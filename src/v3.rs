@@ -90,11 +90,11 @@ fn canonical_headers(headers: &HeaderMap) -> Result<(String, String)> {
 const SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
 
 /// Type of ali access key and secret key.
-pub type AccessKeyNSecret = (&'static str, &'static str);
+pub type AccessKeyNSecret = (Cow<'static, str>, Cow<'static, str>);
 
 /// Build http request according to authorization signature V3.
 pub async fn call<R>(
-    key_secret: AccessKeyNSecret,
+    key_secret: &AccessKeyNSecret,
     http_client: &reqwest::Client,
     req: R,
 ) -> Result<R::Result>
@@ -130,8 +130,8 @@ where
     let hashed_canonical_request = hexed_sha256(&canonical_request);
     let string_to_sign = format!("{}\n{}", SIGNATURE_ALGORITHM, hashed_canonical_request);
     debug!("string_to_sign: {:?}", string_to_sign);
-    let signature = hexed_hmac_sha256(key_secret.1, string_to_sign.as_bytes())?;
-    let ali_access_key_id = key_secret.0;
+    let signature = hexed_hmac_sha256(&key_secret.1, string_to_sign.as_bytes())?;
+    let ali_access_key_id = &key_secret.0;
     insert_str_header(
         &mut headers,
         http::header::AUTHORIZATION,

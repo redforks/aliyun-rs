@@ -4,10 +4,10 @@ use serde::de::DeserializeOwned;
 use std::collections::BTreeMap;
 use thiserror::Error;
 
+mod common;
 mod v3;
 
 pub type Error = anyhow::Error;
-
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 /// Each api entry should implement this trait.
