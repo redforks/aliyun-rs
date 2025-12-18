@@ -1,15 +1,16 @@
 //! Build authorization signature V3
 
-use anyhow::Context;
+use anyhow::{Context, anyhow};
 use http::{
     HeaderMap, HeaderValue, Method,
     header::{CONTENT_TYPE, IntoHeaderName},
 };
+use serde_json;
 use std::{borrow::Cow, collections::BTreeMap};
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{Error, IntoBody as _, Result};
+use crate::{IntoBody as _, Result};
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
@@ -169,16 +170,17 @@ where
     .await
     .context("send request")?;
 
-    // let resp.into(_text = resp
-    //     .text()
-    //     .await
-    //     .whatever_context::<_, ServerError>("get response text")?;
-    // let resp: R::Response = serde_json::from_str(dbg!(&resp_text))
-    //     .whatever_context::<_, ServerError>("decode response")?;
-    let resp = resp
-        .json::<R::Response>()
-        .await
-        .context("Get response text")?;
+    let status = resp.status();
+    let resp_text = resp.text().await.context("Get response text")?;
+
+    let resp = if status.is_success() {
+        serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?
+    } else {
+        match serde_json::from_str::<crate::CodeMessage>(&resp_text) {
+            Ok(code_msg) => return Err(code_msg.into()),
+            Err(_) => return Err(anyhow!("HTTP error: {} - {}", status, resp_text).into()),
+        }
+    };
     resp.into()
 }
 
