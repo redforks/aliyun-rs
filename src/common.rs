@@ -29,6 +29,12 @@ impl Connection {
     }
 
     pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<R::Result>> + Send {
-        call(&self.0.access_key_secret, &self.0.http_client, req)
+        call(
+            &self.0.access_key_secret,
+            &self.0.http_client,
+            &self.0.version,
+            &self.0.end_point,
+            req,
+        )
     }
 }

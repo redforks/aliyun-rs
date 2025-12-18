@@ -43,10 +43,14 @@ fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &
     Ok(())
 }
 
-fn gen_headers<R: super::Request>(hashed_content: &str) -> Result<HeaderMap> {
+fn gen_headers<R: super::Request>(
+    version: &'static str,
+    end_point: &'static str,
+    hashed_content: &str,
+) -> Result<HeaderMap> {
     let mut r = HeaderMap::new();
     insert_str_header(&mut r, "x-acs-action", R::ACTION)?;
-    insert_str_header(&mut r, "x-acs-version", R::VERSION)?;
+    insert_str_header(&mut r, "x-acs-version", version)?;
     insert_str_header(
         &mut r,
         "x-acs-signature-nonce",
@@ -57,7 +61,7 @@ fn gen_headers<R: super::Request>(hashed_content: &str) -> Result<HeaderMap> {
         "x-acs-date",
         &format_datetime(OffsetDateTime::now_utc())?,
     )?;
-    insert_str_header(&mut r, "host", R::END_POINT)?;
+    insert_str_header(&mut r, "host", end_point)?;
     insert_str_header(&mut r, "x-acs-content-sha256", hashed_content)?;
 
     Ok(r)
@@ -96,6 +100,8 @@ pub type AccessKeyNSecret = (Cow<'static, str>, Cow<'static, str>);
 pub async fn call<R>(
     key_secret: &AccessKeyNSecret,
     http_client: &reqwest::Client,
+    version: &'static str,
+    end_point: &'static str,
     req: R,
 ) -> Result<R::Result>
 where
@@ -112,7 +118,7 @@ where
     let body = body.into_body()?;
     let body_bytes = body.as_bytes().context("body should be bytes")?;
     let hashed_request_payload = hexed_sha256(body_bytes);
-    let mut headers = gen_headers::<R>(&hashed_request_payload)?;
+    let mut headers = gen_headers::<R>(version, end_point, &hashed_request_payload)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
     }
@@ -140,7 +146,7 @@ where
             SIGNATURE_ALGORITHM, ali_access_key_id, header_names, signature
         ),
     )?;
-    let mut url = format!("https://{}{}", R::END_POINT, R::URL_PATH);
+    let mut url = format!("https://{}{}", end_point, R::URL_PATH);
     if !query_string.is_empty() {
         url.push('?');
         url.push_str(&query_string);

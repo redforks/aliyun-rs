@@ -7,6 +7,10 @@ use thiserror::Error;
 mod common;
 mod v3;
 
+#[cfg(test)]
+#[allow(dead_code)]
+mod sample;
+
 pub type Error = anyhow::Error;
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
@@ -15,8 +19,6 @@ trait Request: Sized + Send {
     const METHOD: Method;
     const URL_PATH: &'static str = "/";
     const ACTION: &'static str;
-    const VERSION: &'static str;
-    const END_POINT: &'static str;
     /// Request body, will serialize to json. Use unit type if no request body.
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
