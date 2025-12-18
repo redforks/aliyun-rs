@@ -2,9 +2,11 @@
 name = "aliyun-rs"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 anyhow = "1.0.100"
+derive_setters = "0.1.8"
 hex = "0.4.3"
 hmac = "0.12.1"
 http = "1.4.0"
