@@ -1,6 +1,7 @@
+use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
-use serde::de::DeserializeOwned;
+use serde::{Deserialize, de::DeserializeOwned};
 use std::collections::BTreeMap;
 use thiserror::Error;
 
@@ -11,7 +12,15 @@ mod v3;
 #[allow(dead_code)]
 mod sample;
 
-pub type Error = anyhow::Error;
+#[derive(Debug, thiserror::Error)]
+pub enum Error {
+    #[error(transparent)]
+    Ali(#[from] CodeMessage),
+
+    #[error(transparent)]
+    Other(#[from] anyhow::Error),
+}
+
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 /// Each api entry should implement this trait.
@@ -45,5 +54,29 @@ impl IntoBody for () {
 
     fn into_body(self) -> Result<Body> {
         Ok(b"".as_slice().into())
+    }
+}
+
+#[derive(Debug, Deserialize, thiserror::Error)]
+#[serde(rename_all = "PascalCase")]
+#[error("{code}: {message}")]
+pub struct CodeMessage {
+    pub code: String,
+    pub message: String,
+}
+
+impl CodeMessage {
+    pub fn check(&self) -> Result<()> {
+        if &self.code == "OK" {
+            Ok(())
+        } else {
+            Err(anyhow!("{}: {}", self.code, self.message).into())
+        }
+    }
+}
+
+impl From<CodeMessage> for Result<()> {
+    fn from(value: CodeMessage) -> Self {
+        value.check()
     }
 }

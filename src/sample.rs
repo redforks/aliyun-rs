@@ -1,7 +1,7 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 use crate::{Request, Result, v3::AccessKeySecret};
-use std::{borrow::Cow, future::Future};
+use std::{borrow::Cow, collections::HashMap, future::Future};
 
 #[derive(Clone, Copy)]
 pub enum Endpoint {
@@ -19,17 +19,23 @@ impl From<Endpoint> for &'static str {
 }
 
 mod sealed {
-    use crate::Result;
+    use crate::{CodeMessage, Result};
     use serde::Deserialize;
 
     /// prevent Request type used with Connection of other mod.
     pub trait Bound {}
 
     #[derive(Deserialize)]
-    pub struct QuerySmsTemplateListResponse {}
+    #[serde(rename_all = "PascalCase")]
+    pub struct SendSmsResponse {
+        #[serde(flatten)]
+        code_message: CodeMessage,
+        biz_id: String,
+        request_id: String,
+    }
 
-    impl From<QuerySmsTemplateListResponse> for Result<()> {
-        fn from(value: QuerySmsTemplateListResponse) -> Self {
+    impl From<SendSmsResponse> for Result<()> {
+        fn from(value: SendSmsResponse) -> Self {
             todo!()
         }
     }
@@ -55,34 +61,54 @@ impl Connection {
     }
 
     /// Helps for IDE auto complete
-    pub fn query_sms(&self, req: QuerySmsTemplateList) -> impl Future<Output = Result<()>> + Send {
+    pub fn send_sms(&self, req: SendSms) -> impl Future<Output = Result<()>> + Send {
         self.call(req)
     }
 }
 
-#[derive(derive_setters::Setters)]
-pub struct QuerySmsTemplateList {
-    //
+#[derive(derive_setters::Setters, Debug)]
+#[setters(generate = false)]
+pub struct SendSms {
+    phone_numbers: String,
+    sign_name: String,
+    template_code: String,
+    #[setters(generate = true, strip_option)]
+    template_param: Option<String>,
+    #[setters(generate = true, strip_option)]
+    sms_up_extend_code: Option<String>,
+    #[setters(generate = true, strip_option)]
+    out_id: Option<String>,
 }
 
-impl sealed::Bound for QuerySmsTemplateList {}
+impl sealed::Bound for SendSms {}
 
-impl QuerySmsTemplateList {
-    pub fn new(required_args: ()) -> Self {
-        Self {}
+impl SendSms {
+    pub fn new(
+        phone_numbers: impl Into<String>,
+        sign_name: impl Into<String>,
+        template_code: impl Into<String>,
+    ) -> Self {
+        SendSms {
+            phone_numbers: phone_numbers.into(),
+            sign_name: sign_name.into(),
+            template_code: template_code.into(),
+            template_param: None,
+            sms_up_extend_code: None,
+            out_id: None,
+        }
     }
 }
 
-impl Request for QuerySmsTemplateList {
+impl Request for SendSms {
     const METHOD: http::Method = http::Method::GET;
 
-    const ACTION: &'static str = "QuerySmsTemplateList";
+    const ACTION: &'static str = "SendSms";
 
     type Body = ();
 
     type Result = ();
 
-    type Response = sealed::QuerySmsTemplateListResponse;
+    type Response = sealed::SendSmsResponse;
 
     fn to_body(self) -> Result<Self::Body> {
         todo!()

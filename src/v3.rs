@@ -1,6 +1,6 @@
 //! Build authorization signature V3
 
-use anyhow::{Context, anyhow};
+use anyhow::Context;
 use http::{
     HeaderMap, HeaderValue, Method,
     header::{CONTENT_TYPE, IntoHeaderName},
@@ -225,7 +225,9 @@ fn format_datetime(dt: OffsetDateTime) -> Result<String> {
         .encode();
     const FORMAT: Iso8601<CONFIG> = Iso8601::<CONFIG>;
 
-    dt.format(&FORMAT).context("format rfc3339 failed")
+    dt.format(&FORMAT)
+        .context("format rfc3339 failed")
+        .map_err(Into::into)
 }
 
 #[cfg(test)]
