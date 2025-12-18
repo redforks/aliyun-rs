@@ -28,7 +28,7 @@ impl Connection {
         }))
     }
 
-    pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<R::Result>> + Send {
+    pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<R::Response>> + Send {
         call(
             &self.0.access_key_secret,
             &self.0.http_client,

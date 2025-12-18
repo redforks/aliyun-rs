@@ -112,7 +112,7 @@ pub async fn call<R>(
     version: &'static str,
     end_point: &'static str,
     req: R,
-) -> Result<R::Result>
+) -> Result<R::Response>
 where
     R: super::Request,
 {
@@ -181,7 +181,7 @@ where
             Err(_) => return Err(anyhow!("HTTP error: {} - {}", status, resp_text).into()),
         }
     };
-    resp.into()
+    Ok(resp)
 }
 
 /// Compute signature String using HMAC-SHA256, and encode use hex.

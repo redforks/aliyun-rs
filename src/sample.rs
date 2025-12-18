@@ -1,7 +1,5 @@
-use serde::{Deserialize, Serialize};
-
-use crate::{Request, Result, v3::AccessKeySecret};
-use std::{borrow::Cow, collections::HashMap, future::Future};
+use crate::{CodeMessage, Request, Result, v3::AccessKeySecret};
+use serde::Deserialize;
 
 #[derive(Clone, Copy)]
 pub enum Endpoint {
@@ -19,26 +17,8 @@ impl From<Endpoint> for &'static str {
 }
 
 mod sealed {
-    use crate::{CodeMessage, Result};
-    use serde::Deserialize;
-
     /// prevent Request type used with Connection of other mod.
     pub trait Bound {}
-
-    #[derive(Deserialize)]
-    #[serde(rename_all = "PascalCase")]
-    pub struct SendSmsResponse {
-        #[serde(flatten)]
-        code_message: CodeMessage,
-        biz_id: String,
-        request_id: String,
-    }
-
-    impl From<SendSmsResponse> for Result<()> {
-        fn from(value: SendSmsResponse) -> Self {
-            todo!()
-        }
-    }
 }
 
 #[derive(Clone)]
@@ -56,12 +36,12 @@ impl Connection {
     pub fn call<R: Request + sealed::Bound>(
         &self,
         req: R,
-    ) -> impl Future<Output = Result<R::Result>> + Send {
+    ) -> impl Future<Output = Result<R::Response>> + Send {
         self.0.call(req)
     }
 
     /// Helps for IDE auto complete
-    pub fn send_sms(&self, req: SendSms) -> impl Future<Output = Result<()>> + Send {
+    pub fn send_sms(&self, req: SendSms) -> impl Future<Output = Result<SendSmsResponse>> + Send {
         self.call(req)
     }
 }
@@ -106,11 +86,18 @@ impl Request for SendSms {
 
     type Body = ();
 
-    type Result = ();
-
-    type Response = sealed::SendSmsResponse;
+    type Response = SendSmsResponse;
 
     fn to_body(self) -> Result<Self::Body> {
         todo!()
     }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct SendSmsResponse {
+    #[serde(flatten)]
+    code_message: CodeMessage,
+    biz_id: String,
+    request_id: String,
 }

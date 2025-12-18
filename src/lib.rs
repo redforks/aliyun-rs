@@ -31,10 +31,8 @@ trait Request: Sized + Send {
     /// Request body, will serialize to json. Use unit type if no request body.
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
-    /// Result data if no error.
-    type Result;
-    /// Response json type
-    type Response: DeserializeOwned + Into<Result<Self::Result>>;
+    /// Response type returned by the call() method.
+    type Response: DeserializeOwned;
 
     fn to_query_params(&self) -> Result<BTreeMap<&'static str, String>> {
         Ok(BTreeMap::new())
