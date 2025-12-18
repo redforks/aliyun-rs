@@ -1,7 +1,7 @@
 use serde::Deserialize;
 
-use crate::{Request, Result};
-use std::borrow::Cow;
+use crate::{Request, Result, v3::AccessKeySecret};
+use std::{borrow::Cow, future::Future};
 
 #[derive(Clone, Copy)]
 pub enum Endpoint {
@@ -39,13 +39,9 @@ mod sealed {
 pub struct Connection(crate::common::Connection);
 
 impl Connection {
-    pub fn new(
-        endpoint: Endpoint,
-        app_key: impl Into<Cow<'static, str>>,
-        app_securet: impl Into<Cow<'static, str>>,
-    ) -> Self {
+    pub fn new(endpoint: Endpoint, app_key_secret: AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
-            (app_key.into(), app_securet.into()),
+            app_key_secret,
             "2020-01-01",
             endpoint.into(),
         ))

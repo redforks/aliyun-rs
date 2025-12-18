@@ -94,11 +94,19 @@ fn canonical_headers(headers: &HeaderMap) -> Result<(String, String)> {
 const SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
 
 /// Type of ali access key and secret key.
-pub type AccessKeyNSecret = (Cow<'static, str>, Cow<'static, str>);
+#[derive(Clone, Debug)]
+pub struct AccessKeySecret(pub Cow<'static, str>, pub Cow<'static, str>);
+
+impl AccessKeySecret {
+    #[inline]
+    pub fn new(key: impl Into<Cow<'static, str>>, secret: impl Into<Cow<'static, str>>) -> Self {
+        Self(key.into(), secret.into())
+    }
+}
 
 /// Build http request according to authorization signature V3.
 pub async fn call<R>(
-    key_secret: &AccessKeyNSecret,
+    key_secret: &AccessKeySecret,
     http_client: &reqwest::Client,
     version: &'static str,
     end_point: &'static str,

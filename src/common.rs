@@ -1,11 +1,11 @@
 use crate::{
     Request, Result,
-    v3::{AccessKeyNSecret, call},
+    v3::{AccessKeySecret, call},
 };
-use std::rc::Rc;
+use std::{future::Future, rc::Rc};
 
 struct _Connection {
-    access_key_secret: AccessKeyNSecret,
+    access_key_secret: AccessKeySecret,
     version: &'static str,
     end_point: &'static str,
     http_client: reqwest::Client,
@@ -16,7 +16,7 @@ pub struct Connection(Rc<_Connection>);
 
 impl Connection {
     pub fn new(
-        access_key_secret: AccessKeyNSecret,
+        access_key_secret: AccessKeySecret,
         version: &'static str,
         end_point: &'static str,
     ) -> Self {
