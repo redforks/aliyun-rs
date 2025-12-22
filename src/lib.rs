@@ -8,7 +8,6 @@ mod common;
 mod v3;
 
 #[cfg(test)]
-#[allow(dead_code)]
 mod sample;
 
 #[derive(Debug, thiserror::Error)]
