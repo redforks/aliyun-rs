@@ -1,4 +1,6 @@
-use crate::{CodeMessage, Request, Result, v3::AccessKeySecret};
+use std::collections::BTreeMap;
+
+use crate::{CodeMessage, QueryValue, Request, Result, v3::AccessKeySecret};
 use serde::Deserialize;
 
 #[derive(Clone, Copy)]
@@ -33,14 +35,13 @@ impl Connection {
         ))
     }
 
-    pub fn call<R: Request + sealed::Bound>(
+    fn call<R: Request + sealed::Bound>(
         &self,
         req: R,
     ) -> impl Future<Output = Result<R::Response>> + Send {
         self.0.call(req)
     }
 
-    /// Helps for IDE auto complete
     pub fn send_sms(&self, req: SendSms) -> impl Future<Output = Result<SendSmsResponse>> + Send {
         self.call(req)
     }
@@ -87,6 +88,17 @@ impl Request for SendSms {
     type Body = ();
 
     type Response = SendSmsResponse;
+
+    fn to_query_params(&self) -> crate::Result<BTreeMap<&'static str, QueryValue<'_>>> {
+        let mut params = BTreeMap::new();
+        params.insert("PhoneNumbers", (&self.phone_numbers).into());
+        params.insert("SignName", (&self.sign_name).into());
+        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateParam", (&self.template_param).into());
+        params.insert("SmsUpExtendCode", (&self.sms_up_extend_code).into());
+        params.insert("OutId", (&self.out_id).into());
+        Ok(params)
+    }
 
     fn to_body(self) -> Result<Self::Body> {
         todo!()

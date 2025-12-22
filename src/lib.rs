@@ -3,7 +3,6 @@ use http::{HeaderValue, Method};
 use reqwest::Body;
 use serde::{Deserialize, de::DeserializeOwned};
 use std::collections::BTreeMap;
-use thiserror::Error;
 
 mod common;
 mod v3;
@@ -23,6 +22,44 @@ pub enum Error {
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
+enum QueryValue<'a> {
+    Str(&'a str),
+    OptStr(Option<&'a str>),
+}
+
+impl<'a> From<&'a String> for QueryValue<'a> {
+    fn from(value: &'a String) -> Self {
+        Self::Str(value)
+    }
+}
+
+impl<'a> From<&'a str> for QueryValue<'a> {
+    fn from(value: &'a str) -> Self {
+        Self::Str(value)
+    }
+}
+
+impl<'a> From<Option<&'a str>> for QueryValue<'a> {
+    fn from(value: Option<&'a str>) -> Self {
+        Self::OptStr(value)
+    }
+}
+
+impl<'a> From<&'a Option<String>> for QueryValue<'a> {
+    fn from(value: &'a Option<String>) -> Self {
+        Self::OptStr(value.as_deref())
+    }
+}
+
+impl<'a> QueryValue<'a> {
+    fn to_query_value(&self) -> Option<&'_ str> {
+        match self {
+            QueryValue::Str(v) => Some(*v),
+            QueryValue::OptStr(v) => *v,
+        }
+    }
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
@@ -34,7 +71,7 @@ trait Request: Sized + Send {
     /// Response type returned by the call() method.
     type Response: DeserializeOwned;
 
-    fn to_query_params(&self) -> Result<BTreeMap<&'static str, String>> {
+    fn to_query_params(&self) -> Result<BTreeMap<&'static str, QueryValue>> {
         Ok(BTreeMap::new())
     }
     fn to_body(self) -> Result<Self::Body>;

@@ -10,7 +10,7 @@ use std::{borrow::Cow, collections::BTreeMap};
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{IntoBody as _, Result};
+use crate::{IntoBody as _, QueryValue, Result};
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
@@ -27,10 +27,13 @@ fn canonical_uri_path(uri: &str) -> Cow<'_, str> {
     canonical_uri.into()
 }
 
-fn canonical_query_string(values: &BTreeMap<&'static str, String>) -> String {
+fn canonical_query_string(values: BTreeMap<&'static str, QueryValue>) -> String {
     let mut query = String::new();
     for (k, v) in values {
-        query.push_str(&format!("{}={}&", percent_encode(k), percent_encode(v)));
+        let v = v.to_query_value();
+        if let Some(v) = v {
+            query.push_str(&format!("{}={}&", percent_encode(k), percent_encode(&v)));
+        }
     }
     query.pop(); // remove last '&'
     query
@@ -117,7 +120,7 @@ where
     R: super::Request,
 {
     let uri = canonical_uri_path(R::URL_PATH);
-    let query_string = canonical_query_string(&req.to_query_params()?);
+    let query_string = canonical_query_string(req.to_query_params()?);
     let body = req.to_body()?;
     let content_type = if R::METHOD == Method::GET {
         None
