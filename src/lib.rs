@@ -7,10 +7,10 @@ use std::collections::BTreeMap;
 mod common;
 mod v3;
 
+pub mod sms;
+
 #[cfg(test)]
 mod sample;
-
-pub mod sms;
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
@@ -25,11 +25,8 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 enum QueryValue<'a> {
     Str(&'a str),
-    OptStr(Option<&'a str>),
     I64(&'a i64),
     Bool(&'a bool),
-    OptI64(Option<&'a i64>),
-    OptBool(Option<&'a bool>),
 }
 
 impl<'a> From<&'a String> for QueryValue<'a> {
@@ -41,18 +38,6 @@ impl<'a> From<&'a String> for QueryValue<'a> {
 impl<'a> From<&'a str> for QueryValue<'a> {
     fn from(value: &'a str) -> Self {
         Self::Str(value)
-    }
-}
-
-impl<'a> From<Option<&'a str>> for QueryValue<'a> {
-    fn from(value: Option<&'a str>) -> Self {
-        Self::OptStr(value)
-    }
-}
-
-impl<'a> From<&'a Option<String>> for QueryValue<'a> {
-    fn from(value: &'a Option<String>) -> Self {
-        Self::OptStr(value.as_deref())
     }
 }
 
@@ -68,49 +53,18 @@ impl<'a> From<&'a bool> for QueryValue<'a> {
     }
 }
 
-impl<'a> From<Option<&'a i64>> for QueryValue<'a> {
-    fn from(value: Option<&'a i64>) -> Self {
-        Self::OptI64(value)
-    }
-}
-
-impl<'a> From<&'a Option<i64>> for QueryValue<'a> {
-    fn from(value: &'a Option<i64>) -> Self {
-        Self::OptI64(value.as_ref())
-    }
-}
-
-impl<'a> From<Option<&'a bool>> for QueryValue<'a> {
-    fn from(value: Option<&'a bool>) -> Self {
-        Self::OptBool(value)
-    }
-}
-
-impl<'a> From<&'a Option<bool>> for QueryValue<'a> {
-    fn from(value: &'a Option<bool>) -> Self {
-        Self::OptBool(value.as_ref())
-    }
-}
-
 impl<'a> QueryValue<'a> {
-    fn to_query_value(&self) -> Option<String> {
+    fn to_query_value(&self) -> String {
         match self {
-            QueryValue::Str(v) => Some(v.to_string()),
-            QueryValue::OptStr(v) => v.map(|s| s.to_string()),
-            QueryValue::I64(v) => Some(v.to_string()),
-            QueryValue::Bool(v) => Some(if **v {
-                "true".to_string()
-            } else {
-                "false".to_string()
-            }),
-            QueryValue::OptI64(v) => v.map(|i| i.to_string()),
-            QueryValue::OptBool(v) => v.map(|b| {
-                if *b {
+            QueryValue::Str(v) => v.to_string(),
+            QueryValue::I64(v) => v.to_string(),
+            QueryValue::Bool(v) => {
+                if **v {
                     "true".to_string()
                 } else {
                     "false".to_string()
                 }
-            }),
+            }
         }
     }
 }

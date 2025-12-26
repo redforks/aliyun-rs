@@ -95,9 +95,15 @@ impl Request for SendSms {
         params.insert("PhoneNumbers", (&self.phone_numbers).into());
         params.insert("SignName", (&self.sign_name).into());
         params.insert("TemplateCode", (&self.template_code).into());
-        params.insert("TemplateParam", (&self.template_param).into());
-        params.insert("SmsUpExtendCode", (&self.sms_up_extend_code).into());
-        params.insert("OutId", (&self.out_id).into());
+        if let Some(ref v) = self.template_param {
+            params.insert("TemplateParam", v.into());
+        }
+        if let Some(ref v) = self.sms_up_extend_code {
+            params.insert("SmsUpExtendCode", v.into());
+        }
+        if let Some(ref v) = self.out_id {
+            params.insert("OutId", v.into());
+        }
         Ok(params)
     }
 

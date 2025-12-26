@@ -31,9 +31,7 @@ fn canonical_query_string(values: BTreeMap<&'static str, QueryValue>) -> String 
     let mut query = String::new();
     for (k, v) in values {
         let v = v.to_query_value();
-        if let Some(v) = v {
-            query.push_str(&format!("{}={}&", percent_encode(k), percent_encode(&v)));
-        }
+        query.push_str(&format!("{}={}&", percent_encode(k), percent_encode(&v)));
     }
     query.pop(); // remove last '&'
     query
