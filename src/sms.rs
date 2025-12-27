@@ -113,7 +113,7 @@ impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
             app_key_secret,
-            "1.0",
+            "2017-05-25",
             endpoint.into(),
         ))
     }
@@ -576,7 +576,7 @@ impl Connection {
     /// - 通过接口删除签名的操作会在短信服务控制台同步，在控制台对模板的相关操作，请参见[短信签名](~~108073~~)。
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -634,7 +634,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -664,7 +664,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - 通过接口修改签名的操作会在短信服务控制台同步，在控制台对签名的相关操作，请参见[短信签名](~~108073~~)。
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -696,7 +696,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - 当前接口是通过签名名称查询单个签名的审核详情。[QuerySmsSignList](~~419288~~)接口可以查询您当前账号下所有签名的签名详情。
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -947,7 +947,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -984,7 +984,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1015,7 +1015,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1238,7 +1238,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1611,7 +1611,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1646,7 +1646,7 @@ Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1678,7 +1678,7 @@ Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query par
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1709,7 +1709,7 @@ Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query para
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1744,7 +1744,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -1775,7 +1775,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///  
+    ///
     ///
     /// # Methods
     /// - Post
@@ -3166,7 +3166,7 @@ impl crate::Request for UpdateSmsSign {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsSign {
@@ -3262,7 +3262,7 @@ impl crate::Request for ChangeSignatureQualification {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsSign {
@@ -3353,7 +3353,7 @@ impl crate::Request for AddSmsSign {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsSign {
@@ -3436,7 +3436,7 @@ impl crate::Request for ModifySmsSign {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsSign {
@@ -4169,7 +4169,7 @@ impl crate::Request for UpdateSmsTemplate {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsTemplate {
@@ -4215,7 +4215,7 @@ impl crate::Request for DeleteSmsTemplate {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsTemplate {
@@ -4290,7 +4290,7 @@ impl crate::Request for AddSmsTemplate {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsTemplate {
@@ -4886,7 +4886,7 @@ impl crate::Request for GetMediaResourceId {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCardSmsTemplate {
@@ -5923,7 +5923,7 @@ impl crate::Request for ConversionDataIntl {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddShortUrl {}
@@ -5958,7 +5958,7 @@ impl crate::Request for AddShortUrl {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteShortUrl {}
@@ -5993,7 +5993,7 @@ impl crate::Request for DeleteShortUrl {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryShortUrl {}
@@ -6028,7 +6028,7 @@ impl crate::Request for QueryShortUrl {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
@@ -6100,7 +6100,7 @@ impl crate::Request for ListTagResources {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
@@ -6154,7 +6154,7 @@ impl crate::Request for TagResources {
     }
 }
 
-///  
+///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
@@ -6426,9 +6426,8 @@ pub struct QuerySmsAppIcpRecordResponseDataItem {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseAuditInfo {
-    pub audit_date: String,
-    pub reject_info: String,
+pub struct GetSmsTemplateResponseFileUrlList {
+    pub file_url: Vec<String>,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
@@ -6437,14 +6436,15 @@ pub struct GetSmsTemplateResponseVendorAuditStatus {}
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseMoreDataFileUrlList {
-    pub more_data_file_url: Vec<String>,
+pub struct GetSmsTemplateResponseAuditInfo {
+    pub audit_date: String,
+    pub reject_info: String,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseFileUrlList {
-    pub file_url: Vec<String>,
+pub struct GetSmsTemplateResponseMoreDataFileUrlList {
+    pub more_data_file_url: Vec<String>,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
