@@ -522,9 +522,7 @@ impl Connection {
         &self,
         req: QuerySmsSignList,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsSignListResponse>> + Send {
-        async {
-            todo!(r##"Only HttpMethod::Get supported"##);
-        }
+        self.call(req)
     }
 
     ///
@@ -646,8 +644,7 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<AddSmsSignResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
+                r##"Parameter 'SignFileList': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
             );
         }
     }
@@ -676,8 +673,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     ) -> impl std::future::Future<Output = crate::Result<ModifySmsSignResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
+                r##"Parameter 'SignFileList': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
             );
         }
     }
@@ -892,9 +888,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         &self,
         req: QuerySmsTemplateList,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsTemplateListResponse>> + Send {
-        async {
-            todo!(r##"Only HttpMethod::Get supported"##);
-        }
+        self.call(req)
     }
 
     ///
@@ -1108,18 +1102,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         &self,
         req: SendBatchSms,
     ) -> impl std::future::Future<Output = crate::Result<SendBatchSmsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'PhoneNumberJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SignNameJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'TemplateParamJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'PhoneNumberJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SignNameJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'TemplateParamJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1161,9 +1144,7 @@ Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only
         &self,
         req: QuerySendStatistics,
     ) -> impl std::future::Future<Output = crate::Result<QuerySendStatisticsResponse>> + Send {
-        async {
-            todo!(r##"Only HttpMethod::Get supported"##);
-        }
+        self.call(req)
     }
 
     ///
@@ -1217,8 +1198,7 @@ Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only
     ) -> impl std::future::Future<Output = crate::Result<GetMediaResourceIdResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get supported
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -1253,8 +1233,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"Only HttpMethod::Get supported
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -1624,16 +1603,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         &self,
         req: AddShortUrl,
     ) -> impl std::future::Future<Output = crate::Result<AddShortUrlResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'ShortUrlName': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'ShortUrlName': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1660,12 +1630,7 @@ Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query
         &self,
         req: DeleteShortUrl,
     ) -> impl std::future::Future<Output = crate::Result<DeleteShortUrlResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1691,12 +1656,7 @@ Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query par
         &self,
         req: QueryShortUrl,
     ) -> impl std::future::Future<Output = crate::Result<QueryShortUrlResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2963,15 +2923,17 @@ impl crate::Request for GetSmsSign {
         Ok(())
     }
 }
-#[derive(derive_setters::Setters, Debug)]
+#[derive(derive_setters::Setters, Debug, serde::Serialize)]
 #[setters(generate = false)]
 pub struct QuerySmsSignList {
     /// 当前页码，默认取值为**1**。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_index: Option<i32>,
     /// 每页显示的签名个数。默认取值为**10**，取值范围：**1~50**。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
 }
@@ -2988,11 +2950,11 @@ impl QuerySmsSignList {
 }
 
 impl crate::Request for QuerySmsSignList {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsSignList";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsSignListResponse;
 
@@ -3013,7 +2975,7 @@ impl crate::Request for QuerySmsSignList {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3946,15 +3908,17 @@ impl crate::Request for GetSmsTemplate {
         Ok(())
     }
 }
-#[derive(derive_setters::Setters, Debug)]
+#[derive(derive_setters::Setters, Debug, serde::Serialize)]
 #[setters(generate = false)]
 pub struct QuerySmsTemplateList {
     /// 当前页码。默认取值为**1**。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_index: Option<i32>,
     /// 每页显示的模板个数。取值范围：**1~50**，默认取值为**10**。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
 }
@@ -3971,11 +3935,11 @@ impl QuerySmsTemplateList {
 }
 
 impl crate::Request for QuerySmsTemplateList {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsTemplateList";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsTemplateListResponse;
 
@@ -3996,7 +3960,7 @@ impl crate::Request for QuerySmsTemplateList {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4550,10 +4514,34 @@ impl crate::Request for SendSms {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendBatchSms {
+    /// 接收短信的手机号码。手机号码格式：
+    ///
+    /// * 国内短信：+/+86/0086/86或无任何前缀的手机号码，例如1590000\*\*\*\*。
+    /// * 国际/港澳台消息：国际区号+号码，例如852000012\*\*\*\*。
+    ///
+    /// > 验证码类型短信，建议使用[SendSms](~~419273~~)接口单条发送。
+    phone_number_json: String,
+    /// 短信签名名称，签名数量需与手机号码数量一致。
+    ///
+    /// 您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看已审核通过的签名，必须使用审核通过的签名发送短信。
+    sign_name_json: String,
     /// 短信模板Code。国内短信模板和国际短信模板不可以混用。
     ///
     /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表，必须使用已审核通过的模板Code发送短信。
     template_code: String,
+    /// 短信模板变量对应的实际值。当您选择的模板内含有变量时，此参数必填。
+    ///
+    /// > - 模板变量值的个数必须与手机号码、签名的个数相同、内容一一对应，表示向指定手机号码中发对应签名的短信，且短信模板中的变量参数替换为对应的值。
+    /// > - 如果JSON中需要带换行符，请参照标准的JSON协议处理。
+
+    #[setters(generate = true, strip_option)]
+    template_param_json: Option<String>,
+    /// 上行短信扩展码，JSON数组格式。
+    ///
+    /// > 无特殊需要可忽略此字段。
+
+    #[setters(generate = true, strip_option)]
+    sms_up_extend_code_json: Option<String>,
     /// 外部流水扩展字段，长度小于256的字符串。
     ///
     /// > 无特殊需要可忽略此字段。
@@ -4565,9 +4553,17 @@ pub struct SendBatchSms {
 impl sealed::Bound for SendBatchSms {}
 
 impl SendBatchSms {
-    pub fn new(template_code: impl Into<String>) -> Self {
+    pub fn new(
+        phone_number_json: impl Into<String>,
+        sign_name_json: impl Into<String>,
+        template_code: impl Into<String>,
+    ) -> Self {
         Self {
+            phone_number_json: phone_number_json.into(),
+            sign_name_json: sign_name_json.into(),
             template_code: template_code.into(),
+            template_param_json: None,
+            sms_up_extend_code_json: None,
             out_id: None,
         }
     }
@@ -4677,7 +4673,7 @@ impl crate::Request for QuerySendDetails {
         Ok(())
     }
 }
-#[derive(derive_setters::Setters, Debug)]
+#[derive(derive_setters::Setters, Debug, serde::Serialize)]
 #[setters(generate = false)]
 pub struct QuerySendStatistics {
     /// 短信发送范围。取值：
@@ -4685,14 +4681,24 @@ pub struct QuerySendStatistics {
     /// - **1**：国内短信发送记录。
     ///
     /// - **2**：国际/港澳台短信发送记录。
+
+    #[serde(skip)]
     is_globe: i32,
     /// 开始日期，格式为yyyyMMdd。
+
+    #[serde(skip)]
     start_date: String,
     /// 结束日期，格式为yyyyMMdd。
+
+    #[serde(skip)]
     end_date: String,
     /// 当前页码。
+
+    #[serde(skip)]
     page_index: i32,
     /// 每页显示的条数。取值范围：**1~50**。
+
+    #[serde(skip)]
     page_size: i32,
     /// 模板类型。取值：
     ///
@@ -4706,10 +4712,12 @@ pub struct QuerySendStatistics {
     ///
     /// - **7**：数字短信。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     template_type: Option<i32>,
     /// 签名名称。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     sign_name: Option<String>,
 }
@@ -4737,11 +4745,11 @@ impl QuerySendStatistics {
 }
 
 impl crate::Request for QuerySendStatistics {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySendStatistics";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySendStatisticsResponse;
 
@@ -4767,7 +4775,7 @@ impl crate::Request for QuerySendStatistics {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -4806,7 +4814,7 @@ impl crate::Request for GetOSSInfoForCardTemplate {
         Ok(())
     }
 }
-#[derive(derive_setters::Setters, Debug)]
+#[derive(derive_setters::Setters, Debug, serde::Serialize)]
 #[setters(generate = false)]
 pub struct GetMediaResourceId {
     /// 资源类型。
@@ -4821,19 +4829,27 @@ pub struct GetMediaResourceId {
     /// > - 16:9比例：sixteenToNine
     /// > - 3:1比例：threeToOne
     /// > - 48:65比例：fortyEightToSixtyFiv
+
+    #[serde(skip)]
     resource_type: i32,
     /// 获取的资源地址。
+
+    #[serde(skip)]
     oss_key: String,
     /// 文件大小，单位：Byte。
+
+    #[serde(skip)]
     file_size: i64,
     /// 扩展字段。
     ///
     /// > 资源类型为**图片**时必填。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     extend_info: Option<String>,
     /// 上传资源的描述。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     memo: Option<String>,
 }
@@ -4857,11 +4873,11 @@ impl GetMediaResourceId {
 }
 
 impl crate::Request for GetMediaResourceId {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetMediaResourceId";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetMediaResourceIdResponse;
 
@@ -4885,23 +4901,28 @@ impl crate::Request for GetMediaResourceId {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
 ///
-#[derive(derive_setters::Setters, Debug)]
+#[derive(derive_setters::Setters, Debug, serde::Serialize)]
 #[setters(generate = false)]
 pub struct CreateCardSmsTemplate {
     /// 卡片短信模板名称。
+
+    #[serde(skip)]
     template_name: String,
     /// 卡片短信的模板内容。
     ///
     /// > - Template、ExtendInfo、TemplateContent、TmpCard、Action等字段说明，请参见[卡片短信模板参数字段说明](~~434929~~)。
     /// > - 不同类型的卡片短信模板的内容结构不同，详情请参见[卡片短信模板示例](~~435361~~)。
+
+    #[serde(skip)]
     template: CreateCardSmsTemplateTemplate,
     /// 对上传模板的描述。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     memo: Option<String>,
     /// 模板提交的厂商。厂商类型取值：
@@ -4915,6 +4936,7 @@ pub struct CreateCardSmsTemplate {
     ///
     /// > 该参数不填时，系统自动匹配模板支持的手机厂商。
 
+    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     factorys: Option<String>,
 }
@@ -4936,11 +4958,11 @@ impl CreateCardSmsTemplate {
 }
 
 impl crate::Request for CreateCardSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateCardSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateCardSmsTemplateResponse;
 
@@ -4963,7 +4985,7 @@ impl crate::Request for CreateCardSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5929,13 +5951,29 @@ impl crate::Request for ConversionDataIntl {
 ///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct AddShortUrl {}
+pub struct AddShortUrl {
+    /// 原始链接地址。不超过1000个字符。
+    /// ><notice>短信服务暂时不支持使用此接口。></notice>
+    source_url: String,
+    /// 短链服务名称。不超过13个字符。
+    short_url_name: String,
+    /// 短链服务使用有效期。单位为天，有效期最长为90天。
+    effective_days: String,
+}
 
 impl sealed::Bound for AddShortUrl {}
 
 impl AddShortUrl {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(
+        source_url: impl Into<String>,
+        short_url_name: impl Into<String>,
+        effective_days: impl Into<String>,
+    ) -> Self {
+        Self {
+            source_url: source_url.into(),
+            short_url_name: short_url_name.into(),
+            effective_days: effective_days.into(),
+        }
     }
 }
 
@@ -5964,13 +6002,19 @@ impl crate::Request for AddShortUrl {
 ///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteShortUrl {}
+pub struct DeleteShortUrl {
+    /// 原始链接地址。不超过1000个字符。
+    /// ><notice>短信服务暂时不支持使用此接口。></notice>
+    source_url: String,
+}
 
 impl sealed::Bound for DeleteShortUrl {}
 
 impl DeleteShortUrl {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(source_url: impl Into<String>) -> Self {
+        Self {
+            source_url: source_url.into(),
+        }
     }
 }
 
@@ -5999,13 +6043,19 @@ impl crate::Request for DeleteShortUrl {
 ///
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct QueryShortUrl {}
+pub struct QueryShortUrl {
+    /// 生成的短链服务地址。可通过[AddShortUrl](~~186774~~)接口获取。
+    /// ><notice>短信服务暂时不支持使用此接口。></notice>
+    short_url: String,
+}
 
 impl sealed::Bound for QueryShortUrl {}
 
 impl QueryShortUrl {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(short_url: impl Into<String>) -> Self {
+        Self {
+            short_url: short_url.into(),
+        }
     }
 }
 
@@ -6224,877 +6274,1173 @@ impl crate::Request for UntagResources {
     }
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubmitSmsQualificationBusinessLicensePicsItem {
+    #[serde(rename = "LicensePic")]
     pub license_pic: String,
+    #[serde(rename = "Type")]
     pub r#type: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SubmitSmsQualificationOtherFilesItem {
+    #[serde(rename = "LicensePic")]
     pub license_pic: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdateSmsQualificationBusinessLicensePicsItem {
+    #[serde(rename = "LicensePic")]
     pub license_pic: String,
+    #[serde(rename = "Type")]
     pub r#type: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct UpdateSmsQualificationOtherFilesItem {
+    #[serde(rename = "LicensePic")]
     pub license_pic: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateCardSmsTemplateTemplate {}
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryMobilesCardSupportMobilesItem {}
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsQualificationRecordResponseDataListItem {
+    #[serde(rename = "AuditRemark")]
     pub audit_remark: String,
+    #[serde(rename = "AuditTime")]
     pub audit_time: String,
+    #[serde(rename = "CompanyName")]
     pub company_name: String,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "GroupId")]
     pub group_id: i64,
+    #[serde(rename = "LegalPersonName")]
     pub legal_person_name: String,
+    #[serde(rename = "QualificationGroupName")]
     pub qualification_group_name: String,
+    #[serde(rename = "StateName")]
     pub state_name: String,
+    #[serde(rename = "UseBySelf")]
     pub use_by_self: String,
+    #[serde(rename = "WorkOrderId")]
     pub work_order_id: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsQualificationRecordResponseData {
+    #[serde(rename = "List")]
     pub list: Vec<QuerySmsQualificationRecordResponseDataListItem>,
+    #[serde(rename = "PageNo")]
     pub page_no: i64,
+    #[serde(rename = "PageSize")]
     pub page_size: i64,
+    #[serde(rename = "Total")]
     pub total: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
-    pub license_pic: String,
-    pub pic_url: String,
-}
-
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
+    #[serde(rename = "LicensePic")]
     pub license_pic: String,
+    #[serde(rename = "PicUrl")]
     pub pic_url: String,
+    #[serde(rename = "Type")]
     pub r#type: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
+    #[serde(rename = "PicUrl")]
+    pub pic_url: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySingleSmsQualificationResponseData {
+    #[serde(rename = "AdminIDCardExpDate")]
     pub admin_id_card_exp_date: String,
+    #[serde(rename = "AdminIDCardFrontFace")]
     pub admin_id_card_front_face: String,
+    #[serde(rename = "AdminIDCardNo")]
     pub admin_id_card_no: String,
+    #[serde(rename = "AdminIDCardPic")]
     pub admin_id_card_pic: String,
+    #[serde(rename = "AdminIDCardType")]
     pub admin_id_card_type: String,
+    #[serde(rename = "AdminName")]
     pub admin_name: String,
+    #[serde(rename = "AdminPhoneNo")]
     pub admin_phone_no: String,
+    #[serde(rename = "BusinessLicensePics")]
     pub business_license_pics: Vec<QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem>,
+    #[serde(rename = "BusinessType")]
     pub business_type: String,
+    #[serde(rename = "CompanyName")]
     pub company_name: String,
+    #[serde(rename = "CompanyType")]
     pub company_type: String,
+    #[serde(rename = "EffTimeStr")]
     pub eff_time_str: String,
+    #[serde(rename = "LegalPersonIDCardNo")]
     pub legal_person_id_card_no: String,
+    #[serde(rename = "LegalPersonIDCardType")]
     pub legal_person_id_card_type: String,
+    #[serde(rename = "LegalPersonIdCardEffTime")]
     pub legal_person_id_card_eff_time: String,
+    #[serde(rename = "LegalPersonName")]
     pub legal_person_name: String,
+    #[serde(rename = "OrganizationCode")]
     pub organization_code: String,
+    #[serde(rename = "OtherFiles")]
     pub other_files: Vec<QuerySingleSmsQualificationResponseDataOtherFilesItem>,
+    #[serde(rename = "QualificationGroupId")]
     pub qualification_group_id: i64,
+    #[serde(rename = "QualificationName")]
     pub qualification_name: String,
+    #[serde(rename = "Remark")]
     pub remark: String,
+    #[serde(rename = "State")]
     pub state: String,
+    #[serde(rename = "UseBySelf")]
     pub use_by_self: bool,
+    #[serde(rename = "WhetherShare")]
     pub whether_share: bool,
+    #[serde(rename = "WorkOrderId")]
     pub work_order_id: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsAuthorizationLetterResponseDataItem {
+    #[serde(rename = "Authorization")]
     pub authorization: String,
+    #[serde(rename = "AuthorizationLetterExpDate")]
     pub authorization_letter_exp_date: String,
+    #[serde(rename = "AuthorizationLetterId")]
     pub authorization_letter_id: i64,
+    #[serde(rename = "AuthorizationLetterName")]
     pub authorization_letter_name: String,
+    #[serde(rename = "AuthorizationLetterPic")]
     pub authorization_letter_pic: String,
+    #[serde(rename = "OrganizationCode")]
     pub organization_code: String,
+    #[serde(rename = "ProxyAuthorization")]
     pub proxy_authorization: String,
+    #[serde(rename = "SignScope")]
     pub sign_scope: String,
+    #[serde(rename = "State")]
     pub state: String,
+    #[serde(rename = "Status")]
     pub status: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsSignResponseAuditInfo {
+    #[serde(rename = "AuditDate")]
     pub audit_date: String,
+    #[serde(rename = "RejectInfo")]
     pub reject_info: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem {
+    #[serde(rename = "ReasonCode")]
     pub reason_code: String,
+    #[serde(rename = "ReasonDescList")]
     pub reason_desc_list: Vec<String>,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItem {
+    #[serde(rename = "OperatorCode")]
     pub operator_code: String,
+    #[serde(rename = "OperatorCompleteTime")]
     pub operator_complete_time: String,
+    #[serde(rename = "RegisterStatus")]
     pub register_status: i32,
+    #[serde(rename = "RegisterStatusReasons")]
     pub register_status_reasons:
         Vec<GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem>,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsSignListResponseSmsSignListItemReason {
+    #[serde(rename = "RejectDate")]
     pub reject_date: String,
+    #[serde(rename = "RejectInfo")]
     pub reject_info: String,
+    #[serde(rename = "RejectSubInfo")]
     pub reject_sub_info: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsSignListResponseSmsSignListItem {
+    #[serde(rename = "AppIcpRecordId")]
     pub app_icp_record_id: i64,
+    #[serde(rename = "AuditStatus")]
     pub audit_status: String,
+    #[serde(rename = "AuthorizationLetterId")]
     pub authorization_letter_id: i64,
+    #[serde(rename = "BusinessType")]
     pub business_type: String,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "Reason")]
     pub reason: QuerySmsSignListResponseSmsSignListItemReason,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "TrademarkId")]
     pub trademark_id: i64,
+    #[serde(rename = "authorizationLetterAuditPass")]
     pub authorization_letter_audit_pass: bool,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChangeSignatureQualificationResponseDataData {}
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChangeSignatureQualificationResponseData {
+    #[serde(rename = "Data")]
     pub data: ChangeSignatureQualificationResponseDataData,
+    #[serde(rename = "ErrCode")]
     pub err_code: String,
+    #[serde(rename = "ErrMessage")]
     pub err_message: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsTrademarkResponseDataItem {
+    #[serde(rename = "TrademarkApplicantName")]
     pub trademark_applicant_name: String,
+    #[serde(rename = "TrademarkEffExpDate")]
     pub trademark_eff_exp_date: String,
+    #[serde(rename = "TrademarkId")]
     pub trademark_id: i64,
+    #[serde(rename = "TrademarkName")]
     pub trademark_name: String,
+    #[serde(rename = "TrademarkPic")]
     pub trademark_pic: String,
+    #[serde(rename = "TrademarkPicUrl")]
     pub trademark_pic_url: String,
+    #[serde(rename = "TrademarkRegistrationNumber")]
     pub trademark_registration_number: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsAppIcpRecordResponseDataItem {
+    #[serde(rename = "AppApprovalDate")]
     pub app_approval_date: String,
+    #[serde(rename = "AppIcpLicenseNumber")]
     pub app_icp_license_number: String,
+    #[serde(rename = "AppIcpRecordId")]
     pub app_icp_record_id: i64,
+    #[serde(rename = "AppIcpRecordPic")]
     pub app_icp_record_pic: String,
+    #[serde(rename = "AppIcpRecordPicUrl")]
     pub app_icp_record_pic_url: String,
+    #[serde(rename = "AppPrincipalUnitName")]
     pub app_principal_unit_name: String,
+    #[serde(rename = "AppServiceName")]
     pub app_service_name: String,
+    #[serde(rename = "Domain")]
     pub domain: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSmsTemplateResponseAuditInfo {
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsTemplateResponseFileUrlList {
+    #[serde(rename = "FileUrl")]
     pub file_url: Vec<String>,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsTemplateResponseMoreDataFileUrlList {
+    #[serde(rename = "MoreDataFileUrl")]
     pub more_data_file_url: Vec<String>,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseAuditInfo {
-    pub audit_date: String,
-    pub reject_info: String,
-}
-
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsTemplateResponseVendorAuditStatus {}
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsTemplateListResponseSmsTemplateListItemReason {
+    #[serde(rename = "RejectDate")]
     pub reject_date: String,
+    #[serde(rename = "RejectInfo")]
     pub reject_info: String,
+    #[serde(rename = "RejectSubInfo")]
     pub reject_sub_info: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySmsTemplateListResponseSmsTemplateListItem {
+    #[serde(rename = "AuditStatus")]
     pub audit_status: String,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "OuterTemplateType")]
     pub outer_template_type: i32,
+    #[serde(rename = "Reason")]
     pub reason: QuerySmsTemplateListResponseSmsTemplateListItemReason,
+    #[serde(rename = "SignatureName")]
     pub signature_name: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateContent")]
     pub template_content: String,
+    #[serde(rename = "TemplateName")]
     pub template_name: String,
+    #[serde(rename = "TemplateType")]
     pub template_type: i32,
+    #[serde(rename = "TrafficDriving")]
     pub traffic_driving: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem {
+    #[serde(rename = "Content")]
     pub content: String,
+    #[serde(rename = "ErrCode")]
     pub err_code: String,
+    #[serde(rename = "OutId")]
     pub out_id: String,
+    #[serde(rename = "PhoneNum")]
     pub phone_num: String,
+    #[serde(rename = "ReceiveDate")]
     pub receive_date: String,
+    #[serde(rename = "SendDate")]
     pub send_date: String,
+    #[serde(rename = "SendStatus")]
     pub send_status: i64,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySendDetailsResponseSmsSendDetailDtOs {
+    #[serde(rename = "SmsSendDetailDTO")]
     pub sms_send_detail_dto: Vec<QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem>,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySendStatisticsResponseDataTargetListItem {
+    #[serde(rename = "NoRespondedCount")]
     pub no_responded_count: i64,
+    #[serde(rename = "RespondedFailCount")]
     pub responded_fail_count: i64,
+    #[serde(rename = "RespondedSuccessCount")]
     pub responded_success_count: i64,
+    #[serde(rename = "SendDate")]
     pub send_date: String,
+    #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySendStatisticsResponseData {
+    #[serde(rename = "TargetList")]
     pub target_list: Vec<QuerySendStatisticsResponseDataTargetListItem>,
+    #[serde(rename = "TotalSize")]
     pub total_size: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem {
+    #[serde(rename = "ErrCode")]
     pub err_code: String,
+    #[serde(rename = "OutId")]
     pub out_id: String,
+    #[serde(rename = "PhoneNumber")]
     pub phone_number: String,
+    #[serde(rename = "ReceiveDate")]
     pub receive_date: String,
+    #[serde(rename = "ReceiveType")]
     pub receive_type: String,
+    #[serde(rename = "RenderDate")]
     pub render_date: String,
+    #[serde(rename = "RenderStatus")]
     pub render_status: i64,
+    #[serde(rename = "SendDate")]
     pub send_date: String,
+    #[serde(rename = "SendStatus")]
     pub send_status: i64,
+    #[serde(rename = "SmsContent")]
     pub sms_content: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetCardSmsDetailsResponseCardSendDetailDto {
+    #[serde(rename = "CurrentPage")]
     pub current_page: i64,
+    #[serde(rename = "PageSize")]
     pub page_size: i64,
+    #[serde(rename = "Records")]
     pub records: Vec<GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem>,
+    #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetQualificationOssInfoResponseData {
+    #[serde(rename = "AccessKeyId")]
     pub access_key_id: String,
+    #[serde(rename = "Expire")]
     pub expire: i64,
+    #[serde(rename = "Host")]
     pub host: String,
+    #[serde(rename = "Policy")]
     pub policy: String,
+    #[serde(rename = "Signature")]
     pub signature: String,
+    #[serde(rename = "StartPath")]
     pub start_path: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetOssInfoForUploadFileResponseModel {
+    #[serde(rename = "AccessKeyId")]
     pub access_key_id: String,
+    #[serde(rename = "ExpireTime")]
     pub expire_time: String,
+    #[serde(rename = "Host")]
     pub host: String,
+    #[serde(rename = "Policy")]
     pub policy: String,
+    #[serde(rename = "Signature")]
     pub signature: String,
+    #[serde(rename = "StartPath")]
     pub start_path: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsOcrOssInfoResponseModel {
+    #[serde(rename = "AccessKeyId")]
     pub access_key_id: String,
+    #[serde(rename = "Bucket")]
     pub bucket: String,
+    #[serde(rename = "ExpireTime")]
     pub expire_time: String,
+    #[serde(rename = "Host")]
     pub host: String,
+    #[serde(rename = "Policy")]
     pub policy: String,
+    #[serde(rename = "Signature")]
     pub signature: String,
+    #[serde(rename = "StartPath")]
     pub start_path: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct AddShortUrlResponseData {
+    #[serde(rename = "ExpireDate")]
     pub expire_date: String,
+    #[serde(rename = "ShortUrl")]
     pub short_url: String,
+    #[serde(rename = "SourceUrl")]
     pub source_url: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryShortUrlResponseData {
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "ExpireDate")]
     pub expire_date: String,
+    #[serde(rename = "PageViewCount")]
     pub page_view_count: String,
+    #[serde(rename = "ShortUrl")]
     pub short_url: String,
+    #[serde(rename = "ShortUrlName")]
     pub short_url_name: String,
+    #[serde(rename = "ShortUrlStatus")]
     pub short_url_status: String,
+    #[serde(rename = "SourceUrl")]
     pub source_url: String,
+    #[serde(rename = "UniqueVisitorCount")]
     pub unique_visitor_count: String,
 }
 
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SubmitSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsQualificationRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: QuerySmsQualificationRecordResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySingleSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: QuerySingleSmsQualificationResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct UpdateSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct DeleteSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: bool,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct RequiredPhoneCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ValidPhoneCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: bool,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateSmsAuthorizationLetterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsAuthorizationLetterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: Vec<QuerySmsAuthorizationLetterResponseDataItem>,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AppIcpRecordId")]
     pub app_icp_record_id: i64,
+    #[serde(rename = "ApplyScene")]
     pub apply_scene: String,
+    #[serde(rename = "AuditInfo")]
     pub audit_info: GetSmsSignResponseAuditInfo,
+    #[serde(rename = "AuthorizationLetterAuditPass")]
     pub authorization_letter_audit_pass: bool,
+    #[serde(rename = "AuthorizationLetterId")]
     pub authorization_letter_id: i64,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "FileUrlList")]
     pub file_url_list: Vec<String>,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "QualificationId")]
     pub qualification_id: i64,
+    #[serde(rename = "RegisterResult")]
     pub register_result: i32,
+    #[serde(rename = "Remark")]
     pub remark: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignCode")]
     pub sign_code: String,
+    #[serde(rename = "SignIspRegisterDetailList")]
     pub sign_isp_register_detail_list: Vec<GetSmsSignResponseSignIspRegisterDetailListItem>,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "SignStatus")]
     pub sign_status: i64,
+    #[serde(rename = "SignTag")]
     pub sign_tag: String,
+    #[serde(rename = "SignUsage")]
     pub sign_usage: String,
+    #[serde(rename = "ThirdParty")]
     pub third_party: bool,
+    #[serde(rename = "TrademarkId")]
     pub trademark_id: i64,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsSignListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "CurrentPage")]
     pub current_page: i32,
+    #[serde(rename = "PageSize")]
     pub page_size: i32,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SmsSignList")]
     pub sms_sign_list: Vec<QuerySmsSignListResponseSmsSignListItem>,
+    #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct UpdateSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct DeleteSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ChangeSignatureQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: ChangeSignatureQualificationResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct AddSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ModifySmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "Reason")]
     pub reason: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "SignStatus")]
     pub sign_status: i32,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateSmsTrademarkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsTrademarkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: Vec<QuerySmsTrademarkResponseDataItem>,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateSmsAppIcpRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsAppIcpRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: Vec<QuerySmsAppIcpRecordResponseDataItem>,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateName")]
     pub template_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "ApplyScene")]
     pub apply_scene: String,
+    #[serde(rename = "AuditInfo")]
     pub audit_info: GetSmsTemplateResponseAuditInfo,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "FileUrlList")]
     pub file_url_list: GetSmsTemplateResponseFileUrlList,
+    #[serde(rename = "IntlType")]
     pub intl_type: i32,
+    #[serde(rename = "MoreDataFileUrlList")]
     pub more_data_file_url_list: GetSmsTemplateResponseMoreDataFileUrlList,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RelatedSignName")]
     pub related_sign_name: String,
+    #[serde(rename = "Remark")]
     pub remark: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateContent")]
     pub template_content: String,
+    #[serde(rename = "TemplateName")]
     pub template_name: String,
+    #[serde(rename = "TemplateStatus")]
     pub template_status: String,
+    #[serde(rename = "TemplateTag")]
     pub template_tag: i32,
+    #[serde(rename = "TemplateType")]
     pub template_type: String,
+    #[serde(rename = "VariableAttribute")]
     pub variable_attribute: String,
+    #[serde(rename = "VendorAuditStatus")]
     pub vendor_audit_status: GetSmsTemplateResponseVendorAuditStatus,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsTemplateListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "CurrentPage")]
     pub current_page: i32,
+    #[serde(rename = "PageSize")]
     pub page_size: i32,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SmsTemplateList")]
     pub sms_template_list: Vec<QuerySmsTemplateListResponseSmsTemplateListItem>,
+    #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct UpdateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateName")]
     pub template_name: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct DeleteSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct AddSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ModifySmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "Reason")]
     pub reason: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateContent")]
     pub template_content: String,
+    #[serde(rename = "TemplateName")]
     pub template_name: String,
+    #[serde(rename = "TemplateStatus")]
     pub template_status: i32,
+    #[serde(rename = "TemplateType")]
     pub template_type: i32,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SendSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "BizId")]
     pub biz_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SendBatchSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "BizId")]
     pub biz_id: String,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySendDetailsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SmsSendDetailDTOs")]
     pub sms_send_detail_dt_os: QuerySendDetailsResponseSmsSendDetailDtOs,
+    #[serde(rename = "TotalCount")]
     pub total_count: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QuerySendStatisticsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
     pub data: QuerySendStatisticsResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetMediaResourceIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CreateCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QueryCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct CheckMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QueryMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetCardSmsLinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetCardSmsDetailsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "CardSendDetailDTO")]
     pub card_send_detail_dto: GetCardSmsDetailsResponseCardSendDetailDto,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QueryCardSmsTemplateReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SendCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SendBatchCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetQualificationOssInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
     pub data: GetQualificationOssInfoResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetOSSInfoForUploadFileResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Model")]
     pub model: GetOssInfoForUploadFileResponseModel,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct GetSmsOcrOssInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Model")]
     pub model: GetSmsOcrOssInfoResponseModel,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
     pub success: bool,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct SmsConversionIntlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ConversionDataIntlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct AddShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
     pub data: AddShortUrlResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct DeleteShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct QueryShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
     pub data: QueryShortUrlResponseData,
+    #[serde(rename = "RequestId")]
     pub request_id: String,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct TagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-#[derive(serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug, serde::Deserialize)]
 pub struct UntagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,

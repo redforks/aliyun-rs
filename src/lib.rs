@@ -1,7 +1,8 @@
+use anyhow::Context as _;
 use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
-use serde::{Deserialize, de::DeserializeOwned};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::collections::BTreeMap;
 
 mod common;
@@ -146,6 +147,20 @@ impl IntoBody for () {
 
     fn into_body(self) -> Result<Body> {
         Ok(b"".as_slice().into())
+    }
+}
+
+pub struct Form<T>(pub T);
+
+impl<T: Serialize> IntoBody for Form<T> {
+    fn content_type(&self) -> HeaderValue {
+        HeaderValue::from_static("application/x-www-form-urlencoded")
+    }
+
+    fn into_body(self) -> Result<Body> {
+        let encoded = serde_urlencoded::to_string(&self.0)
+            .context("Convert response object to form urlencoded")?;
+        Ok(encoded.into())
     }
 }
 

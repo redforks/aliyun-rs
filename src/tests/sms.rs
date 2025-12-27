@@ -58,18 +58,17 @@ fn format_date(date: time::OffsetDateTime) -> String {
 async fn test_query_sms_sign_list() {
     let conn = test_connection();
 
-    // Note: QuerySmsSignList returns todo!(), so we expect a runtime panic
-    // This is kept as documentation for when the endpoint is implemented
-    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-        let rt = tokio::runtime::Runtime::new().unwrap();
-        rt.block_on(async {
-            conn.query_sms_sign_list(crate::sms::QuerySmsSignList::new())
-                .await
-        })
-    })) {
-        Ok(Ok(_)) => println!("Query SMS sign list succeeded"),
-        Ok(Err(e)) => println!("Query SMS sign list error: {}", e),
-        Err(_) => println!("Query SMS sign list panicked (expected - not implemented)"),
+    let result = conn
+        .query_sms_sign_list(crate::sms::QuerySmsSignList::new())
+        .await;
+
+    match result {
+        Ok(response) => {
+            println!("Query SMS sign list response code: {:?}", response);
+        }
+        Err(e) => {
+            println!("Query SMS sign list error: {:?}", e);
+        }
     }
 }
 
@@ -530,6 +529,148 @@ async fn test_update_sms_template() {
         }
         Err(e) => {
             println!("Create failed (expected): {}", e);
+        }
+    }
+}
+
+#[tokio::test]
+#[ignore]
+async fn test_query_sms_template_list() {
+    let conn = test_connection();
+
+    let result = conn
+        .query_sms_template_list(crate::sms::QuerySmsTemplateList::new())
+        .await;
+
+    match result {
+        Ok(response) => {
+            println!(
+                "Query SMS template list response code: {}",
+                response.code_message.code
+            );
+        }
+        Err(e) => {
+            println!("Query SMS template list error: {}", e);
+        }
+    }
+}
+
+#[tokio::test]
+#[ignore]
+async fn test_query_send_statistics() {
+    let conn = test_connection();
+
+    let end_date = format_date(time::OffsetDateTime::now_utc());
+    let start_date = format_date(time::OffsetDateTime::now_utc() - time::Duration::days(7));
+
+    let result = conn
+        .query_send_statistics(crate::sms::QuerySendStatistics::new(
+            0_i32,
+            &start_date,
+            &end_date,
+            1_i32,
+            10_i32,
+        ))
+        .await;
+
+    match result {
+        Ok(response) => {
+            println!(
+                "Query send statistics response code: {}",
+                response.code_message.code
+            );
+        }
+        Err(e) => {
+            println!("Query send statistics error: {}", e);
+        }
+    }
+}
+
+#[tokio::test]
+#[ignore]
+async fn test_send_batch_sms() {
+    let conn = test_connection();
+
+    // Send batch SMS - requires approved signs and templates
+    let phone_numbers = r#"["15000000000","15000000001"]"#;
+    let sign_names = r#"["test-sign","test-sign"]"#;
+    let template_params = r#"[{"code":"1234"},{"code":"5678"}]"#;
+
+    let send_request = crate::sms::SendBatchSms::new(
+        phone_numbers,
+        sign_names,
+        "SMS_template", // Must be an approved template
+    )
+    .template_param_json(template_params.to_string());
+
+    let result = conn.send_batch_sms(send_request).await;
+
+    match result {
+        Ok(response) => {
+            println!("Send batch SMS response: {}", response.code_message.code);
+        }
+        Err(e) => {
+            println!(
+                "Send batch SMS failed (expected without valid credentials): {}",
+                e
+            );
+        }
+    }
+}
+
+#[tokio::test]
+#[ignore]
+async fn test_short_url_operations() {
+    let conn = test_connection();
+
+    // Test AddShortUrl
+    let source_url = "https://example.com/very-long-url-that-needs-shortening";
+    let short_url_name = "TestShortUrl";
+    let effective_days = "30";
+
+    let add_result = conn
+        .add_short_url(crate::sms::AddShortUrl::new(
+            source_url,
+            short_url_name,
+            effective_days,
+        ))
+        .await;
+
+    match add_result {
+        Ok(add_response) => {
+            println!("Add short URL response: {}", add_response.code_message.code);
+
+            // Query the short URL
+            let short_url = &add_response.data.short_url;
+            let query_result = conn
+                .query_short_url(crate::sms::QueryShortUrl::new(short_url))
+                .await;
+            match query_result {
+                Ok(query_response) => {
+                    println!(
+                        "Query short URL response: {}",
+                        query_response.code_message.code
+                    );
+                }
+                Err(e) => println!("Query short URL error: {}", e),
+            }
+
+            // Delete the short URL
+            let delete_result = conn
+                .delete_short_url(crate::sms::DeleteShortUrl::new(source_url))
+                .await;
+            match delete_result {
+                Ok(delete_response) => {
+                    println!(
+                        "Delete short URL response: {}",
+                        delete_response.code_message.code
+                    );
+                }
+                Err(e) => println!("Delete short URL error: {}", e),
+            }
+        }
+        Err(e) => {
+            println!("Add short URL failed (service may not be available): {}", e);
         }
     }
 }
