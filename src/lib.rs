@@ -59,6 +59,12 @@ impl From<i64> for QueryValue<'_> {
     }
 }
 
+impl<'a> From<&'a i64> for QueryValue<'_> {
+    fn from(value: &i64) -> Self {
+        Self::I64(*value)
+    }
+}
+
 impl From<i32> for QueryValue<'_> {
     fn from(value: i32) -> Self {
         Self::I32(value)
@@ -68,6 +74,18 @@ impl From<i32> for QueryValue<'_> {
 impl From<bool> for QueryValue<'_> {
     fn from(value: bool) -> Self {
         Self::Bool(value)
+    }
+}
+
+impl<'a> From<&'a i32> for QueryValue<'_> {
+    fn from(value: &i32) -> Self {
+        Self::I32(*value)
+    }
+}
+
+impl<'a> From<&'a bool> for QueryValue<'_> {
+    fn from(value: &bool) -> Self {
+        Self::Bool(*value)
     }
 }
 

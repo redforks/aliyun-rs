@@ -131,9 +131,7 @@ impl Connection {
         req: SubmitSmsQualification,
     ) -> impl std::future::Future<Output = crate::Result<SubmitSmsQualificationResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_qualification_record(
@@ -141,9 +139,7 @@ impl Connection {
         req: QuerySmsQualificationRecord,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsQualificationRecordResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_single_sms_qualification(
@@ -151,9 +147,7 @@ impl Connection {
         req: QuerySingleSmsQualification,
     ) -> impl std::future::Future<Output = crate::Result<QuerySingleSmsQualificationResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn update_sms_qualification(
@@ -161,9 +155,7 @@ impl Connection {
         req: UpdateSmsQualification,
     ) -> impl std::future::Future<Output = crate::Result<UpdateSmsQualificationResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn delete_sms_qualification(
@@ -171,27 +163,21 @@ impl Connection {
         req: DeleteSmsQualification,
     ) -> impl std::future::Future<Output = crate::Result<DeleteSmsQualificationResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn required_phone_code(
         &self,
         req: RequiredPhoneCode,
     ) -> impl std::future::Future<Output = crate::Result<RequiredPhoneCodeResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn valid_phone_code(
         &self,
         req: ValidPhoneCode,
     ) -> impl std::future::Future<Output = crate::Result<ValidPhoneCodeResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn create_sms_authorization_letter(
@@ -199,9 +185,7 @@ impl Connection {
         req: CreateSmsAuthorizationLetter,
     ) -> impl std::future::Future<Output = crate::Result<CreateSmsAuthorizationLetterResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_authorization_letter(
@@ -209,27 +193,21 @@ impl Connection {
         req: QuerySmsAuthorizationLetter,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsAuthorizationLetterResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn create_sms_sign(
         &self,
         req: CreateSmsSign,
     ) -> impl std::future::Future<Output = crate::Result<CreateSmsSignResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn get_sms_sign(
         &self,
         req: GetSmsSign,
     ) -> impl std::future::Future<Output = crate::Result<GetSmsSignResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_sign_list(
@@ -237,7 +215,7 @@ impl Connection {
         req: QuerySmsSignList,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsSignListResponse>> + Send {
         async {
-            todo!(r##"API has 1 methods or with non-GET method."##);
+            todo!(r##"Only HttpMethod::Get supported"##);
         }
     }
 
@@ -245,18 +223,14 @@ impl Connection {
         &self,
         req: UpdateSmsSign,
     ) -> impl std::future::Future<Output = crate::Result<UpdateSmsSignResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn delete_sms_sign(
         &self,
         req: DeleteSmsSign,
     ) -> impl std::future::Future<Output = crate::Result<DeleteSmsSignResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn change_signature_qualification(
@@ -264,9 +238,7 @@ impl Connection {
         req: ChangeSignatureQualification,
     ) -> impl std::future::Future<Output = crate::Result<ChangeSignatureQualificationResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn add_sms_sign(
@@ -276,7 +248,6 @@ impl Connection {
         async {
             todo!(
                 r##"Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 2 methods or with non-GET method.
 Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
             );
         }
@@ -289,7 +260,6 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         async {
             todo!(
                 r##"Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 2 methods or with non-GET method.
 Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
             );
         }
@@ -299,27 +269,21 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         &self,
         req: QuerySmsSign,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsSignResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn create_sms_trademark(
         &self,
         req: CreateSmsTrademark,
     ) -> impl std::future::Future<Output = crate::Result<CreateSmsTrademarkResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_trademark(
         &self,
         req: QuerySmsTrademark,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsTrademarkResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn create_sms_app_icp_record(
@@ -327,36 +291,28 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         req: CreateSmsAppIcpRecord,
     ) -> impl std::future::Future<Output = crate::Result<CreateSmsAppIcpRecordResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_app_icp_record(
         &self,
         req: QuerySmsAppIcpRecord,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsAppIcpRecordResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn create_sms_template(
         &self,
         req: CreateSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<CreateSmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn get_sms_template(
         &self,
         req: GetSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<GetSmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_template_list(
@@ -364,7 +320,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         req: QuerySmsTemplateList,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsTemplateListResponse>> + Send {
         async {
-            todo!(r##"API has 1 methods or with non-GET method."##);
+            todo!(r##"Only HttpMethod::Get supported"##);
         }
     }
 
@@ -372,54 +328,42 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
         &self,
         req: UpdateSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<UpdateSmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn delete_sms_template(
         &self,
         req: DeleteSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<DeleteSmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn add_sms_template(
         &self,
         req: AddSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<AddSmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn modify_sms_template(
         &self,
         req: ModifySmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<ModifySmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_sms_template(
         &self,
         req: QuerySmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<QuerySmsTemplateResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn send_sms(
         &self,
         req: SendSms,
     ) -> impl std::future::Future<Output = crate::Result<SendSmsResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn send_batch_sms(
@@ -432,7 +376,6 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
 Parameter 'SignNameJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'TemplateParamJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 2 methods or with non-GET method.
 Parameter 'PhoneNumberJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'SignNameJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'TemplateParamJson': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
@@ -445,9 +388,7 @@ Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only
         &self,
         req: QuerySendDetails,
     ) -> impl std::future::Future<Output = crate::Result<QuerySendDetailsResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_send_statistics(
@@ -455,7 +396,7 @@ Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only
         req: QuerySendStatistics,
     ) -> impl std::future::Future<Output = crate::Result<QuerySendStatisticsResponse>> + Send {
         async {
-            todo!(r##"API has 1 methods or with non-GET method."##);
+            todo!(r##"Only HttpMethod::Get supported"##);
         }
     }
 
@@ -466,8 +407,7 @@ Parameter 'SmsUpExtendCodeJson': Unsupported ParameterIn variant: FormData. Only
     {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -478,7 +418,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<GetMediaResourceIdResponse>> + Send {
         async {
             todo!(
-                r##"API has 1 methods or with non-GET method.
+                r##"Only HttpMethod::Get supported
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
@@ -491,7 +431,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"API has 1 methods or with non-GET method.
+                r##"Only HttpMethod::Get supported
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
@@ -503,8 +443,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<QueryCardSmsTemplateResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -516,8 +455,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'Mobiles': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
+                r##"Parameter 'Mobiles': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
@@ -530,8 +468,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -542,8 +479,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<GetCardSmsLinkResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -552,9 +488,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         &self,
         req: GetCardSmsDetails,
     ) -> impl std::future::Future<Output = crate::Result<GetCardSmsDetailsResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn query_card_sms_template_report(
@@ -564,8 +498,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'TemplateCodes': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
+                r##"Parameter 'TemplateCodes': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
@@ -577,8 +510,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<SendCardSmsResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'CardObjects': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
+                r##"Parameter 'CardObjects': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
@@ -590,8 +522,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<SendBatchCardSmsResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
         }
     }
@@ -601,9 +532,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         req: GetQualificationOssInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetQualificationOssInfoResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn get_oss_info_for_upload_file(
@@ -611,36 +540,28 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         req: GetOSSInfoForUploadFile,
     ) -> impl std::future::Future<Output = crate::Result<GetOSSInfoForUploadFileResponse>> + Send
     {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn get_sms_ocr_oss_info(
         &self,
         req: GetSmsOcrOssInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetSmsOcrOssInfoResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn sms_conversion_intl(
         &self,
         req: SmsConversionIntl,
     ) -> impl std::future::Future<Output = crate::Result<SmsConversionIntlResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn conversion_data_intl(
         &self,
         req: ConversionDataIntl,
     ) -> impl std::future::Future<Output = crate::Result<ConversionDataIntlResponse>> + Send {
-        async {
-            todo!(r##"API has 2 methods or with non-GET method."##);
-        }
+        self.call(req)
     }
 
     pub fn add_short_url(
@@ -652,7 +573,6 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
                 r##"Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'ShortUrlName': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 2 methods or with non-GET method.
 Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'ShortUrlName': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
 Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
@@ -667,7 +587,6 @@ Parameter 'EffectiveDays': Unsupported ParameterIn variant: FormData. Only Query
         async {
             todo!(
                 r##"Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 3 methods or with non-GET method.
 Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
             );
         }
@@ -680,7 +599,6 @@ Parameter 'SourceUrl': Unsupported ParameterIn variant: FormData. Only Query par
         async {
             todo!(
                 r##"Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported.
-API has 2 methods or with non-GET method.
 Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query parameters are supported."##
             );
         }
@@ -692,8 +610,7 @@ Parameter 'ShortUrl': Unsupported ParameterIn variant: FormData. Only Query para
     ) -> impl std::future::Future<Output = crate::Result<ListTagResourcesResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
+                r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
@@ -706,8 +623,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<TagResourcesResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
+                r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
@@ -720,8 +636,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<UntagResourcesResponse>> + Send {
         async {
             todo!(
-                r##"API has 2 methods or with non-GET method.
-Parameter 'TagKey': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
+                r##"Parameter 'TagKey': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
 Response struct error: Response must contain 'Message' field for CodeMessage"##
             );
@@ -4271,6 +4186,13 @@ pub struct QuerySmsAuthorizationLetterResponseDataItem {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
+pub struct GetSmsSignResponseAuditInfo {
+    pub audit_date: String,
+    pub reject_info: String,
+}
+
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem {
     pub reason_code: String,
     pub reason_desc_list: Vec<String>,
@@ -4284,13 +4206,6 @@ pub struct GetSmsSignResponseSignIspRegisterDetailListItem {
     pub register_status: i32,
     pub register_status_reasons:
         Vec<GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem>,
-}
-
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct GetSmsSignResponseAuditInfo {
-    pub audit_date: String,
-    pub reject_info: String,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
@@ -4356,10 +4271,6 @@ pub struct QuerySmsAppIcpRecordResponseDataItem {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseVendorAuditStatus {}
-
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
 pub struct GetSmsTemplateResponseFileUrlList {
     pub file_url: Vec<String>,
 }
@@ -4376,6 +4287,10 @@ pub struct GetSmsTemplateResponseAuditInfo {
     pub audit_date: String,
     pub reject_info: String,
 }
+
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct GetSmsTemplateResponseVendorAuditStatus {}
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
