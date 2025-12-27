@@ -128,7 +128,7 @@ trait Request: Sized + Send {
     /// Response type returned by the call() method.
     type Response: DeserializeOwned;
 
-    fn to_query_params(&self) -> Result<BTreeMap<&'static str, QueryValue>> {
+    fn to_query_params(&self) -> Result<BTreeMap<&'static str, QueryValue<'_>>> {
         Ok(BTreeMap::new())
     }
     fn to_body(self) -> Result<Self::Body>;
