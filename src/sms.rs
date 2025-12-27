@@ -990,6 +990,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - Post
     /// - Get
     ///
+    #[deprecated]
     pub fn add_sms_template(
         &self,
         req: AddSmsTemplate,
@@ -1021,6 +1022,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - Post
     /// - Get
     ///
+    #[deprecated]
     pub fn modify_sms_template(
         &self,
         req: ModifySmsTemplate,
@@ -1045,6 +1047,7 @@ Parameter 'SignFileList': Unsupported ParameterIn variant: FormData. Only Query 
     /// - Post
     /// - Get
     ///
+    #[deprecated]
     pub fn query_sms_template(
         &self,
         req: QuerySmsTemplate,
@@ -6281,17 +6284,17 @@ pub struct QuerySmsQualificationRecordResponseData {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
+pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
     pub license_pic: String,
     pub pic_url: String,
-    pub r#type: String,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
+pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
     pub license_pic: String,
     pub pic_url: String,
+    pub r#type: String,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
@@ -6432,7 +6435,9 @@ pub struct GetSmsTemplateResponseFileUrlList {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseVendorAuditStatus {}
+pub struct GetSmsTemplateResponseMoreDataFileUrlList {
+    pub more_data_file_url: Vec<String>,
+}
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -6443,9 +6448,7 @@ pub struct GetSmsTemplateResponseAuditInfo {
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct GetSmsTemplateResponseMoreDataFileUrlList {
-    pub more_data_file_url: Vec<String>,
-}
+pub struct GetSmsTemplateResponseVendorAuditStatus {}
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "PascalCase")]
