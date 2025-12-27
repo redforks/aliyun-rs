@@ -164,7 +164,7 @@ impl<T: Serialize> IntoBody for Form<T> {
     }
 }
 
-#[derive(Debug, Deserialize, thiserror::Error)]
+#[derive(Debug, Deserialize, Default, thiserror::Error)]
 #[serde(rename_all = "PascalCase")]
 #[error("{code}: {message}")]
 pub struct CodeMessage {

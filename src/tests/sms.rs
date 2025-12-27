@@ -102,10 +102,7 @@ async fn test_query_sms_sign() {
 
     match result {
         Ok(response) => {
-            println!(
-                "Query SMS sign response code: {}",
-                response.code_message.code
-            );
+            println!("Query SMS sign response code: {:?}", response);
         }
         Err(e) => {
             println!("Query SMS sign error: {}", e);
@@ -254,7 +251,7 @@ async fn test_send_sms() {
         }
         Err(e) => {
             println!(
-                "Send SMS failed (expected without valid credentials/sign/template): {}",
+                "Send SMS failed (expected without valid credentials/sign/template): {:?}",
                 e
             );
         }
