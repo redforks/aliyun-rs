@@ -1171,11 +1171,7 @@ impl Connection {
         req: GetOSSInfoForCardTemplate,
     ) -> impl std::future::Future<Output = crate::Result<GetOSSInfoForCardTemplateResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1196,11 +1192,7 @@ impl Connection {
         &self,
         req: GetMediaResourceId,
     ) -> impl std::future::Future<Output = crate::Result<GetMediaResourceIdResponse>> + Send {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1231,11 +1223,7 @@ impl Connection {
         req: CreateCardSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<CreateCardSmsTemplateResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1260,11 +1248,7 @@ impl Connection {
         &self,
         req: QueryCardSmsTemplate,
     ) -> impl std::future::Future<Output = crate::Result<QueryCardSmsTemplateResponse>> + Send {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1292,8 +1276,7 @@ impl Connection {
     {
         async {
             todo!(
-                r##"Parameter 'Mobiles': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Parameter 'Mobiles': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
             );
         }
     }
@@ -1318,11 +1301,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         req: QueryMobilesCardSupport,
     ) -> impl std::future::Future<Output = crate::Result<QueryMobilesCardSupportResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1346,11 +1325,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         &self,
         req: GetCardSmsLink,
     ) -> impl std::future::Future<Output = crate::Result<GetCardSmsLinkResponse>> + Send {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1397,8 +1372,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     {
         async {
             todo!(
-                r##"Parameter 'TemplateCodes': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Parameter 'TemplateCodes': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
             );
         }
     }
@@ -1430,8 +1404,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
     ) -> impl std::future::Future<Output = crate::Result<SendCardSmsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'CardObjects': Unsupported ParameterStyle variant: Flat. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+                r##"Parameter 'CardObjects': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
             );
         }
     }
@@ -1462,11 +1435,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         &self,
         req: SendBatchCardSms,
     ) -> impl std::future::Future<Output = crate::Result<SendBatchCardSmsResponse>> + Send {
-        async {
-            todo!(
-                r##"Response struct error: Response must contain 'Message' field for CodeMessage"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1685,8 +1654,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         async {
             todo!(
                 r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
             );
         }
     }
@@ -1720,8 +1688,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         async {
             todo!(
                 r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
             );
         }
     }
@@ -1751,8 +1718,7 @@ Response struct error: Response must contain 'Message' field for CodeMessage"##
         async {
             todo!(
                 r##"Parameter 'TagKey': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Response struct error: Response must contain 'Message' field for CodeMessage"##
+Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
             );
         }
     }
@@ -6454,6 +6420,15 @@ pub struct QuerySmsAuthorizationLetterResponseDataItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct GetSmsSignResponseAuditInfo {
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem {
     #[serde(rename = "ReasonCode")]
     pub reason_code: String,
@@ -6473,15 +6448,6 @@ pub struct GetSmsSignResponseSignIspRegisterDetailListItem {
     #[serde(rename = "RegisterStatusReasons")]
     pub register_status_reasons:
         Vec<GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem>,
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsSignResponseAuditInfo {
-    #[serde(rename = "AuditDate")]
-    pub audit_date: String,
-    #[serde(rename = "RejectInfo")]
-    pub reject_info: String,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6588,13 +6554,6 @@ pub struct GetSmsTemplateResponseAuditInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetSmsTemplateResponseMoreDataFileUrlList {
-    #[serde(rename = "MoreDataFileUrl")]
-    pub more_data_file_url: Vec<String>,
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct GetSmsTemplateResponseVendorAuditStatus {}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6602,6 +6561,13 @@ pub struct GetSmsTemplateResponseVendorAuditStatus {}
 pub struct GetSmsTemplateResponseFileUrlList {
     #[serde(rename = "FileUrl")]
     pub file_url: Vec<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSmsTemplateResponseMoreDataFileUrlList {
+    #[serde(rename = "MoreDataFileUrl")]
+    pub more_data_file_url: Vec<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6696,6 +6662,101 @@ pub struct QuerySendStatisticsResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct GetOssInfoForCardTemplateResponseData {
+    #[serde(rename = "AccessKeyId")]
+    pub access_key_id: String,
+    #[serde(rename = "AliUid")]
+    pub ali_uid: String,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "ExpireTime")]
+    pub expire_time: String,
+    #[serde(rename = "Host")]
+    pub host: String,
+    #[serde(rename = "Policy")]
+    pub policy: String,
+    #[serde(rename = "Signature")]
+    pub signature: String,
+    #[serde(rename = "StartPath")]
+    pub start_path: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetMediaResourceIdResponseData {
+    #[serde(rename = "ResUrlDownload")]
+    pub res_url_download: String,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: i64,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CreateCardSmsTemplateResponseData {
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryCardSmsTemplateResponseDataTemplatesItem {}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryCardSmsTemplateResponseData {
+    #[serde(rename = "Templates")]
+    pub templates: Vec<QueryCardSmsTemplateResponseDataTemplatesItem>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CheckMobilesCardSupportResponseDataQueryResultItem {
+    #[serde(rename = "mobile")]
+    pub mobile: String,
+    #[serde(rename = "support")]
+    pub support: bool,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CheckMobilesCardSupportResponseData {
+    #[serde(rename = "queryResult")]
+    pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResultItem>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryMobilesCardSupportResponseDataQueryResultItem {
+    #[serde(rename = "Mobile")]
+    pub mobile: String,
+    #[serde(rename = "Support")]
+    pub support: bool,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryMobilesCardSupportResponseData {
+    #[serde(rename = "QueryResult")]
+    pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResultItem>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetCardSmsLinkResponseData {
+    #[serde(rename = "CardPhoneNumbers")]
+    pub card_phone_numbers: String,
+    #[serde(rename = "CardSignNames")]
+    pub card_sign_names: String,
+    #[serde(rename = "CardSmsLinks")]
+    pub card_sms_links: String,
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem {
     #[serde(rename = "ErrCode")]
     pub err_code: String,
@@ -6732,6 +6793,51 @@ pub struct GetCardSmsDetailsResponseCardSendDetailDto {
     pub records: Vec<GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem>,
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryCardSmsTemplateReportResponseDataModelItem {}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryCardSmsTemplateReportResponseData {
+    #[serde(rename = "model")]
+    pub model: Vec<QueryCardSmsTemplateReportResponseDataModelItem>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SendCardSmsResponseData {
+    #[serde(rename = "BizCardId")]
+    pub biz_card_id: String,
+    #[serde(rename = "BizDigitalId")]
+    pub biz_digital_id: String,
+    #[serde(rename = "BizSmsId")]
+    pub biz_sms_id: String,
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "MediaMobiles")]
+    pub media_mobiles: String,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SendBatchCardSmsResponseData {
+    #[serde(rename = "BizCardId")]
+    pub biz_card_id: String,
+    #[serde(rename = "BizDigitalId")]
+    pub biz_digital_id: String,
+    #[serde(rename = "BizSmsId")]
+    pub biz_sms_id: String,
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "MediaMobiles")]
+    pub media_mobiles: String,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6817,6 +6923,26 @@ pub struct QueryShortUrlResponseData {
     pub source_url: String,
     #[serde(rename = "UniqueVisitorCount")]
     pub unique_visitor_count: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ListTagResourcesResponseTagResourcesTagResourceItem {
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String,
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
+    #[serde(rename = "TagKey")]
+    pub tag_key: String,
+    #[serde(rename = "TagValue")]
+    pub tag_value: String,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ListTagResourcesResponseTagResources {
+    #[serde(rename = "TagResource")]
+    pub tag_resource: Vec<ListTagResourcesResponseTagResourcesTagResourceItem>,
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -7332,42 +7458,84 @@ pub struct QuerySendStatisticsResponse {
 pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: GetOssInfoForCardTemplateResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetMediaResourceIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: GetMediaResourceIdResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: CreateCardSmsTemplateResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: QueryCardSmsTemplateResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CheckMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: CheckMobilesCardSupportResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: QueryMobilesCardSupportResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsLinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: GetCardSmsLinkResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -7386,18 +7554,36 @@ pub struct GetCardSmsDetailsResponse {
 pub struct QueryCardSmsTemplateReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: QueryCardSmsTemplateReportResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: SendCardSmsResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: SendBatchCardSmsResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -7488,16 +7674,30 @@ pub struct QueryShortUrlResponse {
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "NextToken")]
+    pub next_token: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "TagResources")]
+    pub tag_resources: ListTagResourcesResponseTagResources,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UntagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
