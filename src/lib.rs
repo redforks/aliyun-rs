@@ -27,6 +27,7 @@ enum QueryValue<'a> {
     Str(&'a str),
     I64(&'a i64),
     Bool(&'a bool),
+    Json(serde_json::Value),
 }
 
 impl<'a> From<&'a String> for QueryValue<'a> {
@@ -53,6 +54,12 @@ impl<'a> From<&'a bool> for QueryValue<'a> {
     }
 }
 
+impl<'a> From<serde_json::Value> for QueryValue<'a> {
+    fn from(value: serde_json::Value) -> Self {
+        Self::Json(value)
+    }
+}
+
 impl<'a> QueryValue<'a> {
     fn to_query_value(&self) -> String {
         match self {
@@ -65,6 +72,7 @@ impl<'a> QueryValue<'a> {
                     "false".to_string()
                 }
             }
+            QueryValue::Json(v) => v.to_string(),
         }
     }
 }
