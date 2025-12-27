@@ -29,9 +29,9 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 enum QueryValue<'a> {
     Str(&'a str),
     OwnedStr(String),
-    I64(&'a i64),
-    I32(&'a i32),
-    Bool(&'a bool),
+    I64(i64),
+    I32(i32),
+    Bool(bool),
     Json(serde_json::Value),
 }
 
@@ -53,20 +53,20 @@ impl<'a> From<&'a str> for QueryValue<'a> {
     }
 }
 
-impl<'a> From<&'a i64> for QueryValue<'a> {
-    fn from(value: &'a i64) -> Self {
+impl From<i64> for QueryValue<'_> {
+    fn from(value: i64) -> Self {
         Self::I64(value)
     }
 }
 
-impl<'a> From<&'a i32> for QueryValue<'a> {
-    fn from(value: &'a i32) -> Self {
+impl From<i32> for QueryValue<'_> {
+    fn from(value: i32) -> Self {
         Self::I32(value)
     }
 }
 
-impl<'a> From<&'a bool> for QueryValue<'a> {
-    fn from(value: &'a bool) -> Self {
+impl From<bool> for QueryValue<'_> {
+    fn from(value: bool) -> Self {
         Self::Bool(value)
     }
 }
@@ -84,7 +84,7 @@ impl<'a> QueryValue<'a> {
             QueryValue::I64(v) => v.to_string(),
             QueryValue::I32(v) => v.to_string(),
             QueryValue::Bool(v) => {
-                if **v {
+                if *v {
                     "true".to_string()
                 } else {
                     "false".to_string()
