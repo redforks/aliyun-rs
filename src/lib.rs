@@ -12,6 +12,9 @@ pub mod sms;
 #[cfg(test)]
 mod sample;
 
+#[cfg(test)]
+mod tests;
+
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error(transparent)]

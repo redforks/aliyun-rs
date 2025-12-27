@@ -22,3 +22,4 @@ uuid = { version = "1.19.0", features = ["v4"] }
 
 [dev-dependencies]
 time = { version = "0.3.44", features = ["macros"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
