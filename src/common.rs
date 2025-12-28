@@ -2,7 +2,7 @@ use crate::{
     Request, Result,
     v3::{AccessKeySecret, call},
 };
-use std::{future::Future, rc::Rc};
+use std::{future::Future, sync::Arc};
 
 struct _Connection {
     access_key_secret: AccessKeySecret,
@@ -12,7 +12,7 @@ struct _Connection {
 }
 
 #[derive(Clone)]
-pub struct Connection(Rc<_Connection>);
+pub struct Connection(Arc<_Connection>);
 
 impl Connection {
     pub fn new(
@@ -20,7 +20,7 @@ impl Connection {
         version: &'static str,
         end_point: &'static str,
     ) -> Self {
-        Self(Rc::new(_Connection {
+        Self(Arc::new(_Connection {
             access_key_secret,
             version,
             end_point,
