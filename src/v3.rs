@@ -5,7 +5,6 @@ use http::{
     HeaderMap, HeaderValue, Method,
     header::{CONTENT_TYPE, IntoHeaderName},
 };
-use serde_json;
 use std::{borrow::Cow, collections::BTreeMap};
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
@@ -27,11 +26,11 @@ fn canonical_uri_path(uri: &str) -> Cow<'_, str> {
     canonical_uri.into()
 }
 
-fn canonical_query_string(values: BTreeMap<&'static str, QueryValue>) -> String {
+fn canonical_query_string(values: BTreeMap<Cow<'static, str>, QueryValue>) -> String {
     let mut query = String::new();
     for (k, v) in values {
         let v = v.to_query_value();
-        query.push_str(&format!("{}={}&", percent_encode(k), percent_encode(&v)));
+        query.push_str(&format!("{}={}&", percent_encode(&k), percent_encode(&v)));
     }
     query.pop(); // remove last '&'
     query

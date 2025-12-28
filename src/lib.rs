@@ -2,6 +2,7 @@ use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
 use serde::{Deserialize, de::DeserializeOwned};
+use std::borrow::Cow;
 use std::collections::BTreeMap;
 
 mod common;
@@ -121,11 +122,124 @@ impl<'a> QueryValue<'a> {
     }
 }
 
+/// Trait for types that can be flattened into query parameters.
+/// Used for ParameterStyle::Flat and ParameterStyle::RepeatList.
+///
+/// This trait handles the recursive flattening of nested structs and arrays
+/// into dot-notation key-value pairs, e.g., `Name.1.Field` for array elements
+/// or `Name.Field` for nested objects.
+pub(crate) trait FlatSerialize {
+    /// Append this value's query parameters to the map.
+    ///
+    /// For scalar types, this inserts a single entry with the given name.
+    /// For struct types, this inserts entries for each field with `name.field_name` format.
+    /// For array types (with RepeatList style), this inserts entries with `name.{index}` format (1-indexed).
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    );
+}
+
+impl FlatSerialize for String {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+impl FlatSerialize for str {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+impl FlatSerialize for i32 {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), (*self).into());
+    }
+}
+
+impl FlatSerialize for i64 {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), (*self).into());
+    }
+}
+
+impl FlatSerialize for bool {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), (*self).into());
+    }
+}
+
+impl FlatSerialize for f32 {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), self.to_string().into());
+    }
+}
+
+impl FlatSerialize for f64 {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        params.insert(name.to_string().into(), self.to_string().into());
+    }
+}
+
+impl<T: FlatSerialize> FlatSerialize for Vec<T> {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        for (i, item) in self.iter().enumerate() {
+            item.flat_serialize(&format!("{}.{}", name, i + 1), params);
+        }
+    }
+}
+
+impl<T: FlatSerialize> FlatSerialize for Option<T> {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if let Some(v) = self {
+            v.flat_serialize(name, params);
+        }
+    }
+}
+
 /// Trait for types that can be converted to form data parameters.
 /// This is used instead of serde_urlencoded to support custom parameter styles
 /// like Flat and RepeatList.
 trait ToFormData {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, QueryValue<'_>>;
+    fn to_form_data(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>>;
 }
 
 /// Each api entry should implement this trait.
@@ -139,7 +253,7 @@ trait Request: Sized + Send {
     /// Response type returned by the call() method.
     type Response: DeserializeOwned;
 
-    fn to_query_params(&self) -> Result<BTreeMap<&'static str, QueryValue<'_>>> {
+    fn to_query_params(&self) -> Result<BTreeMap<Cow<'static, str>, QueryValue<'_>>> {
         Ok(BTreeMap::new())
     }
     fn to_body(self) -> Result<Self::Body>;

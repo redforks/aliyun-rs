@@ -1,4 +1,5 @@
 #[allow(dead_code)]
+use std::borrow::Cow;
 use std::collections::BTreeMap;
 
 use crate::{CodeMessage, QueryValue, Request, Result, v3::AccessKeySecret};
@@ -90,19 +91,19 @@ impl Request for SendSms {
 
     type Response = SendSmsResponse;
 
-    fn to_query_params(&self) -> crate::Result<BTreeMap<&'static str, QueryValue<'_>>> {
+    fn to_query_params(&self) -> crate::Result<BTreeMap<Cow<'static, str>, QueryValue<'_>>> {
         let mut params = BTreeMap::new();
-        params.insert("PhoneNumbers", (&self.phone_numbers).into());
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("PhoneNumbers".into(), (&self.phone_numbers).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
         if let Some(ref v) = self.template_param {
-            params.insert("TemplateParam", v.into());
+            params.insert("TemplateParam".into(), v.into());
         }
         if let Some(ref v) = self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode", v.into());
+            params.insert("SmsUpExtendCode".into(), v.into());
         }
         if let Some(ref v) = self.out_id {
-            params.insert("OutId", v.into());
+            params.insert("OutId".into(), v.into());
         }
         Ok(params)
     }

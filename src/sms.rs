@@ -642,11 +642,7 @@ impl Connection {
         &self,
         req: AddSmsSign,
     ) -> impl std::future::Future<Output = crate::Result<AddSmsSignResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'SignFileList': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -671,11 +667,7 @@ impl Connection {
         &self,
         req: ModifySmsSign,
     ) -> impl std::future::Future<Output = crate::Result<ModifySmsSignResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'SignFileList': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1274,11 +1266,7 @@ impl Connection {
         req: CheckMobilesCardSupport,
     ) -> impl std::future::Future<Output = crate::Result<CheckMobilesCardSupportResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'Mobiles': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1370,11 +1358,7 @@ impl Connection {
         req: QueryCardSmsTemplateReport,
     ) -> impl std::future::Future<Output = crate::Result<QueryCardSmsTemplateReportResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'TemplateCodes': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1402,11 +1386,7 @@ impl Connection {
         &self,
         req: SendCardSms,
     ) -> impl std::future::Future<Output = crate::Result<SendCardSmsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'CardObjects': Unsupported ParameterStyle variant: Flat. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1651,12 +1631,7 @@ impl Connection {
         &self,
         req: ListTagResources,
     ) -> impl std::future::Future<Output = crate::Result<ListTagResourcesResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1685,12 +1660,7 @@ Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Jso
         &self,
         req: TagResources,
     ) -> impl std::future::Future<Output = crate::Result<TagResourcesResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'Tag': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1715,12 +1685,7 @@ Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Jso
         &self,
         req: UntagResources,
     ) -> impl std::future::Future<Output = crate::Result<UntagResourcesResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'TagKey': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported.
-Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Json style is supported."##
-            );
-        }
+        self.call(req)
     }
 }
 
@@ -1889,7 +1854,9 @@ impl SubmitSmsQualification {
     }
 }
 impl crate::ToFormData for SubmitSmsQualification {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -1907,61 +1874,72 @@ impl crate::Request for SubmitSmsQualification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("QualificationName", (&self.qualification_name).into());
-        params.insert("UseBySelf", (&self.use_by_self).into());
-        params.insert("CompanyType", (&self.company_type).into());
-        params.insert("CompanyName", (&self.company_name).into());
-        params.insert("OrganizationCode", (&self.organization_code).into());
         params.insert(
-            "BussinessLicenseExpDate",
+            "QualificationName".into(),
+            (&self.qualification_name).into(),
+        );
+        params.insert("UseBySelf".into(), (&self.use_by_self).into());
+        params.insert("CompanyType".into(), (&self.company_type).into());
+        params.insert("CompanyName".into(), (&self.company_name).into());
+        params.insert("OrganizationCode".into(), (&self.organization_code).into());
+        params.insert(
+            "BussinessLicenseExpDate".into(),
             (&self.bussiness_license_exp_date).into(),
         );
-        params.insert("LegalPersonName", (&self.legal_person_name).into());
+        params.insert("LegalPersonName".into(), (&self.legal_person_name).into());
         params.insert(
-            "LegalPersonIDCardNo",
+            "LegalPersonIDCardNo".into(),
             (&self.legal_person_id_card_no).into(),
         );
         params.insert(
-            "LegalPersonIdCardEffTime",
+            "LegalPersonIdCardEffTime".into(),
             (&self.legal_person_id_card_eff_time).into(),
         );
         params.insert(
-            "LegalPersonIDCardType",
+            "LegalPersonIDCardType".into(),
             (&self.legal_person_id_card_type).into(),
         );
-        params.insert("AdminIDCardPic", (&self.admin_id_card_pic).into());
+        params.insert("AdminIDCardPic".into(), (&self.admin_id_card_pic).into());
         params.insert(
-            "AdminIDCardFrontFace",
+            "AdminIDCardFrontFace".into(),
             (&self.admin_id_card_front_face).into(),
         );
-        params.insert("AdminName", (&self.admin_name).into());
-        params.insert("AdminIDCardNo", (&self.admin_id_card_no).into());
-        params.insert("AdminIDCardType", (&self.admin_id_card_type).into());
-        params.insert("AdminIDCardExpDate", (&self.admin_id_card_exp_date).into());
-        params.insert("AdminPhoneNo", (&self.admin_phone_no).into());
-        params.insert("CertifyCode", (&self.certify_code).into());
-        params.insert("WhetherShare", (&self.whether_share).into());
+        params.insert("AdminName".into(), (&self.admin_name).into());
+        params.insert("AdminIDCardNo".into(), (&self.admin_id_card_no).into());
+        params.insert("AdminIDCardType".into(), (&self.admin_id_card_type).into());
+        params.insert(
+            "AdminIDCardExpDate".into(),
+            (&self.admin_id_card_exp_date).into(),
+        );
+        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
+        params.insert("CertifyCode".into(), (&self.certify_code).into());
+        params.insert("WhetherShare".into(), (&self.whether_share).into());
 
         if let Some(f) = &self.business_license_pics {
-            params.insert("BusinessLicensePics", serde_json::to_string(f)?.into());
+            params.insert(
+                "BusinessLicensePics".into(),
+                serde_json::to_string(f)?.into(),
+            );
         }
 
         if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide", f.into());
+            params.insert("LegalPersonIdCardFrontSide".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide", f.into());
+            params.insert("LegalPersonIdCardBackSide".into(), f.into());
         }
 
         if let Some(f) = &self.other_files {
-            params.insert("OtherFiles", serde_json::to_string(f)?.into());
+            params.insert("OtherFiles".into(), serde_json::to_string(f)?.into());
         }
 
         if let Some(f) = &self.remark {
-            params.insert("Remark", f.into());
+            params.insert("Remark".into(), f.into());
         }
 
         Ok(params)
@@ -2026,7 +2004,9 @@ impl QuerySmsQualificationRecord {
     }
 }
 impl crate::ToFormData for QuerySmsQualificationRecord {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2044,39 +2024,41 @@ impl crate::Request for QuerySmsQualificationRecord {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.qualification_group_name {
-            params.insert("QualificationGroupName", f.into());
+            params.insert("QualificationGroupName".into(), f.into());
         }
 
         if let Some(f) = &self.company_name {
-            params.insert("CompanyName", f.into());
+            params.insert("CompanyName".into(), f.into());
         }
 
         if let Some(f) = &self.state {
-            params.insert("State", f.into());
+            params.insert("State".into(), f.into());
         }
 
         if let Some(f) = &self.work_order_id {
-            params.insert("WorkOrderId", f.into());
+            params.insert("WorkOrderId".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName", f.into());
+            params.insert("LegalPersonName".into(), f.into());
         }
 
         if let Some(f) = &self.use_by_self {
-            params.insert("UseBySelf", f.into());
+            params.insert("UseBySelf".into(), f.into());
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo", f.into());
+            params.insert("PageNo".into(), f.into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize", f.into());
+            params.insert("PageSize".into(), f.into());
         }
 
         Ok(params)
@@ -2107,7 +2089,9 @@ impl QuerySingleSmsQualification {
     }
 }
 impl crate::ToFormData for QuerySingleSmsQualification {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2125,15 +2109,17 @@ impl crate::Request for QuerySingleSmsQualification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "QualificationGroupId",
+            "QualificationGroupId".into(),
             (&self.qualification_group_id).into(),
         );
 
         if let Some(f) = &self.order_id {
-            params.insert("OrderId", f.into());
+            params.insert("OrderId".into(), f.into());
         }
 
         Ok(params)
@@ -2278,7 +2264,9 @@ impl UpdateSmsQualification {
     }
 }
 impl crate::ToFormData for UpdateSmsQualification {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2296,78 +2284,83 @@ impl crate::Request for UpdateSmsQualification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "QualificationGroupId",
+            "QualificationGroupId".into(),
             (&self.qualification_group_id).into(),
         );
-        params.insert("OrderId", (&self.order_id).into());
-        params.insert("AdminPhoneNo", (&self.admin_phone_no).into());
-        params.insert("CertifyCode", (&self.certify_code).into());
+        params.insert("OrderId".into(), (&self.order_id).into());
+        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
+        params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         if let Some(f) = &self.business_license_pics {
-            params.insert("BusinessLicensePics", serde_json::to_string(f)?.into());
+            params.insert(
+                "BusinessLicensePics".into(),
+                serde_json::to_string(f)?.into(),
+            );
         }
 
         if let Some(f) = &self.company_name {
-            params.insert("CompanyName", f.into());
+            params.insert("CompanyName".into(), f.into());
         }
 
         if let Some(f) = &self.bussiness_license_exp_date {
-            params.insert("BussinessLicenseExpDate", f.into());
+            params.insert("BussinessLicenseExpDate".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide", f.into());
+            params.insert("LegalPersonIdCardFrontSide".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide", f.into());
+            params.insert("LegalPersonIdCardBackSide".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName", f.into());
+            params.insert("LegalPersonName".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_no {
-            params.insert("LegalPersonIDCardNo", f.into());
+            params.insert("LegalPersonIDCardNo".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_eff_time {
-            params.insert("LegalPersonIdCardEffTime", f.into());
+            params.insert("LegalPersonIdCardEffTime".into(), f.into());
         }
 
         if let Some(f) = &self.legal_person_id_card_type {
-            params.insert("LegalPersonIDCardType", f.into());
+            params.insert("LegalPersonIDCardType".into(), f.into());
         }
 
         if let Some(f) = &self.admin_id_card_pic {
-            params.insert("AdminIDCardPic", f.into());
+            params.insert("AdminIDCardPic".into(), f.into());
         }
 
         if let Some(f) = &self.admin_id_card_front_face {
-            params.insert("AdminIDCardFrontFace", f.into());
+            params.insert("AdminIDCardFrontFace".into(), f.into());
         }
 
         if let Some(f) = &self.admin_name {
-            params.insert("AdminName", f.into());
+            params.insert("AdminName".into(), f.into());
         }
 
         if let Some(f) = &self.admin_id_card_no {
-            params.insert("AdminIDCardNo", f.into());
+            params.insert("AdminIDCardNo".into(), f.into());
         }
 
         if let Some(f) = &self.admin_id_card_exp_date {
-            params.insert("AdminIDCardExpDate", f.into());
+            params.insert("AdminIDCardExpDate".into(), f.into());
         }
 
         if let Some(f) = &self.admin_id_card_type {
-            params.insert("AdminIDCardType", f.into());
+            params.insert("AdminIDCardType".into(), f.into());
         }
 
         if let Some(f) = &self.other_files {
-            params.insert("OtherFiles", serde_json::to_string(f)?.into());
+            params.insert("OtherFiles".into(), serde_json::to_string(f)?.into());
         }
 
         Ok(params)
@@ -2397,7 +2390,9 @@ impl DeleteSmsQualification {
     }
 }
 impl crate::ToFormData for DeleteSmsQualification {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2415,13 +2410,15 @@ impl crate::Request for DeleteSmsQualification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "QualificationGroupId",
+            "QualificationGroupId".into(),
             (&self.qualification_group_id).into(),
         );
-        params.insert("OrderId", (&self.order_id).into());
+        params.insert("OrderId".into(), (&self.order_id).into());
 
         Ok(params)
     }
@@ -2449,7 +2446,9 @@ impl RequiredPhoneCode {
     }
 }
 impl crate::ToFormData for RequiredPhoneCode {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2467,9 +2466,11 @@ impl crate::Request for RequiredPhoneCode {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNo", (&self.phone_no).into());
+        params.insert("PhoneNo".into(), (&self.phone_no).into());
 
         Ok(params)
     }
@@ -2498,7 +2499,9 @@ impl ValidPhoneCode {
     }
 }
 impl crate::ToFormData for ValidPhoneCode {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2516,10 +2519,12 @@ impl crate::Request for ValidPhoneCode {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNo", (&self.phone_no).into());
-        params.insert("CertifyCode", (&self.certify_code).into());
+        params.insert("PhoneNo".into(), (&self.phone_no).into());
+        params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         Ok(params)
     }
@@ -2581,7 +2586,9 @@ impl CreateSmsAuthorizationLetter {
     }
 }
 impl crate::ToFormData for CreateSmsAuthorizationLetter {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2599,22 +2606,30 @@ impl crate::Request for CreateSmsAuthorizationLetter {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "AuthorizationLetterPic",
+            "AuthorizationLetterPic".into(),
             (&self.authorization_letter_pic).into(),
         );
-        params.insert("SignList", serde_json::to_string(&self.sign_list)?.into());
         params.insert(
-            "AuthorizationLetterExpDate",
+            "SignList".into(),
+            serde_json::to_string(&self.sign_list)?.into(),
+        );
+        params.insert(
+            "AuthorizationLetterExpDate".into(),
             (&self.authorization_letter_exp_date).into(),
         );
-        params.insert("Authorization", (&self.authorization).into());
-        params.insert("OrganizationCode", (&self.organization_code).into());
-        params.insert("ProxyAuthorization", (&self.proxy_authorization).into());
+        params.insert("Authorization".into(), (&self.authorization).into());
+        params.insert("OrganizationCode".into(), (&self.organization_code).into());
         params.insert(
-            "AuthorizationLetterName",
+            "ProxyAuthorization".into(),
+            (&self.proxy_authorization).into(),
+        );
+        params.insert(
+            "AuthorizationLetterName".into(),
             (&self.authorization_letter_name).into(),
         );
 
@@ -2664,7 +2679,9 @@ impl QuerySmsAuthorizationLetter {
     }
 }
 impl crate::ToFormData for QuerySmsAuthorizationLetter {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2682,30 +2699,32 @@ impl crate::Request for QuerySmsAuthorizationLetter {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.authorization_letter_id_list {
             params.insert(
-                "AuthorizationLetterIdList",
+                "AuthorizationLetterIdList".into(),
                 serde_json::to_string(f)?.into(),
             );
         }
 
         if let Some(f) = &self.sign_name {
-            params.insert("SignName", f.into());
+            params.insert("SignName".into(), f.into());
         }
 
         if let Some(f) = &self.organization_code {
-            params.insert("OrganizationCode", f.into());
+            params.insert("OrganizationCode".into(), f.into());
         }
 
         if let Some(f) = &self.state {
-            params.insert("State", f.into());
+            params.insert("State".into(), f.into());
         }
 
         if let Some(f) = &self.status {
-            params.insert("Status", f.into());
+            params.insert("Status".into(), f.into());
         }
 
         Ok(params)
@@ -2811,7 +2830,9 @@ impl CreateSmsSign {
     }
 }
 impl crate::ToFormData for CreateSmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2829,42 +2850,44 @@ impl crate::Request for CreateSmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("QualificationId", (&self.qualification_id).into());
-        params.insert("SignSource", (&self.sign_source).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("QualificationId".into(), (&self.qualification_id).into());
+        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark", f.into());
+            params.insert("Remark".into(), f.into());
         }
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType", f.into());
+            params.insert("SignType".into(), f.into());
         }
 
         if let Some(f) = &self.more_data {
-            params.insert("MoreData", serde_json::to_string(f)?.into());
+            params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent", f.into());
+            params.insert("ApplySceneContent".into(), f.into());
         }
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty", f.into());
+            params.insert("ThirdParty".into(), f.into());
         }
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId", f.into());
+            params.insert("AuthorizationLetterId".into(), f.into());
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId", f.into());
+            params.insert("TrademarkId".into(), f.into());
         }
 
         if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId", f.into());
+            params.insert("AppIcpRecordId".into(), f.into());
         }
 
         Ok(params)
@@ -2894,7 +2917,9 @@ impl GetSmsSign {
     }
 }
 impl crate::ToFormData for GetSmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2912,9 +2937,11 @@ impl crate::Request for GetSmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
     }
@@ -2945,7 +2972,9 @@ impl QuerySmsSignList {
     }
 }
 impl crate::ToFormData for QuerySmsSignList {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -2963,15 +2992,17 @@ impl crate::Request for QuerySmsSignList {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex", f.into());
+            params.insert("PageIndex".into(), f.into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize", f.into());
+            params.insert("PageSize".into(), f.into());
         }
 
         Ok(params)
@@ -3069,7 +3100,9 @@ impl UpdateSmsSign {
     }
 }
 impl crate::ToFormData for UpdateSmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3087,42 +3120,44 @@ impl crate::Request for UpdateSmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("QualificationId", (&self.qualification_id).into());
-        params.insert("SignSource", (&self.sign_source).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("QualificationId".into(), (&self.qualification_id).into());
+        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark", f.into());
+            params.insert("Remark".into(), f.into());
         }
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType", f.into());
+            params.insert("SignType".into(), f.into());
         }
 
         if let Some(f) = &self.more_data {
-            params.insert("MoreData", serde_json::to_string(f)?.into());
+            params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent", f.into());
+            params.insert("ApplySceneContent".into(), f.into());
         }
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty", f.into());
+            params.insert("ThirdParty".into(), f.into());
         }
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId", f.into());
+            params.insert("AuthorizationLetterId".into(), f.into());
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId", f.into());
+            params.insert("TrademarkId".into(), f.into());
         }
 
         if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId", f.into());
+            params.insert("AppIcpRecordId".into(), f.into());
         }
 
         Ok(params)
@@ -3154,7 +3189,9 @@ impl DeleteSmsSign {
     }
 }
 impl crate::ToFormData for DeleteSmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3172,9 +3209,11 @@ impl crate::Request for DeleteSmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
     }
@@ -3207,7 +3246,9 @@ impl ChangeSignatureQualification {
     }
 }
 impl crate::ToFormData for ChangeSignatureQualification {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3225,13 +3266,15 @@ impl crate::Request for ChangeSignatureQualification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignatureName", (&self.signature_name).into());
-        params.insert("QualificationId", (&self.qualification_id).into());
+        params.insert("SignatureName".into(), (&self.signature_name).into());
+        params.insert("QualificationId".into(), (&self.qualification_id).into());
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId", f.into());
+            params.insert("AuthorizationLetterId".into(), f.into());
         }
 
         Ok(params)
@@ -3278,6 +3321,8 @@ pub struct AddSmsSign {
     ///
     /// - 登录场景，您可以提供测试账号和密码。
     remark: String,
+    /// 签名文件列表。
+    sign_file_list: Vec<AddSmsSignSignFileListItem>,
     /// 签名类型。
     ///
     /// - **0**：验证码
@@ -3293,18 +3338,23 @@ impl AddSmsSign {
         sign_name: impl Into<String>,
         sign_source: impl Into<i32>,
         remark: impl Into<String>,
+        sign_file_list: impl Into<Vec<AddSmsSignSignFileListItem>>,
     ) -> Self {
         Self {
             sign_name: sign_name.into(),
             sign_source: sign_source.into(),
             remark: remark.into(),
+            sign_file_list: sign_file_list.into(),
             sign_type: None,
         }
     }
 }
 impl crate::ToFormData for AddSmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
+        crate::FlatSerialize::flat_serialize(&self.sign_file_list, "SignFileList", &mut params);
 
         params
     }
@@ -3321,14 +3371,16 @@ impl crate::Request for AddSmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("SignSource", (&self.sign_source).into());
-        params.insert("Remark", (&self.remark).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("SignSource".into(), (&self.sign_source).into());
+        params.insert("Remark".into(), (&self.remark).into());
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType", f.into());
+            params.insert("SignType".into(), f.into());
         }
 
         Ok(params)
@@ -3366,6 +3418,8 @@ pub struct ModifySmsSign {
     /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
     /// - 登录场景，您可以提供测试账号和密码。
     remark: String,
+    /// 签名文件列表。
+    sign_file_list: Vec<ModifySmsSignSignFileListItem>,
     /// 签名类型。取值：
     ///
     /// - **0**：验证码
@@ -3382,18 +3436,23 @@ impl ModifySmsSign {
         sign_name: impl Into<String>,
         sign_source: impl Into<i32>,
         remark: impl Into<String>,
+        sign_file_list: impl Into<Vec<ModifySmsSignSignFileListItem>>,
     ) -> Self {
         Self {
             sign_name: sign_name.into(),
             sign_source: sign_source.into(),
             remark: remark.into(),
+            sign_file_list: sign_file_list.into(),
             sign_type: None,
         }
     }
 }
 impl crate::ToFormData for ModifySmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
+        crate::FlatSerialize::flat_serialize(&self.sign_file_list, "SignFileList", &mut params);
 
         params
     }
@@ -3410,14 +3469,16 @@ impl crate::Request for ModifySmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("SignSource", (&self.sign_source).into());
-        params.insert("Remark", (&self.remark).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("SignSource".into(), (&self.sign_source).into());
+        params.insert("Remark".into(), (&self.remark).into());
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType", f.into());
+            params.insert("SignType".into(), f.into());
         }
 
         Ok(params)
@@ -3446,7 +3507,9 @@ impl QuerySmsSign {
     }
 }
 impl crate::ToFormData for QuerySmsSign {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3464,9 +3527,11 @@ impl crate::Request for QuerySmsSign {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
     }
@@ -3525,7 +3590,9 @@ impl CreateSmsTrademark {
     }
 }
 impl crate::ToFormData for CreateSmsTrademark {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3543,19 +3610,24 @@ impl crate::Request for CreateSmsTrademark {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TrademarkPic", (&self.trademark_pic).into());
+        params.insert("TrademarkPic".into(), (&self.trademark_pic).into());
         params.insert(
-            "TrademarkRegistrationNumber",
+            "TrademarkRegistrationNumber".into(),
             (&self.trademark_registration_number).into(),
         );
-        params.insert("TrademarkName", (&self.trademark_name).into());
+        params.insert("TrademarkName".into(), (&self.trademark_name).into());
         params.insert(
-            "TrademarkApplicantName",
+            "TrademarkApplicantName".into(),
             (&self.trademark_applicant_name).into(),
         );
-        params.insert("TrademarkEffExpDate", (&self.trademark_eff_exp_date).into());
+        params.insert(
+            "TrademarkEffExpDate".into(),
+            (&self.trademark_eff_exp_date).into(),
+        );
 
         Ok(params)
     }
@@ -3581,7 +3653,9 @@ impl QuerySmsTrademark {
     }
 }
 impl crate::ToFormData for QuerySmsTrademark {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3599,10 +3673,12 @@ impl crate::Request for QuerySmsTrademark {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "TrademarkIdList",
+            "TrademarkIdList".into(),
             serde_json::to_string(&self.trademark_id_list)?.into(),
         );
 
@@ -3670,7 +3746,9 @@ impl CreateSmsAppIcpRecord {
     }
 }
 impl crate::ToFormData for CreateSmsAppIcpRecord {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3688,17 +3766,22 @@ impl crate::Request for CreateSmsAppIcpRecord {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("AppIcpRecordPic", (&self.app_icp_record_pic).into());
-        params.insert("AppServiceName", (&self.app_service_name).into());
+        params.insert("AppIcpRecordPic".into(), (&self.app_icp_record_pic).into());
+        params.insert("AppServiceName".into(), (&self.app_service_name).into());
         params.insert(
-            "AppPrincipalUnitName",
+            "AppPrincipalUnitName".into(),
             (&self.app_principal_unit_name).into(),
         );
-        params.insert("AppIcpLicenseNumber", (&self.app_icp_license_number).into());
-        params.insert("AppApprovalDate", (&self.app_approval_date).into());
-        params.insert("Domain", (&self.domain).into());
+        params.insert(
+            "AppIcpLicenseNumber".into(),
+            (&self.app_icp_license_number).into(),
+        );
+        params.insert("AppApprovalDate".into(), (&self.app_approval_date).into());
+        params.insert("Domain".into(), (&self.domain).into());
 
         Ok(params)
     }
@@ -3724,7 +3807,9 @@ impl QuerySmsAppIcpRecord {
     }
 }
 impl crate::ToFormData for QuerySmsAppIcpRecord {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3742,10 +3827,12 @@ impl crate::Request for QuerySmsAppIcpRecord {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
         params.insert(
-            "AppIcpRecordIdList",
+            "AppIcpRecordIdList".into(),
             serde_json::to_string(&self.app_icp_record_id_list)?.into(),
         );
 
@@ -3869,7 +3956,9 @@ impl CreateSmsTemplate {
     }
 }
 impl crate::ToFormData for CreateSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3887,38 +3976,40 @@ impl crate::Request for CreateSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName", (&self.template_name).into());
-        params.insert("TemplateContent", (&self.template_content).into());
-        params.insert("TemplateType", (&self.template_type).into());
+        params.insert("TemplateName".into(), (&self.template_name).into());
+        params.insert("TemplateContent".into(), (&self.template_content).into());
+        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark", f.into());
+            params.insert("Remark".into(), f.into());
         }
 
         if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName", f.into());
+            params.insert("RelatedSignName".into(), f.into());
         }
 
         if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule", f.into());
+            params.insert("TemplateRule".into(), f.into());
         }
 
         if let Some(f) = &self.more_data {
-            params.insert("MoreData", serde_json::to_string(f)?.into());
+            params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent", f.into());
+            params.insert("ApplySceneContent".into(), f.into());
         }
 
         if let Some(f) = &self.intl_type {
-            params.insert("IntlType", f.into());
+            params.insert("IntlType".into(), f.into());
         }
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving", f.into());
+            params.insert("TrafficDriving".into(), f.into());
         }
 
         Ok(params)
@@ -3948,7 +4039,9 @@ impl GetSmsTemplate {
     }
 }
 impl crate::ToFormData for GetSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -3966,9 +4059,11 @@ impl crate::Request for GetSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
     }
@@ -3999,7 +4094,9 @@ impl QuerySmsTemplateList {
     }
 }
 impl crate::ToFormData for QuerySmsTemplateList {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4017,15 +4114,17 @@ impl crate::Request for QuerySmsTemplateList {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex", f.into());
+            params.insert("PageIndex".into(), f.into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize", f.into());
+            params.insert("PageSize".into(), f.into());
         }
 
         Ok(params)
@@ -4147,7 +4246,9 @@ impl UpdateSmsTemplate {
     }
 }
 impl crate::ToFormData for UpdateSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4165,39 +4266,41 @@ impl crate::Request for UpdateSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName", (&self.template_name).into());
-        params.insert("TemplateCode", (&self.template_code).into());
-        params.insert("TemplateContent", (&self.template_content).into());
-        params.insert("TemplateType", (&self.template_type).into());
+        params.insert("TemplateName".into(), (&self.template_name).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
+        params.insert("TemplateContent".into(), (&self.template_content).into());
+        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark", f.into());
+            params.insert("Remark".into(), f.into());
         }
 
         if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName", f.into());
+            params.insert("RelatedSignName".into(), f.into());
         }
 
         if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule", f.into());
+            params.insert("TemplateRule".into(), f.into());
         }
 
         if let Some(f) = &self.more_data {
-            params.insert("MoreData", serde_json::to_string(f)?.into());
+            params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent", f.into());
+            params.insert("ApplySceneContent".into(), f.into());
         }
 
         if let Some(f) = &self.intl_type {
-            params.insert("IntlType", f.into());
+            params.insert("IntlType".into(), f.into());
         }
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving", f.into());
+            params.insert("TrafficDriving".into(), f.into());
         }
 
         Ok(params)
@@ -4231,7 +4334,9 @@ impl DeleteSmsTemplate {
     }
 }
 impl crate::ToFormData for DeleteSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4249,9 +4354,11 @@ impl crate::Request for DeleteSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
     }
@@ -4310,7 +4417,9 @@ impl AddSmsTemplate {
     }
 }
 impl crate::ToFormData for AddSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4328,12 +4437,14 @@ impl crate::Request for AddSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateType", (&self.template_type).into());
-        params.insert("TemplateName", (&self.template_name).into());
-        params.insert("TemplateContent", (&self.template_content).into());
-        params.insert("Remark", (&self.remark).into());
+        params.insert("TemplateType".into(), (&self.template_type).into());
+        params.insert("TemplateName".into(), (&self.template_name).into());
+        params.insert("TemplateContent".into(), (&self.template_content).into());
+        params.insert("Remark".into(), (&self.remark).into());
 
         Ok(params)
     }
@@ -4397,7 +4508,9 @@ impl ModifySmsTemplate {
     }
 }
 impl crate::ToFormData for ModifySmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4415,13 +4528,15 @@ impl crate::Request for ModifySmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateType", (&self.template_type).into());
-        params.insert("TemplateName", (&self.template_name).into());
-        params.insert("TemplateCode", (&self.template_code).into());
-        params.insert("TemplateContent", (&self.template_content).into());
-        params.insert("Remark", (&self.remark).into());
+        params.insert("TemplateType".into(), (&self.template_type).into());
+        params.insert("TemplateName".into(), (&self.template_name).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
+        params.insert("TemplateContent".into(), (&self.template_content).into());
+        params.insert("Remark".into(), (&self.remark).into());
 
         Ok(params)
     }
@@ -4449,7 +4564,9 @@ impl QuerySmsTemplate {
     }
 }
 impl crate::ToFormData for QuerySmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4467,9 +4584,11 @@ impl crate::Request for QuerySmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
     }
@@ -4572,7 +4691,9 @@ impl SendSms {
     }
 }
 impl crate::ToFormData for SendSms {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4590,22 +4711,24 @@ impl crate::Request for SendSms {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumbers", (&self.phone_numbers).into());
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("PhoneNumbers".into(), (&self.phone_numbers).into());
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         if let Some(f) = &self.template_param {
-            params.insert("TemplateParam", f.into());
+            params.insert("TemplateParam".into(), f.into());
         }
 
         if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode", f.into());
+            params.insert("SmsUpExtendCode".into(), f.into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId", f.into());
+            params.insert("OutId".into(), f.into());
         }
 
         Ok(params)
@@ -4670,17 +4793,19 @@ impl SendBatchSms {
     }
 }
 impl crate::ToFormData for SendBatchSms {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumberJson", (&self.phone_number_json).into());
-        params.insert("SignNameJson", (&self.sign_name_json).into());
+        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
+        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.template_param_json {
-            params.insert("TemplateParamJson", f.into());
+            params.insert("TemplateParamJson".into(), f.into());
         }
 
         if let Some(f) = &self.sms_up_extend_code_json {
-            params.insert("SmsUpExtendCodeJson", f.into());
+            params.insert("SmsUpExtendCodeJson".into(), f.into());
         }
 
         params
@@ -4698,12 +4823,14 @@ impl crate::Request for SendBatchSms {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId", f.into());
+            params.insert("OutId".into(), f.into());
         }
 
         Ok(params)
@@ -4761,7 +4888,9 @@ impl QuerySendDetails {
     }
 }
 impl crate::ToFormData for QuerySendDetails {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4779,15 +4908,17 @@ impl crate::Request for QuerySendDetails {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumber", (&self.phone_number).into());
-        params.insert("SendDate", (&self.send_date).into());
-        params.insert("PageSize", (&self.page_size).into());
-        params.insert("CurrentPage", (&self.current_page).into());
+        params.insert("PhoneNumber".into(), (&self.phone_number).into());
+        params.insert("SendDate".into(), (&self.send_date).into());
+        params.insert("PageSize".into(), (&self.page_size).into());
+        params.insert("CurrentPage".into(), (&self.current_page).into());
 
         if let Some(f) = &self.biz_id {
-            params.insert("BizId", f.into());
+            params.insert("BizId".into(), f.into());
         }
 
         Ok(params)
@@ -4854,7 +4985,9 @@ impl QuerySendStatistics {
     }
 }
 impl crate::ToFormData for QuerySendStatistics {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4872,20 +5005,22 @@ impl crate::Request for QuerySendStatistics {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("IsGlobe", (&self.is_globe).into());
-        params.insert("StartDate", (&self.start_date).into());
-        params.insert("EndDate", (&self.end_date).into());
-        params.insert("PageIndex", (&self.page_index).into());
-        params.insert("PageSize", (&self.page_size).into());
+        params.insert("IsGlobe".into(), (&self.is_globe).into());
+        params.insert("StartDate".into(), (&self.start_date).into());
+        params.insert("EndDate".into(), (&self.end_date).into());
+        params.insert("PageIndex".into(), (&self.page_index).into());
+        params.insert("PageSize".into(), (&self.page_size).into());
 
         if let Some(f) = &self.template_type {
-            params.insert("TemplateType", f.into());
+            params.insert("TemplateType".into(), f.into());
         }
 
         if let Some(f) = &self.sign_name {
-            params.insert("SignName", f.into());
+            params.insert("SignName".into(), f.into());
         }
 
         Ok(params)
@@ -4910,7 +5045,9 @@ impl GetOSSInfoForCardTemplate {
     }
 }
 impl crate::ToFormData for GetOSSInfoForCardTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -4928,7 +5065,9 @@ impl crate::Request for GetOSSInfoForCardTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
@@ -4986,7 +5125,9 @@ impl GetMediaResourceId {
     }
 }
 impl crate::ToFormData for GetMediaResourceId {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5004,18 +5145,20 @@ impl crate::Request for GetMediaResourceId {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType", (&self.resource_type).into());
-        params.insert("OssKey", (&self.oss_key).into());
-        params.insert("FileSize", (&self.file_size).into());
+        params.insert("ResourceType".into(), (&self.resource_type).into());
+        params.insert("OssKey".into(), (&self.oss_key).into());
+        params.insert("FileSize".into(), (&self.file_size).into());
 
         if let Some(f) = &self.extend_info {
-            params.insert("ExtendInfo", f.into());
+            params.insert("ExtendInfo".into(), f.into());
         }
 
         if let Some(f) = &self.memo {
-            params.insert("Memo", f.into());
+            params.insert("Memo".into(), f.into());
         }
 
         Ok(params)
@@ -5070,7 +5213,9 @@ impl CreateCardSmsTemplate {
     }
 }
 impl crate::ToFormData for CreateCardSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5088,17 +5233,22 @@ impl crate::Request for CreateCardSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName", (&self.template_name).into());
-        params.insert("Template", serde_json::to_string(&self.template)?.into());
+        params.insert("TemplateName".into(), (&self.template_name).into());
+        params.insert(
+            "Template".into(),
+            serde_json::to_string(&self.template)?.into(),
+        );
 
         if let Some(f) = &self.memo {
-            params.insert("Memo", f.into());
+            params.insert("Memo".into(), f.into());
         }
 
         if let Some(f) = &self.factorys {
-            params.insert("Factorys", f.into());
+            params.insert("Factorys".into(), f.into());
         }
 
         Ok(params)
@@ -5129,7 +5279,9 @@ impl QueryCardSmsTemplate {
     }
 }
 impl crate::ToFormData for QueryCardSmsTemplate {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5147,9 +5299,11 @@ impl crate::Request for QueryCardSmsTemplate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
     }
@@ -5182,19 +5336,27 @@ pub struct CheckMobilesCardSupport {
     ///
     /// >必须是已添加、并通过审核的卡片短信模板。
     template_code: String,
+    /// 待查询的手机号列表。
+    mobiles: Vec<CheckMobilesCardSupportMobilesItem>,
 }
 
 impl sealed::Bound for CheckMobilesCardSupport {}
 
 impl CheckMobilesCardSupport {
-    pub fn new(template_code: impl Into<String>) -> Self {
+    pub fn new(
+        template_code: impl Into<String>,
+        mobiles: impl Into<Vec<CheckMobilesCardSupportMobilesItem>>,
+    ) -> Self {
         Self {
             template_code: template_code.into(),
+            mobiles: mobiles.into(),
         }
     }
 }
 impl crate::ToFormData for CheckMobilesCardSupport {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5212,9 +5374,12 @@ impl crate::Request for CheckMobilesCardSupport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
+        crate::FlatSerialize::flat_serialize(&self.mobiles, "Mobiles", &mut params);
 
         Ok(params)
     }
@@ -5254,7 +5419,9 @@ impl QueryMobilesCardSupport {
     }
 }
 impl crate::ToFormData for QueryMobilesCardSupport {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5272,13 +5439,18 @@ impl crate::Request for QueryMobilesCardSupport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode", (&self.template_code).into());
-        params.insert("Mobiles", serde_json::to_string(&self.mobiles)?.into());
+        params.insert("TemplateCode".into(), (&self.template_code).into());
+        params.insert(
+            "Mobiles".into(),
+            serde_json::to_string(&self.mobiles)?.into(),
+        );
 
         if let Some(f) = &self.encrypt_type {
-            params.insert("EncryptType", f.into());
+            params.insert("EncryptType".into(), f.into());
         }
 
         Ok(params)
@@ -5354,7 +5526,9 @@ impl GetCardSmsLink {
     }
 }
 impl crate::ToFormData for GetCardSmsLink {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5372,37 +5546,39 @@ impl crate::Request for GetCardSmsLink {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("CardTemplateCode", (&self.card_template_code).into());
-        params.insert("SignNameJson", (&self.sign_name_json).into());
+        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
+        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId", f.into());
+            params.insert("OutId".into(), f.into());
         }
 
         if let Some(f) = &self.phone_number_json {
-            params.insert("PhoneNumberJson", f.into());
+            params.insert("PhoneNumberJson".into(), f.into());
         }
 
         if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson", f.into());
+            params.insert("CardTemplateParamJson".into(), f.into());
         }
 
         if let Some(f) = &self.card_code_type {
-            params.insert("CardCodeType", f.into());
+            params.insert("CardCodeType".into(), f.into());
         }
 
         if let Some(f) = &self.card_link_type {
-            params.insert("CardLinkType", f.into());
+            params.insert("CardLinkType".into(), f.into());
         }
 
         if let Some(f) = &self.domain {
-            params.insert("Domain", f.into());
+            params.insert("Domain".into(), f.into());
         }
 
         if let Some(f) = &self.custom_short_code_json {
-            params.insert("CustomShortCodeJson", f.into());
+            params.insert("CustomShortCodeJson".into(), f.into());
         }
 
         Ok(params)
@@ -5456,7 +5632,9 @@ impl GetCardSmsDetails {
     }
 }
 impl crate::ToFormData for GetCardSmsDetails {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5474,29 +5652,31 @@ impl crate::Request for GetCardSmsDetails {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SendDate", (&self.send_date).into());
-        params.insert("PhoneNumber", (&self.phone_number).into());
+        params.insert("SendDate".into(), (&self.send_date).into());
+        params.insert("PhoneNumber".into(), (&self.phone_number).into());
 
         if let Some(f) = &self.current_page {
-            params.insert("CurrentPage", f.into());
+            params.insert("CurrentPage".into(), f.into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize", f.into());
+            params.insert("PageSize".into(), f.into());
         }
 
         if let Some(f) = &self.biz_card_id {
-            params.insert("BizCardId", f.into());
+            params.insert("BizCardId".into(), f.into());
         }
 
         if let Some(f) = &self.biz_sms_id {
-            params.insert("BizSmsId", f.into());
+            params.insert("BizSmsId".into(), f.into());
         }
 
         if let Some(f) = &self.biz_digit_id {
-            params.insert("BizDigitId", f.into());
+            params.insert("BizDigitId".into(), f.into());
         }
 
         Ok(params)
@@ -5509,6 +5689,8 @@ impl crate::Request for GetCardSmsDetails {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryCardSmsTemplateReport {
+    /// 卡片短信对象。
+    template_codes: Vec<String>,
     /// 开始时间，格式为yyyy-MM-dd HH:mm:ss
     start_date: String,
     /// 结束时间，格式为yyyy-MM-dd HH:mm:ss
@@ -5518,15 +5700,22 @@ pub struct QueryCardSmsTemplateReport {
 impl sealed::Bound for QueryCardSmsTemplateReport {}
 
 impl QueryCardSmsTemplateReport {
-    pub fn new(start_date: impl Into<String>, end_date: impl Into<String>) -> Self {
+    pub fn new(
+        template_codes: impl Into<Vec<String>>,
+        start_date: impl Into<String>,
+        end_date: impl Into<String>,
+    ) -> Self {
         Self {
+            template_codes: template_codes.into(),
             start_date: start_date.into(),
             end_date: end_date.into(),
         }
     }
 }
 impl crate::ToFormData for QueryCardSmsTemplateReport {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5544,10 +5733,13 @@ impl crate::Request for QueryCardSmsTemplateReport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("StartDate", (&self.start_date).into());
-        params.insert("EndDate", (&self.end_date).into());
+        crate::FlatSerialize::flat_serialize(&self.template_codes, "TemplateCodes", &mut params);
+        params.insert("StartDate".into(), (&self.start_date).into());
+        params.insert("EndDate".into(), (&self.end_date).into());
 
         Ok(params)
     }
@@ -5559,6 +5751,8 @@ impl crate::Request for QueryCardSmsTemplateReport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendCardSms {
+    /// 卡片短信对象。
+    card_objects: Vec<SendCardSmsCardObjectsItem>,
     /// 短信签名名称。您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看签名列表。
     /// >必须是通过审核的短信签名。
     sign_name: String,
@@ -5618,11 +5812,13 @@ impl sealed::Bound for SendCardSms {}
 
 impl SendCardSms {
     pub fn new(
+        card_objects: impl Into<Vec<SendCardSmsCardObjectsItem>>,
         sign_name: impl Into<String>,
         card_template_code: impl Into<String>,
         fallback_type: impl Into<String>,
     ) -> Self {
         Self {
+            card_objects: card_objects.into(),
             sign_name: sign_name.into(),
             card_template_code: card_template_code.into(),
             sms_template_code: None,
@@ -5638,7 +5834,9 @@ impl SendCardSms {
     }
 }
 impl crate::ToFormData for SendCardSms {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5656,42 +5854,45 @@ impl crate::Request for SendCardSms {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName", (&self.sign_name).into());
-        params.insert("CardTemplateCode", (&self.card_template_code).into());
-        params.insert("FallbackType", (&self.fallback_type).into());
+        crate::FlatSerialize::flat_serialize(&self.card_objects, "CardObjects", &mut params);
+        params.insert("SignName".into(), (&self.sign_name).into());
+        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
+        params.insert("FallbackType".into(), (&self.fallback_type).into());
 
         if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode", f.into());
+            params.insert("SmsTemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode", f.into());
+            params.insert("SmsUpExtendCode".into(), f.into());
         }
 
         if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode", f.into());
+            params.insert("DigitalTemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId", f.into());
+            params.insert("OutId".into(), f.into());
         }
 
         if let Some(f) = &self.sms_template_param {
-            params.insert("SmsTemplateParam", f.into());
+            params.insert("SmsTemplateParam".into(), f.into());
         }
 
         if let Some(f) = &self.digital_template_param {
-            params.insert("DigitalTemplateParam", f.into());
+            params.insert("DigitalTemplateParam".into(), f.into());
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode", f.into());
+            params.insert("TemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.template_param {
-            params.insert("TemplateParam", f.into());
+            params.insert("TemplateParam".into(), f.into());
         }
 
         Ok(params)
@@ -5792,7 +5993,9 @@ impl SendBatchCardSms {
     }
 }
 impl crate::ToFormData for SendBatchCardSms {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5810,47 +6013,49 @@ impl crate::Request for SendBatchCardSms {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("CardTemplateCode", (&self.card_template_code).into());
-        params.insert("FallbackType", (&self.fallback_type).into());
-        params.insert("PhoneNumberJson", (&self.phone_number_json).into());
-        params.insert("SignNameJson", (&self.sign_name_json).into());
+        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
+        params.insert("FallbackType".into(), (&self.fallback_type).into());
+        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
+        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode", f.into());
+            params.insert("SmsTemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode", f.into());
+            params.insert("DigitalTemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId", f.into());
+            params.insert("OutId".into(), f.into());
         }
 
         if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson", f.into());
+            params.insert("CardTemplateParamJson".into(), f.into());
         }
 
         if let Some(f) = &self.sms_template_param_json {
-            params.insert("SmsTemplateParamJson", f.into());
+            params.insert("SmsTemplateParamJson".into(), f.into());
         }
 
         if let Some(f) = &self.digital_template_param_json {
-            params.insert("DigitalTemplateParamJson", f.into());
+            params.insert("DigitalTemplateParamJson".into(), f.into());
         }
 
         if let Some(f) = &self.sms_up_extend_code_json {
-            params.insert("SmsUpExtendCodeJson", f.into());
+            params.insert("SmsUpExtendCodeJson".into(), f.into());
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode", f.into());
+            params.insert("TemplateCode".into(), f.into());
         }
 
         if let Some(f) = &self.template_param_json {
-            params.insert("TemplateParamJson", f.into());
+            params.insert("TemplateParamJson".into(), f.into());
         }
 
         Ok(params)
@@ -5877,7 +6082,9 @@ impl GetQualificationOssInfo {
     }
 }
 impl crate::ToFormData for GetQualificationOssInfo {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5895,9 +6102,11 @@ impl crate::Request for GetQualificationOssInfo {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("BizType", (&self.biz_type).into());
+        params.insert("BizType".into(), (&self.biz_type).into());
 
         Ok(params)
     }
@@ -5924,7 +6133,9 @@ impl GetOSSInfoForUploadFile {
     }
 }
 impl crate::ToFormData for GetOSSInfoForUploadFile {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5942,11 +6153,13 @@ impl crate::Request for GetOSSInfoForUploadFile {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.biz_type {
-            params.insert("BizType", f.into());
+            params.insert("BizType".into(), f.into());
         }
 
         Ok(params)
@@ -5973,7 +6186,9 @@ impl GetSmsOcrOssInfo {
     }
 }
 impl crate::ToFormData for GetSmsOcrOssInfo {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -5991,11 +6206,13 @@ impl crate::Request for GetSmsOcrOssInfo {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.task_type {
-            params.insert("TaskType", f.into());
+            params.insert("TaskType".into(), f.into());
         }
 
         Ok(params)
@@ -6033,7 +6250,9 @@ impl SmsConversionIntl {
     }
 }
 impl crate::ToFormData for SmsConversionIntl {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -6051,13 +6270,15 @@ impl crate::Request for SmsConversionIntl {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("MessageId", (&self.message_id).into());
-        params.insert("Delivered", (&self.delivered).into());
+        params.insert("MessageId".into(), (&self.message_id).into());
+        params.insert("Delivered".into(), (&self.delivered).into());
 
         if let Some(f) = &self.conversion_time {
-            params.insert("ConversionTime", f.into());
+            params.insert("ConversionTime".into(), f.into());
         }
 
         Ok(params)
@@ -6091,7 +6312,9 @@ impl ConversionDataIntl {
     }
 }
 impl crate::ToFormData for ConversionDataIntl {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -6109,12 +6332,14 @@ impl crate::Request for ConversionDataIntl {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ConversionRate", (&self.conversion_rate).into());
+        params.insert("ConversionRate".into(), (&self.conversion_rate).into());
 
         if let Some(f) = &self.report_time {
-            params.insert("ReportTime", f.into());
+            params.insert("ReportTime".into(), f.into());
         }
 
         Ok(params)
@@ -6154,11 +6379,13 @@ impl AddShortUrl {
     }
 }
 impl crate::ToFormData for AddShortUrl {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SourceUrl", (&self.source_url).into());
-        params.insert("ShortUrlName", (&self.short_url_name).into());
-        params.insert("EffectiveDays", (&self.effective_days).into());
+        params.insert("SourceUrl".into(), (&self.source_url).into());
+        params.insert("ShortUrlName".into(), (&self.short_url_name).into());
+        params.insert("EffectiveDays".into(), (&self.effective_days).into());
 
         params
     }
@@ -6175,7 +6402,9 @@ impl crate::Request for AddShortUrl {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
@@ -6205,9 +6434,11 @@ impl DeleteShortUrl {
     }
 }
 impl crate::ToFormData for DeleteShortUrl {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SourceUrl", (&self.source_url).into());
+        params.insert("SourceUrl".into(), (&self.source_url).into());
 
         params
     }
@@ -6224,7 +6455,9 @@ impl crate::Request for DeleteShortUrl {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
@@ -6254,9 +6487,11 @@ impl QueryShortUrl {
     }
 }
 impl crate::ToFormData for QueryShortUrl {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ShortUrl", (&self.short_url).into());
+        params.insert("ShortUrl".into(), (&self.short_url).into());
 
         params
     }
@@ -6273,7 +6508,9 @@ impl crate::Request for QueryShortUrl {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
@@ -6301,6 +6538,12 @@ pub struct ListTagResources {
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
+    /// 标签列表。标签列表和**ResourceId**(短信模板Code)不能同时为空。最多可输入20个标签。
+    #[setters(generate = true, strip_option)]
+    tag: Option<Vec<ListTagResourcesTagItem>>,
+    /// 短信模板Code。短信模板Code和标签列表**Tag**不能同时为空。
+    #[setters(generate = true, strip_option)]
+    resource_id: Option<Vec<String>>,
 }
 
 impl sealed::Bound for ListTagResources {}
@@ -6313,11 +6556,15 @@ impl ListTagResources {
             next_token: None,
             page_size: None,
             prod_code: None,
+            tag: None,
+            resource_id: None,
         }
     }
 }
 impl crate::ToFormData for ListTagResources {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -6335,21 +6582,31 @@ impl crate::Request for ListTagResources {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType", (&self.resource_type).into());
-        params.insert("RegionId", (&self.region_id).into());
+        params.insert("ResourceType".into(), (&self.resource_type).into());
+        params.insert("RegionId".into(), (&self.region_id).into());
 
         if let Some(f) = &self.next_token {
-            params.insert("NextToken", f.into());
+            params.insert("NextToken".into(), f.into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize", f.into());
+            params.insert("PageSize".into(), f.into());
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode", f.into());
+            params.insert("ProdCode".into(), f.into());
+        }
+
+        if let Some(f) = &self.tag {
+            crate::FlatSerialize::flat_serialize(f, "Tag", &mut params);
+        }
+
+        if let Some(f) = &self.resource_id {
+            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
         }
 
         Ok(params)
@@ -6371,21 +6628,34 @@ pub struct TagResources {
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
+    /// 标签。单次添加的标签数量不超过20。
+    tag: Vec<TagResourcesTagItem>,
+    /// 短信模板Code。数量不能超过20条。
+    #[setters(generate = true, strip_option)]
+    resource_id: Option<Vec<String>>,
 }
 
 impl sealed::Bound for TagResources {}
 
 impl TagResources {
-    pub fn new(resource_type: impl Into<String>, region_id: impl Into<String>) -> Self {
+    pub fn new(
+        resource_type: impl Into<String>,
+        region_id: impl Into<String>,
+        tag: impl Into<Vec<TagResourcesTagItem>>,
+    ) -> Self {
         Self {
             resource_type: resource_type.into(),
             region_id: region_id.into(),
             prod_code: None,
+            tag: tag.into(),
+            resource_id: None,
         }
     }
 }
 impl crate::ToFormData for TagResources {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -6403,13 +6673,20 @@ impl crate::Request for TagResources {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType", (&self.resource_type).into());
-        params.insert("RegionId", (&self.region_id).into());
+        params.insert("ResourceType".into(), (&self.resource_type).into());
+        params.insert("RegionId".into(), (&self.region_id).into());
+        crate::FlatSerialize::flat_serialize(&self.tag, "Tag", &mut params);
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode", f.into());
+            params.insert("ProdCode".into(), f.into());
+        }
+
+        if let Some(f) = &self.resource_id {
+            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
         }
 
         Ok(params)
@@ -6438,6 +6715,12 @@ pub struct UntagResources {
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
+    /// 标签键。单次添加的标签数量不超过20。
+    #[setters(generate = true, strip_option)]
+    tag_key: Option<Vec<String>>,
+    /// 短信模板Code。数量不能超过20条。
+    #[setters(generate = true, strip_option)]
+    resource_id: Option<Vec<String>>,
 }
 
 impl sealed::Bound for UntagResources {}
@@ -6449,11 +6732,15 @@ impl UntagResources {
             region_id: region_id.into(),
             all: None,
             prod_code: None,
+            tag_key: None,
+            resource_id: None,
         }
     }
 }
 impl crate::ToFormData for UntagResources {
-    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         params
@@ -6471,17 +6758,27 @@ impl crate::Request for UntagResources {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<std::collections::BTreeMap<&'static str, crate::QueryValue<'_>>> {
+    ) -> crate::Result<
+        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
+    > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType", (&self.resource_type).into());
-        params.insert("RegionId", (&self.region_id).into());
+        params.insert("ResourceType".into(), (&self.resource_type).into());
+        params.insert("RegionId".into(), (&self.region_id).into());
 
         if let Some(f) = &self.all {
-            params.insert("All", f.into());
+            params.insert("All".into(), f.into());
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode", f.into());
+            params.insert("ProdCode".into(), f.into());
+        }
+
+        if let Some(f) = &self.tag_key {
+            crate::FlatSerialize::flat_serialize(f, "TagKey", &mut params);
+        }
+
+        if let Some(f) = &self.resource_id {
+            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
         }
 
         Ok(params)
@@ -6501,11 +6798,46 @@ pub struct SubmitSmsQualificationBusinessLicensePicsItem {
     pub r#type: String,
 }
 
+impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePicsItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SubmitSmsQualificationOtherFilesItem {
     #[serde(rename = "LicensePic")]
     pub license_pic: String,
+}
+
+impl crate::FlatSerialize for SubmitSmsQualificationOtherFilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6517,6 +6849,24 @@ pub struct UpdateSmsQualificationBusinessLicensePicsItem {
     pub r#type: String,
 }
 
+impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePicsItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsQualificationOtherFilesItem {
@@ -6524,13 +6874,212 @@ pub struct UpdateSmsQualificationOtherFilesItem {
     pub license_pic: String,
 }
 
+impl crate::FlatSerialize for UpdateSmsQualificationOtherFilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct AddSmsSignSignFileListItem {
+    #[serde(rename = "FileContents")]
+    pub file_contents: String,
+    #[serde(rename = "FileSuffix")]
+    pub file_suffix: String,
+}
+
+impl crate::FlatSerialize for AddSmsSignSignFileListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.file_contents,
+            &format!("{}.FileContents", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.file_suffix,
+            &format!("{}.FileSuffix", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ModifySmsSignSignFileListItem {
+    #[serde(rename = "FileContents")]
+    pub file_contents: String,
+    #[serde(rename = "FileSuffix")]
+    pub file_suffix: String,
+}
+
+impl crate::FlatSerialize for ModifySmsSignSignFileListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.file_contents,
+            &format!("{}.FileContents", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.file_suffix,
+            &format!("{}.FileSuffix", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCardSmsTemplateTemplate {}
 
+impl crate::FlatSerialize for CreateCardSmsTemplateTemplate {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CheckMobilesCardSupportMobilesItem {}
+
+impl crate::FlatSerialize for CheckMobilesCardSupportMobilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportMobilesItem {}
+
+impl crate::FlatSerialize for QueryMobilesCardSupportMobilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SendCardSmsCardObjectsItem {
+    #[serde(rename = "customUrl")]
+    pub custom_url: String,
+    #[serde(rename = "dyncParams")]
+    pub dync_params: String,
+    #[serde(rename = "mobile")]
+    pub mobile: String,
+}
+
+impl crate::FlatSerialize for SendCardSmsCardObjectsItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.custom_url,
+            &format!("{}.customUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.dync_params,
+            &format!("{}.dyncParams", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ListTagResourcesTagItem {
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+impl crate::FlatSerialize for ListTagResourcesTagItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
+        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TagResourcesTagItem {
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+impl crate::FlatSerialize for TagResourcesTagItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
+        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
+    }
+}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -6557,6 +7106,64 @@ pub struct QuerySmsQualificationRecordResponseDataListItem {
     pub work_order_id: i64,
 }
 
+impl crate::FlatSerialize for QuerySmsQualificationRecordResponseDataListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_remark,
+            &format!("{}.AuditRemark", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_time,
+            &format!("{}.AuditTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.company_name,
+            &format!("{}.CompanyName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.group_id, &format!("{}.GroupId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_name,
+            &format!("{}.LegalPersonName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_group_name,
+            &format!("{}.QualificationGroupName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.state_name,
+            &format!("{}.StateName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.use_by_self,
+            &format!("{}.UseBySelf", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.work_order_id,
+            &format!("{}.WorkOrderId", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsQualificationRecordResponseData {
@@ -6570,6 +7177,26 @@ pub struct QuerySmsQualificationRecordResponseData {
     pub total: i64,
 }
 
+impl crate::FlatSerialize for QuerySmsQualificationRecordResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.list, &format!("{}.List", name), params);
+        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.page_size,
+            &format!("{}.PageSize", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.total, &format!("{}.Total", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
@@ -6581,6 +7208,25 @@ pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
     pub r#type: String,
 }
 
+impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
@@ -6588,6 +7234,24 @@ pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
     pub license_pic: String,
     #[serde(rename = "PicUrl")]
     pub pic_url: String,
+}
+
+impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6645,6 +7309,135 @@ pub struct QuerySingleSmsQualificationResponseData {
     pub work_order_id: i64,
 }
 
+impl crate::FlatSerialize for QuerySingleSmsQualificationResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_exp_date,
+            &format!("{}.AdminIDCardExpDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_front_face,
+            &format!("{}.AdminIDCardFrontFace", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_no,
+            &format!("{}.AdminIDCardNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_pic,
+            &format!("{}.AdminIDCardPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_type,
+            &format!("{}.AdminIDCardType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_name,
+            &format!("{}.AdminName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_phone_no,
+            &format!("{}.AdminPhoneNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.business_license_pics,
+            &format!("{}.BusinessLicensePics", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.business_type,
+            &format!("{}.BusinessType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.company_name,
+            &format!("{}.CompanyName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.company_type,
+            &format!("{}.CompanyType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.eff_time_str,
+            &format!("{}.EffTimeStr", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_no,
+            &format!("{}.LegalPersonIDCardNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_type,
+            &format!("{}.LegalPersonIDCardType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_eff_time,
+            &format!("{}.LegalPersonIdCardEffTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_name,
+            &format!("{}.LegalPersonName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.organization_code,
+            &format!("{}.OrganizationCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.other_files,
+            &format!("{}.OtherFiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_group_id,
+            &format!("{}.QualificationGroupId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_name,
+            &format!("{}.QualificationName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.remark, &format!("{}.Remark", name), params);
+        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.use_by_self,
+            &format!("{}.UseBySelf", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.whether_share,
+            &format!("{}.WhetherShare", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.work_order_id,
+            &format!("{}.WorkOrderId", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsAuthorizationLetterResponseDataItem {
@@ -6670,6 +7463,91 @@ pub struct QuerySmsAuthorizationLetterResponseDataItem {
     pub status: String,
 }
 
+impl crate::FlatSerialize for QuerySmsAuthorizationLetterResponseDataItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization,
+            &format!("{}.Authorization", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_exp_date,
+            &format!("{}.AuthorizationLetterExpDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_id,
+            &format!("{}.AuthorizationLetterId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_name,
+            &format!("{}.AuthorizationLetterName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_pic,
+            &format!("{}.AuthorizationLetterPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.organization_code,
+            &format!("{}.OrganizationCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.proxy_authorization,
+            &format!("{}.ProxyAuthorization", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sign_scope,
+            &format!("{}.SignScope", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
+        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSmsSignResponseAuditInfo {
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
+}
+
+impl crate::FlatSerialize for GetSmsSignResponseAuditInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_date,
+            &format!("{}.AuditDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem {
@@ -6677,6 +7555,30 @@ pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsI
     pub reason_code: String,
     #[serde(rename = "ReasonDescList")]
     pub reason_desc_list: Vec<String>,
+}
+
+impl crate::FlatSerialize
+    for GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem
+{
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.reason_code,
+            &format!("{}.ReasonCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reason_desc_list,
+            &format!("{}.ReasonDescList", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6693,13 +7595,36 @@ pub struct GetSmsSignResponseSignIspRegisterDetailListItem {
         Vec<GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem>,
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsSignResponseAuditInfo {
-    #[serde(rename = "AuditDate")]
-    pub audit_date: String,
-    #[serde(rename = "RejectInfo")]
-    pub reject_info: String,
+impl crate::FlatSerialize for GetSmsSignResponseSignIspRegisterDetailListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.operator_code,
+            &format!("{}.OperatorCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.operator_complete_time,
+            &format!("{}.OperatorCompleteTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.register_status,
+            &format!("{}.RegisterStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.register_status_reasons,
+            &format!("{}.RegisterStatusReasons", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6711,6 +7636,33 @@ pub struct QuerySmsSignListResponseSmsSignListItemReason {
     pub reject_info: String,
     #[serde(rename = "RejectSubInfo")]
     pub reject_sub_info: String,
+}
+
+impl crate::FlatSerialize for QuerySmsSignListResponseSmsSignListItemReason {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_date,
+            &format!("{}.RejectDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_sub_info,
+            &format!("{}.RejectSubInfo", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6738,9 +7690,75 @@ pub struct QuerySmsSignListResponseSmsSignListItem {
     pub authorization_letter_audit_pass: bool,
 }
 
+impl crate::FlatSerialize for QuerySmsSignListResponseSmsSignListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_id,
+            &format!("{}.AppIcpRecordId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_status,
+            &format!("{}.AuditStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_id,
+            &format!("{}.AuthorizationLetterId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.business_type,
+            &format!("{}.BusinessType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
+        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.sign_name,
+            &format!("{}.SignName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_id,
+            &format!("{}.TrademarkId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_audit_pass,
+            &format!("{}.authorizationLetterAuditPass", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ChangeSignatureQualificationResponseDataData {}
+
+impl crate::FlatSerialize for ChangeSignatureQualificationResponseDataData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -6753,6 +7771,26 @@ pub struct ChangeSignatureQualificationResponseData {
     pub err_message: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl crate::FlatSerialize for ChangeSignatureQualificationResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.err_message,
+            &format!("{}.ErrMessage", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6772,6 +7810,53 @@ pub struct QuerySmsTrademarkResponseDataItem {
     pub trademark_pic_url: String,
     #[serde(rename = "TrademarkRegistrationNumber")]
     pub trademark_registration_number: String,
+}
+
+impl crate::FlatSerialize for QuerySmsTrademarkResponseDataItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_applicant_name,
+            &format!("{}.TrademarkApplicantName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_eff_exp_date,
+            &format!("{}.TrademarkEffExpDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_id,
+            &format!("{}.TrademarkId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_name,
+            &format!("{}.TrademarkName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_pic,
+            &format!("{}.TrademarkPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_pic_url,
+            &format!("{}.TrademarkPicUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_registration_number,
+            &format!("{}.TrademarkRegistrationNumber", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6795,11 +7880,88 @@ pub struct QuerySmsAppIcpRecordResponseDataItem {
     pub domain: String,
 }
 
+impl crate::FlatSerialize for QuerySmsAppIcpRecordResponseDataItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.app_approval_date,
+            &format!("{}.AppApprovalDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_license_number,
+            &format!("{}.AppIcpLicenseNumber", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_id,
+            &format!("{}.AppIcpRecordId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_pic,
+            &format!("{}.AppIcpRecordPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_pic_url,
+            &format!("{}.AppIcpRecordPicUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_principal_unit_name,
+            &format!("{}.AppPrincipalUnitName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_service_name,
+            &format!("{}.AppServiceName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsTemplateResponseFileUrlList {
     #[serde(rename = "FileUrl")]
     pub file_url: Vec<String>,
+}
+
+impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSmsTemplateResponseVendorAuditStatus {}
+
+impl crate::FlatSerialize for GetSmsTemplateResponseVendorAuditStatus {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6811,15 +7973,50 @@ pub struct GetSmsTemplateResponseAuditInfo {
     pub reject_info: String,
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsTemplateResponseVendorAuditStatus {}
+impl crate::FlatSerialize for GetSmsTemplateResponseAuditInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_date,
+            &format!("{}.AuditDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
+            params,
+        );
+    }
+}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsTemplateResponseMoreDataFileUrlList {
     #[serde(rename = "MoreDataFileUrl")]
     pub more_data_file_url: Vec<String>,
+}
+
+impl crate::FlatSerialize for GetSmsTemplateResponseMoreDataFileUrlList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.more_data_file_url,
+            &format!("{}.MoreDataFileUrl", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6831,6 +8028,33 @@ pub struct QuerySmsTemplateListResponseSmsTemplateListItemReason {
     pub reject_info: String,
     #[serde(rename = "RejectSubInfo")]
     pub reject_sub_info: String,
+}
+
+impl crate::FlatSerialize for QuerySmsTemplateListResponseSmsTemplateListItemReason {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_date,
+            &format!("{}.RejectDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_sub_info,
+            &format!("{}.RejectSubInfo", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6860,6 +8084,65 @@ pub struct QuerySmsTemplateListResponseSmsTemplateListItem {
     pub traffic_driving: String,
 }
 
+impl crate::FlatSerialize for QuerySmsTemplateListResponseSmsTemplateListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_status,
+            &format!("{}.AuditStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.outer_template_type,
+            &format!("{}.OuterTemplateType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.signature_name,
+            &format!("{}.SignatureName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_content,
+            &format!("{}.TemplateContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_name,
+            &format!("{}.TemplateName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_type,
+            &format!("{}.TemplateType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.traffic_driving,
+            &format!("{}.TrafficDriving", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem {
@@ -6881,11 +8164,68 @@ pub struct QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem {
     pub template_code: String,
 }
 
+impl crate::FlatSerialize for QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
+        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.phone_num,
+            &format!("{}.PhoneNum", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_date,
+            &format!("{}.ReceiveDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_date,
+            &format!("{}.SendDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_status,
+            &format!("{}.SendStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendDetailsResponseSmsSendDetailDtOs {
     #[serde(rename = "SmsSendDetailDTO")]
     pub sms_send_detail_dto: Vec<QuerySendDetailsResponseSmsSendDetailDtOsSmsSendDetailDtoItem>,
+}
+
+impl crate::FlatSerialize for QuerySendDetailsResponseSmsSendDetailDtOs {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.sms_send_detail_dto,
+            &format!("{}.SmsSendDetailDTO", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6903,6 +8243,43 @@ pub struct QuerySendStatisticsResponseDataTargetListItem {
     pub total_count: i64,
 }
 
+impl crate::FlatSerialize for QuerySendStatisticsResponseDataTargetListItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.no_responded_count,
+            &format!("{}.NoRespondedCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.responded_fail_count,
+            &format!("{}.RespondedFailCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.responded_success_count,
+            &format!("{}.RespondedSuccessCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_date,
+            &format!("{}.SendDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.total_count,
+            &format!("{}.TotalCount", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendStatisticsResponseData {
@@ -6910,6 +8287,28 @@ pub struct QuerySendStatisticsResponseData {
     pub target_list: Vec<QuerySendStatisticsResponseDataTargetListItem>,
     #[serde(rename = "TotalSize")]
     pub total_size: i64,
+}
+
+impl crate::FlatSerialize for QuerySendStatisticsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.target_list,
+            &format!("{}.TargetList", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.total_size,
+            &format!("{}.TotalSize", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6933,6 +8332,42 @@ pub struct GetOssInfoForCardTemplateResponseData {
     pub start_path: String,
 }
 
+impl crate::FlatSerialize for GetOssInfoForCardTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.ali_uid, &format!("{}.AliUid", name), params);
+        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetMediaResourceIdResponseData {
@@ -6942,6 +8377,28 @@ pub struct GetMediaResourceIdResponseData {
     pub resource_id: i64,
 }
 
+impl crate::FlatSerialize for GetMediaResourceIdResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.res_url_download,
+            &format!("{}.ResUrlDownload", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_id,
+            &format!("{}.ResourceId", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCardSmsTemplateResponseData {
@@ -6949,15 +8406,61 @@ pub struct CreateCardSmsTemplateResponseData {
     pub template_code: String,
 }
 
+impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponseDataTemplatesItem {}
+
+impl crate::FlatSerialize for QueryCardSmsTemplateResponseDataTemplatesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponseData {
     #[serde(rename = "Templates")]
     pub templates: Vec<QueryCardSmsTemplateResponseDataTemplatesItem>,
+}
+
+impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.templates,
+            &format!("{}.Templates", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6969,11 +8472,42 @@ pub struct CheckMobilesCardSupportResponseDataQueryResultItem {
     pub support: bool,
 }
 
+impl crate::FlatSerialize for CheckMobilesCardSupportResponseDataQueryResultItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
+        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.support", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CheckMobilesCardSupportResponseData {
     #[serde(rename = "queryResult")]
     pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResultItem>,
+}
+
+impl crate::FlatSerialize for CheckMobilesCardSupportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.query_result,
+            &format!("{}.queryResult", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6985,11 +8519,42 @@ pub struct QueryMobilesCardSupportResponseDataQueryResultItem {
     pub support: bool,
 }
 
+impl crate::FlatSerialize for QueryMobilesCardSupportResponseDataQueryResultItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.Mobile", name), params);
+        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.Support", name), params);
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponseData {
     #[serde(rename = "QueryResult")]
     pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResultItem>,
+}
+
+impl crate::FlatSerialize for QueryMobilesCardSupportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.query_result,
+            &format!("{}.QueryResult", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7005,6 +8570,43 @@ pub struct GetCardSmsLinkResponseData {
     pub card_tmp_state: i32,
     #[serde(rename = "NotMediaMobiles")]
     pub not_media_mobiles: String,
+}
+
+impl crate::FlatSerialize for GetCardSmsLinkResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.card_phone_numbers,
+            &format!("{}.CardPhoneNumbers", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_sign_names,
+            &format!("{}.CardSignNames", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_sms_links,
+            &format!("{}.CardSmsLinks", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7034,6 +8636,65 @@ pub struct GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem {
     pub template_code: String,
 }
 
+impl crate::FlatSerialize for GetCardSmsDetailsResponseCardSendDetailDtoRecordsItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
+        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.phone_number,
+            &format!("{}.PhoneNumber", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_date,
+            &format!("{}.ReceiveDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_type,
+            &format!("{}.ReceiveType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.render_date,
+            &format!("{}.RenderDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.render_status,
+            &format!("{}.RenderStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_date,
+            &format!("{}.SendDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_status,
+            &format!("{}.SendStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sms_content,
+            &format!("{}.SmsContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsDetailsResponseCardSendDetailDto {
@@ -7047,15 +8708,68 @@ pub struct GetCardSmsDetailsResponseCardSendDetailDto {
     pub total_count: i64,
 }
 
+impl crate::FlatSerialize for GetCardSmsDetailsResponseCardSendDetailDto {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.current_page,
+            &format!("{}.CurrentPage", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.page_size,
+            &format!("{}.PageSize", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.records, &format!("{}.Records", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.total_count,
+            &format!("{}.TotalCount", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateReportResponseDataModelItem {}
+
+impl crate::FlatSerialize for QueryCardSmsTemplateReportResponseDataModelItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+    }
+}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateReportResponseData {
     #[serde(rename = "model")]
     pub model: Vec<QueryCardSmsTemplateReportResponseDataModelItem>,
+}
+
+impl crate::FlatSerialize for QueryCardSmsTemplateReportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.model, &format!("{}.model", name), params);
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7075,6 +8789,48 @@ pub struct SendCardSmsResponseData {
     pub not_media_mobiles: String,
 }
 
+impl crate::FlatSerialize for SendCardSmsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_card_id,
+            &format!("{}.BizCardId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_digital_id,
+            &format!("{}.BizDigitalId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_sms_id,
+            &format!("{}.BizSmsId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.media_mobiles,
+            &format!("{}.MediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchCardSmsResponseData {
@@ -7090,6 +8846,48 @@ pub struct SendBatchCardSmsResponseData {
     pub media_mobiles: String,
     #[serde(rename = "NotMediaMobiles")]
     pub not_media_mobiles: String,
+}
+
+impl crate::FlatSerialize for SendBatchCardSmsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_card_id,
+            &format!("{}.BizCardId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_digital_id,
+            &format!("{}.BizDigitalId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_sms_id,
+            &format!("{}.BizSmsId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.media_mobiles,
+            &format!("{}.MediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7109,6 +8907,36 @@ pub struct GetQualificationOssInfoResponseData {
     pub start_path: String,
 }
 
+impl crate::FlatSerialize for GetQualificationOssInfoResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.expire, &format!("{}.Expire", name), params);
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetOssInfoForUploadFileResponseModel {
@@ -7124,6 +8952,40 @@ pub struct GetOssInfoForUploadFileResponseModel {
     pub signature: String,
     #[serde(rename = "StartPath")]
     pub start_path: String,
+}
+
+impl crate::FlatSerialize for GetOssInfoForUploadFileResponseModel {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7145,6 +9007,41 @@ pub struct GetSmsOcrOssInfoResponseModel {
     pub start_path: String,
 }
 
+impl crate::FlatSerialize for GetSmsOcrOssInfoResponseModel {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddShortUrlResponseData {
@@ -7154,6 +9051,33 @@ pub struct AddShortUrlResponseData {
     pub short_url: String,
     #[serde(rename = "SourceUrl")]
     pub source_url: String,
+}
+
+impl crate::FlatSerialize for AddShortUrlResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_date,
+            &format!("{}.ExpireDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url,
+            &format!("{}.ShortUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.source_url,
+            &format!("{}.SourceUrl", name),
+            params,
+        );
+    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -7177,6 +9101,58 @@ pub struct QueryShortUrlResponseData {
     pub unique_visitor_count: String,
 }
 
+impl crate::FlatSerialize for QueryShortUrlResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_date,
+            &format!("{}.ExpireDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.page_view_count,
+            &format!("{}.PageViewCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url,
+            &format!("{}.ShortUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url_name,
+            &format!("{}.ShortUrlName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url_status,
+            &format!("{}.ShortUrlStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.source_url,
+            &format!("{}.SourceUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.unique_visitor_count,
+            &format!("{}.UniqueVisitorCount", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesResponseTagResourcesTagResourceItem {
@@ -7190,11 +9166,56 @@ pub struct ListTagResourcesResponseTagResourcesTagResourceItem {
     pub tag_value: String,
 }
 
+impl crate::FlatSerialize for ListTagResourcesResponseTagResourcesTagResourceItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_id,
+            &format!("{}.ResourceId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_type,
+            &format!("{}.ResourceType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.tag_value,
+            &format!("{}.TagValue", name),
+            params,
+        );
+    }
+}
+
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesResponseTagResources {
     #[serde(rename = "TagResource")]
     pub tag_resource: Vec<ListTagResourcesResponseTagResourcesTagResourceItem>,
+}
+
+impl crate::FlatSerialize for ListTagResourcesResponseTagResources {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.tag_resource,
+            &format!("{}.TagResource", name),
+            params,
+        );
+    }
 }
 
 /// Enum type marshalled as String
@@ -7225,6 +9246,19 @@ impl QueryMobilesCardSupportEncryptType {
 impl<'a> From<&'a QueryMobilesCardSupportEncryptType> for crate::QueryValue<'a> {
     fn from(value: &'a QueryMobilesCardSupportEncryptType) -> Self {
         crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for QueryMobilesCardSupportEncryptType {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
     }
 }
 
