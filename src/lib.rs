@@ -11,6 +11,8 @@ use std::collections::HashMap;
 mod common;
 mod v3;
 
+pub use v3::AccessKeySecret;
+
 pub mod sms;
 
 #[cfg(test)]

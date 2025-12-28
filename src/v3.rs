@@ -105,6 +105,12 @@ impl AccessKeySecret {
     }
 }
 
+impl From<(Cow<'static, str>, Cow<'static, str>)> for AccessKeySecret {
+    fn from(value: (Cow<'static, str>, Cow<'static, str>)) -> Self {
+        Self(value.0, value.1)
+    }
+}
+
 /// Build http request according to authorization signature V3.
 pub async fn call<R>(
     key_secret: &AccessKeySecret,
