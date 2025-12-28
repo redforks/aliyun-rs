@@ -1,3 +1,5 @@
+#![allow(unused_mut)]
+
 #[derive(Clone, Copy)]
 pub enum Endpoint {
     ApSoutheast1,
@@ -4607,7 +4609,7 @@ impl crate::Request for QuerySmsTemplate {
 ///
 /// ### SDK示例
 /// 如果您需要了解如何使用SDK，请参见[首次调用API](~~2841024~~)。
-/// ```Java
+/// ```ignore
 /// // 构造请求对象
 /// SendSmsRequest sendSmsRequest = new SendSmsRequest()
 ///             .setPhoneNumbers("1390000****")
@@ -4623,7 +4625,7 @@ impl crate::Request for QuerySmsTemplate {
 ///
 /// ### 自签名请求示例
 /// 推荐您通过SDK调用API，SDK已经封装了签名等机制。
-/// ```HTTP
+/// ```ignore
 /// POST /?PhoneNumbers=123****4567&SignName=阿里云短信测试&TemplateCode=SMS_154950909&TemplateParam={"code":"1234"} HTTP/1.1
 /// Host: dysmsapi.aliyuncs.com
 /// Authorization: ACS3-HMAC-SHA256 Credential=YourAccessKeyId,SignedHeaders=host;x-acs-action;x-acs-content-sha256;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=06563a9e1b43f5dfe96b81********ceab24a1d853912eee15083a6f0f3283c0
@@ -5179,7 +5181,7 @@ pub struct CreateCardSmsTemplate {
     ///
     /// > - Template、ExtendInfo、TemplateContent、TmpCard、Action等字段说明，请参见[卡片短信模板参数字段说明](~~434929~~)。
     /// > - 不同类型的卡片短信模板的内容结构不同，详情请参见[卡片短信模板示例](~~435361~~)。
-    template: CreateCardSmsTemplateTemplate,
+    template: crate::OpenObject,
     /// 对上传模板的描述。
     #[setters(generate = true, strip_option)]
     memo: Option<String>,
@@ -5200,10 +5202,7 @@ pub struct CreateCardSmsTemplate {
 impl sealed::Bound for CreateCardSmsTemplate {}
 
 impl CreateCardSmsTemplate {
-    pub fn new(
-        template_name: impl Into<String>,
-        template: impl Into<CreateCardSmsTemplateTemplate>,
-    ) -> Self {
+    pub fn new(template_name: impl Into<String>, template: impl Into<crate::OpenObject>) -> Self {
         Self {
             template_name: template_name.into(),
             template: template.into(),
@@ -5315,7 +5314,7 @@ impl crate::Request for QueryCardSmsTemplate {
 
 /// 完整请求参数示例：
 ///
-/// ```
+/// ```ignore
 /// {
 ///   "Mobiles": [
 ///     {
@@ -5337,7 +5336,7 @@ pub struct CheckMobilesCardSupport {
     /// >必须是已添加、并通过审核的卡片短信模板。
     template_code: String,
     /// 待查询的手机号列表。
-    mobiles: Vec<CheckMobilesCardSupportMobilesItem>,
+    mobiles: Vec<crate::OpenObject>,
 }
 
 impl sealed::Bound for CheckMobilesCardSupport {}
@@ -5345,7 +5344,7 @@ impl sealed::Bound for CheckMobilesCardSupport {}
 impl CheckMobilesCardSupport {
     pub fn new(
         template_code: impl Into<String>,
-        mobiles: impl Into<Vec<CheckMobilesCardSupportMobilesItem>>,
+        mobiles: impl Into<Vec<crate::OpenObject>>,
     ) -> Self {
         Self {
             template_code: template_code.into(),
@@ -5396,7 +5395,7 @@ pub struct QueryMobilesCardSupport {
     /// >必须是已添加、并通过审核的卡片短信模板。
     template_code: String,
     /// 手机号列表。
-    mobiles: Vec<QueryMobilesCardSupportMobilesItem>,
+    mobiles: Vec<crate::OpenObject>,
     /// 手机号码加密方式。取值：
     /// - SHA1：SHA1加密方式。
     /// - NORMAL：不加密，明文传输。
@@ -5409,7 +5408,7 @@ impl sealed::Bound for QueryMobilesCardSupport {}
 impl QueryMobilesCardSupport {
     pub fn new(
         template_code: impl Into<String>,
-        mobiles: impl Into<Vec<QueryMobilesCardSupportMobilesItem>>,
+        mobiles: impl Into<Vec<crate::OpenObject>>,
     ) -> Self {
         Self {
             template_code: template_code.into(),
@@ -6955,54 +6954,6 @@ impl crate::FlatSerialize for ModifySmsSignSignFileListItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CreateCardSmsTemplateTemplate {}
-
-impl crate::FlatSerialize for CreateCardSmsTemplateTemplate {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CheckMobilesCardSupportMobilesItem {}
-
-impl crate::FlatSerialize for CheckMobilesCardSupportMobilesItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryMobilesCardSupportMobilesItem {}
-
-impl crate::FlatSerialize for QueryMobilesCardSupportMobilesItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct SendCardSmsCardObjectsItem {
     #[serde(rename = "customUrl")]
     pub custom_url: String,
@@ -7199,6 +7150,33 @@ impl crate::FlatSerialize for QuerySmsQualificationRecordResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
+    #[serde(rename = "PicUrl")]
+    pub pic_url: String,
+}
+
+impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
     #[serde(rename = "LicensePic")]
     pub license_pic: String,
@@ -7224,33 +7202,6 @@ impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataBusinessLic
         );
         crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
         crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-    #[serde(rename = "PicUrl")]
-    pub pic_url: String,
-}
-
-impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataOtherFilesItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
     }
 }
 
@@ -7746,25 +7697,9 @@ impl crate::FlatSerialize for QuerySmsSignListResponseSmsSignListItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ChangeSignatureQualificationResponseDataData {}
-
-impl crate::FlatSerialize for ChangeSignatureQualificationResponseDataData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct ChangeSignatureQualificationResponseData {
     #[serde(rename = "Data")]
-    pub data: ChangeSignatureQualificationResponseDataData,
+    pub data: crate::OpenObject,
     #[serde(rename = "ErrCode")]
     pub err_code: String,
     #[serde(rename = "ErrMessage")]
@@ -7930,12 +7865,12 @@ impl crate::FlatSerialize for QuerySmsAppIcpRecordResponseDataItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetSmsTemplateResponseFileUrlList {
-    #[serde(rename = "FileUrl")]
-    pub file_url: Vec<String>,
+pub struct GetSmsTemplateResponseMoreDataFileUrlList {
+    #[serde(rename = "MoreDataFileUrl")]
+    pub more_data_file_url: Vec<String>,
 }
 
-impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
+impl crate::FlatSerialize for GetSmsTemplateResponseMoreDataFileUrlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -7944,23 +7879,11 @@ impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
             crate::QueryValue<'a>,
         >,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsTemplateResponseVendorAuditStatus {}
-
-impl crate::FlatSerialize for GetSmsTemplateResponseVendorAuditStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.more_data_file_url,
+            &format!("{}.MoreDataFileUrl", name),
+            params,
+        );
     }
 }
 
@@ -7997,12 +7920,12 @@ impl crate::FlatSerialize for GetSmsTemplateResponseAuditInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetSmsTemplateResponseMoreDataFileUrlList {
-    #[serde(rename = "MoreDataFileUrl")]
-    pub more_data_file_url: Vec<String>,
+pub struct GetSmsTemplateResponseFileUrlList {
+    #[serde(rename = "FileUrl")]
+    pub file_url: Vec<String>,
 }
 
-impl crate::FlatSerialize for GetSmsTemplateResponseMoreDataFileUrlList {
+impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8011,11 +7934,7 @@ impl crate::FlatSerialize for GetSmsTemplateResponseMoreDataFileUrlList {
             crate::QueryValue<'a>,
         >,
     ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.more_data_file_url,
-            &format!("{}.MoreDataFileUrl", name),
-            params,
-        );
+        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
     }
 }
 
@@ -8425,25 +8344,9 @@ impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct QueryCardSmsTemplateResponseDataTemplatesItem {}
-
-impl crate::FlatSerialize for QueryCardSmsTemplateResponseDataTemplatesItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct QueryCardSmsTemplateResponseData {
     #[serde(rename = "Templates")]
-    pub templates: Vec<QueryCardSmsTemplateResponseDataTemplatesItem>,
+    pub templates: Vec<crate::OpenObject>,
 }
 
 impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
@@ -8738,25 +8641,9 @@ impl crate::FlatSerialize for GetCardSmsDetailsResponseCardSendDetailDto {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct QueryCardSmsTemplateReportResponseDataModelItem {}
-
-impl crate::FlatSerialize for QueryCardSmsTemplateReportResponseDataModelItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct QueryCardSmsTemplateReportResponseData {
     #[serde(rename = "model")]
-    pub model: Vec<QueryCardSmsTemplateReportResponseDataModelItem>,
+    pub model: Vec<crate::OpenObject>,
 }
 
 impl crate::FlatSerialize for QueryCardSmsTemplateReportResponseData {
@@ -9667,7 +9554,7 @@ pub struct GetSmsTemplateResponse {
     #[serde(rename = "VariableAttribute")]
     pub variable_attribute: String,
     #[serde(rename = "VendorAuditStatus")]
-    pub vendor_audit_status: GetSmsTemplateResponseVendorAuditStatus,
+    pub vendor_audit_status: crate::OpenObject,
 }
 
 #[derive(Debug, Default, serde::Deserialize)]

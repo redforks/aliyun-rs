@@ -1,9 +1,10 @@
 use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
-use serde::{Deserialize, de::DeserializeOwned};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::borrow::Cow;
 use std::collections::BTreeMap;
+use std::collections::HashMap;
 
 mod common;
 mod v3;
@@ -234,6 +235,130 @@ impl<T: FlatSerialize> FlatSerialize for Option<T> {
         }
     }
 }
+
+/// A dynamic value type for open objects (objects without predefined properties).
+/// Similar to `serde_json::Value` but tailored for API serialization.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum Value {
+    Null,
+    Bool(bool),
+    Integer(i64),
+    Float(f64),
+    String(String),
+    Array(Vec<Value>),
+    Object(HashMap<String, Value>),
+}
+
+impl Default for Value {
+    fn default() -> Self {
+        Value::Null
+    }
+}
+
+impl From<bool> for Value {
+    fn from(v: bool) -> Self {
+        Value::Bool(v)
+    }
+}
+
+impl From<i32> for Value {
+    fn from(v: i32) -> Self {
+        Value::Integer(v as i64)
+    }
+}
+
+impl From<i64> for Value {
+    fn from(v: i64) -> Self {
+        Value::Integer(v)
+    }
+}
+
+impl From<f32> for Value {
+    fn from(v: f32) -> Self {
+        Value::Float(v as f64)
+    }
+}
+
+impl From<f64> for Value {
+    fn from(v: f64) -> Self {
+        Value::Float(v)
+    }
+}
+
+impl From<String> for Value {
+    fn from(v: String) -> Self {
+        Value::String(v)
+    }
+}
+
+impl From<&str> for Value {
+    fn from(v: &str) -> Self {
+        Value::String(v.to_string())
+    }
+}
+
+impl<T: Into<Value>> From<Vec<T>> for Value {
+    fn from(v: Vec<T>) -> Self {
+        Value::Array(v.into_iter().map(Into::into).collect())
+    }
+}
+
+impl<T: Into<Value>> From<HashMap<String, T>> for Value {
+    fn from(v: HashMap<String, T>) -> Self {
+        Value::Object(v.into_iter().map(|(k, v)| (k, v.into())).collect())
+    }
+}
+
+impl FlatSerialize for Value {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        match self {
+            Value::Null => {}
+            Value::Bool(v) => {
+                params.insert(name.to_string().into(), (*v).into());
+            }
+            Value::Integer(v) => {
+                params.insert(name.to_string().into(), (*v).into());
+            }
+            Value::Float(v) => {
+                params.insert(name.to_string().into(), v.to_string().into());
+            }
+            Value::String(v) => {
+                params.insert(name.to_string().into(), v.as_str().into());
+            }
+            Value::Array(arr) => {
+                for (i, item) in arr.iter().enumerate() {
+                    item.flat_serialize(&format!("{}.{}", name, i + 1), params);
+                }
+            }
+            Value::Object(obj) => {
+                for (key, value) in obj {
+                    value.flat_serialize(&format!("{}.{}", name, key), params);
+                }
+            }
+        }
+    }
+}
+
+impl<V: FlatSerialize> FlatSerialize for HashMap<String, V> {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        for (key, value) in self {
+            value.flat_serialize(&format!("{}.{}", name, key), params);
+        }
+    }
+}
+
+/// Type alias for open objects - objects without predefined properties.
+/// This allows any string key with dynamic values.
+pub type OpenObject = HashMap<String, Value>;
 
 /// Trait for types that can be converted to form data parameters.
 /// This is used instead of serde_urlencoded to support custom parameter styles
