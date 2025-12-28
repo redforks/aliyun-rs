@@ -105,6 +105,12 @@ impl AccessKeySecret {
     }
 }
 
+impl From<(&'static str, &'static str)> for AccessKeySecret {
+    fn from(value: (&'static str, &'static str)) -> Self {
+        Self(value.0.into(), value.1.into())
+    }
+}
+
 impl From<(Cow<'static, str>, Cow<'static, str>)> for AccessKeySecret {
     fn from(value: (Cow<'static, str>, Cow<'static, str>)) -> Self {
         Self(value.0, value.1)
