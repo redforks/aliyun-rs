@@ -184,6 +184,7 @@ where
 
     let status = resp.status();
     let resp_text = resp.text().await.context("Get response text")?;
+    debug!("Response: {:?}", resp_text);
 
     let resp = if status.is_success() {
         serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?
