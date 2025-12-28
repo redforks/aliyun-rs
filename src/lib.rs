@@ -1,8 +1,7 @@
-use anyhow::Context as _;
 use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
-use serde::{Deserialize, Serialize, de::DeserializeOwned};
+use serde::{Deserialize, de::DeserializeOwned};
 use std::collections::BTreeMap;
 
 mod common;
@@ -30,7 +29,7 @@ pub enum Error {
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
-enum QueryValue<'a> {
+pub(crate) enum QueryValue<'a> {
     Str(&'a str),
     OwnedStr(String),
     I64(i64),
@@ -116,6 +115,17 @@ impl<'a> QueryValue<'a> {
             QueryValue::OwnedStr(v) => v.clone(),
         }
     }
+
+    fn url_encode(&self) -> String {
+        urlencoding::encode(&self.to_query_value()).into_owned()
+    }
+}
+
+/// Trait for types that can be converted to form data parameters.
+/// This is used instead of serde_urlencoded to support custom parameter styles
+/// like Flat and RepeatList.
+trait ToFormData {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, QueryValue<'_>>;
 }
 
 /// Each api entry should implement this trait.
@@ -150,16 +160,20 @@ impl IntoBody for () {
     }
 }
 
-pub struct Form<T>(pub T);
+pub(crate) struct Form<T: ToFormData>(pub T);
 
-impl<T: Serialize> IntoBody for Form<T> {
+impl<T: ToFormData> IntoBody for Form<T> {
     fn content_type(&self) -> HeaderValue {
         HeaderValue::from_static("application/x-www-form-urlencoded")
     }
 
     fn into_body(self) -> Result<Body> {
-        let encoded = serde_urlencoded::to_string(&self.0)
-            .context("Convert response object to form urlencoded")?;
+        let params = self.0.to_form_data();
+        let encoded = params
+            .iter()
+            .map(|(k, v)| format!("{}={}", urlencoding::encode(k), v.url_encode()))
+            .collect::<Vec<_>>()
+            .join("&");
         Ok(encoded.into())
     }
 }

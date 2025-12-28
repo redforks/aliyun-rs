@@ -574,7 +574,7 @@ impl Connection {
     /// - 通过接口删除签名的操作会在短信服务控制台同步，在控制台对模板的相关操作，请参见[短信签名](~~108073~~)。
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -632,7 +632,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -661,7 +661,7 @@ impl Connection {
     /// - 通过接口修改签名的操作会在短信服务控制台同步，在控制台对签名的相关操作，请参见[短信签名](~~108073~~)。
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -692,7 +692,7 @@ impl Connection {
     /// - 当前接口是通过签名名称查询单个签名的审核详情。[QuerySmsSignList](~~419288~~)接口可以查询您当前账号下所有签名的签名详情。
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -941,7 +941,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -978,7 +978,7 @@ impl Connection {
     /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1010,7 +1010,7 @@ impl Connection {
     /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1213,7 +1213,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1562,7 +1562,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1588,7 +1588,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1615,7 +1615,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1641,7 +1641,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1675,7 +1675,7 @@ Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Jso
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1705,7 +1705,7 @@ Parameter 'ResourceId': Unsupported ParameterStyle variant: RepeatList. Only Jso
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Extra Info
-    ///
+    ///  
     ///
     /// # Methods
     /// - Post
@@ -1746,7 +1746,6 @@ pub struct SubmitSmsQualification {
     /// - NON_PROFIT_ORGANIZATION：政府机关或事业单位。
     company_type: String,
     /// 企业营业证件信息。资质用途`UseBySelf`选择`false`他用时，此参数必填。
-
     #[setters(generate = true, strip_option)]
     business_license_pics: Option<Vec<SubmitSmsQualificationBusinessLicensePicsItem>>,
     /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
@@ -1760,13 +1759,11 @@ pub struct SubmitSmsQualification {
     ///
     ///
     /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_front_side: Option<String>,
     /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
     /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_back_side: Option<String>,
     /// 法定代表人姓名，长度不超过50字符。
@@ -1827,7 +1824,6 @@ pub struct SubmitSmsQualification {
     /// > 您可以使用[ValidPhoneCode](~~ValidPhoneCode~~)自行校验短信验证码是否准确后再传入。
     certify_code: String,
     /// 更多资料，如果您还有其他证明或备注材料、照片等，可在此上传。
-
     #[setters(generate = true, strip_option)]
     other_files: Option<Vec<SubmitSmsQualificationOtherFilesItem>>,
     /// 资质授权，是否同意与其他云通信产品（如国内语音、国内号码隐私保护）的资质共享。仅当您申请**自用资质**，且资质信息**与当前阿里云账号认证企业信息一致**时可被共享、复用；其他情况无效。取值：
@@ -1836,7 +1832,6 @@ pub struct SubmitSmsQualification {
     /// - false：不同意。
     whether_share: bool,
     /// 备注。如果您还有其他信息需要说明，或者需要给资质审核人员备注说明，可在此添加描述。
-
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
 }
@@ -1893,13 +1888,20 @@ impl SubmitSmsQualification {
         }
     }
 }
+impl crate::ToFormData for SubmitSmsQualification {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for SubmitSmsQualification {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SubmitSmsQualification";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SubmitSmsQualificationResponse;
 
@@ -1966,18 +1968,16 @@ impl crate::Request for SubmitSmsQualification {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsQualificationRecord {
     /// 资质名称。
-
     #[setters(generate = true, strip_option)]
     qualification_group_name: Option<String>,
     /// 企业名称。
-
     #[setters(generate = true, strip_option)]
     company_name: Option<String>,
     /// 审核状态。取值：
@@ -1987,30 +1987,24 @@ pub struct QuerySmsQualificationRecord {
     /// - PASS：审核通过。
     /// - NOT_FINISH：资料待补充。
     /// - CANCEL：已撤回。
-
     #[setters(generate = true, strip_option)]
     state: Option<String>,
     /// 审核工单ID。
-
     #[setters(generate = true, strip_option)]
     work_order_id: Option<i64>,
     /// 法人姓名。
-
     #[setters(generate = true, strip_option)]
     legal_person_name: Option<String>,
     /// 资质申请用途，取值：
     ///
     /// - **true**：自用。
     /// - **false**：他用。
-
     #[setters(generate = true, strip_option)]
     use_by_self: Option<bool>,
     /// 当前页码。默认取值为 1。
-
     #[setters(generate = true, strip_option)]
     page_no: Option<i64>,
     /// 每页显示的数据条数。取值范围：**1~50**。
-
     #[setters(generate = true, strip_option)]
     page_size: Option<i64>,
 }
@@ -2031,13 +2025,20 @@ impl QuerySmsQualificationRecord {
         }
     }
 }
+impl crate::ToFormData for QuerySmsQualificationRecord {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsQualificationRecord {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsQualificationRecord";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsQualificationRecordResponse;
 
@@ -2082,7 +2083,7 @@ impl crate::Request for QuerySmsQualificationRecord {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2091,7 +2092,6 @@ pub struct QuerySingleSmsQualification {
     /// 资质ID，即您[申请资质](~~SubmitSmsQualification~~)返回的ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质ID。
     qualification_group_id: i64,
     /// 审核工单ID，您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质及其对应审核工单ID。
-
     #[setters(generate = true, strip_option)]
     order_id: Option<i64>,
 }
@@ -2106,13 +2106,20 @@ impl QuerySingleSmsQualification {
         }
     }
 }
+impl crate::ToFormData for QuerySingleSmsQualification {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySingleSmsQualification {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySingleSmsQualification";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySingleSmsQualificationResponse;
 
@@ -2133,7 +2140,7 @@ impl crate::Request for QuerySingleSmsQualification {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -2150,42 +2157,34 @@ pub struct UpdateSmsQualification {
     /// 审核工单ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质及其对应审核工单ID。
     order_id: i64,
     /// 企业营业证件信息。待修改的资质用途为他用时，此参数必填。
-
     #[setters(generate = true, strip_option)]
     business_license_pics: Option<Vec<UpdateSmsQualificationBusinessLicensePicsItem>>,
     /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
-
     #[setters(generate = true, strip_option)]
     company_name: Option<String>,
     /// 营业证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     /// > 证照有效期为长期时，截止日期可填：2099-12-31。
-
     #[setters(generate = true, strip_option)]
     bussiness_license_exp_date: Option<String>,
     /// 法定代表人证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_front_side: Option<String>,
     /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_back_side: Option<String>,
     /// 法定代表人姓名。
     ///
     /// > - 若组织证件中无法定代表人信息，但存在负责人/首席代表等相关信息，请准备证件中对应负责人或首席代表的身份证件照片。
     /// > - 若组织证件中无法定代表人信息，且无任何负责人信息，请准备业务主要负责人的姓名、身份证件照片。
-
     #[setters(generate = true, strip_option)]
     legal_person_name: Option<String>,
     /// 法人证件号码。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_no: Option<String>,
     /// 法人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     /// > 证件有效期为长期时，截止日期可填：2099-12-31。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_eff_time: Option<String>,
     /// 法人证件类型。取值：
@@ -2196,7 +2195,6 @@ pub struct UpdateSmsQualification {
     /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
     /// - residencePermit：港澳台居民居住证。
     /// - other：其他。
-
     #[setters(generate = true, strip_option)]
     legal_person_id_card_type: Option<String>,
     /// 管理员证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
@@ -2204,7 +2202,6 @@ pub struct UpdateSmsQualification {
     /// ><notice>
     ///  证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
     /// ></notice>
-
     #[setters(generate = true, strip_option)]
     admin_id_card_pic: Option<String>,
     /// 管理员证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
@@ -2212,22 +2209,18 @@ pub struct UpdateSmsQualification {
     /// ><notice>
     /// 证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
     /// ></notice>
-
     #[setters(generate = true, strip_option)]
     admin_id_card_front_face: Option<String>,
     /// 管理员姓名。
     ///
     /// > 管理员（又称经办人）指登录阿里云账号并管理短信业务的人员，一般是贵方管理此阿里云账号下资质、签名和模板，并进行短信发送的相关运营人员，且此人手机号可接收验证码。管理员不一定是此阿里云账号的管理员，管理员可以与企业法人为同一人。
-
     #[setters(generate = true, strip_option)]
     admin_name: Option<String>,
     /// 管理员证件号码。
-
     #[setters(generate = true, strip_option)]
     admin_id_card_no: Option<String>,
     /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     /// > 证件有效期为长期时，截止日期可填：2099-12-31。
-
     #[setters(generate = true, strip_option)]
     admin_id_card_exp_date: Option<String>,
     /// 管理员手机号码，格式：+/+86/0086/86 或无任何前缀的手机号码，例如1390000****。
@@ -2244,11 +2237,9 @@ pub struct UpdateSmsQualification {
     /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
     /// - residencePermit：港澳台居民居住证。
     /// - other：其他。
-
     #[setters(generate = true, strip_option)]
     admin_id_card_type: Option<String>,
     /// 更多资料，如果您还有其他证明或备注材料、照片等，可在此上传。
-
     #[setters(generate = true, strip_option)]
     other_files: Option<Vec<UpdateSmsQualificationOtherFilesItem>>,
 }
@@ -2286,13 +2277,20 @@ impl UpdateSmsQualification {
         }
     }
 }
+impl crate::ToFormData for UpdateSmsQualification {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for UpdateSmsQualification {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateSmsQualification";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = UpdateSmsQualificationResponse;
 
@@ -2376,7 +2374,7 @@ impl crate::Request for UpdateSmsQualification {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2398,13 +2396,20 @@ impl DeleteSmsQualification {
         }
     }
 }
+impl crate::ToFormData for DeleteSmsQualification {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for DeleteSmsQualification {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteSmsQualification";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = DeleteSmsQualificationResponse;
 
@@ -2422,7 +2427,7 @@ impl crate::Request for DeleteSmsQualification {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2443,13 +2448,20 @@ impl RequiredPhoneCode {
         }
     }
 }
+impl crate::ToFormData for RequiredPhoneCode {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for RequiredPhoneCode {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "RequiredPhoneCode";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = RequiredPhoneCodeResponse;
 
@@ -2463,7 +2475,7 @@ impl crate::Request for RequiredPhoneCode {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2485,13 +2497,20 @@ impl ValidPhoneCode {
         }
     }
 }
+impl crate::ToFormData for ValidPhoneCode {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ValidPhoneCode {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ValidPhoneCode";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ValidPhoneCodeResponse;
 
@@ -2506,7 +2525,7 @@ impl crate::Request for ValidPhoneCode {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2561,13 +2580,20 @@ impl CreateSmsAuthorizationLetter {
         }
     }
 }
+impl crate::ToFormData for CreateSmsAuthorizationLetter {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CreateSmsAuthorizationLetter {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSmsAuthorizationLetter";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateSmsAuthorizationLetterResponse;
 
@@ -2596,35 +2622,30 @@ impl crate::Request for CreateSmsAuthorizationLetter {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsAuthorizationLetter {
     /// 委托授权书ID列表。
-
     #[setters(generate = true, strip_option)]
     authorization_letter_id_list: Option<Vec<i64>>,
     /// 签名名称。若您创建授权书时，授权范围包括多个签名，则会返回包含该签名的授权书。
-
     #[setters(generate = true, strip_option)]
     sign_name: Option<String>,
     /// 委托授权方社会统一信用代码，长度不超过150个字符。
-
     #[setters(generate = true, strip_option)]
     organization_code: Option<String>,
     /// 委托授权书审核状态，与签名审核状态相关，取值：
     /// - **INT**：待审核。委托授权书已创建，当您提交签名申请后进入审核流程。
     /// - **PASSED**：审核通过。当您的委托授权签名范围中有签名审核通过时，委托授权书状态变为PASSED。
-
     #[setters(generate = true, strip_option)]
     state: Option<String>,
     /// 委托授权书可用状态，与授权书有效期相关，取值：
     ///
     /// - **VALID**：可用，授权书处于有效期内。
     /// - **INVALID**：不可用，授权书已过期。
-
     #[setters(generate = true, strip_option)]
     status: Option<String>,
 }
@@ -2642,13 +2663,20 @@ impl QuerySmsAuthorizationLetter {
         }
     }
 }
+impl crate::ToFormData for QuerySmsAuthorizationLetter {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsAuthorizationLetter {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsAuthorizationLetter";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsAuthorizationLetterResponse;
 
@@ -2684,7 +2712,7 @@ impl crate::Request for QuerySmsAuthorizationLetter {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2706,7 +2734,6 @@ pub struct CreateSmsSign {
     /// >  - 若签名涉及政企机关单位，请备注政企机关单位的固定电话。
     ///
     /// 信息完善的申请说明会提高签名、模板的审核效率。如未按规范进行填写或不填写，可能会影响您签名审核的通过。
-
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
     /// 签名类型。取值：
@@ -2716,11 +2743,9 @@ pub struct CreateSmsSign {
     /// - **1**：通用（默认值）。
     ///
     /// 建议使用默认值：**通用**。
-
     #[setters(generate = true, strip_option)]
     sign_type: Option<i32>,
     /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
-
     #[setters(generate = true, strip_option)]
     more_data: Option<Vec<String>>,
     /// 已审核通过的资质ID。
@@ -2729,7 +2754,6 @@ pub struct CreateSmsSign {
     /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
     qualification_id: i64,
     /// App应用商店链接。若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
-
     #[setters(generate = true, strip_option)]
     apply_scene_content: Option<String>,
     /// 签名来源。取值：
@@ -2746,23 +2770,19 @@ pub struct CreateSmsSign {
     ///
     /// - true：他用（签名为非本账号实名认证的企业、网站、产品名等）。
     /// ><notice>签名为自用时，请选择自用资质ID；签名为他用时，请选择他用资质ID。></notice>
-
     #[setters(generate = true, strip_option)]
     third_party: Option<bool>,
     /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
-
     #[setters(generate = true, strip_option)]
     authorization_letter_id: Option<i64>,
     /// 商标实体id。
     /// > - 当SignSource=5时，需要传商标实体id。
     /// > - 商标实体id可以通过调用[创建商标实体](~~CreateSmsTrademark~~)接口获取。
-
     #[setters(generate = true, strip_option)]
     trademark_id: Option<i64>,
     /// APP-ICP备案实体id。
     /// > - 当SignSource=2时，需要传备案实体id。
     /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
-
     #[setters(generate = true, strip_option)]
     app_icp_record_id: Option<i64>,
 }
@@ -2790,13 +2810,20 @@ impl CreateSmsSign {
         }
     }
 }
+impl crate::ToFormData for CreateSmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CreateSmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateSmsSignResponse;
 
@@ -2844,7 +2871,7 @@ impl crate::Request for CreateSmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2866,13 +2893,20 @@ impl GetSmsSign {
         }
     }
 }
+impl crate::ToFormData for GetSmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetSmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetSmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetSmsSignResponse;
 
@@ -2886,20 +2920,16 @@ impl crate::Request for GetSmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
-#[derive(derive_setters::Setters, Debug, serde::Serialize)]
+#[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsSignList {
     /// 当前页码，默认取值为**1**。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_index: Option<i32>,
     /// 每页显示的签名个数。默认取值为**10**，取值范围：**1~50**。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
 }
@@ -2912,6 +2942,13 @@ impl QuerySmsSignList {
             page_index: None,
             page_size: None,
         }
+    }
+}
+impl crate::ToFormData for QuerySmsSignList {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
     }
 }
 
@@ -2956,7 +2993,6 @@ pub struct UpdateSmsSign {
     /// >  - 若签名涉及政企机关单位，请备注政企机关单位的固定电话。
     ///
     /// 信息完善的申请说明会提高签名、模板的审核效率。如未按规范进行填写或不填写，可能会影响您签名审核的通过。
-
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
     /// 签名类型。取值：
@@ -2965,11 +3001,9 @@ pub struct UpdateSmsSign {
     /// - **1**：通用（默认值）。
     ///
     /// 建议使用默认值：**通用**。
-
     #[setters(generate = true, strip_option)]
     sign_type: Option<i32>,
     /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
-
     #[setters(generate = true, strip_option)]
     more_data: Option<Vec<String>>,
     /// 已审核通过的资质ID。
@@ -2978,7 +3012,6 @@ pub struct UpdateSmsSign {
     /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
     qualification_id: i64,
     /// App应用商店链接，若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
-
     #[setters(generate = true, strip_option)]
     apply_scene_content: Option<String>,
     /// 签名来源。取值：
@@ -2995,23 +3028,19 @@ pub struct UpdateSmsSign {
     ///
     /// - true：他用（签名为非本账号实名认证的企业、网站、产品名等）。
     /// ><notice>签名为自用时，请选择自用资质ID；签名为他用时，请选择他用资质ID。></notice>
-
     #[setters(generate = true, strip_option)]
     third_party: Option<bool>,
     /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
-
     #[setters(generate = true, strip_option)]
     authorization_letter_id: Option<i64>,
     /// 商标实体id。
     /// > - 当SignSource=5时，需要传商标实体id。
     /// > - 商标实体id可以通过调用[创建商标实体](~~CreateSmsTrademark~~)接口获取。
-
     #[setters(generate = true, strip_option)]
     trademark_id: Option<i64>,
     /// APP-ICP备案实体id。
     /// > - 当SignSource=2时，需要传备案实体id。
     /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
-
     #[setters(generate = true, strip_option)]
     app_icp_record_id: Option<i64>,
 }
@@ -3039,13 +3068,20 @@ impl UpdateSmsSign {
         }
     }
 }
+impl crate::ToFormData for UpdateSmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for UpdateSmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateSmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = UpdateSmsSignResponse;
 
@@ -3093,11 +3129,11 @@ impl crate::Request for UpdateSmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsSign {
@@ -3117,13 +3153,20 @@ impl DeleteSmsSign {
         }
     }
 }
+impl crate::ToFormData for DeleteSmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for DeleteSmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteSmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = DeleteSmsSignResponse;
 
@@ -3137,7 +3180,7 @@ impl crate::Request for DeleteSmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3148,7 +3191,6 @@ pub struct ChangeSignatureQualification {
     /// 资质ID，即您申请资质返回的ID。您可以通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质ID。
     qualification_id: i64,
     /// 授权委托书ID。
-
     #[setters(generate = true, strip_option)]
     authorization_letter_id: Option<i64>,
 }
@@ -3164,13 +3206,20 @@ impl ChangeSignatureQualification {
         }
     }
 }
+impl crate::ToFormData for ChangeSignatureQualification {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ChangeSignatureQualification {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ChangeSignatureQualification";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ChangeSignatureQualificationResponse;
 
@@ -3189,11 +3238,11 @@ impl crate::Request for ChangeSignatureQualification {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsSign {
@@ -3233,7 +3282,6 @@ pub struct AddSmsSign {
     ///
     /// - **0**：验证码
     /// - **1**：通用
-
     #[setters(generate = true, strip_option)]
     sign_type: Option<i32>,
 }
@@ -3254,13 +3302,20 @@ impl AddSmsSign {
         }
     }
 }
+impl crate::ToFormData for AddSmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for AddSmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "AddSmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = AddSmsSignResponse;
 
@@ -3280,11 +3335,11 @@ impl crate::Request for AddSmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsSign {
@@ -3316,7 +3371,6 @@ pub struct ModifySmsSign {
     /// - **0**：验证码
     ///
     /// - **1**：通用
-
     #[setters(generate = true, strip_option)]
     sign_type: Option<i32>,
 }
@@ -3337,13 +3391,20 @@ impl ModifySmsSign {
         }
     }
 }
+impl crate::ToFormData for ModifySmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ModifySmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ModifySmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ModifySmsSignResponse;
 
@@ -3363,11 +3424,11 @@ impl crate::Request for ModifySmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsSign {
@@ -3384,13 +3445,20 @@ impl QuerySmsSign {
         }
     }
 }
+impl crate::ToFormData for QuerySmsSign {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsSign {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsSign";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsSignResponse;
 
@@ -3404,7 +3472,7 @@ impl crate::Request for QuerySmsSign {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3456,13 +3524,20 @@ impl CreateSmsTrademark {
         }
     }
 }
+impl crate::ToFormData for CreateSmsTrademark {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CreateSmsTrademark {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSmsTrademark";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateSmsTrademarkResponse;
 
@@ -3486,7 +3561,7 @@ impl crate::Request for CreateSmsTrademark {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3505,13 +3580,20 @@ impl QuerySmsTrademark {
         }
     }
 }
+impl crate::ToFormData for QuerySmsTrademark {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsTrademark {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsTrademark";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsTrademarkResponse;
 
@@ -3528,7 +3610,7 @@ impl crate::Request for QuerySmsTrademark {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3587,13 +3669,20 @@ impl CreateSmsAppIcpRecord {
         }
     }
 }
+impl crate::ToFormData for CreateSmsAppIcpRecord {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CreateSmsAppIcpRecord {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSmsAppIcpRecord";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateSmsAppIcpRecordResponse;
 
@@ -3615,7 +3704,7 @@ impl crate::Request for CreateSmsAppIcpRecord {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3634,13 +3723,20 @@ impl QuerySmsAppIcpRecord {
         }
     }
 }
+impl crate::ToFormData for QuerySmsAppIcpRecord {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsAppIcpRecord {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsAppIcpRecord";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsAppIcpRecordResponse;
 
@@ -3657,7 +3753,7 @@ impl crate::Request for QuerySmsAppIcpRecord {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3670,7 +3766,6 @@ pub struct CreateSmsTemplate {
     /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
     template_content: String,
     /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
-
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
     /// 短信类型。取值：
@@ -3689,28 +3784,23 @@ pub struct CreateSmsTemplate {
     /// - 当TemplateType参数为**0**、**1**、**2**时，此参数必填。
     ///
     /// - 关联签名可以提升审核效率，此处关联的签名和短信发送时选择的签名无关。</notice>
-
     #[setters(generate = true, strip_option)]
     related_sign_name: Option<String>,
     /// 模板变量规则。变量规则的填写，请参见[示例文档](~~2806243~~)。
-
     #[setters(generate = true, strip_option)]
     template_rule: Option<String>,
     /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
-
     #[setters(generate = true, strip_option)]
     more_data: Option<Vec<String>>,
     /// 业务场景。
     ///  - 模板关联的短信签名使用场景如果为“已上线APP”，`ApplySceneContent`必须为以`http://`开头或`https://`开头的App链接。
     ///  - 模板关联的短信签名使用场景如果为“已注册商标名”、“企事业单位名称”，`ApplySceneContent`必填。
-
     #[setters(generate = true, strip_option)]
     apply_scene_content: Option<String>,
     /// 国际/港澳台模板类型。当**TemplateType**参数为**3**时，国际/港澳台模板需要设置此参数，取值：
     /// - **0**：短信通知。
     /// - **1**：推广短信。
     /// - **2**：验证码。
-
     #[setters(generate = true, strip_option)]
     intl_type: Option<i32>,
     /// ><warning>
@@ -3752,7 +3842,6 @@ pub struct CreateSmsTemplate {
     /// - 96_PHONE：96开头电话。
     /// - 1_PHONE：1开头，3~5位电话。
     /// - OTHER_PHONE：其他号码。
-
     #[setters(generate = true, strip_option)]
     traffic_driving: Option<String>,
 }
@@ -3779,13 +3868,20 @@ impl CreateSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for CreateSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CreateSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CreateSmsTemplateResponse;
 
@@ -3829,7 +3925,7 @@ impl crate::Request for CreateSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3851,13 +3947,20 @@ impl GetSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for GetSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetSmsTemplateResponse;
 
@@ -3871,20 +3974,16 @@ impl crate::Request for GetSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
-#[derive(derive_setters::Setters, Debug, serde::Serialize)]
+#[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsTemplateList {
     /// 当前页码。默认取值为**1**。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_index: Option<i32>,
     /// 每页显示的模板个数。取值范围：**1~50**，默认取值为**10**。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
 }
@@ -3897,6 +3996,13 @@ impl QuerySmsTemplateList {
             page_index: None,
             page_size: None,
         }
+    }
+}
+impl crate::ToFormData for QuerySmsTemplateList {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
     }
 }
 
@@ -3941,7 +4047,6 @@ pub struct UpdateSmsTemplate {
     /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
     template_content: String,
     /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
-
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
     /// 短信类型。取值：
@@ -3954,28 +4059,23 @@ pub struct UpdateSmsTemplate {
     /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
     template_type: i32,
     /// 模板申请时关联的短信签名。
-
     #[setters(generate = true, strip_option)]
     related_sign_name: Option<String>,
     /// 模板变量规则。变量规则填写请参见[示例文档](~~2806243~~)。
-
     #[setters(generate = true, strip_option)]
     template_rule: Option<String>,
     /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
-
     #[setters(generate = true, strip_option)]
     more_data: Option<Vec<String>>,
     /// 业务场景。
     ///  - 模板关联的短信签名使用场景如果为“已上线APP”，`ApplySceneContent`必须为以`http://`开头或`https://`开头的App链接。
     ///  - 模板关联的短信签名使用场景如果为“已注册商标名”、“企事业单位名称”，`ApplySceneContent`必填。
-
     #[setters(generate = true, strip_option)]
     apply_scene_content: Option<String>,
     /// 国际/港澳台模板类型。当**TemplateType**参数为**3**时，国际/港澳台模板需要设置此参数，取值：
     /// - **0**：短信通知。
     /// - **1**：推广短信。
     /// - **2**：验证码。
-
     #[setters(generate = true, strip_option)]
     intl_type: Option<i32>,
     /// ><warning>
@@ -4018,7 +4118,6 @@ pub struct UpdateSmsTemplate {
     /// - 96_PHONE：96开头电话。
     /// - 1_PHONE：1开头，3~5位电话。
     /// - OTHER_PHONE：其他号码。
-
     #[setters(generate = true, strip_option)]
     traffic_driving: Option<String>,
 }
@@ -4047,13 +4146,20 @@ impl UpdateSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for UpdateSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for UpdateSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = UpdateSmsTemplateResponse;
 
@@ -4098,11 +4204,11 @@ impl crate::Request for UpdateSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsTemplate {
@@ -4124,13 +4230,20 @@ impl DeleteSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for DeleteSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for DeleteSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = DeleteSmsTemplateResponse;
 
@@ -4144,11 +4257,11 @@ impl crate::Request for DeleteSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsTemplate {
@@ -4196,13 +4309,20 @@ impl AddSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for AddSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for AddSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "AddSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = AddSmsTemplateResponse;
 
@@ -4219,11 +4339,11 @@ impl crate::Request for AddSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsTemplate {
@@ -4276,13 +4396,20 @@ impl ModifySmsTemplate {
         }
     }
 }
+impl crate::ToFormData for ModifySmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ModifySmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ModifySmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ModifySmsTemplateResponse;
 
@@ -4300,7 +4427,7 @@ impl crate::Request for ModifySmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4321,13 +4448,20 @@ impl QuerySmsTemplate {
         }
     }
 }
+impl crate::ToFormData for QuerySmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySmsTemplateResponse;
 
@@ -4341,7 +4475,7 @@ impl crate::Request for QuerySmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -4406,18 +4540,15 @@ pub struct SendSms {
     ///
     /// > - 如果JSON中需要带换行符，请参照标准的JSON协议处理。
     /// > - 模板变量规范，请参见[短信模板规范](~~463161~~)。
-
     #[setters(generate = true, strip_option)]
     template_param: Option<String>,
     /// 上行短信扩展码。上行短信指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费，按运营商普通短信资费进行扣费。
     /// > 扩展码是生成签名时系统自动默认生成的，不支持自行传入。无特殊需要可忽略此字段。
-
     #[setters(generate = true, strip_option)]
     sms_up_extend_code: Option<String>,
     /// 外部流水扩展字段。
     ///
     /// > 无特殊需要可忽略此字段。
-
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
 }
@@ -4440,13 +4571,20 @@ impl SendSms {
         }
     }
 }
+impl crate::ToFormData for SendSms {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for SendSms {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SendSms";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SendSmsResponse;
 
@@ -4474,7 +4612,7 @@ impl crate::Request for SendSms {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4499,19 +4637,16 @@ pub struct SendBatchSms {
     ///
     /// > - 模板变量值的个数必须与手机号码、签名的个数相同、内容一一对应，表示向指定手机号码中发对应签名的短信，且短信模板中的变量参数替换为对应的值。
     /// > - 如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     template_param_json: Option<String>,
     /// 上行短信扩展码，JSON数组格式。
     ///
     /// > 无特殊需要可忽略此字段。
-
     #[setters(generate = true, strip_option)]
     sms_up_extend_code_json: Option<String>,
     /// 外部流水扩展字段，长度小于256的字符串。
     ///
     /// > 无特殊需要可忽略此字段。
-
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
 }
@@ -4534,13 +4669,30 @@ impl SendBatchSms {
         }
     }
 }
+impl crate::ToFormData for SendBatchSms {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+        params.insert("PhoneNumberJson", (&self.phone_number_json).into());
+        params.insert("SignNameJson", (&self.sign_name_json).into());
+
+        if let Some(f) = &self.template_param_json {
+            params.insert("TemplateParamJson", f.into());
+        }
+
+        if let Some(f) = &self.sms_up_extend_code_json {
+            params.insert("SmsUpExtendCodeJson", f.into());
+        }
+
+        params
+    }
+}
 
 impl crate::Request for SendBatchSms {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SendBatchSms";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SendBatchSmsResponse;
 
@@ -4558,7 +4710,7 @@ impl crate::Request for SendBatchSms {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -4576,7 +4728,6 @@ pub struct QuerySendDetails {
     /// 发送回执ID。即发送流水号，调用[SendSms](~~419273~~)或[SendBatchSms](~~419274~~)发送短信时，返回值中的BizId字段。
     ///
     /// > 只能传入一个Bizid的值，无法传入多个Bizid。
-
     #[setters(generate = true, strip_option)]
     biz_id: Option<String>,
     /// 短信发送日期，支持查询最近30天的记录。
@@ -4609,13 +4760,20 @@ impl QuerySendDetails {
         }
     }
 }
+impl crate::ToFormData for QuerySendDetails {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QuerySendDetails {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QuerySendDetails";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QuerySendDetailsResponse;
 
@@ -4636,10 +4794,10 @@ impl crate::Request for QuerySendDetails {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
-#[derive(derive_setters::Setters, Debug, serde::Serialize)]
+#[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySendStatistics {
     /// 短信发送范围。取值：
@@ -4647,24 +4805,14 @@ pub struct QuerySendStatistics {
     /// - **1**：国内短信发送记录。
     ///
     /// - **2**：国际/港澳台短信发送记录。
-
-    #[serde(skip)]
     is_globe: i32,
     /// 开始日期，格式为yyyyMMdd。
-
-    #[serde(skip)]
     start_date: String,
     /// 结束日期，格式为yyyyMMdd。
-
-    #[serde(skip)]
     end_date: String,
     /// 当前页码。
-
-    #[serde(skip)]
     page_index: i32,
     /// 每页显示的条数。取值范围：**1~50**。
-
-    #[serde(skip)]
     page_size: i32,
     /// 模板类型。取值：
     ///
@@ -4677,13 +4825,9 @@ pub struct QuerySendStatistics {
     /// - **3**：国际/港澳台消息。（仅支持企业客户）
     ///
     /// - **7**：数字短信。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     template_type: Option<i32>,
     /// 签名名称。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     sign_name: Option<String>,
 }
@@ -4707,6 +4851,13 @@ impl QuerySendStatistics {
             template_type: None,
             sign_name: None,
         }
+    }
+}
+impl crate::ToFormData for QuerySendStatistics {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
     }
 }
 
@@ -4758,13 +4909,20 @@ impl GetOSSInfoForCardTemplate {
         Self {}
     }
 }
+impl crate::ToFormData for GetOSSInfoForCardTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetOSSInfoForCardTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetOSSInfoForCardTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetOSSInfoForCardTemplateResponse;
 
@@ -4777,10 +4935,10 @@ impl crate::Request for GetOSSInfoForCardTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
-#[derive(derive_setters::Setters, Debug, serde::Serialize)]
+#[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetMediaResourceId {
     /// 资源类型。
@@ -4795,27 +4953,17 @@ pub struct GetMediaResourceId {
     /// > - 16:9比例：sixteenToNine
     /// > - 3:1比例：threeToOne
     /// > - 48:65比例：fortyEightToSixtyFiv
-
-    #[serde(skip)]
     resource_type: i32,
     /// 获取的资源地址。
-
-    #[serde(skip)]
     oss_key: String,
     /// 文件大小，单位：Byte。
-
-    #[serde(skip)]
     file_size: i64,
     /// 扩展字段。
     ///
     /// > 资源类型为**图片**时必填。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     extend_info: Option<String>,
     /// 上传资源的描述。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     memo: Option<String>,
 }
@@ -4835,6 +4983,13 @@ impl GetMediaResourceId {
             extend_info: None,
             memo: None,
         }
+    }
+}
+impl crate::ToFormData for GetMediaResourceId {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
     }
 }
 
@@ -4871,24 +5026,18 @@ impl crate::Request for GetMediaResourceId {
     }
 }
 
-///
-#[derive(derive_setters::Setters, Debug, serde::Serialize)]
+///  
+#[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCardSmsTemplate {
     /// 卡片短信模板名称。
-
-    #[serde(skip)]
     template_name: String,
     /// 卡片短信的模板内容。
     ///
     /// > - Template、ExtendInfo、TemplateContent、TmpCard、Action等字段说明，请参见[卡片短信模板参数字段说明](~~434929~~)。
     /// > - 不同类型的卡片短信模板的内容结构不同，详情请参见[卡片短信模板示例](~~435361~~)。
-
-    #[serde(skip)]
     template: CreateCardSmsTemplateTemplate,
     /// 对上传模板的描述。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     memo: Option<String>,
     /// 模板提交的厂商。厂商类型取值：
@@ -4901,8 +5050,6 @@ pub struct CreateCardSmsTemplate {
     /// - **HONOR**：表示荣耀厂商。
     ///
     /// > 该参数不填时，系统自动匹配模板支持的手机厂商。
-
-    #[serde(skip)]
     #[setters(generate = true, strip_option)]
     factorys: Option<String>,
 }
@@ -4920,6 +5067,13 @@ impl CreateCardSmsTemplate {
             memo: None,
             factorys: None,
         }
+    }
+}
+impl crate::ToFormData for CreateCardSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
     }
 }
 
@@ -4974,13 +5128,20 @@ impl QueryCardSmsTemplate {
         }
     }
 }
+impl crate::ToFormData for QueryCardSmsTemplate {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QueryCardSmsTemplate {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QueryCardSmsTemplate";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QueryCardSmsTemplateResponse;
 
@@ -4994,7 +5155,7 @@ impl crate::Request for QueryCardSmsTemplate {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -5032,13 +5193,20 @@ impl CheckMobilesCardSupport {
         }
     }
 }
+impl crate::ToFormData for CheckMobilesCardSupport {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CheckMobilesCardSupport {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CheckMobilesCardSupport";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CheckMobilesCardSupportResponse;
 
@@ -5052,7 +5220,7 @@ impl crate::Request for CheckMobilesCardSupport {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5067,9 +5235,8 @@ pub struct QueryMobilesCardSupport {
     /// 手机号码加密方式。取值：
     /// - SHA1：SHA1加密方式。
     /// - NORMAL：不加密，明文传输。
-
     #[setters(generate = true, strip_option)]
-    encrypt_type: Option<String>,
+    encrypt_type: Option<QueryMobilesCardSupportEncryptType>,
 }
 
 impl sealed::Bound for QueryMobilesCardSupport {}
@@ -5086,13 +5253,20 @@ impl QueryMobilesCardSupport {
         }
     }
 }
+impl crate::ToFormData for QueryMobilesCardSupport {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QueryMobilesCardSupport {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QueryMobilesCardSupport";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QueryMobilesCardSupportResponse;
 
@@ -5111,7 +5285,7 @@ impl crate::Request for QueryMobilesCardSupport {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5120,7 +5294,6 @@ pub struct GetCardSmsLink {
     /// 卡片短信模板Code。请在控制台[卡片短信>模板管理](https://dysms.console.aliyun.com/domestic/card)页面选择已通过审核的卡片短信模板Code。
     card_template_code: String,
     /// 外部流水扩展字段。
-
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
     /// 手机号码、用户ID或系统内部标识。
@@ -5128,7 +5301,6 @@ pub struct GetCardSmsLink {
     /// > - 最多支持1万个手机号码。
     /// > - 用户也可自定义标识，长度不超过60个字符。
     /// > - OPPO厂商的模板一次最多申请10个。
-
     #[setters(generate = true, strip_option)]
     phone_number_json: Option<String>,
     /// 短信签名名称。
@@ -5137,13 +5309,11 @@ pub struct GetCardSmsLink {
     /// >必须是已添加、并通过审核的短信签名；且短信签名的个数必须与手机号码的个数相同、内容一一对应。
     sign_name_json: String,
     /// 卡片短信动参。
-
     #[setters(generate = true, strip_option)]
     card_template_param_json: Option<String>,
     /// 卡片短信短链编码类型。取值：
     /// - 1：群发。
     /// - 2：个性化。
-
     #[setters(generate = true, strip_option)]
     card_code_type: Option<i32>,
     /// 卡片短信短链类型。取值：
@@ -5151,20 +5321,17 @@ pub struct GetCardSmsLink {
     /// - 2：自定义生成短码。
     ///
     /// > **CardLinkType**不填时，默认为标准生成短码。如需生成自定义短码，请联系阿里运营人员进行报备。
-
     #[setters(generate = true, strip_option)]
     card_link_type: Option<i32>,
     /// 发送账号分配的短链域名，需要提前报备。
     ///
     /// > - 当**CardLinkType**为**2**时，**Domain**参数必填。
     /// > - 当**Domain**参数不填时，则使用系统默认域名。长度不超过100个字符。
-
     #[setters(generate = true, strip_option)]
     domain: Option<String>,
     /// 客户自定义短码。长度为4~8位的数字或字母。
     ///
     /// > 当生成类型为自定义生成短码时必填。
-
     #[setters(generate = true, strip_option)]
     custom_short_code_json: Option<String>,
 }
@@ -5186,13 +5353,20 @@ impl GetCardSmsLink {
         }
     }
 }
+impl crate::ToFormData for GetCardSmsLink {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetCardSmsLink {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetCardSmsLink";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetCardSmsLinkResponse;
 
@@ -5235,20 +5409,18 @@ impl crate::Request for GetCardSmsLink {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCardSmsDetails {
     /// 分页查看发送记录，指定发送记录的当前页码。
-
     #[setters(generate = true, strip_option)]
     current_page: Option<i64>,
     /// 分页查看发送记录，指定每页显示的卡片短信记录数量。
     ///
     /// 取值范围为1~50。
-
     #[setters(generate = true, strip_option)]
     page_size: Option<i64>,
     /// 卡片短信发送日期，支持查询最近30天的记录。
@@ -5258,15 +5430,12 @@ pub struct GetCardSmsDetails {
     /// 接收短信的国内手机号码。格式：11位手机号码，例如1390000****。
     phone_number: String,
     /// 卡片短信发送ID。通过[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizCardId字段。
-
     #[setters(generate = true, strip_option)]
     biz_card_id: Option<String>,
     /// 文本短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizSmsId字段。
-
     #[setters(generate = true, strip_option)]
     biz_sms_id: Option<String>,
     /// 数字短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizDigitalId字段。
-
     #[setters(generate = true, strip_option)]
     biz_digit_id: Option<String>,
 }
@@ -5286,13 +5455,20 @@ impl GetCardSmsDetails {
         }
     }
 }
+impl crate::ToFormData for GetCardSmsDetails {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetCardSmsDetails {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetCardSmsDetails";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetCardSmsDetailsResponse;
 
@@ -5327,7 +5503,7 @@ impl crate::Request for GetCardSmsDetails {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5349,13 +5525,20 @@ impl QueryCardSmsTemplateReport {
         }
     }
 }
+impl crate::ToFormData for QueryCardSmsTemplateReport {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for QueryCardSmsTemplateReport {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QueryCardSmsTemplateReport";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QueryCardSmsTemplateReportResponse;
 
@@ -5370,7 +5553,7 @@ impl crate::Request for QueryCardSmsTemplateReport {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5385,12 +5568,10 @@ pub struct SendCardSms {
     ///
     /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
     /// >必须是已添加、并通过审核的短信模板。
-
     #[setters(generate = true, strip_option)]
     sms_template_code: Option<String>,
     /// 上行短信扩展码。上行短信，指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费的，按运营商普通短信资费进行扣费。
     /// >无上述需求的用户请忽略此字段。
-
     #[setters(generate = true, strip_option)]
     sms_up_extend_code: Option<String>,
     /// 回落类型。取值：
@@ -5403,23 +5584,19 @@ pub struct SendCardSms {
     /// 您可在控制台**数字短信**[模板管理](https://dysms.console.aliyun.com/domestic/digit)页面查看数字短信模板列表。
     ///
     /// >必须是已添加、并通过审核的数字短信模板。
-
     #[setters(generate = true, strip_option)]
     digital_template_code: Option<String>,
     /// 预留给调用方使用的ID。
-
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
     /// 回落文本短信的模板变量对应的实际值。**SmsTemplateCode**回落的文本短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     sms_template_param: Option<String>,
     /// 回落数字短信的模板变量对应的实际值。**DigitalTemplateCode**回落的数字短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     digital_template_param: Option<String>,
     /// 自定义发送内容模板CODE。
@@ -5428,13 +5605,11 @@ pub struct SendCardSms {
     ///
     /// > - 必须是已添加、并通过审核的模板CODE；且发送国际/港澳台消息时，请使用国际/港澳台短信模版。
     /// > - 例如：选择的文本短信模板内容为：您有一条消息待查收；卡片解析链接为：`1*.cn/2**d`。最终下发内容：`您有一条消息待查收1*.cn/2**d`。请在下发前做好测试和字数控制。
-
     #[setters(generate = true, strip_option)]
     template_code: Option<String>,
     /// 自定义发送内容模板变量对应的实际值。**TemplateCode**填入包含变量的短信模板时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     template_param: Option<String>,
 }
@@ -5462,13 +5637,20 @@ impl SendCardSms {
         }
     }
 }
+impl crate::ToFormData for SendCardSms {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for SendCardSms {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SendCardSms";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SendCardSmsResponse;
 
@@ -5516,7 +5698,7 @@ impl crate::Request for SendCardSms {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5528,7 +5710,6 @@ pub struct SendBatchCardSms {
     ///
     /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
     /// >必须是已添加、并通过审核的短信模板。
-
     #[setters(generate = true, strip_option)]
     sms_template_code: Option<String>,
     /// 回落类型。取值：
@@ -5540,11 +5721,9 @@ pub struct SendBatchCardSms {
     ///
     /// 您可在控制台**国内数字短信**[模板管理](https://dysms.console.aliyun.com/domestic/digit)页面查看数字短信模板列表。
     /// >必须是已添加、并通过审核的数字短信模板。
-
     #[setters(generate = true, strip_option)]
     digital_template_code: Option<String>,
     /// 预留给调用方使用的ID。
-
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
     /// 接收短信的手机号码。
@@ -5556,22 +5735,18 @@ pub struct SendBatchCardSms {
     /// 卡片短信模板参数对应的实际值。**CardTemplateCode**卡片短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     card_template_param_json: Option<String>,
     /// 文本短信模板参数对应的实际值。**SmsTemplateCode**回落的文本短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     sms_template_param_json: Option<String>,
     /// 数字短信模板参数对应的实际值。**DigitalTemplateCode**回落的数字短信模板内含有变量时，此参数必填。
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-
     #[setters(generate = true, strip_option)]
     digital_template_param_json: Option<String>,
     /// 上行短信扩展码。
-
     #[setters(generate = true, strip_option)]
     sms_up_extend_code_json: Option<String>,
     /// 自定义发送内容模板CODE。
@@ -5580,14 +5755,12 @@ pub struct SendBatchCardSms {
     ///
     /// > - 必须是已添加、并通过审核的短信模板；且发送国际/港澳台消息时，请使用国际/港澳台短信模板。
     /// > - 例如：选择的文本短信模板内容为：您有一条消息待查收；卡片解析链接为：`1*.cn/2**d`。最终下发内容：`您有一条消息待查收1*.cn/2**d`。请在下发前做好测试和字数控制。
-
     #[setters(generate = true, strip_option)]
     template_code: Option<String>,
     /// 自定义发送内容模板变量对应的实际值。**TemplateCode**填入包含变量的短信模板时，此参数必填。
     ///
     /// > - 如果JSON中需要带换行符，请参照标准的JSON协议处理；
     /// > - 模板变量值的个数必须与手机号码、签名的个数相同、内容一一对应，表示向指定手机号码中发对应签名的短信，且短信模板中的变量参数替换为对应的值。
-
     #[setters(generate = true, strip_option)]
     template_param_json: Option<String>,
 }
@@ -5618,13 +5791,20 @@ impl SendBatchCardSms {
         }
     }
 }
+impl crate::ToFormData for SendBatchCardSms {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for SendBatchCardSms {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SendBatchCardSms";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SendBatchCardSmsResponse;
 
@@ -5677,7 +5857,7 @@ impl crate::Request for SendBatchCardSms {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5696,13 +5876,20 @@ impl GetQualificationOssInfo {
         }
     }
 }
+impl crate::ToFormData for GetQualificationOssInfo {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetQualificationOssInfo {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetQualificationOssInfo";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetQualificationOssInfoResponse;
 
@@ -5716,7 +5903,7 @@ impl crate::Request for GetQualificationOssInfo {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5725,7 +5912,6 @@ pub struct GetOSSInfoForUploadFile {
     /// 业务类型，默认值为**fcMediaSms**。
     ///
     /// 创建签名、创建模板时，上传**更多资料**场景，该值为**fcMediaSms**。
-
     #[setters(generate = true, strip_option)]
     biz_type: Option<String>,
 }
@@ -5737,13 +5923,20 @@ impl GetOSSInfoForUploadFile {
         Self { biz_type: None }
     }
 }
+impl crate::ToFormData for GetOSSInfoForUploadFile {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetOSSInfoForUploadFile {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetOSSInfoForUploadFile";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetOSSInfoForUploadFileResponse;
 
@@ -5760,7 +5953,7 @@ impl crate::Request for GetOSSInfoForUploadFile {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5768,7 +5961,6 @@ impl crate::Request for GetOSSInfoForUploadFile {
 pub struct GetSmsOcrOssInfo {
     /// OCR任务类型。可选值：
     /// - ICP_DOMAIN（域名类型链接ICP备案截图）
-
     #[setters(generate = true, strip_option)]
     task_type: Option<String>,
 }
@@ -5780,13 +5972,20 @@ impl GetSmsOcrOssInfo {
         Self { task_type: None }
     }
 }
+impl crate::ToFormData for GetSmsOcrOssInfo {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for GetSmsOcrOssInfo {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "GetSmsOcrOssInfo";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = GetSmsOcrOssInfoResponse;
 
@@ -5803,7 +6002,7 @@ impl crate::Request for GetSmsOcrOssInfo {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5818,7 +6017,6 @@ pub struct SmsConversionIntl {
     /// - 如果不指定该字段：默认当前的时间戳。
     ///
     /// - 如果指定该字段：该时间戳必须大于发送时间并且小于当前时间戳。
-
     #[setters(generate = true, strip_option)]
     conversion_time: Option<i64>,
 }
@@ -5834,13 +6032,20 @@ impl SmsConversionIntl {
         }
     }
 }
+impl crate::ToFormData for SmsConversionIntl {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for SmsConversionIntl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SmsConversionIntl";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = SmsConversionIntlResponse;
 
@@ -5859,7 +6064,7 @@ impl crate::Request for SmsConversionIntl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5868,7 +6073,6 @@ pub struct ConversionDataIntl {
     /// 转化率观测的时间点。必须是Unix时间戳，毫秒级别长整型。
     ///
     /// >如果不指定该字段：默认当前的时间戳。
-
     #[setters(generate = true, strip_option)]
     report_time: Option<i64>,
     /// 转化率监控回报值。
@@ -5886,13 +6090,20 @@ impl ConversionDataIntl {
         }
     }
 }
+impl crate::ToFormData for ConversionDataIntl {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ConversionDataIntl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ConversionDataIntl";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ConversionDataIntlResponse;
 
@@ -5910,11 +6121,11 @@ impl crate::Request for ConversionDataIntl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddShortUrl {
@@ -5942,13 +6153,23 @@ impl AddShortUrl {
         }
     }
 }
+impl crate::ToFormData for AddShortUrl {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+        params.insert("SourceUrl", (&self.source_url).into());
+        params.insert("ShortUrlName", (&self.short_url_name).into());
+        params.insert("EffectiveDays", (&self.effective_days).into());
+
+        params
+    }
+}
 
 impl crate::Request for AddShortUrl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "AddShortUrl";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = AddShortUrlResponse;
 
@@ -5961,11 +6182,11 @@ impl crate::Request for AddShortUrl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteShortUrl {
@@ -5983,13 +6204,21 @@ impl DeleteShortUrl {
         }
     }
 }
+impl crate::ToFormData for DeleteShortUrl {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+        params.insert("SourceUrl", (&self.source_url).into());
+
+        params
+    }
+}
 
 impl crate::Request for DeleteShortUrl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteShortUrl";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = DeleteShortUrlResponse;
 
@@ -6002,11 +6231,11 @@ impl crate::Request for DeleteShortUrl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryShortUrl {
@@ -6024,13 +6253,21 @@ impl QueryShortUrl {
         }
     }
 }
+impl crate::ToFormData for QueryShortUrl {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+        params.insert("ShortUrl", (&self.short_url).into());
+
+        params
+    }
+}
 
 impl crate::Request for QueryShortUrl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "QueryShortUrl";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = QueryShortUrlResponse;
 
@@ -6043,11 +6280,11 @@ impl crate::Request for QueryShortUrl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
@@ -6056,15 +6293,12 @@ pub struct ListTagResources {
     /// 地域ID。默认取值：**cn-hangzhou**。
     region_id: String,
     /// 查询下一页标签的Token。
-
     #[setters(generate = true, strip_option)]
     next_token: Option<String>,
     /// 每页显示条数。
-
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
     /// 产品名。默认取值：**dysms**。
-
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
 }
@@ -6082,13 +6316,20 @@ impl ListTagResources {
         }
     }
 }
+impl crate::ToFormData for ListTagResources {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for ListTagResources {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ListTagResources";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = ListTagResourcesResponse;
 
@@ -6115,11 +6356,11 @@ impl crate::Request for ListTagResources {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
@@ -6128,7 +6369,6 @@ pub struct TagResources {
     /// 地域ID，默认取值：**cn-hangzhou**。更多地域ID请参见[服务接入点](~~419270~~)。
     region_id: String,
     /// 产品名。默认取值：**dysms**。
-
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
 }
@@ -6144,13 +6384,20 @@ impl TagResources {
         }
     }
 }
+impl crate::ToFormData for TagResources {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for TagResources {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "TagResources";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = TagResourcesResponse;
 
@@ -6169,11 +6416,11 @@ impl crate::Request for TagResources {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
-///
+///  
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
@@ -6186,11 +6433,9 @@ pub struct UntagResources {
     ///
     /// - **true**：是。
     /// - **false**：否。
-
     #[setters(generate = true, strip_option)]
     all: Option<bool>,
     /// 产品名。默认取值：**dysms**。
-
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
 }
@@ -6207,13 +6452,20 @@ impl UntagResources {
         }
     }
 }
+impl crate::ToFormData for UntagResources {
+    fn to_form_data(&self) -> std::collections::BTreeMap<&'static str, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for UntagResources {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UntagResources";
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = UntagResourcesResponse;
 
@@ -6236,7 +6488,7 @@ impl crate::Request for UntagResources {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 
@@ -6420,15 +6672,6 @@ pub struct QuerySmsAuthorizationLetterResponseDataItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetSmsSignResponseAuditInfo {
-    #[serde(rename = "AuditDate")]
-    pub audit_date: String,
-    #[serde(rename = "RejectInfo")]
-    pub reject_info: String,
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem {
     #[serde(rename = "ReasonCode")]
     pub reason_code: String,
@@ -6448,6 +6691,15 @@ pub struct GetSmsSignResponseSignIspRegisterDetailListItem {
     #[serde(rename = "RegisterStatusReasons")]
     pub register_status_reasons:
         Vec<GetSmsSignResponseSignIspRegisterDetailListItemRegisterStatusReasonsItem>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSmsSignResponseAuditInfo {
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6545,6 +6797,13 @@ pub struct QuerySmsAppIcpRecordResponseDataItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct GetSmsTemplateResponseFileUrlList {
+    #[serde(rename = "FileUrl")]
+    pub file_url: Vec<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsTemplateResponseAuditInfo {
     #[serde(rename = "AuditDate")]
     pub audit_date: String,
@@ -6555,13 +6814,6 @@ pub struct GetSmsTemplateResponseAuditInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsTemplateResponseVendorAuditStatus {}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsTemplateResponseFileUrlList {
-    #[serde(rename = "FileUrl")]
-    pub file_url: Vec<String>,
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -6945,6 +7197,37 @@ pub struct ListTagResourcesResponseTagResources {
     pub tag_resource: Vec<ListTagResourcesResponseTagResourcesTagResourceItem>,
 }
 
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum QueryMobilesCardSupportEncryptType {
+    #[serde(rename = "SHA1")]
+    Sha1,
+    #[serde(rename = "NORMAL")]
+    Normal,
+}
+
+impl Default for QueryMobilesCardSupportEncryptType {
+    fn default() -> Self {
+        Self::Sha1
+    }
+}
+
+impl QueryMobilesCardSupportEncryptType {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Sha1 => "SHA1",
+            Self::Normal => "NORMAL",
+        }
+    }
+}
+
+impl<'a> From<&'a QueryMobilesCardSupportEncryptType> for crate::QueryValue<'a> {
+    fn from(value: &'a QueryMobilesCardSupportEncryptType) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SubmitSmsQualificationResponse {
@@ -6959,6 +7242,7 @@ pub struct SubmitSmsQualificationResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsQualificationRecordResponse {
@@ -6973,6 +7257,7 @@ pub struct QuerySmsQualificationRecordResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySingleSmsQualificationResponse {
@@ -6987,6 +7272,7 @@ pub struct QuerySingleSmsQualificationResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsQualificationResponse {
@@ -7001,6 +7287,7 @@ pub struct UpdateSmsQualificationResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSmsQualificationResponse {
@@ -7015,6 +7302,7 @@ pub struct DeleteSmsQualificationResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RequiredPhoneCodeResponse {
@@ -7029,6 +7317,7 @@ pub struct RequiredPhoneCodeResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ValidPhoneCodeResponse {
@@ -7043,6 +7332,7 @@ pub struct ValidPhoneCodeResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsAuthorizationLetterResponse {
@@ -7057,6 +7347,7 @@ pub struct CreateSmsAuthorizationLetterResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsAuthorizationLetterResponse {
@@ -7071,6 +7362,7 @@ pub struct QuerySmsAuthorizationLetterResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsSignResponse {
@@ -7083,6 +7375,7 @@ pub struct CreateSmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsSignResponse {
@@ -7129,6 +7422,7 @@ pub struct GetSmsSignResponse {
     #[serde(rename = "TrademarkId")]
     pub trademark_id: i64,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsSignListResponse {
@@ -7145,6 +7439,7 @@ pub struct QuerySmsSignListResponse {
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsSignResponse {
@@ -7157,6 +7452,7 @@ pub struct UpdateSmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSmsSignResponse {
@@ -7167,6 +7463,7 @@ pub struct DeleteSmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ChangeSignatureQualificationResponse {
@@ -7181,6 +7478,7 @@ pub struct ChangeSignatureQualificationResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddSmsSignResponse {
@@ -7191,6 +7489,7 @@ pub struct AddSmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySmsSignResponse {
@@ -7201,6 +7500,7 @@ pub struct ModifySmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsSignResponse {
@@ -7217,6 +7517,7 @@ pub struct QuerySmsSignResponse {
     #[serde(rename = "SignStatus")]
     pub sign_status: i32,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsTrademarkResponse {
@@ -7231,6 +7532,7 @@ pub struct CreateSmsTrademarkResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsTrademarkResponse {
@@ -7245,6 +7547,7 @@ pub struct QuerySmsTrademarkResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsAppIcpRecordResponse {
@@ -7259,6 +7562,7 @@ pub struct CreateSmsAppIcpRecordResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsAppIcpRecordResponse {
@@ -7273,6 +7577,7 @@ pub struct QuerySmsAppIcpRecordResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsTemplateResponse {
@@ -7287,6 +7592,7 @@ pub struct CreateSmsTemplateResponse {
     #[serde(rename = "TemplateName")]
     pub template_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsTemplateResponse {
@@ -7329,6 +7635,7 @@ pub struct GetSmsTemplateResponse {
     #[serde(rename = "VendorAuditStatus")]
     pub vendor_audit_status: GetSmsTemplateResponseVendorAuditStatus,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsTemplateListResponse {
@@ -7345,6 +7652,7 @@ pub struct QuerySmsTemplateListResponse {
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsTemplateResponse {
@@ -7359,6 +7667,7 @@ pub struct UpdateSmsTemplateResponse {
     #[serde(rename = "TemplateName")]
     pub template_name: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSmsTemplateResponse {
@@ -7369,6 +7678,7 @@ pub struct DeleteSmsTemplateResponse {
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddSmsTemplateResponse {
@@ -7379,6 +7689,7 @@ pub struct AddSmsTemplateResponse {
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySmsTemplateResponse {
@@ -7389,6 +7700,7 @@ pub struct ModifySmsTemplateResponse {
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsTemplateResponse {
@@ -7411,6 +7723,7 @@ pub struct QuerySmsTemplateResponse {
     #[serde(rename = "TemplateType")]
     pub template_type: i32,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendSmsResponse {
@@ -7421,6 +7734,7 @@ pub struct SendSmsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchSmsResponse {
@@ -7431,6 +7745,7 @@ pub struct SendBatchSmsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendDetailsResponse {
@@ -7443,6 +7758,7 @@ pub struct QuerySendDetailsResponse {
     #[serde(rename = "TotalCount")]
     pub total_count: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendStatisticsResponse {
@@ -7453,6 +7769,7 @@ pub struct QuerySendStatisticsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetOSSInfoForCardTemplateResponse {
@@ -7465,6 +7782,7 @@ pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetMediaResourceIdResponse {
@@ -7477,6 +7795,7 @@ pub struct GetMediaResourceIdResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCardSmsTemplateResponse {
@@ -7489,6 +7808,7 @@ pub struct CreateCardSmsTemplateResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponse {
@@ -7501,6 +7821,7 @@ pub struct QueryCardSmsTemplateResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CheckMobilesCardSupportResponse {
@@ -7513,6 +7834,7 @@ pub struct CheckMobilesCardSupportResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponse {
@@ -7525,6 +7847,7 @@ pub struct QueryMobilesCardSupportResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsLinkResponse {
@@ -7537,6 +7860,7 @@ pub struct GetCardSmsLinkResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsDetailsResponse {
@@ -7549,6 +7873,7 @@ pub struct GetCardSmsDetailsResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateReportResponse {
@@ -7561,6 +7886,7 @@ pub struct QueryCardSmsTemplateReportResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendCardSmsResponse {
@@ -7573,6 +7899,7 @@ pub struct SendCardSmsResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchCardSmsResponse {
@@ -7585,6 +7912,7 @@ pub struct SendBatchCardSmsResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetQualificationOssInfoResponse {
@@ -7599,6 +7927,7 @@ pub struct GetQualificationOssInfoResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetOSSInfoForUploadFileResponse {
@@ -7611,6 +7940,7 @@ pub struct GetOSSInfoForUploadFileResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsOcrOssInfoResponse {
@@ -7625,6 +7955,7 @@ pub struct GetSmsOcrOssInfoResponse {
     #[serde(rename = "Success")]
     pub success: bool,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SmsConversionIntlResponse {
@@ -7633,6 +7964,7 @@ pub struct SmsConversionIntlResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConversionDataIntlResponse {
@@ -7641,6 +7973,7 @@ pub struct ConversionDataIntlResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddShortUrlResponse {
@@ -7651,6 +7984,7 @@ pub struct AddShortUrlResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteShortUrlResponse {
@@ -7659,6 +7993,7 @@ pub struct DeleteShortUrlResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryShortUrlResponse {
@@ -7669,6 +8004,7 @@ pub struct QueryShortUrlResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesResponse {
@@ -7681,6 +8017,7 @@ pub struct ListTagResourcesResponse {
     #[serde(rename = "TagResources")]
     pub tag_resources: ListTagResourcesResponseTagResources,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesResponse {
@@ -7691,6 +8028,7 @@ pub struct TagResourcesResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UntagResourcesResponse {
