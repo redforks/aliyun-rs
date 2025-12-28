@@ -187,7 +187,9 @@ where
     debug!("Response: {:?}", resp_text);
 
     let resp = if status.is_success() {
-        serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?
+        let resp = serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?;
+        resp.as_ref().check()?;
+        resp
     } else {
         match serde_json::from_str::<crate::CodeMessage>(&resp_text) {
             Ok(code_msg) => return Err(code_msg.into()),

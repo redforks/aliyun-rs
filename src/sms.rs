@@ -7150,6 +7150,33 @@ impl crate::FlatSerialize for QuerySmsQualificationRecordResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
+    #[serde(rename = "PicUrl")]
+    pub pic_url: String,
+}
+
+impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataOtherFilesItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QuerySingleSmsQualificationResponseDataBusinessLicensePicsItem {
     #[serde(rename = "LicensePic")]
     pub license_pic: String,
@@ -7175,33 +7202,6 @@ impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataBusinessLic
         );
         crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
         crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QuerySingleSmsQualificationResponseDataOtherFilesItem {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-    #[serde(rename = "PicUrl")]
-    pub pic_url: String,
-}
-
-impl crate::FlatSerialize for QuerySingleSmsQualificationResponseDataOtherFilesItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
     }
 }
 
@@ -7865,6 +7865,26 @@ impl crate::FlatSerialize for QuerySmsAppIcpRecordResponseDataItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct GetSmsTemplateResponseFileUrlList {
+    #[serde(rename = "FileUrl")]
+    pub file_url: Vec<String>,
+}
+
+impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GetSmsTemplateResponseMoreDataFileUrlList {
     #[serde(rename = "MoreDataFileUrl")]
     pub more_data_file_url: Vec<String>,
@@ -7915,26 +7935,6 @@ impl crate::FlatSerialize for GetSmsTemplateResponseAuditInfo {
             &format!("{}.RejectInfo", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSmsTemplateResponseFileUrlList {
-    #[serde(rename = "FileUrl")]
-    pub file_url: Vec<String>,
-}
-
-impl crate::FlatSerialize for GetSmsTemplateResponseFileUrlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
     }
 }
 
@@ -9164,6 +9164,12 @@ pub struct SubmitSmsQualificationResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for SubmitSmsQualificationResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsQualificationRecordResponse {
@@ -9177,6 +9183,12 @@ pub struct QuerySmsQualificationRecordResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for QuerySmsQualificationRecordResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9194,6 +9206,12 @@ pub struct QuerySingleSmsQualificationResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySingleSmsQualificationResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsQualificationResponse {
@@ -9207,6 +9225,12 @@ pub struct UpdateSmsQualificationResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for UpdateSmsQualificationResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9224,6 +9248,12 @@ pub struct DeleteSmsQualificationResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for DeleteSmsQualificationResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RequiredPhoneCodeResponse {
@@ -9237,6 +9267,12 @@ pub struct RequiredPhoneCodeResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for RequiredPhoneCodeResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9254,6 +9290,12 @@ pub struct ValidPhoneCodeResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for ValidPhoneCodeResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsAuthorizationLetterResponse {
@@ -9267,6 +9309,12 @@ pub struct CreateSmsAuthorizationLetterResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for CreateSmsAuthorizationLetterResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9284,6 +9332,12 @@ pub struct QuerySmsAuthorizationLetterResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsAuthorizationLetterResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsSignResponse {
@@ -9295,6 +9349,12 @@ pub struct CreateSmsSignResponse {
     pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+}
+
+impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9344,6 +9404,12 @@ pub struct GetSmsSignResponse {
     pub trademark_id: i64,
 }
 
+impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsSignListResponse {
@@ -9361,6 +9427,12 @@ pub struct QuerySmsSignListResponse {
     pub total_count: i64,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsSignResponse {
@@ -9374,6 +9446,12 @@ pub struct UpdateSmsSignResponse {
     pub sign_name: String,
 }
 
+impl AsRef<crate::CodeMessage> for UpdateSmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSmsSignResponse {
@@ -9383,6 +9461,12 @@ pub struct DeleteSmsSignResponse {
     pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+}
+
+impl AsRef<crate::CodeMessage> for DeleteSmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9400,6 +9484,12 @@ pub struct ChangeSignatureQualificationResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for ChangeSignatureQualificationResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddSmsSignResponse {
@@ -9411,6 +9501,12 @@ pub struct AddSmsSignResponse {
     pub sign_name: String,
 }
 
+impl AsRef<crate::CodeMessage> for AddSmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySmsSignResponse {
@@ -9420,6 +9516,12 @@ pub struct ModifySmsSignResponse {
     pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+}
+
+impl AsRef<crate::CodeMessage> for ModifySmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9439,6 +9541,12 @@ pub struct QuerySmsSignResponse {
     pub sign_status: i32,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsSignResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsTrademarkResponse {
@@ -9452,6 +9560,12 @@ pub struct CreateSmsTrademarkResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for CreateSmsTrademarkResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9469,6 +9583,12 @@ pub struct QuerySmsTrademarkResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsTrademarkResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsAppIcpRecordResponse {
@@ -9482,6 +9602,12 @@ pub struct CreateSmsAppIcpRecordResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for CreateSmsAppIcpRecordResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9499,6 +9625,12 @@ pub struct QuerySmsAppIcpRecordResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsAppIcpRecordResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSmsTemplateResponse {
@@ -9512,6 +9644,12 @@ pub struct CreateSmsTemplateResponse {
     pub template_code: String,
     #[serde(rename = "TemplateName")]
     pub template_name: String,
+}
+
+impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9557,6 +9695,12 @@ pub struct GetSmsTemplateResponse {
     pub vendor_audit_status: crate::OpenObject,
 }
 
+impl AsRef<crate::CodeMessage> for GetSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySmsTemplateListResponse {
@@ -9574,6 +9718,12 @@ pub struct QuerySmsTemplateListResponse {
     pub total_count: i64,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSmsTemplateResponse {
@@ -9589,6 +9739,12 @@ pub struct UpdateSmsTemplateResponse {
     pub template_name: String,
 }
 
+impl AsRef<crate::CodeMessage> for UpdateSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSmsTemplateResponse {
@@ -9598,6 +9754,12 @@ pub struct DeleteSmsTemplateResponse {
     pub request_id: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
+}
+
+impl AsRef<crate::CodeMessage> for DeleteSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9611,6 +9773,12 @@ pub struct AddSmsTemplateResponse {
     pub template_code: String,
 }
 
+impl AsRef<crate::CodeMessage> for AddSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySmsTemplateResponse {
@@ -9620,6 +9788,12 @@ pub struct ModifySmsTemplateResponse {
     pub request_id: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
+}
+
+impl AsRef<crate::CodeMessage> for ModifySmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9645,6 +9819,12 @@ pub struct QuerySmsTemplateResponse {
     pub template_type: i32,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendSmsResponse {
@@ -9656,6 +9836,12 @@ pub struct SendSmsResponse {
     pub request_id: String,
 }
 
+impl AsRef<crate::CodeMessage> for SendSmsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchSmsResponse {
@@ -9665,6 +9851,12 @@ pub struct SendBatchSmsResponse {
     pub biz_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for SendBatchSmsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9680,6 +9872,12 @@ pub struct QuerySendDetailsResponse {
     pub total_count: String,
 }
 
+impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QuerySendStatisticsResponse {
@@ -9689,6 +9887,12 @@ pub struct QuerySendStatisticsResponse {
     pub data: QuerySendStatisticsResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for QuerySendStatisticsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9704,6 +9908,12 @@ pub struct GetOSSInfoForCardTemplateResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetMediaResourceIdResponse {
@@ -9715,6 +9925,12 @@ pub struct GetMediaResourceIdResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9730,6 +9946,12 @@ pub struct CreateCardSmsTemplateResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for CreateCardSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponse {
@@ -9741,6 +9963,12 @@ pub struct QueryCardSmsTemplateResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9756,6 +9984,12 @@ pub struct CheckMobilesCardSupportResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponse {
@@ -9767,6 +10001,12 @@ pub struct QueryMobilesCardSupportResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9782,6 +10022,12 @@ pub struct GetCardSmsLinkResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for GetCardSmsLinkResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsDetailsResponse {
@@ -9793,6 +10039,12 @@ pub struct GetCardSmsDetailsResponse {
     pub card_send_detail_dto: GetCardSmsDetailsResponseCardSendDetailDto,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for GetCardSmsDetailsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9808,6 +10060,12 @@ pub struct QueryCardSmsTemplateReportResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendCardSmsResponse {
@@ -9821,6 +10079,12 @@ pub struct SendCardSmsResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for SendCardSmsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendBatchCardSmsResponse {
@@ -9832,6 +10096,12 @@ pub struct SendBatchCardSmsResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for SendBatchCardSmsResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9849,6 +10119,12 @@ pub struct GetQualificationOssInfoResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for GetQualificationOssInfoResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetOSSInfoForUploadFileResponse {
@@ -9860,6 +10136,12 @@ pub struct GetOSSInfoForUploadFileResponse {
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+}
+
+impl AsRef<crate::CodeMessage> for GetOSSInfoForUploadFileResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9877,6 +10159,12 @@ pub struct GetSmsOcrOssInfoResponse {
     pub success: bool,
 }
 
+impl AsRef<crate::CodeMessage> for GetSmsOcrOssInfoResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SmsConversionIntlResponse {
@@ -9886,6 +10174,12 @@ pub struct SmsConversionIntlResponse {
     pub request_id: String,
 }
 
+impl AsRef<crate::CodeMessage> for SmsConversionIntlResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConversionDataIntlResponse {
@@ -9893,6 +10187,12 @@ pub struct ConversionDataIntlResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for ConversionDataIntlResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9906,6 +10206,12 @@ pub struct AddShortUrlResponse {
     pub request_id: String,
 }
 
+impl AsRef<crate::CodeMessage> for AddShortUrlResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteShortUrlResponse {
@@ -9913,6 +10219,12 @@ pub struct DeleteShortUrlResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for DeleteShortUrlResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9924,6 +10236,12 @@ pub struct QueryShortUrlResponse {
     pub data: QueryShortUrlResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for QueryShortUrlResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9939,6 +10257,12 @@ pub struct ListTagResourcesResponse {
     pub tag_resources: ListTagResourcesResponseTagResources,
 }
 
+impl AsRef<crate::CodeMessage> for ListTagResourcesResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesResponse {
@@ -9950,6 +10274,12 @@ pub struct TagResourcesResponse {
     pub request_id: String,
 }
 
+impl AsRef<crate::CodeMessage> for TagResourcesResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UntagResourcesResponse {
@@ -9959,6 +10289,12 @@ pub struct UntagResourcesResponse {
     pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+}
+
+impl AsRef<crate::CodeMessage> for UntagResourcesResponse {
+    fn as_ref(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
 }
 
 use std::collections::HashMap;

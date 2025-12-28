@@ -380,7 +380,7 @@ trait Request: Sized + Send {
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
     /// Response type returned by the call() method.
-    type Response: DeserializeOwned;
+    type Response: DeserializeOwned + AsRef<CodeMessage>;
 
     fn to_query_params(&self) -> Result<BTreeMap<Cow<'static, str>, QueryValue<'_>>> {
         Ok(BTreeMap::new())
@@ -443,4 +443,19 @@ impl From<CodeMessage> for Result<()> {
     fn from(value: CodeMessage) -> Self {
         value.check()
     }
+}
+
+/// Macro to implement AsRef<CodeMessage> for Response types that have a flattened code_message field.
+/// Use this in generated code or for Response types.
+#[macro_export]
+macro_rules! impl_as_ref_code_message {
+    ($($ty:ty),* $(,)?) => {
+        $(
+            impl AsRef<$crate::CodeMessage> for $ty {
+                fn as_ref(&self) -> &$crate::CodeMessage {
+                    &self.code_message
+                }
+            }
+        )*
+    };
 }

@@ -121,3 +121,9 @@ pub struct SendSmsResponse {
     biz_id: String,
     request_id: String,
 }
+
+impl AsRef<CodeMessage> for SendSmsResponse {
+    fn as_ref(&self) -> &CodeMessage {
+        &self.code_message
+    }
+}
