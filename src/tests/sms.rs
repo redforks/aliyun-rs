@@ -168,28 +168,6 @@ async fn test_get_sms_template() {
 
 #[tokio::test]
 #[ignore]
-async fn test_query_sms_template() {
-    let conn = test_connection();
-
-    let result = conn
-        .query_sms_template(crate::sms::QuerySmsTemplate::new("SMS_template"))
-        .await;
-
-    match result {
-        Ok(response) => {
-            println!(
-                "Query SMS template response code: {}",
-                response.code_message.code
-            );
-        }
-        Err(e) => {
-            println!("Query SMS template error: {}", e);
-        }
-    }
-}
-
-#[tokio::test]
-#[ignore]
 async fn test_create_and_delete_sms_template() {
     let conn = test_connection();
     let template_name = test_template_name();
@@ -365,68 +343,6 @@ async fn test_sms_sign_full_lifecycle() {
                 println!("\n=== Step 4: Delete SMS Sign ===");
                 let delete_request = crate::sms::DeleteSmsSign::new(&sign_name);
                 match conn.delete_sms_sign(delete_request).await {
-                    Ok(delete_response) => {
-                        println!("Delete response: {}", delete_response.code_message.code);
-                    }
-                    Err(e) => println!("Delete failed: {}", e),
-                }
-            }
-        }
-        Err(e) => {
-            println!("Create failed (expected): {}", e);
-        }
-    }
-}
-
-#[tokio::test]
-#[ignore]
-async fn test_sms_template_full_lifecycle() {
-    let conn = test_connection();
-    let template_name = test_template_name();
-
-    // 1. Create a template
-    println!("=== Step 1: Create SMS Template ===");
-    let create_request =
-        crate::sms::CreateSmsTemplate::new(&template_name, "您的验证码是${code}。", 0_i32)
-            .remark("Full lifecycle test".to_string());
-
-    let create_result = conn.create_sms_template(create_request).await;
-
-    match create_result {
-        Ok(create_response) => {
-            println!("Create response: {}", create_response.code_message.code);
-
-            if create_response.code_message.code == "OK" {
-                let template_code = create_response.template_code;
-
-                // 2. Get the template details
-                println!("\n=== Step 2: Get SMS Template ===");
-                let get_result = conn
-                    .get_sms_template(crate::sms::GetSmsTemplate::new(&template_code))
-                    .await;
-                match get_result {
-                    Ok(get_response) => {
-                        println!("Get response: {}", get_response.code_message.code);
-                    }
-                    Err(e) => println!("Get failed: {}", e),
-                }
-
-                // 3. Query the template (old API)
-                println!("\n=== Step 3: Query SMS Template ===");
-                let query_result = conn
-                    .query_sms_template(crate::sms::QuerySmsTemplate::new(&template_code))
-                    .await;
-                match query_result {
-                    Ok(query_response) => {
-                        println!("Query response: {}", query_response.code_message.code);
-                    }
-                    Err(e) => println!("Query failed: {}", e),
-                }
-
-                // 4. Delete the template
-                println!("\n=== Step 4: Delete SMS Template ===");
-                let delete_request = crate::sms::DeleteSmsTemplate::new(&template_code);
-                match conn.delete_sms_template(delete_request).await {
                     Ok(delete_response) => {
                         println!("Delete response: {}", delete_response.code_message.code);
                     }
