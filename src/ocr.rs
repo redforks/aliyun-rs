@@ -2960,9 +2960,7 @@ impl Connection {
         req: VerifyBusinessLicense,
     ) -> impl std::future::Future<Output = crate::Result<VerifyBusinessLicenseResponse>> + Send
     {
-        async {
-            todo!(r##"Response struct error: Response must contain 'Code' field for CodeMessage"##);
-        }
+        self.call(req)
     }
 
     ///
@@ -2989,9 +2987,7 @@ impl Connection {
         &self,
         req: VerifyVATInvoice,
     ) -> impl std::future::Future<Output = crate::Result<VerifyVATInvoiceResponse>> + Send {
-        async {
-            todo!(r##"Response struct error: Response must contain 'Code' field for CodeMessage"##);
-        }
+        self.call(req)
     }
 }
 
@@ -11407,6 +11403,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCovidTestReportResponse {
 pub struct VerifyBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
@@ -11420,6 +11420,10 @@ impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for VerifyVATInvoiceResponse {
