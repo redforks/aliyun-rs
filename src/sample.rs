@@ -113,7 +113,7 @@ impl Request for SendSms {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SendSmsResponse {
     #[serde(flatten)]

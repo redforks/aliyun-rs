@@ -13,27 +13,21 @@ use crate::{IntoBody as _, QueryValue, Result};
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
-fn canonical_uri_path(uri: &str) -> Cow<'_, str> {
-    let mut uri = uri.split('/');
-    let mut canonical_uri = String::new();
-    if let Some(part) = uri.next() {
-        canonical_uri.push_str(&percent_encode(part));
-    }
-    for part in uri {
-        canonical_uri.push('/');
-        canonical_uri.push_str(&percent_encode(part));
-    }
-    canonical_uri.into()
+fn canonical_uri_path(uri: &str) -> String {
+    uri.split('/')
+        .map(percent_encode)
+        .collect::<Vec<_>>()
+        .join("/")
 }
 
 fn canonical_query_string(values: BTreeMap<Cow<'static, str>, QueryValue>) -> String {
-    let mut query = String::new();
-    for (k, v) in values {
-        let v = v.to_query_value();
-        query.push_str(&format!("{}={}&", percent_encode(&k), percent_encode(&v)));
-    }
-    query.pop(); // remove last '&'
-    query
+    values
+        .into_iter()
+        .map(|(k, v)| {
+            format!("{}={}", percent_encode(&k), percent_encode(&v.to_query_value()))
+        })
+        .collect::<Vec<_>>()
+        .join("&")
 }
 
 fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &str) -> Result<()> {
@@ -82,9 +76,13 @@ fn canonical_headers(headers: &HeaderMap) -> Result<(String, String)> {
 
     let mut canonical_headers = String::new();
     let mut signed_headers = String::new();
-    for (k, v) in headers {
-        canonical_headers.push_str(&format!("{}:{}\n", k, v));
-        signed_headers.push_str(&format!("{};", k));
+    for (k, v) in &headers {
+        canonical_headers.push_str(k);
+        canonical_headers.push(':');
+        canonical_headers.push_str(v);
+        canonical_headers.push('\n');
+        signed_headers.push_str(k);
+        signed_headers.push(';');
     }
     // remove last ';' of signed_headers, canonical_headers should not remove last '\n'
     signed_headers.pop();
@@ -211,10 +209,13 @@ fn hexed_hmac_sha256(key: &str, to_sign: &[u8]) -> Result<String> {
     Ok(hex::encode(result))
 }
 
-/// Url encoding but convert space to '%20' not '+', '*' to '%2A', and keep '~' as is.
+/// Percent-encodes a string per RFC 3986.
+///
+/// The `urlencoding` crate's default behavior matches Aliyun's requirements:
+/// - Spaces are encoded as `%20` (not `+`)
+/// - The `*` character is encoded as `%2A`
+/// - The `~` character is not encoded
 fn percent_encode(s: &str) -> Cow<'_, str> {
-    // looks like the default behavior of urlencoding crate is what we want, so just use it.
-    // The problem maybe exist in java implementation, so ali doc explicitly mention this.
     urlencoding::encode(s)
 }
 

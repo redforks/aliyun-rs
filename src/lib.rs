@@ -105,20 +105,20 @@ impl<'a> From<serde_json::Value> for QueryValue<'a> {
 }
 
 impl<'a> QueryValue<'a> {
-    fn to_query_value(&self) -> String {
+    fn to_query_value(&self) -> Cow<'_, str> {
         match self {
-            QueryValue::Str(v) => v.to_string(),
-            QueryValue::I64(v) => v.to_string(),
-            QueryValue::I32(v) => v.to_string(),
+            QueryValue::Str(v) => (*v).into(),
+            QueryValue::I64(v) => v.to_string().into(),
+            QueryValue::I32(v) => v.to_string().into(),
             QueryValue::Bool(v) => {
                 if *v {
-                    "true".to_string()
+                    Cow::Borrowed("true")
                 } else {
-                    "false".to_string()
+                    Cow::Borrowed("false")
                 }
             }
-            QueryValue::Json(v) => v.to_string(),
-            QueryValue::OwnedStr(v) => v.clone(),
+            QueryValue::Json(v) => v.to_string().into(),
+            QueryValue::OwnedStr(v) => v.as_str().into(),
         }
     }
 
@@ -152,7 +152,7 @@ impl FlatSerialize for String {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.insert(name.to_owned().into(), self.into());
     }
 }
 
@@ -162,7 +162,7 @@ impl FlatSerialize for str {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.insert(name.to_owned().into(), self.into());
     }
 }
 
@@ -172,7 +172,7 @@ impl FlatSerialize for i32 {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), (*self).into());
+        params.insert(name.to_owned().into(), (*self).into());
     }
 }
 
@@ -182,7 +182,7 @@ impl FlatSerialize for i64 {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), (*self).into());
+        params.insert(name.to_owned().into(), (*self).into());
     }
 }
 
@@ -192,7 +192,7 @@ impl FlatSerialize for bool {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), (*self).into());
+        params.insert(name.to_owned().into(), (*self).into());
     }
 }
 
@@ -202,7 +202,7 @@ impl FlatSerialize for f32 {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), self.to_string().into());
+        params.insert(name.to_owned().into(), self.to_string().into());
     }
 }
 
@@ -212,7 +212,7 @@ impl FlatSerialize for f64 {
         name: &str,
         params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
     ) {
-        params.insert(name.to_string().into(), self.to_string().into());
+        params.insert(name.to_owned().into(), self.to_string().into());
     }
 }
 
@@ -323,16 +323,16 @@ impl FlatSerialize for Value {
         match self {
             Value::Null => {}
             Value::Bool(v) => {
-                params.insert(name.to_string().into(), (*v).into());
+                params.insert(name.to_owned().into(), (*v).into());
             }
             Value::Integer(v) => {
-                params.insert(name.to_string().into(), (*v).into());
+                params.insert(name.to_owned().into(), (*v).into());
             }
             Value::Float(v) => {
-                params.insert(name.to_string().into(), v.to_string().into());
+                params.insert(name.to_owned().into(), QueryValue::OwnedStr(v.to_string()));
             }
             Value::String(v) => {
-                params.insert(name.to_string().into(), v.as_str().into());
+                params.insert(name.to_owned().into(), v.as_str().into());
             }
             Value::Array(arr) => {
                 for (i, item) in arr.iter().enumerate() {
