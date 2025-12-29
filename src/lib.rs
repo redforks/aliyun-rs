@@ -563,13 +563,15 @@ impl IntoBody for OctetStream {
 #[serde(rename_all = "PascalCase")]
 #[error("{code}: {message}")]
 pub struct CodeMessage {
+    #[serde(default)]
     pub code: String,
+    #[serde(default)]
     pub message: String,
 }
 
 impl CodeMessage {
     pub fn check(&self) -> Result<()> {
-        if &self.code == "OK" {
+        if &self.code == "OK" || (self.code.is_empty() && self.message.is_empty()) {
             Ok(())
         } else {
             Err(anyhow!("{}: {}", self.code, self.message).into())
