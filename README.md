@@ -1,4 +1,4 @@
-# aliyun-rs
+# ali-acs
 
 [![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -43,15 +43,15 @@
 
 ```toml
 [dependencies]
-aliyun-rs = "0.1"
+ali-acs = "0.1"
 tokio = { version = "1", features = ["full"] }
 ```
 
 ### 基本使用
 
 ```rust
-use aliyun_rs::sms::{Connection, Endpoint};
-use aliyun_rs::v3::AccessKeySecret;
+use ali_acs::sms::{Connection, Endpoint};
+use ali_acs::v3::AccessKeySecret;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -64,7 +64,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let conn = Connection::new(Endpoint::CnHangzhou, app_key_secret);
 
     // 3. 构建请求（必要参数通过 ::new() 构造）
-    let req = aliyun_rs::sms::SendSms::new(
+    let req = ali_acs::sms::SendSms::new(
         "13800138000",           // 手机号码
         "阿里云短信签名",         // 签名名称
         "SMS_123456789"           // 模板CODE
@@ -85,8 +85,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ### 更多示例
 
 ```rust
-use aliyun_rs::sms::*;
-use aliyun_rs::v3::AccessKeySecret;
+use ali_acs::sms::*;
+use ali_acs::v3::AccessKeySecret;
 
 // 创建签名
 let create_sign_req = CreateSmsSign::new("我的签名", SignSource::SelfBuilt)
@@ -212,7 +212,7 @@ let ecs_conn = ecs::Connection::new(
 使用 `Value` 和 `OpenObject` 处理动态 API 字段：
 
 ```rust
-use aliyun_rs::{Value, OpenObject};
+use ali_acs::{Value, OpenObject};
 
 let mut extra = OpenObject::new();
 extra.insert("custom_field".to_string(), Value::String("value".to_string()));
@@ -236,8 +236,8 @@ extra.insert("custom_field".to_string(), Value::String("value".to_string()));
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-repo/aliyun-rs.git
-cd aliyun-rs
+git clone https://github.com/your-repo/ali-acs.git
+cd ali-acs
 
 # 运行测试
 cargo test
