@@ -3,6 +3,11 @@ name = "aliyun-rs"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
+description = "A type-safe, idiomatic Rust SDK for Alibaba Cloud services with complete protocol coverage"
+repository = "https://github.com/redforks/aliyun-rs"
+readme = "README.md"
+keywords = ["aliyun", "ali", "cloud", "sdk", "api"]
+categories = ["api-bindings", "asynchronous", "web-programming"]
 
 [dependencies]
 anyhow = "1.0.100"
