@@ -421,6 +421,19 @@ impl<T: ToFormData> IntoBody for Form<T> {
     }
 }
 
+/// Body wrapper for binary data using application/octet-stream content type.
+pub(crate) struct OctetStream(pub Vec<u8>);
+
+impl IntoBody for OctetStream {
+    fn content_type(&self) -> HeaderValue {
+        HeaderValue::from_static("application/octet-stream")
+    }
+
+    fn into_body(self) -> Result<Body> {
+        Ok(self.0.into())
+    }
+}
+
 #[derive(Debug, Deserialize, Default, thiserror::Error)]
 #[serde(rename_all = "PascalCase")]
 #[error("{code}: {message}")]
