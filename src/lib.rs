@@ -13,6 +13,7 @@ mod v3;
 
 pub use v3::AccessKeySecret;
 
+pub mod ocr;
 pub mod sms;
 
 #[cfg(test)]
@@ -236,6 +237,130 @@ impl<T: FlatSerialize> FlatSerialize for Option<T> {
     ) {
         if let Some(v) = self {
             v.flat_serialize(name, params);
+        }
+    }
+}
+
+/// Trait for types that can be serialized as comma-separated values.
+/// Used for ParameterStyle::Simple with array types.
+///
+/// This trait handles the serialization of arrays into a single comma-separated string,
+/// e.g., `["a", "b", "c"]` becomes `"a,b,c"`.
+pub(crate) trait SimpleSerialize {
+    /// Serialize this value as a comma-separated string and insert into the map.
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    );
+}
+
+impl SimpleSerialize for Vec<String> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self.join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl SimpleSerialize for Vec<i32> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self
+                .iter()
+                .map(|v| v.to_string())
+                .collect::<Vec<_>>()
+                .join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl SimpleSerialize for Vec<i64> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self
+                .iter()
+                .map(|v| v.to_string())
+                .collect::<Vec<_>>()
+                .join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl SimpleSerialize for Vec<bool> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self
+                .iter()
+                .map(|v| if *v { "true" } else { "false" })
+                .collect::<Vec<_>>()
+                .join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl SimpleSerialize for Vec<f32> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self
+                .iter()
+                .map(|v| v.to_string())
+                .collect::<Vec<_>>()
+                .join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl SimpleSerialize for Vec<f64> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if !self.is_empty() {
+            let joined = self
+                .iter()
+                .map(|v| v.to_string())
+                .collect::<Vec<_>>()
+                .join(",");
+            params.insert(name.to_owned().into(), joined.into());
+        }
+    }
+}
+
+impl<T: SimpleSerialize> SimpleSerialize for Option<T> {
+    fn simple_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+    ) {
+        if let Some(v) = self {
+            v.simple_serialize(name, params);
         }
     }
 }
