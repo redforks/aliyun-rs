@@ -14,6 +14,7 @@ mod v3;
 pub use v3::AccessKeySecret;
 
 pub mod ocr;
+pub mod oss;
 pub mod sms;
 
 #[cfg(test)]
@@ -380,7 +381,6 @@ pub enum Value {
     Array(Vec<Value>),
     Object(HashMap<String, Value>),
 }
-
 
 impl From<bool> for Value {
     fn from(v: bool) -> Self {

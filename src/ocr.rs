@@ -3071,7 +3071,7 @@ pub struct RecognizeAllText {
     /// * 图片类型。**必选**参数，且为**单选**。
     /// * 支持的图片类型请参考 **请求参数补充说明**。
     /// * 请注意，对于票据卡证类图片，当图片真实类型和入参指定的**Type**不一致时，会导致识别失败。
-    r#type: Type,
+    r#type: TextType,
     /// - 是否需要图案检测功能。如果开启，会返回**FigureInfo**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
     /// - 默认值：不同图片类型（**Type**）的默认值不同，详见**请求参数补充说明**。
@@ -3148,7 +3148,7 @@ pub struct RecognizeAllText {
 impl sealed::Bound for RecognizeAllText {}
 
 impl RecognizeAllText {
-    pub fn new(r#type: impl Into<Type>) -> Self {
+    pub fn new(r#type: impl Into<TextType>) -> Self {
         Self {
             url: None,
             body: None,
@@ -3697,7 +3697,7 @@ pub struct RecognizeTableOcr {
     /// * true：是手写表格；false：不是手写表格。
     /// * 注意：该字段是字符串类型。
     #[setters(generate = true, strip_option)]
-    is_hand_writing: Option<Writing>,
+    is_hand_writing: Option<HandWriting>,
 }
 
 impl sealed::Bound for RecognizeTableOcr {}
@@ -8481,52 +8481,6 @@ impl crate::FlatSerialize for FigureInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct Footer {
-    #[serde(rename = "BlockId")]
-    pub block_id: i32,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<String>,
-}
-
-impl crate::FlatSerialize for Footer {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct Header {
-    #[serde(rename = "BlockId")]
-    pub block_id: i32,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<String>,
-}
-
-impl crate::FlatSerialize for Header {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct ImagePoint {
     #[serde(rename = "X")]
     pub x: i32,
@@ -8661,13 +8615,59 @@ impl crate::FlatSerialize for ItemData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct KvDetail {
+pub struct ItemFooter {
+    #[serde(rename = "BlockId")]
+    pub block_id: i32,
+    #[serde(rename = "Contents")]
+    pub contents: Vec<String>,
+}
+
+impl crate::FlatSerialize for ItemFooter {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
+        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ItemHeader {
+    #[serde(rename = "BlockId")]
+    pub block_id: i32,
+    #[serde(rename = "Contents")]
+    pub contents: Vec<String>,
+}
+
+impl crate::FlatSerialize for ItemHeader {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
+        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct KvDetails {
     /// Additional properties not explicitly defined in the schema
     #[serde(flatten)]
     pub extra: std::collections::HashMap<String, crate::Value>,
 }
 
-impl crate::FlatSerialize for KvDetail {
+impl crate::FlatSerialize for KvDetails {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -9299,9 +9299,9 @@ pub struct TableDetail {
     #[serde(rename = "ColumnCount")]
     pub column_count: i32,
     #[serde(rename = "Footer")]
-    pub footer: Footer,
+    pub footer: ItemFooter,
     #[serde(rename = "Header")]
-    pub header: Header,
+    pub header: ItemHeader,
     #[serde(rename = "RowCount")]
     pub row_count: i32,
     #[serde(rename = "TableId")]
@@ -9680,7 +9680,7 @@ pub struct TextResponseDataSubImagesItemKvInfo {
     #[serde(rename = "KvCount")]
     pub kv_count: i32,
     #[serde(rename = "KvDetails")]
-    pub kv_details: KvDetail,
+    pub kv_details: KvDetails,
 }
 
 impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
@@ -9740,6 +9740,50 @@ impl<'a> From<&'a ConfigCountry> for crate::QueryValue<'a> {
 }
 
 impl crate::FlatSerialize for ConfigCountry {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum HandWriting {
+    #[serde(rename = "true")]
+    True,
+    #[serde(rename = "false")]
+    False,
+}
+
+impl Default for HandWriting {
+    fn default() -> Self {
+        Self::True
+    }
+}
+
+impl HandWriting {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::True => "true",
+            Self::False => "false",
+        }
+    }
+}
+
+impl<'a> From<&'a HandWriting> for crate::QueryValue<'a> {
+    fn from(value: &'a HandWriting) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for HandWriting {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -9852,7 +9896,7 @@ impl crate::FlatSerialize for LicenseCountry {
 
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum Type {
+pub enum TextType {
     #[serde(rename = "Advanced")]
     Advanced,
     #[serde(rename = "General")]
@@ -9973,13 +10017,13 @@ pub enum Type {
     TrademarkCertificate,
 }
 
-impl Default for Type {
+impl Default for TextType {
     fn default() -> Self {
         Self::Advanced
     }
 }
 
-impl Type {
+impl TextType {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
@@ -10046,57 +10090,13 @@ impl Type {
     }
 }
 
-impl<'a> From<&'a Type> for crate::QueryValue<'a> {
-    fn from(value: &'a Type) -> Self {
+impl<'a> From<&'a TextType> for crate::QueryValue<'a> {
+    fn from(value: &'a TextType) -> Self {
         crate::QueryValue::from(value.as_str())
     }
 }
 
-impl crate::FlatSerialize for Type {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        params.insert(name.to_string().into(), self.into());
-    }
-}
-
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum Writing {
-    #[serde(rename = "true")]
-    True,
-    #[serde(rename = "false")]
-    False,
-}
-
-impl Default for Writing {
-    fn default() -> Self {
-        Self::True
-    }
-}
-
-impl Writing {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::True => "true",
-            Self::False => "false",
-        }
-    }
-}
-
-impl<'a> From<&'a Writing> for crate::QueryValue<'a> {
-    fn from(value: &'a Writing) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for Writing {
+impl crate::FlatSerialize for TextType {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
