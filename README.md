@@ -127,6 +127,41 @@ let req = SendSms::new("13800138000", "签名", "模板CODE")
     .out_id("custom-id".to_string());
 ```
 
+### Response 响应结构
+
+所有的 API 响应类型都包含 `Code` 和 `Message` 字段（通过 `CodeMessage` 结构体）：
+
+```rust
+pub struct SendSmsResponse {
+    pub code_message: CodeMessage,  // 包含 Code 和 Message 字段
+    pub biz_id: Option<String>,
+    pub request_id: String,
+}
+
+// CodeMessage 结构定义
+pub struct CodeMessage {
+    pub code: String,    // API 响应码，如果 API 不返回则为空字符串
+    pub message: String, // API 响应消息，如果 API 不返回则为空字符串
+}
+```
+
+**设计说明**：
+
+- **统一的结构** - 几乎所有阿里云 API 响应都包含 `Code` 和 `Message` 字段
+- **少数例外** - 少数 API 端点不返回这些字段，此时 `code` 和 `message` 为空字符串
+- **统一处理** - 通过在所有 Response 结构中包含 `CodeMessage`，确保 API 调用的一致性
+
+```rust
+let response = conn.send_sms(req).await?;
+
+// 检查响应码
+if !response.code_message.code.is_empty() && response.code_message.code != "OK" {
+    return Err(response.code_message.message.into());
+}
+
+println!("BizId: {:?}", response.biz_id);
+```
+
 ### 为什么每个服务有独立的 Connection 和 Endpoint？
 
 不同的阿里云产品使用独立的 `Connection` 结构体和 `Endpoint` 枚举，这是出于以下设计考虑：
