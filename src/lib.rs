@@ -69,7 +69,7 @@ impl From<i64> for QueryValue<'_> {
     }
 }
 
-impl<'a> From<&'a i64> for QueryValue<'_> {
+impl From<&i64> for QueryValue<'_> {
     fn from(value: &i64) -> Self {
         Self::I64(*value)
     }
@@ -87,13 +87,13 @@ impl From<bool> for QueryValue<'_> {
     }
 }
 
-impl<'a> From<&'a i32> for QueryValue<'_> {
+impl From<&i32> for QueryValue<'_> {
     fn from(value: &i32) -> Self {
         Self::I32(*value)
     }
 }
 
-impl<'a> From<&'a bool> for QueryValue<'_> {
+impl From<&bool> for QueryValue<'_> {
     fn from(value: &bool) -> Self {
         Self::Bool(*value)
     }
@@ -369,7 +369,9 @@ impl<T: SimpleSerialize> SimpleSerialize for Option<T> {
 /// Similar to `serde_json::Value` but tailored for API serialization.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(untagged)]
+#[derive(Default)]
 pub enum Value {
+    #[default]
     Null,
     Bool(bool),
     Integer(i64),
@@ -379,11 +381,6 @@ pub enum Value {
     Object(HashMap<String, Value>),
 }
 
-impl Default for Value {
-    fn default() -> Self {
-        Value::Null
-    }
-}
 
 impl From<bool> for Value {
     fn from(v: bool) -> Self {

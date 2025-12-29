@@ -47,8 +47,8 @@ impl Connection {
         call(
             &self.0.access_key_secret,
             &self.0.http_client,
-            &self.0.version,
-            &self.0.end_point,
+            self.0.version,
+            self.0.end_point,
             req,
         )
     }
