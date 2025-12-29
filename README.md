@@ -232,17 +232,6 @@ extra.insert("custom_field".to_string(), Value::String("value".to_string()));
 - [ ] 增强错误处理
 - [ ] 完善 API 文档注释
 
-## 开发
-
-```bash
-# 克隆仓库
-git clone https://github.com/your-repo/ali-acs.git
-cd ali-acs
-
-# 运行测试
-cargo test
-```
-
 ## 许可证
 
 MIT License
