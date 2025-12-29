@@ -139,12 +139,7 @@ impl Connection {
         &self,
         req: ListBuckets,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -184,13 +179,13 @@ Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. On
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -221,7 +216,7 @@ Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. On
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -270,8 +265,8 @@ Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. On
     ) -> impl std::future::Future<Output = crate::Result<GetBucketStatResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -315,15 +310,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-bucket-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-resource-group-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-bucket-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -356,9 +345,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -391,8 +380,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -422,8 +411,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsV2Response>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -451,8 +440,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInfoResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -480,8 +469,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLocationResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -533,10 +522,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -564,10 +551,8 @@ Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. On
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -596,11 +581,9 @@ Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. On
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -629,11 +612,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -662,11 +643,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -698,9 +677,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -735,8 +714,8 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -774,9 +753,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<AbortBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -811,8 +790,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CompleteBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -853,8 +832,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<ExtendBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -890,8 +869,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -925,11 +904,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -958,8 +935,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -995,11 +972,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketLifecycleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-allow-same-action-overlap': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-allow-same-action-overlap': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1029,8 +1004,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLifecycleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1063,9 +1038,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1103,9 +1078,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1142,8 +1117,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1181,9 +1156,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketVersioningResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1213,8 +1188,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketVersioningResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1247,8 +1222,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectVersionsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1286,9 +1261,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1327,8 +1302,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1366,9 +1341,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1400,8 +1375,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1429,9 +1404,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketRtcResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1471,8 +1446,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1502,8 +1477,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1532,8 +1507,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1562,8 +1537,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1598,8 +1573,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1655,9 +1630,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketInventoryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1689,8 +1664,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInventoryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1722,8 +1697,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketInventoryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1755,9 +1730,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1796,9 +1771,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketLoggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1828,8 +1803,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLoggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1860,9 +1835,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketLoggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1902,9 +1877,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -1935,8 +1910,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -1965,9 +1940,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1996,8 +1971,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWebsiteResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2033,9 +2008,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketWebsiteResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2067,9 +2042,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketWebsiteResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2098,9 +2073,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketRefererResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2130,8 +2105,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRefererResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2165,9 +2140,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketTagsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2197,8 +2172,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTagsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2228,9 +2203,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketTagsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2288,8 +2263,8 @@ Response struct error: 200 response must have schema"##
     + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2321,8 +2296,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2358,8 +2333,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2393,9 +2368,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2426,9 +2401,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketEncryptionResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2460,8 +2435,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEncryptionResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2492,9 +2467,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2530,9 +2505,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2563,8 +2538,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2630,9 +2605,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketCorsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2644,7 +2619,7 @@ Response struct error: 200 response must have schema"##
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///  
+    ///
     ///
     /// # Path
     /// `/?cors`
@@ -2664,8 +2639,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketCorsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2696,9 +2671,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketCorsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2729,17 +2704,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'Origin': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Access-Control-Request-Method': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Access-Control-Request-Headers': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'Origin': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Access-Control-Request-Method': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Access-Control-Request-Headers': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2769,9 +2738,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2802,8 +2771,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2831,8 +2800,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<GetMetaQueryStatusResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -2860,8 +2829,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<CloseMetaQueryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2890,8 +2859,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DoMetaQueryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -2920,8 +2889,8 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<OpenMetaQueryResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2951,13 +2920,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<UpdateUserAntiDDosInfoResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-status': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-status': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2985,12 +2948,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-status': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-status': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3075,13 +3034,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-type': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-instance': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-defender-type': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3136,8 +3091,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3166,9 +3121,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3198,8 +3153,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutCnameResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3229,8 +3184,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<ListCnameResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3258,8 +3213,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteCnameResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3289,8 +3244,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetCnameTokenResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3318,8 +3273,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<CreateCnameTokenResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -3348,9 +3303,9 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<PutStyleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3380,8 +3335,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<ListStyleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3409,8 +3364,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<GetStyleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3438,9 +3393,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteStyleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3473,8 +3428,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetBucketHttpsConfigResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3502,9 +3457,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketHttpsConfigResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3539,11 +3494,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -3575,10 +3528,8 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3636,11 +3587,9 @@ Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn 
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3673,10 +3622,8 @@ Response struct error: 200 response must have schema"##
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3708,11 +3655,9 @@ Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn 
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -3746,11 +3691,9 @@ Response struct error: 200 response must have schema"##
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3784,10 +3727,8 @@ Response struct error: 200 response must have schema"##
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3819,11 +3760,9 @@ Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn 
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-access-point-for-object-process-name': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3937,8 +3876,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -3967,9 +3906,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4000,9 +3939,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4032,8 +3971,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4062,9 +4001,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: API must have 200 response"##
             );
@@ -4095,9 +4034,9 @@ Response struct error: API must have 200 response"##
     + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4130,8 +4069,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4166,9 +4105,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4199,9 +4138,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4232,8 +4171,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4262,9 +4201,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4303,27 +4242,12 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4347,7 +4271,7 @@ Response struct error: 200 response must have schema"##
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///   
+    ///
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -4378,41 +4302,12 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CopyObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-none-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-unmodified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-modified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-metadata-directive': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging-directive': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-none-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-unmodified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-modified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-metadata-directive': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging-directive': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
         }
     }
@@ -4451,22 +4346,10 @@ Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, F
     ) -> impl std::future::Future<Output = crate::Result<GetObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'Range': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Modified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Unmodified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-None-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Accept-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'Range': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Modified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Unmodified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-None-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Accept-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4508,28 +4391,11 @@ Parameter 'Accept-Encoding': Unsupported ParameterIn variant: Header. Only Query
     ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Cache-Control': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Disposition': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-MD5': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Expires': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-meta-*': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Cache-Control': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Disposition': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-MD5': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Expires': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4558,10 +4424,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4604,11 +4470,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4641,19 +4507,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Modified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Unmodified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-None-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Modified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Unmodified-Since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'If-None-Match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4691,11 +4549,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4759,10 +4617,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4792,10 +4650,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CleanRestoredObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4828,10 +4686,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<SelectObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -4865,10 +4723,10 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -4904,30 +4762,10 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Cache-Control': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Disposition': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Expires': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-tagging': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-data-encryption': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-server-side-encryption-key-id': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Cache-Control': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Disposition': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Content-Encoding': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'Expires': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4963,11 +4801,11 @@ Parameter 'Expires': Unsupported ParameterIn variant: Header. Only Query, FormDa
     ) -> impl std::future::Future<Output = crate::Result<UploadPartResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5016,14 +4854,10 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-complete-all': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-complete-all': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -5076,23 +4910,11 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<UploadPartCopyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-range': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-none-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-unmodified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-modified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-range': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-none-match': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-unmodified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-copy-source-if-modified-since': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported."##
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5127,11 +4949,11 @@ Parameter 'x-oss-copy-source-if-modified-since': Unsupported ParameterIn variant
     ) -> impl std::future::Future<Output = crate::Result<AbortMultipartUploadResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5162,8 +4984,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<ListMultipartUploadsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5195,10 +5017,10 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<ListPartsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5249,13 +5071,11 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, an
     ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5290,10 +5110,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5334,19 +5154,11 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, an
     ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-symlink-target': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-symlink-target': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-object-acl': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-storage-class': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
-Parameter 'x-oss-forbid-overwrite': Unsupported ParameterIn variant: Header. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5380,10 +5192,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5429,11 +5241,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5468,10 +5280,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5504,11 +5316,11 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, an
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5540,11 +5352,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -5573,8 +5385,8 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<ListLiveChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5605,11 +5417,11 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteLiveChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5642,11 +5454,11 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelStatusResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5675,10 +5487,10 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelInfoResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5709,10 +5521,10 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5740,10 +5552,10 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelStatResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5771,10 +5583,10 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<GetVodPlaylistResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5804,12 +5616,12 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<PostVodPlaylistResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
-Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5838,9 +5650,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5870,9 +5682,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketHashResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5903,9 +5715,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5936,9 +5748,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5968,9 +5780,9 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -6001,8 +5813,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -6029,9 +5841,9 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
             );
         }
@@ -6059,9 +5871,9 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -6089,8 +5901,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, and Body parameters are supported."##
+                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -6112,6 +5924,9 @@ pub struct ListBuckets {
     /// 默认值：100
     #[setters(generate = true, strip_option)]
     max_keys: Option<i64>,
+    /// Bucket所属资源组Id
+    #[setters(generate = true, strip_option)]
+    x_oss_resource_group_id: Option<String>,
     /// 指定Bucket标签键。列举结果中仅会包含那些打上了对应标签的Bucket。
     #[setters(generate = true, strip_option)]
     tag_key: Option<String>,
@@ -6132,6 +5947,7 @@ impl ListBuckets {
             prefix: None,
             marker: None,
             max_keys: None,
+            x_oss_resource_group_id: None,
             tag_key: None,
             tag_value: None,
             tagging: None,
@@ -6182,6 +5998,18 @@ impl crate::Request for ListBuckets {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_resource_group_id {
+            headers.insert("x-oss-resource-group-id".into(), f.to_string());
+        }
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -6225,6 +6053,14 @@ impl crate::Request for DescribeRegions {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -6260,19 +6096,54 @@ impl crate::Request for GetBucketStat {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucket {}
+pub struct PutBucket {
+    /// 指定Bucket的访问权限ACL。包含如下三种访问权限：
+    ///
+    /// - public-read-write：公共读写
+    ///
+    /// - public-read：公共读
+    ///
+    /// - private：私有（默认值）
+    ///
+    /// 关于Bucket访问权限ACL的更多信息，请参见[设置存储空间访问权限ACL](~~31843~~)。
+    #[setters(generate = true, strip_option)]
+    x_oss_acl: Option<BucketAcl>,
+    /// 指定资源组ID。
+    /// - 如果在请求中携带该请求头并指定资源组ID，则创建的存储空间属于该资源组。当指定的资源组ID为rg-default-id时，创建的存储空间属于默认资源组。
+    /// - 如果在请求中未携带该请求头，则创建的存储空间属于默认资源组。
+    ///
+    /// 您可以通过资源管理的控制台或ListResourceGroups接口获取资源组ID。具体操作，请分别参见[查看资源组基本信息](~~151181~~)和[ListResourceGroups](~~158855~~)。
+    /// > 创建无地域属性Bucket时不支持配置资源组。
+    #[setters(generate = true, strip_option)]
+    x_oss_resource_group_id: Option<String>,
+    /// 指定Bucket标签，如 k1=v1&k2=v2。
+    #[setters(generate = true, strip_option)]
+    x_oss_bucket_tagging: Option<String>,
+}
 
 impl sealed::Bound for PutBucket {}
 
 impl PutBucket {
     pub fn new() -> Self {
-        Self {}
+        Self {
+            x_oss_acl: None,
+            x_oss_resource_group_id: None,
+            x_oss_bucket_tagging: None,
+        }
     }
 }
 
@@ -6293,6 +6164,26 @@ impl crate::Request for PutBucket {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_acl {
+            headers.insert("x-oss-acl".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_resource_group_id {
+            headers.insert("x-oss-resource-group-id".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_bucket_tagging {
+            headers.insert("x-oss-bucket-tagging".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6328,6 +6219,14 @@ impl crate::Request for DeleteBucket {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6417,6 +6316,14 @@ impl crate::Request for ListObjects {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6530,6 +6437,14 @@ impl crate::Request for ListObjectsV2 {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -6565,6 +6480,14 @@ impl crate::Request for GetBucketInfo {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -6598,6 +6521,14 @@ impl crate::Request for GetBucketLocation {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6657,19 +6588,32 @@ impl crate::Request for ListAccessPoints {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetAccessPoint {}
+pub struct GetAccessPoint {
+    /// 接入点名称。
+    x_oss_access_point_name: String,
+}
 
 impl sealed::Bound for GetAccessPoint {}
 
 impl GetAccessPoint {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_name: x_oss_access_point_name.into(),
+        }
     }
 }
 
@@ -6692,19 +6636,36 @@ impl crate::Request for GetAccessPoint {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-name".into(),
+            self.x_oss_access_point_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetAccessPointPolicy {}
+pub struct GetAccessPointPolicy {
+    /// 接入点名称。
+    x_oss_access_point_name: String,
+}
 
 impl sealed::Bound for GetAccessPointPolicy {}
 
 impl GetAccessPointPolicy {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_name: x_oss_access_point_name.into(),
+        }
     }
 }
 
@@ -6727,19 +6688,36 @@ impl crate::Request for GetAccessPointPolicy {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-name".into(),
+            self.x_oss_access_point_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteAccessPointPolicy {}
+pub struct DeleteAccessPointPolicy {
+    /// 接入点名称。
+    x_oss_access_point_name: String,
+}
 
 impl sealed::Bound for DeleteAccessPointPolicy {}
 
 impl DeleteAccessPointPolicy {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_name: x_oss_access_point_name.into(),
+        }
     }
 }
 
@@ -6762,6 +6740,18 @@ impl crate::Request for DeleteAccessPointPolicy {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-name".into(),
+            self.x_oss_access_point_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -6769,6 +6759,9 @@ impl crate::Request for DeleteAccessPointPolicy {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicy {
+    /// 接入点名称。
+    #[setters(generate = true, strip_option)]
+    x_oss_access_point_name: Option<String>,
     /// 接入点策略配置内容。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
@@ -6778,7 +6771,10 @@ impl sealed::Bound for PutAccessPointPolicy {}
 
 impl PutAccessPointPolicy {
     pub fn new() -> Self {
-        Self { body: None }
+        Self {
+            x_oss_access_point_name: None,
+            body: None,
+        }
     }
 }
 
@@ -6801,19 +6797,36 @@ impl crate::Request for PutAccessPointPolicy {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_access_point_name {
+            headers.insert("x-oss-access-point-name".into(), f.to_string());
+        }
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteAccessPoint {}
+pub struct DeleteAccessPoint {
+    /// 接入点名称。
+    x_oss_access_point_name: String,
+}
 
 impl sealed::Bound for DeleteAccessPoint {}
 
 impl DeleteAccessPoint {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_name: x_oss_access_point_name.into(),
+        }
     }
 }
 
@@ -6834,6 +6847,18 @@ impl crate::Request for DeleteAccessPoint {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-name".into(),
+            self.x_oss_access_point_name.to_string(),
+        );
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6869,6 +6894,14 @@ impl crate::Request for CreateAccessPoint {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6915,6 +6948,14 @@ impl crate::Request for InitiateBucketWorm {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6948,6 +6989,14 @@ impl crate::Request for AbortBucketWorm {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6998,6 +7047,14 @@ impl crate::Request for CompleteBucketWorm {
         params.insert("wormId".into(), (&self.worm_id).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7052,6 +7109,14 @@ impl crate::Request for ExtendBucketWorm {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -7087,19 +7152,37 @@ impl crate::Request for GetBucketWorm {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketAcl {}
+pub struct PutBucketAcl {
+    /// 设置Bucket的访问权限ACL。PutBucketAcl接口通过Put请求中的x-oss-acl请求头来设置访问权限，如果没有该请求头，则访问权限设置不生效。
+    /// <br>取值如下：
+    ///
+    /// - public-read-write（公共读写）：所有用户都有该Bucket内的文件的读写权限。请谨慎使用该访问权限。
+    /// - public-read（公共读）：Bucket的拥有者和授权用户有该Bucket内的文件的读写权限，其他用户只有该Bucket内的文件的读权限。请谨慎使用该访问权限。
+    /// - private：Bucket的拥有者和授权用户有该Bucket内的文件的读写权限，其他用户没有权限操作该Bucket内的文件。
+    x_oss_acl: BucketAcl,
+}
 
 impl sealed::Bound for PutBucketAcl {}
 
 impl PutBucketAcl {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_acl: impl Into<BucketAcl>) -> Self {
+        Self {
+            x_oss_acl: x_oss_acl.into(),
+        }
     }
 }
 
@@ -7120,6 +7203,15 @@ impl crate::Request for PutBucketAcl {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert("x-oss-acl".into(), self.x_oss_acl.to_string());
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7157,19 +7249,37 @@ impl crate::Request for GetBucketAcl {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketLifecycle {}
+pub struct PutBucketLifecycle {
+    /// 指定生命周期规则是否允许前缀重叠。取值如下：
+    ///
+    /// true：允许前缀重叠。
+    ///
+    /// false：不允许前缀重叠。
+    #[setters(generate = true, strip_option)]
+    x_oss_allow_same_action_overlap: Option<String>,
+}
 
 impl sealed::Bound for PutBucketLifecycle {}
 
 impl PutBucketLifecycle {
     pub fn new() -> Self {
-        Self {}
+        Self {
+            x_oss_allow_same_action_overlap: None,
+        }
     }
 }
 
@@ -7190,6 +7300,18 @@ impl crate::Request for PutBucketLifecycle {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_allow_same_action_overlap {
+            headers.insert("x-oss-allow-same-action-overlap".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7227,6 +7349,14 @@ impl crate::Request for GetBucketLifecycle {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7260,6 +7390,14 @@ impl crate::Request for DeleteBucketLifecycle {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7297,6 +7435,14 @@ impl crate::Request for PutBucketTransferAcceleration {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7330,6 +7476,14 @@ impl crate::Request for GetBucketTransferAcceleration {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7367,6 +7521,14 @@ impl crate::Request for PutBucketVersioning {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7400,6 +7562,14 @@ impl crate::Request for GetBucketVersioning {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7513,6 +7683,14 @@ impl crate::Request for ListObjectVersions {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7551,6 +7729,14 @@ impl crate::Request for PutBucketPolicy {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body))
     }
@@ -7584,6 +7770,14 @@ impl crate::Request for GetBucketPolicy {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7621,6 +7815,14 @@ impl crate::Request for DeleteBucketPolicy {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7656,6 +7858,14 @@ impl crate::Request for GetBucketPolicyStatus {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7689,6 +7899,14 @@ impl crate::Request for PutBucketRtc {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7735,6 +7953,14 @@ impl crate::Request for PutBucketReplication {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -7770,6 +7996,14 @@ impl crate::Request for GetBucketReplication {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7803,6 +8037,14 @@ impl crate::Request for GetBucketReplicationLocation {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7844,6 +8086,14 @@ impl crate::Request for GetBucketReplicationProgress {
         params.insert("rule-id".into(), (&self.rule_id).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7890,6 +8140,14 @@ impl crate::Request for DeleteBucketReplication {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -7931,6 +8189,14 @@ impl crate::Request for PutBucketInventory {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -7970,6 +8236,14 @@ impl crate::Request for GetBucketInventory {
         params.insert("inventoryId".into(), (&self.inventory_id).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8017,6 +8291,14 @@ impl crate::Request for ListBucketInventory {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8058,6 +8340,14 @@ impl crate::Request for DeleteBucketInventory {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8091,6 +8381,14 @@ impl crate::Request for PutBucketLogging {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8128,6 +8426,14 @@ impl crate::Request for GetBucketLogging {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8161,6 +8467,14 @@ impl crate::Request for DeleteBucketLogging {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8198,6 +8512,14 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8231,6 +8553,14 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8268,6 +8598,14 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8301,6 +8639,14 @@ impl crate::Request for GetBucketWebsite {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8338,6 +8684,14 @@ impl crate::Request for PutBucketWebsite {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8371,6 +8725,14 @@ impl crate::Request for DeleteBucketWebsite {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8408,6 +8770,14 @@ impl crate::Request for PutBucketReferer {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8441,6 +8811,14 @@ impl crate::Request for GetBucketReferer {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8478,6 +8856,14 @@ impl crate::Request for PutBucketTags {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8513,6 +8899,14 @@ impl crate::Request for GetBucketTags {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8546,6 +8940,14 @@ impl crate::Request for DeleteBucketTags {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8601,6 +9003,14 @@ impl crate::Request for ListUserDataRedundancyTransition {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8634,6 +9044,14 @@ impl crate::Request for ListBucketDataRedundancyTransition {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8678,6 +9096,14 @@ impl crate::Request for GetBucketDataRedundancyTransition {
         );
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8733,6 +9159,14 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -8777,6 +9211,14 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8810,6 +9252,14 @@ impl crate::Request for PutBucketEncryption {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8847,6 +9297,14 @@ impl crate::Request for GetBucketEncryption {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8880,6 +9338,14 @@ impl crate::Request for DeleteBucketEncryption {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8917,6 +9383,14 @@ impl crate::Request for PutBucketRequestPayment {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -8950,6 +9424,14 @@ impl crate::Request for GetBucketRequestPayment {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8987,6 +9469,14 @@ impl crate::Request for PutBucketCors {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9020,6 +9510,14 @@ impl crate::Request for GetBucketCors {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9057,19 +9555,47 @@ impl crate::Request for DeleteBucketCors {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct OptionObject {}
+pub struct OptionObject {
+    /// 请求来源域，用于标识跨域请求。
+    /// 在实际请求中只能设置一个该请求头。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    origin: Option<String>,
+    /// 在实际请求中会用到的方法。
+    /// 在实际请求中只能设置一个该请求头。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    access_control_request_method: Option<String>,
+    /// 在实际请求中会用到的除了简单头部之外的header。
+    /// 在实际请求中可以为该请求头设置多个header，多个header之间使用英文逗号(,)隔开。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    access_control_request_headers: Option<String>,
+}
 
 impl sealed::Bound for OptionObject {}
 
 impl OptionObject {
     pub fn new() -> Self {
-        Self {}
+        Self {
+            origin: None,
+            access_control_request_method: None,
+            access_control_request_headers: None,
+        }
     }
 }
 
@@ -9090,6 +9616,26 @@ impl crate::Request for OptionObject {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.origin {
+            headers.insert("Origin".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.access_control_request_method {
+            headers.insert("Access-Control-Request-Method".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.access_control_request_headers {
+            headers.insert("Access-Control-Request-Headers".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9127,6 +9673,14 @@ impl crate::Request for PutBucketAccessMonitor {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9162,6 +9716,14 @@ impl crate::Request for GetBucketAccessMonitor {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9195,6 +9757,14 @@ impl crate::Request for GetMetaQueryStatus {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9239,6 +9809,14 @@ impl crate::Request for CloseMetaQuery {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9293,6 +9871,14 @@ impl crate::Request for DoMetaQuery {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9361,19 +9947,38 @@ impl crate::Request for OpenMetaQuery {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct UpdateUserAntiDDosInfo {}
+pub struct UpdateUserAntiDDosInfo {
+    /// 高防实例ID。
+    x_oss_defender_instance: String,
+    /// 更改高防OSS实例状态。取值为：HaltDefending，表示解除防护。
+    x_oss_defender_status: String,
+}
 
 impl sealed::Bound for UpdateUserAntiDDosInfo {}
 
 impl UpdateUserAntiDDosInfo {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(
+        x_oss_defender_instance: impl Into<String>,
+        x_oss_defender_status: impl Into<String>,
+    ) -> Self {
+        Self {
+            x_oss_defender_instance: x_oss_defender_instance.into(),
+            x_oss_defender_status: x_oss_defender_status.into(),
+        }
     }
 }
 impl crate::ToFormData for UpdateUserAntiDDosInfo {
@@ -9405,19 +10010,52 @@ impl crate::Request for UpdateUserAntiDDosInfo {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-defender-instance".into(),
+            self.x_oss_defender_instance.to_string(),
+        );
+        headers.insert(
+            "x-oss-defender-status".into(),
+            self.x_oss_defender_status.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct UpdateBucketAntiDDosInfo {}
+pub struct UpdateBucketAntiDDosInfo {
+    /// 高防实例ID。
+    x_oss_defender_instance: String,
+    /// 更新高防实例状态。取值如下：
+    ///
+    /// - Init：初始化防护状态。该状态下需要传入待防护的自定义域名。
+    ///
+    /// - Defending：防护中状态。该状态下可以选择是否传入待防护的自定义域名。
+    ///
+    /// - HaltDefending：解除防护状态。该状态下不需要传入待防护的自定义域名。
+    x_oss_defender_status: String,
+}
 
 impl sealed::Bound for UpdateBucketAntiDDosInfo {}
 
 impl UpdateBucketAntiDDosInfo {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(
+        x_oss_defender_instance: impl Into<String>,
+        x_oss_defender_status: impl Into<String>,
+    ) -> Self {
+        Self {
+            x_oss_defender_instance: x_oss_defender_instance.into(),
+            x_oss_defender_status: x_oss_defender_status.into(),
+        }
     }
 }
 impl crate::ToFormData for UpdateBucketAntiDDosInfo {
@@ -9447,6 +10085,22 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-defender-instance".into(),
+            self.x_oss_defender_instance.to_string(),
+        );
+        headers.insert(
+            "x-oss-defender-status".into(),
+            self.x_oss_defender_status.to_string(),
+        );
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9508,6 +10162,14 @@ impl crate::Request for ListBucketAntiDDosInfo {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9543,19 +10205,38 @@ impl crate::Request for InitUserAntiDDosInfo {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct InitBucketAntiDDosInfo {}
+pub struct InitBucketAntiDDosInfo {
+    /// 高防实例ID。
+    x_oss_defender_instance: String,
+    /// 高防实例类型。取值固定为AntiDDosPremimum。
+    x_oss_defender_type: String,
+}
 
 impl sealed::Bound for InitBucketAntiDDosInfo {}
 
 impl InitBucketAntiDDosInfo {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(
+        x_oss_defender_instance: impl Into<String>,
+        x_oss_defender_type: impl Into<String>,
+    ) -> Self {
+        Self {
+            x_oss_defender_instance: x_oss_defender_instance.into(),
+            x_oss_defender_type: x_oss_defender_type.into(),
+        }
     }
 }
 
@@ -9576,6 +10257,22 @@ impl crate::Request for InitBucketAntiDDosInfo {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-defender-instance".into(),
+            self.x_oss_defender_instance.to_string(),
+        );
+        headers.insert(
+            "x-oss-defender-type".into(),
+            self.x_oss_defender_type.to_string(),
+        );
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9613,6 +10310,14 @@ impl crate::Request for GetUserAntiDDosInfo {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9648,6 +10353,14 @@ impl crate::Request for GetBucketResourceGroup {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9681,6 +10394,14 @@ impl crate::Request for PutBucketResourceGroup {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9727,6 +10448,14 @@ impl crate::Request for PutCname {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -9760,6 +10489,14 @@ impl crate::Request for ListCname {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9806,6 +10543,14 @@ impl crate::Request for DeleteCname {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -9845,6 +10590,14 @@ impl crate::Request for GetCnameToken {
         params.insert("cname".into(), (&self.cname).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9889,6 +10642,14 @@ impl crate::Request for CreateCnameToken {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -9942,6 +10703,14 @@ impl crate::Request for PutStyle {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -9975,6 +10744,14 @@ impl crate::Request for ListStyle {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10018,6 +10795,14 @@ impl crate::Request for GetStyle {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10059,6 +10844,14 @@ impl crate::Request for DeleteStyle {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10092,6 +10885,14 @@ impl crate::Request for GetBucketHttpsConfig {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10129,19 +10930,36 @@ impl crate::Request for PutBucketHttpsConfig {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct CreateAccessPointForObjectProcess {}
+pub struct CreateAccessPointForObjectProcess {
+    /// 填写对象FC接入点名称。接入点命名规范说明如下：
+    /// - 命名长度不能超过63个字符
+    /// - 只允许包含小写字母、数字、短划线（-），且不能以短划线开头或结尾。
+    /// - 名称在当前地域必须唯一。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for CreateAccessPointForObjectProcess {}
 
 impl CreateAccessPointForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10164,19 +10982,37 @@ impl crate::Request for CreateAccessPointForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetAccessPointForObjectProcess {}
+pub struct GetAccessPointForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for GetAccessPointForObjectProcess {}
 
 impl GetAccessPointForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10197,6 +11033,18 @@ impl crate::Request for GetAccessPointForObjectProcess {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10256,19 +11104,33 @@ impl crate::Request for ListAccessPointsForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteAccessPointForObjectProcess {}
+pub struct DeleteAccessPointForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for DeleteAccessPointForObjectProcess {}
 
 impl DeleteAccessPointForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10291,19 +11153,37 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetAccessPointConfigForObjectProcess {}
+pub struct GetAccessPointConfigForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for GetAccessPointConfigForObjectProcess {}
 
 impl GetAccessPointConfigForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10326,19 +11206,41 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutAccessPointConfigForObjectProcess {}
+pub struct PutAccessPointConfigForObjectProcess {
+    /// 填写对象FC接入点名称。接入点命名规范说明如下：
+    ///
+    /// - 命名长度不能超过63个字符。
+    /// - 只允许包含小写字母、数字、短划线（-），且不能以短划线开头或结尾。
+    /// - 名称在当前地域必须唯一。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for PutAccessPointConfigForObjectProcess {}
 
 impl PutAccessPointConfigForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10361,6 +11263,18 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10368,6 +11282,8 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicyForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
     /// 接口请求体。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
@@ -10376,8 +11292,12 @@ pub struct PutAccessPointPolicyForObjectProcess {
 impl sealed::Bound for PutAccessPointPolicyForObjectProcess {}
 
 impl PutAccessPointPolicyForObjectProcess {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+            body: None,
+        }
     }
 }
 
@@ -10400,19 +11320,37 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetAccessPointPolicyForObjectProcess {}
+pub struct GetAccessPointPolicyForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for GetAccessPointPolicyForObjectProcess {}
 
 impl GetAccessPointPolicyForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10435,19 +11373,37 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteAccessPointPolicyForObjectProcess {}
+pub struct DeleteAccessPointPolicyForObjectProcess {
+    /// 填写对象FC接入点名称。
+    x_oss_access_point_for_object_process_name: String,
+}
 
 impl sealed::Bound for DeleteAccessPointPolicyForObjectProcess {}
 
 impl DeleteAccessPointPolicyForObjectProcess {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+        Self {
+            x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
+                .into(),
+        }
     }
 }
 
@@ -10468,6 +11424,18 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-access-point-for-object-process-name".into(),
+            self.x_oss_access_point_for_object_process_name.to_string(),
+        );
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10505,6 +11473,14 @@ impl crate::Request for GetPublicAccessBlock {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10538,6 +11514,14 @@ impl crate::Request for PutPublicAccessBlock {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10575,6 +11559,14 @@ impl crate::Request for DeletePublicAccessBlock {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10608,6 +11600,14 @@ impl crate::Request for GetBucketPublicAccessBlock {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10645,6 +11645,14 @@ impl crate::Request for PutBucketPublicAccessBlock {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10678,6 +11686,14 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10725,6 +11741,14 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10767,6 +11791,14 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
         );
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10814,6 +11846,14 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10847,6 +11887,14 @@ impl crate::Request for GetBucketArchiveDirectRead {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10884,6 +11932,14 @@ impl crate::Request for PutBucketArchiveDirectRead {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10917,6 +11973,14 @@ impl crate::Request for PutBucketOverwriteConfig {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -10954,6 +12018,14 @@ impl crate::Request for GetBucketOverwriteConfig {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10989,6 +12061,14 @@ impl crate::Request for DeleteBucketOverwriteConfig {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -10996,6 +12076,51 @@ impl crate::Request for DeleteBucketOverwriteConfig {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObject {
+    /// 指定PutObject操作时是否覆盖同名Object。 当目标Bucket处于已开启或已暂停的版本控制状态时，**x-oss-forbid-overwrite**请求Header设置无效，即允许覆盖同名Object。
+    ///   - 不指定**x-oss-forbid-overwrite**或者指定**x-oss-forbid-overwrite**为**false**时，表示允许覆盖同名Object。
+    ///   - 指定**x-oss-forbid-overwrite**为**true**时，表示禁止覆盖同名Object。
+    ///
+    /// 设置**x-oss-forbid-overwrite**请求Header会导致QPS处理性能下降，如果您有大量的操作需要使用**x-oss-forbid-overwrite**请求Header（QPS>1000），请联系技术支持，避免影响您的业务。
+    /// 默认值：**false**
+    #[setters(generate = true, strip_option)]
+    x_oss_forbid_overwrite: Option<bool>,
+    /// 创建Object时，指定服务器端加密方式。
+    ///
+    /// 取值：**AES256**、**KMS****或**SM4****
+    ///
+    /// 指定此选项后，在响应头中会返回此选项，OSS会对上传的Object进行加密编码存储。当下载该Object时，响应头中会包含**x-oss-server-side-encryption**，且该值会被设置成此Object的加密算法。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption: Option<String>,
+    /// 创建Object时，指定服务器端加密方式。
+    ///
+    /// 取值：**AES256**、**KMS**或**SM4**
+    ///
+    /// 指定此选项后，在响应头中会返回此选项，OSS会对上传的Object进行加密编码存储。当下载该Object时，响应头中会包含**x-oss-server-side-encryption**，且该值会被设置成此Object的加密算法。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_data_encryption: Option<String>,
+    /// KMS托管的用户主密钥。
+    /// 此选项仅在**x-oss-server-side-encryption**为KMS时有效。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption_key_id: Option<String>,
+    /// 指定OSS创建Object时的访问权限。
+    ///
+    /// 取值：
+    ///
+    /// - default（默认）：Object遵循所在存储空间的访问权限。
+    /// - private：Object是私有资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户没有权限操作该Object。
+    /// - public-read：Object是公共读资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户只有该Object的读权限。请谨慎使用该权限。
+    /// - public-read-write：Object是公共读写资源。所有用户都有该Object的读写权限。请谨慎使用该权限。
+    ///
+    /// 关于访问权限的更多信息，请参见**[读写权限ACL](~~100676~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_object_acl: Option<ObjectAcl>,
+    /// 指定Object的存储类型。                               对于任意存储类型的Bucket，如果上传Object时指定此参数，则此次上传的Object将存储为指定的类型。例如在IA类型的Bucket中上传Object时，如果指定x-oss-storage-class为Standard，则该Object直接存储为Standard。                              取值：                                 Standard：标准存储                                    IA：低频访问                                    Archive：归档存储                                    ColdArchive：冷归档存储                                    关于存储类型的更多信息，请参见存储类型介绍。
+    #[setters(generate = true, strip_option)]
+    x_oss_storage_class: Option<StorageClass>,
+    /// 指定Object的标签，可同时设置多个标签，例如TagA=A&TagB=B。
+    /// > Key和Value需要先进行URL编码，如果某项没有”=“，则看作Value为空字符串。
+    #[setters(generate = true, strip_option)]
+    x_oss_tagging: Option<String>,
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
@@ -11005,7 +12130,16 @@ impl sealed::Bound for PutObject {}
 
 impl PutObject {
     pub fn new() -> Self {
-        Self { body: None }
+        Self {
+            x_oss_forbid_overwrite: None,
+            x_oss_server_side_encryption: None,
+            x_oss_server_side_data_encryption: None,
+            x_oss_server_side_encryption_key_id: None,
+            x_oss_object_acl: None,
+            x_oss_storage_class: None,
+            x_oss_tagging: None,
+            body: None,
+        }
     }
 }
 
@@ -11028,19 +12162,154 @@ impl crate::Request for PutObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_forbid_overwrite {
+            headers.insert("x-oss-forbid-overwrite".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption {
+            headers.insert("x-oss-server-side-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_data_encryption {
+            headers.insert("x-oss-server-side-data-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption_key_id {
+            headers.insert("x-oss-server-side-encryption-key-id".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_object_acl {
+            headers.insert("x-oss-object-acl".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_storage_class {
+            headers.insert("x-oss-storage-class".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_tagging {
+            headers.insert("x-oss-tagging".into(), f.to_string());
+        }
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct CopyObject {}
+pub struct CopyObject {
+    /// 指定拷贝的源地址。
+    /// 默认值：无
+    x_oss_copy_source: String,
+    /// 指定CopyObject操作时是否覆盖同名目标Object。当目标Bucket处于已开启或已暂停版本控制状态时，**x-oss-forbid-overwrite**请求Header设置无效，即允许覆盖同名Object。
+    ///   - 未指定**x-oss-forbid-overwrite**或者指定**x-oss-forbid-overwrite**为**false**时，表示允许覆盖同名目标Object。
+    ///   - 指定**x-oss-forbid-overwrite**为**true**时，表示禁止覆盖同名Object。
+    ///
+    /// 设置**x-oss-forbid-overwrite**请求Header会导致QPS处理性能下降，如果您有大量的操作需要使用x-**x-oss-forbid-overwrite**请求Header（QPS>1000），请联系技术支持，避免影响您的业务。
+    /// 默认值：false
+    #[setters(generate = true, strip_option)]
+    x_oss_forbid_overwrite: Option<String>,
+    /// 如果源Object的ETag值和您提供的ETag相等，则执行拷贝操作，并返回200 OK。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_match: Option<String>,
+    /// 如果源Object的ETag值和您提供的ETag不相等，则执行拷贝操作，并返回200 OK。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_none_match: Option<String>,
+    /// 如果指定的时间等于或者晚于文件实际修改时间，则正常拷贝文件，并返回200 OK。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_unmodified_since: Option<String>,
+    /// 如果源Object在用户指定的时间以后被修改过，则执行拷贝操作。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_modified_since: Option<String>,
+    /// 指定如何设置目标Object的元信息。
+    ///   - **COPY**（默认值）：复制源Object的元数据到目标Object。
+    /// OSS不会复制源Object的**x-oss-server-side-encryption**属性配置到目标Object。目标Object的服务器端加密编码方式取决于当前拷贝操作是否指定了**x-oss-server-side-encryption**。
+    ///   - **REPLACE**：忽略源Object的元数据，直接采用请求中指定的元数据。
+    ///
+    /// > 如果拷贝操作的源Object地址和目标Object地址相同，且未开启版本控制时，则无论x-oss-metadata-directive为何值，都会忽略源Object的元数据，目标Object将直接采用请求中指定的元数据。
+    #[setters(generate = true, strip_option)]
+    x_oss_metadata_directive: Option<String>,
+    /// 指定OSS创建目标Object时，服务器端熵编码加密算法 。
+    /// 取值：**AES256**、**KMS**
+    /// 您只有购买了KMS套件，才能使用KMS加密算法，否则OSS会返回KmsServiceNotEnabled错误。
+    ///   - 如果拷贝操作中未指定**x-oss-server-side-encryption**，则无论源Object是否进行过服务器端加密编码，拷贝后的目标Object均不进行服务器端加密编码。
+    ///   - 如果拷贝操作中指定了**x-oss-server-side-encryption**，则无论源Object是否进行过服务器端加密编码，拷贝后的目标Object均会进行服务器端加密编码。并且拷贝操作的响应头中会包含**x-oss-server-side-encryption**，值为目标Object的加密算法。
+    /// 在目标Object被下载时，响应头中也会包含**x-oss-server-side-encryption**，值为该Object的加密算法。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption: Option<String>,
+    /// 指定Object的加密算法。如果未指定此选项，表明Object使用AES256加密算法。此选项仅当x-oss-server-side-encryption为KMS时有效。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_data_encryption: Option<String>,
+    /// 表示KMS托管的用户主密钥。
+    /// 该参数仅在**x-oss-server-side-encryption**为KMS时有效。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption_key_id: Option<String>,
+    /// 指定OSS创建目标Object时的访问权限。
+    ///
+    /// 取值：
+    ///
+    /// - default（默认）：Object遵循所在存储空间的访问权限。
+    /// - private：Object是私有资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户没有权限操作该Object。
+    /// - public-read：Object是公共读资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户只有该Object的读权限。请谨慎使用该权限。
+    /// - public-read-write：Object是公共读写资源。所有用户都有该Object的读写权限。请谨慎使用该权限。
+    ///
+    /// 关于访问权限的更多信息，请参见**[读写权限ACL](~~100676~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_object_acl: Option<ObjectAcl>,
+    /// 指定Object的存储类型。
+    /// 对于任意存储类型Bucket，如果上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如在IA类型的Bucket中上传Object时，如果指定**x-oss-storage-class**为Standard，则该Object直接存储为Standard类型。
+    ///
+    /// 取值：
+    /// - Standard：标准存储
+    /// - IA：低频访问
+    /// - Archive：归档存储
+    /// - ColdArchive：冷归档存储
+    ///
+    /// 关于存储类型的更多信息，请参见**[存储类型介绍](~~51374~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_storage_class: Option<StorageClass>,
+    /// 指定Object的对象标签，可同时设置多个标签，例如TagA=A&TagB=B。
+    /// > Key和Value需要先进行URL编码，如果某项没有“=”，则看作Value为空字符串。
+    #[setters(generate = true, strip_option)]
+    x_oss_tagging: Option<String>,
+    /// 指定如何设置目标Object的对象标签。取值如下：
+    ///   - **Copy**（默认值）：复制源Object的对象标签到目标 Object。
+    ///   - **Replace**：忽略源Object的对象标签，直接采用请求中指定的对象标签。
+    #[setters(generate = true, strip_option)]
+    x_oss_tagging_directive: Option<String>,
+}
 
 impl sealed::Bound for CopyObject {}
 
 impl CopyObject {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_copy_source: impl Into<String>) -> Self {
+        Self {
+            x_oss_copy_source: x_oss_copy_source.into(),
+            x_oss_forbid_overwrite: None,
+            x_oss_copy_source_if_match: None,
+            x_oss_copy_source_if_none_match: None,
+            x_oss_copy_source_if_unmodified_since: None,
+            x_oss_copy_source_if_modified_since: None,
+            x_oss_metadata_directive: None,
+            x_oss_server_side_encryption: None,
+            x_oss_server_side_data_encryption: None,
+            x_oss_server_side_encryption_key_id: None,
+            x_oss_object_acl: None,
+            x_oss_storage_class: None,
+            x_oss_tagging: None,
+            x_oss_tagging_directive: None,
+        }
     }
 }
 
@@ -11061,6 +12330,73 @@ impl crate::Request for CopyObject {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-copy-source".into(),
+            self.x_oss_copy_source.to_string(),
+        );
+
+        if let Some(f) = &self.x_oss_forbid_overwrite {
+            headers.insert("x-oss-forbid-overwrite".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_match {
+            headers.insert("x-oss-copy-source-if-match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_none_match {
+            headers.insert("x-oss-copy-source-if-none-match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_unmodified_since {
+            headers.insert(
+                "x-oss-copy-source-if-unmodified-since".into(),
+                f.to_string(),
+            );
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_modified_since {
+            headers.insert("x-oss-copy-source-if-modified-since".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_metadata_directive {
+            headers.insert("x-oss-metadata-directive".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption {
+            headers.insert("x-oss-server-side-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_data_encryption {
+            headers.insert("x-oss-server-side-data-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption_key_id {
+            headers.insert("x-oss-server-side-encryption-key-id".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_object_acl {
+            headers.insert("x-oss-object-acl".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_storage_class {
+            headers.insert("x-oss-storage-class".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_tagging {
+            headers.insert("x-oss-tagging".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_tagging_directive {
+            headers.insert("x-oss-tagging-directive".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11088,6 +12424,44 @@ pub struct GetObject {
     /// 指定OSS返回请求的content-encoding头。
     #[setters(generate = true, strip_option)]
     response_content_encoding: Option<String>,
+    /// 指定文件传输的范围。
+    ///   - 如果指定的范围符合规范，返回消息中会包含整个Object的大小和此次返回Object的范围。例如：Content-Range: bytes 0~9/44，表示整个Object大小为44，此次返回的范围为0~9。
+    ///   - 如果指定的范围不符合规范，则传送整个Object，并且结果中不包含Content-Range。
+    ///
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    range: Option<String>,
+    /// 如果指定的时间早于实际修改时间或指定的时间不符合规范，则直接返回Object，并返回200 OK；如果指定的时间等于或者晚于实际修改时间，则返回304 Not Modified。
+    /// 时间格式：GMT，例如`Fri, 13 Nov 2015 14:47:53 GMT`
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_modified_since: Option<String>,
+    /// 如果指定的时间等于或者晚于Object实际修改时间，则正常传输Object，并返回200 OK；如果指定的时间早于实际修改时间，则返回412 Precondition
+    ///                               Failed。
+    /// 时间格式：GMT，例如`Fri, 13 Nov 2015 14:47:53 GMT`
+    /// **If-Modified-Since**和**If-Unmodified-Since**可以同时使用。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_unmodified_since: Option<String>,
+    /// 如果传入的ETag和Object的ETag匹配，则正常传输Object，并返回200 OK；如果传入的ETag和Object的ETag不匹配，则返回412 Precondition Failed。
+    /// Object的ETag值用于验证数据是否发生了更改，您可以基于ETag值验证数据完整性。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_match: Option<String>,
+    /// 如果传入的ETag值和Object的ETag不匹配，则正常传输Object，并返回200 OK；如果传入的ETag和Object的ETag匹配，则返回304 Not Modified。
+    /// **If-Match**和**If-None-Match**可以同时使用。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_none_match: Option<String>,
+    /// 指定客户端的编码类型。
+    /// 如果要对返回内容进行Gzip压缩传输，您需要在请求头中以显示方式加入Accept-Encoding:gzip。OSS会根据Object的Content-Type和Object大小（不小于1
+    ///                                  KB）判断是否返回经过Gzip压缩的数据。
+    /// >   - 如果采用了Gzip压缩，则不会附带ETag信息。
+    /// >   - 目前OSS支持Gzip压缩的Content-Type为text/cache-manifest、 text/xml、text/plain、text/css、application/javascript、application/x-javascript、application/rss+xml、application/json和text/json。
+    ///
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    accept_encoding: Option<String>,
     /// 目标文件的版本ID。
     #[setters(generate = true, strip_option)]
     version_id: Option<String>,
@@ -11104,6 +12478,12 @@ impl GetObject {
             response_cache_control: None,
             response_content_disposition: None,
             response_content_encoding: None,
+            range: None,
+            if_modified_since: None,
+            if_unmodified_since: None,
+            if_match: None,
+            if_none_match: None,
+            accept_encoding: None,
             version_id: None,
         }
     }
@@ -11156,6 +12536,38 @@ impl crate::Request for GetObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.range {
+            headers.insert("Range".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_modified_since {
+            headers.insert("If-Modified-Since".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_unmodified_since {
+            headers.insert("If-Unmodified-Since".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_match {
+            headers.insert("If-Match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_none_match {
+            headers.insert("If-None-Match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.accept_encoding {
+            headers.insert("Accept-Encoding".into(), f.to_string());
+        }
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -11168,6 +12580,57 @@ pub struct AppendObject {
     /// - 当position值为0，且不存在同名Object时，则AppendObject与PutObject请求类似，即允许设置x-oss-server-side-encryption等请求头。如果加入了正确的x-oss-server-side-encryption头，那么后续的AppendObject响应头部也会包含x-oss-server-side-encryption头。后续如需更改元数据，可以使用CopyObject接口。
     /// - 在position值正确的情况下，对已存在的Appendable Object追加一个大小为0的内容，该操作不会改变Object的状态。
     position: i64,
+    /// 指定服务器端加密方式。
+    /// 合法值：
+    ///
+    /// - AES256：使用OSS完全托管密钥进行加解密（SSE-OSS）。
+    /// - KMS：使用KMS托管密钥进行加解密。
+    /// - SM4：国密SM4算法。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption: Option<String>,
+    /// 指定Object的访问权限。 取值范围如下：
+    ///
+    /// - default（默认）：Object遵循所在存储空间的访问权限。
+    /// - private：Object是私有资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户没有权限操作该Object。
+    /// - public-read：Object是公共读资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户只有该Object的读权限。请谨慎使用该权限。
+    /// - public-read-write：Object是公共读写资源。所有用户都有该Object的读写权限。请谨慎使用该权限。
+    ///
+    /// 关于访问权限的更多信息，请参见[读写权限ACL](~~100676~~)。
+    #[setters(generate = true, strip_option)]
+    x_oss_object_acl: Option<ObjectAcl>,
+    /// 指定Object的存储类型。取值范围如下：
+    ///
+    /// - Standard：标准存储
+    /// -  IA：低频访问
+    /// - Archive：归档存储
+    /// 对于任意存储类型的Bucket，如果上传Object时指定此参数，则此次上传的Object将存储为指定的类型。例如在IA类型的Bucket中上传Object时，如果指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
+    /// 关于存储类型的更多信息，请参见存储类型介绍。
+    ///
+    /// ><notice> 该值仅在首次执行AppendObject操作时有效，后续追加时不生效。
+    #[setters(generate = true, strip_option)]
+    x_oss_storage_class: Option<StorageClass>,
+    /// 指定该Object的网页缓存行为。更多信息，请参见**[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    cache_control: Option<String>,
+    /// 指定该Object被下载时的名称。更多信息，请参见**[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_disposition: Option<String>,
+    /// 指定该Object的内容编码格式。更多信息，请参见**[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_encoding: Option<String>,
+    /// 是一串由MD5算法生成的值，该请求头用于检查消息内容是否与发送时一致。
+    /// 获取Content-MD5值：对消息内容（不包括头部）执行MD5算法，获得128比特位数字，然后对该数字进行base64编码。
+    /// 默认值：无
+    /// 限制：无
+    #[setters(generate = true, strip_option)]
+    content_md5: Option<String>,
+    /// 过期时间。更多信息，请参见**[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    expires: Option<String>,
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
@@ -11179,6 +12642,14 @@ impl AppendObject {
     pub fn new(position: impl Into<i64>) -> Self {
         Self {
             position: position.into(),
+            x_oss_server_side_encryption: None,
+            x_oss_object_acl: None,
+            x_oss_storage_class: None,
+            cache_control: None,
+            content_disposition: None,
+            content_encoding: None,
+            content_md5: None,
+            expires: None,
             body: None,
         }
     }
@@ -11202,6 +12673,46 @@ impl crate::Request for AppendObject {
         params.insert("position".into(), (&self.position).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_server_side_encryption {
+            headers.insert("x-oss-server-side-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_object_acl {
+            headers.insert("x-oss-object-acl".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_storage_class {
+            headers.insert("x-oss-storage-class".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.cache_control {
+            headers.insert("Cache-Control".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.content_disposition {
+            headers.insert("Content-Disposition".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.content_encoding {
+            headers.insert("Content-Encoding".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.content_md5 {
+            headers.insert("Content-MD5".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.expires {
+            headers.insert("Expires".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11254,6 +12765,14 @@ impl crate::Request for SealAppendObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -11297,6 +12816,14 @@ impl crate::Request for DeleteObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -11307,13 +12834,35 @@ pub struct HeadObject {
     /// 请求Object的版本号。
     #[setters(generate = true, strip_option)]
     version_id: Option<String>,
+    /// 如果传入参数中的时间早于实际修改时间，则返回200 OK和Object Meta；否则返回304 not modified。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_modified_since: Option<String>,
+    /// 如果传入参数中的时间等于或者晚于文件实际修改时间，则返回200 OK和Object Meta；否则返回412 precondition failed。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_unmodified_since: Option<String>,
+    /// 如果传入期望的ETag和Object的 ETag匹配，则返回200 OK和Object Meta；否则返回412 precondition failed。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_match: Option<String>,
+    /// 如果传入期望的ETag值和Object的ETag不匹配，则返回200 OK和Object Meta；否则返回304 Not Modified。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    if_none_match: Option<String>,
 }
 
 impl sealed::Bound for HeadObject {}
 
 impl HeadObject {
     pub fn new() -> Self {
-        Self { version_id: None }
+        Self {
+            version_id: None,
+            if_modified_since: None,
+            if_unmodified_since: None,
+            if_match: None,
+            if_none_match: None,
+        }
     }
 }
 
@@ -11338,6 +12887,30 @@ impl crate::Request for HeadObject {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.if_modified_since {
+            headers.insert("If-Modified-Since".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_unmodified_since {
+            headers.insert("If-Unmodified-Since".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_match {
+            headers.insert("If-Match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.if_none_match {
+            headers.insert("If-None-Match".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11381,6 +12954,14 @@ impl crate::Request for GetObjectMeta {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11435,6 +13016,14 @@ impl crate::Request for RestoreObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -11477,6 +13066,14 @@ impl crate::Request for CleanRestoredObject {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11529,6 +13126,14 @@ impl crate::Request for SelectObject {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -11579,6 +13184,14 @@ impl crate::Request for CreateSelectObjectMeta {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -11592,6 +13205,61 @@ pub struct InitiateMultipartUpload {
     /// 可选值：**url**
     #[setters(generate = true, strip_option)]
     encoding_type: Option<EncodeType>,
+    /// 指定InitiateMultipartUpload操作时是否覆盖同名Object。当目标Bucket处于已开启或已暂停的版本控制状态时，**x-oss-forbid-overwrite**请求Header设置无效，即允许覆盖同名Object。
+    ///   - 不指定**x-oss-forbid-overwrite**或者指定**x-oss-forbid-overwrite**为**false**时，表示允许覆盖同名Object。
+    ///   - 指定**x-oss-forbid-overwrite**为**true**时，表示禁止覆盖同名Object。
+    ///
+    /// 设置**x-oss-forbid-overwrite**请求Header会导致QPS处理性能下降，如果您有大量的操作需要使用**x-oss-forbid-overwrite**请求Header（QPS>1000），请联系技术支持，避免影响您的业务。
+    #[setters(generate = true, strip_option)]
+    x_oss_forbid_overwrite: Option<String>,
+    /// 指定Object的存储类型。
+    /// 对于任意存储类型Bucket，如果上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如在IA类型的Bucket中上传Object时，如果指定**x-oss-storage-class**为Standard，则该Object直接存储为Standard类型。
+    /// 取值：
+    ///
+    /// - Standard：标准存储
+    /// - IA：低频访问
+    /// - Archive：归档存储
+    /// - ColdArchive：冷归档存储
+    ///
+    /// 关于存储类型的更多信息，请参见**[存储类型介绍](~~51374~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_storage_class: Option<StorageClass>,
+    /// 指定Object的标签，可同时设置多个标签，例如： TagA=A&TagB=B
+    /// > Key和Value需要先进行URL编码，如果某项没有`=`，则看作Value为空字符串。
+    #[setters(generate = true, strip_option)]
+    x_oss_tagging: Option<String>,
+    /// 指定上传该Object的每个part时使用的服务器端加密方式。
+    /// 取值：**AES256**、**KMS**或**SM4**
+    /// > 使用KMS加密算法前，您需要先开通密钥管理服务KMS。
+    ///
+    ///
+    /// 指定此参数后，在响应头中会返回此参数，OSS会对上传的每个part进行加密编码存储。当下载该Object时，响应头中会包含x-oss-server-side-encryption，且该值会被设置成此Object的加密算法。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption: Option<String>,
+    /// 指定Object的加密算法。若未指定此选项，表明Object使用AES256加密算法。此选项仅当**x-oss-server-side-encryption**为KMS时有效。
+    /// 取值：SM4
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_data_encryption: Option<String>,
+    /// 表示KMS托管的用户主密钥。
+    /// 该参数在**x-oss-server-side-encryption**值为KMS时有效。
+    #[setters(generate = true, strip_option)]
+    x_oss_server_side_encryption_key_id: Option<String>,
+    /// 指定该Object被下载时的网页的缓存行为。更多信息，请参见**[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    cache_control: Option<String>,
+    /// 指定该Object被下载时的名称。更多信息，请参见**[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_disposition: Option<String>,
+    /// 指定该Object被下载时的内容编码格式。更多信息，请参见**[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_encoding: Option<String>,
+    /// 过期时间，单位为毫秒。更多信息，请参见**[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    expires: Option<String>,
 }
 
 impl sealed::Bound for InitiateMultipartUpload {}
@@ -11600,6 +13268,16 @@ impl InitiateMultipartUpload {
     pub fn new() -> Self {
         Self {
             encoding_type: None,
+            x_oss_forbid_overwrite: None,
+            x_oss_storage_class: None,
+            x_oss_tagging: None,
+            x_oss_server_side_encryption: None,
+            x_oss_server_side_data_encryption: None,
+            x_oss_server_side_encryption_key_id: None,
+            cache_control: None,
+            content_disposition: None,
+            content_encoding: None,
+            expires: None,
         }
     }
 }
@@ -11634,6 +13312,54 @@ impl crate::Request for InitiateMultipartUpload {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_forbid_overwrite {
+            headers.insert("x-oss-forbid-overwrite".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_storage_class {
+            headers.insert("x-oss-storage-class".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_tagging {
+            headers.insert("x-oss-tagging".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption {
+            headers.insert("x-oss-server-side-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_data_encryption {
+            headers.insert("x-oss-server-side-data-encryption".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_server_side_encryption_key_id {
+            headers.insert("x-oss-server-side-encryption-key-id".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.cache_control {
+            headers.insert("Cache-Control".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.content_disposition {
+            headers.insert("Content-Disposition".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.content_encoding {
+            headers.insert("Content-Encoding".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.expires {
+            headers.insert("Expires".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11690,6 +13416,14 @@ impl crate::Request for UploadPart {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -11709,6 +13443,23 @@ pub struct CompleteMultipartUpload {
     /// 有效值：url
     #[setters(generate = true, strip_option)]
     encoding_type: Option<EncodeType>,
+    /// 指定CompleteMultipartUpload操作时是否覆盖同名Object。
+    ///
+    /// - 不指定x-oss-forbid-overwrite或者指定x-oss-forbid-overwrite为false时，表示允许覆盖同名Object。
+    /// - 指定x-oss-forbid-overwrite为true时，表示禁止覆盖同名Object。
+    ///
+    /// >
+    /// - 当目标Bucket的版本控制状态为“开启”或“暂停”时，x-oss-forbid-overwrite请求Header设置无效，即允许覆盖同名Object。
+    /// - 设置x-oss-forbid-overwrite请求Header会导致QPS处理性能下降，如果您有大量的操作需要使用x-oss-forbid-overwrite请求Header（QPS > 1000），请工单联系我们进行确认，避免影响您的业务。
+    #[setters(generate = true, strip_option)]
+    x_oss_forbid_overwrite: Option<String>,
+    /// 指定是否列举当前UploadId已上传的所有Part。
+    ///
+    /// - 如果指定了x-oss-complete-all:yes，则OSS会列举当前UploadId已上传的所有Part，然后按照PartNumber的序号排序并执行CompleteMultipartUpload操作。执行CompleteMultipartUpload过程中无法检测正在上传或者漏传的Part，因此用户需要自己确保Part的完整性。
+    /// - 如果指定了x-oss-complete-all:yes，则不允许继续指定body，否则报错。
+    /// - 如果指定了x-oss-complete-all:yes，response的格式保持不变。
+    #[setters(generate = true, strip_option)]
+    x_oss_complete_all: Option<String>,
 }
 
 impl sealed::Bound for CompleteMultipartUpload {}
@@ -11718,6 +13469,8 @@ impl CompleteMultipartUpload {
         Self {
             upload_id: upload_id.into(),
             encoding_type: None,
+            x_oss_forbid_overwrite: None,
+            x_oss_complete_all: None,
         }
     }
 }
@@ -11755,6 +13508,22 @@ impl crate::Request for CompleteMultipartUpload {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.x_oss_forbid_overwrite {
+            headers.insert("x-oss-forbid-overwrite".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_complete_all {
+            headers.insert("x-oss-complete-all".into(), f.to_string());
+        }
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -11762,6 +13531,8 @@ impl crate::Request for CompleteMultipartUpload {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UploadPartCopy {
+    /// 拷贝源地址（必须有可读权限）。
+    x_oss_copy_source: String,
     /// 每一个上传的Part都有一个标识它的号码（partNumber）。
     ///
     /// 取值：1~10000
@@ -11771,15 +13542,49 @@ pub struct UploadPartCopy {
     part_number: i64,
     /// uploadId用于唯一标识上传的Part属于哪个Object。
     upload_id: String,
+    /// 源Object的拷贝范围。例如设置bytes=0~9，表示拷贝0到9这10个字符。
+    /// 默认值：无
+    ///   - 不指定该请求头时，表示拷贝整个源Object。
+    ///   - 当指定该请求头时，则返回消息中会包含整个文件的长度和此次拷贝的范围，例如：Content-Range: bytes 0~9/44，表示整个文件长度为44，此次拷贝的范围为0~9。
+    ///   - 当指定的范围不符合规范时，则拷贝整个源Object，并且不在结果中提及Content-Range。
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_range: Option<String>,
+    /// 如果源Object的ETAG值和用户提供的ETAG相等，则执行拷贝操作；否则返回412 HTTP错误码（预处理失败）。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_match: Option<String>,
+    /// 如果传入的ETag值和Object的ETag不匹配，则正常传输文件，并返回200 OK；否则返回304 Not Modified。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_none_match: Option<String>,
+    /// 如果传入参数中的时间等于或者晚于文件实际修改时间，则正常传输文件，并返回200 OK；否则返回412 precondition failed错误。
+    /// 默认值：无
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_unmodified_since: Option<String>,
+    /// 如果指定的时间早于实际修改时间，则正常传送文件，并返回200 OK；否则返回304 not modified。
+    /// 默认值：无
+    /// 时间格式：GMT时间，例如Fri, 13 Nov 2015 14:47:53 GMT
+    #[setters(generate = true, strip_option)]
+    x_oss_copy_source_if_modified_since: Option<String>,
 }
 
 impl sealed::Bound for UploadPartCopy {}
 
 impl UploadPartCopy {
-    pub fn new(part_number: impl Into<i64>, upload_id: impl Into<String>) -> Self {
+    pub fn new(
+        x_oss_copy_source: impl Into<String>,
+        part_number: impl Into<i64>,
+        upload_id: impl Into<String>,
+    ) -> Self {
         Self {
+            x_oss_copy_source: x_oss_copy_source.into(),
             part_number: part_number.into(),
             upload_id: upload_id.into(),
+            x_oss_copy_source_range: None,
+            x_oss_copy_source_if_match: None,
+            x_oss_copy_source_if_none_match: None,
+            x_oss_copy_source_if_unmodified_since: None,
+            x_oss_copy_source_if_modified_since: None,
         }
     }
 }
@@ -11803,6 +13608,41 @@ impl crate::Request for UploadPartCopy {
         params.insert("uploadId".into(), (&self.upload_id).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-copy-source".into(),
+            self.x_oss_copy_source.to_string(),
+        );
+
+        if let Some(f) = &self.x_oss_copy_source_range {
+            headers.insert("x-oss-copy-source-range".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_match {
+            headers.insert("x-oss-copy-source-if-match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_none_match {
+            headers.insert("x-oss-copy-source-if-none-match".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_unmodified_since {
+            headers.insert(
+                "x-oss-copy-source-if-unmodified-since".into(),
+                f.to_string(),
+            );
+        }
+
+        if let Some(f) = &self.x_oss_copy_source_if_modified_since {
+            headers.insert("x-oss-copy-source-if-modified-since".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11844,6 +13684,14 @@ impl crate::Request for AbortMultipartUpload {
         params.insert("uploadId".into(), (&self.upload_id).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -11943,6 +13791,14 @@ impl crate::Request for ListMultipartUploads {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12017,6 +13873,14 @@ impl crate::Request for ListParts {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12024,6 +13888,16 @@ impl crate::Request for ListParts {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObjectAcl {
+    /// 指定OSS创建Object时的访问权限。
+    /// 取值：
+    ///
+    /// - default（默认）：Object遵循所在存储空间的访问权限。
+    /// - private：Object是私有资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户没有权限操作该Object。
+    /// - public-read：Object是公共读资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户只有该Object的读权限。请谨慎使用该权限。
+    /// - public-read-write：Object是公共读写资源。所有用户都有该Object的读写权限。请谨慎使用该权限。
+    ///
+    /// 关于访问权限的更多信息，请参见**[读写权限ACL](~~100676~~)**。
+    x_oss_object_acl: ObjectAcl,
     /// Object对应的版本
     #[setters(generate = true, strip_option)]
     version_id: Option<String>,
@@ -12032,8 +13906,11 @@ pub struct PutObjectAcl {
 impl sealed::Bound for PutObjectAcl {}
 
 impl PutObjectAcl {
-    pub fn new() -> Self {
-        Self { version_id: None }
+    pub fn new(x_oss_object_acl: impl Into<ObjectAcl>) -> Self {
+        Self {
+            x_oss_object_acl: x_oss_object_acl.into(),
+            version_id: None,
+        }
     }
 }
 
@@ -12058,6 +13935,15 @@ impl crate::Request for PutObjectAcl {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert("x-oss-object-acl".into(), self.x_oss_object_acl.to_string());
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12103,19 +13989,70 @@ impl crate::Request for GetObjectAcl {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutSymlink {}
+pub struct PutSymlink {
+    /// 软链接指向的目标文件。
+    /// 合法值：命名规范同Object
+    ///   - TargetObjectName同ObjectName一样，需要对其进行URL编码。
+    ///   - 软链接的目标文件类型不能为软链接。
+    x_oss_symlink_target: String,
+    /// 指定OSS创建Object时的访问权限。
+    ///
+    /// 取值：
+    ///
+    /// - default（默认）：Object遵循所在存储空间的访问权限。
+    /// - private：Object是私有资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户没有权限操作该Object。
+    /// - public-read：Object是公共读资源。只有Object的拥有者和授权用户有该Object的读写权限，其他用户只有该Object的读权限。请谨慎使用该权限。
+    /// - public-read-write：Object是公共读写资源。所有用户都有该Object的读写权限。请谨慎使用该权限。
+    ///
+    /// 关于访问权限的更多信息，请参见**[读写权限ACL](~~100676~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_object_acl: Option<ObjectAcl>,
+    /// 指定Object的存储类型。
+    /// 对于任意存储类型的Bucket，如果上传Object时指定此参数，则此次上传的Object将存储为指定的类型。例如在IA类型的Bucket中上传Object时，如果指定**x-oss-storage-class**为Standard，则该Object直接存储为Standard。
+    ///
+    /// 取值：
+    /// - Standard：标准存储
+    /// - IA：低频访问
+    /// - Archive：归档存储
+    ///
+    /// IA与Archive类型的单个Object大小如果不足64 KB，则会按64 KB计量计费。建议在使用PutSymlink接口时不要将Object的存储类型指定为IA或Archive。
+    /// 关于存储类型的更多信息，请参见**[存储类型介绍](~~51374~~)**。
+    #[setters(generate = true, strip_option)]
+    x_oss_storage_class: Option<StorageClass>,
+    /// 指定PutSymlink操作时是否覆盖同名Object。
+    ///   - 不指定**x-oss-forbid-overwrite**或者指定**x-oss-forbid-overwrite**为**false**时，表示允许覆盖同名Object。
+    ///   - 指定**x-oss-forbid-overwrite**为**true**时，表示禁止覆盖同名Object。
+    ///
+    /// 设置**x-oss-forbid-overwrite**请求Header会导致QPS处理性能下降，如果您有大量的操作需要使用**x-oss-forbid-overwrite**请求Header（QPS>1000），请联系技术支持，避免影响您的业务。
+    /// > 当目标Bucket处于已开启或已暂停版本控制状态时，**x-oss-forbid-overwrite**请求Header设置无效，即允许覆盖同名Object。
+    #[setters(generate = true, strip_option)]
+    x_oss_forbid_overwrite: Option<String>,
+}
 
 impl sealed::Bound for PutSymlink {}
 
 impl PutSymlink {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(x_oss_symlink_target: impl Into<String>) -> Self {
+        Self {
+            x_oss_symlink_target: x_oss_symlink_target.into(),
+            x_oss_object_acl: None,
+            x_oss_storage_class: None,
+            x_oss_forbid_overwrite: None,
+        }
     }
 }
 
@@ -12136,6 +14073,30 @@ impl crate::Request for PutSymlink {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+        headers.insert(
+            "x-oss-symlink-target".into(),
+            self.x_oss_symlink_target.to_string(),
+        );
+
+        if let Some(f) = &self.x_oss_object_acl {
+            headers.insert("x-oss-object-acl".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_storage_class {
+            headers.insert("x-oss-storage-class".into(), f.to_string());
+        }
+
+        if let Some(f) = &self.x_oss_forbid_overwrite {
+            headers.insert("x-oss-forbid-overwrite".into(), f.to_string());
+        }
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12181,6 +14142,14 @@ impl crate::Request for GetSymlink {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12222,6 +14191,14 @@ impl crate::Request for PutObjectTagging {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12267,6 +14244,14 @@ impl crate::Request for GetObjectTagging {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12310,6 +14295,14 @@ impl crate::Request for DeleteObjectTagging {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12343,6 +14336,14 @@ impl crate::Request for PutLiveChannel {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12407,6 +14408,14 @@ impl crate::Request for ListLiveChannel {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12440,6 +14449,14 @@ impl crate::Request for DeleteLiveChannel {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12486,6 +14503,14 @@ impl crate::Request for PutLiveChannelStatus {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12519,6 +14544,14 @@ impl crate::Request for GetLiveChannelInfo {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12556,6 +14589,14 @@ impl crate::Request for GetLiveChannelHistory {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12589,6 +14630,14 @@ impl crate::Request for GetLiveChannelStat {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12635,6 +14684,14 @@ impl crate::Request for GetVodPlaylist {
         params.insert("startTime".into(), (&self.start_time).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12693,6 +14750,14 @@ impl crate::Request for PostVodPlaylist {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -12726,6 +14791,14 @@ impl crate::Request for PutChannel {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12763,6 +14836,14 @@ impl crate::Request for PutBucketHash {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12796,6 +14877,14 @@ impl crate::Request for PutBucketCommonHeader {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12833,6 +14922,14 @@ impl crate::Request for DeleteBucketCommonHeader {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12868,6 +14965,14 @@ impl crate::Request for PutProcessConfiguration {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12901,6 +15006,14 @@ impl crate::Request for GetBucketEventNotification {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -12947,6 +15060,14 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -12990,6 +15111,14 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
     }
@@ -13023,6 +15152,14 @@ impl crate::Request for ListDataLakeStorageTransferJob {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {

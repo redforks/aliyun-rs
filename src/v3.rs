@@ -24,7 +24,11 @@ fn canonical_query_string(values: BTreeMap<Cow<'static, str>, QueryValue>) -> St
     values
         .into_iter()
         .map(|(k, v)| {
-            format!("{}={}", percent_encode(&k), percent_encode(&v.to_query_value()))
+            format!(
+                "{}={}",
+                percent_encode(&k),
+                percent_encode(&v.to_query_value())
+            )
         })
         .collect::<Vec<_>>()
         .join("&")
@@ -128,6 +132,7 @@ where
 {
     let uri = canonical_uri_path(R::URL_PATH);
     let query_string = canonical_query_string(req.to_query_params()?);
+    let custom_headers = req.to_headers()?;
     let body = req.to_body()?;
     let content_type = if R::METHOD == Method::GET {
         None
@@ -140,6 +145,14 @@ where
     let mut headers = gen_headers::<R>(version, end_point, &hashed_request_payload)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
+    }
+    // Add custom headers from the request
+    for (name, value) in custom_headers {
+        let header_name = http::header::HeaderName::from_bytes(name.as_bytes())
+            .context("Invalid custom header name")?;
+        let header_value =
+            http::header::HeaderValue::from_str(&value).context("Invalid custom header value")?;
+        headers.insert(header_name, header_value);
     }
     let (canonical_headers, header_names) = canonical_headers(&headers)?;
     let canonical_request = format!(
@@ -185,7 +198,8 @@ where
     debug!("Response: {:?}", resp_text);
 
     let resp = if status.is_success() {
-        let resp = serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?;
+        let resp =
+            serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?;
         resp.as_ref().check()?;
         resp
     } else {

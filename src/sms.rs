@@ -1960,6 +1960,14 @@ impl crate::Request for SubmitSmsQualification {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2079,6 +2087,14 @@ impl crate::Request for QuerySmsQualificationRecord {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2138,6 +2154,14 @@ impl crate::Request for QuerySingleSmsQualification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -2381,6 +2405,14 @@ impl crate::Request for UpdateSmsQualification {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2438,6 +2470,14 @@ impl crate::Request for DeleteSmsQualification {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2488,6 +2528,14 @@ impl crate::Request for RequiredPhoneCode {
         params.insert("PhoneNo".into(), (&self.phone_no).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -2542,6 +2590,14 @@ impl crate::Request for ValidPhoneCode {
         params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -2651,6 +2707,14 @@ impl crate::Request for CreateSmsAuthorizationLetter {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2743,6 +2807,14 @@ impl crate::Request for QuerySmsAuthorizationLetter {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -2908,6 +2980,14 @@ impl crate::Request for CreateSmsSign {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -2959,6 +3039,14 @@ impl crate::Request for GetSmsSign {
         params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3021,6 +3109,14 @@ impl crate::Request for QuerySmsSignList {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3178,6 +3274,14 @@ impl crate::Request for UpdateSmsSign {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -3231,6 +3335,14 @@ impl crate::Request for DeleteSmsSign {
         params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3293,6 +3405,14 @@ impl crate::Request for ChangeSignatureQualification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3401,6 +3521,14 @@ impl crate::Request for AddSmsSign {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -3499,6 +3627,14 @@ impl crate::Request for ModifySmsSign {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -3549,6 +3685,14 @@ impl crate::Request for QuerySmsSign {
         params.insert("SignName".into(), (&self.sign_name).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3647,6 +3791,14 @@ impl crate::Request for CreateSmsTrademark {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -3698,6 +3850,14 @@ impl crate::Request for QuerySmsTrademark {
         );
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3801,6 +3961,14 @@ impl crate::Request for CreateSmsAppIcpRecord {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -3852,6 +4020,14 @@ impl crate::Request for QuerySmsAppIcpRecord {
         );
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4030,6 +4206,14 @@ impl crate::Request for CreateSmsTemplate {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -4081,6 +4265,14 @@ impl crate::Request for GetSmsTemplate {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4143,6 +4335,14 @@ impl crate::Request for QuerySmsTemplateList {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4321,6 +4521,14 @@ impl crate::Request for UpdateSmsTemplate {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -4376,6 +4584,14 @@ impl crate::Request for DeleteSmsTemplate {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4462,6 +4678,14 @@ impl crate::Request for AddSmsTemplate {
         params.insert("Remark".into(), (&self.remark).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4556,6 +4780,14 @@ impl crate::Request for ModifySmsTemplate {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -4606,6 +4838,14 @@ impl crate::Request for QuerySmsTemplate {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4749,6 +4989,14 @@ impl crate::Request for SendSms {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -4851,6 +5099,14 @@ impl crate::Request for SendBatchSms {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -4937,6 +5193,14 @@ impl crate::Request for QuerySendDetails {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5041,6 +5305,14 @@ impl crate::Request for QuerySendStatistics {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5086,6 +5358,14 @@ impl crate::Request for GetOSSInfoForCardTemplate {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5179,6 +5459,14 @@ impl crate::Request for GetMediaResourceId {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5266,6 +5554,14 @@ impl crate::Request for CreateCardSmsTemplate {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5318,6 +5614,14 @@ impl crate::Request for QueryCardSmsTemplate {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5396,6 +5700,14 @@ impl crate::Request for CheckMobilesCardSupport {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5466,6 +5778,14 @@ impl crate::Request for QueryMobilesCardSupport {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5596,6 +5916,14 @@ impl crate::Request for GetCardSmsLink {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5694,6 +6022,14 @@ impl crate::Request for GetCardSmsDetails {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -5754,6 +6090,14 @@ impl crate::Request for QueryCardSmsTemplateReport {
         params.insert("EndDate".into(), (&self.end_date).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5908,6 +6252,14 @@ impl crate::Request for SendCardSms {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6073,6 +6425,14 @@ impl crate::Request for SendBatchCardSms {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6121,6 +6481,14 @@ impl crate::Request for GetQualificationOssInfo {
         params.insert("BizType".into(), (&self.biz_type).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6177,6 +6545,14 @@ impl crate::Request for GetOSSInfoForUploadFile {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6228,6 +6604,14 @@ impl crate::Request for GetSmsOcrOssInfo {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6296,6 +6680,14 @@ impl crate::Request for SmsConversionIntl {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6355,6 +6747,14 @@ impl crate::Request for ConversionDataIntl {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6422,6 +6822,14 @@ impl crate::Request for AddShortUrl {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6475,6 +6883,14 @@ impl crate::Request for DeleteShortUrl {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6526,6 +6942,14 @@ impl crate::Request for QueryShortUrl {
         let mut params = std::collections::BTreeMap::new();
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6624,6 +7048,14 @@ impl crate::Request for ListTagResources {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::Form(self))
     }
@@ -6702,6 +7134,14 @@ impl crate::Request for TagResources {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6794,6 +7234,14 @@ impl crate::Request for UntagResources {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {

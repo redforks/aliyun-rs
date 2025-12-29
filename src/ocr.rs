@@ -3257,6 +3257,14 @@ impl crate::Request for RecognizeAllText {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -3324,6 +3332,14 @@ impl crate::Request for RecognizeGeneralStructure {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3451,6 +3467,14 @@ impl crate::Request for RecognizeAdvanced {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -3549,6 +3573,14 @@ impl crate::Request for RecognizeHandwriting {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -3611,6 +3643,14 @@ impl crate::Request for RecognizeBasic {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -3662,6 +3702,14 @@ impl crate::Request for RecognizeGeneral {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3754,6 +3802,14 @@ impl crate::Request for RecognizeTableOcr {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -3805,6 +3861,14 @@ impl crate::Request for RecognizeHealthCode {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3939,6 +4003,14 @@ impl crate::Request for RecognizeDocumentStructure {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4018,6 +4090,14 @@ impl crate::Request for RecognizeIdcard {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4073,6 +4153,14 @@ impl crate::Request for RecognizePassport {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4137,6 +4225,14 @@ impl crate::Request for RecognizeHousehold {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4188,6 +4284,14 @@ impl crate::Request for RecognizeEstateCertification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4243,6 +4347,14 @@ impl crate::Request for RecognizeBankCard {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4294,6 +4406,14 @@ impl crate::Request for RecognizeBirthCertification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4354,6 +4474,14 @@ impl crate::Request for RecognizeChinesePassport {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4418,6 +4546,14 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4478,6 +4614,14 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4531,6 +4675,14 @@ impl crate::Request for RecognizeHKIdcard {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4582,6 +4734,14 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4640,6 +4800,14 @@ impl crate::Request for RecognizeInternationalIdcard {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4716,6 +4884,14 @@ impl crate::Request for RecognizeMixedInvoices {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4779,6 +4955,14 @@ impl crate::Request for RecognizeInvoice {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4832,6 +5016,14 @@ impl crate::Request for RecognizeCarInvoice {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4882,6 +5074,14 @@ impl crate::Request for RecognizeQuotaInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4937,6 +5137,14 @@ impl crate::Request for RecognizeAirItinerary {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -4988,6 +5196,14 @@ impl crate::Request for RecognizeTrainInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5043,6 +5259,14 @@ impl crate::Request for RecognizeTaxiInvoice {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5093,6 +5317,14 @@ impl crate::Request for RecognizeRollTicket {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5148,6 +5380,14 @@ impl crate::Request for RecognizeBankAcceptance {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5198,6 +5438,14 @@ impl crate::Request for RecognizeBusShipTicket {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5253,6 +5501,14 @@ impl crate::Request for RecognizeNonTaxInvoice {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5303,6 +5559,14 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5357,6 +5621,14 @@ impl crate::Request for RecognizeHotelConsume {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5408,6 +5680,14 @@ impl crate::Request for RecognizePaymentRecord {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5477,6 +5757,14 @@ impl crate::Request for RecognizePurchaseRecord {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5527,6 +5815,14 @@ impl crate::Request for RecognizeRideHailingItinerary {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5581,6 +5877,14 @@ impl crate::Request for RecognizeShoppingReceipt {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5633,6 +5937,14 @@ impl crate::Request for RecognizeSocialSecurityCard {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5683,6 +5995,14 @@ impl crate::Request for RecognizeTollInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5738,6 +6058,14 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5788,6 +6116,14 @@ impl crate::Request for RecognizeUsedCarInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5843,6 +6179,14 @@ impl crate::Request for RecognizeBusinessLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5896,6 +6240,14 @@ impl crate::Request for RecognizeBankAccountLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -5946,6 +6298,14 @@ impl crate::Request for RecognizeTradeMarkCertification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6001,6 +6361,14 @@ impl crate::Request for RecognizeFoodProduceLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6052,6 +6420,14 @@ impl crate::Request for RecognizeFoodManageLicense {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6106,6 +6482,14 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6156,6 +6540,14 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6211,6 +6603,14 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6261,6 +6661,14 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6319,6 +6727,14 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6370,6 +6786,14 @@ impl crate::Request for RecognizeVehicleLicense {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6425,6 +6849,14 @@ impl crate::Request for RecognizeDrivingLicense {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6476,6 +6908,14 @@ impl crate::Request for RecognizeWaybill {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6531,6 +6971,14 @@ impl crate::Request for RecognizeCarNumber {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6582,6 +7030,14 @@ impl crate::Request for RecognizeCarVinCode {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6637,6 +7093,14 @@ impl crate::Request for RecognizeVehicleRegistration {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6688,6 +7152,14 @@ impl crate::Request for RecognizeVehicleCertification {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6743,6 +7215,14 @@ impl crate::Request for RecognizeEduFormula {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -6794,6 +7274,14 @@ impl crate::Request for RecognizeEduOralCalculation {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6870,6 +7358,14 @@ impl crate::Request for RecognizeEduPaperOcr {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6953,6 +7449,14 @@ impl crate::Request for RecognizeEduPaperCut {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7013,6 +7517,14 @@ impl crate::Request for RecognizeEduQuestionOcr {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7094,6 +7606,14 @@ impl crate::Request for RecognizeEduPaperStructed {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7189,6 +7709,14 @@ impl crate::Request for RecognizeMultiLanguage {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7258,6 +7786,14 @@ impl crate::Request for RecognizeEnglish {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7336,6 +7872,14 @@ impl crate::Request for RecognizeThai {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7410,6 +7954,14 @@ impl crate::Request for RecognizeJanpanese {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7488,6 +8040,14 @@ impl crate::Request for RecognizeKorean {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7562,6 +8122,14 @@ impl crate::Request for RecognizeLatin {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7640,6 +8208,14 @@ impl crate::Request for RecognizeRussian {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7702,6 +8278,14 @@ impl crate::Request for RecognizeCovidTestReport {
         Ok(params)
     }
 
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
+    }
+
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(crate::OctetStream(self.body.unwrap_or_default()))
     }
@@ -7762,6 +8346,14 @@ impl crate::Request for VerifyBusinessLicense {
         params.insert("LegalPerson".into(), (&self.legal_person).into());
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7875,6 +8467,14 @@ impl crate::Request for VerifyVATInvoice {
         }
 
         Ok(params)
+    }
+
+    fn to_headers(
+        &self,
+    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
+        let mut headers = std::collections::BTreeMap::new();
+
+        Ok(headers)
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
