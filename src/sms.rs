@@ -120,6 +120,19 @@ impl Connection {
         ))
     }
 
+    pub fn with_client(
+        endpoint: Endpoint,
+        app_key_secret: crate::v3::AccessKeySecret,
+        client: reqwest::Client,
+    ) -> Self {
+        Self(crate::common::Connection::with_client(
+            app_key_secret,
+            "2017-05-25",
+            endpoint.into(),
+            client,
+        ))
+    }
+
     fn call<R: crate::Request + sealed::Bound>(
         &self,
         req: R,

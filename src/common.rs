@@ -29,6 +29,20 @@ impl Connection {
         })
     }
 
+    pub fn with_client(
+        access_key_secret: AccessKeySecret,
+        version: &'static str,
+        end_point: &'static str,
+        http_client: reqwest::Client,
+    ) -> Self {
+        Self(_Connection {
+            access_key_secret,
+            version,
+            end_point,
+            http_client,
+        })
+    }
+
     pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<R::Response>> + Send {
         call(
             &self.0.access_key_secret,
