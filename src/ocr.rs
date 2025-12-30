@@ -146,8 +146,8 @@ impl Connection {
     /// ```
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_all_text(
         &self,
@@ -184,8 +184,8 @@ impl Connection {
     /// - `LLMTimeout`: Large language model timeout, please try again with fewer keys.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_general_structure(
         &self,
@@ -236,8 +236,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_advanced(
         &self,
@@ -284,8 +284,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场手写体识别。](https://market.aliyun.com/apimarket/detail/cmapi00040832) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_handwriting(
         &self,
@@ -331,8 +331,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_basic(
         &self,
@@ -378,8 +378,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_general(
         &self,
@@ -427,8 +427,8 @@ impl Connection {
     /// 注：PDF文件格式的表格解析请点击[表格智能解析](https://help.aliyun.com/document_detail/450742.html)快速了解
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_table_ocr(
         &self,
@@ -478,8 +478,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_health_code(
         &self,
@@ -494,8 +494,8 @@ impl Connection {
     /// 对文档信息进行结构化识别，并提供元素平铺和层级树两种视角的版面信息输出。能够将文档中的文字元素（单字、文字块、行等）和相应的版面格式（标题、段落、表格）抽离并按顺序输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_document_structure(
         &self,
@@ -544,8 +544,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [身份证混贴识别。](https://market.aliyun.com/products/57124001/cmapi00042846.html?#sku=yuncode3684600001) </li> <li> [国际身份证识别。](~~455939~~) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_idcard(
         &self,
@@ -591,8 +591,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场护照识别。](https://market.aliyun.com/products/57124001/cmapi016682.html?spm=a2c4g.11186623.0.0.47e98a21paGIxa&innerSource=search#sku=yuncode1068200007) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_passport(
         &self,
@@ -640,8 +640,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_household(
         &self,
@@ -687,8 +687,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场不动产权证识别。](https://market.aliyun.com/products/57124001/cmapi032590.html?spm=a2c4g.11186623.0.0.53898a21nnCeEE#sku=yuncode2659000001) </li>  </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_estate_certification(
         &self,
@@ -735,8 +735,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场银行卡识别。](https://market.aliyun.com/products/57124001/cmapi016870.html?spm=a2c4g.11186623.0.0.47e98a21uyjeUi&innerSource=search#sku=yuncode1087000000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_bank_card(
         &self,
@@ -782,8 +782,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场出生证明识别。](https://market.aliyun.com/products/57124001/cmapi00043620.html?spm=a2c4g.11186623.0.0.47e98a21Sz0eAq#sku=yuncode3762000001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_birth_certification(
         &self,
@@ -799,8 +799,8 @@ impl Connection {
     /// 支持中国人民共和国护照的结构化内容检测识别功能，支持中国内地、中国香港、中国澳门和中国台湾地区的护照识别，识别内容包括出生地、出生日期、国籍、性别、护照号码、有效期至、签发国、签发地等字段。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_chinese_passport(
         &self,
@@ -846,8 +846,8 @@ impl Connection {
     /// |识别范围|<ul> <li> 本接口只支持正面识别，背面不支持。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_exit_entry_permit_to_mainland(
         &self,
@@ -863,8 +863,8 @@ impl Connection {
     /// 支持通行证中的各项关键信息，姓名、出生日期、证件号码等字段的准确识别。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_exit_entry_permit_to_hk(
         &self,
@@ -898,8 +898,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [国际身份证识别。](https://help.aliyun.com/document_detail/455939.html) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_hk_idcard(
         &self,
@@ -948,8 +948,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_social_security_card_version_ii(
         &self,
@@ -1000,8 +1000,8 @@ impl Connection {
     /// - `illegalCountryName`: the country name is not supported.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_international_idcard(
         &self,
@@ -1050,8 +1050,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场混贴票据识别。](https://market.aliyun.com/products/57124001/cmapi00034969.html?spm=a2c4g.11186623.0.0.6dcb4dcdy2b5CR#sku=yuncode2896900002) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_mixed_invoices(
         &self,
@@ -1100,8 +1100,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场增值税发票识别。](https://market.aliyun.com/products/57124001/cmapi027758.html?spm=a2c4g.11186623.0.0.1ff64dcdDsX9s8#sku=yuncode2175800000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_invoice(
         &self,
@@ -1150,8 +1150,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场机动车销售发票识别。](https://market.aliyun.com/products/57124001/cmapi029811.html?spm=a2c4g.11186623.0.0.6dcb4dcdaoX2WN#sku=yuncode2381100001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_car_invoice(
         &self,
@@ -1166,8 +1166,8 @@ impl Connection {
     /// 支持包括发票号码、发票代码、发票金额等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_quota_invoice(
         &self,
@@ -1214,8 +1214,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场航空行程单识别。](https://market.aliyun.com/products/57124001/cmapi00035385.html?#sku=yuncode2938500001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_air_itinerary(
         &self,
@@ -1266,8 +1266,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场火车票识别。](https://market.aliyun.com/products/57124001/cmapi020096.html?spm=a2c4g.11186623.0.0.6dcb4dcdaoX2WN&innerSource=search#sku=yuncode1409600000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_train_invoice(
         &self,
@@ -1313,8 +1313,8 @@ impl Connection {
     /// |其他提示|<ul> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li>  </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_taxi_invoice(
         &self,
@@ -1329,8 +1329,8 @@ impl Connection {
     /// 支持对卷票上包括发票代码、发票号码、开票日期、发票金额、校验码、大写金额、销售方税号、购买方税号等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_roll_ticket(
         &self,
@@ -1383,8 +1383,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_bank_acceptance(
         &self,
@@ -1400,8 +1400,8 @@ impl Connection {
     /// 支持包括标题、发票号码、出发车站、到达车站、日期、金额等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_bus_ship_ticket(
         &self,
@@ -1451,8 +1451,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_non_tax_invoice(
         &self,
@@ -1468,8 +1468,8 @@ impl Connection {
     /// 支持包括发票代码、发票号码、销售方名称、销售方识别号、购买方名称、购买方识别号、合计金额等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_common_printed_invoice(
         &self,
@@ -1489,8 +1489,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_hotel_consume(
         &self,
@@ -1540,8 +1540,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_payment_record(
         &self,
@@ -1561,8 +1561,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_purchase_record(
         &self,
@@ -1578,8 +1578,8 @@ impl Connection {
     /// 支持网约车行程单全部字段的识别，包括：服务商、申请日期、行程开始时间、行程结束时间、行程人手机号、总金额等字段。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_ride_hailing_itinerary(
         &self,
@@ -1599,8 +1599,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_shopping_receipt(
         &self,
@@ -1618,8 +1618,8 @@ impl Connection {
     /// 此接口不再更新，不支持新用户接入。请使用新版接口：[社保卡识别](https://help.aliyun.com/document_detail/442264.html)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_social_security_card(
         &self,
@@ -1635,8 +1635,8 @@ impl Connection {
     /// 支持包括发票代码、发票号码、金额、日期、车型、出口、入口等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_toll_invoice(
         &self,
@@ -1681,8 +1681,8 @@ impl Connection {
     /// |其他提示|<ul> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。</li> </ul> |
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_tax_clearance_certificate(
         &self,
@@ -1698,8 +1698,8 @@ impl Connection {
     /// 支持包括发票代码、发票号码、开票日期、发票金额、购买方名称、购买方身份证号等关键字段结构化识别输出。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_used_car_invoice(
         &self,
@@ -1749,8 +1749,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场营业执照识别。](https://market.aliyun.com/products/57124001/cmapi013592.html?spm=5176.730005.result.41.7fc03524S3wFYv&innerSource=search_%E8%90%A5%E4%B8%9A%E6%89%A7%E7%85%A7#sku=yuncode759200000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_business_license(
         &self,
@@ -1797,8 +1797,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场银行开户许可证识别。](https://market.aliyun.com/products/57124001/cmapi00042885.html?#sku=yuncode3688500001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_bank_account_license(
         &self,
@@ -1814,8 +1814,8 @@ impl Connection {
     /// 可快速精准的识别商标注册证中所包含的商标名称、注册人、注册人地址以及有效期限、核定服务项目等关键有效字段信息。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_trade_mark_certification(
         &self,
@@ -1860,8 +1860,8 @@ impl Connection {
     /// |图片大小|<ul> <li> 图片二进制文件不能超过10MB。</li> <li> 图片过大会影响接口响应速度，建议使用小于1.5M图片进行识别，且通过传图片URL的方式调用接口。</li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_food_produce_license(
         &self,
@@ -1909,8 +1909,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场食品经营许可证识别。](https://market.aliyun.com/products/57124001/cmapi033384.html?spm=a2c4g.11186623.0.0.43f6525aYt7UN6#sku=yuncode2738400001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_food_manage_license(
         &self,
@@ -1926,8 +1926,8 @@ impl Connection {
     /// 可快速精准的识别医疗器械经营许可证所包含许可证编号、企业名称、注册地址、法定代表人、企业负责人、质量管理人、仓库地址、经营范围、许可期限、发证日期等关键字段信息。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_medical_device_manage_license(
         &self,
@@ -1944,8 +1944,8 @@ impl Connection {
     /// 可快速精准的识别医疗器械生产许可证所包含许可证编号、法定代表人、企业名称、注册地址、生产地址、生产范围、企业负责人、有效期限等关键字段信息。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_medical_device_produce_license(
         &self,
@@ -1991,8 +1991,8 @@ impl Connection {
     /// |图片大小|<ul> <li> 图片二进制文件不能超过10MB。</li> <li> 图片过大会影响接口响应速度，建议使用小于1.5M图片进行识别，且通过传图片URL的方式调用接口。</li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_ctwo_medical_device_manage_license(
         &self,
@@ -2013,8 +2013,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_cosmetic_produce_license(
         &self,
@@ -2033,8 +2033,8 @@ impl Connection {
     /// - `illegalCountryName`: the country name is not supported.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_international_business_license(
         &self,
@@ -2086,8 +2086,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [行驶证识别。](https://market.aliyun.com/products/57124001/cmapi011791.html?spm=5176.730005.result.13.291d3524fc1E2j&innerSource=search_%E8%A1%8C%E9%A9%B6%E8%AF%81#sku=yuncode579100000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_vehicle_license(
         &self,
@@ -2137,8 +2137,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场驾驶证识别。](https://market.aliyun.com/products/57002002/cmapi010402.html?spm=5176.730005.result.29.34d635246xDdY0&innerSource=search_%E9%A9%BE%E9%A9%B6%E8%AF%81) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_driving_license(
         &self,
@@ -2187,8 +2187,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场电子面单识别。](https://market.aliyun.com/products/57124001/cmapi00043511.html?spm=a2c4g.11186623.0.0.4efc4288F9Ffm7#sku=yuncode3751100001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_waybill(
         &self,
@@ -2236,8 +2236,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场车牌识别。](https://market.aliyun.com/products/57124001/cmapi020094.html?spm=5176.730005.result.17.517535242WwEyb&innerSource=search_%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB#sku=yuncode1409400000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_car_number(
         &self,
@@ -2285,8 +2285,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场车辆vin码识别。](https://market.aliyun.com/products/57124001/cmapi023049.html?spm=a2c4g.11186623.0.0.3ecb4288iZinrC#sku=yuncode1704900000) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_car_vin_code(
         &self,
@@ -2333,8 +2333,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场机动车注册登记证识别。](https://market.aliyun.com/products/57124001/cmapi00038697.html?#sku=yuncode3269700001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_vehicle_registration(
         &self,
@@ -2381,8 +2381,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场车辆合格证识别。](https://market.aliyun.com/products/57124001/cmapi00049687.html?#sku=yuncode4368700002) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_vehicle_certification(
         &self,
@@ -2428,8 +2428,8 @@ impl Connection {
     /// |其他提示|<ul> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。</li> </ul> |
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_formula(
         &self,
@@ -2475,8 +2475,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场口算判题。](https://market.aliyun.com/products/57124001/cmapi00043293.html?#sku=yuncode3729300001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_oral_calculation(
         &self,
@@ -2522,8 +2522,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_paper_ocr(
         &self,
@@ -2570,8 +2570,8 @@ impl Connection {
     /// |相关能力|<ul> <li> [云市场扫描版试卷切题识别。](https://market.aliyun.com/products/57124001/cmapi00042623.html?#sku=yuncode3662300001) </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_paper_cut(
         &self,
@@ -2617,8 +2617,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_question_ocr(
         &self,
@@ -2665,8 +2665,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_edu_paper_structed(
         &self,
@@ -2713,8 +2713,8 @@ impl Connection {
     /// |相关能力|<ul><li>[云市场通用多语言识别。](https://market.aliyun.com/products/57124001/cmapi00040847.html?#sku=yuncode3484700001)</li></ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_multi_language(
         &self,
@@ -2761,8 +2761,8 @@ impl Connection {
     /// |其他提示|<ul> <li>接口响应速度和图片中的文字数量有关，如果图片中文字数量越多，接口响应可能越慢。</li> <li> 接口会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_english(
         &self,
@@ -2777,8 +2777,8 @@ impl Connection {
     /// 针对泰语图片文档场景下泰文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_thai(
         &self,
@@ -2793,8 +2793,8 @@ impl Connection {
     /// 针对全日文图片文档场景下日文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_janpanese(
         &self,
@@ -2809,8 +2809,8 @@ impl Connection {
     /// 针对韩语图片文档场景下韩文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_korean(
         &self,
@@ -2825,8 +2825,8 @@ impl Connection {
     /// 针对拉丁语系的图片文档场景下印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_latin(
         &self,
@@ -2841,8 +2841,8 @@ impl Connection {
     /// 针对图片文档场景下俄文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_russian(
         &self,
@@ -2892,8 +2892,8 @@ impl Connection {
     /// 通过SDK调用此接口的示例请参考[开发者中心](https://next.api.aliyun.com/api-tools/sdk/ocr-api?version=2021-07-07&language=java-tea)
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn recognize_covid_test_report(
         &self,
@@ -2952,8 +2952,8 @@ impl Connection {
     /// ```
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn verify_business_license(
         &self,
@@ -2980,8 +2980,8 @@ impl Connection {
     /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn verify_vat_invoice(
         &self,

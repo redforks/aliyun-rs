@@ -493,11 +493,21 @@ trait ToFormData {
     fn to_form_data(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>>;
 }
 
+/// Content type for response deserialization.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+enum ResponseContentType {
+    #[default]
+    Json,
+    Xml,
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
     const URL_PATH: &'static str = "/";
     const ACTION: &'static str;
+    /// Content type for deserializing the response body. Defaults to JSON.
+    const RESPONSE_CONTENT_TYPE: ResponseContentType = ResponseContentType::Json;
     /// Request body, will serialize to json. Use unit type if no request body.
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
@@ -557,6 +567,20 @@ impl IntoBody for OctetStream {
 
     fn into_body(self) -> Result<Body> {
         Ok(self.0.into())
+    }
+}
+
+/// Body wrapper for XML-serialized data using application/xml content type.
+pub(crate) struct XmlBody<T: serde::Serialize>(pub T);
+
+impl<T: serde::Serialize> IntoBody for XmlBody<T> {
+    fn content_type(&self) -> HeaderValue {
+        HeaderValue::from_static("application/xml")
+    }
+
+    fn into_body(self) -> Result<Body> {
+        let xml = quick_xml::se::to_string(&self.0).context("Failed to serialize body to XML")?;
+        Ok(xml.into())
     }
 }
 

@@ -133,7 +133,7 @@ impl Connection {
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_buckets(
         &self,
@@ -179,13 +179,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -216,7 +216,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -229,7 +229,7 @@ impl Connection {
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn describe_regions(
         &self,
@@ -257,18 +257,13 @@ impl Connection {
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_stat(
         &self,
         req: GetBucketStat,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketStatResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -302,20 +297,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket(
         &self,
         req: PutBucket,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -337,7 +326,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket(
         &self,
@@ -345,9 +334,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -372,18 +359,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_objects(
         &self,
         req: ListObjects,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -403,18 +385,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_objects_v2(
         &self,
         req: ListObjectsV2,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsV2Response>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -432,18 +409,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_info(
         &self,
         req: GetBucketInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInfoResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -461,18 +433,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_location(
         &self,
         req: GetBucketLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLocationResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -490,7 +457,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_access_points(
         &self,
@@ -514,18 +481,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point(
         &self,
         req: GetAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -543,18 +505,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/json`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point_policy(
         &self,
         req: GetAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPolicyResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -572,7 +529,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/json`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_access_point_policy(
         &self,
@@ -581,9 +538,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -604,19 +559,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_access_point_policy(
         &self,
         req: PutAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPolicyResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -635,7 +585,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_access_point(
         &self,
@@ -643,9 +593,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -669,20 +617,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn create_access_point(
         &self,
         req: CreateAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -706,19 +647,14 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn initiate_bucket_worm(
         &self,
         req: InitiateBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -745,7 +681,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn abort_bucket_worm(
         &self,
@@ -753,9 +689,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<AbortBucketWormResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -782,18 +716,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn complete_bucket_worm(
         &self,
         req: CompleteBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<CompleteBucketWormResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -824,19 +754,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn extend_bucket_worm(
         &self,
         req: ExtendBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<ExtendBucketWormResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -861,18 +786,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_worm(
         &self,
         req: GetBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWormResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -896,19 +816,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_acl(
         &self,
         req: PutBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketAclResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -927,18 +842,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_acl(
         &self,
         req: GetBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAclResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -964,20 +874,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_lifecycle(
         &self,
         req: PutBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketLifecycleResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -996,18 +900,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_lifecycle(
         &self,
         req: GetBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLifecycleResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1029,7 +928,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_lifecycle(
         &self,
@@ -1038,9 +937,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1069,7 +966,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_transfer_acceleration(
         &self,
@@ -1077,13 +974,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketTransferAccelerationResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1108,19 +999,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_transfer_acceleration(
         &self,
         req: GetBucketTransferAcceleration,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTransferAccelerationResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1148,20 +1034,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_versioning(
         &self,
         req: PutBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketVersioningResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1180,18 +1060,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_versioning(
         &self,
         req: GetBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketVersioningResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1214,18 +1089,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_object_versions(
         &self,
         req: ListObjectVersions,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectVersionsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1253,19 +1123,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_policy(
         &self,
         req: PutBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketPolicyResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1294,18 +1159,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/json`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_policy(
         &self,
         req: GetBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1333,7 +1193,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_policy(
         &self,
@@ -1341,9 +1201,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketPolicyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1366,19 +1224,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_policy_status(
         &self,
         req: GetBucketPolicyStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyStatusResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1396,20 +1249,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_rtc(
         &self,
         req: PutBucketRtc,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketRtcResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1438,19 +1285,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn put_bucket_replication(
         &self,
         req: PutBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1469,18 +1311,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_replication(
         &self,
         req: GetBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1498,19 +1335,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_replication_location(
         &self,
         req: GetBucketReplicationLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationLocationResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1528,19 +1360,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_replication_progress(
         &self,
         req: GetBucketReplicationProgress,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationProgressResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1564,7 +1391,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn delete_bucket_replication(
         &self,
@@ -1572,12 +1399,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketReplicationResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1622,20 +1444,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_inventory(
         &self,
         req: PutBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketInventoryResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1656,18 +1472,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_inventory(
         &self,
         req: GetBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInventoryResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1689,18 +1500,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_bucket_inventory(
         &self,
         req: ListBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketInventoryResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1721,7 +1527,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_inventory(
         &self,
@@ -1730,9 +1536,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1763,20 +1567,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_logging(
         &self,
         req: PutBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketLoggingResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1795,18 +1593,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_logging(
         &self,
         req: GetBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLoggingResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1827,7 +1620,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_logging(
         &self,
@@ -1835,9 +1628,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketLoggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1868,7 +1659,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_user_defined_log_fields_config(
         &self,
@@ -1876,13 +1667,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutUserDefinedLogFieldsConfigResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -1901,19 +1686,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_user_defined_log_fields_config(
         &self,
         req: GetUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetUserDefinedLogFieldsConfigResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1931,7 +1711,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_user_defined_log_fields_config(
         &self,
@@ -1940,9 +1720,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -1963,18 +1741,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_website(
         &self,
         req: GetBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWebsiteResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2000,20 +1773,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_website(
         &self,
         req: PutBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketWebsiteResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2034,7 +1801,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_website(
         &self,
@@ -2042,9 +1809,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketWebsiteResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2065,20 +1830,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_referer(
         &self,
         req: PutBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketRefererResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2097,18 +1856,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_referer(
         &self,
         req: GetBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRefererResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2132,20 +1886,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_tags(
         &self,
         req: PutBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketTagsResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2164,18 +1912,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_tags(
         &self,
         req: GetBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTagsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2195,7 +1938,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_tags(
         &self,
@@ -2203,9 +1946,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketTagsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2226,7 +1967,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_user_data_redundancy_transition(
         &self,
@@ -2254,19 +1995,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_bucket_data_redundancy_transition(
         &self,
         req: ListBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketDataRedundancyTransitionResponse>>
     + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2287,19 +2023,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_data_redundancy_transition(
         &self,
         req: GetBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketDataRedundancyTransitionResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2323,7 +2054,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn create_bucket_data_redundancy_transition(
         &self,
@@ -2331,12 +2062,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<
         Output = crate::Result<CreateBucketDataRedundancyTransitionResponse>,
     > + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2358,7 +2084,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_data_redundancy_transition(
         &self,
@@ -2368,9 +2094,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2393,20 +2117,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_encryption(
         &self,
         req: PutBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketEncryptionResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2427,18 +2145,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_encryption(
         &self,
         req: GetBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEncryptionResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2458,7 +2171,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_encryption(
         &self,
@@ -2467,9 +2180,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2496,7 +2207,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_request_payment(
         &self,
@@ -2504,13 +2215,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketRequestPaymentResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2529,19 +2234,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_request_payment(
         &self,
         req: GetBucketRequestPayment,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRequestPaymentResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2597,20 +2297,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_cors(
         &self,
         req: PutBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketCorsResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2619,7 +2313,7 @@ Response struct error: 200 response must have schema"##
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///
+    ///  
     ///
     /// # Path
     /// `/?cors`
@@ -2631,18 +2325,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_cors(
         &self,
         req: GetBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketCorsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2663,7 +2352,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_cors(
         &self,
@@ -2671,9 +2360,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteBucketCorsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -2696,7 +2383,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Options
+    /// - OPTIONS
     ///
     pub fn option_object(
         &self,
@@ -2704,10 +2391,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -2729,7 +2414,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_access_monitor(
         &self,
@@ -2737,13 +2422,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketAccessMonitorResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2762,19 +2441,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_access_monitor(
         &self,
         req: GetBucketAccessMonitor,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAccessMonitorResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2792,18 +2466,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_meta_query_status(
         &self,
         req: GetMetaQueryStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetMetaQueryStatusResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2821,18 +2490,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn close_meta_query(
         &self,
         req: CloseMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<CloseMetaQueryResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2851,19 +2516,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn do_meta_query(
         &self,
         req: DoMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<DoMetaQueryResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2881,19 +2540,14 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn open_meta_query(
         &self,
         req: OpenMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<OpenMetaQueryResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2912,7 +2566,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn update_user_anti_d_dos_info(
         &self,
@@ -2939,7 +2593,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn update_bucket_anti_d_dos_info(
         &self,
@@ -2947,12 +2601,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<UpdateBucketAntiDDosInfoResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -2971,7 +2620,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_bucket_anti_d_dos_info(
         &self,
@@ -2996,17 +2645,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn init_user_anti_d_dos_info(
         &self,
         req: InitUserAntiDDosInfo,
     ) -> impl std::future::Future<Output = crate::Result<InitUserAntiDDosInfoResponse>> + Send {
         async {
-            todo!(
-                r##"Only HttpMethod::Get or HttpMethod::Post supported
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3025,7 +2671,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn init_bucket_anti_d_dos_info(
         &self,
@@ -3033,13 +2679,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<InitBucketAntiDDosInfoResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3058,7 +2698,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_user_anti_d_dos_info(
         &self,
@@ -3082,19 +2722,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_resource_group(
         &self,
         req: GetBucketResourceGroup,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketResourceGroupResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3112,7 +2747,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_resource_group(
         &self,
@@ -3120,13 +2755,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketResourceGroupResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3145,19 +2774,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn put_cname(
         &self,
         req: PutCname,
     ) -> impl std::future::Future<Output = crate::Result<PutCnameResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3176,18 +2800,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_cname(
         &self,
         req: ListCname,
     ) -> impl std::future::Future<Output = crate::Result<ListCnameResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3205,19 +2824,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn delete_cname(
         &self,
         req: DeleteCname,
     ) -> impl std::future::Future<Output = crate::Result<DeleteCnameResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3236,18 +2850,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_cname_token(
         &self,
         req: GetCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<GetCnameTokenResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3265,19 +2874,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn create_cname_token(
         &self,
         req: CreateCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<CreateCnameTokenResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3295,20 +2898,14 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_style(
         &self,
         req: PutStyle,
     ) -> impl std::future::Future<Output = crate::Result<PutStyleResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3327,18 +2924,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_style(
         &self,
         req: ListStyle,
     ) -> impl std::future::Future<Output = crate::Result<ListStyleResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3356,18 +2948,13 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_style(
         &self,
         req: GetStyle,
     ) -> impl std::future::Future<Output = crate::Result<GetStyleResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3385,7 +2972,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_style(
         &self,
@@ -3393,9 +2980,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteStyleResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3420,18 +3005,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_https_config(
         &self,
         req: GetBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketHttpsConfigResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3449,20 +3029,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_https_config(
         &self,
         req: PutBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketHttpsConfigResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3485,21 +3059,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn create_access_point_for_object_process(
         &self,
         req: CreateAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointForObjectProcessResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3519,19 +3086,14 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point_for_object_process(
         &self,
         req: GetAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointForObjectProcessResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3551,7 +3113,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_access_points_for_object_process(
         &self,
@@ -3578,7 +3140,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_access_point_for_object_process(
         &self,
@@ -3587,9 +3149,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3612,7 +3172,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point_config_for_object_process(
         &self,
@@ -3620,12 +3180,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointConfigForObjectProcessResponse>,
     > + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3645,7 +3200,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_access_point_config_for_object_process(
         &self,
@@ -3654,13 +3209,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
         Output = crate::Result<PutAccessPointConfigForObjectProcessResponse>,
     > + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3681,7 +3230,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_access_point_policy_for_object_process(
         &self,
@@ -3690,12 +3239,7 @@ Response struct error: 200 response must have schema"##
         Output = crate::Result<PutAccessPointPolicyForObjectProcessResponse>,
     > + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3717,7 +3261,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point_policy_for_object_process(
         &self,
@@ -3727,8 +3271,7 @@ Response struct error: 200 response must have schema"##
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
+                r##"Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
             );
         }
     }
@@ -3750,7 +3293,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_access_point_policy_for_object_process(
         &self,
@@ -3760,9 +3303,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     > + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
+Unsupported consumes content type: Binary. Only application/json and application/xml are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3783,7 +3325,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_public_access_block(
         &self,
@@ -3807,18 +3349,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_public_access_block(
         &self,
         req: PutPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<PutPublicAccessBlockResponse>> + Send {
         async {
-            todo!(
-                r##"Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3837,7 +3375,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_public_access_block(
         &self,
@@ -3846,7 +3384,7 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Only HttpMethod::Get or HttpMethod::Post supported
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3867,19 +3405,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_public_access_block(
         &self,
         req: GetBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPublicAccessBlockResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3897,7 +3430,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_public_access_block(
         &self,
@@ -3905,13 +3438,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketPublicAccessBlockResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -3930,7 +3457,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_public_access_block(
         &self,
@@ -3939,9 +3466,7 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -3962,19 +3487,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_access_point_public_access_block(
         &self,
         req: GetAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPublicAccessBlockResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -3992,7 +3512,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_access_point_public_access_block(
         &self,
@@ -4000,13 +3520,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: API must have 200 response"##
-            );
+            todo!(r##"Response struct error: API must have 200 response"##);
         }
     }
 
@@ -4025,7 +3539,7 @@ Response struct error: API must have 200 response"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_access_point_public_access_block(
         &self,
@@ -4034,9 +3548,7 @@ Response struct error: API must have 200 response"##
     + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4060,19 +3572,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_archive_direct_read(
         &self,
         req: GetBucketArchiveDirectRead,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketArchiveDirectReadResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -4096,7 +3603,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_archive_direct_read(
         &self,
@@ -4104,13 +3611,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketArchiveDirectReadResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -4129,7 +3630,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_overwrite_config(
         &self,
@@ -4137,13 +3638,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketOverwriteConfigResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -4162,19 +3657,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_overwrite_config(
         &self,
         req: GetBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketOverwriteConfigResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -4192,7 +3682,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_overwrite_config(
         &self,
@@ -4201,9 +3691,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4234,7 +3722,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/octet-stream`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_object(
         &self,
@@ -4242,10 +3730,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported consumes content type: Binary. Only application/json and application/xml are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
 Response struct error: 200 response must have schema"##
@@ -4271,7 +3757,7 @@ Response struct error: 200 response must have schema"##
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///
+    ///   
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -4294,7 +3780,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn copy_object(
         &self,
@@ -4302,10 +3788,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CopyObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
@@ -4338,7 +3821,7 @@ Parameter 'x-oss-meta-*': Schema with additional_properties of type String is no
     /// - `application/octet-stream`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_object(
         &self,
@@ -4346,9 +3829,8 @@ Parameter 'x-oss-meta-*': Schema with additional_properties of type String is no
     ) -> impl std::future::Future<Output = crate::Result<GetObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported produces content type: Binary. Only application/json and application/xml are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -4383,7 +3865,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn append_object(
         &self,
@@ -4391,9 +3873,8 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported consumes content type: Binary. Only application/json and application/xml are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
 Response struct error: 200 response must have schema"##
@@ -4416,7 +3897,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn seal_append_object(
         &self,
@@ -4424,9 +3905,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4462,7 +3941,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_object(
         &self,
@@ -4470,10 +3949,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4499,7 +3976,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Head
+    /// - HEAD
     ///
     pub fn head_object(
         &self,
@@ -4507,10 +3984,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4541,7 +4016,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Head
+    /// - HEAD
     ///
     pub fn get_object_meta(
         &self,
@@ -4549,10 +4024,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4609,7 +4082,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn restore_object(
         &self,
@@ -4617,11 +4090,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -4642,7 +4112,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn clean_restored_object(
         &self,
@@ -4650,9 +4120,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<CleanRestoredObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4678,7 +4146,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/octet-stream`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn select_object(
         &self,
@@ -4686,11 +4154,9 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<SelectObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported produces content type: Binary. Only application/json and application/xml are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4714,7 +4180,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn create_select_object_meta(
         &self,
@@ -4723,11 +4189,8 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4753,7 +4216,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn initiate_multipart_upload(
         &self,
@@ -4762,9 +4225,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -4793,7 +4254,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn upload_part(
         &self,
@@ -4801,10 +4262,8 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<UploadPartResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported consumes content type: Binary. Only application/json and application/xml are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4845,7 +4304,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn complete_multipart_upload(
         &self,
@@ -4854,11 +4313,8 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -4902,7 +4358,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn upload_part_copy(
         &self,
@@ -4910,10 +4366,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<UploadPartCopyResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -4941,7 +4394,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn abort_multipart_upload(
         &self,
@@ -4949,10 +4402,8 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<AbortMultipartUploadResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -4976,18 +4427,13 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_multipart_uploads(
         &self,
         req: ListMultipartUploads,
     ) -> impl std::future::Future<Output = crate::Result<ListMultipartUploadsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -5009,7 +4455,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_parts(
         &self,
@@ -5017,9 +4463,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<ListPartsResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5063,7 +4507,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_object_acl(
         &self,
@@ -5071,10 +4515,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5102,7 +4543,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_object_acl(
         &self,
@@ -5110,9 +4551,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectAclResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5146,7 +4585,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_symlink(
         &self,
@@ -5154,10 +4593,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5184,7 +4620,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_symlink(
         &self,
@@ -5192,9 +4628,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5233,7 +4667,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_object_tagging(
         &self,
@@ -5241,12 +4675,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5272,7 +4702,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_object_tagging(
         &self,
@@ -5280,9 +4710,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5308,7 +4736,7 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_object_tagging(
         &self,
@@ -5316,10 +4744,8 @@ Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Bo
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectTaggingResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'key': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5344,7 +4770,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_live_channel(
         &self,
@@ -5352,12 +4778,8 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
     }
@@ -5377,18 +4799,13 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_live_channel(
         &self,
         req: ListLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<ListLiveChannelResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -5409,7 +4826,7 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_live_channel(
         &self,
@@ -5417,10 +4834,8 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     ) -> impl std::future::Future<Output = crate::Result<DeleteLiveChannelResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5446,7 +4861,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_live_channel_status(
         &self,
@@ -5454,10 +4869,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelStatusResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
             );
@@ -5479,7 +4891,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_live_channel_info(
         &self,
@@ -5487,9 +4899,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelInfoResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5512,7 +4922,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_live_channel_history(
         &self,
@@ -5521,9 +4931,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5544,7 +4952,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_live_channel_stat(
         &self,
@@ -5552,9 +4960,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelStatResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5575,7 +4981,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     /// - `application/octet-stream`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_vod_playlist(
         &self,
@@ -5583,9 +4989,8 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<GetVodPlaylistResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+Unsupported produces content type: Binary. Only application/json and application/xml are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported."##
             );
         }
@@ -5608,7 +5013,7 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn post_vod_playlist(
         &self,
@@ -5616,10 +5021,8 @@ Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData
     ) -> impl std::future::Future<Output = crate::Result<PostVodPlaylistResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'channel': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Parameter 'playlist': Unsupported ParameterIn variant: Path. Only Query, FormData, Body, and Header parameters are supported.
 Response struct error: 200 response must have schema"##
@@ -5642,20 +5045,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_channel(
         &self,
         req: PutChannel,
     ) -> impl std::future::Future<Output = crate::Result<PutChannelResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -5674,20 +5071,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_hash(
         &self,
         req: PutBucketHash,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketHashResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -5706,7 +5097,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_bucket_common_header(
         &self,
@@ -5714,13 +5105,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutBucketCommonHeaderResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -5739,7 +5124,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Delete
+    /// - DELETE
     ///
     pub fn delete_bucket_common_header(
         &self,
@@ -5748,9 +5133,7 @@ Response struct error: 200 response must have schema"##
     {
         async {
             todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
+                r##"Only HttpMethod::Get, HttpMethod::Post, or HttpMethod::Put supported
 Response struct error: 200 response must have schema"##
             );
         }
@@ -5771,7 +5154,7 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_process_configuration(
         &self,
@@ -5779,13 +5162,7 @@ Response struct error: 200 response must have schema"##
     ) -> impl std::future::Future<Output = crate::Result<PutProcessConfigurationResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -5804,19 +5181,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn get_bucket_event_notification(
         &self,
         req: GetBucketEventNotification,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEventNotificationResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -5832,21 +5204,14 @@ Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData,
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn put_data_lake_cache_prefetch_job(
         &self,
         req: PutDataLakeCachePrefetchJob,
     ) -> impl std::future::Future<Output = crate::Result<PutDataLakeCachePrefetchJobResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, RepeatList and Simple styles are supported."##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -5862,7 +5227,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Put
+    /// - PUT
     ///
     pub fn start_data_lake_cache_prefetch_job(
         &self,
@@ -5870,12 +5235,7 @@ Parameter 'body': Unsupported ParameterStyle variant: Xml. Only Json, Flat, Repe
     ) -> impl std::future::Future<Output = crate::Result<StartDataLakeCachePrefetchJobResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Only HttpMethod::Get or HttpMethod::Post supported
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Response struct error: 200 response must have schema"##
-            );
+            todo!(r##"Response struct error: 200 response must have schema"##);
         }
     }
 
@@ -5892,19 +5252,14 @@ Response struct error: 200 response must have schema"##
     /// - `application/xml`
     ///
     /// # Methods
-    /// - Get
+    /// - GET
     ///
     pub fn list_data_lake_storage_transfer_job(
         &self,
         req: ListDataLakeStorageTransferJob,
     ) -> impl std::future::Future<Output = crate::Result<ListDataLakeStorageTransferJobResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported.
-Parameter 'bucket': Unsupported ParameterIn variant: Host. Only Query, FormData, Body, and Header parameters are supported."##
-            );
-        }
+        self.call(req)
     }
 }
 
@@ -5959,6 +5314,7 @@ impl crate::Request for ListBuckets {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBuckets";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6034,6 +5390,7 @@ impl crate::Request for DescribeRegions {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DescribeRegions";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6081,6 +5438,7 @@ impl crate::Request for GetBucketStat {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketStat";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6133,6 +5491,9 @@ pub struct PutBucket {
     /// 指定Bucket标签，如 k1=v1&k2=v2。
     #[setters(generate = true, strip_option)]
     x_oss_bucket_tagging: Option<String>,
+    /// 存储创建Bucket信息的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<BucketBody>,
 }
 
 impl sealed::Bound for PutBucket {}
@@ -6143,16 +5504,18 @@ impl PutBucket {
             x_oss_acl: None,
             x_oss_resource_group_id: None,
             x_oss_bucket_tagging: None,
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutBucket {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucket";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<BucketBody>;
 
     type Response = PutBucketResponse;
 
@@ -6187,7 +5550,7 @@ impl crate::Request for PutBucket {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6206,6 +5569,7 @@ impl crate::Request for DeleteBucket {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucket";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6283,6 +5647,7 @@ impl crate::Request for ListObjects {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjects";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6394,6 +5759,7 @@ impl crate::Request for ListObjectsV2 {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjectsV2";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6465,6 +5831,7 @@ impl crate::Request for GetBucketInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6508,6 +5875,7 @@ impl crate::Request for GetBucketLocation {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLocation";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6565,6 +5933,7 @@ impl crate::Request for ListAccessPoints {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListAccessPoints";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6621,6 +5990,7 @@ impl crate::Request for GetAccessPoint {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPoint";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6779,9 +6149,10 @@ impl PutAccessPointPolicy {
 }
 
 impl crate::Request for PutAccessPointPolicy {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPolicy";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
@@ -6834,6 +6205,7 @@ impl crate::Request for DeleteAccessPoint {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteAccessPoint";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6867,22 +6239,27 @@ impl crate::Request for DeleteAccessPoint {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct CreateAccessPoint {}
+pub struct CreateAccessPoint {
+    /// 保存接入点信息的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<PointBody>,
+}
 
 impl sealed::Bound for CreateAccessPoint {}
 
 impl CreateAccessPoint {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for CreateAccessPoint {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "CreateAccessPoint";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PointBody>;
 
     type Response = CreateAccessPointResponse;
 
@@ -6905,27 +6282,22 @@ impl crate::Request for CreateAccessPoint {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct InitiateBucketWorm {}
+pub struct InitiateBucketWorm {
+    /// 请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<InitiateBucketWormBody>,
+}
 
 impl sealed::Bound for InitiateBucketWorm {}
 
 impl InitiateBucketWorm {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for InitiateBucketWorm {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -6933,8 +6305,9 @@ impl crate::Request for InitiateBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "InitiateBucketWorm";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<InitiateBucketWormBody>;
 
     type Response = InitiateBucketWormResponse;
 
@@ -6957,7 +6330,7 @@ impl crate::Request for InitiateBucketWorm {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6976,6 +6349,7 @@ impl crate::Request for AbortBucketWorm {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "AbortBucketWorm";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7033,6 +6407,7 @@ impl crate::Request for CompleteBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CompleteBucketWorm";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -7068,6 +6443,9 @@ pub struct ExtendBucketWorm {
     ///
     /// > 如果指定用于延长Object保留天数对应的合规保留策略ID不存在，则返回404。
     worm_id: String,
+    /// 保存合规保留策略的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<ExtendBucketWormBody>,
 }
 
 impl sealed::Bound for ExtendBucketWorm {}
@@ -7076,16 +6454,8 @@ impl ExtendBucketWorm {
     pub fn new(worm_id: impl Into<String>) -> Self {
         Self {
             worm_id: worm_id.into(),
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for ExtendBucketWorm {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -7093,8 +6463,9 @@ impl crate::Request for ExtendBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ExtendBucketWorm";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<ExtendBucketWormBody>;
 
     type Response = ExtendBucketWormResponse;
 
@@ -7118,7 +6489,7 @@ impl crate::Request for ExtendBucketWorm {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7137,6 +6508,7 @@ impl crate::Request for GetBucketWorm {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketWorm";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7185,13 +6557,23 @@ impl PutBucketAcl {
         }
     }
 }
+impl crate::ToFormData for PutBucketAcl {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for PutBucketAcl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketAcl";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = PutBucketAclResponse;
 
@@ -7215,7 +6597,7 @@ impl crate::Request for PutBucketAcl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7234,6 +6616,7 @@ impl crate::Request for GetBucketAcl {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketAcl";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7271,6 +6654,9 @@ pub struct PutBucketLifecycle {
     /// false：不允许前缀重叠。
     #[setters(generate = true, strip_option)]
     x_oss_allow_same_action_overlap: Option<String>,
+    /// 保存Lifecycle配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<LifecycleBody>,
 }
 
 impl sealed::Bound for PutBucketLifecycle {}
@@ -7279,16 +6665,18 @@ impl PutBucketLifecycle {
     pub fn new() -> Self {
         Self {
             x_oss_allow_same_action_overlap: None,
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutBucketLifecycle {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketLifecycle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<LifecycleBody>;
 
     type Response = PutBucketLifecycleResponse;
 
@@ -7315,7 +6703,7 @@ impl crate::Request for PutBucketLifecycle {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7334,6 +6722,7 @@ impl crate::Request for GetBucketLifecycle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLifecycle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7377,6 +6766,7 @@ impl crate::Request for DeleteBucketLifecycle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketLifecycle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7406,22 +6796,27 @@ impl crate::Request for DeleteBucketLifecycle {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketTransferAcceleration {}
+pub struct PutBucketTransferAcceleration {
+    /// 传输加速配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<AccelerationBody>,
+}
 
 impl sealed::Bound for PutBucketTransferAcceleration {}
 
 impl PutBucketTransferAcceleration {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketTransferAcceleration {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketTransferAcceleration";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<AccelerationBody>;
 
     type Response = PutBucketTransferAccelerationResponse;
 
@@ -7444,7 +6839,7 @@ impl crate::Request for PutBucketTransferAcceleration {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7463,6 +6858,7 @@ impl crate::Request for GetBucketTransferAcceleration {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketTransferAcceleration";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7492,22 +6888,27 @@ impl crate::Request for GetBucketTransferAcceleration {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketVersioning {}
+pub struct PutBucketVersioning {
+    /// 请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<VersioningBody>,
+}
 
 impl sealed::Bound for PutBucketVersioning {}
 
 impl PutBucketVersioning {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketVersioning {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketVersioning";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<VersioningBody>;
 
     type Response = PutBucketVersioningResponse;
 
@@ -7530,7 +6931,7 @@ impl crate::Request for PutBucketVersioning {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7549,6 +6950,7 @@ impl crate::Request for GetBucketVersioning {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketVersioning";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7644,6 +7046,7 @@ impl crate::Request for ListObjectVersions {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjectVersions";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7711,9 +7114,10 @@ impl PutBucketPolicy {
 }
 
 impl crate::Request for PutBucketPolicy {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketPolicy";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
@@ -7800,6 +7204,7 @@ impl crate::Request for DeleteBucketPolicy {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketPolicy";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7843,6 +7248,7 @@ impl crate::Request for GetBucketPolicyStatus {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketPolicyStatus";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7872,22 +7278,27 @@ impl crate::Request for GetBucketPolicyStatus {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketRtc {}
+pub struct PutBucketRtc {
+    /// 保存RTC配置规则的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<RtcBody>,
+}
 
 impl sealed::Bound for PutBucketRtc {}
 
 impl PutBucketRtc {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketRtc {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketRtc";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<RtcBody>;
 
     type Response = PutBucketRtcResponse;
 
@@ -7910,27 +7321,22 @@ impl crate::Request for PutBucketRtc {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketReplication {}
+pub struct PutBucketReplication {
+    /// 指定数据复制配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<PutBucketReplicationBody>,
+}
 
 impl sealed::Bound for PutBucketReplication {}
 
 impl PutBucketReplication {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for PutBucketReplication {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -7938,8 +7344,9 @@ impl crate::Request for PutBucketReplication {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PutBucketReplication";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<PutBucketReplicationBody>;
 
     type Response = PutBucketReplicationResponse;
 
@@ -7962,7 +7369,7 @@ impl crate::Request for PutBucketReplication {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7981,6 +7388,7 @@ impl crate::Request for GetBucketReplication {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplication";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8024,6 +7432,7 @@ impl crate::Request for GetBucketReplicationLocation {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplicationLocation";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8072,6 +7481,7 @@ impl crate::Request for GetBucketReplicationProgress {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplicationProgress";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8102,22 +7512,17 @@ impl crate::Request for GetBucketReplicationProgress {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketReplication {}
+pub struct DeleteBucketReplication {
+    /// 保存需要删除的数据复制规则的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<DeleteBucketReplicationBody>,
+}
 
 impl sealed::Bound for DeleteBucketReplication {}
 
 impl DeleteBucketReplication {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for DeleteBucketReplication {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -8125,8 +7530,9 @@ impl crate::Request for DeleteBucketReplication {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteBucketReplication";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<DeleteBucketReplicationBody>;
 
     type Response = DeleteBucketReplicationResponse;
 
@@ -8149,7 +7555,7 @@ impl crate::Request for DeleteBucketReplication {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8157,6 +7563,9 @@ impl crate::Request for DeleteBucketReplication {
 pub struct PutBucketInventory {
     /// 配置的清单规则Id。
     inventory_id: String,
+    /// 存储清单配置信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<InventoryBody>,
 }
 
 impl sealed::Bound for PutBucketInventory {}
@@ -8165,16 +7574,18 @@ impl PutBucketInventory {
     pub fn new(inventory_id: impl Into<String>) -> Self {
         Self {
             inventory_id: inventory_id.into(),
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutBucketInventory {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketInventory";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<InventoryBody>;
 
     type Response = PutBucketInventoryResponse;
 
@@ -8198,7 +7609,7 @@ impl crate::Request for PutBucketInventory {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8222,6 +7633,7 @@ impl crate::Request for GetBucketInventory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketInventory";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8272,6 +7684,7 @@ impl crate::Request for ListBucketInventory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketInventory";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8324,6 +7737,7 @@ impl crate::Request for DeleteBucketInventory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketInventory";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8354,22 +7768,27 @@ impl crate::Request for DeleteBucketInventory {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketLogging {}
+pub struct PutBucketLogging {
+    /// 存储访问日志状态信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<LoggingBody>,
+}
 
 impl sealed::Bound for PutBucketLogging {}
 
 impl PutBucketLogging {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketLogging {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketLogging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<LoggingBody>;
 
     type Response = PutBucketLoggingResponse;
 
@@ -8392,7 +7811,7 @@ impl crate::Request for PutBucketLogging {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8411,6 +7830,7 @@ impl crate::Request for GetBucketLogging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLogging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8454,6 +7874,7 @@ impl crate::Request for DeleteBucketLogging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketLogging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8483,22 +7904,27 @@ impl crate::Request for DeleteBucketLogging {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutUserDefinedLogFieldsConfig {}
+pub struct PutUserDefinedLogFieldsConfig {
+    /// 接口请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<FieldsConfigBody>,
+}
 
 impl sealed::Bound for PutUserDefinedLogFieldsConfig {}
 
 impl PutUserDefinedLogFieldsConfig {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutUserDefinedLogFieldsConfig {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutUserDefinedLogFieldsConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<FieldsConfigBody>;
 
     type Response = PutUserDefinedLogFieldsConfigResponse;
 
@@ -8521,7 +7947,7 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8540,6 +7966,7 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetUserDefinedLogFieldsConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8583,6 +8010,7 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteUserDefinedLogFieldsConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8626,6 +8054,7 @@ impl crate::Request for GetBucketWebsite {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketWebsite";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8655,22 +8084,27 @@ impl crate::Request for GetBucketWebsite {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketWebsite {}
+pub struct PutBucketWebsite {
+    /// 保存静态网站配置的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<WebsiteBody>,
+}
 
 impl sealed::Bound for PutBucketWebsite {}
 
 impl PutBucketWebsite {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketWebsite {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketWebsite";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<WebsiteBody>;
 
     type Response = PutBucketWebsiteResponse;
 
@@ -8693,7 +8127,7 @@ impl crate::Request for PutBucketWebsite {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8712,6 +8146,7 @@ impl crate::Request for DeleteBucketWebsite {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketWebsite";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8741,22 +8176,27 @@ impl crate::Request for DeleteBucketWebsite {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketReferer {}
+pub struct PutBucketReferer {
+    /// 保存Referer配置内容的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<RefererBody>,
+}
 
 impl sealed::Bound for PutBucketReferer {}
 
 impl PutBucketReferer {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketReferer {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketReferer";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<RefererBody>;
 
     type Response = PutBucketRefererResponse;
 
@@ -8779,7 +8219,7 @@ impl crate::Request for PutBucketReferer {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8798,6 +8238,7 @@ impl crate::Request for GetBucketReferer {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReferer";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8827,22 +8268,27 @@ impl crate::Request for GetBucketReferer {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketTags {}
+pub struct PutBucketTags {
+    /// 设置Bucket TagSet的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<TagsBody>,
+}
 
 impl sealed::Bound for PutBucketTags {}
 
 impl PutBucketTags {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketTags {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketTags";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<TagsBody>;
 
     type Response = PutBucketTagsResponse;
 
@@ -8865,7 +8311,7 @@ impl crate::Request for PutBucketTags {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8884,6 +8330,7 @@ impl crate::Request for GetBucketTags {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketTags";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8927,6 +8374,7 @@ impl crate::Request for DeleteBucketTags {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketTags";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8980,6 +8428,7 @@ impl crate::Request for ListUserDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListUserDataRedundancyTransition";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9031,6 +8480,7 @@ impl crate::Request for ListBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketDataRedundancyTransition";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9079,6 +8529,7 @@ impl crate::Request for GetBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketDataRedundancyTransition";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9140,6 +8591,7 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateBucketDataRedundancyTransition";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -9192,6 +8644,7 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketDataRedundancyTransition";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9225,22 +8678,27 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketEncryption {}
+pub struct PutBucketEncryption {
+    /// 配置服务器端加密规则的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<EncryptionBody>,
+}
 
 impl sealed::Bound for PutBucketEncryption {}
 
 impl PutBucketEncryption {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketEncryption {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketEncryption";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<EncryptionBody>;
 
     type Response = PutBucketEncryptionResponse;
 
@@ -9263,7 +8721,7 @@ impl crate::Request for PutBucketEncryption {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9282,6 +8740,7 @@ impl crate::Request for GetBucketEncryption {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketEncryption";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9325,6 +8784,7 @@ impl crate::Request for DeleteBucketEncryption {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketEncryption";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9354,22 +8814,27 @@ impl crate::Request for DeleteBucketEncryption {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketRequestPayment {}
+pub struct PutBucketRequestPayment {
+    /// 配置请求者付费的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<PaymentBody>,
+}
 
 impl sealed::Bound for PutBucketRequestPayment {}
 
 impl PutBucketRequestPayment {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketRequestPayment {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketRequestPayment";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PaymentBody>;
 
     type Response = PutBucketRequestPaymentResponse;
 
@@ -9392,7 +8857,7 @@ impl crate::Request for PutBucketRequestPayment {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9411,6 +8876,7 @@ impl crate::Request for GetBucketRequestPayment {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketRequestPayment";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9440,22 +8906,27 @@ impl crate::Request for GetBucketRequestPayment {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketCors {}
+pub struct PutBucketCors {
+    /// 设置跨域资源共享规则的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<CorsBody>,
+}
 
 impl sealed::Bound for PutBucketCors {}
 
 impl PutBucketCors {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketCors {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketCors";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<CorsBody>;
 
     type Response = PutBucketCorsResponse;
 
@@ -9478,7 +8949,7 @@ impl crate::Request for PutBucketCors {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9497,6 +8968,7 @@ impl crate::Request for GetBucketCors {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketCors";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9540,6 +9012,7 @@ impl crate::Request for DeleteBucketCors {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketCors";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9603,6 +9076,7 @@ impl crate::Request for OptionObject {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "OptionObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9644,22 +9118,27 @@ impl crate::Request for OptionObject {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketAccessMonitor {}
+pub struct PutBucketAccessMonitor {
+    /// 修改访问跟踪状态配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<MonitorBody>,
+}
 
 impl sealed::Bound for PutBucketAccessMonitor {}
 
 impl PutBucketAccessMonitor {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketAccessMonitor {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketAccessMonitor";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<MonitorBody>;
 
     type Response = PutBucketAccessMonitorResponse;
 
@@ -9682,7 +9161,7 @@ impl crate::Request for PutBucketAccessMonitor {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9701,6 +9180,7 @@ impl crate::Request for GetBucketAccessMonitor {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketAccessMonitor";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9744,6 +9224,7 @@ impl crate::Request for GetMetaQueryStatus {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetMetaQueryStatus";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9796,6 +9277,7 @@ impl crate::Request for CloseMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CloseMetaQuery";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -9831,22 +9313,19 @@ pub struct DoMetaQuery {
     /// - semantic：向量检索
     #[setters(generate = true, strip_option)]
     mode: Option<String>,
+    /// 保存查询条件的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<DoMetaQueryBody>,
 }
 
 impl sealed::Bound for DoMetaQuery {}
 
 impl DoMetaQuery {
     pub fn new() -> Self {
-        Self { mode: None }
-    }
-}
-impl crate::ToFormData for DoMetaQuery {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self {
+            mode: None,
+            body: None,
+        }
     }
 }
 
@@ -9854,8 +9333,9 @@ impl crate::Request for DoMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DoMetaQuery";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<DoMetaQueryBody>;
 
     type Response = DoMetaQueryResponse;
 
@@ -9882,7 +9362,7 @@ impl crate::Request for DoMetaQuery {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9898,6 +9378,9 @@ pub struct OpenMetaQuery {
     /// 指定用于访问 OSS 服务的 RAM 角色名称，支持在控制台为角色授予权限，实现安全访问。
     #[setters(generate = true, strip_option)]
     role: Option<String>,
+    /// 接口请求体参数
+    #[setters(generate = true, strip_option)]
+    body: Option<OpenMetaQueryBody>,
 }
 
 impl sealed::Bound for OpenMetaQuery {}
@@ -9907,16 +9390,8 @@ impl OpenMetaQuery {
         Self {
             mode: None,
             role: None,
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for OpenMetaQuery {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -9924,8 +9399,9 @@ impl crate::Request for OpenMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "OpenMetaQuery";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<OpenMetaQueryBody>;
 
     type Response = OpenMetaQueryResponse;
 
@@ -9956,7 +9432,7 @@ impl crate::Request for OpenMetaQuery {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9995,6 +9471,7 @@ impl crate::Request for UpdateUserAntiDDosInfo {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateUserAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -10043,6 +9520,9 @@ pub struct UpdateBucketAntiDDosInfo {
     ///
     /// - HaltDefending：解除防护状态。该状态下不需要传入待防护的自定义域名。
     x_oss_defender_status: String,
+    /// 保存高防实例配置信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<UpdateBucketAntiDDosInfoBody>,
 }
 
 impl sealed::Bound for UpdateBucketAntiDDosInfo {}
@@ -10055,16 +9535,8 @@ impl UpdateBucketAntiDDosInfo {
         Self {
             x_oss_defender_instance: x_oss_defender_instance.into(),
             x_oss_defender_status: x_oss_defender_status.into(),
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for UpdateBucketAntiDDosInfo {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -10072,8 +9544,9 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateBucketAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<UpdateBucketAntiDDosInfoBody>;
 
     type Response = UpdateBucketAntiDDosInfoResponse;
 
@@ -10104,7 +9577,7 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10139,6 +9612,7 @@ impl crate::Request for ListBucketAntiDDosInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10185,13 +9659,23 @@ impl InitUserAntiDDosInfo {
         Self {}
     }
 }
+impl crate::ToFormData for InitUserAntiDDosInfo {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for InitUserAntiDDosInfo {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "InitUserAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = InitUserAntiDDosInfoResponse;
 
@@ -10214,7 +9698,7 @@ impl crate::Request for InitUserAntiDDosInfo {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10224,6 +9708,9 @@ pub struct InitBucketAntiDDosInfo {
     x_oss_defender_instance: String,
     /// 高防实例类型。取值固定为AntiDDosPremimum。
     x_oss_defender_type: String,
+    /// 保存高防实例配置信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<InitBucketAntiDDosInfoBody>,
 }
 
 impl sealed::Bound for InitBucketAntiDDosInfo {}
@@ -10236,16 +9723,18 @@ impl InitBucketAntiDDosInfo {
         Self {
             x_oss_defender_instance: x_oss_defender_instance.into(),
             x_oss_defender_type: x_oss_defender_type.into(),
+            body: None,
         }
     }
 }
 
 impl crate::Request for InitBucketAntiDDosInfo {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "InitBucketAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<InitBucketAntiDDosInfoBody>;
 
     type Response = InitBucketAntiDDosInfoResponse;
 
@@ -10276,7 +9765,7 @@ impl crate::Request for InitBucketAntiDDosInfo {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10295,6 +9784,7 @@ impl crate::Request for GetUserAntiDDosInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetUserAntiDDosInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10338,6 +9828,7 @@ impl crate::Request for GetBucketResourceGroup {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketResourceGroup";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10367,22 +9858,27 @@ impl crate::Request for GetBucketResourceGroup {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketResourceGroup {}
+pub struct PutBucketResourceGroup {
+    /// 配置资源组ID的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<GroupBody>,
+}
 
 impl sealed::Bound for PutBucketResourceGroup {}
 
 impl PutBucketResourceGroup {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketResourceGroup {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketResourceGroup";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<GroupBody>;
 
     type Response = PutBucketResourceGroupResponse;
 
@@ -10405,27 +9901,22 @@ impl crate::Request for PutBucketResourceGroup {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutCname {}
+pub struct PutCname {
+    /// 保存Cname配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<PutCnameBody>,
+}
 
 impl sealed::Bound for PutCname {}
 
 impl PutCname {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for PutCname {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -10433,8 +9924,9 @@ impl crate::Request for PutCname {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PutCname";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<PutCnameBody>;
 
     type Response = PutCnameResponse;
 
@@ -10457,7 +9949,7 @@ impl crate::Request for PutCname {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10476,6 +9968,7 @@ impl crate::Request for ListCname {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListCname";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10505,22 +9998,17 @@ impl crate::Request for ListCname {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteCname {}
+pub struct DeleteCname {
+    /// 删除Cname配置信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<DeleteCnameBody>,
+}
 
 impl sealed::Bound for DeleteCname {}
 
 impl DeleteCname {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for DeleteCname {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -10528,8 +10016,9 @@ impl crate::Request for DeleteCname {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteCname";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<DeleteCnameBody>;
 
     type Response = DeleteCnameResponse;
 
@@ -10552,7 +10041,7 @@ impl crate::Request for DeleteCname {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10576,6 +10065,7 @@ impl crate::Request for GetCnameToken {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetCnameToken";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10606,22 +10096,17 @@ impl crate::Request for GetCnameToken {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct CreateCnameToken {}
+pub struct CreateCnameToken {
+    /// 创建CnameToken的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<TokenBody>,
+}
 
 impl sealed::Bound for CreateCnameToken {}
 
 impl CreateCnameToken {
     pub fn new() -> Self {
-        Self {}
-    }
-}
-impl crate::ToFormData for CreateCnameToken {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self { body: None }
     }
 }
 
@@ -10629,8 +10114,9 @@ impl crate::Request for CreateCnameToken {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateCnameToken";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<TokenBody>;
 
     type Response = CreateCnameTokenResponse;
 
@@ -10653,7 +10139,7 @@ impl crate::Request for CreateCnameToken {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10666,6 +10152,9 @@ pub struct PutStyle {
     /// 取值：image、document、video。
     #[setters(generate = true, strip_option)]
     category: Option<String>,
+    /// 保存图片样式信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<StyleBody>,
 }
 
 impl sealed::Bound for PutStyle {}
@@ -10675,16 +10164,18 @@ impl PutStyle {
         Self {
             style_name: style_name.into(),
             category: None,
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutStyle {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutStyle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<StyleBody>;
 
     type Response = PutStyleResponse;
 
@@ -10712,7 +10203,7 @@ impl crate::Request for PutStyle {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10731,6 +10222,7 @@ impl crate::Request for ListStyle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListStyle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10779,6 +10271,7 @@ impl crate::Request for GetStyle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetStyle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10828,6 +10321,7 @@ impl crate::Request for DeleteStyle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteStyle";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10872,6 +10366,7 @@ impl crate::Request for GetBucketHttpsConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketHttpsConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10901,22 +10396,27 @@ impl crate::Request for GetBucketHttpsConfig {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketHttpsConfig {}
+pub struct PutBucketHttpsConfig {
+    /// 保存HTTPS配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<HttpsConfigBody>,
+}
 
 impl sealed::Bound for PutBucketHttpsConfig {}
 
 impl PutBucketHttpsConfig {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketHttpsConfig {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketHttpsConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<HttpsConfigBody>;
 
     type Response = PutBucketHttpsConfigResponse;
 
@@ -10939,7 +10439,7 @@ impl crate::Request for PutBucketHttpsConfig {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10950,6 +10450,9 @@ pub struct CreateAccessPointForObjectProcess {
     /// - 只允许包含小写字母、数字、短划线（-），且不能以短划线开头或结尾。
     /// - 名称在当前地域必须唯一。
     x_oss_access_point_for_object_process_name: String,
+    /// 请求体参数。
+    #[setters(generate = true, strip_option)]
+    body: Option<PointForObjectProcessBody>,
 }
 
 impl sealed::Bound for CreateAccessPointForObjectProcess {}
@@ -10959,16 +10462,18 @@ impl CreateAccessPointForObjectProcess {
         Self {
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
+            body: None,
         }
     }
 }
 
 impl crate::Request for CreateAccessPointForObjectProcess {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "CreateAccessPointForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PointForObjectProcessBody>;
 
     type Response = CreateAccessPointForObjectProcessResponse;
 
@@ -10995,7 +10500,7 @@ impl crate::Request for CreateAccessPointForObjectProcess {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11020,6 +10525,7 @@ impl crate::Request for GetAccessPointForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11081,6 +10587,7 @@ impl crate::Request for ListAccessPointsForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListAccessPointsForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11138,6 +10645,7 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteAccessPointForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11191,6 +10699,7 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointConfigForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11231,6 +10740,9 @@ pub struct PutAccessPointConfigForObjectProcess {
     /// - 只允许包含小写字母、数字、短划线（-），且不能以短划线开头或结尾。
     /// - 名称在当前地域必须唯一。
     x_oss_access_point_for_object_process_name: String,
+    /// 请求体参数。
+    #[setters(generate = true, strip_option)]
+    body: Option<ConfigForObjectProcessBody>,
 }
 
 impl sealed::Bound for PutAccessPointConfigForObjectProcess {}
@@ -11240,16 +10752,18 @@ impl PutAccessPointConfigForObjectProcess {
         Self {
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutAccessPointConfigForObjectProcess {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointConfigForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<ConfigForObjectProcessBody>;
 
     type Response = PutAccessPointConfigForObjectProcessResponse;
 
@@ -11276,7 +10790,7 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11302,9 +10816,10 @@ impl PutAccessPointPolicyForObjectProcess {
 }
 
 impl crate::Request for PutAccessPointPolicyForObjectProcess {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPolicyForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
@@ -11358,6 +10873,7 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointPolicyForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11411,6 +10927,7 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteAccessPointPolicyForObjectProcess";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11458,6 +10975,7 @@ impl crate::Request for GetPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11487,22 +11005,27 @@ impl crate::Request for GetPublicAccessBlock {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutPublicAccessBlock {}
+pub struct PutPublicAccessBlock {
+    /// 接口请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<PutPublicAccessBlockBody>,
+}
 
 impl sealed::Bound for PutPublicAccessBlock {}
 
 impl PutPublicAccessBlock {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutPublicAccessBlock {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PutPublicAccessBlockBody>;
 
     type Response = PutPublicAccessBlockResponse;
 
@@ -11525,7 +11048,7 @@ impl crate::Request for PutPublicAccessBlock {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11544,6 +11067,7 @@ impl crate::Request for DeletePublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeletePublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11587,6 +11111,7 @@ impl crate::Request for GetBucketPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11616,22 +11141,27 @@ impl crate::Request for GetBucketPublicAccessBlock {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketPublicAccessBlock {}
+pub struct PutBucketPublicAccessBlock {
+    /// 接口请求体参数。
+    #[setters(generate = true, strip_option)]
+    body: Option<BucketPublicAccessBlockBody>,
+}
 
 impl sealed::Bound for PutBucketPublicAccessBlock {}
 
 impl PutBucketPublicAccessBlock {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketPublicAccessBlock {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<BucketPublicAccessBlockBody>;
 
     type Response = PutBucketPublicAccessBlockResponse;
 
@@ -11654,7 +11184,7 @@ impl crate::Request for PutBucketPublicAccessBlock {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11673,6 +11203,7 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11722,6 +11253,7 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11758,6 +11290,9 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
 pub struct PutAccessPointPublicAccessBlock {
     /// 接入点名称。
     x_oss_access_point_name: String,
+    /// 接口请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<PointPublicAccessBlockBody>,
 }
 
 impl sealed::Bound for PutAccessPointPublicAccessBlock {}
@@ -11766,16 +11301,18 @@ impl PutAccessPointPublicAccessBlock {
     pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
             x_oss_access_point_name: x_oss_access_point_name.into(),
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutAccessPointPublicAccessBlock {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PointPublicAccessBlockBody>;
 
     type Response = PutAccessPointPublicAccessBlockResponse;
 
@@ -11802,7 +11339,7 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11827,6 +11364,7 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteAccessPointPublicAccessBlock";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11874,6 +11412,7 @@ impl crate::Request for GetBucketArchiveDirectRead {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketArchiveDirectRead";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -11903,22 +11442,27 @@ impl crate::Request for GetBucketArchiveDirectRead {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketArchiveDirectRead {}
+pub struct PutBucketArchiveDirectRead {
+    /// 接口请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<ReadBody>,
+}
 
 impl sealed::Bound for PutBucketArchiveDirectRead {}
 
 impl PutBucketArchiveDirectRead {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketArchiveDirectRead {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketArchiveDirectRead";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<ReadBody>;
 
     type Response = PutBucketArchiveDirectReadResponse;
 
@@ -11941,27 +11485,32 @@ impl crate::Request for PutBucketArchiveDirectRead {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketOverwriteConfig {}
+pub struct PutBucketOverwriteConfig {
+    /// 接口请求体结构
+    #[setters(generate = true, strip_option)]
+    body: Option<OverwriteConfigBody>,
+}
 
 impl sealed::Bound for PutBucketOverwriteConfig {}
 
 impl PutBucketOverwriteConfig {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketOverwriteConfig {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketOverwriteConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<OverwriteConfigBody>;
 
     type Response = PutBucketOverwriteConfigResponse;
 
@@ -11984,7 +11533,7 @@ impl crate::Request for PutBucketOverwriteConfig {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12003,6 +11552,7 @@ impl crate::Request for GetBucketOverwriteConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketOverwriteConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12046,6 +11596,7 @@ impl crate::Request for DeleteBucketOverwriteConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketOverwriteConfig";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12144,7 +11695,7 @@ impl PutObject {
 }
 
 impl crate::Request for PutObject {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutObject";
 
@@ -12312,13 +11863,23 @@ impl CopyObject {
         }
     }
 }
+impl crate::ToFormData for CopyObject {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for CopyObject {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "CopyObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = CopyObjectResponse;
 
@@ -12400,7 +11961,7 @@ impl crate::Request for CopyObject {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12659,6 +12220,7 @@ impl crate::Request for AppendObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "AppendObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
@@ -12749,6 +12311,7 @@ impl crate::Request for SealAppendObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SealAppendObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -12870,6 +12433,7 @@ impl crate::Request for HeadObject {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "HeadObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12937,6 +12501,7 @@ impl crate::Request for GetObjectMeta {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetObjectMeta";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12974,22 +12539,19 @@ pub struct RestoreObject {
     /// 请求解冻的Obejct的版本号。
     #[setters(generate = true, strip_option)]
     version_id: Option<String>,
+    /// 保存解冻请求信息的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<RestoreObjectBody>,
 }
 
 impl sealed::Bound for RestoreObject {}
 
 impl RestoreObject {
     pub fn new() -> Self {
-        Self { version_id: None }
-    }
-}
-impl crate::ToFormData for RestoreObject {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
+        Self {
+            version_id: None,
+            body: None,
+        }
     }
 }
 
@@ -12997,8 +12559,9 @@ impl crate::Request for RestoreObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "RestoreObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<RestoreObjectBody>;
 
     type Response = RestoreObjectResponse;
 
@@ -13025,7 +12588,7 @@ impl crate::Request for RestoreObject {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13053,6 +12616,7 @@ impl crate::Request for CleanRestoredObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CleanRestoredObject";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -13085,6 +12649,9 @@ impl crate::Request for CleanRestoredObject {
 pub struct SelectObject {
     /// 如果是csv文件，该值需要设置为csv/select；如果是json文件，则需要设置为json/select。
     x_oss_process: String,
+    /// 保存SelectObject请求的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<SelectObjectBody>,
 }
 
 impl sealed::Bound for SelectObject {}
@@ -13093,16 +12660,8 @@ impl SelectObject {
     pub fn new(x_oss_process: impl Into<String>) -> Self {
         Self {
             x_oss_process: x_oss_process.into(),
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for SelectObject {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -13111,7 +12670,7 @@ impl crate::Request for SelectObject {
 
     const ACTION: &'static str = "SelectObject";
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<SelectObjectBody>;
 
     type Response = SelectObjectResponse;
 
@@ -13135,7 +12694,7 @@ impl crate::Request for SelectObject {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13143,6 +12702,9 @@ impl crate::Request for SelectObject {
 pub struct CreateSelectObjectMeta {
     /// 如果是csv文件，该值需要设置为csv/meta；如果是json文件，则需要设置为json/meta。
     x_oss_process: String,
+    /// 保存CreateSelectObjectMeta请求的容器。
+    #[setters(generate = true, strip_option)]
+    body: Option<MetaBody>,
 }
 
 impl sealed::Bound for CreateSelectObjectMeta {}
@@ -13151,16 +12713,8 @@ impl CreateSelectObjectMeta {
     pub fn new(x_oss_process: impl Into<String>) -> Self {
         Self {
             x_oss_process: x_oss_process.into(),
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for CreateSelectObjectMeta {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -13168,8 +12722,9 @@ impl crate::Request for CreateSelectObjectMeta {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateSelectObjectMeta";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<MetaBody>;
 
     type Response = CreateSelectObjectMetaResponse;
 
@@ -13193,7 +12748,7 @@ impl crate::Request for CreateSelectObjectMeta {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13295,6 +12850,7 @@ impl crate::Request for InitiateMultipartUpload {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "InitiateMultipartUpload";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -13396,9 +12952,10 @@ impl UploadPart {
 }
 
 impl crate::Request for UploadPart {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "UploadPart";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
@@ -13460,6 +13017,9 @@ pub struct CompleteMultipartUpload {
     /// - 如果指定了x-oss-complete-all:yes，response的格式保持不变。
     #[setters(generate = true, strip_option)]
     x_oss_complete_all: Option<String>,
+    /// 保存CompleteMultipartUpload请求内容的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<UploadBody>,
 }
 
 impl sealed::Bound for CompleteMultipartUpload {}
@@ -13471,16 +13031,8 @@ impl CompleteMultipartUpload {
             encoding_type: None,
             x_oss_forbid_overwrite: None,
             x_oss_complete_all: None,
+            body: None,
         }
-    }
-}
-impl crate::ToFormData for CompleteMultipartUpload {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        params
     }
 }
 
@@ -13488,8 +13040,9 @@ impl crate::Request for CompleteMultipartUpload {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CompleteMultipartUpload";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::XmlBody<UploadBody>;
 
     type Response = CompleteMultipartUploadResponse;
 
@@ -13525,7 +13078,7 @@ impl crate::Request for CompleteMultipartUpload {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13588,13 +13141,23 @@ impl UploadPartCopy {
         }
     }
 }
+impl crate::ToFormData for UploadPartCopy {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for UploadPartCopy {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "UploadPartCopy";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = UploadPartCopyResponse;
 
@@ -13646,7 +13209,7 @@ impl crate::Request for UploadPartCopy {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13670,6 +13233,7 @@ impl crate::Request for AbortMultipartUpload {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "AbortMultipartUpload";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13752,6 +13316,7 @@ impl crate::Request for ListMultipartUploads {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListMultipartUploads";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13845,6 +13410,7 @@ impl crate::Request for ListParts {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListParts";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13913,13 +13479,23 @@ impl PutObjectAcl {
         }
     }
 }
+impl crate::ToFormData for PutObjectAcl {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for PutObjectAcl {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutObjectAcl";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = PutObjectAclResponse;
 
@@ -13947,7 +13523,7 @@ impl crate::Request for PutObjectAcl {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13970,6 +13546,7 @@ impl crate::Request for GetObjectAcl {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetObjectAcl";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14055,13 +13632,23 @@ impl PutSymlink {
         }
     }
 }
+impl crate::ToFormData for PutSymlink {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for PutSymlink {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutSymlink";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = PutSymlinkResponse;
 
@@ -14100,7 +13687,7 @@ impl crate::Request for PutSymlink {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14123,6 +13710,7 @@ impl crate::Request for GetSymlink {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetSymlink";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14160,22 +13748,29 @@ pub struct PutObjectTagging {
     /// 版本对应的ID。
     #[setters(generate = true, strip_option)]
     version_id: Option<String>,
+    /// 保存标签集合的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<TaggingBody>,
 }
 
 impl sealed::Bound for PutObjectTagging {}
 
 impl PutObjectTagging {
     pub fn new() -> Self {
-        Self { version_id: None }
+        Self {
+            version_id: None,
+            body: None,
+        }
     }
 }
 
 impl crate::Request for PutObjectTagging {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutObjectTagging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<TaggingBody>;
 
     type Response = PutObjectTaggingResponse;
 
@@ -14202,7 +13797,7 @@ impl crate::Request for PutObjectTagging {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14225,6 +13820,7 @@ impl crate::Request for GetObjectTagging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetObjectTagging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14276,6 +13872,7 @@ impl crate::Request for DeleteObjectTagging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteObjectTagging";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14309,22 +13906,27 @@ impl crate::Request for DeleteObjectTagging {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutLiveChannel {}
+pub struct PutLiveChannel {
+    /// 保存LiveChannel配置的请求体。
+    #[setters(generate = true, strip_option)]
+    body: Option<LiveChannelBody>,
+}
 
 impl sealed::Bound for PutLiveChannel {}
 
 impl PutLiveChannel {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutLiveChannel {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutLiveChannel";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<LiveChannelBody>;
 
     type Response = PutLiveChannelResponse;
 
@@ -14347,7 +13949,7 @@ impl crate::Request for PutLiveChannel {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14381,6 +13983,7 @@ impl crate::Request for ListLiveChannel {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListLiveChannel";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14436,6 +14039,7 @@ impl crate::Request for DeleteLiveChannel {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteLiveChannel";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14482,13 +14086,23 @@ impl PutLiveChannelStatus {
         }
     }
 }
+impl crate::ToFormData for PutLiveChannelStatus {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for PutLiveChannelStatus {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutLiveChannelStatus";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = PutLiveChannelStatusResponse;
 
@@ -14512,7 +14126,7 @@ impl crate::Request for PutLiveChannelStatus {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14531,6 +14145,7 @@ impl crate::Request for GetLiveChannelInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelInfo";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14574,6 +14189,7 @@ impl crate::Request for GetLiveChannelHistory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelHistory";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14617,6 +14233,7 @@ impl crate::Request for GetLiveChannelStat {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelStat";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14733,6 +14350,7 @@ impl crate::Request for PostVodPlaylist {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PostVodPlaylist";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -14764,22 +14382,27 @@ impl crate::Request for PostVodPlaylist {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutChannel {}
+pub struct PutChannel {
+    /// 接口请求体
+    #[setters(generate = true, strip_option)]
+    body: Option<PutChannelBody>,
+}
 
 impl sealed::Bound for PutChannel {}
 
 impl PutChannel {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutChannel {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutChannel";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<PutChannelBody>;
 
     type Response = PutChannelResponse;
 
@@ -14802,27 +14425,32 @@ impl crate::Request for PutChannel {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketHash {}
+pub struct PutBucketHash {
+    /// 接口请求体
+    #[setters(generate = true, strip_option)]
+    body: Option<HashBody>,
+}
 
 impl sealed::Bound for PutBucketHash {}
 
 impl PutBucketHash {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketHash {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketHash";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<HashBody>;
 
     type Response = PutBucketHashResponse;
 
@@ -14845,27 +14473,32 @@ impl crate::Request for PutBucketHash {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutBucketCommonHeader {}
+pub struct PutBucketCommonHeader {
+    /// 接口请求体
+    #[setters(generate = true, strip_option)]
+    body: Option<HeaderBody>,
+}
 
 impl sealed::Bound for PutBucketCommonHeader {}
 
 impl PutBucketCommonHeader {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutBucketCommonHeader {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketCommonHeader";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<HeaderBody>;
 
     type Response = PutBucketCommonHeaderResponse;
 
@@ -14888,7 +14521,7 @@ impl crate::Request for PutBucketCommonHeader {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14907,6 +14540,7 @@ impl crate::Request for DeleteBucketCommonHeader {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DeleteBucketCommonHeader";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -14936,22 +14570,27 @@ impl crate::Request for DeleteBucketCommonHeader {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct PutProcessConfiguration {}
+pub struct PutProcessConfiguration {
+    /// 请求结构体
+    #[setters(generate = true, strip_option)]
+    body: Option<ConfigurationBody>,
+}
 
 impl sealed::Bound for PutProcessConfiguration {}
 
 impl PutProcessConfiguration {
     pub fn new() -> Self {
-        Self {}
+        Self { body: None }
     }
 }
 
 impl crate::Request for PutProcessConfiguration {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutProcessConfiguration";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<ConfigurationBody>;
 
     type Response = PutProcessConfigurationResponse;
 
@@ -14974,7 +14613,7 @@ impl crate::Request for PutProcessConfiguration {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14993,6 +14632,7 @@ impl crate::Request for GetBucketEventNotification {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketEventNotification";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -15025,6 +14665,8 @@ impl crate::Request for GetBucketEventNotification {
 pub struct PutDataLakeCachePrefetchJob {
     #[setters(generate = true, strip_option)]
     x_oss_datalake_job_id: Option<String>,
+    #[setters(generate = true, strip_option)]
+    body: Option<JobBody>,
 }
 
 impl sealed::Bound for PutDataLakeCachePrefetchJob {}
@@ -15033,16 +14675,18 @@ impl PutDataLakeCachePrefetchJob {
     pub fn new() -> Self {
         Self {
             x_oss_datalake_job_id: None,
+            body: None,
         }
     }
 }
 
 impl crate::Request for PutDataLakeCachePrefetchJob {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutDataLakeCachePrefetchJob";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::XmlBody<JobBody>;
 
     type Response = PutDataLakeCachePrefetchJobResponse;
 
@@ -15069,7 +14713,7 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::XmlBody(self.body.unwrap_or_default()))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -15087,13 +14731,23 @@ impl StartDataLakeCachePrefetchJob {
         }
     }
 }
+impl crate::ToFormData for StartDataLakeCachePrefetchJob {
+    fn to_form_data(
+        &self,
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+        let mut params = std::collections::BTreeMap::new();
+
+        params
+    }
+}
 
 impl crate::Request for StartDataLakeCachePrefetchJob {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "StartDataLakeCachePrefetchJob";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::Form<Self>;
 
     type Response = StartDataLakeCachePrefetchJobResponse;
 
@@ -15120,7 +14774,7 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(())
+        Ok(crate::Form(self))
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -15139,6 +14793,7 @@ impl crate::Request for ListDataLakeStorageTransferJob {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListDataLakeStorageTransferJob";
+    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -15164,6 +14819,30 @@ impl crate::Request for ListDataLakeStorageTransferJob {
 
     fn to_body(self) -> crate::Result<Self::Body> {
         Ok(())
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct AccelerationBody {
+    #[serde(rename = "TransferAccelerationConfiguration")]
+    pub transfer_acceleration_configuration: TransferAccelerationConfiguration,
+}
+
+impl crate::FlatSerialize for AccelerationBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.transfer_acceleration_configuration,
+            &format!("{}.TransferAccelerationConfiguration", name),
+            params,
+        );
     }
 }
 
@@ -15354,6 +15033,26 @@ impl crate::FlatSerialize for ArchiveDirectReadConfiguration {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct BodyReplicationConfiguration {
+    #[serde(rename = "Rule")]
+    pub rule: ReplicationRule,
+}
+
+impl crate::FlatSerialize for BodyReplicationConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Bucket {
     #[serde(rename = "CreationDate")]
     pub creation_date: String,
@@ -15489,6 +15188,46 @@ impl crate::FlatSerialize for BucketAntiDDosInfoResponseAntiDdosListConfiguratio
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct BucketAntiDdosConfiguration {
+    #[serde(rename = "Cnames")]
+    pub cnames: BucketAntiDdosConfigurationCnames,
+}
+
+impl crate::FlatSerialize for BucketAntiDdosConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.cnames, &format!("{}.Cnames", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketAntiDdosConfigurationCnames {
+    #[serde(rename = "Domain")]
+    pub domain: Vec<String>,
+}
+
+impl crate::FlatSerialize for BucketAntiDdosConfigurationCnames {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BucketAntiDdosInfo {
     #[serde(rename = "ActiveTime")]
     pub active_time: i64,
@@ -15555,6 +15294,169 @@ impl crate::FlatSerialize for BucketAntiDdosInfoCnames {
             crate::QueryValue<'a>,
         >,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketBody {
+    #[serde(rename = "CreateBucketConfiguration")]
+    pub create_bucket_configuration: CreateBucketConfiguration,
+}
+
+impl crate::FlatSerialize for BucketBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.create_bucket_configuration,
+            &format!("{}.CreateBucketConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketChannelConfig {
+    #[serde(rename = "DebugInfo")]
+    pub debug_info: String,
+    #[serde(rename = "RuleList")]
+    pub rule_list: BucketChannelConfigRuleList,
+    #[serde(rename = "version")]
+    pub version: i32,
+}
+
+impl crate::FlatSerialize for BucketChannelConfig {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.debug_info,
+            &format!("{}.DebugInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.rule_list,
+            &format!("{}.RuleList", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.version, &format!("{}.version", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketChannelConfigRuleList {
+    #[serde(rename = "Rule")]
+    pub rule: Vec<BucketChannelConfigRuleListRuleItem>,
+}
+
+impl crate::FlatSerialize for BucketChannelConfigRuleList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketChannelConfigRuleListRuleItem {
+    #[serde(rename = "FrontContent")]
+    pub front_content: String,
+    #[serde(rename = "RuleName")]
+    pub rule_name: String,
+    #[serde(rename = "RuleRegex")]
+    pub rule_regex: String,
+}
+
+impl crate::FlatSerialize for BucketChannelConfigRuleListRuleItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.front_content,
+            &format!("{}.FrontContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.rule_name,
+            &format!("{}.RuleName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.rule_regex,
+            &format!("{}.RuleRegex", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketCnameConfiguration {
+    #[serde(rename = "Cname")]
+    pub cname: BucketCnameConfigurationCname,
+}
+
+impl crate::FlatSerialize for BucketCnameConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketCnameConfigurationCname {
+    #[serde(rename = "CertificateConfiguration")]
+    pub certificate_configuration: CertificateConfiguration,
+    #[serde(rename = "Domain")]
+    pub domain: String,
+}
+
+impl crate::FlatSerialize for BucketCnameConfigurationCname {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.certificate_configuration,
+            &format!("{}.CertificateConfiguration", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
     }
 }
@@ -15884,6 +15786,113 @@ impl crate::FlatSerialize for BucketLoggingStatus {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct BucketProcessConfiguration {
+    #[serde(rename = "BucketChannelConfig")]
+    pub bucket_channel_config: BucketChannelConfig,
+    #[serde(rename = "CompliedHost")]
+    pub complied_host: String,
+    #[serde(rename = "OssDomainSupportAtProcess")]
+    pub oss_domain_support_at_process: String,
+    #[serde(rename = "SourceFileProtect")]
+    pub source_file_protect: String,
+    #[serde(rename = "SourceFileProtectSuffix")]
+    pub source_file_protect_suffix: String,
+    #[serde(rename = "StyleDelimiters")]
+    pub style_delimiters: String,
+}
+
+impl crate::FlatSerialize for BucketProcessConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_channel_config,
+            &format!("{}.BucketChannelConfig", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.complied_host,
+            &format!("{}.CompliedHost", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.oss_domain_support_at_process,
+            &format!("{}.OssDomainSupportAtProcess", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.source_file_protect,
+            &format!("{}.SourceFileProtect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.source_file_protect_suffix,
+            &format!("{}.SourceFileProtectSuffix", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.style_delimiters,
+            &format!("{}.StyleDelimiters", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketPublicAccessBlockBody {
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+}
+
+impl crate::FlatSerialize for BucketPublicAccessBlockBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.public_access_block_configuration,
+            &format!("{}.PublicAccessBlockConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BucketResourceGroupConfiguration {
+    #[serde(rename = "ResourceGroupId")]
+    pub resource_group_id: String,
+}
+
+impl crate::FlatSerialize for BucketResourceGroupConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_group_id,
+            &format!("{}.ResourceGroupId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct BucketStat {
     #[serde(rename = "ArchiveMultipartPartCount")]
     pub archive_multipart_part_count: i64,
@@ -16167,6 +16176,126 @@ impl crate::FlatSerialize for BucketsResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct CertificateConfiguration {
+    #[serde(rename = "CertId")]
+    pub cert_id: String,
+    #[serde(rename = "Certificate")]
+    pub certificate: String,
+    #[serde(rename = "DeleteCertificate")]
+    pub delete_certificate: bool,
+    #[serde(rename = "Force")]
+    pub force: bool,
+    #[serde(rename = "PreviousCertId")]
+    pub previous_cert_id: String,
+    #[serde(rename = "PrivateKey")]
+    pub private_key: String,
+}
+
+impl crate::FlatSerialize for CertificateConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.cert_id, &format!("{}.CertId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.certificate,
+            &format!("{}.Certificate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.delete_certificate,
+            &format!("{}.DeleteCertificate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.force, &format!("{}.Force", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.previous_cert_id,
+            &format!("{}.PreviousCertId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.private_key,
+            &format!("{}.PrivateKey", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct Channel {
+    #[serde(rename = "AutoSetContentType")]
+    pub auto_set_content_type: bool,
+    #[serde(rename = "Default404Pic")]
+    pub default404_pic: String,
+    #[serde(rename = "OrigPicForbidden")]
+    pub orig_pic_forbidden: bool,
+    #[serde(rename = "SetAttachName")]
+    pub set_attach_name: bool,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "StyleDelimiters")]
+    pub style_delimiters: String,
+    #[serde(rename = "UseSrcFormat")]
+    pub use_src_format: bool,
+    #[serde(rename = "UseStyleOnly")]
+    pub use_style_only: bool,
+}
+
+impl crate::FlatSerialize for Channel {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.auto_set_content_type,
+            &format!("{}.AutoSetContentType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.default404_pic,
+            &format!("{}.Default404Pic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.orig_pic_forbidden,
+            &format!("{}.OrigPicForbidden", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.set_attach_name,
+            &format!("{}.SetAttachName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.style_delimiters,
+            &format!("{}.StyleDelimiters", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.use_src_format,
+            &format!("{}.UseSrcFormat", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.use_style_only,
+            &format!("{}.UseStyleOnly", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ChannelConfiguration {
     #[serde(rename = "Description")]
     pub description: String,
@@ -16256,6 +16385,46 @@ impl crate::FlatSerialize for ChannelStat {
         );
         crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
         crate::FlatSerialize::flat_serialize(&self.video, &format!("{}.Video", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CnameBodyBucketCnameConfiguration {
+    #[serde(rename = "Cname")]
+    pub cname: CnameBodyBucketCnameConfigurationCname,
+}
+
+impl crate::FlatSerialize for CnameBodyBucketCnameConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CnameBodyBucketCnameConfigurationCname {
+    #[serde(rename = "Domain")]
+    pub domain: String,
+}
+
+impl crate::FlatSerialize for CnameBodyBucketCnameConfigurationCname {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
     }
 }
 
@@ -16411,6 +16580,49 @@ impl crate::FlatSerialize for CnameToken {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct CommonHeaders {
+    #[serde(rename = "Header")]
+    pub header: Vec<CommonHeadersHeaderItem>,
+}
+
+impl crate::FlatSerialize for CommonHeaders {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.Header", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CommonHeadersHeaderItem {
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+impl crate::FlatSerialize for CommonHeadersHeaderItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
+        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CommonPrefix {
     #[serde(rename = "Prefix")]
     pub prefix: String,
@@ -16426,6 +16638,53 @@ impl crate::FlatSerialize for CommonPrefix {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CompleteMultipartUpload {
+    #[serde(rename = "Part")]
+    pub part: Vec<CompleteMultipartUploadPartItem>,
+}
+
+impl crate::FlatSerialize for CompleteMultipartUpload {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.part, &format!("{}.Part", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CompleteMultipartUploadPartItem {
+    #[serde(rename = "ETag")]
+    pub e_tag: String,
+    #[serde(rename = "PartNumber")]
+    pub part_number: i64,
+}
+
+impl crate::FlatSerialize for CompleteMultipartUploadPartItem {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.part_number,
+            &format!("{}.PartNumber", name),
+            params,
+        );
     }
 }
 
@@ -16467,6 +16726,69 @@ impl crate::FlatSerialize for CompleteMultipartUploadResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct ConfigForObjectProcessBody {
+    #[serde(rename = "PutAccessPointConfigForObjectProcessConfiguration")]
+    pub put_access_point_config_for_object_process_configuration:
+        ConfigForObjectProcessConfiguration,
+}
+
+impl crate::FlatSerialize for ConfigForObjectProcessBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.put_access_point_config_for_object_process_configuration,
+            &format!("{}.PutAccessPointConfigForObjectProcessConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ConfigForObjectProcessConfiguration {
+    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    pub allow_anonymous_access_for_object_process: String,
+    #[serde(rename = "ObjectProcessConfiguration")]
+    pub object_process_configuration: ObjectProcessConfiguration,
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+}
+
+impl crate::FlatSerialize for ConfigForObjectProcessConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.allow_anonymous_access_for_object_process,
+            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.object_process_configuration,
+            &format!("{}.ObjectProcessConfiguration", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.public_access_block_configuration,
+            &format!("{}.PublicAccessBlockConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ConfigForObjectProcessResult {
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
     pub allow_anonymous_access_for_object_process: String,
@@ -16498,6 +16820,30 @@ impl crate::FlatSerialize for ConfigForObjectProcessResult {
         crate::FlatSerialize::flat_serialize(
             &self.public_access_block_configuration,
             &format!("{}.PublicAccessBlockConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ConfigurationBody {
+    #[serde(rename = "BucketProcessConfiguration")]
+    pub bucket_process_configuration: BucketProcessConfiguration,
+}
+
+impl crate::FlatSerialize for ConfigurationBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_process_configuration,
+            &format!("{}.BucketProcessConfiguration", name),
             params,
         );
     }
@@ -16563,6 +16909,61 @@ impl crate::FlatSerialize for CopyPartResult {
         crate::FlatSerialize::flat_serialize(
             &self.last_modified,
             &format!("{}.LastModified", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CorsBody {
+    #[serde(rename = "CORSConfiguration")]
+    pub cors_configuration: CorsConfiguration,
+}
+
+impl crate::FlatSerialize for CorsBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.cors_configuration,
+            &format!("{}.CORSConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CorsConfiguration {
+    #[serde(rename = "CORSRule")]
+    pub cors_rule: Vec<CorsRule>,
+    #[serde(rename = "ResponseVary")]
+    pub response_vary: bool,
+}
+
+impl crate::FlatSerialize for CorsConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.cors_rule,
+            &format!("{}.CORSRule", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.response_vary,
+            &format!("{}.ResponseVary", name),
             params,
         );
     }
@@ -16653,6 +17054,44 @@ impl crate::FlatSerialize for CorsRule {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct CreateAccessPointConfiguration {
+    #[serde(rename = "AccessPointName")]
+    pub access_point_name: String,
+    #[serde(rename = "NetworkOrigin")]
+    pub network_origin: String,
+    #[serde(rename = "VpcConfiguration")]
+    pub vpc_configuration: AccessPointVpcConfiguration,
+}
+
+impl crate::FlatSerialize for CreateAccessPointConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_point_name,
+            &format!("{}.AccessPointName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.network_origin,
+            &format!("{}.NetworkOrigin", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.vpc_configuration,
+            &format!("{}.VpcConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateAccessPointForObjectProcessResult {
     #[serde(rename = "AccessPointForObjectProcessAlias")]
     pub access_point_for_object_process_alias: String,
@@ -16711,6 +17150,63 @@ impl crate::FlatSerialize for CreateAccessPointResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct CreateBucketConfiguration {
+    #[serde(rename = "DataRedundancyType")]
+    pub data_redundancy_type: DataRedundancyType,
+    #[serde(rename = "StorageClass")]
+    pub storage_class: StorageClass,
+}
+
+impl crate::FlatSerialize for CreateBucketConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.data_redundancy_type,
+            &format!("{}.DataRedundancyType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.storage_class,
+            &format!("{}.StorageClass", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CreateDataLakeCachePrefetchJob {
+    #[serde(rename = "Excludes")]
+    pub excludes: Vec<String>,
+    #[serde(rename = "Includes")]
+    pub includes: Vec<String>,
+    #[serde(rename = "Tag")]
+    pub tag: String,
+}
+
+impl crate::FlatSerialize for CreateDataLakeCachePrefetchJob {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.excludes, &format!("{}.Excludes", name), params);
+        crate::FlatSerialize::flat_serialize(&self.includes, &format!("{}.Includes", name), params);
+        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct CreateLiveChannelResult {
     #[serde(rename = "PlayUrls")]
     pub play_urls: LiveChannelPlayUrls,
@@ -16735,6 +17231,99 @@ impl crate::FlatSerialize for CreateLiveChannelResult {
         crate::FlatSerialize::flat_serialize(
             &self.publish_urls,
             &format!("{}.PublishUrls", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CsvInput {
+    #[serde(rename = "AllowQuotedRecordDelimiter")]
+    pub allow_quoted_record_delimiter: bool,
+    #[serde(rename = "CommentCharacter")]
+    pub comment_character: String,
+    #[serde(rename = "FieldDelimiter")]
+    pub field_delimiter: String,
+    #[serde(rename = "FileHeaderInfo")]
+    pub file_header_info: FileHeaderInfo,
+    #[serde(rename = "QuoteCharacter")]
+    pub quote_character: String,
+    #[serde(rename = "Range")]
+    pub range: String,
+    #[serde(rename = "RecordDelimiter")]
+    pub record_delimiter: String,
+}
+
+impl crate::FlatSerialize for CsvInput {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.allow_quoted_record_delimiter,
+            &format!("{}.AllowQuotedRecordDelimiter", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.comment_character,
+            &format!("{}.CommentCharacter", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.field_delimiter,
+            &format!("{}.FieldDelimiter", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.file_header_info,
+            &format!("{}.FileHeaderInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.quote_character,
+            &format!("{}.QuoteCharacter", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.range, &format!("{}.Range", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.record_delimiter,
+            &format!("{}.RecordDelimiter", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CsvOutput {
+    #[serde(rename = "FieldDelimiter")]
+    pub field_delimiter: String,
+    #[serde(rename = "RecordDelimiter")]
+    pub record_delimiter: String,
+}
+
+impl crate::FlatSerialize for CsvOutput {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.field_delimiter,
+            &format!("{}.FieldDelimiter", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.record_delimiter,
+            &format!("{}.RecordDelimiter", name),
             params,
         );
     }
@@ -16955,6 +17544,54 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobs {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct DeleteBucketReplicationBody {
+    #[serde(rename = "ReplicationRules")]
+    pub replication_rules: ReplicationRules,
+}
+
+impl crate::FlatSerialize for DeleteBucketReplicationBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.replication_rules,
+            &format!("{}.ReplicationRules", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct DeleteCnameBody {
+    #[serde(rename = "BucketCnameConfiguration")]
+    pub bucket_cname_configuration: CnameBodyBucketCnameConfiguration,
+}
+
+impl crate::FlatSerialize for DeleteCnameBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_cname_configuration,
+            &format!("{}.BucketCnameConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct DeleteMarkerEntry {
     #[serde(rename = "IsLatest")]
     pub is_latest: bool,
@@ -16992,6 +17629,54 @@ impl crate::FlatSerialize for DeleteMarkerEntry {
         crate::FlatSerialize::flat_serialize(
             &self.version_id,
             &format!("{}.VersionId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct DoMetaQueryBody {
+    #[serde(rename = "MetaQuery")]
+    pub meta_query: MetaQuery,
+}
+
+impl crate::FlatSerialize for DoMetaQueryBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.meta_query,
+            &format!("{}.MetaQuery", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct EncryptionBody {
+    #[serde(rename = "ServerSideEncryptionRule")]
+    pub server_side_encryption_rule: ServerSideEncryptionRule,
+}
+
+impl crate::FlatSerialize for EncryptionBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.server_side_encryption_rule,
+            &format!("{}.ServerSideEncryptionRule", name),
             params,
         );
     }
@@ -17067,6 +17752,78 @@ impl crate::FlatSerialize for EventNotificationConfiguration {
         crate::FlatSerialize::flat_serialize(
             &self.function_compute_configuration,
             &format!("{}.FunctionComputeConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ExtendBucketWormBody {
+    #[serde(rename = "ExtendWormConfiguration")]
+    pub extend_worm_configuration: ExtendWormConfiguration,
+}
+
+impl crate::FlatSerialize for ExtendBucketWormBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.extend_worm_configuration,
+            &format!("{}.ExtendWormConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ExtendWormConfiguration {
+    #[serde(rename = "RetentionPeriodInDays")]
+    pub retention_period_in_days: i32,
+}
+
+impl crate::FlatSerialize for ExtendWormConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.retention_period_in_days,
+            &format!("{}.RetentionPeriodInDays", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct FieldsConfigBody {
+    #[serde(rename = "UserDefinedLogFieldsConfiguration")]
+    pub user_defined_log_fields_configuration: UserDefinedLogFieldsConfiguration,
+}
+
+impl crate::FlatSerialize for FieldsConfigBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.user_defined_log_fields_configuration,
+            &format!("{}.UserDefinedLogFieldsConfiguration", name),
             params,
         );
     }
@@ -17369,6 +18126,30 @@ impl crate::FlatSerialize for GetAccessPointResultEndpoints {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct GroupBody {
+    #[serde(rename = "BucketResourceGroupConfiguration")]
+    pub bucket_resource_group_configuration: BucketResourceGroupConfiguration,
+}
+
+impl crate::FlatSerialize for GroupBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_resource_group_configuration,
+            &format!("{}.BucketResourceGroupConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct GroupConfiguration {
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
@@ -17386,6 +18167,78 @@ impl crate::FlatSerialize for GroupConfiguration {
         crate::FlatSerialize::flat_serialize(
             &self.resource_group_id,
             &format!("{}.ResourceGroupId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct HashBody {
+    #[serde(rename = "ObjectHashConfiguration")]
+    pub object_hash_configuration: ObjectHashConfiguration,
+}
+
+impl crate::FlatSerialize for HashBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.object_hash_configuration,
+            &format!("{}.ObjectHashConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct HeaderBody {
+    #[serde(rename = "CommonHeaders")]
+    pub common_headers: CommonHeaders,
+}
+
+impl crate::FlatSerialize for HeaderBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.common_headers,
+            &format!("{}.CommonHeaders", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct HttpsConfigBody {
+    #[serde(rename = "HttpsConfiguration")]
+    pub https_configuration: HttpsConfiguration,
+}
+
+impl crate::FlatSerialize for HttpsConfigBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.https_configuration,
+            &format!("{}.HttpsConfiguration", name),
             params,
         );
     }
@@ -17542,6 +18395,54 @@ impl crate::FlatSerialize for InfoList {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct InitBucketAntiDDosInfoBody {
+    #[serde(rename = "AntiDDOSConfiguration")]
+    pub anti_ddos_configuration: BucketAntiDdosConfiguration,
+}
+
+impl crate::FlatSerialize for InitBucketAntiDDosInfoBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.anti_ddos_configuration,
+            &format!("{}.AntiDDOSConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InitiateBucketWormBody {
+    #[serde(rename = "InitiateWormConfiguration")]
+    pub initiate_worm_configuration: InitiateWormConfiguration,
+}
+
+impl crate::FlatSerialize for InitiateBucketWormBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.initiate_worm_configuration,
+            &format!("{}.InitiateWormConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InitiateMultipartUploadResult {
     #[serde(rename = "Bucket")]
     pub bucket: String,
@@ -17572,6 +18473,84 @@ impl crate::FlatSerialize for InitiateMultipartUploadResult {
         crate::FlatSerialize::flat_serialize(
             &self.upload_id,
             &format!("{}.UploadId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InitiateWormConfiguration {
+    #[serde(rename = "RetentionPeriodInDays")]
+    pub retention_period_in_days: i32,
+}
+
+impl crate::FlatSerialize for InitiateWormConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.retention_period_in_days,
+            &format!("{}.RetentionPeriodInDays", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InputSerialization {
+    #[serde(rename = "CSV")]
+    pub csv: CsvInput,
+    #[serde(rename = "CompressionType")]
+    pub compression_type: CompressionType,
+    #[serde(rename = "JSON")]
+    pub json: JsonInput,
+}
+
+impl crate::FlatSerialize for InputSerialization {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.csv, &format!("{}.CSV", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.compression_type,
+            &format!("{}.CompressionType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.json, &format!("{}.JSON", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InventoryBody {
+    #[serde(rename = "InventoryConfiguration")]
+    pub inventory_configuration: InventoryConfiguration,
+}
+
+impl crate::FlatSerialize for InventoryBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.inventory_configuration,
+            &format!("{}.InventoryConfiguration", name),
             params,
         );
     }
@@ -17822,6 +18801,30 @@ impl crate::FlatSerialize for InventorySchedule {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct JobBody {
+    #[serde(rename = "CreateDataLakeCachePrefetchJob")]
+    pub create_data_lake_cache_prefetch_job: CreateDataLakeCachePrefetchJob,
+}
+
+impl crate::FlatSerialize for JobBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.create_data_lake_cache_prefetch_job,
+            &format!("{}.CreateDataLakeCachePrefetchJob", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct JobId {
     #[serde(rename = "ID")]
     pub id: String,
@@ -17837,6 +18840,84 @@ impl crate::FlatSerialize for JobId {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct JsonInput {
+    #[serde(rename = "ParseJsonNumberAsString")]
+    pub parse_json_number_as_string: bool,
+    #[serde(rename = "Range")]
+    pub range: String,
+    #[serde(rename = "Type")]
+    pub r#type: JsonType,
+}
+
+impl crate::FlatSerialize for JsonInput {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.parse_json_number_as_string,
+            &format!("{}.ParseJsonNumberAsString", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.range, &format!("{}.Range", name), params);
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct JsonOutput {
+    #[serde(rename = "RecordDelimiter")]
+    pub record_delimiter: String,
+}
+
+impl crate::FlatSerialize for JsonOutput {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.record_delimiter,
+            &format!("{}.RecordDelimiter", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LifecycleBody {
+    #[serde(rename = "LifecycleConfiguration")]
+    pub lifecycle_configuration: LifecycleConfiguration,
+}
+
+impl crate::FlatSerialize for LifecycleBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.lifecycle_configuration,
+            &format!("{}.LifecycleConfiguration", name),
+            params,
+        );
     }
 }
 
@@ -18450,6 +19531,63 @@ impl crate::FlatSerialize for LiveChannelAudio {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct LiveChannelBody {
+    #[serde(rename = "LiveChannelConfiguration")]
+    pub live_channel_configuration: LiveChannelConfiguration,
+}
+
+impl crate::FlatSerialize for LiveChannelBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.live_channel_configuration,
+            &format!("{}.LiveChannelConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LiveChannelConfiguration {
+    #[serde(rename = "Description")]
+    pub description: String,
+    #[serde(rename = "Snapshot")]
+    pub snapshot: LiveChannelSnapshot,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "Target")]
+    pub target: LiveChannelTarget,
+}
+
+impl crate::FlatSerialize for LiveChannelConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.description,
+            &format!("{}.Description", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.snapshot, &format!("{}.Snapshot", name), params);
+        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+        crate::FlatSerialize::flat_serialize(&self.target, &format!("{}.Target", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LiveChannelPlayUrls {
     #[serde(rename = "Url")]
     pub url: String,
@@ -18485,6 +19623,47 @@ impl crate::FlatSerialize for LiveChannelPublishUrls {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.url, &format!("{}.Url", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LiveChannelSnapshot {
+    #[serde(rename = "DestBucket")]
+    pub dest_bucket: String,
+    #[serde(rename = "Interval")]
+    pub interval: i64,
+    #[serde(rename = "NotifyTopic")]
+    pub notify_topic: String,
+    #[serde(rename = "RoleName")]
+    pub role_name: String,
+}
+
+impl crate::FlatSerialize for LiveChannelSnapshot {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.dest_bucket,
+            &format!("{}.DestBucket", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.interval, &format!("{}.Interval", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.notify_topic,
+            &format!("{}.NotifyTopic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.role_name,
+            &format!("{}.RoleName", name),
+            params,
+        );
     }
 }
 
@@ -18652,6 +19831,30 @@ impl crate::FlatSerialize for LocationTransferTypeTransferTypes {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct LoggingBody {
+    #[serde(rename = "BucketLoggingStatus")]
+    pub bucket_logging_status: BucketLoggingStatus,
+}
+
+impl crate::FlatSerialize for LoggingBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_logging_status,
+            &format!("{}.BucketLoggingStatus", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct LoggingEnabled {
     #[serde(rename = "LoggingRole")]
     pub logging_role: String,
@@ -18683,6 +19886,142 @@ impl crate::FlatSerialize for LoggingEnabled {
         crate::FlatSerialize::flat_serialize(
             &self.target_prefix,
             &format!("{}.TargetPrefix", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaBody {
+    #[serde(rename = "CsvMetaRequest")]
+    pub csv_meta_request: SelectMetaRequest,
+}
+
+impl crate::FlatSerialize for MetaBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.csv_meta_request,
+            &format!("{}.CsvMetaRequest", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQuery {
+    #[serde(rename = "Aggregations")]
+    pub aggregations: MetaQueryAggregations,
+    #[serde(rename = "MaxResults")]
+    pub max_results: i64,
+    #[serde(rename = "MediaTypes")]
+    pub media_types: MetaQueryMediaTypes,
+    #[serde(rename = "NextToken")]
+    pub next_token: String,
+    #[serde(rename = "Order")]
+    pub order: MetaQueryOrder,
+    #[serde(rename = "Query")]
+    pub query: String,
+    #[serde(rename = "SimpleQuery")]
+    pub simple_query: String,
+    #[serde(rename = "Sort")]
+    pub sort: String,
+}
+
+impl crate::FlatSerialize for MetaQuery {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.aggregations,
+            &format!("{}.Aggregations", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.max_results,
+            &format!("{}.MaxResults", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.media_types,
+            &format!("{}.MediaTypes", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.next_token,
+            &format!("{}.NextToken", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.order, &format!("{}.Order", name), params);
+        crate::FlatSerialize::flat_serialize(&self.query, &format!("{}.Query", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.simple_query,
+            &format!("{}.SimpleQuery", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.sort, &format!("{}.Sort", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryAggregation {
+    #[serde(rename = "Field")]
+    pub field: String,
+    #[serde(rename = "Operation")]
+    pub operation: String,
+}
+
+impl crate::FlatSerialize for MetaQueryAggregation {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.operation,
+            &format!("{}.Operation", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryAggregations {
+    #[serde(rename = "Aggregation")]
+    pub aggregation: Vec<MetaQueryAggregation>,
+}
+
+impl crate::FlatSerialize for MetaQueryAggregations {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.aggregation,
+            &format!("{}.Aggregation", name),
             params,
         );
     }
@@ -19168,6 +20507,70 @@ impl crate::FlatSerialize for MetaQueryFileVideoStreams {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct MetaQueryMediaTypes {
+    #[serde(rename = "MediaType")]
+    pub media_type: Vec<String>,
+}
+
+impl crate::FlatSerialize for MetaQueryMediaTypes {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.media_type,
+            &format!("{}.MediaType", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryOpenRequest {
+    #[serde(rename = "Filters")]
+    pub filters: MetaQueryOpenRequestFilters,
+}
+
+impl crate::FlatSerialize for MetaQueryOpenRequest {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.filters, &format!("{}.Filters", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryOpenRequestFilters {
+    #[serde(rename = "Filter")]
+    pub filter: Vec<String>,
+}
+
+impl crate::FlatSerialize for MetaQueryOpenRequestFilters {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.Filter", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetaQueryResp {
     #[serde(rename = "Aggregations")]
     pub aggregations: MetaQueryRespAggregations,
@@ -19499,6 +20902,30 @@ impl crate::FlatSerialize for MetaQueryUserMeta {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct MonitorBody {
+    #[serde(rename = "AccessMonitorConfiguration")]
+    pub access_monitor_configuration: AccessMonitorConfiguration,
+}
+
+impl crate::FlatSerialize for MonitorBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_monitor_configuration,
+            &format!("{}.AccessMonitorConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ObjectAclResponseAccessControlPolicy {
     #[serde(rename = "AccessControlList")]
     pub access_control_list: ObjectAclResponseAccessControlPolicyAccessControlList,
@@ -19541,6 +20968,37 @@ impl crate::FlatSerialize for ObjectAclResponseAccessControlPolicyAccessControlL
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.grant, &format!("{}.Grant", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ObjectHashConfiguration {
+    #[serde(rename = "DisplayObjectHash")]
+    pub display_object_hash: bool,
+    #[serde(rename = "ObjectHashFunction")]
+    pub object_hash_function: String,
+}
+
+impl crate::FlatSerialize for ObjectHashConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.display_object_hash,
+            &format!("{}.DisplayObjectHash", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.object_hash_function,
+            &format!("{}.ObjectHashFunction", name),
+            params,
+        );
     }
 }
 
@@ -19979,6 +21437,105 @@ impl crate::FlatSerialize for ObjectsResponseListBucketResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct OpenMetaQueryBody {
+    #[serde(rename = "MetaQuery")]
+    pub meta_query: MetaQueryOpenRequest,
+}
+
+impl crate::FlatSerialize for OpenMetaQueryBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.meta_query,
+            &format!("{}.MetaQuery", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct OutputSerialization {
+    #[serde(rename = "CSV")]
+    pub csv: CsvOutput,
+    #[serde(rename = "EnablePayloadCrc")]
+    pub enable_payload_crc: bool,
+    #[serde(rename = "JSON")]
+    pub json: JsonOutput,
+    #[serde(rename = "KeepAllColumns")]
+    pub keep_all_columns: bool,
+    #[serde(rename = "OutputHeader")]
+    pub output_header: bool,
+    #[serde(rename = "OutputRawData")]
+    pub output_raw_data: bool,
+}
+
+impl crate::FlatSerialize for OutputSerialization {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.csv, &format!("{}.CSV", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.enable_payload_crc,
+            &format!("{}.EnablePayloadCrc", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.json, &format!("{}.JSON", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.keep_all_columns,
+            &format!("{}.KeepAllColumns", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.output_header,
+            &format!("{}.OutputHeader", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.output_raw_data,
+            &format!("{}.OutputRawData", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct OverwriteConfigBody {
+    #[serde(rename = "OverwriteConfiguration")]
+    pub overwrite_configuration: OverwriteConfiguration,
+}
+
+impl crate::FlatSerialize for OverwriteConfigBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.overwrite_configuration,
+            &format!("{}.OverwriteConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct OverwriteConfiguration {
     #[serde(rename = "Rule")]
     pub rule: Vec<OverwriteConfigurationRuleItem>,
@@ -20123,6 +21680,30 @@ impl crate::FlatSerialize for Part {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct PaymentBody {
+    #[serde(rename = "RequestPaymentConfiguration")]
+    pub request_payment_configuration: RequestPaymentConfiguration,
+}
+
+impl crate::FlatSerialize for PaymentBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.request_payment_configuration,
+            &format!("{}.RequestPaymentConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct PaymentConfiguration {
     #[serde(rename = "Payer")]
     pub payer: String,
@@ -20138,6 +21719,30 @@ impl crate::FlatSerialize for PaymentConfiguration {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.payer, &format!("{}.Payer", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PointBody {
+    #[serde(rename = "CreateAccessPointConfiguration")]
+    pub create_access_point_configuration: CreateAccessPointConfiguration,
+}
+
+impl crate::FlatSerialize for PointBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.create_access_point_configuration,
+            &format!("{}.CreateAccessPointConfiguration", name),
+            params,
+        );
     }
 }
 
@@ -20186,6 +21791,92 @@ impl crate::FlatSerialize for PointForObjectProcess {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PointForObjectProcessBody {
+    #[serde(rename = "CreateAccessPointForObjectProcessConfiguration")]
+    pub create_access_point_for_object_process_configuration: PointForObjectProcessConfiguration,
+}
+
+impl crate::FlatSerialize for PointForObjectProcessBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.create_access_point_for_object_process_configuration,
+            &format!("{}.CreateAccessPointForObjectProcessConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PointForObjectProcessConfiguration {
+    #[serde(rename = "AccessPointName")]
+    pub access_point_name: String,
+    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    pub allow_anonymous_access_for_object_process: String,
+    #[serde(rename = "ObjectProcessConfiguration")]
+    pub object_process_configuration: ObjectProcessConfiguration,
+}
+
+impl crate::FlatSerialize for PointForObjectProcessConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.access_point_name,
+            &format!("{}.AccessPointName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.allow_anonymous_access_for_object_process,
+            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.object_process_configuration,
+            &format!("{}.ObjectProcessConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PointPublicAccessBlockBody {
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+}
+
+impl crate::FlatSerialize for PointPublicAccessBlockBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.public_access_block_configuration,
+            &format!("{}.PublicAccessBlockConfiguration", name),
+            params,
+        );
     }
 }
 
@@ -20308,6 +21999,98 @@ impl crate::FlatSerialize for PublicAccessBlockConfiguration {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct PutBucketReplicationBody {
+    #[serde(rename = "ReplicationConfiguration")]
+    pub replication_configuration: BodyReplicationConfiguration,
+}
+
+impl crate::FlatSerialize for PutBucketReplicationBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.replication_configuration,
+            &format!("{}.ReplicationConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PutChannelBody {
+    #[serde(rename = "Channel")]
+    pub channel: Channel,
+}
+
+impl crate::FlatSerialize for PutChannelBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.channel, &format!("{}.Channel", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PutCnameBody {
+    #[serde(rename = "BucketCnameConfiguration")]
+    pub bucket_cname_configuration: BucketCnameConfiguration,
+}
+
+impl crate::FlatSerialize for PutCnameBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_cname_configuration,
+            &format!("{}.BucketCnameConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct PutPublicAccessBlockBody {
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+}
+
+impl crate::FlatSerialize for PutPublicAccessBlockBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.public_access_block_configuration,
+            &format!("{}.PublicAccessBlockConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct QueryStatus {
     #[serde(rename = "CreateTime")]
     pub create_time: String,
@@ -20338,6 +22121,54 @@ impl crate::FlatSerialize for QueryStatus {
         crate::FlatSerialize::flat_serialize(
             &self.update_time,
             &format!("{}.UpdateTime", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ReadBody {
+    #[serde(rename = "ArchiveDirectReadConfiguration")]
+    pub archive_direct_read_configuration: ArchiveDirectReadConfiguration,
+}
+
+impl crate::FlatSerialize for ReadBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.archive_direct_read_configuration,
+            &format!("{}.ArchiveDirectReadConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RefererBody {
+    #[serde(rename = "RefererConfiguration")]
+    pub referer_configuration: RefererConfiguration,
+}
+
+impl crate::FlatSerialize for RefererBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.referer_configuration,
+            &format!("{}.RefererConfiguration", name),
             params,
         );
     }
@@ -20778,6 +22609,26 @@ impl crate::FlatSerialize for ReplicationRule {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct ReplicationRules {
+    #[serde(rename = "ID")]
+    pub id: String,
+}
+
+impl crate::FlatSerialize for ReplicationRules {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ReplicationSourceSelectionCriteria {
     #[serde(rename = "SseKmsEncryptedObjects")]
     pub sse_kms_encrypted_objects: ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects,
@@ -20822,6 +22673,26 @@ impl crate::FlatSerialize for ReplicationSourceSelectionCriteriaSseKmsEncryptedO
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct RequestPaymentConfiguration {
+    #[serde(rename = "Payer")]
+    pub payer: String,
+}
+
+impl crate::FlatSerialize for RequestPaymentConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.payer, &format!("{}.Payer", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct ResponseBucketDataRedundancyTransition {
     #[serde(rename = "TaskId")]
     pub task_id: String,
@@ -20837,6 +22708,77 @@ impl crate::FlatSerialize for ResponseBucketDataRedundancyTransition {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.TaskId", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RestoreObjectBody {
+    #[serde(rename = "RestoreRequest")]
+    pub restore_request: RestoreRequest,
+}
+
+impl crate::FlatSerialize for RestoreObjectBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.restore_request,
+            &format!("{}.RestoreRequest", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RestoreRequest {
+    #[serde(rename = "Days")]
+    pub days: i64,
+    #[serde(rename = "JobParameters")]
+    pub job_parameters: RestoreRequestJobParameters,
+}
+
+impl crate::FlatSerialize for RestoreRequest {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.days, &format!("{}.Days", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.job_parameters,
+            &format!("{}.JobParameters", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RestoreRequestJobParameters {
+    #[serde(rename = "Tier")]
+    pub tier: String,
+}
+
+impl crate::FlatSerialize for RestoreRequestJobParameters {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.tier, &format!("{}.Tier", name), params);
     }
 }
 
@@ -21581,6 +23523,53 @@ impl crate::FlatSerialize for Rtc {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct RtcBody {
+    #[serde(rename = "ReplicationRule")]
+    pub replication_rule: RtcConfiguration,
+}
+
+impl crate::FlatSerialize for RtcBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.replication_rule,
+            &format!("{}.ReplicationRule", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RtcConfiguration {
+    #[serde(rename = "ID")]
+    pub id: String,
+    #[serde(rename = "RTC")]
+    pub rtc: Rtc,
+}
+
+impl crate::FlatSerialize for RtcConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
+        crate::FlatSerialize::flat_serialize(&self.rtc, &format!("{}.RTC", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct RtcConstraint {
     #[serde(rename = "Location")]
     pub location: Vec<String>,
@@ -21601,6 +23590,157 @@ impl crate::FlatSerialize for RtcConstraint {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct SelectMetaRequest {
+    #[serde(rename = "InputSerialization")]
+    pub input_serialization: InputSerialization,
+    #[serde(rename = "OverwriteIfExists")]
+    pub overwrite_if_exists: bool,
+}
+
+impl crate::FlatSerialize for SelectMetaRequest {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.input_serialization,
+            &format!("{}.InputSerialization", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.overwrite_if_exists,
+            &format!("{}.OverwriteIfExists", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SelectObjectBody {
+    #[serde(rename = "SelectRequest")]
+    pub select_request: SelectRequest,
+}
+
+impl crate::FlatSerialize for SelectObjectBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.select_request,
+            &format!("{}.SelectRequest", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SelectRequest {
+    #[serde(rename = "Expression")]
+    pub expression: String,
+    #[serde(rename = "InputSerialization")]
+    pub input_serialization: InputSerialization,
+    #[serde(rename = "Options")]
+    pub options: SelectRequestOptions,
+    #[serde(rename = "OutputSerialization")]
+    pub output_serialization: OutputSerialization,
+}
+
+impl crate::FlatSerialize for SelectRequest {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.expression,
+            &format!("{}.Expression", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.input_serialization,
+            &format!("{}.InputSerialization", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.options, &format!("{}.Options", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.output_serialization,
+            &format!("{}.OutputSerialization", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SelectRequestOptions {
+    #[serde(rename = "MaxSkippedRecordsAllowed")]
+    pub max_skipped_records_allowed: i64,
+    #[serde(rename = "SkipPartialDataRecord")]
+    pub skip_partial_data_record: bool,
+}
+
+impl crate::FlatSerialize for SelectRequestOptions {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.max_skipped_records_allowed,
+            &format!("{}.MaxSkippedRecordsAllowed", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.skip_partial_data_record,
+            &format!("{}.SkipPartialDataRecord", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ServerSideEncryptionRule {
+    #[serde(rename = "ApplyServerSideEncryptionByDefault")]
+    pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
+}
+
+impl crate::FlatSerialize for ServerSideEncryptionRule {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.apply_server_side_encryption_by_default,
+            &format!("{}.ApplyServerSideEncryptionByDefault", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct Ssekms {
     #[serde(rename = "KeyId")]
     pub key_id: String,
@@ -21616,6 +23756,46 @@ impl crate::FlatSerialize for Ssekms {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.key_id, &format!("{}.KeyId", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct Style {
+    #[serde(rename = "Content")]
+    pub content: String,
+}
+
+impl crate::FlatSerialize for Style {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StyleBody {
+    #[serde(rename = "Style")]
+    pub style: Style,
+}
+
+impl crate::FlatSerialize for StyleBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.style, &format!("{}.Style", name), params);
     }
 }
 
@@ -21724,6 +23904,46 @@ impl crate::FlatSerialize for TagSet {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct Tagging {
+    #[serde(rename = "TagSet")]
+    pub tag_set: TagSet,
+}
+
+impl crate::FlatSerialize for Tagging {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.tag_set, &format!("{}.TagSet", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TaggingBody {
+    #[serde(rename = "Tagging")]
+    pub tagging: Tagging,
+}
+
+impl crate::FlatSerialize for TaggingBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.tagging, &format!("{}.Tagging", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TaggingResponseTagging {
     #[serde(rename = "TagSet")]
     pub tag_set: TagSet,
@@ -21739,6 +23959,26 @@ impl crate::FlatSerialize for TaggingResponseTagging {
         >,
     ) {
         crate::FlatSerialize::flat_serialize(&self.tag_set, &format!("{}.TagSet", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TagsBody {
+    #[serde(rename = "Tagging")]
+    pub tagging: Tagging,
+}
+
+impl crate::FlatSerialize for TagsBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.tagging, &format!("{}.Tagging", name), params);
     }
 }
 
@@ -21764,6 +24004,90 @@ impl crate::FlatSerialize for TagsResponseTagging {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct TokenBody {
+    #[serde(rename = "BucketCnameConfiguration")]
+    pub bucket_cname_configuration: TokenBodyBucketCnameConfiguration,
+}
+
+impl crate::FlatSerialize for TokenBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.bucket_cname_configuration,
+            &format!("{}.BucketCnameConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TokenBodyBucketCnameConfiguration {
+    #[serde(rename = "Cname")]
+    pub cname: TokenBodyBucketCnameConfigurationCname,
+}
+
+impl crate::FlatSerialize for TokenBodyBucketCnameConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TokenBodyBucketCnameConfigurationCname {
+    #[serde(rename = "Domain")]
+    pub domain: String,
+}
+
+impl crate::FlatSerialize for TokenBodyBucketCnameConfigurationCname {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TransferAccelerationConfiguration {
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
+}
+
+impl crate::FlatSerialize for TransferAccelerationConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct TypeConstraint {
     #[serde(rename = "LocationTransferType")]
     pub location_transfer_type: Vec<LocationTransferType>,
@@ -21781,6 +24105,30 @@ impl crate::FlatSerialize for TypeConstraint {
         crate::FlatSerialize::flat_serialize(
             &self.location_transfer_type,
             &format!("{}.LocationTransferType", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct UpdateBucketAntiDDosInfoBody {
+    #[serde(rename = "AntiDDOSConfiguration")]
+    pub anti_ddos_configuration: BucketAntiDdosConfiguration,
+}
+
+impl crate::FlatSerialize for UpdateBucketAntiDDosInfoBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.anti_ddos_configuration,
+            &format!("{}.AntiDDOSConfiguration", name),
             params,
         );
     }
@@ -21815,6 +24163,30 @@ impl crate::FlatSerialize for Upload {
         crate::FlatSerialize::flat_serialize(
             &self.upload_id,
             &format!("{}.UploadId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct UploadBody {
+    #[serde(rename = "CompleteMultipartUpload")]
+    pub complete_multipart_upload: CompleteMultipartUpload,
+}
+
+impl crate::FlatSerialize for UploadBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.complete_multipart_upload,
+            &format!("{}.CompleteMultipartUpload", name),
             params,
         );
     }
@@ -22178,6 +24550,50 @@ impl crate::FlatSerialize for V2ResponseListBucketResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct VersioningBody {
+    #[serde(rename = "VersioningConfiguration")]
+    pub versioning_configuration: VersioningConfiguration,
+}
+
+impl crate::FlatSerialize for VersioningBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.versioning_configuration,
+            &format!("{}.VersioningConfiguration", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct VersioningConfiguration {
+    #[serde(rename = "Status")]
+    pub status: BucketVersioningStatus,
+}
+
+impl crate::FlatSerialize for VersioningConfiguration {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct VersioningConfiguration {
     #[serde(rename = "Status")]
     pub status: BucketVersioningStatus,
@@ -22283,6 +24699,30 @@ impl crate::FlatSerialize for VersionsResult {
         crate::FlatSerialize::flat_serialize(
             &self.version_id_marker,
             &format!("{}.VersionIdMarker", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct WebsiteBody {
+    #[serde(rename = "WebsiteConfiguration")]
+    pub website_configuration: WebsiteConfiguration,
+}
+
+impl crate::FlatSerialize for WebsiteBody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.website_configuration,
+            &format!("{}.WebsiteConfiguration", name),
             params,
         );
     }
@@ -22575,6 +25015,50 @@ impl crate::FlatSerialize for BucketWormState {
 
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum CompressionType {
+    #[serde(rename = "None")]
+    None,
+    #[serde(rename = "GZIP")]
+    Gzip,
+}
+
+impl Default for CompressionType {
+    fn default() -> Self {
+        Self::None
+    }
+}
+
+impl CompressionType {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::None => "None",
+            Self::Gzip => "GZIP",
+        }
+    }
+}
+
+impl<'a> From<&'a CompressionType> for crate::QueryValue<'a> {
+    fn from(value: &'a CompressionType) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for CompressionType {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum DataRedundancyType {
     #[serde(rename = "LRS")]
     Lrs,
@@ -22646,6 +25130,53 @@ impl<'a> From<&'a EncodeType> for crate::QueryValue<'a> {
 }
 
 impl crate::FlatSerialize for EncodeType {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum FileHeaderInfo {
+    #[serde(rename = "USE")]
+    Use,
+    #[serde(rename = "IGNORE")]
+    Ignore,
+    #[serde(rename = "NONE")]
+    None,
+}
+
+impl Default for FileHeaderInfo {
+    fn default() -> Self {
+        Self::Use
+    }
+}
+
+impl FileHeaderInfo {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Use => "USE",
+            Self::Ignore => "IGNORE",
+            Self::None => "NONE",
+        }
+    }
+}
+
+impl<'a> From<&'a FileHeaderInfo> for crate::QueryValue<'a> {
+    fn from(value: &'a FileHeaderInfo) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for FileHeaderInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -22789,6 +25320,96 @@ impl<'a> From<&'a InventoryOptionalField> for crate::QueryValue<'a> {
 }
 
 impl crate::FlatSerialize for InventoryOptionalField {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum JsonType {
+    /// DOCUMENT
+    #[serde(rename = "DOCUMENT")]
+    Document,
+    /// LINES
+    #[serde(rename = "LINES")]
+    Lines,
+}
+
+impl Default for JsonType {
+    fn default() -> Self {
+        Self::Document
+    }
+}
+
+impl JsonType {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Document => "DOCUMENT",
+            Self::Lines => "LINES",
+        }
+    }
+}
+
+impl<'a> From<&'a JsonType> for crate::QueryValue<'a> {
+    fn from(value: &'a JsonType) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for JsonType {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        params.insert(name.to_string().into(), self.into());
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum MetaQueryOrder {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+}
+
+impl Default for MetaQueryOrder {
+    fn default() -> Self {
+        Self::Asc
+    }
+}
+
+impl MetaQueryOrder {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Asc => "asc",
+            Self::Desc => "desc",
+        }
+    }
+}
+
+impl<'a> From<&'a MetaQueryOrder> for crate::QueryValue<'a> {
+    fn from(value: &'a MetaQueryOrder) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for MetaQueryOrder {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,

@@ -196,8 +196,8 @@ impl Connection {
     /// - `QualificationNameNullError`: Qualification name cannot be empty.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn submit_sms_qualification(
         &self,
@@ -222,8 +222,8 @@ impl Connection {
     /// - 如果资质未通过审核，审核备注`AuditRemark`会返回审核失败的原因，请参考[审核失败的处理建议](~~2384377#a96cc318b94x1~~)，调用[修改短信资质](~~UpdateSmsQualification~~)接口或在控制台[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面修改资质信息后，重新发起审核。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_sms_qualification_record(
         &self,
@@ -243,8 +243,8 @@ impl Connection {
     /// - 受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。特殊情况可能延长审核时间，请耐心等待。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_single_sms_qualification(
         &self,
@@ -313,8 +313,8 @@ impl Connection {
     /// - `WorkOrderIdExpired`: Qualification details have changed. Please re-query the qualification list and resubmit.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn update_sms_qualification(
         &self,
@@ -339,8 +339,8 @@ impl Connection {
     /// - `QualificationNotExist`: Qualification does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn delete_sms_qualification(
         &self,
@@ -360,8 +360,8 @@ impl Connection {
     /// - 本接口获取短信验证码有[流控限制](~~44335#section-0wh-xn6-0t7~~)，请勿频繁操作：针对同一个号码最多支持1条/分钟，5条/小时，10条/天。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn required_phone_code(
         &self,
@@ -379,8 +379,8 @@ impl Connection {
     /// - 本接口不影响短信资质申请流程，仅供验证短信验证码使用。实际申请时，请在[申请短信资质](~~SubmitSmsQualification~~)接口中的`CertifyCode`参数传入验证码。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn valid_phone_code(
         &self,
@@ -414,8 +414,8 @@ impl Connection {
     /// - `SignNumOverLimit`: The signature exceeds the limit of 100 entries.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn create_sms_authorization_letter(
         &self,
@@ -437,8 +437,8 @@ impl Connection {
     /// - 审核时间：受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成。短信签名及模板预计在审核提交后的2小时内完成审核，涉及政府企业相关，一般2个工作日内审核完成。如遇升级核验、审核任务较多、非工作时间，审核时间可能会延长，请耐心等待（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_sms_authorization_letter(
         &self,
@@ -481,8 +481,8 @@ impl Connection {
     /// - `TrademarkNotExist`: The trademark does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn create_sms_sign(
         &self,
@@ -513,8 +513,8 @@ impl Connection {
     /// - `SignatureNotFound`: The signature does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_sms_sign(
         &self,
@@ -531,7 +531,7 @@ impl Connection {
     /// 本接口可以查询您当前账号下**首次创建**的签名资料或者**最新审核通过**的签名详情。如果您需要查询应用场景内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsSign](~~GetSmsSign~~)接口通过签名名称查询单个签名审核详情。
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn query_sms_sign_list(
         &self,
@@ -569,8 +569,8 @@ impl Connection {
     /// - `TrademarkNotExist`: The trademark does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn update_sms_sign(
         &self,
@@ -592,8 +592,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn delete_sms_sign(
         &self,
@@ -619,8 +619,8 @@ impl Connection {
     /// - `SmsSignatureNotExist`: Signature does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn change_signature_qualification(
         &self,
@@ -650,8 +650,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn add_sms_sign(
         &self,
@@ -675,8 +675,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn modify_sms_sign(
         &self,
@@ -702,8 +702,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_sms_sign(
         &self,
@@ -732,8 +732,8 @@ impl Connection {
     /// - `TrademarkRegistrationNumberOverLimit`: The trademark registration number exceeds the length limit.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn create_sms_trademark(
         &self,
@@ -752,8 +752,8 @@ impl Connection {
     /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出商标id，然后使用此接口进一步查询详情。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_sms_trademark(
         &self,
@@ -782,8 +782,8 @@ impl Connection {
     /// - `AppPrincipalUnitNameOverLimit`: The principal unit name of the APP exceeds the length limit.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn create_sms_app_icp_record(
         &self,
@@ -803,8 +803,8 @@ impl Connection {
     /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出ICP备案id，然后使用此接口进一步查询详情。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_sms_app_icp_record(
         &self,
@@ -843,8 +843,8 @@ impl Connection {
     /// - `TemplateVarLimitExceeded`: The verification code template only supports one variable.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn create_sms_template(
         &self,
@@ -870,8 +870,8 @@ impl Connection {
     /// - `TemplateNotFound`: The template does not exist.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_sms_template(
         &self,
@@ -889,7 +889,7 @@ impl Connection {
     /// - 您也可登录短信服务控制台[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页查看您当前账号下所有模板的模板详情。
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn query_sms_template_list(
         &self,
@@ -924,8 +924,8 @@ impl Connection {
     /// - `TemplateVarLimitExceeded`: The verification code template only supports one variable.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn update_sms_template(
         &self,
@@ -951,8 +951,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn delete_sms_template(
         &self,
@@ -988,8 +988,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     #[deprecated]
     pub fn add_sms_template(
@@ -1020,8 +1020,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     #[deprecated]
     pub fn modify_sms_template(
@@ -1045,8 +1045,8 @@ impl Connection {
     /// - QuerySmsTemplate当前接口是通过模板Code查询单个模板的审核详情。[QuerySmsTemplateList](~~419288~~)接口可以查询您当前账号下所有模板的模板详情。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     #[deprecated]
     pub fn query_sms_template(
@@ -1072,8 +1072,8 @@ impl Connection {
     /// 本接口的单用户 QPS 限制为 5000/秒。超过限制，API 调用将会被限流，请合理使用。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn send_sms(
         &self,
@@ -1102,8 +1102,8 @@ impl Connection {
     /// 本接口的单用户 QPS 限制为 5000/秒。超过限制，API 调用将会被限流，请合理使用。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn send_batch_sms(
         &self,
@@ -1125,8 +1125,8 @@ impl Connection {
     /// 本接口的单用户QPS限制为5000/秒。超过限制，API调用将会被限流，请合理使用。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_send_details(
         &self,
@@ -1145,7 +1145,7 @@ impl Connection {
     /// - 您可以登录[短信服务控制台](https://dysms.console.aliyun.com/dysms.htm#/overview)，在**业务统计**-**发送记录**页面查询发送详情。
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn query_send_statistics(
         &self,
@@ -1170,8 +1170,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn get_oss_info_for_card_template(
         &self,
@@ -1193,7 +1193,7 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn get_media_resource_id(
         &self,
@@ -1223,7 +1223,7 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
+    /// - POST
     ///
     pub fn create_card_sms_template(
         &self,
@@ -1248,8 +1248,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn query_card_sms_template(
         &self,
@@ -1273,8 +1273,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn check_mobiles_card_support(
         &self,
@@ -1296,8 +1296,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn query_mobiles_card_support(
         &self,
@@ -1321,8 +1321,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn get_card_sms_link(
         &self,
@@ -1343,8 +1343,8 @@ impl Connection {
     /// - `InvalidParameter`: At most, only one parameter can be passed among bizCardId, bizSmsId, and bizDigitId.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_card_sms_details(
         &self,
@@ -1365,8 +1365,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn query_card_sms_template_report(
         &self,
@@ -1394,8 +1394,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn send_card_sms(
         &self,
@@ -1423,8 +1423,8 @@ impl Connection {
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
     ///
     /// # Methods
-    /// - Get
-    /// - Post
+    /// - GET
+    /// - POST
     ///
     pub fn send_batch_card_sms(
         &self,
@@ -1446,8 +1446,8 @@ impl Connection {
     /// - `OssBiztypeNotSupportError`: Retrieving OSS configuration does not support this biz type.
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_qualification_oss_info(
         &self,
@@ -1467,8 +1467,8 @@ impl Connection {
     /// - 创建签名或模板所需的更多资料，可上传到OSS文件系统保存。文件上传操作，请参见[OSS上传文件](~~2833114~~)。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_oss_info_for_upload_file(
         &self,
@@ -1484,8 +1484,8 @@ impl Connection {
     /// 获取 OCR 的 OSS 信息。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn get_sms_ocr_oss_info(
         &self,
@@ -1510,8 +1510,8 @@ impl Connection {
     /// > 转化率反馈功能会对业务系统有一定的侵入性，为了防止调用转化率API的抖动影响业务逻辑，请考虑：  - 使用异步模式（例如：队列或事件驱动）调用API。  - 添加可降级的方案保护业务逻辑（例如：手动降级开工或者使用断路器自动降级）。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn sms_conversion_intl(
         &self,
@@ -1533,8 +1533,8 @@ impl Connection {
     /// >- 添加可降级的方案保护业务逻辑（例如：手动降级开工或者使用断路器自动降级）。
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn conversion_data_intl(
         &self,
@@ -1560,8 +1560,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn add_short_url(
         &self,
@@ -1586,9 +1586,9 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
-    /// - Delete
+    /// - POST
+    /// - GET
+    /// - DELETE
     ///
     pub fn delete_short_url(
         &self,
@@ -1613,8 +1613,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn query_short_url(
         &self,
@@ -1639,8 +1639,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn list_tag_resources(
         &self,
@@ -1668,8 +1668,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn tag_resources(
         &self,
@@ -1693,8 +1693,8 @@ impl Connection {
     ///  
     ///
     /// # Methods
-    /// - Post
-    /// - Get
+    /// - POST
+    /// - GET
     ///
     pub fn untag_resources(
         &self,

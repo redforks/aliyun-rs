@@ -186,6 +186,7 @@ where
     debug!("{:#?}", &headers);
     let resp = match R::METHOD {
         Method::POST => http_client.post(url).headers(headers).body(body),
+        Method::PUT => http_client.put(url).headers(headers).body(body),
         Method::GET => http_client.get(url).headers(headers),
         _ => unreachable!(),
     }
@@ -198,14 +199,25 @@ where
     debug!("Response: {:?}", resp_text);
 
     let resp = if status.is_success() {
-        let resp =
-            serde_json::from_str::<R::Response>(&resp_text).context("Decode response as JSON")?;
+        let resp = match R::RESPONSE_CONTENT_TYPE {
+            crate::ResponseContentType::Json => serde_json::from_str::<R::Response>(&resp_text)
+                .context("Decode response as JSON")?,
+            crate::ResponseContentType::Xml => quick_xml::de::from_str::<R::Response>(&resp_text)
+                .context("Decode response as XML")?,
+        };
         resp.as_ref().check()?;
         resp
     } else {
+        // Try JSON first for error responses, then XML
         match serde_json::from_str::<crate::CodeMessage>(&resp_text) {
             Ok(code_msg) => return Err(code_msg.into()),
-            Err(_) => return Err(anyhow!("HTTP error: {} - {}", status, resp_text).into()),
+            Err(_) => {
+                // Try XML for error response
+                match quick_xml::de::from_str::<crate::CodeMessage>(&resp_text) {
+                    Ok(code_msg) => return Err(code_msg.into()),
+                    Err(_) => return Err(anyhow!("HTTP error: {} - {}", status, resp_text).into()),
+                }
+            }
         }
     };
     Ok(resp)
