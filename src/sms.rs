@@ -1959,8 +1959,8 @@ impl crate::Request for SubmitSmsQualification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2078,8 +2078,8 @@ impl crate::Request for QuerySmsQualificationRecord {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2139,8 +2139,8 @@ impl crate::Request for QuerySingleSmsQualification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -2381,8 +2381,8 @@ impl crate::Request for UpdateSmsQualification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2438,8 +2438,8 @@ impl crate::Request for DeleteSmsQualification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2490,8 +2490,8 @@ impl crate::Request for RequiredPhoneCode {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2544,8 +2544,8 @@ impl crate::Request for ValidPhoneCode {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2651,8 +2651,8 @@ impl crate::Request for CreateSmsAuthorizationLetter {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2744,8 +2744,8 @@ impl crate::Request for QuerySmsAuthorizationLetter {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2909,8 +2909,8 @@ impl crate::Request for CreateSmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2962,8 +2962,8 @@ impl crate::Request for GetSmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3024,8 +3024,8 @@ impl crate::Request for QuerySmsSignList {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3181,8 +3181,8 @@ impl crate::Request for UpdateSmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -3236,8 +3236,8 @@ impl crate::Request for DeleteSmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3298,8 +3298,8 @@ impl crate::Request for ChangeSignatureQualification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -3406,8 +3406,8 @@ impl crate::Request for AddSmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -3506,8 +3506,8 @@ impl crate::Request for ModifySmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -3558,8 +3558,8 @@ impl crate::Request for QuerySmsSign {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3654,8 +3654,8 @@ impl crate::Request for CreateSmsTrademark {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3706,8 +3706,8 @@ impl crate::Request for QuerySmsTrademark {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3807,8 +3807,8 @@ impl crate::Request for CreateSmsAppIcpRecord {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3859,8 +3859,8 @@ impl crate::Request for QuerySmsAppIcpRecord {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4037,8 +4037,8 @@ impl crate::Request for CreateSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4090,8 +4090,8 @@ impl crate::Request for GetSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4152,8 +4152,8 @@ impl crate::Request for QuerySmsTemplateList {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4330,8 +4330,8 @@ impl crate::Request for UpdateSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -4387,8 +4387,8 @@ impl crate::Request for DeleteSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -4473,8 +4473,8 @@ impl crate::Request for AddSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -4565,8 +4565,8 @@ impl crate::Request for ModifySmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4617,8 +4617,8 @@ impl crate::Request for QuerySmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -4758,8 +4758,8 @@ impl crate::Request for SendSms {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4862,8 +4862,8 @@ impl crate::Request for SendBatchSms {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -4950,8 +4950,8 @@ impl crate::Request for QuerySendDetails {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5052,8 +5052,8 @@ impl crate::Request for QuerySendStatistics {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -5097,8 +5097,8 @@ impl crate::Request for GetOSSInfoForCardTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5188,8 +5188,8 @@ impl crate::Request for GetMediaResourceId {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -5274,8 +5274,8 @@ impl crate::Request for CreateCardSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5328,8 +5328,8 @@ impl crate::Request for QueryCardSmsTemplate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -5404,8 +5404,8 @@ impl crate::Request for CheckMobilesCardSupport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5475,8 +5475,8 @@ impl crate::Request for QueryMobilesCardSupport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5603,8 +5603,8 @@ impl crate::Request for GetCardSmsLink {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5701,8 +5701,8 @@ impl crate::Request for GetCardSmsDetails {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5764,8 +5764,8 @@ impl crate::Request for QueryCardSmsTemplateReport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5919,8 +5919,8 @@ impl crate::Request for SendCardSms {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6082,8 +6082,8 @@ impl crate::Request for SendBatchCardSms {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6132,8 +6132,8 @@ impl crate::Request for GetQualificationOssInfo {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6186,8 +6186,8 @@ impl crate::Request for GetOSSInfoForUploadFile {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6239,8 +6239,8 @@ impl crate::Request for GetSmsOcrOssInfo {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6305,8 +6305,8 @@ impl crate::Request for SmsConversionIntl {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6366,8 +6366,8 @@ impl crate::Request for ConversionDataIntl {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6431,8 +6431,8 @@ impl crate::Request for AddShortUrl {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6484,8 +6484,8 @@ impl crate::Request for DeleteShortUrl {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6537,8 +6537,8 @@ impl crate::Request for QueryShortUrl {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6633,8 +6633,8 @@ impl crate::Request for ListTagResources {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6713,8 +6713,8 @@ impl crate::Request for TagResources {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -6805,8 +6805,8 @@ impl crate::Request for UntagResources {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 

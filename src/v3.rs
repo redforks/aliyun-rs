@@ -133,7 +133,7 @@ where
     let uri = canonical_uri_path(R::URL_PATH);
     let query_string = canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
-    let body = req.to_body()?;
+    let body = req.to_body();
     let content_type = if R::METHOD == Method::GET {
         None
     } else {

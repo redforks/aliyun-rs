@@ -521,7 +521,7 @@ trait Request: Sized + Send {
     fn to_headers(&self) -> BTreeMap<Cow<'static, str>, String> {
         BTreeMap::new()
     }
-    fn to_body(self) -> Result<Self::Body>;
+    fn to_body(self) -> Self::Body;
 }
 
 trait IntoBody {

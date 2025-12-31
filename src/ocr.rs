@@ -3263,8 +3263,8 @@ impl crate::Request for RecognizeAllText {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -3334,8 +3334,8 @@ impl crate::Request for RecognizeGeneralStructure {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3461,8 +3461,8 @@ impl crate::Request for RecognizeAdvanced {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3561,8 +3561,8 @@ impl crate::Request for RecognizeHandwriting {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3625,8 +3625,8 @@ impl crate::Request for RecognizeBasic {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3680,8 +3680,8 @@ impl crate::Request for RecognizeGeneral {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3772,8 +3772,8 @@ impl crate::Request for RecognizeTableOcr {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3827,8 +3827,8 @@ impl crate::Request for RecognizeHealthCode {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -3961,8 +3961,8 @@ impl crate::Request for RecognizeDocumentStructure {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4042,8 +4042,8 @@ impl crate::Request for RecognizeIdcard {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -4101,8 +4101,8 @@ impl crate::Request for RecognizePassport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4165,8 +4165,8 @@ impl crate::Request for RecognizeHousehold {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4220,8 +4220,8 @@ impl crate::Request for RecognizeEstateCertification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4275,8 +4275,8 @@ impl crate::Request for RecognizeBankCard {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4330,8 +4330,8 @@ impl crate::Request for RecognizeBirthCertification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -4392,8 +4392,8 @@ impl crate::Request for RecognizeChinesePassport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4456,8 +4456,8 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -4518,8 +4518,8 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4573,8 +4573,8 @@ impl crate::Request for RecognizeHKIdcard {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4628,8 +4628,8 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4688,8 +4688,8 @@ impl crate::Request for RecognizeInternationalIdcard {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4764,8 +4764,8 @@ impl crate::Request for RecognizeMixedInvoices {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4829,8 +4829,8 @@ impl crate::Request for RecognizeInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4884,8 +4884,8 @@ impl crate::Request for RecognizeCarInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -4938,8 +4938,8 @@ impl crate::Request for RecognizeQuotaInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4993,8 +4993,8 @@ impl crate::Request for RecognizeAirItinerary {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5048,8 +5048,8 @@ impl crate::Request for RecognizeTrainInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5103,8 +5103,8 @@ impl crate::Request for RecognizeTaxiInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5157,8 +5157,8 @@ impl crate::Request for RecognizeRollTicket {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5212,8 +5212,8 @@ impl crate::Request for RecognizeBankAcceptance {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5266,8 +5266,8 @@ impl crate::Request for RecognizeBusShipTicket {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5321,8 +5321,8 @@ impl crate::Request for RecognizeNonTaxInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5375,8 +5375,8 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5429,8 +5429,8 @@ impl crate::Request for RecognizeHotelConsume {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5484,8 +5484,8 @@ impl crate::Request for RecognizePaymentRecord {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5553,8 +5553,8 @@ impl crate::Request for RecognizePurchaseRecord {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5607,8 +5607,8 @@ impl crate::Request for RecognizeRideHailingItinerary {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5661,8 +5661,8 @@ impl crate::Request for RecognizeShoppingReceipt {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5715,8 +5715,8 @@ impl crate::Request for RecognizeSocialSecurityCard {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5769,8 +5769,8 @@ impl crate::Request for RecognizeTollInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5824,8 +5824,8 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -5878,8 +5878,8 @@ impl crate::Request for RecognizeUsedCarInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5933,8 +5933,8 @@ impl crate::Request for RecognizeBusinessLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5988,8 +5988,8 @@ impl crate::Request for RecognizeBankAccountLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -6042,8 +6042,8 @@ impl crate::Request for RecognizeTradeMarkCertification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6097,8 +6097,8 @@ impl crate::Request for RecognizeFoodProduceLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6152,8 +6152,8 @@ impl crate::Request for RecognizeFoodManageLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -6206,8 +6206,8 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -6260,8 +6260,8 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6315,8 +6315,8 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -6369,8 +6369,8 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -6427,8 +6427,8 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6482,8 +6482,8 @@ impl crate::Request for RecognizeVehicleLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6537,8 +6537,8 @@ impl crate::Request for RecognizeDrivingLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6592,8 +6592,8 @@ impl crate::Request for RecognizeWaybill {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6647,8 +6647,8 @@ impl crate::Request for RecognizeCarNumber {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6702,8 +6702,8 @@ impl crate::Request for RecognizeCarVinCode {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6757,8 +6757,8 @@ impl crate::Request for RecognizeVehicleRegistration {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6812,8 +6812,8 @@ impl crate::Request for RecognizeVehicleCertification {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6867,8 +6867,8 @@ impl crate::Request for RecognizeEduFormula {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6922,8 +6922,8 @@ impl crate::Request for RecognizeEduOralCalculation {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7000,8 +7000,8 @@ impl crate::Request for RecognizeEduPaperOcr {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7083,8 +7083,8 @@ impl crate::Request for RecognizeEduPaperCut {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7147,8 +7147,8 @@ impl crate::Request for RecognizeEduQuestionOcr {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7230,8 +7230,8 @@ impl crate::Request for RecognizeEduPaperStructed {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7325,8 +7325,8 @@ impl crate::Request for RecognizeMultiLanguage {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7398,8 +7398,8 @@ impl crate::Request for RecognizeEnglish {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -7476,8 +7476,8 @@ impl crate::Request for RecognizeThai {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -7554,8 +7554,8 @@ impl crate::Request for RecognizeJanpanese {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -7632,8 +7632,8 @@ impl crate::Request for RecognizeKorean {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -7710,8 +7710,8 @@ impl crate::Request for RecognizeLatin {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 
@@ -7788,8 +7788,8 @@ impl crate::Request for RecognizeRussian {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7852,8 +7852,8 @@ impl crate::Request for RecognizeCovidTestReport {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::OctetStream(self.body.unwrap_or_default()))
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7914,8 +7914,8 @@ impl crate::Request for VerifyBusinessLicense {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
@@ -8027,8 +8027,8 @@ impl crate::Request for VerifyVATInvoice {
         Default::default()
     }
 
-    fn to_body(self) -> crate::Result<Self::Body> {
-        Ok(crate::Form(self))
+    fn to_body(self) -> Self::Body {
+        crate::Form(self)
     }
 }
 
