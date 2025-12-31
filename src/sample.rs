@@ -91,7 +91,7 @@ impl Request for SendSms {
 
     type Response = SendSmsResponse;
 
-    fn to_query_params(&self) -> crate::Result<BTreeMap<Cow<'static, str>, QueryValue<'_>>> {
+    fn to_query_params(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>> {
         let mut params = BTreeMap::new();
         params.insert("PhoneNumbers".into(), (&self.phone_numbers).into());
         params.insert("SignName".into(), (&self.sign_name).into());
@@ -105,7 +105,7 @@ impl Request for SendSms {
         if let Some(ref v) = self.out_id {
             params.insert("OutId".into(), v.into());
         }
-        Ok(params)
+        params
     }
 
     fn to_body(self) -> Result<Self::Body> {

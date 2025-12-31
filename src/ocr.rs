@@ -205,7 +205,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01JW5Amf1TfpKdxvNhB_!!6000000002410-2-tps-1105-549.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多功能集结|集表格识别、旋转识别、生僻字识别等多功能为一体。|
@@ -256,7 +256,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1xvaLcggP7K4jSZFqXXamhVXa-1600-920.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多文字形式|支持中文手写体、英文手写体、数字手写体。|
@@ -304,7 +304,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01beY6FP20nVIAEwIiL_!!6000000006894-0-tps-850-443.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多类型覆盖|支持模糊、光照不均、透视畸变、任意背景等低质量图像识别。|
@@ -351,7 +351,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i3/O1CN01g9tMm71eQDRRu7U3C_!!6000000003865-2-tps-899-243.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多类型覆盖|支持模糊、光照不均、透视畸变、任意背景等低质量图像识别。|
@@ -398,7 +398,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/6884068261/p303185.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多格式|支持有线表格、条纹表格、无线表格、手写表格识别。|
@@ -447,7 +447,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/7365590561/p433785.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -515,7 +515,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i3/O1CN01VMB4xL1kWWl9GqGNt_!!6000000004691-0-tps-1071-532.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多类型覆盖|支持自动区分正反面、支持少数民族版式识别、临时身份证识别、生僻字识别、反光实拍、劣质图像识别。<img width=1000/>|
@@ -564,7 +564,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01A0sPpE1ZzPvVTa6QV_!!6000000003265-2-tps-2482-1193.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多国护照|对美国、法国、英国、日本、韩国等多国和地区护照提供识别服务。|
@@ -611,7 +611,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01XgQQf11PBoxYZP19J_!!6000000001803-2-tps-2458-1318.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -660,7 +660,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1Nk0DOpP7gK0jSZFjXXc5aXXa-1600-920.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |适用范围广|适用于全国各地的不同不动产权证和房产证识别。|
@@ -708,7 +708,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1gbfaN7L0gK0jSZFAXXcA9pXa-1600-800.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多银行|支持中国银行、中国工商银行、交通银行、邮政银行等多家银行。|
@@ -755,7 +755,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01NGKqgA1DoxKux5pBP_!!6000000000264-0-tps-1046-705.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -820,7 +820,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01VpucoK1PtmovU859J_!!6000000001899-0-tps-928-626.jpg" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -918,7 +918,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01lTV8Qu1jeU1ycPA30_!!6000000004573-2-tps-820-272.png" width="60%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -970,7 +970,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01DvhDz81Y8uxtjp3ER_!!6000000003015-0-tps-1071-532.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多国身份证|对越南、韩国、印度、孟加拉居民身份证提供识别服务|
@@ -1022,7 +1022,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1072,7 +1072,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1121,7 +1121,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -1188,7 +1188,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01B5q2Z321hNcDMA9zN_!!6000000007016-2-tps-825-318.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1237,7 +1237,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、OFD、PDF。|
@@ -1287,7 +1287,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1.OicXebviK0jSZFNXXaApXXa-364-982.jpg" width="30%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1350,7 +1350,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -1421,7 +1421,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01jraEpU29O9qPIWKaT_!!6000000008057-0-tps-2977-1800.jpg" width="40%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1510,7 +1510,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01pP14mQ1F2WjPhgXev_!!6000000000429-2-tps-821-313.png" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1655,7 +1655,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01hmLCcX1JV9xJF1joS_!!6000000001033-2-tps-757-472.png" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1721,7 +1721,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1770,7 +1770,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01h572VA1PARjgZ1TyV_!!6000000001800-2-tps-819-316.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1835,7 +1835,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1YaMhXKT2gK0jSZFvXXXnFXXa-1414-1000.png" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -1882,7 +1882,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -1966,7 +1966,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01UQj0kH1u8qOmEehui_!!6000000005993-0-tps-2066-802.jpg" width="45%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2057,7 +2057,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多类型覆盖|支持模糊、光照不均、透视畸变、任意背景等低质量图像识别。|
@@ -2108,7 +2108,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2159,7 +2159,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2208,7 +2208,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多地区车牌识别|浙、苏、赣、黑、鄂、川、甘、陕、吉、辽、闽、皖等。|
@@ -2257,7 +2257,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -2306,7 +2306,7 @@ impl Connection {
     ///
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2354,7 +2354,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01myFZQ91pMyaGJpRZn_!!6000000005347-2-tps-562-316.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2402,7 +2402,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01tW1cGY1U1LxDXWmtJ_!!6000000002457-2-tps-641-318.png" width="60%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2448,7 +2448,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01JwIWUI1UyR34OnMHv_!!6000000002586-2-tps-636-316.png" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2496,7 +2496,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN016bI8WV1TWfQ4ocurU_!!6000000002390-2-tps-739-450.png" width="50%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2542,7 +2542,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i1/O1CN01DOZA301QjXXwGP8uJ_!!6000000002012-2-tps-1030-942.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |服务|自动切题，并识别其中所包含的文字内容和坐标位置。|
@@ -2590,7 +2590,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1KESJj639YK4jSZPcXXXrUFXa-1030-400.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |多文本格式|支持印刷体文本以及公式的OCR识别。|
@@ -2638,7 +2638,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i3/O1CN01XxrLu71rjXK95i1lW_!!6000000005667-2-tps-1147-626.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |智能识别|自动切题，并识别其中的全部字段和坐标位置。|
@@ -2686,7 +2686,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i4/O1CN01tVz6Eh1eY0Lb3pUGZ_!!6000000003882-2-tps-640-368.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图像增强|默认支持图像增强，包括图像自动旋转、畸变自动矫正、模糊图片自动增强等能力。|
@@ -2734,7 +2734,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/tfs/TB1K2a4NVY7gK0jSZKzXXaikpXa-2060-800.jpg" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |功能|具备英文专项识别和英文分词功能。|
@@ -2861,7 +2861,7 @@ impl Connection {
     /// <p style="text-align:center"><img src="https://img.alicdn.com/imgextra/i2/O1CN01qWUm4s1kF7eX52tJy_!!6000000004653-2-tps-1921-831.png" width="70%"></p>
     ///
     /// #### 本接口核心能力
-    ///
+    ///   
     /// |分类 |概述|
     /// |---|---------|
     /// |图片格式|支持PNG、JPG、JPEG、BMP、GIF、TIFF、WebP。|
@@ -2996,54 +2996,54 @@ impl Connection {
 /// | ----------- | ------ | --- |
 /// | Advanced    | 通用文字识别高精版 | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false）</li> <li>AdvancedConfig（**通用识别高精版**专有参数，默认：空）</li></ul> |
 /// | General     | 通用文字识别基础版 | <ul> <li>OutputStamp（默认：false）</li> </li></ul> |
-/// | Commerce    | 电商图片文字   | <ul> <li>OutputStamp（默认：false）</li> </li></ul>|
-/// | HandWriting | 手写文字  | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li></ul>|
-/// | MultiLang | 多语言文字   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>MultiLanConfig（**多语言通用类型**专有参数，默认：空）</li> </ul>|
-/// | Table | 表格   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>TableConfig（**表格类型**专有参数，默认：空）</li> </ul>|
-/// | IdCard | 身份证 | <ul> <li>OutputFigure（默认：false）</li> <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li>  <li>IdCardConfig（**身份证**专有参数，默认：空）</li> </ul>|
-/// | BankCard | 银行卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | InternationalPassport | 国际护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|
-/// | ChinesePassport | 中国护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | SocialSecurityCard | 社保卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | PermitToHK_MO_TW | 往来港澳台通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | PermitToMainland | 来往中国大陆（内地）通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | HouseholdHead | 户口本首页 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | HouseholdResident | 户口本常住人口页 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | EstateCertification | 不动产权证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：true）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | BirthCertification | 出生证明 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | HKIdCard | 中国香港身份证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|
-/// | InternationalIdCard | 国际身份证 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> InternationalIdCardConfig（**国际身份证**专有参数，默认：空） </li> </ul>|
-/// | Stamp | 公章 | <ul> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|
-/// | MixedInvoice | 混贴票证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | Invoice | 增值税发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | CarInvoice | 机动车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | QuotaInvoice | 定额发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | AirItinerary | 航空行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | TrainTicket | 火车票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | TollInvoice | 过路过桥费发票 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | RollTicket | 增值税发票卷票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | BankAcceptance | 银行承兑汇票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | BusShipTicket | 客运车船票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | NonTaxInvoice | 非税收入发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | CommonPrintedInvoice | 通用机打发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | HotelConsume | 酒店流水  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | PaymentRecord | 支付详情页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | PurchaseRecord | 电商订单页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | RideHailingItinerary | 网约车行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | ShoppingReceipt | 购物小票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | TaxClearanceCertificate | 税收完税证明  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | UsedCarInvoice | 二手车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | VehicleLicense | 行驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | DrivingLicense | 驾驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | VehicleRegistration | 机动车登记证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | VehicleCertification | 车辆合格证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | LicensePlateNumber | 车牌 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | CarVinCode | 车辆vin码 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | BusinessLicense | 营业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | InternationalBusinessLicense | 国际企业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> <li> OutputKVExcel（默认：false）</li> <li> InternationalBusinessLicenseConfig （**国际企业执照**专有参数，默认：空）</li> </ul>|
-/// | MedicalDeviceManageLicense | 医疗器械经营许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | MedicalDeviceProduceLicense | 医疗器械生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | CosmeticProduceLicense | 化妆品生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
+/// | Commerce    | 电商图片文字   | <ul> <li>OutputStamp（默认：false）</li> </li></ul>|   
+/// | HandWriting | 手写文字  | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li></ul>|   
+/// | MultiLang | 多语言文字   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>MultiLanConfig（**多语言通用类型**专有参数，默认：空）</li> </ul>|   
+/// | Table | 表格   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>TableConfig（**表格类型**专有参数，默认：空）</li> </ul>|   
+/// | IdCard | 身份证 | <ul> <li>OutputFigure（默认：false）</li> <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li>  <li>IdCardConfig（**身份证**专有参数，默认：空）</li> </ul>|   
+/// | BankCard | 银行卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | InternationalPassport | 国际护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|   
+/// | ChinesePassport | 中国护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | SocialSecurityCard | 社保卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | PermitToHK_MO_TW | 往来港澳台通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | PermitToMainland | 来往中国大陆（内地）通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | HouseholdHead | 户口本首页 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | HouseholdResident | 户口本常住人口页 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | EstateCertification | 不动产权证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：true）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | BirthCertification | 出生证明 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | HKIdCard | 中国香港身份证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|   
+/// | InternationalIdCard | 国际身份证 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> InternationalIdCardConfig（**国际身份证**专有参数，默认：空） </li> </ul>|   
+/// | Stamp | 公章 | <ul> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
+/// | MixedInvoice | 混贴票证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | Invoice | 增值税发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | CarInvoice | 机动车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | QuotaInvoice | 定额发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | AirItinerary | 航空行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | TrainTicket | 火车票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | TollInvoice | 过路过桥费发票 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | RollTicket | 增值税发票卷票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | BankAcceptance | 银行承兑汇票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | BusShipTicket | 客运车船票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | NonTaxInvoice | 非税收入发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | CommonPrintedInvoice | 通用机打发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | HotelConsume | 酒店流水  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | PaymentRecord | 支付详情页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | PurchaseRecord | 电商订单页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | RideHailingItinerary | 网约车行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | ShoppingReceipt | 购物小票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | TaxClearanceCertificate | 税收完税证明  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | UsedCarInvoice | 二手车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | VehicleLicense | 行驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | DrivingLicense | 驾驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | VehicleRegistration | 机动车登记证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | VehicleCertification | 车辆合格证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | LicensePlateNumber | 车牌 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | CarVinCode | 车辆vin码 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | BusinessLicense | 营业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | InternationalBusinessLicense | 国际企业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> <li> OutputKVExcel（默认：false）</li> <li> InternationalBusinessLicenseConfig （**国际企业执照**专有参数，默认：空）</li> </ul>|   
+/// | MedicalDeviceManageLicense | 医疗器械经营许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | MedicalDeviceProduceLicense | 医疗器械生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
+/// | CosmeticProduceLicense | 化妆品生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
 /// | QrCode | 二维码  | |
 /// | BarCode | 条形码 | |
 /// | TaxiInvoice | 出租车发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
@@ -3180,9 +3180,7 @@ impl crate::Request for RecognizeAllText {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3223,36 +3221,42 @@ impl crate::Request for RecognizeAllText {
         }
 
         if let Some(f) = &self.advanced_config {
-            params.insert("AdvancedConfig".into(), serde_json::to_string(f)?.into());
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("AdvancedConfig".into(), json.into());
+            }
         }
 
         if let Some(f) = &self.id_card_config {
-            params.insert("IdCardConfig".into(), serde_json::to_string(f)?.into());
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("IdCardConfig".into(), json.into());
+            }
         }
 
         if let Some(f) = &self.international_id_card_config {
-            params.insert(
-                "InternationalIdCardConfig".into(),
-                serde_json::to_string(f)?.into(),
-            );
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("InternationalIdCardConfig".into(), json.into());
+            }
         }
 
         if let Some(f) = &self.international_business_license_config {
-            params.insert(
-                "InternationalBusinessLicenseConfig".into(),
-                serde_json::to_string(f)?.into(),
-            );
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("InternationalBusinessLicenseConfig".into(), json.into());
+            }
         }
 
         if let Some(f) = &self.multi_lan_config {
-            params.insert("MultiLanConfig".into(), serde_json::to_string(f)?.into());
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("MultiLanConfig".into(), json.into());
+            }
         }
 
         if let Some(f) = &self.table_config {
-            params.insert("TableConfig".into(), serde_json::to_string(f)?.into());
+            if let Ok(json) = serde_json::to_string(f) {
+                params.insert("TableConfig".into(), json.into());
+            }
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3314,9 +3318,7 @@ impl crate::Request for RecognizeGeneralStructure {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3327,7 +3329,7 @@ impl crate::Request for RecognizeGeneralStructure {
             crate::SimpleSerialize::simple_serialize(f, "Keys", &mut params);
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3417,9 +3419,7 @@ impl crate::Request for RecognizeAdvanced {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3458,7 +3458,7 @@ impl crate::Request for RecognizeAdvanced {
             params.insert("Row".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3533,9 +3533,7 @@ impl crate::Request for RecognizeHandwriting {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3562,7 +3560,7 @@ impl crate::Request for RecognizeHandwriting {
             params.insert("Paragraph".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3617,9 +3615,7 @@ impl crate::Request for RecognizeBasic {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3630,7 +3626,7 @@ impl crate::Request for RecognizeBasic {
             params.insert("NeedRotate".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3680,16 +3676,14 @@ impl crate::Request for RecognizeGeneral {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3760,9 +3754,7 @@ impl crate::Request for RecognizeTableOcr {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3785,7 +3777,7 @@ impl crate::Request for RecognizeTableOcr {
             params.insert("IsHandWriting".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3835,16 +3827,14 @@ impl crate::Request for RecognizeHealthCode {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -3937,9 +3927,7 @@ impl crate::Request for RecognizeDocumentStructure {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -3982,7 +3970,7 @@ impl crate::Request for RecognizeDocumentStructure {
             params.insert("UseNewStyleOutput".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4046,9 +4034,7 @@ impl crate::Request for RecognizeIdcard {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4067,7 +4053,7 @@ impl crate::Request for RecognizeIdcard {
             params.insert("Llm_rec".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4121,16 +4107,14 @@ impl crate::Request for RecognizePassport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4185,9 +4169,7 @@ impl crate::Request for RecognizeHousehold {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4198,7 +4180,7 @@ impl crate::Request for RecognizeHousehold {
             params.insert("IsResidentPage".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4248,16 +4230,14 @@ impl crate::Request for RecognizeEstateCertification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4307,16 +4287,14 @@ impl crate::Request for RecognizeBankCard {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4366,16 +4344,14 @@ impl crate::Request for RecognizeBirthCertification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4428,9 +4404,7 @@ impl crate::Request for RecognizeChinesePassport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4441,7 +4415,7 @@ impl crate::Request for RecognizeChinesePassport {
             params.insert("OutputFigure".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4496,9 +4470,7 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4509,7 +4481,7 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
             params.insert("OutputFigure".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4562,9 +4534,7 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4575,7 +4545,7 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
             params.insert("OutputFigure".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4625,16 +4595,14 @@ impl crate::Request for RecognizeHKIdcard {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4684,16 +4652,14 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4747,9 +4713,7 @@ impl crate::Request for RecognizeInternationalIdcard {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4757,7 +4721,7 @@ impl crate::Request for RecognizeInternationalIdcard {
         }
         params.insert("Country".into(), (&self.country).into());
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4820,9 +4784,7 @@ impl crate::Request for RecognizeMixedInvoices {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4837,7 +4799,7 @@ impl crate::Request for RecognizeMixedInvoices {
             params.insert("MergePdfPages".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4893,9 +4855,7 @@ impl crate::Request for RecognizeInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -4906,7 +4866,7 @@ impl crate::Request for RecognizeInvoice {
             params.insert("PageNo".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -4956,16 +4916,14 @@ impl crate::Request for RecognizeCarInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5014,16 +4972,14 @@ impl crate::Request for RecognizeQuotaInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5073,16 +5029,14 @@ impl crate::Request for RecognizeAirItinerary {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5132,16 +5086,14 @@ impl crate::Request for RecognizeTrainInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5191,16 +5143,14 @@ impl crate::Request for RecognizeTaxiInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5249,16 +5199,14 @@ impl crate::Request for RecognizeRollTicket {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5308,16 +5256,14 @@ impl crate::Request for RecognizeBankAcceptance {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5366,16 +5312,14 @@ impl crate::Request for RecognizeBusShipTicket {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5425,16 +5369,14 @@ impl crate::Request for RecognizeNonTaxInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5483,16 +5425,14 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5541,16 +5481,14 @@ impl crate::Request for RecognizeHotelConsume {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5600,16 +5538,14 @@ impl crate::Request for RecognizePaymentRecord {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5669,9 +5605,7 @@ impl crate::Request for RecognizePurchaseRecord {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -5682,7 +5616,7 @@ impl crate::Request for RecognizePurchaseRecord {
             params.insert("OutputMultiOrders".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5731,16 +5665,14 @@ impl crate::Request for RecognizeRideHailingItinerary {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5789,16 +5721,14 @@ impl crate::Request for RecognizeShoppingReceipt {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5847,16 +5777,14 @@ impl crate::Request for RecognizeSocialSecurityCard {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5905,16 +5833,14 @@ impl crate::Request for RecognizeTollInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -5964,16 +5890,14 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6022,16 +5946,14 @@ impl crate::Request for RecognizeUsedCarInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6081,16 +6003,14 @@ impl crate::Request for RecognizeBusinessLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6140,16 +6060,14 @@ impl crate::Request for RecognizeBankAccountLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6198,16 +6116,14 @@ impl crate::Request for RecognizeTradeMarkCertification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6257,16 +6173,14 @@ impl crate::Request for RecognizeFoodProduceLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6316,16 +6230,14 @@ impl crate::Request for RecognizeFoodManageLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6374,16 +6286,14 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6432,16 +6342,14 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6491,16 +6399,14 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6549,16 +6455,14 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6610,9 +6514,7 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -6620,7 +6522,7 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         }
         params.insert("Country".into(), (&self.country).into());
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6670,16 +6572,14 @@ impl crate::Request for RecognizeVehicleLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6729,16 +6629,14 @@ impl crate::Request for RecognizeDrivingLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6788,16 +6686,14 @@ impl crate::Request for RecognizeWaybill {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6847,16 +6743,14 @@ impl crate::Request for RecognizeCarNumber {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6906,16 +6800,14 @@ impl crate::Request for RecognizeCarVinCode {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -6965,16 +6857,14 @@ impl crate::Request for RecognizeVehicleRegistration {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7024,16 +6914,14 @@ impl crate::Request for RecognizeVehicleCertification {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7083,16 +6971,14 @@ impl crate::Request for RecognizeEduFormula {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7142,16 +7028,14 @@ impl crate::Request for RecognizeEduOralCalculation {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
             params.insert("Url".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7215,9 +7099,7 @@ impl crate::Request for RecognizeEduPaperOcr {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7233,7 +7115,7 @@ impl crate::Request for RecognizeEduPaperOcr {
             params.insert("OutputOricoord".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7301,9 +7183,7 @@ impl crate::Request for RecognizeEduPaperCut {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7320,7 +7200,7 @@ impl crate::Request for RecognizeEduPaperCut {
             params.insert("OutputOricoord".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7375,9 +7255,7 @@ impl crate::Request for RecognizeEduQuestionOcr {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7388,7 +7266,7 @@ impl crate::Request for RecognizeEduQuestionOcr {
             params.insert("NeedRotate".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7454,9 +7332,7 @@ impl crate::Request for RecognizeEduPaperStructed {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7475,7 +7351,7 @@ impl crate::Request for RecognizeEduPaperStructed {
             params.insert("OutputOricoord".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7548,9 +7424,7 @@ impl crate::Request for RecognizeMultiLanguage {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7574,7 +7448,7 @@ impl crate::Request for RecognizeMultiLanguage {
             params.insert("NeedSortPage".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7634,9 +7508,7 @@ impl crate::Request for RecognizeEnglish {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7651,7 +7523,7 @@ impl crate::Request for RecognizeEnglish {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7712,9 +7584,7 @@ impl crate::Request for RecognizeThai {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7733,7 +7603,7 @@ impl crate::Request for RecognizeThai {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7794,9 +7664,7 @@ impl crate::Request for RecognizeJanpanese {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7815,7 +7683,7 @@ impl crate::Request for RecognizeJanpanese {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7876,9 +7744,7 @@ impl crate::Request for RecognizeKorean {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7897,7 +7763,7 @@ impl crate::Request for RecognizeKorean {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -7958,9 +7824,7 @@ impl crate::Request for RecognizeLatin {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -7979,7 +7843,7 @@ impl crate::Request for RecognizeLatin {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -8040,9 +7904,7 @@ impl crate::Request for RecognizeRussian {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -8061,7 +7923,7 @@ impl crate::Request for RecognizeRussian {
             params.insert("OutputTable".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -8116,9 +7978,7 @@ impl crate::Request for RecognizeCovidTestReport {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
@@ -8129,7 +7989,7 @@ impl crate::Request for RecognizeCovidTestReport {
             params.insert("MultipleResult".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -8187,15 +8047,13 @@ impl crate::Request for VerifyBusinessLicense {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
         params.insert("CreditCode".into(), (&self.credit_code).into());
         params.insert("CompanyName".into(), (&self.company_name).into());
         params.insert("LegalPerson".into(), (&self.legal_person).into());
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
@@ -8289,9 +8147,7 @@ impl crate::Request for VerifyVATInvoice {
 
     fn to_query_params(
         &self,
-    ) -> crate::Result<
-        std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
-    > {
+    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.invoice_code {
@@ -8312,7 +8168,7 @@ impl crate::Request for VerifyVATInvoice {
             params.insert("InvoiceKind".into(), (f).into());
         }
 
-        Ok(params)
+        params
     }
 
     fn to_headers(
