@@ -3186,42 +3186,42 @@ impl crate::Request for RecognizeAllText {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("Type".into(), (&self.r#type).into());
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
+        params.insert("Type".into(), (&self.r#type).into());
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         if let Some(f) = &self.output_qrcode {
-            params.insert("OutputQrcode".into(), f.into());
+            params.insert("OutputQrcode".into(), (f).into());
         }
 
         if let Some(f) = &self.output_bar_code {
-            params.insert("OutputBarCode".into(), f.into());
+            params.insert("OutputBarCode".into(), (f).into());
         }
 
         if let Some(f) = &self.output_stamp {
-            params.insert("OutputStamp".into(), f.into());
+            params.insert("OutputStamp".into(), (f).into());
         }
 
         if let Some(f) = &self.output_coordinate {
-            params.insert("OutputCoordinate".into(), f.into());
+            params.insert("OutputCoordinate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), f.into());
+            params.insert("OutputOricoord".into(), (f).into());
         }
 
         if let Some(f) = &self.output_kv_excel {
-            params.insert("OutputKVExcel".into(), f.into());
+            params.insert("OutputKVExcel".into(), (f).into());
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), f.into());
+            params.insert("PageNo".into(), (f).into());
         }
 
         if let Some(f) = &self.advanced_config {
@@ -3324,7 +3324,7 @@ impl crate::Request for RecognizeGeneralStructure {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.keys {
@@ -3429,39 +3429,39 @@ impl crate::Request for RecognizeAdvanced {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), f.into());
+            params.insert("NeedSortPage".into(), (f).into());
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         if let Some(f) = &self.no_stamp {
-            params.insert("NoStamp".into(), f.into());
+            params.insert("NoStamp".into(), (f).into());
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), f.into());
+            params.insert("Paragraph".into(), (f).into());
         }
 
         if let Some(f) = &self.row {
-            params.insert("Row".into(), f.into());
+            params.insert("Row".into(), (f).into());
         }
 
         Ok(params)
@@ -3547,27 +3547,27 @@ impl crate::Request for RecognizeHandwriting {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), f.into());
+            params.insert("NeedSortPage".into(), (f).into());
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), f.into());
+            params.insert("Paragraph".into(), (f).into());
         }
 
         Ok(params)
@@ -3633,11 +3633,11 @@ impl crate::Request for RecognizeBasic {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         Ok(params)
@@ -3698,7 +3698,7 @@ impl crate::Request for RecognizeGeneral {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -3780,23 +3780,23 @@ impl crate::Request for RecognizeTableOcr {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.line_less {
-            params.insert("LineLess".into(), f.into());
+            params.insert("LineLess".into(), (f).into());
         }
 
         if let Some(f) = &self.skip_detection {
-            params.insert("SkipDetection".into(), f.into());
+            params.insert("SkipDetection".into(), (f).into());
         }
 
         if let Some(f) = &self.is_hand_writing {
-            params.insert("IsHandWriting".into(), f.into());
+            params.insert("IsHandWriting".into(), (f).into());
         }
 
         Ok(params)
@@ -3857,7 +3857,7 @@ impl crate::Request for RecognizeHealthCode {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -3961,43 +3961,43 @@ impl crate::Request for RecognizeDocumentStructure {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), f.into());
+            params.insert("NeedSortPage".into(), (f).into());
         }
 
         if let Some(f) = &self.page {
-            params.insert("Page".into(), f.into());
+            params.insert("Page".into(), (f).into());
         }
 
         if let Some(f) = &self.no_stamp {
-            params.insert("NoStamp".into(), f.into());
+            params.insert("NoStamp".into(), (f).into());
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), f.into());
+            params.insert("Paragraph".into(), (f).into());
         }
 
         if let Some(f) = &self.row {
-            params.insert("Row".into(), f.into());
+            params.insert("Row".into(), (f).into());
         }
 
         if let Some(f) = &self.use_new_style_output {
-            params.insert("UseNewStyleOutput".into(), f.into());
+            params.insert("UseNewStyleOutput".into(), (f).into());
         }
 
         Ok(params)
@@ -4072,19 +4072,19 @@ impl crate::Request for RecognizeIdcard {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         if let Some(f) = &self.output_quality_info {
-            params.insert("OutputQualityInfo".into(), f.into());
+            params.insert("OutputQualityInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.llm_rec {
-            params.insert("Llm_rec".into(), f.into());
+            params.insert("Llm_rec".into(), (f).into());
         }
 
         Ok(params)
@@ -4149,7 +4149,7 @@ impl crate::Request for RecognizePassport {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4215,11 +4215,11 @@ impl crate::Request for RecognizeHousehold {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.is_resident_page {
-            params.insert("IsResidentPage".into(), f.into());
+            params.insert("IsResidentPage".into(), (f).into());
         }
 
         Ok(params)
@@ -4280,7 +4280,7 @@ impl crate::Request for RecognizeEstateCertification {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4341,7 +4341,7 @@ impl crate::Request for RecognizeBankCard {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4402,7 +4402,7 @@ impl crate::Request for RecognizeBirthCertification {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4466,11 +4466,11 @@ impl crate::Request for RecognizeChinesePassport {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         Ok(params)
@@ -4536,11 +4536,11 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         Ok(params)
@@ -4604,11 +4604,11 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), f.into());
+            params.insert("OutputFigure".into(), (f).into());
         }
 
         Ok(params)
@@ -4669,7 +4669,7 @@ impl crate::Request for RecognizeHKIdcard {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4730,7 +4730,7 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -4793,11 +4793,11 @@ impl crate::Request for RecognizeInternationalIdcard {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("Country".into(), (&self.country).into());
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
+        params.insert("Country".into(), (&self.country).into());
 
         Ok(params)
     }
@@ -4870,15 +4870,15 @@ impl crate::Request for RecognizeMixedInvoices {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), f.into());
+            params.insert("PageNo".into(), (f).into());
         }
 
         if let Some(f) = &self.merge_pdf_pages {
-            params.insert("MergePdfPages".into(), f.into());
+            params.insert("MergePdfPages".into(), (f).into());
         }
 
         Ok(params)
@@ -4945,11 +4945,11 @@ impl crate::Request for RecognizeInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), f.into());
+            params.insert("PageNo".into(), (f).into());
         }
 
         Ok(params)
@@ -5010,7 +5010,7 @@ impl crate::Request for RecognizeCarInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5070,7 +5070,7 @@ impl crate::Request for RecognizeQuotaInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5131,7 +5131,7 @@ impl crate::Request for RecognizeAirItinerary {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5192,7 +5192,7 @@ impl crate::Request for RecognizeTrainInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5253,7 +5253,7 @@ impl crate::Request for RecognizeTaxiInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5313,7 +5313,7 @@ impl crate::Request for RecognizeRollTicket {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5374,7 +5374,7 @@ impl crate::Request for RecognizeBankAcceptance {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5434,7 +5434,7 @@ impl crate::Request for RecognizeBusShipTicket {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5495,7 +5495,7 @@ impl crate::Request for RecognizeNonTaxInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5555,7 +5555,7 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5615,7 +5615,7 @@ impl crate::Request for RecognizeHotelConsume {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5676,7 +5676,7 @@ impl crate::Request for RecognizePaymentRecord {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5747,11 +5747,11 @@ impl crate::Request for RecognizePurchaseRecord {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_multi_orders {
-            params.insert("OutputMultiOrders".into(), f.into());
+            params.insert("OutputMultiOrders".into(), (f).into());
         }
 
         Ok(params)
@@ -5811,7 +5811,7 @@ impl crate::Request for RecognizeRideHailingItinerary {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5871,7 +5871,7 @@ impl crate::Request for RecognizeShoppingReceipt {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5931,7 +5931,7 @@ impl crate::Request for RecognizeSocialSecurityCard {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -5991,7 +5991,7 @@ impl crate::Request for RecognizeTollInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6052,7 +6052,7 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6112,7 +6112,7 @@ impl crate::Request for RecognizeUsedCarInvoice {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6173,7 +6173,7 @@ impl crate::Request for RecognizeBusinessLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6234,7 +6234,7 @@ impl crate::Request for RecognizeBankAccountLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6294,7 +6294,7 @@ impl crate::Request for RecognizeTradeMarkCertification {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6355,7 +6355,7 @@ impl crate::Request for RecognizeFoodProduceLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6416,7 +6416,7 @@ impl crate::Request for RecognizeFoodManageLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6476,7 +6476,7 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6536,7 +6536,7 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6597,7 +6597,7 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6657,7 +6657,7 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6718,11 +6718,11 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("Country".into(), (&self.country).into());
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
+        params.insert("Country".into(), (&self.country).into());
 
         Ok(params)
     }
@@ -6782,7 +6782,7 @@ impl crate::Request for RecognizeVehicleLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6843,7 +6843,7 @@ impl crate::Request for RecognizeDrivingLicense {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6904,7 +6904,7 @@ impl crate::Request for RecognizeWaybill {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -6965,7 +6965,7 @@ impl crate::Request for RecognizeCarNumber {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7026,7 +7026,7 @@ impl crate::Request for RecognizeCarVinCode {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7087,7 +7087,7 @@ impl crate::Request for RecognizeVehicleRegistration {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7148,7 +7148,7 @@ impl crate::Request for RecognizeVehicleCertification {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7209,7 +7209,7 @@ impl crate::Request for RecognizeEduFormula {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7270,7 +7270,7 @@ impl crate::Request for RecognizeEduOralCalculation {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         Ok(params)
@@ -7343,18 +7343,18 @@ impl crate::Request for RecognizeEduPaperOcr {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ImageType".into(), (&self.image_type).into());
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
+        params.insert("ImageType".into(), (&self.image_type).into());
 
         if let Some(f) = &self.subject {
-            params.insert("Subject".into(), f.into());
+            params.insert("Subject".into(), (f).into());
         }
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), f.into());
+            params.insert("OutputOricoord".into(), (f).into());
         }
 
         Ok(params)
@@ -7431,19 +7431,19 @@ impl crate::Request for RecognizeEduPaperCut {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.url {
+            params.insert("Url".into(), (f).into());
+        }
         params.insert("CutType".into(), (&self.cut_type).into());
         params.insert("ImageType".into(), (&self.image_type).into());
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
-        }
-
         if let Some(f) = &self.subject {
-            params.insert("Subject".into(), f.into());
+            params.insert("Subject".into(), (f).into());
         }
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), f.into());
+            params.insert("OutputOricoord".into(), (f).into());
         }
 
         Ok(params)
@@ -7509,11 +7509,11 @@ impl crate::Request for RecognizeEduQuestionOcr {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         Ok(params)
@@ -7590,19 +7590,19 @@ impl crate::Request for RecognizeEduPaperStructed {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.subject {
-            params.insert("Subject".into(), f.into());
+            params.insert("Subject".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), f.into());
+            params.insert("OutputOricoord".into(), (f).into());
         }
 
         Ok(params)
@@ -7684,26 +7684,26 @@ impl crate::Request for RecognizeMultiLanguage {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        crate::SimpleSerialize::simple_serialize(&self.languages, "Languages", &mut params);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
+        crate::SimpleSerialize::simple_serialize(&self.languages, "Languages", &mut params);
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), f.into());
+            params.insert("NeedSortPage".into(), (f).into());
         }
 
         Ok(params)
@@ -7774,15 +7774,15 @@ impl crate::Request for RecognizeEnglish {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -7854,19 +7854,19 @@ impl crate::Request for RecognizeThai {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -7938,19 +7938,19 @@ impl crate::Request for RecognizeJanpanese {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -8022,19 +8022,19 @@ impl crate::Request for RecognizeKorean {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -8106,19 +8106,19 @@ impl crate::Request for RecognizeLatin {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -8190,19 +8190,19 @@ impl crate::Request for RecognizeRussian {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), f.into());
+            params.insert("OutputCharInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), f.into());
+            params.insert("NeedRotate".into(), (f).into());
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), f.into());
+            params.insert("OutputTable".into(), (f).into());
         }
 
         Ok(params)
@@ -8268,11 +8268,11 @@ impl crate::Request for RecognizeCovidTestReport {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), f.into());
+            params.insert("Url".into(), (f).into());
         }
 
         if let Some(f) = &self.multiple_result {
-            params.insert("MultipleResult".into(), f.into());
+            params.insert("MultipleResult".into(), (f).into());
         }
 
         Ok(params)
@@ -8447,23 +8447,23 @@ impl crate::Request for VerifyVATInvoice {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
+
+        if let Some(f) = &self.invoice_code {
+            params.insert("InvoiceCode".into(), (f).into());
+        }
         params.insert("InvoiceNo".into(), (&self.invoice_no).into());
         params.insert("InvoiceDate".into(), (&self.invoice_date).into());
 
-        if let Some(f) = &self.invoice_code {
-            params.insert("InvoiceCode".into(), f.into());
-        }
-
         if let Some(f) = &self.invoice_sum {
-            params.insert("InvoiceSum".into(), f.into());
+            params.insert("InvoiceSum".into(), (f).into());
         }
 
         if let Some(f) = &self.verify_code {
-            params.insert("VerifyCode".into(), f.into());
+            params.insert("VerifyCode".into(), (f).into());
         }
 
         if let Some(f) = &self.invoice_kind {
-            params.insert("InvoiceKind".into(), f.into());
+            params.insert("InvoiceKind".into(), (f).into());
         }
 
         Ok(params)

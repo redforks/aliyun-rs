@@ -1899,12 +1899,27 @@ impl crate::Request for SubmitSmsQualification {
         );
         params.insert("UseBySelf".into(), (&self.use_by_self).into());
         params.insert("CompanyType".into(), (&self.company_type).into());
+
+        if let Some(f) = &self.business_license_pics {
+            params.insert(
+                "BusinessLicensePics".into(),
+                serde_json::to_string(f)?.into(),
+            );
+        }
         params.insert("CompanyName".into(), (&self.company_name).into());
         params.insert("OrganizationCode".into(), (&self.organization_code).into());
         params.insert(
             "BussinessLicenseExpDate".into(),
             (&self.bussiness_license_exp_date).into(),
         );
+
+        if let Some(f) = &self.legal_person_id_card_front_side {
+            params.insert("LegalPersonIdCardFrontSide".into(), (f).into());
+        }
+
+        if let Some(f) = &self.legal_person_id_card_back_side {
+            params.insert("LegalPersonIdCardBackSide".into(), (f).into());
+        }
         params.insert("LegalPersonName".into(), (&self.legal_person_name).into());
         params.insert(
             "LegalPersonIDCardNo".into(),
@@ -1932,29 +1947,14 @@ impl crate::Request for SubmitSmsQualification {
         );
         params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
         params.insert("CertifyCode".into(), (&self.certify_code).into());
-        params.insert("WhetherShare".into(), (&self.whether_share).into());
-
-        if let Some(f) = &self.business_license_pics {
-            params.insert(
-                "BusinessLicensePics".into(),
-                serde_json::to_string(f)?.into(),
-            );
-        }
-
-        if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide".into(), f.into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide".into(), f.into());
-        }
 
         if let Some(f) = &self.other_files {
             params.insert("OtherFiles".into(), serde_json::to_string(f)?.into());
         }
+        params.insert("WhetherShare".into(), (&self.whether_share).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), f.into());
+            params.insert("Remark".into(), (f).into());
         }
 
         Ok(params)
@@ -2053,35 +2053,35 @@ impl crate::Request for QuerySmsQualificationRecord {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.qualification_group_name {
-            params.insert("QualificationGroupName".into(), f.into());
+            params.insert("QualificationGroupName".into(), (f).into());
         }
 
         if let Some(f) = &self.company_name {
-            params.insert("CompanyName".into(), f.into());
+            params.insert("CompanyName".into(), (f).into());
         }
 
         if let Some(f) = &self.state {
-            params.insert("State".into(), f.into());
+            params.insert("State".into(), (f).into());
         }
 
         if let Some(f) = &self.work_order_id {
-            params.insert("WorkOrderId".into(), f.into());
+            params.insert("WorkOrderId".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName".into(), f.into());
+            params.insert("LegalPersonName".into(), (f).into());
         }
 
         if let Some(f) = &self.use_by_self {
-            params.insert("UseBySelf".into(), f.into());
+            params.insert("UseBySelf".into(), (f).into());
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), f.into());
+            params.insert("PageNo".into(), (f).into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), f.into());
+            params.insert("PageSize".into(), (f).into());
         }
 
         Ok(params)
@@ -2150,7 +2150,7 @@ impl crate::Request for QuerySingleSmsQualification {
         );
 
         if let Some(f) = &self.order_id {
-            params.insert("OrderId".into(), f.into());
+            params.insert("OrderId".into(), (f).into());
         }
 
         Ok(params)
@@ -2332,8 +2332,6 @@ impl crate::Request for UpdateSmsQualification {
             (&self.qualification_group_id).into(),
         );
         params.insert("OrderId".into(), (&self.order_id).into());
-        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
-        params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         if let Some(f) = &self.business_license_pics {
             params.insert(
@@ -2343,59 +2341,61 @@ impl crate::Request for UpdateSmsQualification {
         }
 
         if let Some(f) = &self.company_name {
-            params.insert("CompanyName".into(), f.into());
+            params.insert("CompanyName".into(), (f).into());
         }
 
         if let Some(f) = &self.bussiness_license_exp_date {
-            params.insert("BussinessLicenseExpDate".into(), f.into());
+            params.insert("BussinessLicenseExpDate".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide".into(), f.into());
+            params.insert("LegalPersonIdCardFrontSide".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide".into(), f.into());
+            params.insert("LegalPersonIdCardBackSide".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName".into(), f.into());
+            params.insert("LegalPersonName".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_id_card_no {
-            params.insert("LegalPersonIDCardNo".into(), f.into());
+            params.insert("LegalPersonIDCardNo".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_id_card_eff_time {
-            params.insert("LegalPersonIdCardEffTime".into(), f.into());
+            params.insert("LegalPersonIdCardEffTime".into(), (f).into());
         }
 
         if let Some(f) = &self.legal_person_id_card_type {
-            params.insert("LegalPersonIDCardType".into(), f.into());
+            params.insert("LegalPersonIDCardType".into(), (f).into());
         }
 
         if let Some(f) = &self.admin_id_card_pic {
-            params.insert("AdminIDCardPic".into(), f.into());
+            params.insert("AdminIDCardPic".into(), (f).into());
         }
 
         if let Some(f) = &self.admin_id_card_front_face {
-            params.insert("AdminIDCardFrontFace".into(), f.into());
+            params.insert("AdminIDCardFrontFace".into(), (f).into());
         }
 
         if let Some(f) = &self.admin_name {
-            params.insert("AdminName".into(), f.into());
+            params.insert("AdminName".into(), (f).into());
         }
 
         if let Some(f) = &self.admin_id_card_no {
-            params.insert("AdminIDCardNo".into(), f.into());
+            params.insert("AdminIDCardNo".into(), (f).into());
         }
 
         if let Some(f) = &self.admin_id_card_exp_date {
-            params.insert("AdminIDCardExpDate".into(), f.into());
+            params.insert("AdminIDCardExpDate".into(), (f).into());
         }
+        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
+        params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         if let Some(f) = &self.admin_id_card_type {
-            params.insert("AdminIDCardType".into(), f.into());
+            params.insert("AdminIDCardType".into(), (f).into());
         }
 
         if let Some(f) = &self.other_files {
@@ -2689,6 +2689,7 @@ impl crate::Request for CreateSmsAuthorizationLetter {
             "SignList".into(),
             serde_json::to_string(&self.sign_list)?.into(),
         );
+
         params.insert(
             "AuthorizationLetterExpDate".into(),
             (&self.authorization_letter_exp_date).into(),
@@ -2791,19 +2792,19 @@ impl crate::Request for QuerySmsAuthorizationLetter {
         }
 
         if let Some(f) = &self.sign_name {
-            params.insert("SignName".into(), f.into());
+            params.insert("SignName".into(), (f).into());
         }
 
         if let Some(f) = &self.organization_code {
-            params.insert("OrganizationCode".into(), f.into());
+            params.insert("OrganizationCode".into(), (f).into());
         }
 
         if let Some(f) = &self.state {
-            params.insert("State".into(), f.into());
+            params.insert("State".into(), (f).into());
         }
 
         if let Some(f) = &self.status {
-            params.insert("Status".into(), f.into());
+            params.insert("Status".into(), (f).into());
         }
 
         Ok(params)
@@ -2942,39 +2943,39 @@ impl crate::Request for CreateSmsSign {
     > {
         let mut params = std::collections::BTreeMap::new();
         params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("QualificationId".into(), (&self.qualification_id).into());
-        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), f.into());
+            params.insert("Remark".into(), (f).into());
         }
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), f.into());
+            params.insert("SignType".into(), (f).into());
         }
 
         if let Some(f) = &self.more_data {
             params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
+        params.insert("QualificationId".into(), (&self.qualification_id).into());
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), f.into());
+            params.insert("ApplySceneContent".into(), (f).into());
         }
+        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty".into(), f.into());
+            params.insert("ThirdParty".into(), (f).into());
         }
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), f.into());
+            params.insert("AuthorizationLetterId".into(), (f).into());
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId".into(), f.into());
+            params.insert("TrademarkId".into(), (f).into());
         }
 
         if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId".into(), f.into());
+            params.insert("AppIcpRecordId".into(), (f).into());
         }
 
         Ok(params)
@@ -3101,11 +3102,11 @@ impl crate::Request for QuerySmsSignList {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex".into(), f.into());
+            params.insert("PageIndex".into(), (f).into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), f.into());
+            params.insert("PageSize".into(), (f).into());
         }
 
         Ok(params)
@@ -3236,39 +3237,39 @@ impl crate::Request for UpdateSmsSign {
     > {
         let mut params = std::collections::BTreeMap::new();
         params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("QualificationId".into(), (&self.qualification_id).into());
-        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), f.into());
+            params.insert("Remark".into(), (f).into());
         }
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), f.into());
+            params.insert("SignType".into(), (f).into());
         }
 
         if let Some(f) = &self.more_data {
             params.insert("MoreData".into(), serde_json::to_string(f)?.into());
         }
+        params.insert("QualificationId".into(), (&self.qualification_id).into());
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), f.into());
+            params.insert("ApplySceneContent".into(), (f).into());
         }
+        params.insert("SignSource".into(), (&self.sign_source).into());
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty".into(), f.into());
+            params.insert("ThirdParty".into(), (f).into());
         }
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), f.into());
+            params.insert("AuthorizationLetterId".into(), (f).into());
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId".into(), f.into());
+            params.insert("TrademarkId".into(), (f).into());
         }
 
         if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId".into(), f.into());
+            params.insert("AppIcpRecordId".into(), (f).into());
         }
 
         Ok(params)
@@ -3401,7 +3402,7 @@ impl crate::Request for ChangeSignatureQualification {
         params.insert("QualificationId".into(), (&self.qualification_id).into());
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), f.into());
+            params.insert("AuthorizationLetterId".into(), (f).into());
         }
 
         Ok(params)
@@ -3515,7 +3516,7 @@ impl crate::Request for AddSmsSign {
         params.insert("Remark".into(), (&self.remark).into());
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), f.into());
+            params.insert("SignType".into(), (f).into());
         }
 
         Ok(params)
@@ -3621,7 +3622,7 @@ impl crate::Request for ModifySmsSign {
         params.insert("Remark".into(), (&self.remark).into());
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), f.into());
+            params.insert("SignType".into(), (f).into());
         }
 
         Ok(params)
@@ -4173,18 +4174,18 @@ impl crate::Request for CreateSmsTemplate {
         let mut params = std::collections::BTreeMap::new();
         params.insert("TemplateName".into(), (&self.template_name).into());
         params.insert("TemplateContent".into(), (&self.template_content).into());
-        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), f.into());
+            params.insert("Remark".into(), (f).into());
         }
+        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName".into(), f.into());
+            params.insert("RelatedSignName".into(), (f).into());
         }
 
         if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule".into(), f.into());
+            params.insert("TemplateRule".into(), (f).into());
         }
 
         if let Some(f) = &self.more_data {
@@ -4192,15 +4193,15 @@ impl crate::Request for CreateSmsTemplate {
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), f.into());
+            params.insert("ApplySceneContent".into(), (f).into());
         }
 
         if let Some(f) = &self.intl_type {
-            params.insert("IntlType".into(), f.into());
+            params.insert("IntlType".into(), (f).into());
         }
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving".into(), f.into());
+            params.insert("TrafficDriving".into(), (f).into());
         }
 
         Ok(params)
@@ -4327,11 +4328,11 @@ impl crate::Request for QuerySmsTemplateList {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex".into(), f.into());
+            params.insert("PageIndex".into(), (f).into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), f.into());
+            params.insert("PageSize".into(), (f).into());
         }
 
         Ok(params)
@@ -4488,18 +4489,18 @@ impl crate::Request for UpdateSmsTemplate {
         params.insert("TemplateName".into(), (&self.template_name).into());
         params.insert("TemplateCode".into(), (&self.template_code).into());
         params.insert("TemplateContent".into(), (&self.template_content).into());
-        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), f.into());
+            params.insert("Remark".into(), (f).into());
         }
+        params.insert("TemplateType".into(), (&self.template_type).into());
 
         if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName".into(), f.into());
+            params.insert("RelatedSignName".into(), (f).into());
         }
 
         if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule".into(), f.into());
+            params.insert("TemplateRule".into(), (f).into());
         }
 
         if let Some(f) = &self.more_data {
@@ -4507,15 +4508,15 @@ impl crate::Request for UpdateSmsTemplate {
         }
 
         if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), f.into());
+            params.insert("ApplySceneContent".into(), (f).into());
         }
 
         if let Some(f) = &self.intl_type {
-            params.insert("IntlType".into(), f.into());
+            params.insert("IntlType".into(), (f).into());
         }
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving".into(), f.into());
+            params.insert("TrafficDriving".into(), (f).into());
         }
 
         Ok(params)
@@ -4975,15 +4976,15 @@ impl crate::Request for SendSms {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         if let Some(f) = &self.template_param {
-            params.insert("TemplateParam".into(), f.into());
+            params.insert("TemplateParam".into(), (f).into());
         }
 
         if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode".into(), f.into());
+            params.insert("SmsUpExtendCode".into(), (f).into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), f.into());
+            params.insert("OutId".into(), (f).into());
         }
 
         Ok(params)
@@ -5093,7 +5094,7 @@ impl crate::Request for SendBatchSms {
         params.insert("TemplateCode".into(), (&self.template_code).into());
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), f.into());
+            params.insert("OutId".into(), (f).into());
         }
 
         Ok(params)
@@ -5184,13 +5185,13 @@ impl crate::Request for QuerySendDetails {
     > {
         let mut params = std::collections::BTreeMap::new();
         params.insert("PhoneNumber".into(), (&self.phone_number).into());
+
+        if let Some(f) = &self.biz_id {
+            params.insert("BizId".into(), (f).into());
+        }
         params.insert("SendDate".into(), (&self.send_date).into());
         params.insert("PageSize".into(), (&self.page_size).into());
         params.insert("CurrentPage".into(), (&self.current_page).into());
-
-        if let Some(f) = &self.biz_id {
-            params.insert("BizId".into(), f.into());
-        }
 
         Ok(params)
     }
@@ -5295,11 +5296,11 @@ impl crate::Request for QuerySendStatistics {
         params.insert("PageSize".into(), (&self.page_size).into());
 
         if let Some(f) = &self.template_type {
-            params.insert("TemplateType".into(), f.into());
+            params.insert("TemplateType".into(), (f).into());
         }
 
         if let Some(f) = &self.sign_name {
-            params.insert("SignName".into(), f.into());
+            params.insert("SignName".into(), (f).into());
         }
 
         Ok(params)
@@ -5355,9 +5356,7 @@ impl crate::Request for GetOSSInfoForCardTemplate {
     ) -> crate::Result<
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
-        let mut params = std::collections::BTreeMap::new();
-
-        Ok(params)
+        Ok(Default::default())
     }
 
     fn to_headers(
@@ -5449,11 +5448,11 @@ impl crate::Request for GetMediaResourceId {
         params.insert("FileSize".into(), (&self.file_size).into());
 
         if let Some(f) = &self.extend_info {
-            params.insert("ExtendInfo".into(), f.into());
+            params.insert("ExtendInfo".into(), (f).into());
         }
 
         if let Some(f) = &self.memo {
-            params.insert("Memo".into(), f.into());
+            params.insert("Memo".into(), (f).into());
         }
 
         Ok(params)
@@ -5544,11 +5543,11 @@ impl crate::Request for CreateCardSmsTemplate {
         );
 
         if let Some(f) = &self.memo {
-            params.insert("Memo".into(), f.into());
+            params.insert("Memo".into(), (f).into());
         }
 
         if let Some(f) = &self.factorys {
-            params.insert("Factorys".into(), f.into());
+            params.insert("Factorys".into(), (f).into());
         }
 
         Ok(params)
@@ -5774,7 +5773,7 @@ impl crate::Request for QueryMobilesCardSupport {
         );
 
         if let Some(f) = &self.encrypt_type {
-            params.insert("EncryptType".into(), f.into());
+            params.insert("EncryptType".into(), (f).into());
         }
 
         Ok(params)
@@ -5883,34 +5882,34 @@ impl crate::Request for GetCardSmsLink {
     > {
         let mut params = std::collections::BTreeMap::new();
         params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), f.into());
+            params.insert("OutId".into(), (f).into());
         }
 
         if let Some(f) = &self.phone_number_json {
-            params.insert("PhoneNumberJson".into(), f.into());
+            params.insert("PhoneNumberJson".into(), (f).into());
         }
+        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson".into(), f.into());
+            params.insert("CardTemplateParamJson".into(), (f).into());
         }
 
         if let Some(f) = &self.card_code_type {
-            params.insert("CardCodeType".into(), f.into());
+            params.insert("CardCodeType".into(), (f).into());
         }
 
         if let Some(f) = &self.card_link_type {
-            params.insert("CardLinkType".into(), f.into());
+            params.insert("CardLinkType".into(), (f).into());
         }
 
         if let Some(f) = &self.domain {
-            params.insert("Domain".into(), f.into());
+            params.insert("Domain".into(), (f).into());
         }
 
         if let Some(f) = &self.custom_short_code_json {
-            params.insert("CustomShortCodeJson".into(), f.into());
+            params.insert("CustomShortCodeJson".into(), (f).into());
         }
 
         Ok(params)
@@ -5996,27 +5995,27 @@ impl crate::Request for GetCardSmsDetails {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("SendDate".into(), (&self.send_date).into());
-        params.insert("PhoneNumber".into(), (&self.phone_number).into());
 
         if let Some(f) = &self.current_page {
-            params.insert("CurrentPage".into(), f.into());
+            params.insert("CurrentPage".into(), (f).into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), f.into());
+            params.insert("PageSize".into(), (f).into());
         }
+        params.insert("SendDate".into(), (&self.send_date).into());
+        params.insert("PhoneNumber".into(), (&self.phone_number).into());
 
         if let Some(f) = &self.biz_card_id {
-            params.insert("BizCardId".into(), f.into());
+            params.insert("BizCardId".into(), (f).into());
         }
 
         if let Some(f) = &self.biz_sms_id {
-            params.insert("BizSmsId".into(), f.into());
+            params.insert("BizSmsId".into(), (f).into());
         }
 
         if let Some(f) = &self.biz_digit_id {
-            params.insert("BizDigitId".into(), f.into());
+            params.insert("BizDigitId".into(), (f).into());
         }
 
         Ok(params)
@@ -6086,6 +6085,7 @@ impl crate::Request for QueryCardSmsTemplateReport {
     > {
         let mut params = std::collections::BTreeMap::new();
         crate::FlatSerialize::flat_serialize(&self.template_codes, "TemplateCodes", &mut params);
+
         params.insert("StartDate".into(), (&self.start_date).into());
         params.insert("EndDate".into(), (&self.end_date).into());
 
@@ -6215,40 +6215,41 @@ impl crate::Request for SendCardSms {
     > {
         let mut params = std::collections::BTreeMap::new();
         crate::FlatSerialize::flat_serialize(&self.card_objects, "CardObjects", &mut params);
+
         params.insert("SignName".into(), (&self.sign_name).into());
         params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-        params.insert("FallbackType".into(), (&self.fallback_type).into());
 
         if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode".into(), f.into());
+            params.insert("SmsTemplateCode".into(), (f).into());
         }
 
         if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode".into(), f.into());
+            params.insert("SmsUpExtendCode".into(), (f).into());
         }
+        params.insert("FallbackType".into(), (&self.fallback_type).into());
 
         if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode".into(), f.into());
+            params.insert("DigitalTemplateCode".into(), (f).into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), f.into());
+            params.insert("OutId".into(), (f).into());
         }
 
         if let Some(f) = &self.sms_template_param {
-            params.insert("SmsTemplateParam".into(), f.into());
+            params.insert("SmsTemplateParam".into(), (f).into());
         }
 
         if let Some(f) = &self.digital_template_param {
-            params.insert("DigitalTemplateParam".into(), f.into());
+            params.insert("DigitalTemplateParam".into(), (f).into());
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode".into(), f.into());
+            params.insert("TemplateCode".into(), (f).into());
         }
 
         if let Some(f) = &self.template_param {
-            params.insert("TemplateParam".into(), f.into());
+            params.insert("TemplateParam".into(), (f).into());
         }
 
         Ok(params)
@@ -6382,44 +6383,44 @@ impl crate::Request for SendBatchCardSms {
     > {
         let mut params = std::collections::BTreeMap::new();
         params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-        params.insert("FallbackType".into(), (&self.fallback_type).into());
-        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
-        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode".into(), f.into());
+            params.insert("SmsTemplateCode".into(), (f).into());
         }
+        params.insert("FallbackType".into(), (&self.fallback_type).into());
 
         if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode".into(), f.into());
+            params.insert("DigitalTemplateCode".into(), (f).into());
         }
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), f.into());
+            params.insert("OutId".into(), (f).into());
         }
+        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
+        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
 
         if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson".into(), f.into());
+            params.insert("CardTemplateParamJson".into(), (f).into());
         }
 
         if let Some(f) = &self.sms_template_param_json {
-            params.insert("SmsTemplateParamJson".into(), f.into());
+            params.insert("SmsTemplateParamJson".into(), (f).into());
         }
 
         if let Some(f) = &self.digital_template_param_json {
-            params.insert("DigitalTemplateParamJson".into(), f.into());
+            params.insert("DigitalTemplateParamJson".into(), (f).into());
         }
 
         if let Some(f) = &self.sms_up_extend_code_json {
-            params.insert("SmsUpExtendCodeJson".into(), f.into());
+            params.insert("SmsUpExtendCodeJson".into(), (f).into());
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode".into(), f.into());
+            params.insert("TemplateCode".into(), (f).into());
         }
 
         if let Some(f) = &self.template_param_json {
-            params.insert("TemplateParamJson".into(), f.into());
+            params.insert("TemplateParamJson".into(), (f).into());
         }
 
         Ok(params)
@@ -6539,7 +6540,7 @@ impl crate::Request for GetOSSInfoForUploadFile {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.biz_type {
-            params.insert("BizType".into(), f.into());
+            params.insert("BizType".into(), (f).into());
         }
 
         Ok(params)
@@ -6600,7 +6601,7 @@ impl crate::Request for GetSmsOcrOssInfo {
         let mut params = std::collections::BTreeMap::new();
 
         if let Some(f) = &self.task_type {
-            params.insert("TaskType".into(), f.into());
+            params.insert("TaskType".into(), (f).into());
         }
 
         Ok(params)
@@ -6674,7 +6675,7 @@ impl crate::Request for SmsConversionIntl {
         params.insert("Delivered".into(), (&self.delivered).into());
 
         if let Some(f) = &self.conversion_time {
-            params.insert("ConversionTime".into(), f.into());
+            params.insert("ConversionTime".into(), (f).into());
         }
 
         Ok(params)
@@ -6740,11 +6741,11 @@ impl crate::Request for ConversionDataIntl {
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
         let mut params = std::collections::BTreeMap::new();
-        params.insert("ConversionRate".into(), (&self.conversion_rate).into());
 
         if let Some(f) = &self.report_time {
-            params.insert("ReportTime".into(), f.into());
+            params.insert("ReportTime".into(), (f).into());
         }
+        params.insert("ConversionRate".into(), (&self.conversion_rate).into());
 
         Ok(params)
     }
@@ -6817,9 +6818,7 @@ impl crate::Request for AddShortUrl {
     ) -> crate::Result<
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
-        let mut params = std::collections::BTreeMap::new();
-
-        Ok(params)
+        Ok(Default::default())
     }
 
     fn to_headers(
@@ -6878,9 +6877,7 @@ impl crate::Request for DeleteShortUrl {
     ) -> crate::Result<
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
-        let mut params = std::collections::BTreeMap::new();
-
-        Ok(params)
+        Ok(Default::default())
     }
 
     fn to_headers(
@@ -6939,9 +6936,7 @@ impl crate::Request for QueryShortUrl {
     ) -> crate::Result<
         std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>>,
     > {
-        let mut params = std::collections::BTreeMap::new();
-
-        Ok(params)
+        Ok(Default::default())
     }
 
     fn to_headers(
@@ -7026,15 +7021,15 @@ impl crate::Request for ListTagResources {
         params.insert("RegionId".into(), (&self.region_id).into());
 
         if let Some(f) = &self.next_token {
-            params.insert("NextToken".into(), f.into());
+            params.insert("NextToken".into(), (f).into());
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), f.into());
+            params.insert("PageSize".into(), (f).into());
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), f.into());
+            params.insert("ProdCode".into(), (f).into());
         }
 
         if let Some(f) = &self.tag {
@@ -7123,11 +7118,11 @@ impl crate::Request for TagResources {
         let mut params = std::collections::BTreeMap::new();
         params.insert("ResourceType".into(), (&self.resource_type).into());
         params.insert("RegionId".into(), (&self.region_id).into());
-        crate::FlatSerialize::flat_serialize(&self.tag, "Tag", &mut params);
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), f.into());
+            params.insert("ProdCode".into(), (f).into());
         }
+        crate::FlatSerialize::flat_serialize(&self.tag, "Tag", &mut params);
 
         if let Some(f) = &self.resource_id {
             crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
@@ -7218,11 +7213,11 @@ impl crate::Request for UntagResources {
         params.insert("RegionId".into(), (&self.region_id).into());
 
         if let Some(f) = &self.all {
-            params.insert("All".into(), f.into());
+            params.insert("All".into(), (f).into());
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), f.into());
+            params.insert("ProdCode".into(), (f).into());
         }
 
         if let Some(f) = &self.tag_key {
@@ -8555,6 +8550,30 @@ impl crate::FlatSerialize for ResponseFileUrlList {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct ResponseTagResources {
+    #[serde(rename = "TagResource")]
+    pub tag_resource: Vec<TagResource>,
+}
+
+impl crate::FlatSerialize for ResponseTagResources {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut std::collections::BTreeMap<
+            std::borrow::Cow<'static, str>,
+            crate::QueryValue<'a>,
+        >,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.tag_resource,
+            &format!("{}.TagResource", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct SendCardSmsResponseData {
     #[serde(rename = "BizCardId")]
     pub biz_card_id: String,
@@ -9187,30 +9206,6 @@ impl crate::FlatSerialize for TagResource {
         crate::FlatSerialize::flat_serialize(
             &self.tag_value,
             &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TagResources {
-    #[serde(rename = "TagResource")]
-    pub tag_resource: Vec<TagResource>,
-}
-
-impl crate::FlatSerialize for TagResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_resource,
-            &format!("{}.TagResource", name),
             params,
         );
     }
@@ -10712,7 +10707,7 @@ pub struct ListTagResourcesResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "TagResources")]
-    pub tag_resources: TagResources,
+    pub tag_resources: ResponseTagResources,
 }
 
 impl AsRef<crate::CodeMessage> for ListTagResourcesResponse {

@@ -1,5 +1,6 @@
 #![doc = include_str!("../README.md")]
 
+use anyhow::Context as _;
 use anyhow::anyhow;
 use http::{HeaderValue, Method};
 use reqwest::Body;
@@ -14,7 +15,6 @@ mod v3;
 pub use v3::AccessKeySecret;
 
 pub mod ocr;
-pub mod oss;
 pub mod sms;
 
 #[cfg(test)]
