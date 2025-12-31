@@ -518,8 +518,8 @@ trait Request: Sized + Send {
         BTreeMap::new()
     }
     /// Returns custom headers to be included in the request.
-    fn to_headers(&self) -> Result<BTreeMap<Cow<'static, str>, String>> {
-        Ok(BTreeMap::new())
+    fn to_headers(&self) -> BTreeMap<Cow<'static, str>, String> {
+        BTreeMap::new()
     }
     fn to_body(self) -> Result<Self::Body>;
 }

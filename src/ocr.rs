@@ -3259,10 +3259,8 @@ impl crate::Request for RecognizeAllText {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3332,10 +3330,8 @@ impl crate::Request for RecognizeGeneralStructure {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3461,10 +3457,8 @@ impl crate::Request for RecognizeAdvanced {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3563,10 +3557,8 @@ impl crate::Request for RecognizeHandwriting {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3629,10 +3621,8 @@ impl crate::Request for RecognizeBasic {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3686,10 +3676,8 @@ impl crate::Request for RecognizeGeneral {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3780,10 +3768,8 @@ impl crate::Request for RecognizeTableOcr {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3837,10 +3823,8 @@ impl crate::Request for RecognizeHealthCode {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -3973,10 +3957,8 @@ impl crate::Request for RecognizeDocumentStructure {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4056,10 +4038,8 @@ impl crate::Request for RecognizeIdcard {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4117,10 +4097,8 @@ impl crate::Request for RecognizePassport {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4183,10 +4161,8 @@ impl crate::Request for RecognizeHousehold {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4240,10 +4216,8 @@ impl crate::Request for RecognizeEstateCertification {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4297,10 +4271,8 @@ impl crate::Request for RecognizeBankCard {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4354,10 +4326,8 @@ impl crate::Request for RecognizeBirthCertification {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4418,10 +4388,8 @@ impl crate::Request for RecognizeChinesePassport {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4484,10 +4452,8 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4548,10 +4514,8 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4605,10 +4569,8 @@ impl crate::Request for RecognizeHKIdcard {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4662,10 +4624,8 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4724,10 +4684,8 @@ impl crate::Request for RecognizeInternationalIdcard {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4802,10 +4760,8 @@ impl crate::Request for RecognizeMixedInvoices {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4869,10 +4825,8 @@ impl crate::Request for RecognizeInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4926,10 +4880,8 @@ impl crate::Request for RecognizeCarInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -4982,10 +4934,8 @@ impl crate::Request for RecognizeQuotaInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5039,10 +4989,8 @@ impl crate::Request for RecognizeAirItinerary {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5096,10 +5044,8 @@ impl crate::Request for RecognizeTrainInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5153,10 +5099,8 @@ impl crate::Request for RecognizeTaxiInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5209,10 +5153,8 @@ impl crate::Request for RecognizeRollTicket {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5266,10 +5208,8 @@ impl crate::Request for RecognizeBankAcceptance {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5322,10 +5262,8 @@ impl crate::Request for RecognizeBusShipTicket {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5379,10 +5317,8 @@ impl crate::Request for RecognizeNonTaxInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5435,10 +5371,8 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5491,10 +5425,8 @@ impl crate::Request for RecognizeHotelConsume {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5548,10 +5480,8 @@ impl crate::Request for RecognizePaymentRecord {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5619,10 +5549,8 @@ impl crate::Request for RecognizePurchaseRecord {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5675,10 +5603,8 @@ impl crate::Request for RecognizeRideHailingItinerary {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5731,10 +5657,8 @@ impl crate::Request for RecognizeShoppingReceipt {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5787,10 +5711,8 @@ impl crate::Request for RecognizeSocialSecurityCard {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5843,10 +5765,8 @@ impl crate::Request for RecognizeTollInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5900,10 +5820,8 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -5956,10 +5874,8 @@ impl crate::Request for RecognizeUsedCarInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6013,10 +5929,8 @@ impl crate::Request for RecognizeBusinessLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6070,10 +5984,8 @@ impl crate::Request for RecognizeBankAccountLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6126,10 +6038,8 @@ impl crate::Request for RecognizeTradeMarkCertification {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6183,10 +6093,8 @@ impl crate::Request for RecognizeFoodProduceLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6240,10 +6148,8 @@ impl crate::Request for RecognizeFoodManageLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6296,10 +6202,8 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6352,10 +6256,8 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6409,10 +6311,8 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6465,10 +6365,8 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6525,10 +6423,8 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6582,10 +6478,8 @@ impl crate::Request for RecognizeVehicleLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6639,10 +6533,8 @@ impl crate::Request for RecognizeDrivingLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6696,10 +6588,8 @@ impl crate::Request for RecognizeWaybill {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6753,10 +6643,8 @@ impl crate::Request for RecognizeCarNumber {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6810,10 +6698,8 @@ impl crate::Request for RecognizeCarVinCode {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6867,10 +6753,8 @@ impl crate::Request for RecognizeVehicleRegistration {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6924,10 +6808,8 @@ impl crate::Request for RecognizeVehicleCertification {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -6981,10 +6863,8 @@ impl crate::Request for RecognizeEduFormula {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7038,10 +6918,8 @@ impl crate::Request for RecognizeEduOralCalculation {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7118,10 +6996,8 @@ impl crate::Request for RecognizeEduPaperOcr {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7203,10 +7079,8 @@ impl crate::Request for RecognizeEduPaperCut {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7269,10 +7143,8 @@ impl crate::Request for RecognizeEduQuestionOcr {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7354,10 +7226,8 @@ impl crate::Request for RecognizeEduPaperStructed {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7451,10 +7321,8 @@ impl crate::Request for RecognizeMultiLanguage {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7526,10 +7394,8 @@ impl crate::Request for RecognizeEnglish {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7606,10 +7472,8 @@ impl crate::Request for RecognizeThai {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7686,10 +7550,8 @@ impl crate::Request for RecognizeJanpanese {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7766,10 +7628,8 @@ impl crate::Request for RecognizeKorean {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7846,10 +7706,8 @@ impl crate::Request for RecognizeLatin {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7926,10 +7784,8 @@ impl crate::Request for RecognizeRussian {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -7992,10 +7848,8 @@ impl crate::Request for RecognizeCovidTestReport {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8056,10 +7910,8 @@ impl crate::Request for VerifyBusinessLicense {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
@@ -8171,10 +8023,8 @@ impl crate::Request for VerifyVATInvoice {
         params
     }
 
-    fn to_headers(
-        &self,
-    ) -> crate::Result<std::collections::BTreeMap<std::borrow::Cow<'static, str>, String>> {
-        Ok(Default::default())
+    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+        Default::default()
     }
 
     fn to_body(self) -> crate::Result<Self::Body> {
