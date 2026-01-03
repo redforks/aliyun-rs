@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 use std::borrow::Cow;
-use std::collections::BTreeMap;
 
 use crate::{CodeMessage, QueryValue, Request, Result, v3::AccessKeySecret};
 use serde::Deserialize;
@@ -108,8 +107,8 @@ impl Request for SendSms {
         params
     }
 
-    fn to_body(self) -> Result<Self::Body> {
-        todo!()
+    fn to_body(self) -> Self::Body {
+        todo!();
     }
 }
 

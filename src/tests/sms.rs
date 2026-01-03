@@ -116,7 +116,6 @@ async fn test_create_and_delete_sms_sign() {
     let conn = test_connection();
     let sign_name = test_sign_name();
 
-    // Create a sign - this will likely fail without proper qualification
     let create_request = crate::sms::CreateSmsSign::new(&sign_name, 0_i64, 0_i32)
         .remark("Automated test sign for validation".to_string());
 

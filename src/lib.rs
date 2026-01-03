@@ -6,7 +6,6 @@ use http::{HeaderValue, Method};
 use reqwest::Body;
 use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::borrow::Cow;
-use std::collections::BTreeMap;
 use std::collections::HashMap;
 
 mod common;
