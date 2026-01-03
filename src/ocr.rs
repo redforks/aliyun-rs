@@ -3056,20 +3056,32 @@ impl Connection {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeAllText {
-    /// - 本字段和 body 字段二选一，不可同时透传或同时为空。
-    /// - 图片链接（长度不超过2048字节，不支持 base64）。
+    /// * 当图片类型为通用文字识别高精版时（**Type=Advanced**），可通过本字段设置可选功能。
     #[setters(generate = true, strip_option)]
-    url: Option<String>,
-    /// - 本字段和 URL 字段二选一，不可同时透传或同时为空。
-    /// - 图片二进制文件，最大 10MB。
-    /// - 使用 HTTP 方式调用，把图片二进制文件放到 HTTP body 中上传即可。
-    /// - 使用 SDK 的方式调用，把图片放到 SDK 的 body 中即可。
+    advanced_config: Option<AdvancedConfig>,
+    /// * 当图片类型为身份证时（**Type=IdCard**），可通过本字段设置可选功能。
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
-    /// * 图片类型。**必选**参数，且为**单选**。
-    /// * 支持的图片类型请参考 **请求参数补充说明**。
-    /// * 请注意，对于票据卡证类图片，当图片真实类型和入参指定的**Type**不一致时，会导致识别失败。
-    r#type: TextType,
+    id_card_config: Option<TextIdCardConfig>,
+    /// * 当图片类型为国际企业执照时（Type=**InternationalBusinessLicense**），可通过本字段设置可选功能。
+    #[setters(generate = true, strip_option)]
+    international_business_license_config: Option<LicenseConfig>,
+    /// * 当图片类型为国际身份证时（Type=**InternationalIdCard**），可通过本字段设置可选功能。
+    #[setters(generate = true, strip_option)]
+    international_id_card_config: Option<InternationalIdCardConfig>,
+    /// * 当图片类型为通用多语言文字时（Type=**MultiLang**），可通过本字段设置可选功能。
+    #[setters(generate = true, strip_option)]
+    multi_lan_config: Option<LanConfig>,
+    /// - 是否需要条形码检测功能。开启后会返回**BarCodeInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别条形码时开启此参数。
+    #[setters(generate = true, strip_option)]
+    output_bar_code: Option<bool>,
+    /// - 返回坐标格式（**points**、**rectangle**）。
+    /// - points：四点坐标；rectangle：旋转矩形。
+    /// - 默认不需要传此参数，不返回文字坐标。
+    #[setters(generate = true, strip_option)]
+    output_coordinate: Option<String>,
     /// - 是否需要图案检测功能。如果开启，会返回**FigureInfo**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
     /// - 默认值：不同图片类型（**Type**）的默认值不同，详见**请求参数补充说明**。
@@ -3082,65 +3094,53 @@ pub struct RecognizeAllText {
     /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别图案时开启此参数。
     #[setters(generate = true, strip_option)]
     output_figure: Option<bool>,
-    /// - 是否需要二维码检测功能。开启后会返回**QrCodeInfo**字段（详见返回参数说明）。
-    /// - true：需要；false：不需要。
-    /// - 默认值：false。
-    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别二维码时开启此参数。
-    #[setters(generate = true, strip_option)]
-    output_qrcode: Option<bool>,
-    /// - 是否需要条形码检测功能。开启后会返回**BarCodeInfo**字段（详见返回参数说明）。
-    /// - true：需要；false：不需要。
-    /// - 默认值：false。
-    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别条形码时开启此参数。
-    #[setters(generate = true, strip_option)]
-    output_bar_code: Option<bool>,
-    /// - 是否需要印章检测功能。开启后会返回**StampInfo**字段（详见返回参数说明）。
-    /// - true：需要；false：不需要。
-    /// - 默认值：false。
-    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别印章时开启此参数。
-    #[setters(generate = true, strip_option)]
-    output_stamp: Option<bool>,
-    /// - 返回坐标格式（**points**、**rectangle**）。
-    /// - points：四点坐标；rectangle：旋转矩形。
-    /// - 默认不需要传此参数，不返回文字坐标。
-    #[setters(generate = true, strip_option)]
-    output_coordinate: Option<String>,
-    /// - 是否需要返回原图坐标信息。 系统会自动对图片做处理（比如自动旋转、图片校正等），您可以设置返回的坐标口径，是“原图坐标”或“算法处理后图片坐标”。
-    /// - true：需要；false：不需要。
-    /// - 默认值：不同图片类型（**Type**）的默认值不同，详见**请求参数补充说明**。
-    /// - **请注意**：仅当**OutputCoordinate**不为空时，设置此参数才有意义。
-    #[setters(generate = true, strip_option)]
-    output_oricoord: Option<bool>,
     /// - 是否需要把识别出的结构化信息转成 Excel 文件链接（默认不需要）。
     /// - true：需要；false：不需要。
     /// - 文件链接有效期为一小时。
     /// - **注意**：开启此参数后，会增加接口的响应时间，请在需要时开启。
     #[setters(generate = true, strip_option)]
     output_kv_excel: Option<bool>,
+    /// - 是否需要返回原图坐标信息。 系统会自动对图片做处理（比如自动旋转、图片校正等），您可以设置返回的坐标口径，是“原图坐标”或“算法处理后图片坐标”。
+    /// - true：需要；false：不需要。
+    /// - 默认值：不同图片类型（**Type**）的默认值不同，详见**请求参数补充说明**。
+    /// - **请注意**：仅当**OutputCoordinate**不为空时，设置此参数才有意义。
+    #[setters(generate = true, strip_option)]
+    output_oricoord: Option<bool>,
+    /// - 是否需要二维码检测功能。开启后会返回**QrCodeInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别二维码时开启此参数。
+    #[setters(generate = true, strip_option)]
+    output_qrcode: Option<bool>,
+    /// - 是否需要印章检测功能。开启后会返回**StampInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别印章时开启此参数。
+    #[setters(generate = true, strip_option)]
+    output_stamp: Option<bool>,
     /// 当图片类型为混贴票证/增值税发票/定额发票航空行程单/火车票增值税发票卷票/通用机打发票时（即Type=MixedInvoice/Invoice/QuotaInvoice/AirItinerary/TrainTicket/RollTicket/CommonPrintedInvoice），可通过本字段设置可选功能。
     /// - 指定识别的 PDF/OFD 页码；例如：PageNo=6，则识别 PDF/OFD 的第六页。
     /// - 如果不传此参数，或传值大于 PDF/OFD 总页数，则识别 PDF/OFD 的第一页。
     /// - 默认识别第一页。
     #[setters(generate = true, strip_option)]
     page_no: Option<i32>,
-    /// * 当图片类型为通用文字识别高精版时（**Type=Advanced**），可通过本字段设置可选功能。
-    #[setters(generate = true, strip_option)]
-    advanced_config: Option<AdvancedConfig>,
-    /// * 当图片类型为身份证时（**Type=IdCard**），可通过本字段设置可选功能。
-    #[setters(generate = true, strip_option)]
-    id_card_config: Option<TextIdCardConfig>,
-    /// * 当图片类型为国际身份证时（Type=**InternationalIdCard**），可通过本字段设置可选功能。
-    #[setters(generate = true, strip_option)]
-    international_id_card_config: Option<InternationalIdCardConfig>,
-    /// * 当图片类型为国际企业执照时（Type=**InternationalBusinessLicense**），可通过本字段设置可选功能。
-    #[setters(generate = true, strip_option)]
-    international_business_license_config: Option<LicenseConfig>,
-    /// * 当图片类型为通用多语言文字时（Type=**MultiLang**），可通过本字段设置可选功能。
-    #[setters(generate = true, strip_option)]
-    multi_lan_config: Option<LanConfig>,
     /// * 当图片类型为表格时（Type=**Table**），可通过本字段设置可选功能。
     #[setters(generate = true, strip_option)]
     table_config: Option<TableConfig>,
+    /// * 图片类型。**必选**参数，且为**单选**。
+    /// * 支持的图片类型请参考 **请求参数补充说明**。
+    /// * 请注意，对于票据卡证类图片，当图片真实类型和入参指定的**Type**不一致时，会导致识别失败。
+    r#type: TextType,
+    /// - 本字段和 body 字段二选一，不可同时透传或同时为空。
+    /// - 图片链接（长度不超过2048字节，不支持 base64）。
+    #[setters(generate = true, strip_option)]
+    url: Option<String>,
+    /// - 本字段和 URL 字段二选一，不可同时透传或同时为空。
+    /// - 图片二进制文件，最大 10MB。
+    /// - 使用 HTTP 方式调用，把图片二进制文件放到 HTTP body 中上传即可。
+    /// - 使用 SDK 的方式调用，把图片放到 SDK 的 body 中即可。
+    #[setters(generate = true, strip_option)]
+    body: Option<Vec<u8>>,
 }
 
 impl sealed::Bound for RecognizeAllText {}
@@ -3148,23 +3148,23 @@ impl sealed::Bound for RecognizeAllText {}
 impl RecognizeAllText {
     pub fn new(r#type: impl Into<TextType>) -> Self {
         Self {
-            url: None,
-            body: None,
-            r#type: r#type.into(),
-            output_figure: None,
-            output_qrcode: None,
-            output_bar_code: None,
-            output_stamp: None,
-            output_coordinate: None,
-            output_oricoord: None,
-            output_kv_excel: None,
-            page_no: None,
             advanced_config: None,
             id_card_config: None,
-            international_id_card_config: None,
             international_business_license_config: None,
+            international_id_card_config: None,
             multi_lan_config: None,
+            output_bar_code: None,
+            output_coordinate: None,
+            output_figure: None,
+            output_kv_excel: None,
+            output_oricoord: None,
+            output_qrcode: None,
+            output_stamp: None,
+            page_no: None,
             table_config: None,
+            r#type: r#type.into(),
+            url: None,
+            body: None,
         }
     }
 }
@@ -3178,88 +3178,86 @@ impl crate::Request for RecognizeAllText {
 
     type Response = RecognizeAllTextResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-        params.insert("Type".into(), (&self.r#type).into());
-
-        if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_qrcode {
-            params.insert("OutputQrcode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_bar_code {
-            params.insert("OutputBarCode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_stamp {
-            params.insert("OutputStamp".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_coordinate {
-            params.insert("OutputCoordinate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_kv_excel {
-            params.insert("OutputKVExcel".into(), (f).into());
-        }
-
-        if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(16);
 
         if let Some(f) = &self.advanced_config {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("AdvancedConfig".into(), json.into());
+                params.push(("AdvancedConfig".into(), json.into()));
             }
         }
 
         if let Some(f) = &self.id_card_config {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("IdCardConfig".into(), json.into());
-            }
-        }
-
-        if let Some(f) = &self.international_id_card_config {
-            if let Ok(json) = serde_json::to_string(f) {
-                params.insert("InternationalIdCardConfig".into(), json.into());
+                params.push(("IdCardConfig".into(), json.into()));
             }
         }
 
         if let Some(f) = &self.international_business_license_config {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("InternationalBusinessLicenseConfig".into(), json.into());
+                params.push(("InternationalBusinessLicenseConfig".into(), json.into()));
+            }
+        }
+
+        if let Some(f) = &self.international_id_card_config {
+            if let Ok(json) = serde_json::to_string(f) {
+                params.push(("InternationalIdCardConfig".into(), json.into()));
             }
         }
 
         if let Some(f) = &self.multi_lan_config {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("MultiLanConfig".into(), json.into());
+                params.push(("MultiLanConfig".into(), json.into()));
             }
+        }
+
+        if let Some(f) = &self.output_bar_code {
+            params.push(("OutputBarCode".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_coordinate {
+            params.push(("OutputCoordinate".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_figure {
+            params.push(("OutputFigure".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_kv_excel {
+            params.push(("OutputKVExcel".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_oricoord {
+            params.push(("OutputOricoord".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_qrcode {
+            params.push(("OutputQrcode".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_stamp {
+            params.push(("OutputStamp".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.page_no {
+            params.push(("PageNo".into(), (f).into()));
         }
 
         if let Some(f) = &self.table_config {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("TableConfig".into(), json.into());
+                params.push(("TableConfig".into(), json.into()));
             }
+        }
+        params.push(("Type".into(), (&self.r#type).into()));
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3275,6 +3273,12 @@ impl crate::Request for RecognizeAllText {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeGeneralStructure {
+    /// * 需要抽取的所有Key（字符串数组）。
+    /// * 默认值为**空**，表示由大模型自动判断需要抽取的Key。
+    /// * Key的上限数量为**30**（包含30）。
+    /// * 建议调用接口时传此参数，减小接口耗时。**请注意**：接口响应时间和Key的数量呈正相关关系。
+    #[setters(generate = true, strip_option)]
+    keys: Option<Vec<String>>,
     /// * 本字段和 body 字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超过2048字节，不支持 base64）。
     #[setters(generate = true, strip_option)]
@@ -3285,12 +3289,6 @@ pub struct RecognizeGeneralStructure {
     /// * 使用 SDK 的方式调用，把图片放到 SDK 的 body 中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 需要抽取的所有Key（字符串数组）。
-    /// * 默认值为**空**，表示由大模型自动判断需要抽取的Key。
-    /// * Key的上限数量为**30**（包含30）。
-    /// * 建议调用接口时传此参数，减小接口耗时。**请注意**：接口响应时间和Key的数量呈正相关关系。
-    #[setters(generate = true, strip_option)]
-    keys: Option<Vec<String>>,
 }
 
 impl sealed::Bound for RecognizeGeneralStructure {}
@@ -3298,9 +3296,9 @@ impl sealed::Bound for RecognizeGeneralStructure {}
 impl RecognizeGeneralStructure {
     pub fn new() -> Self {
         Self {
+            keys: None,
             url: None,
             body: None,
-            keys: None,
         }
     }
 }
@@ -3314,23 +3312,21 @@ impl crate::Request for RecognizeGeneralStructure {
 
     type Response = RecognizeGeneralStructureResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.keys {
             crate::SimpleSerialize::simple_serialize(f, "Keys", &mut params);
         }
 
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
+        }
+
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3341,6 +3337,38 @@ impl crate::Request for RecognizeGeneralStructure {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeAdvanced {
+    /// * 是否需要自动旋转功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否按顺序输出文字块，默认为false。
+    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
+    #[setters(generate = true, strip_option)]
+    need_sort_page: Option<bool>,
+    /// * 是否需要去除印章功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    no_stamp: Option<bool>,
+    /// * 是否输出单字识别结果，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// * 是否需要图案检测功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_figure: Option<bool>,
+    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
+    /// * 是否需要分段功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    paragraph: Option<bool>,
+    /// * 是否需要成行返回功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    row: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -3351,38 +3379,6 @@ pub struct RecognizeAdvanced {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否输出单字识别结果，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// * 是否需要自动旋转功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
-    /// * 是否按顺序输出文字块，默认为false。
-    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
-    #[setters(generate = true, strip_option)]
-    need_sort_page: Option<bool>,
-    /// * 是否需要图案检测功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_figure: Option<bool>,
-    /// * 是否需要去除印章功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    no_stamp: Option<bool>,
-    /// * 是否需要分段功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    paragraph: Option<bool>,
-    /// * 是否需要成行返回功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    row: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeAdvanced {}
@@ -3390,16 +3386,16 @@ impl sealed::Bound for RecognizeAdvanced {}
 impl RecognizeAdvanced {
     pub fn new() -> Self {
         Self {
-            url: None,
-            body: None,
-            output_char_info: None,
             need_rotate: None,
-            output_table: None,
             need_sort_page: None,
-            output_figure: None,
             no_stamp: None,
+            output_char_info: None,
+            output_figure: None,
+            output_table: None,
             paragraph: None,
             row: None,
+            url: None,
+            body: None,
         }
     }
 }
@@ -3413,51 +3409,49 @@ impl crate::Request for RecognizeAdvanced {
 
     type Response = RecognizeAdvancedResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(9);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
+            params.push(("NeedSortPage".into(), (f).into()));
         }
 
         if let Some(f) = &self.no_stamp {
-            params.insert("NoStamp".into(), (f).into());
+            params.push(("NoStamp".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_char_info {
+            params.push(("OutputCharInfo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_figure {
+            params.push(("OutputFigure".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_table {
+            params.push(("OutputTable".into(), (f).into()));
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), (f).into());
+            params.push(("Paragraph".into(), (f).into()));
         }
 
         if let Some(f) = &self.row {
-            params.insert("Row".into(), (f).into());
+            params.push(("Row".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3468,6 +3462,26 @@ impl crate::Request for RecognizeAdvanced {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHandwriting {
+    /// * 是否需要自动旋转功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否按顺序输出文字块，默认为false。
+    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
+    #[setters(generate = true, strip_option)]
+    need_sort_page: Option<bool>,
+    /// * 是否输出单字识别结果，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
+    /// * 是否需要分段功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    paragraph: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -3478,26 +3492,6 @@ pub struct RecognizeHandwriting {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否输出单字识别结果，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// * 是否需要自动旋转功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
-    /// * 是否按顺序输出文字块，默认为false。
-    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
-    #[setters(generate = true, strip_option)]
-    need_sort_page: Option<bool>,
-    /// * 是否需要分段功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    paragraph: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeHandwriting {}
@@ -3505,13 +3499,13 @@ impl sealed::Bound for RecognizeHandwriting {}
 impl RecognizeHandwriting {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            need_sort_page: None,
+            output_char_info: None,
+            output_table: None,
+            paragraph: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
-            need_sort_page: None,
-            paragraph: None,
         }
     }
 }
@@ -3525,39 +3519,37 @@ impl crate::Request for RecognizeHandwriting {
 
     type Response = RecognizeHandwritingResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), (f).into());
+            params.push(("NeedSortPage".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_char_info {
+            params.push(("OutputCharInfo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_table {
+            params.push(("OutputTable".into(), (f).into()));
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), (f).into());
+            params.push(("Paragraph".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3568,6 +3560,10 @@ impl crate::Request for RecognizeHandwriting {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBasic {
+    /// * 是否需要自动旋转功能，默认需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -3578,10 +3574,6 @@ pub struct RecognizeBasic {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要自动旋转功能，默认需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeBasic {}
@@ -3589,9 +3581,9 @@ impl sealed::Bound for RecognizeBasic {}
 impl RecognizeBasic {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
             url: None,
             body: None,
-            need_rotate: None,
         }
     }
 }
@@ -3605,23 +3597,21 @@ impl crate::Request for RecognizeBasic {
 
     type Response = RecognizeBasicResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3664,19 +3654,17 @@ impl crate::Request for RecognizeGeneral {
 
     type Response = RecognizeGeneralResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3687,6 +3675,23 @@ impl crate::Request for RecognizeGeneral {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTableOcr {
+    /// * 是否是手写表格，默认不是。
+    /// * true：是手写表格；false：不是手写表格。
+    /// * 注意：该字段是字符串类型。
+    #[setters(generate = true, strip_option)]
+    is_hand_writing: Option<HandWriting>,
+    /// * 是否无线条或者只有横线没有竖线,默认有线条。
+    /// * true：无线条；false：有线条。
+    #[setters(generate = true, strip_option)]
+    line_less: Option<bool>,
+    /// * 是否需要自动旋转功能，默认需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否跳过检测，默认为false。
+    /// * true：跳过检查；false：不跳过检查。
+    #[setters(generate = true, strip_option)]
+    skip_detection: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -3697,23 +3702,6 @@ pub struct RecognizeTableOcr {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要自动旋转功能，默认需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否无线条或者只有横线没有竖线,默认有线条。
-    /// * true：无线条；false：有线条。
-    #[setters(generate = true, strip_option)]
-    line_less: Option<bool>,
-    /// * 是否跳过检测，默认为false。
-    /// * true：跳过检查；false：不跳过检查。
-    #[setters(generate = true, strip_option)]
-    skip_detection: Option<bool>,
-    /// * 是否是手写表格，默认不是。
-    /// * true：是手写表格；false：不是手写表格。
-    /// * 注意：该字段是字符串类型。
-    #[setters(generate = true, strip_option)]
-    is_hand_writing: Option<HandWriting>,
 }
 
 impl sealed::Bound for RecognizeTableOcr {}
@@ -3721,12 +3709,12 @@ impl sealed::Bound for RecognizeTableOcr {}
 impl RecognizeTableOcr {
     pub fn new() -> Self {
         Self {
+            is_hand_writing: None,
+            line_less: None,
+            need_rotate: None,
+            skip_detection: None,
             url: None,
             body: None,
-            need_rotate: None,
-            line_less: None,
-            skip_detection: None,
-            is_hand_writing: None,
         }
     }
 }
@@ -3740,35 +3728,33 @@ impl crate::Request for RecognizeTableOcr {
 
     type Response = RecognizeTableOcrResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+        if let Some(f) = &self.is_hand_writing {
+            params.push(("IsHandWriting".into(), (f).into()));
         }
 
         if let Some(f) = &self.line_less {
-            params.insert("LineLess".into(), (f).into());
+            params.push(("LineLess".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.skip_detection {
-            params.insert("SkipDetection".into(), (f).into());
+            params.push(("SkipDetection".into(), (f).into()));
         }
 
-        if let Some(f) = &self.is_hand_writing {
-            params.insert("IsHandWriting".into(), (f).into());
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3811,19 +3797,17 @@ impl crate::Request for RecognizeHealthCode {
 
     type Response = RecognizeHealthCodeResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3838,17 +3822,16 @@ impl crate::Request for RecognizeHealthCode {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeDocumentStructure {
-    /// 图片链接（长度不超2048字节，不支持 base64）。
-    #[setters(generate = true, strip_option)]
-    url: Option<String>,
-    /// 图片二进制文件，最大10MB，与URL二选一。
-    /// 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。
-    /// 使用SDK的方式调用，把图片放到SDK的body中即可。
-    #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
     /// 是否需要自动旋转功能，返回角度信息。默认不需要。true：需要 false：不需要。
     #[setters(generate = true, strip_option)]
     need_rotate: Option<bool>,
+    /// 是否按顺序输出文字块，默认不需要。true：需要 false：不需要。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
+    /// 当UseNewStyleOutput=true时，此参数不生效。
+    #[setters(generate = true, strip_option)]
+    need_sort_page: Option<bool>,
+    /// 是否需要去除印章功能，默认不需要。true：需要 false：不需要
+    #[setters(generate = true, strip_option)]
+    no_stamp: Option<bool>,
     /// 是否输出单字识别结果，默认不需要。true：需要 false：不需要。
     /// 当UseNewStyleOutput=true时，此参数不生效。
     #[setters(generate = true, strip_option)]
@@ -3856,17 +3839,10 @@ pub struct RecognizeDocumentStructure {
     /// 是否输出表格识别结果，包含单元格信息。默认不需要。true：需要 false：不需要。
     #[setters(generate = true, strip_option)]
     output_table: Option<bool>,
-    /// 是否按顺序输出文字块，默认不需要。true：需要 false：不需要。false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
-    /// 当UseNewStyleOutput=true时，此参数不生效。
-    #[setters(generate = true, strip_option)]
-    need_sort_page: Option<bool>,
     /// 是否需要分页功能，默认不需要。 true：需要 false：不需要。
     /// 当UseNewStyleOutput=true时，此参数不生效。
     #[setters(generate = true, strip_option)]
     page: Option<bool>,
-    /// 是否需要去除印章功能，默认不需要。true：需要 false：不需要
-    #[setters(generate = true, strip_option)]
-    no_stamp: Option<bool>,
     /// 是否需要分段功能，默认不需要。true：需要 false：不需要。
     /// 当UseNewStyleOutput=true时，此参数不生效。
     #[setters(generate = true, strip_option)]
@@ -3875,9 +3851,17 @@ pub struct RecognizeDocumentStructure {
     /// 当UseNewStyleOutput=true时，此参数不生效。
     #[setters(generate = true, strip_option)]
     row: Option<bool>,
+    /// 图片链接（长度不超2048字节，不支持 base64）。
+    #[setters(generate = true, strip_option)]
+    url: Option<String>,
     /// 是否返回新版格式输出，默认为false
     #[setters(generate = true, strip_option)]
     use_new_style_output: Option<bool>,
+    /// 图片二进制文件，最大10MB，与URL二选一。
+    /// 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。
+    /// 使用SDK的方式调用，把图片放到SDK的body中即可。
+    #[setters(generate = true, strip_option)]
+    body: Option<Vec<u8>>,
 }
 
 impl sealed::Bound for RecognizeDocumentStructure {}
@@ -3885,17 +3869,17 @@ impl sealed::Bound for RecognizeDocumentStructure {}
 impl RecognizeDocumentStructure {
     pub fn new() -> Self {
         Self {
-            url: None,
-            body: None,
             need_rotate: None,
+            need_sort_page: None,
+            no_stamp: None,
             output_char_info: None,
             output_table: None,
-            need_sort_page: None,
             page: None,
-            no_stamp: None,
             paragraph: None,
             row: None,
+            url: None,
             use_new_style_output: None,
+            body: None,
         }
     }
 }
@@ -3909,55 +3893,53 @@ impl crate::Request for RecognizeDocumentStructure {
 
     type Response = RecognizeDocumentStructureResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(10);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), (f).into());
-        }
-
-        if let Some(f) = &self.page {
-            params.insert("Page".into(), (f).into());
+            params.push(("NeedSortPage".into(), (f).into()));
         }
 
         if let Some(f) = &self.no_stamp {
-            params.insert("NoStamp".into(), (f).into());
+            params.push(("NoStamp".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_char_info {
+            params.push(("OutputCharInfo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_table {
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.page {
+            params.push(("Page".into(), (f).into()));
         }
 
         if let Some(f) = &self.paragraph {
-            params.insert("Paragraph".into(), (f).into());
+            params.push(("Paragraph".into(), (f).into()));
         }
 
         if let Some(f) = &self.row {
-            params.insert("Row".into(), (f).into());
+            params.push(("Row".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         if let Some(f) = &self.use_new_style_output {
-            params.insert("UseNewStyleOutput".into(), (f).into());
+            params.push(("UseNewStyleOutput".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3968,6 +3950,17 @@ impl crate::Request for RecognizeDocumentStructure {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeIdcard {
+    #[setters(generate = true, strip_option)]
+    llm_rec: Option<bool>,
+    /// * 是否需要图案检测功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_figure: Option<bool>,
+    /// * 是否需要身份证质量检测功能，默认不需要。
+    /// * 身份证质量检测功能包含：是否翻拍，是否是复印件，完整度评分，整体质量分数、篡改指数。
+    /// * 注意：如果需要设置此参数，请使用最新版本SDK。如果不需要设置此参数，您无需更新SDK。
+    #[setters(generate = true, strip_option)]
+    output_quality_info: Option<bool>,
     /// * 本字段和body字段二选一，不可同时传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -3978,17 +3971,6 @@ pub struct RecognizeIdcard {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要图案检测功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_figure: Option<bool>,
-    /// * 是否需要身份证质量检测功能，默认不需要。
-    /// * 身份证质量检测功能包含：是否翻拍，是否是复印件，完整度评分，整体质量分数、篡改指数。
-    /// * 注意：如果需要设置此参数，请使用最新版本SDK。如果不需要设置此参数，您无需更新SDK。
-    #[setters(generate = true, strip_option)]
-    output_quality_info: Option<bool>,
-    #[setters(generate = true, strip_option)]
-    llm_rec: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeIdcard {}
@@ -3996,11 +3978,11 @@ impl sealed::Bound for RecognizeIdcard {}
 impl RecognizeIdcard {
     pub fn new() -> Self {
         Self {
-            url: None,
-            body: None,
+            llm_rec: None,
             output_figure: None,
             output_quality_info: None,
-            llm_rec: None,
+            url: None,
+            body: None,
         }
     }
 }
@@ -4014,31 +3996,29 @@ impl crate::Request for RecognizeIdcard {
 
     type Response = RecognizeIdcardResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.llm_rec {
+            params.push(("Llm_rec".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
+            params.push(("OutputFigure".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_quality_info {
-            params.insert("OutputQualityInfo".into(), (f).into());
+            params.push(("OutputQualityInfo".into(), (f).into()));
         }
 
-        if let Some(f) = &self.llm_rec {
-            params.insert("Llm_rec".into(), (f).into());
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4085,19 +4065,17 @@ impl crate::Request for RecognizePassport {
 
     type Response = RecognizePassportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4108,6 +4086,10 @@ impl crate::Request for RecognizePassport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHousehold {
+    /// * 是否是户口本常住人口页，默认为否。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    is_resident_page: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -4118,10 +4100,6 @@ pub struct RecognizeHousehold {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否是户口本常住人口页，默认为否。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    is_resident_page: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeHousehold {}
@@ -4129,9 +4107,9 @@ impl sealed::Bound for RecognizeHousehold {}
 impl RecognizeHousehold {
     pub fn new() -> Self {
         Self {
+            is_resident_page: None,
             url: None,
             body: None,
-            is_resident_page: None,
         }
     }
 }
@@ -4145,23 +4123,21 @@ impl crate::Request for RecognizeHousehold {
 
     type Response = RecognizeHouseholdResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.is_resident_page {
-            params.insert("IsResidentPage".into(), (f).into());
+            params.push(("IsResidentPage".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4204,19 +4180,17 @@ impl crate::Request for RecognizeEstateCertification {
 
     type Response = RecognizeEstateCertificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4259,19 +4233,17 @@ impl crate::Request for RecognizeBankCard {
 
     type Response = RecognizeBankCardResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4314,19 +4286,17 @@ impl crate::Request for RecognizeBirthCertification {
 
     type Response = RecognizeBirthCertificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4340,15 +4310,15 @@ impl crate::Request for RecognizeBirthCertification {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeChinesePassport {
+    /// 是否需要图案检测功能，默认需要
+    #[setters(generate = true, strip_option)]
+    output_figure: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制字节流，最大10MB
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否需要图案检测功能，默认需要
-    #[setters(generate = true, strip_option)]
-    output_figure: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeChinesePassport {}
@@ -4356,9 +4326,9 @@ impl sealed::Bound for RecognizeChinesePassport {}
 impl RecognizeChinesePassport {
     pub fn new() -> Self {
         Self {
+            output_figure: None,
             url: None,
             body: None,
-            output_figure: None,
         }
     }
 }
@@ -4372,23 +4342,21 @@ impl crate::Request for RecognizeChinesePassport {
 
     type Response = RecognizeChinesePassportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
+            params.push(("OutputFigure".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4399,6 +4367,10 @@ impl crate::Request for RecognizeChinesePassport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeExitEntryPermitToMainland {
+    /// * 是否需要图案检测功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_figure: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -4409,10 +4381,6 @@ pub struct RecognizeExitEntryPermitToMainland {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要图案检测功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_figure: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeExitEntryPermitToMainland {}
@@ -4420,9 +4388,9 @@ impl sealed::Bound for RecognizeExitEntryPermitToMainland {}
 impl RecognizeExitEntryPermitToMainland {
     pub fn new() -> Self {
         Self {
+            output_figure: None,
             url: None,
             body: None,
-            output_figure: None,
         }
     }
 }
@@ -4436,23 +4404,21 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
 
     type Response = RecognizeExitEntryPermitToMainlandResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
+            params.push(("OutputFigure".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4466,15 +4432,15 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeExitEntryPermitToHK {
+    /// 图案坐标信息输出，针对结构化，如身份证人脸头像
+    #[setters(generate = true, strip_option)]
+    output_figure: Option<bool>,
     /// 图片链接（长度不超 2048字节，不支持 base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制字节流，最大10MB
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 图案坐标信息输出，针对结构化，如身份证人脸头像
-    #[setters(generate = true, strip_option)]
-    output_figure: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeExitEntryPermitToHK {}
@@ -4482,9 +4448,9 @@ impl sealed::Bound for RecognizeExitEntryPermitToHK {}
 impl RecognizeExitEntryPermitToHK {
     pub fn new() -> Self {
         Self {
+            output_figure: None,
             url: None,
             body: None,
-            output_figure: None,
         }
     }
 }
@@ -4498,23 +4464,21 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
 
     type Response = RecognizeExitEntryPermitToHKResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.output_figure {
-            params.insert("OutputFigure".into(), (f).into());
+            params.push(("OutputFigure".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4557,19 +4521,17 @@ impl crate::Request for RecognizeHKIdcard {
 
     type Response = RecognizeHKIdcardResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4612,19 +4574,17 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
 
     type Response = RecognizeSocialSecurityCardVersionIIResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4635,6 +4595,9 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInternationalIdcard {
+    /// * 国家名称。
+    ///   * 如：India，Vietnam，Korea，Bangladesh。
+    country: IdcardCountry,
     /// * 本字段和BODY字段二选一，不可同时透传或同时为空。
     ///   * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -4645,9 +4608,6 @@ pub struct RecognizeInternationalIdcard {
     ///   * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 国家名称。
-    ///   * 如：India，Vietnam，Korea，Bangladesh。
-    country: IdcardCountry,
 }
 
 impl sealed::Bound for RecognizeInternationalIdcard {}
@@ -4655,9 +4615,9 @@ impl sealed::Bound for RecognizeInternationalIdcard {}
 impl RecognizeInternationalIdcard {
     pub fn new(country: impl Into<IdcardCountry>) -> Self {
         Self {
+            country: country.into(),
             url: None,
             body: None,
-            country: country.into(),
         }
     }
 }
@@ -4671,20 +4631,18 @@ impl crate::Request for RecognizeInternationalIdcard {
 
     type Response = RecognizeInternationalIdcardResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
+        params.push(("Country".into(), (&self.country).into()));
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
-        params.insert("Country".into(), (&self.country).into());
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4695,6 +4653,17 @@ impl crate::Request for RecognizeInternationalIdcard {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMixedInvoices {
+    /// * 是否合并PDF的**前几页**，并返回合并页的识别结果（最大支持返回**前4页**识别结果）。例如上传的PDF有**3页**，且设置此参数为**true**，返回前**3页**所有识别结果。
+    /// * 默认为**false**。
+    /// * 如果上传的PDF总页数大于**4页**，且设置此参数为**true**，则只识别**前4页**（此参数不支持选择任意页码号）。
+    /// * 如果设置了 **PageNo**，同时 **MergePdfPages** 设置为**true**，则 **MergePdfPages** 不生效，会识别 **PageNo** 指定的PDF页面。
+    #[setters(generate = true, strip_option)]
+    merge_pdf_pages: Option<bool>,
+    /// * 待识别的PDF/OFD页码。
+    /// * 如果字段为空，或大于PDF/OFD总页数，则识别第一页。
+    /// * 使用SDK设置此字段，请更新SDK版本。
+    #[setters(generate = true, strip_option)]
+    page_no: Option<i32>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -4705,17 +4674,6 @@ pub struct RecognizeMixedInvoices {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 待识别的PDF/OFD页码。
-    /// * 如果字段为空，或大于PDF/OFD总页数，则识别第一页。
-    /// * 使用SDK设置此字段，请更新SDK版本。
-    #[setters(generate = true, strip_option)]
-    page_no: Option<i32>,
-    /// * 是否合并PDF的**前几页**，并返回合并页的识别结果（最大支持返回**前4页**识别结果）。例如上传的PDF有**3页**，且设置此参数为**true**，返回前**3页**所有识别结果。
-    /// * 默认为**false**。
-    /// * 如果上传的PDF总页数大于**4页**，且设置此参数为**true**，则只识别**前4页**（此参数不支持选择任意页码号）。
-    /// * 如果设置了 **PageNo**，同时 **MergePdfPages** 设置为**true**，则 **MergePdfPages** 不生效，会识别 **PageNo** 指定的PDF页面。
-    #[setters(generate = true, strip_option)]
-    merge_pdf_pages: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeMixedInvoices {}
@@ -4723,10 +4681,10 @@ impl sealed::Bound for RecognizeMixedInvoices {}
 impl RecognizeMixedInvoices {
     pub fn new() -> Self {
         Self {
+            merge_pdf_pages: None,
+            page_no: None,
             url: None,
             body: None,
-            page_no: None,
-            merge_pdf_pages: None,
         }
     }
 }
@@ -4740,27 +4698,25 @@ impl crate::Request for RecognizeMixedInvoices {
 
     type Response = RecognizeMixedInvoicesResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.merge_pdf_pages {
+            params.push(("MergePdfPages".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), (f).into());
+            params.push(("PageNo".into(), (f).into()));
         }
 
-        if let Some(f) = &self.merge_pdf_pages {
-            params.insert("MergePdfPages".into(), (f).into());
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4771,6 +4727,11 @@ impl crate::Request for RecognizeMixedInvoices {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInvoice {
+    /// * 指定识别的PDF/OFD页码；例如：pageNo=6，识别PDF/OFD的第六页。
+    /// * 如果该参数为空，或传值大于PDF/OFD总页数，则识别PDF/OFD的第一页。
+    /// * 如果使用SDK设置此参数，请更新SDK版本，该参数在SDK版本1.1.16开始支持。
+    #[setters(generate = true, strip_option)]
+    page_no: Option<i32>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -4781,11 +4742,6 @@ pub struct RecognizeInvoice {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 指定识别的PDF/OFD页码；例如：pageNo=6，识别PDF/OFD的第六页。
-    /// * 如果该参数为空，或传值大于PDF/OFD总页数，则识别PDF/OFD的第一页。
-    /// * 如果使用SDK设置此参数，请更新SDK版本，该参数在SDK版本1.1.16开始支持。
-    #[setters(generate = true, strip_option)]
-    page_no: Option<i32>,
 }
 
 impl sealed::Bound for RecognizeInvoice {}
@@ -4793,9 +4749,9 @@ impl sealed::Bound for RecognizeInvoice {}
 impl RecognizeInvoice {
     pub fn new() -> Self {
         Self {
+            page_no: None,
             url: None,
             body: None,
-            page_no: None,
         }
     }
 }
@@ -4809,23 +4765,21 @@ impl crate::Request for RecognizeInvoice {
 
     type Response = RecognizeInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), (f).into());
+            params.push(("PageNo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4868,19 +4822,17 @@ impl crate::Request for RecognizeCarInvoice {
 
     type Response = RecognizeCarInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4922,19 +4874,17 @@ impl crate::Request for RecognizeQuotaInvoice {
 
     type Response = RecognizeQuotaInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4977,19 +4927,17 @@ impl crate::Request for RecognizeAirItinerary {
 
     type Response = RecognizeAirItineraryResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5032,19 +4980,17 @@ impl crate::Request for RecognizeTrainInvoice {
 
     type Response = RecognizeTrainInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5087,19 +5033,17 @@ impl crate::Request for RecognizeTaxiInvoice {
 
     type Response = RecognizeTaxiInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5141,19 +5085,17 @@ impl crate::Request for RecognizeRollTicket {
 
     type Response = RecognizeRollTicketResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5196,19 +5138,17 @@ impl crate::Request for RecognizeBankAcceptance {
 
     type Response = RecognizeBankAcceptanceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5250,19 +5190,17 @@ impl crate::Request for RecognizeBusShipTicket {
 
     type Response = RecognizeBusShipTicketResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5305,19 +5243,17 @@ impl crate::Request for RecognizeNonTaxInvoice {
 
     type Response = RecognizeNonTaxInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5359,19 +5295,17 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
 
     type Response = RecognizeCommonPrintedInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5413,19 +5347,17 @@ impl crate::Request for RecognizeHotelConsume {
 
     type Response = RecognizeHotelConsumeResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5468,19 +5400,17 @@ impl crate::Request for RecognizePaymentRecord {
 
     type Response = RecognizePaymentRecordResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5494,6 +5424,12 @@ impl crate::Request for RecognizePaymentRecord {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizePurchaseRecord {
+    /// * 是否需要识别多条订单，默认不需要。
+    /// * true：需要；false：不需要。
+    /// * 如果需要使用此参数，请更新SDK到1.1.14或更高版本。
+    /// * 注意：如果此参数设置为true，返回结果字段会变化。
+    #[setters(generate = true, strip_option)]
+    output_multi_orders: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -5504,12 +5440,6 @@ pub struct RecognizePurchaseRecord {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要识别多条订单，默认不需要。
-    /// * true：需要；false：不需要。
-    /// * 如果需要使用此参数，请更新SDK到1.1.14或更高版本。
-    /// * 注意：如果此参数设置为true，返回结果字段会变化。
-    #[setters(generate = true, strip_option)]
-    output_multi_orders: Option<bool>,
 }
 
 impl sealed::Bound for RecognizePurchaseRecord {}
@@ -5517,9 +5447,9 @@ impl sealed::Bound for RecognizePurchaseRecord {}
 impl RecognizePurchaseRecord {
     pub fn new() -> Self {
         Self {
+            output_multi_orders: None,
             url: None,
             body: None,
-            output_multi_orders: None,
         }
     }
 }
@@ -5533,23 +5463,21 @@ impl crate::Request for RecognizePurchaseRecord {
 
     type Response = RecognizePurchaseRecordResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.output_multi_orders {
-            params.insert("OutputMultiOrders".into(), (f).into());
+            params.push(("OutputMultiOrders".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5591,19 +5519,17 @@ impl crate::Request for RecognizeRideHailingItinerary {
 
     type Response = RecognizeRideHailingItineraryResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5645,19 +5571,17 @@ impl crate::Request for RecognizeShoppingReceipt {
 
     type Response = RecognizeShoppingReceiptResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5699,19 +5623,17 @@ impl crate::Request for RecognizeSocialSecurityCard {
 
     type Response = RecognizeSocialSecurityCardResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5753,19 +5675,17 @@ impl crate::Request for RecognizeTollInvoice {
 
     type Response = RecognizeTollInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5808,19 +5728,17 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
 
     type Response = RecognizeTaxClearanceCertificateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5862,19 +5780,17 @@ impl crate::Request for RecognizeUsedCarInvoice {
 
     type Response = RecognizeUsedCarInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5917,19 +5833,17 @@ impl crate::Request for RecognizeBusinessLicense {
 
     type Response = RecognizeBusinessLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5972,19 +5886,17 @@ impl crate::Request for RecognizeBankAccountLicense {
 
     type Response = RecognizeBankAccountLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6026,19 +5938,17 @@ impl crate::Request for RecognizeTradeMarkCertification {
 
     type Response = RecognizeTradeMarkCertificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6081,19 +5991,17 @@ impl crate::Request for RecognizeFoodProduceLicense {
 
     type Response = RecognizeFoodProduceLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6136,19 +6044,17 @@ impl crate::Request for RecognizeFoodManageLicense {
 
     type Response = RecognizeFoodManageLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6190,19 +6096,17 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
 
     type Response = RecognizeMedicalDeviceManageLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6244,19 +6148,17 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
 
     type Response = RecognizeMedicalDeviceProduceLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6299,19 +6201,17 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
 
     type Response = RecognizeCtwoMedicalDeviceManageLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6353,19 +6253,17 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
 
     type Response = RecognizeCosmeticProduceLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6379,14 +6277,14 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInternationalBusinessLicense {
+    /// 国家名称
+    country: LicenseCountry,
     /// 图片/PDF 链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片/PDF二进制字节流，最大10M
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 国家名称
-    country: LicenseCountry,
 }
 
 impl sealed::Bound for RecognizeInternationalBusinessLicense {}
@@ -6394,9 +6292,9 @@ impl sealed::Bound for RecognizeInternationalBusinessLicense {}
 impl RecognizeInternationalBusinessLicense {
     pub fn new(country: impl Into<LicenseCountry>) -> Self {
         Self {
+            country: country.into(),
             url: None,
             body: None,
-            country: country.into(),
         }
     }
 }
@@ -6410,20 +6308,18 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
 
     type Response = RecognizeInternationalBusinessLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
+        params.push(("Country".into(), (&self.country).into()));
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
-        params.insert("Country".into(), (&self.country).into());
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6466,19 +6362,17 @@ impl crate::Request for RecognizeVehicleLicense {
 
     type Response = RecognizeVehicleLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6521,19 +6415,17 @@ impl crate::Request for RecognizeDrivingLicense {
 
     type Response = RecognizeDrivingLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6576,19 +6468,17 @@ impl crate::Request for RecognizeWaybill {
 
     type Response = RecognizeWaybillResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6631,19 +6521,17 @@ impl crate::Request for RecognizeCarNumber {
 
     type Response = RecognizeCarNumberResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6686,19 +6574,17 @@ impl crate::Request for RecognizeCarVinCode {
 
     type Response = RecognizeCarVinCodeResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6741,19 +6627,17 @@ impl crate::Request for RecognizeVehicleRegistration {
 
     type Response = RecognizeVehicleRegistrationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6796,19 +6680,17 @@ impl crate::Request for RecognizeVehicleCertification {
 
     type Response = RecognizeVehicleCertificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6851,19 +6733,17 @@ impl crate::Request for RecognizeEduFormula {
 
     type Response = RecognizeEduFormulaResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6906,19 +6786,17 @@ impl crate::Request for RecognizeEduOralCalculation {
 
     type Response = RecognizeEduOralCalculationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6929,6 +6807,17 @@ impl crate::Request for RecognizeEduOralCalculation {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperOcr {
+    /// * 图片类型。
+    /// * scan：扫描图， photo：实拍图。
+    image_type: String,
+    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_oricoord: Option<bool>,
+    /// * 年级学科。
+    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
+    #[setters(generate = true, strip_option)]
+    subject: Option<String>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -6939,17 +6828,6 @@ pub struct RecognizeEduPaperOcr {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 图片类型。
-    /// * scan：扫描图， photo：实拍图。
-    image_type: String,
-    /// * 年级学科。
-    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
-    #[setters(generate = true, strip_option)]
-    subject: Option<String>,
-    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_oricoord: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeEduPaperOcr {}
@@ -6957,11 +6835,11 @@ impl sealed::Bound for RecognizeEduPaperOcr {}
 impl RecognizeEduPaperOcr {
     pub fn new(image_type: impl Into<String>) -> Self {
         Self {
+            image_type: image_type.into(),
+            output_oricoord: None,
+            subject: None,
             url: None,
             body: None,
-            image_type: image_type.into(),
-            subject: None,
-            output_oricoord: None,
         }
     }
 }
@@ -6975,28 +6853,26 @@ impl crate::Request for RecognizeEduPaperOcr {
 
     type Response = RecognizeEduPaperOcrResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-        params.insert("ImageType".into(), (&self.image_type).into());
-
-        if let Some(f) = &self.subject {
-            params.insert("Subject".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+        params.push(("ImageType".into(), (&self.image_type).into()));
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), (f).into());
+            params.push(("OutputOricoord".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.subject {
+            params.push(("Subject".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7007,6 +6883,20 @@ impl crate::Request for RecognizeEduPaperOcr {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperCut {
+    /// * 切题类型。
+    /// * question：题目， answer：答案。
+    cut_type: String,
+    /// * 图片类型。
+    /// * scan：扫描图， photo：实拍图。
+    image_type: String,
+    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_oricoord: Option<bool>,
+    /// * 年级学科。
+    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
+    #[setters(generate = true, strip_option)]
+    subject: Option<String>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7017,20 +6907,6 @@ pub struct RecognizeEduPaperCut {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 切题类型。
-    /// * question：题目， answer：答案。
-    cut_type: String,
-    /// * 图片类型。
-    /// * scan：扫描图， photo：实拍图。
-    image_type: String,
-    /// * 年级学科。
-    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
-    #[setters(generate = true, strip_option)]
-    subject: Option<String>,
-    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_oricoord: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeEduPaperCut {}
@@ -7038,12 +6914,12 @@ impl sealed::Bound for RecognizeEduPaperCut {}
 impl RecognizeEduPaperCut {
     pub fn new(cut_type: impl Into<String>, image_type: impl Into<String>) -> Self {
         Self {
-            url: None,
-            body: None,
             cut_type: cut_type.into(),
             image_type: image_type.into(),
-            subject: None,
             output_oricoord: None,
+            subject: None,
+            url: None,
+            body: None,
         }
     }
 }
@@ -7057,29 +6933,27 @@ impl crate::Request for RecognizeEduPaperCut {
 
     type Response = RecognizeEduPaperCutResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-        params.insert("CutType".into(), (&self.cut_type).into());
-        params.insert("ImageType".into(), (&self.image_type).into());
-
-        if let Some(f) = &self.subject {
-            params.insert("Subject".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
+        params.push(("CutType".into(), (&self.cut_type).into()));
+        params.push(("ImageType".into(), (&self.image_type).into()));
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), (f).into());
+            params.push(("OutputOricoord".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.subject {
+            params.push(("Subject".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7090,6 +6964,10 @@ impl crate::Request for RecognizeEduPaperCut {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduQuestionOcr {
+    /// * 是否需要自动旋转功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
     /// * 本字段和BODY字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7100,10 +6978,6 @@ pub struct RecognizeEduQuestionOcr {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要自动旋转功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeEduQuestionOcr {}
@@ -7111,9 +6985,9 @@ impl sealed::Bound for RecognizeEduQuestionOcr {}
 impl RecognizeEduQuestionOcr {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
             url: None,
             body: None,
-            need_rotate: None,
         }
     }
 }
@@ -7127,23 +7001,21 @@ impl crate::Request for RecognizeEduQuestionOcr {
 
     type Response = RecognizeEduQuestionOcrResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7154,6 +7026,19 @@ impl crate::Request for RecognizeEduQuestionOcr {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperStructed {
+    /// * 是否需要自动旋转功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
+    /// * 如需输出原图坐标，建议同时将NeedRotate参数设置为true。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_oricoord: Option<bool>,
+    /// * 年级学科。
+    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
+    #[setters(generate = true, strip_option)]
+    subject: Option<String>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7164,19 +7049,6 @@ pub struct RecognizeEduPaperStructed {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 年级学科。
-    /// * default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治。
-    #[setters(generate = true, strip_option)]
-    subject: Option<String>,
-    /// * 是否需要自动旋转功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否输出原图坐标信息（如果图片被做过旋转，图片校正等处理），默认不需要。
-    /// * 如需输出原图坐标，建议同时将NeedRotate参数设置为true。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_oricoord: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeEduPaperStructed {}
@@ -7184,11 +7056,11 @@ impl sealed::Bound for RecognizeEduPaperStructed {}
 impl RecognizeEduPaperStructed {
     pub fn new() -> Self {
         Self {
-            url: None,
-            body: None,
-            subject: None,
             need_rotate: None,
             output_oricoord: None,
+            subject: None,
+            url: None,
+            body: None,
         }
     }
 }
@@ -7202,31 +7074,29 @@ impl crate::Request for RecognizeEduPaperStructed {
 
     type Response = RecognizeEduPaperStructedResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
-
-        if let Some(f) = &self.subject {
-            params.insert("Subject".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_oricoord {
-            params.insert("OutputOricoord".into(), (f).into());
+            params.push(("OutputOricoord".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.subject {
+            params.push(("Subject".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7237,6 +7107,24 @@ impl crate::Request for RecognizeEduPaperStructed {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMultiLanguage {
+    /// * 支持语言列表。
+    languages: Vec<String>,
+    /// * 是否需要自动旋转功能，默认需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否按顺序输出文字块，默认为false。
+    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
+    #[setters(generate = true, strip_option)]
+    need_sort_page: Option<bool>,
+    /// * 是否输出单字识别结果，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7247,24 +7135,6 @@ pub struct RecognizeMultiLanguage {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 支持语言列表。
-    languages: Vec<String>,
-    /// * 是否输出单字识别结果，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// * 是否需要自动旋转功能，默认需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
-    /// * 是否按顺序输出文字块，默认为false。
-    /// * false表示从左往右，从上到下的顺序；true表示从上到下，从左往右的顺序。
-    #[setters(generate = true, strip_option)]
-    need_sort_page: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeMultiLanguage {}
@@ -7272,13 +7142,13 @@ impl sealed::Bound for RecognizeMultiLanguage {}
 impl RecognizeMultiLanguage {
     pub fn new(languages: impl Into<Vec<String>>) -> Self {
         Self {
+            languages: languages.into(),
+            need_rotate: None,
+            need_sort_page: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            languages: languages.into(),
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
-            need_sort_page: None,
         }
     }
 }
@@ -7292,36 +7162,34 @@ impl crate::Request for RecognizeMultiLanguage {
 
     type Response = RecognizeMultiLanguageResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
         crate::SimpleSerialize::simple_serialize(&self.languages, "Languages", &mut params);
 
-        if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.need_sort_page {
-            params.insert("NeedSortPage".into(), (f).into());
+            params.push(("NeedSortPage".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_char_info {
+            params.push(("OutputCharInfo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.output_table {
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7332,6 +7200,14 @@ impl crate::Request for RecognizeMultiLanguage {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEnglish {
+    /// * 是否需要自动旋转功能，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
+    /// * true：需要；false：不需要。
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7342,14 +7218,6 @@ pub struct RecognizeEnglish {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 是否需要自动旋转功能，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// * 是否输出表格识别结果，包含单元格信息，默认不需要。
-    /// * true：需要；false：不需要。
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeEnglish {}
@@ -7357,10 +7225,10 @@ impl sealed::Bound for RecognizeEnglish {}
 impl RecognizeEnglish {
     pub fn new() -> Self {
         Self {
-            url: None,
-            body: None,
             need_rotate: None,
             output_table: None,
+            url: None,
+            body: None,
         }
     }
 }
@@ -7374,27 +7242,25 @@ impl crate::Request for RecognizeEnglish {
 
     type Response = RecognizeEnglishResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
 
         if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7408,21 +7274,21 @@ impl crate::Request for RecognizeEnglish {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeThai {
+    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// 是否输出单字识别结果
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// 是否输出表格识别结果，包含单元格信息
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制文件，最大10MB，与URL二选一。 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否输出单字识别结果
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// 是否输出表格识别结果，包含单元格信息
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeThai {}
@@ -7430,11 +7296,11 @@ impl sealed::Bound for RecognizeThai {}
 impl RecognizeThai {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
         }
     }
 }
@@ -7448,31 +7314,29 @@ impl crate::Request for RecognizeThai {
 
     type Response = RecognizeThaiResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("OutputCharInfo".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7486,21 +7350,21 @@ impl crate::Request for RecognizeThai {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeJanpanese {
+    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// 是否输出单字识别结果
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// 是否输出表格识别结果，包含单元格信息
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制文件，最大10MB，与URL二选一。 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。 使用SDK的方式调用，把图片放到SDK的body中即可
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否输出单字识别结果
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// 是否输出表格识别结果，包含单元格信息
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeJanpanese {}
@@ -7508,11 +7372,11 @@ impl sealed::Bound for RecognizeJanpanese {}
 impl RecognizeJanpanese {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
         }
     }
 }
@@ -7526,31 +7390,29 @@ impl crate::Request for RecognizeJanpanese {
 
     type Response = RecognizeJanpaneseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("OutputCharInfo".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7564,21 +7426,21 @@ impl crate::Request for RecognizeJanpanese {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeKorean {
+    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// 是否输出单字识别结果
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// 是否输出表格识别结果，包含单元格信息
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制文件，最大10MB，与URL二选一。 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否输出单字识别结果
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// 是否输出表格识别结果，包含单元格信息
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeKorean {}
@@ -7586,11 +7448,11 @@ impl sealed::Bound for RecognizeKorean {}
 impl RecognizeKorean {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
         }
     }
 }
@@ -7604,31 +7466,29 @@ impl crate::Request for RecognizeKorean {
 
     type Response = RecognizeKoreanResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("OutputCharInfo".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7642,21 +7502,21 @@ impl crate::Request for RecognizeKorean {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeLatin {
+    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// 是否输出单字识别结果
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// 是否输出表格识别结果，包含单元格信息
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制文件，最大10MB，与URL二选一。 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否输出单字识别结果
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// 是否输出表格识别结果，包含单元格信息
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeLatin {}
@@ -7664,11 +7524,11 @@ impl sealed::Bound for RecognizeLatin {}
 impl RecognizeLatin {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
         }
     }
 }
@@ -7682,31 +7542,29 @@ impl crate::Request for RecognizeLatin {
 
     type Response = RecognizeLatinResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("OutputCharInfo".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7720,21 +7578,21 @@ impl crate::Request for RecognizeLatin {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeRussian {
+    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
+    #[setters(generate = true, strip_option)]
+    need_rotate: Option<bool>,
+    /// 是否输出单字识别结果
+    #[setters(generate = true, strip_option)]
+    output_char_info: Option<bool>,
+    /// 是否输出表格识别结果，包含单元格信息
+    #[setters(generate = true, strip_option)]
+    output_table: Option<bool>,
     /// 图片链接（长度不超2048字节，不支持base64）
     #[setters(generate = true, strip_option)]
     url: Option<String>,
     /// 图片二进制文件，最大10MB，与URL二选一。 使用HTTP方式调用，把图片二进制文件放到HTTP body 中上传即可。 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// 是否输出单字识别结果
-    #[setters(generate = true, strip_option)]
-    output_char_info: Option<bool>,
-    /// 是否需要自动旋转功能（结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置），返回角度信息
-    #[setters(generate = true, strip_option)]
-    need_rotate: Option<bool>,
-    /// 是否输出表格识别结果，包含单元格信息
-    #[setters(generate = true, strip_option)]
-    output_table: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeRussian {}
@@ -7742,11 +7600,11 @@ impl sealed::Bound for RecognizeRussian {}
 impl RecognizeRussian {
     pub fn new() -> Self {
         Self {
+            need_rotate: None,
+            output_char_info: None,
+            output_table: None,
             url: None,
             body: None,
-            output_char_info: None,
-            need_rotate: None,
-            output_table: None,
         }
     }
 }
@@ -7760,31 +7618,29 @@ impl crate::Request for RecognizeRussian {
 
     type Response = RecognizeRussianResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
+        if let Some(f) = &self.need_rotate {
+            params.push(("NeedRotate".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_char_info {
-            params.insert("OutputCharInfo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.need_rotate {
-            params.insert("NeedRotate".into(), (f).into());
+            params.push(("OutputCharInfo".into(), (f).into()));
         }
 
         if let Some(f) = &self.output_table {
-            params.insert("OutputTable".into(), (f).into());
+            params.push(("OutputTable".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7795,6 +7651,10 @@ impl crate::Request for RecognizeRussian {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCovidTestReport {
+    /// * 当一张图有多个子图时，是否要返回多个识别结果,默认不需要。
+    /// * true：返回所有子图识别结果；false：返回检测日期最新的一个结果。
+    #[setters(generate = true, strip_option)]
+    multiple_result: Option<bool>,
     /// * 本字段和body字段二选一，不可同时透传或同时为空。
     /// * 图片链接（长度不超2048字节，不支持base64）。
     #[setters(generate = true, strip_option)]
@@ -7805,10 +7665,6 @@ pub struct RecognizeCovidTestReport {
     /// * 使用SDK的方式调用，把图片放到SDK的body中即可。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
-    /// * 当一张图有多个子图时，是否要返回多个识别结果,默认不需要。
-    /// * true：返回所有子图识别结果；false：返回检测日期最新的一个结果。
-    #[setters(generate = true, strip_option)]
-    multiple_result: Option<bool>,
 }
 
 impl sealed::Bound for RecognizeCovidTestReport {}
@@ -7816,9 +7672,9 @@ impl sealed::Bound for RecognizeCovidTestReport {}
 impl RecognizeCovidTestReport {
     pub fn new() -> Self {
         Self {
+            multiple_result: None,
             url: None,
             body: None,
-            multiple_result: None,
         }
     }
 }
@@ -7832,23 +7688,21 @@ impl crate::Request for RecognizeCovidTestReport {
 
     type Response = RecognizeCovidTestReportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.url {
-            params.insert("Url".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.multiple_result {
-            params.insert("MultipleResult".into(), (f).into());
+            params.push(("MultipleResult".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.url {
+            params.push(("Url".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7859,10 +7713,10 @@ impl crate::Request for RecognizeCovidTestReport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct VerifyBusinessLicense {
-    /// 企业注册号或统一社会信用代码
-    credit_code: String,
     /// 企业名称
     company_name: String,
+    /// 企业注册号或统一社会信用代码
+    credit_code: String,
     /// 企业法人姓名
     legal_person: String,
 }
@@ -7871,21 +7725,19 @@ impl sealed::Bound for VerifyBusinessLicense {}
 
 impl VerifyBusinessLicense {
     pub fn new(
-        credit_code: impl Into<String>,
         company_name: impl Into<String>,
+        credit_code: impl Into<String>,
         legal_person: impl Into<String>,
     ) -> Self {
         Self {
-            credit_code: credit_code.into(),
             company_name: company_name.into(),
+            credit_code: credit_code.into(),
             legal_person: legal_person.into(),
         }
     }
 }
 impl crate::ToFormData for VerifyBusinessLicense {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -7899,18 +7751,16 @@ impl crate::Request for VerifyBusinessLicense {
 
     type Response = VerifyBusinessLicenseResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("CreditCode".into(), (&self.credit_code).into());
-        params.insert("CompanyName".into(), (&self.company_name).into());
-        params.insert("LegalPerson".into(), (&self.legal_person).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
+        params.push(("CompanyName".into(), (&self.company_name).into()));
+        params.push(("CreditCode".into(), (&self.credit_code).into()));
+        params.push(("LegalPerson".into(), (&self.legal_person).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -7948,10 +7798,15 @@ pub struct VerifyVATInvoice {
     /// 发票代码。数电发票（发票类型代码为31，32，51，61，83，84）时可为空（发票类型代码见**发票类型代码说明**）。
     #[setters(generate = true, strip_option)]
     invoice_code: Option<String>,
-    /// 发票号码。
-    invoice_no: String,
     /// 开票日期（日期格式为：YYYYMMDD）。
     invoice_date: String,
+    /// 发票类型。用来区分是否为 **区块链发票**。
+    /// * InvoiceKind=0 或不填，表示 **非区块链发票**。
+    /// * InvoiceKind=1，表示 **区块链发票**。注意，如果核验区块链发票，则 **InvoiceCode**，**InvoiceNumber**，**InvoiceDate**，**InvoiceSum**，**VerifyCode** 这5个入参均为必传参数。
+    #[setters(generate = true, strip_option)]
+    invoice_kind: Option<i32>,
+    /// 发票号码。
+    invoice_no: String,
     /// 发票金额。发票类型代码为 01，03，15，20，31，32 ，51，61，85，83，84时必填：为 01，03，20 ,85时填写发票**不含税金额**；为 15 ,84时填写发票**车价合计**；为 31，32 ，51，61，83时填写**含税金额**；为区块链发票（InvoiceKind=1）时填写 **不含税金额**。
     /// 其它类型可为空（详见**发票类型代码说明**）。
     #[setters(generate = true, strip_option)]
@@ -7959,31 +7814,24 @@ pub struct VerifyVATInvoice {
     /// 校验码，取**后6位**。发票类型代码为 04，10，11，14，86 时必填，发票类型代码为 86 时，填写密码区数电票号码后六位，为区块链发票（InvoiceKind=1）时必填，其他发票种类可为空（详见**发票类型代码说明**）。
     #[setters(generate = true, strip_option)]
     verify_code: Option<String>,
-    /// 发票类型。用来区分是否为 **区块链发票**。
-    /// * InvoiceKind=0 或不填，表示 **非区块链发票**。
-    /// * InvoiceKind=1，表示 **区块链发票**。注意，如果核验区块链发票，则 **InvoiceCode**，**InvoiceNumber**，**InvoiceDate**，**InvoiceSum**，**VerifyCode** 这5个入参均为必传参数。
-    #[setters(generate = true, strip_option)]
-    invoice_kind: Option<i32>,
 }
 
 impl sealed::Bound for VerifyVATInvoice {}
 
 impl VerifyVATInvoice {
-    pub fn new(invoice_no: impl Into<String>, invoice_date: impl Into<String>) -> Self {
+    pub fn new(invoice_date: impl Into<String>, invoice_no: impl Into<String>) -> Self {
         Self {
             invoice_code: None,
-            invoice_no: invoice_no.into(),
             invoice_date: invoice_date.into(),
+            invoice_kind: None,
+            invoice_no: invoice_no.into(),
             invoice_sum: None,
             verify_code: None,
-            invoice_kind: None,
         }
     }
 }
 impl crate::ToFormData for VerifyVATInvoice {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -7997,33 +7845,31 @@ impl crate::Request for VerifyVATInvoice {
 
     type Response = VerifyVATInvoiceResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
 
         if let Some(f) = &self.invoice_code {
-            params.insert("InvoiceCode".into(), (f).into());
+            params.push(("InvoiceCode".into(), (f).into()));
         }
-        params.insert("InvoiceNo".into(), (&self.invoice_no).into());
-        params.insert("InvoiceDate".into(), (&self.invoice_date).into());
+        params.push(("InvoiceDate".into(), (&self.invoice_date).into()));
+
+        if let Some(f) = &self.invoice_kind {
+            params.push(("InvoiceKind".into(), (f).into()));
+        }
+        params.push(("InvoiceNo".into(), (&self.invoice_no).into()));
 
         if let Some(f) = &self.invoice_sum {
-            params.insert("InvoiceSum".into(), (f).into());
+            params.push(("InvoiceSum".into(), (f).into()));
         }
 
         if let Some(f) = &self.verify_code {
-            params.insert("VerifyCode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.invoice_kind {
-            params.insert("InvoiceKind".into(), (f).into());
+            params.push(("VerifyCode".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -8057,10 +7903,7 @@ impl crate::FlatSerialize for AdvancedConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.is_hand_writing_table,
@@ -8124,10 +7967,7 @@ impl crate::FlatSerialize for BarCodeDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.bar_code_angle,
@@ -8162,10 +8002,7 @@ impl crate::FlatSerialize for BarCodeInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.bar_code_count,
@@ -8193,10 +8030,7 @@ impl crate::FlatSerialize for BarCodePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -8220,10 +8054,7 @@ impl crate::FlatSerialize for BarCodeRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -8255,10 +8086,7 @@ impl crate::FlatSerialize for BlockDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.block_angle,
@@ -8307,10 +8135,7 @@ impl crate::FlatSerialize for BlockInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.block_count,
@@ -8338,10 +8163,7 @@ impl crate::FlatSerialize for BlockPoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -8365,10 +8187,7 @@ impl crate::FlatSerialize for BlockRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -8406,10 +8225,7 @@ impl crate::FlatSerialize for CellDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.block_list,
@@ -8469,10 +8285,7 @@ impl crate::FlatSerialize for CellPoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -8496,10 +8309,7 @@ impl crate::FlatSerialize for CellRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -8527,10 +8337,7 @@ impl crate::FlatSerialize for CharInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.char_confidence,
@@ -8569,10 +8376,7 @@ impl crate::FlatSerialize for CharPoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -8596,10 +8400,7 @@ impl crate::FlatSerialize for CharRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -8620,10 +8421,7 @@ impl crate::FlatSerialize for FigureInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.extra, name, params);
     }
@@ -8642,10 +8440,7 @@ impl crate::FlatSerialize for ImagePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -8669,10 +8464,7 @@ impl crate::FlatSerialize for ImageRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -8692,10 +8484,7 @@ impl crate::FlatSerialize for InternationalIdCardConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
     }
@@ -8724,10 +8513,7 @@ impl crate::FlatSerialize for ItemData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.anti_fake_code,
@@ -8776,10 +8562,7 @@ impl crate::FlatSerialize for ItemFooter {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
         crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
@@ -8799,10 +8582,7 @@ impl crate::FlatSerialize for ItemHeader {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
         crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
@@ -8821,10 +8601,7 @@ impl crate::FlatSerialize for KvDetails {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.extra, name, params);
     }
@@ -8841,10 +8618,7 @@ impl crate::FlatSerialize for LanConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.languages,
@@ -8865,10 +8639,7 @@ impl crate::FlatSerialize for LicenseConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
     }
@@ -8889,10 +8660,7 @@ impl crate::FlatSerialize for ParagraphDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.block_list,
@@ -8925,10 +8693,7 @@ impl crate::FlatSerialize for ParagraphInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.paragraph_count,
@@ -8960,10 +8725,7 @@ impl crate::FlatSerialize for QrCodeDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(
@@ -8997,10 +8759,7 @@ impl crate::FlatSerialize for QrCodeInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.qr_code_count,
@@ -9028,10 +8787,7 @@ impl crate::FlatSerialize for QrCodePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -9055,10 +8811,7 @@ impl crate::FlatSerialize for QrCodeRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -9086,10 +8839,7 @@ impl crate::FlatSerialize for QualityInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.completeness_score,
@@ -9130,10 +8880,7 @@ impl crate::FlatSerialize for RowDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.block_list,
@@ -9162,10 +8909,7 @@ impl crate::FlatSerialize for RowInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.row_count,
@@ -9197,10 +8941,7 @@ impl crate::FlatSerialize for StampDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(
@@ -9234,10 +8975,7 @@ impl crate::FlatSerialize for StampInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.stamp_count,
@@ -9265,10 +9003,7 @@ impl crate::FlatSerialize for StampPoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -9292,10 +9027,7 @@ impl crate::FlatSerialize for StampRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -9321,10 +9053,7 @@ impl crate::FlatSerialize for StructureResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
         crate::FlatSerialize::flat_serialize(
@@ -9356,10 +9085,7 @@ impl crate::FlatSerialize for StructureResponseDataSubImage {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
         crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
@@ -9384,10 +9110,7 @@ impl crate::FlatSerialize for StructureResponseDataSubImagesItemKvInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
@@ -9411,10 +9134,7 @@ impl crate::FlatSerialize for TableConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.is_hand_writing_table,
@@ -9466,10 +9186,7 @@ impl crate::FlatSerialize for TableDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.cell_count,
@@ -9524,10 +9241,7 @@ impl crate::FlatSerialize for TableInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.table_count,
@@ -9565,10 +9279,7 @@ impl crate::FlatSerialize for TablePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
         crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
@@ -9592,10 +9303,7 @@ impl crate::FlatSerialize for TableRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
@@ -9617,10 +9325,7 @@ impl crate::FlatSerialize for TextIdCardConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.llm_rec, &format!("{}.Llm_rec", name), params);
         crate::FlatSerialize::flat_serialize(
@@ -9664,10 +9369,7 @@ impl crate::FlatSerialize for TextResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.algo_server,
@@ -9755,10 +9457,7 @@ impl crate::FlatSerialize for TextResponseDataSubImage {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
         crate::FlatSerialize::flat_serialize(
@@ -9837,10 +9536,7 @@ impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
@@ -9893,12 +9589,9 @@ impl crate::FlatSerialize for ConfigCountry {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -9937,12 +9630,9 @@ impl crate::FlatSerialize for HandWriting {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -9991,12 +9681,9 @@ impl crate::FlatSerialize for IdcardCountry {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -10035,12 +9722,9 @@ impl crate::FlatSerialize for LicenseCountry {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -10250,12 +9934,9 @@ impl crate::FlatSerialize for TextType {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 

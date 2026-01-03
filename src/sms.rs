@@ -1710,66 +1710,9 @@ impl Connection {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SubmitSmsQualification {
-    /// 资质名称，用于管理、区分您申请的多个资质，不会出现在短信内容中。名称不可与已有资质名称重复，仅支持中文、英文或与数字组合，不支持任何符号或纯数字输入，长度不超过100字符。
-    qualification_name: String,
-    /// 资质申请用途，取值：
-    ///
-    /// - **true**：**自用**，签名所属主体与本账号实名认证的主体一致。
-    /// - **false**：**他用**，签名所属主体与本账号实名认证的主体不一致。
-    use_by_self: bool,
-    /// 企业类型，取值：
-    ///
-    /// - COMPANY：企业。
-    ///
-    /// - NON_PROFIT_ORGANIZATION：政府机关或事业单位。
-    company_type: String,
-    /// 企业营业证件信息。资质用途`UseBySelf`选择`false`他用时，此参数必填。
-    #[setters(generate = true, strip_option)]
-    business_license_pics: Option<Vec<SubmitSmsQualificationBusinessLicensePic>>,
-    /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
-    company_name: String,
-    /// 社会统一信用代码，长度不超过150字符。
-    organization_code: String,
-    /// 营业证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
-    /// > 证照有效期为长期时，截止日期可填：2099-12-31。
-    bussiness_license_exp_date: String,
-    /// 法定代表人证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    ///
-    ///
-    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_front_side: Option<String>,
-    /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    ///
-    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_back_side: Option<String>,
-    /// 法定代表人姓名，长度不超过50字符。
-    ///
-    /// > - 若组织证件中无法定代表人信息，但存在负责人/首席代表等相关信息，请准备证件中对应负责人或首席代表的身份证件照片。
-    /// > - 若组织证件中无法定代表人信息，且无任何负责人信息，请准备业务主要负责人的姓名、身份证件照片。
-    legal_person_name: String,
-    /// 法定代表人证件号码。
-    legal_person_id_card_no: String,
-    /// 法定代表人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     /// > 证件有效期为长期时，截止日期可填：2099-12-31。
-    legal_person_id_card_eff_time: String,
-    /// 法定代表人证件类型。取值：
-    ///
-    /// - identityCard：身份证。
-    /// - passport：护照。
-    /// - homeReturnPermit：港澳居民来往内地通行证。
-    /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
-    /// - residencePermit：港澳台居民居住证。
-    /// - other：其他。
-    legal_person_id_card_type: String,
-    /// 管理员证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    ///
-    /// ><notice>
-    /// 证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
-    ///
-    /// ></notice>
-    admin_id_card_pic: String,
+    admin_id_card_exp_date: String,
     /// 管理员证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
     /// ><notice>
@@ -1777,12 +1720,15 @@ pub struct SubmitSmsQualification {
     ///
     /// ></notice>
     admin_id_card_front_face: String,
-    /// 管理员姓名，长度不超过50字符。**在当前的[短信签名实名制](~~2873145~~)要求下，同一个管理员若申请多个不同的企业资质会导致报备失败，请确认一管一企以提升报备成功率。**
-    ///
-    /// > 管理员（又称经办人）指登录阿里云账号并管理短信业务的人员，一般是贵方管理此阿里云账号下资质、签名和模板，并进行短信发送的相关运营人员，且此人手机号可接收验证码。管理员不一定是此阿里云账号的管理员，管理员可以与企业法人为同一人。
-    admin_name: String,
     /// 管理员证件号码。
     admin_id_card_no: String,
+    /// 管理员证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
+    ///
+    /// ><notice>
+    /// 证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
+    ///
+    /// ></notice>
+    admin_id_card_pic: String,
     /// 管理员证件类型。取值：
     ///
     /// - identityCard：身份证。
@@ -1792,84 +1738,136 @@ pub struct SubmitSmsQualification {
     /// - residencePermit：港澳台居民居住证。
     /// - other：其他。
     admin_id_card_type: String,
-    /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
-    /// > 证件有效期为长期时，截止日期可填：2099-12-31。
-    admin_id_card_exp_date: String,
+    /// 管理员姓名，长度不超过50字符。**在当前的[短信签名实名制](~~2873145~~)要求下，同一个管理员若申请多个不同的企业资质会导致报备失败，请确认一管一企以提升报备成功率。**
+    ///
+    /// > 管理员（又称经办人）指登录阿里云账号并管理短信业务的人员，一般是贵方管理此阿里云账号下资质、签名和模板，并进行短信发送的相关运营人员，且此人手机号可接收验证码。管理员不一定是此阿里云账号的管理员，管理员可以与企业法人为同一人。
+    admin_name: String,
     /// 管理员手机号码，格式：+/+86/0086/86 或无任何前缀的手机号码，例如1390000****。
     admin_phone_no: String,
+    /// 企业营业证件信息。资质用途`UseBySelf`选择`false`他用时，此参数必填。
+    #[setters(generate = true, strip_option)]
+    business_license_pics: Option<Vec<SubmitSmsQualificationBusinessLicensePic>>,
+    /// 营业证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// > 证照有效期为长期时，截止日期可填：2099-12-31。
+    bussiness_license_exp_date: String,
     /// 手机号验证码。请调用[RequiredPhoneCode](~~RequiredPhoneCode~~)接口并传入**管理员手机号码**后，在此填入接收到的短信验证码。
     ///
     /// > 您可以使用[ValidPhoneCode](~~ValidPhoneCode~~)自行校验短信验证码是否准确后再传入。
     certify_code: String,
+    /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
+    company_name: String,
+    /// 企业类型，取值：
+    ///
+    /// - COMPANY：企业。
+    ///
+    /// - NON_PROFIT_ORGANIZATION：政府机关或事业单位。
+    company_type: String,
+    /// 法定代表人证件号码。
+    legal_person_id_card_no: String,
+    /// 法定代表人证件类型。取值：
+    ///
+    /// - identityCard：身份证。
+    /// - passport：护照。
+    /// - homeReturnPermit：港澳居民来往内地通行证。
+    /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
+    /// - residencePermit：港澳台居民居住证。
+    /// - other：其他。
+    legal_person_id_card_type: String,
+    /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
+    ///
+    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_back_side: Option<String>,
+    /// 法定代表人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// > 证件有效期为长期时，截止日期可填：2099-12-31。
+    legal_person_id_card_eff_time: String,
+    /// 法定代表人证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
+    ///
+    ///
+    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_front_side: Option<String>,
+    /// 法定代表人姓名，长度不超过50字符。
+    ///
+    /// > - 若组织证件中无法定代表人信息，但存在负责人/首席代表等相关信息，请准备证件中对应负责人或首席代表的身份证件照片。
+    /// > - 若组织证件中无法定代表人信息，且无任何负责人信息，请准备业务主要负责人的姓名、身份证件照片。
+    legal_person_name: String,
+    /// 社会统一信用代码，长度不超过150字符。
+    organization_code: String,
     /// 更多资料，如果您还有其他证明或备注材料、照片等，可在此上传。
     #[setters(generate = true, strip_option)]
     other_files: Option<Vec<SubmitSmsQualificationOtherFile>>,
+    /// 资质名称，用于管理、区分您申请的多个资质，不会出现在短信内容中。名称不可与已有资质名称重复，仅支持中文、英文或与数字组合，不支持任何符号或纯数字输入，长度不超过100字符。
+    qualification_name: String,
+    /// 备注。如果您还有其他信息需要说明，或者需要给资质审核人员备注说明，可在此添加描述。
+    #[setters(generate = true, strip_option)]
+    remark: Option<String>,
+    /// 资质申请用途，取值：
+    ///
+    /// - **true**：**自用**，签名所属主体与本账号实名认证的主体一致。
+    /// - **false**：**他用**，签名所属主体与本账号实名认证的主体不一致。
+    use_by_self: bool,
     /// 资质授权，是否同意与其他云通信产品（如国内语音、国内号码隐私保护）的资质共享。仅当您申请**自用资质**，且资质信息**与当前阿里云账号认证企业信息一致**时可被共享、复用；其他情况无效。取值：
     ///
     /// - true：同意，您的资质信息可在其他云通信产品的“资质认证环节”调用，免除重复认证环节。
     /// - false：不同意。
     whether_share: bool,
-    /// 备注。如果您还有其他信息需要说明，或者需要给资质审核人员备注说明，可在此添加描述。
-    #[setters(generate = true, strip_option)]
-    remark: Option<String>,
 }
 
 impl sealed::Bound for SubmitSmsQualification {}
 
 impl SubmitSmsQualification {
     pub fn new(
+        admin_id_card_exp_date: impl Into<String>,
+        admin_id_card_front_face: impl Into<String>,
+        admin_id_card_no: impl Into<String>,
+        admin_id_card_pic: impl Into<String>,
+        admin_id_card_type: impl Into<String>,
+        admin_name: impl Into<String>,
+        admin_phone_no: impl Into<String>,
+        bussiness_license_exp_date: impl Into<String>,
+        certify_code: impl Into<String>,
+        company_name: impl Into<String>,
+        company_type: impl Into<String>,
+        legal_person_id_card_no: impl Into<String>,
+        legal_person_id_card_type: impl Into<String>,
+        legal_person_id_card_eff_time: impl Into<String>,
+        legal_person_name: impl Into<String>,
+        organization_code: impl Into<String>,
         qualification_name: impl Into<String>,
         use_by_self: impl Into<bool>,
-        company_type: impl Into<String>,
-        company_name: impl Into<String>,
-        organization_code: impl Into<String>,
-        bussiness_license_exp_date: impl Into<String>,
-        legal_person_name: impl Into<String>,
-        legal_person_id_card_no: impl Into<String>,
-        legal_person_id_card_eff_time: impl Into<String>,
-        legal_person_id_card_type: impl Into<String>,
-        admin_id_card_pic: impl Into<String>,
-        admin_id_card_front_face: impl Into<String>,
-        admin_name: impl Into<String>,
-        admin_id_card_no: impl Into<String>,
-        admin_id_card_type: impl Into<String>,
-        admin_id_card_exp_date: impl Into<String>,
-        admin_phone_no: impl Into<String>,
-        certify_code: impl Into<String>,
         whether_share: impl Into<bool>,
     ) -> Self {
         Self {
-            qualification_name: qualification_name.into(),
-            use_by_self: use_by_self.into(),
-            company_type: company_type.into(),
-            business_license_pics: None,
-            company_name: company_name.into(),
-            organization_code: organization_code.into(),
-            bussiness_license_exp_date: bussiness_license_exp_date.into(),
-            legal_person_id_card_front_side: None,
-            legal_person_id_card_back_side: None,
-            legal_person_name: legal_person_name.into(),
-            legal_person_id_card_no: legal_person_id_card_no.into(),
-            legal_person_id_card_eff_time: legal_person_id_card_eff_time.into(),
-            legal_person_id_card_type: legal_person_id_card_type.into(),
-            admin_id_card_pic: admin_id_card_pic.into(),
-            admin_id_card_front_face: admin_id_card_front_face.into(),
-            admin_name: admin_name.into(),
-            admin_id_card_no: admin_id_card_no.into(),
-            admin_id_card_type: admin_id_card_type.into(),
             admin_id_card_exp_date: admin_id_card_exp_date.into(),
+            admin_id_card_front_face: admin_id_card_front_face.into(),
+            admin_id_card_no: admin_id_card_no.into(),
+            admin_id_card_pic: admin_id_card_pic.into(),
+            admin_id_card_type: admin_id_card_type.into(),
+            admin_name: admin_name.into(),
             admin_phone_no: admin_phone_no.into(),
+            business_license_pics: None,
+            bussiness_license_exp_date: bussiness_license_exp_date.into(),
             certify_code: certify_code.into(),
+            company_name: company_name.into(),
+            company_type: company_type.into(),
+            legal_person_id_card_no: legal_person_id_card_no.into(),
+            legal_person_id_card_type: legal_person_id_card_type.into(),
+            legal_person_id_card_back_side: None,
+            legal_person_id_card_eff_time: legal_person_id_card_eff_time.into(),
+            legal_person_id_card_front_side: None,
+            legal_person_name: legal_person_name.into(),
+            organization_code: organization_code.into(),
             other_files: None,
-            whether_share: whether_share.into(),
+            qualification_name: qualification_name.into(),
             remark: None,
+            use_by_self: use_by_self.into(),
+            whether_share: whether_share.into(),
         }
     }
 }
 impl crate::ToFormData for SubmitSmsQualification {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -1883,79 +1881,77 @@ impl crate::Request for SubmitSmsQualification {
 
     type Response = SubmitSmsQualificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert(
-            "QualificationName".into(),
-            (&self.qualification_name).into(),
-        );
-        params.insert("UseBySelf".into(), (&self.use_by_self).into());
-        params.insert("CompanyType".into(), (&self.company_type).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(24);
+        params.push((
+            "AdminIDCardExpDate".into(),
+            (&self.admin_id_card_exp_date).into(),
+        ));
+        params.push((
+            "AdminIDCardFrontFace".into(),
+            (&self.admin_id_card_front_face).into(),
+        ));
+        params.push(("AdminIDCardNo".into(), (&self.admin_id_card_no).into()));
+        params.push(("AdminIDCardPic".into(), (&self.admin_id_card_pic).into()));
+        params.push(("AdminIDCardType".into(), (&self.admin_id_card_type).into()));
+        params.push(("AdminName".into(), (&self.admin_name).into()));
+        params.push(("AdminPhoneNo".into(), (&self.admin_phone_no).into()));
 
         if let Some(f) = &self.business_license_pics {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("BusinessLicensePics".into(), json.into());
+                params.push(("BusinessLicensePics".into(), json.into()));
             }
         }
-        params.insert("CompanyName".into(), (&self.company_name).into());
-        params.insert("OrganizationCode".into(), (&self.organization_code).into());
-        params.insert(
+        params.push((
             "BussinessLicenseExpDate".into(),
             (&self.bussiness_license_exp_date).into(),
-        );
-
-        if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide".into(), (f).into());
-        }
-        params.insert("LegalPersonName".into(), (&self.legal_person_name).into());
-        params.insert(
+        ));
+        params.push(("CertifyCode".into(), (&self.certify_code).into()));
+        params.push(("CompanyName".into(), (&self.company_name).into()));
+        params.push(("CompanyType".into(), (&self.company_type).into()));
+        params.push((
             "LegalPersonIDCardNo".into(),
             (&self.legal_person_id_card_no).into(),
-        );
-        params.insert(
-            "LegalPersonIdCardEffTime".into(),
-            (&self.legal_person_id_card_eff_time).into(),
-        );
-        params.insert(
+        ));
+        params.push((
             "LegalPersonIDCardType".into(),
             (&self.legal_person_id_card_type).into(),
-        );
-        params.insert("AdminIDCardPic".into(), (&self.admin_id_card_pic).into());
-        params.insert(
-            "AdminIDCardFrontFace".into(),
-            (&self.admin_id_card_front_face).into(),
-        );
-        params.insert("AdminName".into(), (&self.admin_name).into());
-        params.insert("AdminIDCardNo".into(), (&self.admin_id_card_no).into());
-        params.insert("AdminIDCardType".into(), (&self.admin_id_card_type).into());
-        params.insert(
-            "AdminIDCardExpDate".into(),
-            (&self.admin_id_card_exp_date).into(),
-        );
-        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
-        params.insert("CertifyCode".into(), (&self.certify_code).into());
+        ));
+
+        if let Some(f) = &self.legal_person_id_card_back_side {
+            params.push(("LegalPersonIdCardBackSide".into(), (f).into()));
+        }
+        params.push((
+            "LegalPersonIdCardEffTime".into(),
+            (&self.legal_person_id_card_eff_time).into(),
+        ));
+
+        if let Some(f) = &self.legal_person_id_card_front_side {
+            params.push(("LegalPersonIdCardFrontSide".into(), (f).into()));
+        }
+        params.push(("LegalPersonName".into(), (&self.legal_person_name).into()));
+        params.push(("OrganizationCode".into(), (&self.organization_code).into()));
 
         if let Some(f) = &self.other_files {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("OtherFiles".into(), json.into());
+                params.push(("OtherFiles".into(), json.into()));
             }
         }
-        params.insert("WhetherShare".into(), (&self.whether_share).into());
+        params.push((
+            "QualificationName".into(),
+            (&self.qualification_name).into(),
+        ));
 
         if let Some(f) = &self.remark {
-            params.insert("Remark".into(), (f).into());
+            params.push(("Remark".into(), (f).into()));
         }
+        params.push(("UseBySelf".into(), (&self.use_by_self).into()));
+        params.push(("WhetherShare".into(), (&self.whether_share).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -1966,12 +1962,21 @@ impl crate::Request for SubmitSmsQualification {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsQualificationRecord {
-    /// 资质名称。
-    #[setters(generate = true, strip_option)]
-    qualification_group_name: Option<String>,
     /// 企业名称。
     #[setters(generate = true, strip_option)]
     company_name: Option<String>,
+    /// 法人姓名。
+    #[setters(generate = true, strip_option)]
+    legal_person_name: Option<String>,
+    /// 当前页码。默认取值为 1。
+    #[setters(generate = true, strip_option)]
+    page_no: Option<i64>,
+    /// 每页显示的数据条数。取值范围：**1~50**。
+    #[setters(generate = true, strip_option)]
+    page_size: Option<i64>,
+    /// 资质名称。
+    #[setters(generate = true, strip_option)]
+    qualification_group_name: Option<String>,
     /// 审核状态。取值：
     ///
     /// - INIT：审核中。
@@ -1981,24 +1986,15 @@ pub struct QuerySmsQualificationRecord {
     /// - CANCEL：已撤回。
     #[setters(generate = true, strip_option)]
     state: Option<String>,
-    /// 审核工单ID。
-    #[setters(generate = true, strip_option)]
-    work_order_id: Option<i64>,
-    /// 法人姓名。
-    #[setters(generate = true, strip_option)]
-    legal_person_name: Option<String>,
     /// 资质申请用途，取值：
     ///
     /// - **true**：自用。
     /// - **false**：他用。
     #[setters(generate = true, strip_option)]
     use_by_self: Option<bool>,
-    /// 当前页码。默认取值为 1。
+    /// 审核工单ID。
     #[setters(generate = true, strip_option)]
-    page_no: Option<i64>,
-    /// 每页显示的数据条数。取值范围：**1~50**。
-    #[setters(generate = true, strip_option)]
-    page_size: Option<i64>,
+    work_order_id: Option<i64>,
 }
 
 impl sealed::Bound for QuerySmsQualificationRecord {}
@@ -2006,21 +2002,19 @@ impl sealed::Bound for QuerySmsQualificationRecord {}
 impl QuerySmsQualificationRecord {
     pub fn new() -> Self {
         Self {
-            qualification_group_name: None,
             company_name: None,
-            state: None,
-            work_order_id: None,
             legal_person_name: None,
-            use_by_self: None,
             page_no: None,
             page_size: None,
+            qualification_group_name: None,
+            state: None,
+            use_by_self: None,
+            work_order_id: None,
         }
     }
 }
 impl crate::ToFormData for QuerySmsQualificationRecord {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2034,47 +2028,45 @@ impl crate::Request for QuerySmsQualificationRecord {
 
     type Response = QuerySmsQualificationRecordResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.qualification_group_name {
-            params.insert("QualificationGroupName".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(8);
 
         if let Some(f) = &self.company_name {
-            params.insert("CompanyName".into(), (f).into());
-        }
-
-        if let Some(f) = &self.state {
-            params.insert("State".into(), (f).into());
-        }
-
-        if let Some(f) = &self.work_order_id {
-            params.insert("WorkOrderId".into(), (f).into());
+            params.push(("CompanyName".into(), (f).into()));
         }
 
         if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName".into(), (f).into());
-        }
-
-        if let Some(f) = &self.use_by_self {
-            params.insert("UseBySelf".into(), (f).into());
+            params.push(("LegalPersonName".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_no {
-            params.insert("PageNo".into(), (f).into());
+            params.push(("PageNo".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), (f).into());
+            params.push(("PageSize".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.qualification_group_name {
+            params.push(("QualificationGroupName".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.state {
+            params.push(("State".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.use_by_self {
+            params.push(("UseBySelf".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.work_order_id {
+            params.push(("WorkOrderId".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2085,11 +2077,11 @@ impl crate::Request for QuerySmsQualificationRecord {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySingleSmsQualification {
-    /// 资质ID，即您[申请资质](~~SubmitSmsQualification~~)返回的ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质ID。
-    qualification_group_id: i64,
     /// 审核工单ID，您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质及其对应审核工单ID。
     #[setters(generate = true, strip_option)]
     order_id: Option<i64>,
+    /// 资质ID，即您[申请资质](~~SubmitSmsQualification~~)返回的ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质ID。
+    qualification_group_id: i64,
 }
 
 impl sealed::Bound for QuerySingleSmsQualification {}
@@ -2097,15 +2089,13 @@ impl sealed::Bound for QuerySingleSmsQualification {}
 impl QuerySingleSmsQualification {
     pub fn new(qualification_group_id: impl Into<i64>) -> Self {
         Self {
-            qualification_group_id: qualification_group_id.into(),
             order_id: None,
+            qualification_group_id: qualification_group_id.into(),
         }
     }
 }
 impl crate::ToFormData for QuerySingleSmsQualification {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2119,23 +2109,21 @@ impl crate::Request for QuerySingleSmsQualification {
 
     type Response = QuerySingleSmsQualificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert(
-            "QualificationGroupId".into(),
-            (&self.qualification_group_id).into(),
-        );
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.order_id {
-            params.insert("OrderId".into(), (f).into());
+            params.push(("OrderId".into(), (f).into()));
         }
+        params.push((
+            "QualificationGroupId".into(),
+            (&self.qualification_group_id).into(),
+        ));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2152,58 +2140,10 @@ impl crate::Request for QuerySingleSmsQualification {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsQualification {
-    /// 资质ID，即您[申请短信资质](~~SubmitSmsQualification~~)返回的ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质ID。
-    qualification_group_id: i64,
-    /// 审核工单ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质及其对应审核工单ID。
-    order_id: i64,
-    /// 企业营业证件信息。待修改的资质用途为他用时，此参数必填。
-    #[setters(generate = true, strip_option)]
-    business_license_pics: Option<Vec<UpdateSmsQualificationBusinessLicensePic>>,
-    /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
-    #[setters(generate = true, strip_option)]
-    company_name: Option<String>,
-    /// 营业证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
-    /// > 证照有效期为长期时，截止日期可填：2099-12-31。
-    #[setters(generate = true, strip_option)]
-    bussiness_license_exp_date: Option<String>,
-    /// 法定代表人证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_front_side: Option<String>,
-    /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_back_side: Option<String>,
-    /// 法定代表人姓名。
-    ///
-    /// > - 若组织证件中无法定代表人信息，但存在负责人/首席代表等相关信息，请准备证件中对应负责人或首席代表的身份证件照片。
-    /// > - 若组织证件中无法定代表人信息，且无任何负责人信息，请准备业务主要负责人的姓名、身份证件照片。
-    #[setters(generate = true, strip_option)]
-    legal_person_name: Option<String>,
-    /// 法人证件号码。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_no: Option<String>,
-    /// 法人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     /// > 证件有效期为长期时，截止日期可填：2099-12-31。
     #[setters(generate = true, strip_option)]
-    legal_person_id_card_eff_time: Option<String>,
-    /// 法人证件类型。取值：
-    ///
-    /// - identityCard：身份证。
-    /// - passport：护照。
-    /// - homeReturnPermit：港澳居民来往内地通行证。
-    /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
-    /// - residencePermit：港澳台居民居住证。
-    /// - other：其他。
-    #[setters(generate = true, strip_option)]
-    legal_person_id_card_type: Option<String>,
-    /// 管理员证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
-    ///
-    /// ><notice>
-    ///  证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
-    /// ></notice>
-    #[setters(generate = true, strip_option)]
-    admin_id_card_pic: Option<String>,
+    admin_id_card_exp_date: Option<String>,
     /// 管理员证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
     /// ><notice>
@@ -2211,24 +2151,16 @@ pub struct UpdateSmsQualification {
     /// ></notice>
     #[setters(generate = true, strip_option)]
     admin_id_card_front_face: Option<String>,
-    /// 管理员姓名。
-    ///
-    /// > 管理员（又称经办人）指登录阿里云账号并管理短信业务的人员，一般是贵方管理此阿里云账号下资质、签名和模板，并进行短信发送的相关运营人员，且此人手机号可接收验证码。管理员不一定是此阿里云账号的管理员，管理员可以与企业法人为同一人。
-    #[setters(generate = true, strip_option)]
-    admin_name: Option<String>,
     /// 管理员证件号码。
     #[setters(generate = true, strip_option)]
     admin_id_card_no: Option<String>,
-    /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
-    /// > 证件有效期为长期时，截止日期可填：2099-12-31。
-    #[setters(generate = true, strip_option)]
-    admin_id_card_exp_date: Option<String>,
-    /// 管理员手机号码，格式：+/+86/0086/86 或无任何前缀的手机号码，例如1390000****。
-    admin_phone_no: String,
-    /// 手机号验证码。请调用[RequiredPhoneCode](~~RequiredPhoneCode~~)接口并传入**管理员手机号码**后，在此填入接收到的短信验证码。
+    /// 管理员证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
-    /// > 您可以使用[ValidPhoneCode](~~ValidPhoneCode~~)自行校验短信验证码是否准确后再传入。
-    certify_code: String,
+    /// ><notice>
+    ///  证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
+    /// ></notice>
+    #[setters(generate = true, strip_option)]
+    admin_id_card_pic: Option<String>,
     /// 管理员证件类型。取值：
     ///
     /// - identityCard：身份证。
@@ -2239,48 +2171,102 @@ pub struct UpdateSmsQualification {
     /// - other：其他。
     #[setters(generate = true, strip_option)]
     admin_id_card_type: Option<String>,
+    /// 管理员姓名。
+    ///
+    /// > 管理员（又称经办人）指登录阿里云账号并管理短信业务的人员，一般是贵方管理此阿里云账号下资质、签名和模板，并进行短信发送的相关运营人员，且此人手机号可接收验证码。管理员不一定是此阿里云账号的管理员，管理员可以与企业法人为同一人。
+    #[setters(generate = true, strip_option)]
+    admin_name: Option<String>,
+    /// 管理员手机号码，格式：+/+86/0086/86 或无任何前缀的手机号码，例如1390000****。
+    admin_phone_no: String,
+    /// 企业营业证件信息。待修改的资质用途为他用时，此参数必填。
+    #[setters(generate = true, strip_option)]
+    business_license_pics: Option<Vec<UpdateSmsQualificationBusinessLicensePic>>,
+    /// 营业证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// > 证照有效期为长期时，截止日期可填：2099-12-31。
+    #[setters(generate = true, strip_option)]
+    bussiness_license_exp_date: Option<String>,
+    /// 手机号验证码。请调用[RequiredPhoneCode](~~RequiredPhoneCode~~)接口并传入**管理员手机号码**后，在此填入接收到的短信验证码。
+    ///
+    /// > 您可以使用[ValidPhoneCode](~~ValidPhoneCode~~)自行校验短信验证码是否准确后再传入。
+    certify_code: String,
+    /// 企业名称。符号仅支持中点`·`、中文`【】（）`、英文`()`及`空格`，不可含其他符号或纯数字，长度不超过150字符。
+    #[setters(generate = true, strip_option)]
+    company_name: Option<String>,
+    /// 法人证件号码。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_no: Option<String>,
+    /// 法人证件类型。取值：
+    ///
+    /// - identityCard：身份证。
+    /// - passport：护照。
+    /// - homeReturnPermit：港澳居民来往内地通行证。
+    /// - TaiwanCompatriotPermit：台湾居民来往大陆通行证。
+    /// - residencePermit：港澳台居民居住证。
+    /// - other：其他。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_type: Option<String>,
+    /// 法定代表人证件反面照片（身份证人像面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
+    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_back_side: Option<String>,
+    /// 法人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
+    /// > 证件有效期为长期时，截止日期可填：2099-12-31。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_eff_time: Option<String>,
+    /// 法定代表人证件正面照片（身份证国徽面），仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
+    /// > 系统会使用您填写的法人姓名、证件号码进行校验；若校验不通过，则需要上传法定代表人身份证件照片。
+    #[setters(generate = true, strip_option)]
+    legal_person_id_card_front_side: Option<String>,
+    /// 法定代表人姓名。
+    ///
+    /// > - 若组织证件中无法定代表人信息，但存在负责人/首席代表等相关信息，请准备证件中对应负责人或首席代表的身份证件照片。
+    /// > - 若组织证件中无法定代表人信息，且无任何负责人信息，请准备业务主要负责人的姓名、身份证件照片。
+    #[setters(generate = true, strip_option)]
+    legal_person_name: Option<String>,
+    /// 审核工单ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质及其对应审核工单ID。
+    order_id: i64,
     /// 更多资料，如果您还有其他证明或备注材料、照片等，可在此上传。
     #[setters(generate = true, strip_option)]
     other_files: Option<Vec<UpdateSmsQualificationOtherFile>>,
+    /// 资质ID，即您[申请短信资质](~~SubmitSmsQualification~~)返回的ID。您可以通过[查询资质列表](~~QuerySmsQualificationRecord~~)获取当前账号下的资质ID。
+    qualification_group_id: i64,
 }
 
 impl sealed::Bound for UpdateSmsQualification {}
 
 impl UpdateSmsQualification {
     pub fn new(
-        qualification_group_id: impl Into<i64>,
-        order_id: impl Into<i64>,
         admin_phone_no: impl Into<String>,
         certify_code: impl Into<String>,
+        order_id: impl Into<i64>,
+        qualification_group_id: impl Into<i64>,
     ) -> Self {
         Self {
-            qualification_group_id: qualification_group_id.into(),
-            order_id: order_id.into(),
-            business_license_pics: None,
-            company_name: None,
-            bussiness_license_exp_date: None,
-            legal_person_id_card_front_side: None,
-            legal_person_id_card_back_side: None,
-            legal_person_name: None,
-            legal_person_id_card_no: None,
-            legal_person_id_card_eff_time: None,
-            legal_person_id_card_type: None,
-            admin_id_card_pic: None,
-            admin_id_card_front_face: None,
-            admin_name: None,
-            admin_id_card_no: None,
             admin_id_card_exp_date: None,
-            admin_phone_no: admin_phone_no.into(),
-            certify_code: certify_code.into(),
+            admin_id_card_front_face: None,
+            admin_id_card_no: None,
+            admin_id_card_pic: None,
             admin_id_card_type: None,
+            admin_name: None,
+            admin_phone_no: admin_phone_no.into(),
+            business_license_pics: None,
+            bussiness_license_exp_date: None,
+            certify_code: certify_code.into(),
+            company_name: None,
+            legal_person_id_card_no: None,
+            legal_person_id_card_type: None,
+            legal_person_id_card_back_side: None,
+            legal_person_id_card_eff_time: None,
+            legal_person_id_card_front_side: None,
+            legal_person_name: None,
+            order_id: order_id.into(),
             other_files: None,
+            qualification_group_id: qualification_group_id.into(),
         }
     }
 }
 impl crate::ToFormData for UpdateSmsQualification {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2294,90 +2280,88 @@ impl crate::Request for UpdateSmsQualification {
 
     type Response = UpdateSmsQualificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert(
-            "QualificationGroupId".into(),
-            (&self.qualification_group_id).into(),
-        );
-        params.insert("OrderId".into(), (&self.order_id).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(20);
 
-        if let Some(f) = &self.business_license_pics {
-            if let Ok(json) = serde_json::to_string(f) {
-                params.insert("BusinessLicensePics".into(), json.into());
-            }
-        }
-
-        if let Some(f) = &self.company_name {
-            params.insert("CompanyName".into(), (f).into());
-        }
-
-        if let Some(f) = &self.bussiness_license_exp_date {
-            params.insert("BussinessLicenseExpDate".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_front_side {
-            params.insert("LegalPersonIdCardFrontSide".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_back_side {
-            params.insert("LegalPersonIdCardBackSide".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_name {
-            params.insert("LegalPersonName".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_no {
-            params.insert("LegalPersonIDCardNo".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_eff_time {
-            params.insert("LegalPersonIdCardEffTime".into(), (f).into());
-        }
-
-        if let Some(f) = &self.legal_person_id_card_type {
-            params.insert("LegalPersonIDCardType".into(), (f).into());
-        }
-
-        if let Some(f) = &self.admin_id_card_pic {
-            params.insert("AdminIDCardPic".into(), (f).into());
+        if let Some(f) = &self.admin_id_card_exp_date {
+            params.push(("AdminIDCardExpDate".into(), (f).into()));
         }
 
         if let Some(f) = &self.admin_id_card_front_face {
-            params.insert("AdminIDCardFrontFace".into(), (f).into());
-        }
-
-        if let Some(f) = &self.admin_name {
-            params.insert("AdminName".into(), (f).into());
+            params.push(("AdminIDCardFrontFace".into(), (f).into()));
         }
 
         if let Some(f) = &self.admin_id_card_no {
-            params.insert("AdminIDCardNo".into(), (f).into());
+            params.push(("AdminIDCardNo".into(), (f).into()));
         }
 
-        if let Some(f) = &self.admin_id_card_exp_date {
-            params.insert("AdminIDCardExpDate".into(), (f).into());
+        if let Some(f) = &self.admin_id_card_pic {
+            params.push(("AdminIDCardPic".into(), (f).into()));
         }
-        params.insert("AdminPhoneNo".into(), (&self.admin_phone_no).into());
-        params.insert("CertifyCode".into(), (&self.certify_code).into());
 
         if let Some(f) = &self.admin_id_card_type {
-            params.insert("AdminIDCardType".into(), (f).into());
+            params.push(("AdminIDCardType".into(), (f).into()));
         }
+
+        if let Some(f) = &self.admin_name {
+            params.push(("AdminName".into(), (f).into()));
+        }
+        params.push(("AdminPhoneNo".into(), (&self.admin_phone_no).into()));
+
+        if let Some(f) = &self.business_license_pics {
+            if let Ok(json) = serde_json::to_string(f) {
+                params.push(("BusinessLicensePics".into(), json.into()));
+            }
+        }
+
+        if let Some(f) = &self.bussiness_license_exp_date {
+            params.push(("BussinessLicenseExpDate".into(), (f).into()));
+        }
+        params.push(("CertifyCode".into(), (&self.certify_code).into()));
+
+        if let Some(f) = &self.company_name {
+            params.push(("CompanyName".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_id_card_no {
+            params.push(("LegalPersonIDCardNo".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_id_card_type {
+            params.push(("LegalPersonIDCardType".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_id_card_back_side {
+            params.push(("LegalPersonIdCardBackSide".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_id_card_eff_time {
+            params.push(("LegalPersonIdCardEffTime".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_id_card_front_side {
+            params.push(("LegalPersonIdCardFrontSide".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.legal_person_name {
+            params.push(("LegalPersonName".into(), (f).into()));
+        }
+        params.push(("OrderId".into(), (&self.order_id).into()));
 
         if let Some(f) = &self.other_files {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("OtherFiles".into(), json.into());
+                params.push(("OtherFiles".into(), json.into()));
             }
         }
+        params.push((
+            "QualificationGroupId".into(),
+            (&self.qualification_group_id).into(),
+        ));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2388,26 +2372,24 @@ impl crate::Request for UpdateSmsQualification {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsQualification {
-    /// 资质ID，即您[申请资质](~~SubmitSmsQualification~~)返回的ID。您可以通过调用[查询资质列表](~~QuerySmsQualificationRecord~~)接口，或通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质ID。
-    qualification_group_id: i64,
     /// 审核工单ID。您可以通过调用[查询资质列表](~~QuerySmsQualificationRecord~~)接口，或通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质及其对应审核工单ID。
     order_id: i64,
+    /// 资质ID，即您[申请资质](~~SubmitSmsQualification~~)返回的ID。您可以通过调用[查询资质列表](~~QuerySmsQualificationRecord~~)接口，或通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质ID。
+    qualification_group_id: i64,
 }
 
 impl sealed::Bound for DeleteSmsQualification {}
 
 impl DeleteSmsQualification {
-    pub fn new(qualification_group_id: impl Into<i64>, order_id: impl Into<i64>) -> Self {
+    pub fn new(order_id: impl Into<i64>, qualification_group_id: impl Into<i64>) -> Self {
         Self {
-            qualification_group_id: qualification_group_id.into(),
             order_id: order_id.into(),
+            qualification_group_id: qualification_group_id.into(),
         }
     }
 }
 impl crate::ToFormData for DeleteSmsQualification {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2421,20 +2403,18 @@ impl crate::Request for DeleteSmsQualification {
 
     type Response = DeleteSmsQualificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert(
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
+        params.push(("OrderId".into(), (&self.order_id).into()));
+        params.push((
             "QualificationGroupId".into(),
             (&self.qualification_group_id).into(),
-        );
-        params.insert("OrderId".into(), (&self.order_id).into());
+        ));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2461,9 +2441,7 @@ impl RequiredPhoneCode {
     }
 }
 impl crate::ToFormData for RequiredPhoneCode {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2477,16 +2455,14 @@ impl crate::Request for RequiredPhoneCode {
 
     type Response = RequiredPhoneCodeResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNo".into(), (&self.phone_no).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("PhoneNo".into(), (&self.phone_no).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2497,26 +2473,24 @@ impl crate::Request for RequiredPhoneCode {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ValidPhoneCode {
-    /// 手机号。
-    phone_no: String,
     /// 验证码。
     certify_code: String,
+    /// 手机号。
+    phone_no: String,
 }
 
 impl sealed::Bound for ValidPhoneCode {}
 
 impl ValidPhoneCode {
-    pub fn new(phone_no: impl Into<String>, certify_code: impl Into<String>) -> Self {
+    pub fn new(certify_code: impl Into<String>, phone_no: impl Into<String>) -> Self {
         Self {
-            phone_no: phone_no.into(),
             certify_code: certify_code.into(),
+            phone_no: phone_no.into(),
         }
     }
 }
 impl crate::ToFormData for ValidPhoneCode {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2530,17 +2504,15 @@ impl crate::Request for ValidPhoneCode {
 
     type Response = ValidPhoneCodeResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNo".into(), (&self.phone_no).into());
-        params.insert("CertifyCode".into(), (&self.certify_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
+        params.push(("CertifyCode".into(), (&self.certify_code).into()));
+        params.push(("PhoneNo".into(), (&self.phone_no).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2551,6 +2523,14 @@ impl crate::Request for ValidPhoneCode {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsAuthorizationLetter {
+    /// 委托授权方，即签名归属方。符号仅支持中点`·`、中文`【】（）`、英文`()`及空格，不可含其他符号或纯数字，长度不超过150字符。
+    authorization: String,
+    /// 授权委托书有效期。有效期格式：`YYYY-MM-DD~YYYY-MM-DD`。
+    ///
+    /// > 有效期限建议为1~3年。请设定一个合理的时间周期，避免有效期过长或过短。
+    authorization_letter_exp_date: String,
+    /// 授权委托书命名。命名不可与您其他授权书重复，仅支持中文、英文或与数字组合，不可含符号或纯数字，长度不超过100字符。
+    authorization_letter_name: String,
     /// 委托授权书的fileKey。
     ///
     /// 1. 上传到OSS的授权委托书文件信息。请下载[授权委托书模板](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250414/bvpcmo/%E6%8E%88%E6%9D%83%E5%A7%94%E6%89%98%E4%B9%A6%E6%A8%A1%E7%89%88.doc)后，根据[规范](~~56741~~)完成填写并盖章后上传。文件上传要求：
@@ -2559,51 +2539,41 @@ pub struct CreateSmsAuthorizationLetter {
     ///
     /// 2. fileKey的获取方式如下：[通过OSS上传文件](~~2833114~~)。
     authorization_letter_pic: String,
-    /// 委托授权签名列表，签名数量不超过100个。
-    ///
-    /// > 建议您在授权书内将可能需要用到的签名一次性全部授权，避免后续申请签名时不在授权书签名范围内，导致审核不通过且需重新补充委托授权书。
-    sign_list: Vec<String>,
-    /// 授权委托书有效期。有效期格式：`YYYY-MM-DD~YYYY-MM-DD`。
-    ///
-    /// > 有效期限建议为1~3年。请设定一个合理的时间周期，避免有效期过长或过短。
-    authorization_letter_exp_date: String,
-    /// 委托授权方，即签名归属方。符号仅支持中点`·`、中文`【】（）`、英文`()`及空格，不可含其他符号或纯数字，长度不超过150字符。
-    authorization: String,
     /// 委托授权方社会统一信用代码，长度不超过150字符。信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
     organization_code: String,
     /// 被委托授权方，即签名申请方。符号仅支持中点`·`、中文`【】（）`、英文`()`及空格，不可含其他符号或纯数字，长度不超过150字符。
     proxy_authorization: String,
-    /// 授权委托书命名。命名不可与您其他授权书重复，仅支持中文、英文或与数字组合，不可含符号或纯数字，长度不超过100字符。
-    authorization_letter_name: String,
+    /// 委托授权签名列表，签名数量不超过100个。
+    ///
+    /// > 建议您在授权书内将可能需要用到的签名一次性全部授权，避免后续申请签名时不在授权书签名范围内，导致审核不通过且需重新补充委托授权书。
+    sign_list: Vec<String>,
 }
 
 impl sealed::Bound for CreateSmsAuthorizationLetter {}
 
 impl CreateSmsAuthorizationLetter {
     pub fn new(
-        authorization_letter_pic: impl Into<String>,
-        sign_list: impl Into<Vec<String>>,
-        authorization_letter_exp_date: impl Into<String>,
         authorization: impl Into<String>,
+        authorization_letter_exp_date: impl Into<String>,
+        authorization_letter_name: impl Into<String>,
+        authorization_letter_pic: impl Into<String>,
         organization_code: impl Into<String>,
         proxy_authorization: impl Into<String>,
-        authorization_letter_name: impl Into<String>,
+        sign_list: impl Into<Vec<String>>,
     ) -> Self {
         Self {
-            authorization_letter_pic: authorization_letter_pic.into(),
-            sign_list: sign_list.into(),
-            authorization_letter_exp_date: authorization_letter_exp_date.into(),
             authorization: authorization.into(),
+            authorization_letter_exp_date: authorization_letter_exp_date.into(),
+            authorization_letter_name: authorization_letter_name.into(),
+            authorization_letter_pic: authorization_letter_pic.into(),
             organization_code: organization_code.into(),
             proxy_authorization: proxy_authorization.into(),
-            authorization_letter_name: authorization_letter_name.into(),
+            sign_list: sign_list.into(),
         }
     }
 }
 impl crate::ToFormData for CreateSmsAuthorizationLetter {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2617,37 +2587,34 @@ impl crate::Request for CreateSmsAuthorizationLetter {
 
     type Response = CreateSmsAuthorizationLetterResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert(
-            "AuthorizationLetterPic".into(),
-            (&self.authorization_letter_pic).into(),
-        );
-        if let Ok(json) = serde_json::to_string(&self.sign_list) {
-            params.insert("SignList".into(), json.into());
-        }
-
-        params.insert(
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(7);
+        params.push(("Authorization".into(), (&self.authorization).into()));
+        params.push((
             "AuthorizationLetterExpDate".into(),
             (&self.authorization_letter_exp_date).into(),
-        );
-        params.insert("Authorization".into(), (&self.authorization).into());
-        params.insert("OrganizationCode".into(), (&self.organization_code).into());
-        params.insert(
-            "ProxyAuthorization".into(),
-            (&self.proxy_authorization).into(),
-        );
-        params.insert(
+        ));
+        params.push((
             "AuthorizationLetterName".into(),
             (&self.authorization_letter_name).into(),
-        );
+        ));
+        params.push((
+            "AuthorizationLetterPic".into(),
+            (&self.authorization_letter_pic).into(),
+        ));
+        params.push(("OrganizationCode".into(), (&self.organization_code).into()));
+        params.push((
+            "ProxyAuthorization".into(),
+            (&self.proxy_authorization).into(),
+        ));
+        if let Ok(json) = serde_json::to_string(&self.sign_list) {
+            params.push(("SignList".into(), json.into()));
+        }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2661,12 +2628,12 @@ pub struct QuerySmsAuthorizationLetter {
     /// 委托授权书ID列表。
     #[setters(generate = true, strip_option)]
     authorization_letter_id_list: Option<Vec<i64>>,
-    /// 签名名称。若您创建授权书时，授权范围包括多个签名，则会返回包含该签名的授权书。
-    #[setters(generate = true, strip_option)]
-    sign_name: Option<String>,
     /// 委托授权方社会统一信用代码，长度不超过150个字符。
     #[setters(generate = true, strip_option)]
     organization_code: Option<String>,
+    /// 签名名称。若您创建授权书时，授权范围包括多个签名，则会返回包含该签名的授权书。
+    #[setters(generate = true, strip_option)]
+    sign_name: Option<String>,
     /// 委托授权书审核状态，与签名审核状态相关，取值：
     /// - **INT**：待审核。委托授权书已创建，当您提交签名申请后进入审核流程。
     /// - **PASSED**：审核通过。当您的委托授权签名范围中有签名审核通过时，委托授权书状态变为PASSED。
@@ -2686,17 +2653,15 @@ impl QuerySmsAuthorizationLetter {
     pub fn new() -> Self {
         Self {
             authorization_letter_id_list: None,
-            sign_name: None,
             organization_code: None,
+            sign_name: None,
             state: None,
             status: None,
         }
     }
 }
 impl crate::ToFormData for QuerySmsAuthorizationLetter {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2710,37 +2675,35 @@ impl crate::Request for QuerySmsAuthorizationLetter {
 
     type Response = QuerySmsAuthorizationLetterResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
 
         if let Some(f) = &self.authorization_letter_id_list {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("AuthorizationLetterIdList".into(), json.into());
+                params.push(("AuthorizationLetterIdList".into(), json.into()));
             }
         }
 
-        if let Some(f) = &self.sign_name {
-            params.insert("SignName".into(), (f).into());
+        if let Some(f) = &self.organization_code {
+            params.push(("OrganizationCode".into(), (f).into()));
         }
 
-        if let Some(f) = &self.organization_code {
-            params.insert("OrganizationCode".into(), (f).into());
+        if let Some(f) = &self.sign_name {
+            params.push(("SignName".into(), (f).into()));
         }
 
         if let Some(f) = &self.state {
-            params.insert("State".into(), (f).into());
+            params.push(("State".into(), (f).into()));
         }
 
         if let Some(f) = &self.status {
-            params.insert("Status".into(), (f).into());
+            params.push(("Status".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2751,15 +2714,25 @@ impl crate::Request for QuerySmsAuthorizationLetter {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsSign {
-    /// 签名名称，签名名称请遵守[签名规范](~~108076#section-0p8-qn8-mmy~~)：
+    /// APP-ICP备案实体id。
+    /// > - 当SignSource=2时，需要传备案实体id。
+    /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
+    #[setters(generate = true, strip_option)]
+    app_icp_record_id: Option<i64>,
+    /// App应用商店链接。若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
+    #[setters(generate = true, strip_option)]
+    apply_scene_content: Option<String>,
+    /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
+    #[setters(generate = true, strip_option)]
+    authorization_letter_id: Option<i64>,
+    /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
+    #[setters(generate = true, strip_option)]
+    more_data: Option<Vec<String>>,
+    /// 已审核通过的资质ID。
     ///
-    /// - 长度限2~12字符，不支持包含“测试”、“test”等字样。
-    ///
-    /// - 不支持添加【】、()、[]等符号；不支持、，。空格等特殊字符。
-    ///
-    /// > - 签名名称区分大小写字母，如【Aliyun通信】和【aliyun通信】视为两个不同的签名。
-    /// > - 当您的验证码签名和通用签名名称相同时，系统默认使用通用签名发送短信。
-    sign_name: String,
+    /// > - 在申请短信签名前，请先[申请资质](~~2539801~~)。
+    /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
+    qualification_id: i64,
     /// 短信签名场景说明，是签名审核的参考信息之一，长度不超过200个字符。
     /// >  - 您可以提供已上线业务的使用场景，并提供实际业务的网站链接、应用市场下载链接等。
     /// >  - 您可以提供短信完整示例，体现您的业务场景。
@@ -2769,6 +2742,23 @@ pub struct CreateSmsSign {
     /// 信息完善的申请说明会提高签名、模板的审核效率。如未按规范进行填写或不填写，可能会影响您签名审核的通过。
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
+    /// 签名名称，签名名称请遵守[签名规范](~~108076#section-0p8-qn8-mmy~~)：
+    ///
+    /// - 长度限2~12字符，不支持包含“测试”、“test”等字样。
+    ///
+    /// - 不支持添加【】、()、[]等符号；不支持、，。空格等特殊字符。
+    ///
+    /// > - 签名名称区分大小写字母，如【Aliyun通信】和【aliyun通信】视为两个不同的签名。
+    /// > - 当您的验证码签名和通用签名名称相同时，系统默认使用通用签名发送短信。
+    sign_name: String,
+    /// 签名来源。取值：
+    ///
+    /// -  **0**：企事业单位的全称或简称。
+    /// -  **2**：App应用的全称或简称。
+    /// -  **5**：商标名的全称或简称。
+    ///
+    /// 签名来源的详细说明请参见[签名来源](~~108076#section-fow-bfu-wo9~~)。
+    sign_source: i32,
     /// 签名类型。取值：
     ///
     /// - **0**：验证码。
@@ -2778,25 +2768,6 @@ pub struct CreateSmsSign {
     /// 建议使用默认值：**通用**。
     #[setters(generate = true, strip_option)]
     sign_type: Option<i32>,
-    /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
-    #[setters(generate = true, strip_option)]
-    more_data: Option<Vec<String>>,
-    /// 已审核通过的资质ID。
-    ///
-    /// > - 在申请短信签名前，请先[申请资质](~~2539801~~)。
-    /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
-    qualification_id: i64,
-    /// App应用商店链接。若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
-    #[setters(generate = true, strip_option)]
-    apply_scene_content: Option<String>,
-    /// 签名来源。取值：
-    ///
-    /// -  **0**：企事业单位的全称或简称。
-    /// -  **2**：App应用的全称或简称。
-    /// -  **5**：商标名的全称或简称。
-    ///
-    /// 签名来源的详细说明请参见[签名来源](~~108076#section-fow-bfu-wo9~~)。
-    sign_source: i32,
     /// 签名用途。取值：
     ///
     /// - false：自用（默认值，签名为本账号实名认证的企业、网站、产品名等）。
@@ -2805,48 +2776,38 @@ pub struct CreateSmsSign {
     /// ><notice>签名为自用时，请选择自用资质ID；签名为他用时，请选择他用资质ID。></notice>
     #[setters(generate = true, strip_option)]
     third_party: Option<bool>,
-    /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
-    #[setters(generate = true, strip_option)]
-    authorization_letter_id: Option<i64>,
     /// 商标实体id。
     /// > - 当SignSource=5时，需要传商标实体id。
     /// > - 商标实体id可以通过调用[创建商标实体](~~CreateSmsTrademark~~)接口获取。
     #[setters(generate = true, strip_option)]
     trademark_id: Option<i64>,
-    /// APP-ICP备案实体id。
-    /// > - 当SignSource=2时，需要传备案实体id。
-    /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
-    #[setters(generate = true, strip_option)]
-    app_icp_record_id: Option<i64>,
 }
 
 impl sealed::Bound for CreateSmsSign {}
 
 impl CreateSmsSign {
     pub fn new(
-        sign_name: impl Into<String>,
         qualification_id: impl Into<i64>,
+        sign_name: impl Into<String>,
         sign_source: impl Into<i32>,
     ) -> Self {
         Self {
-            sign_name: sign_name.into(),
-            remark: None,
-            sign_type: None,
+            app_icp_record_id: None,
+            apply_scene_content: None,
+            authorization_letter_id: None,
             more_data: None,
             qualification_id: qualification_id.into(),
-            apply_scene_content: None,
+            remark: None,
+            sign_name: sign_name.into(),
             sign_source: sign_source.into(),
+            sign_type: None,
             third_party: None,
-            authorization_letter_id: None,
             trademark_id: None,
-            app_icp_record_id: None,
         }
     }
 }
 impl crate::ToFormData for CreateSmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2860,52 +2821,50 @@ impl crate::Request for CreateSmsSign {
 
     type Response = CreateSmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(11);
 
-        if let Some(f) = &self.remark {
-            params.insert("Remark".into(), (f).into());
+        if let Some(f) = &self.app_icp_record_id {
+            params.push(("AppIcpRecordId".into(), (f).into()));
         }
 
-        if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), (f).into());
+        if let Some(f) = &self.apply_scene_content {
+            params.push(("ApplySceneContent".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.authorization_letter_id {
+            params.push(("AuthorizationLetterId".into(), (f).into()));
         }
 
         if let Some(f) = &self.more_data {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("MoreData".into(), json.into());
+                params.push(("MoreData".into(), json.into()));
             }
         }
-        params.insert("QualificationId".into(), (&self.qualification_id).into());
+        params.push(("QualificationId".into(), (&self.qualification_id).into()));
 
-        if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), (f).into());
+        if let Some(f) = &self.remark {
+            params.push(("Remark".into(), (f).into()));
         }
-        params.insert("SignSource".into(), (&self.sign_source).into());
+        params.push(("SignName".into(), (&self.sign_name).into()));
+        params.push(("SignSource".into(), (&self.sign_source).into()));
+
+        if let Some(f) = &self.sign_type {
+            params.push(("SignType".into(), (f).into()));
+        }
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty".into(), (f).into());
-        }
-
-        if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), (f).into());
+            params.push(("ThirdParty".into(), (f).into()));
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId".into(), (f).into());
-        }
-
-        if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId".into(), (f).into());
+            params.push(("TrademarkId".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2933,9 +2892,7 @@ impl GetSmsSign {
     }
 }
 impl crate::ToFormData for GetSmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -2949,16 +2906,14 @@ impl crate::Request for GetSmsSign {
 
     type Response = GetSmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("SignName".into(), (&self.sign_name).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -2988,9 +2943,7 @@ impl QuerySmsSignList {
     }
 }
 impl crate::ToFormData for QuerySmsSignList {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3004,23 +2957,21 @@ impl crate::Request for QuerySmsSignList {
 
     type Response = QuerySmsSignListResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex".into(), (f).into());
+            params.push(("PageIndex".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), (f).into());
+            params.push(("PageSize".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3031,8 +2982,25 @@ impl crate::Request for QuerySmsSignList {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsSign {
-    /// 未审核通过的短信签名。您可在控制台[国内消息>签名管理](https://dysms.console.aliyun.com/domestic/text/sign)页签进行查看未通过审核得短信签名。也可通过[QuerySmsSignList](~~QuerySmsSignList~~)接口查看未通过审核的短信签名。
-    sign_name: String,
+    /// APP-ICP备案实体id。
+    /// > - 当SignSource=2时，需要传备案实体id。
+    /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
+    #[setters(generate = true, strip_option)]
+    app_icp_record_id: Option<i64>,
+    /// App应用商店链接，若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
+    #[setters(generate = true, strip_option)]
+    apply_scene_content: Option<String>,
+    /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
+    #[setters(generate = true, strip_option)]
+    authorization_letter_id: Option<i64>,
+    /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
+    #[setters(generate = true, strip_option)]
+    more_data: Option<Vec<String>>,
+    /// 已审核通过的资质ID。
+    ///
+    /// > - 在申请短信签名前，请先[申请资质](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK)。
+    /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
+    qualification_id: i64,
     /// 短信签名场景说明，是签名审核的参考信息之一，长度不超过200个字符。
     /// >  - 您可以提供已上线业务的使用场景，并提供实际业务的网站链接、应用市场下载链接等。
     /// >  - 您可以提供短信完整示例，体现您的业务场景。
@@ -3042,25 +3010,8 @@ pub struct UpdateSmsSign {
     /// 信息完善的申请说明会提高签名、模板的审核效率。如未按规范进行填写或不填写，可能会影响您签名审核的通过。
     #[setters(generate = true, strip_option)]
     remark: Option<String>,
-    /// 签名类型。取值：
-    ///
-    /// - **0**：验证码。
-    /// - **1**：通用（默认值）。
-    ///
-    /// 建议使用默认值：**通用**。
-    #[setters(generate = true, strip_option)]
-    sign_type: Option<i32>,
-    /// 更多资料。补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。请参见[签名申请材料](~~108076#section-xup-k46-yi4~~)，上传相关材料。
-    #[setters(generate = true, strip_option)]
-    more_data: Option<Vec<String>>,
-    /// 已审核通过的资质ID。
-    ///
-    /// > - 在申请短信签名前，请先[申请资质](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK)。
-    /// > - 您可在[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面查看资质ID。
-    qualification_id: i64,
-    /// App应用商店链接，若签名来源为“已上线App”，即`SignSource`取值为2时，请填写http://或https://开头的应用商店链接，并确保App已经上线。
-    #[setters(generate = true, strip_option)]
-    apply_scene_content: Option<String>,
+    /// 未审核通过的短信签名。您可在控制台[国内消息>签名管理](https://dysms.console.aliyun.com/domestic/text/sign)页签进行查看未通过审核得短信签名。也可通过[QuerySmsSignList](~~QuerySmsSignList~~)接口查看未通过审核的短信签名。
+    sign_name: String,
     /// 签名来源。取值：
     ///
     /// -  **0**：企事业单位的全称或简称。
@@ -3069,6 +3020,14 @@ pub struct UpdateSmsSign {
     ///
     /// 签名来源的详细说明请参见[签名来源](~~108076#section-fow-bfu-wo9~~)。
     sign_source: i32,
+    /// 签名类型。取值：
+    ///
+    /// - **0**：验证码。
+    /// - **1**：通用（默认值）。
+    ///
+    /// 建议使用默认值：**通用**。
+    #[setters(generate = true, strip_option)]
+    sign_type: Option<i32>,
     /// 签名用途。取值：
     ///
     /// - false：自用（默认值，签名为本账号实名认证的企业、网站、产品名等）。
@@ -3077,48 +3036,38 @@ pub struct UpdateSmsSign {
     /// ><notice>签名为自用时，请选择自用资质ID；签名为他用时，请选择他用资质ID。></notice>
     #[setters(generate = true, strip_option)]
     third_party: Option<bool>,
-    /// 委托授权书ID，当签名为他用时，委托授权书ID不可为空，否则签名审核不通过。委托授权书的社会统一信用代码必须与签名绑定的资质信息中社会统一信用代码字段保持一致，否则创建签名失败。
-    #[setters(generate = true, strip_option)]
-    authorization_letter_id: Option<i64>,
     /// 商标实体id。
     /// > - 当SignSource=5时，需要传商标实体id。
     /// > - 商标实体id可以通过调用[创建商标实体](~~CreateSmsTrademark~~)接口获取。
     #[setters(generate = true, strip_option)]
     trademark_id: Option<i64>,
-    /// APP-ICP备案实体id。
-    /// > - 当SignSource=2时，需要传备案实体id。
-    /// > - 备案实体id可以通过调用[创建ICP备案实体](~~CreateSmsAppIcpRecord~~)接口获取。
-    #[setters(generate = true, strip_option)]
-    app_icp_record_id: Option<i64>,
 }
 
 impl sealed::Bound for UpdateSmsSign {}
 
 impl UpdateSmsSign {
     pub fn new(
-        sign_name: impl Into<String>,
         qualification_id: impl Into<i64>,
+        sign_name: impl Into<String>,
         sign_source: impl Into<i32>,
     ) -> Self {
         Self {
-            sign_name: sign_name.into(),
-            remark: None,
-            sign_type: None,
+            app_icp_record_id: None,
+            apply_scene_content: None,
+            authorization_letter_id: None,
             more_data: None,
             qualification_id: qualification_id.into(),
-            apply_scene_content: None,
+            remark: None,
+            sign_name: sign_name.into(),
             sign_source: sign_source.into(),
+            sign_type: None,
             third_party: None,
-            authorization_letter_id: None,
             trademark_id: None,
-            app_icp_record_id: None,
         }
     }
 }
 impl crate::ToFormData for UpdateSmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3132,52 +3081,50 @@ impl crate::Request for UpdateSmsSign {
 
     type Response = UpdateSmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(11);
 
-        if let Some(f) = &self.remark {
-            params.insert("Remark".into(), (f).into());
+        if let Some(f) = &self.app_icp_record_id {
+            params.push(("AppIcpRecordId".into(), (f).into()));
         }
 
-        if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), (f).into());
+        if let Some(f) = &self.apply_scene_content {
+            params.push(("ApplySceneContent".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.authorization_letter_id {
+            params.push(("AuthorizationLetterId".into(), (f).into()));
         }
 
         if let Some(f) = &self.more_data {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("MoreData".into(), json.into());
+                params.push(("MoreData".into(), json.into()));
             }
         }
-        params.insert("QualificationId".into(), (&self.qualification_id).into());
+        params.push(("QualificationId".into(), (&self.qualification_id).into()));
 
-        if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), (f).into());
+        if let Some(f) = &self.remark {
+            params.push(("Remark".into(), (f).into()));
         }
-        params.insert("SignSource".into(), (&self.sign_source).into());
+        params.push(("SignName".into(), (&self.sign_name).into()));
+        params.push(("SignSource".into(), (&self.sign_source).into()));
+
+        if let Some(f) = &self.sign_type {
+            params.push(("SignType".into(), (f).into()));
+        }
 
         if let Some(f) = &self.third_party {
-            params.insert("ThirdParty".into(), (f).into());
-        }
-
-        if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), (f).into());
+            params.push(("ThirdParty".into(), (f).into()));
         }
 
         if let Some(f) = &self.trademark_id {
-            params.insert("TrademarkId".into(), (f).into());
-        }
-
-        if let Some(f) = &self.app_icp_record_id {
-            params.insert("AppIcpRecordId".into(), (f).into());
+            params.push(("TrademarkId".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3207,9 +3154,7 @@ impl DeleteSmsSign {
     }
 }
 impl crate::ToFormData for DeleteSmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3223,16 +3168,14 @@ impl crate::Request for DeleteSmsSign {
 
     type Response = DeleteSmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("SignName".into(), (&self.sign_name).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3243,30 +3186,28 @@ impl crate::Request for DeleteSmsSign {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ChangeSignatureQualification {
-    /// 短信签名。
-    signature_name: String,
-    /// 资质ID，即您申请资质返回的ID。您可以通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质ID。
-    qualification_id: i64,
     /// 授权委托书ID。
     #[setters(generate = true, strip_option)]
     authorization_letter_id: Option<i64>,
+    /// 资质ID，即您申请资质返回的ID。您可以通过控制台国内消息[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面获取当前账号下的资质ID。
+    qualification_id: i64,
+    /// 短信签名。
+    signature_name: String,
 }
 
 impl sealed::Bound for ChangeSignatureQualification {}
 
 impl ChangeSignatureQualification {
-    pub fn new(signature_name: impl Into<String>, qualification_id: impl Into<i64>) -> Self {
+    pub fn new(qualification_id: impl Into<i64>, signature_name: impl Into<String>) -> Self {
         Self {
-            signature_name: signature_name.into(),
-            qualification_id: qualification_id.into(),
             authorization_letter_id: None,
+            qualification_id: qualification_id.into(),
+            signature_name: signature_name.into(),
         }
     }
 }
 impl crate::ToFormData for ChangeSignatureQualification {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3280,21 +3221,19 @@ impl crate::Request for ChangeSignatureQualification {
 
     type Response = ChangeSignatureQualificationResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignatureName".into(), (&self.signature_name).into());
-        params.insert("QualificationId".into(), (&self.qualification_id).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
 
         if let Some(f) = &self.authorization_letter_id {
-            params.insert("AuthorizationLetterId".into(), (f).into());
+            params.push(("AuthorizationLetterId".into(), (f).into()));
         }
+        params.push(("QualificationId".into(), (&self.qualification_id).into()));
+        params.push(("SignatureName".into(), (&self.signature_name).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3307,6 +3246,22 @@ impl crate::Request for ChangeSignatureQualification {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsSign {
+    /// 短信签名场景说明，长度不超过200个字符。
+    ///
+    /// 签名审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
+    ///
+    /// - 您可以提供已上线业务的使用场景。
+    ///
+    /// - 您可以提供真实场景的短信示例，体现您的业务场景。
+    ///
+    /// - 您可以提供变量的传参内容，详细描述业务使用场景和选择这个变量属性的原因。
+    ///
+    /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
+    ///
+    /// - 登录场景，您可以提供测试账号和密码。
+    remark: String,
+    /// 签名文件列表。
+    sign_file_list: Vec<AddSmsSignSignFileList>,
     /// 签名名称，签名名称请遵守[签名规范](~~108076#section-0p8-qn8-mmy~~)。
     ///
     /// > - 签名名称不区分大小写字母，如【Aliyun通信】和【aliyun通信】视为名称相同。
@@ -3325,22 +3280,6 @@ pub struct AddSmsSign {
     ///
     /// >此接口不支持申请签名来源是**测试或学习**和**线上试用**的签名，如果您需要申请这两种签名来源的签名，请前往[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification)申请。
     sign_source: i32,
-    /// 短信签名场景说明，长度不超过200个字符。
-    ///
-    /// 签名审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
-    ///
-    /// - 您可以提供已上线业务的使用场景。
-    ///
-    /// - 您可以提供真实场景的短信示例，体现您的业务场景。
-    ///
-    /// - 您可以提供变量的传参内容，详细描述业务使用场景和选择这个变量属性的原因。
-    ///
-    /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
-    ///
-    /// - 登录场景，您可以提供测试账号和密码。
-    remark: String,
-    /// 签名文件列表。
-    sign_file_list: Vec<AddSmsSignSignFileList>,
     /// 签名类型。
     ///
     /// - **0**：验证码
@@ -3353,25 +3292,23 @@ impl sealed::Bound for AddSmsSign {}
 
 impl AddSmsSign {
     pub fn new(
-        sign_name: impl Into<String>,
-        sign_source: impl Into<i32>,
         remark: impl Into<String>,
         sign_file_list: impl Into<Vec<AddSmsSignSignFileList>>,
+        sign_name: impl Into<String>,
+        sign_source: impl Into<i32>,
     ) -> Self {
         Self {
-            sign_name: sign_name.into(),
-            sign_source: sign_source.into(),
             remark: remark.into(),
             sign_file_list: sign_file_list.into(),
+            sign_name: sign_name.into(),
+            sign_source: sign_source.into(),
             sign_type: None,
         }
     }
 }
 impl crate::ToFormData for AddSmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
         crate::FlatSerialize::flat_serialize(&self.sign_file_list, "SignFileList", &mut params);
 
         params
@@ -3387,22 +3324,20 @@ impl crate::Request for AddSmsSign {
 
     type Response = AddSmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("SignSource".into(), (&self.sign_source).into());
-        params.insert("Remark".into(), (&self.remark).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+        params.push(("Remark".into(), (&self.remark).into()));
+        params.push(("SignName".into(), (&self.sign_name).into()));
+        params.push(("SignSource".into(), (&self.sign_source).into()));
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), (f).into());
+            params.push(("SignType".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3415,6 +3350,18 @@ impl crate::Request for AddSmsSign {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsSign {
+    /// 短信签名申请说明，长度不超过200个字符。
+    ///
+    /// 签名审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
+    ///
+    /// - 您可以提供已上线业务的使用场景。
+    /// - 您可以提供真实场景的短信示例，体现您的业务场景。
+    /// - 您可以提供变量的传参内容，详细描述业务使用场景和选择这个变量属性的原因。
+    /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
+    /// - 登录场景，您可以提供测试账号和密码。
+    remark: String,
+    /// 签名文件列表。
+    sign_file_list: Vec<ModifySmsSignSignFileList>,
     /// 签名名称。
     ///
     /// > 审核通过的签名支持修改，但不支持修改签名名称，修改后的签名需要重新通过审核后才能使用。签名审核未完成前，原签名也不能正常使用。
@@ -3428,18 +3375,6 @@ pub struct ModifySmsSign {
     /// - **4**：电商平台店铺名的全称或简称。
     /// - **5**：商标名的全称或简称。
     sign_source: i32,
-    /// 短信签名申请说明，长度不超过200个字符。
-    ///
-    /// 签名审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
-    ///
-    /// - 您可以提供已上线业务的使用场景。
-    /// - 您可以提供真实场景的短信示例，体现您的业务场景。
-    /// - 您可以提供变量的传参内容，详细描述业务使用场景和选择这个变量属性的原因。
-    /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
-    /// - 登录场景，您可以提供测试账号和密码。
-    remark: String,
-    /// 签名文件列表。
-    sign_file_list: Vec<ModifySmsSignSignFileList>,
     /// 签名类型。取值：
     ///
     /// - **0**：验证码
@@ -3453,25 +3388,23 @@ impl sealed::Bound for ModifySmsSign {}
 
 impl ModifySmsSign {
     pub fn new(
-        sign_name: impl Into<String>,
-        sign_source: impl Into<i32>,
         remark: impl Into<String>,
         sign_file_list: impl Into<Vec<ModifySmsSignSignFileList>>,
+        sign_name: impl Into<String>,
+        sign_source: impl Into<i32>,
     ) -> Self {
         Self {
-            sign_name: sign_name.into(),
-            sign_source: sign_source.into(),
             remark: remark.into(),
             sign_file_list: sign_file_list.into(),
+            sign_name: sign_name.into(),
+            sign_source: sign_source.into(),
             sign_type: None,
         }
     }
 }
 impl crate::ToFormData for ModifySmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
         crate::FlatSerialize::flat_serialize(&self.sign_file_list, "SignFileList", &mut params);
 
         params
@@ -3487,22 +3420,20 @@ impl crate::Request for ModifySmsSign {
 
     type Response = ModifySmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("SignSource".into(), (&self.sign_source).into());
-        params.insert("Remark".into(), (&self.remark).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+        params.push(("Remark".into(), (&self.remark).into()));
+        params.push(("SignName".into(), (&self.sign_name).into()));
+        params.push(("SignSource".into(), (&self.sign_source).into()));
 
         if let Some(f) = &self.sign_type {
-            params.insert("SignType".into(), (f).into());
+            params.push(("SignType".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3529,9 +3460,7 @@ impl QuerySmsSign {
     }
 }
 impl crate::ToFormData for QuerySmsSign {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3545,16 +3474,14 @@ impl crate::Request for QuerySmsSign {
 
     type Response = QuerySmsSignResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SignName".into(), (&self.sign_name).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("SignName".into(), (&self.sign_name).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3565,6 +3492,12 @@ impl crate::Request for QuerySmsSign {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsTrademark {
+    /// 申请人名称，长度在50个字符内
+    trademark_applicant_name: String,
+    /// 专用权生失效日期。
+    trademark_eff_exp_date: String,
+    /// 商标名称，长度在15个字符内
+    trademark_name: String,
     /// 商标详情截图fileKey。
     ///
     /// 1. 商标查询方法：
@@ -3584,37 +3517,29 @@ pub struct CreateSmsTrademark {
     trademark_pic: String,
     /// 商标注册号，长度在15个字符内
     trademark_registration_number: String,
-    /// 商标名称，长度在15个字符内
-    trademark_name: String,
-    /// 申请人名称，长度在50个字符内
-    trademark_applicant_name: String,
-    /// 专用权生失效日期。
-    trademark_eff_exp_date: String,
 }
 
 impl sealed::Bound for CreateSmsTrademark {}
 
 impl CreateSmsTrademark {
     pub fn new(
-        trademark_pic: impl Into<String>,
-        trademark_registration_number: impl Into<String>,
-        trademark_name: impl Into<String>,
         trademark_applicant_name: impl Into<String>,
         trademark_eff_exp_date: impl Into<String>,
+        trademark_name: impl Into<String>,
+        trademark_pic: impl Into<String>,
+        trademark_registration_number: impl Into<String>,
     ) -> Self {
         Self {
-            trademark_pic: trademark_pic.into(),
-            trademark_registration_number: trademark_registration_number.into(),
-            trademark_name: trademark_name.into(),
             trademark_applicant_name: trademark_applicant_name.into(),
             trademark_eff_exp_date: trademark_eff_exp_date.into(),
+            trademark_name: trademark_name.into(),
+            trademark_pic: trademark_pic.into(),
+            trademark_registration_number: trademark_registration_number.into(),
         }
     }
 }
 impl crate::ToFormData for CreateSmsTrademark {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3628,29 +3553,27 @@ impl crate::Request for CreateSmsTrademark {
 
     type Response = CreateSmsTrademarkResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TrademarkPic".into(), (&self.trademark_pic).into());
-        params.insert(
-            "TrademarkRegistrationNumber".into(),
-            (&self.trademark_registration_number).into(),
-        );
-        params.insert("TrademarkName".into(), (&self.trademark_name).into());
-        params.insert(
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
+        params.push((
             "TrademarkApplicantName".into(),
             (&self.trademark_applicant_name).into(),
-        );
-        params.insert(
+        ));
+        params.push((
             "TrademarkEffExpDate".into(),
             (&self.trademark_eff_exp_date).into(),
-        );
+        ));
+        params.push(("TrademarkName".into(), (&self.trademark_name).into()));
+        params.push(("TrademarkPic".into(), (&self.trademark_pic).into()));
+        params.push((
+            "TrademarkRegistrationNumber".into(),
+            (&self.trademark_registration_number).into(),
+        ));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3675,9 +3598,7 @@ impl QuerySmsTrademark {
     }
 }
 impl crate::ToFormData for QuerySmsTrademark {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3691,18 +3612,16 @@ impl crate::Request for QuerySmsTrademark {
 
     type Response = QuerySmsTrademarkResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
         if let Ok(json) = serde_json::to_string(&self.trademark_id_list) {
-            params.insert("TrademarkIdList".into(), json.into());
+            params.push(("TrademarkIdList".into(), json.into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3713,6 +3632,10 @@ impl crate::Request for QuerySmsTrademark {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsAppIcpRecord {
+    /// ICP备案审核通过日期
+    app_approval_date: String,
+    /// ICP备案/许可证号，长度在15个字符内
+    app_icp_license_number: String,
     /// APP-ICP备案详情截图fileKey。
     ///
     /// 1. ICP备案查询方法：
@@ -3730,14 +3653,10 @@ pub struct CreateSmsAppIcpRecord {
     ///
     /// 3. fileKey的获取方式如下：[通过OSS上传文件](~~2833114~~)。
     app_icp_record_pic: String,
-    /// ICP备案：服务名称，长度在15个字符内
-    app_service_name: String,
     /// ICP备案：主办单位名称，长度在50个字符内
     app_principal_unit_name: String,
-    /// ICP备案/许可证号，长度在15个字符内
-    app_icp_license_number: String,
-    /// ICP备案审核通过日期
-    app_approval_date: String,
+    /// ICP备案：服务名称，长度在15个字符内
+    app_service_name: String,
     /// APP应用商店链接。
     ///
     /// >
@@ -3749,27 +3668,25 @@ impl sealed::Bound for CreateSmsAppIcpRecord {}
 
 impl CreateSmsAppIcpRecord {
     pub fn new(
-        app_icp_record_pic: impl Into<String>,
-        app_service_name: impl Into<String>,
-        app_principal_unit_name: impl Into<String>,
-        app_icp_license_number: impl Into<String>,
         app_approval_date: impl Into<String>,
+        app_icp_license_number: impl Into<String>,
+        app_icp_record_pic: impl Into<String>,
+        app_principal_unit_name: impl Into<String>,
+        app_service_name: impl Into<String>,
         domain: impl Into<String>,
     ) -> Self {
         Self {
-            app_icp_record_pic: app_icp_record_pic.into(),
-            app_service_name: app_service_name.into(),
-            app_principal_unit_name: app_principal_unit_name.into(),
-            app_icp_license_number: app_icp_license_number.into(),
             app_approval_date: app_approval_date.into(),
+            app_icp_license_number: app_icp_license_number.into(),
+            app_icp_record_pic: app_icp_record_pic.into(),
+            app_principal_unit_name: app_principal_unit_name.into(),
+            app_service_name: app_service_name.into(),
             domain: domain.into(),
         }
     }
 }
 impl crate::ToFormData for CreateSmsAppIcpRecord {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3783,27 +3700,25 @@ impl crate::Request for CreateSmsAppIcpRecord {
 
     type Response = CreateSmsAppIcpRecordResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("AppIcpRecordPic".into(), (&self.app_icp_record_pic).into());
-        params.insert("AppServiceName".into(), (&self.app_service_name).into());
-        params.insert(
-            "AppPrincipalUnitName".into(),
-            (&self.app_principal_unit_name).into(),
-        );
-        params.insert(
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
+        params.push(("AppApprovalDate".into(), (&self.app_approval_date).into()));
+        params.push((
             "AppIcpLicenseNumber".into(),
             (&self.app_icp_license_number).into(),
-        );
-        params.insert("AppApprovalDate".into(), (&self.app_approval_date).into());
-        params.insert("Domain".into(), (&self.domain).into());
+        ));
+        params.push(("AppIcpRecordPic".into(), (&self.app_icp_record_pic).into()));
+        params.push((
+            "AppPrincipalUnitName".into(),
+            (&self.app_principal_unit_name).into(),
+        ));
+        params.push(("AppServiceName".into(), (&self.app_service_name).into()));
+        params.push(("Domain".into(), (&self.domain).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3828,9 +3743,7 @@ impl QuerySmsAppIcpRecord {
     }
 }
 impl crate::ToFormData for QuerySmsAppIcpRecord {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3844,18 +3757,16 @@ impl crate::Request for QuerySmsAppIcpRecord {
 
     type Response = QuerySmsAppIcpRecordResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
         if let Ok(json) = serde_json::to_string(&self.app_icp_record_id_list) {
-            params.insert("AppIcpRecordIdList".into(), json.into());
+            params.push(("AppIcpRecordIdList".into(), json.into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -3866,39 +3777,6 @@ impl crate::Request for QuerySmsAppIcpRecord {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsTemplate {
-    /// 模板名称，长度不超过30个字符。
-    template_name: String,
-    /// 模板内容，长度不超过500个字符。
-    ///
-    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
-    template_content: String,
-    /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
-    #[setters(generate = true, strip_option)]
-    remark: Option<String>,
-    /// 短信类型。取值：
-    ///
-    /// - **0**：验证码。
-    /// - **1**：短信通知。
-    /// - **2**：推广短信。
-    /// - **3**：国际/港澳台消息。
-    ///
-    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
-    template_type: i32,
-    /// 模板需要关联的签名名称。关联的短信签名必须为审核通过的签名。
-    ///
-    /// <notice>
-    ///
-    /// - 当TemplateType参数为**0**、**1**、**2**时，此参数必填。
-    ///
-    /// - 关联签名可以提升审核效率，此处关联的签名和短信发送时选择的签名无关。</notice>
-    #[setters(generate = true, strip_option)]
-    related_sign_name: Option<String>,
-    /// 模板变量规则。变量规则的填写，请参见[示例文档](~~2806243~~)。
-    #[setters(generate = true, strip_option)]
-    template_rule: Option<String>,
-    /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
-    #[setters(generate = true, strip_option)]
-    more_data: Option<Vec<String>>,
     /// 业务场景。
     ///  - 模板关联的短信签名使用场景如果为“已上线APP”，`ApplySceneContent`必须为以`http://`开头或`https://`开头的App链接。
     ///  - 模板关联的短信签名使用场景如果为“已注册商标名”、“企事业单位名称”，`ApplySceneContent`必填。
@@ -3910,6 +3788,39 @@ pub struct CreateSmsTemplate {
     /// - **2**：验证码。
     #[setters(generate = true, strip_option)]
     intl_type: Option<i32>,
+    /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
+    #[setters(generate = true, strip_option)]
+    more_data: Option<Vec<String>>,
+    /// 模板需要关联的签名名称。关联的短信签名必须为审核通过的签名。
+    ///
+    /// <notice>
+    ///
+    /// - 当TemplateType参数为**0**、**1**、**2**时，此参数必填。
+    ///
+    /// - 关联签名可以提升审核效率，此处关联的签名和短信发送时选择的签名无关。</notice>
+    #[setters(generate = true, strip_option)]
+    related_sign_name: Option<String>,
+    /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
+    #[setters(generate = true, strip_option)]
+    remark: Option<String>,
+    /// 模板内容，长度不超过500个字符。
+    ///
+    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
+    template_content: String,
+    /// 模板名称，长度不超过30个字符。
+    template_name: String,
+    /// 模板变量规则。变量规则的填写，请参见[示例文档](~~2806243~~)。
+    #[setters(generate = true, strip_option)]
+    template_rule: Option<String>,
+    /// 短信类型。取值：
+    ///
+    /// - **0**：验证码。
+    /// - **1**：短信通知。
+    /// - **2**：推广短信。
+    /// - **3**：国际/港澳台消息。
+    ///
+    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
+    template_type: i32,
     /// ><warning>
     /// 为管控短信内容安全，短信内容中包含“号码、链接”等引流信息，存在被运营商拦截导致发送失败的风险。建议尽可能在短信模板中避免包含相关信息，以降低短信发送失败风险。></warning>
     ///
@@ -3957,28 +3868,26 @@ impl sealed::Bound for CreateSmsTemplate {}
 
 impl CreateSmsTemplate {
     pub fn new(
-        template_name: impl Into<String>,
         template_content: impl Into<String>,
+        template_name: impl Into<String>,
         template_type: impl Into<i32>,
     ) -> Self {
         Self {
-            template_name: template_name.into(),
-            template_content: template_content.into(),
-            remark: None,
-            template_type: template_type.into(),
-            related_sign_name: None,
-            template_rule: None,
-            more_data: None,
             apply_scene_content: None,
             intl_type: None,
+            more_data: None,
+            related_sign_name: None,
+            remark: None,
+            template_content: template_content.into(),
+            template_name: template_name.into(),
+            template_rule: None,
+            template_type: template_type.into(),
             traffic_driving: None,
         }
     }
 }
 impl crate::ToFormData for CreateSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -3992,48 +3901,46 @@ impl crate::Request for CreateSmsTemplate {
 
     type Response = CreateSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName".into(), (&self.template_name).into());
-        params.insert("TemplateContent".into(), (&self.template_content).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(10);
 
-        if let Some(f) = &self.remark {
-            params.insert("Remark".into(), (f).into());
-        }
-        params.insert("TemplateType".into(), (&self.template_type).into());
-
-        if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName".into(), (f).into());
+        if let Some(f) = &self.apply_scene_content {
+            params.push(("ApplySceneContent".into(), (f).into()));
         }
 
-        if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule".into(), (f).into());
+        if let Some(f) = &self.intl_type {
+            params.push(("IntlType".into(), (f).into()));
         }
 
         if let Some(f) = &self.more_data {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("MoreData".into(), json.into());
+                params.push(("MoreData".into(), json.into()));
             }
         }
 
-        if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), (f).into());
+        if let Some(f) = &self.related_sign_name {
+            params.push(("RelatedSignName".into(), (f).into()));
         }
 
-        if let Some(f) = &self.intl_type {
-            params.insert("IntlType".into(), (f).into());
+        if let Some(f) = &self.remark {
+            params.push(("Remark".into(), (f).into()));
         }
+        params.push(("TemplateContent".into(), (&self.template_content).into()));
+        params.push(("TemplateName".into(), (&self.template_name).into()));
+
+        if let Some(f) = &self.template_rule {
+            params.push(("TemplateRule".into(), (f).into()));
+        }
+        params.push(("TemplateType".into(), (&self.template_type).into()));
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving".into(), (f).into());
+            params.push(("TrafficDriving".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4061,9 +3968,7 @@ impl GetSmsTemplate {
     }
 }
 impl crate::ToFormData for GetSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4077,16 +3982,14 @@ impl crate::Request for GetSmsTemplate {
 
     type Response = GetSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4116,9 +4019,7 @@ impl QuerySmsTemplateList {
     }
 }
 impl crate::ToFormData for QuerySmsTemplateList {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4132,23 +4033,21 @@ impl crate::Request for QuerySmsTemplateList {
 
     type Response = QuerySmsTemplateListResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.page_index {
-            params.insert("PageIndex".into(), (f).into());
+            params.push(("PageIndex".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), (f).into());
+            params.push(("PageSize".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4159,35 +4058,6 @@ impl crate::Request for QuerySmsTemplateList {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsTemplate {
-    /// 模板名称，长度不超过30个字符。您可在控制台[国内消息>模板管理](https://dysms.console.aliyun.com/domestic/text/template)页签查看未通过审核的模板名称。也可通过[QuerySmsTemplateList](~~QuerySmsTemplateList~~)接口查看未通过审核的短信模板名称。
-    template_name: String,
-    /// 未通过审核的模板Code。您可在控制台[国内消息>模板管理](https://dysms.console.aliyun.com/domestic/text/template)页签查看未通过审核的模板Code。也可通过[QuerySmsTemplateList](~~QuerySmsTemplateList~~)接口查看未通过审核的模板Code。
-    template_code: String,
-    /// 模板内容，长度不超过500个字符。
-    ///
-    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
-    template_content: String,
-    /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
-    #[setters(generate = true, strip_option)]
-    remark: Option<String>,
-    /// 短信类型。取值：
-    ///
-    /// - **0**：验证码。
-    /// - **1**：短信通知。
-    /// - **2**：推广短信。
-    /// - **3**：国际/港澳台消息。
-    ///
-    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
-    template_type: i32,
-    /// 模板申请时关联的短信签名。
-    #[setters(generate = true, strip_option)]
-    related_sign_name: Option<String>,
-    /// 模板变量规则。变量规则填写请参见[示例文档](~~2806243~~)。
-    #[setters(generate = true, strip_option)]
-    template_rule: Option<String>,
-    /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
-    #[setters(generate = true, strip_option)]
-    more_data: Option<Vec<String>>,
     /// 业务场景。
     ///  - 模板关联的短信签名使用场景如果为“已上线APP”，`ApplySceneContent`必须为以`http://`开头或`https://`开头的App链接。
     ///  - 模板关联的短信签名使用场景如果为“已注册商标名”、“企事业单位名称”，`ApplySceneContent`必填。
@@ -4199,6 +4069,35 @@ pub struct UpdateSmsTemplate {
     /// - **2**：验证码。
     #[setters(generate = true, strip_option)]
     intl_type: Option<i32>,
+    /// 更多资料，您可以补充上传业务证明文件或业务截图，有助于审核人员了解您的业务详情。如果您申请的短信模板为推广短信（即TemplateType为2），请上传用户授权证明材料，具体说明请参见[用户授权证明材料上传规范](~~312341~~)。
+    #[setters(generate = true, strip_option)]
+    more_data: Option<Vec<String>>,
+    /// 模板申请时关联的短信签名。
+    #[setters(generate = true, strip_option)]
+    related_sign_name: Option<String>,
+    /// 请描述您使用短信的业务场景或提供业务场景的线上链接，并提供短信完整示例（填入变量内容），信息完整有助于提高模板审核通过率。如未按规范进行填写或不填写，可能会影响您模板审核的通过。
+    #[setters(generate = true, strip_option)]
+    remark: Option<String>,
+    /// 未通过审核的模板Code。您可在控制台[国内消息>模板管理](https://dysms.console.aliyun.com/domestic/text/template)页签查看未通过审核的模板Code。也可通过[QuerySmsTemplateList](~~QuerySmsTemplateList~~)接口查看未通过审核的模板Code。
+    template_code: String,
+    /// 模板内容，长度不超过500个字符。
+    ///
+    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
+    template_content: String,
+    /// 模板名称，长度不超过30个字符。您可在控制台[国内消息>模板管理](https://dysms.console.aliyun.com/domestic/text/template)页签查看未通过审核的模板名称。也可通过[QuerySmsTemplateList](~~QuerySmsTemplateList~~)接口查看未通过审核的短信模板名称。
+    template_name: String,
+    /// 模板变量规则。变量规则填写请参见[示例文档](~~2806243~~)。
+    #[setters(generate = true, strip_option)]
+    template_rule: Option<String>,
+    /// 短信类型。取值：
+    ///
+    /// - **0**：验证码。
+    /// - **1**：短信通知。
+    /// - **2**：推广短信。
+    /// - **3**：国际/港澳台消息。
+    ///
+    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
+    template_type: i32,
     /// ><warning>
     /// 为管控短信内容安全，短信内容中包含“号码、链接”等引流信息，存在被运营商拦截导致发送失败的风险。建议尽可能在短信模板中避免包含相关信息，以降低短信发送失败风险。></warning>
     ///
@@ -4247,30 +4146,28 @@ impl sealed::Bound for UpdateSmsTemplate {}
 
 impl UpdateSmsTemplate {
     pub fn new(
-        template_name: impl Into<String>,
         template_code: impl Into<String>,
         template_content: impl Into<String>,
+        template_name: impl Into<String>,
         template_type: impl Into<i32>,
     ) -> Self {
         Self {
-            template_name: template_name.into(),
-            template_code: template_code.into(),
-            template_content: template_content.into(),
-            remark: None,
-            template_type: template_type.into(),
-            related_sign_name: None,
-            template_rule: None,
-            more_data: None,
             apply_scene_content: None,
             intl_type: None,
+            more_data: None,
+            related_sign_name: None,
+            remark: None,
+            template_code: template_code.into(),
+            template_content: template_content.into(),
+            template_name: template_name.into(),
+            template_rule: None,
+            template_type: template_type.into(),
             traffic_driving: None,
         }
     }
 }
 impl crate::ToFormData for UpdateSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4284,49 +4181,47 @@ impl crate::Request for UpdateSmsTemplate {
 
     type Response = UpdateSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName".into(), (&self.template_name).into());
-        params.insert("TemplateCode".into(), (&self.template_code).into());
-        params.insert("TemplateContent".into(), (&self.template_content).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(11);
 
-        if let Some(f) = &self.remark {
-            params.insert("Remark".into(), (f).into());
-        }
-        params.insert("TemplateType".into(), (&self.template_type).into());
-
-        if let Some(f) = &self.related_sign_name {
-            params.insert("RelatedSignName".into(), (f).into());
+        if let Some(f) = &self.apply_scene_content {
+            params.push(("ApplySceneContent".into(), (f).into()));
         }
 
-        if let Some(f) = &self.template_rule {
-            params.insert("TemplateRule".into(), (f).into());
+        if let Some(f) = &self.intl_type {
+            params.push(("IntlType".into(), (f).into()));
         }
 
         if let Some(f) = &self.more_data {
             if let Ok(json) = serde_json::to_string(f) {
-                params.insert("MoreData".into(), json.into());
+                params.push(("MoreData".into(), json.into()));
             }
         }
 
-        if let Some(f) = &self.apply_scene_content {
-            params.insert("ApplySceneContent".into(), (f).into());
+        if let Some(f) = &self.related_sign_name {
+            params.push(("RelatedSignName".into(), (f).into()));
         }
 
-        if let Some(f) = &self.intl_type {
-            params.insert("IntlType".into(), (f).into());
+        if let Some(f) = &self.remark {
+            params.push(("Remark".into(), (f).into()));
         }
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
+        params.push(("TemplateContent".into(), (&self.template_content).into()));
+        params.push(("TemplateName".into(), (&self.template_name).into()));
+
+        if let Some(f) = &self.template_rule {
+            params.push(("TemplateRule".into(), (f).into()));
+        }
+        params.push(("TemplateType".into(), (&self.template_type).into()));
 
         if let Some(f) = &self.traffic_driving {
-            params.insert("TrafficDriving".into(), (f).into());
+            params.push(("TrafficDriving".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4358,9 +4253,7 @@ impl DeleteSmsTemplate {
     }
 }
 impl crate::ToFormData for DeleteSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4374,16 +4267,14 @@ impl crate::Request for DeleteSmsTemplate {
 
     type Response = DeleteSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4396,21 +4287,6 @@ impl crate::Request for DeleteSmsTemplate {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsTemplate {
-    /// 短信类型。取值：
-    ///
-    /// - **0**：验证码。
-    /// - **1**：短信通知。
-    /// - **2**：推广短信。
-    /// - **3**：国际/港澳台消息。
-    ///
-    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](~~55324~~)。
-    template_type: i32,
-    /// 模板名称，长度不超过30个字符。
-    template_name: String,
-    /// 模板内容，长度不超过500个字符。
-    ///
-    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
-    template_content: String,
     /// 短信模板申请说明，长度不超过100个字符。
     ///
     /// 模板审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
@@ -4421,29 +4297,42 @@ pub struct AddSmsTemplate {
     /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
     /// - 登录场景，您可以提供测试账号和密码。
     remark: String,
+    /// 模板内容，长度不超过500个字符。
+    ///
+    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
+    template_content: String,
+    /// 模板名称，长度不超过30个字符。
+    template_name: String,
+    /// 短信类型。取值：
+    ///
+    /// - **0**：验证码。
+    /// - **1**：短信通知。
+    /// - **2**：推广短信。
+    /// - **3**：国际/港澳台消息。
+    ///
+    /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](~~55324~~)。
+    template_type: i32,
 }
 
 impl sealed::Bound for AddSmsTemplate {}
 
 impl AddSmsTemplate {
     pub fn new(
-        template_type: impl Into<i32>,
-        template_name: impl Into<String>,
-        template_content: impl Into<String>,
         remark: impl Into<String>,
+        template_content: impl Into<String>,
+        template_name: impl Into<String>,
+        template_type: impl Into<i32>,
     ) -> Self {
         Self {
-            template_type: template_type.into(),
-            template_name: template_name.into(),
-            template_content: template_content.into(),
             remark: remark.into(),
+            template_content: template_content.into(),
+            template_name: template_name.into(),
+            template_type: template_type.into(),
         }
     }
 }
 impl crate::ToFormData for AddSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4457,19 +4346,17 @@ impl crate::Request for AddSmsTemplate {
 
     type Response = AddSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateType".into(), (&self.template_type).into());
-        params.insert("TemplateName".into(), (&self.template_name).into());
-        params.insert("TemplateContent".into(), (&self.template_content).into());
-        params.insert("Remark".into(), (&self.remark).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+        params.push(("Remark".into(), (&self.remark).into()));
+        params.push(("TemplateContent".into(), (&self.template_content).into()));
+        params.push(("TemplateName".into(), (&self.template_name).into()));
+        params.push(("TemplateType".into(), (&self.template_type).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4482,24 +4369,6 @@ impl crate::Request for AddSmsTemplate {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsTemplate {
-    /// 短信类型。取值：
-    ///
-    /// - **0**：验证码。
-    /// - **1**：短信通知。
-    /// - **2**：推广短信。
-    /// - **3**：国际/港澳台消息。
-    template_type: i32,
-    /// 模板名称，长度限制为1~30个字符。
-    template_name: String,
-    /// 未通过审核的短信模板Code。
-    ///
-    /// - 通过[QuerySmsTemplateList](~~419288~~)接口获取未通过审核的短信模板Code。
-    /// - 在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面查看未通过审核的短信模板Code。
-    template_code: String,
-    /// 模板内容，长度不超过500个字符。
-    ///
-    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
-    template_content: String,
     /// 短信模板申请说明，长度不超过100个字符。
     ///
     /// 模板审核的参考信息，完善申请说明有助于审核人员理解您的业务场景，提高审核效率。填写指导：
@@ -4510,31 +4379,47 @@ pub struct ModifySmsTemplate {
     /// - 您可以提供实际业务的网站链接、已备案的域名地址、应用市场下载链接等。
     /// - 登录场景，您可以提供测试账号和密码。
     remark: String,
+    /// 未通过审核的短信模板Code。
+    ///
+    /// - 通过[QuerySmsTemplateList](~~419288~~)接口获取未通过审核的短信模板Code。
+    /// - 在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面查看未通过审核的短信模板Code。
+    template_code: String,
+    /// 模板内容，长度不超过500个字符。
+    ///
+    /// 模板内容和变量内容必须符合[短信模板规范](~~463161~~)，否则模板会审核失败。您也可以在[申请模板](https://dysms.console.aliyun.com/domestic/text/template/add)页面，查看常用模板示例。使用示例模板可提高审核效率和成功率。变量规范请参见[TemplateContent参数变量规范](~~2806243~~)。
+    template_content: String,
+    /// 模板名称，长度限制为1~30个字符。
+    template_name: String,
+    /// 短信类型。取值：
+    ///
+    /// - **0**：验证码。
+    /// - **1**：短信通知。
+    /// - **2**：推广短信。
+    /// - **3**：国际/港澳台消息。
+    template_type: i32,
 }
 
 impl sealed::Bound for ModifySmsTemplate {}
 
 impl ModifySmsTemplate {
     pub fn new(
-        template_type: impl Into<i32>,
-        template_name: impl Into<String>,
+        remark: impl Into<String>,
         template_code: impl Into<String>,
         template_content: impl Into<String>,
-        remark: impl Into<String>,
+        template_name: impl Into<String>,
+        template_type: impl Into<i32>,
     ) -> Self {
         Self {
-            template_type: template_type.into(),
-            template_name: template_name.into(),
+            remark: remark.into(),
             template_code: template_code.into(),
             template_content: template_content.into(),
-            remark: remark.into(),
+            template_name: template_name.into(),
+            template_type: template_type.into(),
         }
     }
 }
 impl crate::ToFormData for ModifySmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4548,20 +4433,18 @@ impl crate::Request for ModifySmsTemplate {
 
     type Response = ModifySmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateType".into(), (&self.template_type).into());
-        params.insert("TemplateName".into(), (&self.template_name).into());
-        params.insert("TemplateCode".into(), (&self.template_code).into());
-        params.insert("TemplateContent".into(), (&self.template_content).into());
-        params.insert("Remark".into(), (&self.remark).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
+        params.push(("Remark".into(), (&self.remark).into()));
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
+        params.push(("TemplateContent".into(), (&self.template_content).into()));
+        params.push(("TemplateName".into(), (&self.template_name).into()));
+        params.push(("TemplateType".into(), (&self.template_type).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4588,9 +4471,7 @@ impl QuerySmsTemplate {
     }
 }
 impl crate::ToFormData for QuerySmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4604,16 +4485,14 @@ impl crate::Request for QuerySmsTemplate {
 
     type Response = QuerySmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4661,6 +4540,11 @@ impl crate::Request for QuerySmsTemplate {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendSms {
+    /// 外部流水扩展字段。
+    ///
+    /// > 无特殊需要可忽略此字段。
+    #[setters(generate = true, strip_option)]
+    out_id: Option<String>,
     /// 接收短信的手机号码。手机号码格式：
     ///
     /// * 国内短信：+/+86/0086/86或无任何前缀的手机号码，例如1390000\*\*\*\*。
@@ -4675,6 +4559,10 @@ pub struct SendSms {
     ///
     /// > 如果验证码签名和通用签名相同时，默认使用通用签名发送短信。
     sign_name: String,
+    /// 上行短信扩展码。上行短信指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费，按运营商普通短信资费进行扣费。
+    /// > 扩展码是生成签名时系统自动默认生成的，不支持自行传入。无特殊需要可忽略此字段。
+    #[setters(generate = true, strip_option)]
+    sms_up_extend_code: Option<String>,
     /// 短信模板Code。
     ///
     /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表，必须使用已**审核通过**的模板Code发送短信。
@@ -4685,15 +4573,6 @@ pub struct SendSms {
     /// > - 模板变量规范，请参见[短信模板规范](~~463161~~)。
     #[setters(generate = true, strip_option)]
     template_param: Option<String>,
-    /// 上行短信扩展码。上行短信指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费，按运营商普通短信资费进行扣费。
-    /// > 扩展码是生成签名时系统自动默认生成的，不支持自行传入。无特殊需要可忽略此字段。
-    #[setters(generate = true, strip_option)]
-    sms_up_extend_code: Option<String>,
-    /// 外部流水扩展字段。
-    ///
-    /// > 无特殊需要可忽略此字段。
-    #[setters(generate = true, strip_option)]
-    out_id: Option<String>,
 }
 
 impl sealed::Bound for SendSms {}
@@ -4705,19 +4584,17 @@ impl SendSms {
         template_code: impl Into<String>,
     ) -> Self {
         Self {
+            out_id: None,
             phone_numbers: phone_numbers.into(),
             sign_name: sign_name.into(),
+            sms_up_extend_code: None,
             template_code: template_code.into(),
             template_param: None,
-            sms_up_extend_code: None,
-            out_id: None,
         }
     }
 }
 impl crate::ToFormData for SendSms {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4731,30 +4608,28 @@ impl crate::Request for SendSms {
 
     type Response = SendSmsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumbers".into(), (&self.phone_numbers).into());
-        params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("TemplateCode".into(), (&self.template_code).into());
-
-        if let Some(f) = &self.template_param {
-            params.insert("TemplateParam".into(), (f).into());
-        }
-
-        if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), (f).into());
+            params.push(("OutId".into(), (f).into()));
+        }
+        params.push(("PhoneNumbers".into(), (&self.phone_numbers).into()));
+        params.push(("SignName".into(), (&self.sign_name).into()));
+
+        if let Some(f) = &self.sms_up_extend_code {
+            params.push(("SmsUpExtendCode".into(), (f).into()));
+        }
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
+
+        if let Some(f) = &self.template_param {
+            params.push(("TemplateParam".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4765,6 +4640,11 @@ impl crate::Request for SendSms {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendBatchSms {
+    /// 外部流水扩展字段，长度小于256的字符串。
+    ///
+    /// > 无特殊需要可忽略此字段。
+    #[setters(generate = true, strip_option)]
+    out_id: Option<String>,
     /// 接收短信的手机号码。手机号码格式：
     ///
     /// * 国内短信：+/+86/0086/86或无任何前缀的手机号码，例如1590000\*\*\*\*。
@@ -4776,6 +4656,11 @@ pub struct SendBatchSms {
     ///
     /// 您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看已审核通过的签名，必须使用审核通过的签名发送短信。
     sign_name_json: String,
+    /// 上行短信扩展码，JSON数组格式。
+    ///
+    /// > 无特殊需要可忽略此字段。
+    #[setters(generate = true, strip_option)]
+    sms_up_extend_code_json: Option<String>,
     /// 短信模板Code。国内短信模板和国际短信模板不可以混用。
     ///
     /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表，必须使用已审核通过的模板Code发送短信。
@@ -4786,16 +4671,6 @@ pub struct SendBatchSms {
     /// > - 如果JSON中需要带换行符，请参照标准的JSON协议处理。
     #[setters(generate = true, strip_option)]
     template_param_json: Option<String>,
-    /// 上行短信扩展码，JSON数组格式。
-    ///
-    /// > 无特殊需要可忽略此字段。
-    #[setters(generate = true, strip_option)]
-    sms_up_extend_code_json: Option<String>,
-    /// 外部流水扩展字段，长度小于256的字符串。
-    ///
-    /// > 无特殊需要可忽略此字段。
-    #[setters(generate = true, strip_option)]
-    out_id: Option<String>,
 }
 
 impl sealed::Bound for SendBatchSms {}
@@ -4807,29 +4682,27 @@ impl SendBatchSms {
         template_code: impl Into<String>,
     ) -> Self {
         Self {
+            out_id: None,
             phone_number_json: phone_number_json.into(),
             sign_name_json: sign_name_json.into(),
+            sms_up_extend_code_json: None,
             template_code: template_code.into(),
             template_param_json: None,
-            sms_up_extend_code_json: None,
-            out_id: None,
         }
     }
 }
 impl crate::ToFormData for SendBatchSms {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
-        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
-
-        if let Some(f) = &self.template_param_json {
-            params.insert("TemplateParamJson".into(), f.into());
-        }
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+        params.push(("PhoneNumberJson".into(), (&self.phone_number_json).into()));
+        params.push(("SignNameJson".into(), (&self.sign_name_json).into()));
 
         if let Some(f) = &self.sms_up_extend_code_json {
-            params.insert("SmsUpExtendCodeJson".into(), f.into());
+            params.push(("SmsUpExtendCodeJson".into(), f.into()));
+        }
+
+        if let Some(f) = &self.template_param_json {
+            params.push(("TemplateParamJson".into(), f.into()));
         }
 
         params
@@ -4845,20 +4718,18 @@ impl crate::Request for SendBatchSms {
 
     type Response = SendBatchSmsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
 
         if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), (f).into());
+            params.push(("OutId".into(), (f).into()));
         }
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4871,6 +4742,17 @@ impl crate::Request for SendBatchSms {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySendDetails {
+    /// 发送回执ID。即发送流水号，调用[SendSms](~~419273~~)或[SendBatchSms](~~419274~~)发送短信时，返回值中的BizId字段。
+    ///
+    /// > 只能传入一个Bizid的值，无法传入多个Bizid。
+    #[setters(generate = true, strip_option)]
+    biz_id: Option<String>,
+    /// 发送记录的当前页码，供分页查看发送记录使用。
+    current_page: i64,
+    /// 每页显示的短信记录数量，供分页查看发送记录使用。
+    ///
+    /// 取值范围为1~50。
+    page_size: i64,
     /// 需要查询的手机号码。格式：
     ///
     /// * 国内短信：11位手机号码，例如1390000\*\*\*\*。
@@ -4878,45 +4760,32 @@ pub struct QuerySendDetails {
     ///
     /// > 只能传入一个手机号码。
     phone_number: String,
-    /// 发送回执ID。即发送流水号，调用[SendSms](~~419273~~)或[SendBatchSms](~~419274~~)发送短信时，返回值中的BizId字段。
-    ///
-    /// > 只能传入一个Bizid的值，无法传入多个Bizid。
-    #[setters(generate = true, strip_option)]
-    biz_id: Option<String>,
     /// 短信发送日期，支持查询最近30天的记录。
     ///
     /// 格式：**yyyyMMdd**，例如20250601。
     send_date: String,
-    /// 每页显示的短信记录数量，供分页查看发送记录使用。
-    ///
-    /// 取值范围为1~50。
-    page_size: i64,
-    /// 发送记录的当前页码，供分页查看发送记录使用。
-    current_page: i64,
 }
 
 impl sealed::Bound for QuerySendDetails {}
 
 impl QuerySendDetails {
     pub fn new(
+        current_page: impl Into<i64>,
+        page_size: impl Into<i64>,
         phone_number: impl Into<String>,
         send_date: impl Into<String>,
-        page_size: impl Into<i64>,
-        current_page: impl Into<i64>,
     ) -> Self {
         Self {
-            phone_number: phone_number.into(),
             biz_id: None,
-            send_date: send_date.into(),
-            page_size: page_size.into(),
             current_page: current_page.into(),
+            page_size: page_size.into(),
+            phone_number: phone_number.into(),
+            send_date: send_date.into(),
         }
     }
 }
 impl crate::ToFormData for QuerySendDetails {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -4930,23 +4799,21 @@ impl crate::Request for QuerySendDetails {
 
     type Response = QuerySendDetailsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("PhoneNumber".into(), (&self.phone_number).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
 
         if let Some(f) = &self.biz_id {
-            params.insert("BizId".into(), (f).into());
+            params.push(("BizId".into(), (f).into()));
         }
-        params.insert("SendDate".into(), (&self.send_date).into());
-        params.insert("PageSize".into(), (&self.page_size).into());
-        params.insert("CurrentPage".into(), (&self.current_page).into());
+        params.push(("CurrentPage".into(), (&self.current_page).into()));
+        params.push(("PageSize".into(), (&self.page_size).into()));
+        params.push(("PhoneNumber".into(), (&self.phone_number).into()));
+        params.push(("SendDate".into(), (&self.send_date).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -4957,20 +4824,23 @@ impl crate::Request for QuerySendDetails {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySendStatistics {
+    /// 结束日期，格式为yyyyMMdd。
+    end_date: String,
     /// 短信发送范围。取值：
     ///
     /// - **1**：国内短信发送记录。
     ///
     /// - **2**：国际/港澳台短信发送记录。
     is_globe: i32,
-    /// 开始日期，格式为yyyyMMdd。
-    start_date: String,
-    /// 结束日期，格式为yyyyMMdd。
-    end_date: String,
     /// 当前页码。
     page_index: i32,
     /// 每页显示的条数。取值范围：**1~50**。
     page_size: i32,
+    /// 签名名称。
+    #[setters(generate = true, strip_option)]
+    sign_name: Option<String>,
+    /// 开始日期，格式为yyyyMMdd。
+    start_date: String,
     /// 模板类型。取值：
     ///
     /// - **0**：验证码。
@@ -4984,36 +4854,31 @@ pub struct QuerySendStatistics {
     /// - **7**：数字短信。
     #[setters(generate = true, strip_option)]
     template_type: Option<i32>,
-    /// 签名名称。
-    #[setters(generate = true, strip_option)]
-    sign_name: Option<String>,
 }
 
 impl sealed::Bound for QuerySendStatistics {}
 
 impl QuerySendStatistics {
     pub fn new(
-        is_globe: impl Into<i32>,
-        start_date: impl Into<String>,
         end_date: impl Into<String>,
+        is_globe: impl Into<i32>,
         page_index: impl Into<i32>,
         page_size: impl Into<i32>,
+        start_date: impl Into<String>,
     ) -> Self {
         Self {
-            is_globe: is_globe.into(),
-            start_date: start_date.into(),
             end_date: end_date.into(),
+            is_globe: is_globe.into(),
             page_index: page_index.into(),
             page_size: page_size.into(),
-            template_type: None,
             sign_name: None,
+            start_date: start_date.into(),
+            template_type: None,
         }
     }
 }
 impl crate::ToFormData for QuerySendStatistics {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5027,28 +4892,26 @@ impl crate::Request for QuerySendStatistics {
 
     type Response = QuerySendStatisticsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("IsGlobe".into(), (&self.is_globe).into());
-        params.insert("StartDate".into(), (&self.start_date).into());
-        params.insert("EndDate".into(), (&self.end_date).into());
-        params.insert("PageIndex".into(), (&self.page_index).into());
-        params.insert("PageSize".into(), (&self.page_size).into());
-
-        if let Some(f) = &self.template_type {
-            params.insert("TemplateType".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(7);
+        params.push(("EndDate".into(), (&self.end_date).into()));
+        params.push(("IsGlobe".into(), (&self.is_globe).into()));
+        params.push(("PageIndex".into(), (&self.page_index).into()));
+        params.push(("PageSize".into(), (&self.page_size).into()));
 
         if let Some(f) = &self.sign_name {
-            params.insert("SignName".into(), (f).into());
+            params.push(("SignName".into(), (f).into()));
+        }
+        params.push(("StartDate".into(), (&self.start_date).into()));
+
+        if let Some(f) = &self.template_type {
+            params.push(("TemplateType".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5071,9 +4934,7 @@ impl GetOSSInfoForCardTemplate {
     }
 }
 impl crate::ToFormData for GetOSSInfoForCardTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5087,13 +4948,11 @@ impl crate::Request for GetOSSInfoForCardTemplate {
 
     type Response = GetOSSInfoForCardTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5104,6 +4963,18 @@ impl crate::Request for GetOSSInfoForCardTemplate {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetMediaResourceId {
+    /// 扩展字段。
+    ///
+    /// > 资源类型为**图片**时必填。
+    #[setters(generate = true, strip_option)]
+    extend_info: Option<String>,
+    /// 文件大小，单位：Byte。
+    file_size: i64,
+    /// 上传资源的描述。
+    #[setters(generate = true, strip_option)]
+    memo: Option<String>,
+    /// 获取的资源地址。
+    oss_key: String,
     /// 资源类型。
     ///
     /// - **1**：文本
@@ -5117,41 +4988,27 @@ pub struct GetMediaResourceId {
     /// > - 3:1比例：threeToOne
     /// > - 48:65比例：fortyEightToSixtyFiv
     resource_type: i32,
-    /// 获取的资源地址。
-    oss_key: String,
-    /// 文件大小，单位：Byte。
-    file_size: i64,
-    /// 扩展字段。
-    ///
-    /// > 资源类型为**图片**时必填。
-    #[setters(generate = true, strip_option)]
-    extend_info: Option<String>,
-    /// 上传资源的描述。
-    #[setters(generate = true, strip_option)]
-    memo: Option<String>,
 }
 
 impl sealed::Bound for GetMediaResourceId {}
 
 impl GetMediaResourceId {
     pub fn new(
-        resource_type: impl Into<i32>,
-        oss_key: impl Into<String>,
         file_size: impl Into<i64>,
+        oss_key: impl Into<String>,
+        resource_type: impl Into<i32>,
     ) -> Self {
         Self {
-            resource_type: resource_type.into(),
-            oss_key: oss_key.into(),
-            file_size: file_size.into(),
             extend_info: None,
+            file_size: file_size.into(),
             memo: None,
+            oss_key: oss_key.into(),
+            resource_type: resource_type.into(),
         }
     }
 }
 impl crate::ToFormData for GetMediaResourceId {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5165,26 +5022,24 @@ impl crate::Request for GetMediaResourceId {
 
     type Response = GetMediaResourceIdResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType".into(), (&self.resource_type).into());
-        params.insert("OssKey".into(), (&self.oss_key).into());
-        params.insert("FileSize".into(), (&self.file_size).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
 
         if let Some(f) = &self.extend_info {
-            params.insert("ExtendInfo".into(), (f).into());
+            params.push(("ExtendInfo".into(), (f).into()));
         }
+        params.push(("FileSize".into(), (&self.file_size).into()));
 
         if let Some(f) = &self.memo {
-            params.insert("Memo".into(), (f).into());
+            params.push(("Memo".into(), (f).into()));
         }
+        params.push(("OssKey".into(), (&self.oss_key).into()));
+        params.push(("ResourceType".into(), (&self.resource_type).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5197,16 +5052,6 @@ impl crate::Request for GetMediaResourceId {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCardSmsTemplate {
-    /// 卡片短信模板名称。
-    template_name: String,
-    /// 卡片短信的模板内容。
-    ///
-    /// > - Template、ExtendInfo、TemplateContent、TmpCard、Action等字段说明，请参见[卡片短信模板参数字段说明](~~434929~~)。
-    /// > - 不同类型的卡片短信模板的内容结构不同，详情请参见[卡片短信模板示例](~~435361~~)。
-    template: crate::OpenObject,
-    /// 对上传模板的描述。
-    #[setters(generate = true, strip_option)]
-    memo: Option<String>,
     /// 模板提交的厂商。厂商类型取值：
     ///
     /// - **HuaWei**：表示华为厂商。
@@ -5219,24 +5064,32 @@ pub struct CreateCardSmsTemplate {
     /// > 该参数不填时，系统自动匹配模板支持的手机厂商。
     #[setters(generate = true, strip_option)]
     factorys: Option<String>,
+    /// 对上传模板的描述。
+    #[setters(generate = true, strip_option)]
+    memo: Option<String>,
+    /// 卡片短信的模板内容。
+    ///
+    /// > - Template、ExtendInfo、TemplateContent、TmpCard、Action等字段说明，请参见[卡片短信模板参数字段说明](~~434929~~)。
+    /// > - 不同类型的卡片短信模板的内容结构不同，详情请参见[卡片短信模板示例](~~435361~~)。
+    template: crate::OpenObject,
+    /// 卡片短信模板名称。
+    template_name: String,
 }
 
 impl sealed::Bound for CreateCardSmsTemplate {}
 
 impl CreateCardSmsTemplate {
-    pub fn new(template_name: impl Into<String>, template: impl Into<crate::OpenObject>) -> Self {
+    pub fn new(template: impl Into<crate::OpenObject>, template_name: impl Into<String>) -> Self {
         Self {
-            template_name: template_name.into(),
-            template: template.into(),
-            memo: None,
             factorys: None,
+            memo: None,
+            template: template.into(),
+            template_name: template_name.into(),
         }
     }
 }
 impl crate::ToFormData for CreateCardSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5250,27 +5103,26 @@ impl crate::Request for CreateCardSmsTemplate {
 
     type Response = CreateCardSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateName".into(), (&self.template_name).into());
-        if let Ok(json) = serde_json::to_string(&self.template) {
-            params.insert("Template".into(), json.into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(4);
+
+        if let Some(f) = &self.factorys {
+            params.push(("Factorys".into(), (f).into()));
         }
 
         if let Some(f) = &self.memo {
-            params.insert("Memo".into(), (f).into());
+            params.push(("Memo".into(), (f).into()));
+        }
+        if let Ok(json) = serde_json::to_string(&self.template) {
+            params.push(("Template".into(), json.into()));
         }
 
-        if let Some(f) = &self.factorys {
-            params.insert("Factorys".into(), (f).into());
-        }
+        params.push(("TemplateName".into(), (&self.template_name).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5299,9 +5151,7 @@ impl QueryCardSmsTemplate {
     }
 }
 impl crate::ToFormData for QueryCardSmsTemplate {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5315,16 +5165,14 @@ impl crate::Request for QueryCardSmsTemplate {
 
     type Response = QueryCardSmsTemplateResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5351,32 +5199,30 @@ impl crate::Request for QueryCardSmsTemplate {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CheckMobilesCardSupport {
+    /// 待查询的手机号列表。
+    mobiles: Vec<crate::OpenObject>,
     /// 卡片短信模板Code。
     /// 登录短信服务控制台[国内卡片短信](https://dysms.console.aliyun.com/domestic/card)页面，在**模板管理**页签查看卡片短信模板列表。
     ///
     /// >必须是已添加、并通过审核的卡片短信模板。
     template_code: String,
-    /// 待查询的手机号列表。
-    mobiles: Vec<crate::OpenObject>,
 }
 
 impl sealed::Bound for CheckMobilesCardSupport {}
 
 impl CheckMobilesCardSupport {
     pub fn new(
-        template_code: impl Into<String>,
         mobiles: impl Into<Vec<crate::OpenObject>>,
+        template_code: impl Into<String>,
     ) -> Self {
         Self {
-            template_code: template_code.into(),
             mobiles: mobiles.into(),
+            template_code: template_code.into(),
         }
     }
 }
 impl crate::ToFormData for CheckMobilesCardSupport {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5390,17 +5236,16 @@ impl crate::Request for CheckMobilesCardSupport {
 
     type Response = CheckMobilesCardSupportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
         crate::FlatSerialize::flat_serialize(&self.mobiles, "Mobiles", &mut params);
+
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5411,37 +5256,35 @@ impl crate::Request for CheckMobilesCardSupport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryMobilesCardSupport {
-    /// 卡片短信模板Code。请在控制台选择**国内消息**>[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面查看。
-    ///
-    /// >必须是已添加、并通过审核的卡片短信模板。
-    template_code: String,
-    /// 手机号列表。
-    mobiles: Vec<crate::OpenObject>,
     /// 手机号码加密方式。取值：
     /// - SHA1：SHA1加密方式。
     /// - NORMAL：不加密，明文传输。
     #[setters(generate = true, strip_option)]
     encrypt_type: Option<EncryptType>,
+    /// 手机号列表。
+    mobiles: Vec<crate::OpenObject>,
+    /// 卡片短信模板Code。请在控制台选择**国内消息**>[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面查看。
+    ///
+    /// >必须是已添加、并通过审核的卡片短信模板。
+    template_code: String,
 }
 
 impl sealed::Bound for QueryMobilesCardSupport {}
 
 impl QueryMobilesCardSupport {
     pub fn new(
-        template_code: impl Into<String>,
         mobiles: impl Into<Vec<crate::OpenObject>>,
+        template_code: impl Into<String>,
     ) -> Self {
         Self {
-            template_code: template_code.into(),
-            mobiles: mobiles.into(),
             encrypt_type: None,
+            mobiles: mobiles.into(),
+            template_code: template_code.into(),
         }
     }
 }
 impl crate::ToFormData for QueryMobilesCardSupport {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5455,23 +5298,22 @@ impl crate::Request for QueryMobilesCardSupport {
 
     type Response = QueryMobilesCardSupportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("TemplateCode".into(), (&self.template_code).into());
-        if let Ok(json) = serde_json::to_string(&self.mobiles) {
-            params.insert("Mobiles".into(), json.into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
 
         if let Some(f) = &self.encrypt_type {
-            params.insert("EncryptType".into(), (f).into());
+            params.push(("EncryptType".into(), (f).into()));
         }
+        if let Ok(json) = serde_json::to_string(&self.mobiles) {
+            params.push(("Mobiles".into(), json.into()));
+        }
+
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5482,8 +5324,34 @@ impl crate::Request for QueryMobilesCardSupport {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCardSmsLink {
+    /// 卡片短信短链编码类型。取值：
+    /// - 1：群发。
+    /// - 2：个性化。
+    #[setters(generate = true, strip_option)]
+    card_code_type: Option<i32>,
+    /// 卡片短信短链类型。取值：
+    /// - 1：标准生成短码。
+    /// - 2：自定义生成短码。
+    ///
+    /// > **CardLinkType**不填时，默认为标准生成短码。如需生成自定义短码，请联系阿里运营人员进行报备。
+    #[setters(generate = true, strip_option)]
+    card_link_type: Option<i32>,
     /// 卡片短信模板Code。请在控制台[卡片短信>模板管理](https://dysms.console.aliyun.com/domestic/card)页面选择已通过审核的卡片短信模板Code。
     card_template_code: String,
+    /// 卡片短信动参。
+    #[setters(generate = true, strip_option)]
+    card_template_param_json: Option<String>,
+    /// 客户自定义短码。长度为4~8位的数字或字母。
+    ///
+    /// > 当生成类型为自定义生成短码时必填。
+    #[setters(generate = true, strip_option)]
+    custom_short_code_json: Option<String>,
+    /// 发送账号分配的短链域名，需要提前报备。
+    ///
+    /// > - 当**CardLinkType**为**2**时，**Domain**参数必填。
+    /// > - 当**Domain**参数不填时，则使用系统默认域名。长度不超过100个字符。
+    #[setters(generate = true, strip_option)]
+    domain: Option<String>,
     /// 外部流水扩展字段。
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
@@ -5499,32 +5367,6 @@ pub struct GetCardSmsLink {
     ///
     /// >必须是已添加、并通过审核的短信签名；且短信签名的个数必须与手机号码的个数相同、内容一一对应。
     sign_name_json: String,
-    /// 卡片短信动参。
-    #[setters(generate = true, strip_option)]
-    card_template_param_json: Option<String>,
-    /// 卡片短信短链编码类型。取值：
-    /// - 1：群发。
-    /// - 2：个性化。
-    #[setters(generate = true, strip_option)]
-    card_code_type: Option<i32>,
-    /// 卡片短信短链类型。取值：
-    /// - 1：标准生成短码。
-    /// - 2：自定义生成短码。
-    ///
-    /// > **CardLinkType**不填时，默认为标准生成短码。如需生成自定义短码，请联系阿里运营人员进行报备。
-    #[setters(generate = true, strip_option)]
-    card_link_type: Option<i32>,
-    /// 发送账号分配的短链域名，需要提前报备。
-    ///
-    /// > - 当**CardLinkType**为**2**时，**Domain**参数必填。
-    /// > - 当**Domain**参数不填时，则使用系统默认域名。长度不超过100个字符。
-    #[setters(generate = true, strip_option)]
-    domain: Option<String>,
-    /// 客户自定义短码。长度为4~8位的数字或字母。
-    ///
-    /// > 当生成类型为自定义生成短码时必填。
-    #[setters(generate = true, strip_option)]
-    custom_short_code_json: Option<String>,
 }
 
 impl sealed::Bound for GetCardSmsLink {}
@@ -5532,22 +5374,20 @@ impl sealed::Bound for GetCardSmsLink {}
 impl GetCardSmsLink {
     pub fn new(card_template_code: impl Into<String>, sign_name_json: impl Into<String>) -> Self {
         Self {
+            card_code_type: None,
+            card_link_type: None,
             card_template_code: card_template_code.into(),
+            card_template_param_json: None,
+            custom_short_code_json: None,
+            domain: None,
             out_id: None,
             phone_number_json: None,
             sign_name_json: sign_name_json.into(),
-            card_template_param_json: None,
-            card_code_type: None,
-            card_link_type: None,
-            domain: None,
-            custom_short_code_json: None,
         }
     }
 }
 impl crate::ToFormData for GetCardSmsLink {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5561,45 +5401,43 @@ impl crate::Request for GetCardSmsLink {
 
     type Response = GetCardSmsLinkResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-
-        if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), (f).into());
-        }
-
-        if let Some(f) = &self.phone_number_json {
-            params.insert("PhoneNumberJson".into(), (f).into());
-        }
-        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
-
-        if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson".into(), (f).into());
-        }
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(9);
 
         if let Some(f) = &self.card_code_type {
-            params.insert("CardCodeType".into(), (f).into());
+            params.push(("CardCodeType".into(), (f).into()));
         }
 
         if let Some(f) = &self.card_link_type {
-            params.insert("CardLinkType".into(), (f).into());
+            params.push(("CardLinkType".into(), (f).into()));
         }
+        params.push(("CardTemplateCode".into(), (&self.card_template_code).into()));
 
-        if let Some(f) = &self.domain {
-            params.insert("Domain".into(), (f).into());
+        if let Some(f) = &self.card_template_param_json {
+            params.push(("CardTemplateParamJson".into(), (f).into()));
         }
 
         if let Some(f) = &self.custom_short_code_json {
-            params.insert("CustomShortCodeJson".into(), (f).into());
+            params.push(("CustomShortCodeJson".into(), (f).into()));
         }
+
+        if let Some(f) = &self.domain {
+            params.push(("Domain".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.out_id {
+            params.push(("OutId".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.phone_number_json {
+            params.push(("PhoneNumberJson".into(), (f).into()));
+        }
+        params.push(("SignNameJson".into(), (&self.sign_name_json).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5610,6 +5448,15 @@ impl crate::Request for GetCardSmsLink {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCardSmsDetails {
+    /// 卡片短信发送ID。通过[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizCardId字段。
+    #[setters(generate = true, strip_option)]
+    biz_card_id: Option<String>,
+    /// 数字短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizDigitalId字段。
+    #[setters(generate = true, strip_option)]
+    biz_digit_id: Option<String>,
+    /// 文本短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizSmsId字段。
+    #[setters(generate = true, strip_option)]
+    biz_sms_id: Option<String>,
     /// 分页查看发送记录，指定发送记录的当前页码。
     #[setters(generate = true, strip_option)]
     current_page: Option<i64>,
@@ -5618,42 +5465,31 @@ pub struct GetCardSmsDetails {
     /// 取值范围为1~50。
     #[setters(generate = true, strip_option)]
     page_size: Option<i64>,
+    /// 接收短信的国内手机号码。格式：11位手机号码，例如1390000****。
+    phone_number: String,
     /// 卡片短信发送日期，支持查询最近30天的记录。
     ///
     /// 格式为yyyyMMdd，例如20240112。
     send_date: String,
-    /// 接收短信的国内手机号码。格式：11位手机号码，例如1390000****。
-    phone_number: String,
-    /// 卡片短信发送ID。通过[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizCardId字段。
-    #[setters(generate = true, strip_option)]
-    biz_card_id: Option<String>,
-    /// 文本短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizSmsId字段。
-    #[setters(generate = true, strip_option)]
-    biz_sms_id: Option<String>,
-    /// 数字短信发送ID，调用[SendCardSms](~~434120~~)接口或[SendBatchCardSms](~~434119~~)接口发送卡片短信时，获取返回值中的BizDigitalId字段。
-    #[setters(generate = true, strip_option)]
-    biz_digit_id: Option<String>,
 }
 
 impl sealed::Bound for GetCardSmsDetails {}
 
 impl GetCardSmsDetails {
-    pub fn new(send_date: impl Into<String>, phone_number: impl Into<String>) -> Self {
+    pub fn new(phone_number: impl Into<String>, send_date: impl Into<String>) -> Self {
         Self {
+            biz_card_id: None,
+            biz_digit_id: None,
+            biz_sms_id: None,
             current_page: None,
             page_size: None,
-            send_date: send_date.into(),
             phone_number: phone_number.into(),
-            biz_card_id: None,
-            biz_sms_id: None,
-            biz_digit_id: None,
+            send_date: send_date.into(),
         }
     }
 }
 impl crate::ToFormData for GetCardSmsDetails {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5667,37 +5503,35 @@ impl crate::Request for GetCardSmsDetails {
 
     type Response = GetCardSmsDetailsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-
-        if let Some(f) = &self.current_page {
-            params.insert("CurrentPage".into(), (f).into());
-        }
-
-        if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), (f).into());
-        }
-        params.insert("SendDate".into(), (&self.send_date).into());
-        params.insert("PhoneNumber".into(), (&self.phone_number).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(7);
 
         if let Some(f) = &self.biz_card_id {
-            params.insert("BizCardId".into(), (f).into());
-        }
-
-        if let Some(f) = &self.biz_sms_id {
-            params.insert("BizSmsId".into(), (f).into());
+            params.push(("BizCardId".into(), (f).into()));
         }
 
         if let Some(f) = &self.biz_digit_id {
-            params.insert("BizDigitId".into(), (f).into());
+            params.push(("BizDigitId".into(), (f).into()));
         }
+
+        if let Some(f) = &self.biz_sms_id {
+            params.push(("BizSmsId".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.current_page {
+            params.push(("CurrentPage".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.page_size {
+            params.push(("PageSize".into(), (f).into()));
+        }
+        params.push(("PhoneNumber".into(), (&self.phone_number).into()));
+        params.push(("SendDate".into(), (&self.send_date).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5708,33 +5542,31 @@ impl crate::Request for GetCardSmsDetails {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryCardSmsTemplateReport {
-    /// 卡片短信对象。
-    template_codes: Vec<String>,
-    /// 开始时间，格式为yyyy-MM-dd HH:mm:ss
-    start_date: String,
     /// 结束时间，格式为yyyy-MM-dd HH:mm:ss
     end_date: String,
+    /// 开始时间，格式为yyyy-MM-dd HH:mm:ss
+    start_date: String,
+    /// 卡片短信对象。
+    template_codes: Vec<String>,
 }
 
 impl sealed::Bound for QueryCardSmsTemplateReport {}
 
 impl QueryCardSmsTemplateReport {
     pub fn new(
-        template_codes: impl Into<Vec<String>>,
-        start_date: impl Into<String>,
         end_date: impl Into<String>,
+        start_date: impl Into<String>,
+        template_codes: impl Into<Vec<String>>,
     ) -> Self {
         Self {
-            template_codes: template_codes.into(),
-            start_date: start_date.into(),
             end_date: end_date.into(),
+            start_date: start_date.into(),
+            template_codes: template_codes.into(),
         }
     }
 }
 impl crate::ToFormData for QueryCardSmsTemplateReport {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5748,19 +5580,16 @@ impl crate::Request for QueryCardSmsTemplateReport {
 
     type Response = QueryCardSmsTemplateReportResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
+        params.push(("EndDate".into(), (&self.end_date).into()));
+        params.push(("StartDate".into(), (&self.start_date).into()));
         crate::FlatSerialize::flat_serialize(&self.template_codes, "TemplateCodes", &mut params);
-
-        params.insert("StartDate".into(), (&self.start_date).into());
-        params.insert("EndDate".into(), (&self.end_date).into());
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5773,26 +5602,8 @@ impl crate::Request for QueryCardSmsTemplateReport {
 pub struct SendCardSms {
     /// 卡片短信对象。
     card_objects: Vec<CardObject>,
-    /// 短信签名名称。您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看签名列表。
-    /// >必须是通过审核的短信签名。
-    sign_name: String,
     /// 卡片短信模板Code。请在控制台**卡片短信**[模板管理](https://dysms.console.aliyun.com/domestic/card)页面选择已通过审核的卡片短信模板Code。
     card_template_code: String,
-    /// 回落文本短信的模板Code。**FallbackType**选择**SMS**回落文本短信时，此参数必填。
-    ///
-    /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
-    /// >必须是已添加、并通过审核的短信模板。
-    #[setters(generate = true, strip_option)]
-    sms_template_code: Option<String>,
-    /// 上行短信扩展码。上行短信，指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费的，按运营商普通短信资费进行扣费。
-    /// >无上述需求的用户请忽略此字段。
-    #[setters(generate = true, strip_option)]
-    sms_up_extend_code: Option<String>,
-    /// 回落类型。取值：
-    /// - **SMS**：不支持卡片短信的号码，回落文本短信。
-    /// - **DIGITALSMS**：不支持卡片短信的号码，回落数字短信。
-    /// - **NONE**：不需要回落。
-    fallback_type: String,
     /// 回落数字短信的模板Code。**FallbackType**选择**DIGITALSMS**回落数字短信时，此参数必填。
     ///
     /// 您可在控制台**数字短信**[模板管理](https://dysms.console.aliyun.com/domestic/digit)页面查看数字短信模板列表。
@@ -5800,19 +5611,37 @@ pub struct SendCardSms {
     /// >必须是已添加、并通过审核的数字短信模板。
     #[setters(generate = true, strip_option)]
     digital_template_code: Option<String>,
-    /// 预留给调用方使用的ID。
-    #[setters(generate = true, strip_option)]
-    out_id: Option<String>,
-    /// 回落文本短信的模板变量对应的实际值。**SmsTemplateCode**回落的文本短信模板内含有变量时，此参数必填。
-    ///
-    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-    #[setters(generate = true, strip_option)]
-    sms_template_param: Option<String>,
     /// 回落数字短信的模板变量对应的实际值。**DigitalTemplateCode**回落的数字短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
     #[setters(generate = true, strip_option)]
     digital_template_param: Option<String>,
+    /// 回落类型。取值：
+    /// - **SMS**：不支持卡片短信的号码，回落文本短信。
+    /// - **DIGITALSMS**：不支持卡片短信的号码，回落数字短信。
+    /// - **NONE**：不需要回落。
+    fallback_type: String,
+    /// 预留给调用方使用的ID。
+    #[setters(generate = true, strip_option)]
+    out_id: Option<String>,
+    /// 短信签名名称。您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看签名列表。
+    /// >必须是通过审核的短信签名。
+    sign_name: String,
+    /// 回落文本短信的模板Code。**FallbackType**选择**SMS**回落文本短信时，此参数必填。
+    ///
+    /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
+    /// >必须是已添加、并通过审核的短信模板。
+    #[setters(generate = true, strip_option)]
+    sms_template_code: Option<String>,
+    /// 回落文本短信的模板变量对应的实际值。**SmsTemplateCode**回落的文本短信模板内含有变量时，此参数必填。
+    ///
+    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
+    #[setters(generate = true, strip_option)]
+    sms_template_param: Option<String>,
+    /// 上行短信扩展码。上行短信，指发送给通信服务提供商的短信，用于定制某种服务、完成查询，或是办理某种业务等，需要收费的，按运营商普通短信资费进行扣费。
+    /// >无上述需求的用户请忽略此字段。
+    #[setters(generate = true, strip_option)]
+    sms_up_extend_code: Option<String>,
     /// 自定义发送内容模板CODE。
     ///
     /// 自定义内容会按照选定的文本短信模板+卡片解析链接的形式下发到终端，您可以登录[短信服务控制台](https://dysms.console.aliyun.com/overview)，选择**国内消息**或**国际/港澳台短信**，在**模板管理**页签下查看**模板CODE**。
@@ -5833,30 +5662,28 @@ impl sealed::Bound for SendCardSms {}
 impl SendCardSms {
     pub fn new(
         card_objects: impl Into<Vec<CardObject>>,
-        sign_name: impl Into<String>,
         card_template_code: impl Into<String>,
         fallback_type: impl Into<String>,
+        sign_name: impl Into<String>,
     ) -> Self {
         Self {
             card_objects: card_objects.into(),
-            sign_name: sign_name.into(),
             card_template_code: card_template_code.into(),
-            sms_template_code: None,
-            sms_up_extend_code: None,
-            fallback_type: fallback_type.into(),
             digital_template_code: None,
-            out_id: None,
-            sms_template_param: None,
             digital_template_param: None,
+            fallback_type: fallback_type.into(),
+            out_id: None,
+            sign_name: sign_name.into(),
+            sms_template_code: None,
+            sms_template_param: None,
+            sms_up_extend_code: None,
             template_code: None,
             template_param: None,
         }
     }
 }
 impl crate::ToFormData for SendCardSms {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -5870,52 +5697,50 @@ impl crate::Request for SendCardSms {
 
     type Response = SendCardSmsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(12);
         crate::FlatSerialize::flat_serialize(&self.card_objects, "CardObjects", &mut params);
 
-        params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-
-        if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode".into(), (f).into());
-        }
-        params.insert("FallbackType".into(), (&self.fallback_type).into());
+        params.push(("CardTemplateCode".into(), (&self.card_template_code).into()));
 
         if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), (f).into());
-        }
-
-        if let Some(f) = &self.sms_template_param {
-            params.insert("SmsTemplateParam".into(), (f).into());
+            params.push(("DigitalTemplateCode".into(), (f).into()));
         }
 
         if let Some(f) = &self.digital_template_param {
-            params.insert("DigitalTemplateParam".into(), (f).into());
+            params.push(("DigitalTemplateParam".into(), (f).into()));
+        }
+        params.push(("FallbackType".into(), (&self.fallback_type).into()));
+
+        if let Some(f) = &self.out_id {
+            params.push(("OutId".into(), (f).into()));
+        }
+        params.push(("SignName".into(), (&self.sign_name).into()));
+
+        if let Some(f) = &self.sms_template_code {
+            params.push(("SmsTemplateCode".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.sms_template_param {
+            params.push(("SmsTemplateParam".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.sms_up_extend_code {
+            params.push(("SmsUpExtendCode".into(), (f).into()));
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode".into(), (f).into());
+            params.push(("TemplateCode".into(), (f).into()));
         }
 
         if let Some(f) = &self.template_param {
-            params.insert("TemplateParam".into(), (f).into());
+            params.push(("TemplateParam".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -5928,23 +5753,26 @@ impl crate::Request for SendCardSms {
 pub struct SendBatchCardSms {
     /// 卡片短信模板Code。请在控制台**卡片短信**[模板管理](https://dysms.console.aliyun.com/domestic/card)页面选择**已通过审核**的卡片短信模板Code。
     card_template_code: String,
-    /// 回落文本短信的模板Code。**FallbackType**选择**SMS**回落文本短信时，此参数必填。
+    /// 卡片短信模板参数对应的实际值。**CardTemplateCode**卡片短信模板内含有变量时，此参数必填。
     ///
-    /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
-    /// >必须是已添加、并通过审核的短信模板。
+    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
     #[setters(generate = true, strip_option)]
-    sms_template_code: Option<String>,
-    /// 回落类型。取值：
-    /// - **SMS**：不支持卡片短信的号码，回落文本短信。
-    /// - **DIGITALSMS**：不支持卡片短信的号码，回落数字短信。
-    /// - **NONE**：不需要回落。
-    fallback_type: String,
+    card_template_param_json: Option<String>,
     /// 回落数字短信的模板Code。**FallbackType**选择**DIGITALSMS**回落数字短信时，此参数必填。
     ///
     /// 您可在控制台**国内数字短信**[模板管理](https://dysms.console.aliyun.com/domestic/digit)页面查看数字短信模板列表。
     /// >必须是已添加、并通过审核的数字短信模板。
     #[setters(generate = true, strip_option)]
     digital_template_code: Option<String>,
+    /// 数字短信模板参数对应的实际值。**DigitalTemplateCode**回落的数字短信模板内含有变量时，此参数必填。
+    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
+    #[setters(generate = true, strip_option)]
+    digital_template_param_json: Option<String>,
+    /// 回落类型。取值：
+    /// - **SMS**：不支持卡片短信的号码，回落文本短信。
+    /// - **DIGITALSMS**：不支持卡片短信的号码，回落数字短信。
+    /// - **NONE**：不需要回落。
+    fallback_type: String,
     /// 预留给调用方使用的ID。
     #[setters(generate = true, strip_option)]
     out_id: Option<String>,
@@ -5954,20 +5782,17 @@ pub struct SendBatchCardSms {
     /// 您可以通过[QuerySmsSignList](~~419282~~)接口查询当前账号已申请的签名或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/sign)查看签名列表。
     /// >必须是已添加、并通过审核的短信签名；且短信签名的个数必须与手机号码的个数相同、内容一一对应。
     sign_name_json: String,
-    /// 卡片短信模板参数对应的实际值。**CardTemplateCode**卡片短信模板内含有变量时，此参数必填。
+    /// 回落文本短信的模板Code。**FallbackType**选择**SMS**回落文本短信时，此参数必填。
     ///
-    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
+    /// 您可以通过[QuerySmsTemplateList](~~419288~~)接口查询当前账号已申请的模板或在[短信服务控制台](https://dysms.console.aliyun.com/domestic/text/template)查看模板列表。
+    /// >必须是已添加、并通过审核的短信模板。
     #[setters(generate = true, strip_option)]
-    card_template_param_json: Option<String>,
+    sms_template_code: Option<String>,
     /// 文本短信模板参数对应的实际值。**SmsTemplateCode**回落的文本短信模板内含有变量时，此参数必填。
     ///
     /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
     #[setters(generate = true, strip_option)]
     sms_template_param_json: Option<String>,
-    /// 数字短信模板参数对应的实际值。**DigitalTemplateCode**回落的数字短信模板内含有变量时，此参数必填。
-    /// >如果JSON中需要带换行符，请参照标准的JSON协议处理。
-    #[setters(generate = true, strip_option)]
-    digital_template_param_json: Option<String>,
     /// 上行短信扩展码。
     #[setters(generate = true, strip_option)]
     sms_up_extend_code_json: Option<String>,
@@ -5998,15 +5823,15 @@ impl SendBatchCardSms {
     ) -> Self {
         Self {
             card_template_code: card_template_code.into(),
-            sms_template_code: None,
-            fallback_type: fallback_type.into(),
+            card_template_param_json: None,
             digital_template_code: None,
+            digital_template_param_json: None,
+            fallback_type: fallback_type.into(),
             out_id: None,
             phone_number_json: phone_number_json.into(),
             sign_name_json: sign_name_json.into(),
-            card_template_param_json: None,
+            sms_template_code: None,
             sms_template_param_json: None,
-            digital_template_param_json: None,
             sms_up_extend_code_json: None,
             template_code: None,
             template_param_json: None,
@@ -6014,9 +5839,7 @@ impl SendBatchCardSms {
     }
 }
 impl crate::ToFormData for SendBatchCardSms {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6030,55 +5853,53 @@ impl crate::Request for SendBatchCardSms {
 
     type Response = SendBatchCardSmsResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("CardTemplateCode".into(), (&self.card_template_code).into());
-
-        if let Some(f) = &self.sms_template_code {
-            params.insert("SmsTemplateCode".into(), (f).into());
-        }
-        params.insert("FallbackType".into(), (&self.fallback_type).into());
-
-        if let Some(f) = &self.digital_template_code {
-            params.insert("DigitalTemplateCode".into(), (f).into());
-        }
-
-        if let Some(f) = &self.out_id {
-            params.insert("OutId".into(), (f).into());
-        }
-        params.insert("PhoneNumberJson".into(), (&self.phone_number_json).into());
-        params.insert("SignNameJson".into(), (&self.sign_name_json).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(13);
+        params.push(("CardTemplateCode".into(), (&self.card_template_code).into()));
 
         if let Some(f) = &self.card_template_param_json {
-            params.insert("CardTemplateParamJson".into(), (f).into());
+            params.push(("CardTemplateParamJson".into(), (f).into()));
         }
 
-        if let Some(f) = &self.sms_template_param_json {
-            params.insert("SmsTemplateParamJson".into(), (f).into());
+        if let Some(f) = &self.digital_template_code {
+            params.push(("DigitalTemplateCode".into(), (f).into()));
         }
 
         if let Some(f) = &self.digital_template_param_json {
-            params.insert("DigitalTemplateParamJson".into(), (f).into());
+            params.push(("DigitalTemplateParamJson".into(), (f).into()));
+        }
+        params.push(("FallbackType".into(), (&self.fallback_type).into()));
+
+        if let Some(f) = &self.out_id {
+            params.push(("OutId".into(), (f).into()));
+        }
+        params.push(("PhoneNumberJson".into(), (&self.phone_number_json).into()));
+        params.push(("SignNameJson".into(), (&self.sign_name_json).into()));
+
+        if let Some(f) = &self.sms_template_code {
+            params.push(("SmsTemplateCode".into(), (f).into()));
+        }
+
+        if let Some(f) = &self.sms_template_param_json {
+            params.push(("SmsTemplateParamJson".into(), (f).into()));
         }
 
         if let Some(f) = &self.sms_up_extend_code_json {
-            params.insert("SmsUpExtendCodeJson".into(), (f).into());
+            params.push(("SmsUpExtendCodeJson".into(), (f).into()));
         }
 
         if let Some(f) = &self.template_code {
-            params.insert("TemplateCode".into(), (f).into());
+            params.push(("TemplateCode".into(), (f).into()));
         }
 
         if let Some(f) = &self.template_param_json {
-            params.insert("TemplateParamJson".into(), (f).into());
+            params.push(("TemplateParamJson".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6103,9 +5924,7 @@ impl GetQualificationOssInfo {
     }
 }
 impl crate::ToFormData for GetQualificationOssInfo {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6119,16 +5938,14 @@ impl crate::Request for GetQualificationOssInfo {
 
     type Response = GetQualificationOssInfoResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("BizType".into(), (&self.biz_type).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("BizType".into(), (&self.biz_type).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6154,9 +5971,7 @@ impl GetOSSInfoForUploadFile {
     }
 }
 impl crate::ToFormData for GetOSSInfoForUploadFile {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6170,19 +5985,17 @@ impl crate::Request for GetOSSInfoForUploadFile {
 
     type Response = GetOSSInfoForUploadFileResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.biz_type {
-            params.insert("BizType".into(), (f).into());
+            params.push(("BizType".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6207,9 +6020,7 @@ impl GetSmsOcrOssInfo {
     }
 }
 impl crate::ToFormData for GetSmsOcrOssInfo {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6223,19 +6034,17 @@ impl crate::Request for GetSmsOcrOssInfo {
 
     type Response = GetSmsOcrOssInfoResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
 
         if let Some(f) = &self.task_type {
-            params.insert("TaskType".into(), (f).into());
+            params.push(("TaskType".into(), (f).into()));
         }
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6246,10 +6055,6 @@ impl crate::Request for GetSmsOcrOssInfo {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SmsConversionIntl {
-    /// 消息ID。
-    message_id: String,
-    /// 如果您的用户回复了您发送的消息，则设置为 true。否则，设置为 false。
-    delivered: bool,
     /// 触达发送目标的时间戳。必须是Unix时间戳，毫秒级别长整型。
     ///
     /// - 如果不指定该字段：默认当前的时间戳。
@@ -6257,23 +6062,25 @@ pub struct SmsConversionIntl {
     /// - 如果指定该字段：该时间戳必须大于发送时间并且小于当前时间戳。
     #[setters(generate = true, strip_option)]
     conversion_time: Option<i64>,
+    /// 如果您的用户回复了您发送的消息，则设置为 true。否则，设置为 false。
+    delivered: bool,
+    /// 消息ID。
+    message_id: String,
 }
 
 impl sealed::Bound for SmsConversionIntl {}
 
 impl SmsConversionIntl {
-    pub fn new(message_id: impl Into<String>, delivered: impl Into<bool>) -> Self {
+    pub fn new(delivered: impl Into<bool>, message_id: impl Into<String>) -> Self {
         Self {
-            message_id: message_id.into(),
-            delivered: delivered.into(),
             conversion_time: None,
+            delivered: delivered.into(),
+            message_id: message_id.into(),
         }
     }
 }
 impl crate::ToFormData for SmsConversionIntl {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6287,21 +6094,19 @@ impl crate::Request for SmsConversionIntl {
 
     type Response = SmsConversionIntlResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("MessageId".into(), (&self.message_id).into());
-        params.insert("Delivered".into(), (&self.delivered).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
 
         if let Some(f) = &self.conversion_time {
-            params.insert("ConversionTime".into(), (f).into());
+            params.push(("ConversionTime".into(), (f).into()));
         }
+        params.push(("Delivered".into(), (&self.delivered).into()));
+        params.push(("MessageId".into(), (&self.message_id).into()));
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6312,14 +6117,14 @@ impl crate::Request for SmsConversionIntl {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ConversionDataIntl {
+    /// 转化率监控回报值。
+    /// >该参数取值为double类型 ，区间是\[0,1]。
+    conversion_rate: String,
     /// 转化率观测的时间点。必须是Unix时间戳，毫秒级别长整型。
     ///
     /// >如果不指定该字段：默认当前的时间戳。
     #[setters(generate = true, strip_option)]
     report_time: Option<i64>,
-    /// 转化率监控回报值。
-    /// >该参数取值为double类型 ，区间是\[0,1]。
-    conversion_rate: String,
 }
 
 impl sealed::Bound for ConversionDataIntl {}
@@ -6327,15 +6132,13 @@ impl sealed::Bound for ConversionDataIntl {}
 impl ConversionDataIntl {
     pub fn new(conversion_rate: impl Into<String>) -> Self {
         Self {
-            report_time: None,
             conversion_rate: conversion_rate.into(),
+            report_time: None,
         }
     }
 }
 impl crate::ToFormData for ConversionDataIntl {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6349,20 +6152,18 @@ impl crate::Request for ConversionDataIntl {
 
     type Response = ConversionDataIntlResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(2);
+        params.push(("ConversionRate".into(), (&self.conversion_rate).into()));
 
         if let Some(f) = &self.report_time {
-            params.insert("ReportTime".into(), (f).into());
+            params.push(("ReportTime".into(), (f).into()));
         }
-        params.insert("ConversionRate".into(), (&self.conversion_rate).into());
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6375,38 +6176,36 @@ impl crate::Request for ConversionDataIntl {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddShortUrl {
+    /// 短链服务使用有效期。单位为天，有效期最长为90天。
+    effective_days: String,
+    /// 短链服务名称。不超过13个字符。
+    short_url_name: String,
     /// 原始链接地址。不超过1000个字符。
     /// ><notice>短信服务暂时不支持使用此接口。></notice>
     source_url: String,
-    /// 短链服务名称。不超过13个字符。
-    short_url_name: String,
-    /// 短链服务使用有效期。单位为天，有效期最长为90天。
-    effective_days: String,
 }
 
 impl sealed::Bound for AddShortUrl {}
 
 impl AddShortUrl {
     pub fn new(
-        source_url: impl Into<String>,
-        short_url_name: impl Into<String>,
         effective_days: impl Into<String>,
+        short_url_name: impl Into<String>,
+        source_url: impl Into<String>,
     ) -> Self {
         Self {
-            source_url: source_url.into(),
-            short_url_name: short_url_name.into(),
             effective_days: effective_days.into(),
+            short_url_name: short_url_name.into(),
+            source_url: source_url.into(),
         }
     }
 }
 impl crate::ToFormData for AddShortUrl {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SourceUrl".into(), (&self.source_url).into());
-        params.insert("ShortUrlName".into(), (&self.short_url_name).into());
-        params.insert("EffectiveDays".into(), (&self.effective_days).into());
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(3);
+        params.push(("EffectiveDays".into(), (&self.effective_days).into()));
+        params.push(("ShortUrlName".into(), (&self.short_url_name).into()));
+        params.push(("SourceUrl".into(), (&self.source_url).into()));
 
         params
     }
@@ -6421,13 +6220,11 @@ impl crate::Request for AddShortUrl {
 
     type Response = AddShortUrlResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6455,11 +6252,9 @@ impl DeleteShortUrl {
     }
 }
 impl crate::ToFormData for DeleteShortUrl {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("SourceUrl".into(), (&self.source_url).into());
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("SourceUrl".into(), (&self.source_url).into()));
 
         params
     }
@@ -6474,13 +6269,11 @@ impl crate::Request for DeleteShortUrl {
 
     type Response = DeleteShortUrlResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6508,11 +6301,9 @@ impl QueryShortUrl {
     }
 }
 impl crate::ToFormData for QueryShortUrl {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("ShortUrl".into(), (&self.short_url).into());
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(1);
+        params.push(("ShortUrl".into(), (&self.short_url).into()));
 
         params
     }
@@ -6527,13 +6318,11 @@ impl crate::Request for QueryShortUrl {
 
     type Response = QueryShortUrlResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6546,10 +6335,6 @@ impl crate::Request for QueryShortUrl {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
-    /// 资源类型，默认填写TEMPLATE。
-    resource_type: String,
-    /// 地域ID。默认取值：**cn-hangzhou**。
-    region_id: String,
     /// 查询下一页标签的Token。
     #[setters(generate = true, strip_option)]
     next_token: Option<String>,
@@ -6559,33 +6344,35 @@ pub struct ListTagResources {
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
-    /// 标签列表。标签列表和**ResourceId**(短信模板Code)不能同时为空。最多可输入20个标签。
-    #[setters(generate = true, strip_option)]
-    tag: Option<Vec<ListTagResourcesTag>>,
+    /// 地域ID。默认取值：**cn-hangzhou**。
+    region_id: String,
     /// 短信模板Code。短信模板Code和标签列表**Tag**不能同时为空。
     #[setters(generate = true, strip_option)]
     resource_id: Option<Vec<String>>,
+    /// 资源类型，默认填写TEMPLATE。
+    resource_type: String,
+    /// 标签列表。标签列表和**ResourceId**(短信模板Code)不能同时为空。最多可输入20个标签。
+    #[setters(generate = true, strip_option)]
+    tag: Option<Vec<ListTagResourcesTag>>,
 }
 
 impl sealed::Bound for ListTagResources {}
 
 impl ListTagResources {
-    pub fn new(resource_type: impl Into<String>, region_id: impl Into<String>) -> Self {
+    pub fn new(region_id: impl Into<String>, resource_type: impl Into<String>) -> Self {
         Self {
-            resource_type: resource_type.into(),
-            region_id: region_id.into(),
             next_token: None,
             page_size: None,
             prod_code: None,
-            tag: None,
+            region_id: region_id.into(),
             resource_id: None,
+            resource_type: resource_type.into(),
+            tag: None,
         }
     }
 }
 impl crate::ToFormData for ListTagResources {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6599,37 +6386,35 @@ impl crate::Request for ListTagResources {
 
     type Response = ListTagResourcesResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType".into(), (&self.resource_type).into());
-        params.insert("RegionId".into(), (&self.region_id).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(7);
 
         if let Some(f) = &self.next_token {
-            params.insert("NextToken".into(), (f).into());
+            params.push(("NextToken".into(), (f).into()));
         }
 
         if let Some(f) = &self.page_size {
-            params.insert("PageSize".into(), (f).into());
+            params.push(("PageSize".into(), (f).into()));
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), (f).into());
+            params.push(("ProdCode".into(), (f).into()));
         }
+        params.push(("RegionId".into(), (&self.region_id).into()));
+
+        if let Some(f) = &self.resource_id {
+            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
+        }
+        params.push(("ResourceType".into(), (&self.resource_type).into()));
 
         if let Some(f) = &self.tag {
             crate::FlatSerialize::flat_serialize(f, "Tag", &mut params);
         }
 
-        if let Some(f) = &self.resource_id {
-            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
-        }
-
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6642,41 +6427,39 @@ impl crate::Request for ListTagResources {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
-    /// 资源类型，默认取值：**TEMPLATE**。
-    resource_type: String,
-    /// 地域ID，默认取值：**cn-hangzhou**。更多地域ID请参见[服务接入点](~~419270~~)。
-    region_id: String,
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
-    /// 标签。单次添加的标签数量不超过20。
-    tag: Vec<TagResourcesTag>,
+    /// 地域ID，默认取值：**cn-hangzhou**。更多地域ID请参见[服务接入点](~~419270~~)。
+    region_id: String,
     /// 短信模板Code。数量不能超过20条。
     #[setters(generate = true, strip_option)]
     resource_id: Option<Vec<String>>,
+    /// 资源类型，默认取值：**TEMPLATE**。
+    resource_type: String,
+    /// 标签。单次添加的标签数量不超过20。
+    tag: Vec<TagResourcesTag>,
 }
 
 impl sealed::Bound for TagResources {}
 
 impl TagResources {
     pub fn new(
-        resource_type: impl Into<String>,
         region_id: impl Into<String>,
+        resource_type: impl Into<String>,
         tag: impl Into<Vec<TagResourcesTag>>,
     ) -> Self {
         Self {
-            resource_type: resource_type.into(),
-            region_id: region_id.into(),
             prod_code: None,
-            tag: tag.into(),
+            region_id: region_id.into(),
             resource_id: None,
+            resource_type: resource_type.into(),
+            tag: tag.into(),
         }
     }
 }
 impl crate::ToFormData for TagResources {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6690,26 +6473,24 @@ impl crate::Request for TagResources {
 
     type Response = TagResourcesResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType".into(), (&self.resource_type).into());
-        params.insert("RegionId".into(), (&self.region_id).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(5);
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), (f).into());
+            params.push(("ProdCode".into(), (f).into()));
         }
-        crate::FlatSerialize::flat_serialize(&self.tag, "Tag", &mut params);
+        params.push(("RegionId".into(), (&self.region_id).into()));
 
         if let Some(f) = &self.resource_id {
             crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
         }
+        params.push(("ResourceType".into(), (&self.resource_type).into()));
+        crate::FlatSerialize::flat_serialize(&self.tag, "Tag", &mut params);
 
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6722,11 +6503,6 @@ impl crate::Request for TagResources {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
-    /// 资源类型，默认填写TEMPLATE。
-    resource_type: String,
-    /// 地域ID，默认填写cn-hangzhou。
-    /// 更多地域ID请参见[服务接入点](~~419270~~)。
-    region_id: String,
     /// 是否删除该模板下的所有标签。取值：
     ///
     /// - **true**：是。
@@ -6736,32 +6512,35 @@ pub struct UntagResources {
     /// 产品名。默认取值：**dysms**。
     #[setters(generate = true, strip_option)]
     prod_code: Option<String>,
-    /// 标签键。单次添加的标签数量不超过20。
-    #[setters(generate = true, strip_option)]
-    tag_key: Option<Vec<String>>,
+    /// 地域ID，默认填写cn-hangzhou。
+    /// 更多地域ID请参见[服务接入点](~~419270~~)。
+    region_id: String,
     /// 短信模板Code。数量不能超过20条。
     #[setters(generate = true, strip_option)]
     resource_id: Option<Vec<String>>,
+    /// 资源类型，默认填写TEMPLATE。
+    resource_type: String,
+    /// 标签键。单次添加的标签数量不超过20。
+    #[setters(generate = true, strip_option)]
+    tag_key: Option<Vec<String>>,
 }
 
 impl sealed::Bound for UntagResources {}
 
 impl UntagResources {
-    pub fn new(resource_type: impl Into<String>, region_id: impl Into<String>) -> Self {
+    pub fn new(region_id: impl Into<String>, resource_type: impl Into<String>) -> Self {
         Self {
-            resource_type: resource_type.into(),
-            region_id: region_id.into(),
             all: None,
             prod_code: None,
-            tag_key: None,
+            region_id: region_id.into(),
             resource_id: None,
+            resource_type: resource_type.into(),
+            tag_key: None,
         }
     }
 }
 impl crate::ToFormData for UntagResources {
-    fn to_form_data(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
+    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 }
@@ -6775,33 +6554,31 @@ impl crate::Request for UntagResources {
 
     type Response = UntagResourcesResponse;
 
-    fn to_query_params(
-        &self,
-    ) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, crate::QueryValue<'_>> {
-        let mut params = std::collections::BTreeMap::new();
-        params.insert("ResourceType".into(), (&self.resource_type).into());
-        params.insert("RegionId".into(), (&self.region_id).into());
+    fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
 
         if let Some(f) = &self.all {
-            params.insert("All".into(), (f).into());
+            params.push(("All".into(), (f).into()));
         }
 
         if let Some(f) = &self.prod_code {
-            params.insert("ProdCode".into(), (f).into());
+            params.push(("ProdCode".into(), (f).into()));
         }
+        params.push(("RegionId".into(), (&self.region_id).into()));
+
+        if let Some(f) = &self.resource_id {
+            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
+        }
+        params.push(("ResourceType".into(), (&self.resource_type).into()));
 
         if let Some(f) = &self.tag_key {
             crate::FlatSerialize::flat_serialize(f, "TagKey", &mut params);
         }
 
-        if let Some(f) = &self.resource_id {
-            crate::FlatSerialize::flat_serialize(f, "ResourceId", &mut params);
-        }
-
         params
     }
 
-    fn to_headers(&self) -> std::collections::BTreeMap<std::borrow::Cow<'static, str>, String> {
+    fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
     }
 
@@ -6825,10 +6602,7 @@ impl crate::FlatSerialize for AddShortUrlResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.expire_date,
@@ -6861,10 +6635,7 @@ impl crate::FlatSerialize for AddSmsSignSignFileList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.file_contents,
@@ -6900,10 +6671,7 @@ impl crate::FlatSerialize for BatchCardSmsResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.biz_card_id,
@@ -6953,10 +6721,7 @@ impl crate::FlatSerialize for CardObject {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.custom_url,
@@ -6989,10 +6754,7 @@ impl crate::FlatSerialize for CardSendDetailDto {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.current_page,
@@ -7038,10 +6800,7 @@ impl crate::FlatSerialize for CardTemplateResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.access_key_id,
@@ -7081,10 +6840,7 @@ impl crate::FlatSerialize for CheckMobilesCardSupportResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.query_result,
@@ -7107,10 +6863,7 @@ impl crate::FlatSerialize for CheckMobilesCardSupportResponseDataQueryResult {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
         crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.support", name), params);
@@ -7128,10 +6881,7 @@ impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.template_code,
@@ -7156,10 +6906,7 @@ impl crate::FlatSerialize for DataBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -7182,10 +6929,7 @@ impl crate::FlatSerialize for DataFileUrlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.more_data_file_url,
@@ -7224,10 +6968,7 @@ impl crate::FlatSerialize for DataList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.audit_remark,
@@ -7291,10 +7032,7 @@ impl crate::FlatSerialize for DataOtherFile {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -7322,10 +7060,7 @@ impl crate::FlatSerialize for DetailList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.operator_code,
@@ -7361,10 +7096,7 @@ impl crate::FlatSerialize for DtOs {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.sms_send_detail_dto,
@@ -7405,10 +7137,7 @@ impl crate::FlatSerialize for DtoRecord {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
         crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
@@ -7481,10 +7210,7 @@ impl crate::FlatSerialize for FileResponseModel {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.access_key_id,
@@ -7536,10 +7262,7 @@ impl crate::FlatSerialize for IcpRecordResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.app_approval_date,
@@ -7593,10 +7316,7 @@ impl crate::FlatSerialize for IdResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.res_url_download,
@@ -7632,10 +7352,7 @@ impl crate::FlatSerialize for InfoResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.access_key_id,
@@ -7681,10 +7398,7 @@ impl crate::FlatSerialize for InfoResponseModel {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.access_key_id,
@@ -7741,10 +7455,7 @@ impl crate::FlatSerialize for LetterResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.authorization,
@@ -7810,10 +7521,7 @@ impl crate::FlatSerialize for LinkResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.card_phone_numbers,
@@ -7856,10 +7564,7 @@ impl crate::FlatSerialize for ListTagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
         crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
@@ -7879,10 +7584,7 @@ impl crate::FlatSerialize for ModifySmsSignSignFileList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.file_contents,
@@ -7914,10 +7616,7 @@ impl crate::FlatSerialize for QualificationRecordResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.list, &format!("{}.List", name), params);
         crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
@@ -7941,10 +7640,7 @@ impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.templates,
@@ -7965,10 +7661,7 @@ impl crate::FlatSerialize for QueryMobilesCardSupportResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.query_result,
@@ -7991,10 +7684,7 @@ impl crate::FlatSerialize for QueryMobilesCardSupportResponseDataQueryResult {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.Mobile", name), params);
         crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.Support", name), params);
@@ -8026,10 +7716,7 @@ impl crate::FlatSerialize for QueryShortUrlResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.create_date,
@@ -8085,10 +7772,7 @@ impl crate::FlatSerialize for ReportResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.model, &format!("{}.model", name), params);
     }
@@ -8105,10 +7789,7 @@ impl crate::FlatSerialize for ResponseFileUrlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
     }
@@ -8125,10 +7806,7 @@ impl crate::FlatSerialize for ResponseTagResources {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.tag_resource,
@@ -8159,10 +7837,7 @@ impl crate::FlatSerialize for SendCardSmsResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.biz_card_id,
@@ -8226,10 +7901,7 @@ impl crate::FlatSerialize for SignList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.app_icp_record_id,
@@ -8291,10 +7963,7 @@ impl crate::FlatSerialize for SignListItemReason {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.reject_date,
@@ -8327,10 +7996,7 @@ impl crate::FlatSerialize for SignResponseAuditInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.audit_date,
@@ -8362,10 +8028,7 @@ impl crate::FlatSerialize for SignatureQualificationResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
@@ -8437,10 +8100,7 @@ impl crate::FlatSerialize for SmsQualificationResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.admin_id_card_exp_date,
@@ -8587,10 +8247,7 @@ impl crate::FlatSerialize for SmsSendDetailDto {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
         crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
@@ -8636,10 +8293,7 @@ impl crate::FlatSerialize for StatisticsResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.target_list,
@@ -8667,10 +8321,7 @@ impl crate::FlatSerialize for StatusReason {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.reason_code,
@@ -8698,10 +8349,7 @@ impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -8723,10 +8371,7 @@ impl crate::FlatSerialize for SubmitSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -8753,10 +8398,7 @@ impl crate::FlatSerialize for TagResource {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.resource_id,
@@ -8790,10 +8432,7 @@ impl crate::FlatSerialize for TagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
         crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
@@ -8819,10 +8458,7 @@ impl crate::FlatSerialize for TargetList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.no_responded_count,
@@ -8883,10 +8519,7 @@ impl crate::FlatSerialize for TemplateList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.audit_status,
@@ -8953,10 +8586,7 @@ impl crate::FlatSerialize for TemplateListItemReason {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.reject_date,
@@ -8989,10 +8619,7 @@ impl crate::FlatSerialize for TemplateResponseAuditInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.audit_date,
@@ -9030,10 +8657,7 @@ impl crate::FlatSerialize for TrademarkResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.trademark_applicant_name,
@@ -9086,10 +8710,7 @@ impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -9111,10 +8732,7 @@ impl crate::FlatSerialize for UpdateSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
             &self.license_pic,
@@ -9159,12 +8777,9 @@ impl crate::FlatSerialize for EncryptType {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut std::collections::BTreeMap<
-            std::borrow::Cow<'static, str>,
-            crate::QueryValue<'a>,
-        >,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.insert(name.to_string().into(), self.into());
+        params.push((name.to_string().into(), self.into()));
     }
 }
 

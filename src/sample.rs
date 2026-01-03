@@ -91,19 +91,19 @@ impl Request for SendSms {
 
     type Response = SendSmsResponse;
 
-    fn to_query_params(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>> {
-        let mut params = BTreeMap::new();
-        params.insert("PhoneNumbers".into(), (&self.phone_numbers).into());
-        params.insert("SignName".into(), (&self.sign_name).into());
-        params.insert("TemplateCode".into(), (&self.template_code).into());
-        if let Some(ref v) = self.template_param {
-            params.insert("TemplateParam".into(), v.into());
+    fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
+        let mut params = Vec::with_capacity(6);
+        params.push(("PhoneNumbers".into(), (&self.phone_numbers).into()));
+        params.push(("SignName".into(), (&self.sign_name).into()));
+        params.push(("TemplateCode".into(), (&self.template_code).into()));
+        if let Some(f) = &self.out_id {
+            params.push(("OutId".into(), f.into()));
         }
-        if let Some(ref v) = self.sms_up_extend_code {
-            params.insert("SmsUpExtendCode".into(), v.into());
+        if let Some(f) = &self.sms_up_extend_code {
+            params.push(("SmsUpExtendCode".into(), f.into()));
         }
-        if let Some(ref v) = self.out_id {
-            params.insert("OutId".into(), v.into());
+        if let Some(f) = &self.template_param {
+            params.push(("TemplateParam".into(), f.into()));
         }
         params
     }

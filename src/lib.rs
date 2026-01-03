@@ -144,7 +144,7 @@ pub(crate) trait FlatSerialize {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     );
 }
 
@@ -152,9 +152,9 @@ impl FlatSerialize for String {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), self.into());
+        params.push((name.to_owned().into(), self.into()));
     }
 }
 
@@ -162,9 +162,9 @@ impl FlatSerialize for str {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), self.into());
+        params.push((name.to_owned().into(), self.into()));
     }
 }
 
@@ -172,9 +172,9 @@ impl FlatSerialize for i32 {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), (*self).into());
+        params.push((name.to_owned().into(), (*self).into()));
     }
 }
 
@@ -182,9 +182,9 @@ impl FlatSerialize for i64 {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), (*self).into());
+        params.push((name.to_owned().into(), (*self).into()));
     }
 }
 
@@ -192,9 +192,9 @@ impl FlatSerialize for bool {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), (*self).into());
+        params.push((name.to_owned().into(), (*self).into()));
     }
 }
 
@@ -202,9 +202,9 @@ impl FlatSerialize for f32 {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), self.to_string().into());
+        params.push((name.to_owned().into(), self.to_string().into()));
     }
 }
 
@@ -212,9 +212,9 @@ impl FlatSerialize for f64 {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
-        params.insert(name.to_owned().into(), self.to_string().into());
+        params.push((name.to_owned().into(), self.to_string().into()));
     }
 }
 
@@ -222,7 +222,7 @@ impl<T: FlatSerialize> FlatSerialize for Vec<T> {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         for (i, item) in self.iter().enumerate() {
             item.flat_serialize(&format!("{}.{}", name, i + 1), params);
@@ -234,7 +234,7 @@ impl<T: FlatSerialize> FlatSerialize for Option<T> {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if let Some(v) = self {
             v.flat_serialize(name, params);
@@ -252,7 +252,7 @@ pub(crate) trait SimpleSerialize {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     );
 }
 
@@ -260,11 +260,11 @@ impl SimpleSerialize for Vec<String> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self.join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -273,7 +273,7 @@ impl SimpleSerialize for Vec<i32> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self
@@ -281,7 +281,7 @@ impl SimpleSerialize for Vec<i32> {
                 .map(|v| v.to_string())
                 .collect::<Vec<_>>()
                 .join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -290,7 +290,7 @@ impl SimpleSerialize for Vec<i64> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self
@@ -298,7 +298,7 @@ impl SimpleSerialize for Vec<i64> {
                 .map(|v| v.to_string())
                 .collect::<Vec<_>>()
                 .join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -307,7 +307,7 @@ impl SimpleSerialize for Vec<bool> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self
@@ -315,7 +315,7 @@ impl SimpleSerialize for Vec<bool> {
                 .map(|v| if *v { "true" } else { "false" })
                 .collect::<Vec<_>>()
                 .join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -324,7 +324,7 @@ impl SimpleSerialize for Vec<f32> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self
@@ -332,7 +332,7 @@ impl SimpleSerialize for Vec<f32> {
                 .map(|v| v.to_string())
                 .collect::<Vec<_>>()
                 .join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -341,7 +341,7 @@ impl SimpleSerialize for Vec<f64> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if !self.is_empty() {
             let joined = self
@@ -349,7 +349,7 @@ impl SimpleSerialize for Vec<f64> {
                 .map(|v| v.to_string())
                 .collect::<Vec<_>>()
                 .join(",");
-            params.insert(name.to_owned().into(), joined.into());
+            params.push((name.to_owned().into(), joined.into()));
         }
     }
 }
@@ -358,7 +358,7 @@ impl<T: SimpleSerialize> SimpleSerialize for Option<T> {
     fn simple_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         if let Some(v) = self {
             v.simple_serialize(name, params);
@@ -440,21 +440,21 @@ impl FlatSerialize for Value {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         match self {
             Value::Null => {}
             Value::Bool(v) => {
-                params.insert(name.to_owned().into(), (*v).into());
+                params.push((name.to_owned().into(), (*v).into()));
             }
             Value::Integer(v) => {
-                params.insert(name.to_owned().into(), (*v).into());
+                params.push((name.to_owned().into(), (*v).into()));
             }
             Value::Float(v) => {
-                params.insert(name.to_owned().into(), QueryValue::OwnedStr(v.to_string()));
+                params.push((name.to_owned().into(), QueryValue::OwnedStr(v.to_string())));
             }
             Value::String(v) => {
-                params.insert(name.to_owned().into(), v.as_str().into());
+                params.push((name.to_owned().into(), v.as_str().into()));
             }
             Value::Array(arr) => {
                 for (i, item) in arr.iter().enumerate() {
@@ -474,7 +474,7 @@ impl<V: FlatSerialize> FlatSerialize for HashMap<String, V> {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
-        params: &mut BTreeMap<Cow<'static, str>, QueryValue<'a>>,
+        params: &mut Vec<(Cow<'static, str>, QueryValue<'a>)>,
     ) {
         for (key, value) in self {
             value.flat_serialize(&format!("{}.{}", name, key), params);
@@ -490,7 +490,7 @@ pub type OpenObject = HashMap<String, Value>;
 /// This is used instead of serde_urlencoded to support custom parameter styles
 /// like Flat and RepeatList.
 trait ToFormData {
-    fn to_form_data(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>>;
+    fn to_form_data(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)>;
 }
 
 /// Content type for response deserialization.
@@ -514,12 +514,12 @@ trait Request: Sized + Send {
     /// Response type returned by the call() method.
     type Response: DeserializeOwned + AsRef<CodeMessage>;
 
-    fn to_query_params(&self) -> BTreeMap<Cow<'static, str>, QueryValue<'_>> {
-        BTreeMap::new()
+    fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
+        Vec::new()
     }
     /// Returns custom headers to be included in the request.
-    fn to_headers(&self) -> BTreeMap<Cow<'static, str>, String> {
-        BTreeMap::new()
+    fn to_headers(&self) -> Vec<(Cow<'static, str>, String)> {
+        Vec::new()
     }
     fn to_body(self) -> Self::Body;
 }

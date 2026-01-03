@@ -20,7 +20,7 @@ fn canonical_uri_path(uri: &str) -> String {
         .join("/")
 }
 
-fn canonical_query_string(values: BTreeMap<Cow<'static, str>, QueryValue>) -> String {
+fn canonical_query_string(values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
     values
         .into_iter()
         .map(|(k, v)| {
