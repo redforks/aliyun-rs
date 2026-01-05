@@ -519,11 +519,17 @@ trait Request: Sized + Send {
     fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
         Vec::new()
     }
+
     /// Returns custom headers to be included in the request.
     fn to_headers(&self) -> Vec<(Cow<'static, str>, String)> {
         Vec::new()
     }
+
     fn to_body(self) -> Self::Body;
+
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([])
+    }
 }
 
 trait IntoBody {

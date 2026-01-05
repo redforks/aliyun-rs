@@ -130,7 +130,18 @@ pub async fn call<R>(
 where
     R: super::Request,
 {
-    let uri = canonical_uri_path(R::URL_PATH);
+    // Replace path parameters if any
+    let path_args = req.get_path_args();
+    let url_path: Cow<'static, str> = if path_args.is_empty() {
+        R::URL_PATH.into()
+    } else {
+        let mut path = R::URL_PATH.to_string();
+        for (placeholder, value) in path_args.iter() {
+            path = path.replace(placeholder, value);
+        }
+        path.into()
+    };
+    let uri = canonical_uri_path(&url_path);
     let query_string = canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
     let body = req.to_body();
@@ -178,7 +189,7 @@ where
             SIGNATURE_ALGORITHM, ali_access_key_id, header_names, signature
         ),
     )?;
-    let mut url = format!("https://{}{}", end_point, R::URL_PATH);
+    let mut url = format!("https://{}{}", end_point, url_path);
     if !query_string.is_empty() {
         url.push('?');
         url.push_str(&query_string);
