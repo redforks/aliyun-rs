@@ -201,7 +201,7 @@ where
     let resp = if status.is_success() {
         let resp = match R::RESPONSE_CONTENT_TYPE {
             crate::ResponseContentType::Json => serde_json::from_str::<R::Response>(&resp_text)
-                .context("Decode response as JSON")?,
+                .with_context(|| format!("Decode response as JSON: {}", &resp_text))?,
             crate::ResponseContentType::Xml => quick_xml::de::from_str::<R::Response>(&resp_text)
                 .context("Decode response as XML")?,
         };

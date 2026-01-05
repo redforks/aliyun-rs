@@ -9578,11 +9578,11 @@ pub enum TextType {
     #[serde(rename = "ChinesePassport")]
     ChinesePassport,
     #[serde(rename = "PermitToHK_MO_TW")]
-    PermitToHkMoTw,
+    PermitToHK_MO_TW,
     #[serde(rename = "PermitToMainland")]
     PermitToMainland,
     #[serde(rename = "HKIdCard")]
-    HkIdCard,
+    HKIdCard,
     #[serde(rename = "SocialSecurityCard")]
     SocialSecurityCard,
     #[serde(rename = "InternationalIdCard")]
@@ -9652,7 +9652,7 @@ pub enum TextType {
     #[serde(rename = "MedicalDeviceProduceLicense")]
     MedicalDeviceProduceLicense,
     #[serde(rename = "ClassIIMedicalDeviceManageLicense")]
-    ClassIiMedicalDeviceManageLicense,
+    ClassIIMedicalDeviceManageLicense,
     #[serde(rename = "CosmeticProduceLicense")]
     CosmeticProduceLicense,
     #[serde(rename = "VehicleRegistration")]
@@ -9694,9 +9694,9 @@ impl TextType {
             Self::BankCard => "BankCard",
             Self::BirthCertification => "BirthCertification",
             Self::ChinesePassport => "ChinesePassport",
-            Self::PermitToHkMoTw => "PermitToHK_MO_TW",
+            Self::PermitToHK_MO_TW => "PermitToHK_MO_TW",
             Self::PermitToMainland => "PermitToMainland",
-            Self::HkIdCard => "HKIdCard",
+            Self::HKIdCard => "HKIdCard",
             Self::SocialSecurityCard => "SocialSecurityCard",
             Self::InternationalIdCard => "InternationalIdCard",
             Self::Stamp => "Stamp",
@@ -9731,7 +9731,7 @@ impl TextType {
             Self::FoodManagementLicense => "FoodManagementLicense",
             Self::MedicalDeviceManageLicense => "MedicalDeviceManageLicense",
             Self::MedicalDeviceProduceLicense => "MedicalDeviceProduceLicense",
-            Self::ClassIiMedicalDeviceManageLicense => "ClassIIMedicalDeviceManageLicense",
+            Self::ClassIIMedicalDeviceManageLicense => "ClassIIMedicalDeviceManageLicense",
             Self::CosmeticProduceLicense => "CosmeticProduceLicense",
             Self::VehicleRegistration => "VehicleRegistration",
             Self::VehicleCertification => "VehicleCertification",

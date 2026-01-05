@@ -7705,7 +7705,7 @@ impl crate::FlatSerialize for TemplateList {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct SmsSendDetailDto {
+pub struct DetailDto {
     #[serde(rename = "ErrCode")]
     pub err_code: String,
     #[serde(rename = "TemplateCode")]
@@ -7724,7 +7724,7 @@ pub struct SmsSendDetailDto {
     pub send_status: i64,
 }
 
-impl crate::FlatSerialize for SmsSendDetailDto {
+impl crate::FlatSerialize for DetailDto {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -7763,12 +7763,12 @@ impl crate::FlatSerialize for SmsSendDetailDto {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DtOs {
+pub struct DetailDTOs {
     #[serde(rename = "SmsSendDetailDTO")]
-    pub sms_send_detail_dto: Vec<SmsSendDetailDto>,
+    pub sms_send_detail_dto: Vec<DetailDto>,
 }
 
-impl crate::FlatSerialize for DtOs {
+impl crate::FlatSerialize for DetailDTOs {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -7861,7 +7861,7 @@ impl crate::FlatSerialize for StatisticsResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CardTemplateResponseData {
+pub struct ResponseData {
     #[serde(rename = "Signature")]
     pub signature: String,
     #[serde(rename = "Host")]
@@ -7880,7 +7880,7 @@ pub struct CardTemplateResponseData {
     pub bucket: String,
 }
 
-impl crate::FlatSerialize for CardTemplateResponseData {
+impl crate::FlatSerialize for ResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8116,7 +8116,7 @@ impl crate::FlatSerialize for LinkResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DtoRecord {
+pub struct DTORecord {
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
     #[serde(rename = "RenderDate")]
@@ -8141,7 +8141,7 @@ pub struct DtoRecord {
     pub err_code: String,
 }
 
-impl crate::FlatSerialize for DtoRecord {
+impl crate::FlatSerialize for DTORecord {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8199,7 +8199,7 @@ impl crate::FlatSerialize for DtoRecord {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CardSendDetailDto {
+pub struct DetailDTO {
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
     #[serde(rename = "PageSize")]
@@ -8207,10 +8207,10 @@ pub struct CardSendDetailDto {
     #[serde(rename = "CurrentPage")]
     pub current_page: i64,
     #[serde(rename = "Records")]
-    pub records: Vec<DtoRecord>,
+    pub records: Vec<DTORecord>,
 }
 
-impl crate::FlatSerialize for CardSendDetailDto {
+impl crate::FlatSerialize for DetailDTO {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8441,7 +8441,7 @@ impl crate::FlatSerialize for InfoResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct FileResponseModel {
+pub struct ResponseModel {
     #[serde(rename = "Policy")]
     pub policy: String,
     #[serde(rename = "StartPath")]
@@ -8456,7 +8456,7 @@ pub struct FileResponseModel {
     pub expire_time: String,
 }
 
-impl crate::FlatSerialize for FileResponseModel {
+impl crate::FlatSerialize for ResponseModel {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8746,14 +8746,14 @@ impl crate::FlatSerialize for TagResourcesTag {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum EncryptType {
     #[serde(rename = "SHA1")]
-    Sha1,
+    SHA1,
     #[serde(rename = "NORMAL")]
-    Normal,
+    NORMAL,
 }
 
 impl Default for EncryptType {
     fn default() -> Self {
-        Self::Sha1
+        Self::SHA1
     }
 }
 
@@ -8761,8 +8761,8 @@ impl EncryptType {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::Sha1 => "SHA1",
-            Self::Normal => "NORMAL",
+            Self::SHA1 => "SHA1",
+            Self::NORMAL => "NORMAL",
         }
     }
 }
@@ -9501,9 +9501,9 @@ pub struct QuerySendDetailsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "TotalCount")]
-    pub total_count: String,
+    pub total_count: i64,
     #[serde(rename = "SmsSendDetailDTOs")]
-    pub sms_send_detail_dt_os: DtOs,
+    pub sms_send_detail_dtos: DetailDTOs,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
@@ -9539,7 +9539,7 @@ pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(rename = "Success")]
     pub success: bool,
     #[serde(rename = "Data")]
-    pub data: CardTemplateResponseData,
+    pub data: ResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
@@ -9670,7 +9670,7 @@ pub struct GetCardSmsDetailsResponse {
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
     #[serde(rename = "CardSendDetailDTO")]
-    pub card_send_detail_dto: CardSendDetailDto,
+    pub card_send_detail_dto: DetailDTO,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9767,7 +9767,7 @@ pub struct GetOSSInfoForUploadFileResponse {
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Model")]
-    pub model: FileResponseModel,
+    pub model: ResponseModel,
     #[serde(rename = "Success")]
     pub success: bool,
 }
