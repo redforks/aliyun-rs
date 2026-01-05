@@ -158,7 +158,7 @@ async fn test_query_send_details() {
                 "Query send details response code: {}",
                 response.code_message.code
             );
-            let details = &response.sms_send_detail_dt_os.sms_send_detail_dto;
+            let details = &response.sms_send_detail_dtos.sms_send_detail_dto;
             if !details.is_empty() {
                 println!("Found {} send detail(s)", details.len());
             }
