@@ -6261,7 +6261,7 @@ impl crate::ToFormData for DeleteShortUrl {
 }
 
 impl crate::Request for DeleteShortUrl {
-    const METHOD: http::Method = http::Method::POST;
+    const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteShortUrl";
 
@@ -8788,14 +8788,14 @@ impl crate::FlatSerialize for EncryptType {
 pub struct SubmitSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for SubmitSmsQualificationResponse {
@@ -8809,12 +8809,12 @@ impl AsRef<crate::CodeMessage> for SubmitSmsQualificationResponse {
 pub struct QuerySmsQualificationRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
     #[serde(rename = "Data")]
     pub data: QualificationRecordResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8830,14 +8830,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsQualificationRecordResponse {
 pub struct QuerySingleSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: SmsQualificationResponseData,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: SmsQualificationResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySingleSmsQualificationResponse {
@@ -8851,12 +8851,12 @@ impl AsRef<crate::CodeMessage> for QuerySingleSmsQualificationResponse {
 pub struct UpdateSmsQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8874,12 +8874,12 @@ pub struct DeleteSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: bool,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for DeleteSmsQualificationResponse {
@@ -8893,14 +8893,14 @@ impl AsRef<crate::CodeMessage> for DeleteSmsQualificationResponse {
 pub struct RequiredPhoneCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
     #[serde(rename = "Data")]
     pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for RequiredPhoneCodeResponse {
@@ -8914,14 +8914,14 @@ impl AsRef<crate::CodeMessage> for RequiredPhoneCodeResponse {
 pub struct ValidPhoneCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "Data")]
     pub data: bool,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for ValidPhoneCodeResponse {
@@ -8935,14 +8935,14 @@ impl AsRef<crate::CodeMessage> for ValidPhoneCodeResponse {
 pub struct CreateSmsAuthorizationLetterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsAuthorizationLetterResponse {
@@ -8956,12 +8956,12 @@ impl AsRef<crate::CodeMessage> for CreateSmsAuthorizationLetterResponse {
 pub struct QuerySmsAuthorizationLetterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
-    #[serde(rename = "Data")]
-    pub data: Vec<LetterResponseData>,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: Vec<LetterResponseData>,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8979,10 +8979,10 @@ pub struct CreateSmsSignResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "OrderId")]
     pub order_id: String,
-    #[serde(rename = "SignName")]
-    pub sign_name: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
+    pub sign_name: String,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
@@ -8996,46 +8996,46 @@ impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
 pub struct GetSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "SignUsage")]
-    pub sign_usage: String,
-    #[serde(rename = "AuthorizationLetterId")]
-    pub authorization_letter_id: i64,
+    #[serde(rename = "AppIcpRecordId")]
+    pub app_icp_record_id: i64,
+    #[serde(rename = "ApplyScene")]
+    pub apply_scene: String,
     #[serde(rename = "AuditInfo")]
     pub audit_info: SignResponseAuditInfo,
-    #[serde(rename = "SignName")]
-    pub sign_name: String,
+    #[serde(rename = "AuthorizationLetterAuditPass")]
+    pub authorization_letter_audit_pass: bool,
+    #[serde(rename = "AuthorizationLetterId")]
+    pub authorization_letter_id: i64,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
-    #[serde(rename = "SignCode")]
-    pub sign_code: String,
+    #[serde(rename = "FileUrlList")]
+    pub file_url_list: Vec<String>,
     #[serde(rename = "OrderId")]
     pub order_id: String,
     #[serde(rename = "QualificationId")]
     pub qualification_id: i64,
+    #[serde(rename = "RegisterResult")]
+    pub register_result: i32,
     #[serde(rename = "Remark")]
     pub remark: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
-    #[serde(rename = "FileUrlList")]
-    pub file_url_list: Vec<String>,
-    #[serde(rename = "RegisterResult")]
-    pub register_result: i32,
-    #[serde(rename = "AuthorizationLetterAuditPass")]
-    pub authorization_letter_audit_pass: bool,
+    #[serde(rename = "SignCode")]
+    pub sign_code: String,
     #[serde(rename = "SignIspRegisterDetailList")]
     pub sign_isp_register_detail_list: Vec<DetailList>,
-    #[serde(rename = "TrademarkId")]
-    pub trademark_id: i64,
-    #[serde(rename = "AppIcpRecordId")]
-    pub app_icp_record_id: i64,
-    #[serde(rename = "ThirdParty")]
-    pub third_party: bool,
+    #[serde(rename = "SignName")]
+    pub sign_name: String,
     #[serde(rename = "SignStatus")]
     pub sign_status: i64,
     #[serde(rename = "SignTag")]
     pub sign_tag: String,
-    #[serde(rename = "ApplyScene")]
-    pub apply_scene: String,
+    #[serde(rename = "SignUsage")]
+    pub sign_usage: String,
+    #[serde(rename = "ThirdParty")]
+    pub third_party: bool,
+    #[serde(rename = "TrademarkId")]
+    pub trademark_id: i64,
 }
 
 impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
@@ -9049,16 +9049,16 @@ impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
 pub struct QuerySmsSignListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "CurrentPage")]
+    pub current_page: i32,
+    #[serde(rename = "PageSize")]
+    pub page_size: i32,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SmsSignList")]
     pub sms_sign_list: Vec<SignList>,
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
-    #[serde(rename = "CurrentPage")]
-    pub current_page: i32,
-    #[serde(rename = "PageSize")]
-    pub page_size: i32,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
@@ -9072,10 +9072,10 @@ impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
 pub struct UpdateSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
 }
@@ -9091,10 +9091,10 @@ impl AsRef<crate::CodeMessage> for UpdateSmsSignResponse {
 pub struct DeleteSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "SignName")]
-    pub sign_name: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
+    pub sign_name: String,
 }
 
 impl AsRef<crate::CodeMessage> for DeleteSmsSignResponse {
@@ -9108,14 +9108,14 @@ impl AsRef<crate::CodeMessage> for DeleteSmsSignResponse {
 pub struct ChangeSignatureQualificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: SignatureQualificationResponseData,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: SignatureQualificationResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for ChangeSignatureQualificationResponse {
@@ -9129,10 +9129,10 @@ impl AsRef<crate::CodeMessage> for ChangeSignatureQualificationResponse {
 pub struct AddSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "SignName")]
-    pub sign_name: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SignName")]
+    pub sign_name: String,
 }
 
 impl AsRef<crate::CodeMessage> for AddSmsSignResponse {
@@ -9163,16 +9163,16 @@ impl AsRef<crate::CodeMessage> for ModifySmsSignResponse {
 pub struct QuerySmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "SignStatus")]
-    pub sign_status: i32,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
-    #[serde(rename = "Reason")]
-    pub reason: String,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "Reason")]
+    pub reason: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "SignStatus")]
+    pub sign_status: i32,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsSignResponse {
@@ -9186,14 +9186,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsSignResponse {
 pub struct CreateSmsTrademarkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsTrademarkResponse {
@@ -9211,10 +9211,10 @@ pub struct QuerySmsTrademarkResponse {
     pub access_denied_detail: String,
     #[serde(rename = "Data")]
     pub data: Vec<TrademarkResponseData>,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsTrademarkResponse {
@@ -9230,10 +9230,10 @@ pub struct CreateSmsAppIcpRecordResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9249,14 +9249,14 @@ impl AsRef<crate::CodeMessage> for CreateSmsAppIcpRecordResponse {
 pub struct QuerySmsAppIcpRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: Vec<IcpRecordResponseData>,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsAppIcpRecordResponse {
@@ -9270,14 +9270,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsAppIcpRecordResponse {
 pub struct CreateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
@@ -9291,42 +9291,42 @@ impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
 pub struct GetSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TemplateContent")]
-    pub template_content: String,
-    #[serde(rename = "TemplateStatus")]
-    pub template_status: String,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
-    #[serde(rename = "VariableAttribute")]
-    pub variable_attribute: String,
-    #[serde(rename = "MoreDataFileUrlList")]
-    pub more_data_file_url_list: DataFileUrlList,
-    #[serde(rename = "IntlType")]
-    pub intl_type: i32,
     #[serde(rename = "ApplyScene")]
     pub apply_scene: String,
-    #[serde(rename = "Remark")]
-    pub remark: String,
-    #[serde(rename = "TemplateTag")]
-    pub template_tag: i32,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
+    #[serde(rename = "AuditInfo")]
+    pub audit_info: TemplateResponseAuditInfo,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
     #[serde(rename = "FileUrlList")]
     pub file_url_list: ResponseFileUrlList,
+    #[serde(rename = "IntlType")]
+    pub intl_type: i32,
+    #[serde(rename = "MoreDataFileUrlList")]
+    pub more_data_file_url_list: DataFileUrlList,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
     #[serde(rename = "RelatedSignName")]
     pub related_sign_name: String,
-    #[serde(rename = "TemplateType")]
-    pub template_type: String,
-    #[serde(rename = "AuditInfo")]
-    pub audit_info: TemplateResponseAuditInfo,
-    #[serde(rename = "VendorAuditStatus")]
-    pub vendor_audit_status: crate::OpenObject,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
+    #[serde(rename = "Remark")]
+    pub remark: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
+    #[serde(rename = "TemplateContent")]
+    pub template_content: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
+    #[serde(rename = "TemplateStatus")]
+    pub template_status: String,
+    #[serde(rename = "TemplateTag")]
+    pub template_tag: i32,
+    #[serde(rename = "TemplateType")]
+    pub template_type: String,
+    #[serde(rename = "VariableAttribute")]
+    pub variable_attribute: String,
+    #[serde(rename = "VendorAuditStatus")]
+    pub vendor_audit_status: crate::OpenObject,
 }
 
 impl AsRef<crate::CodeMessage> for GetSmsTemplateResponse {
@@ -9340,16 +9340,16 @@ impl AsRef<crate::CodeMessage> for GetSmsTemplateResponse {
 pub struct QuerySmsTemplateListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
-    #[serde(rename = "TotalCount")]
-    pub total_count: i64,
-    #[serde(rename = "SmsTemplateList")]
-    pub sms_template_list: Vec<TemplateList>,
     #[serde(rename = "CurrentPage")]
     pub current_page: i32,
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "SmsTemplateList")]
+    pub sms_template_list: Vec<TemplateList>,
+    #[serde(rename = "TotalCount")]
+    pub total_count: i64,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
@@ -9363,14 +9363,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
 pub struct UpdateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "OrderId")]
     pub order_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
 }
 
 impl AsRef<crate::CodeMessage> for UpdateSmsTemplateResponse {
@@ -9384,10 +9384,10 @@ impl AsRef<crate::CodeMessage> for UpdateSmsTemplateResponse {
 pub struct DeleteSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
 }
 
 impl AsRef<crate::CodeMessage> for DeleteSmsTemplateResponse {
@@ -9401,10 +9401,10 @@ impl AsRef<crate::CodeMessage> for DeleteSmsTemplateResponse {
 pub struct AddSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
 }
 
 impl AsRef<crate::CodeMessage> for AddSmsTemplateResponse {
@@ -9418,10 +9418,10 @@ impl AsRef<crate::CodeMessage> for AddSmsTemplateResponse {
 pub struct ModifySmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
 }
 
 impl AsRef<crate::CodeMessage> for ModifySmsTemplateResponse {
@@ -9437,20 +9437,20 @@ pub struct QuerySmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
+    #[serde(rename = "Reason")]
+    pub reason: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "TemplateContent")]
+    pub template_content: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
     #[serde(rename = "TemplateStatus")]
     pub template_status: i32,
     #[serde(rename = "TemplateType")]
     pub template_type: i32,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
-    #[serde(rename = "Reason")]
-    pub reason: String,
-    #[serde(rename = "TemplateContent")]
-    pub template_content: String,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsTemplateResponse {
@@ -9464,10 +9464,10 @@ impl AsRef<crate::CodeMessage> for QuerySmsTemplateResponse {
 pub struct SendSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "BizId")]
     pub biz_id: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for SendSmsResponse {
@@ -9481,10 +9481,10 @@ impl AsRef<crate::CodeMessage> for SendSmsResponse {
 pub struct SendBatchSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "BizId")]
     pub biz_id: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for SendBatchSmsResponse {
@@ -9498,12 +9498,12 @@ impl AsRef<crate::CodeMessage> for SendBatchSmsResponse {
 pub struct QuerySendDetailsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TotalCount")]
-    pub total_count: String,
-    #[serde(rename = "SmsSendDetailDTOs")]
-    pub sms_send_detail_dt_os: DtOs,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "SmsSendDetailDTOs")]
+    pub sms_send_detail_dt_os: DtOs,
+    #[serde(rename = "TotalCount")]
+    pub total_count: String,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
@@ -9534,12 +9534,12 @@ impl AsRef<crate::CodeMessage> for QuerySendStatisticsResponse {
 pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "Data")]
     pub data: CardTemplateResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
@@ -9553,12 +9553,12 @@ impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
 pub struct GetMediaResourceIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "Data")]
     pub data: IdResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
@@ -9572,12 +9572,12 @@ impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
 pub struct CreateCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "Data")]
     pub data: CreateCardSmsTemplateResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for CreateCardSmsTemplateResponse {
@@ -9612,10 +9612,10 @@ pub struct CheckMobilesCardSupportResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "Data")]
     pub data: CheckMobilesCardSupportResponseData,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
@@ -9629,12 +9629,12 @@ impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
 pub struct QueryMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: QueryMobilesCardSupportResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
-    #[serde(rename = "Data")]
-    pub data: QueryMobilesCardSupportResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
@@ -9648,12 +9648,12 @@ impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
 pub struct GetCardSmsLinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: LinkResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
-    #[serde(rename = "Data")]
-    pub data: LinkResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for GetCardSmsLinkResponse {
@@ -9686,12 +9686,12 @@ impl AsRef<crate::CodeMessage> for GetCardSmsDetailsResponse {
 pub struct QueryCardSmsTemplateReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "Data")]
     pub data: ReportResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
@@ -9705,12 +9705,12 @@ impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
 pub struct SendCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "Data")]
+    pub data: SendCardSmsResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
-    #[serde(rename = "Data")]
-    pub data: SendCardSmsResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for SendCardSmsResponse {
@@ -9743,14 +9743,14 @@ impl AsRef<crate::CodeMessage> for SendBatchCardSmsResponse {
 pub struct GetQualificationOssInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: InfoResponseData,
-    #[serde(rename = "Success")]
-    pub success: bool,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Data")]
+    pub data: InfoResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for GetQualificationOssInfoResponse {
@@ -9766,10 +9766,10 @@ pub struct GetOSSInfoForUploadFileResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "Model")]
     pub model: FileResponseModel,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for GetOSSInfoForUploadFileResponse {
@@ -9783,14 +9783,14 @@ impl AsRef<crate::CodeMessage> for GetOSSInfoForUploadFileResponse {
 pub struct GetSmsOcrOssInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Model")]
-    pub model: InfoResponseModel,
-    #[serde(rename = "Success")]
-    pub success: bool,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
+    #[serde(rename = "Model")]
+    pub model: InfoResponseModel,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
 }
 
 impl AsRef<crate::CodeMessage> for GetSmsOcrOssInfoResponse {
@@ -9834,10 +9834,10 @@ impl AsRef<crate::CodeMessage> for ConversionDataIntlResponse {
 pub struct AddShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: AddShortUrlResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for AddShortUrlResponse {
@@ -9883,10 +9883,10 @@ impl AsRef<crate::CodeMessage> for QueryShortUrlResponse {
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
     #[serde(rename = "TagResources")]
     pub tag_resources: ResponseTagResources,
 }
@@ -9919,10 +9919,10 @@ impl AsRef<crate::CodeMessage> for TagResourcesResponse {
 pub struct UntagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for UntagResourcesResponse {

@@ -9945,10 +9945,10 @@ impl crate::FlatSerialize for TextType {
 pub struct RecognizeAllTextResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: TextResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeAllTextResponse {
@@ -9962,10 +9962,10 @@ impl AsRef<crate::CodeMessage> for RecognizeAllTextResponse {
 pub struct RecognizeGeneralStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: StructureResponseData,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeGeneralStructureResponse {
@@ -10030,10 +10030,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBasicResponse {
 pub struct RecognizeGeneralResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeGeneralResponse {
@@ -10047,10 +10047,10 @@ impl AsRef<crate::CodeMessage> for RecognizeGeneralResponse {
 pub struct RecognizeTableOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTableOcrResponse {
@@ -10132,10 +10132,10 @@ impl AsRef<crate::CodeMessage> for RecognizePassportResponse {
 pub struct RecognizeHouseholdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHouseholdResponse {
@@ -10149,10 +10149,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHouseholdResponse {
 pub struct RecognizeEstateCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEstateCertificationResponse {
@@ -10166,10 +10166,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEstateCertificationResponse {
 pub struct RecognizeBankCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBankCardResponse {
@@ -10183,10 +10183,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBankCardResponse {
 pub struct RecognizeBirthCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBirthCertificationResponse {
@@ -10200,10 +10200,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBirthCertificationResponse {
 pub struct RecognizeChinesePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeChinesePassportResponse {
@@ -10251,10 +10251,10 @@ impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToHKResponse {
 pub struct RecognizeHKIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHKIdcardResponse {
@@ -10268,10 +10268,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHKIdcardResponse {
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardVersionIIResponse {
@@ -10285,10 +10285,10 @@ impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardVersionIIResponse 
 pub struct RecognizeInternationalIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeInternationalIdcardResponse {
@@ -10302,10 +10302,10 @@ impl AsRef<crate::CodeMessage> for RecognizeInternationalIdcardResponse {
 pub struct RecognizeMixedInvoicesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMixedInvoicesResponse {
@@ -10370,10 +10370,10 @@ impl AsRef<crate::CodeMessage> for RecognizeQuotaInvoiceResponse {
 pub struct RecognizeAirItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeAirItineraryResponse {
@@ -10387,10 +10387,10 @@ impl AsRef<crate::CodeMessage> for RecognizeAirItineraryResponse {
 pub struct RecognizeTrainInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTrainInvoiceResponse {
@@ -10421,10 +10421,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTaxiInvoiceResponse {
 pub struct RecognizeRollTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeRollTicketResponse {
@@ -10455,10 +10455,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBankAcceptanceResponse {
 pub struct RecognizeBusShipTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBusShipTicketResponse {
@@ -10489,10 +10489,10 @@ impl AsRef<crate::CodeMessage> for RecognizeNonTaxInvoiceResponse {
 pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCommonPrintedInvoiceResponse {
@@ -10506,10 +10506,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCommonPrintedInvoiceResponse {
 pub struct RecognizeHotelConsumeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHotelConsumeResponse {
@@ -10523,10 +10523,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHotelConsumeResponse {
 pub struct RecognizePaymentRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizePaymentRecordResponse {
@@ -10608,10 +10608,10 @@ impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardResponse {
 pub struct RecognizeTollInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTollInvoiceResponse {
@@ -10642,10 +10642,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTaxClearanceCertificateResponse {
 pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeUsedCarInvoiceResponse {
@@ -10659,10 +10659,10 @@ impl AsRef<crate::CodeMessage> for RecognizeUsedCarInvoiceResponse {
 pub struct RecognizeBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBusinessLicenseResponse {
@@ -10727,10 +10727,10 @@ impl AsRef<crate::CodeMessage> for RecognizeFoodProduceLicenseResponse {
 pub struct RecognizeFoodManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeFoodManageLicenseResponse {
@@ -10761,10 +10761,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceManageLicenseResponse {
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceProduceLicenseResponse {
@@ -10778,10 +10778,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceProduceLicenseResponse 
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCtwoMedicalDeviceManageLicenseResponse {
@@ -10846,10 +10846,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleLicenseResponse {
 pub struct RecognizeDrivingLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeDrivingLicenseResponse {
@@ -10880,10 +10880,10 @@ impl AsRef<crate::CodeMessage> for RecognizeWaybillResponse {
 pub struct RecognizeCarNumberResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCarNumberResponse {
@@ -10897,10 +10897,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCarNumberResponse {
 pub struct RecognizeCarVinCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCarVinCodeResponse {
@@ -10914,10 +10914,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCarVinCodeResponse {
 pub struct RecognizeVehicleRegistrationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeVehicleRegistrationResponse {
@@ -10931,10 +10931,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleRegistrationResponse {
 pub struct RecognizeVehicleCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeVehicleCertificationResponse {
@@ -10948,10 +10948,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleCertificationResponse {
 pub struct RecognizeEduFormulaResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduFormulaResponse {
@@ -10999,10 +10999,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduPaperOcrResponse {
 pub struct RecognizeEduPaperCutResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduPaperCutResponse {
@@ -11067,10 +11067,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMultiLanguageResponse {
 pub struct RecognizeEnglishResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEnglishResponse {
@@ -11101,10 +11101,10 @@ impl AsRef<crate::CodeMessage> for RecognizeThaiResponse {
 pub struct RecognizeJanpaneseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeJanpaneseResponse {
@@ -11118,10 +11118,10 @@ impl AsRef<crate::CodeMessage> for RecognizeJanpaneseResponse {
 pub struct RecognizeKoreanResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeKoreanResponse {
@@ -11152,10 +11152,10 @@ impl AsRef<crate::CodeMessage> for RecognizeLatinResponse {
 pub struct RecognizeRussianResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeRussianResponse {
@@ -11169,10 +11169,10 @@ impl AsRef<crate::CodeMessage> for RecognizeRussianResponse {
 pub struct RecognizeCovidTestReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCovidTestReportResponse {
@@ -11203,10 +11203,10 @@ impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "Data")]
     pub data: String,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for VerifyVATInvoiceResponse {
