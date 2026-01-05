@@ -70,8 +70,8 @@ impl Connection {
     /// | 其他提示 | <ul> <li>请保证整张图片内容及其边缘包含在图像内。 </li> <li> 本能力会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul> |
     ///
     /// # Error Codes
-    /// - `InvalidCountry`: Specified parameter Country is not valid.
     /// - `invalidInputParameter`: %s
+    /// - `InvalidCountry`: Specified parameter Country is not valid.
     ///
     /// # Extra Info
     /// #### 您可以参考下面的示例调用统一API接口
@@ -177,8 +177,8 @@ impl Connection {
     /// ---
     ///
     /// # Error Codes
-    /// - `DataInspectionFailed`: Input or output data may contain inappropriate content.
     /// - `ExceededKeyNumber`: Too many keys, please try again with fewer keys.
+    /// - `DataInspectionFailed`: Input or output data may contain inappropriate content.
     /// - `LLMTimeout`: Large language model timeout, please try again with fewer keys.
     ///
     /// # Methods
@@ -7881,18 +7881,18 @@ impl crate::Request for VerifyVATInvoice {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AdvancedConfig {
-    #[serde(rename = "IsHandWritingTable")]
-    pub is_hand_writing_table: bool,
-    #[serde(rename = "IsLineLessTable")]
-    pub is_line_less_table: bool,
-    #[serde(rename = "OutputCharInfo")]
-    pub output_char_info: bool,
-    #[serde(rename = "OutputParagraph")]
-    pub output_paragraph: bool,
     #[serde(rename = "OutputRow")]
     pub output_row: bool,
+    #[serde(rename = "OutputParagraph")]
+    pub output_paragraph: bool,
     #[serde(rename = "OutputTable")]
     pub output_table: bool,
+    #[serde(rename = "OutputCharInfo")]
+    pub output_char_info: bool,
+    #[serde(rename = "IsLineLessTable")]
+    pub is_line_less_table: bool,
+    #[serde(rename = "IsHandWritingTable")]
+    pub is_hand_writing_table: bool,
     #[serde(rename = "OutputTableExcel")]
     pub output_table_excel: bool,
     #[serde(rename = "OutputTableHtml")]
@@ -7906,18 +7906,8 @@ impl crate::FlatSerialize for AdvancedConfig {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.is_hand_writing_table,
-            &format!("{}.IsHandWritingTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_line_less_table,
-            &format!("{}.IsLineLessTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_char_info,
-            &format!("{}.OutputCharInfo", name),
+            &self.output_row,
+            &format!("{}.OutputRow", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -7926,13 +7916,23 @@ impl crate::FlatSerialize for AdvancedConfig {
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.output_row,
-            &format!("{}.OutputRow", name),
+            &self.output_table,
+            &format!("{}.OutputTable", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.output_table,
-            &format!("{}.OutputTable", name),
+            &self.output_char_info,
+            &format!("{}.OutputCharInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.is_line_less_table,
+            &format!("{}.IsLineLessTable", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.is_hand_writing_table,
+            &format!("{}.IsHandWritingTable", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -7950,68 +7950,78 @@ impl crate::FlatSerialize for AdvancedConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BarCodeDetail {
-    #[serde(rename = "BarCodeAngle")]
-    pub bar_code_angle: i32,
-    #[serde(rename = "BarCodePoints")]
-    pub bar_code_points: Vec<BarCodePoint>,
-    #[serde(rename = "BarCodeRect")]
-    pub bar_code_rect: BarCodeRect,
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "Type")]
-    pub r#type: String,
+pub struct TextIdCardConfig {
+    #[serde(rename = "OutputIdCardQuality")]
+    pub output_id_card_quality: bool,
+    #[serde(rename = "Llm_rec")]
+    pub llm_rec: bool,
 }
 
-impl crate::FlatSerialize for BarCodeDetail {
+impl crate::FlatSerialize for TextIdCardConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.bar_code_angle,
-            &format!("{}.BarCodeAngle", name),
+            &self.output_id_card_quality,
+            &format!("{}.OutputIdCardQuality", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_points,
-            &format!("{}.BarCodePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_rect,
-            &format!("{}.BarCodeRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+        crate::FlatSerialize::flat_serialize(&self.llm_rec, &format!("{}.Llm_rec", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BarCodeInfo {
-    #[serde(rename = "BarCodeCount")]
-    pub bar_code_count: i32,
-    #[serde(rename = "BarCodeDetails")]
-    pub bar_code_details: Vec<BarCodeDetail>,
+pub struct InternationalIdCardConfig {
+    #[serde(rename = "Country")]
+    pub country: ConfigCountry,
 }
 
-impl crate::FlatSerialize for BarCodeInfo {
+impl crate::FlatSerialize for InternationalIdCardConfig {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LicenseConfig {
+    #[serde(rename = "Country")]
+    pub country: String,
+}
+
+impl crate::FlatSerialize for LicenseConfig {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LanConfig {
+    #[serde(rename = "Languages")]
+    pub languages: String,
+}
+
+impl crate::FlatSerialize for LanConfig {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.bar_code_count,
-            &format!("{}.BarCodeCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_details,
-            &format!("{}.BarCodeDetails", name),
+            &self.languages,
+            &format!("{}.Languages", name),
             params,
         );
     }
@@ -8019,14 +8029,56 @@ impl crate::FlatSerialize for BarCodeInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BarCodePoint {
+pub struct TableConfig {
+    #[serde(rename = "IsHandWritingTable")]
+    pub is_hand_writing_table: bool,
+    #[serde(rename = "IsLineLessTable")]
+    pub is_line_less_table: bool,
+    #[serde(rename = "OutputTableExcel")]
+    pub output_table_excel: bool,
+    #[serde(rename = "OutputTableHtml")]
+    pub output_table_html: bool,
+}
+
+impl crate::FlatSerialize for TableConfig {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.is_hand_writing_table,
+            &format!("{}.IsHandWritingTable", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.is_line_less_table,
+            &format!("{}.IsLineLessTable", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.output_table_excel,
+            &format!("{}.OutputTableExcel", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.output_table_html,
+            &format!("{}.OutputTableHtml", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ImagePoint {
     #[serde(rename = "X")]
     pub x: i32,
     #[serde(rename = "Y")]
     pub y: i32,
 }
 
-impl crate::FlatSerialize for BarCodePoint {
+impl crate::FlatSerialize for ImagePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8039,18 +8091,18 @@ impl crate::FlatSerialize for BarCodePoint {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BarCodeRect {
+pub struct ImageRect {
     #[serde(rename = "CenterX")]
     pub center_x: i32,
     #[serde(rename = "CenterY")]
     pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
     #[serde(rename = "Width")]
     pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
 }
 
-impl crate::FlatSerialize for BarCodeRect {
+impl crate::FlatSerialize for ImageRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8058,22 +8110,204 @@ impl crate::FlatSerialize for BarCodeRect {
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
         crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct KvDetails {
+    /// Additional properties not explicitly defined in the schema
+    #[serde(flatten)]
+    pub extra: std::collections::HashMap<String, crate::Value>,
+}
+
+impl crate::FlatSerialize for KvDetails {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TextResponseDataSubImagesItemKvInfo {
+    #[serde(rename = "KvCount")]
+    pub kv_count: i32,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "KvDetails")]
+    pub kv_details: KvDetails,
+}
+
+impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.kv_details,
+            &format!("{}.KvDetails", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BlockPoint {
+    #[serde(rename = "X")]
+    pub x: i32,
+    #[serde(rename = "Y")]
+    pub y: i32,
+}
+
+impl crate::FlatSerialize for BlockPoint {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
+        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BlockRect {
+    #[serde(rename = "CenterX")]
+    pub center_x: i32,
+    #[serde(rename = "CenterY")]
+    pub center_y: i32,
+    #[serde(rename = "Width")]
+    pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
+}
+
+impl crate::FlatSerialize for BlockRect {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
+        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
+        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CharPoint {
+    #[serde(rename = "X")]
+    pub x: i32,
+    #[serde(rename = "Y")]
+    pub y: i32,
+}
+
+impl crate::FlatSerialize for CharPoint {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
+        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CharRect {
+    #[serde(rename = "CenterX")]
+    pub center_x: i32,
+    #[serde(rename = "CenterY")]
+    pub center_y: i32,
+    #[serde(rename = "Width")]
+    pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
+}
+
+impl crate::FlatSerialize for CharRect {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
+        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
+        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CharInfo {
+    #[serde(rename = "CharId")]
+    pub char_id: i32,
+    #[serde(rename = "CharContent")]
+    pub char_content: String,
+    #[serde(rename = "CharConfidence")]
+    pub char_confidence: i32,
+    #[serde(rename = "CharPoints")]
+    pub char_points: Vec<CharPoint>,
+    #[serde(rename = "CharRect")]
+    pub char_rect: CharRect,
+}
+
+impl crate::FlatSerialize for CharInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.char_id, &format!("{}.CharId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.char_content,
+            &format!("{}.CharContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.char_confidence,
+            &format!("{}.CharConfidence", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.char_points,
+            &format!("{}.CharPoints", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.char_rect,
+            &format!("{}.CharRect", name),
+            params,
+        );
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockDetail {
-    #[serde(rename = "BlockAngle")]
-    pub block_angle: i32,
-    #[serde(rename = "BlockConfidence")]
-    pub block_confidence: i32,
-    #[serde(rename = "BlockContent")]
-    pub block_content: String,
     #[serde(rename = "BlockId")]
     pub block_id: i32,
+    #[serde(rename = "BlockAngle")]
+    pub block_angle: i32,
+    #[serde(rename = "BlockContent")]
+    pub block_content: String,
+    #[serde(rename = "BlockConfidence")]
+    pub block_confidence: i32,
     #[serde(rename = "BlockPoints")]
     pub block_points: Vec<BlockPoint>,
     #[serde(rename = "BlockRect")]
@@ -8088,14 +8322,10 @@ impl crate::FlatSerialize for BlockDetail {
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
         crate::FlatSerialize::flat_serialize(
             &self.block_angle,
             &format!("{}.BlockAngle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_confidence,
-            &format!("{}.BlockConfidence", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -8103,7 +8333,11 @@ impl crate::FlatSerialize for BlockDetail {
             &format!("{}.BlockContent", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.block_confidence,
+            &format!("{}.BlockConfidence", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(
             &self.block_points,
             &format!("{}.BlockPoints", name),
@@ -8152,123 +8386,41 @@ impl crate::FlatSerialize for BlockInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BlockPoint {
-    #[serde(rename = "X")]
-    pub x: i32,
-    #[serde(rename = "Y")]
-    pub y: i32,
+pub struct ItemHeader {
+    #[serde(rename = "Contents")]
+    pub contents: Vec<String>,
+    #[serde(rename = "BlockId")]
+    pub block_id: i32,
 }
 
-impl crate::FlatSerialize for BlockPoint {
+impl crate::FlatSerialize for ItemHeader {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
+        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
+        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BlockRect {
-    #[serde(rename = "CenterX")]
-    pub center_x: i32,
-    #[serde(rename = "CenterY")]
-    pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "Width")]
-    pub width: i32,
+pub struct ItemFooter {
+    #[serde(rename = "Contents")]
+    pub contents: Vec<String>,
+    #[serde(rename = "BlockId")]
+    pub block_id: i32,
 }
 
-impl crate::FlatSerialize for BlockRect {
+impl crate::FlatSerialize for ItemFooter {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CellDetail {
-    #[serde(rename = "BlockList")]
-    pub block_list: Vec<i32>,
-    #[serde(rename = "CellAngle")]
-    pub cell_angle: i32,
-    #[serde(rename = "CellContent")]
-    pub cell_content: String,
-    #[serde(rename = "CellId")]
-    pub cell_id: i32,
-    #[serde(rename = "CellPoints")]
-    pub cell_points: Vec<CellPoint>,
-    #[serde(rename = "CellRect")]
-    pub cell_rect: CellRect,
-    #[serde(rename = "ColumnEnd")]
-    pub column_end: i32,
-    #[serde(rename = "ColumnStart")]
-    pub column_start: i32,
-    #[serde(rename = "RowEnd")]
-    pub row_end: i32,
-    #[serde(rename = "RowStart")]
-    pub row_start: i32,
-}
-
-impl crate::FlatSerialize for CellDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.block_list,
-            &format!("{}.BlockList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_angle,
-            &format!("{}.CellAngle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_content,
-            &format!("{}.CellContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cell_id, &format!("{}.CellId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_points,
-            &format!("{}.CellPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_rect,
-            &format!("{}.CellRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.column_end,
-            &format!("{}.ColumnEnd", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.column_start,
-            &format!("{}.ColumnStart", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.row_end, &format!("{}.RowEnd", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.row_start,
-            &format!("{}.RowStart", name),
-            params,
-        );
+        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
+        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
     }
 }
 
@@ -8299,10 +8451,10 @@ pub struct CellRect {
     pub center_x: i32,
     #[serde(rename = "CenterY")]
     pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
     #[serde(rename = "Width")]
     pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
 }
 
 impl crate::FlatSerialize for CellRect {
@@ -8313,368 +8465,82 @@ impl crate::FlatSerialize for CellRect {
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
         crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CharInfo {
-    #[serde(rename = "CharConfidence")]
-    pub char_confidence: i32,
-    #[serde(rename = "CharContent")]
-    pub char_content: String,
-    #[serde(rename = "CharId")]
-    pub char_id: i32,
-    #[serde(rename = "CharPoints")]
-    pub char_points: Vec<CharPoint>,
-    #[serde(rename = "CharRect")]
-    pub char_rect: CharRect,
-}
-
-impl crate::FlatSerialize for CharInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.char_confidence,
-            &format!("{}.CharConfidence", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_content,
-            &format!("{}.CharContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.char_id, &format!("{}.CharId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.char_points,
-            &format!("{}.CharPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_rect,
-            &format!("{}.CharRect", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CharPoint {
-    #[serde(rename = "X")]
-    pub x: i32,
-    #[serde(rename = "Y")]
-    pub y: i32,
-}
-
-impl crate::FlatSerialize for CharPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CharRect {
-    #[serde(rename = "CenterX")]
-    pub center_x: i32,
-    #[serde(rename = "CenterY")]
-    pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "Width")]
-    pub width: i32,
-}
-
-impl crate::FlatSerialize for CharRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
         crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct FigureInfo {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, crate::Value>,
-}
-
-impl crate::FlatSerialize for FigureInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ImagePoint {
-    #[serde(rename = "X")]
-    pub x: i32,
-    #[serde(rename = "Y")]
-    pub y: i32,
-}
-
-impl crate::FlatSerialize for ImagePoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ImageRect {
-    #[serde(rename = "CenterX")]
-    pub center_x: i32,
-    #[serde(rename = "CenterY")]
-    pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "Width")]
-    pub width: i32,
-}
-
-impl crate::FlatSerialize for ImageRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct InternationalIdCardConfig {
-    #[serde(rename = "Country")]
-    pub country: ConfigCountry,
-}
-
-impl crate::FlatSerialize for InternationalIdCardConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ItemData {
-    #[serde(rename = "AntiFakeCode")]
-    pub anti_fake_code: String,
-    #[serde(rename = "CompanyId")]
-    pub company_id: String,
-    #[serde(rename = "OrganizationName")]
-    pub organization_name: String,
-    #[serde(rename = "OrganizationNameEng")]
-    pub organization_name_eng: String,
-    #[serde(rename = "OtherText")]
-    pub other_text: String,
-    #[serde(rename = "TaxpayerId")]
-    pub taxpayer_id: String,
-    #[serde(rename = "TopText")]
-    pub top_text: String,
-}
-
-impl crate::FlatSerialize for ItemData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.anti_fake_code,
-            &format!("{}.AntiFakeCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_id,
-            &format!("{}.CompanyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_name,
-            &format!("{}.OrganizationName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_name_eng,
-            &format!("{}.OrganizationNameEng", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.other_text,
-            &format!("{}.OtherText", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.taxpayer_id,
-            &format!("{}.TaxpayerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.top_text, &format!("{}.TopText", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ItemFooter {
-    #[serde(rename = "BlockId")]
-    pub block_id: i32,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<String>,
-}
-
-impl crate::FlatSerialize for ItemFooter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ItemHeader {
-    #[serde(rename = "BlockId")]
-    pub block_id: i32,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<String>,
-}
-
-impl crate::FlatSerialize for ItemHeader {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct KvDetails {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, crate::Value>,
-}
-
-impl crate::FlatSerialize for KvDetails {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct LanConfig {
-    #[serde(rename = "Languages")]
-    pub languages: String,
-}
-
-impl crate::FlatSerialize for LanConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.languages,
-            &format!("{}.Languages", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct LicenseConfig {
-    #[serde(rename = "Country")]
-    pub country: String,
-}
-
-impl crate::FlatSerialize for LicenseConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ParagraphDetail {
+pub struct CellDetail {
+    #[serde(rename = "CellId")]
+    pub cell_id: i32,
+    #[serde(rename = "CellContent")]
+    pub cell_content: String,
+    #[serde(rename = "RowStart")]
+    pub row_start: i32,
+    #[serde(rename = "RowEnd")]
+    pub row_end: i32,
+    #[serde(rename = "ColumnStart")]
+    pub column_start: i32,
+    #[serde(rename = "ColumnEnd")]
+    pub column_end: i32,
     #[serde(rename = "BlockList")]
     pub block_list: Vec<i32>,
-    #[serde(rename = "ParagraphContent")]
-    pub paragraph_content: String,
-    #[serde(rename = "ParagraphId")]
-    pub paragraph_id: i32,
+    #[serde(rename = "CellPoints")]
+    pub cell_points: Vec<CellPoint>,
+    #[serde(rename = "CellRect")]
+    pub cell_rect: CellRect,
+    #[serde(rename = "CellAngle")]
+    pub cell_angle: i32,
 }
 
-impl crate::FlatSerialize for ParagraphDetail {
+impl crate::FlatSerialize for CellDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.cell_id, &format!("{}.CellId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.cell_content,
+            &format!("{}.CellContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.row_start,
+            &format!("{}.RowStart", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.row_end, &format!("{}.RowEnd", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.column_start,
+            &format!("{}.ColumnStart", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.column_end,
+            &format!("{}.ColumnEnd", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(
             &self.block_list,
             &format!("{}.BlockList", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.paragraph_content,
-            &format!("{}.ParagraphContent", name),
+            &self.cell_points,
+            &format!("{}.CellPoints", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.paragraph_id,
-            &format!("{}.ParagraphId", name),
+            &self.cell_rect,
+            &format!("{}.CellRect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.cell_angle,
+            &format!("{}.CellAngle", name),
             params,
         );
     }
@@ -8682,108 +8548,14 @@ impl crate::FlatSerialize for ParagraphDetail {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ParagraphInfo {
-    #[serde(rename = "ParagraphCount")]
-    pub paragraph_count: i32,
-    #[serde(rename = "ParagraphDetails")]
-    pub paragraph_details: Vec<ParagraphDetail>,
-}
-
-impl crate::FlatSerialize for ParagraphInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_count,
-            &format!("{}.ParagraphCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_details,
-            &format!("{}.ParagraphDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QrCodeDetail {
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "QrCodeAngle")]
-    pub qr_code_angle: i32,
-    #[serde(rename = "QrCodePoints")]
-    pub qr_code_points: Vec<QrCodePoint>,
-    #[serde(rename = "QrCodeRect")]
-    pub qr_code_rect: QrCodeRect,
-}
-
-impl crate::FlatSerialize for QrCodeDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_angle,
-            &format!("{}.QrCodeAngle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_points,
-            &format!("{}.QrCodePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_rect,
-            &format!("{}.QrCodeRect", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QrCodeInfo {
-    #[serde(rename = "QrCodeCount")]
-    pub qr_code_count: i32,
-    #[serde(rename = "QrCodeDetails")]
-    pub qr_code_details: Vec<QrCodeDetail>,
-}
-
-impl crate::FlatSerialize for QrCodeInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_count,
-            &format!("{}.QrCodeCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_details,
-            &format!("{}.QrCodeDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QrCodePoint {
+pub struct TablePoint {
     #[serde(rename = "X")]
     pub x: i32,
     #[serde(rename = "Y")]
     pub y: i32,
 }
 
-impl crate::FlatSerialize for QrCodePoint {
+impl crate::FlatSerialize for TablePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8796,18 +8568,18 @@ impl crate::FlatSerialize for QrCodePoint {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct QrCodeRect {
+pub struct TableRect {
     #[serde(rename = "CenterX")]
     pub center_x: i32,
     #[serde(rename = "CenterY")]
     pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
     #[serde(rename = "Width")]
     pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
 }
 
-impl crate::FlatSerialize for QrCodeRect {
+impl crate::FlatSerialize for TableRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -8815,367 +8587,28 @@ impl crate::FlatSerialize for QrCodeRect {
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
         crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QualityInfo {
-    #[serde(rename = "CompletenessScore")]
-    pub completeness_score: f32,
-    #[serde(rename = "IsCopy")]
-    pub is_copy: bool,
-    #[serde(rename = "IsReshoot")]
-    pub is_reshoot: bool,
-    #[serde(rename = "QualityScore")]
-    pub quality_score: f32,
-    #[serde(rename = "TamperScore")]
-    pub tamper_score: f32,
-}
-
-impl crate::FlatSerialize for QualityInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.completeness_score,
-            &format!("{}.CompletenessScore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.is_copy, &format!("{}.IsCopy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_reshoot,
-            &format!("{}.IsReshoot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.quality_score,
-            &format!("{}.QualityScore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tamper_score,
-            &format!("{}.TamperScore", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct RowDetail {
-    #[serde(rename = "BlockList")]
-    pub block_list: Vec<i32>,
-    #[serde(rename = "RowContent")]
-    pub row_content: String,
-    #[serde(rename = "RowId")]
-    pub row_id: i32,
-}
-
-impl crate::FlatSerialize for RowDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.block_list,
-            &format!("{}.BlockList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.row_content,
-            &format!("{}.RowContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.row_id, &format!("{}.RowId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct RowInfo {
-    #[serde(rename = "RowCount")]
-    pub row_count: i32,
-    #[serde(rename = "RowDetails")]
-    pub row_details: Vec<RowDetail>,
-}
-
-impl crate::FlatSerialize for RowInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.row_count,
-            &format!("{}.RowCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.row_details,
-            &format!("{}.RowDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StampDetail {
-    #[serde(rename = "Data")]
-    pub data: ItemData,
-    #[serde(rename = "StampAngle")]
-    pub stamp_angle: i32,
-    #[serde(rename = "StampPoints")]
-    pub stamp_points: Vec<StampPoint>,
-    #[serde(rename = "StampRect")]
-    pub stamp_rect: StampRect,
-}
-
-impl crate::FlatSerialize for StampDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_angle,
-            &format!("{}.StampAngle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_points,
-            &format!("{}.StampPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_rect,
-            &format!("{}.StampRect", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StampInfo {
-    #[serde(rename = "StampCount")]
-    pub stamp_count: i32,
-    #[serde(rename = "StampDetails")]
-    pub stamp_details: Vec<StampDetail>,
-}
-
-impl crate::FlatSerialize for StampInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_count,
-            &format!("{}.StampCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_details,
-            &format!("{}.StampDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StampPoint {
-    #[serde(rename = "X")]
-    pub x: i32,
-    #[serde(rename = "Y")]
-    pub y: i32,
-}
-
-impl crate::FlatSerialize for StampPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StampRect {
-    #[serde(rename = "CenterX")]
-    pub center_x: i32,
-    #[serde(rename = "CenterY")]
-    pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "Width")]
-    pub width: i32,
-}
-
-impl crate::FlatSerialize for StampRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
         crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StructureResponseData {
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "SubImageCount")]
-    pub sub_image_count: i32,
-    #[serde(rename = "SubImages")]
-    pub sub_images: Vec<StructureResponseDataSubImage>,
-    #[serde(rename = "Width")]
-    pub width: i32,
-}
-
-impl crate::FlatSerialize for StructureResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_count,
-            &format!("{}.SubImageCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_images,
-            &format!("{}.SubImages", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StructureResponseDataSubImage {
-    #[serde(rename = "Angle")]
-    pub angle: i32,
-    #[serde(rename = "KvInfo")]
-    pub kv_info: StructureResponseDataSubImagesItemKvInfo,
-    #[serde(rename = "SubImageId")]
-    pub sub_image_id: i32,
-}
-
-impl crate::FlatSerialize for StructureResponseDataSubImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
-        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_id,
-            &format!("{}.SubImageId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StructureResponseDataSubImagesItemKvInfo {
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "KvCount")]
-    pub kv_count: i32,
-}
-
-impl crate::FlatSerialize for StructureResponseDataSubImagesItemKvInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TableConfig {
-    #[serde(rename = "IsHandWritingTable")]
-    pub is_hand_writing_table: bool,
-    #[serde(rename = "IsLineLessTable")]
-    pub is_line_less_table: bool,
-    #[serde(rename = "OutputTableExcel")]
-    pub output_table_excel: bool,
-    #[serde(rename = "OutputTableHtml")]
-    pub output_table_html: bool,
-}
-
-impl crate::FlatSerialize for TableConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_hand_writing_table,
-            &format!("{}.IsHandWritingTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_line_less_table,
-            &format!("{}.IsLineLessTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_excel,
-            &format!("{}.OutputTableExcel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_html,
-            &format!("{}.OutputTableHtml", name),
-            params,
-        );
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableDetail {
-    #[serde(rename = "CellCount")]
-    pub cell_count: i32,
-    #[serde(rename = "CellDetails")]
-    pub cell_details: Vec<CellDetail>,
-    #[serde(rename = "ColumnCount")]
-    pub column_count: i32,
-    #[serde(rename = "Footer")]
-    pub footer: ItemFooter,
-    #[serde(rename = "Header")]
-    pub header: ItemHeader,
-    #[serde(rename = "RowCount")]
-    pub row_count: i32,
     #[serde(rename = "TableId")]
     pub table_id: i32,
+    #[serde(rename = "RowCount")]
+    pub row_count: i32,
+    #[serde(rename = "ColumnCount")]
+    pub column_count: i32,
+    #[serde(rename = "CellCount")]
+    pub cell_count: i32,
+    #[serde(rename = "Header")]
+    pub header: ItemHeader,
+    #[serde(rename = "Footer")]
+    pub footer: ItemFooter,
+    #[serde(rename = "CellDetails")]
+    pub cell_details: Vec<CellDetail>,
     #[serde(rename = "TablePoints")]
     pub table_points: Vec<TablePoint>,
     #[serde(rename = "TableRect")]
@@ -9188,14 +8621,10 @@ impl crate::FlatSerialize for TableDetail {
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.table_id, &format!("{}.TableId", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.cell_count,
-            &format!("{}.CellCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_details,
-            &format!("{}.CellDetails", name),
+            &self.row_count,
+            &format!("{}.RowCount", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -9203,14 +8632,18 @@ impl crate::FlatSerialize for TableDetail {
             &format!("{}.ColumnCount", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.footer, &format!("{}.Footer", name), params);
-        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.Header", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.row_count,
-            &format!("{}.RowCount", name),
+            &self.cell_count,
+            &format!("{}.CellCount", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.table_id, &format!("{}.TableId", name), params);
+        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.Header", name), params);
+        crate::FlatSerialize::flat_serialize(&self.footer, &format!("{}.Footer", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.cell_details,
+            &format!("{}.CellDetails", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(
             &self.table_points,
             &format!("{}.TablePoints", name),
@@ -9268,14 +8701,136 @@ impl crate::FlatSerialize for TableInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TablePoint {
+pub struct RowDetail {
+    #[serde(rename = "RowId")]
+    pub row_id: i32,
+    #[serde(rename = "RowContent")]
+    pub row_content: String,
+    #[serde(rename = "BlockList")]
+    pub block_list: Vec<i32>,
+}
+
+impl crate::FlatSerialize for RowDetail {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.row_id, &format!("{}.RowId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.row_content,
+            &format!("{}.RowContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.block_list,
+            &format!("{}.BlockList", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct RowInfo {
+    #[serde(rename = "RowCount")]
+    pub row_count: i32,
+    #[serde(rename = "RowDetails")]
+    pub row_details: Vec<RowDetail>,
+}
+
+impl crate::FlatSerialize for RowInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.row_count,
+            &format!("{}.RowCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.row_details,
+            &format!("{}.RowDetails", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ParagraphDetail {
+    #[serde(rename = "ParagraphId")]
+    pub paragraph_id: i32,
+    #[serde(rename = "ParagraphContent")]
+    pub paragraph_content: String,
+    #[serde(rename = "BlockList")]
+    pub block_list: Vec<i32>,
+}
+
+impl crate::FlatSerialize for ParagraphDetail {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.paragraph_id,
+            &format!("{}.ParagraphId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.paragraph_content,
+            &format!("{}.ParagraphContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.block_list,
+            &format!("{}.BlockList", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ParagraphInfo {
+    #[serde(rename = "ParagraphCount")]
+    pub paragraph_count: i32,
+    #[serde(rename = "ParagraphDetails")]
+    pub paragraph_details: Vec<ParagraphDetail>,
+}
+
+impl crate::FlatSerialize for ParagraphInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.paragraph_count,
+            &format!("{}.ParagraphCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.paragraph_details,
+            &format!("{}.ParagraphDetails", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QrCodePoint {
     #[serde(rename = "X")]
     pub x: i32,
     #[serde(rename = "Y")]
     pub y: i32,
 }
 
-impl crate::FlatSerialize for TablePoint {
+impl crate::FlatSerialize for QrCodePoint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -9288,18 +8843,18 @@ impl crate::FlatSerialize for TablePoint {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TableRect {
+pub struct QrCodeRect {
     #[serde(rename = "CenterX")]
     pub center_x: i32,
     #[serde(rename = "CenterY")]
     pub center_y: i32,
-    #[serde(rename = "Height")]
-    pub height: i32,
     #[serde(rename = "Width")]
     pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
 }
 
-impl crate::FlatSerialize for TableRect {
+impl crate::FlatSerialize for QrCodeRect {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -9307,30 +8862,44 @@ impl crate::FlatSerialize for TableRect {
     ) {
         crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
         crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
         crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TextIdCardConfig {
-    #[serde(rename = "Llm_rec")]
-    pub llm_rec: bool,
-    #[serde(rename = "OutputIdCardQuality")]
-    pub output_id_card_quality: bool,
+pub struct QrCodeDetail {
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "QrCodePoints")]
+    pub qr_code_points: Vec<QrCodePoint>,
+    #[serde(rename = "QrCodeRect")]
+    pub qr_code_rect: QrCodeRect,
+    #[serde(rename = "QrCodeAngle")]
+    pub qr_code_angle: i32,
 }
 
-impl crate::FlatSerialize for TextIdCardConfig {
+impl crate::FlatSerialize for QrCodeDetail {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.llm_rec, &format!("{}.Llm_rec", name), params);
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.output_id_card_quality,
-            &format!("{}.OutputIdCardQuality", name),
+            &self.qr_code_points,
+            &format!("{}.QrCodePoints", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qr_code_rect,
+            &format!("{}.QrCodeRect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qr_code_angle,
+            &format!("{}.QrCodeAngle", name),
             params,
         );
     }
@@ -9338,81 +8907,376 @@ impl crate::FlatSerialize for TextIdCardConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TextResponseData {
-    #[serde(rename = "AlgoServer")]
-    pub algo_server: Vec<String>,
-    #[serde(rename = "AlgoVersion")]
-    pub algo_version: String,
-    #[serde(rename = "Content")]
-    pub content: String,
-    #[serde(rename = "DebugInfo")]
-    pub debug_info: String,
-    #[serde(rename = "Height")]
-    pub height: i32,
-    #[serde(rename = "IsMixedMode")]
-    pub is_mixed_mode: bool,
-    #[serde(rename = "KvExcelUrl")]
-    pub kv_excel_url: String,
-    #[serde(rename = "PageNo")]
-    pub page_no: i32,
-    #[serde(rename = "SubImageCount")]
-    pub sub_image_count: i32,
-    #[serde(rename = "SubImages")]
-    pub sub_images: Vec<TextResponseDataSubImage>,
+pub struct QrCodeInfo {
+    #[serde(rename = "QrCodeCount")]
+    pub qr_code_count: i32,
+    #[serde(rename = "QrCodeDetails")]
+    pub qr_code_details: Vec<QrCodeDetail>,
+}
+
+impl crate::FlatSerialize for QrCodeInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.qr_code_count,
+            &format!("{}.QrCodeCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qr_code_details,
+            &format!("{}.QrCodeDetails", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BarCodePoint {
+    #[serde(rename = "X")]
+    pub x: i32,
+    #[serde(rename = "Y")]
+    pub y: i32,
+}
+
+impl crate::FlatSerialize for BarCodePoint {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
+        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BarCodeRect {
+    #[serde(rename = "CenterX")]
+    pub center_x: i32,
+    #[serde(rename = "CenterY")]
+    pub center_y: i32,
     #[serde(rename = "Width")]
     pub width: i32,
-    #[serde(rename = "XmlResult")]
-    pub xml_result: String,
+    #[serde(rename = "Height")]
+    pub height: i32,
 }
 
-impl crate::FlatSerialize for TextResponseData {
+impl crate::FlatSerialize for BarCodeRect {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
+        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
+        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BarCodeDetail {
+    #[serde(rename = "Type")]
+    pub r#type: String,
+    #[serde(rename = "Data")]
+    pub data: String,
+    #[serde(rename = "BarCodePoints")]
+    pub bar_code_points: Vec<BarCodePoint>,
+    #[serde(rename = "BarCodeRect")]
+    pub bar_code_rect: BarCodeRect,
+    #[serde(rename = "BarCodeAngle")]
+    pub bar_code_angle: i32,
+}
+
+impl crate::FlatSerialize for BarCodeDetail {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.bar_code_points,
+            &format!("{}.BarCodePoints", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.bar_code_rect,
+            &format!("{}.BarCodeRect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.bar_code_angle,
+            &format!("{}.BarCodeAngle", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BarCodeInfo {
+    #[serde(rename = "BarCodeCount")]
+    pub bar_code_count: i32,
+    #[serde(rename = "BarCodeDetails")]
+    pub bar_code_details: Vec<BarCodeDetail>,
+}
+
+impl crate::FlatSerialize for BarCodeInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.algo_server,
-            &format!("{}.AlgoServer", name),
+            &self.bar_code_count,
+            &format!("{}.BarCodeCount", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.algo_version,
-            &format!("{}.AlgoVersion", name),
+            &self.bar_code_details,
+            &format!("{}.BarCodeDetails", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct FigureInfo {
+    /// Additional properties not explicitly defined in the schema
+    #[serde(flatten)]
+    pub extra: std::collections::HashMap<String, crate::Value>,
+}
+
+impl crate::FlatSerialize for FigureInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ItemData {
+    #[serde(rename = "CompanyId")]
+    pub company_id: String,
+    #[serde(rename = "OrganizationName")]
+    pub organization_name: String,
+    #[serde(rename = "AntiFakeCode")]
+    pub anti_fake_code: String,
+    #[serde(rename = "OtherText")]
+    pub other_text: String,
+    #[serde(rename = "TopText")]
+    pub top_text: String,
+    #[serde(rename = "OrganizationNameEng")]
+    pub organization_name_eng: String,
+    #[serde(rename = "TaxpayerId")]
+    pub taxpayer_id: String,
+}
+
+impl crate::FlatSerialize for ItemData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
         crate::FlatSerialize::flat_serialize(
-            &self.debug_info,
-            &format!("{}.DebugInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_mixed_mode,
-            &format!("{}.IsMixedMode", name),
+            &self.company_id,
+            &format!("{}.CompanyId", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.kv_excel_url,
-            &format!("{}.KvExcelUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_count,
-            &format!("{}.SubImageCount", name),
+            &self.organization_name,
+            &format!("{}.OrganizationName", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.sub_images,
-            &format!("{}.SubImages", name),
+            &self.anti_fake_code,
+            &format!("{}.AntiFakeCode", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(
+            &self.other_text,
+            &format!("{}.OtherText", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.top_text, &format!("{}.TopText", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.organization_name_eng,
+            &format!("{}.OrganizationNameEng", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.taxpayer_id,
+            &format!("{}.TaxpayerId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StampPoint {
+    #[serde(rename = "X")]
+    pub x: i32,
+    #[serde(rename = "Y")]
+    pub y: i32,
+}
+
+impl crate::FlatSerialize for StampPoint {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
+        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StampRect {
+    #[serde(rename = "CenterX")]
+    pub center_x: i32,
+    #[serde(rename = "CenterY")]
+    pub center_y: i32,
+    #[serde(rename = "Width")]
+    pub width: i32,
+    #[serde(rename = "Height")]
+    pub height: i32,
+}
+
+impl crate::FlatSerialize for StampRect {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
+        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
         crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StampDetail {
+    #[serde(rename = "Data")]
+    pub data: ItemData,
+    #[serde(rename = "StampPoints")]
+    pub stamp_points: Vec<StampPoint>,
+    #[serde(rename = "StampRect")]
+    pub stamp_rect: StampRect,
+    #[serde(rename = "StampAngle")]
+    pub stamp_angle: i32,
+}
+
+impl crate::FlatSerialize for StampDetail {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.xml_result,
-            &format!("{}.XmlResult", name),
+            &self.stamp_points,
+            &format!("{}.StampPoints", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.stamp_rect,
+            &format!("{}.StampRect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.stamp_angle,
+            &format!("{}.StampAngle", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StampInfo {
+    #[serde(rename = "StampCount")]
+    pub stamp_count: i32,
+    #[serde(rename = "StampDetails")]
+    pub stamp_details: Vec<StampDetail>,
+}
+
+impl crate::FlatSerialize for StampInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.stamp_count,
+            &format!("{}.StampCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.stamp_details,
+            &format!("{}.StampDetails", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QualityInfo {
+    #[serde(rename = "IsCopy")]
+    pub is_copy: bool,
+    #[serde(rename = "IsReshoot")]
+    pub is_reshoot: bool,
+    #[serde(rename = "CompletenessScore")]
+    pub completeness_score: f32,
+    #[serde(rename = "QualityScore")]
+    pub quality_score: f32,
+    #[serde(rename = "TamperScore")]
+    pub tamper_score: f32,
+}
+
+impl crate::FlatSerialize for QualityInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.is_copy, &format!("{}.IsCopy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.is_reshoot,
+            &format!("{}.IsReshoot", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.completeness_score,
+            &format!("{}.CompletenessScore", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.quality_score,
+            &format!("{}.QualityScore", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.tamper_score,
+            &format!("{}.TamperScore", name),
             params,
         );
     }
@@ -9421,36 +9285,36 @@ impl crate::FlatSerialize for TextResponseData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImage {
-    #[serde(rename = "Angle")]
-    pub angle: i32,
-    #[serde(rename = "BarCodeInfo")]
-    pub bar_code_info: BarCodeInfo,
-    #[serde(rename = "BlockInfo")]
-    pub block_info: BlockInfo,
-    #[serde(rename = "FigureInfo")]
-    pub figure_info: FigureInfo,
-    #[serde(rename = "KvInfo")]
-    pub kv_info: TextResponseDataSubImagesItemKvInfo,
-    #[serde(rename = "ParagraphInfo")]
-    pub paragraph_info: ParagraphInfo,
-    #[serde(rename = "QrCodeInfo")]
-    pub qr_code_info: QrCodeInfo,
-    #[serde(rename = "QualityInfo")]
-    pub quality_info: QualityInfo,
-    #[serde(rename = "RowInfo")]
-    pub row_info: RowInfo,
-    #[serde(rename = "StampInfo")]
-    pub stamp_info: StampInfo,
     #[serde(rename = "SubImageId")]
     pub sub_image_id: i32,
+    #[serde(rename = "Type")]
+    pub r#type: String,
+    #[serde(rename = "Angle")]
+    pub angle: i32,
     #[serde(rename = "SubImagePoints")]
     pub sub_image_points: Vec<ImagePoint>,
     #[serde(rename = "SubImageRect")]
     pub sub_image_rect: ImageRect,
+    #[serde(rename = "KvInfo")]
+    pub kv_info: TextResponseDataSubImagesItemKvInfo,
+    #[serde(rename = "BlockInfo")]
+    pub block_info: BlockInfo,
     #[serde(rename = "TableInfo")]
     pub table_info: TableInfo,
-    #[serde(rename = "Type")]
-    pub r#type: String,
+    #[serde(rename = "RowInfo")]
+    pub row_info: RowInfo,
+    #[serde(rename = "ParagraphInfo")]
+    pub paragraph_info: ParagraphInfo,
+    #[serde(rename = "QrCodeInfo")]
+    pub qr_code_info: QrCodeInfo,
+    #[serde(rename = "BarCodeInfo")]
+    pub bar_code_info: BarCodeInfo,
+    #[serde(rename = "FigureInfo")]
+    pub figure_info: FigureInfo,
+    #[serde(rename = "StampInfo")]
+    pub stamp_info: StampInfo,
+    #[serde(rename = "QualityInfo")]
+    pub quality_info: QualityInfo,
 }
 
 impl crate::FlatSerialize for TextResponseDataSubImage {
@@ -9459,23 +9323,35 @@ impl crate::FlatSerialize for TextResponseDataSubImage {
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.bar_code_info,
-            &format!("{}.BarCodeInfo", name),
+            &self.sub_image_id,
+            &format!("{}.SubImageId", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_image_points,
+            &format!("{}.SubImagePoints", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_image_rect,
+            &format!("{}.SubImageRect", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
         crate::FlatSerialize::flat_serialize(
             &self.block_info,
             &format!("{}.BlockInfo", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.figure_info,
-            &format!("{}.FigureInfo", name),
+            &self.table_info,
+            &format!("{}.TableInfo", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
+        crate::FlatSerialize::flat_serialize(&self.row_info, &format!("{}.RowInfo", name), params);
         crate::FlatSerialize::flat_serialize(
             &self.paragraph_info,
             &format!("{}.ParagraphInfo", name),
@@ -9487,244 +9363,188 @@ impl crate::FlatSerialize for TextResponseDataSubImage {
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.quality_info,
-            &format!("{}.QualityInfo", name),
+            &self.bar_code_info,
+            &format!("{}.BarCodeInfo", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.row_info, &format!("{}.RowInfo", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.figure_info,
+            &format!("{}.FigureInfo", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(
             &self.stamp_info,
             &format!("{}.StampInfo", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.sub_image_id,
-            &format!("{}.SubImageId", name),
+            &self.quality_info,
+            &format!("{}.QualityInfo", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_points,
-            &format!("{}.SubImagePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_rect,
-            &format!("{}.SubImageRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_info,
-            &format!("{}.TableInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TextResponseDataSubImagesItemKvInfo {
-    #[serde(rename = "Data")]
-    pub data: String,
-    #[serde(rename = "KvCount")]
-    pub kv_count: i32,
-    #[serde(rename = "KvDetails")]
-    pub kv_details: KvDetails,
+pub struct TextResponseData {
+    #[serde(rename = "Height")]
+    pub height: i32,
+    #[serde(rename = "Width")]
+    pub width: i32,
+    #[serde(rename = "Content")]
+    pub content: String,
+    #[serde(rename = "SubImageCount")]
+    pub sub_image_count: i32,
+    #[serde(rename = "SubImages")]
+    pub sub_images: Vec<TextResponseDataSubImage>,
+    #[serde(rename = "XmlResult")]
+    pub xml_result: String,
+    #[serde(rename = "AlgoVersion")]
+    pub algo_version: String,
+    #[serde(rename = "DebugInfo")]
+    pub debug_info: String,
+    #[serde(rename = "AlgoServer")]
+    pub algo_server: Vec<String>,
+    #[serde(rename = "IsMixedMode")]
+    pub is_mixed_mode: bool,
+    #[serde(rename = "PageNo")]
+    pub page_no: i32,
+    #[serde(rename = "KvExcelUrl")]
+    pub kv_excel_url: String,
 }
 
-impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
+impl crate::FlatSerialize for TextResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.kv_details,
-            &format!("{}.KvDetails", name),
+            &self.sub_image_count,
+            &format!("{}.SubImageCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_images,
+            &format!("{}.SubImages", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.xml_result,
+            &format!("{}.XmlResult", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.algo_version,
+            &format!("{}.AlgoVersion", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.debug_info,
+            &format!("{}.DebugInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.algo_server,
+            &format!("{}.AlgoServer", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.is_mixed_mode,
+            &format!("{}.IsMixedMode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.kv_excel_url,
+            &format!("{}.KvExcelUrl", name),
             params,
         );
     }
 }
 
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum ConfigCountry {
-    #[serde(rename = "India")]
-    India,
-    #[serde(rename = "Korea")]
-    Korea,
-    #[serde(rename = "Vietnam")]
-    Vietnam,
-    #[serde(rename = "Bangladesh")]
-    Bangladesh,
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StructureResponseDataSubImagesItemKvInfo {
+    #[serde(rename = "KvCount")]
+    pub kv_count: i32,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
-impl Default for ConfigCountry {
-    fn default() -> Self {
-        Self::India
-    }
-}
-
-impl ConfigCountry {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::India => "India",
-            Self::Korea => "Korea",
-            Self::Vietnam => "Vietnam",
-            Self::Bangladesh => "Bangladesh",
-        }
-    }
-}
-
-impl<'a> From<&'a ConfigCountry> for crate::QueryValue<'a> {
-    fn from(value: &'a ConfigCountry) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for ConfigCountry {
+impl crate::FlatSerialize for StructureResponseDataSubImagesItemKvInfo {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.push((name.to_string().into(), self.into()));
+        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
     }
 }
 
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum HandWriting {
-    #[serde(rename = "true")]
-    True,
-    #[serde(rename = "false")]
-    False,
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StructureResponseDataSubImage {
+    #[serde(rename = "SubImageId")]
+    pub sub_image_id: i32,
+    #[serde(rename = "Angle")]
+    pub angle: i32,
+    #[serde(rename = "KvInfo")]
+    pub kv_info: StructureResponseDataSubImagesItemKvInfo,
 }
 
-impl Default for HandWriting {
-    fn default() -> Self {
-        Self::True
-    }
-}
-
-impl HandWriting {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::True => "true",
-            Self::False => "false",
-        }
-    }
-}
-
-impl<'a> From<&'a HandWriting> for crate::QueryValue<'a> {
-    fn from(value: &'a HandWriting) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for HandWriting {
+impl crate::FlatSerialize for StructureResponseDataSubImage {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.push((name.to_string().into(), self.into()));
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_image_id,
+            &format!("{}.SubImageId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
+        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
     }
 }
 
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum IdcardCountry {
-    /// India
-    #[serde(rename = "India")]
-    India,
-    /// Vietnam
-    #[serde(rename = "Vietnam")]
-    Vietnam,
-    /// Korea
-    #[serde(rename = "Korea")]
-    Korea,
-    /// Bangladesh
-    #[serde(rename = "Bangladesh")]
-    Bangladesh,
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StructureResponseData {
+    #[serde(rename = "Height")]
+    pub height: i32,
+    #[serde(rename = "Width")]
+    pub width: i32,
+    #[serde(rename = "SubImageCount")]
+    pub sub_image_count: i32,
+    #[serde(rename = "SubImages")]
+    pub sub_images: Vec<StructureResponseDataSubImage>,
 }
 
-impl Default for IdcardCountry {
-    fn default() -> Self {
-        Self::India
-    }
-}
-
-impl IdcardCountry {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::India => "India",
-            Self::Vietnam => "Vietnam",
-            Self::Korea => "Korea",
-            Self::Bangladesh => "Bangladesh",
-        }
-    }
-}
-
-impl<'a> From<&'a IdcardCountry> for crate::QueryValue<'a> {
-    fn from(value: &'a IdcardCountry) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for IdcardCountry {
+impl crate::FlatSerialize for StructureResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum LicenseCountry {
-    #[serde(rename = "India")]
-    India,
-    #[serde(rename = "Korea")]
-    Korea,
-}
-
-impl Default for LicenseCountry {
-    fn default() -> Self {
-        Self::India
-    }
-}
-
-impl LicenseCountry {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::India => "India",
-            Self::Korea => "Korea",
-        }
-    }
-}
-
-impl<'a> From<&'a LicenseCountry> for crate::QueryValue<'a> {
-    fn from(value: &'a LicenseCountry) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for LicenseCountry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
+        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
+        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_image_count,
+            &format!("{}.SubImageCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sub_images,
+            &format!("{}.SubImages", name),
+            params,
+        );
     }
 }
 
@@ -9940,15 +9760,195 @@ impl crate::FlatSerialize for TextType {
     }
 }
 
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum ConfigCountry {
+    #[serde(rename = "India")]
+    India,
+    #[serde(rename = "Korea")]
+    Korea,
+    #[serde(rename = "Vietnam")]
+    Vietnam,
+    #[serde(rename = "Bangladesh")]
+    Bangladesh,
+}
+
+impl Default for ConfigCountry {
+    fn default() -> Self {
+        Self::India
+    }
+}
+
+impl ConfigCountry {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::India => "India",
+            Self::Korea => "Korea",
+            Self::Vietnam => "Vietnam",
+            Self::Bangladesh => "Bangladesh",
+        }
+    }
+}
+
+impl<'a> From<&'a ConfigCountry> for crate::QueryValue<'a> {
+    fn from(value: &'a ConfigCountry) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for ConfigCountry {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum HandWriting {
+    #[serde(rename = "true")]
+    True,
+    #[serde(rename = "false")]
+    False,
+}
+
+impl Default for HandWriting {
+    fn default() -> Self {
+        Self::True
+    }
+}
+
+impl HandWriting {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::True => "true",
+            Self::False => "false",
+        }
+    }
+}
+
+impl<'a> From<&'a HandWriting> for crate::QueryValue<'a> {
+    fn from(value: &'a HandWriting) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for HandWriting {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum IdcardCountry {
+    /// India
+    #[serde(rename = "India")]
+    India,
+    /// Vietnam
+    #[serde(rename = "Vietnam")]
+    Vietnam,
+    /// Korea
+    #[serde(rename = "Korea")]
+    Korea,
+    /// Bangladesh
+    #[serde(rename = "Bangladesh")]
+    Bangladesh,
+}
+
+impl Default for IdcardCountry {
+    fn default() -> Self {
+        Self::India
+    }
+}
+
+impl IdcardCountry {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::India => "India",
+            Self::Vietnam => "Vietnam",
+            Self::Korea => "Korea",
+            Self::Bangladesh => "Bangladesh",
+        }
+    }
+}
+
+impl<'a> From<&'a IdcardCountry> for crate::QueryValue<'a> {
+    fn from(value: &'a IdcardCountry) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for IdcardCountry {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum LicenseCountry {
+    #[serde(rename = "India")]
+    India,
+    #[serde(rename = "Korea")]
+    Korea,
+}
+
+impl Default for LicenseCountry {
+    fn default() -> Self {
+        Self::India
+    }
+}
+
+impl LicenseCountry {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::India => "India",
+            Self::Korea => "Korea",
+        }
+    }
+}
+
+impl<'a> From<&'a LicenseCountry> for crate::QueryValue<'a> {
+    fn from(value: &'a LicenseCountry) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for LicenseCountry {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeAllTextResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: TextResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: TextResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeAllTextResponse {
@@ -9962,10 +9962,10 @@ impl AsRef<crate::CodeMessage> for RecognizeAllTextResponse {
 pub struct RecognizeGeneralStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: StructureResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: StructureResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeGeneralStructureResponse {
@@ -9979,10 +9979,10 @@ impl AsRef<crate::CodeMessage> for RecognizeGeneralStructureResponse {
 pub struct RecognizeAdvancedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeAdvancedResponse {
@@ -9996,10 +9996,10 @@ impl AsRef<crate::CodeMessage> for RecognizeAdvancedResponse {
 pub struct RecognizeHandwritingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHandwritingResponse {
@@ -10013,10 +10013,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHandwritingResponse {
 pub struct RecognizeBasicResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBasicResponse {
@@ -10030,10 +10030,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBasicResponse {
 pub struct RecognizeGeneralResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeGeneralResponse {
@@ -10047,10 +10047,10 @@ impl AsRef<crate::CodeMessage> for RecognizeGeneralResponse {
 pub struct RecognizeTableOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTableOcrResponse {
@@ -10064,10 +10064,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTableOcrResponse {
 pub struct RecognizeHealthCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHealthCodeResponse {
@@ -10081,10 +10081,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHealthCodeResponse {
 pub struct RecognizeDocumentStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeDocumentStructureResponse {
@@ -10098,10 +10098,10 @@ impl AsRef<crate::CodeMessage> for RecognizeDocumentStructureResponse {
 pub struct RecognizeIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeIdcardResponse {
@@ -10115,10 +10115,10 @@ impl AsRef<crate::CodeMessage> for RecognizeIdcardResponse {
 pub struct RecognizePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizePassportResponse {
@@ -10132,10 +10132,10 @@ impl AsRef<crate::CodeMessage> for RecognizePassportResponse {
 pub struct RecognizeHouseholdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHouseholdResponse {
@@ -10149,10 +10149,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHouseholdResponse {
 pub struct RecognizeEstateCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEstateCertificationResponse {
@@ -10166,10 +10166,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEstateCertificationResponse {
 pub struct RecognizeBankCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBankCardResponse {
@@ -10183,10 +10183,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBankCardResponse {
 pub struct RecognizeBirthCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBirthCertificationResponse {
@@ -10200,10 +10200,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBirthCertificationResponse {
 pub struct RecognizeChinesePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeChinesePassportResponse {
@@ -10217,10 +10217,10 @@ impl AsRef<crate::CodeMessage> for RecognizeChinesePassportResponse {
 pub struct RecognizeExitEntryPermitToMainlandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToMainlandResponse {
@@ -10234,10 +10234,10 @@ impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToMainlandResponse {
 pub struct RecognizeExitEntryPermitToHKResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToHKResponse {
@@ -10251,10 +10251,10 @@ impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToHKResponse {
 pub struct RecognizeHKIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHKIdcardResponse {
@@ -10268,10 +10268,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHKIdcardResponse {
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardVersionIIResponse {
@@ -10285,10 +10285,10 @@ impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardVersionIIResponse 
 pub struct RecognizeInternationalIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeInternationalIdcardResponse {
@@ -10302,10 +10302,10 @@ impl AsRef<crate::CodeMessage> for RecognizeInternationalIdcardResponse {
 pub struct RecognizeMixedInvoicesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMixedInvoicesResponse {
@@ -10319,10 +10319,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMixedInvoicesResponse {
 pub struct RecognizeInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeInvoiceResponse {
@@ -10336,10 +10336,10 @@ impl AsRef<crate::CodeMessage> for RecognizeInvoiceResponse {
 pub struct RecognizeCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCarInvoiceResponse {
@@ -10353,10 +10353,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCarInvoiceResponse {
 pub struct RecognizeQuotaInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeQuotaInvoiceResponse {
@@ -10370,10 +10370,10 @@ impl AsRef<crate::CodeMessage> for RecognizeQuotaInvoiceResponse {
 pub struct RecognizeAirItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeAirItineraryResponse {
@@ -10387,10 +10387,10 @@ impl AsRef<crate::CodeMessage> for RecognizeAirItineraryResponse {
 pub struct RecognizeTrainInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTrainInvoiceResponse {
@@ -10404,10 +10404,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTrainInvoiceResponse {
 pub struct RecognizeTaxiInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTaxiInvoiceResponse {
@@ -10421,10 +10421,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTaxiInvoiceResponse {
 pub struct RecognizeRollTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeRollTicketResponse {
@@ -10438,10 +10438,10 @@ impl AsRef<crate::CodeMessage> for RecognizeRollTicketResponse {
 pub struct RecognizeBankAcceptanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBankAcceptanceResponse {
@@ -10455,10 +10455,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBankAcceptanceResponse {
 pub struct RecognizeBusShipTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBusShipTicketResponse {
@@ -10472,10 +10472,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBusShipTicketResponse {
 pub struct RecognizeNonTaxInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeNonTaxInvoiceResponse {
@@ -10489,10 +10489,10 @@ impl AsRef<crate::CodeMessage> for RecognizeNonTaxInvoiceResponse {
 pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCommonPrintedInvoiceResponse {
@@ -10506,10 +10506,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCommonPrintedInvoiceResponse {
 pub struct RecognizeHotelConsumeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeHotelConsumeResponse {
@@ -10523,10 +10523,10 @@ impl AsRef<crate::CodeMessage> for RecognizeHotelConsumeResponse {
 pub struct RecognizePaymentRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizePaymentRecordResponse {
@@ -10540,10 +10540,10 @@ impl AsRef<crate::CodeMessage> for RecognizePaymentRecordResponse {
 pub struct RecognizePurchaseRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizePurchaseRecordResponse {
@@ -10557,10 +10557,10 @@ impl AsRef<crate::CodeMessage> for RecognizePurchaseRecordResponse {
 pub struct RecognizeRideHailingItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeRideHailingItineraryResponse {
@@ -10574,10 +10574,10 @@ impl AsRef<crate::CodeMessage> for RecognizeRideHailingItineraryResponse {
 pub struct RecognizeShoppingReceiptResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeShoppingReceiptResponse {
@@ -10591,10 +10591,10 @@ impl AsRef<crate::CodeMessage> for RecognizeShoppingReceiptResponse {
 pub struct RecognizeSocialSecurityCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardResponse {
@@ -10608,10 +10608,10 @@ impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardResponse {
 pub struct RecognizeTollInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTollInvoiceResponse {
@@ -10625,10 +10625,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTollInvoiceResponse {
 pub struct RecognizeTaxClearanceCertificateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTaxClearanceCertificateResponse {
@@ -10642,10 +10642,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTaxClearanceCertificateResponse {
 pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeUsedCarInvoiceResponse {
@@ -10659,10 +10659,10 @@ impl AsRef<crate::CodeMessage> for RecognizeUsedCarInvoiceResponse {
 pub struct RecognizeBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBusinessLicenseResponse {
@@ -10676,10 +10676,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBusinessLicenseResponse {
 pub struct RecognizeBankAccountLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeBankAccountLicenseResponse {
@@ -10693,10 +10693,10 @@ impl AsRef<crate::CodeMessage> for RecognizeBankAccountLicenseResponse {
 pub struct RecognizeTradeMarkCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeTradeMarkCertificationResponse {
@@ -10710,10 +10710,10 @@ impl AsRef<crate::CodeMessage> for RecognizeTradeMarkCertificationResponse {
 pub struct RecognizeFoodProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeFoodProduceLicenseResponse {
@@ -10727,10 +10727,10 @@ impl AsRef<crate::CodeMessage> for RecognizeFoodProduceLicenseResponse {
 pub struct RecognizeFoodManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeFoodManageLicenseResponse {
@@ -10744,10 +10744,10 @@ impl AsRef<crate::CodeMessage> for RecognizeFoodManageLicenseResponse {
 pub struct RecognizeMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceManageLicenseResponse {
@@ -10761,10 +10761,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceManageLicenseResponse {
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceProduceLicenseResponse {
@@ -10778,10 +10778,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceProduceLicenseResponse 
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCtwoMedicalDeviceManageLicenseResponse {
@@ -10795,10 +10795,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCtwoMedicalDeviceManageLicenseRespon
 pub struct RecognizeCosmeticProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCosmeticProduceLicenseResponse {
@@ -10812,10 +10812,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCosmeticProduceLicenseResponse {
 pub struct RecognizeInternationalBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeInternationalBusinessLicenseResponse {
@@ -10829,10 +10829,10 @@ impl AsRef<crate::CodeMessage> for RecognizeInternationalBusinessLicenseResponse
 pub struct RecognizeVehicleLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeVehicleLicenseResponse {
@@ -10846,10 +10846,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleLicenseResponse {
 pub struct RecognizeDrivingLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeDrivingLicenseResponse {
@@ -10863,10 +10863,10 @@ impl AsRef<crate::CodeMessage> for RecognizeDrivingLicenseResponse {
 pub struct RecognizeWaybillResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeWaybillResponse {
@@ -10880,10 +10880,10 @@ impl AsRef<crate::CodeMessage> for RecognizeWaybillResponse {
 pub struct RecognizeCarNumberResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCarNumberResponse {
@@ -10897,10 +10897,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCarNumberResponse {
 pub struct RecognizeCarVinCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCarVinCodeResponse {
@@ -10914,10 +10914,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCarVinCodeResponse {
 pub struct RecognizeVehicleRegistrationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeVehicleRegistrationResponse {
@@ -10931,10 +10931,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleRegistrationResponse {
 pub struct RecognizeVehicleCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeVehicleCertificationResponse {
@@ -10948,10 +10948,10 @@ impl AsRef<crate::CodeMessage> for RecognizeVehicleCertificationResponse {
 pub struct RecognizeEduFormulaResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduFormulaResponse {
@@ -10965,10 +10965,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduFormulaResponse {
 pub struct RecognizeEduOralCalculationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduOralCalculationResponse {
@@ -10982,10 +10982,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduOralCalculationResponse {
 pub struct RecognizeEduPaperOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduPaperOcrResponse {
@@ -10999,10 +10999,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduPaperOcrResponse {
 pub struct RecognizeEduPaperCutResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduPaperCutResponse {
@@ -11016,10 +11016,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduPaperCutResponse {
 pub struct RecognizeEduQuestionOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduQuestionOcrResponse {
@@ -11033,10 +11033,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduQuestionOcrResponse {
 pub struct RecognizeEduPaperStructedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEduPaperStructedResponse {
@@ -11050,10 +11050,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEduPaperStructedResponse {
 pub struct RecognizeMultiLanguageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeMultiLanguageResponse {
@@ -11067,10 +11067,10 @@ impl AsRef<crate::CodeMessage> for RecognizeMultiLanguageResponse {
 pub struct RecognizeEnglishResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeEnglishResponse {
@@ -11084,10 +11084,10 @@ impl AsRef<crate::CodeMessage> for RecognizeEnglishResponse {
 pub struct RecognizeThaiResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeThaiResponse {
@@ -11101,10 +11101,10 @@ impl AsRef<crate::CodeMessage> for RecognizeThaiResponse {
 pub struct RecognizeJanpaneseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeJanpaneseResponse {
@@ -11118,10 +11118,10 @@ impl AsRef<crate::CodeMessage> for RecognizeJanpaneseResponse {
 pub struct RecognizeKoreanResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeKoreanResponse {
@@ -11135,10 +11135,10 @@ impl AsRef<crate::CodeMessage> for RecognizeKoreanResponse {
 pub struct RecognizeLatinResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeLatinResponse {
@@ -11152,10 +11152,10 @@ impl AsRef<crate::CodeMessage> for RecognizeLatinResponse {
 pub struct RecognizeRussianResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeRussianResponse {
@@ -11169,10 +11169,10 @@ impl AsRef<crate::CodeMessage> for RecognizeRussianResponse {
 pub struct RecognizeCovidTestReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for RecognizeCovidTestReportResponse {
@@ -11186,10 +11186,10 @@ impl AsRef<crate::CodeMessage> for RecognizeCovidTestReportResponse {
 pub struct VerifyBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
@@ -11203,10 +11203,10 @@ impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
 }
 
 impl AsRef<crate::CodeMessage> for VerifyVATInvoiceResponse {

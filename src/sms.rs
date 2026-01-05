@@ -150,7 +150,6 @@ impl Connection {
     /// # Error Codes
     /// - `AdminBackOssFileNotUploadError`: Administrator ID card portrait photo not uploaded.
     /// - `AdminDateNotValid`: Current time is outside the administrator ID card validity period.
-    /// - `AdminFrontOssFileNotUploadError`: Administrator ID card national emblem photo not uploaded.
     /// - `AdminIdcardExpdateNotMatchRegexError`: Invalid administrator ID card expiration time format.
     /// - `AdminIdcardFrontFaceFileError`: Invalid format for administrator's ID card national emblem photo.
     /// - `AdminIdcardFrontFaceNullError`: Administrator's ID card national emblem photo cannot be empty.
@@ -169,29 +168,30 @@ impl Connection {
     /// - `CertifyCodeError`: SMS verification code is incorrect.
     /// - `CompanyNameNullError`: Company name cannot be empty.
     /// - `CompanyTypeError`: Invalid company type.
+    /// - `QualificationNameNullError`: Qualification name cannot be empty.
+    /// - `QualificationNameNotMatchRegex`: Qualification names must be in Chinese, English, or alphanumeric combinations. Symbols or pure numbers are not supported.
+    /// - `QualificationNameAlreadyExist`: The qualification name already exists. Please modify and resubmit.
+    /// - `OtherFileTypeError`: Invalid file format for other documents.
+    /// - `LegalPersonIdcardTypeError`: Invalid legal person ID card type.
+    /// - `LegalIdCardNoNullError`: Legal person's ID number cannot be empty.
+    /// - `LegalIdCardNotMatchRegex`: Invalid legal person ID number format.
+    /// - `LegalPersonNameNullError`: Legal person's name cannot be empty.
+    /// - `OrganizationCodeNullError`: Unified Social Credit Code cannot be empty.
+    /// - `LegalPersonIdcardEfftimeNotMatchRegexError`: Invalid legal person ID card expiration time format.
+    /// - `LegalDateNotValid`: Current time is outside the legal person ID card validity period.
+    /// - `LegalFrontOssFileNotUploadError`: Legal person ID card national emblem photo not uploaded.
+    /// - `LegalBackOssFileNotUploadError`: Legal person ID card portrait photo not uploaded.
+    /// - `AdminFrontOssFileNotUploadError`: Administrator ID card national emblem photo not uploaded.
+    /// - `OtherOssFileNotUploadError`: Other files not uploaded.
+    /// - `GrayCustAccessError`: This customer is not authorized to use the OpenAPI. Please contact support for whitelisting.
+    /// - `CustNotExistError`: Customer's cloud communication information is invalid.
+    /// - `NotEnterpriseCertifyCustCheckError`: Non-enterprise certified customers are not allowed to access.
+    /// - `PhoneNoCertifyCodeNullError`: Phone number and verification code cannot be empty.
     /// - `CompanyVerificationFailedCompanyStateInvalid`: Four Elements Verification Failed: Company is not in normal operation.
     /// - `CompanyVerificationFailedFourElementsError`: Four Elements Verification Failed: Authentication Failed.
     /// - `CompanyVerificationFailedMismatch`: Four Elements Verification Failed: Mismatch between Legal Representative and Company Information.
     /// - `CompanyVerificationFailedNoCompany`: Four Elements Verification Failed: Company Not Found.
     /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.
-    /// - `CustNotExistError`: Customer's cloud communication information is invalid.
-    /// - `GrayCustAccessError`: This customer is not authorized to use the OpenAPI. Please contact support for whitelisting.
-    /// - `LegalBackOssFileNotUploadError`: Legal person ID card portrait photo not uploaded.
-    /// - `LegalDateNotValid`: Current time is outside the legal person ID card validity period.
-    /// - `LegalFrontOssFileNotUploadError`: Legal person ID card national emblem photo not uploaded.
-    /// - `LegalIdCardNoNullError`: Legal person's ID number cannot be empty.
-    /// - `LegalIdCardNotMatchRegex`: Invalid legal person ID number format.
-    /// - `LegalPersonIdcardEfftimeNotMatchRegexError`: Invalid legal person ID card expiration time format.
-    /// - `LegalPersonIdcardTypeError`: Invalid legal person ID card type.
-    /// - `LegalPersonNameNullError`: Legal person's name cannot be empty.
-    /// - `NotEnterpriseCertifyCustCheckError`: Non-enterprise certified customers are not allowed to access.
-    /// - `OrganizationCodeNullError`: Unified Social Credit Code cannot be empty.
-    /// - `OtherFileTypeError`: Invalid file format for other documents.
-    /// - `OtherOssFileNotUploadError`: Other files not uploaded.
-    /// - `PhoneNoCertifyCodeNullError`: Phone number and verification code cannot be empty.
-    /// - `QualificationNameAlreadyExist`: The qualification name already exists. Please modify and resubmit.
-    /// - `QualificationNameNotMatchRegex`: Qualification names must be in Chinese, English, or alphanumeric combinations. Symbols or pure numbers are not supported.
-    /// - `QualificationNameNullError`: Qualification name cannot be empty.
     ///
     /// # Methods
     /// - POST
@@ -263,52 +263,52 @@ impl Connection {
     /// - 不支持批量修改短信资质，建议每次修改至少间隔5秒。
     ///
     /// # Error Codes
-    /// - `AdminBackOssFileNotUploadError`: Administrator ID card portrait photo not uploaded.
-    /// - `AdminDateNotValid`: Current time is outside the administrator ID card validity period.
-    /// - `AdminFrontOssFileNotUploadError`: Administrator ID card national emblem photo not uploaded.
-    /// - `AdminIdcardExpdateNotMatchRegexError`: Invalid administrator ID card expiration time format.
-    /// - `AdminIdcardFrontFaceFileError`: Invalid format for administrator's ID card national emblem photo.
-    /// - `AdminIdcardFrontFaceNullError`: Administrator's ID card national emblem photo cannot be empty.
-    /// - `AdminIdcardNoNullError`: Administrator's ID number cannot be empty.
-    /// - `AdminIdcardNotMatchRegex`: Invalid administrator ID number format.
-    /// - `AdminIdcardPicsFileError`: Invalid format for administrator's ID card portrait photo.
-    /// - `AdminIdcardPicsNullError`: Administrator's ID card portrait photo cannot be empty.
-    /// - `AdminIdcardTypeError`: Invalid administrator ID card type.
-    /// - `AdminNameNullError`: Administrator's name cannot be empty.
-    /// - `BusinessLicenseDateNotMatchRegexError`: Invalid business license expiration time format.
-    /// - `BusinessLicenseDateNotValid`: Current time is outside the business license validity period.
-    /// - `BusinessLicenseOssFileNotUploadError`: Business license file not uploaded.
-    /// - `BusinessLicensePicsFileError`: Invalid business license file format.
+    /// - `QualificationNameNullError`: Qualification name cannot be empty.
     /// - `BusinessLicensePicsNullError`: Business license documents cannot be empty.
+    /// - `OtherFileTypeError`: Invalid file format for other documents.
+    /// - `QualificationNameAlreadyExist`: The qualification name already exists. Please modify and resubmit.
+    /// - `QualificationNameNotMatchRegex`: Qualification names must be in Chinese, English, or alphanumeric combinations. Symbols or pure numbers are not supported.
+    /// - `AdminIdcardTypeError`: Invalid administrator ID card type.
+    /// - `BusinessLicensePicsFileError`: Invalid business license file format.
     /// - `BusinessLicenseTypeError`: Invalid business license type.
-    /// - `CertifyCodeError`: SMS verification code is incorrect.
+    /// - `LegalIdCardNoNullError`: Legal person's ID number cannot be empty.
+    /// - `LegalPersonIdcardTypeError`: Invalid legal person ID card type.
     /// - `CompanyNameNullError`: Company name cannot be empty.
     /// - `CompanyTypeError`: Invalid company type.
+    /// - `LegalIdCardNotMatchRegex`: Invalid legal person ID number format.
+    /// - `LegalPersonNameNullError`: Legal person's name cannot be empty.
+    /// - `OrganizationCodeNullError`: Unified Social Credit Code cannot be empty.
+    /// - `AdminIdcardFrontFaceFileError`: Invalid format for administrator's ID card national emblem photo.
+    /// - `AdminIdcardFrontFaceNullError`: Administrator's ID card national emblem photo cannot be empty.
+    /// - `AdminIdcardPicsFileError`: Invalid format for administrator's ID card portrait photo.
+    /// - `AdminIdcardPicsNullError`: Administrator's ID card portrait photo cannot be empty.
+    /// - `AdminNameNullError`: Administrator's name cannot be empty.
+    /// - `AdminIdcardExpdateNotMatchRegexError`: Invalid administrator ID card expiration time format.
+    /// - `AdminIdcardNoNullError`: Administrator's ID number cannot be empty.
+    /// - `AdminIdcardNotMatchRegex`: Invalid administrator ID number format.
+    /// - `BusinessLicenseDateNotMatchRegexError`: Invalid business license expiration time format.
+    /// - `LegalPersonIdcardEfftimeNotMatchRegexError`: Invalid legal person ID card expiration time format.
+    /// - `AdminDateNotValid`: Current time is outside the administrator ID card validity period.
+    /// - `BusinessLicenseDateNotValid`: Current time is outside the business license validity period.
+    /// - `BusinessLicenseOssFileNotUploadError`: Business license file not uploaded.
+    /// - `LegalDateNotValid`: Current time is outside the legal person ID card validity period.
+    /// - `LegalFrontOssFileNotUploadError`: Legal person ID card national emblem photo not uploaded.
+    /// - `AdminBackOssFileNotUploadError`: Administrator ID card portrait photo not uploaded.
+    /// - `AdminFrontOssFileNotUploadError`: Administrator ID card national emblem photo not uploaded.
+    /// - `CustNotExistError`: Customer's cloud communication information is invalid.
+    /// - `GrayCustAccessError`: This customer is not authorized to use the OpenAPI. Please contact support for whitelisting.
+    /// - `LegalBackOssFileNotUploadError`: Legal person ID card portrait photo not uploaded.
+    /// - `OtherOssFileNotUploadError`: Other files not uploaded.
+    /// - `CertifyCodeError`: SMS verification code is incorrect.
+    /// - `NotEnterpriseCertifyCustCheckError`: Non-enterprise certified customers are not allowed to access.
+    /// - `PhoneNoCertifyCodeNullError`: Phone number and verification code cannot be empty.
+    /// - `SameQualificationGroupError`: A qualification with the same company and administrator information already exists.
+    /// - `WorkOrderIdExpired`: Qualification details have changed. Please re-query the qualification list and resubmit.
     /// - `CompanyVerificationFailedCompanyStateInvalid`: Four Elements Verification Failed: Company is not in normal operation.
     /// - `CompanyVerificationFailedFourElementsError`: Four Elements Verification Failed: Authentication Failed.
     /// - `CompanyVerificationFailedMismatch`: Four Elements Verification Failed: Mismatch between Legal Representative and Company Information.
     /// - `CompanyVerificationFailedNoCompany`: Four Elements Verification Failed: Company Not Found.
     /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.
-    /// - `CustNotExistError`: Customer's cloud communication information is invalid.
-    /// - `GrayCustAccessError`: This customer is not authorized to use the OpenAPI. Please contact support for whitelisting.
-    /// - `LegalBackOssFileNotUploadError`: Legal person ID card portrait photo not uploaded.
-    /// - `LegalDateNotValid`: Current time is outside the legal person ID card validity period.
-    /// - `LegalFrontOssFileNotUploadError`: Legal person ID card national emblem photo not uploaded.
-    /// - `LegalIdCardNoNullError`: Legal person's ID number cannot be empty.
-    /// - `LegalIdCardNotMatchRegex`: Invalid legal person ID number format.
-    /// - `LegalPersonIdcardEfftimeNotMatchRegexError`: Invalid legal person ID card expiration time format.
-    /// - `LegalPersonIdcardTypeError`: Invalid legal person ID card type.
-    /// - `LegalPersonNameNullError`: Legal person's name cannot be empty.
-    /// - `NotEnterpriseCertifyCustCheckError`: Non-enterprise certified customers are not allowed to access.
-    /// - `OrganizationCodeNullError`: Unified Social Credit Code cannot be empty.
-    /// - `OtherFileTypeError`: Invalid file format for other documents.
-    /// - `OtherOssFileNotUploadError`: Other files not uploaded.
-    /// - `PhoneNoCertifyCodeNullError`: Phone number and verification code cannot be empty.
-    /// - `QualificationNameAlreadyExist`: The qualification name already exists. Please modify and resubmit.
-    /// - `QualificationNameNotMatchRegex`: Qualification names must be in Chinese, English, or alphanumeric combinations. Symbols or pure numbers are not supported.
-    /// - `QualificationNameNullError`: Qualification name cannot be empty.
-    /// - `SameQualificationGroupError`: A qualification with the same company and administrator information already exists.
-    /// - `WorkOrderIdExpired`: Qualification details have changed. Please re-query the qualification list and resubmit.
     ///
     /// # Methods
     /// - POST
@@ -333,8 +333,8 @@ impl Connection {
     /// - 审核不通过的资质可通过[修改资质信息](~~UpdateSmsQualification~~)后直接重新发起审核。
     ///
     /// # Error Codes
-    /// - `BindSignDeleteFailed`: The qualification is bound to a signature and cannot be deleted temporarily.
     /// - `QualificationNotExist`: Qualification does not exist.
+    /// - `BindSignDeleteFailed`: The qualification is bound to a signature and cannot be deleted temporarily.
     ///
     /// # Methods
     /// - POST
@@ -397,19 +397,19 @@ impl Connection {
     /// - 创建授权委托书后，您可以通过[QuerySmsAuthorizationLetter](~~QuerySmsAuthorizationLetter~~)查询已创建的授权书详情；通过接口创建的授权书信息会同步在短信服务控制台。
     ///
     /// # Error Codes
+    /// - `AuthorizationLetterNameRepeat`: The authorization letter name is duplicated.
     /// - `AuthorizationLetterDateNotMatchRegex`: The format of the authorization letter's effective and expiry date is incorrect.
     /// - `AuthorizationLetterDateNotValid`: The current time is not within the validity period of the authorization letter.
     /// - `AuthorizationLetterNameNotMatchRegex`: The authorization letter name cannot be empty and must consist of Chinese, English characters or a combination with numbers, symbols or purely numeric input are not supported.
     /// - `AuthorizationLetterNameOverLimit`: The authorization letter name exceeds the 100-character length limit.
-    /// - `AuthorizationLetterNameRepeat`: The authorization letter name is duplicated.
     /// - `AuthorizationNotMatchRegex`: The authorizer name cannot be empty and currently does not support any symbols except middle dots, spaces, Chinese brackets, and English parentheses or purely numeric input.
     /// - `AuthorizationOssFileNotUploadError`: The authorization letter file has not been uploaded.
     /// - `AuthorizationOverLimit`: The authorizer exceeds the 1000-character length limit.
-    /// - `OrganizationCodeOverLimit`: The organization code is limited to 150 characters.
-    /// - `ProxyAuthorizationNotMatchRegex`: The authorized party name currently does not support any symbols except middle dots, spaces, Chinese brackets, and English parentheses or purely numeric input.
     /// - `ProxyAuthorizationOverLimit`: The authorized party exceeds the 1000-character length limit.
-    /// - `SignNotMatchRegex`: The signature length is limited to 2-12 characters and does not support some special characters.
+    /// - `ProxyAuthorizationNotMatchRegex`: The authorized party name currently does not support any symbols except middle dots, spaces, Chinese brackets, and English parentheses or purely numeric input.
     /// - `SignNumOverLimit`: The signature exceeds the limit of 100 entries.
+    /// - `SignNotMatchRegex`: The signature length is limited to 2-12 characters and does not support some special characters.
+    /// - `OrganizationCodeOverLimit`: The organization code is limited to 150 characters.
     ///
     /// # Methods
     /// - POST
@@ -461,22 +461,22 @@ impl Connection {
     /// - 提交签名申请后，您可以通过[GetSmsSign](~~2807429~~)接口查询签名审核状态和详情。也可以[配置回执消息](~~101508~~)，通过[SignSmsReport](~~120998~~)获取签名的审核状态消息。
     ///
     /// # Error Codes
-    /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    /// - `InvalidApplySceneContent`: For certain signature sources, the
-    ///     applySceneContent should be an HTTP or HTTPS link.
+    /// - `ParameterMismatch.ThirdParty`: The type of signature, whether for personal use or for a third party, should be consistent with the qualifications.
+    /// - `SignName.Exists`: Sorry, this signature already exists and cannot be applied for again.
     /// - `InvalidQualification`: The qualification should be approved.
     /// - `InvalidSignName`: The signature cannot contain spaces, special
     ///     symbols, or all numbers.
+    /// - `InvalidApplySceneContent`: For certain signature sources, the
+    ///     applySceneContent should be an HTTP or HTTPS link.
     /// - `MissApplySceneContent`: In some signature sources, the applySceneContent is required.
     /// - `MissingSignName`: The signature name cannot be empty.
-    /// - `ParameterMismatch.ThirdParty`: The type of signature, whether for personal use or for a third party, should be consistent with the qualifications.
-    /// - `QualificationNotFound`: Qualification does not exist.
-    /// - `SignName.Exists`: Sorry, this signature already exists and cannot be applied for again.
-    /// - `SmsAuthorizationLetterNotExist`: Authorization does not belong to the customer.
     /// - `SmsAuthorizationLetterNotMatch`: Please bind the available authorization letter whose the social credit code is same  to the the social credit code  of qualification.
+    /// - `SmsAuthorizationLetterNotExist`: Authorization does not belong to the customer.
     /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
     /// - `TrademarkNotExist`: The trademark does not exist.
+    /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
+    /// - `QualificationNotFound`: Qualification does not exist.
     ///
     /// # Methods
     /// - POST
@@ -549,22 +549,22 @@ impl Connection {
     /// - 通过接口申请的签名信息会同步在短信服务控制台，在控制台对签名的相关操作，请参见[短信签名](~~108073~~)。
     ///
     /// # Error Codes
-    /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
+    /// - `ParameterMismatch.ThirdParty`: The type of signature, whether for personal use or for a third party, should be consistent with the qualifications.
+    /// - `SignName.Exists`: Sorry, this signature already exists and cannot be applied for again.
+    /// - `InvalidQualification`: The qualification should be approved.
     /// - `InvalidApplySceneContent`: For certain signature sources, the
     ///     applySceneContent should be an HTTP or HTTPS link.
-    /// - `InvalidQualification`: The qualification should be approved.
     /// - `InvalidSignName`: The signature cannot contain spaces, special
     ///     symbols, or all numbers.
     /// - `MissApplySceneContent`: In some signature sources, the applySceneContent is required.
     /// - `MissingSignName`: The signature name cannot be empty.
-    /// - `ParameterMismatch.ThirdParty`: The type of signature, whether for personal use or for a third party, should be consistent with the qualifications.
-    /// - `QualificationNotFound`: Qualification does not exist.
-    /// - `SignName.Exists`: Sorry, this signature already exists and cannot be applied for again.
-    /// - `SmsAuthorizationLetterNotExist`: Authorization does not belong to the customer.
     /// - `SmsAuthorizationLetterNotMatch`: Please bind the available authorization letter whose the social credit code is same  to the the social credit code  of qualification.
+    /// - `SmsAuthorizationLetterNotExist`: Authorization does not belong to the customer.
     /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
     /// - `TrademarkNotExist`: The trademark does not exist.
+    /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
+    /// - `QualificationNotFound`: Qualification does not exist.
     ///
     /// # Methods
     /// - POST
@@ -606,15 +606,15 @@ impl Connection {
     /// 更换签名的资质和授权书。
     ///
     /// # Error Codes
-    /// - `QualificationNotComplete`: The qualification elements are incomplete.
     /// - `QualificationNotExist`: Can't query qualification information.
-    /// - `SMS_STATUS_ILLEGAL`: When replacing the qualification and power of attorney of the signature, the signature status must be approved.
     /// - `SmsAuthorizationLetterNotExist`: Authorization does not belong to the customer.
-    /// - `SmsPassedAuthorizationLetterNotMatch`: Please bind audited authorization letter whose the social credit code is same  to the the social credit code  of qualification.
-    /// - `SmsQualificationNotPassed`: The qualification has not been approved and cannot be bound to the signature.
-    /// - `SmsQualificationRegisterFailed`: The registration of the current qualification fails. Please modify the qualification and re-bind the qualification before completing the signature registration process again.
-    /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
     /// - `SmsSignatureNotExist`: Signature does not exist.
+    /// - `SmsQualificationRegisterFailed`: The registration of the current qualification fails. Please modify the qualification and re-bind the qualification before completing the signature registration process again.
+    /// - `SmsQualificationNotPassed`: The qualification has not been approved and cannot be bound to the signature.
+    /// - `SmsPassedAuthorizationLetterNotMatch`: Please bind audited authorization letter whose the social credit code is same  to the the social credit code  of qualification.
+    /// - `QualificationNotComplete`: The qualification elements are incomplete.
+    /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
+    /// - `SMS_STATUS_ILLEGAL`: When replacing the qualification and power of attorney of the signature, the signature status must be approved.
     ///
     /// # Methods
     /// - POST
@@ -718,16 +718,16 @@ impl Connection {
     /// 商标应在国家知识产权局商标局-中国商标网中可查，且商标所有方与企业名称一致。
     ///
     /// # Error Codes
-    /// - `TrademarkApplicantNameNotMatchRegex`: The trademark applicant cannot be empty.
-    /// - `TrademarkApplicantNameOverLimit`: The trademark applicant exceeds the length limit.
-    /// - `TrademarkDateNotValid`: The trademark's validity period is not within the valid range.
+    /// - `TrademarkOssFileNotUploadError`: The trademark screenshot file is not uploaded.
     /// - `TrademarkLetterDateNotMatchRegex`: The format of the trademark's validity period is incorrect.
     /// - `TrademarkNameNotMatchRegex`: The trademark name cannot be empty.
     /// - `TrademarkNameOverLimit`: The trademark name exceeds the length limit.
-    /// - `TrademarkOssFileNotUploadError`: The trademark screenshot file is not uploaded.
-    /// - `TrademarkPicsFileError`: The format of the trademark screenshot file is incorrect.
     /// - `TrademarkRegistrationNumberNotMatchRegex`: The trademark registration number cannot be empty.
     /// - `TrademarkRegistrationNumberOverLimit`: The trademark registration number exceeds the length limit.
+    /// - `TrademarkApplicantNameNotMatchRegex`: The trademark applicant cannot be empty.
+    /// - `TrademarkApplicantNameOverLimit`: The trademark applicant exceeds the length limit.
+    /// - `TrademarkDateNotValid`: The trademark's validity period is not within the valid range.
+    /// - `TrademarkPicsFileError`: The format of the trademark screenshot file is incorrect.
     ///
     /// # Methods
     /// - POST
@@ -768,16 +768,16 @@ impl Connection {
     /// 签名来源选择已上线APP，则需要上传ICP备案截图。
     ///
     /// # Error Codes
-    /// - `AppApprovalDateNotValid`: The validity period of the APP-ICP record is not within the valid range.
-    /// - `AppDomainNotMatchRegex`: The APP app store link cannot be empty and must start with http:// or https://.
-    /// - `AppDomainOverLimit`: The APP app store link exceeds the length limit.
-    /// - `AppIcpLicenseNumberNotMatchRegex`: The ICP record/license number cannot be empty.
-    /// - `AppIcpLicenseNumberOverLimit`: The ICP record/license number exceeds the length limit.
-    /// - `AppIcpRecordDateNotMatchRegex`: The format of the APP-ICP record approval date is incorrect.
     /// - `AppIcpRecordOssFileNotUploadError`: The APP-ICP record screenshot file is not uploaded.
-    /// - `AppIcpRecordPicsFileError`: The format of the APP-ICP record screenshot file is incorrect.
+    /// - `AppIcpRecordDateNotMatchRegex`: The format of the APP-ICP record approval date is incorrect.
     /// - `AppPrincipalUnitNameNotMatchRegex`: The principal unit name of the APP cannot be empty.
     /// - `AppPrincipalUnitNameOverLimit`: The principal unit name of the APP exceeds the length limit.
+    /// - `AppIcpLicenseNumberNotMatchRegex`: The ICP record/license number cannot be empty.
+    /// - `AppIcpLicenseNumberOverLimit`: The ICP record/license number exceeds the length limit.
+    /// - `AppDomainNotMatchRegex`: The APP app store link cannot be empty and must start with http:// or https://.
+    /// - `AppDomainOverLimit`: The APP app store link exceeds the length limit.
+    /// - `AppApprovalDateNotValid`: The validity period of the APP-ICP record is not within the valid range.
+    /// - `AppIcpRecordPicsFileError`: The format of the APP-ICP record screenshot file is incorrect.
     ///
     /// # Methods
     /// - POST
@@ -829,16 +829,16 @@ impl Connection {
     /// - 仅支持企业认证用户申请推广短信和国际/港澳台消息，个人用户与企业用户权益区别详情请参见[使用须知](~~55324~~)。
     ///
     /// # Error Codes
-    /// - `AssocSignUnapproved`: Associated signature must be approved.
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
+    /// - `AssocSignUnapproved`: Associated signature must be approved.
+    /// - `InvalidTemplateRule.Format`: The parameter TemplateRule format must be JSON.
     /// - `InvalidMoreData`: Specified parameter MoreData is not valid.
+    /// - `TemplateVarLimitExceeded`: The verification code template only supports one variable.
     /// - `InvalidTemplateContent.Format`: Invalid template content format.
     /// - `InvalidTemplateRule`: The template variable format is non-standard. Please refer to the variable format specifications in the help documentation.
-    /// - `InvalidTemplateRule.Format`: The parameter TemplateRule format must be JSON.
-    /// - `MissingTemplateName`: The template  name cannot be empty.
     /// - `ServiceNotOpened`: This product service is not opened.
+    /// - `MissingTemplateName`: The template  name cannot be empty.
     /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.
-    /// - `TemplateVarLimitExceeded`: The verification code template only supports one variable.
     ///
     /// # Methods
     /// - POST
@@ -910,16 +910,16 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `AssocSignUnapproved`: Associated signature must be approved.
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    /// - `InvalidMoreData`: Specified parameter MoreData is not valid.
-    /// - `InvalidTemplateContent.Format`: Invalid template content format.
+    /// - `AssocSignUnapproved`: Associated signature must be approved.
     /// - `InvalidTemplateRule`: The template variable format is non-standard. Please refer to the variable format specifications in the help documentation.
     /// - `InvalidTemplateRule.Format`: The parameter TemplateRule format must be JSON.
-    /// - `MissingTemplateName`: The template  name cannot be empty.
-    /// - `ServiceNotOpened`: This product service is not opened.
-    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.
+    /// - `InvalidMoreData`: Specified parameter MoreData is not valid.
     /// - `TemplateVarLimitExceeded`: The verification code template only supports one variable.
+    /// - `InvalidTemplateContent.Format`: Invalid template content format.
+    /// - `ServiceNotOpened`: This product service is not opened.
+    /// - `MissingTemplateName`: The template  name cannot be empty.
+    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.
     ///
     /// # Methods
     /// - POST
@@ -1335,8 +1335,8 @@ impl Connection {
     /// 查询单个号码的卡片短信发送记录和发送状态等信息。
     ///
     /// # Error Codes
-    /// - `InvalidParam.PageSize`: PageSize must be less than or equal to 50.
     /// - `InvalidParam.PhoneNumber`: Incorrect phone number format.
+    /// - `InvalidParam.PageSize`: PageSize must be less than or equal to 50.
     /// - `InvalidParam.SendDate`: Only the last 30 days can be queried.
     /// - `InvalidParameter`: At most, only one parameter can be passed among bizCardId, bizSmsId, and bizDigitId.
     ///
@@ -6589,320 +6589,36 @@ impl crate::Request for UntagResources {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct AddShortUrlResponseData {
-    #[serde(rename = "ExpireDate")]
-    pub expire_date: String,
-    #[serde(rename = "ShortUrl")]
-    pub short_url: String,
-    #[serde(rename = "SourceUrl")]
-    pub source_url: String,
-}
-
-impl crate::FlatSerialize for AddShortUrlResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_date,
-            &format!("{}.ExpireDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url,
-            &format!("{}.ShortUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_url,
-            &format!("{}.SourceUrl", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct AddSmsSignSignFileList {
-    #[serde(rename = "FileContents")]
-    pub file_contents: String,
-    #[serde(rename = "FileSuffix")]
-    pub file_suffix: String,
-}
-
-impl crate::FlatSerialize for AddSmsSignSignFileList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.file_contents,
-            &format!("{}.FileContents", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.file_suffix,
-            &format!("{}.FileSuffix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BatchCardSmsResponseData {
-    #[serde(rename = "BizCardId")]
-    pub biz_card_id: String,
-    #[serde(rename = "BizDigitalId")]
-    pub biz_digital_id: String,
-    #[serde(rename = "BizSmsId")]
-    pub biz_sms_id: String,
-    #[serde(rename = "CardTmpState")]
-    pub card_tmp_state: i32,
-    #[serde(rename = "MediaMobiles")]
-    pub media_mobiles: String,
-    #[serde(rename = "NotMediaMobiles")]
-    pub not_media_mobiles: String,
-}
-
-impl crate::FlatSerialize for BatchCardSmsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_card_id,
-            &format!("{}.BizCardId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_digital_id,
-            &format!("{}.BizDigitalId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_sms_id,
-            &format!("{}.BizSmsId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.media_mobiles,
-            &format!("{}.MediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CardObject {
-    #[serde(rename = "customUrl")]
-    pub custom_url: String,
-    #[serde(rename = "dyncParams")]
-    pub dync_params: String,
-    #[serde(rename = "mobile")]
-    pub mobile: String,
-}
-
-impl crate::FlatSerialize for CardObject {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_url,
-            &format!("{}.customUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dync_params,
-            &format!("{}.dyncParams", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CardSendDetailDto {
-    #[serde(rename = "CurrentPage")]
-    pub current_page: i64,
-    #[serde(rename = "PageSize")]
-    pub page_size: i64,
-    #[serde(rename = "Records")]
-    pub records: Vec<DtoRecord>,
-    #[serde(rename = "TotalCount")]
-    pub total_count: i64,
-}
-
-impl crate::FlatSerialize for CardSendDetailDto {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.current_page,
-            &format!("{}.CurrentPage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.page_size,
-            &format!("{}.PageSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.records, &format!("{}.Records", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CardTemplateResponseData {
-    #[serde(rename = "AccessKeyId")]
-    pub access_key_id: String,
-    #[serde(rename = "AliUid")]
-    pub ali_uid: String,
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "ExpireTime")]
-    pub expire_time: String,
-    #[serde(rename = "Host")]
-    pub host: String,
-    #[serde(rename = "Policy")]
-    pub policy: String,
-    #[serde(rename = "Signature")]
-    pub signature: String,
-    #[serde(rename = "StartPath")]
-    pub start_path: String,
-}
-
-impl crate::FlatSerialize for CardTemplateResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.ali_uid, &format!("{}.AliUid", name), params);
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CheckMobilesCardSupportResponseData {
-    #[serde(rename = "queryResult")]
-    pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResult>,
-}
-
-impl crate::FlatSerialize for CheckMobilesCardSupportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.query_result,
-            &format!("{}.queryResult", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CheckMobilesCardSupportResponseDataQueryResult {
-    #[serde(rename = "mobile")]
-    pub mobile: String,
-    #[serde(rename = "support")]
-    pub support: bool,
-}
-
-impl crate::FlatSerialize for CheckMobilesCardSupportResponseDataQueryResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
-        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.support", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CreateCardSmsTemplateResponseData {
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
-}
-
-impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataBusinessLicensePic {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-    #[serde(rename = "PicUrl")]
-    pub pic_url: String,
+pub struct SubmitSmsQualificationBusinessLicensePic {
     #[serde(rename = "Type")]
     pub r#type: String,
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
 }
 
-impl crate::FlatSerialize for DataBusinessLicensePic {
+impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePic {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SubmitSmsQualificationOtherFile {
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
+}
+
+impl crate::FlatSerialize for SubmitSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -6913,55 +6629,32 @@ impl crate::FlatSerialize for DataBusinessLicensePic {
             &format!("{}.LicensePic", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataFileUrlList {
-    #[serde(rename = "MoreDataFileUrl")]
-    pub more_data_file_url: Vec<String>,
-}
-
-impl crate::FlatSerialize for DataFileUrlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.more_data_file_url,
-            &format!("{}.MoreDataFileUrl", name),
-            params,
-        );
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataList {
-    #[serde(rename = "AuditRemark")]
-    pub audit_remark: String,
-    #[serde(rename = "AuditTime")]
-    pub audit_time: String,
-    #[serde(rename = "CompanyName")]
-    pub company_name: String,
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "GroupId")]
-    pub group_id: i64,
     #[serde(rename = "LegalPersonName")]
     pub legal_person_name: String,
-    #[serde(rename = "QualificationGroupName")]
-    pub qualification_group_name: String,
-    #[serde(rename = "StateName")]
-    pub state_name: String,
-    #[serde(rename = "UseBySelf")]
-    pub use_by_self: String,
+    #[serde(rename = "AuditRemark")]
+    pub audit_remark: String,
+    #[serde(rename = "CompanyName")]
+    pub company_name: String,
     #[serde(rename = "WorkOrderId")]
     pub work_order_id: i64,
+    #[serde(rename = "StateName")]
+    pub state_name: String,
+    #[serde(rename = "AuditTime")]
+    pub audit_time: String,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "QualificationGroupName")]
+    pub qualification_group_name: String,
+    #[serde(rename = "GroupId")]
+    pub group_id: i64,
+    #[serde(rename = "UseBySelf")]
+    pub use_by_self: String,
 }
 
 impl crate::FlatSerialize for DataList {
@@ -6971,13 +6664,13 @@ impl crate::FlatSerialize for DataList {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.audit_remark,
-            &format!("{}.AuditRemark", name),
+            &self.legal_person_name,
+            &format!("{}.LegalPersonName", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.audit_time,
-            &format!("{}.AuditTime", name),
+            &self.audit_remark,
+            &format!("{}.AuditRemark", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -6986,19 +6679,8 @@ impl crate::FlatSerialize for DataList {
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.group_id, &format!("{}.GroupId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_name,
-            &format!("{}.LegalPersonName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_group_name,
-            &format!("{}.QualificationGroupName", name),
+            &self.work_order_id,
+            &format!("{}.WorkOrderId", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -7007,15 +6689,83 @@ impl crate::FlatSerialize for DataList {
             params,
         );
         crate::FlatSerialize::flat_serialize(
+            &self.audit_time,
+            &format!("{}.AuditTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_group_name,
+            &format!("{}.QualificationGroupName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.group_id, &format!("{}.GroupId", name), params);
+        crate::FlatSerialize::flat_serialize(
             &self.use_by_self,
             &format!("{}.UseBySelf", name),
             params,
         );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QualificationRecordResponseData {
+    #[serde(rename = "PageSize")]
+    pub page_size: i64,
+    #[serde(rename = "Total")]
+    pub total: i64,
+    #[serde(rename = "PageNo")]
+    pub page_no: i64,
+    #[serde(rename = "List")]
+    pub list: Vec<DataList>,
+}
+
+impl crate::FlatSerialize for QualificationRecordResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
         crate::FlatSerialize::flat_serialize(
-            &self.work_order_id,
-            &format!("{}.WorkOrderId", name),
+            &self.page_size,
+            &format!("{}.PageSize", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(&self.total, &format!("{}.Total", name), params);
+        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
+        crate::FlatSerialize::flat_serialize(&self.list, &format!("{}.List", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct DataBusinessLicensePic {
+    #[serde(rename = "Type")]
+    pub r#type: String,
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
+    #[serde(rename = "PicUrl")]
+    pub pic_url: String,
+}
+
+impl crate::FlatSerialize for DataBusinessLicensePic {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
     }
 }
 
@@ -7045,41 +6795,180 @@ impl crate::FlatSerialize for DataOtherFile {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DetailList {
-    #[serde(rename = "OperatorCode")]
-    pub operator_code: String,
-    #[serde(rename = "OperatorCompleteTime")]
-    pub operator_complete_time: String,
-    #[serde(rename = "RegisterStatus")]
-    pub register_status: i32,
-    #[serde(rename = "RegisterStatusReasons")]
-    pub register_status_reasons: Vec<StatusReason>,
+pub struct SmsQualificationResponseData {
+    #[serde(rename = "AdminIDCardExpDate")]
+    pub admin_id_card_exp_date: String,
+    #[serde(rename = "BusinessType")]
+    pub business_type: String,
+    #[serde(rename = "AdminIDCardFrontFace")]
+    pub admin_id_card_front_face: String,
+    #[serde(rename = "Remark")]
+    pub remark: String,
+    #[serde(rename = "LegalPersonName")]
+    pub legal_person_name: String,
+    #[serde(rename = "CompanyName")]
+    pub company_name: String,
+    #[serde(rename = "LegalPersonIDCardNo")]
+    pub legal_person_id_card_no: String,
+    #[serde(rename = "BusinessLicensePics")]
+    pub business_license_pics: Vec<DataBusinessLicensePic>,
+    #[serde(rename = "AdminIDCardNo")]
+    pub admin_id_card_no: String,
+    #[serde(rename = "OrganizationCode")]
+    pub organization_code: String,
+    #[serde(rename = "LegalPersonIdCardEffTime")]
+    pub legal_person_id_card_eff_time: String,
+    #[serde(rename = "AdminPhoneNo")]
+    pub admin_phone_no: String,
+    #[serde(rename = "QualificationName")]
+    pub qualification_name: String,
+    #[serde(rename = "AdminName")]
+    pub admin_name: String,
+    #[serde(rename = "CompanyType")]
+    pub company_type: String,
+    #[serde(rename = "AdminIDCardType")]
+    pub admin_id_card_type: String,
+    #[serde(rename = "UseBySelf")]
+    pub use_by_self: bool,
+    #[serde(rename = "EffTimeStr")]
+    pub eff_time_str: String,
+    #[serde(rename = "QualificationGroupId")]
+    pub qualification_group_id: i64,
+    #[serde(rename = "WhetherShare")]
+    pub whether_share: bool,
+    #[serde(rename = "WorkOrderId")]
+    pub work_order_id: i64,
+    #[serde(rename = "State")]
+    pub state: String,
+    #[serde(rename = "OtherFiles")]
+    pub other_files: Vec<DataOtherFile>,
+    #[serde(rename = "LegalPersonIDCardType")]
+    pub legal_person_id_card_type: String,
+    #[serde(rename = "AdminIDCardPic")]
+    pub admin_id_card_pic: String,
 }
 
-impl crate::FlatSerialize for DetailList {
+impl crate::FlatSerialize for SmsQualificationResponseData {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.operator_code,
-            &format!("{}.OperatorCode", name),
+            &self.admin_id_card_exp_date,
+            &format!("{}.AdminIDCardExpDate", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.operator_complete_time,
-            &format!("{}.OperatorCompleteTime", name),
+            &self.business_type,
+            &format!("{}.BusinessType", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.register_status,
-            &format!("{}.RegisterStatus", name),
+            &self.admin_id_card_front_face,
+            &format!("{}.AdminIDCardFrontFace", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.remark, &format!("{}.Remark", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_name,
+            &format!("{}.LegalPersonName", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.register_status_reasons,
-            &format!("{}.RegisterStatusReasons", name),
+            &self.company_name,
+            &format!("{}.CompanyName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_no,
+            &format!("{}.LegalPersonIDCardNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.business_license_pics,
+            &format!("{}.BusinessLicensePics", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_no,
+            &format!("{}.AdminIDCardNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.organization_code,
+            &format!("{}.OrganizationCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_eff_time,
+            &format!("{}.LegalPersonIdCardEffTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_phone_no,
+            &format!("{}.AdminPhoneNo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_name,
+            &format!("{}.QualificationName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_name,
+            &format!("{}.AdminName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.company_type,
+            &format!("{}.CompanyType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_type,
+            &format!("{}.AdminIDCardType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.use_by_self,
+            &format!("{}.UseBySelf", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.eff_time_str,
+            &format!("{}.EffTimeStr", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.qualification_group_id,
+            &format!("{}.QualificationGroupId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.whether_share,
+            &format!("{}.WhetherShare", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.work_order_id,
+            &format!("{}.WorkOrderId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.other_files,
+            &format!("{}.OtherFiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.legal_person_id_card_type,
+            &format!("{}.LegalPersonIDCardType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.admin_id_card_pic,
+            &format!("{}.AdminIDCardPic", name),
             params,
         );
     }
@@ -7087,20 +6976,23 @@ impl crate::FlatSerialize for DetailList {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DtOs {
-    #[serde(rename = "SmsSendDetailDTO")]
-    pub sms_send_detail_dto: Vec<SmsSendDetailDto>,
+pub struct UpdateSmsQualificationBusinessLicensePic {
+    #[serde(rename = "Type")]
+    pub r#type: String,
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
 }
 
-impl crate::FlatSerialize for DtOs {
+impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.sms_send_detail_dto,
-            &format!("{}.SmsSendDetailDTO", name),
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
             params,
         );
     }
@@ -7108,319 +7000,20 @@ impl crate::FlatSerialize for DtOs {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DtoRecord {
-    #[serde(rename = "ErrCode")]
-    pub err_code: String,
-    #[serde(rename = "OutId")]
-    pub out_id: String,
-    #[serde(rename = "PhoneNumber")]
-    pub phone_number: String,
-    #[serde(rename = "ReceiveDate")]
-    pub receive_date: String,
-    #[serde(rename = "ReceiveType")]
-    pub receive_type: String,
-    #[serde(rename = "RenderDate")]
-    pub render_date: String,
-    #[serde(rename = "RenderStatus")]
-    pub render_status: i64,
-    #[serde(rename = "SendDate")]
-    pub send_date: String,
-    #[serde(rename = "SendStatus")]
-    pub send_status: i64,
-    #[serde(rename = "SmsContent")]
-    pub sms_content: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
+pub struct UpdateSmsQualificationOtherFile {
+    #[serde(rename = "LicensePic")]
+    pub license_pic: String,
 }
 
-impl crate::FlatSerialize for DtoRecord {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
-        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.phone_number,
-            &format!("{}.PhoneNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_date,
-            &format!("{}.ReceiveDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_type,
-            &format!("{}.ReceiveType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.render_date,
-            &format!("{}.RenderDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.render_status,
-            &format!("{}.RenderStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_status,
-            &format!("{}.SendStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sms_content,
-            &format!("{}.SmsContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct FileResponseModel {
-    #[serde(rename = "AccessKeyId")]
-    pub access_key_id: String,
-    #[serde(rename = "ExpireTime")]
-    pub expire_time: String,
-    #[serde(rename = "Host")]
-    pub host: String,
-    #[serde(rename = "Policy")]
-    pub policy: String,
-    #[serde(rename = "Signature")]
-    pub signature: String,
-    #[serde(rename = "StartPath")]
-    pub start_path: String,
-}
-
-impl crate::FlatSerialize for FileResponseModel {
+impl crate::FlatSerialize for UpdateSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct IcpRecordResponseData {
-    #[serde(rename = "AppApprovalDate")]
-    pub app_approval_date: String,
-    #[serde(rename = "AppIcpLicenseNumber")]
-    pub app_icp_license_number: String,
-    #[serde(rename = "AppIcpRecordId")]
-    pub app_icp_record_id: i64,
-    #[serde(rename = "AppIcpRecordPic")]
-    pub app_icp_record_pic: String,
-    #[serde(rename = "AppIcpRecordPicUrl")]
-    pub app_icp_record_pic_url: String,
-    #[serde(rename = "AppPrincipalUnitName")]
-    pub app_principal_unit_name: String,
-    #[serde(rename = "AppServiceName")]
-    pub app_service_name: String,
-    #[serde(rename = "Domain")]
-    pub domain: String,
-}
-
-impl crate::FlatSerialize for IcpRecordResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.app_approval_date,
-            &format!("{}.AppApprovalDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_license_number,
-            &format!("{}.AppIcpLicenseNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_id,
-            &format!("{}.AppIcpRecordId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_pic,
-            &format!("{}.AppIcpRecordPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_pic_url,
-            &format!("{}.AppIcpRecordPicUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_principal_unit_name,
-            &format!("{}.AppPrincipalUnitName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_service_name,
-            &format!("{}.AppServiceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct IdResponseData {
-    #[serde(rename = "ResUrlDownload")]
-    pub res_url_download: String,
-    #[serde(rename = "ResourceId")]
-    pub resource_id: i64,
-}
-
-impl crate::FlatSerialize for IdResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.res_url_download,
-            &format!("{}.ResUrlDownload", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct InfoResponseData {
-    #[serde(rename = "AccessKeyId")]
-    pub access_key_id: String,
-    #[serde(rename = "Expire")]
-    pub expire: i64,
-    #[serde(rename = "Host")]
-    pub host: String,
-    #[serde(rename = "Policy")]
-    pub policy: String,
-    #[serde(rename = "Signature")]
-    pub signature: String,
-    #[serde(rename = "StartPath")]
-    pub start_path: String,
-}
-
-impl crate::FlatSerialize for InfoResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.expire, &format!("{}.Expire", name), params);
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct InfoResponseModel {
-    #[serde(rename = "AccessKeyId")]
-    pub access_key_id: String,
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "ExpireTime")]
-    pub expire_time: String,
-    #[serde(rename = "Host")]
-    pub host: String,
-    #[serde(rename = "Policy")]
-    pub policy: String,
-    #[serde(rename = "Signature")]
-    pub signature: String,
-    #[serde(rename = "StartPath")]
-    pub start_path: String,
-}
-
-impl crate::FlatSerialize for InfoResponseModel {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
+            &self.license_pic,
+            &format!("{}.LicensePic", name),
             params,
         );
     }
@@ -7431,24 +7024,24 @@ impl crate::FlatSerialize for InfoResponseModel {
 pub struct LetterResponseData {
     #[serde(rename = "Authorization")]
     pub authorization: String,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "SignScope")]
+    pub sign_scope: String,
+    #[serde(rename = "State")]
+    pub state: String,
     #[serde(rename = "AuthorizationLetterExpDate")]
     pub authorization_letter_exp_date: String,
-    #[serde(rename = "AuthorizationLetterId")]
-    pub authorization_letter_id: i64,
-    #[serde(rename = "AuthorizationLetterName")]
-    pub authorization_letter_name: String,
     #[serde(rename = "AuthorizationLetterPic")]
     pub authorization_letter_pic: String,
     #[serde(rename = "OrganizationCode")]
     pub organization_code: String,
     #[serde(rename = "ProxyAuthorization")]
     pub proxy_authorization: String,
-    #[serde(rename = "SignScope")]
-    pub sign_scope: String,
-    #[serde(rename = "State")]
-    pub state: String,
-    #[serde(rename = "Status")]
-    pub status: String,
+    #[serde(rename = "AuthorizationLetterId")]
+    pub authorization_letter_id: i64,
+    #[serde(rename = "AuthorizationLetterName")]
+    pub authorization_letter_name: String,
 }
 
 impl crate::FlatSerialize for LetterResponseData {
@@ -7462,19 +7055,16 @@ impl crate::FlatSerialize for LetterResponseData {
             &format!("{}.Authorization", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.sign_scope,
+            &format!("{}.SignScope", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
         crate::FlatSerialize::flat_serialize(
             &self.authorization_letter_exp_date,
             &format!("{}.AuthorizationLetterExpDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_id,
-            &format!("{}.AuthorizationLetterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_name,
-            &format!("{}.AuthorizationLetterName", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
@@ -7493,491 +7083,13 @@ impl crate::FlatSerialize for LetterResponseData {
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.sign_scope,
-            &format!("{}.SignScope", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct LinkResponseData {
-    #[serde(rename = "CardPhoneNumbers")]
-    pub card_phone_numbers: String,
-    #[serde(rename = "CardSignNames")]
-    pub card_sign_names: String,
-    #[serde(rename = "CardSmsLinks")]
-    pub card_sms_links: String,
-    #[serde(rename = "CardTmpState")]
-    pub card_tmp_state: i32,
-    #[serde(rename = "NotMediaMobiles")]
-    pub not_media_mobiles: String,
-}
-
-impl crate::FlatSerialize for LinkResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.card_phone_numbers,
-            &format!("{}.CardPhoneNumbers", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_sign_names,
-            &format!("{}.CardSignNames", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_sms_links,
-            &format!("{}.CardSmsLinks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListTagResourcesTag {
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "Value")]
-    pub value: String,
-}
-
-impl crate::FlatSerialize for ListTagResourcesTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ModifySmsSignSignFileList {
-    #[serde(rename = "FileContents")]
-    pub file_contents: String,
-    #[serde(rename = "FileSuffix")]
-    pub file_suffix: String,
-}
-
-impl crate::FlatSerialize for ModifySmsSignSignFileList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.file_contents,
-            &format!("{}.FileContents", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.file_suffix,
-            &format!("{}.FileSuffix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QualificationRecordResponseData {
-    #[serde(rename = "List")]
-    pub list: Vec<DataList>,
-    #[serde(rename = "PageNo")]
-    pub page_no: i64,
-    #[serde(rename = "PageSize")]
-    pub page_size: i64,
-    #[serde(rename = "Total")]
-    pub total: i64,
-}
-
-impl crate::FlatSerialize for QualificationRecordResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.list, &format!("{}.List", name), params);
-        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.page_size,
-            &format!("{}.PageSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.total, &format!("{}.Total", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryCardSmsTemplateResponseData {
-    #[serde(rename = "Templates")]
-    pub templates: Vec<crate::OpenObject>,
-}
-
-impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.templates,
-            &format!("{}.Templates", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryMobilesCardSupportResponseData {
-    #[serde(rename = "QueryResult")]
-    pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResult>,
-}
-
-impl crate::FlatSerialize for QueryMobilesCardSupportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.query_result,
-            &format!("{}.QueryResult", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryMobilesCardSupportResponseDataQueryResult {
-    #[serde(rename = "Mobile")]
-    pub mobile: String,
-    #[serde(rename = "Support")]
-    pub support: bool,
-}
-
-impl crate::FlatSerialize for QueryMobilesCardSupportResponseDataQueryResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.Mobile", name), params);
-        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.Support", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryShortUrlResponseData {
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "ExpireDate")]
-    pub expire_date: String,
-    #[serde(rename = "PageViewCount")]
-    pub page_view_count: String,
-    #[serde(rename = "ShortUrl")]
-    pub short_url: String,
-    #[serde(rename = "ShortUrlName")]
-    pub short_url_name: String,
-    #[serde(rename = "ShortUrlStatus")]
-    pub short_url_status: String,
-    #[serde(rename = "SourceUrl")]
-    pub source_url: String,
-    #[serde(rename = "UniqueVisitorCount")]
-    pub unique_visitor_count: String,
-}
-
-impl crate::FlatSerialize for QueryShortUrlResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_date,
-            &format!("{}.ExpireDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.page_view_count,
-            &format!("{}.PageViewCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url,
-            &format!("{}.ShortUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url_name,
-            &format!("{}.ShortUrlName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url_status,
-            &format!("{}.ShortUrlStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_url,
-            &format!("{}.SourceUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.unique_visitor_count,
-            &format!("{}.UniqueVisitorCount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ReportResponseData {
-    #[serde(rename = "model")]
-    pub model: Vec<crate::OpenObject>,
-}
-
-impl crate::FlatSerialize for ReportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.model, &format!("{}.model", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseFileUrlList {
-    #[serde(rename = "FileUrl")]
-    pub file_url: Vec<String>,
-}
-
-impl crate::FlatSerialize for ResponseFileUrlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseTagResources {
-    #[serde(rename = "TagResource")]
-    pub tag_resource: Vec<TagResource>,
-}
-
-impl crate::FlatSerialize for ResponseTagResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_resource,
-            &format!("{}.TagResource", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SendCardSmsResponseData {
-    #[serde(rename = "BizCardId")]
-    pub biz_card_id: String,
-    #[serde(rename = "BizDigitalId")]
-    pub biz_digital_id: String,
-    #[serde(rename = "BizSmsId")]
-    pub biz_sms_id: String,
-    #[serde(rename = "CardTmpState")]
-    pub card_tmp_state: i32,
-    #[serde(rename = "MediaMobiles")]
-    pub media_mobiles: String,
-    #[serde(rename = "NotMediaMobiles")]
-    pub not_media_mobiles: String,
-}
-
-impl crate::FlatSerialize for SendCardSmsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_card_id,
-            &format!("{}.BizCardId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_digital_id,
-            &format!("{}.BizDigitalId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_sms_id,
-            &format!("{}.BizSmsId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.media_mobiles,
-            &format!("{}.MediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SignList {
-    #[serde(rename = "AppIcpRecordId")]
-    pub app_icp_record_id: i64,
-    #[serde(rename = "AuditStatus")]
-    pub audit_status: String,
-    #[serde(rename = "AuthorizationLetterId")]
-    pub authorization_letter_id: i64,
-    #[serde(rename = "BusinessType")]
-    pub business_type: String,
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
-    #[serde(rename = "Reason")]
-    pub reason: SignListItemReason,
-    #[serde(rename = "SignName")]
-    pub sign_name: String,
-    #[serde(rename = "TrademarkId")]
-    pub trademark_id: i64,
-    #[serde(rename = "authorizationLetterAuditPass")]
-    pub authorization_letter_audit_pass: bool,
-}
-
-impl crate::FlatSerialize for SignList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_id,
-            &format!("{}.AppIcpRecordId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_status,
-            &format!("{}.AuditStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
             &self.authorization_letter_id,
             &format!("{}.AuthorizationLetterId", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.business_type,
-            &format!("{}.BusinessType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sign_name,
-            &format!("{}.SignName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_id,
-            &format!("{}.TrademarkId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_audit_pass,
-            &format!("{}.authorizationLetterAuditPass", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SignListItemReason {
-    #[serde(rename = "RejectDate")]
-    pub reject_date: String,
-    #[serde(rename = "RejectInfo")]
-    pub reject_info: String,
-    #[serde(rename = "RejectSubInfo")]
-    pub reject_sub_info: String,
-}
-
-impl crate::FlatSerialize for SignListItemReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_date,
-            &format!("{}.RejectDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_sub_info,
-            &format!("{}.RejectSubInfo", name),
+            &self.authorization_letter_name,
+            &format!("{}.AuthorizationLetterName", name),
             params,
         );
     }
@@ -7986,10 +7098,10 @@ impl crate::FlatSerialize for SignListItemReason {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SignResponseAuditInfo {
-    #[serde(rename = "AuditDate")]
-    pub audit_date: String,
     #[serde(rename = "RejectInfo")]
     pub reject_info: String,
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
 }
 
 impl crate::FlatSerialize for SignResponseAuditInfo {
@@ -7999,310 +7111,13 @@ impl crate::FlatSerialize for SignResponseAuditInfo {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.audit_date,
-            &format!("{}.AuditDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
             &self.reject_info,
             &format!("{}.RejectInfo", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SignatureQualificationResponseData {
-    #[serde(rename = "Data")]
-    pub data: crate::OpenObject,
-    #[serde(rename = "ErrCode")]
-    pub err_code: String,
-    #[serde(rename = "ErrMessage")]
-    pub err_message: String,
-    #[serde(rename = "Success")]
-    pub success: bool,
-}
-
-impl crate::FlatSerialize for SignatureQualificationResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.err_message,
-            &format!("{}.ErrMessage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SmsQualificationResponseData {
-    #[serde(rename = "AdminIDCardExpDate")]
-    pub admin_id_card_exp_date: String,
-    #[serde(rename = "AdminIDCardFrontFace")]
-    pub admin_id_card_front_face: String,
-    #[serde(rename = "AdminIDCardNo")]
-    pub admin_id_card_no: String,
-    #[serde(rename = "AdminIDCardPic")]
-    pub admin_id_card_pic: String,
-    #[serde(rename = "AdminIDCardType")]
-    pub admin_id_card_type: String,
-    #[serde(rename = "AdminName")]
-    pub admin_name: String,
-    #[serde(rename = "AdminPhoneNo")]
-    pub admin_phone_no: String,
-    #[serde(rename = "BusinessLicensePics")]
-    pub business_license_pics: Vec<DataBusinessLicensePic>,
-    #[serde(rename = "BusinessType")]
-    pub business_type: String,
-    #[serde(rename = "CompanyName")]
-    pub company_name: String,
-    #[serde(rename = "CompanyType")]
-    pub company_type: String,
-    #[serde(rename = "EffTimeStr")]
-    pub eff_time_str: String,
-    #[serde(rename = "LegalPersonIDCardNo")]
-    pub legal_person_id_card_no: String,
-    #[serde(rename = "LegalPersonIDCardType")]
-    pub legal_person_id_card_type: String,
-    #[serde(rename = "LegalPersonIdCardEffTime")]
-    pub legal_person_id_card_eff_time: String,
-    #[serde(rename = "LegalPersonName")]
-    pub legal_person_name: String,
-    #[serde(rename = "OrganizationCode")]
-    pub organization_code: String,
-    #[serde(rename = "OtherFiles")]
-    pub other_files: Vec<DataOtherFile>,
-    #[serde(rename = "QualificationGroupId")]
-    pub qualification_group_id: i64,
-    #[serde(rename = "QualificationName")]
-    pub qualification_name: String,
-    #[serde(rename = "Remark")]
-    pub remark: String,
-    #[serde(rename = "State")]
-    pub state: String,
-    #[serde(rename = "UseBySelf")]
-    pub use_by_self: bool,
-    #[serde(rename = "WhetherShare")]
-    pub whether_share: bool,
-    #[serde(rename = "WorkOrderId")]
-    pub work_order_id: i64,
-}
-
-impl crate::FlatSerialize for SmsQualificationResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_exp_date,
-            &format!("{}.AdminIDCardExpDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_front_face,
-            &format!("{}.AdminIDCardFrontFace", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_no,
-            &format!("{}.AdminIDCardNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_pic,
-            &format!("{}.AdminIDCardPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_type,
-            &format!("{}.AdminIDCardType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_name,
-            &format!("{}.AdminName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_phone_no,
-            &format!("{}.AdminPhoneNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_license_pics,
-            &format!("{}.BusinessLicensePics", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_type,
-            &format!("{}.BusinessType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_name,
-            &format!("{}.CompanyName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_type,
-            &format!("{}.CompanyType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eff_time_str,
-            &format!("{}.EffTimeStr", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_no,
-            &format!("{}.LegalPersonIDCardNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_type,
-            &format!("{}.LegalPersonIDCardType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_eff_time,
-            &format!("{}.LegalPersonIdCardEffTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_name,
-            &format!("{}.LegalPersonName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_code,
-            &format!("{}.OrganizationCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.other_files,
-            &format!("{}.OtherFiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_group_id,
-            &format!("{}.QualificationGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_name,
-            &format!("{}.QualificationName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.remark, &format!("{}.Remark", name), params);
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.use_by_self,
-            &format!("{}.UseBySelf", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.whether_share,
-            &format!("{}.WhetherShare", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.work_order_id,
-            &format!("{}.WorkOrderId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SmsSendDetailDto {
-    #[serde(rename = "Content")]
-    pub content: String,
-    #[serde(rename = "ErrCode")]
-    pub err_code: String,
-    #[serde(rename = "OutId")]
-    pub out_id: String,
-    #[serde(rename = "PhoneNum")]
-    pub phone_num: String,
-    #[serde(rename = "ReceiveDate")]
-    pub receive_date: String,
-    #[serde(rename = "SendDate")]
-    pub send_date: String,
-    #[serde(rename = "SendStatus")]
-    pub send_status: i64,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
-}
-
-impl crate::FlatSerialize for SmsSendDetailDto {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
-        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.phone_num,
-            &format!("{}.PhoneNum", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_date,
-            &format!("{}.ReceiveDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_status,
-            &format!("{}.SendStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StatisticsResponseData {
-    #[serde(rename = "TargetList")]
-    pub target_list: Vec<TargetList>,
-    #[serde(rename = "TotalSize")]
-    pub total_size: i64,
-}
-
-impl crate::FlatSerialize for StatisticsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.target_list,
-            &format!("{}.TargetList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_size,
-            &format!("{}.TotalSize", name),
+            &self.audit_date,
+            &format!("{}.AuditDate", name),
             params,
         );
     }
@@ -8338,82 +7153,41 @@ impl crate::FlatSerialize for StatusReason {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct SubmitSmsQualificationBusinessLicensePic {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-    #[serde(rename = "Type")]
-    pub r#type: String,
+pub struct DetailList {
+    #[serde(rename = "RegisterStatus")]
+    pub register_status: i32,
+    #[serde(rename = "OperatorCode")]
+    pub operator_code: String,
+    #[serde(rename = "OperatorCompleteTime")]
+    pub operator_complete_time: String,
+    #[serde(rename = "RegisterStatusReasons")]
+    pub register_status_reasons: Vec<StatusReason>,
 }
 
-impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePic {
+impl crate::FlatSerialize for DetailList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SubmitSmsQualificationOtherFile {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-}
-
-impl crate::FlatSerialize for SubmitSmsQualificationOtherFile {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TagResource {
-    #[serde(rename = "ResourceId")]
-    pub resource_id: String,
-    #[serde(rename = "ResourceType")]
-    pub resource_type: String,
-    #[serde(rename = "TagKey")]
-    pub tag_key: String,
-    #[serde(rename = "TagValue")]
-    pub tag_value: String,
-}
-
-impl crate::FlatSerialize for TagResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
+            &self.register_status,
+            &format!("{}.RegisterStatus", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
+            &self.operator_code,
+            &format!("{}.OperatorCode", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
+            &self.operator_complete_time,
+            &format!("{}.OperatorCompleteTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.register_status_reasons,
+            &format!("{}.RegisterStatusReasons", name),
             params,
         );
     }
@@ -8421,68 +7195,34 @@ impl crate::FlatSerialize for TagResource {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TagResourcesTag {
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "Value")]
-    pub value: String,
+pub struct SignListItemReason {
+    #[serde(rename = "RejectSubInfo")]
+    pub reject_sub_info: String,
+    #[serde(rename = "RejectDate")]
+    pub reject_date: String,
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
 }
 
-impl crate::FlatSerialize for TagResourcesTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TargetList {
-    #[serde(rename = "NoRespondedCount")]
-    pub no_responded_count: i64,
-    #[serde(rename = "RespondedFailCount")]
-    pub responded_fail_count: i64,
-    #[serde(rename = "RespondedSuccessCount")]
-    pub responded_success_count: i64,
-    #[serde(rename = "SendDate")]
-    pub send_date: String,
-    #[serde(rename = "TotalCount")]
-    pub total_count: i64,
-}
-
-impl crate::FlatSerialize for TargetList {
+impl crate::FlatSerialize for SignListItemReason {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.no_responded_count,
-            &format!("{}.NoRespondedCount", name),
+            &self.reject_sub_info,
+            &format!("{}.RejectSubInfo", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.responded_fail_count,
-            &format!("{}.RespondedFailCount", name),
+            &self.reject_date,
+            &format!("{}.RejectDate", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.responded_success_count,
-            &format!("{}.RespondedSuccessCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
             params,
         );
     }
@@ -8490,37 +7230,40 @@ impl crate::FlatSerialize for TargetList {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TemplateList {
+pub struct SignList {
+    #[serde(rename = "SignName")]
+    pub sign_name: String,
     #[serde(rename = "AuditStatus")]
     pub audit_status: String,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
+    #[serde(rename = "Reason")]
+    pub reason: SignListItemReason,
+    #[serde(rename = "BusinessType")]
+    pub business_type: String,
     #[serde(rename = "OrderId")]
     pub order_id: String,
-    #[serde(rename = "OuterTemplateType")]
-    pub outer_template_type: i32,
-    #[serde(rename = "Reason")]
-    pub reason: TemplateListItemReason,
-    #[serde(rename = "SignatureName")]
-    pub signature_name: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
-    #[serde(rename = "TemplateContent")]
-    pub template_content: String,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
-    #[serde(rename = "TemplateType")]
-    pub template_type: i32,
-    #[serde(rename = "TrafficDriving")]
-    pub traffic_driving: String,
+    #[serde(rename = "AuthorizationLetterId")]
+    pub authorization_letter_id: i64,
+    #[serde(rename = "authorizationLetterAuditPass")]
+    pub authorization_letter_audit_pass: bool,
+    #[serde(rename = "TrademarkId")]
+    pub trademark_id: i64,
+    #[serde(rename = "AppIcpRecordId")]
+    pub app_icp_record_id: i64,
 }
 
-impl crate::FlatSerialize for TemplateList {
+impl crate::FlatSerialize for SignList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.sign_name,
+            &format!("{}.SignName", name),
+            params,
+        );
         crate::FlatSerialize::flat_serialize(
             &self.audit_status,
             &format!("{}.AuditStatus", name),
@@ -8531,41 +7274,312 @@ impl crate::FlatSerialize for TemplateList {
             &format!("{}.CreateDate", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.outer_template_type,
-            &format!("{}.OuterTemplateType", name),
-            params,
-        );
         crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.signature_name,
-            &format!("{}.SignatureName", name),
+            &self.business_type,
+            &format!("{}.BusinessType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.authorization_letter_id,
+            &format!("{}.AuthorizationLetterId", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
+            &self.authorization_letter_audit_pass,
+            &format!("{}.authorizationLetterAuditPass", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.template_content,
-            &format!("{}.TemplateContent", name),
+            &self.trademark_id,
+            &format!("{}.TrademarkId", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.template_name,
-            &format!("{}.TemplateName", name),
+            &self.app_icp_record_id,
+            &format!("{}.AppIcpRecordId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SignatureQualificationResponseData {
+    #[serde(rename = "Data")]
+    pub data: crate::OpenObject,
+    #[serde(rename = "ErrMessage")]
+    pub err_message: String,
+    #[serde(rename = "Success")]
+    pub success: bool,
+    #[serde(rename = "ErrCode")]
+    pub err_code: String,
+}
+
+impl crate::FlatSerialize for SignatureQualificationResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.err_message,
+            &format!("{}.ErrMessage", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct AddSmsSignSignFileList {
+    #[serde(rename = "FileContents")]
+    pub file_contents: String,
+    #[serde(rename = "FileSuffix")]
+    pub file_suffix: String,
+}
+
+impl crate::FlatSerialize for AddSmsSignSignFileList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.file_contents,
+            &format!("{}.FileContents", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.template_type,
-            &format!("{}.TemplateType", name),
+            &self.file_suffix,
+            &format!("{}.FileSuffix", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ModifySmsSignSignFileList {
+    #[serde(rename = "FileContents")]
+    pub file_contents: String,
+    #[serde(rename = "FileSuffix")]
+    pub file_suffix: String,
+}
+
+impl crate::FlatSerialize for ModifySmsSignSignFileList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.file_contents,
+            &format!("{}.FileContents", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.traffic_driving,
-            &format!("{}.TrafficDriving", name),
+            &self.file_suffix,
+            &format!("{}.FileSuffix", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TrademarkResponseData {
+    #[serde(rename = "TrademarkPicUrl")]
+    pub trademark_pic_url: String,
+    #[serde(rename = "TrademarkRegistrationNumber")]
+    pub trademark_registration_number: String,
+    #[serde(rename = "TrademarkName")]
+    pub trademark_name: String,
+    #[serde(rename = "TrademarkPic")]
+    pub trademark_pic: String,
+    #[serde(rename = "TrademarkEffExpDate")]
+    pub trademark_eff_exp_date: String,
+    #[serde(rename = "TrademarkId")]
+    pub trademark_id: i64,
+    #[serde(rename = "TrademarkApplicantName")]
+    pub trademark_applicant_name: String,
+}
+
+impl crate::FlatSerialize for TrademarkResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_pic_url,
+            &format!("{}.TrademarkPicUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_registration_number,
+            &format!("{}.TrademarkRegistrationNumber", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_name,
+            &format!("{}.TrademarkName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_pic,
+            &format!("{}.TrademarkPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_eff_exp_date,
+            &format!("{}.TrademarkEffExpDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_id,
+            &format!("{}.TrademarkId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.trademark_applicant_name,
+            &format!("{}.TrademarkApplicantName", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct IcpRecordResponseData {
+    #[serde(rename = "AppIcpRecordId")]
+    pub app_icp_record_id: i64,
+    #[serde(rename = "AppIcpRecordPic")]
+    pub app_icp_record_pic: String,
+    #[serde(rename = "AppIcpRecordPicUrl")]
+    pub app_icp_record_pic_url: String,
+    #[serde(rename = "AppPrincipalUnitName")]
+    pub app_principal_unit_name: String,
+    #[serde(rename = "AppIcpLicenseNumber")]
+    pub app_icp_license_number: String,
+    #[serde(rename = "Domain")]
+    pub domain: String,
+    #[serde(rename = "AppApprovalDate")]
+    pub app_approval_date: String,
+    #[serde(rename = "AppServiceName")]
+    pub app_service_name: String,
+}
+
+impl crate::FlatSerialize for IcpRecordResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_id,
+            &format!("{}.AppIcpRecordId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_pic,
+            &format!("{}.AppIcpRecordPic", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_record_pic_url,
+            &format!("{}.AppIcpRecordPicUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_principal_unit_name,
+            &format!("{}.AppPrincipalUnitName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_icp_license_number,
+            &format!("{}.AppIcpLicenseNumber", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.app_approval_date,
+            &format!("{}.AppApprovalDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.app_service_name,
+            &format!("{}.AppServiceName", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TemplateResponseAuditInfo {
+    #[serde(rename = "RejectInfo")]
+    pub reject_info: String,
+    #[serde(rename = "AuditDate")]
+    pub audit_date: String,
+}
+
+impl crate::FlatSerialize for TemplateResponseAuditInfo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.reject_info,
+            &format!("{}.RejectInfo", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_date,
+            &format!("{}.AuditDate", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ResponseFileUrlList {
+    #[serde(rename = "FileUrl")]
+    pub file_url: Vec<String>,
+}
+
+impl crate::FlatSerialize for ResponseFileUrlList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct DataFileUrlList {
+    #[serde(rename = "MoreDataFileUrl")]
+    pub more_data_file_url: Vec<String>,
+}
+
+impl crate::FlatSerialize for DataFileUrlList {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.more_data_file_url,
+            &format!("{}.MoreDataFileUrl", name),
             params,
         );
     }
@@ -8608,27 +7622,82 @@ impl crate::FlatSerialize for TemplateListItemReason {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TemplateResponseAuditInfo {
-    #[serde(rename = "AuditDate")]
-    pub audit_date: String,
-    #[serde(rename = "RejectInfo")]
-    pub reject_info: String,
+pub struct TemplateList {
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
+    #[serde(rename = "OuterTemplateType")]
+    pub outer_template_type: i32,
+    #[serde(rename = "AuditStatus")]
+    pub audit_status: String,
+    #[serde(rename = "TemplateContent")]
+    pub template_content: String,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "Reason")]
+    pub reason: TemplateListItemReason,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
+    #[serde(rename = "TemplateType")]
+    pub template_type: i32,
+    #[serde(rename = "SignatureName")]
+    pub signature_name: String,
+    #[serde(rename = "TrafficDriving")]
+    pub traffic_driving: String,
 }
 
-impl crate::FlatSerialize for TemplateResponseAuditInfo {
+impl crate::FlatSerialize for TemplateList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.audit_date,
-            &format!("{}.AuditDate", name),
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
+            &self.template_name,
+            &format!("{}.TemplateName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.outer_template_type,
+            &format!("{}.OuterTemplateType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.audit_status,
+            &format!("{}.AuditStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.template_content,
+            &format!("{}.TemplateContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
+        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.template_type,
+            &format!("{}.TemplateType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.signature_name,
+            &format!("{}.SignatureName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.traffic_driving,
+            &format!("{}.TrafficDriving", name),
             params,
         );
     }
@@ -8636,62 +7705,57 @@ impl crate::FlatSerialize for TemplateResponseAuditInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TrademarkResponseData {
-    #[serde(rename = "TrademarkApplicantName")]
-    pub trademark_applicant_name: String,
-    #[serde(rename = "TrademarkEffExpDate")]
-    pub trademark_eff_exp_date: String,
-    #[serde(rename = "TrademarkId")]
-    pub trademark_id: i64,
-    #[serde(rename = "TrademarkName")]
-    pub trademark_name: String,
-    #[serde(rename = "TrademarkPic")]
-    pub trademark_pic: String,
-    #[serde(rename = "TrademarkPicUrl")]
-    pub trademark_pic_url: String,
-    #[serde(rename = "TrademarkRegistrationNumber")]
-    pub trademark_registration_number: String,
+pub struct SmsSendDetailDto {
+    #[serde(rename = "ErrCode")]
+    pub err_code: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "OutId")]
+    pub out_id: String,
+    #[serde(rename = "ReceiveDate")]
+    pub receive_date: String,
+    #[serde(rename = "SendDate")]
+    pub send_date: String,
+    #[serde(rename = "PhoneNum")]
+    pub phone_num: String,
+    #[serde(rename = "Content")]
+    pub content: String,
+    #[serde(rename = "SendStatus")]
+    pub send_status: i64,
 }
 
-impl crate::FlatSerialize for TrademarkResponseData {
+impl crate::FlatSerialize for SmsSendDetailDto {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.trademark_applicant_name,
-            &format!("{}.TrademarkApplicantName", name),
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_date,
+            &format!("{}.ReceiveDate", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.trademark_eff_exp_date,
-            &format!("{}.TrademarkEffExpDate", name),
+            &self.send_date,
+            &format!("{}.SendDate", name),
             params,
         );
         crate::FlatSerialize::flat_serialize(
-            &self.trademark_id,
-            &format!("{}.TrademarkId", name),
+            &self.phone_num,
+            &format!("{}.PhoneNum", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
         crate::FlatSerialize::flat_serialize(
-            &self.trademark_name,
-            &format!("{}.TrademarkName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_pic,
-            &format!("{}.TrademarkPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_pic_url,
-            &format!("{}.TrademarkPicUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_registration_number,
-            &format!("{}.TrademarkRegistrationNumber", name),
+            &self.send_status,
+            &format!("{}.SendStatus", name),
             params,
         );
     }
@@ -8699,46 +7763,982 @@ impl crate::FlatSerialize for TrademarkResponseData {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct UpdateSmsQualificationBusinessLicensePic {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
-    #[serde(rename = "Type")]
-    pub r#type: String,
+pub struct DtOs {
+    #[serde(rename = "SmsSendDetailDTO")]
+    pub sms_send_detail_dto: Vec<SmsSendDetailDto>,
 }
 
-impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePic {
+impl crate::FlatSerialize for DtOs {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
+            &self.sms_send_detail_dto,
+            &format!("{}.SmsSendDetailDTO", name),
             params,
         );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
     }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct UpdateSmsQualificationOtherFile {
-    #[serde(rename = "LicensePic")]
-    pub license_pic: String,
+pub struct TargetList {
+    #[serde(rename = "TotalCount")]
+    pub total_count: i64,
+    #[serde(rename = "RespondedSuccessCount")]
+    pub responded_success_count: i64,
+    #[serde(rename = "RespondedFailCount")]
+    pub responded_fail_count: i64,
+    #[serde(rename = "NoRespondedCount")]
+    pub no_responded_count: i64,
+    #[serde(rename = "SendDate")]
+    pub send_date: String,
 }
 
-impl crate::FlatSerialize for UpdateSmsQualificationOtherFile {
+impl crate::FlatSerialize for TargetList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
+            &self.total_count,
+            &format!("{}.TotalCount", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(
+            &self.responded_success_count,
+            &format!("{}.RespondedSuccessCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.responded_fail_count,
+            &format!("{}.RespondedFailCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.no_responded_count,
+            &format!("{}.NoRespondedCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_date,
+            &format!("{}.SendDate", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct StatisticsResponseData {
+    #[serde(rename = "TotalSize")]
+    pub total_size: i64,
+    #[serde(rename = "TargetList")]
+    pub target_list: Vec<TargetList>,
+}
+
+impl crate::FlatSerialize for StatisticsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.total_size,
+            &format!("{}.TotalSize", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.target_list,
+            &format!("{}.TargetList", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CardTemplateResponseData {
+    #[serde(rename = "Signature")]
+    pub signature: String,
+    #[serde(rename = "Host")]
+    pub host: String,
+    #[serde(rename = "Policy")]
+    pub policy: String,
+    #[serde(rename = "ExpireTime")]
+    pub expire_time: String,
+    #[serde(rename = "AliUid")]
+    pub ali_uid: String,
+    #[serde(rename = "AccessKeyId")]
+    pub access_key_id: String,
+    #[serde(rename = "StartPath")]
+    pub start_path: String,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+}
+
+impl crate::FlatSerialize for CardTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.ali_uid, &format!("{}.AliUid", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct IdResponseData {
+    #[serde(rename = "ResourceId")]
+    pub resource_id: i64,
+    #[serde(rename = "ResUrlDownload")]
+    pub res_url_download: String,
+}
+
+impl crate::FlatSerialize for IdResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_id,
+            &format!("{}.ResourceId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.res_url_download,
+            &format!("{}.ResUrlDownload", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CreateCardSmsTemplateResponseData {
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+}
+
+impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryCardSmsTemplateResponseData {
+    #[serde(rename = "Templates")]
+    pub templates: Vec<crate::OpenObject>,
+}
+
+impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.templates,
+            &format!("{}.Templates", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CheckMobilesCardSupportResponseDataQueryResult {
+    #[serde(rename = "mobile")]
+    pub mobile: String,
+    #[serde(rename = "support")]
+    pub support: bool,
+}
+
+impl crate::FlatSerialize for CheckMobilesCardSupportResponseDataQueryResult {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
+        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.support", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CheckMobilesCardSupportResponseData {
+    #[serde(rename = "queryResult")]
+    pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResult>,
+}
+
+impl crate::FlatSerialize for CheckMobilesCardSupportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.query_result,
+            &format!("{}.queryResult", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryMobilesCardSupportResponseDataQueryResult {
+    #[serde(rename = "Mobile")]
+    pub mobile: String,
+    #[serde(rename = "Support")]
+    pub support: bool,
+}
+
+impl crate::FlatSerialize for QueryMobilesCardSupportResponseDataQueryResult {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.Mobile", name), params);
+        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.Support", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryMobilesCardSupportResponseData {
+    #[serde(rename = "QueryResult")]
+    pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResult>,
+}
+
+impl crate::FlatSerialize for QueryMobilesCardSupportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.query_result,
+            &format!("{}.QueryResult", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct LinkResponseData {
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
+    #[serde(rename = "CardPhoneNumbers")]
+    pub card_phone_numbers: String,
+    #[serde(rename = "CardSmsLinks")]
+    pub card_sms_links: String,
+    #[serde(rename = "CardSignNames")]
+    pub card_sign_names: String,
+}
+
+impl crate::FlatSerialize for LinkResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_phone_numbers,
+            &format!("{}.CardPhoneNumbers", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_sms_links,
+            &format!("{}.CardSmsLinks", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_sign_names,
+            &format!("{}.CardSignNames", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct DtoRecord {
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "RenderDate")]
+    pub render_date: String,
+    #[serde(rename = "ReceiveDate")]
+    pub receive_date: String,
+    #[serde(rename = "RenderStatus")]
+    pub render_status: i64,
+    #[serde(rename = "ReceiveType")]
+    pub receive_type: String,
+    #[serde(rename = "SendStatus")]
+    pub send_status: i64,
+    #[serde(rename = "OutId")]
+    pub out_id: String,
+    #[serde(rename = "PhoneNumber")]
+    pub phone_number: String,
+    #[serde(rename = "SmsContent")]
+    pub sms_content: String,
+    #[serde(rename = "SendDate")]
+    pub send_date: String,
+    #[serde(rename = "ErrCode")]
+    pub err_code: String,
+}
+
+impl crate::FlatSerialize for DtoRecord {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.template_code,
+            &format!("{}.TemplateCode", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.render_date,
+            &format!("{}.RenderDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_date,
+            &format!("{}.ReceiveDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.render_status,
+            &format!("{}.RenderStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.receive_type,
+            &format!("{}.ReceiveType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_status,
+            &format!("{}.SendStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.phone_number,
+            &format!("{}.PhoneNumber", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.sms_content,
+            &format!("{}.SmsContent", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.send_date,
+            &format!("{}.SendDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CardSendDetailDto {
+    #[serde(rename = "TotalCount")]
+    pub total_count: i64,
+    #[serde(rename = "PageSize")]
+    pub page_size: i64,
+    #[serde(rename = "CurrentPage")]
+    pub current_page: i64,
+    #[serde(rename = "Records")]
+    pub records: Vec<DtoRecord>,
+}
+
+impl crate::FlatSerialize for CardSendDetailDto {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.total_count,
+            &format!("{}.TotalCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.page_size,
+            &format!("{}.PageSize", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.current_page,
+            &format!("{}.CurrentPage", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.records, &format!("{}.Records", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ReportResponseData {
+    #[serde(rename = "model")]
+    pub model: Vec<crate::OpenObject>,
+}
+
+impl crate::FlatSerialize for ReportResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.model, &format!("{}.model", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct CardObject {
+    #[serde(rename = "customUrl")]
+    pub custom_url: String,
+    #[serde(rename = "dyncParams")]
+    pub dync_params: String,
+    #[serde(rename = "mobile")]
+    pub mobile: String,
+}
+
+impl crate::FlatSerialize for CardObject {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.custom_url,
+            &format!("{}.customUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.dync_params,
+            &format!("{}.dyncParams", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct SendCardSmsResponseData {
+    #[serde(rename = "MediaMobiles")]
+    pub media_mobiles: String,
+    #[serde(rename = "BizCardId")]
+    pub biz_card_id: String,
+    #[serde(rename = "BizDigitalId")]
+    pub biz_digital_id: String,
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
+    #[serde(rename = "BizSmsId")]
+    pub biz_sms_id: String,
+}
+
+impl crate::FlatSerialize for SendCardSmsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.media_mobiles,
+            &format!("{}.MediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_card_id,
+            &format!("{}.BizCardId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_digital_id,
+            &format!("{}.BizDigitalId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_sms_id,
+            &format!("{}.BizSmsId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct BatchCardSmsResponseData {
+    #[serde(rename = "MediaMobiles")]
+    pub media_mobiles: String,
+    #[serde(rename = "BizCardId")]
+    pub biz_card_id: String,
+    #[serde(rename = "BizDigitalId")]
+    pub biz_digital_id: String,
+    #[serde(rename = "CardTmpState")]
+    pub card_tmp_state: i32,
+    #[serde(rename = "NotMediaMobiles")]
+    pub not_media_mobiles: String,
+    #[serde(rename = "BizSmsId")]
+    pub biz_sms_id: String,
+}
+
+impl crate::FlatSerialize for BatchCardSmsResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.media_mobiles,
+            &format!("{}.MediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_card_id,
+            &format!("{}.BizCardId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_digital_id,
+            &format!("{}.BizDigitalId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.card_tmp_state,
+            &format!("{}.CardTmpState", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.not_media_mobiles,
+            &format!("{}.NotMediaMobiles", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.biz_sms_id,
+            &format!("{}.BizSmsId", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InfoResponseData {
+    #[serde(rename = "Policy")]
+    pub policy: String,
+    #[serde(rename = "Expire")]
+    pub expire: i64,
+    #[serde(rename = "StartPath")]
+    pub start_path: String,
+    #[serde(rename = "AccessKeyId")]
+    pub access_key_id: String,
+    #[serde(rename = "Signature")]
+    pub signature: String,
+    #[serde(rename = "Host")]
+    pub host: String,
+}
+
+impl crate::FlatSerialize for InfoResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(&self.expire, &format!("{}.Expire", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct FileResponseModel {
+    #[serde(rename = "Policy")]
+    pub policy: String,
+    #[serde(rename = "StartPath")]
+    pub start_path: String,
+    #[serde(rename = "AccessKeyId")]
+    pub access_key_id: String,
+    #[serde(rename = "Signature")]
+    pub signature: String,
+    #[serde(rename = "Host")]
+    pub host: String,
+    #[serde(rename = "ExpireTime")]
+    pub expire_time: String,
+}
+
+impl crate::FlatSerialize for FileResponseModel {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct InfoResponseModel {
+    #[serde(rename = "Policy")]
+    pub policy: String,
+    #[serde(rename = "StartPath")]
+    pub start_path: String,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "AccessKeyId")]
+    pub access_key_id: String,
+    #[serde(rename = "Signature")]
+    pub signature: String,
+    #[serde(rename = "Host")]
+    pub host: String,
+    #[serde(rename = "ExpireTime")]
+    pub expire_time: String,
+}
+
+impl crate::FlatSerialize for InfoResponseModel {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.start_path,
+            &format!("{}.StartPath", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.access_key_id,
+            &format!("{}.AccessKeyId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.signature,
+            &format!("{}.Signature", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_time,
+            &format!("{}.ExpireTime", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct AddShortUrlResponseData {
+    #[serde(rename = "SourceUrl")]
+    pub source_url: String,
+    #[serde(rename = "ExpireDate")]
+    pub expire_date: String,
+    #[serde(rename = "ShortUrl")]
+    pub short_url: String,
+}
+
+impl crate::FlatSerialize for AddShortUrlResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.source_url,
+            &format!("{}.SourceUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_date,
+            &format!("{}.ExpireDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url,
+            &format!("{}.ShortUrl", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct QueryShortUrlResponseData {
+    #[serde(rename = "UniqueVisitorCount")]
+    pub unique_visitor_count: String,
+    #[serde(rename = "SourceUrl")]
+    pub source_url: String,
+    #[serde(rename = "ShortUrlStatus")]
+    pub short_url_status: String,
+    #[serde(rename = "PageViewCount")]
+    pub page_view_count: String,
+    #[serde(rename = "ExpireDate")]
+    pub expire_date: String,
+    #[serde(rename = "ShortUrlName")]
+    pub short_url_name: String,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "ShortUrl")]
+    pub short_url: String,
+}
+
+impl crate::FlatSerialize for QueryShortUrlResponseData {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.unique_visitor_count,
+            &format!("{}.UniqueVisitorCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.source_url,
+            &format!("{}.SourceUrl", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url_status,
+            &format!("{}.ShortUrlStatus", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.page_view_count,
+            &format!("{}.PageViewCount", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.expire_date,
+            &format!("{}.ExpireDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url_name,
+            &format!("{}.ShortUrlName", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.create_date,
+            &format!("{}.CreateDate", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.short_url,
+            &format!("{}.ShortUrl", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ListTagResourcesTag {
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+impl crate::FlatSerialize for ListTagResourcesTag {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
+        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TagResource {
+    #[serde(rename = "ResourceType")]
+    pub resource_type: String,
+    #[serde(rename = "TagValue")]
+    pub tag_value: String,
+    #[serde(rename = "ResourceId")]
+    pub resource_id: String,
+    #[serde(rename = "TagKey")]
+    pub tag_key: String,
+}
+
+impl crate::FlatSerialize for TagResource {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_type,
+            &format!("{}.ResourceType", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.tag_value,
+            &format!("{}.TagValue", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.resource_id,
+            &format!("{}.ResourceId", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct ResponseTagResources {
+    #[serde(rename = "TagResource")]
+    pub tag_resource: Vec<TagResource>,
+}
+
+impl crate::FlatSerialize for ResponseTagResources {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.tag_resource,
+            &format!("{}.TagResource", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct TagResourcesTag {
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "Value")]
+    pub value: String,
+}
+
+impl crate::FlatSerialize for TagResourcesTag {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
+        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
     }
 }
 
@@ -8790,10 +8790,10 @@ pub struct SubmitSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8811,10 +8811,10 @@ pub struct QuerySmsQualificationRecordResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: QualificationRecordResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: QualificationRecordResponseData,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8832,10 +8832,10 @@ pub struct QuerySingleSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: SmsQualificationResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: SmsQualificationResponseData,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8853,10 +8853,10 @@ pub struct UpdateSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8874,10 +8874,10 @@ pub struct DeleteSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: bool,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: bool,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8895,10 +8895,10 @@ pub struct RequiredPhoneCodeResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8916,10 +8916,10 @@ pub struct ValidPhoneCodeResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: bool,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: bool,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8937,10 +8937,10 @@ pub struct CreateSmsAuthorizationLetterResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8958,10 +8958,10 @@ pub struct QuerySmsAuthorizationLetterResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: Vec<LetterResponseData>,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: Vec<LetterResponseData>,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -8977,12 +8977,12 @@ impl AsRef<crate::CodeMessage> for QuerySmsAuthorizationLetterResponse {
 pub struct CreateSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
@@ -8996,46 +8996,46 @@ impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
 pub struct GetSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AppIcpRecordId")]
-    pub app_icp_record_id: i64,
-    #[serde(rename = "ApplyScene")]
-    pub apply_scene: String,
-    #[serde(rename = "AuditInfo")]
-    pub audit_info: SignResponseAuditInfo,
-    #[serde(rename = "AuthorizationLetterAuditPass")]
-    pub authorization_letter_audit_pass: bool,
-    #[serde(rename = "AuthorizationLetterId")]
-    pub authorization_letter_id: i64,
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "FileUrlList")]
-    pub file_url_list: Vec<String>,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
-    #[serde(rename = "QualificationId")]
-    pub qualification_id: i64,
-    #[serde(rename = "RegisterResult")]
-    pub register_result: i32,
-    #[serde(rename = "Remark")]
-    pub remark: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
-    #[serde(rename = "SignCode")]
-    pub sign_code: String,
-    #[serde(rename = "SignIspRegisterDetailList")]
-    pub sign_isp_register_detail_list: Vec<DetailList>,
     #[serde(rename = "SignName")]
     pub sign_name: String,
     #[serde(rename = "SignStatus")]
     pub sign_status: i64,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
+    #[serde(rename = "QualificationId")]
+    pub qualification_id: i64,
+    #[serde(rename = "Remark")]
+    pub remark: String,
+    #[serde(rename = "AuditInfo")]
+    pub audit_info: SignResponseAuditInfo,
+    #[serde(rename = "FileUrlList")]
+    pub file_url_list: Vec<String>,
+    #[serde(rename = "SignCode")]
+    pub sign_code: String,
     #[serde(rename = "SignTag")]
     pub sign_tag: String,
-    #[serde(rename = "SignUsage")]
-    pub sign_usage: String,
+    #[serde(rename = "ApplyScene")]
+    pub apply_scene: String,
     #[serde(rename = "ThirdParty")]
     pub third_party: bool,
+    #[serde(rename = "SignUsage")]
+    pub sign_usage: String,
+    #[serde(rename = "RegisterResult")]
+    pub register_result: i32,
+    #[serde(rename = "AuthorizationLetterId")]
+    pub authorization_letter_id: i64,
+    #[serde(rename = "AuthorizationLetterAuditPass")]
+    pub authorization_letter_audit_pass: bool,
+    #[serde(rename = "SignIspRegisterDetailList")]
+    pub sign_isp_register_detail_list: Vec<DetailList>,
     #[serde(rename = "TrademarkId")]
     pub trademark_id: i64,
+    #[serde(rename = "AppIcpRecordId")]
+    pub app_icp_record_id: i64,
 }
 
 impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
@@ -9049,16 +9049,16 @@ impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
 pub struct QuerySmsSignListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CurrentPage")]
-    pub current_page: i32,
-    #[serde(rename = "PageSize")]
-    pub page_size: i32,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SmsSignList")]
     pub sms_sign_list: Vec<SignList>,
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    #[serde(rename = "CurrentPage")]
+    pub current_page: i32,
+    #[serde(rename = "PageSize")]
+    pub page_size: i32,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
@@ -9072,12 +9072,12 @@ impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
 pub struct UpdateSmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for UpdateSmsSignResponse {
@@ -9110,10 +9110,10 @@ pub struct ChangeSignatureQualificationResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: SignatureQualificationResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: SignatureQualificationResponseData,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9163,16 +9163,16 @@ impl AsRef<crate::CodeMessage> for ModifySmsSignResponse {
 pub struct QuerySmsSignResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    #[serde(rename = "RequestId")]
+    pub request_id: String,
+    #[serde(rename = "SignStatus")]
+    pub sign_status: i32,
     #[serde(rename = "CreateDate")]
     pub create_date: String,
     #[serde(rename = "Reason")]
     pub reason: String,
-    #[serde(rename = "RequestId")]
-    pub request_id: String,
     #[serde(rename = "SignName")]
     pub sign_name: String,
-    #[serde(rename = "SignStatus")]
-    pub sign_status: i32,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsSignResponse {
@@ -9188,10 +9188,10 @@ pub struct CreateSmsTrademarkResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9209,10 +9209,10 @@ pub struct QuerySmsTrademarkResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: Vec<TrademarkResponseData>,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: Vec<TrademarkResponseData>,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9230,10 +9230,10 @@ pub struct CreateSmsAppIcpRecordResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: String,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9251,10 +9251,10 @@ pub struct QuerySmsAppIcpRecordResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: Vec<IcpRecordResponseData>,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: Vec<IcpRecordResponseData>,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9270,14 +9270,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsAppIcpRecordResponse {
 pub struct CreateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "TemplateName")]
     pub template_name: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
@@ -9291,40 +9291,40 @@ impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
 pub struct GetSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ApplyScene")]
-    pub apply_scene: String,
-    #[serde(rename = "AuditInfo")]
-    pub audit_info: TemplateResponseAuditInfo,
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "FileUrlList")]
-    pub file_url_list: ResponseFileUrlList,
-    #[serde(rename = "IntlType")]
-    pub intl_type: i32,
-    #[serde(rename = "MoreDataFileUrlList")]
-    pub more_data_file_url_list: DataFileUrlList,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
-    #[serde(rename = "RelatedSignName")]
-    pub related_sign_name: String,
-    #[serde(rename = "Remark")]
-    pub remark: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
     #[serde(rename = "TemplateContent")]
     pub template_content: String,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
-    #[serde(rename = "TemplateStatus")]
-    pub template_status: String,
-    #[serde(rename = "TemplateTag")]
-    pub template_tag: i32,
     #[serde(rename = "TemplateType")]
     pub template_type: String,
+    #[serde(rename = "TemplateStatus")]
+    pub template_status: String,
+    #[serde(rename = "RelatedSignName")]
+    pub related_sign_name: String,
+    #[serde(rename = "TemplateTag")]
+    pub template_tag: i32,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
     #[serde(rename = "VariableAttribute")]
     pub variable_attribute: String,
+    #[serde(rename = "Remark")]
+    pub remark: String,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "AuditInfo")]
+    pub audit_info: TemplateResponseAuditInfo,
+    #[serde(rename = "FileUrlList")]
+    pub file_url_list: ResponseFileUrlList,
+    #[serde(rename = "MoreDataFileUrlList")]
+    pub more_data_file_url_list: DataFileUrlList,
+    #[serde(rename = "IntlType")]
+    pub intl_type: i32,
+    #[serde(rename = "ApplyScene")]
+    pub apply_scene: String,
     #[serde(rename = "VendorAuditStatus")]
     pub vendor_audit_status: crate::OpenObject,
 }
@@ -9340,16 +9340,16 @@ impl AsRef<crate::CodeMessage> for GetSmsTemplateResponse {
 pub struct QuerySmsTemplateListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CurrentPage")]
-    pub current_page: i32,
-    #[serde(rename = "PageSize")]
-    pub page_size: i32,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SmsTemplateList")]
     pub sms_template_list: Vec<TemplateList>,
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    #[serde(rename = "CurrentPage")]
+    pub current_page: i32,
+    #[serde(rename = "PageSize")]
+    pub page_size: i32,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
@@ -9363,14 +9363,14 @@ impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
 pub struct UpdateSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "OrderId")]
-    pub order_id: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
-    #[serde(rename = "TemplateCode")]
-    pub template_code: String,
     #[serde(rename = "TemplateName")]
     pub template_name: String,
+    #[serde(rename = "TemplateCode")]
+    pub template_code: String,
+    #[serde(rename = "OrderId")]
+    pub order_id: String,
 }
 
 impl AsRef<crate::CodeMessage> for UpdateSmsTemplateResponse {
@@ -9435,22 +9435,22 @@ impl AsRef<crate::CodeMessage> for ModifySmsTemplateResponse {
 pub struct QuerySmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CreateDate")]
-    pub create_date: String,
-    #[serde(rename = "Reason")]
-    pub reason: String,
+    #[serde(rename = "TemplateContent")]
+    pub template_content: String,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "TemplateCode")]
     pub template_code: String,
-    #[serde(rename = "TemplateContent")]
-    pub template_content: String,
-    #[serde(rename = "TemplateName")]
-    pub template_name: String,
     #[serde(rename = "TemplateStatus")]
     pub template_status: i32,
     #[serde(rename = "TemplateType")]
     pub template_type: i32,
+    #[serde(rename = "TemplateName")]
+    pub template_name: String,
+    #[serde(rename = "CreateDate")]
+    pub create_date: String,
+    #[serde(rename = "Reason")]
+    pub reason: String,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySmsTemplateResponse {
@@ -9500,10 +9500,10 @@ pub struct QuerySendDetailsResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "RequestId")]
     pub request_id: String,
-    #[serde(rename = "SmsSendDetailDTOs")]
-    pub sms_send_detail_dt_os: DtOs,
     #[serde(rename = "TotalCount")]
     pub total_count: String,
+    #[serde(rename = "SmsSendDetailDTOs")]
+    pub sms_send_detail_dt_os: DtOs,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
@@ -9517,10 +9517,10 @@ impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
 pub struct QuerySendStatisticsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: StatisticsResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: StatisticsResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QuerySendStatisticsResponse {
@@ -9534,12 +9534,12 @@ impl AsRef<crate::CodeMessage> for QuerySendStatisticsResponse {
 pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: CardTemplateResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: CardTemplateResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
@@ -9553,12 +9553,12 @@ impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
 pub struct GetMediaResourceIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: IdResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: IdResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
@@ -9572,12 +9572,12 @@ impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
 pub struct CreateCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: CreateCardSmsTemplateResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: CreateCardSmsTemplateResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for CreateCardSmsTemplateResponse {
@@ -9591,12 +9591,12 @@ impl AsRef<crate::CodeMessage> for CreateCardSmsTemplateResponse {
 pub struct QueryCardSmsTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: QueryCardSmsTemplateResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: QueryCardSmsTemplateResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateResponse {
@@ -9610,12 +9610,12 @@ impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateResponse {
 pub struct CheckMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: CheckMobilesCardSupportResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: CheckMobilesCardSupportResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
@@ -9629,12 +9629,12 @@ impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
 pub struct QueryMobilesCardSupportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: QueryMobilesCardSupportResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: QueryMobilesCardSupportResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
@@ -9648,12 +9648,12 @@ impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
 pub struct GetCardSmsLinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: LinkResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: LinkResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for GetCardSmsLinkResponse {
@@ -9686,12 +9686,12 @@ impl AsRef<crate::CodeMessage> for GetCardSmsDetailsResponse {
 pub struct QueryCardSmsTemplateReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: ReportResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: ReportResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
@@ -9705,12 +9705,12 @@ impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
 pub struct SendCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: SendCardSmsResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: SendCardSmsResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for SendCardSmsResponse {
@@ -9724,12 +9724,12 @@ impl AsRef<crate::CodeMessage> for SendCardSmsResponse {
 pub struct SendBatchCardSmsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: BatchCardSmsResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Success")]
     pub success: bool,
+    #[serde(rename = "Data")]
+    pub data: BatchCardSmsResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for SendBatchCardSmsResponse {
@@ -9745,10 +9745,10 @@ pub struct GetQualificationOssInfoResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Data")]
-    pub data: InfoResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: InfoResponseData,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9764,10 +9764,10 @@ impl AsRef<crate::CodeMessage> for GetQualificationOssInfoResponse {
 pub struct GetOSSInfoForUploadFileResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Model")]
-    pub model: FileResponseModel,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Model")]
+    pub model: FileResponseModel,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9785,10 +9785,10 @@ pub struct GetSmsOcrOssInfoResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "AccessDeniedDetail")]
     pub access_denied_detail: String,
-    #[serde(rename = "Model")]
-    pub model: InfoResponseModel,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Model")]
+    pub model: InfoResponseModel,
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -9834,10 +9834,10 @@ impl AsRef<crate::CodeMessage> for ConversionDataIntlResponse {
 pub struct AddShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: AddShortUrlResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: AddShortUrlResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for AddShortUrlResponse {
@@ -9866,10 +9866,10 @@ impl AsRef<crate::CodeMessage> for DeleteShortUrlResponse {
 pub struct QueryShortUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Data")]
-    pub data: QueryShortUrlResponseData,
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    #[serde(rename = "Data")]
+    pub data: QueryShortUrlResponseData,
 }
 
 impl AsRef<crate::CodeMessage> for QueryShortUrlResponse {
