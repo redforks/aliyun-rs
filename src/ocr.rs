@@ -71,8 +71,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `invalidInputParameter`: %s
-    /// - `InvalidCountry`: Specified parameter Country is not valid.
-    ///
+    /// - `InvalidCountry`: Specified parameter Country is not valid.///
     /// # Extra Info
     /// #### 您可以参考下面的示例调用统一API接口
     /// * 通过图片URL请求接口Java示例
@@ -179,8 +178,7 @@ impl Connection {
     /// # Error Codes
     /// - `ExceededKeyNumber`: Too many keys, please try again with fewer keys.
     /// - `DataInspectionFailed`: Input or output data may contain inappropriate content.
-    /// - `LLMTimeout`: Large language model timeout, please try again with fewer keys.
-    ///
+    /// - `LLMTimeout`: Large language model timeout, please try again with fewer keys.///
     /// # Methods
     /// - GET
     /// - POST
@@ -995,8 +993,7 @@ impl Connection {
     /// |其他提示|<ul> <li>请保证整张身份证内容及其边缘包含在图像内。 </li> <li> 本能力会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li> </ul>|
     ///
     /// # Error Codes
-    /// - `illegalCountryName`: the country name is not supported.
-    ///
+    /// - `illegalCountryName`: the country name is not supported.///
     /// # Methods
     /// - GET
     /// - POST
@@ -2028,8 +2025,7 @@ impl Connection {
     /// 支持韩国、印度营业执照类型，提供包括证件类型、公司名称、注册号、法人姓名、签发日期等关键字段的识别能力。
     ///
     /// # Error Codes
-    /// - `illegalCountryName`: the country name is not supported.
-    ///
+    /// - `illegalCountryName`: the country name is not supported.///
     /// # Methods
     /// - GET
     /// - POST
@@ -2915,8 +2911,7 @@ impl Connection {
     /// |3|可以参照[调试页面](https://next.api.aliyun.com/api/ocr-api/2021-07-07/VerifyBusinessLicense?sdkStyle=dara)提供的代码示例完成API接入开发。接入完成后，调用API获取识别结果。如果使用子账号调用接口，需要阿里云账号（主账号）对RAM账号进行授权。创建RAM用户的具体操作，请参考：[创建RAM用户。](https://help.aliyun.com/document_detail/93720.html)文字识别服务提供一种系统授权策略，即**AliyunOCRFullAccess**。具体授权操作，请参见[在用户页面为RAM用户授权。](https://help.aliyun.com/document_detail/116146.html)|
     ///
     /// # Error Codes
-    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server
-    ///
+    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server///
     /// # Extra Info
     /// * <span style="font-size:larger;"> <b> 返回结果示例 </b></span>
     /// ```ignore
@@ -2975,8 +2970,7 @@ impl Connection {
     /// |3|可以参照[调试页面](https://next.api.aliyun.com/api/ocr-api/2021-07-07/VerifyVATInvoice?sdkStyle=dara)提供的代码示例完成API接入开发。接入完成后，调用API获取识别结果。如果使用子账号调用接口，需要阿里云账号（主账号）对RAM账号进行授权。创建RAM用户的具体操作，请参考：[创建RAM用户。](https://help.aliyun.com/document_detail/93720.html)文字识别服务提供一种系统授权策略，即**AliyunOCRFullAccess**。具体授权操作，请参见[在用户页面为RAM用户授权。](https://help.aliyun.com/document_detail/116146.html)|
     ///
     /// # Error Codes
-    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server
-    ///
+    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server///
     /// # Methods
     /// - GET
     /// - POST

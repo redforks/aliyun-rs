@@ -191,8 +191,7 @@ impl Connection {
     /// - `CompanyVerificationFailedFourElementsError`: Four Elements Verification Failed: Authentication Failed.
     /// - `CompanyVerificationFailedMismatch`: Four Elements Verification Failed: Mismatch between Legal Representative and Company Information.
     /// - `CompanyVerificationFailedNoCompany`: Four Elements Verification Failed: Company Not Found.
-    /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.
-    ///
+    /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -308,8 +307,7 @@ impl Connection {
     /// - `CompanyVerificationFailedFourElementsError`: Four Elements Verification Failed: Authentication Failed.
     /// - `CompanyVerificationFailedMismatch`: Four Elements Verification Failed: Mismatch between Legal Representative and Company Information.
     /// - `CompanyVerificationFailedNoCompany`: Four Elements Verification Failed: Company Not Found.
-    /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.
-    ///
+    /// - `CompanyVerificationFailedNoLegalPerson`: Four Elements Verification Failed: Legal Representative Not Found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -334,8 +332,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `QualificationNotExist`: Qualification does not exist.
-    /// - `BindSignDeleteFailed`: The qualification is bound to a signature and cannot be deleted temporarily.
-    ///
+    /// - `BindSignDeleteFailed`: The qualification is bound to a signature and cannot be deleted temporarily.///
     /// # Methods
     /// - POST
     /// - GET
@@ -409,8 +406,7 @@ impl Connection {
     /// - `ProxyAuthorizationNotMatchRegex`: The authorized party name currently does not support any symbols except middle dots, spaces, Chinese brackets, and English parentheses or purely numeric input.
     /// - `SignNumOverLimit`: The signature exceeds the limit of 100 entries.
     /// - `SignNotMatchRegex`: The signature length is limited to 2-12 characters and does not support some special characters.
-    /// - `OrganizationCodeOverLimit`: The organization code is limited to 150 characters.
-    ///
+    /// - `OrganizationCodeOverLimit`: The organization code is limited to 150 characters.///
     /// # Methods
     /// - POST
     /// - GET
@@ -476,8 +472,7 @@ impl Connection {
     /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
     /// - `TrademarkNotExist`: The trademark does not exist.
     /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
-    /// - `QualificationNotFound`: Qualification does not exist.
-    ///
+    /// - `QualificationNotFound`: Qualification does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -508,8 +503,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    /// - `SignatureNotFound`: The signature does not exist.
-    ///
+    /// - `SignatureNotFound`: The signature does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -564,8 +558,7 @@ impl Connection {
     /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
     /// - `TrademarkNotExist`: The trademark does not exist.
     /// - `AppIcpRecordNotExist`: The APP-ICP record does not exist.
-    /// - `QualificationNotFound`: Qualification does not exist.
-    ///
+    /// - `QualificationNotFound`: Qualification does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -585,9 +578,6 @@ impl Connection {
     /// - 支持删除已撤回、审核失败或审核通过的签名，审核中的短信签名不支持删除。
     /// - 删除短信签名后不可恢复，且后续不可再使用该签名发送短信，请谨慎操作。
     /// - 通过接口删除签名的操作会在短信服务控制台同步，在控制台对模板的相关操作，请参见[短信签名](~~108073~~)。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -614,8 +604,7 @@ impl Connection {
     /// - `SmsPassedAuthorizationLetterNotMatch`: Please bind audited authorization letter whose the social credit code is same  to the the social credit code  of qualification.
     /// - `QualificationNotComplete`: The qualification elements are incomplete.
     /// - `SmsSignNotAuthorized`: the signature is not in the sign scope of the authorization letter.
-    /// - `SMS_STATUS_ILLEGAL`: When replacing the qualification and power of attorney of the signature, the signature status must be approved.
-    ///
+    /// - `SMS_STATUS_ILLEGAL`: When replacing the qualification and power of attorney of the signature, the signature status must be approved.///
     /// # Methods
     /// - POST
     /// - GET
@@ -644,9 +633,6 @@ impl Connection {
     /// ### QPS限制
     /// 本接口的单用户QPS限制为1次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
-    /// # Extra Info
-    ///  
-    ///
     /// # Methods
     /// - POST
     /// - GET
@@ -668,9 +654,6 @@ impl Connection {
     /// - 仅支持修改未通过审核的签名，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后自动提交审核，签名进入待审核状态。
     ///
     /// - 通过接口修改签名的操作会在短信服务控制台同步，在控制台对签名的相关操作，请参见[短信签名](~~108073~~)。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -695,9 +678,6 @@ impl Connection {
     /// - 如果签名未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](~~65990~~)，调用[ModifySmsTemplate](~~419287~~)接口或在[签名管理](https://dysms.console.aliyun.com/domestic/text)页面修改短信签名。
     ///
     /// - 当前接口是通过签名名称查询单个签名的审核详情。[QuerySmsSignList](~~419288~~)接口可以查询您当前账号下所有签名的签名详情。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -727,8 +707,7 @@ impl Connection {
     /// - `TrademarkApplicantNameNotMatchRegex`: The trademark applicant cannot be empty.
     /// - `TrademarkApplicantNameOverLimit`: The trademark applicant exceeds the length limit.
     /// - `TrademarkDateNotValid`: The trademark's validity period is not within the valid range.
-    /// - `TrademarkPicsFileError`: The format of the trademark screenshot file is incorrect.
-    ///
+    /// - `TrademarkPicsFileError`: The format of the trademark screenshot file is incorrect.///
     /// # Methods
     /// - POST
     /// - GET
@@ -777,8 +756,7 @@ impl Connection {
     /// - `AppDomainNotMatchRegex`: The APP app store link cannot be empty and must start with http:// or https://.
     /// - `AppDomainOverLimit`: The APP app store link exceeds the length limit.
     /// - `AppApprovalDateNotValid`: The validity period of the APP-ICP record is not within the valid range.
-    /// - `AppIcpRecordPicsFileError`: The format of the APP-ICP record screenshot file is incorrect.
-    ///
+    /// - `AppIcpRecordPicsFileError`: The format of the APP-ICP record screenshot file is incorrect.///
     /// # Methods
     /// - POST
     /// - GET
@@ -838,8 +816,7 @@ impl Connection {
     /// - `InvalidTemplateRule`: The template variable format is non-standard. Please refer to the variable format specifications in the help documentation.
     /// - `ServiceNotOpened`: This product service is not opened.
     /// - `MissingTemplateName`: The template  name cannot be empty.
-    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.
-    ///
+    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -865,8 +842,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    /// - `TemplateNotFound`: The template does not exist.
-    ///
+    /// - `TemplateNotFound`: The template does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -919,8 +895,7 @@ impl Connection {
     /// - `InvalidTemplateContent.Format`: Invalid template content format.
     /// - `ServiceNotOpened`: This product service is not opened.
     /// - `MissingTemplateName`: The template  name cannot be empty.
-    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.
-    ///
+    /// - `SmsSignatureNotFound`: The associated SMS signature does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -944,9 +919,6 @@ impl Connection {
     ///
     /// ### QPS限制
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -980,11 +952,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable///
     /// # Methods
     /// - POST
     /// - GET
@@ -1012,11 +980,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `TemplateParameterCountIllegal`: The verification code template only supports 1 verification code as a variable///
     /// # Methods
     /// - POST
     /// - GET
@@ -1165,8 +1129,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1188,8 +1151,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     ///
@@ -1215,11 +1177,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     ///
@@ -1243,8 +1201,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1268,8 +1225,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为2000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1291,8 +1247,7 @@ impl Connection {
     /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1316,8 +1271,7 @@ impl Connection {
     /// - 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1338,8 +1292,7 @@ impl Connection {
     /// - `InvalidParam.PhoneNumber`: Incorrect phone number format.
     /// - `InvalidParam.PageSize`: PageSize must be less than or equal to 50.
     /// - `InvalidParam.SendDate`: Only the last 30 days can be queried.
-    /// - `InvalidParameter`: At most, only one parameter can be passed among bizCardId, bizSmsId, and bizDigitId.
-    ///
+    /// - `InvalidParameter`: At most, only one parameter can be passed among bizCardId, bizSmsId, and bizDigitId.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1360,8 +1313,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1389,8 +1341,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1418,8 +1369,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - GET
     /// - POST
@@ -1441,8 +1391,7 @@ impl Connection {
     /// - 待上传的文件命名不支持包含中文和特殊符号。
     ///
     /// # Error Codes
-    /// - `OssBiztypeNotSupportError`: Retrieving OSS configuration does not support this biz type.
-    ///
+    /// - `OssBiztypeNotSupportError`: Retrieving OSS configuration does not support this biz type.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1552,11 +1501,7 @@ impl Connection {
     /// - 短链接生成后，需要进行安全审核，审核时长一般为10分钟~2小时，安全审核通过之前，短链接无法直接访问。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1578,11 +1523,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为100次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1605,11 +1546,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为20次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1631,11 +1568,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为50次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1660,11 +1593,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为50次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1685,11 +1614,7 @@ impl Connection {
     /// 本接口的单用户QPS限制为50次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
     ///
     /// # Error Codes
-    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ForbiddenAction`: Access to the account is denied. Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET

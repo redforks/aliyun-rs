@@ -131,11 +131,7 @@ impl Connection {
     /// - `Unauthorized.EmptyRegion`: The specified account has no access authority to any region.
     /// - `Invalid.InstanceChargeType`: The specified instanceChargeType is not valid.
     /// - `InvalidAcceptLanguage.NotFound`: Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -161,11 +157,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidRegion.NotFound`: The specified parameter RegionId is not valid.
     /// - `InvalidInstanceChargeType.NotFound`: The InstanceChargeType does not exist in our records.
-    /// - `InvalidAcceptLanguage.NotFound`: Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAcceptLanguage.NotFound`: Only Chinese (zh-CN), English (en-US), and Japanese (ja) are allowed.///
     /// # Methods
     /// - POST
     /// - GET
@@ -269,11 +261,7 @@ impl Connection {
     /// - `Invalid.NetworkType`: The specified NetworkType is not valid.
     /// - `InvalidResourceId.NotFound`: The specified ResourceId is not found in our records.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidDedicatedHostId.NotFound`: The specified Dedicated Host does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDedicatedHostId.NotFound`: The specified Dedicated Host does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -300,11 +288,7 @@ impl Connection {
     /// # Error Codes
     /// - `Invalid.Parameter`: The required parameter regionId must be not null.
     /// - `InternalError`: The process of creating snapshot has failed due to some unknown error.
-    /// - `ServiceUnavailable`: The service is unavailable, please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ServiceUnavailable`: The service is unavailable, please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -381,11 +365,7 @@ impl Connection {
     /// - `Invalid.OperationType`: The specified OperationType is not valid.
     /// - `OperationDenied`: The specified operation is denied as this instanceType is not support.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId provided does not exist in our records.
-    /// - `InvalidResourceId.NotFound`: The specified ResourceId is not found in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceId.NotFound`: The specified ResourceId is not found in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -432,11 +412,7 @@ impl Connection {
     /// - `RecommendEmpty.GenerationNotMatch`: The recommend instanceType generation are not match.
     /// - `RecommendEmpty.NetworkTypeNotSupported`: The recommend instanceType networkType are not match.
     /// - `InvalidInstanceFamilyLevel.NotSupported`: The specified InstanceFamilyLevel is not valid.
-    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -575,11 +551,7 @@ impl Connection {
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
     /// - `InvalidDedicatedHostType.Missing`: The dedicatedHostType parameter that is mandatory for processing the request is not provided.
     /// - `InvalidDedicatedHostId.NotFound`: The specified SchedulerOptions.DedicatedHostId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -616,11 +588,7 @@ impl Connection {
     /// - `ChargeTypeViolation`: The operation is not permitted due to charge type of the instance.
     /// - `InvalidAction.Unauthorized`: The specified action is not valid.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -665,11 +633,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1254,8 +1218,7 @@ impl Connection {
     /// - `InvalidDiskIds.NotPortable`: The specified DiskId is not portable.
     /// - `InvalidAutoSnapshotPolicyId.NotFound`: Specified parameter AutoSnapshotPolicyId not found.
     /// - `Throttling.Resource`: The request throttle by resource operation.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1618,11 +1581,7 @@ impl Connection {
     /// - `OperationConflict`: Request was denied due to conflict with a previous request,please try again later.
     /// - `Throttling.Resource`: The request throttle by resource operation.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `InvalidImage.OSType`: The image OSType does not support this instance type.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImage.OSType`: The image OSType does not support this instance type.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1671,11 +1630,7 @@ impl Connection {
     /// - `InstanceNotReady`: The specified instance is not ready for use.
     /// - `InternalError`: The request processing has failed due to some unknown error.
     /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1721,11 +1676,7 @@ impl Connection {
     /// - `InvalidInstanceIds.NotFound`: The specified InstanceIds does not exist.
     /// - `InvalidOperation.Conflict`: Request was denied due to conflict with a previous request, please try again later.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1766,11 +1717,7 @@ impl Connection {
     /// - `OperationDenied.SystemInstanceNotSupport`: The system instance does not support the %s operation because %s.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1813,11 +1760,7 @@ impl Connection {
     /// - `InvalidInstanceIds.NotFound`: The specified InstanceIds does not exist.
     /// - `InvalidOperation.Conflict`: Request was denied due to conflict with a previous request, please try again later.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1851,11 +1794,7 @@ impl Connection {
     /// - `InvalidParameter.KMSKeyId.NotFound`: %s
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1895,11 +1834,7 @@ impl Connection {
     /// - `InvalidInstanceIds.NotFound`: The specified InstanceIds does not exist.
     /// - `InvalidOperation.Conflict`: Request was denied due to conflict with a previous request, please try again later.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1939,11 +1874,7 @@ impl Connection {
     /// - `InvalidOperation.EniLinked`: %s
     /// - `OperationDenied.SystemInstanceNotSupport`: The system instance does not support the %s operation because %s.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -1988,11 +1919,7 @@ impl Connection {
     /// - `InvalidInstanceIds.NotFound`: The specified InstanceIds does not exist.
     /// - `InvalidInstanceId.NotFound`: %s
     /// - `InvalidParameter`: Invalid parameters.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2032,11 +1959,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidParameter.TooManyInstanceIds`: Instance ids cannot be more than 100.
     /// - `Abs.InvalidInstanceIds.MalFormed`: The specified instanceIds is not valid.
-    /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2074,8 +1997,7 @@ impl Connection {
     /// - `InvalidFilterKey.NotFound`: Invalid filter.%s.
     /// - `InvalidFilterValue`: Invalid filter.%s.
     /// - `InvalidNetworkType.NotFound`: The specified InstanceNetworkType is not found.
-    /// - `InvalidStatus.NotFound`: The specified Status is not found.
-    ///
+    /// - `InvalidStatus.NotFound`: The specified Status is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2093,11 +2015,7 @@ impl Connection {
     /// 本接口用于查询阿里云 ECS提供的实例规格族列表。通过该接口获取不同系列的实例规格族信息，从而更好地帮助您了解可用的实例规格资源，为您选择合适的实例规格创建 ECS 实例提供参考。
     ///
     /// # Error Codes
-    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2150,8 +2068,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2242,11 +2159,7 @@ impl Connection {
     /// - `InvalidParameter.SecurityGroupIdRepeated`: The specified security group ids has repeated.
     /// - `InvalidSecurityGroupType.NotSupportClassic`: The specified SecurityGroupIds have classic group type.
     /// - `InvalidSecurityGroupVpc.NotBelongToOneVpc`: The specified SecurityGroupIds are belong to different vpc.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2279,8 +2192,7 @@ impl Connection {
     /// - `InvalidOperation.PtpStatusAlreadyEnabled`: The specified instance already has PTP enabled.
     /// - `InvalidOperation.PtpStatusAlreadyDisabled`: The specified instance does not have PTP enabled.
     /// - `OperationDenied.HardwareNotSupportEnablePtp`: The hardware of the instance does not support enable PTP.
-    /// - `OperationDenied.ClockPtpNoStock`: The resource of PTP is out of usage.
-    ///
+    /// - `OperationDenied.ClockPtpNoStock`: The resource of PTP is out of usage.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2311,8 +2223,7 @@ impl Connection {
     /// - `InvalidInstanceType.NetworkOptionsBandwidthWeightingUnsupported`: The current instance type does not support setting or modifying the BandwidthWeighting parameter.
     /// - `InvalidParameter.NetworkOptionsBandwidthWeighting`: The specified parameter BandwidthWeighting is not valid.The correct value should be in [%s].
     /// - `InvalidInstanceId.NotFound`: Specified instance does not exist.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2399,8 +2310,7 @@ impl Connection {
     /// - `InvalidOperation.StoppedModeUnsupported`: The specified instance is StopCharging.
     /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `InvalidInstanceType.ValueUnauthorized`: The specified InstanceType is not authorized.
-    ///
+    /// - `InvalidInstanceType.ValueUnauthorized`: The specified InstanceType is not authorized.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2532,11 +2442,7 @@ impl Connection {
     /// - `MissingTemporary.EndTime`: Temporary.EndTime is not specified.
     /// - `InvalidInstanceChargeType.NotFound`: The InstanceChargeType does not exist in our records.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2653,11 +2559,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
     /// - `ImageOrderFailed`: Create marketplace image order failed.
-    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `LimitedOperation.ServiceUnavailable`: The service is currently unavailable. Please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2681,11 +2583,7 @@ impl Connection {
     /// - `UnsupportedParameter`: The parameters is unsupported.
     /// - `ChargeTypeViolation`: The operation is not permitted due to charge type of the instance.
     /// - `NoSuchResource`: The specified resource is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2712,11 +2610,7 @@ impl Connection {
     /// - `InvalidUser.PassRoleForbidden`: The RAM user does not have the privilege to pass a RAM role.
     /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist.
     /// - `InvalidRamRole.NotFound`: The specified RAMRoleName does not exist.
-    /// - `InvalidRamRole.NotEcsRole`: The specified ram role is not authorized for ecs, please check your role policy.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRamRole.NotEcsRole`: The specified ram role is not authorized for ecs, please check your role policy.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2743,11 +2637,7 @@ impl Connection {
     /// - `InvalidNetworkType.MismatchRamRole`: Ram role cannot be applied to instances of Classic network type.
     /// - `InvalidParameter.AllEmpty`: %s
     /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2769,11 +2659,7 @@ impl Connection {
     /// - `InvalidInstanceIds.Malformed`: The specified instanceIds are not valid.
     /// - `InvalidNetworkType.MismatchRamRole`: Ram role cannot be applied to instances of Classic network type.
     /// - `InvalidUser.PassRoleForbidden`: The RAM user does not have the privilege to pass a RAM role.
-    /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2814,11 +2700,7 @@ impl Connection {
     /// - `InstanceNotReady`: The specified instance is not ready for use
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2847,11 +2729,7 @@ impl Connection {
     /// - `InstanceNotReady`: Temporarily unable to connect the specified instance,please try later.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    /// - `NoSuchResource`: The specified resource is not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `NoSuchResource`: The specified resource is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2875,11 +2753,7 @@ impl Connection {
     /// - `InvalidHttpPutResponseHopLimit.NotSupported`: The specified HttpPutResponseHopLimit not supported, more than 1 and less than 64 is reasonable.
     /// - `InvalidInstanceMetadataTags.NotSupported`: The specified InstanceMetadataTags not supported.
     /// - `InvalidImdsAccessPolicyId.NotFound`: The specified parameter ImdsAccessPolicyId is not found.
-    /// - `InvalidInstanceId.NotFound`: The specified InstanceId is not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified InstanceId is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2898,11 +2772,7 @@ impl Connection {
     /// 本接口用于查询一台ECS实例的自定义数据。
     ///
     /// # Error Codes
-    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -2980,11 +2850,7 @@ impl Connection {
     /// - `PrePaidInstance.Expired`: The prePaid instance has expired.
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3014,11 +2880,7 @@ impl Connection {
     /// - `InvalidParameter.RenewalStatusInstanceId`: The parameter RenewalStatus and InstanceId can not be both empty.
     /// - `InvalidParameter.PageSize`: The specified parameter PageSize is not valid.
     /// - `InvalidParameter.PageNumber`: The specified parameter PageNumber is not valid.
-    /// - `InvalidParameter.InvalidInstanceId`: The specified InstanceId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.InvalidInstanceId`: The specified InstanceId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3059,11 +2921,7 @@ impl Connection {
     /// - `InvalidParameter.RenewalStatus`: %s
     /// - `InvalidPeriodUnit.ValueNotSupported`: The specified parameter PeriodUnit is not valid.
     /// - `InvalidPeriod.StarterPackage`: This instance was created by using a Starter Package plan and can only be renewed monthly, not yearly.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3098,11 +2956,7 @@ impl Connection {
     /// - `InsufficientBalance`: Your account does not have enough balance.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidPayType.NotSupport`: The specified pre pay instance not support.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3150,11 +3004,7 @@ impl Connection {
     /// - `Forbbiden.SubUser`: %s
     /// - `OperationDenied.RegionIdNotSupported`: region not support spot duration instance.
     /// - `OperationDenied.FlavorNotSupported`: flavor not support spot duration instance.
-    /// - `OperationDenied.TimestampNotSupported`: timestamp not support spot duration instance.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `OperationDenied.TimestampNotSupported`: timestamp not support spot duration instance.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3196,11 +3046,7 @@ impl Connection {
     /// - `Invalid.ResourceType`: The ResourceType provided does not exist in our records.
     /// - `Invalid.DestinationResource`: The specified DestinationResource is not valid.
     /// - `Invalid.IoOptimized`: The specified IoOptimized is not valid.
-    /// - `Invalid.NetworkType`: The specified NetworkType is not valid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Invalid.NetworkType`: The specified NetworkType is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3304,11 +3150,7 @@ impl Connection {
     /// - `InvalidSnapshotId.NotFound`: The specified SnapshotId does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified instance %s does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The process of creating snapshot has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The process of creating snapshot has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3345,11 +3187,7 @@ impl Connection {
     /// - `InvalidUsage`: The specified Usage is not valid.
     /// - `InvalidOSType`: The specified OSType is not valid.
     /// - `InvalidArchitecture`: The specified Architecture is not valid.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3384,8 +3222,7 @@ impl Connection {
     /// - `InvalidOperation.FeaturesImdsSupportNotMatch`: The specified parameter Features.ImdsSupport can not be set to v1 from v2.
     /// - `InvalidStatus.ImageIsCreating`: The operation cannot be performed because the image is creating. Please wait until the creation is complete and try again.
     /// - `InvalidOperation.PublicImageUnsupported`: The community image's publisher is not the current account. Modification is not permitted.
-    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
-    ///
+    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3411,11 +3248,7 @@ impl Connection {
     /// - `ImageIsImporting`: The specified Image is importing.
     /// - `ImageIsExporting`: The specified image is currently being exported. You can use the DescribeTasks API to check the status of related tasks and cancel them if needed.
     /// - `ImageIsPublic`: You can not delete public image, please modify it to private.
-    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3438,11 +3271,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidUser.Unauthorized`: The user is not authorized.
-    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3464,11 +3293,7 @@ impl Connection {
     /// - `InvalidParamter`: Invalid Parameter.
     /// - `InvalidInstanceType.ValueNotSupported`: The specified InstanceType does not exist or beyond the permitted range.
     /// - `InvalidUsage`: The specifed Usage is not valid.
-    /// - `InvalidImageId.NotFound`: The specified image %s does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImageId.NotFound`: The specified image %s does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3488,11 +3313,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `MissingParameter`: The input parameter  "RegionId "that is mandatory for processing this request is not supplied.
-    /// - `InvalidImageId.NotFound`: The specified image %s does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImageId.NotFound`: The specified image %s does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3558,11 +3379,7 @@ impl Connection {
     /// - `InvalidOperation.ServiceKeyEncryptedImageUnsupported`: The specified service key encrypted image is not supported for this operation. Please switch to a CMK (Customer Master Key) encrypted image and retry.
     /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
     /// - `InvalidAccount.NotFound`: The specified account %s in parameter "AddAccount.n" or "RemoveAccount.n" does not exist.
-    /// - `InvalidAccount.Forbbiden`: The specified Account does not yourself.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAccount.Forbbiden`: The specified Account does not yourself.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3582,8 +3399,7 @@ impl Connection {
     /// - `MissingParameter`: The input parameter "RegionId" that is mandatory for processing this request is not supplied.
     /// - `Forbbiden`: User not authorized to operate on the specified resource.
     /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
-    /// - `InvalidGroup.Malformed`: The specified parameter "AddGroup.n" or "RemoveGroup.n" does not exist.
-    ///
+    /// - `InvalidGroup.Malformed`: The specified parameter "AddGroup.n" or "RemoveGroup.n" does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3773,8 +3589,7 @@ impl Connection {
     /// - `InvalidOperation.CloudBoxImageImportRoleRequired`: The role for cloud box image import is not set to the ECS service.
     /// - `InvalidOperation.CloudBoxImageImportUnsupported`: Importing cloud box images is not supported.
     /// - `TagKey.Duplication`: The TagKey has duplication with others, case-insensitive.
-    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    ///
+    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3869,11 +3684,7 @@ impl Connection {
     /// - `InvalidImageLicense.NotSupported`: %s
     /// - `InvalidImageCategory.NotSupported`: The specified image category is not supported.
     /// - `InvalidOSSBucket.EncryptUnsupported`: Accessing objects from encrypted OSS bucket is not supported.
-    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3950,11 +3761,7 @@ impl Connection {
     /// - `InvalidParameter.KMSKeyId.NotFound`: The specified KMSKeyId does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
     /// - `InvalidOperation.Conflict`: Request was denied due to conflict with a previous request, please try again later.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -3983,11 +3790,7 @@ impl Connection {
     /// - `CancelNotSupported`: The specified image coping can not be cancelled.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4047,11 +3850,7 @@ impl Connection {
     /// - `InvalidComponentVersion.Exist`: The specified ComponentVersion does exist with the specified Name.
     /// - `InvalidOperation.NoPermissionCreateServiceLinkedRole`: You are not authorized to create Service-linked role. The system will automatically create it when the API is called for the first time. Check your RAM policies, and ensure that you are using the correct credentials.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `NotSupportedCommand.FROM`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `NotSupportedCommand.FROM`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -4076,11 +3875,7 @@ impl Connection {
     /// - `InvalidSystemType.NotSupportedValue`: %s.
     /// - `InvalidComponentType.NotSupportedValue`: %s.
     /// - `InvalidParameter.ComponentVersion`: The specified ComponentVersion is invalid.
-    /// - `Invalid.NextToken`: The specified NextToken is not valid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Invalid.NextToken`: The specified NextToken is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4103,11 +3898,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidImageComponent.InUse`: %s.
-    /// - `InvalidImageComponent.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImageComponent.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -4216,11 +4007,7 @@ impl Connection {
     /// - `MissingParameter.ImportImageOptions`: The specified parameter ImportImageOptions is missing.
     /// - `MissingParameter.ImportImageOptionsDiskDeviceMappingsOSSObject`: The specified parameter ImportImageOptions.DiskDeviceMappings.OSSObject is missing.
     /// - `MissingParameter.ImportImageOptionsDiskDeviceMappingsOSSBucket`: The specified parameter ImportImageOptions.DiskDeviceMappings.OSSBucket is missing.
-    /// - `MissingParameter.ImageOptionsDiskDeviceMappings`: The specified parameter ImportImageOptions.DiskDeviceMappings is missing.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter.ImageOptionsDiskDeviceMappings`: The specified parameter ImportImageOptions.DiskDeviceMappings is missing.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4242,11 +4029,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidImagePipelineIdSize.ExceededMaxNumber`: %s
     /// - `InvalidName.Malformed`: %s
-    /// - `Invalid.NextToken`: The specified NextToken is not valid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Invalid.NextToken`: The specified NextToken is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4268,11 +4051,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidImagePipeline.HasRunningExecution`: %s
-    /// - `InvalidImagePipeline.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImagePipeline.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -4313,11 +4092,7 @@ impl Connection {
     /// - `ImageComponent.NotFound`: %s.
     /// - `InvalidImagePipeline.BaseImageNotFound`: The BaseImage of the specified ImagePipeline is not found.
     /// - `InvalidImagePipeline.OSSObjectNotFound`: The ImportImageOptions.DiskDeviceMappings.OSSObject of the specified ImagePipeline is not found in this region.
-    /// - `StartImagePipelineExecution.Failed`: Start image pipeline execution failed.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `StartImagePipelineExecution.Failed`: Start image pipeline execution failed.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4346,11 +4121,7 @@ impl Connection {
     /// - `MissingParameter.ImagePipelineId`: The specified parameter ImagePipelineId should not be empty.
     /// - `InvalidExecutionId.SizeExceeded`: ExecutionId list exceeds maximum size of %s. Current size is %s.
     /// - `Invalid.NextToken`: The specified NextToken is not valid.
-    /// - `InvalidImagePipeline.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImagePipeline.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -4374,11 +4145,7 @@ impl Connection {
     /// - `InvalidStatus.CancelFailed`: Failed to cancel execution,status is success, failed or cancelled.
     /// - `InvalidStatus.ImagePipelineExecution`: %s
     /// - `InvalidImagePipelineExecution.NotFound`: The specified image pipeline execution does not exist!
-    /// - `InvalidImagePipelineExecutionId.NotFound`: The specified ImagePipelineExecutionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidImagePipelineExecutionId.NotFound`: The specified ImagePipelineExecutionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4529,11 +4296,7 @@ impl Connection {
     /// - `InvalidParameter.KMSKeyId.NotFound`: The specified KMSKeyId does not exist.
     /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
     /// - `InvalidStorageClusterId.NotExist`: The specified StorageClusterId does not exist in current region.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4581,11 +4344,7 @@ impl Connection {
     /// - `InvalidDiskIds.ValueNotSupported`: The specified parameter "DiskIds" is not supported.
     /// - `InvalidDiskChargeType.NotFound`: The DiskChargeType does not exist in our records.
     /// - `InvalidLockReason.NotFound`: The specified LockReason is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4677,11 +4436,7 @@ impl Connection {
     /// - `InvalidDisk.InUse`: The specified disk has been occupied.
     /// - `DiskAttachedNumberExceeded`: The attaching times of the specified disk exceeded.
     /// - `InvalidKMSKeyId.NotFound`: The KMS key used by the disk does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4727,11 +4482,7 @@ impl Connection {
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidDisk.AlreadyDetached`: The specified disk has been detached.
     /// - `InvalidDiskId.OperationNotSupported`: The operation is not supported due to base image not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4814,11 +4565,7 @@ impl Connection {
     /// - `InvalidDataDiskCategory.ValueNotSupported`: The specified Category of Data Disk is not valid.
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4855,11 +4602,7 @@ impl Connection {
     /// - `DeleteWithInstance.Conflict`: The specified image is from the image market, you cannot set DeleteWithInstance attribute to false.
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidDescription.Malformed`: The specified description is wrongly formed.
-    /// - `InvalidInstanceId.NotFound`: Specified attached instance does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: Specified attached instance does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -4932,8 +4675,7 @@ impl Connection {
     /// - `InvalidInstanceStatus.NotSupported`: The status of the specified instance is invalid.
     /// - `InvalidInstanceId.NOT_FOUND`: The specified instance is not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5033,11 +4775,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
     /// - `InvalidDiskCategory.ValueUnauthorized`: The specified DiskCategory is not authorized.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5157,11 +4895,7 @@ impl Connection {
     /// - `InvalidSystemDiskSize.LessThanMinSize`: The specified parameter SystemDisk.Size is less than the min size.
     /// - `NoSuchResource`: The specified resource is not found.
     /// - `OperationDenied`: Internal Error.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5214,11 +4948,7 @@ impl Connection {
     /// - `Disk.NotFound`: The specified disk does not exist.
     /// - `InvalidSnapshotId.NotFound`: The specified SnapshotId does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5266,11 +4996,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidSnapshot.NotFound`: The SnapshotId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5324,11 +5050,7 @@ impl Connection {
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidImageId.NotFound`: The specified ImageId does not exist.
     /// - `InvalidDiskId.OperationNotSupported`: The operation is not supported due to image not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5379,8 +5101,7 @@ impl Connection {
     /// - `InvalidOperation.AcrossRegionsOrZonesUnsupported`: Migration across regions or available zones is not supported.
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
     /// - `InvalidStorageClusterId.NotFound`: The specified dedicated block storage cluster does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5415,11 +5136,7 @@ impl Connection {
     /// - `UserNotInTheWhiteList`: The user is not in disk white list.
     /// - `InvalidDiskStatus.DeleteProtection`: The specified disk is under delete protection, can not be deleted.
     /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5474,8 +5191,7 @@ impl Connection {
     /// - `InvalidOperation.KMSServiceNotOpen`: KMS service is currently not open.
     /// - `UserNotInTheWhiteList`: The user is not in disk white list.
     /// - `InvalidParameter.KMSKeyId.CMKNotEnabled`: The CMK (Customer Master Key) must be in an active state.
-    /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.
-    ///
+    /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.///
     /// # Methods
     /// - GET
     /// - POST
@@ -5494,8 +5210,7 @@ impl Connection {
     /// 查询指定地域块存储账号级默认加密的服务状态。
     ///
     /// # Error Codes
-    /// - `InvalidParameter.RegionIdNotExists`: The specified region does not exists.
-    ///
+    /// - `InvalidParameter.RegionIdNotExists`: The specified region does not exists.///
     /// # Methods
     /// - GET
     /// - POST
@@ -5515,8 +5230,7 @@ impl Connection {
     /// 查询块存储账号级默认加密使用的密钥。
     ///
     /// # Error Codes
-    /// - `InvalidParameter.RegionIdNotExists`: The specified region does not exists.
-    ///
+    /// - `InvalidParameter.RegionIdNotExists`: The specified region does not exists.///
     /// # Methods
     /// - GET
     /// - POST
@@ -5549,8 +5263,7 @@ impl Connection {
     /// - `UserNotInTheWhiteList`: The user is not in disk white list.
     /// - `InvalidDefaultEncryption.NotFound`: You have not configured default encryption setting in this region.
     /// - `InvalidParameter.KMSKeyId.CMKNotEnabled`: The CMK (Customer Master Key) must be in an active state.
-    /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.
-    ///
+    /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5581,8 +5294,7 @@ impl Connection {
     /// - `InvalidOperation.KMSKeyIdNotFound`: The specified KMSKeyId not found, %s.
     /// - `InvalidOperation.KMSServiceNotOpen`: KMS service is currently not open.
     /// - `UserNotInTheWhiteList`: The user is not in disk white list.
-    /// - `InvalidDefaultEncryption.NotFound`: You have not configured default encryption setting in this region.
-    ///
+    /// - `InvalidDefaultEncryption.NotFound`: You have not configured default encryption setting in this region.///
     /// # Methods
     /// - GET
     /// - POST
@@ -5611,8 +5323,7 @@ impl Connection {
     /// - `Abs.InvalidAction.RegionNotSupport`: This region does not support this action.
     /// - `InvalidParameter.RegionIdNotExists`: The specified region does not exists.
     /// - `UserNotInTheWhiteList`: The user is not in disk white list.
-    /// - `InvalidDefaultEncryption.NotFound`: You have not configured default encryption setting in this region.
-    ///
+    /// - `InvalidDefaultEncryption.NotFound`: You have not configured default encryption setting in this region.///
     /// # Methods
     /// - GET
     /// - POST
@@ -5729,11 +5440,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidVolumeId.NotFound`: The specified volume does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5807,11 +5514,7 @@ impl Connection {
     /// - `InvalidStatus.NotFound`: The specified Status is not found.
     /// - `InvalidSnapshotType.NotFound`: The specfied SnapshotType is not found.
     /// - `InvalidSnapshotLinkId.NotFound`: The specified snapshot link is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5833,11 +5536,7 @@ impl Connection {
     /// 如果您想知道当前地域下每块磁盘的快照使用情况，推荐使用[DescribeSnapshotLinks](~~55837~~)查询快照链。
     ///
     /// # Error Codes
-    /// - `InvalidParam.RegionId`: The specified region is not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParam.RegionId`: The specified region is not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5865,11 +5564,7 @@ impl Connection {
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: The current operation is not supported because the resource is managed by a cloud product. Please contact the relevant cloud product to confirm the reason.
     /// - `InvalidDescription.Malformed`: The specified description is wrongly formed.
     /// - `InvalidSnapshotId.NotFound`: The specified SnapshotId does not exist.
-    /// - `InvalidSnapshotDisableInstantAccess.Malformed`: The specified DisableInstantAccess is not valid!
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidSnapshotDisableInstantAccess.Malformed`: The specified DisableInstantAccess is not valid!///
     /// # Methods
     /// - POST
     /// - GET
@@ -5911,8 +5606,7 @@ impl Connection {
     /// - `InvalidOperation.InstantAccessEnabledUnsupport`: The specified snapshot with legacy Instant Access enabled does not support archive.
     /// - `InvalidOperation.EncryptedSnapshotUnsupport`: Archiving encrypted snapshots is not currently supported.
     /// - `QuotaExceed.ConcurrentArchiveSnapshotQuota`: The number of concurrent archiving tasks associated with the disk of the current snapshot has exceeded the quota limit. Please try again later.
-    /// - `InvalidSnapshotId.NotFound`: The specified SnapshotId does not exist.
-    ///
+    /// - `InvalidSnapshotId.NotFound`: The specified SnapshotId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -5981,11 +5675,7 @@ impl Connection {
     /// - `InvalidParameter.KMSKeyId.CMKNotEnabled`: The CMK (Customer Master Key) must be in an active state.
     /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.
     /// - `InvalidOperation.Conflict`: Request was denied due to conflict with a previous request, please try again later.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6018,11 +5708,7 @@ impl Connection {
     /// - `InvalidOperation.DeleteSharedSnapshotUnsupported`: The current snapshot shares authorization with other users. Please revoke the shared authorization through resource management first.
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: The current operation is not supported because the resource is managed by a cloud product. Please contact the relevant cloud product to confirm the reason.
     /// - `InvalidSnapshotId.NotFound`: The specified snapshot is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6051,11 +5737,7 @@ impl Connection {
     /// - `InvalidRegionId`: The specified regionId is invalid.
     /// - `InvalidSnapshotLinkIds`: The specified snapshotLinkIds is invalid.
     /// - `InvalidDiskIds`: The specified diskIds is invalid.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6147,8 +5829,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidKMSKeyId.NotFound`: The KMS key used by the disk does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6172,11 +5853,7 @@ impl Connection {
     /// - `InvalidSnapshotGroupId.MustBeOne`: The size of SnapshotGroupIds must be one when AdditionalAttributes has SNAPSHOT_GROUP_PROGRESS_STATUS.
     /// - `InvalidStatus.ValueNotSupported`: The specified parameter status is not valid. The expected status is progressing, accomplished or failed.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6198,11 +5875,7 @@ impl Connection {
     /// - `InvalidParameter.Name`: The specified Name is invalid.
     /// - `InvalidParameter.Description`: The specified Description is invalid.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidSnapshotGroup.NotFound`: The SnapshotGroupId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidSnapshotGroup.NotFound`: The SnapshotGroupId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6228,11 +5901,7 @@ impl Connection {
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: The current operation is not supported because the resource is managed by a cloud product. Please contact the relevant cloud product to confirm the reason.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidSnapshotGroup.NotFound`: The SnapshotGroupId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6282,11 +5951,7 @@ impl Connection {
     /// - `Abs.InvalidAction.RegionNotSupport`: This region does not support this action.
     /// - `InvalidParameter.KMSKeyId.CMKNotEnabled`: The CMK (Customer Master Key) must be in an active state.
     /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.
-    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6307,11 +5972,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidTag.Mismatch`: The specified Tag.n.Key and Tag.n.Value are not match.
-    /// - `InvalidTagCount`: The specified tags are beyond the permitted range.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidTagCount`: The specified tags are beyond the permitted range.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6334,8 +5995,7 @@ impl Connection {
     /// - `ParameterConflict.AutoSnapshotPolicyIdAndDiskId`: The AutoSnapshotPolicyId and DiskId parameters cannot be specified at the same time. You may specify only one of them.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidAutoSnapshotPolicyId.NotFound`: Specified parameter AutoSnapshotPolicyId not found.
-    /// - `InvalidDiskId.NotFound`: The specified disk does not exist.
-    ///
+    /// - `InvalidDiskId.NotFound`: The specified disk does not exist.///
     /// # Methods
     /// - GET
     /// - POST
@@ -6374,11 +6034,7 @@ impl Connection {
     /// - `InvalidParameter.KMSKeyId.CMKNotEnabled`: The CMK (Customer Master Key) must be in an active state.
     /// - `InvalidParameter.KMSKeyId.CMKUnauthorized`: The CMK(Customer Master Key) lacks authorization to add tags to the ECS service.
     /// - `ParameterInvalid`: The specified automatic snapshot policy does not exist.
-    /// - `InvalidParameter.KMSKeyId.NotFound`: The specified KMSKeyId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.KMSKeyId.NotFound`: The specified KMSKeyId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6423,11 +6079,7 @@ impl Connection {
     /// - `QuotaExceed.AppliedAutoSnapshotPolicyQuota`: The number of auto snapshot policies applied to the specified disk %s has exceeded the quota %s. Please cancel any unused policies and try again.
     /// - `InvalidOperation.AutoSnapshotPolicyConflict`: The disk %s cannot apply the auto snapshot policy of promotional activities and other policies at the same time.
     /// - `ParameterInvalid`: The specified automatic snapshot policy does not exist.
-    /// - `InvalidDiskId.NotFound`: The specified disk does not exist in the region.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDiskId.NotFound`: The specified disk does not exist in the region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6449,11 +6101,7 @@ impl Connection {
     /// - `ParameterInvalid`: The specified RegionId parameter is invalid.
     /// - `InvalidOperation.SnapshotPolicyHasDeleted`: The snapshot policy associated with the current operation has been deleted. Check whether the parameters are correct.
     /// - `OperationDenied.TooManyAutoSnapshotPolicies`: The specified disk %s has already applied multiple auto snapshot policies. To cancel a policy, please explicitly specify the autoSnapshotPolicyId parameter.
-    /// - `InvalidDiskId.NotFound`: The specified DiskIds are not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDiskId.NotFound`: The specified DiskIds are not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6472,11 +6120,7 @@ impl Connection {
     /// 删除一条自动快照策略。如果目标自动快照策略已经被应用到磁盘上，删除自动快照策略后，这些磁盘不再执行该策略。
     ///
     /// # Error Codes
-    /// - `ParameterInvalid`: The specified automatic snapshot policy does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ParameterInvalid`: The specified automatic snapshot policy does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6493,9 +6137,6 @@ impl Connection {
     /// # 查询某地域下已购买对象存储OSS存储包
     ///
     /// 调用DescribeSnapshotPackage查询您在一个阿里云地域下已经购买的OSS存储包。存储包可以用于抵扣标准快照存储容量，但不支持抵扣本地快照。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -6525,8 +6166,7 @@ impl Connection {
     /// - `Invalid.IoOptimized`: The specified IoOptimized is not valid.
     /// - `Invalid.ResourceId`: The specified ResourceId is not valid.
     /// - `Invalid.InstancePayType`: The specified InstancePayType is not valid.
-    /// - `Invalid.OperationType`: The specified OperationType is not valid.
-    ///
+    /// - `Invalid.OperationType`: The specified OperationType is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6630,11 +6270,7 @@ impl Connection {
     /// - `InvalidOperation.PublicIpAddressNoStock`: The public IP address for the specified Region or ChargeType of the instance is out of stock. Please try another Region or ChargeType.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `Image.OrderFailed`: Create marketplace image order failed.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Image.OrderFailed`: Create marketplace image order failed.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6689,11 +6325,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidVlanId.NotFound`: The VlanId provided does not exist in our records.
     /// - `InvalidIpAddress.NotFound`: The specified IP is not in the specified vlan.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6747,11 +6379,7 @@ impl Connection {
     /// - `Forbidden.RiskControl`: This operation is forbidden by Aliyun RiskControl system.
     /// - `UnsupportedPublicIpWithIsp`: %s
     /// - `InvalidInstanceId.NotFound`: %s
-    /// - `InvalidInstance.IpAddressMissing`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstance.IpAddressMissing`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -6852,11 +6480,7 @@ impl Connection {
     /// - `InvalidDependence.GrantAccess`: The Specified operation is denied due to grant access.
     /// - `InvalidDependence.BindGA`: The Specified operation is denied due to GA.
     /// - `InvalidDependence.SLB`: The Specified operation is denied as your instance with alb or clb.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6888,11 +6512,7 @@ impl Connection {
     /// - `InvalidVpc.NotBelong`: The specified vpc is not belong to you.
     /// - `InvalidParameter.PageNumber`: The parameter pageNumber is invalid.
     /// - `InvalidParameter.PageSize`: The parameter pageSize is invalid.
-    /// - `InvalidRegionId.NotFound`: The specified region does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified region does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6929,11 +6549,7 @@ impl Connection {
     /// - `InvalidStatus.InstanceLocked`: The specified instance is locked,please wait more.
     /// - `InvalidInstanceId.LimitedRegion`: The specified instance does not support this operation due to the limitation of its region.
     /// - `Forbidden.SubUser`: User not authorized to operate on the specified resource.
-    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -6962,11 +6578,7 @@ impl Connection {
     /// - `Forbidden.SubUser`: User not authorized to operate on the specified resource.
     /// - `InvalidOperation.InvalidVpc`: The specified instance not link specify vpc.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidParameter.RegionIdAndInstanceId`: The specified instance does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.RegionIdAndInstanceId`: The specified instance does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7099,11 +6711,7 @@ impl Connection {
     /// - `InvalidOperation.EniTrafficModeNotSupportIpv6`: The High Performance(RDMA) traffic mode does not support IPv6.
     /// - `InvalidOperation.VSwitchCidrReservationNotExist`: The specified VSwitch does not have CIDR reservation.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support IP prefix feature.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support IP prefix feature.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7158,11 +6766,7 @@ impl Connection {
     /// - `InvalidEcsId.NotFound`: %s
     /// - `InvalidEniId.NotFound`: %s
     /// - `InvalidVSwitchId.NotFound`: %s
-    /// - `InvalidSecurityGroupId.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidSecurityGroupId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -7192,8 +6796,7 @@ impl Connection {
     /// - `Forbidden.NotSupportRAM`: %s
     /// - `Forbidden.SubUser`: %s
     /// - `InvalidParameter`: %s
-    /// - `InvalidEniId.NotFound`: %s
-    ///
+    /// - `InvalidEniId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -7268,11 +6871,7 @@ impl Connection {
     /// - `InvalidVSwitchId.NotFound`: %s
     /// - `InvalidSecurityGroupId.NotFound`: %s
     /// - `InvalidOperation.PrimaryEniOnlySupportModifyNameAndDesc`: Primary NetworkInterface is only allowed to modify name and description.
-    /// - `InvalidParameter.SecurityGroupIdRepeated`: The specified security group ids has repeated.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.SecurityGroupIdRepeated`: The specified security group ids has repeated.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7337,8 +6936,7 @@ impl Connection {
     /// - `InvalidEniId.NotFound`: %s
     /// - `InvalidVSwitchId.NotFound`: %s
     /// - `InvalidSecurityGroupId.NotFound`: %s
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7439,8 +7037,7 @@ impl Connection {
     /// - `InvalidEniId.NotFound`: %s
     /// - `InvalidVSwitchId.NotFound`: %s
     /// - `InvalidSecurityGroupId.NotFound`: %s
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7516,11 +7113,7 @@ impl Connection {
     /// - `InvalidEniId.NotFound`: %s
     /// - `InvalidVSwitchId.NotFound`: %s
     /// - `InvalidSecurityGroupId.NotFound`: %s
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7602,11 +7195,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: %s
     /// - `InvalidOperation.VSwitchCidrReservationNotExist`: The specified VSwitch does not have CIDR reservation.
     /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support IP prefix feature.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7668,11 +7257,7 @@ impl Connection {
     /// - `InvalidVSwitchId.NotFound`: %s
     /// - `InvalidSecurityGroupId.NotFound`: %s
     /// - `InvalidInstanceId.NotFound`: %s
-    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7759,11 +7344,7 @@ impl Connection {
     /// - `InvalidVSwitchId.IpInvalid`: The specified ipv6 does not match VSwitch cidr scope.
     /// - `InvalidOperation.HasIpv6RouteEntry`: The specified eni has been pointed to the next hop of the route.
     /// - `InvalidOperation.VSwitchCidrReservationNotExist`: The specified vSwitch has no cidr reservation.
-    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7812,11 +7393,7 @@ impl Connection {
     /// - `InvalidIp.IpPrefixMaskNotSame`: The ip prefixes %s are illegal which mask must be same.
     /// - `InvalidIp.IpPrefixNotStrict`: The ip prefix must be strict cidr format.
     /// - `InvalidEniId.NotFound`: %s
-    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidOperation.RegionNotSupportIpPrefix`: The current region does not support ip prefix.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7847,11 +7424,7 @@ impl Connection {
     /// - `Forbidden.NotSupportRAM`: %s
     /// - `Forbidden.SubUser`: %s
     /// - `InvalidOperation.PermissionNotExisted`: %s
-    /// - `InvalidEniId.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidEniId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -7882,11 +7455,7 @@ impl Connection {
     /// - `Forbidden.NotSupportRAM`: %s
     /// - `Forbidden.SubUser`: %s
     /// - `InvalidOperation.PermissionNotExisted`: %s
-    /// - `InvalidEniId.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidEniId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -7931,11 +7500,7 @@ impl Connection {
     /// - `LimitExceed.MaxEntries`: The number of entries exceeds the MaxEntries of the specified prefix list.
     /// - `LimitExceed.PrefixListPerRegion`: The number of prefix lists in the region exceeds the limit.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    /// - `InvalidResourceGroup.NotFound`: The specified resource group is not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceGroup.NotFound`: The specified resource group is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7957,11 +7522,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidParameter`: %s
     /// - `LimitExceed.PrefixListId`: The specified number of PrefixListId exceeds the limit.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -7980,11 +7541,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8006,11 +7563,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `NotSupported.ResourceType`: The specified resource type is not supported.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8046,11 +7599,7 @@ impl Connection {
     /// - `LimitExceed.MaxEntries`: The number of entries exceeds the MaxEntries of the specified prefix list.
     /// - `LimitExceed.Entry`: The number of entries added or removed exceeds the limit.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8072,11 +7621,7 @@ impl Connection {
     /// # Error Codes
     /// - `NotAllowed.AssociationExist`: The specified prefix list has associated resources.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8104,8 +7649,7 @@ impl Connection {
     /// - `InvalidOperation.MaxCountExceed`: The number of port range list in the current account has exceeded quota.
     /// - `InvalidParameter.PortRangeDuplicated`: The specified PortRange is duplicated.
     /// - `InvalidDescription.Malformed`: The specifid Description is not valid.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8125,8 +7669,7 @@ impl Connection {
     /// # Error Codes
     /// - `LimitExceed.PortRangeListId`: The specified number of PortRangeListId exceeds the limit.
     /// - `InvalidParameter`: The specified parameter is not valid.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - GET
     /// - POST
@@ -8146,8 +7689,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidPortRangeListId.NotFound`: The specified port range list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - GET
     /// - POST
@@ -8168,8 +7710,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidPortRangeListId.NotFound`: The specified port range list was not found.
     /// - `InvalidParameter`: The specified parameter is not valid.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - GET
     /// - POST
@@ -8201,8 +7742,7 @@ impl Connection {
     /// - `MissingParameter`: Missing mandatory parameter.
     /// - `InvalidDescription.Malformed`: The specifid Description is not valid.
     /// - `AuthorizationLimitExceed`: The limit of authorization records in the security group reaches.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8223,8 +7763,7 @@ impl Connection {
     /// - `InvalidOperation.Conflict`: The port range list has conflict task.
     /// - `InvalidPortRangeListId.AssociationExist`: The specified port range list has association resources.
     /// - `InvalidPortRangeListId.NotFound`: The specified port range list was not found.
-    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter RegionId is not valid.///
     /// # Methods
     /// - GET
     /// - POST
@@ -8265,11 +7804,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified region does not exist.
     /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8299,11 +7834,7 @@ impl Connection {
     /// - `InvalidParameter.SecurityGroupType`: The specified SecurityGroupType is not valid.
     /// - `InvalidSecurityGroupId.Malformed`: The specified parameter SecurityGroupId is not valid.
     /// - `InvalidSecurityGroupName.Malformed`: The specified parameter SecurityGroupName is not valid.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8329,11 +7860,7 @@ impl Connection {
     /// - `InvalidParameter.AttributeNotSupported`: The specified value for parameter Attribute is not supported. Valid values: snapshotPolicyIds.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8363,11 +7890,7 @@ impl Connection {
     /// - `InvalidPolicy.Malformed`: The Policy is invalid. Only 'Accept' and 'Drop' are supported. Ignore case.
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: %s
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
-    /// - `InvalidParameter.InnerAccessPolicy`: The InnerAccessPolicy attribute of enterprise level security group can't be modified.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.InnerAccessPolicy`: The InnerAccessPolicy attribute of enterprise level security group can't be modified.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8390,11 +7913,7 @@ impl Connection {
     /// - `InvalidSecurityGroupDiscription.Malformed`: Specified security group description is not valid.
     /// - `InvalidParameter`: Invalid Parameter.
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: %s
-    /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8423,11 +7942,7 @@ impl Connection {
     /// - `DependencyViolation`: There is still instance(s) in the specified security group.
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: %s
     /// - `InvalidSecurityGroup.NotFound`: The specified security group is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8554,11 +8069,7 @@ impl Connection {
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
     /// - `InvalidSourceGroupId.NotFound`: The SourceGroupId provided does not exist in our records.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8634,11 +8145,7 @@ impl Connection {
     /// - `SecurityGroupRule.NotFound`: The target security group rule not exist.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
     /// - `InvalidSecurityGroupRuleId.NotFound`: The specified SecurityGroupRuleId is not exists.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8762,11 +8269,7 @@ impl Connection {
     /// - `InvalidSourceGroupId.NotFound`: The SourceGroupId provided does not exist in our records.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
     /// - `InvalidSecurityGroupRuleId.NotFound`: The specified SecurityGroupRuleId is not exists.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8892,8 +8395,7 @@ impl Connection {
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
     /// - `InvalidDestGroupId.NotFound`: The DestGroupId provided does not exist in our records.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -8970,11 +8472,7 @@ impl Connection {
     /// - `SecurityGroupRule.NotFound`: The target security group rule do not exist.
     /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
     /// - `InvalidSecurityGroupRuleId.NotFound`: The specified SecurityGroupRuleId is not exists.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9098,11 +8596,7 @@ impl Connection {
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
     /// - `InvalidDestGroupId.NotFound`: The DestGroupId provided does not exist in our records.
     /// - `InvalidSecurityGroupRuleId.NotFound`: The specified SecurityGroupRuleId is not exists.
-    /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidPrefixListId.NotFound`: The specified prefix list was not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9125,11 +8619,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidSecurityGroupId.Malformed`: The specified parameter SecurityGroupId is essential and size should less than 10
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidSecurityGroupId.NotFound`: The SecurityGroupId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidSecurityGroupId.NotFound`: The SecurityGroupId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9182,11 +8672,7 @@ impl Connection {
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidEniId.NotFound`: %s
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9229,11 +8715,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
     /// - `InvalidSecurityGroupId.NotFound`: The specified SecurityGroupId does not exist.
     /// - `InvalidEniId.NotFound`: %s
-    /// - `RequestTimeout`: The request encounters an upstream server timeout.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `RequestTimeout`: The request encounters an upstream server timeout.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9263,11 +8745,7 @@ impl Connection {
     /// - `QuotaExceed.KeyPair`: The key pair quota exceeds.
     /// - `QuotaExceed.Tags`: %s
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9303,11 +8781,7 @@ impl Connection {
     /// - `KeyPair.AlreadyExist`: The key pair already exist.
     /// - `QuotaExceed.KeyPair`: The key pair quota exceeds.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9323,9 +8797,6 @@ impl Connection {
     /// # 查询密钥对列表
     ///
     /// 调用DescribeKeyPairs查询一个或多个密钥对。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -9356,11 +8827,7 @@ impl Connection {
     /// - `InvalidInstanceIds.ValueNotSupported`: The specified parameter InstanceIds is not valid.
     /// - `DependencyViolation.IoOptimize`: The specified parameter InstanceIds is not valid.
     /// - `DependencyViolation.WindowsInstance`: The instance creating is windows, cannot use ssh key pair to login
-    /// - `InstanceKeyPairLimitExceeded`: The specified instances are beyond the permitted range.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InstanceKeyPairLimitExceeded`: The specified instances are beyond the permitted range.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9386,11 +8853,7 @@ impl Connection {
     /// - `InvalidKeyPairName.NotFound`: The specified KeyPairName does not exist in our records.
     /// - `InvalidInstanceIds.ValueNotSupported`: The specified parameter InstanceIds is not valid.
     /// - `DependencyViolation.WindowsInstance`: The instance creating is windows, cannot use ssh key pair to login.
-    /// - `InstanceKeyPairLimitExceeded`: The specified instances are beyond the permitted range.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InstanceKeyPairLimitExceeded`: The specified instances are beyond the permitted range.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9416,11 +8879,7 @@ impl Connection {
     /// - `MissingParameter`: The input parameter "KeyPairNames" that is mandatory for processing this request is not supplied.
     /// - `InvalidKeyPairNames.ValueNotSupported`: The specified parameter "KeyPairNames" is not valid.
     /// - `InvalidParameter.KeypairAlreadyAttachedInstance`: The specified parameter "KeyPairNames" attached to instances can not be deleted.
-    /// - `InstanceKeyPairLimitExceeded`: Exceeding the allowed amount of instance which will be deleted.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InstanceKeyPairLimitExceeded`: Exceeding the allowed amount of instance which will be deleted.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9466,11 +8925,7 @@ impl Connection {
     /// - `LaunchTemplateName.Duplicated`: %s
     /// - `QuotaExceed.Tags`: %s
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9493,11 +8948,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `InnerServiceFailed`: %s
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9524,11 +8975,7 @@ impl Connection {
     /// - `InvalidRegion.NotExist`: %s
     /// - `MissingParameter`: %s
     /// - `InvalidParameter`: %s
-    /// - `InnerServiceFailed`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InnerServiceFailed`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -9561,11 +9008,7 @@ impl Connection {
     /// - `LaunchTemplateVersionLimitExceed`: %s
     /// - `InvalidLaunchTemplate.NotFound`: %s
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9589,11 +9032,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `InnerServiceFailed`: %s
     /// - `InvalidLaunchTemplate.NotFound`: The specified LaunchTemplate is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9617,11 +9056,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `InnerServiceFailed`: %s
     /// - `InvalidLaunchTemplate.NotFound`: %s
-    /// - `InvalidLaunchTemplateVersion.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidLaunchTemplateVersion.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -9651,11 +9086,7 @@ impl Connection {
     /// - `MissingParameter`: %s
     /// - `InvalidParameter`: %s
     /// - `InvalidOperation.DeleteDefaultVersion`: %s
-    /// - `InnerServiceFailed`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InnerServiceFailed`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -9729,11 +9160,7 @@ impl Connection {
     /// - `InvalidResourcePoolOptionsPrivatePoolIds.NotFound`: The ResourcePoolOptions.PrivatePoolIds do not exist.
     /// - `InvalidSecurityGroupId.NotFound`: The SecurityGroupId %s provided does not exist in our records.
     /// - `InvalidVSwitchId.NotFound`: The specified virtual switch %s  does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9753,11 +9180,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `MissingParamter.RegionId`: The regionId should not be null.
-    /// - `InvalidName.Malformed`: The specified parameter "AutoProvisioningGroupName" is not valid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidName.Malformed`: The specified parameter "AutoProvisioningGroupName" is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9779,11 +9202,7 @@ impl Connection {
     /// - `MissingParameter`: The specified parameter "AutoProvisioningGroupId" should not be null.
     /// - `MissingParamter.RegionId`: The regionId should not be null.
     /// - `Forbidden.RAM`: User not authorized to operate on the specified resource, or this API doesn't support RAM.
-    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9821,11 +9240,7 @@ impl Connection {
     /// - `InvalidParameter.TargetCapacity`: The Capacity is illegal, TotalTargetCapacity, PayAsYouGoTargetCapacity, SpotTargetCapacity must be specified, meanwhile, the TargetCapacity must be larger than or equal to the sum of SpotCapacity and OnDemandCapacity.
     /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.
     /// - `InvalidParameter.MaxPrice`: The specified parameter "MaxSpotPrice" is not valid.
-    /// - `InvalidVSwitchId.NotFound`: The specified virtual switch %s  does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidVSwitchId.NotFound`: The specified virtual switch %s  does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9848,11 +9263,7 @@ impl Connection {
     /// - `MissingParamter.RegionId`: The regionId should not be null.
     /// - `InvalidParameter.periodTime`: The format of startTime or endTime is invalid.
     /// - `Forbidden.RAM`: User not authorized to operate on the specified resource, or this API doesn't support RAM.
-    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9878,11 +9289,7 @@ impl Connection {
     /// - `Forbidden.RAM`: User not authorized to operate on the specified resource, or this API doesn't support RAM.
     /// - `AutoProvisioningGroup.Unauthorized`: Unauthorized to operate current action.
     /// - `AutoProvisioningGroup.IncorrectStatus`: Current status of AutoProvisioningGroup does not support curren action.
-    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAutoProvisioningGroupId.NotFound`: The specified AutoProvisioningGroupId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9912,11 +9319,7 @@ impl Connection {
     /// - `DeploymentSet.GroupQuotaFull`: The deploymentSet group quota is full.
     /// - `InvalidParameter.GroupCount`: The specified parameter "GroupCount" is not valid.
     /// - `InvalidZoneId.NotFound`: The zoneId provided does not exist in our records.
-    /// - `QuotaExceed.DeploymentSet`: The deploymentSet quota is full.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `QuotaExceed.DeploymentSet`: The deploymentSet quota is full.///
     /// # Methods
     /// - POST
     /// - GET
@@ -9937,9 +9340,6 @@ impl Connection {
     ///
     /// 更多实例规格族的详情，请参见[实例规格族](~~25378~~)。
     ///
-    /// # Extra Info
-    ///  
-    ///
     /// # Methods
     /// - POST
     /// - GET
@@ -9959,11 +9359,7 @@ impl Connection {
     /// 查询一个或多个部署集的详细信息。
     ///
     /// # Error Codes
-    /// - `InvalidDeploymentSetIds.TooManyInput`: The parameter DeploymentSets size should less than 100.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDeploymentSetIds.TooManyInput`: The parameter DeploymentSets size should less than 100.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10028,11 +9424,7 @@ impl Connection {
     /// - `InvalidDedicatedHost.NotFound`: No available host.
     /// - `InvalidParam.DedicatedHostId`: Parameter dedicated host id must been provided in such operation.
     /// - `InvalidDedicatedHost.ZoneNotMatch`: The specify dedicated host zone location not match the instance zone location.
-    /// - `InvalidOperation.NotSupport`: The specified DedicatedHost operation not supported on MPS.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidOperation.NotSupport`: The specified DedicatedHost operation not supported on MPS.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10054,11 +9446,7 @@ impl Connection {
     /// - `MissingParameter`: The input parameter RegionId that is mandatory for processing this request is not supplied.
     /// - `InvalidDeploymentSetName.Malformed`: Specified deployment set name is not valid.
     /// - `InvalidDescription.Malformed`: The specified parameter Description is not valid.
-    /// - `InvalidDeploymentSetId.NotFound`: The specified DeploymentSetId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDeploymentSetId.NotFound`: The specified DeploymentSetId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10081,11 +9469,7 @@ impl Connection {
     /// # Error Codes
     /// - `MissingParameter`: The input parameter "DeploymentSetId" that is mandatory for processing this request is not supplied.
     /// - `DependencyViolation.NotEmpty`: There are still instance(s) in the specified DeploymentSetId.
-    /// - `DependencyViolation.ReferByHPC`: The specified deployment set is still referred by an HPC cluster.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `DependencyViolation.ReferByHPC`: The specified deployment set is still referred by an HPC cluster.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10167,11 +9551,7 @@ impl Connection {
     /// - `InvalidAccount.NotSupportEA`: According to business rules, this account cannot purchase ECS ElasticityAssurance.
     /// - `InvalidZoneId.NotFound`: The specified zoneId does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10222,11 +9602,7 @@ impl Connection {
     /// - `Invalid.AssuranceTimes.NotSupported`: The value of AssuranceTimes is not supported.
     /// - `RepeatStartPrivatePool`: PrivatePool has already been started.
     /// - `InvalidResourceGroup.NotFound`: The specified resource group is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10277,11 +9653,7 @@ impl Connection {
     /// - `Invalid.PrivatePool.Purchase`: The PrivatePool has already paid.
     /// - `Invalid.AssuranceTimes.NotSupported`: The value of AssuranceTimes is not supported.
     /// - `RepeatStartPrivatePool`: PrivatePool has already been started.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10332,11 +9704,7 @@ impl Connection {
     /// - `InvalidOperation.InstanceAmountAndOtherAttributesUnsupported`: Modify InstanceAmount and other attributes simultaneously is not supported.
     /// - `QuotaExceed.ElasticityAssuranceCapacity`: ElasticityAssurance Capacity quota exceeded.
     /// - `InvalidPrivatePoolId.NotFound`: The specified private pool does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10368,8 +9736,7 @@ impl Connection {
     /// - `InvalidOperation.PackageTypeUnsupported`: Not support to renew this type of resource package.
     /// - `InternalError`: The request processing has failed due to some unknown error.
     /// - `IncorrectPrivatePoolStatus`: The current status of the private pool does not support this operation.
-    /// - `InvalidPrivatePoolId.NotFound`: The specified private pool does not exist.
-    ///
+    /// - `InvalidPrivatePoolId.NotFound`: The specified private pool does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10393,8 +9760,7 @@ impl Connection {
     /// - `InvalidParameter.Period`: The specified Period is not valid.
     /// - `InvalidParameter.PeriodUnit`: The specified PeriodUnit is not supported.
     /// - `MissingParameter.PrivatePoolOptionsId`: The specified PrivatePoolOptions.Id should not be null.
-    /// - `InvalidParameter.RenewalStatus`: The specified parameter RenewalStatus is not valid.
-    ///
+    /// - `InvalidParameter.RenewalStatus`: The specified parameter RenewalStatus is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10416,8 +9782,7 @@ impl Connection {
     /// # Error Codes
     /// - `Invalid.PrivatePoolOptionsId`: The specified PrivatePoolOptions.Id is invalid.
     /// - `Invalid.TooManyPrivatePoolOptions.Ids`: Too many PrivatePoolOptions.Ids in this request.
-    /// - `MissingParameter.PrivatePoolOptionsId`: The specified PrivatePoolOptions.Id should not be null.
-    ///
+    /// - `MissingParameter.PrivatePoolOptionsId`: The specified PrivatePoolOptions.Id should not be null.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10446,8 +9811,7 @@ impl Connection {
     /// - `InvalidParameter.PeriodUnit`: The specified PeriodUnit is not supported.
     /// - `InvalidUser.Unauthorized`: The user is not authorized.
     /// - `IncorrectPrivatePoolStatus`: The current status of the private pool does not support this operation.
-    /// - `InternalError`: Internal error.
-    ///
+    /// - `InternalError`: Internal error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10526,11 +9890,7 @@ impl Connection {
     /// - `Zone.NotOnSale`: The specified zone is not available for purchase.
     /// - `InvalidZoneId.NotFound`: The specified zoneId does not exist.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10582,11 +9942,7 @@ impl Connection {
     /// - `RepeatStartPrivatePool`: PrivatePool has already been started.
     /// - `InvalidParameter.RegionId`: The specified RegionId is not exist.
     /// - `InvalidPermission.ResourceShareAssocoated`: The current resource is associated to a shared relationship and cannot be released.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10635,11 +9991,7 @@ impl Connection {
     /// - `Invalid.PrivatePool.Purchase`: The PrivatePool has already paid.
     /// - `Invalid.AssuranceTimes.NotSupported`: The value of AssuranceTimes is not supported.
     /// - `RepeatStartPrivatePool`: PrivatePool has already been started.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10676,11 +10028,7 @@ impl Connection {
     /// - `InvalidPrivatePoolOptions.Id`: The specified private pool does not support this operation.
     /// - `OperationDenied.InstanceTypeNotAuthorized`: The specified InstanceType is not available or not authorized.
     /// - `InvalidPrivatePoolId.NotFound`: The specified private pool does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10738,11 +10086,7 @@ impl Connection {
     /// - `Abs.InvalidInstanceIds.MalFormed`: The specified InstanceIds is not valid.
     /// - `InvalidInstanceIds.NotFound`: The specified InstanceIds does not exist.
     /// - `InvalidParameter`: Invalid parameters.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10807,11 +10151,7 @@ impl Connection {
     /// - `RepeatStartPrivatePool`: PrivatePool has already been started.
     /// - `InvalidOperation.PrePaidInstanceUnsupported`: Not support to modify the private pool options of prepay instances.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10866,8 +10206,7 @@ impl Connection {
     /// - `Invalid.Action.ReleaseCapacityReservation`: Release action is not supported when using Limited endTimeType, please change it to Unlimited first.
     /// - `InvalidOperation.ReleasePrivatePoolUnsupported`: The specified private pool does not support release.
     /// - `InvalidPermission.ResourceShareAssocoated`: The current resource is associated to a shared relationship and cannot be released.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -10963,11 +10302,7 @@ impl Connection {
     /// - `RegionUnauthorized`: You are not authorized to perform the operation in the specified region.
     /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.
     /// - `PaymentMethodNotFound`: No payment method has been registered on the account.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11037,11 +10372,7 @@ impl Connection {
     /// - `InvalidReservedInstanceStatus.ValueNotSupported`: The specified Status is not supported.
     /// - `InvalidAllocationType.ValueNotSupported`: The specified AllocationType is not supported.
     /// - `RAM.ApiNotSupported`: This call is not supported from ram accessing.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11159,11 +10490,7 @@ impl Connection {
     /// - `OperationDenied.OnlyModifyName`: It is not allowed to modify the ReservedInstanceName only.
     /// - `InvalidReservedInstanceId.NotFound`: The specified parameter ReservedInstanceId is invalid.
     /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11185,11 +10512,7 @@ impl Connection {
     /// - `InvalidParameter.ReservedInstanceName`: The reservedInstanceName is invalid.
     /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.
     /// - `InvalidReservedInstanceId.NotFound`: The specified ReservedInstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11270,8 +10593,7 @@ impl Connection {
     /// - `InvalidReservedInstanceId.NotFound`: The specified parameter ReservedInstanceId is invalid.
     /// - `ChargeTypeViolation`: The operation is not permitted due to charge type of the instance.
     /// - `InvalidZoneId.NotFound`: The ZoneId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11294,8 +10616,7 @@ impl Connection {
     /// - `MissingParamter.InstanceId`: ReservedInstanceId should not be null.
     /// - `InvalidParameter.ToManyInstanceIds`: ReservedInstanceId should be less than 100.
     /// - `InValidParameter`: Parameter invalid.%s
-    /// - `ResourceStatusViolation`: The operation is not permitted due to resource status of the instance.
-    ///
+    /// - `ResourceStatusViolation`: The operation is not permitted due to resource status of the instance.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11321,8 +10642,7 @@ impl Connection {
     /// - `InvalidParameter.PeriodUnit`: The specified parameter PeriodUnit is not valid.
     /// - `InvalidParameter.Period`: The specified parameter Period is not valid.
     /// - `InvalidParameter.RenewalStatus`: The specified parameter RenewalStatus is not valid.
-    /// - `InValidParameter`: Parameter invalid.%s
-    ///
+    /// - `InValidParameter`: Parameter invalid.%s///
     /// # Methods
     /// - POST
     /// - GET
@@ -11364,11 +10684,7 @@ impl Connection {
     /// - `InvalidStartTime.NotSupported`: The specified StartTime should be within 180 calendar days from the current date, and you must specify a precision to hour.
     /// - `InvalidStartTime.MalFormed`: The specified StartTime is out of the permitted range.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11390,11 +10706,7 @@ impl Connection {
     /// - `MissingParameter.RegionId`: The specified RegionId should not be null.
     /// - `InvalidParameter.Name`: The specified Name is invalid.
     /// - `InvalidParameter.CapacityExceed`: The specified Capacity exceeds the limitation of quota.
-    /// - `InvalidAllocationType.ValueNotSupported`: The specified AllocationType is not supported.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidAllocationType.ValueNotSupported`: The specified AllocationType is not supported.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11417,11 +10729,7 @@ impl Connection {
     /// - `InvalidParameter.Name`: The specified Name is invalid.
     /// - `InvalidDescription.Malformed`: The specified Description is wrongly formed.
     /// - `MissingParameter.StorageCapacityUnitId`: The specified StorageCapacityUnitId is not supported.
-    /// - `InvalidStorageCapacityUnitId.NotFound`: The specified StorageCapacityUnitId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidStorageCapacityUnitId.NotFound`: The specified StorageCapacityUnitId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11532,11 +10840,7 @@ impl Connection {
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
     /// - `InvalidTerminationMode.NotFound`: The specified parameter TerminationMode does not exist.
     /// - `InvalidOssOutputDelivery.BucketNotFound`: The OSS bucket specified in the parameter OssOutputDelivery does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11591,11 +10895,7 @@ impl Connection {
     /// - `InvalidCmdType.NotFound`: The specified command type does not exist.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11722,11 +11022,7 @@ impl Connection {
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
     /// - `InvalidTerminationMode.NotFound`: The specified parameter TerminationMode does not exist.
     /// - `InvalidOssOutputDelivery.BucketNotFound`: The OSS bucket specified in the parameter OssOutputDelivery does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11770,11 +11066,7 @@ impl Connection {
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11822,11 +11114,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
     /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11882,8 +11170,7 @@ impl Connection {
     /// - `InvalidInstanceId.NotFound`: The specified parameter InstanceId does not exist.
     /// - `InvalidRegionId.NotFound`: The specified parameter RegionId does not exist.
     /// - `InvalidCommandId.NotFound`: The specified CommandId does not exist.
-    /// - `InternalError`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11913,11 +11200,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInvokeId.NotFound`: The specified invoke ID does not exist.
     /// - `InvalidInstanceId.NotFound`: The specified parameter InstanceId does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11958,11 +11241,7 @@ impl Connection {
     /// - `InvalidCommandType.NotFound`: The specified parameter Type does not exist.
     /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
     /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -11994,11 +11273,7 @@ impl Connection {
     /// - `InvalidTimeout.ExceedLimit`: The specified parameter Timeout exceeds the upper limit.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidCmdId.NotFound`: The specified command ID does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12021,11 +11296,7 @@ impl Connection {
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidCmdId.NotFound`: The specified command ID does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12075,11 +11346,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instances not found.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12114,11 +11381,7 @@ impl Connection {
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12153,11 +11416,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instance does not exist.
     /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12187,11 +11446,7 @@ impl Connection {
     /// - `InvalidInstanceId.OSTypeUnsupported`: The OS type of the instance %s corresponding to the parameter InstanceId does not support the operation.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instance does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12251,8 +11506,7 @@ impl Connection {
     /// - `InvalidEncryptionOptions.Conflict`: The parameter PortNumber or TargetServer cannot be specified with parameter EncryptionOptions.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instances not found.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12275,8 +11529,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `RegionId.ApiNotSupported`: The api is not supported in this region.
-    /// - `InvalidSessionId.NotFound`: The specified SessionId does not exist.
-    ///
+    /// - `InvalidSessionId.NotFound`: The specified SessionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12299,8 +11552,7 @@ impl Connection {
     /// - `InvalidParameter.NextToken`: The specified parameter NextToken is not valid.
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `InvalidRegionId.NotFound`: The specified parameter RegionId does not exist.
-    /// - `InternalError`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12340,8 +11592,7 @@ impl Connection {
     /// - `InvalidSlsLogstoreName.NotFound`: The specified parameter SlsDeliveryConfig.LogstoreName does not exist.
     /// - `InvalidOssBucketName.NotFound`: The specified parameter OssDeliveryConfig.BucketName does not exist.
     /// - `InvalidRegionId.NotFound`: The specified parameter RegionId does not exist.
-    /// - `InternalError`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12362,8 +11613,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidParameter.SettingType`: The specified parameter SettingType is not valid.
     /// - `InvalidRegionId.NotFound`: The specified parameter RegionId does not exist.
-    /// - `InternalError`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12421,11 +11671,7 @@ impl Connection {
     /// - `ManagedInstanceCountExceedLimit`: The count of managed instance in current region exceeds the limit of %s.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when dispatch the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when dispatch the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12461,11 +11707,7 @@ impl Connection {
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12491,11 +11733,7 @@ impl Connection {
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `ActivationId.NotFound`: The specified activation id does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12522,11 +11760,7 @@ impl Connection {
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `ActivationId.NotFound`: The specified activation id does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12558,11 +11792,7 @@ impl Connection {
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12591,8 +11821,7 @@ impl Connection {
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instances id does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12615,11 +11844,7 @@ impl Connection {
     /// - `Operation.Forbidden`: The operation is not permitted.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidInstance.NotFound`: The specified instance id does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12652,8 +11877,7 @@ impl Connection {
     /// - `InvalidParameter.MaxResults`: The specified parameter MaxResults is not valid.
     /// - `InvalidInstance.NotFound`: The specified instance does not exist.
     /// - `InvalidPluginName.NotFound`: The specified plugin name does not exist.
-    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.
-    ///
+    /// - `InternalError.Dispatch`: An error occurred when you dispatched the request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12681,11 +11905,7 @@ impl Connection {
     /// - `OperationDenied.NotInWhiteList`: %s
     /// - `InstanceIdLimitExceeded`: %s
     /// - `EventIdLimitExceeded`: %s
-    /// - `MissingParameter`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12714,11 +11934,7 @@ impl Connection {
     /// - `InvalidParameter.TimeEndBeforeStart`: %s
     /// - `OperationDenied.NotInWhiteList`: %s
     /// - `TooManyDiskEvent.DiskIdRequired`: %s
-    /// - `MissingParameter`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12747,11 +11963,7 @@ impl Connection {
     /// - `EventIdLimitExceeded`: %s
     /// - `InvalidParameter.TimeEndBeforeStart`: %s
     /// - `OperationDenied.NotInWhiteList`: %s
-    /// - `MissingParameter`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12784,11 +11996,7 @@ impl Connection {
     /// - `SimulatedEventLimitExceeded`: %s
     /// - `InstanceIdLimitExceeded`: %s
     /// - `MissingParameter`: %s
-    /// - `InvalidInstanceId.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12811,11 +12019,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `CannotCancelSystemEvent.NotSimulated`: %s
     /// - `InvalidEventId.NotFound`: %s
-    /// - `MissingParameter`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12846,11 +12050,7 @@ impl Connection {
     /// - `SwitchToOffline.OnlineReinitFail`: Failed to online reinitialize disk while offline reinitialization succeeded.
     /// - `Forbidden.RAM`: User not authorized to operate on the specified resource, or this API does not support RAM.
     /// - `OperationFail.AcceptRecoverFail`: Failed to accept system event due to resource constraints.
-    /// - `InvalidEventId.NoInquiringEventFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidEventId.NoInquiringEventFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -12886,8 +12086,7 @@ impl Connection {
     /// 调用CreateDiagnosticMetricSet创建资源诊断指标集合。您可以根据需要，灵活组合诊断指标。
     ///
     /// # Error Codes
-    /// - `InvalidParameter.MetricId`: %s
-    ///
+    /// - `InvalidParameter.MetricId`: %s///
     /// # Methods
     /// - POST
     ///
@@ -12905,8 +12104,7 @@ impl Connection {
     /// 调用DescribeDiagnosticMetricSets查询资源诊断集合列表。
     ///
     /// # Error Codes
-    /// - `InvalidMetricSetId.NotExist`: The specified MetricSetId does not exist.
-    ///
+    /// - `InvalidMetricSetId.NotExist`: The specified MetricSetId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -12926,8 +12124,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidParameter.MetricSetId`: %s
-    /// - `InvalidParameter.MetricIds`: %s
-    ///
+    /// - `InvalidParameter.MetricIds`: %s///
     /// # Methods
     /// - POST
     ///
@@ -12945,8 +12142,7 @@ impl Connection {
     /// 调用DeleteDiagnosticMetricSets删除资源诊断指标集合。
     ///
     /// # Error Codes
-    /// - `InvalidMetricSetId.NotExist`: The specified MetricSetId does not exist.
-    ///
+    /// - `InvalidMetricSetId.NotExist`: The specified MetricSetId does not exist.///
     /// # Methods
     /// - POST
     ///
@@ -12968,8 +12164,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `InvalidOperation.CloudAssistantNotReady`: Cloud Assistant is not installed, or the service is unavailable. Install Cloud Assistant or check the status of Cloud Assistant first.
     /// - `InvalidAxt.ServiceNotReady	`: %s
-    /// - `Forbidden.CreateSLR`: You are not authorized to do this action.
-    ///
+    /// - `Forbidden.CreateSLR`: You are not authorized to do this action.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13005,8 +12200,7 @@ impl Connection {
     /// 调用DescribeDiagnosticReportAttributes查询资源诊断详情。
     ///
     /// # Error Codes
-    /// - `InvalidParameter.ReportNotExist`: The specified report does not exist.
-    ///
+    /// - `InvalidParameter.ReportNotExist`: The specified report does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13028,8 +12222,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidStatus.InProgress`: %s
-    /// - `InvalidResource.NotFound`: The specified resource not exists.
-    ///
+    /// - `InvalidResource.NotFound`: The specified resource not exists.///
     /// # Methods
     /// - POST
     ///
@@ -13059,11 +12252,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `IncorrectInstanceStatus`: %s
     /// - `NotSupported`: %s
-    /// - `Throttling`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Throttling`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -13092,11 +12281,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `IncorrectInstanceStatus`: %s
     /// - `NotSupported`: %s
-    /// - `Throttling`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Throttling`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -13145,11 +12330,7 @@ impl Connection {
     /// - `InvalidInstanceType.NotSupportCredit`: The InstanceType of the specified instance does not support credit.
     /// - `InvalidParameter.EndTime`: The specified parameter EndTime is earlier than StartTime.
     /// - `InvalidDiskId.NotFound`: The DiskId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13188,11 +12369,7 @@ impl Connection {
     /// - `Throttling`: Request was denied due to request throttling.
     /// - `InvalidStartTime.ValueNotSupported`: The specified parameter StartTime is later than EndTime.
     /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13230,11 +12407,7 @@ impl Connection {
     /// - `InvalidParameter.EndTime`: The specified parameter EndTime is earlier than StartTime.
     /// - `InvalidDiskId.NotFound`: The DiskId provided does not exist in our records.
     /// - `InvalidEcsId.NotFound`: The specified instance ID is invalid.
-    /// - `InvalidParam.Malformed`: The specified parameter "EniId" and "InstanceId" are not valid
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParam.Malformed`: The specified parameter "EniId" and "InstanceId" are not valid///
     /// # Methods
     /// - POST
     /// - GET
@@ -13266,11 +12439,7 @@ impl Connection {
     /// - `InvalidPeriod.ValueNotSupported`: The specified parameter "Period" is not valid.
     /// - `InvalidStartTime.TooEarly`: The specified parameter "StartTime" is too early.
     /// - `InvalidParameter.TooManyDataQueried`: Too many data queried.
-    /// - `Throttling`: Request was denied due to request throttling.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Throttling`: Request was denied due to request throttling.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13298,11 +12467,7 @@ impl Connection {
     /// - `InvalidParameter`: %s
     /// - `InstanceIdLimitExceeded`: %s
     /// - `OperationDenied.NotInWhiteList`: %s
-    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13329,11 +12494,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidParameter`: %s
     /// - `OperationDenied.NotInWhiteList`: %s
-    /// - `InvalidInstanceId.NotFound`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidInstanceId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -13388,11 +12549,7 @@ impl Connection {
     /// - `InstanceExpiredOrInArrears`: The specified operation is denied as your prepay instance is expired (prepay mode) or in arrears (afterpay mode).
     /// - `InvalidOperation.RedeployInstance`: %s
     /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13414,11 +12571,7 @@ impl Connection {
     /// - `InstanceIdLimitExceeded`: %s
     /// - `DiskIdLimitExceeded`: %s
     /// - `InvalidInstanceId.NotFound`: %s
-    /// - `MissingParameter`: %s
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParameter`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -13467,11 +12620,7 @@ impl Connection {
     /// - `MissingParameter.RegionId`: The parameter - RegionId should not be null.
     /// - `InvalidResourceId.NotFound`: The specified ResourceIds are not found in our records.
     /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    /// - `ServiceUnavailable`: The service is unavailable, please try again later.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `ServiceUnavailable`: The service is unavailable, please try again later.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13535,11 +12684,7 @@ impl Connection {
     /// - `InvalidResourceId.NotFound`: The specified ResourceIds are not found in our records.
     /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
     /// - `ServiceUnavailable`: The service is unavailable, please try again later.
-    /// - `InternalError`: The process of creating snapshot has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The process of creating snapshot has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13581,11 +12726,7 @@ impl Connection {
     /// - `MissingParameter.Tags`: The parameter - Tags should not be null
     /// - `MissingParameter.RegionId`: The parameter - RegionId should not be null
     /// - `InvalidResourceId.NotFound`: The specified ResourceIds are not found in our records.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13614,11 +12755,7 @@ impl Connection {
     /// - `InvalidStatus.ResourceGroup`: You cannot perform an operation on a resource group that is being created or deleted.
     /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
     /// - `InvalidResourceGroup.NotFound`: The ResourceGroup provided does not exist in our records.
-    /// - `InvalidResourceId.NotFound`: The ResourceId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceId.NotFound`: The ResourceId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13686,11 +12823,7 @@ impl Connection {
     /// - `InvalidDedicatedHostClusterId.NotFound`: The specified DedicatedHostClusterId does not exist.
     /// - `InvalidDedicatedHostClusterId.ExceedMaxSize`: The specified Dedicated Host Cluster exceeded max capacity.
     /// - `InvalidParameter.ActionOnMaintenance`: The specified ActionOnMaintenance does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13722,11 +12855,7 @@ impl Connection {
     /// - `InvalidRegion.NotFound`: The specified parameter RegionId is not valid.
     /// - `InvalidZone.NotFound`: The specified parameter ZoneId is not valid.
     /// - `InvalidDedicatedHostIds.Malformed`: The amount of specified dedicatedHostIds exceeds the limit.
-    /// - `InvalidLockReason.NotFound`: The specified LockReason is not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidLockReason.NotFound`: The specified LockReason is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13743,9 +12872,6 @@ impl Connection {
     /// # 查询专有宿主机规格详细参数
     ///
     /// 调用DescribeDedicatedHostTypes查询指定地域下支持的专有宿主机规格详细参数，或者查询专有宿主机支持的ECS实例规格族。
-    ///
-    /// # Extra Info
-    ///  
     ///
     /// # Methods
     /// - POST
@@ -13781,11 +12907,7 @@ impl Connection {
     /// - `InvalidDedicatedHostClusterId.NotFound`: The specified DedicatedHostClusterId does not exist.
     /// - `InvalidDedicatedHostClusterId.ExceedMaxSize`: The specified Dedicated Host Cluster exceeded max capacity.
     /// - `InvalidDedicatedHostClusterId.NotMatch`: The specified DedicatedHostCluster does not match request.
-    /// - `InvalidParameter.ActionOnMaintenance`: The specified ActionOnMaintenance does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.ActionOnMaintenance`: The specified ActionOnMaintenance does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13836,11 +12958,7 @@ impl Connection {
     /// - `InvalidOperation.NotSupport`: Instance on dedicated host not support modify charge type.
     /// - `InvalidInstanceId.NotFound`: The specified instanceId does not exist.
     /// - `InvalidDedicatedHostId.NotFound`: The specified Dedicated Host does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13864,11 +12982,7 @@ impl Connection {
     /// - `InvalidParameter.ToManyDedicatedHostIds`: DedicatedHostId should be less than 100.
     /// - `InvalidParameter.InvalidDedicatedHostId`: %s
     /// - `IncorrectDedicatedHostStatus`: The current status of the resource does not support this operation.
-    /// - `MissingParamter.InstanceId`: InstanceId should not be null.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `MissingParamter.InstanceId`: InstanceId should not be null.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13898,11 +13012,7 @@ impl Connection {
     /// - `InvalidParameter.Duration`: %s
     /// - `InvalidParameter.RenewalStatus`: %s
     /// - `InvalidPeriodUnit.ValueNotSupported`: The specified parameter PeriodUnit is not valid.
-    /// - `InvalidParameter.AutoRenewWithEcs`: The value of parameter AutoRenewWithEcs is invalid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidParameter.AutoRenewWithEcs`: The value of parameter AutoRenewWithEcs is invalid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13938,11 +13048,7 @@ impl Connection {
     /// - `ChargeTypeViolation`: Pay-As-You-Go dedicated host do not support this operation.
     /// - `IncorrectHostStatus`: The current status of the resource does not support this operation.
     /// - `LastTokenProcessing`: The last token request is processing.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13968,11 +13074,7 @@ impl Connection {
     /// - `InvalidAutoReleaseTime.Malformed`: The specified parameter AutoReleaseTime is not valid.
     /// - `ChargeTypeViolation`: The operation is not permitted due to charge type of the dedicated host.
     /// - `NoSuchResource`: The specified resource is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -13996,11 +13098,7 @@ impl Connection {
     /// - `InvalidDedicatedHostStatus.Malformed`: The specified DedicatedHost is in inValid status to execute redeployment.
     /// - `InvalidInstanceStatus.Unstopped`: There is unstopped instances on DedicatedHost.
     /// - `InvalidUser.Unauthorized`: The user is not authorized.
-    /// - `InvalidDedicatedHostId.NotFound`: The specified DedicatedHostId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDedicatedHostId.NotFound`: The specified DedicatedHostId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14026,11 +13124,7 @@ impl Connection {
     /// - `InstanceExist`: Instance exists on the dedicated host.
     /// - `OperationDenied.DedicatedHostShared`: The specified ddh is shared to other users. Remove it from the resource share before releasing.
     /// - `InvalidDedicatedHostId.NotFound`: The specified DedicatedHostId does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14056,11 +13150,7 @@ impl Connection {
     /// - `QuotaExceed.Region`: The maximum region quota of Dedicated Host Cluster has exceeded.
     /// - `QuotaExceed.Zone`: The maximum zone quota of Dedicated Host Cluster has exceeded.
     /// - `InvalidParam.Zone`: The specified zone not match region.
-    /// - `InvalidRegionId.NotFound`: The regionId provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The regionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14082,11 +13172,7 @@ impl Connection {
     /// - `InvalidDedicatedHostName.Malformed`: The specified parameter DedicatedHostClusterName is not valid.
     /// - `InvalidDescription.Malformed`: The specified parameter Description is not valid.
     /// - `InvalidUser.Unauthorized`: The user is not authorized
-    /// - `InvalidDedicatedHostId.NotFound`: The specified DedicatedHostClusterId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDedicatedHostId.NotFound`: The specified DedicatedHostClusterId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14114,11 +13200,7 @@ impl Connection {
     /// - `InvalidParameter.DedicatedHostClusterIds`: The specified parameter dedicatedHostClusterIds is not valid.
     /// - `InvalidRegion.NotFound`: The specified parameter RegionId is not valid.
     /// - `InvalidZone.NotFound`: The specified parameter ZoneId is not valid.
-    /// - `InvalidDedicatedHostIds.Malformed`: The amount of specified dedicatedHostClusterIds exceeds the limit.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidDedicatedHostIds.Malformed`: The amount of specified dedicatedHostClusterIds exceeds the limit.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14138,11 +13220,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `DedicatedHostExists`: Dedicated Host exists in the dedicated host cluster.
-    /// - `IncompleteParamter`: Parameter DedicatedHostClusterId can not be null in this request.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `IncompleteParamter`: Parameter DedicatedHostClusterId can not be null in this request.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14167,11 +13245,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified parameter "RegionId" is not valid.
     /// - `Invalid.Parameter`: Invalid parameters
     /// - `InvalidRegionId.NotFound`: The specified parameter "RegionId" is not valid.
-    /// - `InternalError`: Failed to create hpc cluster
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InternalError`: Failed to create hpc cluster///
     /// # Methods
     /// - POST
     /// - GET
@@ -14193,11 +13267,7 @@ impl Connection {
     /// - `MissingParameter.HpcClusterId`: The input parameter HpcClusterId that is mandatory for processing this request is not supplied.
     /// - `InvalidHpcClusterIds.ExceedLimit`: The amount of specified specified hpc cluster ids exceeds the limit.
     /// - `InvalidHpcClusterIds.Malformed`: The amount of specified specified hpc cluster ids is invalid.
-    /// - `Invalid.Parameter`: Invalid parameters.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `Invalid.Parameter`: Invalid parameters.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14222,11 +13292,7 @@ impl Connection {
     /// - `InvalidModifyInfo`: Modify info is invalid, name/description must not null at the same time.
     /// - `HPC_CLUSTER_MODIFY_FAILED`: Modify failed, possibly this hpc cluster does not exist.
     /// - `Invalid.Parameter`: Invalid parameters.
-    /// - `HpcClusterNotExists`: The specified hpc cluster does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `HpcClusterNotExists`: The specified hpc cluster does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14251,11 +13317,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified parameter "RegionId" is not valid.
     /// - `NotExists.HpcCluster`: The specified hpc cluster does not exist.
     /// - `NotEmpty.HpcCluster`: The specified hpc cluster is not empty, still contains instances.
-    /// - `InvalidRegionId.NotFound`: The specified parameter "RegionId" is not valid.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified parameter "RegionId" is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14274,11 +13336,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `MissingParameter`: An input parameter "RegionId" that is mandatory for processing the request is not supplied.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14298,11 +13356,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `MissingParameter`: An input parameter "RegionId" that is mandatory for processing the request is not supplied.
-    /// - `InvalidTaskId.NotFound`: The specified "TaskId" is not found.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidTaskId.NotFound`: The specified "TaskId" is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14327,11 +13381,7 @@ impl Connection {
     /// - `InvalidTaskId.TaskActionNotSupport`: The specified task action  not support.
     /// - `InvalidTaskId.IncorrectTaskStatus`: The specified task status is invalid.
     /// - `InvalidTaskId.NotFound`: The specified "TaskId" is not found.
-    /// - `CancelTaskFailed`: The task is failed to cancel, Please contact the administrator.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `CancelTaskFailed`: The task is failed to cancel, Please contact the administrator.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14347,8 +13397,7 @@ impl Connection {
     /// 获取用户级别默认属性
     ///
     /// # Error Codes
-    /// - `InvalidParameter`: The specified parameters are not valid.
-    ///
+    /// - `InvalidParameter`: The specified parameters are not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14367,8 +13416,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidAction.UserForbidden`: Specified action is not valid.
-    /// - `InvalidParams`: The parameters statusKey or statusValue are not valid.
-    ///
+    /// - `InvalidParams`: The parameters statusKey or statusValue are not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14386,8 +13434,7 @@ impl Connection {
     /// 查询账号限制
     ///
     /// # Error Codes
-    /// - `InvalidLimitation.NotFound`: The specified Limitation is not valid.
-    ///
+    /// - `InvalidLimitation.NotFound`: The specified Limitation is not valid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14431,8 +13478,7 @@ impl Connection {
     /// - `Forbidden.NotSupportRAM`: %s
     /// - `Forbidden.SubUser`: %s
     /// - `InvalidOperation.PermissionNotExisted`: %s
-    /// - `InvalidEniPermissionId.NotFound`: %s
-    ///
+    /// - `InvalidEniPermissionId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -14455,8 +13501,7 @@ impl Connection {
     /// - `InvalidBandwidth.NotExist`: bandwidth package not exist.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
     /// - `InvalidBandwidthPackageId.NotFound`: The specified BandwidthPackageId does not exist in our records.
-    /// - `InvalidNatGateway.NotFound`: The specified natGateway does not exist in our records.
-    ///
+    /// - `InvalidNatGateway.NotFound`: The specified natGateway does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14480,8 +13525,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
     /// - `InvalidBandwidthPackageId.NotFound`: The specified BandwidthPackageId does not exist in our records.
     /// - `InvalidBandwidth.ValueNotSupported`: The specified value of Bandwidth not supported.
-    /// - `BandwidthPackage.FinancialLocked`: The specified BandwidthPackage has been Financail Lock.
-    ///
+    /// - `BandwidthPackage.FinancialLocked`: The specified BandwidthPackage has been Financail Lock.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14500,8 +13544,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidAliuid`: User Id is not valid.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14547,8 +13590,7 @@ impl Connection {
     /// - `InvalidStatus.RouteEntry`: RouteEntry status error.
     /// - `InvalidZoneId.NotFound`: Specified zone does not exist.
     /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14583,8 +13625,7 @@ impl Connection {
     /// - `Forbidden.RegionNotFound`: Specified instance is not found during access authentication.
     /// - `IncorrectVSwitchId`: Specified vSwtich instance is not found during access authentication.
     /// - `InvalidVSwitchId.NotFound`: VSwitch not exist.
-    /// - `IncorrectStatus`: Vswtich status not stable.
-    ///
+    /// - `IncorrectStatus`: Vswtich status not stable.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14605,8 +13646,7 @@ impl Connection {
     /// - `InvalidVSwitchName.Malformed`: Specified virtual switch name is not valid.
     /// - `InvalidVSwitchDiscription.Malformed`: Specified virtual switch description is not valid.
     /// - `Forbidden.VRouterNotFound`: specified virtual switch is not found during access authentication.
-    /// - `InvalidVSwitchId.NotFound`: The specified virtual switch does not exists.
-    ///
+    /// - `InvalidVSwitchId.NotFound`: The specified virtual switch does not exists.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14630,8 +13670,7 @@ impl Connection {
     /// - `Mismatch.InstanceIdAndRegionId`: The instanceId and regionId are mismatched.
     /// - `InvalidVSwitchId.NotFound`: VSwitch not exist.
     /// - `InvalidVpcIdNumber.NotSupported`: The number of vpcIds exceeds the limit.
-    /// - `InvalidVSwitchIdNumber.NotSupported`: The number of vSwitchIds exceeds the limit.
-    ///
+    /// - `InvalidVSwitchIdNumber.NotSupported`: The number of vSwitchIds exceeds the limit.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14669,8 +13708,7 @@ impl Connection {
     /// - `IllegalParam.ClientToken`: Token verify failed because client token length too long.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidAccessPointId.NotFound`: The AccessPointId provided does not exist in our records.
-    /// - `InvalidPortType.NotFound`: There are no resources with the portType.
-    ///
+    /// - `InvalidPortType.NotFound`: There are no resources with the portType.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14693,8 +13731,7 @@ impl Connection {
     /// - `Forbidden.VBRExists`: physical connection owner's vbr still exists.
     /// - `Forbidden.AssociateToVBR`: The physical connection still associate to VBR.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.
-    ///
+    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14724,8 +13761,7 @@ impl Connection {
     /// - `InvalidCircuitCode.Malformed`: circuitCode is illegal.
     /// - `InvalidPhysicalConnectionBandwidth.Malformed`: Specified PhysicalConnection Bandwidth is not valid.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.
-    ///
+    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14746,8 +13782,7 @@ impl Connection {
     /// - `Forbidden.NotAllowedInState`: The request does not allow in this state.
     /// - `INSTANCE.STATUS.NOT.ALLOW`: Instance status not allow
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.
-    ///
+    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14766,8 +13801,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key
-    ///
+    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key///
     /// # Methods
     /// - POST
     /// - GET
@@ -14787,8 +13821,7 @@ impl Connection {
     /// # Error Codes
     /// - `Forbidden.NotAllowedInState`: The request does not allow in this state.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.
-    ///
+    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14809,8 +13842,7 @@ impl Connection {
     /// - `Forbidden.NotAllowedInState`: The request does not allow in this state.
     /// - `Forbidden.VbrAttached`: Cannot terminate physical connection when virtual border routers are still attached.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.
-    ///
+    /// - `InvalidPhysicalConnectionId.NotFound`: The PhysicalConnectionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14844,8 +13876,7 @@ impl Connection {
     /// - `IllegalParam.EnableIpv6`: %s
     /// - `Forbbiden`: User not authorized to operate on the specified resource.
     /// - `InvalidRegionId.NotFound`: Specified value of "regionId" is not supported.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14891,8 +13922,7 @@ impl Connection {
     /// - `DependencyViolation.RouterInterface`: Specified object has dependent resources RouterInterface.
     /// - `OperationDenied`: The operation is not supported in this status.
     /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14918,8 +13948,7 @@ impl Connection {
     /// - `IellgalParameter.OwnerAccount`: The specified parameter OwnerAccount is not valid.
     /// - `OperationFailed.Endpoint`: Operation failed because the RegionId is unavailable in this endpoint.
     /// - `InvalidRegionId.NotFound`: The specified RegionId is not found.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14948,8 +13977,7 @@ impl Connection {
     /// - `ParamExclusive.EnableIpv6AndCidrBlock`: EnableIpv6 and CidrBlock is mutually exclusive.
     /// - `OperationFailed.ClassicLinkEnabled`: Operation failed because classicLink is enabled.
     /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.
-    /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.
-    ///
+    /// - `InvalidVpcId.NotFound`: Specified VPC does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -14971,8 +13999,7 @@ impl Connection {
     /// - `DependencyViolation.ForwardEntry`: The ip has been used by ForwardEntry.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
     /// - `InvalidBandwidthPackageId.NotFound`: The specified BandwidthPackageId does not exist in our records.
-    /// - `invalidRemovedIpAddresses.NotFound`: Some of the specified value of RemovedIpAddress not found in specified BandwidthPackage.
-    ///
+    /// - `invalidRemovedIpAddresses.NotFound`: Some of the specified value of RemovedIpAddress not found in specified BandwidthPackage.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15001,8 +14028,7 @@ impl Connection {
     /// - `CountLimitExceed.HaVipInVpc`: Specified Vpc exceeds the quota of max number of ha-vip count.
     /// - `QuotaExceeded.HaVip`: Living HaVip quota exceeded.
     /// - `InvalidRegionId.NotFound`: Specified value of "regionId" is not supported.
-    /// - `InvalidVSwitchId.NotFound`: The specified VSwitch does not exist in the specified region.
-    ///
+    /// - `InvalidVSwitchId.NotFound`: The specified VSwitch does not exist in the specified region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15025,8 +14051,7 @@ impl Connection {
     /// - `IncorrectHaVipStatus`: HaVip?s status is invalid.
     /// - `Forbidden.HaVip`: No permissions to perform operations on HAVIPs. Please apply for privilege--vpc_privilege_allow_buy_havip_instance.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.
-    ///
+    /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15054,8 +14079,7 @@ impl Connection {
     /// - `InvalidHaVip.Exist`: haVip already bind exist.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.
-    /// - `InvalidInstanceId.NotFound`: The specified Instance does not exist in the specified region.
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified Instance does not exist in the specified region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15075,8 +14099,7 @@ impl Connection {
     /// - `IncorrectStatus`: HaVip can be deleted only when it's status is Available or InUse.
     /// - `InvalidDescription.Malformed`: The specified Description  is wrongly formed.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.
-    ///
+    /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15095,8 +14118,7 @@ impl Connection {
     /// # Error Codes
     /// - `Forbidden.HaVip`: No permissions to perform operations on HAVIPs. Please apply for privilege--vpc_privilege_allow_buy_havip_instance.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key
-    ///
+    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key///
     /// # Methods
     /// - POST
     /// - GET
@@ -15121,8 +14143,7 @@ impl Connection {
     /// - `Forbidden.HaVip`: No permissions to perform operations on HAVIPs. Please apply for privilege--vpc_privilege_allow_buy_havip_instance.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidHaVipId.NotFound`: The specified HaVip does not exist in the specified region.
-    /// - `InvalidInstanceId.NotFound`: The specified Instance does not exist in the specified region.
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified Instance does not exist in the specified region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15162,8 +14183,7 @@ impl Connection {
     /// - `Forbidden.DescriptionNotAllowedByCaller`: The caller is not allowed to specify the Description parameter.
     /// - `InvalidRegionId.NotFound`: The specified RegionId is not found.
     /// - `InvalidVbrOwnerId.NotFound`: The specified VbrOwnerId is not valid.
-    /// - `OperationFailed.AccessDeviceDisabled`: Access device is disabled and can not create vbr.
-    ///
+    /// - `OperationFailed.AccessDeviceDisabled`: Access device is disabled and can not create vbr.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15192,8 +14212,7 @@ impl Connection {
     /// - `Forbidden.MultiVlanRi`: Multiple vlan router interfaces are found.
     /// - `Forbidden.NoRiFound`: No vlan router interfaces are found.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter does not exist in our records.
-    ///
+    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15230,8 +14249,7 @@ impl Connection {
     /// - `Forbidden.VlanIdNotAllowedByCaller`: The caller is not allowed to specify the VlanId.
     /// - `Forbidden.NameNotAllowedByCaller`: The caller is not allowed to specify the Name parameter.
     /// - `Forbidden.DescriptionNotAllowedByCaller`: The caller is not allowed to specify the Description parameter.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId is not found.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15253,8 +14271,7 @@ impl Connection {
     /// - `OperationFailed.VlanIdAlreadyInUse`: The specifed vlanId has been used.
     /// - `Forbidden.OperationNotAllowedByUser`: The caller is not allowed to recover the specified VirtualBorderRouter.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter is not found.
-    ///
+    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15275,8 +14292,7 @@ impl Connection {
     /// - `InvalidOperation.OperationNotAllowedInState`: The specified VirutalBorderRouter is in invalid state.
     /// - `Forbidden.OperationNotAllowedByUser`: The caller is not allowed to terminate the specified VirtualBorderRouter.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter is not found.
-    ///
+    /// - `InvalidVbrId.NotFound`: The specified VirutalBorderRouter is not found.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15295,8 +14311,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key
-    ///
+    /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key///
     /// # Methods
     /// - POST
     /// - GET
@@ -15316,8 +14331,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidPhysicalConnectionId.NotFound`: The specified PhysicalConnectionId does not belong to user.
-    /// - `IllegalParam.AliUid`: Specified value of aliuid invalid.
-    ///
+    /// - `IllegalParam.AliUid`: Specified value of aliuid invalid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15375,8 +14389,7 @@ impl Connection {
     /// - `RI_CREATE_ONE_LIMIT_BY_SYNC`: Create ri only one limit by sync.
     /// - `InvalidDescription.Malformed`: The specifid "Description" is not valid.
     /// - `InvalidName.Malformed`: The specified "Name" is not valid.
-    /// - `InvalidAccessPoint.ValueNotAllowed`: The non-vbr router interface cannot have access point configured.
-    ///
+    /// - `InvalidAccessPoint.ValueNotAllowed`: The non-vbr router interface cannot have access point configured.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15399,8 +14412,7 @@ impl Connection {
     /// - `IllegalParam.InstanceOwner`: The router instance owener error.
     /// - `InvalidRegionId.NotFound`:  
     /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
-    /// - `InvalidRouterInterfaceChargeType.Malformed`: The prepaid routerinterface can not delete.
-    ///
+    /// - `InvalidRouterInterfaceChargeType.Malformed`: The prepaid routerinterface can not delete.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15422,8 +14434,7 @@ impl Connection {
     /// - `Forbidden.FinancialLocked`: This RouterInterface is financiel locked because of bills outstanding.
     /// - `Forbbiden`: The Router instance owener error
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our records.
-    ///
+    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15445,8 +14456,7 @@ impl Connection {
     /// - `Forbidden.FinancialLocked`: This RouterInterface is financiel locked because of bills outstanding.
     /// - `Forbbiden.InvaildOwner`: The RouterInterface owener error
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.
-    ///
+    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15474,8 +14484,7 @@ impl Connection {
     /// - `Forbbiden.ModifyIdAndType`: Opposite is VBR, cannot modify the ID and type
     /// - `InvalidParam.ModifyRouterInterface`: Modify routerinterface param invalid
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our records.
-    ///
+    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15502,8 +14511,7 @@ impl Connection {
     /// - `InvalidOpposite.NotFound`: The opposite not exit.
     /// - `InvalidRouterInterfaceSpec.Malformed`: Specified RouterInterface spec is not valid.
     /// - `IllegalParam.chargeType`: RouterInterface chargeType different.
-    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.
-    ///
+    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15526,8 +14534,7 @@ impl Connection {
     /// - `MissingParameter`: Miss mandatory parameter.
     /// - `InvalidDescription.Malformed`: Invalid description.
     /// - `Forbidden.VRouterNotFound`: Specified virtual router is not found during access authentication.
-    /// - `InvalidVRouterId.NotFound`: Specified virtual router does not exist.
-    ///
+    /// - `InvalidVRouterId.NotFound`: Specified virtual router does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15549,8 +14556,7 @@ impl Connection {
     /// - `IllegalParam.AliUid`: Specified value of aliuid invalid.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
     /// - `InvalidFilterKey.ValueNotSupported`: Specified filter key is not supported: Filter.X.key
-    /// - `InvalidOppositeRegionId.NotFound`: The oppositeRegionId provided does not exist in our records.
-    ///
+    /// - `InvalidOppositeRegionId.NotFound`: The oppositeRegionId provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15591,8 +14597,7 @@ impl Connection {
     /// - `InvalidAllocationId.NotFound`: Specified allocation ID is not found
     /// - `InvalidHaVip.NotFound`: The specified HaVip does not exist.
     /// - `Forbidden.RegionNotFound`: Specified region is not found during access authentication.
-    /// - `OperationUnsupported.ServiceManaged`: Operation of resource is forbidden because this instance belongs to Service manager.
-    ///
+    /// - `OperationUnsupported.ServiceManaged`: Operation of resource is forbidden because this instance belongs to Service manager.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15651,8 +14656,7 @@ impl Connection {
     /// - `OperationConflict`: Request was denied due to conflict with a previos request.
     /// - `InsufficientEipCapacity`: Insufficient EIP capacity to fulfill your request.
     /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    /// - `OrderError.EIP`: The Account failed to create order.
-    ///
+    /// - `OrderError.EIP`: The Account failed to create order.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15689,8 +14693,7 @@ impl Connection {
     /// - `InvalidAllocationId.NotFound`: Specified allocation ID is not found
     /// - `Forbidden.InCommonBandwidthPackage`: Specified allocation ID in common bandwidth package.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `SYSTEM.UNKNOWN.ERROR`: The Account failed to create order.
-    ///
+    /// - `SYSTEM.UNKNOWN.ERROR`: The Account failed to create order.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15716,8 +14719,7 @@ impl Connection {
     /// - `OperationUnsupported.ServiceManaged`: Operation is forbidden because this instance belongs to Service manager.
     /// - `InvalidAllocationId.NotFound`: Specified allocation ID is not found
     /// - `Forbidden.RegionNotFound`: Specified region is not found during access authentication.
-    /// - `InternalError`: The request processing has failed due to some unknown error.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15788,8 +14790,7 @@ impl Connection {
     /// - `Forbidden.RegionNotFound`: Specified region is not found during access authentication.
     /// - `InvalidRegionId.NotFound`: Specified value of InstanceRegionId is not supported.
     /// - `InvalidInstance.NotExist`: Bind instance data not exist.
-    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.
-    ///
+    /// - `ServiceUnavailable`: The request has failed due to a temporary failure of the server.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15820,8 +14821,7 @@ impl Connection {
     /// - `InvalidFilterKey.NotFound`:  
     /// - `InvalidFilterValue`:  
     /// - `InvalidLockReason.NotFound`: The specified LockReason is not found
-    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.
-    ///
+    /// - `InternalError`: The request processing has failed due to some unknown error, exception or failure.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15849,8 +14849,7 @@ impl Connection {
     /// - `InvalidRegionInstance`: The specified InstanceId does not exist in given region.
     /// - `InvalidIpInstanceId.NotFound`: The specified Eip InstanceId does not exist in our records.
     /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
-    /// - `Forbidden.RegionNotFound`: Specified region is not found during access authentication.
-    ///
+    /// - `Forbidden.RegionNotFound`: Specified region is not found during access authentication.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15896,8 +14895,7 @@ impl Connection {
     /// - `InvalidZoneId.NotFound`: Specified value of ZoneId is not exists.
     /// - `VPC_ONLY_CAN_CREATE_ONE_NAT_GATEWAY`: NatGateway in one vpc support only one.
     /// - `OperationFailed.CrateEntryTimeOut`: Operation failed because create custom routeEntry timeout.
-    /// - `OrderError.NatGateway`: The Account failed to create order.
-    ///
+    /// - `OrderError.NatGateway`: The Account failed to create order.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15921,8 +14919,7 @@ impl Connection {
     /// - `INSTANCE_NOT_EXISTS`: Instance not exists.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
     /// - `InvalidNatGatewayId.NotFound`: The specified NatGatewayId does not exist in our records.
-    /// - `IncorrectStatus.natgw`: NatGateway status is invalid.
-    ///
+    /// - `IncorrectStatus.natgw`: NatGateway status is invalid.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15940,8 +14937,7 @@ impl Connection {
     ///
     /// # Error Codes
     /// - `InvalidAliuid`: User Id is not valid.
-    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    ///
+    /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -15966,8 +14962,7 @@ impl Connection {
     /// - `InvalidParameter`: Specified value of "Period" is not valid
     /// - `OperationDenied.TooManyDataQueried`: Specified operation is denied as too many data to return.
     /// - `InvalidInstanceId.NotFound`: The InstanceId provided does not exist in our records.
-    /// - `InvalidAllocationId.NotFound`: Specified allocation ID is not found
-    ///
+    /// - `InvalidAllocationId.NotFound`: Specified allocation ID is not found///
     /// # Methods
     /// - POST
     /// - GET
@@ -16005,8 +15000,7 @@ impl Connection {
     /// - `OperationFailed.DistibuteLock`: Distibute lock fail.
     /// - `InvalidRouteTableId.NotFound`: Specified route table does not exist.
     /// - `InvalidVpcId.NotFound`: Specified value of VpcId is not found in our record.
-    /// - `Vpc.Error`: error code 500,Internal server error.
-    ///
+    /// - `Vpc.Error`: error code 500,Internal server error.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16026,8 +15020,7 @@ impl Connection {
     /// - `IncorretForwardEntryStatus`: Some Forward entry status blocked this operation..
     /// - `MissingParameter`: Missing mandatory parameter
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    /// - `InvalidForwardEntryId.NotFound`: Specified forward entry ID does not exist
-    ///
+    /// - `InvalidForwardEntryId.NotFound`: Specified forward entry ID does not exist///
     /// # Methods
     /// - POST
     /// - GET
@@ -16084,8 +15077,7 @@ impl Connection {
     /// - `InvalidExternalIp.NotFound`: Specified External Ip address does not found on the VRouter.
     /// - `ResourceNotFound.NatIp`: The specified resource of %s is not found.
     /// - `InternalError`: The request processing has failed due to some unknown error.
-    /// - `System.Error`: ERROR SYSTEM ERROR.
-    ///
+    /// - `System.Error`: ERROR SYSTEM ERROR.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16106,8 +15098,7 @@ impl Connection {
     /// - `QuotaExceeded.BandwidthPackageIps`: The specified ipCount exceeded quota.
     /// - `AllocateIpFailed`: Alloc bandwidthPackage ips failed, maybe no available ip.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    /// - `InvalidBandwidthPackageId.NotFound`: The specified BandwidthPackageId does not exist in our records.
-    ///
+    /// - `InvalidBandwidthPackageId.NotFound`: The specified BandwidthPackageId does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16214,8 +15205,7 @@ impl Connection {
     /// - `InvalidNetworkInterface.NotFound`: The specified networkInterface does not exist.
     /// - `InvalidVpc.NotFound`: Specified vpc is not found in our record.
     /// - `OperationFailed.InstanceDismatchCurrentVpc`: The specified instance does not exist in current vpc.
-    /// - `InvalidIpv6Gateway.NotFound`: Specified Ipv6Gateway does not exist.
-    ///
+    /// - `InvalidIpv6Gateway.NotFound`: Specified Ipv6Gateway does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16234,8 +15224,7 @@ impl Connection {
     /// # Error Codes
     /// - `IncorretForwardEntryStatus`: Some Forward entry status blocked this operation..
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
-    /// - `InvalidForwardTableId.NotFound`: Specified forwardTableId does not exist
-    ///
+    /// - `InvalidForwardTableId.NotFound`: Specified forwardTableId does not exist///
     /// # Methods
     /// - POST
     /// - GET
@@ -16268,8 +15257,7 @@ impl Connection {
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist in our records.
     /// - `InvalidForwardEntryId.NotFound`: Specified forward entry ID does not exist
     /// - `InvalidExternalIp.NotFound`: Specified External Ip address does not found on the VRouter
-    /// - `InvalidForwardTableId.NotFound`: Specified forward table does not exist.
-    ///
+    /// - `InvalidForwardTableId.NotFound`: Specified forward table does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16288,8 +15276,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidAccessPointType.NotSupport`: Invalid access point type.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidRegionId.NotSupport`: The RegionId provided does not support in our records.
-    ///
+    /// - `InvalidRegionId.NotSupport`: The RegionId provided does not support in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16342,8 +15329,7 @@ impl Connection {
     /// - `AttrMismatching.AcceptingSideOppositeRouterType`: %s
     /// - `IllegalParam.InstanceOwner`: The router instance owener error.
     /// - `InvalidRegionId.NotFound`: The RegionId provided does not exist in our records.
-    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.
-    ///
+    /// - `InvalidRouterInterfaceId.NotFound`: The specified RouterInterfaceId does not exist in our record.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16368,8 +15354,7 @@ impl Connection {
     /// - `OSS_AUTHORIZED_FAILED`: ECS service account Have no right to access your OSS. please attach a role of access your oss to ECS service account.
     /// - `InvalidOSSBucket.NotFound`: The specified OSS bucket does not exist in this region.
     /// - `InvalidUser.NotInWhiteList`: The user is not in the white list of exporting snapshot.
-    /// - `InvalidOSSBucket.InOtherRegion`: The specified OSS bucket is in another region.
-    ///
+    /// - `InvalidOSSBucket.InOtherRegion`: The specified OSS bucket is in another region.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16396,8 +15381,7 @@ impl Connection {
     /// - `InvalidIpAddress.NeedInstanceId`: The specified IpAddress need to release with InstanceId.
     /// - `OperationTimesOverLimit`: The specified operation is denied as release public ip times over the limit.
     /// - `Forbidden.ExceedDuration`: Instance nat public ip can only be released in 6 hours after ecs created.
-    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.
-    ///
+    /// - `InvalidInstanceId.NotFound`: The specified InstanceId does not exist.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16434,11 +15418,7 @@ impl Connection {
     /// - `TagKey.Duplication`: The TagKey has duplication with others, case-insensitive.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
     /// - `InvalidResourceId.NotFound`: The specified ResourceId is not found in our records.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16459,11 +15439,7 @@ impl Connection {
     /// # Error Codes
     /// - `InvalidTagCount`: The specified tags are beyond the permitted range.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16490,11 +15466,7 @@ impl Connection {
     /// - `InvalidTagValue.Malformed`: The parameter Tag.n.Value is illegal.
     /// - `Invalid.TagCategory`: The parameter Category is illegal.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16519,11 +15491,7 @@ impl Connection {
     /// - `InvalidResourceId.NotSupported`: The specified ResourceId does not support tagging.
     /// - `InvalidResourceId.NotFound`: The specified ResourceId is not found in our records.
     /// - `InvalidRegionId.NotFound`: The specified RegionId does not exist.
-    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.
-    ///
-    /// # Extra Info
-    ///  
-    ///
+    /// - `InvalidResourceType.NotFound`: The ResourceType provided does not exist in our records.///
     /// # Methods
     /// - POST
     /// - GET
@@ -16557,8 +15525,7 @@ impl Connection {
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: %s
     /// - `InvalidEniId.NotFound`: %s
     /// - `InvalidVSwitchId.NotFound`: %s
-    /// - `InvalidSecurityGroupId.NotFound`: %s
-    ///
+    /// - `InvalidSecurityGroupId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -16593,8 +15560,7 @@ impl Connection {
     /// - `InvalidOperation.EniServiceManaged`: %s
     /// - `InvalidOperation.ResourceManagedByCloudProduct`: %s
     /// - `InvalidEniId.NotFound`: %s
-    /// - `InvalidVSwitchId.NotFound`: %s
-    ///
+    /// - `InvalidVSwitchId.NotFound`: %s///
     /// # Methods
     /// - POST
     /// - GET
@@ -39092,7 +38058,7 @@ pub struct CreateAutoProvisioningGroup {
     launch_template_config: Option<Vec<CreateAutoProvisioningGroupLaunchTemplateConfig>>,
     /// 扩展启动模板云盘配置列表。
     #[setters(generate = true, strip_option)]
-    launch_configuration_data_disk: Option<Vec<ConfigurationDataDisk>>,
+    launch_configuration_data_disk: Option<Vec<DataDisk>>,
     /// 扩展启动模板标签列表。
     #[setters(generate = true, strip_option)]
     launch_configuration_tag: Option<Vec<ConfigurationTag>>,
@@ -39126,10 +38092,10 @@ pub struct CreateAutoProvisioningGroup {
     launch_configuration_security_group_ids: Option<Vec<String>>,
     /// 实例的系统盘信息。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[setters(generate = true, strip_option)]
-    launch_configuration_system_disk: Option<ConfigurationSystemDisk>,
+    launch_configuration_system_disk: Option<SystemDisk>,
     /// >该参数正在邀测中，暂不支持使用。
     #[setters(generate = true, strip_option)]
-    launch_configuration_arn: Option<Vec<LaunchConfigurationArn>>,
+    launch_configuration_arn: Option<Vec<ConfigurationArn>>,
     /// >该参数正在邀测中，暂未开放使用。
     #[setters(generate = true, strip_option)]
     hibernation_options_configured: Option<bool>,
@@ -73435,7 +72401,7 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ConfigurationDataDisk {
+pub struct DataDisk {
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
     #[serde(rename = "KmsKeyId")]
@@ -73466,7 +72432,7 @@ pub struct ConfigurationDataDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for ConfigurationDataDisk {
+impl crate::FlatSerialize for DataDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73597,7 +72563,7 @@ impl crate::FlatSerialize for DataDiskConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ConfigurationSystemDisk {
+pub struct SystemDisk {
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
     #[serde(rename = "KMSKeyId")]
@@ -73612,7 +72578,7 @@ pub struct ConfigurationSystemDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for ConfigurationSystemDisk {
+impl crate::FlatSerialize for SystemDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73653,7 +72619,7 @@ impl crate::FlatSerialize for ConfigurationSystemDisk {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct LaunchConfigurationArn {
+pub struct ConfigurationArn {
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
     #[serde(rename = "RoleType")]
@@ -73662,7 +72628,7 @@ pub struct LaunchConfigurationArn {
     pub assume_role_for: i64,
 }
 
-impl crate::FlatSerialize for LaunchConfigurationArn {
+impl crate::FlatSerialize for ConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
