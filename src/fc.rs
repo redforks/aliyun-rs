@@ -99,7 +99,7 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
-    ///
+
     /// # 更新资源组
     ///
     /// 更新函数计算资源的资源组。
@@ -125,7 +125,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询FC 3.0产品地域信息
     ///
     /// 查询FC 3.0产品支持的地域信息。
@@ -151,7 +150,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建自定义域名
     ///
     /// 创建自定义域名。
@@ -177,7 +175,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除自定义域名
     ///
     /// 删除自定义域名。
@@ -201,7 +198,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取自定义域名
     ///
     /// 获取自定义域名配置。
@@ -225,7 +221,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出自定义域名
     ///
     /// 获取自定义域名信息列表。
@@ -249,7 +244,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 更新自定义域名
     ///
     /// 更新自定义域名。
@@ -273,7 +267,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除函数版本
     ///
     /// 删除函数版本。
@@ -297,7 +290,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取函数代码
     ///
     /// 获取函数代码包的详情。
@@ -321,7 +313,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数版本
     ///
     /// 查询指定函数的版本列表。
@@ -345,7 +336,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 发布函数版本
     ///
     /// 发布函数版本。
@@ -370,7 +360,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建函数
     ///
     /// 调用CreateFunction接口创建函数。
@@ -396,7 +385,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除函数
     ///
     /// 删除函数。
@@ -420,7 +408,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取函数
     ///
     /// 获取函数信息。
@@ -444,7 +431,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数
     ///
     /// 获取函数列表。
@@ -470,7 +456,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 调用函数
     ///
     /// 调用执行函数。
@@ -498,7 +483,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 更新函数
     ///
     /// 更新函数信息。
@@ -522,7 +506,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 允许函数调用
     ///
     /// 允许函数被调用，并恢复预留实例的创建。该 OpenAPI 处于内测阶段。
@@ -549,7 +532,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 禁止函数调用
     ///
     /// 禁止函数被调用，可选终止所有正在处理的请求。函数被禁止调用后，将无法创建新实例，同时预留实例会被销毁。该 OpenAPI 处于内测阶段。
@@ -576,7 +558,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除别名
     ///
     /// 删除别名。
@@ -600,7 +581,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取别名
     ///
     /// 获取别名信息。
@@ -624,7 +604,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出别名
     ///
     /// 查询别名列表信息。
@@ -648,7 +627,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 更新别名
     ///
     /// 更新别名。
@@ -672,7 +650,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建别名
     ///
     /// 创建别名。
@@ -696,7 +673,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建触发器
     ///
     /// 创建触发器。
@@ -720,7 +696,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除触发器
     ///
     /// 删除指定的触发器。
@@ -744,7 +719,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取触发器
     ///
     /// 获取指定的触发器详情。
@@ -768,7 +742,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出触发器
     ///
     /// 查询指定函数的触发器列表。
@@ -792,7 +765,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 更新触发器
     ///
     /// 更新触发器信息。
@@ -816,7 +788,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除异步配置
     ///
     /// 删除异步调用配置。
@@ -840,7 +811,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取异步配置
     ///
     /// 获取指定函数的异步调用配置。
@@ -864,7 +834,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数异步配置
     ///
     /// 查询指定函数的所有异步配置信息。
@@ -889,7 +858,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置函数异步配置
     ///
     /// 创建或更新函数的异步调用配置。
@@ -913,7 +881,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除预留配置
     ///
     /// 删除预留配置。
@@ -937,7 +904,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取预留配置
     ///
     /// 获取预留配置。
@@ -961,7 +927,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数预留配置
     ///
     /// 查询预留配置列表。
@@ -985,7 +950,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置函数预留实例
     ///
     /// 创建预留配置。
@@ -1009,7 +973,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除并发度配置
     ///
     /// 删除并发度配置。
@@ -1033,7 +996,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取并发度配置
     ///
     /// 获取并发度配置。
@@ -1057,7 +1019,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数并发度配置
     ///
     /// 查询并发度配置列表。
@@ -1082,7 +1043,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置函数并发度
     ///
     /// 设置函数并发度。
@@ -1106,7 +1066,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建层版本
     ///
     /// 发布层版本。
@@ -1130,7 +1089,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除层版本
     ///
     /// 删除层版本。
@@ -1154,7 +1112,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取层版本
     ///
     /// 获取层的版本信息。
@@ -1178,7 +1135,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 通过ARN获取层版本
     ///
     /// 通过ARN获取层的版本信息。
@@ -1202,7 +1158,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出层版本
     ///
     /// 获取层的版本列表。
@@ -1226,7 +1181,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出层
     ///
     /// 获取层列表。
@@ -1250,7 +1204,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置层访问权限
     ///
     /// 修改层的权限。
@@ -1274,7 +1227,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数实例
     ///
     /// 查询函数实例列表。
@@ -1298,7 +1250,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出VPC绑定配置
     ///
     /// 查询已创建的VPC连接。
@@ -1322,7 +1273,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建VPC绑定
     ///
     /// 创建VPC连接。
@@ -1345,7 +1295,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 删除VPC绑定
     ///
     /// 删除指定VPC防火墙策略组的访问控制策略。
@@ -1368,7 +1317,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 设置资源标签
     ///
     /// 给指定资源打标签。
@@ -1394,7 +1342,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 查询资源标签关系
     ///
     /// 列出所有被打标签的资源。
@@ -1418,7 +1365,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除资源标签
     ///
     /// 删除资源的标签。
@@ -1444,7 +1390,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 获取异步任务
     ///
     /// 获取指定异步任务详情。
@@ -1468,7 +1413,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取异步任务列表
     ///
     /// 获取异步任务详情列表。
@@ -1492,7 +1436,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 停止异步任务
     ///
     /// 停止异步任务。
@@ -1516,7 +1459,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建会话资源
     ///
     /// 创建一个显式会话资源。系统自动生成唯一 SessionID，预分配函数实例并绑定会话，支持指定 TTL 和 IdleTimeout。适用于 HEADER_FIELD 或 GENERATED_COOKIE 亲和类型，实现会话预热与配置初始化，调用后即可在 InvokeFunction 请求携带，用于路由请求。
@@ -1540,7 +1482,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取会话配置信息
     ///
     /// 获取指定会话的详细信息，包括 SessionID、关联函数、亲和类型、生命周期配置、状态及实例信息。用于查询单个会话当前元数据，支持按 functionName 和 qualifier 精确定位，便于外部系统监控与调试，仅支持查询 Active 状态的会话。
@@ -1564,7 +1505,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 更新会话配置
     ///
     /// 更新Active状态下的会话配置，如 SessionTTLInSeconds 和 SessionIdleTimeoutInSeconds 等生命周期配置。更新后生效，LastModifiedTime 自动刷新。可用于延长或缩短会话有效期，实现动态管理，不改变会话绑定的执行环境。
@@ -1588,7 +1528,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询会话信息列表
     ///
     /// 列举指定函数下Active/Expired 状态的会话列表，支持按 qualifier、状态、会话ID过滤，分页查询。返回会话基础属性，用于批量查看会话分布与状态，助力运维监控和外部系统集成，提升会话可见性与管理能力。
@@ -1612,7 +1551,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除会话资源
     ///
     /// 删除指定会话，禁止新请求路由，会话元数据从数据库清除，客户携带相同 SessionID 的后续请求视为新会话。实现资源释放与会话清理。在会话隔离场景下，系统将中止运行的请求，释放会话绑定的实例。非会话隔离场景下，正在运行中的请求将继续运行，优雅终止。
@@ -1636,7 +1574,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置函数弹性配置
     ///
     /// 设置函数弹性配置
@@ -1654,7 +1591,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除函数弹性配置
     ///
     /// 删除函数弹性配置
@@ -1674,7 +1610,6 @@ impl Connection {
         }
     }
 
-    ///
     /// # 获取函数弹性配置
     ///
     /// 获取函数弹性配置
@@ -1692,7 +1627,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列出函数弹性配置
     ///
     /// 列出函数弹性配置

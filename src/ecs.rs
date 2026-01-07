@@ -123,7 +123,7 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
-    ///
+
     /// # 查询地域列表
     ///
     /// 根据计费方式、资源类型等参数查询地域信息列表。
@@ -144,7 +144,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询可用区列表
     ///
     /// 根据地域ID、计费方式等参数查询可用区信息列表。
@@ -170,7 +169,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询可用区的资源库存
     ///
     /// 查询指定可用区的资源库存状态。该接口主要用于在创建实例（RunInstances）或修改实例规格（ModifyInstanceSpec）前，确认目标资源（如实例规格、系统盘类型）在特定可用区是否库存充足。
@@ -275,7 +273,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源配额
     ///
     /// 查询您在一个阿里云地域下能创建的ECS资源配额。包括您能创建的安全组数量、弹性网卡数量、按量付费vCPU核数、抢占式实例vCPU核数、按量付费云盘总容量配额、专用宿主机数量、网络类型以及账号是否已完成实名认证。
@@ -302,7 +299,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 变更实例规格或系统盘类型之前，查询某一可用区下实例规格或系统盘的库存情况
     ///
     /// 变更实例规格或系统盘类型之前，查询某一可用区下实例规格或系统盘的库存情况。
@@ -379,7 +375,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查找备选实例规格
     ///
     /// （Beta）调用DescribeRecommendInstanceType根据一个指定的实例规格，查找一个或多个备选的实例规格。针对已经或者即将停售的实例规格，DescribeRecommendInstanceType会罗列出作为替补的所有实例规格。
@@ -426,7 +421,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询价格
     ///
     /// 本接口用于查询指定资源的最新价格，支持根据资源类型查询ECS实例、云盘、专有宿主机、弹性保障服务、容量预定服务的最新价格，包括活动规则、价格、折扣等信息。
@@ -564,7 +558,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源续费价格
     ///
     /// 查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。
@@ -601,7 +594,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询未到期的包年包月ECS实例升配时目标实例规格的价格信息、新增包年包月数据盘的价格信息
     ///
     /// 查询未到期的包年包月ECS实例升配时目标实例规格的价格信息、新增包年包月数据盘的价格信息。
@@ -647,7 +639,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量创建实例
     ///
     /// 本接口用于批量创建ECS实例，支持自动启动、分配公网IP及设置自动释放时间。
@@ -1231,7 +1222,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建实例
     ///
     /// 本接口是阿里云 ECS 中用于创建实例的接口，支持创建一台包年包月或按量付费的 ECS 实例。您可通过此接口，依据自身需求灵活配置各类参数，实现实例的个性化创建。
@@ -1594,7 +1584,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 启动实例
     ///
     /// 本接口用于启动一台ECS实例，您可以通过指定实例ID以及按需设置 InitLocalDisk 等参数启动实例。
@@ -1643,7 +1632,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量启动实例
     ///
     /// 本接口用于批量启动 ECS 实例，支持通过设置参数来选择不同的批量操作模式，为您提供灵活的启动方式。
@@ -1689,7 +1677,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 停止实例
     ///
     /// 本接口用于停止一台ECS实例，支持选择不同的停机方式、停机模式以及批量操作模式停止实例。
@@ -1730,7 +1717,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量停止实例
     ///
     /// 本接口用于停止一台或多台 ECS 实例，支持选择不同的停机方式、停机模式以及批量操作模式停止实例。
@@ -1773,7 +1759,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 重启实例
     ///
     /// 本接口用于重启一台ECS实例。
@@ -1807,7 +1792,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量重启实例
     ///
     /// 本接口用于重启一台或多台ECS实例，支持您通过参数来选择是否强制重启和设置不同的批量操作模式。
@@ -1847,7 +1831,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除实例
     ///
     /// 删除或者释放一台指定的ECS实例。
@@ -1887,7 +1870,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量删除实例
     ///
     /// 本接口用于批量删除或者释放按量付费实例或者到期的包年包月实例，支持通过参数设置决定云盘是否释放或转换为按量付费保留。
@@ -1932,7 +1914,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例的状态信息列表
     ///
     /// 本接口主要用于查询一台或多台指定ECS实例的状态信息，同时支持查询指定条件下的实例列表。
@@ -1973,7 +1954,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例的详细信息列表
     ///
     /// 本接口支持根据不同请求条件查询实例列表，并关联查询实例的详细信息。
@@ -2010,7 +1990,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例规格族列表
     ///
     /// 本接口用于查询阿里云 ECS提供的实例规格族列表。通过该接口获取不同系列的实例规格族信息，从而更好地帮助您了解可用的实例规格资源，为您选择合适的实例规格创建 ECS 实例提供参考。
@@ -2029,7 +2008,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例规格信息列表
     ///
     /// 本接口主要用于查询云服务器ECS提供的所有实例规格的信息列表并关联获取实例规格的详细信息，也可根据特定条件查询指定实例规格的信息，帮助您了解不同实例规格的配置和性能，以便选择适合自己业务需求的实例。
@@ -2062,7 +2040,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例属性信息
     ///
     /// 本接口用于查询一台指定ECS实例的属性信息。
@@ -2082,7 +2059,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例属性信息
     ///
     /// 本接口用于修改一台ECS实例的部分属性信息，支持修改密码、实例名称、主机名、所属安全组、实例的MTU以及用户自定义数据等。
@@ -2173,7 +2149,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例时钟选项
     ///
     /// 按需修改实例时钟选项。
@@ -2206,7 +2181,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例网络选项
     ///
     /// 修改实例网络选项。
@@ -2237,7 +2211,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例计费方式
     ///
     /// 本接口用于修改ECS实例的计费方式，支持批量修改。
@@ -2324,7 +2297,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例的实例规格或公网带宽
     ///
     /// 本接口用于修改一台按量付费ECS实例的实例规格或者公网带宽大小。
@@ -2455,7 +2427,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改包年包月实例的实例规格
     ///
     /// 本接口用于修改一台包年包月ECS实例的实例规格，支持您升级或者降低实例规格，修改后的实例规格在实例整个生命周期内生效。
@@ -2573,7 +2544,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例自动释放时间
     ///
     /// 本接口用于修改指定按量付费实例或者抢占式实例的自动释放时间，同时支持取消自动释放功能。
@@ -2597,7 +2567,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为实例授予RAM角色
     ///
     /// 本接口用于为一台或多台ECS实例授予RAM角色。
@@ -2624,7 +2593,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例被授予的RAM角色
     ///
     /// 本接口具备两个主要功能，支持依据实例 ID 来查询一台或多台 ECS 实例所被授予的实RAM角色，同时也允许通过实例 RAM 角色名称来查询被授予了该特定角色的实例情况。
@@ -2651,7 +2619,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 收回实例被授予的RAM角色
     ///
     /// 本接口用于收回一台或多台ECS实例被授予的RAM角色。
@@ -2673,7 +2640,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例VNC登录地址
     ///
     /// 本接口用于查询一台ECS实例的VNC登录地址。
@@ -2714,7 +2680,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例VNC登录密码
     ///
     /// 本接口用于修改一台ECS实例的VNC登录密码。
@@ -2743,7 +2708,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例内的元数据访问设置
     ///
     /// 本接口用于修改指定地域下实例内的元数据访问设置，包括是否启用元数据访问通道和访问元数据时是否启用强制加固模式等设置。
@@ -2767,7 +2731,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例自定义数据
     ///
     /// 本接口用于查询一台ECS实例的自定义数据。
@@ -2785,7 +2748,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 续费实例
     ///
     /// 本接口用于续费一台包年包月的 ECS 实例，支持您设置续费时长或者续费至统一到期日。
@@ -2863,7 +2825,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例自动续费属性
     ///
     /// 本接口用于查询一台或多台包年包月ECS实例的自动续费属性，包括是否开启自动续费、续费周期等信息。
@@ -2894,7 +2855,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例的自动续费属性
     ///
     /// 本接口用于修改一台或多台包年包月实例的自动续费属性，可以帮助您减少资源到期的维护成本。
@@ -2935,7 +2895,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 重新激活已过期或欠费回收的实例
     ///
     /// 本接口用于重新启动一台已过期或欠费回收的按量付费ECS实例。
@@ -2969,7 +2928,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询抢占式实例的历史价格
     ///
     /// 本接口用于查询抢占式实例的历史价格，最多支持获取近30天内的数据，通过历史价格数据可以帮助您合理的设置抢占式实例的单台实例上限价格。
@@ -3018,7 +2976,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询抢占式实例平均释放率和折扣率
     ///
     /// 本接口用于查询指定地域下，抢占式实例近30天的平均释放率、平均折扣率等信息。
@@ -3059,7 +3016,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建自定义镜像
     ///
     /// 创建一份自定义镜像。后续您可以使用创建的自定义镜像创建ECS实例（RunInstances），或者更换实例的系统盘（ReplaceSystemDisk）。
@@ -3163,7 +3119,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询镜像资源
     ///
     /// 指定ImageId、镜像被使用场景、Filter过滤等参数，查询您可以使用的镜像资源列表。
@@ -3200,7 +3155,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改自定义镜像属性
     ///
     /// 调用ModifyImageAttribute接口，并可以指定ImageId、ImageFamily等参数，修改一份自定义镜像的属性，例如镜像族系、名称、启动模式、状态以及是否支持NVMe等。
@@ -3235,7 +3189,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除自定义镜像
     ///
     /// 调用DeleteImage接口，并可以指定参数ImageId、Force删除一份自定义镜像。
@@ -3261,7 +3214,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询镜像族系内可用镜像
     ///
     /// 查询指定镜像族系内最新创建的可用自定义镜像。
@@ -3285,7 +3237,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询指定镜像支持的实例规格
     ///
     /// 查询指定镜像支持的实例规格。
@@ -3307,7 +3258,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询自定义镜像已经共享的所有用户
     ///
     /// 查询一份自定义镜像已经共享的所有用户。持返回结果支分页显示，每页的信息条目默认为10条。
@@ -3327,7 +3277,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 管理镜像共享权限
     ///
     /// 管理镜像共享权限。您可以将自己的自定义镜像共享给其他阿里云账号，也可以发布为社区镜像供他人使用。
@@ -3393,7 +3342,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 修改镜像共享组权限
     ///
     /// # Error Codes
@@ -3414,7 +3362,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 导入本地镜像文件
     ///
     /// 导入一份您的本地镜像文件到云服务器ECS，作为自定义镜像出现在相应地域中。后续您可以使用导入的镜像创建ECS实例（RunInstances），或者更换实例的系统盘（ReplaceSystemDisk）。
@@ -3602,7 +3549,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 导出一份自定义镜像到OSS
     ///
     /// 导出一份自定义镜像到与自定义镜像同一地域的OSS Bucket里。
@@ -3697,7 +3643,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 复制一个地域下的自定义镜像到其他地域
     ///
     /// 复制一个地域下的自定义镜像到其他地域。复制镜像可以实现跨地域部署ECS实例、跨地域复制ECS实例等目的。
@@ -3774,7 +3719,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消正在进行中的复制镜像任务
     ///
     /// 取消正在进行中的复制镜像（CopyImage）任务。
@@ -3803,7 +3747,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建镜像组件
     ///
     /// 创建一个镜像组件。镜像组件用于存储您在构建镜像时，常用的构建模板命令。
@@ -3863,7 +3806,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询镜像组件的详细信息
     ///
     /// 查询一个或多个镜像组件的详细信息。
@@ -3889,7 +3831,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除镜像组件
     ///
     /// 调用DeleteImageComponent接口，并指定参数RegionId、ImageComponentId，删除一个镜像组件。
@@ -3911,7 +3852,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建镜像构建模板
     ///
     /// 创建一个镜像模板。镜像模板可用于构建镜像。
@@ -4020,7 +3960,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询镜像模板的详细信息
     ///
     /// 查询一个或多个镜像模板的详细信息。
@@ -4043,7 +3982,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除镜像模板
     ///
     /// 删除一个镜像模板。
@@ -4064,7 +4002,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 通过镜像模板执行构建镜像的任务
     ///
     /// 通过一个镜像模板执行构建镜像的任务。
@@ -4106,7 +4043,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询镜像构建任务的详细信息
     ///
     /// 调用DescribeImagePipelineExecutions查询一个镜像构建任务的详细信息。
@@ -4135,7 +4071,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消镜像构建任务
     ///
     /// 取消一个镜像构建任务。
@@ -4159,7 +4094,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建数据盘
     ///
     /// 创建一块按量付费或包年包月的数据盘。
@@ -4309,7 +4243,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询块存储
     ///
     /// 查询一块或多块已创建的块存储（包括云盘、本地盘以及弹性临时盘）信息。
@@ -4357,7 +4290,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为实例挂载磁盘
     ///
     /// 为一台ECS实例挂载一块按数据盘或系统盘。
@@ -4449,7 +4381,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 卸载按量付费数据盘或系统盘
     ///
     /// 从一台ECS实例上卸载一块按量付费的数据盘或者系统盘。
@@ -4495,7 +4426,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 扩容磁盘
     ///
     /// 扩容一块磁盘，支持扩容系统盘和数据盘。
@@ -4578,7 +4508,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改块存储属性
     ///
     /// 修改一个或多个块存储设备的名称、描述、是否随实例释放、是否随磁盘删除其自动快照、是否启用自动快照策略、是否开启性能突发功能等。
@@ -4615,7 +4544,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改云盘的计费方式
     ///
     /// 将包年包月ECS实例上挂载的数据盘的计费方式在按量付费和包年包月之间进行转换。
@@ -4688,7 +4616,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 变更云盘类型或性能级别
     ///
     /// 变更一块云盘类型，或者修改一块ESSD云盘的性能级别。ESSD同城冗余云盘、普通云盘、弹性临时盘和本地盘均不支持变更云盘类型。
@@ -4788,7 +4715,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 更换系统盘（更换操作系统）
     ///
     /// 通过更换ECS实例系统盘的方式更换操作系统。更换后系统盘的云盘ID将发生变化，原云盘会被释放。
@@ -4908,7 +4834,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 使用快照回滚云盘
     ///
     /// 使用云盘快照，将云盘回滚到之前某一特定的历史状态。
@@ -4961,7 +4886,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量重置磁盘
     ///
     /// 通过实例快照回滚一个或多个云盘。
@@ -5009,7 +4933,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 初始化磁盘至创建时的初始状态
     ///
     /// 重新初始化一块磁盘至创建时的初始状态。
@@ -5063,7 +4986,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 迁移云盘
     ///
     /// 将云盘迁入、迁出专属块存储集群，或将云盘在不同专属块存储集群之间迁移。
@@ -5114,7 +5036,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 释放按量付费数据盘
     ///
     /// 释放一块按量付费数据盘。磁盘类型包括普通云盘、高效云盘、SSD云盘和ESSD云盘。
@@ -5149,7 +5070,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 开启块存储账号级默认加密
     ///
     /// 开启指定地域块存储账号级默认加密。
@@ -5205,7 +5125,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询块存储账号级默认加密的服务状态
     ///
     /// 查询指定地域块存储账号级默认加密的服务状态。
@@ -5225,7 +5144,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询块存储账号级默认加密使用的密钥
     ///
     /// 查询块存储账号级默认加密使用的密钥。
@@ -5244,7 +5162,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改块存储账号级默认加密使用的密钥
     ///
     /// 修改指定地域块存储账号级默认加密使用的KMS密钥ID。
@@ -5277,7 +5194,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 重置块存储账号级默认加密使用的密钥
     ///
     /// 将指定地域块存储账号级默认加密使用的 KMS 密钥 ID 重置为服务密钥的接口。
@@ -5308,7 +5224,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 关闭块存储账号级默认加密
     ///
     /// 关闭指定地域块存储账号级默认加密。
@@ -5337,7 +5252,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 开通快照服务
     ///
     /// 开通快照服务。
@@ -5353,7 +5267,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建快照
     ///
     /// 为一块云盘创建一份快照。
@@ -5453,7 +5366,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云盘快照列表
     ///
     /// 查询云盘的快照列表信息。例如快照状态、正在创建的快照剩余完成时间、自动快照保留天数等。
@@ -5527,7 +5439,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询快照数量和容量
     ///
     /// 查询您在一个地域下的快照数量以及快照容量。
@@ -5550,7 +5461,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改快照属性
     ///
     /// 修改一份快照的名称、描述或保留天数。
@@ -5578,7 +5488,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改快照类型
     ///
     /// 修改快照类型,可以通过该接口将标准快照转换为归档快照。
@@ -5620,7 +5529,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 复制快照
     ///
     /// 将一份标准快照或加密快照从一个地域复制到另一个地域。
@@ -5688,7 +5596,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除快照
     ///
     /// 删除一份指定的快照。如果需要取消正在创建的快照，也可以调用该接口删除快照，即取消创建快照任务。
@@ -5721,7 +5628,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云盘快照链
     ///
     /// 查询云盘快照链。快照链是一块云盘所有快照组成的关系链，一块云盘对应一条快照链。
@@ -5751,7 +5657,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建快照一致性组
     ///
     /// 为指定ECS实例中的云盘创建快照一致性组。快照一致性组包含一个或多个云盘对应的快照。
@@ -5842,7 +5747,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询快照一致性组
     ///
     /// 查询一个或多个快照一致性组的信息。例如状态、所属的实例ID、快照创建进度等。
@@ -5867,7 +5771,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改快照一致性组
     ///
     /// 修改快照一致性组的名称与描述信息。
@@ -5888,7 +5791,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除快照一致性组
     ///
     /// 删除快照一致性组。
@@ -5914,7 +5816,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建自动快照策略
     ///
     /// 在指定地域下创建一条自动快照策略。可以指定自动快照的重复周期、保留时间以及跨地域备份等策略，为系统盘或数据盘创建快照备份数据。
@@ -5965,7 +5866,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询已创建的自动快照策略
     ///
     /// 本接口用于查询指定地域下已创建的自动快照策略详细信息列表。
@@ -5986,7 +5886,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询自动快照策略的关联关系
     ///
     /// 查询自动快照策略的关联关系
@@ -6010,7 +5909,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改自动快照策略
     ///
     /// 修改一条自动快照策略，例如，快照创建时间点、重复日期、保留时间等。
@@ -6048,7 +5946,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为云盘应用自动快照策略
     ///
     /// 为一块或者多块云盘应用自动快照策略。目标云盘已经应用了自动快照策略时，调用ApplyAutoSnapshotPolicy可以更换云盘当前应用的自动快照策略。
@@ -6093,7 +5990,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消云盘的自动快照策略
     ///
     /// 取消一块或者多块云盘的自动快照策略。
@@ -6115,7 +6011,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除自动快照策略
     ///
     /// 删除一条自动快照策略。如果目标自动快照策略已经被应用到磁盘上，删除自动快照策略后，这些磁盘不再执行该策略。
@@ -6134,7 +6029,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询某地域下已购买对象存储OSS存储包
     ///
     /// 调用DescribeSnapshotPackage查询您在一个阿里云地域下已经购买的OSS存储包。存储包可以用于抵扣标准快照存储容量，但不支持抵扣本地快照。
@@ -6151,7 +6045,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询不同实例规格公网带宽上限
     ///
     /// 调用DescribeBandwidthLimitation查询不同实例规格可以购买、升级或降配的公网带宽上限。
@@ -6180,7 +6073,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 调整ECS实例带宽或分配公网IP
     ///
     /// 修改ECS实例的带宽配置、分配公网IP、转换网络计费方式，支持升配和降配。
@@ -6284,7 +6176,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 分配公网IP
     ///
     /// 为一台ECS实例分配一个公网IP地址。推荐您使用接口ModifyInstanceNetworkSpec分配公网IP。
@@ -6339,7 +6230,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 将公网IP地址转化为弹性公网IP
     ///
     /// 将一台专有网络VPC类型ECS实例的公网IP地址（PublicIP）转化为弹性公网IP（EIP）。
@@ -6393,7 +6283,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例的VPC属性
     ///
     /// 修改一台专有网络类型ECS实例的专有网络VPC、私网IP地址、安全组或交换机。
@@ -6494,7 +6383,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询建立了连接的经典网络类型实例
     ///
     /// 查询一台或多台与专有网络VPC建立了连接的经典网络类型实例。
@@ -6526,7 +6414,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 将经典网络类型实例连接到专有网络VPC
     ///
     /// 调用AttachClassicLinkVpc将一台经典网络类型实例连接到专有网络VPC中，使经典网络类型实例可以和VPC中的云资源私网互通。
@@ -6562,7 +6449,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消经典网络类型实例与VPC的连接
     ///
     /// 调用DetachClassicLinkVpc取消一台经典网络类型ECS实例与专有网络VPC的连接（ClassicLink）。取消ClassicLink后，经典网络类型实例无法与VPC内的实例互通。
@@ -6591,7 +6477,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建弹性网卡
     ///
     /// 创建一张弹性网卡（ENI），支持指定主私网IP地址。
@@ -6725,7 +6610,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查看弹性网卡（ENI）列表
     ///
     /// 查询一个或多个弹性网卡（ENI）的详细信息。
@@ -6780,7 +6664,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询网卡属性
     ///
     /// 指定弹性网卡ID，查询一个网卡的详细信息。
@@ -6810,7 +6693,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改弹性网卡属性
     ///
     /// 修改一个弹性网卡（ENI）的网卡队列数、所属安全组、队列深度、通讯模式以及释放实例时是否保留网卡等属性。
@@ -6885,7 +6767,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除弹性网卡（ENI）
     ///
     /// 异步删除一张弹性网卡（ENI）。
@@ -6950,7 +6831,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 附加弹性网卡到专有网络VPC类型实例上
     ///
     /// 调用AttachNetworkInterface接口，并可以指定NetworkInterfaceId、InstanceId、NetworkCardIndex等参数，附加一个弹性网卡（ENI）到一台专有网络VPC类型ECS实例上。
@@ -7051,7 +6931,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 从实例上分离弹性网卡（ENI）
     ///
     /// 从一台ECS实例上分离一张弹性网卡（ENI）。
@@ -7127,7 +7006,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为弹性网卡分配辅助私有IP地址
     ///
     /// 为一块弹性网卡分配一个或多个辅助私网IP地址。可以为网卡指定在所属交换机（vSwitch）的空闲私网IP地址，或者通过指定私网地址数量自动分配私网IP地址。
@@ -7209,7 +7087,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 从弹性网卡删除辅助私有IP地址
     ///
     /// 从一张弹性网卡删除一个或多个辅助私有IP地址。
@@ -7271,7 +7148,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为弹性网卡分配IPv6地址
     ///
     /// 为弹性网卡分配一个或多个IPv6地址。
@@ -7357,7 +7233,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 回收弹性网卡IPv6地址
     ///
     /// 回收一个或多个弹性网卡IPv6地址。
@@ -7407,7 +7282,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为认证ISV或个人授权弹性网卡权限
     ///
     /// 调用CreateNetworkInterfacePermission为阿里云合作伙伴（认证ISV）或者个人用户授权弹性网卡权限。
@@ -7438,7 +7312,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询授权给认证ISV或个人的弹性网卡权限
     ///
     /// 调用DescribeNetworkInterfacePermissions查询您授权给阿里云合作伙伴（认证ISV）或者个人用户的弹性网卡权限列表。
@@ -7470,7 +7343,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建前缀列表
     ///
     /// 创建一个前缀列表。
@@ -7513,7 +7385,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询前缀列表
     ///
     /// 调用DescribePrefixLists查询一个或多个前缀列表的信息。
@@ -7535,7 +7406,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询前缀列表的详细信息
     ///
     /// 查询指定前缀列表的详细信息，包含前缀列表的名称、地址族、最大条目容量以及条目的详细信息等。
@@ -7555,7 +7425,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询前缀列表已关联的资源信息
     ///
     /// 查询指定前缀列表已关联的资源信息，例如，资源ID和资源类型。
@@ -7577,7 +7446,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改前缀列表的属性
     ///
     /// 修改指定前缀列表的名称、描述等，支持增加、修改和删除条目。
@@ -7612,7 +7480,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除前缀列表
     ///
     /// 调用DeletePrefixList删除指定的前缀列表，同时删除前缀列表中的所有条目。
@@ -7634,7 +7501,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建端口列表
     ///
     /// 创建端口列表，后续可关联资源（例如安全组）使用。
@@ -7662,7 +7528,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询端口列表
     ///
     /// 查询端口列表。
@@ -7683,7 +7548,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询端口列表的条目
     ///
     /// 查询指定端口列表的条目。
@@ -7703,7 +7567,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询端口列表已关联的资源信息
     ///
     /// 查询指定端口列表已关联的资源信息，例如，安全组。
@@ -7724,7 +7587,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改端口列表的属性
     ///
     /// 修改指定端口列表的名称、条目，支持增加、修改和删除条目。
@@ -7755,7 +7617,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除端口列表
     ///
     /// 删除指定端口列表，同时端口列表下的端口列表条目都将被删除。
@@ -7776,7 +7637,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建安全组
     ///
     /// 本接口用于创建一个安全组。
@@ -7817,7 +7677,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询安全组基本信息列表
     ///
     /// 本接口用于查询安全组基本信息列表，支持您通过地域、安全组ID、安全组类型等不同参数查询。
@@ -7848,7 +7707,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询安全组和组内规则信息
     ///
     /// 本接口主要用于查询一个指定安全组的详细信息，并关联查询安全组规则详细信息列表。
@@ -7874,7 +7732,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改普通安全组的组内连通策略
     ///
     /// 本接口用于修改一个普通安全组的组内连通策略。
@@ -7904,7 +7761,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改安全组的名称或者描述
     ///
     /// 本接口用于修改一个指定安全组的名称或者描述信息。
@@ -7927,7 +7783,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除安全组
     ///
     /// 本接口用于删除一个安全组，并关联删除组内所有安全组规则。
@@ -7955,7 +7810,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 增加安全组入方向规则
     ///
     /// 本接口是阿里云 ECS 中用于增加一条或多条安全组入方向规则的接口。通过该接口，用户可以指定安全组入方向的访问权限，允许或者拒绝其他设备发送入方向流量到安全组内的实例，从而实现对网络访问的精细控制。
@@ -8083,7 +7937,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改安全组入方向规则
     ///
     /// 本接口用于修改指定安全组中的一条入方向安全组规则。
@@ -8159,7 +8012,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除安全组入方向规则
     ///
     /// 本接口用于删除指定安全组内的一条或多条入方向安全组规则。
@@ -8282,7 +8134,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 增加安全组出方向规则
     ///
     /// 本接口是阿里云 ECS 中用于增加一条或多条安全组出方向规则的接口。通过该接口，用户可以指定安全组出方向的访问权限，允许或拒绝安全组内的实例发送出方向流量到其他设备，从而实现对网络访问的精细控制。
@@ -8409,7 +8260,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改安全组出方向规则
     ///
     /// 本接口用于修改一条出方向安全组规则。
@@ -8486,7 +8336,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除出方向安全组规则
     ///
     /// 本接口用于删除指定安全组内的一条或多条出方向安全组规则。
@@ -8610,7 +8459,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询被授权的安全组列表
     ///
     /// 本接口用于查询一个或多个指定安全组已经被授权的其他安全组列表信息。
@@ -8633,7 +8481,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 加入安全组
     ///
     /// 本接口用于将一台ECS实例或一张弹性网卡加入到指定的安全组。
@@ -8685,7 +8532,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 移出安全组
     ///
     /// 本接口用于将一台ECS实例或一张弹性网卡移出指定的安全组。
@@ -8728,7 +8574,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建密钥对
     ///
     /// 调用CreateKeyPair创建一对SSH密钥对。系统会为您保管密钥的公钥部分，并返回未加密的PEM编码的PKCS#8格式私钥。您需要自行妥善保管私钥部分。
@@ -8758,7 +8603,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 导入密钥对公钥
     ///
     /// 导入由其他工具产生的RSA密钥对的公钥部分。导入密钥对后，阿里云为您保管公钥部分，您需要自行妥善保存密钥对的私钥部分。
@@ -8794,7 +8638,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询密钥对列表
     ///
     /// 调用DescribeKeyPairs查询一个或多个密钥对。
@@ -8810,7 +8653,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 绑定密钥对到Linux实例
     ///
     /// 绑定一个SSH密钥对到一台或多台Linux实例。
@@ -8840,7 +8682,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # Linux实例解绑密钥对
     ///
     /// 为一台或者多台Linux实例解绑SSH密钥对。
@@ -8866,7 +8707,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量删除密钥对
     ///
     /// 调用DeleteKeyPairs删除一对或者多对SSH密钥对。
@@ -8892,7 +8732,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建实例启动模板
     ///
     /// 创建一个ECS实例启动模板，简称模板。实例启动模板能免除每次创建实例时都需要填入大量配置参数。
@@ -8938,7 +8777,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询一个或多个可用的实例启动模板
     ///
     /// 调用DescribeLaunchTemplates接口，并可以指定TemplateTag、TemplateResourceGroupId、LaunchTemplateId等参数，查询一个或多个实例启动模板的信息，例如启动模板总个数、模板创建时间、模板最新版本号等信息集合。
@@ -8962,7 +8800,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除实例启动模板
     ///
     /// 指定参数LaunchTemplateId或LaunchTemplateName删除目标地域下的一个实例启动模板。
@@ -8988,7 +8825,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 在实例启动模板中创建新版本
     ///
     /// 在指定的ECS实例启动模板下创建一个新版本用于后续创建ECS实例、弹性伸缩组或弹性供应组。
@@ -9022,7 +8858,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例启动模板的版本信息
     ///
     /// 查询ECS实例启动模板版本的信息，例如实例启动模板总数、模板名称、模板版本号等。
@@ -9046,7 +8881,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 切换启动模板的默认版本
     ///
     /// 调用ModifyLaunchTemplateDefaultVersion接口，并通过指定DefaultVersionNumber参数，切换启动模板的默认版本。如果您在创建实例（RunInstances）时不指定模板版本号，则会采用默认版本。
@@ -9070,7 +8904,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除实例启动模板的版本
     ///
     /// 指定LaunchTemplateId、DeleteVersion等参数，删除指定实例启动模板的一个或多个版本。
@@ -9100,7 +8933,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建弹性供应组
     ///
     /// 创建一个弹性供应组。
@@ -9174,7 +9006,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性供应组
     ///
     /// 查询一个或多个弹性供应组。
@@ -9194,7 +9025,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性供应组内的实例
     ///
     /// 查询一个弹性供应组内的实例信息。
@@ -9217,7 +9047,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改弹性供应组的配置
     ///
     /// 修改一个弹性供应组的配置信息。
@@ -9254,7 +9083,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性供应组的调度任务信息
     ///
     /// 调用DescribeAutoProvisioningGroupHistory查询弹性供应组的调度任务信息。
@@ -9278,7 +9106,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除弹性供应组
     ///
     /// 指定参数AutoProvisioningGroupId、TerminateInstances删除一个弹性供应组。
@@ -9303,7 +9130,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 在指定的地域内创建部署集
     ///
     /// 在指定的地域内创建一个部署集。
@@ -9332,7 +9158,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询支持部署集的实例规格族
     ///
     /// 调用DescribeDeploymentSetSupportedInstanceTypeFamily，并指定RegionId、Strategy参数，查询支持各部署集策略的实例规格族。
@@ -9354,7 +9179,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询部署集的属性
     ///
     /// 查询一个或多个部署集的详细信息。
@@ -9373,7 +9197,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例部署集
     ///
     /// 修改ECS实例的部署集，或迁移ECS实例至专有宿主机。支持在迁移ECS实例的同时变更实例规格。
@@ -9438,7 +9261,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改部署集的名称和描述信息
     ///
     /// 修改一个部署集的名称和描述信息。
@@ -9460,7 +9282,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除部署集
     ///
     /// 删除一个部署集。
@@ -9482,7 +9303,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建弹性保障服务
     ///
     /// 通过指定弹性保障服务所属地域下的可用区、实例规格、购买时长、是否自动续费等参数创建弹性保障服务。
@@ -9565,7 +9385,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性保障服务的信息
     ///
     /// 查询弹性保障服务的详细信息。例如弹性保障服务的状态、匹配模式、生效方式、失效时间、已使用的实例的数量等。
@@ -9616,7 +9435,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性保障服务已匹配实例列表
     ///
     /// 调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。
@@ -9668,7 +9486,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改弹性保障服务信息
     ///
     /// 修改一个弹性保障服务的部分信息，包含名称、描述、容量（暂时只支持缩容）。
@@ -9718,7 +9535,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 续费弹性保障服务
     ///
     /// 对一个或多个已购买的弹性保障服务进行续费。
@@ -9750,7 +9566,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改弹性保障服务自动续费
     ///
     /// 修改一个或多个弹性保障服务的自动续费属性。
@@ -9775,7 +9590,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询弹性保障服务自动续费
     ///
     /// 查询一个或多个弹性保障服务的自动续费属性。
@@ -9797,7 +9611,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 购买一个准备完毕的弹性保障服务
     ///
     /// 本接口旨在为用户提供便捷、高效的方式来购买弹性保障服务。当用户存在资源准备完毕，处于未激活状态的弹性保障服务时，可以通过该接口进行购买。
@@ -9825,7 +9638,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建容量预定服务
     ///
     /// 指定需要预留的实例规格、总数量，生效方式和可用区等，创建容量预定服务。
@@ -9904,7 +9716,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询容量预定服务的信息
     ///
     /// 查询一个或多个容量预定服务的详细信息，例如服务的状态、服务的生效与失效时间、私有池的模式和已使用的实例的数量等。
@@ -9956,7 +9767,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询容量预定服务已匹配的实例列表
     ///
     /// 查询容量预定服务已匹配的实例列表。
@@ -10006,7 +9816,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改一个容量预定服务的部分信息
     ///
     /// 调用ModifyCapacityReservation修改一个容量预定服务的部分信息，包括容量预定服务的名称、描述信息、失效方式以及预留的实例总数量。
@@ -10042,7 +9851,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例匹配的私有池信息
     ///
     /// 查询实例匹配的私有池信息，例如匹配模式、私有池ID等。
@@ -10101,7 +9909,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例的私有池的属性
     ///
     /// 修改实例的私有池匹配模式。
@@ -10165,7 +9972,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 释放容量预定服务
     ///
     /// 调用ReleaseCapacityReservation释放容量预定服务。
@@ -10220,7 +10026,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 购买预留实例券
     ///
     /// 本接口用于购买一张预留实例券，支持您购买一张地域级或者可用区级的预留实例券来抵扣对应规格的按量付费实例账单。
@@ -10316,7 +10121,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询预留实例券详细信息列表
     ///
     /// 本接口主要用于查询指定地域下您已经购买的预留实例券信息列表，支持您根据标签、预留实例券属性等参数获取预留实例券详细信息列表。
@@ -10386,7 +10190,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改预留实例券配置
     ///
     /// 本接口的主要功能是通过修改实例规格、数量、可用区等预留实例券的配置来对预留实例券进行拆分、合并或范围变更操作。
@@ -10504,7 +10307,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改预留实例券属性
     ///
     /// 本接口用于修改一张预留实例券的属性信息，包括名称和描述。
@@ -10526,7 +10328,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 续费预留实例券
     ///
     /// 本接口用于对一张或多张预留实例券进行续费，支持您在续费时设置购买时长和自动续费属性。
@@ -10607,7 +10408,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询预留实例券自动续费属性
     ///
     /// 本接口用于查询一个或多个预留实例券自动续费属性，包括自动续费时长和自动续费状态。
@@ -10631,7 +10431,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改预留实例券自动续费属性
     ///
     /// 本接口主要用于修改一个或多个预留实例券的自动续费属性，支持您取消或者关闭自动续费。
@@ -10657,7 +10456,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 购买存储容量单位包
     ///
     /// 本接口用于购买一个或多个存储容量单位包SCU（Storage Capacity Unit）。
@@ -10698,7 +10496,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询存储容量单位包详细信息列表
     ///
     /// 本接口用于查询存储容量单位包SCU（Storage Capacity Unit）的详细信息列表，支持根据名称、状态以及容量大小等条件进行查询。
@@ -10720,7 +10517,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改存储容量单位包属性
     ///
     /// 本接口用于修改一个存储容量单位包SCU（Storage Capacity Unit）的名称或者描述信息。
@@ -10743,7 +10539,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建并执行云助手命令
     ///
     /// 本接口用于在一台或多台ECS实例中创建并执行云助手命令，支持Shell、PowerShell或者Bat类型的脚本，支持定时执行、自定义参数和实例内容器执行等功能。
@@ -10853,7 +10648,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建云助手命令
     ///
     /// 新建一条Shell、PowerShell或者Bat脚本类型的云助手命令。
@@ -10908,7 +10702,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 执行云助手命令
     ///
     /// 指定CommandId、InstanceId、ResourceGroupId等参数，为一台或多台ECS实例触发一条云助手命令。
@@ -11035,7 +10828,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云助手命令的执行信息列表
     ///
     /// 调用DescribeInvocations查询云助手命令的执行列表和状态。
@@ -11079,7 +10871,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云助手命令执行结果
     ///
     /// 调用DescribeInvocationResults查看一条或多条云助手命令的执行结果，即在ECS实例中的实际执行结果。
@@ -11128,7 +10919,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改云助手命令的执行属性
     ///
     /// 修改云助手定时任务的执行信息，包括命令内容、定时执行方式、添加ECS实例或托管实例到任务。
@@ -11184,7 +10974,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 停止执行云助手命令
     ///
     /// 调用StopInvocation停止一台或多台ECS实例中一条正在进行中（Running）的云助手命令进程。
@@ -11213,7 +11002,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询已创建的云助手命令
     ///
     /// 查询您手动创建的云助手命令或者阿里云提供的公共命令。
@@ -11254,7 +11042,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改云助手命令
     ///
     /// 调用ModifyCommand修改一条云助手命令相关参数。
@@ -11286,7 +11073,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除一条云助手命令
     ///
     /// 调用DeleteCommand接口，并指定参数RegionId、CommandId删除一条云助手命令。它无法删除正在执行中的命令。
@@ -11309,7 +11095,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 上传本地文件到ECS实例
     ///
     /// 调用SendFile向一台或多台ECS实例下发远程文件。
@@ -11359,7 +11144,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云助手下发文件列表及状态
     ///
     /// 调用DescribeSendFileResults查询云助手下发文件列表及状态。
@@ -11395,7 +11179,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云助手安装状态
     ///
     /// 调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手Agent。如果已安装了云助手，还将查询云助手命令执行的总数量、正在执行的数量以及最近一次命令执行的时间。
@@ -11430,7 +11213,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为实例安装云助手Agent
     ///
     /// 调用InstallCloudAssistant为一台或多台ECS实例安装云助手Agent。需要重启实例来完成安装云助手Agent的操作。
@@ -11460,7 +11242,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 开始终端会话
     ///
     /// 调用StartTerminalSession基于会话管理功能创建一个会话。您可以通过指定ECS实例ID与该实例建立一个WebSocket会话，通过接口返回的WebSocketUrl可以远程连接到ECS实例。
@@ -11519,7 +11300,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 关闭终端会话
     ///
     /// 永久关闭指定Session的数据连接。
@@ -11542,7 +11322,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查看Session Manager会话历史记录
     ///
     /// 查看Session Manager会话历史记录。
@@ -11566,7 +11345,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改云助手服务配置
     ///
     /// 修改云助手服务配置。
@@ -11606,7 +11384,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云助手服务配置
     ///
     /// 查询云助手服务配置。
@@ -11627,7 +11404,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建一个激活码
     ///
     /// 该接口用于创建一个激活码，该激活码用于将非阿里云服务器注册为阿里云托管实例。
@@ -11684,7 +11460,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询激活码的使用情况
     ///
     /// 调用DescribeActivations查询已创建的激活码以及激活码的使用情况。
@@ -11720,7 +11495,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 手动禁用指定的激活码
     ///
     /// 调用DisableActivation手动禁用指定的激活码。
@@ -11746,7 +11520,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除一个未被使用的激活码
     ///
     /// 调用DeleteActivation删除一个未被使用的激活码。
@@ -11773,7 +11546,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取托管实例
     ///
     /// 调用DescribeManagedInstances查询托管实例列表。
@@ -11806,7 +11578,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改托管实例
     ///
     /// 调用ModifyManagedInstance修改一台托管实例的相关信息。
@@ -11835,7 +11606,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 注销托管实例
     ///
     /// 调用DeregisterManagedInstance注销一个托管实例。注销后您将无法再使用云助手向实例发送命令或文件。
@@ -11858,7 +11628,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例中云助手插件的状态
     ///
     /// 调用ListPluginStatus查询实例中云助手插件的状态。
@@ -11890,7 +11659,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例的全部状态信息
     ///
     /// 调用DescribeInstancesFullStatus查询一台或多台ECS实例的全状态信息。全状态信息包括实例状态和实例系统事件状态，其中，实例状态为实例的生命周期状态，实例系统事件为维护事件的健康状态。
@@ -11919,7 +11687,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询一块或多块块存储的全部状态信息
     ///
     /// 调用DescribeDisksFullStatus查询一块或多块块存储的全部状态信息。
@@ -11948,7 +11715,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询指定实例系统事件信息
     ///
     /// 调用DescribeInstanceHistoryEvents接口，并可以指定InstanceId、EventType等参数，查询指定实例系统事件信息，默认查询处于非活跃状态的历史系统事件。
@@ -11977,7 +11743,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为实例预约模拟系统事件
     ///
     /// 为一台或多台ECS实例预约模拟系统事件。模拟系统事件相当于事件演习，不会真正执行事件，也不会对ECS实例产生影响。
@@ -12010,7 +11775,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消模拟系统事件
     ///
     /// 调用CancelSimulatedSystemEvents取消一件或多件处于Scheduled（计划中）或Executing（执行中）状态的模拟系统事件。取消系统事件后，模拟事件变为Canceled（已取消）状态。
@@ -12033,7 +11797,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 接受并授权执行系统事件操作
     ///
     /// 调用AcceptInquiredSystemEvent接受并授权执行系统事件操作。对问询中（Inquiring）状态的系统事件，接受系统事件的默认操作，授权系统执行默认操作。
@@ -12064,7 +11827,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询诊断指标列表
     ///
     /// 调用DescribeDiagnosticMetrics查询诊断指标列表。
@@ -12081,7 +11843,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建资源诊断指标集合
     ///
     /// 调用CreateDiagnosticMetricSet创建资源诊断指标集合。您可以根据需要，灵活组合诊断指标。
@@ -12099,7 +11860,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源诊断集合列表
     ///
     /// 调用DescribeDiagnosticMetricSets查询资源诊断集合列表。
@@ -12118,7 +11878,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改资源诊断指标集合
     ///
     /// 修改资源诊断指标集合。
@@ -12137,7 +11896,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除资源诊断指标集合
     ///
     /// 调用DeleteDiagnosticMetricSets删除资源诊断指标集合。
@@ -12155,7 +11913,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建资源诊断报告
     ///
     /// 调用CreateDiagnosticReport创建资源诊断报告。根据您传入诊断指标集合ID，生成多个诊断指标的诊断报告。您可以根据返回的诊断报告ID，调用DescribeDiagnosticReportAttributes查询资源诊断详情。
@@ -12178,7 +11935,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源诊断报告列表
     ///
     /// 调用DescribeDiagnosticReports查询资源诊断报告列表。
@@ -12195,7 +11951,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源诊断报告详情
     ///
     /// 调用DescribeDiagnosticReportAttributes查询资源诊断详情。
@@ -12214,7 +11969,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除资源诊断报告
     ///
     /// 调用DeleteDiagnosticReports删除资源诊断报告。
@@ -12235,7 +11989,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取实例的截屏信息
     ///
     /// 调用GetInstanceScreenshot获取实例的截屏信息。
@@ -12266,7 +12019,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取实例系统命令行输出
     ///
     /// 获取一台实例的系统命令行输出，数据以Base64编码后返回。
@@ -12295,7 +12047,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询云盘监控数据
     ///
     /// 查询一块云盘在指定时间内的使用信息，例如，云盘读IOPS、写IOPS、读带宽（B/s）、写带宽（B/s）、读时延（μs）以及写时延（μs）。
@@ -12344,7 +12095,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例监控数据
     ///
     /// 调用DescribeInstanceMonitorData查询一台ECS实例的监控信息。可查询的指标包括ECS实例的vCPU使用率、突发性能实例积分、接收的数据流量、发送的数据流量、平均带宽等。
@@ -12383,7 +12133,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询辅助网卡监控数据
     ///
     /// 调用DescribeEniMonitorData查询一块辅助网卡在指定时间段内使用的流量信息。
@@ -12421,7 +12170,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询近30天内快照容量变化监控数据
     ///
     /// 查询一个地域下近30天内的快照容量变化监控数据。
@@ -12453,7 +12201,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询实例的维护属性
     ///
     /// 调用DescribeInstanceMaintenanceAttributes查询实例的维护属性。
@@ -12482,7 +12229,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改实例的维护属性
     ///
     /// 调用ModifyInstanceMaintenanceAttributes修改实例的维护属性。
@@ -12509,7 +12255,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 重新部署实例
     ///
     /// 当ECS实例收到系统事件通知时，调用RedeployInstance可以重新部署这台ECS实例。
@@ -12562,7 +12307,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 反馈一台或者多台ECS实例异常问题
     ///
     /// 调用ReportInstancesStatus反馈一台或者多台ECS实例的异常问题。您可以反馈多台ECS实例发生的相同问题，也可以反馈一台ECS实例的多块磁盘发生的相同问题。
@@ -12585,7 +12329,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建并绑定标签
     ///
     /// 为指定的ECS资源列表统一创建并绑定标签。
@@ -12633,7 +12376,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询资源已经绑定的标签列表
     ///
     /// 查询一个或多个ECS资源已经绑定的标签列表。
@@ -12697,7 +12439,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为指定资源列表统一解绑标签
     ///
     /// 调用UntagResources为指定的ECS资源列表统一解绑标签。解绑后，如果该标签没有绑定其他任何资源，会被自动删除。
@@ -12739,7 +12480,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 将一个ECS资源或者服务加入一个资源组
     ///
     /// 调用JoinResourceGroup将一个ECS资源或者服务加入一个资源组。
@@ -12768,7 +12508,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建一台或多台按量付费或者包年包月专有宿主机
     ///
     /// 调用AllocateDedicatedHosts创建一台或多台按量付费或者包年包月专有宿主机。专有宿主机是单租户独享的物理机资源，您可以在专有宿主机上自行创建ECS实例和获取物理服务器属性等信息。
@@ -12837,7 +12576,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询专有宿主机详细信息
     ///
     /// 本接口用于查询一台或多台专有宿主机的详细信息。通过该接口，您可以获取包括专有宿主机的物理性能指标、机器码、使用状态以及已创建的ECS实例列表等信息。您能够根据具体需求，通过指定相关参数，如专有宿主机ID列表、专有宿主机集群ID、宿主机名称、状态等，精准地查询所需的专有宿主机详细信息，为高效管理和优化云计算资源提供有力支持。
@@ -12869,7 +12607,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询专有宿主机规格详细参数
     ///
     /// 调用DescribeDedicatedHostTypes查询指定地域下支持的专有宿主机规格详细参数，或者查询专有宿主机支持的ECS实例规格族。
@@ -12886,7 +12623,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改专有宿主机部分信息
     ///
     /// 调用ModifyDedicatedHostAttribute修改一台专有宿主机的部分信息，包括专有宿主机的名称、描述和服务不可用属性等。
@@ -12921,7 +12657,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改专有宿主机的付费类型
     ///
     /// 调用ModifyDedicatedHostsChargeType修改专有宿主机的付费类型。
@@ -12972,7 +12707,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询专有宿主机自动续费状态
     ///
     /// 调用DescribeDedicatedHostAutoRenew查询一台或多台包年包月专有宿主机自动续费状态。
@@ -12996,7 +12730,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为专有宿主机设置或取消自动续费
     ///
     /// 调用ModifyDedicatedHostAutoRenewAttribute为一台或多台包年包月专有宿主机设置自动续费，也可以取消已设定的自动续费。
@@ -13027,7 +12760,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 续费一台或者多台包年包月专有宿主机
     ///
     /// 续费一台或者多台包年包月的专有宿主机。
@@ -13061,7 +12793,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为专有宿主机设定自动释放时间
     ///
     /// 调用ModifyDedicatedHostAutoReleaseTime为一台按量付费专有宿主机设定自动释放时间，或者取消自动释放一台按量付费专有宿主机。
@@ -13088,7 +12819,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 执行专有宿主机的故障迁移
     ///
     /// 执行专有宿主机的故障迁移。
@@ -13112,7 +12842,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 释放专有宿主机
     ///
     /// 本接口用于释放一台按量付费专有宿主机或者到期的包年包月专有宿主机
@@ -13137,7 +12866,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建专有宿主机组
     ///
     /// 创建一个专有宿主机组。
@@ -13164,7 +12892,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改专有宿主机组的信息
     ///
     /// 修改一台专有宿主机组的部分信息，包括专有宿主机组的名称、描述信息、属性等。
@@ -13187,7 +12914,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询专有宿主机组的详情
     ///
     /// 查询一个或多个专有宿主机组的详细信息。
@@ -13214,7 +12940,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除专有宿主机组
     ///
     /// 删除一个专有宿主机组，操作前请先将该专有宿主机组下的专有宿主机迁移至其他专有宿主机组。
@@ -13234,7 +12959,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建一个HPC集群
     ///
     /// 调用CreateHpcCluster创建一个HPC集群。
@@ -13258,7 +12982,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询HPC集群
     ///
     /// 调用DescribeHpcClusters查询您可用的HPC集群。请求参数作为筛选器（Filter）使用，筛选关系为逻辑与关系，参数之间无依赖关系。
@@ -13280,7 +13003,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改一个HPC集群的描述信息
     ///
     /// 调用ModifyHpcClusterAttribute修改一个HPC集群的描述信息。
@@ -13306,7 +13028,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除一个HPC集群
     ///
     /// 调用DeleteHpcCluster删除一个HPC集群。
@@ -13330,7 +13051,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询任务列表
     ///
     /// 调用DescribeTasks查询一个或多个异步请求的进度。
@@ -13349,7 +13069,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询任务详细信息
     ///
     /// 调用DescribeTaskAttribute查询异步任务的详细信息。目前，可以查询的异步任务有导入镜像（ImportImage）、导出镜像（ExportImage）及变更云盘类型（ModifyDiskSpec）。
@@ -13370,7 +13089,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 取消任务
     ///
     /// 调用CancelTask取消一件正在运行的任务。目前，您能取消正在运行的导入镜像任务（ImportImage）和导出镜像任务（ExportImage）。
@@ -13394,7 +13112,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 获取用户级别默认属性
     ///
     /// # Error Codes
@@ -13412,7 +13129,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 设置用户级别默认属性
     ///
     /// # Error Codes
@@ -13431,7 +13147,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 查询账号限制
     ///
     /// # Error Codes
@@ -13448,7 +13163,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 查询集群
     ///
     /// # Methods
@@ -13463,7 +13177,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 删除操作弹性网卡的权限
     ///
     /// # Error Codes
@@ -13493,7 +13206,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteBandwidthPackage
     ///
     /// # Error Codes
@@ -13516,7 +13228,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyBandwidthPackageSpec
     ///
     /// # Error Codes
@@ -13540,7 +13251,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeBandwidthPackages
     ///
     /// # Error Codes
@@ -13559,7 +13269,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateVSwitch
     ///
     /// # Error Codes
@@ -13604,7 +13313,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteVSwitch
     ///
     /// # Error Codes
@@ -13639,7 +13347,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyVSwitchAttribute
     ///
     /// # Error Codes
@@ -13661,7 +13368,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeVSwitches
     ///
     /// # Error Codes
@@ -13684,7 +13390,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreatePhysicalConnection
     ///
     /// # Error Codes
@@ -13723,7 +13428,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeletePhysicalConnection
     ///
     /// # Error Codes
@@ -13746,7 +13450,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyPhysicalConnectionAttribute
     ///
     /// # Error Codes
@@ -13776,7 +13479,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// EnablePhysicalConnection
     ///
     /// # Error Codes
@@ -13797,7 +13499,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribePhysicalConnections
     ///
     /// # Error Codes
@@ -13816,7 +13517,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CancelPhysicalConnection
     ///
     /// # Error Codes
@@ -13836,7 +13536,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// TerminatePhysicalConnection
     ///
     /// # Error Codes
@@ -13857,7 +13556,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateVpc
     ///
     /// # Error Codes
@@ -13890,7 +13588,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 删除VPC
     ///
     /// # Error Codes
@@ -13936,7 +13633,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 查询VPC
     ///
     /// # Error Codes
@@ -13962,7 +13658,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyVpcAttribute
     ///
     /// # Error Codes
@@ -13991,7 +13686,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// RemoveBandwidthPackageIps
     ///
     /// # Error Codes
@@ -14014,7 +13708,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateHaVip
     ///
     /// # Error Codes
@@ -14042,7 +13735,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteHaVip
     ///
     /// # Error Codes
@@ -14065,7 +13757,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// AssociateHaVip
     ///
     /// # Error Codes
@@ -14093,7 +13784,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyHaVipAttribute
     ///
     /// # Error Codes
@@ -14113,7 +13803,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeHaVips
     ///
     /// # Error Codes
@@ -14132,7 +13821,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// UnassociateHaVip
     ///
     /// # Error Codes
@@ -14157,7 +13845,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateVirtualBorderRouter
     ///
     /// # Error Codes
@@ -14198,7 +13885,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteVirtualBorderRouter
     ///
     /// # Error Codes
@@ -14227,7 +13913,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyVirtualBorderRouterAttribute
     ///
     /// # Error Codes
@@ -14264,7 +13949,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// RecoverVirtualBorderRouter
     ///
     /// # Error Codes
@@ -14286,7 +13970,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// TerminateVirtualBorderRouter
     ///
     /// # Error Codes
@@ -14307,7 +13990,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeVirtualBorderRouters
     ///
     /// # Error Codes
@@ -14326,7 +14008,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeVirtualBorderRoutersForPhysicalConnection
     ///
     /// # Error Codes
@@ -14347,7 +14028,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateRouterInterface
     ///
     /// # Error Codes
@@ -14404,7 +14084,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteRouterInterface
     ///
     /// # Error Codes
@@ -14427,7 +14106,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ActivateRouterInterface
     ///
     /// # Error Codes
@@ -14449,7 +14127,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeactivateRouterInterface
     ///
     /// # Error Codes
@@ -14471,7 +14148,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyRouterInterfaceAttribute
     ///
     /// # Error Codes
@@ -14499,7 +14175,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyRouterInterfaceSpec
     ///
     /// # Error Codes
@@ -14526,7 +14201,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyVRouterAttribute
     ///
     /// # Error Codes
@@ -14549,7 +14223,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeRouterInterfaces
     ///
     /// # Error Codes
@@ -14571,7 +14244,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// UnassociateEipAddress
     ///
     /// # Error Codes
@@ -14612,7 +14284,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 申请弹性公网IP（EIP）
     ///
     /// AllocateEipAddress
@@ -14670,7 +14341,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyEipAddressAttribute
     ///
     /// # Error Codes
@@ -14708,7 +14378,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ReleaseEipAddress
     ///
     /// # Error Codes
@@ -14733,7 +14402,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// AssociateEipAddress
     ///
     /// # Error Codes
@@ -14804,7 +14472,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeEipAddresses
     ///
     /// # Error Codes
@@ -14835,7 +14502,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeEipMonitorData
     ///
     /// # Error Codes
@@ -14864,7 +14530,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateNatGateway
     ///
     /// # Error Codes
@@ -14909,7 +14574,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteNatGateway
     ///
     /// # Error Codes
@@ -14933,7 +14597,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeNatGateways
     ///
     /// # Error Codes
@@ -14951,7 +14614,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeNewProjectEipMonitorData
     ///
     /// # Error Codes
@@ -14977,7 +14639,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteRouteEntry
     ///
     /// # Error Codes
@@ -15014,7 +14675,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DeleteForwardEntry
     ///
     /// # Error Codes
@@ -15034,7 +14694,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateForwardEntry
     ///
     /// # Error Codes
@@ -15091,7 +14750,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// AddBandwidthPackageIps
     ///
     /// # Error Codes
@@ -15113,7 +14771,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 查询路由器列表
     ///
     /// # Methods
@@ -15128,7 +14785,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// CreateRouteEntry
     ///
     /// # Error Codes
@@ -15219,7 +14875,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeForwardTableEntries
     ///
     /// # Error Codes
@@ -15239,7 +14894,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ModifyForwardEntry
     ///
     /// # Error Codes
@@ -15271,7 +14925,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// DescribeAccessPoints
     ///
     /// # Error Codes
@@ -15290,7 +14943,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 查询路由表信息列表
     ///
     /// # Methods
@@ -15305,7 +14957,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// ConnectRouterInterface
     ///
     /// # Error Codes
@@ -15344,7 +14995,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// 将快照导出到指定的对象存储
     ///
     /// # Error Codes
@@ -15368,7 +15018,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 释放公网IP地址
     ///
     /// 释放公网IP。
@@ -15396,7 +15045,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 添加或者覆盖一个或者多个标签到云服务器ECS的各项资源上
     ///
     /// 添加或者覆盖一个或者多个标签到云服务器ECS的各项资源上。您可以添加标签到实例、磁盘、快照、镜像、安全组等，便于管理资源。
@@ -15432,7 +15080,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 根据标签检索资源
     ///
     /// 调用DescribeResourceByTags根据标签检索资源。支持根据标签检索，也支持根据资源类型检索。
@@ -15454,7 +15101,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询可供使用标签
     ///
     /// 查询可以供您使用的标签。您可以根据资源类型、资源ID、标签键或标签值等条件查询标签，筛选条件之间为逻辑与（&amp;&amp;）关系，返回满足所有筛选条件的标签。
@@ -15480,7 +15126,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 解绑标签
     ///
     /// 调用RemoveTags从实例、磁盘、快照、镜像或者安全组等解绑一个或多个标签。
@@ -15505,7 +15150,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 启用或修改弹性网卡QoS限速设置
     ///
     /// 启用或修改弹性网卡QoS限速设置
@@ -15539,7 +15183,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 禁用弹性网卡QoS限速设置
     ///
     /// 禁用弹性网卡QoS限速设置
