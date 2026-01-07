@@ -197,7 +197,7 @@ impl Connection {
     pub fn delete_custom_domain(
         &self,
         req: DeleteCustomDomain,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteCustomDomainResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -293,8 +293,7 @@ impl Connection {
     pub fn delete_function_version(
         &self,
         req: DeleteFunctionVersion,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteFunctionVersionResponse>> + Send
-    {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -417,7 +416,7 @@ impl Connection {
     pub fn delete_function(
         &self,
         req: DeleteFunction,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteFunctionResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -491,11 +490,10 @@ impl Connection {
     pub fn invoke_function(
         &self,
         req: InvokeFunction,
-    ) -> impl std::future::Future<Output = crate::Result<InvokeFunctionResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
         async {
             todo!(
-                r##"Unsupported consumes content type: Binary. Only application/json and application/xml are supported.
-Unsupported produces content type: Binary. Only application/json and application/xml are supported."##
+                r##"Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
             );
         }
     }
@@ -548,11 +546,7 @@ Unsupported produces content type: Binary. Only application/json and application
         req: EnableFunctionInvocation,
     ) -> impl std::future::Future<Output = crate::Result<EnableFunctionInvocationResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -579,11 +573,7 @@ Unsupported produces content type: Binary. Only application/json and application
         req: DisableFunctionInvocation,
     ) -> impl std::future::Future<Output = crate::Result<DisableFunctionInvocationResponse>> + Send
     {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -606,7 +596,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_alias(
         &self,
         req: DeleteAlias,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAliasResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -750,7 +740,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_trigger(
         &self,
         req: DeleteTrigger,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteTriggerResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -846,8 +836,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_async_invoke_config(
         &self,
         req: DeleteAsyncInvokeConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAsyncInvokeConfigResponse>> + Send
-    {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -944,8 +933,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_provision_config(
         &self,
         req: DeleteProvisionConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteProvisionConfigResponse>> + Send
-    {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -1041,8 +1029,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_concurrency_config(
         &self,
         req: DeleteConcurrencyConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteConcurrencyConfigResponse>> + Send
-    {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -1163,7 +1150,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn delete_layer_version(
         &self,
         req: DeleteLayerVersion,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteLayerVersionResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -1283,7 +1270,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn put_layer_acl(
         &self,
         req: PutLayerACL,
-    ) -> impl std::future::Future<Output = crate::Result<PutLayerACLResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -1525,7 +1512,7 @@ Unsupported produces content type: Binary. Only application/json and application
     pub fn stop_async_task(
         &self,
         req: StopAsyncTask,
-    ) -> impl std::future::Future<Output = crate::Result<StopAsyncTaskResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -1550,11 +1537,7 @@ Unsupported produces content type: Binary. Only application/json and application
         &self,
         req: CreateSession,
     ) -> impl std::future::Future<Output = crate::Result<CreateSessionResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1578,12 +1561,7 @@ Unsupported produces content type: Binary. Only application/json and application
         &self,
         req: GetSession,
     ) -> impl std::future::Future<Output = crate::Result<GetSessionResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)
-Parameter 'sessionId': Path parameter 'sessionId' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1607,12 +1585,7 @@ Parameter 'sessionId': Path parameter 'sessionId' must be required (required=tru
         &self,
         req: UpdateSession,
     ) -> impl std::future::Future<Output = crate::Result<UpdateSessionResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)
-Parameter 'sessionId': Path parameter 'sessionId' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1636,11 +1609,7 @@ Parameter 'sessionId': Path parameter 'sessionId' must be required (required=tru
         &self,
         req: ListSessions,
     ) -> impl std::future::Future<Output = crate::Result<ListSessionsResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1663,13 +1632,8 @@ Parameter 'sessionId': Path parameter 'sessionId' must be required (required=tru
     pub fn delete_session(
         &self,
         req: DeleteSession,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteSessionResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)
-Parameter 'sessionId': Path parameter 'sessionId' must be required (required=true in schema)"##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
     ///
@@ -1687,11 +1651,7 @@ Parameter 'sessionId': Path parameter 'sessionId' must be required (required=tru
         &self,
         req: PutScalingConfig,
     ) -> impl std::future::Future<Output = crate::Result<PutScalingConfigResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -1710,10 +1670,7 @@ Parameter 'sessionId': Path parameter 'sessionId' must be required (required=tru
         req: DeleteScalingConfig,
     ) -> impl std::future::Future<Output = crate::Result<DeleteScalingConfigResponse>> + Send {
         async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)
-API must have 200 response"##
-            );
+            todo!(r##"API must have 200 response"##);
         }
     }
 
@@ -1732,11 +1689,7 @@ API must have 200 response"##
         &self,
         req: GetScalingConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetScalingConfigResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'functionName': Path parameter 'functionName' must be required (required=true in schema)"##
-            );
-        }
+        self.call(req)
     }
 
     ///
@@ -2603,7 +2556,7 @@ impl crate::Request for InvokeFunction {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::JsonResponseWrap<InvokeFunctionResponse>;
+    type ResponseWrap = Vec<u8>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -2689,13 +2642,18 @@ impl crate::Request for UpdateFunction {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct EnableFunctionInvocation {}
+pub struct EnableFunctionInvocation {
+    /// 允许调用的函数名称
+    function_name: String,
+}
 
 impl sealed::Bound for EnableFunctionInvocation {}
 
 impl EnableFunctionInvocation {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(function_name: impl Into<String>) -> Self {
+        Self {
+            function_name: function_name.into(),
+        }
     }
 }
 impl crate::ToFormData for EnableFunctionInvocation {
@@ -2722,6 +2680,10 @@ impl crate::Request for EnableFunctionInvocation {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -2732,13 +2694,18 @@ pub struct DisableFunctionInvocation {
     /// 禁止调用的请求参数
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
+    /// 禁止调用的函数名称
+    function_name: String,
 }
 
 impl sealed::Bound for DisableFunctionInvocation {}
 
 impl DisableFunctionInvocation {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(function_name: impl Into<String>) -> Self {
+        Self {
+            body: None,
+            function_name: function_name.into(),
+        }
     }
 }
 
@@ -2758,6 +2725,10 @@ impl crate::Request for DisableFunctionInvocation {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -5037,6 +5008,8 @@ impl crate::Request for StopAsyncTask {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSession {
+    /// 创建Session的函数名称
+    function_name: String,
     /// 用于指定Sesion所属的版本或别名
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5048,8 +5021,9 @@ pub struct CreateSession {
 impl sealed::Bound for CreateSession {}
 
 impl CreateSession {
-    pub fn new() -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
+            function_name: function_name.into(),
             qualifier: None,
             body: None,
         }
@@ -5080,6 +5054,10 @@ impl crate::Request for CreateSession {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -5087,6 +5065,10 @@ impl crate::Request for CreateSession {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSession {
+    /// 会话所属函数名称
+    function_name: String,
+    /// 查询的会话ID值
+    session_id: String,
     /// 查询的会话ID关联的函数别名或版本信息
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5095,8 +5077,12 @@ pub struct GetSession {
 impl sealed::Bound for GetSession {}
 
 impl GetSession {
-    pub fn new() -> Self {
-        Self { qualifier: None }
+    pub fn new(function_name: impl Into<String>, session_id: impl Into<String>) -> Self {
+        Self {
+            function_name: function_name.into(),
+            session_id: session_id.into(),
+            qualifier: None,
+        }
     }
 }
 
@@ -5124,11 +5110,22 @@ impl crate::Request for GetSession {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([
+            ("functionName", self.function_name.to_string()),
+            ("sessionId", self.session_id.to_string()),
+        ])
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSession {
+    /// Session所属的函数名称
+    function_name: String,
+    /// 待更新的会话ID值
+    session_id: String,
     /// 待更新的SessionID关联的函数别名或版本信息
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5140,8 +5137,10 @@ pub struct UpdateSession {
 impl sealed::Bound for UpdateSession {}
 
 impl UpdateSession {
-    pub fn new() -> Self {
+    pub fn new(function_name: impl Into<String>, session_id: impl Into<String>) -> Self {
         Self {
+            function_name: function_name.into(),
+            session_id: session_id.into(),
             qualifier: None,
             body: None,
         }
@@ -5172,6 +5171,13 @@ impl crate::Request for UpdateSession {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([
+            ("functionName", self.function_name.to_string()),
+            ("sessionId", self.session_id.to_string()),
+        ])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -5179,6 +5185,8 @@ impl crate::Request for UpdateSession {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListSessions {
+    /// 函数名
+    function_name: String,
     /// 函数别名或版本信息
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5199,8 +5207,9 @@ pub struct ListSessions {
 impl sealed::Bound for ListSessions {}
 
 impl ListSessions {
-    pub fn new() -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
+            function_name: function_name.into(),
             qualifier: None,
             limit: None,
             next_token: None,
@@ -5250,11 +5259,19 @@ impl crate::Request for ListSessions {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSession {
+    /// 函数名称
+    function_name: String,
+    /// 需要删除的会话Id值
+    session_id: String,
     /// 需要删除的SessionId关联的函数别名或版本信息
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5263,8 +5280,12 @@ pub struct DeleteSession {
 impl sealed::Bound for DeleteSession {}
 
 impl DeleteSession {
-    pub fn new() -> Self {
-        Self { qualifier: None }
+    pub fn new(function_name: impl Into<String>, session_id: impl Into<String>) -> Self {
+        Self {
+            function_name: function_name.into(),
+            session_id: session_id.into(),
+            qualifier: None,
+        }
     }
 }
 impl crate::ToFormData for DeleteSession {
@@ -5297,6 +5318,13 @@ impl crate::Request for DeleteSession {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([
+            ("functionName", self.function_name.to_string()),
+            ("sessionId", self.session_id.to_string()),
+        ])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5304,6 +5332,8 @@ impl crate::Request for DeleteSession {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutScalingConfig {
+    /// 函数名称
+    function_name: String,
     /// 函数别名
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5315,8 +5345,9 @@ pub struct PutScalingConfig {
 impl sealed::Bound for PutScalingConfig {}
 
 impl PutScalingConfig {
-    pub fn new() -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
+            function_name: function_name.into(),
             qualifier: None,
             body: None,
         }
@@ -5347,6 +5378,10 @@ impl crate::Request for PutScalingConfig {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -5354,6 +5389,8 @@ impl crate::Request for PutScalingConfig {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteScalingConfig {
+    /// 函数名称
+    function_name: String,
     /// 函数别名
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5362,8 +5399,11 @@ pub struct DeleteScalingConfig {
 impl sealed::Bound for DeleteScalingConfig {}
 
 impl DeleteScalingConfig {
-    pub fn new() -> Self {
-        Self { qualifier: None }
+    pub fn new(function_name: impl Into<String>) -> Self {
+        Self {
+            function_name: function_name.into(),
+            qualifier: None,
+        }
     }
 }
 impl crate::ToFormData for DeleteScalingConfig {
@@ -5396,6 +5436,10 @@ impl crate::Request for DeleteScalingConfig {
         Default::default()
     }
 
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5403,6 +5447,8 @@ impl crate::Request for DeleteScalingConfig {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetScalingConfig {
+    /// 函数名称
+    function_name: String,
     /// 函数别名
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
@@ -5411,8 +5457,11 @@ pub struct GetScalingConfig {
 impl sealed::Bound for GetScalingConfig {}
 
 impl GetScalingConfig {
-    pub fn new() -> Self {
-        Self { qualifier: None }
+    pub fn new(function_name: impl Into<String>) -> Self {
+        Self {
+            function_name: function_name.into(),
+            qualifier: None,
+        }
     }
 }
 
@@ -5438,6 +5487,10 @@ impl crate::Request for GetScalingConfig {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn get_path_args(&self) -> Box<[(&'static str, String)]> {
+        Box::new([("functionName", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5711,9 +5764,6 @@ impl crate::ToCodeMessage for CreateCustomDomainResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteCustomDomainResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCustomDomainResponse {
@@ -5752,9 +5802,6 @@ impl crate::ToCodeMessage for UpdateCustomDomainResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteFunctionVersionResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -5808,9 +5855,6 @@ impl crate::ToCodeMessage for CreateFunctionResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteFunctionResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetFunctionResponse {
@@ -5832,19 +5876,6 @@ pub struct ListFunctionsResponse {
 }
 
 impl crate::ToCodeMessage for ListFunctionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct InvokeFunctionResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for InvokeFunctionResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -5892,9 +5923,6 @@ impl crate::ToCodeMessage for DisableFunctionInvocationResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteAliasResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -5961,9 +5989,6 @@ impl crate::ToCodeMessage for CreateTriggerResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteTriggerResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetTriggerResponse {
@@ -6002,9 +6027,6 @@ impl crate::ToCodeMessage for UpdateTriggerResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteAsyncInvokeConfigResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -6045,9 +6067,6 @@ impl crate::ToCodeMessage for PutAsyncInvokeConfigResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteProvisionConfigResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetProvisionConfigResponse {
@@ -6086,9 +6105,6 @@ impl crate::ToCodeMessage for PutProvisionConfigResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteConcurrencyConfigResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -6142,9 +6158,6 @@ impl crate::ToCodeMessage for CreateLayerVersionResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteLayerVersionResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetLayerVersionResponse {
@@ -6196,9 +6209,6 @@ impl crate::ToCodeMessage for ListLayersResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type PutLayerACLResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -6317,9 +6327,6 @@ impl crate::ToCodeMessage for ListAsyncTasksResponse {
     }
 }
 
-/// Response type for APIs without strongly-typed response definitions.
-pub type StopAsyncTaskResponse = crate::OpenObjectResponse;
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSessionResponse {
@@ -6371,9 +6378,6 @@ impl crate::ToCodeMessage for ListSessionsResponse {
         &self.code_message
     }
 }
-
-/// Response type for APIs without strongly-typed response definitions.
-pub type DeleteSessionResponse = crate::OpenObjectResponse;
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
