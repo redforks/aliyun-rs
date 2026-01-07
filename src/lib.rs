@@ -19,6 +19,9 @@ pub mod ocr;
 #[cfg(feature = "sms")]
 pub mod sms;
 
+#[cfg(feature = "ecs")]
+pub mod ecs;
+
 #[cfg(test)]
 mod sample;
 
@@ -105,6 +108,18 @@ impl From<&bool> for QueryValue<'_> {
 impl<'a> From<serde_json::Value> for QueryValue<'a> {
     fn from(value: serde_json::Value) -> Self {
         Self::Json(value)
+    }
+}
+
+impl From<f32> for QueryValue<'_> {
+    fn from(value: f32) -> Self {
+        Self::OwnedStr(value.to_string())
+    }
+}
+
+impl From<&f32> for QueryValue<'_> {
+    fn from(value: &f32) -> Self {
+        Self::OwnedStr(value.to_string())
     }
 }
 
