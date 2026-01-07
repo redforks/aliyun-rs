@@ -17630,62 +17630,62 @@ pub struct DescribePrice {
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Size`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_1_size: Option<i32>,
+    data_disk1_size: Option<i32>,
     /// 磁盘类型。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Category`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_1_category: Option<String>,
+    data_disk1_category: Option<String>,
     /// 数据盘的性能等级。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.PerformanceLevel`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_1_performance_level: Option<String>,
+    data_disk1_performance_level: Option<String>,
     /// 数据盘容量。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Size`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_2_size: Option<i32>,
+    data_disk2_size: Option<i32>,
     /// 磁盘类型。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Category`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_2_category: Option<String>,
+    data_disk2_category: Option<String>,
     /// 数据盘的性能等级
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.PerformanceLevel`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_2_performance_level: Option<String>,
+    data_disk2_performance_level: Option<String>,
     /// 数据盘容量。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Size`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_3_size: Option<i32>,
+    data_disk3_size: Option<i32>,
     /// 磁盘类型。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Category`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_3_category: Option<String>,
+    data_disk3_category: Option<String>,
     /// 数据盘的性能等级。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.PerformanceLevel`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_3_performance_level: Option<String>,
+    data_disk3_performance_level: Option<String>,
     /// 数据盘容量。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Size`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_4_size: Option<i32>,
+    data_disk4_size: Option<i32>,
     /// 磁盘类型。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.Category`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_4_category: Option<String>,
+    data_disk4_category: Option<String>,
     /// 数据盘的性能等级。
     ///
     /// 为提高扩展性，建议您使用`DataDisk.N.PerformanceLevel`参数。
     #[setters(generate = true, strip_option)]
-    data_disk_4_performance_level: Option<String>,
+    data_disk4_performance_level: Option<String>,
     /// 云服务器ECS的计费时长。取值范围：
     ///
     /// <props="china">
@@ -17857,18 +17857,18 @@ impl DescribePrice {
             system_disk_category: None,
             system_disk_size: None,
             system_disk_performance_level: None,
-            data_disk_1_size: None,
-            data_disk_1_category: None,
-            data_disk_1_performance_level: None,
-            data_disk_2_size: None,
-            data_disk_2_category: None,
-            data_disk_2_performance_level: None,
-            data_disk_3_size: None,
-            data_disk_3_category: None,
-            data_disk_3_performance_level: None,
-            data_disk_4_size: None,
-            data_disk_4_category: None,
-            data_disk_4_performance_level: None,
+            data_disk1_size: None,
+            data_disk1_category: None,
+            data_disk1_performance_level: None,
+            data_disk2_size: None,
+            data_disk2_category: None,
+            data_disk2_performance_level: None,
+            data_disk3_size: None,
+            data_disk3_category: None,
+            data_disk3_performance_level: None,
+            data_disk4_size: None,
+            data_disk4_category: None,
+            data_disk4_performance_level: None,
             period: None,
             price_unit: None,
             amount: None,
@@ -17926,51 +17926,51 @@ impl crate::Request for DescribePrice {
             crate::FlatSerialize::flat_serialize(f, "DataDisk", &mut params);
         }
 
-        if let Some(f) = &self.data_disk_1_category {
+        if let Some(f) = &self.data_disk1_category {
             params.push(("DataDisk.1.Category".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_1_performance_level {
+        if let Some(f) = &self.data_disk1_performance_level {
             params.push(("DataDisk.1.PerformanceLevel".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_1_size {
+        if let Some(f) = &self.data_disk1_size {
             params.push(("DataDisk.1.Size".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_2_category {
+        if let Some(f) = &self.data_disk2_category {
             params.push(("DataDisk.2.Category".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_2_performance_level {
+        if let Some(f) = &self.data_disk2_performance_level {
             params.push(("DataDisk.2.PerformanceLevel".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_2_size {
+        if let Some(f) = &self.data_disk2_size {
             params.push(("DataDisk.2.Size".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_3_category {
+        if let Some(f) = &self.data_disk3_category {
             params.push(("DataDisk.3.Category".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_3_performance_level {
+        if let Some(f) = &self.data_disk3_performance_level {
             params.push(("DataDisk.3.PerformanceLevel".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_3_size {
+        if let Some(f) = &self.data_disk3_size {
             params.push(("DataDisk.3.Size".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_4_category {
+        if let Some(f) = &self.data_disk4_category {
             params.push(("DataDisk.4.Category".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_4_performance_level {
+        if let Some(f) = &self.data_disk4_performance_level {
             params.push(("DataDisk.4.PerformanceLevel".into(), (f).into()));
         }
 
-        if let Some(f) = &self.data_disk_4_size {
+        if let Some(f) = &self.data_disk4_size {
             params.push(("DataDisk.4.Size".into(), (f).into()));
         }
 
@@ -19736,7 +19736,7 @@ pub struct CreateInstance {
     arn: Option<Vec<InstanceArn>>,
     /// 标签列表。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<InstanceTag>>,
+    tag: Option<Vec<CreateInstanceTag>>,
     /// 系统盘相关参数，目前专属块存储集群ID（`StorageClusterId`）需要通过该参数设置参数值。
     #[setters(generate = true, strip_option)]
     system_disk: Option<InstanceSystemDisk>,
@@ -21060,28 +21060,28 @@ pub struct DescribeInstances {
     lock_reason: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_1_key: Option<String>,
+    filter1_key: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_2_key: Option<String>,
+    filter2_key: Option<String>,
     /// 查询资源时的筛选键，取值必须为`ExpiredStartTime`。同时设置`Filter.3.Key`和`Filter.3.Value`可以查询在指定时间点后到期的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_3_key: Option<String>,
+    filter3_key: Option<String>,
     /// 查询资源时的筛选键，取值必须为`ExpiredEndTime`。同时设置`Filter.4.Key`和`Filter.4.Value`可以查询在指定时间点前到期的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_4_key: Option<String>,
+    filter4_key: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_1_value: Option<String>,
+    filter1_value: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_2_value: Option<String>,
+    filter2_value: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.3.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_3_value: Option<String>,
+    filter3_value: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.4.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_4_value: Option<String>,
+    filter4_value: Option<String>,
     /// >该参数正在邀测中，暂不支持使用。
     #[setters(generate = true, strip_option)]
     device_available: Option<bool>,
@@ -21146,7 +21146,7 @@ pub struct DescribeInstances {
     ipv6_address: Option<Vec<String>>,
     /// 标签列表。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<InstancesTag>>,
+    tag: Option<Vec<DescribeInstancesTag>>,
     /// 实例其他属性列表。
     #[setters(generate = true, strip_option)]
     additional_attributes: Option<Vec<String>>,
@@ -21178,14 +21178,14 @@ impl DescribeInstances {
             image_id: None,
             status: None,
             lock_reason: None,
-            filter_1_key: None,
-            filter_2_key: None,
-            filter_3_key: None,
-            filter_4_key: None,
-            filter_1_value: None,
-            filter_2_value: None,
-            filter_3_value: None,
-            filter_4_value: None,
+            filter1_key: None,
+            filter2_key: None,
+            filter3_key: None,
+            filter4_key: None,
+            filter1_value: None,
+            filter2_value: None,
+            filter3_value: None,
+            filter4_value: None,
             device_available: None,
             io_optimized: None,
             need_sale_cycle: None,
@@ -21239,35 +21239,35 @@ impl crate::Request for DescribeInstances {
             params.push(("EipAddresses".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_key {
+        if let Some(f) = &self.filter1_key {
             params.push(("Filter.1.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_value {
+        if let Some(f) = &self.filter1_value {
             params.push(("Filter.1.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_key {
+        if let Some(f) = &self.filter2_key {
             params.push(("Filter.2.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_value {
+        if let Some(f) = &self.filter2_value {
             params.push(("Filter.2.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_3_key {
+        if let Some(f) = &self.filter3_key {
             params.push(("Filter.3.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_3_value {
+        if let Some(f) = &self.filter3_value {
             params.push(("Filter.3.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_4_key {
+        if let Some(f) = &self.filter4_key {
             params.push(("Filter.4.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_4_value {
+        if let Some(f) = &self.filter4_value {
             params.push(("Filter.4.Value".into(), (f).into()));
         }
 
@@ -24262,7 +24262,7 @@ pub struct CreateImage {
     disk_device_mapping: Option<Vec<CreateImageDiskDeviceMapping>>,
     /// 标签列表。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<ImageTag>>,
+    tag: Option<Vec<CreateImageTag>>,
     /// 镜像检测策略，不配置此参数时不触发检测。仅支持标准（Standard）检测模式。
     ///
     /// > 目前已支持大部分的Linux/Windows版本，关于镜像检测项与操作系统限制说明，请参见[镜像检测概述](~~439819~~)和[镜像检测操作系统限制](~~475800~~)。
@@ -25203,9 +25203,9 @@ pub struct ModifyImageShareGroupPermission {
     region_id: String,
     image_id: String,
     #[setters(generate = true, strip_option)]
-    add_group_1: Option<String>,
+    add_group1: Option<String>,
     #[setters(generate = true, strip_option)]
-    remove_group_1: Option<String>,
+    remove_group1: Option<String>,
 }
 
 impl sealed::Bound for ModifyImageShareGroupPermission {}
@@ -25215,8 +25215,8 @@ impl ModifyImageShareGroupPermission {
         Self {
             region_id: region_id.into(),
             image_id: image_id.into(),
-            add_group_1: None,
-            remove_group_1: None,
+            add_group1: None,
+            remove_group1: None,
         }
     }
 }
@@ -25238,13 +25238,13 @@ impl crate::Request for ModifyImageShareGroupPermission {
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
 
-        if let Some(f) = &self.add_group_1 {
+        if let Some(f) = &self.add_group1 {
             params.push(("AddGroup.1".into(), (f).into()));
         }
         params.push(("ImageId".into(), (&self.image_id).into()));
         params.push(("RegionId".into(), (&self.region_id).into()));
 
-        if let Some(f) = &self.remove_group_1 {
+        if let Some(f) = &self.remove_group1 {
             params.push(("RemoveGroup.1".into(), (f).into()));
         }
 
@@ -27276,16 +27276,16 @@ pub struct DescribeDisks {
     lock_reason: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_1_key: Option<String>,
+    filter1_key: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_2_key: Option<String>,
+    filter2_key: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_1_value: Option<String>,
+    filter1_value: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_2_value: Option<String>,
+    filter2_value: Option<String>,
     /// 磁盘所在的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。
     ///
     /// >不支持默认资源组过滤。
@@ -27357,10 +27357,10 @@ impl DescribeDisks {
             enable_automated_snapshot_policy: None,
             disk_charge_type: None,
             lock_reason: None,
-            filter_1_key: None,
-            filter_2_key: None,
-            filter_1_value: None,
-            filter_2_value: None,
+            filter1_key: None,
+            filter2_key: None,
+            filter1_value: None,
+            filter2_value: None,
             resource_group_id: None,
             enable_shared: None,
             encrypted: None,
@@ -27446,19 +27446,19 @@ impl crate::Request for DescribeDisks {
             params.push(("Encrypted".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_key {
+        if let Some(f) = &self.filter1_key {
             params.push(("Filter.1.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_value {
+        if let Some(f) = &self.filter1_value {
             params.push(("Filter.1.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_key {
+        if let Some(f) = &self.filter2_key {
             params.push(("Filter.2.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_value {
+        if let Some(f) = &self.filter2_value {
             params.push(("Filter.2.Value".into(), (f).into()));
         }
 
@@ -29185,7 +29185,7 @@ pub struct CreateSnapshot {
     instant_access_retention_days: Option<i32>,
     /// 标签列表。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<SnapshotTag>>,
+    tag: Option<Vec<CreateSnapshotTag>>,
     /// > 该参数暂未开放使用。
     #[setters(generate = true, strip_option)]
     storage_location_arn: Option<String>,
@@ -29333,16 +29333,16 @@ pub struct DescribeSnapshots {
     snapshot_type: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_1_key: Option<String>,
+    filter1_key: Option<String>,
     /// 查询资源时的筛选键，取值必须为`CreationEndTime`。同时设置`Filter.2.Key`和`Filter.2.Value`可以查询在指定时间点前创建的资源信息。
     #[setters(generate = true, strip_option)]
-    filter_2_key: Option<String>,
+    filter2_key: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_1_value: Option<String>,
+    filter1_value: Option<String>,
     /// 查询资源时的筛选值。指定该参数时必须同时指定`Filter.2.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
     #[setters(generate = true, strip_option)]
-    filter_2_value: Option<String>,
+    filter2_value: Option<String>,
     /// 快照是否被用作创建镜像或云盘。取值范围：
     ///
     /// - image：使用快照创建了自定义镜像。
@@ -29410,10 +29410,10 @@ impl DescribeSnapshots {
             snapshot_name: None,
             status: None,
             snapshot_type: None,
-            filter_1_key: None,
-            filter_2_key: None,
-            filter_1_value: None,
-            filter_2_value: None,
+            filter1_key: None,
+            filter2_key: None,
+            filter1_value: None,
+            filter2_value: None,
             usage: None,
             source_disk_type: None,
             encrypted: None,
@@ -29459,19 +29459,19 @@ impl crate::Request for DescribeSnapshots {
             params.push(("Encrypted".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_key {
+        if let Some(f) = &self.filter1_key {
             params.push(("Filter.1.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_value {
+        if let Some(f) = &self.filter1_value {
             params.push(("Filter.1.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_key {
+        if let Some(f) = &self.filter2_key {
             params.push(("Filter.2.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_value {
+        if let Some(f) = &self.filter2_value {
             params.push(("Filter.2.Value".into(), (f).into()));
         }
 
@@ -34441,7 +34441,7 @@ pub struct CreateSecurityGroup {
     resource_group_id: Option<String>,
     /// 安全组绑定的标签数组。数组长度：0~20。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<GroupTag>>,
+    tag: Option<Vec<SecurityGroupTag>>,
 }
 
 impl sealed::Bound for CreateSecurityGroup {}
@@ -34573,7 +34573,7 @@ pub struct DescribeSecurityGroups {
     resource_group_id: Option<String>,
     /// 标签列表。
     #[setters(generate = true, strip_option)]
-    tag: Option<Vec<GroupsTag>>,
+    tag: Option<Vec<SecurityGroupsTag>>,
     /// 是否只预检此次请求。取值范围：
     ///          
     /// - true：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码DryRunOperation。
@@ -39092,10 +39092,10 @@ pub struct CreateAutoProvisioningGroup {
     launch_template_config: Option<Vec<CreateAutoProvisioningGroupLaunchTemplateConfig>>,
     /// 扩展启动模板云盘配置列表。
     #[setters(generate = true, strip_option)]
-    launch_configuration_data_disk: Option<Vec<Configuration_DataDisk>>,
+    launch_configuration_data_disk: Option<Vec<ConfigurationDataDisk>>,
     /// 扩展启动模板标签列表。
     #[setters(generate = true, strip_option)]
-    launch_configuration_tag: Option<Vec<Configuration_Tag>>,
+    launch_configuration_tag: Option<Vec<ConfigurationTag>>,
     /// 实例系统盘信息列表。
     #[setters(generate = true, strip_option)]
     system_disk_config: Option<Vec<SystemDiskConfig>>,
@@ -39126,10 +39126,10 @@ pub struct CreateAutoProvisioningGroup {
     launch_configuration_security_group_ids: Option<Vec<String>>,
     /// 实例的系统盘信息。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[setters(generate = true, strip_option)]
-    launch_configuration_system_disk: Option<Configuration_SystemDisk>,
+    launch_configuration_system_disk: Option<ConfigurationSystemDisk>,
     /// >该参数正在邀测中，暂不支持使用。
     #[setters(generate = true, strip_option)]
-    launch_configuration_arn: Option<Vec<Configuration_Arn>>,
+    launch_configuration_arn: Option<Vec<LaunchConfigurationArn>>,
     /// >该参数正在邀测中，暂未开放使用。
     #[setters(generate = true, strip_option)]
     hibernation_options_configured: Option<bool>,
@@ -55376,13 +55376,13 @@ pub struct DescribeEipAddresses {
     #[setters(generate = true, strip_option)]
     page_size: Option<i32>,
     #[setters(generate = true, strip_option)]
-    filter_1_key: Option<String>,
+    filter1_key: Option<String>,
     #[setters(generate = true, strip_option)]
-    filter_2_key: Option<String>,
+    filter2_key: Option<String>,
     #[setters(generate = true, strip_option)]
-    filter_1_value: Option<String>,
+    filter1_value: Option<String>,
     #[setters(generate = true, strip_option)]
-    filter_2_value: Option<String>,
+    filter2_value: Option<String>,
     #[setters(generate = true, strip_option)]
     lock_reason: Option<String>,
     #[setters(generate = true, strip_option)]
@@ -55405,10 +55405,10 @@ impl DescribeEipAddresses {
             isp: None,
             page_number: None,
             page_size: None,
-            filter_1_key: None,
-            filter_2_key: None,
-            filter_1_value: None,
-            filter_2_value: None,
+            filter1_key: None,
+            filter2_key: None,
+            filter1_value: None,
+            filter2_value: None,
             lock_reason: None,
             associated_instance_type: None,
             associated_instance_id: None,
@@ -55454,19 +55454,19 @@ impl crate::Request for DescribeEipAddresses {
             params.push(("EipAddress".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_key {
+        if let Some(f) = &self.filter1_key {
             params.push(("Filter.1.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_1_value {
+        if let Some(f) = &self.filter1_value {
             params.push(("Filter.1.Value".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_key {
+        if let Some(f) = &self.filter2_key {
             params.push(("Filter.2.Key".into(), (f).into()));
         }
 
-        if let Some(f) = &self.filter_2_value {
+        if let Some(f) = &self.filter2_value {
             params.push(("Filter.2.Value".into(), (f).into()));
         }
 
@@ -59950,14 +59950,14 @@ impl crate::FlatSerialize for InstanceArn {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct InstanceTag {
+pub struct CreateInstanceTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for InstanceTag {
+impl crate::FlatSerialize for CreateInstanceTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -60222,14 +60222,14 @@ impl crate::FlatSerialize for InstanceStatuses {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct InstancesTag {
+pub struct DescribeInstancesTag {
     #[serde(rename = "value")]
     pub value: String,
     #[serde(rename = "Key")]
     pub key: String,
 }
 
-impl crate::FlatSerialize for InstancesTag {
+impl crate::FlatSerialize for DescribeInstancesTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -63221,14 +63221,14 @@ impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ImageTag {
+pub struct CreateImageTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for ImageTag {
+impl crate::FlatSerialize for CreateImageTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -66539,14 +66539,14 @@ impl crate::FlatSerialize for DisksResponseOperationProgressSet {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct SnapshotTag {
+pub struct CreateSnapshotTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for SnapshotTag {
+impl crate::FlatSerialize for CreateSnapshotTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -70563,14 +70563,14 @@ impl crate::FlatSerialize for RangeListRemoveEntry {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GroupTag {
+pub struct SecurityGroupTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for GroupTag {
+impl crate::FlatSerialize for SecurityGroupTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -70583,14 +70583,14 @@ impl crate::FlatSerialize for GroupTag {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GroupsTag {
+pub struct SecurityGroupsTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for GroupsTag {
+impl crate::FlatSerialize for SecurityGroupsTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73435,7 +73435,7 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct Configuration_DataDisk {
+pub struct ConfigurationDataDisk {
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
     #[serde(rename = "KmsKeyId")]
@@ -73466,7 +73466,7 @@ pub struct Configuration_DataDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for Configuration_DataDisk {
+impl crate::FlatSerialize for ConfigurationDataDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73535,14 +73535,14 @@ impl crate::FlatSerialize for Configuration_DataDisk {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct Configuration_Tag {
+pub struct ConfigurationTag {
     #[serde(rename = "Key")]
     pub key: String,
     #[serde(rename = "Value")]
     pub value: String,
 }
 
-impl crate::FlatSerialize for Configuration_Tag {
+impl crate::FlatSerialize for ConfigurationTag {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73597,7 +73597,7 @@ impl crate::FlatSerialize for DataDiskConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct Configuration_SystemDisk {
+pub struct ConfigurationSystemDisk {
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
     #[serde(rename = "KMSKeyId")]
@@ -73612,7 +73612,7 @@ pub struct Configuration_SystemDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for Configuration_SystemDisk {
+impl crate::FlatSerialize for ConfigurationSystemDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -73653,7 +73653,7 @@ impl crate::FlatSerialize for Configuration_SystemDisk {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct Configuration_Arn {
+pub struct LaunchConfigurationArn {
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
     #[serde(rename = "RoleType")]
@@ -73662,7 +73662,7 @@ pub struct Configuration_Arn {
     pub assume_role_for: i64,
 }
 
-impl crate::FlatSerialize for Configuration_Arn {
+impl crate::FlatSerialize for LaunchConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -85522,42 +85522,42 @@ impl crate::FlatSerialize for SpotStrategy {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum DescribeInstanceTypesInstanceCategory {
     #[serde(rename = "General-purpose")]
-    General_purpose,
+    GeneralPurpose,
     #[serde(rename = "Compute-optimized")]
-    Compute_optimized,
+    ComputeOptimized,
     #[serde(rename = "Memory-optimized")]
-    Memory_optimized,
+    MemoryOptimized,
     #[serde(rename = "Big data")]
-    Big_data,
+    BigData,
     #[serde(rename = "Local SSDs")]
-    Local_SSDs,
+    LocalSSDs,
     #[serde(rename = "High Clock Speed")]
-    High_Clock_Speed,
+    HighClockSpeed,
     #[serde(rename = "Enhanced")]
     Enhanced,
     #[serde(rename = "Shared")]
     Shared,
     #[serde(rename = "Compute-optimized with GPU")]
-    Compute_optimized_with_GPU,
+    ComputeOptimizedWithGPU,
     #[serde(rename = "Visual Compute-optimized")]
-    Visual_Compute_optimized,
+    VisualComputeOptimized,
     #[serde(rename = "Heterogeneous Service")]
-    Heterogeneous_Service,
+    HeterogeneousService,
     #[serde(rename = "Compute-optimized with FPGA")]
-    Compute_optimized_with_FPGA,
+    ComputeOptimizedWithFPGA,
     #[serde(rename = "Compute-optimized with NPU")]
-    Compute_optimized_with_NPU,
+    ComputeOptimizedWithNPU,
     #[serde(rename = "ECS Bare Metal")]
-    ECS_Bare_Metal,
+    ECSBareMetal,
     #[serde(rename = "Super Computing Cluster")]
-    Super_Computing_Cluster,
+    SuperComputingCluster,
     #[serde(rename = "High Performance Compute")]
-    High_Performance_Compute,
+    HighPerformanceCompute,
 }
 
 impl Default for DescribeInstanceTypesInstanceCategory {
     fn default() -> Self {
-        Self::General_purpose
+        Self::GeneralPurpose
     }
 }
 
@@ -85565,22 +85565,22 @@ impl DescribeInstanceTypesInstanceCategory {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::General_purpose => "General-purpose",
-            Self::Compute_optimized => "Compute-optimized",
-            Self::Memory_optimized => "Memory-optimized",
-            Self::Big_data => "Big data",
-            Self::Local_SSDs => "Local SSDs",
-            Self::High_Clock_Speed => "High Clock Speed",
+            Self::GeneralPurpose => "General-purpose",
+            Self::ComputeOptimized => "Compute-optimized",
+            Self::MemoryOptimized => "Memory-optimized",
+            Self::BigData => "Big data",
+            Self::LocalSSDs => "Local SSDs",
+            Self::HighClockSpeed => "High Clock Speed",
             Self::Enhanced => "Enhanced",
             Self::Shared => "Shared",
-            Self::Compute_optimized_with_GPU => "Compute-optimized with GPU",
-            Self::Visual_Compute_optimized => "Visual Compute-optimized",
-            Self::Heterogeneous_Service => "Heterogeneous Service",
-            Self::Compute_optimized_with_FPGA => "Compute-optimized with FPGA",
-            Self::Compute_optimized_with_NPU => "Compute-optimized with NPU",
-            Self::ECS_Bare_Metal => "ECS Bare Metal",
-            Self::Super_Computing_Cluster => "Super Computing Cluster",
-            Self::High_Performance_Compute => "High Performance Compute",
+            Self::ComputeOptimizedWithGPU => "Compute-optimized with GPU",
+            Self::VisualComputeOptimized => "Visual Compute-optimized",
+            Self::HeterogeneousService => "Heterogeneous Service",
+            Self::ComputeOptimizedWithFPGA => "Compute-optimized with FPGA",
+            Self::ComputeOptimizedWithNPU => "Compute-optimized with NPU",
+            Self::ECSBareMetal => "ECS Bare Metal",
+            Self::SuperComputingCluster => "Super Computing Cluster",
+            Self::HighPerformanceCompute => "High Performance Compute",
         }
     }
 }
@@ -85772,42 +85772,42 @@ impl crate::FlatSerialize for NvmeSupport {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum DescribeInstanceTypesInstanceCategoriesItem {
     #[serde(rename = "General-purpose")]
-    General_purpose,
+    GeneralPurpose,
     #[serde(rename = "Compute-optimized")]
-    Compute_optimized,
+    ComputeOptimized,
     #[serde(rename = "Memory-optimized")]
-    Memory_optimized,
+    MemoryOptimized,
     #[serde(rename = "Big data")]
-    Big_data,
+    BigData,
     #[serde(rename = "Local SSDs")]
-    Local_SSDs,
+    LocalSSDs,
     #[serde(rename = "High Clock Speed")]
-    High_Clock_Speed,
+    HighClockSpeed,
     #[serde(rename = "Enhanced")]
     Enhanced,
     #[serde(rename = "Shared")]
     Shared,
     #[serde(rename = "Compute-optimized with GPU")]
-    Compute_optimized_with_GPU,
+    ComputeOptimizedWithGPU,
     #[serde(rename = "Visual Compute-optimized")]
-    Visual_Compute_optimized,
+    VisualComputeOptimized,
     #[serde(rename = "Heterogeneous Service")]
-    Heterogeneous_Service,
+    HeterogeneousService,
     #[serde(rename = "Compute-optimized with FPGA")]
-    Compute_optimized_with_FPGA,
+    ComputeOptimizedWithFPGA,
     #[serde(rename = "Compute-optimized with NPU")]
-    Compute_optimized_with_NPU,
+    ComputeOptimizedWithNPU,
     #[serde(rename = "ECS Bare Metal")]
-    ECS_Bare_Metal,
+    ECSBareMetal,
     #[serde(rename = "Super Computing Cluster")]
-    Super_Computing_Cluster,
+    SuperComputingCluster,
     #[serde(rename = "High Performance Compute")]
-    High_Performance_Compute,
+    HighPerformanceCompute,
 }
 
 impl Default for DescribeInstanceTypesInstanceCategoriesItem {
     fn default() -> Self {
-        Self::General_purpose
+        Self::GeneralPurpose
     }
 }
 
@@ -85815,22 +85815,22 @@ impl DescribeInstanceTypesInstanceCategoriesItem {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::General_purpose => "General-purpose",
-            Self::Compute_optimized => "Compute-optimized",
-            Self::Memory_optimized => "Memory-optimized",
-            Self::Big_data => "Big data",
-            Self::Local_SSDs => "Local SSDs",
-            Self::High_Clock_Speed => "High Clock Speed",
+            Self::GeneralPurpose => "General-purpose",
+            Self::ComputeOptimized => "Compute-optimized",
+            Self::MemoryOptimized => "Memory-optimized",
+            Self::BigData => "Big data",
+            Self::LocalSSDs => "Local SSDs",
+            Self::HighClockSpeed => "High Clock Speed",
             Self::Enhanced => "Enhanced",
             Self::Shared => "Shared",
-            Self::Compute_optimized_with_GPU => "Compute-optimized with GPU",
-            Self::Visual_Compute_optimized => "Visual Compute-optimized",
-            Self::Heterogeneous_Service => "Heterogeneous Service",
-            Self::Compute_optimized_with_FPGA => "Compute-optimized with FPGA",
-            Self::Compute_optimized_with_NPU => "Compute-optimized with NPU",
-            Self::ECS_Bare_Metal => "ECS Bare Metal",
-            Self::Super_Computing_Cluster => "Super Computing Cluster",
-            Self::High_Performance_Compute => "High Performance Compute",
+            Self::ComputeOptimizedWithGPU => "Compute-optimized with GPU",
+            Self::VisualComputeOptimized => "Visual Compute-optimized",
+            Self::HeterogeneousService => "Heterogeneous Service",
+            Self::ComputeOptimizedWithFPGA => "Compute-optimized with FPGA",
+            Self::ComputeOptimizedWithNPU => "Compute-optimized with NPU",
+            Self::ECSBareMetal => "ECS Bare Metal",
+            Self::SuperComputingCluster => "Super Computing Cluster",
+            Self::HighPerformanceCompute => "High Performance Compute",
         }
     }
 }
