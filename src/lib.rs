@@ -640,6 +640,18 @@ impl From<CodeMessage> for Result<()> {
     }
 }
 
+/// Default CodeMessage for binary responses (which don't have structured response data)
+static CODE_MESSAGE: CodeMessage = CodeMessage {
+    code: String::new(),
+    message: String::new(),
+};
+
+impl ToCodeMessage for Vec<u8> {
+    fn to_code_message(&self) -> &CodeMessage {
+        &CODE_MESSAGE
+    }
+}
+
 /// Generic response type for APIs without strongly-typed response definitions.
 /// This is used when an API produces JSON but doesn't define a 200 response schema.
 #[derive(Debug, Default, serde::Deserialize)]
