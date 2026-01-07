@@ -121,8 +121,8 @@ pub struct SendSmsResponse {
     request_id: String,
 }
 
-impl AsRef<CodeMessage> for SendSmsResponse {
-    fn as_ref(&self) -> &CodeMessage {
+impl crate::ToCodeMessage for SendSmsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }

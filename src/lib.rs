@@ -518,6 +518,13 @@ enum ResponseContentType {
     Xml,
 }
 
+/// Trait for types that can provide a reference to CodeMessage.
+/// This is used instead of AsRef<CodeMessage> to allow implementations
+/// for types like Vec<u8> that need to be deserialized into CodeMessage.
+trait ToCodeMessage {
+    fn to_code_message(&self) -> &CodeMessage;
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
@@ -529,7 +536,7 @@ trait Request: Sized + Send {
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
     /// Response type returned by the call() method.
-    type Response: DeserializeOwned + AsRef<CodeMessage>;
+    type Response: DeserializeOwned + ToCodeMessage;
 
     fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
         Vec::new()
@@ -633,14 +640,31 @@ impl From<CodeMessage> for Result<()> {
     }
 }
 
-/// Macro to implement AsRef<CodeMessage> for Response types that have a flattened code_message field.
+/// Generic response type for APIs without strongly-typed response definitions.
+/// This is used when an API produces JSON but doesn't define a 200 response schema.
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct OpenObjectResponse {
+    #[serde(flatten)]
+    pub code_message: CodeMessage,
+    /// Additional response data as an open object (dynamic JSON)
+    pub open_object: OpenObject,
+}
+
+impl ToCodeMessage for OpenObjectResponse {
+    fn to_code_message(&self) -> &CodeMessage {
+        &self.code_message
+    }
+}
+
+/// Macro to implement ToCodeMessage for Response types that have a flattened code_message field.
 /// Use this in generated code or for Response types.
 #[macro_export]
-macro_rules! impl_as_ref_code_message {
+macro_rules! impl_to_code_message {
     ($($ty:ty),* $(,)?) => {
         $(
-            impl AsRef<$crate::CodeMessage> for $ty {
-                fn as_ref(&self) -> &$crate::CodeMessage {
+            impl $crate::ToCodeMessage for $ty {
+                fn to_code_message(&self) -> &$crate::CodeMessage {
                     &self.code_message
                 }
             }

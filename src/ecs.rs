@@ -38058,7 +38058,7 @@ pub struct CreateAutoProvisioningGroup {
     launch_template_config: Option<Vec<CreateAutoProvisioningGroupLaunchTemplateConfig>>,
     /// 扩展启动模板云盘配置列表。
     #[setters(generate = true, strip_option)]
-    launch_configuration_data_disk: Option<Vec<DataDisk>>,
+    launch_configuration_data_disk: Option<Vec<ConfigurationDataDisk>>,
     /// 扩展启动模板标签列表。
     #[setters(generate = true, strip_option)]
     launch_configuration_tag: Option<Vec<ConfigurationTag>>,
@@ -38092,10 +38092,10 @@ pub struct CreateAutoProvisioningGroup {
     launch_configuration_security_group_ids: Option<Vec<String>>,
     /// 实例的系统盘信息。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[setters(generate = true, strip_option)]
-    launch_configuration_system_disk: Option<SystemDisk>,
+    launch_configuration_system_disk: Option<ConfigurationSystemDisk>,
     /// >该参数正在邀测中，暂不支持使用。
     #[setters(generate = true, strip_option)]
-    launch_configuration_arn: Option<Vec<ConfigurationArn>>,
+    launch_configuration_arn: Option<Vec<LaunchConfigurationArn>>,
     /// >该参数正在邀测中，暂未开放使用。
     #[setters(generate = true, strip_option)]
     hibernation_options_configured: Option<bool>,
@@ -72401,7 +72401,7 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct DataDisk {
+pub struct ConfigurationDataDisk {
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
     #[serde(rename = "KmsKeyId")]
@@ -72432,7 +72432,7 @@ pub struct DataDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for DataDisk {
+impl crate::FlatSerialize for ConfigurationDataDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -72563,7 +72563,7 @@ impl crate::FlatSerialize for DataDiskConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct SystemDisk {
+pub struct ConfigurationSystemDisk {
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
     #[serde(rename = "KMSKeyId")]
@@ -72578,7 +72578,7 @@ pub struct SystemDisk {
     pub auto_snapshot_policy_id: String,
 }
 
-impl crate::FlatSerialize for SystemDisk {
+impl crate::FlatSerialize for ConfigurationSystemDisk {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -72619,7 +72619,7 @@ impl crate::FlatSerialize for SystemDisk {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ConfigurationArn {
+pub struct LaunchConfigurationArn {
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
     #[serde(rename = "RoleType")]
@@ -72628,7 +72628,7 @@ pub struct ConfigurationArn {
     pub assume_role_for: i64,
 }
 
-impl crate::FlatSerialize for ConfigurationArn {
+impl crate::FlatSerialize for LaunchConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -85402,8 +85402,8 @@ pub struct DescribeRegionsResponse {
     pub regions: ResponseRegions,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeRegionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeRegionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85419,8 +85419,8 @@ pub struct DescribeZonesResponse {
     pub zones: ResponseZones,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeZonesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeZonesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85436,8 +85436,8 @@ pub struct DescribeAvailableResourceResponse {
     pub available_zones: ResourceResponseAvailableZones,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAvailableResourceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAvailableResourceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85453,8 +85453,8 @@ pub struct DescribeAccountAttributesResponse {
     pub account_attribute_items: AttributeItems,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAccountAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAccountAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85470,8 +85470,8 @@ pub struct DescribeResourcesModificationResponse {
     pub available_zones: ModificationResponseAvailableZones,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeResourcesModificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeResourcesModificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85487,8 +85487,8 @@ pub struct DescribeRecommendInstanceTypeResponse {
     pub data: ResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeRecommendInstanceTypeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeRecommendInstanceTypeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85504,8 +85504,8 @@ pub struct DescribePriceResponse {
     pub price_info: DescribePriceResponsePriceInfo,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePriceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePriceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85521,8 +85521,8 @@ pub struct DescribeRenewalPriceResponse {
     pub price_info: RenewalPriceResponsePriceInfo,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeRenewalPriceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeRenewalPriceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85538,8 +85538,8 @@ pub struct DescribeInstanceModificationPriceResponse {
     pub price_info: ModificationPriceResponsePriceInfo,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceModificationPriceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceModificationPriceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85559,8 +85559,8 @@ pub struct RunInstancesResponse {
     pub instance_id_sets: ResponseInstanceIdSets,
 }
 
-impl AsRef<crate::CodeMessage> for RunInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RunInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85580,8 +85580,8 @@ pub struct CreateInstanceResponse {
     pub trade_price: f32,
 }
 
-impl AsRef<crate::CodeMessage> for CreateInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85595,8 +85595,8 @@ pub struct StartInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for StartInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StartInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85612,8 +85612,8 @@ pub struct StartInstancesResponse {
     pub instance_responses: StartInstancesResponseInstanceResponses,
 }
 
-impl AsRef<crate::CodeMessage> for StartInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StartInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85627,8 +85627,8 @@ pub struct StopInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for StopInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StopInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85644,8 +85644,8 @@ pub struct StopInstancesResponse {
     pub instance_responses: StopInstancesResponseInstanceResponses,
 }
 
-impl AsRef<crate::CodeMessage> for StopInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StopInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85659,8 +85659,8 @@ pub struct RebootInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RebootInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RebootInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85676,8 +85676,8 @@ pub struct RebootInstancesResponse {
     pub instance_responses: RebootInstancesResponseInstanceResponses,
 }
 
-impl AsRef<crate::CodeMessage> for RebootInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RebootInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85691,8 +85691,8 @@ pub struct DeleteInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85706,8 +85706,8 @@ pub struct DeleteInstancesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85729,8 +85729,8 @@ pub struct DescribeInstanceStatusResponse {
     pub instance_statuses: InstanceStatuses,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85754,8 +85754,8 @@ pub struct DescribeInstancesResponse {
     pub instances: DescribeInstancesResponseInstances,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85771,8 +85771,8 @@ pub struct DescribeInstanceTypeFamiliesResponse {
     pub instance_type_families: ResponseInstanceTypeFamilies,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceTypeFamiliesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceTypeFamiliesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85790,8 +85790,8 @@ pub struct DescribeInstanceTypesResponse {
     pub next_token: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceTypesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceTypesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85873,8 +85873,8 @@ pub struct DescribeInstanceAttributeResponse {
     pub network_options: ResponseNetworkOptions,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85888,8 +85888,8 @@ pub struct ModifyInstanceAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85905,8 +85905,8 @@ pub struct ModifyInstanceClockOptionsResponse {
     pub task_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceClockOptionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceClockOptionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85922,8 +85922,8 @@ pub struct ModifyInstanceNetworkOptionsResponse {
     pub task_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceNetworkOptionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceNetworkOptionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85941,8 +85941,8 @@ pub struct ModifyInstanceChargeTypeResponse {
     pub fee_of_instances: InstanceChargeTypeResponseFeeOfInstances,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceChargeTypeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceChargeTypeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85956,8 +85956,8 @@ pub struct ModifyInstanceSpecResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85973,8 +85973,8 @@ pub struct ModifyPrepayInstanceSpecResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyPrepayInstanceSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyPrepayInstanceSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -85988,8 +85988,8 @@ pub struct ModifyInstanceAutoReleaseTimeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceAutoReleaseTimeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceAutoReleaseTimeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86011,8 +86011,8 @@ pub struct AttachInstanceRamRoleResponse {
     pub attach_instance_ram_role_results: AttachInstanceRamRoleResults,
 }
 
-impl AsRef<crate::CodeMessage> for AttachInstanceRamRoleResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AttachInstanceRamRoleResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86032,8 +86032,8 @@ pub struct DescribeInstanceRamRoleResponse {
     pub instance_ram_role_sets: ResponseInstanceRamRoleSets,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceRamRoleResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceRamRoleResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86055,8 +86055,8 @@ pub struct DetachInstanceRamRoleResponse {
     pub detach_instance_ram_role_results: DetachInstanceRamRoleResults,
 }
 
-impl AsRef<crate::CodeMessage> for DetachInstanceRamRoleResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DetachInstanceRamRoleResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86072,8 +86072,8 @@ pub struct DescribeInstanceVncUrlResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceVncUrlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceVncUrlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86087,8 +86087,8 @@ pub struct ModifyInstanceVncPasswdResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceVncPasswdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceVncPasswdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86102,8 +86102,8 @@ pub struct ModifyInstanceMetadataOptionsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceMetadataOptionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceMetadataOptionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86123,8 +86123,8 @@ pub struct DescribeUserDataResponse {
     pub region_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeUserDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeUserDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86140,8 +86140,8 @@ pub struct RenewInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RenewInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RenewInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86163,8 +86163,8 @@ pub struct DescribeInstanceAutoRenewAttributeResponse {
     pub instance_renew_attributes: ResponseInstanceRenewAttributes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86178,8 +86178,8 @@ pub struct ModifyInstanceAutoRenewAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86193,8 +86193,8 @@ pub struct ReActivateInstancesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReActivateInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReActivateInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86214,8 +86214,8 @@ pub struct DescribeSpotPriceHistoryResponse {
     pub spot_prices: SpotPrices,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSpotPriceHistoryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSpotPriceHistoryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86233,8 +86233,8 @@ pub struct DescribeSpotAdviceResponse {
     pub available_spot_zones: SpotZones,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSpotAdviceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSpotAdviceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86250,8 +86250,8 @@ pub struct CreateImageResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86275,8 +86275,8 @@ pub struct DescribeImagesResponse {
     pub images: ResponseImages,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImagesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImagesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86290,8 +86290,8 @@ pub struct ModifyImageAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyImageAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyImageAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86305,8 +86305,8 @@ pub struct DeleteImageResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86322,8 +86322,8 @@ pub struct DescribeImageFromFamilyResponse {
     pub image: ResponseImage,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImageFromFamilyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImageFromFamilyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86343,8 +86343,8 @@ pub struct DescribeImageSupportInstanceTypesResponse {
     pub instance_types: SupportInstanceTypesResponseInstanceTypes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImageSupportInstanceTypesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImageSupportInstanceTypesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86372,8 +86372,8 @@ pub struct DescribeImageSharePermissionResponse {
     pub accounts: ResponseAccounts,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImageSharePermissionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImageSharePermissionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86387,8 +86387,8 @@ pub struct ModifyImageSharePermissionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyImageSharePermissionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyImageSharePermissionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86402,8 +86402,8 @@ pub struct ModifyImageShareGroupPermissionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyImageShareGroupPermissionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyImageShareGroupPermissionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86423,8 +86423,8 @@ pub struct ImportImageResponse {
     pub region_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ImportImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ImportImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86442,8 +86442,8 @@ pub struct ExportImageResponse {
     pub region_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ExportImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ExportImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86459,8 +86459,8 @@ pub struct CopyImageResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CopyImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CopyImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86474,8 +86474,8 @@ pub struct CancelCopyImageResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelCopyImageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelCopyImageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86491,8 +86491,8 @@ pub struct CreateImageComponentResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateImageComponentResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateImageComponentResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86514,8 +86514,8 @@ pub struct DescribeImageComponentsResponse {
     pub image_component: ImageComponent,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImageComponentsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImageComponentsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86529,8 +86529,8 @@ pub struct DeleteImageComponentResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteImageComponentResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteImageComponentResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86546,8 +86546,8 @@ pub struct CreateImagePipelineResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateImagePipelineResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateImagePipelineResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86569,8 +86569,8 @@ pub struct DescribeImagePipelinesResponse {
     pub image_pipeline: ImagePipeline,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImagePipelinesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImagePipelinesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86584,8 +86584,8 @@ pub struct DeleteImagePipelineResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteImagePipelineResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteImagePipelineResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86601,8 +86601,8 @@ pub struct StartImagePipelineExecutionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for StartImagePipelineExecutionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StartImagePipelineExecutionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86624,8 +86624,8 @@ pub struct DescribeImagePipelineExecutionsResponse {
     pub image_pipeline_execution: PipelineExecution,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeImagePipelineExecutionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeImagePipelineExecutionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86639,8 +86639,8 @@ pub struct CancelImagePipelineExecutionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelImagePipelineExecutionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelImagePipelineExecutionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86658,8 +86658,8 @@ pub struct CreateDiskResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86683,8 +86683,8 @@ pub struct DescribeDisksResponse {
     pub disks: ResponseDisks,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDisksResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDisksResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86698,8 +86698,8 @@ pub struct AttachDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AttachDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AttachDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86713,8 +86713,8 @@ pub struct DetachDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DetachDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DetachDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86730,8 +86730,8 @@ pub struct ResizeDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ResizeDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ResizeDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86745,8 +86745,8 @@ pub struct ModifyDiskAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiskAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiskAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86762,8 +86762,8 @@ pub struct ModifyDiskChargeTypeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiskChargeTypeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiskChargeTypeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86781,8 +86781,8 @@ pub struct ModifyDiskSpecResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiskSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiskSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86798,8 +86798,8 @@ pub struct ReplaceSystemDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReplaceSystemDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReplaceSystemDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86813,8 +86813,8 @@ pub struct ResetDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ResetDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ResetDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86830,8 +86830,8 @@ pub struct ResetDisksResponse {
     pub operation_progress_set: DisksResponseOperationProgressSet,
 }
 
-impl AsRef<crate::CodeMessage> for ResetDisksResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ResetDisksResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86845,8 +86845,8 @@ pub struct ReInitDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReInitDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReInitDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86862,8 +86862,8 @@ pub struct ModifyDiskDeploymentResponse {
     pub task_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiskDeploymentResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiskDeploymentResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86877,8 +86877,8 @@ pub struct DeleteDiskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteDiskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteDiskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86892,8 +86892,8 @@ pub struct EnableDiskEncryptionByDefaultResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for EnableDiskEncryptionByDefaultResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for EnableDiskEncryptionByDefaultResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86909,8 +86909,8 @@ pub struct DescribeDiskEncryptionByDefaultStatusResponse {
     pub encrypted: bool,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiskEncryptionByDefaultStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiskEncryptionByDefaultStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86926,8 +86926,8 @@ pub struct DescribeDiskDefaultKMSKeyIdResponse {
     pub kms_key_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiskDefaultKMSKeyIdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiskDefaultKMSKeyIdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86941,8 +86941,8 @@ pub struct ModifyDiskDefaultKMSKeyIdResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiskDefaultKMSKeyIdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiskDefaultKMSKeyIdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86956,8 +86956,8 @@ pub struct ResetDiskDefaultKMSKeyIdResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ResetDiskDefaultKMSKeyIdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ResetDiskDefaultKMSKeyIdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86971,8 +86971,8 @@ pub struct DisableDiskEncryptionByDefaultResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DisableDiskEncryptionByDefaultResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DisableDiskEncryptionByDefaultResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -86986,8 +86986,8 @@ pub struct OpenSnapshotServiceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for OpenSnapshotServiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for OpenSnapshotServiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87003,8 +87003,8 @@ pub struct CreateSnapshotResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSnapshotResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSnapshotResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87028,8 +87028,8 @@ pub struct DescribeSnapshotsResponse {
     pub snapshots: ResponseSnapshots,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87047,8 +87047,8 @@ pub struct DescribeSnapshotsUsageResponse {
     pub snapshot_count: i32,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotsUsageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotsUsageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87062,8 +87062,8 @@ pub struct ModifySnapshotAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySnapshotAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySnapshotAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87079,8 +87079,8 @@ pub struct ModifySnapshotCategoryResponse {
     pub task_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySnapshotCategoryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySnapshotCategoryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87096,8 +87096,8 @@ pub struct CopySnapshotResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CopySnapshotResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CopySnapshotResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87111,8 +87111,8 @@ pub struct DeleteSnapshotResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSnapshotResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSnapshotResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87136,8 +87136,8 @@ pub struct DescribeSnapshotLinksResponse {
     pub snapshot_links: SnapshotLinks,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotLinksResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotLinksResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87153,8 +87153,8 @@ pub struct CreateSnapshotGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSnapshotGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSnapshotGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87172,8 +87172,8 @@ pub struct DescribeSnapshotGroupsResponse {
     pub snapshot_groups: SnapshotGroups,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotGroupsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotGroupsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87187,8 +87187,8 @@ pub struct ModifySnapshotGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySnapshotGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySnapshotGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87204,8 +87204,8 @@ pub struct DeleteSnapshotGroupResponse {
     pub operation_progress_set: GroupResponseOperationProgressSet,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSnapshotGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSnapshotGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87221,8 +87221,8 @@ pub struct CreateAutoSnapshotPolicyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateAutoSnapshotPolicyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateAutoSnapshotPolicyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87244,8 +87244,8 @@ pub struct DescribeAutoSnapshotPolicyExResponse {
     pub auto_snapshot_policies: SnapshotPolicies,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAutoSnapshotPolicyExResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyExResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87263,8 +87263,8 @@ pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
     pub auto_snapshot_policy_associations: PolicyAssociations,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAutoSnapshotPolicyAssociationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyAssociationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87278,8 +87278,8 @@ pub struct ModifyAutoSnapshotPolicyExResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyAutoSnapshotPolicyExResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyAutoSnapshotPolicyExResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87293,8 +87293,8 @@ pub struct ApplyAutoSnapshotPolicyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ApplyAutoSnapshotPolicyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ApplyAutoSnapshotPolicyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87308,8 +87308,8 @@ pub struct CancelAutoSnapshotPolicyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelAutoSnapshotPolicyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelAutoSnapshotPolicyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87323,8 +87323,8 @@ pub struct DeleteAutoSnapshotPolicyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteAutoSnapshotPolicyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteAutoSnapshotPolicyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87346,8 +87346,8 @@ pub struct DescribeSnapshotPackageResponse {
     pub snapshot_packages: SnapshotPackages,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotPackageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotPackageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87363,8 +87363,8 @@ pub struct DescribeBandwidthLimitationResponse {
     pub bandwidths: ResponseBandwidths,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeBandwidthLimitationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeBandwidthLimitationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87380,8 +87380,8 @@ pub struct ModifyInstanceNetworkSpecResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceNetworkSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceNetworkSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87397,8 +87397,8 @@ pub struct AllocatePublicIpAddressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AllocatePublicIpAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AllocatePublicIpAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87412,8 +87412,8 @@ pub struct ConvertNatPublicIpToEipResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ConvertNatPublicIpToEipResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ConvertNatPublicIpToEipResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87427,8 +87427,8 @@ pub struct ModifyInstanceVpcAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceVpcAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceVpcAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87450,8 +87450,8 @@ pub struct DescribeClassicLinkInstancesResponse {
     pub links: ResponseLinks,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeClassicLinkInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeClassicLinkInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87465,8 +87465,8 @@ pub struct AttachClassicLinkVpcResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AttachClassicLinkVpcResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AttachClassicLinkVpcResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87480,8 +87480,8 @@ pub struct DetachClassicLinkVpcResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DetachClassicLinkVpcResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DetachClassicLinkVpcResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87537,8 +87537,8 @@ pub struct CreateNetworkInterfaceResponse {
     pub source_dest_check: bool,
 }
 
-impl AsRef<crate::CodeMessage> for CreateNetworkInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateNetworkInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87562,8 +87562,8 @@ pub struct DescribeNetworkInterfacesResponse {
     pub network_interface_sets: InterfaceSets,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeNetworkInterfacesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeNetworkInterfacesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87649,8 +87649,8 @@ pub struct DescribeNetworkInterfaceAttributeResponse {
     pub qo_s_config: SConfig,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeNetworkInterfaceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeNetworkInterfaceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87664,8 +87664,8 @@ pub struct ModifyNetworkInterfaceAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyNetworkInterfaceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyNetworkInterfaceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87679,8 +87679,8 @@ pub struct DeleteNetworkInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteNetworkInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteNetworkInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87694,8 +87694,8 @@ pub struct AttachNetworkInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AttachNetworkInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AttachNetworkInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87709,8 +87709,8 @@ pub struct DetachNetworkInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DetachNetworkInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DetachNetworkInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87726,8 +87726,8 @@ pub struct AssignPrivateIpAddressesResponse {
     pub assigned_private_ip_addresses_set: AddressesSet,
 }
 
-impl AsRef<crate::CodeMessage> for AssignPrivateIpAddressesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AssignPrivateIpAddressesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87741,8 +87741,8 @@ pub struct UnassignPrivateIpAddressesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UnassignPrivateIpAddressesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UnassignPrivateIpAddressesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87762,8 +87762,8 @@ pub struct AssignIpv6AddressesResponse {
     pub ipv6_prefix_sets: AddressesResponseIpv6PrefixSets,
 }
 
-impl AsRef<crate::CodeMessage> for AssignIpv6AddressesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AssignIpv6AddressesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87777,8 +87777,8 @@ pub struct UnassignIpv6AddressesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UnassignIpv6AddressesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UnassignIpv6AddressesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87794,8 +87794,8 @@ pub struct CreateNetworkInterfacePermissionResponse {
     pub network_interface_permission: ResponseNetworkInterfacePermission,
 }
 
-impl AsRef<crate::CodeMessage> for CreateNetworkInterfacePermissionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateNetworkInterfacePermissionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87817,8 +87817,8 @@ pub struct DescribeNetworkInterfacePermissionsResponse {
     pub network_interface_permissions: InterfacePermissions,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeNetworkInterfacePermissionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeNetworkInterfacePermissionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87834,8 +87834,8 @@ pub struct CreatePrefixListResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreatePrefixListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreatePrefixListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87853,8 +87853,8 @@ pub struct DescribePrefixListsResponse {
     pub prefix_lists: PrefixLists,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePrefixListsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePrefixListsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87882,8 +87882,8 @@ pub struct DescribePrefixListAttributesResponse {
     pub entries: ResponseEntries,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePrefixListAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePrefixListAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87901,8 +87901,8 @@ pub struct DescribePrefixListAssociationsResponse {
     pub prefix_list_associations: ListAssociations,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePrefixListAssociationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePrefixListAssociationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87916,8 +87916,8 @@ pub struct ModifyPrefixListResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyPrefixListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyPrefixListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87931,8 +87931,8 @@ pub struct DeletePrefixListResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeletePrefixListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeletePrefixListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87948,8 +87948,8 @@ pub struct CreatePortRangeListResponse {
     pub port_range_list_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreatePortRangeListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreatePortRangeListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87967,8 +87967,8 @@ pub struct DescribePortRangeListsResponse {
     pub port_range_lists: Vec<RangeList>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePortRangeListsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePortRangeListsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -87984,8 +87984,8 @@ pub struct DescribePortRangeListEntriesResponse {
     pub entries: Vec<ResponseEntry>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePortRangeListEntriesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePortRangeListEntriesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88003,8 +88003,8 @@ pub struct DescribePortRangeListAssociationsResponse {
     pub port_range_list_associations: Vec<RangeListAssociation>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePortRangeListAssociationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePortRangeListAssociationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88018,8 +88018,8 @@ pub struct ModifyPortRangeListResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyPortRangeListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyPortRangeListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88033,8 +88033,8 @@ pub struct DeletePortRangeListResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeletePortRangeListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeletePortRangeListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88050,8 +88050,8 @@ pub struct CreateSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88077,8 +88077,8 @@ pub struct DescribeSecurityGroupsResponse {
     pub page_size: i32,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSecurityGroupsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSecurityGroupsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88110,8 +88110,8 @@ pub struct DescribeSecurityGroupAttributeResponse {
     pub snapshot_policy_ids: PolicyIds,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSecurityGroupAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSecurityGroupAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88125,8 +88125,8 @@ pub struct ModifySecurityGroupPolicyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySecurityGroupPolicyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySecurityGroupPolicyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88140,8 +88140,8 @@ pub struct ModifySecurityGroupAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySecurityGroupAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySecurityGroupAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88155,8 +88155,8 @@ pub struct DeleteSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88170,8 +88170,8 @@ pub struct AuthorizeSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AuthorizeSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AuthorizeSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88185,8 +88185,8 @@ pub struct ModifySecurityGroupRuleResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySecurityGroupRuleResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySecurityGroupRuleResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88200,8 +88200,8 @@ pub struct RevokeSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RevokeSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RevokeSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88215,8 +88215,8 @@ pub struct AuthorizeSecurityGroupEgressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AuthorizeSecurityGroupEgressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AuthorizeSecurityGroupEgressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88230,8 +88230,8 @@ pub struct ModifySecurityGroupEgressRuleResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySecurityGroupEgressRuleResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySecurityGroupEgressRuleResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88245,8 +88245,8 @@ pub struct RevokeSecurityGroupEgressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RevokeSecurityGroupEgressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RevokeSecurityGroupEgressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88262,8 +88262,8 @@ pub struct DescribeSecurityGroupReferencesResponse {
     pub security_group_references: GroupReferences,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSecurityGroupReferencesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSecurityGroupReferencesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88277,8 +88277,8 @@ pub struct JoinSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for JoinSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for JoinSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88292,8 +88292,8 @@ pub struct LeaveSecurityGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for LeaveSecurityGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for LeaveSecurityGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88315,8 +88315,8 @@ pub struct CreateKeyPairResponse {
     pub key_pair_finger_print: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateKeyPairResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateKeyPairResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88334,8 +88334,8 @@ pub struct ImportKeyPairResponse {
     pub key_pair_finger_print: String,
 }
 
-impl AsRef<crate::CodeMessage> for ImportKeyPairResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ImportKeyPairResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88357,8 +88357,8 @@ pub struct DescribeKeyPairsResponse {
     pub key_pairs: KeyPairs,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeKeyPairsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeKeyPairsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88380,8 +88380,8 @@ pub struct AttachKeyPairResponse {
     pub results: AttachKeyPairResponseResults,
 }
 
-impl AsRef<crate::CodeMessage> for AttachKeyPairResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AttachKeyPairResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88403,8 +88403,8 @@ pub struct DetachKeyPairResponse {
     pub results: DetachKeyPairResponseResults,
 }
 
-impl AsRef<crate::CodeMessage> for DetachKeyPairResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DetachKeyPairResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88418,8 +88418,8 @@ pub struct DeleteKeyPairsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteKeyPairsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteKeyPairsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88437,8 +88437,8 @@ pub struct CreateLaunchTemplateResponse {
     pub launch_template_version_number: i64,
 }
 
-impl AsRef<crate::CodeMessage> for CreateLaunchTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateLaunchTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88460,8 +88460,8 @@ pub struct DescribeLaunchTemplatesResponse {
     pub launch_template_sets: TemplateSets,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeLaunchTemplatesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeLaunchTemplatesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88479,8 +88479,8 @@ pub struct DeleteLaunchTemplateResponse {
     pub launch_template_version_numbers: VersionNumbers,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteLaunchTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteLaunchTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88498,8 +88498,8 @@ pub struct CreateLaunchTemplateVersionResponse {
     pub launch_template_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateLaunchTemplateVersionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateLaunchTemplateVersionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88521,8 +88521,8 @@ pub struct DescribeLaunchTemplateVersionsResponse {
     pub launch_template_version_sets: VersionSets,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeLaunchTemplateVersionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeLaunchTemplateVersionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88538,8 +88538,8 @@ pub struct ModifyLaunchTemplateDefaultVersionResponse {
     pub launch_template_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyLaunchTemplateDefaultVersionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyLaunchTemplateDefaultVersionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88555,8 +88555,8 @@ pub struct DeleteLaunchTemplateVersionResponse {
     pub launch_template_versions: TemplateVersions,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteLaunchTemplateVersionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteLaunchTemplateVersionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88574,8 +88574,8 @@ pub struct CreateAutoProvisioningGroupResponse {
     pub launch_results: LaunchResults,
 }
 
-impl AsRef<crate::CodeMessage> for CreateAutoProvisioningGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateAutoProvisioningGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88597,8 +88597,8 @@ pub struct DescribeAutoProvisioningGroupsResponse {
     pub auto_provisioning_groups: ProvisioningGroups,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAutoProvisioningGroupsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAutoProvisioningGroupsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88620,8 +88620,8 @@ pub struct DescribeAutoProvisioningGroupInstancesResponse {
     pub instances: GroupInstancesResponseInstances,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAutoProvisioningGroupInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAutoProvisioningGroupInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88635,8 +88635,8 @@ pub struct ModifyAutoProvisioningGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyAutoProvisioningGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyAutoProvisioningGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88658,8 +88658,8 @@ pub struct DescribeAutoProvisioningGroupHistoryResponse {
     pub auto_provisioning_group_histories: GroupHistories,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAutoProvisioningGroupHistoryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAutoProvisioningGroupHistoryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88673,8 +88673,8 @@ pub struct DeleteAutoProvisioningGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteAutoProvisioningGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteAutoProvisioningGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88690,8 +88690,8 @@ pub struct CreateDeploymentSetResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateDeploymentSetResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateDeploymentSetResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88707,8 +88707,8 @@ pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88732,8 +88732,8 @@ pub struct DescribeDeploymentSetsResponse {
     pub deployment_sets: DeploymentSets,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDeploymentSetsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDeploymentSetsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88747,8 +88747,8 @@ pub struct ModifyInstanceDeploymentResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceDeploymentResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceDeploymentResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88762,8 +88762,8 @@ pub struct ModifyDeploymentSetAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDeploymentSetAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDeploymentSetAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88777,8 +88777,8 @@ pub struct DeleteDeploymentSetResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteDeploymentSetResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteDeploymentSetResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88796,8 +88796,8 @@ pub struct CreateElasticityAssuranceResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateElasticityAssuranceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateElasticityAssuranceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88819,8 +88819,8 @@ pub struct DescribeElasticityAssurancesResponse {
     pub elasticity_assurance_set: AssuranceSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeElasticityAssurancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeElasticityAssurancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88842,8 +88842,8 @@ pub struct DescribeElasticityAssuranceInstancesResponse {
     pub elasticity_assurance_item: ElasticityAssurance,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeElasticityAssuranceInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeElasticityAssuranceInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88857,8 +88857,8 @@ pub struct ModifyElasticityAssuranceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyElasticityAssuranceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyElasticityAssuranceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88876,8 +88876,8 @@ pub struct RenewElasticityAssurancesResponse {
     pub private_pool_options_id_set: OptionsIdSet,
 }
 
-impl AsRef<crate::CodeMessage> for RenewElasticityAssurancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RenewElasticityAssurancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88891,8 +88891,8 @@ pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyElasticityAssuranceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyElasticityAssuranceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88908,8 +88908,8 @@ pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
     pub elasticity_assurance_renew_attributes: AssuranceRenewAttributes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeElasticityAssuranceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeElasticityAssuranceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88923,8 +88923,8 @@ pub struct PurchaseElasticityAssuranceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for PurchaseElasticityAssuranceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for PurchaseElasticityAssuranceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88940,8 +88940,8 @@ pub struct CreateCapacityReservationResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateCapacityReservationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateCapacityReservationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88963,8 +88963,8 @@ pub struct DescribeCapacityReservationsResponse {
     pub capacity_reservation_set: ReservationSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeCapacityReservationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeCapacityReservationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -88986,8 +88986,8 @@ pub struct DescribeCapacityReservationInstancesResponse {
     pub capacity_reservation_item: CapacityReservation,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeCapacityReservationInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeCapacityReservationInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89001,8 +89001,8 @@ pub struct ModifyCapacityReservationResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyCapacityReservationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyCapacityReservationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89024,8 +89024,8 @@ pub struct DescribeInstanceAttachmentAttributesResponse {
     pub instances: AttributesResponseInstances,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceAttachmentAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceAttachmentAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89039,8 +89039,8 @@ pub struct ModifyInstanceAttachmentAttributesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceAttachmentAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceAttachmentAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89054,8 +89054,8 @@ pub struct ReleaseCapacityReservationResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReleaseCapacityReservationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReleaseCapacityReservationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89073,8 +89073,8 @@ pub struct PurchaseReservedInstancesOfferingResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for PurchaseReservedInstancesOfferingResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for PurchaseReservedInstancesOfferingResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89096,8 +89096,8 @@ pub struct DescribeReservedInstancesResponse {
     pub reserved_instances: ReservedInstances,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeReservedInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeReservedInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89113,8 +89113,8 @@ pub struct ModifyReservedInstancesResponse {
     pub reserved_instance_id_sets: ModifyReservedInstancesResponseReservedInstanceIdSets,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyReservedInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyReservedInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89130,8 +89130,8 @@ pub struct ModifyReservedInstanceAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyReservedInstanceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyReservedInstanceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89149,8 +89149,8 @@ pub struct RenewReservedInstancesResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RenewReservedInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RenewReservedInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89166,8 +89166,8 @@ pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
     pub reserved_instance_renew_attributes: ReservedInstanceRenewAttributes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeReservedInstanceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeReservedInstanceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89181,8 +89181,8 @@ pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyReservedInstanceAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyReservedInstanceAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89200,8 +89200,8 @@ pub struct PurchaseStorageCapacityUnitResponse {
     pub storage_capacity_unit_ids: UnitIds,
 }
 
-impl AsRef<crate::CodeMessage> for PurchaseStorageCapacityUnitResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for PurchaseStorageCapacityUnitResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89223,8 +89223,8 @@ pub struct DescribeStorageCapacityUnitsResponse {
     pub storage_capacity_units: CapacityUnits,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeStorageCapacityUnitsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeStorageCapacityUnitsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89238,8 +89238,8 @@ pub struct ModifyStorageCapacityUnitAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyStorageCapacityUnitAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyStorageCapacityUnitAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89257,8 +89257,8 @@ pub struct RunCommandResponse {
     pub invoke_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RunCommandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RunCommandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89274,8 +89274,8 @@ pub struct CreateCommandResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateCommandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateCommandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89291,8 +89291,8 @@ pub struct InvokeCommandResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for InvokeCommandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for InvokeCommandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89316,8 +89316,8 @@ pub struct DescribeInvocationsResponse {
     pub invocations: InvocationsResponseInvocations,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInvocationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInvocationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89333,8 +89333,8 @@ pub struct DescribeInvocationResultsResponse {
     pub invocation: ResponseInvocation,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInvocationResultsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInvocationResultsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89350,8 +89350,8 @@ pub struct ModifyInvocationAttributeResponse {
     pub command_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInvocationAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInvocationAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89365,8 +89365,8 @@ pub struct StopInvocationResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for StopInvocationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StopInvocationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89390,8 +89390,8 @@ pub struct DescribeCommandsResponse {
     pub commands: ResponseCommands,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeCommandsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeCommandsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89405,8 +89405,8 @@ pub struct ModifyCommandResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyCommandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyCommandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89420,8 +89420,8 @@ pub struct DeleteCommandResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteCommandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteCommandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89437,8 +89437,8 @@ pub struct SendFileResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for SendFileResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SendFileResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89462,8 +89462,8 @@ pub struct DescribeSendFileResultsResponse {
     pub invocations: ResultsResponseInvocations,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSendFileResultsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSendFileResultsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89487,8 +89487,8 @@ pub struct DescribeCloudAssistantStatusResponse {
     pub instance_cloud_assistant_status_set: AssistantStatusSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeCloudAssistantStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeCloudAssistantStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89502,8 +89502,8 @@ pub struct InstallCloudAssistantResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for InstallCloudAssistantResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for InstallCloudAssistantResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89523,8 +89523,8 @@ pub struct StartTerminalSessionResponse {
     pub web_socket_url: String,
 }
 
-impl AsRef<crate::CodeMessage> for StartTerminalSessionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for StartTerminalSessionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89538,8 +89538,8 @@ pub struct EndTerminalSessionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for EndTerminalSessionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for EndTerminalSessionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89557,8 +89557,8 @@ pub struct DescribeTerminalSessionsResponse {
     pub sessions: ResponseSessions,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeTerminalSessionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeTerminalSessionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89572,8 +89572,8 @@ pub struct ModifyCloudAssistantSettingsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyCloudAssistantSettingsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyCloudAssistantSettingsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89595,8 +89595,8 @@ pub struct DescribeCloudAssistantSettingsResponse {
     pub session_manager_config: ResponseSessionManagerConfig,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeCloudAssistantSettingsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeCloudAssistantSettingsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89614,8 +89614,8 @@ pub struct CreateActivationResponse {
     pub activation_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateActivationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateActivationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89639,8 +89639,8 @@ pub struct DescribeActivationsResponse {
     pub activation_list: Vec<ActivationList>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeActivationsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeActivationsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89656,8 +89656,8 @@ pub struct DisableActivationResponse {
     pub activation: DisableActivationResponseActivation,
 }
 
-impl AsRef<crate::CodeMessage> for DisableActivationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DisableActivationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89673,8 +89673,8 @@ pub struct DeleteActivationResponse {
     pub activation: DeleteActivationResponseActivation,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteActivationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteActivationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89698,8 +89698,8 @@ pub struct DescribeManagedInstancesResponse {
     pub next_token: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeManagedInstancesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeManagedInstancesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89715,8 +89715,8 @@ pub struct ModifyManagedInstanceResponse {
     pub instance: ModifyManagedInstanceResponseInstance,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyManagedInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyManagedInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89732,8 +89732,8 @@ pub struct DeregisterManagedInstanceResponse {
     pub instance: DeregisterManagedInstanceResponseInstance,
 }
 
-impl AsRef<crate::CodeMessage> for DeregisterManagedInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeregisterManagedInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89757,8 +89757,8 @@ pub struct ListPluginStatusResponse {
     pub instance_plugin_status_set: InstancePluginStatusSet,
 }
 
-impl AsRef<crate::CodeMessage> for ListPluginStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ListPluginStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89780,8 +89780,8 @@ pub struct DescribeInstancesFullStatusResponse {
     pub instance_full_status_set: InstanceFullStatusSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstancesFullStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstancesFullStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89803,8 +89803,8 @@ pub struct DescribeDisksFullStatusResponse {
     pub disk_full_status_set: DiskFullStatusSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDisksFullStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDisksFullStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89828,8 +89828,8 @@ pub struct DescribeInstanceHistoryEventsResponse {
     pub next_token: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceHistoryEventsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceHistoryEventsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89845,8 +89845,8 @@ pub struct CreateSimulatedSystemEventsResponse {
     pub event_id_set: EventIdSet,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSimulatedSystemEventsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSimulatedSystemEventsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89860,8 +89860,8 @@ pub struct CancelSimulatedSystemEventsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelSimulatedSystemEventsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelSimulatedSystemEventsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89875,8 +89875,8 @@ pub struct AcceptInquiredSystemEventResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AcceptInquiredSystemEventResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AcceptInquiredSystemEventResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89894,8 +89894,8 @@ pub struct DescribeDiagnosticMetricsResponse {
     pub metrics: Vec<ResponseMetric>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiagnosticMetricsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiagnosticMetricsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89911,8 +89911,8 @@ pub struct CreateDiagnosticMetricSetResponse {
     pub metric_set_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateDiagnosticMetricSetResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateDiagnosticMetricSetResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89930,8 +89930,8 @@ pub struct DescribeDiagnosticMetricSetsResponse {
     pub metric_sets: Vec<MetricSet>,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiagnosticMetricSetsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiagnosticMetricSetsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89945,8 +89945,8 @@ pub struct ModifyDiagnosticMetricSetResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDiagnosticMetricSetResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDiagnosticMetricSetResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89960,8 +89960,8 @@ pub struct DeleteDiagnosticMetricSetsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteDiagnosticMetricSetsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteDiagnosticMetricSetsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89977,8 +89977,8 @@ pub struct CreateDiagnosticReportResponse {
     pub report_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateDiagnosticReportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateDiagnosticReportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -89996,8 +89996,8 @@ pub struct DescribeDiagnosticReportsResponse {
     pub reports: ResponseReports,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiagnosticReportsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiagnosticReportsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90035,8 +90035,8 @@ pub struct DescribeDiagnosticReportAttributesResponse {
     pub attributes: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiagnosticReportAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiagnosticReportAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90050,8 +90050,8 @@ pub struct DeleteDiagnosticReportsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteDiagnosticReportsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteDiagnosticReportsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90069,8 +90069,8 @@ pub struct GetInstanceScreenshotResponse {
     pub screenshot: String,
 }
 
-impl AsRef<crate::CodeMessage> for GetInstanceScreenshotResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetInstanceScreenshotResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90090,8 +90090,8 @@ pub struct GetInstanceConsoleOutputResponse {
     pub console_output: String,
 }
 
-impl AsRef<crate::CodeMessage> for GetInstanceConsoleOutputResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetInstanceConsoleOutputResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90109,8 +90109,8 @@ pub struct DescribeDiskMonitorDataResponse {
     pub monitor_data: DiskMonitorDataResponseMonitorData,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDiskMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDiskMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90126,8 +90126,8 @@ pub struct DescribeInstanceMonitorDataResponse {
     pub monitor_data: InstanceMonitorDataResponseMonitorData,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90145,8 +90145,8 @@ pub struct DescribeEniMonitorDataResponse {
     pub monitor_data: EniMonitorDataResponseMonitorData,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeEniMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeEniMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90162,8 +90162,8 @@ pub struct DescribeSnapshotMonitorDataResponse {
     pub monitor_data: SnapshotMonitorDataResponseMonitorData,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeSnapshotMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeSnapshotMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90185,8 +90185,8 @@ pub struct DescribeInstanceMaintenanceAttributesResponse {
     pub maintenance_attributes: MaintenanceAttributes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeInstanceMaintenanceAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeInstanceMaintenanceAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90200,8 +90200,8 @@ pub struct ModifyInstanceMaintenanceAttributesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyInstanceMaintenanceAttributesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyInstanceMaintenanceAttributesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90217,8 +90217,8 @@ pub struct RedeployInstanceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RedeployInstanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RedeployInstanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90232,8 +90232,8 @@ pub struct ReportInstancesStatusResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReportInstancesStatusResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReportInstancesStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90247,8 +90247,8 @@ pub struct TagResourcesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for TagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for TagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90266,8 +90266,8 @@ pub struct ListTagResourcesResponse {
     pub tag_resources: ResponseTagResources,
 }
 
-impl AsRef<crate::CodeMessage> for ListTagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ListTagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90281,8 +90281,8 @@ pub struct UntagResourcesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UntagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UntagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90296,8 +90296,8 @@ pub struct JoinResourceGroupResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for JoinResourceGroupResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for JoinResourceGroupResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90315,8 +90315,8 @@ pub struct AllocateDedicatedHostsResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AllocateDedicatedHostsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AllocateDedicatedHostsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90340,8 +90340,8 @@ pub struct DescribeDedicatedHostsResponse {
     pub dedicated_hosts: DedicatedHosts,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDedicatedHostsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDedicatedHostsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90357,8 +90357,8 @@ pub struct DescribeDedicatedHostTypesResponse {
     pub dedicated_host_types: ResponseDedicatedHostTypes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDedicatedHostTypesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDedicatedHostTypesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90372,8 +90372,8 @@ pub struct ModifyDedicatedHostAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDedicatedHostAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDedicatedHostAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90391,8 +90391,8 @@ pub struct ModifyDedicatedHostsChargeTypeResponse {
     pub fee_of_instances: HostsChargeTypeResponseFeeOfInstances,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDedicatedHostsChargeTypeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDedicatedHostsChargeTypeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90408,8 +90408,8 @@ pub struct DescribeDedicatedHostAutoRenewResponse {
     pub dedicated_host_renew_attributes: HostRenewAttributes,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDedicatedHostAutoRenewResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDedicatedHostAutoRenewResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90423,8 +90423,8 @@ pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDedicatedHostAutoRenewAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDedicatedHostAutoRenewAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90440,8 +90440,8 @@ pub struct RenewDedicatedHostsResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RenewDedicatedHostsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RenewDedicatedHostsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90455,8 +90455,8 @@ pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDedicatedHostAutoReleaseTimeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDedicatedHostAutoReleaseTimeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90470,8 +90470,8 @@ pub struct RedeployDedicatedHostResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RedeployDedicatedHostResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RedeployDedicatedHostResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90485,8 +90485,8 @@ pub struct ReleaseDedicatedHostResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReleaseDedicatedHostResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReleaseDedicatedHostResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90502,8 +90502,8 @@ pub struct CreateDedicatedHostClusterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateDedicatedHostClusterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateDedicatedHostClusterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90517,8 +90517,8 @@ pub struct ModifyDedicatedHostClusterAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyDedicatedHostClusterAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyDedicatedHostClusterAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90540,8 +90540,8 @@ pub struct DescribeDedicatedHostClustersResponse {
     pub dedicated_host_clusters: HostClusters,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeDedicatedHostClustersResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeDedicatedHostClustersResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90555,8 +90555,8 @@ pub struct DeleteDedicatedHostClusterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteDedicatedHostClusterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteDedicatedHostClusterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90572,8 +90572,8 @@ pub struct CreateHpcClusterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateHpcClusterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateHpcClusterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90595,8 +90595,8 @@ pub struct DescribeHpcClustersResponse {
     pub hpc_clusters: HpcClusters,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeHpcClustersResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeHpcClustersResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90610,8 +90610,8 @@ pub struct ModifyHpcClusterAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyHpcClusterAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyHpcClusterAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90625,8 +90625,8 @@ pub struct DeleteHpcClusterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteHpcClusterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteHpcClusterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90650,8 +90650,8 @@ pub struct DescribeTasksResponse {
     pub task_set: TaskSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeTasksResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeTasksResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90689,8 +90689,8 @@ pub struct DescribeTaskAttributeResponse {
     pub operation_progress_set: AttributeResponseOperationProgressSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeTaskAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeTaskAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90704,8 +90704,8 @@ pub struct CancelTaskResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelTaskResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelTaskResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90721,8 +90721,8 @@ pub struct DescribeUserBusinessBehaviorResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeUserBusinessBehaviorResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeUserBusinessBehaviorResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90736,8 +90736,8 @@ pub struct ModifyUserBusinessBehaviorResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyUserBusinessBehaviorResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyUserBusinessBehaviorResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90755,8 +90755,8 @@ pub struct DescribeLimitationResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeLimitationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeLimitationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90772,8 +90772,8 @@ pub struct DescribeClustersResponse {
     pub clusters: ResponseClusters,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeClustersResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeClustersResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90787,8 +90787,8 @@ pub struct DeleteNetworkInterfacePermissionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteNetworkInterfacePermissionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteNetworkInterfacePermissionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90802,8 +90802,8 @@ pub struct DeleteBandwidthPackageResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteBandwidthPackageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteBandwidthPackageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90817,8 +90817,8 @@ pub struct ModifyBandwidthPackageSpecResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyBandwidthPackageSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyBandwidthPackageSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90840,8 +90840,8 @@ pub struct DescribeBandwidthPackagesResponse {
     pub bandwidth_packages: BandwidthPackages,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeBandwidthPackagesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeBandwidthPackagesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90857,8 +90857,8 @@ pub struct CreateVSwitchResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateVSwitchResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateVSwitchResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90872,8 +90872,8 @@ pub struct DeleteVSwitchResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteVSwitchResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteVSwitchResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90887,8 +90887,8 @@ pub struct ModifyVSwitchAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyVSwitchAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyVSwitchAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90910,8 +90910,8 @@ pub struct DescribeVSwitchesResponse {
     pub v_switches: VSwitches,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeVSwitchesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeVSwitchesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90927,8 +90927,8 @@ pub struct CreatePhysicalConnectionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreatePhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreatePhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90942,8 +90942,8 @@ pub struct DeletePhysicalConnectionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeletePhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeletePhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90957,8 +90957,8 @@ pub struct ModifyPhysicalConnectionAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyPhysicalConnectionAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyPhysicalConnectionAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90972,8 +90972,8 @@ pub struct EnablePhysicalConnectionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for EnablePhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for EnablePhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -90995,8 +90995,8 @@ pub struct DescribePhysicalConnectionsResponse {
     pub physical_connection_set: ResponsePhysicalConnectionSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribePhysicalConnectionsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribePhysicalConnectionsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91010,8 +91010,8 @@ pub struct CancelPhysicalConnectionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CancelPhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CancelPhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91025,8 +91025,8 @@ pub struct TerminatePhysicalConnectionResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for TerminatePhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for TerminatePhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91046,8 +91046,8 @@ pub struct CreateVpcResponse {
     pub route_table_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateVpcResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateVpcResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91061,8 +91061,8 @@ pub struct DeleteVpcResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteVpcResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteVpcResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91084,8 +91084,8 @@ pub struct DescribeVpcsResponse {
     pub vpcs: ResponseVpcs,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeVpcsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeVpcsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91099,8 +91099,8 @@ pub struct ModifyVpcAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyVpcAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyVpcAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91114,8 +91114,8 @@ pub struct RemoveBandwidthPackageIpsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RemoveBandwidthPackageIpsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RemoveBandwidthPackageIpsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91131,8 +91131,8 @@ pub struct CreateHaVipResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateHaVipResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateHaVipResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91146,8 +91146,8 @@ pub struct DeleteHaVipResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteHaVipResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteHaVipResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91161,8 +91161,8 @@ pub struct AssociateHaVipResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AssociateHaVipResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AssociateHaVipResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91176,8 +91176,8 @@ pub struct ModifyHaVipAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyHaVipAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyHaVipAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91199,8 +91199,8 @@ pub struct DescribeHaVipsResponse {
     pub ha_vips: HaVips,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeHaVipsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeHaVipsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91214,8 +91214,8 @@ pub struct UnassociateHaVipResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UnassociateHaVipResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UnassociateHaVipResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91231,8 +91231,8 @@ pub struct CreateVirtualBorderRouterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateVirtualBorderRouterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateVirtualBorderRouterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91246,8 +91246,8 @@ pub struct DeleteVirtualBorderRouterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteVirtualBorderRouterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteVirtualBorderRouterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91261,8 +91261,8 @@ pub struct ModifyVirtualBorderRouterAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyVirtualBorderRouterAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyVirtualBorderRouterAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91276,8 +91276,8 @@ pub struct RecoverVirtualBorderRouterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecoverVirtualBorderRouterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecoverVirtualBorderRouterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91291,8 +91291,8 @@ pub struct TerminateVirtualBorderRouterResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for TerminateVirtualBorderRouterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for TerminateVirtualBorderRouterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91314,8 +91314,8 @@ pub struct DescribeVirtualBorderRoutersResponse {
     pub virtual_border_router_set: RouterSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeVirtualBorderRoutersResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeVirtualBorderRoutersResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91337,8 +91337,8 @@ pub struct DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
     pub virtual_border_router_for_physical_connection_set: ForPhysicalConnectionSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91356,8 +91356,8 @@ pub struct CreateRouterInterfaceResponse {
     pub router_interface_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateRouterInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateRouterInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91371,8 +91371,8 @@ pub struct DeleteRouterInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteRouterInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteRouterInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91386,8 +91386,8 @@ pub struct ActivateRouterInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ActivateRouterInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ActivateRouterInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91401,8 +91401,8 @@ pub struct DeactivateRouterInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeactivateRouterInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeactivateRouterInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91416,8 +91416,8 @@ pub struct ModifyRouterInterfaceAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyRouterInterfaceAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyRouterInterfaceAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91433,8 +91433,8 @@ pub struct ModifyRouterInterfaceSpecResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyRouterInterfaceSpecResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyRouterInterfaceSpecResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91448,8 +91448,8 @@ pub struct ModifyVRouterAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyVRouterAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyVRouterAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91471,8 +91471,8 @@ pub struct DescribeRouterInterfacesResponse {
     pub router_interface_set: RouterInterfaceSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeRouterInterfacesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeRouterInterfacesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91486,8 +91486,8 @@ pub struct UnassociateEipAddressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UnassociateEipAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UnassociateEipAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91505,8 +91505,8 @@ pub struct AllocateEipAddressResponse {
     pub eip_address: String,
 }
 
-impl AsRef<crate::CodeMessage> for AllocateEipAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AllocateEipAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91520,8 +91520,8 @@ pub struct ModifyEipAddressAttributeResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyEipAddressAttributeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyEipAddressAttributeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91535,8 +91535,8 @@ pub struct ReleaseEipAddressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReleaseEipAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReleaseEipAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91550,8 +91550,8 @@ pub struct AssociateEipAddressResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AssociateEipAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AssociateEipAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91573,8 +91573,8 @@ pub struct DescribeEipAddressesResponse {
     pub eip_addresses: ResponseEipAddresses,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeEipAddressesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeEipAddressesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91590,8 +91590,8 @@ pub struct DescribeEipMonitorDataResponse {
     pub eip_monitor_datas: DescribeEipMonitorDataResponseEipMonitorDatas,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeEipMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeEipMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91611,8 +91611,8 @@ pub struct CreateNatGatewayResponse {
     pub bandwidth_package_ids: ResponseBandwidthPackageIds,
 }
 
-impl AsRef<crate::CodeMessage> for CreateNatGatewayResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateNatGatewayResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91626,8 +91626,8 @@ pub struct DeleteNatGatewayResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteNatGatewayResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteNatGatewayResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91649,8 +91649,8 @@ pub struct DescribeNatGatewaysResponse {
     pub nat_gateways: NatGateways,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeNatGatewaysResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeNatGatewaysResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91666,8 +91666,8 @@ pub struct DescribeNewProjectEipMonitorDataResponse {
     pub eip_monitor_datas: ProjectEipMonitorDataResponseEipMonitorDatas,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeNewProjectEipMonitorDataResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeNewProjectEipMonitorDataResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91681,8 +91681,8 @@ pub struct DeleteRouteEntryResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteRouteEntryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteRouteEntryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91696,8 +91696,8 @@ pub struct DeleteForwardEntryResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteForwardEntryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteForwardEntryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91713,8 +91713,8 @@ pub struct CreateForwardEntryResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateForwardEntryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateForwardEntryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91728,8 +91728,8 @@ pub struct AddBandwidthPackageIpsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AddBandwidthPackageIpsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AddBandwidthPackageIpsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91751,8 +91751,8 @@ pub struct DescribeVRoutersResponse {
     pub v_routers: VRouters,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeVRoutersResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeVRoutersResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91766,8 +91766,8 @@ pub struct CreateRouteEntryResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateRouteEntryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateRouteEntryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91789,8 +91789,8 @@ pub struct DescribeForwardTableEntriesResponse {
     pub forward_table_entries: TableEntries,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeForwardTableEntriesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeForwardTableEntriesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91804,8 +91804,8 @@ pub struct ModifyForwardEntryResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifyForwardEntryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifyForwardEntryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91827,8 +91827,8 @@ pub struct DescribeAccessPointsResponse {
     pub access_point_set: PointSet,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeAccessPointsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeAccessPointsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91850,8 +91850,8 @@ pub struct DescribeRouteTablesResponse {
     pub route_tables: RouteTables,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeRouteTablesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeRouteTablesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91865,8 +91865,8 @@ pub struct ConnectRouterInterfaceResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ConnectRouterInterfaceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ConnectRouterInterfaceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91882,8 +91882,8 @@ pub struct ExportSnapshotResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ExportSnapshotResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ExportSnapshotResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91899,8 +91899,8 @@ pub struct ReleasePublicIpAddressResponse {
     pub remain_times: String,
 }
 
-impl AsRef<crate::CodeMessage> for ReleasePublicIpAddressResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ReleasePublicIpAddressResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91914,8 +91914,8 @@ pub struct AddTagsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for AddTagsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AddTagsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91937,8 +91937,8 @@ pub struct DescribeResourceByTagsResponse {
     pub resources: ResponseResources,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeResourceByTagsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeResourceByTagsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91960,8 +91960,8 @@ pub struct DescribeTagsResponse {
     pub tags: TagsResponseTags,
 }
 
-impl AsRef<crate::CodeMessage> for DescribeTagsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DescribeTagsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91975,8 +91975,8 @@ pub struct RemoveTagsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for RemoveTagsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RemoveTagsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -91990,8 +91990,8 @@ pub struct EnableNetworkInterfaceQoSResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for EnableNetworkInterfaceQoSResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for EnableNetworkInterfaceQoSResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -92005,8 +92005,8 @@ pub struct DisableNetworkInterfaceQoSResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DisableNetworkInterfaceQoSResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DisableNetworkInterfaceQoSResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }

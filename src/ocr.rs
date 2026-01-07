@@ -9945,8 +9945,8 @@ pub struct RecognizeAllTextResponse {
     pub data: TextResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeAllTextResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeAllTextResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9962,8 +9962,8 @@ pub struct RecognizeGeneralStructureResponse {
     pub data: StructureResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeGeneralStructureResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeGeneralStructureResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9979,8 +9979,8 @@ pub struct RecognizeAdvancedResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeAdvancedResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeAdvancedResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9996,8 +9996,8 @@ pub struct RecognizeHandwritingResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeHandwritingResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeHandwritingResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10013,8 +10013,8 @@ pub struct RecognizeBasicResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBasicResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBasicResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10030,8 +10030,8 @@ pub struct RecognizeGeneralResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeGeneralResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeGeneralResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10047,8 +10047,8 @@ pub struct RecognizeTableOcrResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTableOcrResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTableOcrResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10064,8 +10064,8 @@ pub struct RecognizeHealthCodeResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeHealthCodeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeHealthCodeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10081,8 +10081,8 @@ pub struct RecognizeDocumentStructureResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeDocumentStructureResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeDocumentStructureResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10098,8 +10098,8 @@ pub struct RecognizeIdcardResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeIdcardResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeIdcardResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10115,8 +10115,8 @@ pub struct RecognizePassportResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizePassportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizePassportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10132,8 +10132,8 @@ pub struct RecognizeHouseholdResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeHouseholdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeHouseholdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10149,8 +10149,8 @@ pub struct RecognizeEstateCertificationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEstateCertificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEstateCertificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10166,8 +10166,8 @@ pub struct RecognizeBankCardResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBankCardResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBankCardResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10183,8 +10183,8 @@ pub struct RecognizeBirthCertificationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBirthCertificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBirthCertificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10200,8 +10200,8 @@ pub struct RecognizeChinesePassportResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeChinesePassportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeChinesePassportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10217,8 +10217,8 @@ pub struct RecognizeExitEntryPermitToMainlandResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToMainlandResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeExitEntryPermitToMainlandResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10234,8 +10234,8 @@ pub struct RecognizeExitEntryPermitToHKResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeExitEntryPermitToHKResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeExitEntryPermitToHKResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10251,8 +10251,8 @@ pub struct RecognizeHKIdcardResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeHKIdcardResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeHKIdcardResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10268,8 +10268,8 @@ pub struct RecognizeSocialSecurityCardVersionIIResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardVersionIIResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeSocialSecurityCardVersionIIResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10285,8 +10285,8 @@ pub struct RecognizeInternationalIdcardResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeInternationalIdcardResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeInternationalIdcardResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10302,8 +10302,8 @@ pub struct RecognizeMixedInvoicesResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeMixedInvoicesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeMixedInvoicesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10319,8 +10319,8 @@ pub struct RecognizeInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10336,8 +10336,8 @@ pub struct RecognizeCarInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCarInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCarInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10353,8 +10353,8 @@ pub struct RecognizeQuotaInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeQuotaInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeQuotaInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10370,8 +10370,8 @@ pub struct RecognizeAirItineraryResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeAirItineraryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeAirItineraryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10387,8 +10387,8 @@ pub struct RecognizeTrainInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTrainInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTrainInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10404,8 +10404,8 @@ pub struct RecognizeTaxiInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTaxiInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTaxiInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10421,8 +10421,8 @@ pub struct RecognizeRollTicketResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeRollTicketResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeRollTicketResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10438,8 +10438,8 @@ pub struct RecognizeBankAcceptanceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBankAcceptanceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBankAcceptanceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10455,8 +10455,8 @@ pub struct RecognizeBusShipTicketResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBusShipTicketResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBusShipTicketResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10472,8 +10472,8 @@ pub struct RecognizeNonTaxInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeNonTaxInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeNonTaxInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10489,8 +10489,8 @@ pub struct RecognizeCommonPrintedInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCommonPrintedInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCommonPrintedInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10506,8 +10506,8 @@ pub struct RecognizeHotelConsumeResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeHotelConsumeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeHotelConsumeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10523,8 +10523,8 @@ pub struct RecognizePaymentRecordResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizePaymentRecordResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizePaymentRecordResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10540,8 +10540,8 @@ pub struct RecognizePurchaseRecordResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizePurchaseRecordResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizePurchaseRecordResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10557,8 +10557,8 @@ pub struct RecognizeRideHailingItineraryResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeRideHailingItineraryResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeRideHailingItineraryResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10574,8 +10574,8 @@ pub struct RecognizeShoppingReceiptResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeShoppingReceiptResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeShoppingReceiptResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10591,8 +10591,8 @@ pub struct RecognizeSocialSecurityCardResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeSocialSecurityCardResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeSocialSecurityCardResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10608,8 +10608,8 @@ pub struct RecognizeTollInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTollInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTollInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10625,8 +10625,8 @@ pub struct RecognizeTaxClearanceCertificateResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTaxClearanceCertificateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTaxClearanceCertificateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10642,8 +10642,8 @@ pub struct RecognizeUsedCarInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeUsedCarInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeUsedCarInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10659,8 +10659,8 @@ pub struct RecognizeBusinessLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBusinessLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBusinessLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10676,8 +10676,8 @@ pub struct RecognizeBankAccountLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeBankAccountLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeBankAccountLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10693,8 +10693,8 @@ pub struct RecognizeTradeMarkCertificationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeTradeMarkCertificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeTradeMarkCertificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10710,8 +10710,8 @@ pub struct RecognizeFoodProduceLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeFoodProduceLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeFoodProduceLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10727,8 +10727,8 @@ pub struct RecognizeFoodManageLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeFoodManageLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeFoodManageLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10744,8 +10744,8 @@ pub struct RecognizeMedicalDeviceManageLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceManageLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeMedicalDeviceManageLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10761,8 +10761,8 @@ pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeMedicalDeviceProduceLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeMedicalDeviceProduceLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10778,8 +10778,8 @@ pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCtwoMedicalDeviceManageLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCtwoMedicalDeviceManageLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10795,8 +10795,8 @@ pub struct RecognizeCosmeticProduceLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCosmeticProduceLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCosmeticProduceLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10812,8 +10812,8 @@ pub struct RecognizeInternationalBusinessLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeInternationalBusinessLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeInternationalBusinessLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10829,8 +10829,8 @@ pub struct RecognizeVehicleLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeVehicleLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeVehicleLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10846,8 +10846,8 @@ pub struct RecognizeDrivingLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeDrivingLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeDrivingLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10863,8 +10863,8 @@ pub struct RecognizeWaybillResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeWaybillResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeWaybillResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10880,8 +10880,8 @@ pub struct RecognizeCarNumberResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCarNumberResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCarNumberResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10897,8 +10897,8 @@ pub struct RecognizeCarVinCodeResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCarVinCodeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCarVinCodeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10914,8 +10914,8 @@ pub struct RecognizeVehicleRegistrationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeVehicleRegistrationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeVehicleRegistrationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10931,8 +10931,8 @@ pub struct RecognizeVehicleCertificationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeVehicleCertificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeVehicleCertificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10948,8 +10948,8 @@ pub struct RecognizeEduFormulaResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduFormulaResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduFormulaResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10965,8 +10965,8 @@ pub struct RecognizeEduOralCalculationResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduOralCalculationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduOralCalculationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10982,8 +10982,8 @@ pub struct RecognizeEduPaperOcrResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduPaperOcrResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduPaperOcrResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -10999,8 +10999,8 @@ pub struct RecognizeEduPaperCutResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduPaperCutResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduPaperCutResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11016,8 +11016,8 @@ pub struct RecognizeEduQuestionOcrResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduQuestionOcrResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduQuestionOcrResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11033,8 +11033,8 @@ pub struct RecognizeEduPaperStructedResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEduPaperStructedResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEduPaperStructedResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11050,8 +11050,8 @@ pub struct RecognizeMultiLanguageResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeMultiLanguageResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeMultiLanguageResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11067,8 +11067,8 @@ pub struct RecognizeEnglishResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeEnglishResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeEnglishResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11084,8 +11084,8 @@ pub struct RecognizeThaiResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeThaiResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeThaiResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11101,8 +11101,8 @@ pub struct RecognizeJanpaneseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeJanpaneseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeJanpaneseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11118,8 +11118,8 @@ pub struct RecognizeKoreanResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeKoreanResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeKoreanResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11135,8 +11135,8 @@ pub struct RecognizeLatinResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeLatinResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeLatinResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11152,8 +11152,8 @@ pub struct RecognizeRussianResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeRussianResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeRussianResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11169,8 +11169,8 @@ pub struct RecognizeCovidTestReportResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for RecognizeCovidTestReportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RecognizeCovidTestReportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11186,8 +11186,8 @@ pub struct VerifyBusinessLicenseResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for VerifyBusinessLicenseResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for VerifyBusinessLicenseResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -11203,8 +11203,8 @@ pub struct VerifyVATInvoiceResponse {
     pub data: String,
 }
 
-impl AsRef<crate::CodeMessage> for VerifyVATInvoiceResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for VerifyVATInvoiceResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }

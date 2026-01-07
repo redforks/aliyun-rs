@@ -8723,8 +8723,8 @@ pub struct SubmitSmsQualificationResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for SubmitSmsQualificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SubmitSmsQualificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8744,8 +8744,8 @@ pub struct QuerySmsQualificationRecordResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsQualificationRecordResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsQualificationRecordResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8765,8 +8765,8 @@ pub struct QuerySingleSmsQualificationResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySingleSmsQualificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySingleSmsQualificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8786,8 +8786,8 @@ pub struct UpdateSmsQualificationResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for UpdateSmsQualificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UpdateSmsQualificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8807,8 +8807,8 @@ pub struct DeleteSmsQualificationResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSmsQualificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSmsQualificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8828,8 +8828,8 @@ pub struct RequiredPhoneCodeResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for RequiredPhoneCodeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for RequiredPhoneCodeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8849,8 +8849,8 @@ pub struct ValidPhoneCodeResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for ValidPhoneCodeResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ValidPhoneCodeResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8870,8 +8870,8 @@ pub struct CreateSmsAuthorizationLetterResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSmsAuthorizationLetterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSmsAuthorizationLetterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8891,8 +8891,8 @@ pub struct QuerySmsAuthorizationLetterResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsAuthorizationLetterResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsAuthorizationLetterResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8910,8 +8910,8 @@ pub struct CreateSmsSignResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8963,8 +8963,8 @@ pub struct GetSmsSignResponse {
     pub app_icp_record_id: i64,
 }
 
-impl AsRef<crate::CodeMessage> for GetSmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetSmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -8986,8 +8986,8 @@ pub struct QuerySmsSignListResponse {
     pub page_size: i32,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsSignListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsSignListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9005,8 +9005,8 @@ pub struct UpdateSmsSignResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UpdateSmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UpdateSmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9022,8 +9022,8 @@ pub struct DeleteSmsSignResponse {
     pub sign_name: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9043,8 +9043,8 @@ pub struct ChangeSignatureQualificationResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for ChangeSignatureQualificationResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ChangeSignatureQualificationResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9060,8 +9060,8 @@ pub struct AddSmsSignResponse {
     pub sign_name: String,
 }
 
-impl AsRef<crate::CodeMessage> for AddSmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AddSmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9077,8 +9077,8 @@ pub struct ModifySmsSignResponse {
     pub sign_name: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9100,8 +9100,8 @@ pub struct QuerySmsSignResponse {
     pub sign_name: String,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsSignResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsSignResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9121,8 +9121,8 @@ pub struct CreateSmsTrademarkResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSmsTrademarkResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSmsTrademarkResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9142,8 +9142,8 @@ pub struct QuerySmsTrademarkResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsTrademarkResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsTrademarkResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9163,8 +9163,8 @@ pub struct CreateSmsAppIcpRecordResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSmsAppIcpRecordResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSmsAppIcpRecordResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9184,8 +9184,8 @@ pub struct QuerySmsAppIcpRecordResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsAppIcpRecordResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsAppIcpRecordResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9205,8 +9205,8 @@ pub struct CreateSmsTemplateResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for CreateSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9254,8 +9254,8 @@ pub struct GetSmsTemplateResponse {
     pub vendor_audit_status: crate::OpenObject,
 }
 
-impl AsRef<crate::CodeMessage> for GetSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9277,8 +9277,8 @@ pub struct QuerySmsTemplateListResponse {
     pub page_size: i32,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsTemplateListResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsTemplateListResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9298,8 +9298,8 @@ pub struct UpdateSmsTemplateResponse {
     pub order_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UpdateSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UpdateSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9315,8 +9315,8 @@ pub struct DeleteSmsTemplateResponse {
     pub template_code: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9332,8 +9332,8 @@ pub struct AddSmsTemplateResponse {
     pub template_code: String,
 }
 
-impl AsRef<crate::CodeMessage> for AddSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AddSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9349,8 +9349,8 @@ pub struct ModifySmsTemplateResponse {
     pub template_code: String,
 }
 
-impl AsRef<crate::CodeMessage> for ModifySmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ModifySmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9378,8 +9378,8 @@ pub struct QuerySmsTemplateResponse {
     pub reason: String,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9395,8 +9395,8 @@ pub struct SendSmsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for SendSmsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SendSmsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9412,8 +9412,8 @@ pub struct SendBatchSmsResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for SendBatchSmsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SendBatchSmsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9431,8 +9431,8 @@ pub struct QuerySendDetailsResponse {
     pub sms_send_detail_dtos: DetailDTOs,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySendDetailsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySendDetailsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9448,8 +9448,8 @@ pub struct QuerySendStatisticsResponse {
     pub data: StatisticsResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for QuerySendStatisticsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QuerySendStatisticsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9467,8 +9467,8 @@ pub struct GetOSSInfoForCardTemplateResponse {
     pub data: ResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for GetOSSInfoForCardTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetOSSInfoForCardTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9486,8 +9486,8 @@ pub struct GetMediaResourceIdResponse {
     pub data: IdResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for GetMediaResourceIdResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetMediaResourceIdResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9505,8 +9505,8 @@ pub struct CreateCardSmsTemplateResponse {
     pub data: CreateCardSmsTemplateResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for CreateCardSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CreateCardSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9524,8 +9524,8 @@ pub struct QueryCardSmsTemplateResponse {
     pub data: QueryCardSmsTemplateResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QueryCardSmsTemplateResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9543,8 +9543,8 @@ pub struct CheckMobilesCardSupportResponse {
     pub data: CheckMobilesCardSupportResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for CheckMobilesCardSupportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for CheckMobilesCardSupportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9562,8 +9562,8 @@ pub struct QueryMobilesCardSupportResponse {
     pub data: QueryMobilesCardSupportResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for QueryMobilesCardSupportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QueryMobilesCardSupportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9581,8 +9581,8 @@ pub struct GetCardSmsLinkResponse {
     pub data: LinkResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for GetCardSmsLinkResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetCardSmsLinkResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9600,8 +9600,8 @@ pub struct GetCardSmsDetailsResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for GetCardSmsDetailsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetCardSmsDetailsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9619,8 +9619,8 @@ pub struct QueryCardSmsTemplateReportResponse {
     pub data: ReportResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for QueryCardSmsTemplateReportResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QueryCardSmsTemplateReportResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9638,8 +9638,8 @@ pub struct SendCardSmsResponse {
     pub data: SendCardSmsResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for SendCardSmsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SendCardSmsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9657,8 +9657,8 @@ pub struct SendBatchCardSmsResponse {
     pub data: BatchCardSmsResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for SendBatchCardSmsResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SendBatchCardSmsResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9678,8 +9678,8 @@ pub struct GetQualificationOssInfoResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for GetQualificationOssInfoResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetQualificationOssInfoResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9697,8 +9697,8 @@ pub struct GetOSSInfoForUploadFileResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for GetOSSInfoForUploadFileResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetOSSInfoForUploadFileResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9718,8 +9718,8 @@ pub struct GetSmsOcrOssInfoResponse {
     pub success: bool,
 }
 
-impl AsRef<crate::CodeMessage> for GetSmsOcrOssInfoResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for GetSmsOcrOssInfoResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9733,8 +9733,8 @@ pub struct SmsConversionIntlResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for SmsConversionIntlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for SmsConversionIntlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9748,8 +9748,8 @@ pub struct ConversionDataIntlResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for ConversionDataIntlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ConversionDataIntlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9765,8 +9765,8 @@ pub struct AddShortUrlResponse {
     pub data: AddShortUrlResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for AddShortUrlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for AddShortUrlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9780,8 +9780,8 @@ pub struct DeleteShortUrlResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for DeleteShortUrlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for DeleteShortUrlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9797,8 +9797,8 @@ pub struct QueryShortUrlResponse {
     pub data: QueryShortUrlResponseData,
 }
 
-impl AsRef<crate::CodeMessage> for QueryShortUrlResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for QueryShortUrlResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9816,8 +9816,8 @@ pub struct ListTagResourcesResponse {
     pub tag_resources: ResponseTagResources,
 }
 
-impl AsRef<crate::CodeMessage> for ListTagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for ListTagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9833,8 +9833,8 @@ pub struct TagResourcesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for TagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for TagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }
@@ -9850,8 +9850,8 @@ pub struct UntagResourcesResponse {
     pub request_id: String,
 }
 
-impl AsRef<crate::CodeMessage> for UntagResourcesResponse {
-    fn as_ref(&self) -> &crate::CodeMessage {
+impl crate::ToCodeMessage for UntagResourcesResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
 }

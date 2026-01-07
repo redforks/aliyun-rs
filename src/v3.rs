@@ -9,7 +9,7 @@ use std::{borrow::Cow, collections::BTreeMap};
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{IntoBody as _, QueryValue, Result};
+use crate::{IntoBody as _, QueryValue, Result, ToCodeMessage};
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
@@ -216,7 +216,7 @@ where
             crate::ResponseContentType::Xml => quick_xml::de::from_str::<R::Response>(&resp_text)
                 .context("Decode response as XML")?,
         };
-        resp.as_ref().check()?;
+        resp.to_code_message().check()?;
         resp
     } else {
         // Try JSON first for error responses, then XML
