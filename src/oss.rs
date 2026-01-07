@@ -108,8 +108,9 @@ impl Connection {
     fn call<R: crate::Request + sealed::Bound>(
         &self,
         req: R,
-    ) -> impl std::future::Future<Output = crate::Result<<R as crate::Request>::Response>> + Send
-    {
+    ) -> impl std::future::Future<
+        Output = crate::Result<<R::ResponseWrap as crate::IntoResponse>::Response>,
+    > + Send {
         self.0.call(req)
     }
     ///
@@ -5119,7 +5120,7 @@ impl crate::Request for ListBuckets {
 
     type Body = ();
 
-    type Response = ListBucketsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListBucketsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -5188,7 +5189,7 @@ impl crate::Request for DescribeRegions {
 
     type Body = ();
 
-    type Response = DescribeRegionsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DescribeRegionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5227,7 +5228,7 @@ impl crate::Request for GetBucketStat {
 
     type Body = ();
 
-    type Response = GetBucketStatResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketStatResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5290,7 +5291,7 @@ impl crate::Request for PutBucket {
 
     type Body = crate::XmlBody<PutBucketbody>;
 
-    type Response = PutBucketResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5343,7 +5344,7 @@ impl crate::Request for DeleteBucket {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5411,7 +5412,7 @@ impl crate::Request for ListObjects {
 
     type Body = ();
 
-    type Response = ListObjectsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListObjectsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -5514,7 +5515,7 @@ impl crate::Request for ListObjectsV2 {
 
     type Body = ();
 
-    type Response = ListObjectsV2Response;
+    type ResponseWrap = crate::XmlResponseWrap<ListObjectsV2Response>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -5577,7 +5578,7 @@ impl crate::Request for GetBucketInfo {
 
     type Body = ();
 
-    type Response = GetBucketInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5610,7 +5611,7 @@ impl crate::Request for GetBucketLocation {
 
     type Body = ();
 
-    type Response = GetBucketLocationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketLocationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5657,7 +5658,7 @@ impl crate::Request for ListAccessPoints {
 
     type Body = ();
 
-    type Response = ListAccessPointsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListAccessPointsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -5705,7 +5706,7 @@ impl crate::Request for GetAccessPoint {
 
     type Body = ();
 
-    type Response = GetAccessPointResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetAccessPointResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5748,7 +5749,7 @@ impl crate::Request for GetAccessPointPolicy {
 
     type Body = ();
 
-    type Response = GetAccessPointPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetAccessPointPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5796,7 +5797,7 @@ impl crate::Request for DeleteAccessPointPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAccessPointPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteAccessPointPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5847,7 +5848,7 @@ impl crate::Request for PutAccessPointPolicy {
 
     type Body = crate::OctetStream;
 
-    type Response = PutAccessPointPolicyResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5898,7 +5899,7 @@ impl crate::Request for DeleteAccessPoint {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAccessPointResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5943,7 +5944,7 @@ impl crate::Request for CreateAccessPoint {
 
     type Body = crate::XmlBody<AccessPointbody>;
 
-    type Response = CreateAccessPointResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CreateAccessPointResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5982,7 +5983,7 @@ impl crate::Request for InitiateBucketWorm {
 
     type Body = crate::XmlBody<InitiateBucketWormbody>;
 
-    type Response = InitiateBucketWormResponse;
+    type ResponseWrap = crate::XmlResponseWrap<InitiateBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6022,7 +6023,7 @@ impl crate::Request for AbortBucketWorm {
 
     type Body = crate::Form<Self>;
 
-    type Response = AbortBucketWormResponse;
+    type ResponseWrap = crate::XmlResponseWrap<AbortBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6066,7 +6067,7 @@ impl crate::Request for CompleteBucketWorm {
 
     type Body = crate::Form<Self>;
 
-    type Response = CompleteBucketWormResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CompleteBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6115,7 +6116,7 @@ impl crate::Request for ExtendBucketWorm {
 
     type Body = crate::XmlBody<ExtendBucketWormbody>;
 
-    type Response = ExtendBucketWormResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ExtendBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6153,7 +6154,7 @@ impl crate::Request for GetBucketWorm {
 
     type Body = ();
 
-    type Response = GetBucketWormResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6201,7 +6202,7 @@ impl crate::Request for PutBucketAcl {
 
     type Body = crate::Form<Self>;
 
-    type Response = PutBucketAclResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6239,7 +6240,7 @@ impl crate::Request for GetBucketAcl {
 
     type Body = ();
 
-    type Response = GetBucketAclResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6286,7 +6287,7 @@ impl crate::Request for PutBucketLifecycle {
 
     type Body = crate::XmlBody<BucketLifecyclebody>;
 
-    type Response = PutBucketLifecycleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketLifecycleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6327,7 +6328,7 @@ impl crate::Request for GetBucketLifecycle {
 
     type Body = ();
 
-    type Response = GetBucketLifecycleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketLifecycleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6365,7 +6366,7 @@ impl crate::Request for DeleteBucketLifecycle {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketLifecycleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketLifecycleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6404,7 +6405,7 @@ impl crate::Request for PutBucketTransferAcceleration {
 
     type Body = crate::XmlBody<TransferAccelerationbody>;
 
-    type Response = PutBucketTransferAccelerationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketTransferAccelerationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6439,7 +6440,7 @@ impl crate::Request for GetBucketTransferAcceleration {
 
     type Body = ();
 
-    type Response = GetBucketTransferAccelerationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketTransferAccelerationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6476,7 +6477,7 @@ impl crate::Request for PutBucketVersioning {
 
     type Body = crate::XmlBody<BucketVersioningbody>;
 
-    type Response = PutBucketVersioningResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketVersioningResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6511,7 +6512,7 @@ impl crate::Request for GetBucketVersioning {
 
     type Body = ();
 
-    type Response = GetBucketVersioningResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketVersioningResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6596,7 +6597,7 @@ impl crate::Request for ListObjectVersions {
 
     type Body = ();
 
-    type Response = ListObjectVersionsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListObjectVersionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -6658,7 +6659,7 @@ impl crate::Request for PutBucketPolicy {
 
     type Body = crate::OctetStream;
 
-    type Response = PutBucketPolicyResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6692,7 +6693,7 @@ impl crate::Request for GetBucketPolicy {
 
     type Body = ();
 
-    type Response = GetBucketPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetBucketPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6730,7 +6731,7 @@ impl crate::Request for DeleteBucketPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketPolicyResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6765,7 +6766,7 @@ impl crate::Request for GetBucketPolicyStatus {
 
     type Body = ();
 
-    type Response = GetBucketPolicyStatusResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketPolicyStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6802,7 +6803,7 @@ impl crate::Request for PutBucketRtc {
 
     type Body = crate::XmlBody<BucketRtcbody>;
 
-    type Response = PutBucketRtcResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketRtcResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6841,7 +6842,7 @@ impl crate::Request for PutBucketReplication {
 
     type Body = crate::XmlBody<PutBucketReplicationbody>;
 
-    type Response = PutBucketReplicationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6876,7 +6877,7 @@ impl crate::Request for GetBucketReplication {
 
     type Body = ();
 
-    type Response = GetBucketReplicationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6909,7 +6910,7 @@ impl crate::Request for GetBucketReplicationLocation {
 
     type Body = ();
 
-    type Response = GetBucketReplicationLocationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationLocationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6947,7 +6948,7 @@ impl crate::Request for GetBucketReplicationProgress {
 
     type Body = ();
 
-    type Response = GetBucketReplicationProgressResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationProgressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6987,7 +6988,7 @@ impl crate::Request for DeleteBucketReplication {
 
     type Body = crate::XmlBody<DeleteBucketReplicationbody>;
 
-    type Response = DeleteBucketReplicationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7031,7 +7032,7 @@ impl crate::Request for PutBucketInventory {
 
     type Body = crate::XmlBody<BucketInventorybody>;
 
-    type Response = PutBucketInventoryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7074,7 +7075,7 @@ impl crate::Request for GetBucketInventory {
 
     type Body = ();
 
-    type Response = GetBucketInventoryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7116,7 +7117,7 @@ impl crate::Request for ListBucketInventory {
 
     type Body = ();
 
-    type Response = ListBucketInventoryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7165,7 +7166,7 @@ impl crate::Request for DeleteBucketInventory {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketInventoryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7207,7 +7208,7 @@ impl crate::Request for PutBucketLogging {
 
     type Body = crate::XmlBody<BucketLoggingbody>;
 
-    type Response = PutBucketLoggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketLoggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7242,7 +7243,7 @@ impl crate::Request for GetBucketLogging {
 
     type Body = ();
 
-    type Response = GetBucketLoggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketLoggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7280,7 +7281,7 @@ impl crate::Request for DeleteBucketLogging {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketLoggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketLoggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7319,7 +7320,7 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
 
     type Body = crate::XmlBody<FieldsConfigbody>;
 
-    type Response = PutUserDefinedLogFieldsConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutUserDefinedLogFieldsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7354,7 +7355,7 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
 
     type Body = ();
 
-    type Response = GetUserDefinedLogFieldsConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetUserDefinedLogFieldsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7392,7 +7393,7 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteUserDefinedLogFieldsConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteUserDefinedLogFieldsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7427,7 +7428,7 @@ impl crate::Request for GetBucketWebsite {
 
     type Body = ();
 
-    type Response = GetBucketWebsiteResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketWebsiteResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7464,7 +7465,7 @@ impl crate::Request for PutBucketWebsite {
 
     type Body = crate::XmlBody<BucketWebsitebody>;
 
-    type Response = PutBucketWebsiteResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketWebsiteResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7504,7 +7505,7 @@ impl crate::Request for DeleteBucketWebsite {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketWebsiteResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketWebsiteResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7543,7 +7544,7 @@ impl crate::Request for PutBucketReferer {
 
     type Body = crate::XmlBody<BucketRefererbody>;
 
-    type Response = PutBucketRefererResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketRefererResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7578,7 +7579,7 @@ impl crate::Request for GetBucketReferer {
 
     type Body = ();
 
-    type Response = GetBucketRefererResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketRefererResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7615,7 +7616,7 @@ impl crate::Request for PutBucketTags {
 
     type Body = crate::XmlBody<BucketTagsbody>;
 
-    type Response = PutBucketTagsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7650,7 +7651,7 @@ impl crate::Request for GetBucketTags {
 
     type Body = ();
 
-    type Response = GetBucketTagsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7688,7 +7689,7 @@ impl crate::Request for DeleteBucketTags {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketTagsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7733,7 +7734,7 @@ impl crate::Request for ListUserDataRedundancyTransition {
 
     type Body = ();
 
-    type Response = ListUserDataRedundancyTransitionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListUserDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7776,7 +7777,7 @@ impl crate::Request for ListBucketDataRedundancyTransition {
 
     type Body = ();
 
-    type Response = ListBucketDataRedundancyTransitionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7814,7 +7815,7 @@ impl crate::Request for GetBucketDataRedundancyTransition {
 
     type Body = ();
 
-    type Response = GetBucketDataRedundancyTransitionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7863,7 +7864,7 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateBucketDataRedundancyTransitionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CreateBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7914,7 +7915,7 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketDataRedundancyTransitionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7959,7 +7960,7 @@ impl crate::Request for PutBucketEncryption {
 
     type Body = crate::XmlBody<BucketEncryptionbody>;
 
-    type Response = PutBucketEncryptionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketEncryptionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7994,7 +7995,7 @@ impl crate::Request for GetBucketEncryption {
 
     type Body = ();
 
-    type Response = GetBucketEncryptionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketEncryptionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8032,7 +8033,7 @@ impl crate::Request for DeleteBucketEncryption {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketEncryptionResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketEncryptionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8071,7 +8072,7 @@ impl crate::Request for PutBucketRequestPayment {
 
     type Body = crate::XmlBody<RequestPaymentbody>;
 
-    type Response = PutBucketRequestPaymentResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketRequestPaymentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8106,7 +8107,7 @@ impl crate::Request for GetBucketRequestPayment {
 
     type Body = ();
 
-    type Response = GetBucketRequestPaymentResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketRequestPaymentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8143,7 +8144,7 @@ impl crate::Request for PutBucketCors {
 
     type Body = crate::XmlBody<BucketCorsbody>;
 
-    type Response = PutBucketCorsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketCorsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8178,7 +8179,7 @@ impl crate::Request for GetBucketCors {
 
     type Body = ();
 
-    type Response = GetBucketCorsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketCorsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8216,7 +8217,7 @@ impl crate::Request for DeleteBucketCors {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketCorsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketCorsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8274,7 +8275,7 @@ impl crate::Request for OptionObject {
 
     type Body = ();
 
-    type Response = OptionObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<OptionObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8329,7 +8330,7 @@ impl crate::Request for PutBucketAccessMonitor {
 
     type Body = crate::XmlBody<AccessMonitorbody>;
 
-    type Response = PutBucketAccessMonitorResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketAccessMonitorResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8364,7 +8365,7 @@ impl crate::Request for GetBucketAccessMonitor {
 
     type Body = ();
 
-    type Response = GetBucketAccessMonitorResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketAccessMonitorResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8397,7 +8398,7 @@ impl crate::Request for GetMetaQueryStatus {
 
     type Body = ();
 
-    type Response = GetMetaQueryStatusResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetMetaQueryStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8435,7 +8436,7 @@ impl crate::Request for CloseMetaQuery {
 
     type Body = crate::Form<Self>;
 
-    type Response = CloseMetaQueryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CloseMetaQueryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8482,7 +8483,7 @@ impl crate::Request for DoMetaQuery {
 
     type Body = crate::XmlBody<DoMetaQuerybody>;
 
-    type Response = DoMetaQueryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DoMetaQueryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8541,7 +8542,7 @@ impl crate::Request for OpenMetaQuery {
 
     type Body = crate::XmlBody<OpenMetaQuerybody>;
 
-    type Response = OpenMetaQueryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<OpenMetaQueryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -8602,7 +8603,7 @@ impl crate::Request for UpdateUserAntiDDosInfo {
 
     type Body = crate::Form<Self>;
 
-    type Response = UpdateUserAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<UpdateUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8668,7 +8669,7 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
 
     type Body = crate::XmlBody<UpdateBucketAntiDDosInfobody>;
 
-    type Response = UpdateBucketAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<UpdateBucketAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8729,7 +8730,7 @@ impl crate::Request for ListBucketAntiDDosInfo {
 
     type Body = ();
 
-    type Response = ListBucketAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListBucketAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -8777,7 +8778,7 @@ impl crate::Request for InitUserAntiDDosInfo {
 
     type Body = crate::Form<Self>;
 
-    type Response = InitUserAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<InitUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8827,7 +8828,7 @@ impl crate::Request for InitBucketAntiDDosInfo {
 
     type Body = crate::XmlBody<InitBucketAntiDDosInfobody>;
 
-    type Response = InitBucketAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<InitBucketAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8872,7 +8873,7 @@ impl crate::Request for GetUserAntiDDosInfo {
 
     type Body = ();
 
-    type Response = GetUserAntiDDosInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8905,7 +8906,7 @@ impl crate::Request for GetBucketResourceGroup {
 
     type Body = ();
 
-    type Response = GetBucketResourceGroupResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketResourceGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8942,7 +8943,7 @@ impl crate::Request for PutBucketResourceGroup {
 
     type Body = crate::XmlBody<ResourceGroupbody>;
 
-    type Response = PutBucketResourceGroupResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketResourceGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8981,7 +8982,7 @@ impl crate::Request for PutCname {
 
     type Body = crate::XmlBody<PutCnamebody>;
 
-    type Response = PutCnameResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutCnameResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9016,7 +9017,7 @@ impl crate::Request for ListCname {
 
     type Body = ();
 
-    type Response = ListCnameResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListCnameResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9053,7 +9054,7 @@ impl crate::Request for DeleteCname {
 
     type Body = crate::XmlBody<DeleteCnamebody>;
 
-    type Response = DeleteCnameResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteCnameResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9093,7 +9094,7 @@ impl crate::Request for GetCnameToken {
 
     type Body = ();
 
-    type Response = GetCnameTokenResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetCnameTokenResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9133,7 +9134,7 @@ impl crate::Request for CreateCnameToken {
 
     type Body = crate::XmlBody<CnameTokenbody>;
 
-    type Response = CreateCnameTokenResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CreateCnameTokenResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9183,7 +9184,7 @@ impl crate::Request for PutStyle {
 
     type Body = crate::XmlBody<PutStylebody>;
 
-    type Response = PutStyleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9225,7 +9226,7 @@ impl crate::Request for ListStyle {
 
     type Body = ();
 
-    type Response = ListStyleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9263,7 +9264,7 @@ impl crate::Request for GetStyle {
 
     type Body = ();
 
-    type Response = GetStyleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9309,7 +9310,7 @@ impl crate::Request for DeleteStyle {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteStyleResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9347,7 +9348,7 @@ impl crate::Request for GetBucketHttpsConfig {
 
     type Body = ();
 
-    type Response = GetBucketHttpsConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketHttpsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9384,7 +9385,7 @@ impl crate::Request for PutBucketHttpsConfig {
 
     type Body = crate::XmlBody<HttpsConfigbody>;
 
-    type Response = PutBucketHttpsConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketHttpsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9432,7 +9433,7 @@ impl crate::Request for CreateAccessPointForObjectProcess {
 
     type Body = crate::XmlBody<PointForObjectProcessbody>;
 
-    type Response = CreateAccessPointForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CreateAccessPointForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9479,7 +9480,7 @@ impl crate::Request for GetAccessPointForObjectProcess {
 
     type Body = ();
 
-    type Response = GetAccessPointForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetAccessPointForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9532,7 +9533,7 @@ impl crate::Request for ListAccessPointsForObjectProcess {
 
     type Body = ();
 
-    type Response = ListAccessPointsForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListAccessPointsForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9586,7 +9587,7 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAccessPointForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9633,7 +9634,7 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
 
     type Body = ();
 
-    type Response = GetAccessPointConfigForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetAccessPointConfigForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9686,7 +9687,7 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
 
     type Body = crate::XmlBody<ConfigForObjectProcessbody>;
 
-    type Response = PutAccessPointConfigForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointConfigForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9737,7 +9738,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 
     type Body = crate::OctetStream;
 
-    type Response = PutAccessPointPolicyForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPolicyForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9784,7 +9785,7 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
 
     type Body = ();
 
-    type Response = GetAccessPointPolicyForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetAccessPointPolicyForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9834,7 +9835,7 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAccessPointPolicyForObjectProcessResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointPolicyForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9875,7 +9876,7 @@ impl crate::Request for GetPublicAccessBlock {
 
     type Body = ();
 
-    type Response = GetPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9912,7 +9913,7 @@ impl crate::Request for PutPublicAccessBlock {
 
     type Body = crate::XmlBody<PutPublicAccessBlockbody>;
 
-    type Response = PutPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9952,7 +9953,7 @@ impl crate::Request for DeletePublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeletePublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeletePublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9987,7 +9988,7 @@ impl crate::Request for GetBucketPublicAccessBlock {
 
     type Body = ();
 
-    type Response = GetBucketPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10024,7 +10025,7 @@ impl crate::Request for PutBucketPublicAccessBlock {
 
     type Body = crate::XmlBody<BucketPublicAccessBlockbody>;
 
-    type Response = PutBucketPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10064,7 +10065,7 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10105,7 +10106,7 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
 
     type Body = ();
 
-    type Response = GetAccessPointPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetAccessPointPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10153,7 +10154,7 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
 
     type Body = crate::XmlBody<PointPublicAccessBlockbody>;
 
-    type Response = PutAccessPointPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10205,7 +10206,7 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAccessPointPublicAccessBlockResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10246,7 +10247,7 @@ impl crate::Request for GetBucketArchiveDirectRead {
 
     type Body = ();
 
-    type Response = GetBucketArchiveDirectReadResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketArchiveDirectReadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10283,7 +10284,7 @@ impl crate::Request for PutBucketArchiveDirectRead {
 
     type Body = crate::XmlBody<DirectReadbody>;
 
-    type Response = PutBucketArchiveDirectReadResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketArchiveDirectReadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10322,7 +10323,7 @@ impl crate::Request for PutBucketOverwriteConfig {
 
     type Body = crate::XmlBody<OverwriteConfigbody>;
 
-    type Response = PutBucketOverwriteConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketOverwriteConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10357,7 +10358,7 @@ impl crate::Request for GetBucketOverwriteConfig {
 
     type Body = ();
 
-    type Response = GetBucketOverwriteConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketOverwriteConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10395,7 +10396,7 @@ impl crate::Request for DeleteBucketOverwriteConfig {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketOverwriteConfigResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketOverwriteConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10490,7 +10491,7 @@ impl crate::Request for PutObject {
 
     type Body = crate::OctetStream;
 
-    type Response = PutObjectResponse;
+    type ResponseWrap = crate::JsonResponseWrap<PutObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10666,7 +10667,7 @@ impl crate::Request for CopyObject {
 
     type Body = crate::Form<Self>;
 
-    type Response = CopyObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CopyObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10842,7 +10843,7 @@ impl crate::Request for GetObject {
 
     type Body = ();
 
-    type Response = GetObjectResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -11009,7 +11010,7 @@ impl crate::Request for AppendObject {
 
     type Body = crate::OctetStream;
 
-    type Response = AppendObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<AppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11098,7 +11099,7 @@ impl crate::Request for SealAppendObject {
 
     type Body = crate::Form<Self>;
 
-    type Response = SealAppendObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<SealAppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11153,7 +11154,7 @@ impl crate::Request for DeleteObject {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteObjectResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11227,7 +11228,7 @@ impl crate::Request for HeadObject {
 
     type Body = ();
 
-    type Response = HeadObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<HeadObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11297,7 +11298,7 @@ impl crate::Request for GetObjectMeta {
 
     type Body = ();
 
-    type Response = GetObjectMetaResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetObjectMetaResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11353,7 +11354,7 @@ impl crate::Request for RestoreObject {
 
     type Body = crate::XmlBody<RestoreObjectbody>;
 
-    type Response = RestoreObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<RestoreObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11406,7 +11407,7 @@ impl crate::Request for CleanRestoredObject {
 
     type Body = crate::Form<Self>;
 
-    type Response = CleanRestoredObjectResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CleanRestoredObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -11456,7 +11457,7 @@ impl crate::Request for SelectObject {
 
     type Body = crate::XmlBody<SelectObjectbody>;
 
-    type Response = SelectObjectResponse;
+    type ResponseWrap = crate::JsonResponseWrap<SelectObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11510,7 +11511,7 @@ impl crate::Request for CreateSelectObjectMeta {
 
     type Body = crate::XmlBody<ObjectMetabody>;
 
-    type Response = CreateSelectObjectMetaResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CreateSelectObjectMetaResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11635,7 +11636,7 @@ impl crate::Request for InitiateMultipartUpload {
 
     type Body = crate::Form<Self>;
 
-    type Response = InitiateMultipartUploadResponse;
+    type ResponseWrap = crate::XmlResponseWrap<InitiateMultipartUploadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11746,7 +11747,7 @@ impl crate::Request for UploadPart {
 
     type Body = crate::OctetStream;
 
-    type Response = UploadPartResponse;
+    type ResponseWrap = crate::XmlResponseWrap<UploadPartResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -11831,7 +11832,7 @@ impl crate::Request for CompleteMultipartUpload {
 
     type Body = crate::XmlBody<MultipartUploadbody>;
 
-    type Response = CompleteMultipartUploadResponse;
+    type ResponseWrap = crate::XmlResponseWrap<CompleteMultipartUploadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -11945,7 +11946,7 @@ impl crate::Request for UploadPartCopy {
 
     type Body = crate::Form<Self>;
 
-    type Response = UploadPartCopyResponse;
+    type ResponseWrap = crate::XmlResponseWrap<UploadPartCopyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -12030,7 +12031,7 @@ impl crate::Request for AbortMultipartUpload {
 
     type Body = crate::Form<Self>;
 
-    type Response = AbortMultipartUploadResponse;
+    type ResponseWrap = crate::XmlResponseWrap<AbortMultipartUploadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12110,7 +12111,7 @@ impl crate::Request for ListMultipartUploads {
 
     type Body = ();
 
-    type Response = ListMultipartUploadsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListMultipartUploadsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -12198,7 +12199,7 @@ impl crate::Request for ListParts {
 
     type Body = ();
 
-    type Response = ListPartsResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListPartsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -12277,7 +12278,7 @@ impl crate::Request for PutObjectAcl {
 
     type Body = crate::Form<Self>;
 
-    type Response = PutObjectAclResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutObjectAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12334,7 +12335,7 @@ impl crate::Request for GetObjectAcl {
 
     type Body = ();
 
-    type Response = GetObjectAclResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetObjectAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12428,7 +12429,7 @@ impl crate::Request for PutSymlink {
 
     type Body = crate::Form<Self>;
 
-    type Response = PutSymlinkResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12494,7 +12495,7 @@ impl crate::Request for GetSymlink {
 
     type Body = ();
 
-    type Response = GetSymlinkResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12550,7 +12551,7 @@ impl crate::Request for PutObjectTagging {
 
     type Body = crate::XmlBody<ObjectTaggingbody>;
 
-    type Response = PutObjectTaggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12604,7 +12605,7 @@ impl crate::Request for GetObjectTagging {
 
     type Body = ();
 
-    type Response = GetObjectTaggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12661,7 +12662,7 @@ impl crate::Request for DeleteObjectTagging {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteObjectTaggingResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12715,7 +12716,7 @@ impl crate::Request for PutLiveChannel {
 
     type Body = crate::XmlBody<LiveChannelbody>;
 
-    type Response = PutLiveChannelResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutLiveChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12769,7 +12770,7 @@ impl crate::Request for ListLiveChannel {
 
     type Body = ();
 
-    type Response = ListLiveChannelResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListLiveChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -12826,7 +12827,7 @@ impl crate::Request for DeleteLiveChannel {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteLiveChannelResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteLiveChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12881,7 +12882,7 @@ impl crate::Request for PutLiveChannelStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = PutLiveChannelStatusResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutLiveChannelStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12928,7 +12929,7 @@ impl crate::Request for GetLiveChannelInfo {
 
     type Body = ();
 
-    type Response = GetLiveChannelInfoResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12970,7 +12971,7 @@ impl crate::Request for GetLiveChannelHistory {
 
     type Body = ();
 
-    type Response = GetLiveChannelHistoryResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelHistoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13012,7 +13013,7 @@ impl crate::Request for GetLiveChannelStat {
 
     type Body = ();
 
-    type Response = GetLiveChannelStatResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelStatResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13064,7 +13065,7 @@ impl crate::Request for GetVodPlaylist {
 
     type Body = ();
 
-    type Response = GetVodPlaylistResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetVodPlaylistResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -13131,7 +13132,7 @@ impl crate::Request for PostVodPlaylist {
 
     type Body = crate::Form<Self>;
 
-    type Response = PostVodPlaylistResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PostVodPlaylistResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -13181,7 +13182,7 @@ impl crate::Request for PutChannel {
 
     type Body = crate::XmlBody<PutChannelbody>;
 
-    type Response = PutChannelResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13220,7 +13221,7 @@ impl crate::Request for PutBucketHash {
 
     type Body = crate::XmlBody<BucketHashbody>;
 
-    type Response = PutBucketHashResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketHashResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13259,7 +13260,7 @@ impl crate::Request for PutBucketCommonHeader {
 
     type Body = crate::XmlBody<CommonHeaderbody>;
 
-    type Response = PutBucketCommonHeaderResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketCommonHeaderResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13299,7 +13300,7 @@ impl crate::Request for DeleteBucketCommonHeader {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBucketCommonHeaderResponse;
+    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketCommonHeaderResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13338,7 +13339,7 @@ impl crate::Request for PutProcessConfiguration {
 
     type Body = crate::XmlBody<ProcessConfigurationbody>;
 
-    type Response = PutProcessConfigurationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutProcessConfigurationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13373,7 +13374,7 @@ impl crate::Request for GetBucketEventNotification {
 
     type Body = ();
 
-    type Response = GetBucketEventNotificationResponse;
+    type ResponseWrap = crate::XmlResponseWrap<GetBucketEventNotificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13414,7 +13415,7 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
 
     type Body = crate::XmlBody<PrefetchJobbody>;
 
-    type Response = PutDataLakeCachePrefetchJobResponse;
+    type ResponseWrap = crate::XmlResponseWrap<PutDataLakeCachePrefetchJobResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -13464,7 +13465,7 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
 
     type Body = crate::Form<Self>;
 
-    type Response = StartDataLakeCachePrefetchJobResponse;
+    type ResponseWrap = crate::XmlResponseWrap<StartDataLakeCachePrefetchJobResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -13505,7 +13506,7 @@ impl crate::Request for ListDataLakeStorageTransferJob {
 
     type Body = ();
 
-    type Response = ListDataLakeStorageTransferJobResponse;
+    type ResponseWrap = crate::XmlResponseWrap<ListDataLakeStorageTransferJobResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()

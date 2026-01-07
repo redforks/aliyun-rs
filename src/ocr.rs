@@ -44,8 +44,9 @@ impl Connection {
     fn call<R: crate::Request + sealed::Bound>(
         &self,
         req: R,
-    ) -> impl std::future::Future<Output = crate::Result<<R as crate::Request>::Response>> + Send
-    {
+    ) -> impl std::future::Future<
+        Output = crate::Result<<R::ResponseWrap as crate::IntoResponse>::Response>,
+    > + Send {
         self.0.call(req)
     }
     ///
@@ -3170,7 +3171,7 @@ impl crate::Request for RecognizeAllText {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeAllTextResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeAllTextResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(16);
@@ -3304,7 +3305,7 @@ impl crate::Request for RecognizeGeneralStructure {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeGeneralStructureResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeGeneralStructureResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -3401,7 +3402,7 @@ impl crate::Request for RecognizeAdvanced {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeAdvancedResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeAdvancedResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -3511,7 +3512,7 @@ impl crate::Request for RecognizeHandwriting {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeHandwritingResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeHandwritingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -3589,7 +3590,7 @@ impl crate::Request for RecognizeBasic {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBasicResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBasicResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -3646,7 +3647,7 @@ impl crate::Request for RecognizeGeneral {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeGeneralResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeGeneralResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -3720,7 +3721,7 @@ impl crate::Request for RecognizeTableOcr {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTableOcrResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTableOcrResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -3789,7 +3790,7 @@ impl crate::Request for RecognizeHealthCode {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeHealthCodeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeHealthCodeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -3885,7 +3886,7 @@ impl crate::Request for RecognizeDocumentStructure {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeDocumentStructureResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeDocumentStructureResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -3988,7 +3989,7 @@ impl crate::Request for RecognizeIdcard {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeIdcardResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeIdcardResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -4057,7 +4058,7 @@ impl crate::Request for RecognizePassport {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizePassportResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizePassportResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4115,7 +4116,7 @@ impl crate::Request for RecognizeHousehold {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeHouseholdResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeHouseholdResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4172,7 +4173,7 @@ impl crate::Request for RecognizeEstateCertification {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEstateCertificationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEstateCertificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4225,7 +4226,7 @@ impl crate::Request for RecognizeBankCard {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBankCardResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBankCardResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4278,7 +4279,7 @@ impl crate::Request for RecognizeBirthCertification {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBirthCertificationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBirthCertificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4334,7 +4335,7 @@ impl crate::Request for RecognizeChinesePassport {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeChinesePassportResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeChinesePassportResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4396,7 +4397,7 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeExitEntryPermitToMainlandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeExitEntryPermitToMainlandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4456,7 +4457,7 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeExitEntryPermitToHKResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeExitEntryPermitToHKResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4513,7 +4514,7 @@ impl crate::Request for RecognizeHKIdcard {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeHKIdcardResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeHKIdcardResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4566,7 +4567,7 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeSocialSecurityCardVersionIIResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeSocialSecurityCardVersionIIResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4623,7 +4624,7 @@ impl crate::Request for RecognizeInternationalIdcard {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeInternationalIdcardResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeInternationalIdcardResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4690,7 +4691,7 @@ impl crate::Request for RecognizeMixedInvoices {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeMixedInvoicesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeMixedInvoicesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -4757,7 +4758,7 @@ impl crate::Request for RecognizeInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4814,7 +4815,7 @@ impl crate::Request for RecognizeCarInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCarInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCarInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4866,7 +4867,7 @@ impl crate::Request for RecognizeQuotaInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeQuotaInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeQuotaInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4919,7 +4920,7 @@ impl crate::Request for RecognizeAirItinerary {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeAirItineraryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeAirItineraryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -4972,7 +4973,7 @@ impl crate::Request for RecognizeTrainInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTrainInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTrainInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5025,7 +5026,7 @@ impl crate::Request for RecognizeTaxiInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTaxiInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTaxiInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5077,7 +5078,7 @@ impl crate::Request for RecognizeRollTicket {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeRollTicketResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeRollTicketResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5130,7 +5131,7 @@ impl crate::Request for RecognizeBankAcceptance {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBankAcceptanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBankAcceptanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5182,7 +5183,7 @@ impl crate::Request for RecognizeBusShipTicket {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBusShipTicketResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBusShipTicketResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5235,7 +5236,7 @@ impl crate::Request for RecognizeNonTaxInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeNonTaxInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeNonTaxInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5287,7 +5288,7 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCommonPrintedInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCommonPrintedInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5339,7 +5340,7 @@ impl crate::Request for RecognizeHotelConsume {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeHotelConsumeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeHotelConsumeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5392,7 +5393,7 @@ impl crate::Request for RecognizePaymentRecord {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizePaymentRecordResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizePaymentRecordResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5455,7 +5456,7 @@ impl crate::Request for RecognizePurchaseRecord {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizePurchaseRecordResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizePurchaseRecordResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -5511,7 +5512,7 @@ impl crate::Request for RecognizeRideHailingItinerary {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeRideHailingItineraryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeRideHailingItineraryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5563,7 +5564,7 @@ impl crate::Request for RecognizeShoppingReceipt {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeShoppingReceiptResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeShoppingReceiptResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5615,7 +5616,7 @@ impl crate::Request for RecognizeSocialSecurityCard {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeSocialSecurityCardResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeSocialSecurityCardResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5667,7 +5668,7 @@ impl crate::Request for RecognizeTollInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTollInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTollInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5720,7 +5721,7 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTaxClearanceCertificateResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTaxClearanceCertificateResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5772,7 +5773,7 @@ impl crate::Request for RecognizeUsedCarInvoice {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeUsedCarInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeUsedCarInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5825,7 +5826,7 @@ impl crate::Request for RecognizeBusinessLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBusinessLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBusinessLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5878,7 +5879,7 @@ impl crate::Request for RecognizeBankAccountLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeBankAccountLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeBankAccountLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5930,7 +5931,7 @@ impl crate::Request for RecognizeTradeMarkCertification {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeTradeMarkCertificationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeTradeMarkCertificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5983,7 +5984,7 @@ impl crate::Request for RecognizeFoodProduceLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeFoodProduceLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeFoodProduceLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6036,7 +6037,7 @@ impl crate::Request for RecognizeFoodManageLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeFoodManageLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeFoodManageLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6088,7 +6089,7 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeMedicalDeviceManageLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeMedicalDeviceManageLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6140,7 +6141,7 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeMedicalDeviceProduceLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeMedicalDeviceProduceLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6193,7 +6194,7 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCtwoMedicalDeviceManageLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCtwoMedicalDeviceManageLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6245,7 +6246,7 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCosmeticProduceLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCosmeticProduceLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6300,7 +6301,7 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeInternationalBusinessLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeInternationalBusinessLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -6354,7 +6355,7 @@ impl crate::Request for RecognizeVehicleLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeVehicleLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeVehicleLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6407,7 +6408,7 @@ impl crate::Request for RecognizeDrivingLicense {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeDrivingLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeDrivingLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6460,7 +6461,7 @@ impl crate::Request for RecognizeWaybill {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeWaybillResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeWaybillResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6513,7 +6514,7 @@ impl crate::Request for RecognizeCarNumber {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCarNumberResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCarNumberResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6566,7 +6567,7 @@ impl crate::Request for RecognizeCarVinCode {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCarVinCodeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCarVinCodeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6619,7 +6620,7 @@ impl crate::Request for RecognizeVehicleRegistration {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeVehicleRegistrationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeVehicleRegistrationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6672,7 +6673,7 @@ impl crate::Request for RecognizeVehicleCertification {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeVehicleCertificationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeVehicleCertificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6725,7 +6726,7 @@ impl crate::Request for RecognizeEduFormula {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduFormulaResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduFormulaResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6778,7 +6779,7 @@ impl crate::Request for RecognizeEduOralCalculation {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduOralCalculationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduOralCalculationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6845,7 +6846,7 @@ impl crate::Request for RecognizeEduPaperOcr {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduPaperOcrResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduPaperOcrResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -6925,7 +6926,7 @@ impl crate::Request for RecognizeEduPaperCut {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduPaperCutResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduPaperCutResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -6993,7 +6994,7 @@ impl crate::Request for RecognizeEduQuestionOcr {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduQuestionOcrResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduQuestionOcrResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7066,7 +7067,7 @@ impl crate::Request for RecognizeEduPaperStructed {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEduPaperStructedResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEduPaperStructedResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7154,7 +7155,7 @@ impl crate::Request for RecognizeMultiLanguage {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeMultiLanguageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeMultiLanguageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -7234,7 +7235,7 @@ impl crate::Request for RecognizeEnglish {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeEnglishResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeEnglishResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -7306,7 +7307,7 @@ impl crate::Request for RecognizeThai {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeThaiResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeThaiResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7382,7 +7383,7 @@ impl crate::Request for RecognizeJanpanese {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeJanpaneseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeJanpaneseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7458,7 +7459,7 @@ impl crate::Request for RecognizeKorean {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeKoreanResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeKoreanResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7534,7 +7535,7 @@ impl crate::Request for RecognizeLatin {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeLatinResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeLatinResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7610,7 +7611,7 @@ impl crate::Request for RecognizeRussian {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeRussianResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeRussianResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -7680,7 +7681,7 @@ impl crate::Request for RecognizeCovidTestReport {
 
     type Body = crate::OctetStream;
 
-    type Response = RecognizeCovidTestReportResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecognizeCovidTestReportResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7743,7 +7744,7 @@ impl crate::Request for VerifyBusinessLicense {
 
     type Body = crate::Form<Self>;
 
-    type Response = VerifyBusinessLicenseResponse;
+    type ResponseWrap = crate::JsonResponseWrap<VerifyBusinessLicenseResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -7837,7 +7838,7 @@ impl crate::Request for VerifyVATInvoice {
 
     type Body = crate::Form<Self>;
 
-    type Response = VerifyVATInvoiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<VerifyVATInvoiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);

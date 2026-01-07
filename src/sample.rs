@@ -1,7 +1,9 @@
 #![allow(dead_code)]
 use std::borrow::Cow;
 
-use crate::{CodeMessage, QueryValue, Request, Result, v3::AccessKeySecret};
+use crate::{
+    CodeMessage, IntoResponse, JsonResponseWrap, QueryValue, Request, Result, v3::AccessKeySecret,
+};
 use serde::Deserialize;
 
 #[derive(Clone, Copy)]
@@ -39,7 +41,7 @@ impl Connection {
     fn call<R: Request + sealed::Bound>(
         &self,
         req: R,
-    ) -> impl Future<Output = Result<R::Response>> + Send {
+    ) -> impl Future<Output = Result<<R::ResponseWrap as IntoResponse>::Response>> + Send {
         self.0.call(req)
     }
 
@@ -88,7 +90,7 @@ impl Request for SendSms {
 
     type Body = ();
 
-    type Response = SendSmsResponse;
+    type ResponseWrap = JsonResponseWrap<SendSmsResponse>;
 
     fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);

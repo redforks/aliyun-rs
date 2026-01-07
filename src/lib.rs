@@ -525,6 +525,85 @@ trait ToCodeMessage {
     fn to_code_message(&self) -> &CodeMessage;
 }
 
+/// Trait for types that can be deserialized from raw response bytes.
+trait FromBody: Sized {
+    fn from_body(bytes: Vec<u8>) -> Result<Self>;
+}
+
+/// JSON response wrapper that deserializes the inner type from JSON bytes.
+#[derive(Debug)]
+pub struct JsonResponseWrap<T> {
+    inner: T,
+}
+
+impl<T: DeserializeOwned> FromBody for JsonResponseWrap<T> {
+    fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
+        let inner = serde_json::from_str(&text)
+            .with_context(|| format!("Decode response as JSON: {}", &text))?;
+        Ok(Self { inner })
+    }
+}
+
+impl<T: ToCodeMessage> ToCodeMessage for JsonResponseWrap<T> {
+    fn to_code_message(&self) -> &CodeMessage {
+        self.inner.to_code_message()
+    }
+}
+
+trait IntoResponse {
+    type Response;
+
+    fn into_response(self) -> Self::Response;
+}
+
+// Compatibility layer: Allow Response type to be convertible from JsonResponseWrap<Response>
+// This supports the new pattern where Response: From<ResponseWrap>
+impl<T> IntoResponse for JsonResponseWrap<T> {
+    type Response = T;
+
+    fn into_response(self) -> Self::Response {
+        self.inner
+    }
+}
+
+// Compatibility layer: For existing code that uses Response directly
+impl<T: DeserializeOwned + ToCodeMessage> FromBody for T {
+    fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
+        let inner = serde_json::from_str(&text)
+            .with_context(|| format!("Decode response as JSON: {}", &text))?;
+        Ok(inner)
+    }
+}
+
+/// XML response wrapper that deserializes the inner type from XML bytes.
+#[derive(Debug)]
+pub struct XmlResponseWrap<T> {
+    inner: T,
+}
+
+impl<T: DeserializeOwned> FromBody for XmlResponseWrap<T> {
+    fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        let inner = quick_xml::de::from_reader(&bytes[..]).context("Decode response as XML")?;
+        Ok(Self { inner })
+    }
+}
+
+impl<T: ToCodeMessage> ToCodeMessage for XmlResponseWrap<T> {
+    fn to_code_message(&self) -> &CodeMessage {
+        self.inner.to_code_message()
+    }
+}
+
+impl<T> IntoResponse for XmlResponseWrap<T> {
+    type Response = T;
+
+    fn into_response(self) -> Self::Response {
+        self.inner
+    }
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
@@ -535,8 +614,8 @@ trait Request: Sized + Send {
     /// Request body, will serialize to json. Use unit type if no request body.
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
-    /// Response type returned by the call() method.
-    type Response: DeserializeOwned + ToCodeMessage;
+    /// Response wrapper type that handles deserialization from response bytes.
+    type ResponseWrap: FromBody + ToCodeMessage + IntoResponse;
 
     fn to_query_params(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)> {
         Vec::new()

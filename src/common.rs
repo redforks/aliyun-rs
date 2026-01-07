@@ -1,5 +1,5 @@
 use crate::{
-    Request, Result,
+    IntoResponse, Request, Result,
     v3::{AccessKeySecret, call},
 };
 use std::future::Future;
@@ -43,7 +43,7 @@ impl Connection {
         })
     }
 
-    pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<R::Response>> + Send {
+    pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<<R::ResponseWrap as IntoResponse>::Response>> + Send {
         call(
             &self.0.access_key_secret,
             &self.0.http_client,

@@ -118,8 +118,9 @@ impl Connection {
     fn call<R: crate::Request + sealed::Bound>(
         &self,
         req: R,
-    ) -> impl std::future::Future<Output = crate::Result<<R as crate::Request>::Response>> + Send
-    {
+    ) -> impl std::future::Future<
+        Output = crate::Result<<R::ResponseWrap as crate::IntoResponse>::Response>,
+    > + Send {
         self.0.call(req)
     }
     ///
@@ -15637,7 +15638,7 @@ impl crate::Request for DescribeRegions {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeRegionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeRegionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -15738,7 +15739,7 @@ impl crate::Request for DescribeZones {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeZonesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeZonesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -15942,7 +15943,7 @@ impl crate::Request for DescribeAvailableResource {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAvailableResourceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAvailableResourceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(16);
@@ -16078,7 +16079,7 @@ impl crate::Request for DescribeAccountAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAccountAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAccountAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -16209,7 +16210,7 @@ impl crate::Request for DescribeResourcesModification {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeResourcesModificationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeResourcesModificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -16415,7 +16416,7 @@ impl crate::Request for DescribeRecommendInstanceType {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeRecommendInstanceTypeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeRecommendInstanceTypeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(16);
@@ -16871,7 +16872,7 @@ impl crate::Request for DescribePrice {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePriceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePriceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(44);
@@ -17128,7 +17129,7 @@ impl crate::Request for DescribeRenewalPrice {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeRenewalPriceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeRenewalPriceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -17217,7 +17218,7 @@ impl crate::Request for DescribeInstanceModificationPrice {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceModificationPriceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceModificationPriceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -17977,7 +17978,7 @@ impl crate::Request for RunInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = RunInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RunInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(85);
@@ -18792,7 +18793,7 @@ impl crate::Request for CreateInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(63);
@@ -19105,7 +19106,7 @@ impl crate::Request for StartInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = StartInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StartInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -19185,7 +19186,7 @@ impl crate::Request for StartInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = StartInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StartInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -19288,7 +19289,7 @@ impl crate::Request for StopInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = StopInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StopInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -19408,7 +19409,7 @@ impl crate::Request for StopInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = StopInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StopInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -19493,7 +19494,7 @@ impl crate::Request for RebootInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = RebootInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RebootInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -19583,7 +19584,7 @@ impl crate::Request for RebootInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = RebootInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RebootInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -19681,7 +19682,7 @@ impl crate::Request for DeleteInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -19790,7 +19791,7 @@ impl crate::Request for DeleteInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -19890,7 +19891,7 @@ impl crate::Request for DescribeInstanceStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -20184,7 +20185,7 @@ impl crate::Request for DescribeInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(45);
@@ -20424,7 +20425,7 @@ impl crate::Request for DescribeInstanceTypeFamilies {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceTypeFamiliesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceTypeFamiliesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -20731,7 +20732,7 @@ impl crate::Request for DescribeInstanceTypes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceTypesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceTypesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(44);
@@ -20952,7 +20953,7 @@ impl crate::Request for DescribeInstanceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -21143,7 +21144,7 @@ impl crate::Request for ModifyInstanceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(18);
@@ -21284,7 +21285,7 @@ impl crate::Request for ModifyInstanceClockOptions {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceClockOptionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceClockOptionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -21351,7 +21352,7 @@ impl crate::Request for ModifyInstanceNetworkOptions {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceNetworkOptionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceNetworkOptionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -21485,7 +21486,7 @@ impl crate::Request for ModifyInstanceChargeType {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceChargeTypeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceChargeTypeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -21653,7 +21654,7 @@ impl crate::Request for ModifyInstanceSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(14);
@@ -21841,7 +21842,7 @@ impl crate::Request for ModifyPrepayInstanceSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyPrepayInstanceSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyPrepayInstanceSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -21947,7 +21948,7 @@ impl crate::Request for ModifyInstanceAutoReleaseTime {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceAutoReleaseTimeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceAutoReleaseTimeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -22017,7 +22018,7 @@ impl crate::Request for AttachInstanceRamRole {
 
     type Body = crate::Form<Self>;
 
-    type Response = AttachInstanceRamRoleResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AttachInstanceRamRoleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -22097,7 +22098,7 @@ impl crate::Request for DescribeInstanceRamRole {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceRamRoleResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceRamRoleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -22168,7 +22169,7 @@ impl crate::Request for DetachInstanceRamRole {
 
     type Body = crate::Form<Self>;
 
-    type Response = DetachInstanceRamRoleResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DetachInstanceRamRoleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -22224,7 +22225,7 @@ impl crate::Request for DescribeInstanceVncUrl {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceVncUrlResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceVncUrlResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -22283,7 +22284,7 @@ impl crate::Request for ModifyInstanceVncPasswd {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceVncPasswdResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceVncPasswdResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -22369,7 +22370,7 @@ impl crate::Request for ModifyInstanceMetadataOptions {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceMetadataOptionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceMetadataOptionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -22437,7 +22438,7 @@ impl crate::Request for DescribeUserData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeUserDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeUserDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -22526,7 +22527,7 @@ impl crate::Request for RenewInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = RenewInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RenewInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -22622,7 +22623,7 @@ impl crate::Request for DescribeInstanceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceAutoRenewAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -22756,7 +22757,7 @@ impl crate::Request for ModifyInstanceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceAutoRenewAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -22825,7 +22826,7 @@ impl crate::Request for ReActivateInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReActivateInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReActivateInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -22942,7 +22943,7 @@ impl crate::Request for DescribeSpotPriceHistory {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSpotPriceHistoryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSpotPriceHistoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -23075,7 +23076,7 @@ impl crate::Request for DescribeSpotAdvice {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSpotAdviceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSpotAdviceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -23279,7 +23280,7 @@ impl crate::Request for CreateImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(17);
@@ -23545,7 +23546,7 @@ impl crate::Request for DescribeImages {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImagesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImagesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(23);
@@ -23738,7 +23739,7 @@ impl crate::Request for ModifyImageAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyImageAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyImageAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -23834,7 +23835,7 @@ impl crate::Request for DeleteImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -23896,7 +23897,7 @@ impl crate::Request for DescribeImageFromFamily {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImageFromFamilyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImageFromFamilyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -23960,7 +23961,7 @@ impl crate::Request for DescribeImageSupportInstanceTypes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImageSupportInstanceTypesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImageSupportInstanceTypesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -24039,7 +24040,7 @@ impl crate::Request for DescribeImageSharePermission {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImageSharePermissionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImageSharePermissionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -24125,7 +24126,7 @@ impl crate::Request for ModifyImageSharePermission {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyImageSharePermissionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyImageSharePermissionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -24199,7 +24200,7 @@ impl crate::Request for ModifyImageShareGroupPermission {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyImageShareGroupPermissionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyImageShareGroupPermissionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -24387,7 +24388,7 @@ impl crate::Request for ImportImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = ImportImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ImportImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(17);
@@ -24531,7 +24532,7 @@ impl crate::Request for ExportImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = ExportImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ExportImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -24652,7 +24653,7 @@ impl crate::Request for CopyImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = CopyImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CopyImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -24744,7 +24745,7 @@ impl crate::Request for CancelCopyImage {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelCopyImageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelCopyImageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -24846,7 +24847,7 @@ impl crate::Request for CreateImageComponent {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateImageComponentResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateImageComponentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -24986,7 +24987,7 @@ impl crate::Request for DescribeImageComponents {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImageComponentsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImageComponentsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -25077,7 +25078,7 @@ impl crate::Request for DeleteImageComponent {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteImageComponentResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteImageComponentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -25271,7 +25272,7 @@ impl crate::Request for CreateImagePipeline {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateImagePipelineResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateImagePipelineResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(24);
@@ -25436,7 +25437,7 @@ impl crate::Request for DescribeImagePipelines {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImagePipelinesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImagePipelinesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -25511,7 +25512,7 @@ impl crate::Request for DeleteImagePipeline {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteImagePipelineResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteImagePipelineResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -25575,7 +25576,7 @@ impl crate::Request for StartImagePipelineExecution {
 
     type Body = crate::Form<Self>;
 
-    type Response = StartImagePipelineExecutionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StartImagePipelineExecutionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -25677,7 +25678,7 @@ impl crate::Request for DescribeImagePipelineExecutions {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeImagePipelineExecutionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeImagePipelineExecutionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -25756,7 +25757,7 @@ impl crate::Request for CancelImagePipelineExecution {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelImagePipelineExecutionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelImagePipelineExecutionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -25993,7 +25994,7 @@ impl crate::Request for CreateDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(23);
@@ -26351,7 +26352,7 @@ impl crate::Request for DescribeDisks {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDisksResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDisksResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(33);
@@ -26598,7 +26599,7 @@ impl crate::Request for AttachDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = AttachDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AttachDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -26695,7 +26696,7 @@ impl crate::Request for DetachDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = DetachDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DetachDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -26790,7 +26791,7 @@ impl crate::Request for ResizeDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = ResizeDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ResizeDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -26910,7 +26911,7 @@ impl crate::Request for ModifyDiskAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiskAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiskAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -27021,7 +27022,7 @@ impl crate::Request for ModifyDiskChargeType {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiskChargeTypeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiskChargeTypeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -27142,7 +27143,7 @@ impl crate::Request for ModifyDiskSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiskSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiskSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -27323,7 +27324,7 @@ impl crate::Request for ReplaceSystemDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReplaceSystemDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReplaceSystemDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(16);
@@ -27443,7 +27444,7 @@ impl crate::Request for ResetDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = ResetDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ResetDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -27508,7 +27509,7 @@ impl crate::Request for ResetDisks {
 
     type Body = crate::Form<Self>;
 
-    type Response = ResetDisksResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ResetDisksResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -27598,7 +27599,7 @@ impl crate::Request for ReInitDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReInitDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReInitDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -27690,7 +27691,7 @@ impl crate::Request for ModifyDiskDeployment {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiskDeploymentResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiskDeploymentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -27754,7 +27755,7 @@ impl crate::Request for DeleteDisk {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteDiskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteDiskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -27800,7 +27801,7 @@ impl crate::Request for EnableDiskEncryptionByDefault {
 
     type Body = crate::Form<Self>;
 
-    type Response = EnableDiskEncryptionByDefaultResponse;
+    type ResponseWrap = crate::JsonResponseWrap<EnableDiskEncryptionByDefaultResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -27846,7 +27847,7 @@ impl crate::Request for DescribeDiskEncryptionByDefaultStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiskEncryptionByDefaultStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiskEncryptionByDefaultStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -27892,7 +27893,7 @@ impl crate::Request for DescribeDiskDefaultKMSKeyId {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiskDefaultKMSKeyIdResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiskDefaultKMSKeyIdResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -27941,7 +27942,7 @@ impl crate::Request for ModifyDiskDefaultKMSKeyId {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiskDefaultKMSKeyIdResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiskDefaultKMSKeyIdResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -27988,7 +27989,7 @@ impl crate::Request for ResetDiskDefaultKMSKeyId {
 
     type Body = crate::Form<Self>;
 
-    type Response = ResetDiskDefaultKMSKeyIdResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ResetDiskDefaultKMSKeyIdResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -28034,7 +28035,7 @@ impl crate::Request for DisableDiskEncryptionByDefault {
 
     type Body = crate::Form<Self>;
 
-    type Response = DisableDiskEncryptionByDefaultResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DisableDiskEncryptionByDefaultResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -28080,7 +28081,7 @@ impl crate::Request for OpenSnapshotService {
 
     type Body = crate::Form<Self>;
 
-    type Response = OpenSnapshotServiceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<OpenSnapshotServiceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -28189,7 +28190,7 @@ impl crate::Request for CreateSnapshot {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateSnapshotResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateSnapshotResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -28404,7 +28405,7 @@ impl crate::Request for DescribeSnapshots {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(24);
@@ -28544,7 +28545,7 @@ impl crate::Request for DescribeSnapshotsUsage {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotsUsageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotsUsageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -28619,7 +28620,7 @@ impl crate::Request for ModifySnapshotAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySnapshotAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySnapshotAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -28697,7 +28698,7 @@ impl crate::Request for ModifySnapshotCategory {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySnapshotCategoryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySnapshotCategoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -28814,7 +28815,7 @@ impl crate::Request for CopySnapshot {
 
     type Body = crate::Form<Self>;
 
-    type Response = CopySnapshotResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CopySnapshotResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -28917,7 +28918,7 @@ impl crate::Request for DeleteSnapshot {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteSnapshotResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteSnapshotResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -29004,7 +29005,7 @@ impl crate::Request for DescribeSnapshotLinks {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotLinksResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotLinksResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -29144,7 +29145,7 @@ impl crate::Request for CreateSnapshotGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateSnapshotGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateSnapshotGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -29282,7 +29283,7 @@ impl crate::Request for DescribeSnapshotGroups {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotGroupsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotGroupsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -29377,7 +29378,7 @@ impl crate::Request for ModifySnapshotGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySnapshotGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySnapshotGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -29437,7 +29438,7 @@ impl crate::Request for DeleteSnapshotGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteSnapshotGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteSnapshotGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -29555,7 +29556,7 @@ impl crate::Request for CreateAutoSnapshotPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateAutoSnapshotPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateAutoSnapshotPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -29672,7 +29673,7 @@ impl crate::Request for DescribeAutoSnapshotPolicyEx {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAutoSnapshotPolicyExResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAutoSnapshotPolicyExResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -29764,7 +29765,7 @@ impl crate::Request for DescribeAutoSnapshotPolicyAssociations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAutoSnapshotPolicyAssociationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAutoSnapshotPolicyAssociationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -29886,7 +29887,7 @@ impl crate::Request for ModifyAutoSnapshotPolicyEx {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyAutoSnapshotPolicyExResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyAutoSnapshotPolicyExResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -29980,7 +29981,7 @@ impl crate::Request for ApplyAutoSnapshotPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = ApplyAutoSnapshotPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ApplyAutoSnapshotPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -30043,7 +30044,7 @@ impl crate::Request for CancelAutoSnapshotPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelAutoSnapshotPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelAutoSnapshotPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -30099,7 +30100,7 @@ impl crate::Request for DeleteAutoSnapshotPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAutoSnapshotPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteAutoSnapshotPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -30163,7 +30164,7 @@ impl crate::Request for DescribeSnapshotPackage {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotPackageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotPackageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -30257,7 +30258,7 @@ impl crate::Request for DescribeBandwidthLimitation {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeBandwidthLimitationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeBandwidthLimitationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -30397,7 +30398,7 @@ impl crate::Request for ModifyInstanceNetworkSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceNetworkSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceNetworkSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -30494,7 +30495,7 @@ impl crate::Request for AllocatePublicIpAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = AllocatePublicIpAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AllocatePublicIpAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -30553,7 +30554,7 @@ impl crate::Request for ConvertNatPublicIpToEip {
 
     type Body = crate::Form<Self>;
 
-    type Response = ConvertNatPublicIpToEipResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ConvertNatPublicIpToEipResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -30633,7 +30634,7 @@ impl crate::Request for ModifyInstanceVpcAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceVpcAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceVpcAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -30714,7 +30715,7 @@ impl crate::Request for DescribeClassicLinkInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeClassicLinkInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeClassicLinkInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -30788,7 +30789,7 @@ impl crate::Request for AttachClassicLinkVpc {
 
     type Body = crate::Form<Self>;
 
-    type Response = AttachClassicLinkVpcResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AttachClassicLinkVpcResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -30848,7 +30849,7 @@ impl crate::Request for DetachClassicLinkVpc {
 
     type Body = crate::Form<Self>;
 
-    type Response = DetachClassicLinkVpcResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DetachClassicLinkVpcResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -31091,7 +31092,7 @@ impl crate::Request for CreateNetworkInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateNetworkInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateNetworkInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(31);
@@ -31353,7 +31354,7 @@ impl crate::Request for DescribeNetworkInterfaces {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeNetworkInterfacesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeNetworkInterfacesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(19);
@@ -31488,7 +31489,7 @@ impl crate::Request for DescribeNetworkInterfaceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeNetworkInterfaceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeNetworkInterfaceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -31637,7 +31638,7 @@ impl crate::Request for ModifyNetworkInterfaceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyNetworkInterfaceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyNetworkInterfaceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -31734,7 +31735,7 @@ impl crate::Request for DeleteNetworkInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteNetworkInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteNetworkInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -31809,7 +31810,7 @@ impl crate::Request for AttachNetworkInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = AttachNetworkInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AttachNetworkInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -31889,7 +31890,7 @@ impl crate::Request for DetachNetworkInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = DetachNetworkInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DetachNetworkInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -31978,7 +31979,7 @@ impl crate::Request for AssignPrivateIpAddresses {
 
     type Body = crate::Form<Self>;
 
-    type Response = AssignPrivateIpAddressesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AssignPrivateIpAddressesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -32061,7 +32062,7 @@ impl crate::Request for UnassignPrivateIpAddresses {
 
     type Body = crate::Form<Self>;
 
-    type Response = UnassignPrivateIpAddressesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<UnassignPrivateIpAddressesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -32152,7 +32153,7 @@ impl crate::Request for AssignIpv6Addresses {
 
     type Body = crate::Form<Self>;
 
-    type Response = AssignIpv6AddressesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AssignIpv6AddressesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -32235,7 +32236,7 @@ impl crate::Request for UnassignIpv6Addresses {
 
     type Body = crate::Form<Self>;
 
-    type Response = UnassignIpv6AddressesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<UnassignIpv6AddressesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -32311,7 +32312,7 @@ impl crate::Request for CreateNetworkInterfacePermission {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateNetworkInterfacePermissionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateNetworkInterfacePermissionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -32389,7 +32390,7 @@ impl crate::Request for DescribeNetworkInterfacePermissions {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeNetworkInterfacePermissionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeNetworkInterfacePermissionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -32490,7 +32491,7 @@ impl crate::Request for CreatePrefixList {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreatePrefixListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreatePrefixListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -32598,7 +32599,7 @@ impl crate::Request for DescribePrefixLists {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePrefixListsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePrefixListsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -32677,7 +32678,7 @@ impl crate::Request for DescribePrefixListAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePrefixListAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePrefixListAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -32741,7 +32742,7 @@ impl crate::Request for DescribePrefixListAssociations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePrefixListAssociationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePrefixListAssociationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -32817,7 +32818,7 @@ impl crate::Request for ModifyPrefixList {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyPrefixListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyPrefixListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -32885,7 +32886,7 @@ impl crate::Request for DeletePrefixList {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeletePrefixListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeletePrefixListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -32964,7 +32965,7 @@ impl crate::Request for CreatePortRangeList {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreatePortRangeListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreatePortRangeListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -33065,7 +33066,7 @@ impl crate::Request for DescribePortRangeLists {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePortRangeListsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePortRangeListsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -33138,7 +33139,7 @@ impl crate::Request for DescribePortRangeListEntries {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePortRangeListEntriesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePortRangeListEntriesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -33200,7 +33201,7 @@ impl crate::Request for DescribePortRangeListAssociations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePortRangeListAssociationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePortRangeListAssociationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -33278,7 +33279,7 @@ impl crate::Request for ModifyPortRangeList {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyPortRangeListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyPortRangeListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -33350,7 +33351,7 @@ impl crate::Request for DeletePortRangeList {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeletePortRangeListResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeletePortRangeListResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -33440,7 +33441,7 @@ impl crate::Request for CreateSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -33606,7 +33607,7 @@ impl crate::Request for DescribeSecurityGroups {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSecurityGroupsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSecurityGroupsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(17);
@@ -33761,7 +33762,7 @@ impl crate::Request for DescribeSecurityGroupAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSecurityGroupAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSecurityGroupAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -33849,7 +33850,7 @@ impl crate::Request for ModifySecurityGroupPolicy {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySecurityGroupPolicyResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySecurityGroupPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -33921,7 +33922,7 @@ impl crate::Request for ModifySecurityGroupAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySecurityGroupAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySecurityGroupAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -33981,7 +33982,7 @@ impl crate::Request for DeleteSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -34101,7 +34102,7 @@ impl crate::Request for AuthorizeSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = AuthorizeSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AuthorizeSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(19);
@@ -34353,7 +34354,7 @@ impl crate::Request for ModifySecurityGroupRule {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySecurityGroupRuleResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySecurityGroupRuleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -34549,7 +34550,7 @@ impl crate::Request for RevokeSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = RevokeSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RevokeSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -34739,7 +34740,7 @@ impl crate::Request for AuthorizeSecurityGroupEgress {
 
     type Body = crate::Form<Self>;
 
-    type Response = AuthorizeSecurityGroupEgressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AuthorizeSecurityGroupEgressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(19);
@@ -34986,7 +34987,7 @@ impl crate::Request for ModifySecurityGroupEgressRule {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifySecurityGroupEgressRuleResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifySecurityGroupEgressRuleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -35182,7 +35183,7 @@ impl crate::Request for RevokeSecurityGroupEgress {
 
     type Body = crate::Form<Self>;
 
-    type Response = RevokeSecurityGroupEgressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RevokeSecurityGroupEgressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -35306,7 +35307,7 @@ impl crate::Request for DescribeSecurityGroupReferences {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSecurityGroupReferencesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSecurityGroupReferencesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -35378,7 +35379,7 @@ impl crate::Request for JoinSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = JoinSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<JoinSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -35457,7 +35458,7 @@ impl crate::Request for LeaveSecurityGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = LeaveSecurityGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<LeaveSecurityGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -35528,7 +35529,7 @@ impl crate::Request for CreateKeyPair {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateKeyPairResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateKeyPairResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -35603,7 +35604,7 @@ impl crate::Request for ImportKeyPair {
 
     type Body = crate::Form<Self>;
 
-    type Response = ImportKeyPairResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ImportKeyPairResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -35701,7 +35702,7 @@ impl crate::Request for DescribeKeyPairs {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeKeyPairsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeKeyPairsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -35787,7 +35788,7 @@ impl crate::Request for AttachKeyPair {
 
     type Body = crate::Form<Self>;
 
-    type Response = AttachKeyPairResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AttachKeyPairResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -35847,7 +35848,7 @@ impl crate::Request for DetachKeyPair {
 
     type Body = crate::Form<Self>;
 
-    type Response = DetachKeyPairResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DetachKeyPairResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -35902,7 +35903,7 @@ impl crate::Request for DeleteKeyPairs {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteKeyPairsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteKeyPairsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -36350,7 +36351,7 @@ impl crate::Request for CreateLaunchTemplate {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateLaunchTemplateResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateLaunchTemplateResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(62);
@@ -36681,7 +36682,7 @@ impl crate::Request for DescribeLaunchTemplates {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeLaunchTemplatesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeLaunchTemplatesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -36765,7 +36766,7 @@ impl crate::Request for DeleteLaunchTemplate {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteLaunchTemplateResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteLaunchTemplateResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -37223,7 +37224,7 @@ impl crate::Request for CreateLaunchTemplateVersion {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateLaunchTemplateVersionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateLaunchTemplateVersionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(61);
@@ -37565,7 +37566,7 @@ impl crate::Request for DescribeLaunchTemplateVersions {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeLaunchTemplateVersionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeLaunchTemplateVersionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -37660,7 +37661,7 @@ impl crate::Request for ModifyLaunchTemplateDefaultVersion {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyLaunchTemplateDefaultVersionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyLaunchTemplateDefaultVersionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -37731,7 +37732,7 @@ impl crate::Request for DeleteLaunchTemplateVersion {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteLaunchTemplateVersionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteLaunchTemplateVersionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -38210,7 +38211,7 @@ impl crate::Request for CreateAutoProvisioningGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateAutoProvisioningGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateAutoProvisioningGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(62);
@@ -38559,7 +38560,7 @@ impl crate::Request for DescribeAutoProvisioningGroups {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAutoProvisioningGroupsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAutoProvisioningGroupsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -38657,7 +38658,7 @@ impl crate::Request for DescribeAutoProvisioningGroupInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAutoProvisioningGroupInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAutoProvisioningGroupInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -38770,7 +38771,7 @@ impl crate::Request for ModifyAutoProvisioningGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyAutoProvisioningGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyAutoProvisioningGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -38884,7 +38885,7 @@ impl crate::Request for DescribeAutoProvisioningGroupHistory {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAutoProvisioningGroupHistoryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAutoProvisioningGroupHistoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -38967,7 +38968,7 @@ impl crate::Request for DeleteAutoProvisioningGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteAutoProvisioningGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteAutoProvisioningGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -39072,7 +39073,7 @@ impl crate::Request for CreateDeploymentSet {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateDeploymentSetResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateDeploymentSetResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -39164,7 +39165,8 @@ impl crate::Request for DescribeDeploymentSetSupportedInstanceTypeFamily {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDeploymentSetSupportedInstanceTypeFamilyResponse;
+    type ResponseWrap =
+        crate::JsonResponseWrap<DescribeDeploymentSetSupportedInstanceTypeFamilyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -39259,7 +39261,7 @@ impl crate::Request for DescribeDeploymentSets {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDeploymentSetsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDeploymentSetsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -39428,7 +39430,7 @@ impl crate::Request for ModifyInstanceDeployment {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceDeploymentResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceDeploymentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -39528,7 +39530,7 @@ impl crate::Request for ModifyDeploymentSetAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDeploymentSetAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDeploymentSetAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -39588,7 +39590,7 @@ impl crate::Request for DeleteDeploymentSet {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteDeploymentSetResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteDeploymentSetResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -39759,7 +39761,7 @@ impl crate::Request for CreateElasticityAssurance {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateElasticityAssuranceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateElasticityAssuranceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(18);
@@ -39946,7 +39948,7 @@ impl crate::Request for DescribeElasticityAssurances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeElasticityAssurancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeElasticityAssurancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -40053,7 +40055,7 @@ impl crate::Request for DescribeElasticityAssuranceInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeElasticityAssuranceInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeElasticityAssuranceInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -40148,7 +40150,7 @@ impl crate::Request for ModifyElasticityAssurance {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyElasticityAssuranceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyElasticityAssuranceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -40284,7 +40286,7 @@ impl crate::Request for RenewElasticityAssurances {
 
     type Body = crate::Form<Self>;
 
-    type Response = RenewElasticityAssurancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RenewElasticityAssurancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -40402,7 +40404,8 @@ impl crate::Request for ModifyElasticityAssuranceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyElasticityAssuranceAutoRenewAttributeResponse;
+    type ResponseWrap =
+        crate::JsonResponseWrap<ModifyElasticityAssuranceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -40471,7 +40474,8 @@ impl crate::Request for DescribeElasticityAssuranceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeElasticityAssuranceAutoRenewAttributeResponse;
+    type ResponseWrap =
+        crate::JsonResponseWrap<DescribeElasticityAssuranceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -40559,7 +40563,7 @@ impl crate::Request for PurchaseElasticityAssurance {
 
     type Body = crate::Form<Self>;
 
-    type Response = PurchaseElasticityAssuranceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<PurchaseElasticityAssuranceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -40704,7 +40708,7 @@ impl crate::Request for CreateCapacityReservation {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateCapacityReservationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateCapacityReservationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(14);
@@ -40861,7 +40865,7 @@ impl crate::Request for DescribeCapacityReservations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeCapacityReservationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeCapacityReservationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -40962,7 +40966,7 @@ impl crate::Request for DescribeCapacityReservationInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeCapacityReservationInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeCapacityReservationInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -41065,7 +41069,7 @@ impl crate::Request for ModifyCapacityReservation {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyCapacityReservationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyCapacityReservationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -41164,7 +41168,7 @@ impl crate::Request for DescribeInstanceAttachmentAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceAttachmentAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceAttachmentAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -41242,7 +41246,7 @@ impl crate::Request for ModifyInstanceAttachmentAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceAttachmentAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceAttachmentAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -41304,7 +41308,7 @@ impl crate::Request for ReleaseCapacityReservation {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReleaseCapacityReservationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReleaseCapacityReservationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -41486,7 +41490,7 @@ impl crate::Request for PurchaseReservedInstancesOffering {
 
     type Body = crate::Form<Self>;
 
-    type Response = PurchaseReservedInstancesOfferingResponse;
+    type ResponseWrap = crate::JsonResponseWrap<PurchaseReservedInstancesOfferingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(17);
@@ -41670,7 +41674,7 @@ impl crate::Request for DescribeReservedInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeReservedInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeReservedInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(14);
@@ -41779,7 +41783,7 @@ impl crate::Request for ModifyReservedInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyReservedInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyReservedInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -41849,7 +41853,7 @@ impl crate::Request for ModifyReservedInstanceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyReservedInstanceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyReservedInstanceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -41971,7 +41975,7 @@ impl crate::Request for RenewReservedInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = RenewReservedInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RenewReservedInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -42050,7 +42054,7 @@ impl crate::Request for DescribeReservedInstanceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeReservedInstanceAutoRenewAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeReservedInstanceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -42135,7 +42139,7 @@ impl crate::Request for ModifyReservedInstanceAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyReservedInstanceAutoRenewAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyReservedInstanceAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -42256,7 +42260,7 @@ impl crate::Request for PurchaseStorageCapacityUnit {
 
     type Body = crate::Form<Self>;
 
-    type Response = PurchaseStorageCapacityUnitResponse;
+    type ResponseWrap = crate::JsonResponseWrap<PurchaseStorageCapacityUnitResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -42390,7 +42394,7 @@ impl crate::Request for DescribeStorageCapacityUnits {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeStorageCapacityUnitsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeStorageCapacityUnitsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -42481,7 +42485,7 @@ impl crate::Request for ModifyStorageCapacityUnitAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyStorageCapacityUnitAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyStorageCapacityUnitAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -42768,7 +42772,7 @@ impl crate::Request for RunCommand {
 
     type Body = crate::Form<Self>;
 
-    type Response = RunCommandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RunCommandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(26);
@@ -43006,7 +43010,7 @@ impl crate::Request for CreateCommand {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateCommandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateCommandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -43258,7 +43262,7 @@ impl crate::Request for InvokeCommand {
 
     type Body = crate::Form<Self>;
 
-    type Response = InvokeCommandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<InvokeCommandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -43495,7 +43499,7 @@ impl crate::Request for DescribeInvocations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInvocationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInvocationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(17);
@@ -43686,7 +43690,7 @@ impl crate::Request for DescribeInvocationResults {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInvocationResultsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInvocationResultsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -43867,7 +43871,7 @@ impl crate::Request for ModifyInvocationAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInvocationAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInvocationAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -43949,7 +43953,7 @@ impl crate::Request for StopInvocation {
 
     type Body = crate::Form<Self>;
 
-    type Response = StopInvocationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StopInvocationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -44086,7 +44090,7 @@ impl crate::Request for DescribeCommands {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeCommandsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeCommandsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(14);
@@ -44213,7 +44217,7 @@ impl crate::Request for ModifyCommand {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyCommandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyCommandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -44289,7 +44293,7 @@ impl crate::Request for DeleteCommand {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteCommandResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteCommandResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -44418,7 +44422,7 @@ impl crate::Request for SendFile {
 
     type Body = crate::Form<Self>;
 
-    type Response = SendFileResponse;
+    type ResponseWrap = crate::JsonResponseWrap<SendFileResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(14);
@@ -44557,7 +44561,7 @@ impl crate::Request for DescribeSendFileResults {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSendFileResultsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSendFileResultsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -44677,7 +44681,7 @@ impl crate::Request for DescribeCloudAssistantStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeCloudAssistantStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeCloudAssistantStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -44752,7 +44756,7 @@ impl crate::Request for InstallCloudAssistant {
 
     type Body = crate::Form<Self>;
 
-    type Response = InstallCloudAssistantResponse;
+    type ResponseWrap = crate::JsonResponseWrap<InstallCloudAssistantResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -44839,7 +44843,7 @@ impl crate::Request for StartTerminalSession {
 
     type Body = crate::Form<Self>;
 
-    type Response = StartTerminalSessionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<StartTerminalSessionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -44919,7 +44923,7 @@ impl crate::Request for EndTerminalSession {
 
     type Body = crate::Form<Self>;
 
-    type Response = EndTerminalSessionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<EndTerminalSessionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -44986,7 +44990,7 @@ impl crate::Request for DescribeTerminalSessions {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeTerminalSessionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeTerminalSessionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -45071,7 +45075,7 @@ impl crate::Request for ModifyCloudAssistantSettings {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyCloudAssistantSettingsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyCloudAssistantSettingsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -45145,7 +45149,7 @@ impl crate::Request for DescribeCloudAssistantSettings {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeCloudAssistantSettingsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeCloudAssistantSettingsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -45231,7 +45235,7 @@ impl crate::Request for CreateActivation {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateActivationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateActivationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -45353,7 +45357,7 @@ impl crate::Request for DescribeActivations {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeActivationsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeActivationsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -45438,7 +45442,7 @@ impl crate::Request for DisableActivation {
 
     type Body = crate::Form<Self>;
 
-    type Response = DisableActivationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DisableActivationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -45492,7 +45496,7 @@ impl crate::Request for DeleteActivation {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteActivationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteActivationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -45612,7 +45616,7 @@ impl crate::Request for DescribeManagedInstances {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeManagedInstancesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeManagedInstancesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -45718,7 +45722,7 @@ impl crate::Request for ModifyManagedInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyManagedInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyManagedInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -45773,7 +45777,7 @@ impl crate::Request for DeregisterManagedInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeregisterManagedInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeregisterManagedInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -45854,7 +45858,7 @@ impl crate::Request for ListPluginStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = ListPluginStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ListPluginStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -45998,7 +46002,7 @@ impl crate::Request for DescribeInstancesFullStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstancesFullStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstancesFullStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -46166,7 +46170,7 @@ impl crate::Request for DescribeDisksFullStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDisksFullStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDisksFullStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -46396,7 +46400,7 @@ impl crate::Request for DescribeInstanceHistoryEvents {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceHistoryEventsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceHistoryEventsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(20);
@@ -46544,7 +46548,7 @@ impl crate::Request for CreateSimulatedSystemEvents {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateSimulatedSystemEventsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateSimulatedSystemEventsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -46599,7 +46603,7 @@ impl crate::Request for CancelSimulatedSystemEvents {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelSimulatedSystemEventsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelSimulatedSystemEventsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -46656,7 +46660,7 @@ impl crate::Request for AcceptInquiredSystemEvent {
 
     type Body = crate::Form<Self>;
 
-    type Response = AcceptInquiredSystemEventResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AcceptInquiredSystemEventResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -46728,7 +46732,7 @@ impl crate::Request for DescribeDiagnosticMetrics {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiagnosticMetricsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiagnosticMetricsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -46810,7 +46814,7 @@ impl crate::Request for CreateDiagnosticMetricSet {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateDiagnosticMetricSetResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateDiagnosticMetricSetResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -46896,7 +46900,7 @@ impl crate::Request for DescribeDiagnosticMetricSets {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiagnosticMetricSetsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiagnosticMetricSetsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -46981,7 +46985,7 @@ impl crate::Request for ModifyDiagnosticMetricSet {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDiagnosticMetricSetResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDiagnosticMetricSetResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -47048,7 +47052,7 @@ impl crate::Request for DeleteDiagnosticMetricSets {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteDiagnosticMetricSetsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteDiagnosticMetricSetsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -47111,7 +47115,7 @@ impl crate::Request for CreateDiagnosticReport {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateDiagnosticReportResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateDiagnosticReportResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -47209,7 +47213,7 @@ impl crate::Request for DescribeDiagnosticReports {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiagnosticReportsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiagnosticReportsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -47282,7 +47286,7 @@ impl crate::Request for DescribeDiagnosticReportAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiagnosticReportAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiagnosticReportAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -47332,7 +47336,7 @@ impl crate::Request for DeleteDiagnosticReports {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteDiagnosticReportsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteDiagnosticReportsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -47390,7 +47394,7 @@ impl crate::Request for GetInstanceScreenshot {
 
     type Body = crate::Form<Self>;
 
-    type Response = GetInstanceScreenshotResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetInstanceScreenshotResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -47454,7 +47458,7 @@ impl crate::Request for GetInstanceConsoleOutput {
 
     type Body = crate::Form<Self>;
 
-    type Response = GetInstanceConsoleOutputResponse;
+    type ResponseWrap = crate::JsonResponseWrap<GetInstanceConsoleOutputResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -47531,7 +47535,7 @@ impl crate::Request for DescribeDiskMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDiskMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDiskMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -47605,7 +47609,7 @@ impl crate::Request for DescribeInstanceMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -47686,7 +47690,7 @@ impl crate::Request for DescribeEniMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeEniMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeEniMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -47775,7 +47779,7 @@ impl crate::Request for DescribeSnapshotMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeSnapshotMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeSnapshotMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -47851,7 +47855,7 @@ impl crate::Request for DescribeInstanceMaintenanceAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeInstanceMaintenanceAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeInstanceMaintenanceAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -47936,7 +47940,7 @@ impl crate::Request for ModifyInstanceMaintenanceAttributes {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyInstanceMaintenanceAttributesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyInstanceMaintenanceAttributesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -48008,7 +48012,7 @@ impl crate::Request for RedeployInstance {
 
     type Body = crate::Form<Self>;
 
-    type Response = RedeployInstanceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RedeployInstanceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -48116,7 +48120,7 @@ impl crate::Request for ReportInstancesStatus {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReportInstancesStatusResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReportInstancesStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -48224,7 +48228,7 @@ impl crate::Request for TagResources {
 
     type Body = crate::Form<Self>;
 
-    type Response = TagResourcesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<TagResourcesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -48315,7 +48319,7 @@ impl crate::Request for ListTagResources {
 
     type Body = crate::Form<Self>;
 
-    type Response = ListTagResourcesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ListTagResourcesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -48420,7 +48424,7 @@ impl crate::Request for UntagResources {
 
     type Body = crate::Form<Self>;
 
-    type Response = UntagResourcesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<UntagResourcesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -48508,7 +48512,7 @@ impl crate::Request for JoinResourceGroup {
 
     type Body = crate::Form<Self>;
 
-    type Response = JoinResourceGroupResponse;
+    type ResponseWrap = crate::JsonResponseWrap<JoinResourceGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -48738,7 +48742,7 @@ impl crate::Request for AllocateDedicatedHosts {
 
     type Body = crate::Form<Self>;
 
-    type Response = AllocateDedicatedHostsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AllocateDedicatedHostsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(22);
@@ -48960,7 +48964,7 @@ impl crate::Request for DescribeDedicatedHosts {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDedicatedHostsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDedicatedHostsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(16);
@@ -49076,7 +49080,7 @@ impl crate::Request for DescribeDedicatedHostTypes {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDedicatedHostTypesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDedicatedHostTypesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -49184,7 +49188,7 @@ impl crate::Request for ModifyDedicatedHostAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDedicatedHostAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDedicatedHostAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -49319,7 +49323,7 @@ impl crate::Request for ModifyDedicatedHostsChargeType {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDedicatedHostsChargeTypeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDedicatedHostsChargeTypeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -49399,7 +49403,7 @@ impl crate::Request for DescribeDedicatedHostAutoRenew {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDedicatedHostAutoRenewResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDedicatedHostAutoRenewResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -49528,7 +49532,7 @@ impl crate::Request for ModifyDedicatedHostAutoRenewAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDedicatedHostAutoRenewAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDedicatedHostAutoRenewAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -49643,7 +49647,7 @@ impl crate::Request for RenewDedicatedHosts {
 
     type Body = crate::Form<Self>;
 
-    type Response = RenewDedicatedHostsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RenewDedicatedHostsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -49713,7 +49717,7 @@ impl crate::Request for ModifyDedicatedHostAutoReleaseTime {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDedicatedHostAutoReleaseTimeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDedicatedHostAutoReleaseTimeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -49779,7 +49783,7 @@ impl crate::Request for RedeployDedicatedHost {
 
     type Body = crate::Form<Self>;
 
-    type Response = RedeployDedicatedHostResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RedeployDedicatedHostResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -49844,7 +49848,7 @@ impl crate::Request for ReleaseDedicatedHost {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReleaseDedicatedHostResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReleaseDedicatedHostResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -49929,7 +49933,7 @@ impl crate::Request for CreateDedicatedHostCluster {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateDedicatedHostClusterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateDedicatedHostClusterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -50009,7 +50013,7 @@ impl crate::Request for ModifyDedicatedHostClusterAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyDedicatedHostClusterAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyDedicatedHostClusterAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -50115,7 +50119,7 @@ impl crate::Request for DescribeDedicatedHostClusters {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeDedicatedHostClustersResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeDedicatedHostClustersResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -50202,7 +50206,7 @@ impl crate::Request for DeleteDedicatedHostCluster {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteDedicatedHostClusterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteDedicatedHostClusterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -50267,7 +50271,7 @@ impl crate::Request for CreateHpcCluster {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateHpcClusterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateHpcClusterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -50349,7 +50353,7 @@ impl crate::Request for DescribeHpcClusters {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeHpcClustersResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeHpcClustersResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -50432,7 +50436,7 @@ impl crate::Request for ModifyHpcClusterAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyHpcClusterAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyHpcClusterAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -50500,7 +50504,7 @@ impl crate::Request for DeleteHpcCluster {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteHpcClusterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteHpcClusterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -50607,7 +50611,7 @@ impl crate::Request for DescribeTasks {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeTasksResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeTasksResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(9);
@@ -50690,7 +50694,7 @@ impl crate::Request for DescribeTaskAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeTaskAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeTaskAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -50742,7 +50746,7 @@ impl crate::Request for CancelTask {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelTaskResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelTaskResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -50791,7 +50795,7 @@ impl crate::Request for DescribeUserBusinessBehavior {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeUserBusinessBehaviorResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeUserBusinessBehaviorResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -50845,7 +50849,7 @@ impl crate::Request for ModifyUserBusinessBehavior {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyUserBusinessBehaviorResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyUserBusinessBehaviorResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -50895,7 +50899,7 @@ impl crate::Request for DescribeLimitation {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeLimitationResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeLimitationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -50940,7 +50944,7 @@ impl crate::Request for DescribeClusters {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeClustersResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeClustersResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -50993,7 +50997,7 @@ impl crate::Request for DeleteNetworkInterfacePermission {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteNetworkInterfacePermissionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteNetworkInterfacePermissionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -51048,7 +51052,7 @@ impl crate::Request for DeleteBandwidthPackage {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteBandwidthPackageResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteBandwidthPackageResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -51105,7 +51109,7 @@ impl crate::Request for ModifyBandwidthPackageSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyBandwidthPackageSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyBandwidthPackageSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -51167,7 +51171,7 @@ impl crate::Request for DescribeBandwidthPackages {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeBandwidthPackagesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeBandwidthPackagesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -51248,7 +51252,7 @@ impl crate::Request for CreateVSwitch {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateVSwitchResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateVSwitchResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -51314,7 +51318,7 @@ impl crate::Request for DeleteVSwitch {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteVSwitchResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteVSwitchResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -51372,7 +51376,7 @@ impl crate::Request for ModifyVSwitchAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyVSwitchAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyVSwitchAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -51448,7 +51452,7 @@ impl crate::Request for DescribeVSwitches {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeVSwitchesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeVSwitchesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -51558,7 +51562,7 @@ impl crate::Request for CreatePhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreatePhysicalConnectionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreatePhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(13);
@@ -51647,7 +51651,7 @@ impl crate::Request for DeletePhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeletePhysicalConnectionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeletePhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -51732,7 +51736,7 @@ impl crate::Request for ModifyPhysicalConnectionAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyPhysicalConnectionAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyPhysicalConnectionAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -51832,7 +51836,7 @@ impl crate::Request for EnablePhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = EnablePhysicalConnectionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<EnablePhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -51901,7 +51905,7 @@ impl crate::Request for DescribePhysicalConnections {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribePhysicalConnectionsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribePhysicalConnectionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -51974,7 +51978,7 @@ impl crate::Request for CancelPhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = CancelPhysicalConnectionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CancelPhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52039,7 +52043,7 @@ impl crate::Request for TerminatePhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = TerminatePhysicalConnectionResponse;
+    type ResponseWrap = crate::JsonResponseWrap<TerminatePhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52111,7 +52115,7 @@ impl crate::Request for CreateVpc {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateVpcResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateVpcResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -52179,7 +52183,7 @@ impl crate::Request for DeleteVpc {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteVpcResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteVpcResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -52240,7 +52244,7 @@ impl crate::Request for DescribeVpcs {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeVpcsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeVpcsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -52316,7 +52320,7 @@ impl crate::Request for ModifyVpcAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyVpcAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyVpcAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -52392,7 +52396,7 @@ impl crate::Request for RemoveBandwidthPackageIps {
 
     type Body = crate::Form<Self>;
 
-    type Response = RemoveBandwidthPackageIpsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RemoveBandwidthPackageIpsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52461,7 +52465,7 @@ impl crate::Request for CreateHaVip {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateHaVipResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateHaVipResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -52524,7 +52528,7 @@ impl crate::Request for DeleteHaVip {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteHaVipResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteHaVipResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -52585,7 +52589,7 @@ impl crate::Request for AssociateHaVip {
 
     type Body = crate::Form<Self>;
 
-    type Response = AssociateHaVipResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AssociateHaVipResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52644,7 +52648,7 @@ impl crate::Request for ModifyHaVipAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyHaVipAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyHaVipAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52706,7 +52710,7 @@ impl crate::Request for DescribeHaVips {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeHaVipsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeHaVipsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -52774,7 +52778,7 @@ impl crate::Request for UnassociateHaVip {
 
     type Body = crate::Form<Self>;
 
-    type Response = UnassociateHaVipResponse;
+    type ResponseWrap = crate::JsonResponseWrap<UnassociateHaVipResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -52864,7 +52868,7 @@ impl crate::Request for CreateVirtualBorderRouter {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateVirtualBorderRouterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateVirtualBorderRouterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(12);
@@ -52958,7 +52962,7 @@ impl crate::Request for DeleteVirtualBorderRouter {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteVirtualBorderRouterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteVirtualBorderRouterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53041,7 +53045,7 @@ impl crate::Request for ModifyVirtualBorderRouterAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyVirtualBorderRouterAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyVirtualBorderRouterAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(11);
@@ -53131,7 +53135,7 @@ impl crate::Request for RecoverVirtualBorderRouter {
 
     type Body = crate::Form<Self>;
 
-    type Response = RecoverVirtualBorderRouterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RecoverVirtualBorderRouterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53193,7 +53197,7 @@ impl crate::Request for TerminateVirtualBorderRouter {
 
     type Body = crate::Form<Self>;
 
-    type Response = TerminateVirtualBorderRouterResponse;
+    type ResponseWrap = crate::JsonResponseWrap<TerminateVirtualBorderRouterResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53256,7 +53260,7 @@ impl crate::Request for DescribeVirtualBorderRouters {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeVirtualBorderRoutersResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeVirtualBorderRoutersResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53324,7 +53328,8 @@ impl crate::Request for DescribeVirtualBorderRoutersForPhysicalConnection {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeVirtualBorderRoutersForPhysicalConnectionResponse;
+    type ResponseWrap =
+        crate::JsonResponseWrap<DescribeVirtualBorderRoutersForPhysicalConnectionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -53450,7 +53455,7 @@ impl crate::Request for CreateRouterInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateRouterInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateRouterInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(22);
@@ -53572,7 +53577,7 @@ impl crate::Request for DeleteRouterInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteRouterInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteRouterInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53631,7 +53636,7 @@ impl crate::Request for ActivateRouterInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = ActivateRouterInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ActivateRouterInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -53682,7 +53687,7 @@ impl crate::Request for DeactivateRouterInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeactivateRouterInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeactivateRouterInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -53757,7 +53762,7 @@ impl crate::Request for ModifyRouterInterfaceAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyRouterInterfaceAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyRouterInterfaceAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(10);
@@ -53852,7 +53857,7 @@ impl crate::Request for ModifyRouterInterfaceSpec {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyRouterInterfaceSpecResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyRouterInterfaceSpecResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -53919,7 +53924,7 @@ impl crate::Request for ModifyVRouterAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyVRouterAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyVRouterAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -53985,7 +53990,7 @@ impl crate::Request for DescribeRouterInterfaces {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeRouterInterfacesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeRouterInterfacesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -54050,7 +54055,7 @@ impl crate::Request for UnassociateEipAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = UnassociateEipAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<UnassociateEipAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -54119,7 +54124,7 @@ impl crate::Request for AllocateEipAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = AllocateEipAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AllocateEipAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -54189,7 +54194,7 @@ impl crate::Request for ModifyEipAddressAttribute {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyEipAddressAttributeResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyEipAddressAttributeResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -54242,7 +54247,7 @@ impl crate::Request for ReleaseEipAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReleaseEipAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReleaseEipAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -54299,7 +54304,7 @@ impl crate::Request for AssociateEipAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = AssociateEipAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AssociateEipAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -54395,7 +54400,7 @@ impl crate::Request for DescribeEipAddresses {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeEipAddressesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeEipAddressesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(15);
@@ -54510,7 +54515,7 @@ impl crate::Request for DescribeEipMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeEipMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeEipMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -54582,7 +54587,7 @@ impl crate::Request for CreateNatGateway {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateNatGatewayResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateNatGatewayResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(6);
@@ -54647,7 +54652,7 @@ impl crate::Request for DeleteNatGateway {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteNatGatewayResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteNatGatewayResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -54705,7 +54710,7 @@ impl crate::Request for DescribeNatGateways {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeNatGatewaysResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeNatGatewaysResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -54780,7 +54785,7 @@ impl crate::Request for DescribeNewProjectEipMonitorData {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeNewProjectEipMonitorDataResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeNewProjectEipMonitorDataResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -54849,7 +54854,7 @@ impl crate::Request for DeleteRouteEntry {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteRouteEntryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteRouteEntryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -54918,7 +54923,7 @@ impl crate::Request for DeleteForwardEntry {
 
     type Body = crate::Form<Self>;
 
-    type Response = DeleteForwardEntryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DeleteForwardEntryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -54985,7 +54990,7 @@ impl crate::Request for CreateForwardEntry {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateForwardEntryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateForwardEntryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -55047,7 +55052,7 @@ impl crate::Request for AddBandwidthPackageIps {
 
     type Body = crate::Form<Self>;
 
-    type Response = AddBandwidthPackageIpsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AddBandwidthPackageIpsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -55110,7 +55115,7 @@ impl crate::Request for DescribeVRouters {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeVRoutersResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeVRoutersResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -55187,7 +55192,7 @@ impl crate::Request for CreateRouteEntry {
 
     type Body = crate::Form<Self>;
 
-    type Response = CreateRouteEntryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<CreateRouteEntryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -55267,7 +55272,7 @@ impl crate::Request for DescribeForwardTableEntries {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeForwardTableEntriesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeForwardTableEntriesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -55348,7 +55353,7 @@ impl crate::Request for ModifyForwardEntry {
 
     type Body = crate::Form<Self>;
 
-    type Response = ModifyForwardEntryResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ModifyForwardEntryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -55427,7 +55432,7 @@ impl crate::Request for DescribeAccessPoints {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeAccessPointsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeAccessPointsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -55510,7 +55515,7 @@ impl crate::Request for DescribeRouteTables {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeRouteTablesResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeRouteTablesResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(8);
@@ -55588,7 +55593,7 @@ impl crate::Request for ConnectRouterInterface {
 
     type Body = crate::Form<Self>;
 
-    type Response = ConnectRouterInterfaceResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ConnectRouterInterfaceResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -55648,7 +55653,7 @@ impl crate::Request for ExportSnapshot {
 
     type Body = crate::Form<Self>;
 
-    type Response = ExportSnapshotResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ExportSnapshotResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -55712,7 +55717,7 @@ impl crate::Request for ReleasePublicIpAddress {
 
     type Body = crate::Form<Self>;
 
-    type Response = ReleasePublicIpAddressResponse;
+    type ResponseWrap = crate::JsonResponseWrap<ReleasePublicIpAddressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -55801,7 +55806,7 @@ impl crate::Request for AddTags {
 
     type Body = crate::Form<Self>;
 
-    type Response = AddTagsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<AddTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -55885,7 +55890,7 @@ impl crate::Request for DescribeResourceByTags {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeResourceByTagsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeResourceByTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(5);
@@ -55997,7 +56002,7 @@ impl crate::Request for DescribeTags {
 
     type Body = crate::Form<Self>;
 
-    type Response = DescribeTagsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DescribeTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -56098,7 +56103,7 @@ impl crate::Request for RemoveTags {
 
     type Body = crate::Form<Self>;
 
-    type Response = RemoveTagsResponse;
+    type ResponseWrap = crate::JsonResponseWrap<RemoveTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -56158,7 +56163,7 @@ impl crate::Request for EnableNetworkInterfaceQoS {
 
     type Body = crate::Form<Self>;
 
-    type Response = EnableNetworkInterfaceQoSResponse;
+    type ResponseWrap = crate::JsonResponseWrap<EnableNetworkInterfaceQoSResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -56216,7 +56221,7 @@ impl crate::Request for DisableNetworkInterfaceQoS {
 
     type Body = crate::Form<Self>;
 
-    type Response = DisableNetworkInterfaceQoSResponse;
+    type ResponseWrap = crate::JsonResponseWrap<DisableNetworkInterfaceQoSResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);

@@ -9,7 +9,7 @@ use std::{borrow::Cow, collections::BTreeMap};
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{IntoBody as _, QueryValue, Result, ToCodeMessage};
+use crate::{FromBody, IntoBody as _, IntoResponse, QueryValue, Result, ToCodeMessage};
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
@@ -126,7 +126,7 @@ pub async fn call<R>(
     version: &'static str,
     end_point: &'static str,
     req: R,
-) -> Result<R::Response>
+) -> Result<<R::ResponseWrap as IntoResponse>::Response>
 where
     R: super::Request,
 {
@@ -206,20 +206,18 @@ where
     .context("send request")?;
 
     let status = resp.status();
-    let resp_text = resp.text().await.context("Get response text")?;
-    debug!("Response: {:?}", resp_text);
+    let resp_bytes = resp.bytes().await.context("Get response bytes")?;
+    debug!("Response: {:?}", String::from_utf8_lossy(&resp_bytes));
 
     let resp = if status.is_success() {
-        let resp = match R::RESPONSE_CONTENT_TYPE {
-            crate::ResponseContentType::Json => serde_json::from_str::<R::Response>(&resp_text)
-                .with_context(|| format!("Decode response as JSON: {}", &resp_text))?,
-            crate::ResponseContentType::Xml => quick_xml::de::from_str::<R::Response>(&resp_text)
-                .context("Decode response as XML")?,
-        };
-        resp.to_code_message().check()?;
-        resp
+        // Use ResponseWrap to deserialize response bytes
+        let wrap = R::ResponseWrap::from_body(resp_bytes.to_vec())?;
+        wrap.to_code_message().check()?;
+        // Convert ResponseWrap to Response type
+        wrap.into_response()
     } else {
         // Try JSON first for error responses, then XML
+        let resp_text = String::from_utf8_lossy(&resp_bytes);
         match serde_json::from_str::<crate::CodeMessage>(&resp_text) {
             Ok(code_msg) => return Err(code_msg.into()),
             Err(_) => {
