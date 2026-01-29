@@ -731,6 +731,14 @@ impl ToCodeMessage for Vec<u8> {
     }
 }
 
+impl IntoResponse for Vec<u8> {
+    type Response = Vec<u8>;
+
+    fn into_response(self) -> Self::Response {
+        self
+    }
+}
+
 /// Generic response type for APIs without strongly-typed response definitions.
 /// This is used when an API produces JSON but doesn't define a 200 response schema.
 #[derive(Debug, Default, serde::Deserialize)]
