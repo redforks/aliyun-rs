@@ -22,6 +22,8 @@ pub mod sms;
 #[cfg(feature = "ecs")]
 pub mod ecs;
 
+pub mod fc;
+
 #[cfg(test)]
 mod sample;
 
@@ -568,12 +570,34 @@ impl<T> IntoResponse for JsonResponseWrap<T> {
 }
 
 // Compatibility layer: For existing code that uses Response directly
-impl<T: DeserializeOwned + ToCodeMessage> FromBody for T {
+impl<T: DeserializeOwned + ToCodeMessage + Default> FromBody for T {
     fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        // For empty response body, return default value (useful for unit type)
+        if bytes.is_empty() {
+            return Ok(T::default());
+        }
         let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
+        if text.is_empty() {
+            return Ok(T::default());
+        }
         let inner = serde_json::from_str(&text)
             .with_context(|| format!("Decode response as JSON: {}", &text))?;
         Ok(inner)
+    }
+}
+
+// Unit type implementation for empty responses
+impl ToCodeMessage for () {
+    fn to_code_message(&self) -> &CodeMessage {
+        &CODE_MESSAGE
+    }
+}
+
+impl IntoResponse for () {
+    type Response = ();
+
+    fn into_response(self) -> Self::Response {
+        self
     }
 }
 

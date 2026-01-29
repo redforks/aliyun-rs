@@ -194,7 +194,7 @@ impl Connection {
     pub fn delete_custom_domain(
         &self,
         req: DeleteCustomDomain,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -286,7 +286,7 @@ impl Connection {
     pub fn delete_function_version(
         &self,
         req: DeleteFunctionVersion,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -404,7 +404,7 @@ impl Connection {
     pub fn delete_function(
         &self,
         req: DeleteFunction,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -476,11 +476,7 @@ impl Connection {
         &self,
         req: InvokeFunction,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        async {
-            todo!(
-                r##"Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+        self.call(req)
     }
 
     /// # 更新函数
@@ -577,7 +573,7 @@ impl Connection {
     pub fn delete_alias(
         &self,
         req: DeleteAlias,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -715,7 +711,7 @@ impl Connection {
     pub fn delete_trigger(
         &self,
         req: DeleteTrigger,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -807,7 +803,7 @@ impl Connection {
     pub fn delete_async_invoke_config(
         &self,
         req: DeleteAsyncInvokeConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -900,7 +896,7 @@ impl Connection {
     pub fn delete_provision_config(
         &self,
         req: DeleteProvisionConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -992,7 +988,7 @@ impl Connection {
     pub fn delete_concurrency_config(
         &self,
         req: DeleteConcurrencyConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1108,7 +1104,7 @@ impl Connection {
     pub fn delete_layer_version(
         &self,
         req: DeleteLayerVersion,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1223,7 +1219,7 @@ impl Connection {
     pub fn put_layer_acl(
         &self,
         req: PutLayerACL,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1311,10 +1307,8 @@ impl Connection {
     pub fn delete_vpc_binding(
         &self,
         req: DeleteVpcBinding,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteVpcBindingResponse>> + Send {
-        async {
-            todo!(r##"API must have 200 response"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+        self.call(req)
     }
 
     /// # 设置资源标签
@@ -1455,7 +1449,7 @@ impl Connection {
     pub fn stop_async_task(
         &self,
         req: StopAsyncTask,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1570,7 +1564,7 @@ impl Connection {
     pub fn delete_session(
         &self,
         req: DeleteSession,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1604,10 +1598,8 @@ impl Connection {
     pub fn delete_scaling_config(
         &self,
         req: DeleteScalingConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteScalingConfigResponse>> + Send {
-        async {
-            todo!(r##"API must have 200 response"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+        self.call(req)
     }
 
     /// # 获取函数弹性配置
@@ -1745,8 +1737,8 @@ pub struct CreateCustomDomain {
 impl sealed::Bound for CreateCustomDomain {}
 
 impl CreateCustomDomain {
-    pub fn new(body: impl Into<Vec<u8>>) -> Self {
-        Self { body: body.into() }
+    pub fn new() -> Self {
+        Self { body: Vec::new() }
     }
 }
 
@@ -1802,7 +1794,7 @@ impl crate::Request for DeleteCustomDomain {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteCustomDomainResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -1933,10 +1925,10 @@ pub struct UpdateCustomDomain {
 impl sealed::Bound for UpdateCustomDomain {}
 
 impl UpdateCustomDomain {
-    pub fn new(domain_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(domain_name: impl Into<String>) -> Self {
         Self {
             domain_name: domain_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -2000,7 +1992,7 @@ impl crate::Request for DeleteFunctionVersion {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteFunctionVersionResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -2151,10 +2143,10 @@ pub struct PublishFunctionVersion {
 impl sealed::Bound for PublishFunctionVersion {}
 
 impl PublishFunctionVersion {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -2195,8 +2187,8 @@ pub struct CreateFunction {
 impl sealed::Bound for CreateFunction {}
 
 impl CreateFunction {
-    pub fn new(body: impl Into<Vec<u8>>) -> Self {
-        Self { body: body.into() }
+    pub fn new() -> Self {
+        Self { body: Vec::new() }
     }
 }
 
@@ -2252,7 +2244,7 @@ impl crate::Request for DeleteFunction {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteFunctionResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -2540,10 +2532,10 @@ pub struct UpdateFunction {
 impl sealed::Bound for UpdateFunction {}
 
 impl UpdateFunction {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -2702,7 +2694,7 @@ impl crate::Request for DeleteAlias {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteAliasResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -2851,15 +2843,11 @@ pub struct UpdateAlias {
 impl sealed::Bound for UpdateAlias {}
 
 impl UpdateAlias {
-    pub fn new(
-        function_name: impl Into<String>,
-        alias_name: impl Into<String>,
-        body: impl Into<Vec<u8>>,
-    ) -> Self {
+    pub fn new(function_name: impl Into<String>, alias_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
             alias_name: alias_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -2905,10 +2893,10 @@ pub struct CreateAlias {
 impl sealed::Bound for CreateAlias {}
 
 impl CreateAlias {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -2951,10 +2939,10 @@ pub struct CreateTrigger {
 impl sealed::Bound for CreateTrigger {}
 
 impl CreateTrigger {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -3018,7 +3006,7 @@ impl crate::Request for DeleteTrigger {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteTriggerResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -3167,15 +3155,11 @@ pub struct UpdateTrigger {
 impl sealed::Bound for UpdateTrigger {}
 
 impl UpdateTrigger {
-    pub fn new(
-        function_name: impl Into<String>,
-        trigger_name: impl Into<String>,
-        body: impl Into<Vec<u8>>,
-    ) -> Self {
+    pub fn new(function_name: impl Into<String>, trigger_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
             trigger_name: trigger_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -3243,7 +3227,7 @@ impl crate::Request for DeleteAsyncInvokeConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteAsyncInvokeConfigResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -3393,9 +3377,9 @@ pub struct PutAsyncInvokeConfig {
 impl sealed::Bound for PutAsyncInvokeConfig {}
 
 impl PutAsyncInvokeConfig {
-    pub fn new(body: impl Into<Vec<u8>>, function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
-            body: body.into(),
+            body: Vec::new(),
             function_name: function_name.into(),
             qualifier: None,
         }
@@ -3468,7 +3452,7 @@ impl crate::Request for DeleteProvisionConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteProvisionConfigResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -3618,11 +3602,11 @@ pub struct PutProvisionConfig {
 impl sealed::Bound for PutProvisionConfig {}
 
 impl PutProvisionConfig {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
             qualifier: None,
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -3689,7 +3673,7 @@ impl crate::Request for DeleteConcurrencyConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteConcurrencyConfigResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -3820,10 +3804,10 @@ pub struct PutConcurrencyConfig {
 impl sealed::Bound for PutConcurrencyConfig {}
 
 impl PutConcurrencyConfig {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -3866,10 +3850,10 @@ pub struct CreateLayerVersion {
 impl sealed::Bound for CreateLayerVersion {}
 
 impl CreateLayerVersion {
-    pub fn new(layer_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(layer_name: impl Into<String>) -> Self {
         Self {
             layer_name: layer_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -3933,7 +3917,7 @@ impl crate::Request for DeleteLayerVersion {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteLayerVersionResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -4213,7 +4197,7 @@ impl crate::Request for PutLayerACL {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<PutLayerACLResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -4399,10 +4383,10 @@ pub struct CreateVpcBinding {
 impl sealed::Bound for CreateVpcBinding {}
 
 impl CreateVpcBinding {
-    pub fn new(function_name: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
+    pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: body.into(),
+            body: Vec::new(),
         }
     }
 }
@@ -4466,7 +4450,7 @@ impl crate::Request for DeleteVpcBinding {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteVpcBindingResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -4497,8 +4481,8 @@ pub struct TagResources {
 impl sealed::Bound for TagResources {}
 
 impl TagResources {
-    pub fn new(body: impl Into<Vec<u8>>) -> Self {
-        Self { body: body.into() }
+    pub fn new() -> Self {
+        Self { body: Vec::new() }
     }
 }
 
@@ -4912,7 +4896,7 @@ impl crate::Request for StopAsyncTask {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<StopAsyncTaskResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5236,7 +5220,7 @@ impl crate::Request for DeleteSession {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteSessionResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5354,7 +5338,7 @@ impl crate::Request for DeleteScalingConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteScalingConfigResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6185,19 +6169,6 @@ impl crate::ToCodeMessage for CreateVpcBindingResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteVpcBindingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteVpcBindingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct TagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -6321,19 +6292,6 @@ pub struct PutScalingConfigResponse {
 }
 
 impl crate::ToCodeMessage for PutScalingConfigResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteScalingConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteScalingConfigResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
