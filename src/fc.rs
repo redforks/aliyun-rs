@@ -1285,10 +1285,8 @@ impl Connection {
     pub fn create_vpc_binding(
         &self,
         req: CreateVpcBinding,
-    ) -> impl std::future::Future<Output = crate::Result<CreateVpcBindingResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+        self.call(req)
     }
 
     /// # 删除VPC绑定
@@ -1330,10 +1328,8 @@ impl Connection {
     pub fn tag_resources(
         &self,
         req: TagResources,
-    ) -> impl std::future::Future<Output = crate::Result<TagResourcesResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
     /// # 查询资源标签关系
@@ -1378,10 +1374,8 @@ impl Connection {
     pub fn untag_resources(
         &self,
         req: UntagResources,
-    ) -> impl std::future::Future<Output = crate::Result<UntagResourcesResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
     /// # 获取异步任务
@@ -4399,7 +4393,7 @@ impl crate::Request for CreateVpcBinding {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::JsonResponseWrap<CreateVpcBindingResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -4494,7 +4488,7 @@ impl crate::Request for TagResources {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::JsonResponseWrap<TagResourcesResponse>;
+    type ResponseWrap = crate::JsonResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -4627,7 +4621,7 @@ impl crate::Request for UntagResources {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<UntagResourcesResponse>;
+    type ResponseWrap = crate::JsonResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -6156,51 +6150,12 @@ impl crate::ToCodeMessage for ListVpcBindingsResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct CreateVpcBindingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for CreateVpcBindingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct TagResourcesResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for TagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 
 impl crate::ToCodeMessage for ListTagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct UntagResourcesResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for UntagResourcesResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
