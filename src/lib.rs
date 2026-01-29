@@ -513,14 +513,6 @@ trait ToFormData {
     fn to_form_data(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)>;
 }
 
-/// Content type for response deserialization.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
-enum ResponseContentType {
-    #[default]
-    Json,
-    Xml,
-}
-
 /// Trait for types that can provide a reference to CodeMessage.
 /// This is used instead of AsRef<CodeMessage> to allow implementations
 /// for types like Vec<u8> that need to be deserialized into CodeMessage.
@@ -634,8 +626,6 @@ trait Request: Sized + Send {
     const METHOD: Method;
     const URL_PATH: &'static str = "/";
     const ACTION: &'static str;
-    /// Content type for deserializing the response body. Defaults to JSON.
-    const RESPONSE_CONTENT_TYPE: ResponseContentType = ResponseContentType::Json;
     /// Request body, will serialize to json. Use unit type if no request body.
     /// Not used if Method is GET.
     type Body: IntoBody + Send;
