@@ -84116,6 +84116,12 @@ impl SpotStrategy {
     }
 }
 
+impl std::fmt::Display for SpotStrategy {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a SpotStrategy> for crate::QueryValue<'a> {
     fn from(value: &'a SpotStrategy) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84199,6 +84205,12 @@ impl DescribeInstanceTypesInstanceCategory {
     }
 }
 
+impl std::fmt::Display for DescribeInstanceTypesInstanceCategory {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a DescribeInstanceTypesInstanceCategory> for crate::QueryValue<'a> {
     fn from(value: &'a DescribeInstanceTypesInstanceCategory) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84237,6 +84249,12 @@ impl DescribeInstanceTypesCpuArchitecture {
             Self::X86 => "X86",
             Self::ARM => "ARM",
         }
+    }
+}
+
+impl std::fmt::Display for DescribeInstanceTypesCpuArchitecture {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84284,6 +84302,12 @@ impl FamilyLevel {
     }
 }
 
+impl std::fmt::Display for FamilyLevel {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a FamilyLevel> for crate::QueryValue<'a> {
     fn from(value: &'a FamilyLevel) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84325,6 +84349,12 @@ impl DescribeInstanceTypesLocalStorageCategory {
     }
 }
 
+impl std::fmt::Display for DescribeInstanceTypesLocalStorageCategory {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a DescribeInstanceTypesLocalStorageCategory> for crate::QueryValue<'a> {
     fn from(value: &'a DescribeInstanceTypesLocalStorageCategory) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84363,6 +84393,12 @@ impl NvmeSupport {
             Self::Required => "required",
             Self::Unsupported => "unsupported",
         }
+    }
+}
+
+impl std::fmt::Display for NvmeSupport {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84449,6 +84485,12 @@ impl DescribeInstanceTypesInstanceCategoriesItem {
     }
 }
 
+impl std::fmt::Display for DescribeInstanceTypesInstanceCategoriesItem {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a DescribeInstanceTypesInstanceCategoriesItem> for crate::QueryValue<'a> {
     fn from(value: &'a DescribeInstanceTypesInstanceCategoriesItem) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84487,6 +84529,12 @@ impl DescribeInstanceTypesCpuArchitecturesItem {
             Self::X86 => "X86",
             Self::ARM => "ARM",
         }
+    }
+}
+
+impl std::fmt::Display for DescribeInstanceTypesCpuArchitecturesItem {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84531,6 +84579,12 @@ impl DescribeInstanceTypesLocalStorageCategoriesItem {
     }
 }
 
+impl std::fmt::Display for DescribeInstanceTypesLocalStorageCategoriesItem {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a DescribeInstanceTypesLocalStorageCategoriesItem> for crate::QueryValue<'a> {
     fn from(value: &'a DescribeInstanceTypesLocalStorageCategoriesItem) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84569,6 +84623,12 @@ impl ModifyInstanceSpecModifyMode {
             Self::Online => "Online",
             Self::Offline => "Offline",
         }
+    }
+}
+
+impl std::fmt::Display for ModifyInstanceSpecModifyMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84613,6 +84673,12 @@ impl PrepayInstanceSpecModifyMode {
     }
 }
 
+impl std::fmt::Display for PrepayInstanceSpecModifyMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a PrepayInstanceSpecModifyMode> for crate::QueryValue<'a> {
     fn from(value: &'a PrepayInstanceSpecModifyMode) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84648,6 +84714,12 @@ impl OptionsRecover {
         match self {
             Self::All => "All",
         }
+    }
+}
+
+impl std::fmt::Display for OptionsRecover {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84689,6 +84761,12 @@ impl CategoryCategory {
     }
 }
 
+impl std::fmt::Display for CategoryCategory {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a CategoryCategory> for crate::QueryValue<'a> {
     fn from(value: &'a CategoryCategory) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84724,6 +84802,12 @@ impl MetricsResourceType {
         match self {
             Self::Instance => "instance",
         }
+    }
+}
+
+impl std::fmt::Display for MetricsResourceType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84768,6 +84852,12 @@ impl CreateDiagnosticMetricSetResourceType {
     }
 }
 
+impl std::fmt::Display for CreateDiagnosticMetricSetResourceType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a CreateDiagnosticMetricSetResourceType> for crate::QueryValue<'a> {
     fn from(value: &'a CreateDiagnosticMetricSetResourceType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84809,6 +84899,12 @@ impl SetsType {
     }
 }
 
+impl std::fmt::Display for SetsType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a SetsType> for crate::QueryValue<'a> {
     fn from(value: &'a SetsType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84847,6 +84943,12 @@ impl SetsResourceType {
     }
 }
 
+impl std::fmt::Display for SetsResourceType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a SetsResourceType> for crate::QueryValue<'a> {
     fn from(value: &'a SetsResourceType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -84882,6 +84984,12 @@ impl ModifyDiagnosticMetricSetResourceType {
         match self {
             Self::Instance => "instance",
         }
+    }
+}
+
+impl std::fmt::Display for ModifyDiagnosticMetricSetResourceType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84929,6 +85037,12 @@ impl ReportsStatus {
             Self::Failed => "Failed",
             Self::Inprogress => "inprogress",
         }
+    }
+}
+
+impl std::fmt::Display for ReportsStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -84982,6 +85096,12 @@ impl ReportsSeverity {
     }
 }
 
+impl std::fmt::Display for ReportsSeverity {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a ReportsSeverity> for crate::QueryValue<'a> {
     fn from(value: &'a ReportsSeverity) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -85020,6 +85140,12 @@ impl MigrationType {
             Self::Reboot => "Reboot",
             Self::LiveMigrationFirst => "LiveMigrationFirst",
         }
+    }
+}
+
+impl std::fmt::Display for MigrationType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 

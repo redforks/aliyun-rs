@@ -8638,6 +8638,12 @@ impl EncryptType {
     }
 }
 
+impl std::fmt::Display for EncryptType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a EncryptType> for crate::QueryValue<'a> {
     fn from(value: &'a EncryptType) -> Self {
         crate::QueryValue::from(value.as_str())

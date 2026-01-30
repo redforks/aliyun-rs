@@ -9665,6 +9665,12 @@ impl TextType {
     }
 }
 
+impl std::fmt::Display for TextType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a TextType> for crate::QueryValue<'a> {
     fn from(value: &'a TextType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -9712,6 +9718,12 @@ impl ConfigCountry {
     }
 }
 
+impl std::fmt::Display for ConfigCountry {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a ConfigCountry> for crate::QueryValue<'a> {
     fn from(value: &'a ConfigCountry) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -9750,6 +9762,12 @@ impl HandWriting {
             Self::True => "true",
             Self::False => "false",
         }
+    }
+}
+
+impl std::fmt::Display for HandWriting {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -9804,6 +9822,12 @@ impl IdcardCountry {
     }
 }
 
+impl std::fmt::Display for IdcardCountry {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a IdcardCountry> for crate::QueryValue<'a> {
     fn from(value: &'a IdcardCountry) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -9842,6 +9866,12 @@ impl LicenseCountry {
             Self::India => "India",
             Self::Korea => "Korea",
         }
+    }
+}
+
+impl std::fmt::Display for LicenseCountry {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 

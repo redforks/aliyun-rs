@@ -5536,6 +5536,12 @@ impl AcceptLanguage {
     }
 }
 
+impl std::fmt::Display for AcceptLanguage {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a AcceptLanguage> for crate::QueryValue<'a> {
     fn from(value: &'a AcceptLanguage) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -5574,6 +5580,12 @@ impl FunctionsfcVersion {
             Self::V3 => "v3",
             Self::V2 => "v2",
         }
+    }
+}
+
+impl std::fmt::Display for FunctionsfcVersion {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -5618,6 +5630,12 @@ impl InstancesinstanceStatus {
             Self::Terminating => "Terminating",
             Self::Destroyed => "Destroyed",
         }
+    }
+}
+
+impl std::fmt::Display for InstancesinstanceStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
