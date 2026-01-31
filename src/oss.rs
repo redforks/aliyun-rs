@@ -2193,7 +2193,7 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or HttpMethod::Head supported"##
             );
         }
     }
@@ -3592,8 +3592,7 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported
-Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
+                r##"Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
         }
     }
@@ -3627,11 +3626,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetObjectMeta,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
-        async {
-            todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
-            );
-        }
+        self.call(req)
     }
 
     /// # 解冻归档类型或冷归档的文件
@@ -10874,7 +10869,7 @@ impl HeadObject {
 }
 
 impl crate::Request for HeadObject {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::HEAD;
 
     const ACTION: &'static str = "HeadObject";
     const URL_PATH: &'static str = "/{key}";
@@ -11039,7 +11034,7 @@ impl GetObjectMeta {
 }
 
 impl crate::Request for GetObjectMeta {
-    const METHOD: http::Method = http::Method::GET;
+    const METHOD: http::Method = http::Method::HEAD;
 
     const ACTION: &'static str = "GetObjectMeta";
     const URL_PATH: &'static str = "/{key}?objectMeta";
