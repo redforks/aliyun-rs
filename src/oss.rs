@@ -113,7 +113,7 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
-    ///
+
     /// # 列举存储空间
     ///
     /// 列举请求者拥有的所有存储空间（Bucket）。
@@ -141,7 +141,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查询地域
     ///
     /// 查询所有支持地域或者指定地域对应的Endpoint信息，包括外网Endpoint、内网Endpoint和传输加速Endpoint。
@@ -178,13 +177,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -215,7 +214,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -237,7 +236,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取存储空间存储容量与文件数量
     ///
     /// 获取指定存储空间的存储容量以及文件数量。
@@ -265,7 +263,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建存储空间
     ///
     /// 创建一个存储空间（Bucket）。
@@ -301,13 +298,10 @@ impl Connection {
     pub fn put_bucket(
         &self,
         req: PutBucket,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除存储空间
     ///
     /// 删除存储空间（Bucket）。
@@ -330,13 +324,10 @@ impl Connection {
     pub fn delete_bucket(
         &self,
         req: DeleteBucket,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 列举存储空间中所有文件的信息
     ///
     /// 列举存储空间（Bucket）中所有文件（Object）的信息。
@@ -364,7 +355,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列举存储空间中所有文件的信息V2
     ///
     /// 列举存储空间（Bucket）中所有文件（Object）的信息。
@@ -390,7 +380,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查看存储空间的相关信息
     ///
     /// 查看存储空间（Bucket）的相关信息。只有Bucket的拥有者才能查看Bucket的信息。该请求可以从任何一个OSS的Endpoint发起。
@@ -414,7 +403,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 查看存储空间的位置信息
     ///
     /// 查看存储空间（Bucket）的位置信息。只有Bucket的拥有者才能查看Bucket的位置信息。
@@ -438,7 +426,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取接入点信息
     ///
     /// 获取用户级别或Bucket级别的接入点信息。
@@ -462,7 +449,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取接入点信息
     ///
     /// 获取接入点信息。
@@ -486,7 +472,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取接入点策略配置
     ///
     /// 获取接入点策略配置。
@@ -510,7 +495,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除接入点策略
     ///
     /// 删除接入点策略。
@@ -530,14 +514,10 @@ impl Connection {
     pub fn delete_access_point_policy(
         &self,
         req: DeleteAccessPointPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointPolicyResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 配置接入点策略
     ///
     /// 配置接入点策略。
@@ -557,13 +537,10 @@ impl Connection {
     pub fn put_access_point_policy(
         &self,
         req: PutAccessPointPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPolicyResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除接入点
     ///
     /// 删除接入点。
@@ -583,13 +560,10 @@ impl Connection {
     pub fn delete_access_point(
         &self,
         req: DeleteAccessPoint,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 创建接入点
     ///
     /// 创建接入点。
@@ -616,7 +590,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 新建合规保留策略
     ///
     /// 新建一条合规保留策略。
@@ -642,13 +615,10 @@ impl Connection {
     pub fn initiate_bucket_worm(
         &self,
         req: InitiateBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除未锁定的合规保留策略
     ///
     /// 删除指定存储空间（Bucket）未锁定的合规保留策略。
@@ -676,13 +646,10 @@ impl Connection {
     pub fn abort_bucket_worm(
         &self,
         req: AbortBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<AbortBucketWormResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 锁定合规保留策略
     ///
     /// 调用CompleteBucketWorm接口锁定合规保留策略。
@@ -708,13 +675,10 @@ impl Connection {
     pub fn complete_bucket_worm(
         &self,
         req: CompleteBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<CompleteBucketWormResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 延长存储空间中文件的保留天数
     ///
     /// 延长已锁定的合规保留策略对应Bucket中Object的保留天数。
@@ -746,13 +710,10 @@ impl Connection {
     pub fn extend_bucket_worm(
         &self,
         req: ExtendBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<ExtendBucketWormResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的合规保留策略信息
     ///
     /// 获取指定存储空间（Bucket）的合规保留策略信息。
@@ -782,7 +743,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置或修改存储空间的访问权限
     ///
     /// 设置或修改存储空间（Bucket）的访问权限（ACL）。
@@ -808,13 +768,10 @@ impl Connection {
     pub fn put_bucket_acl(
         &self,
         req: PutBucketAcl,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketAclResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的访问权限
     ///
     /// 获取某个存储空间（Bucket）的访问权限（ACL）。只有Bucket的拥有者才能获取Bucket的访问权限。
@@ -838,7 +795,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置存储空间的生命周期规则
     ///
     /// 设置存储空间的生命周期规则
@@ -866,13 +822,10 @@ impl Connection {
     pub fn put_bucket_lifecycle(
         &self,
         req: PutBucketLifecycle,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketLifecycleResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查询存储空间的生命周期规则
     ///
     /// 查看存储空间（Bucket）的生命周期规则（Lifecycle）。只有Bucket的拥有者才有权限查看Bucket的生命周期规则。
@@ -896,7 +849,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的生命周期规则
     ///
     /// 调用DeleteBucketLifecycle接口删除指定存储空间（Bucket）的生命周期规则。
@@ -920,14 +872,10 @@ impl Connection {
     pub fn delete_bucket_lifecycle(
         &self,
         req: DeleteBucketLifecycle,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketLifecycleResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 为存储空间配置传输加速
     ///
     /// 调用PutBucketTransferAcceleration接口为存储空间（Bucket）配置传输加速。开启传输加速后，可提升全球各地用户对OSS的访问速度，适用于远距离数据传输、GB或TB级大文件上传和下载的场景。
@@ -955,14 +903,10 @@ impl Connection {
     pub fn put_bucket_transfer_acceleration(
         &self,
         req: PutBucketTransferAcceleration,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketTransferAccelerationResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的传输加速配置
     ///
     /// 调用GetBucketTransferAcceleration接口获取目标存储空间（Bucket）的传输加速配置。
@@ -993,7 +937,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置存储空间的版本控制状态
     ///
     /// 设置指定存储空间（Bucket）的版本控制状态。
@@ -1023,13 +966,10 @@ impl Connection {
     pub fn put_bucket_versioning(
         &self,
         req: PutBucketVersioning,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketVersioningResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取指定存储空间的版本控制状态
     ///
     /// 调用GetBucketVersioning接口获取指定Bucket的版本控制状态。
@@ -1053,7 +993,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取文件的版本信息
     ///
     /// 列出Bucket中包括删除标记（Delete Marker）在内的所有Object的版本信息。
@@ -1082,7 +1021,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置存储空间的授权策略
     ///
     /// 为指定的存储空间（Bucket）设置授权策略（Policy)。
@@ -1112,13 +1050,10 @@ impl Connection {
     pub fn put_bucket_policy(
         &self,
         req: PutBucketPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketPolicyResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的权限策略
     ///
     /// 获取指定存储空间（Bucket）的权限策略（Policy）。
@@ -1152,7 +1087,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的权限策略
     ///
     /// 删除指定存储空间（Bucket）的权限策略（Policy）。
@@ -1182,13 +1116,10 @@ impl Connection {
     pub fn delete_bucket_policy(
         &self,
         req: DeleteBucketPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketPolicyResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间授权策略是否是公共访问
     ///
     /// 查看当前Bucket Policy是否允许公共访问。
@@ -1215,7 +1146,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置RTC
     ///
     /// 为已有的跨区域复制规则开启或关闭数据复制时间控制（RTC）功能。
@@ -1235,13 +1165,10 @@ impl Connection {
     pub fn put_bucket_rtc(
         &self,
         req: PutBucketRtc,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketRtcResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 指定存储空间的数据复制规则
     ///
     /// 为存储空间（Bucket）指定数据复制规则。OSS支持跨区域复制（Cross-Region Replication）和同区域复制（Same-Region Replication）。
@@ -1271,13 +1198,10 @@ impl Connection {
     pub fn put_bucket_replication(
         &self,
         req: PutBucketReplication,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置存储空间的数据复制规则
     ///
     /// 获取某个存储空间（Bucket）已设置的数据复制规则。
@@ -1301,7 +1225,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取可复制到的目标存储空间的地域
     ///
     /// 获取可复制到的目标存储空间（Bucket）所在的地域。您可以根据返回结果决定将源Bucket的数据复制到哪个地域。
@@ -1326,7 +1249,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取存储空间的数据复制进度
     ///
     /// 获取某个存储空间（Bucket）的数据复制进度。
@@ -1351,7 +1273,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 停止存储空间的数据复制并删除其复制配置
     ///
     /// 停止某个存储空间（Bucket）的数据复制并删除Bucket的复制配置，此时源Bucket中的任何操作都不会被同步到目标Bucket。
@@ -1377,14 +1298,10 @@ impl Connection {
     pub fn delete_bucket_replication(
         &self,
         req: DeleteBucketReplication,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketReplicationResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 配置存储空间的清单规则
     ///
     /// 为指定存储空间（Bucket）配置清单（Inventory）规则。
@@ -1430,13 +1347,10 @@ impl Connection {
     pub fn put_bucket_inventory(
         &self,
         req: PutBucketInventory,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketInventoryResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查看存储空间的清单任务
     ///
     /// 查看某个存储空间（Bucket）中指定的清单（Inventory）任务。
@@ -1462,7 +1376,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 批量获取存储空间的所有清单任务
     ///
     /// 批量获取某个存储空间（Bucket）中的所有清单（Inventory）任务。
@@ -1490,7 +1403,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的指定清单任务
     ///
     /// 删除某个存储空间（Bucket）中指定的清单（Inventory）任务。
@@ -1513,14 +1425,10 @@ impl Connection {
     pub fn delete_bucket_inventory(
         &self,
         req: DeleteBucketInventory,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketInventoryResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 开启存储空间的日志转存功能
     ///
     /// 为存储空间（Bucket）开启日志转存功能，可将OSS的访问日志按照固定命名规则，以小时为单位生成日志文件写入您指定的Bucket。
@@ -1550,13 +1458,10 @@ impl Connection {
     pub fn put_bucket_logging(
         &self,
         req: PutBucketLogging,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketLoggingResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查看存储空间的访问日志配置
     ///
     /// 查看存储空间（Bucket）的访问日志配置。只有Bucket的拥有者才能查看Bucket的访问日志配置。
@@ -1580,7 +1485,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 关闭存储空间的访问日志记录功能
     ///
     /// 关闭存储空间（Bucket）的访问日志记录功能。
@@ -1603,13 +1507,10 @@ impl Connection {
     pub fn delete_bucket_logging(
         &self,
         req: DeleteBucketLogging,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketLoggingResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 修改存储空间实时日志用户自定义字段配置
     ///
     /// 为存储空间（Bucket）实时日志中的user_defined_log_fields字段进行个性化配置。您可以将OSS请求中用户关心的请求头或查询参数信息记录到该字段中去以便后续分析请求。
@@ -1639,14 +1540,10 @@ impl Connection {
     pub fn put_user_defined_log_fields_config(
         &self,
         req: PutUserDefinedLogFieldsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<PutUserDefinedLogFieldsConfigResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间实时日志用户自定义字段配置
     ///
     /// 获取存储空间（Bucket）实时日志中user_defined_log_fields字段的个性化配置。
@@ -1671,7 +1568,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间实时日志用户自定义字段配置
     ///
     /// 删除存储空间（Bucket）实时日志中user_defined_log_fields字段的个性化配置。
@@ -1691,14 +1587,10 @@ impl Connection {
     pub fn delete_user_defined_log_fields_config(
         &self,
         req: DeleteUserDefinedLogFieldsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteUserDefinedLogFieldsConfigResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查看存储空间的静态网站托管状态和规则
     ///
     /// 查看存储空间（Bucket）的静态网站托管状态以及跳转规则。
@@ -1722,7 +1614,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置存储空间为静态网站托管模式并设置跳转规则
     ///
     /// 将存储空间（Bucket）设置为静态网站托管模式并设置跳转规则（RoutingRule）。
@@ -1750,13 +1641,10 @@ impl Connection {
     pub fn put_bucket_website(
         &self,
         req: PutBucketWebsite,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketWebsiteResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 关闭存储空间的静态网站托管模式以及跳转规则
     ///
     /// 关闭存储空间（Bucket）的静态网站托管模式以及跳转规则。
@@ -1778,13 +1666,10 @@ impl Connection {
     pub fn delete_bucket_website(
         &self,
         req: DeleteBucketWebsite,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketWebsiteResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置存储空间的防盗链
     ///
     /// 设置存储空间（Bucket）级别的防盗链（Referer）访问白名单，支持设置是否允许Referer字段为空以及是否允许截断QueryString的请求访问OSS。
@@ -1804,13 +1689,10 @@ impl Connection {
     pub fn put_bucket_referer(
         &self,
         req: PutBucketReferer,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketRefererResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查看存储空间的防盗链相关配置
     ///
     /// 查看存储空间（Bucket）的防盗链（Referer）相关配置。
@@ -1834,7 +1716,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 为存储空间添加或修改标签
     ///
     /// 给某个存储空间（Bucket）添加或修改标签。
@@ -1860,13 +1741,10 @@ impl Connection {
     pub fn put_bucket_tags(
         &self,
         req: PutBucketTags,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketTagsResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的标签信息
     ///
     /// 获取存储空间（Bucket）的标签信息。
@@ -1890,7 +1768,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的标签
     ///
     /// 删除存储空间（Bucket）标签。
@@ -1912,13 +1789,10 @@ impl Connection {
     pub fn delete_bucket_tags(
         &self,
         req: DeleteBucketTags,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketTagsResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 列举用户级别存储冗余类型转换任务
     ///
     /// 获取用户级别存储冗余类型转换的列表。
@@ -1943,7 +1817,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列举存储空间冗余类型转换任务
     ///
     /// 列举某个Bucket下所有的存储冗余转换任务。
@@ -1971,7 +1844,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取存储空间存储冗余转换任务
     ///
     /// 获取存储冗余转换任务。
@@ -1999,7 +1871,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建存储冗余类型转换任务
     ///
     /// 为Bucket创建存储冗余转换任务。
@@ -2031,7 +1902,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储冗余类型转换任务
     ///
     /// 删除存储空间数据冗余类型转换任务。
@@ -2055,15 +1925,10 @@ impl Connection {
     pub fn delete_bucket_data_redundancy_transition(
         &self,
         req: DeleteBucketDataRedundancyTransition,
-    ) -> impl std::future::Future<
-        Output = crate::Result<DeleteBucketDataRedundancyTransitionResponse>,
-    > + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 配置存储空间的加密规则
     ///
     /// 配置存储空间（Bucket）的加密规则。
@@ -2085,13 +1950,10 @@ impl Connection {
     pub fn put_bucket_encryption(
         &self,
         req: PutBucketEncryption,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketEncryptionResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间的加密规则
     ///
     /// 获取存储空间（Bucket）的加密规则。
@@ -2117,7 +1979,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的加密规则
     ///
     /// 删除指定存储空间（Bucket）的加密规则。
@@ -2139,14 +2000,10 @@ impl Connection {
     pub fn delete_bucket_encryption(
         &self,
         req: DeleteBucketEncryption,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketEncryptionResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置请求者付费模式
     ///
     /// 设置某个存储空间（Bucket）的请求者付费模式。
@@ -2172,14 +2029,10 @@ impl Connection {
     pub fn put_bucket_request_payment(
         &self,
         req: PutBucketRequestPayment,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketRequestPaymentResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取请求者付费模式配置信息
     ///
     /// 获取请求者付费模式的配置信息。
@@ -2204,7 +2057,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 设置存储空间的跨域资源共享规则
     ///
     /// 设置指定存储空间（Bucket）的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
@@ -2262,18 +2114,15 @@ impl Connection {
     pub fn put_bucket_cors(
         &self,
         req: PutBucketCors,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketCorsResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间当前的跨域资源共享规则
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///  
+    ///
     ///
     /// # Path
     /// `/?cors`
@@ -2294,7 +2143,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 关闭存储空间跨域资源共享功能
     ///
     /// 调用DeleteBucketCors接口关闭指定存储空间（Bucket）的跨域资源共享CORS（Cross-Origin Resource Sharing）功能并清空所有规则。
@@ -2317,13 +2165,10 @@ impl Connection {
     pub fn delete_bucket_cors(
         &self,
         req: DeleteBucketCors,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketCorsResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 发送预检请求
     ///
     /// 浏览器在发送跨域请求之前会发送一个preflight请求（Options）给OSS，并带上特定的来源域、HTTP方法和header等信息，以决定是否发送真正的请求。
@@ -2345,16 +2190,14 @@ impl Connection {
     pub fn option_object(
         &self,
         req: OptionObject,
-    ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported
-200 response must have schema"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
             );
         }
     }
 
-    ///
     /// # 修改存储空间访问追踪状态
     ///
     /// 修改存储空间（Bucket）的访问追踪状态。
@@ -2374,14 +2217,10 @@ impl Connection {
     pub fn put_bucket_access_monitor(
         &self,
         req: PutBucketAccessMonitor,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketAccessMonitorResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间访问追踪状态
     ///
     /// 获取存储空间（Bucket）的访问追踪功能是否开启。
@@ -2406,7 +2245,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取元数据索引库信息
     ///
     /// 获取指定存储空间（Bucket）的元数据索引库信息。
@@ -2430,7 +2268,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 关闭存储空间元数据管理
     ///
     /// 关闭存储空间（Bucket）的元数据管理功能。OSS会自动删除Bucket的元数据索引库，将无法进行元数据索引。
@@ -2450,13 +2287,10 @@ impl Connection {
     pub fn close_meta_query(
         &self,
         req: CloseMetaQuery,
-    ) -> impl std::future::Future<Output = crate::Result<CloseMetaQueryResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查询满足条件的文件
     ///
     /// 通过存储空间（Bucket）的元数据索引功能，查询满足指定条件的文件（Object），并按照字段和排序方式列出文件信息。
@@ -2480,7 +2314,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 开启元数据管理功能
     ///
     /// 开启元数据管理功能。开启元数据管理功能后，OSS会为Bucket创建元数据索引库并为Bucket中的所有文件（Object）建立元数据索引。元数据索引库创建完成后，OSS会继续对Bucket中新增文件进行准实时的增量追踪扫描并为增量文件建立元数据索引。
@@ -2500,13 +2333,10 @@ impl Connection {
     pub fn open_meta_query(
         &self,
         req: OpenMetaQuery,
-    ) -> impl std::future::Future<Output = crate::Result<OpenMetaQueryResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 更改高防OSS实例状态
     ///
     /// 更改高防OSS实例状态。
@@ -2526,14 +2356,10 @@ impl Connection {
     pub fn update_user_anti_d_dos_info(
         &self,
         req: UpdateUserAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<UpdateUserAntiDDosInfoResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 更新Bucket防护状态
     ///
     /// 更新Bucket防护状态。
@@ -2553,14 +2379,10 @@ impl Connection {
     pub fn update_bucket_anti_d_dos_info(
         &self,
         req: UpdateBucketAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<UpdateBucketAntiDDosInfoResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取Bucket防护信息列表
     ///
     /// 获取Bucket防护信息列表。
@@ -2585,7 +2407,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建高防OSS实例
     ///
     /// 创建高防OSS实例。
@@ -2605,13 +2426,10 @@ impl Connection {
     pub fn init_user_anti_d_dos_info(
         &self,
         req: InitUserAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<InitUserAntiDDosInfoResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 初始化Bucket防护
     ///
     /// 初始化Bucket防护。
@@ -2631,14 +2449,10 @@ impl Connection {
     pub fn init_bucket_anti_d_dos_info(
         &self,
         req: InitBucketAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<InitBucketAntiDDosInfoResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查询高防OSS实例信息
     ///
     /// 查询指定账号下的高防OSS实例信息。
@@ -2662,7 +2476,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取存储空间资源组ID
     ///
     /// 获取存储空间（Bucket）所属的资源组ID。
@@ -2687,7 +2500,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改存储空间资源组
     ///
     /// 修改存储空间（Bucket）所属的资源组ID。
@@ -2707,14 +2519,10 @@ impl Connection {
     pub fn put_bucket_resource_group(
         &self,
         req: PutBucketResourceGroup,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketResourceGroupResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 绑定自定义域名
     ///
     /// 为某个存储空间（Bucket）绑定自定义域名。
@@ -2734,13 +2542,10 @@ impl Connection {
     pub fn put_cname(
         &self,
         req: PutCname,
-    ) -> impl std::future::Future<Output = crate::Result<PutCnameResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查询自定义域名列表
     ///
     /// 查询某个存储空间（Bucket）下绑定的所有的自定义域名（Cname）列表。
@@ -2764,7 +2569,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除Cname
     ///
     /// 删除某个存储空间（Bucket）已绑定的Cname。
@@ -2784,13 +2588,10 @@ impl Connection {
     pub fn delete_cname(
         &self,
         req: DeleteCname,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteCnameResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取CnameToken
     ///
     /// 获取已创建的CnameToken。
@@ -2814,7 +2615,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 创建CnameToken
     ///
     /// 创建域名所有权验证所需的CnameToken。
@@ -2838,7 +2638,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 新增图片样式
     ///
     /// 新增图片样式。一个图片样式中可以包含单个或多个图片处理参数。
@@ -2858,13 +2657,10 @@ impl Connection {
     pub fn put_style(
         &self,
         req: PutStyle,
-    ) -> impl std::future::Future<Output = crate::Result<PutStyleResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 查询图片样式
     ///
     /// 查询某个Bucket下已创建的所有图片样式。
@@ -2888,7 +2684,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取图片样式
     ///
     /// 查询某个Bucket下指定的图片样式信息。
@@ -2912,7 +2707,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除图片样式
     ///
     /// 删除某个Bucket下指定的图片样式。
@@ -2932,13 +2726,10 @@ impl Connection {
     pub fn delete_style(
         &self,
         req: DeleteStyle,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteStyleResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间HTTPS配置
     ///
     /// 调用GetBucketHttpsConfig接口查看Bucket的TLS版本设置。
@@ -2966,7 +2757,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改存储空间HTTPS配置
     ///
     /// 调用PutBucketHttpsConfig接口为Bucket开启或关闭TLS版本设置。
@@ -2986,13 +2776,10 @@ impl Connection {
     pub fn put_bucket_https_config(
         &self,
         req: PutBucketHttpsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketHttpsConfigResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 创建对象FC接入点
     ///
     /// 创建对象FC接入点。
@@ -3021,7 +2808,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 获取对象FC接入点详情
     ///
     /// 获取对象FC接入点基础信息。
@@ -3048,7 +2834,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 列举对象FC接入点
     ///
     /// 获取用户级别的对象FC接入点信息。
@@ -3075,7 +2860,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 删除对象FC接入点
     ///
     /// 删除对象FC接入点。
@@ -3097,14 +2881,10 @@ impl Connection {
     pub fn delete_access_point_for_object_process(
         &self,
         req: DeleteAccessPointForObjectProcess,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointForObjectProcessResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取对象FC接入点配置
     ///
     /// 获取对象FC接入点配置信息。
@@ -3132,7 +2912,6 @@ impl Connection {
         self.call(req)
     }
 
-    ///
     /// # 修改对象FC接入点配置
     ///
     /// 修改对象FC接入点的配置。
@@ -3154,15 +2933,10 @@ impl Connection {
     pub fn put_access_point_config_for_object_process(
         &self,
         req: PutAccessPointConfigForObjectProcess,
-    ) -> impl std::future::Future<
-        Output = crate::Result<PutAccessPointConfigForObjectProcessResponse>,
-    > + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 修改对象FC接入点授权策略
     ///
     /// 为对象FC接入点配置权限策略。
@@ -3184,15 +2958,10 @@ impl Connection {
     pub fn put_access_point_policy_for_object_process(
         &self,
         req: PutAccessPointPolicyForObjectProcess,
-    ) -> impl std::future::Future<
-        Output = crate::Result<PutAccessPointPolicyForObjectProcessResponse>,
-    > + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取对象FC接入点策略
     ///
     /// 获取对象FC接入点的权限策略配置。
@@ -3218,14 +2987,9 @@ impl Connection {
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointPolicyForObjectProcessResponse>,
     > + Send {
-        async {
-            todo!(
-                r##"Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+        self.call(req)
     }
 
-    ///
     /// # 删除对象FC接入点策略
     ///
     /// 删除对象FC接入点的权限策略。
@@ -3247,18 +3011,10 @@ impl Connection {
     pub fn delete_access_point_policy_for_object_process(
         &self,
         req: DeleteAccessPointPolicyForObjectProcess,
-    ) -> impl std::future::Future<
-        Output = crate::Result<DeleteAccessPointPolicyForObjectProcessResponse>,
-    > + Send {
-        async {
-            todo!(
-                r##"200 response must have schema
-Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取用户级别阻止公共访问配置
     ///
     /// 获取绑定在用户级别的阻止公共访问的配置。
@@ -3282,7 +3038,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 修改用户级别阻止公共访问配置
     ///
     /// 修改OSS全局阻止公共访问的配置信息。
@@ -3302,13 +3057,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_public_access_block(
         &self,
         req: PutPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<PutPublicAccessBlockResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除用户级别的阻止公共访问配置
     ///
     /// 删除用户级别的阻止公共访问配置。
@@ -3328,14 +3080,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_public_access_block(
         &self,
         req: DeletePublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<DeletePublicAccessBlockResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间阻止公共访问配置
     ///
     /// 获取存储空间绑定的阻止公共访问配置。
@@ -3360,7 +3108,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 开启/关闭存储空间阻止公共访问配置
     ///
     /// 获取绑定在存储空间上的阻止公共访问的配置信息。
@@ -3380,14 +3127,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_bucket_public_access_block(
         &self,
         req: PutBucketPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketPublicAccessBlockResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除存储空间阻止公共访问配置
     ///
     /// 删除绑定在存储空间上的组织公共访问配置信息。
@@ -3407,14 +3150,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_bucket_public_access_block(
         &self,
         req: DeleteBucketPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketPublicAccessBlockResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取接入点阻止公共访问配置
     ///
     /// 获取指定接入点的阻止公共访问配置信息。
@@ -3439,7 +3178,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 修改接入点阻止公共访问配置
     ///
     /// 修改指定接入点的阻止公共访问的配置信息。
@@ -3462,11 +3200,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
-            todo!(r##"API must have 200 response"##);
+            todo!(r##"API must have 200 or 204 response"##);
         }
     }
 
-    ///
     /// # 删除接入点阻止公共访问配置
     ///
     /// 删除指定接入点的阻止公共访问配置信息。
@@ -3486,14 +3223,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_access_point_public_access_block(
         &self,
         req: DeleteAccessPointPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteAccessPointPublicAccessBlockResponse>>
-    + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间归档直读配置
     ///
     /// 查看Bucket是否开启归档直读。
@@ -3521,7 +3254,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 修改存储空间归档直读配置
     ///
     /// 为Bucket开启或关闭归档直读。
@@ -3547,14 +3279,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_bucket_archive_direct_read(
         &self,
         req: PutBucketArchiveDirectRead,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketArchiveDirectReadResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置存储空间禁止覆盖写规则
     ///
     /// 设置存储空间的禁止覆盖写规则。
@@ -3574,14 +3302,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_bucket_overwrite_config(
         &self,
         req: PutBucketOverwriteConfig,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketOverwriteConfigResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间禁止覆盖写规则
     ///
     /// 获取存储空间的禁止覆盖写规则配置。
@@ -3606,7 +3330,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 删除存储空间的不覆盖写规则
     ///
     /// 删除存储空间的不覆盖写规则配置。
@@ -3626,14 +3349,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_bucket_overwrite_config(
         &self,
         req: DeleteBucketOverwriteConfig,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketOverwriteConfigResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 上传文件
     ///
     /// 上传文件（Object）。
@@ -3663,17 +3382,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_object(
         &self,
         req: PutObject,
-    ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
-200 response must have schema
-Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 拷贝文件
     ///
     /// 拷贝同一地域下相同或不同存储空间（Bucket）之间的文件（Object）。
@@ -3691,7 +3403,7 @@ Unsupported consumes content type: Binary. Only application/json and application
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///   
+    ///
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -3720,14 +3432,9 @@ Unsupported consumes content type: Binary. Only application/json and application
         &self,
         req: CopyObject,
     ) -> impl std::future::Future<Output = crate::Result<CopyObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
-            );
-        }
+        self.call(req)
     }
 
-    ///
     /// # 获取文件
     ///
     /// 获取某个文件（Object）。
@@ -3758,15 +3465,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn get_object(
         &self,
         req: GetObject,
-    ) -> impl std::future::Future<Output = crate::Result<GetObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Unsupported produces content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 以追加写的方式上传文件
     ///
     /// 以追加写的方式上传文件（Object）。
@@ -3800,17 +3502,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn append_object(
         &self,
         req: AppendObject,
-    ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Parameter 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported.
-200 response must have schema
-Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 封存可追加对象
     ///
     /// 通过AppendObject操作创建的Appendable Object，SealAppendable 操作用于Appendable Object停止继续写入。执行该操作后，允许用户通过配置生命周期来将对应的Appendable Object存储类型转为冷归档或深度冷归档存储类型。
@@ -3830,13 +3525,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn seal_append_object(
         &self,
         req: SealAppendObject,
-    ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除文件
     ///
     /// 删除文件（object）。
@@ -3870,13 +3562,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_object(
         &self,
         req: DeleteObject,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取文件的元信息
     ///
     /// 获取某个文件（Object）的元信息。
@@ -3900,16 +3589,14 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn head_object(
         &self,
         req: HeadObject,
-    ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported
-200 response must have schema"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
             );
         }
     }
 
-    ///
     /// # 获取文件的元数据信息
     ///
     /// 获取文件（Object）的元数据信息，包括该Object的ETag、Size、LastModified信息，并且不返回该Object的内容。
@@ -3938,16 +3625,14 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn get_object_meta(
         &self,
         req: GetObjectMeta,
-    ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported
-200 response must have schema"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
             );
         }
     }
 
-    ///
     /// # 解冻归档类型或冷归档的文件
     ///
     /// 解冻归档类型（Archive）或冷归档（Cold Archive）的文件（Object）。
@@ -4002,13 +3687,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn restore_object(
         &self,
         req: RestoreObject,
-    ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 清理解冻副本
     ///
     /// 清理从冷归档或深度冷归档对象中解冻而来的副本
@@ -4028,13 +3710,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn clean_restored_object(
         &self,
         req: CleanRestoredObject,
-    ) -> impl std::future::Future<Output = crate::Result<CleanRestoredObjectResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 对文件执行SQL语句并返回结果
     ///
     /// 对目标文件执行SQL语句，返回执行结果。
@@ -4058,15 +3737,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn select_object(
         &self,
         req: SelectObject,
-    ) -> impl std::future::Future<Output = crate::Result<SelectObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Unsupported produces content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取目标文件总行数、总列数以及Splits个数
     ///
     /// 获取目标文件总的行数，总的列数（对于CSV文件），以及Splits个数。如果该信息不存在，则会扫描整个文件，分析并记录下CSV文件的上述信息。重复调用该API则会保存上述信息而不必重新扫描整个文件。
@@ -4095,7 +3769,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 通知OSS初始化分片上传事件
     ///
     /// 通知OSS初始化一个Multipart Upload事件。
@@ -4126,7 +3799,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 分块上传数据
     ///
     /// 根据指定的Object名和uploadId来分块（Part）上传数据。
@@ -4154,16 +3826,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn upload_part(
         &self,
         req: UploadPart,
-    ) -> impl std::future::Future<Output = crate::Result<UploadPartResponse>> + Send {
-        async {
-            todo!(
-                r##"200 response must have schema
-Unsupported consumes content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 完成整个文件的分片上传
     ///
     /// 来完成整个文件的分片上传。
@@ -4207,7 +3873,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 拷贝数据上传一个数据块
     ///
     /// 从一个已存在的Object中拷贝数据来上传一个Part。
@@ -4255,7 +3920,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 取消分片上传事件并删除数据块数据
     ///
     /// 用于取消MultipartUpload事件并删除对应的Part数据。
@@ -4282,13 +3946,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn abort_multipart_upload(
         &self,
         req: AbortMultipartUpload,
-    ) -> impl std::future::Future<Output = crate::Result<AbortMultipartUploadResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 列举执行中的分片上传事件
     ///
     /// 列举所有执行中的Multipart Upload事件。
@@ -4314,7 +3975,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 列举所有成功上传的数据块
     ///
     /// 列举指定Upload ID所属的所有已经上传成功Part。
@@ -4342,7 +4002,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 修改文件的访问权限
     ///
     /// 修改文件（Object）的访问权限（ACL）。
@@ -4385,13 +4044,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_object_acl(
         &self,
         req: PutObjectAcl,
-    ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取文件的访问权限
     ///
     /// 获取存储空间（Bucket）下某个文件（Object）的访问权限（ACL）。
@@ -4421,7 +4077,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 创建OSS目标文件的软链接
     ///
     /// 为OSS的目标文件（TargetObject）创建软链接（Symlink）。
@@ -4454,13 +4109,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_symlink(
         &self,
         req: PutSymlink,
-    ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取软链接
     ///
     /// 获取OSS目标文件（TargetObject）的软链接。
@@ -4485,13 +4137,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn get_symlink(
         &self,
         req: GetSymlink,
-    ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置或更新文件的标签信息
     ///
     /// 设置或更新对象（Object）的标签（Tagging）信息。
@@ -4528,13 +4177,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_object_tagging(
         &self,
         req: PutObjectTagging,
-    ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取文件的标签信息
     ///
     /// 获取对象（Object）的标签（Tagging）信息。
@@ -4563,7 +4209,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 删除对象的标签信息
     ///
     /// 删除指定对象（Object）的标签（Tagging）信息。
@@ -4588,13 +4233,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_object_tagging(
         &self,
         req: DeleteObjectTagging,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteObjectTaggingResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 创建直播推流
     ///
     /// 通过RTMP协议上传音视频数据前，必须先创建一个LiveChannel。
@@ -4621,7 +4263,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 列举指定的直播推流
     ///
     /// 列举指定的LiveChannel。
@@ -4645,7 +4286,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 删除指定的直播推流
     ///
     /// 删除指定的LiveChannel。
@@ -4668,13 +4308,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_live_channel(
         &self,
         req: DeleteLiveChannel,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteLiveChannelResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 切换直播推流状态
     ///
     /// 切换LiveChannel启用（enabled）和禁用（disabled）两种状态。
@@ -4698,13 +4335,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_live_channel_status(
         &self,
         req: PutLiveChannelStatus,
-    ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelStatusResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取直播推流的配置信息
     ///
     /// 获取指定LiveChannel的配置信息。
@@ -4728,7 +4362,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 获取直播推流的推流记录
     ///
     /// 获取指定LiveChannel的推流记录。
@@ -4755,7 +4388,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 获取直播推流的推流状态信息
     ///
     /// 获取指定LiveChannel的推流状态信息。
@@ -4779,7 +4411,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// # 查看直播推流的播放列表
     ///
     /// 查看指定LiveChannel在指定时间段内推流生成的播放列表。
@@ -4799,15 +4430,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn get_vod_playlist(
         &self,
         req: GetVodPlaylist,
-    ) -> impl std::future::Future<Output = crate::Result<GetVodPlaylistResponse>> + Send {
-        async {
-            todo!(
-                r##"Unsupported produces content type: Binary. Only application/json and application/xml are supported."##
-            );
-        }
+    ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 为直播推流生成点播的播放列表
     ///
     /// 为指定的LiveChannel生成一个点播用的播放列表。
@@ -4829,13 +4455,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn post_vod_playlist(
         &self,
         req: PostVodPlaylist,
-    ) -> impl std::future::Future<Output = crate::Result<PostVodPlaylistResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 创建图片处理通道
     ///
     /// 创建图片处理通道
@@ -4855,13 +4478,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_channel(
         &self,
         req: PutChannel,
-    ) -> impl std::future::Future<Output = crate::Result<PutChannelResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 修改存储空间哈希算法配置
     ///
     /// 修改存储空间哈希算法配置
@@ -4881,13 +4501,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_bucket_hash(
         &self,
         req: PutBucketHash,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketHashResponse>> + Send {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 设置存储空间的用户自定义响应头配置
     ///
     /// 设置存储空间的用户自定义响应头配置
@@ -4907,14 +4524,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_bucket_common_header(
         &self,
         req: PutBucketCommonHeader,
-    ) -> impl std::future::Future<Output = crate::Result<PutBucketCommonHeaderResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 删除存储空间的用户自定义响应头配置
     ///
     /// 删除存储空间的用户自定义响应头配置
@@ -4934,14 +4547,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn delete_bucket_common_header(
         &self,
         req: DeleteBucketCommonHeader,
-    ) -> impl std::future::Future<Output = crate::Result<DeleteBucketCommonHeaderResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 修改存储空间媒体处理配置
     ///
     /// 修改存储空间媒体处理配置
@@ -4961,14 +4570,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn put_process_configuration(
         &self,
         req: PutProcessConfiguration,
-    ) -> impl std::future::Future<Output = crate::Result<PutProcessConfigurationResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// # 获取存储空间事件通知配置
     ///
     /// 获取存储空间事件通知配置
@@ -4993,7 +4598,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// 配置OSS加速器异步预热规则
     ///
     /// # Path
@@ -5016,7 +4620,6 @@ Unsupported consumes content type: Binary. Only application/json and application
         self.call(req)
     }
 
-    ///
     /// 启动OSS加速器异步预热任务
     ///
     /// # Path
@@ -5034,14 +4637,10 @@ Unsupported consumes content type: Binary. Only application/json and application
     pub fn start_data_lake_cache_prefetch_job(
         &self,
         req: StartDataLakeCachePrefetchJob,
-    ) -> impl std::future::Future<Output = crate::Result<StartDataLakeCachePrefetchJobResponse>> + Send
-    {
-        async {
-            todo!(r##"200 response must have schema"##);
-        }
+    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+        self.call(req)
     }
 
-    ///
     /// 列举数据湖元数据转换任务
     ///
     /// # Path
@@ -5116,7 +4715,6 @@ impl crate::Request for ListBuckets {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBuckets";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5185,7 +4783,6 @@ impl crate::Request for DescribeRegions {
 
     const ACTION: &'static str = "DescribeRegions";
     const URL_PATH: &'static str = "/?regions";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5224,7 +4821,6 @@ impl crate::Request for GetBucketStat {
 
     const ACTION: &'static str = "GetBucketStat";
     const URL_PATH: &'static str = "/?stat";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5287,11 +4883,10 @@ impl crate::Request for PutBucket {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucket";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutBucketbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5340,11 +4935,10 @@ impl crate::Request for DeleteBucket {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucket";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5408,7 +5002,6 @@ impl crate::Request for ListObjects {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjects";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5511,7 +5104,6 @@ impl crate::Request for ListObjectsV2 {
 
     const ACTION: &'static str = "ListObjectsV2";
     const URL_PATH: &'static str = "/?list-type=2";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5574,7 +5166,6 @@ impl crate::Request for GetBucketInfo {
 
     const ACTION: &'static str = "GetBucketInfo";
     const URL_PATH: &'static str = "/?bucketInfo";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5607,7 +5198,6 @@ impl crate::Request for GetBucketLocation {
 
     const ACTION: &'static str = "GetBucketLocation";
     const URL_PATH: &'static str = "/?location";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5654,7 +5244,6 @@ impl crate::Request for ListAccessPoints {
 
     const ACTION: &'static str = "ListAccessPoints";
     const URL_PATH: &'static str = "/?accessPoint";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5702,7 +5291,6 @@ impl crate::Request for GetAccessPoint {
 
     const ACTION: &'static str = "GetAccessPoint";
     const URL_PATH: &'static str = "/?accessPoint";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -5797,7 +5385,7 @@ impl crate::Request for DeleteAccessPointPolicy {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteAccessPointPolicyResponse>;
+    type ResponseWrap = crate::JsonResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5844,11 +5432,10 @@ impl crate::Request for PutAccessPointPolicy {
 
     const ACTION: &'static str = "PutAccessPointPolicy";
     const URL_PATH: &'static str = "/?accessPointPolicy";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPolicyResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5895,11 +5482,10 @@ impl crate::Request for DeleteAccessPoint {
 
     const ACTION: &'static str = "DeleteAccessPoint";
     const URL_PATH: &'static str = "/?accessPoint";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5940,7 +5526,6 @@ impl crate::Request for CreateAccessPoint {
 
     const ACTION: &'static str = "CreateAccessPoint";
     const URL_PATH: &'static str = "/?accessPoint";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<AccessPointbody>;
 
@@ -5979,11 +5564,10 @@ impl crate::Request for InitiateBucketWorm {
 
     const ACTION: &'static str = "InitiateBucketWorm";
     const URL_PATH: &'static str = "/?worm";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<InitiateBucketWormbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<InitiateBucketWormResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6019,11 +5603,10 @@ impl crate::Request for AbortBucketWorm {
 
     const ACTION: &'static str = "AbortBucketWorm";
     const URL_PATH: &'static str = "/?worm";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<AbortBucketWormResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6063,11 +5646,10 @@ impl crate::Request for CompleteBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CompleteBucketWorm";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<CompleteBucketWormResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6112,11 +5694,10 @@ impl crate::Request for ExtendBucketWorm {
 
     const ACTION: &'static str = "ExtendBucketWorm";
     const URL_PATH: &'static str = "/?wormExtend";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ExtendBucketWormbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<ExtendBucketWormResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6150,7 +5731,6 @@ impl crate::Request for GetBucketWorm {
 
     const ACTION: &'static str = "GetBucketWorm";
     const URL_PATH: &'static str = "/?worm";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6198,11 +5778,10 @@ impl crate::Request for PutBucketAcl {
 
     const ACTION: &'static str = "PutBucketAcl";
     const URL_PATH: &'static str = "/?acl";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketAclResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6236,7 +5815,6 @@ impl crate::Request for GetBucketAcl {
 
     const ACTION: &'static str = "GetBucketAcl";
     const URL_PATH: &'static str = "/?acl";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6283,11 +5861,10 @@ impl crate::Request for PutBucketLifecycle {
 
     const ACTION: &'static str = "PutBucketLifecycle";
     const URL_PATH: &'static str = "/?lifecycle";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketLifecyclebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketLifecycleResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6324,7 +5901,6 @@ impl crate::Request for GetBucketLifecycle {
 
     const ACTION: &'static str = "GetBucketLifecycle";
     const URL_PATH: &'static str = "/?lifecycle";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6362,11 +5938,10 @@ impl crate::Request for DeleteBucketLifecycle {
 
     const ACTION: &'static str = "DeleteBucketLifecycle";
     const URL_PATH: &'static str = "/?lifecycle";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketLifecycleResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6401,11 +5976,10 @@ impl crate::Request for PutBucketTransferAcceleration {
 
     const ACTION: &'static str = "PutBucketTransferAcceleration";
     const URL_PATH: &'static str = "/?transferAcceleration";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<TransferAccelerationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketTransferAccelerationResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6436,7 +6010,6 @@ impl crate::Request for GetBucketTransferAcceleration {
 
     const ACTION: &'static str = "GetBucketTransferAcceleration";
     const URL_PATH: &'static str = "/?transferAcceleration";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6473,11 +6046,10 @@ impl crate::Request for PutBucketVersioning {
 
     const ACTION: &'static str = "PutBucketVersioning";
     const URL_PATH: &'static str = "/?versioning";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketVersioningbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketVersioningResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6508,7 +6080,6 @@ impl crate::Request for GetBucketVersioning {
 
     const ACTION: &'static str = "GetBucketVersioning";
     const URL_PATH: &'static str = "/?versioning";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6593,7 +6164,6 @@ impl crate::Request for ListObjectVersions {
 
     const ACTION: &'static str = "ListObjectVersions";
     const URL_PATH: &'static str = "/?versions";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6645,8 +6215,8 @@ pub struct PutBucketPolicy {
 impl sealed::Bound for PutBucketPolicy {}
 
 impl PutBucketPolicy {
-    pub fn new(body: impl Into<Vec<u8>>) -> Self {
-        Self { body: body.into() }
+    pub fn new() -> Self {
+        Self { body: Vec::new() }
     }
 }
 
@@ -6655,11 +6225,10 @@ impl crate::Request for PutBucketPolicy {
 
     const ACTION: &'static str = "PutBucketPolicy";
     const URL_PATH: &'static str = "/?policy";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketPolicyResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6727,11 +6296,10 @@ impl crate::Request for DeleteBucketPolicy {
 
     const ACTION: &'static str = "DeleteBucketPolicy";
     const URL_PATH: &'static str = "/?policy";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketPolicyResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6762,7 +6330,6 @@ impl crate::Request for GetBucketPolicyStatus {
 
     const ACTION: &'static str = "GetBucketPolicyStatus";
     const URL_PATH: &'static str = "/?policyStatus";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6799,11 +6366,10 @@ impl crate::Request for PutBucketRtc {
 
     const ACTION: &'static str = "PutBucketRtc";
     const URL_PATH: &'static str = "/?rtc";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketRtcbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketRtcResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6838,11 +6404,10 @@ impl crate::Request for PutBucketReplication {
 
     const ACTION: &'static str = "PutBucketReplication";
     const URL_PATH: &'static str = "/?replication&comp=add";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutBucketReplicationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketReplicationResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6873,7 +6438,6 @@ impl crate::Request for GetBucketReplication {
 
     const ACTION: &'static str = "GetBucketReplication";
     const URL_PATH: &'static str = "/?replication";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6906,7 +6470,6 @@ impl crate::Request for GetBucketReplicationLocation {
 
     const ACTION: &'static str = "GetBucketReplicationLocation";
     const URL_PATH: &'static str = "/?replicationLocation";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6944,7 +6507,6 @@ impl crate::Request for GetBucketReplicationProgress {
 
     const ACTION: &'static str = "GetBucketReplicationProgress";
     const URL_PATH: &'static str = "/?replicationProgress";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -6984,11 +6546,10 @@ impl crate::Request for DeleteBucketReplication {
 
     const ACTION: &'static str = "DeleteBucketReplication";
     const URL_PATH: &'static str = "/?replication&comp=delete";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<DeleteBucketReplicationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketReplicationResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7028,11 +6589,10 @@ impl crate::Request for PutBucketInventory {
 
     const ACTION: &'static str = "PutBucketInventory";
     const URL_PATH: &'static str = "/?inventory";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketInventorybody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketInventoryResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7071,7 +6631,6 @@ impl crate::Request for GetBucketInventory {
 
     const ACTION: &'static str = "GetBucketInventory";
     const URL_PATH: &'static str = "/?inventory";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7113,7 +6672,6 @@ impl crate::Request for ListBucketInventory {
 
     const ACTION: &'static str = "ListBucketInventory";
     const URL_PATH: &'static str = "/?inventory";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7162,11 +6720,10 @@ impl crate::Request for DeleteBucketInventory {
 
     const ACTION: &'static str = "DeleteBucketInventory";
     const URL_PATH: &'static str = "/?inventory";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketInventoryResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7204,11 +6761,10 @@ impl crate::Request for PutBucketLogging {
 
     const ACTION: &'static str = "PutBucketLogging";
     const URL_PATH: &'static str = "/?logging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketLoggingbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketLoggingResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7239,7 +6795,6 @@ impl crate::Request for GetBucketLogging {
 
     const ACTION: &'static str = "GetBucketLogging";
     const URL_PATH: &'static str = "/?logging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7277,11 +6832,10 @@ impl crate::Request for DeleteBucketLogging {
 
     const ACTION: &'static str = "DeleteBucketLogging";
     const URL_PATH: &'static str = "/?logging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketLoggingResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7316,11 +6870,10 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
 
     const ACTION: &'static str = "PutUserDefinedLogFieldsConfig";
     const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<FieldsConfigbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutUserDefinedLogFieldsConfigResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7351,7 +6904,6 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
 
     const ACTION: &'static str = "GetUserDefinedLogFieldsConfig";
     const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7389,11 +6941,10 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
 
     const ACTION: &'static str = "DeleteUserDefinedLogFieldsConfig";
     const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteUserDefinedLogFieldsConfigResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7424,7 +6975,6 @@ impl crate::Request for GetBucketWebsite {
 
     const ACTION: &'static str = "GetBucketWebsite";
     const URL_PATH: &'static str = "/?website";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7461,11 +7011,10 @@ impl crate::Request for PutBucketWebsite {
 
     const ACTION: &'static str = "PutBucketWebsite";
     const URL_PATH: &'static str = "/?website";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketWebsitebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketWebsiteResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7501,11 +7050,10 @@ impl crate::Request for DeleteBucketWebsite {
 
     const ACTION: &'static str = "DeleteBucketWebsite";
     const URL_PATH: &'static str = "/?website";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketWebsiteResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7540,11 +7088,10 @@ impl crate::Request for PutBucketReferer {
 
     const ACTION: &'static str = "PutBucketReferer";
     const URL_PATH: &'static str = "/?referer";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketRefererbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketRefererResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7575,7 +7122,6 @@ impl crate::Request for GetBucketReferer {
 
     const ACTION: &'static str = "GetBucketReferer";
     const URL_PATH: &'static str = "/?referer";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7612,11 +7158,10 @@ impl crate::Request for PutBucketTags {
 
     const ACTION: &'static str = "PutBucketTags";
     const URL_PATH: &'static str = "/?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketTagsbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketTagsResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7647,7 +7192,6 @@ impl crate::Request for GetBucketTags {
 
     const ACTION: &'static str = "GetBucketTags";
     const URL_PATH: &'static str = "/?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7685,11 +7229,10 @@ impl crate::Request for DeleteBucketTags {
 
     const ACTION: &'static str = "DeleteBucketTags";
     const URL_PATH: &'static str = "/?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketTagsResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7730,7 +7273,6 @@ impl crate::Request for ListUserDataRedundancyTransition {
 
     const ACTION: &'static str = "ListUserDataRedundancyTransition";
     const URL_PATH: &'static str = "/?redundancyTransition";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7773,7 +7315,6 @@ impl crate::Request for ListBucketDataRedundancyTransition {
 
     const ACTION: &'static str = "ListBucketDataRedundancyTransition";
     const URL_PATH: &'static str = "/?redundancyTransition";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7811,7 +7352,6 @@ impl crate::Request for GetBucketDataRedundancyTransition {
 
     const ACTION: &'static str = "GetBucketDataRedundancyTransition";
     const URL_PATH: &'static str = "/?redundancyTransition";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -7860,7 +7400,6 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
 
     const ACTION: &'static str = "CreateBucketDataRedundancyTransition";
     const URL_PATH: &'static str = "/?redundancyTransition";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -7911,11 +7450,10 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
 
     const ACTION: &'static str = "DeleteBucketDataRedundancyTransition";
     const URL_PATH: &'static str = "/?redundancyTransition";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketDataRedundancyTransitionResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7956,11 +7494,10 @@ impl crate::Request for PutBucketEncryption {
 
     const ACTION: &'static str = "PutBucketEncryption";
     const URL_PATH: &'static str = "/?encryption";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketEncryptionbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketEncryptionResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7991,7 +7528,6 @@ impl crate::Request for GetBucketEncryption {
 
     const ACTION: &'static str = "GetBucketEncryption";
     const URL_PATH: &'static str = "/?encryption";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8029,11 +7565,10 @@ impl crate::Request for DeleteBucketEncryption {
 
     const ACTION: &'static str = "DeleteBucketEncryption";
     const URL_PATH: &'static str = "/?encryption";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketEncryptionResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8068,11 +7603,10 @@ impl crate::Request for PutBucketRequestPayment {
 
     const ACTION: &'static str = "PutBucketRequestPayment";
     const URL_PATH: &'static str = "/?requestPayment";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<RequestPaymentbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketRequestPaymentResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8103,7 +7637,6 @@ impl crate::Request for GetBucketRequestPayment {
 
     const ACTION: &'static str = "GetBucketRequestPayment";
     const URL_PATH: &'static str = "/?requestPayment";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8140,11 +7673,10 @@ impl crate::Request for PutBucketCors {
 
     const ACTION: &'static str = "PutBucketCors";
     const URL_PATH: &'static str = "/?cors";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketCorsbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketCorsResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8175,7 +7707,6 @@ impl crate::Request for GetBucketCors {
 
     const ACTION: &'static str = "GetBucketCors";
     const URL_PATH: &'static str = "/?cors";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8213,11 +7744,10 @@ impl crate::Request for DeleteBucketCors {
 
     const ACTION: &'static str = "DeleteBucketCors";
     const URL_PATH: &'static str = "/?cors";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketCorsResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8271,11 +7801,10 @@ impl crate::Request for OptionObject {
 
     const ACTION: &'static str = "OptionObject";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<OptionObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8326,11 +7855,10 @@ impl crate::Request for PutBucketAccessMonitor {
 
     const ACTION: &'static str = "PutBucketAccessMonitor";
     const URL_PATH: &'static str = "/?accessmonitor";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<AccessMonitorbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketAccessMonitorResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8361,7 +7889,6 @@ impl crate::Request for GetBucketAccessMonitor {
 
     const ACTION: &'static str = "GetBucketAccessMonitor";
     const URL_PATH: &'static str = "/?accessmonitor";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8394,7 +7921,6 @@ impl crate::Request for GetMetaQueryStatus {
 
     const ACTION: &'static str = "GetMetaQueryStatus";
     const URL_PATH: &'static str = "/?metaQuery";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8432,11 +7958,10 @@ impl crate::Request for CloseMetaQuery {
 
     const ACTION: &'static str = "CloseMetaQuery";
     const URL_PATH: &'static str = "/?metaQuery&comp=delete";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<CloseMetaQueryResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8479,7 +8004,6 @@ impl crate::Request for DoMetaQuery {
 
     const ACTION: &'static str = "DoMetaQuery";
     const URL_PATH: &'static str = "/?metaQuery&comp=query";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<DoMetaQuerybody>;
 
@@ -8538,11 +8062,10 @@ impl crate::Request for OpenMetaQuery {
 
     const ACTION: &'static str = "OpenMetaQuery";
     const URL_PATH: &'static str = "/?metaQuery&comp=add";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<OpenMetaQuerybody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<OpenMetaQueryResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -8599,11 +8122,10 @@ impl crate::Request for UpdateUserAntiDDosInfo {
 
     const ACTION: &'static str = "UpdateUserAntiDDosInfo";
     const URL_PATH: &'static str = "/?antiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<UpdateUserAntiDDosInfoResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8665,11 +8187,10 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
 
     const ACTION: &'static str = "UpdateBucketAntiDDosInfo";
     const URL_PATH: &'static str = "/?antiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<UpdateBucketAntiDDosInfobody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<UpdateBucketAntiDDosInfoResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8726,7 +8247,6 @@ impl crate::Request for ListBucketAntiDDosInfo {
 
     const ACTION: &'static str = "ListBucketAntiDDosInfo";
     const URL_PATH: &'static str = "/?bucketAntiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8774,11 +8294,10 @@ impl crate::Request for InitUserAntiDDosInfo {
 
     const ACTION: &'static str = "InitUserAntiDDosInfo";
     const URL_PATH: &'static str = "/?antiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<InitUserAntiDDosInfoResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8824,11 +8343,10 @@ impl crate::Request for InitBucketAntiDDosInfo {
 
     const ACTION: &'static str = "InitBucketAntiDDosInfo";
     const URL_PATH: &'static str = "/?antiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<InitBucketAntiDDosInfobody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<InitBucketAntiDDosInfoResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8869,7 +8387,6 @@ impl crate::Request for GetUserAntiDDosInfo {
 
     const ACTION: &'static str = "GetUserAntiDDosInfo";
     const URL_PATH: &'static str = "/?antiDDos";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8902,7 +8419,6 @@ impl crate::Request for GetBucketResourceGroup {
 
     const ACTION: &'static str = "GetBucketResourceGroup";
     const URL_PATH: &'static str = "/?resourceGroup";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -8939,11 +8455,10 @@ impl crate::Request for PutBucketResourceGroup {
 
     const ACTION: &'static str = "PutBucketResourceGroup";
     const URL_PATH: &'static str = "/?resourceGroup";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ResourceGroupbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketResourceGroupResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8978,11 +8493,10 @@ impl crate::Request for PutCname {
 
     const ACTION: &'static str = "PutCname";
     const URL_PATH: &'static str = "/?cname&comp=add";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutCnamebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutCnameResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9013,7 +8527,6 @@ impl crate::Request for ListCname {
 
     const ACTION: &'static str = "ListCname";
     const URL_PATH: &'static str = "/?cname";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9050,11 +8563,10 @@ impl crate::Request for DeleteCname {
 
     const ACTION: &'static str = "DeleteCname";
     const URL_PATH: &'static str = "/?cname&comp=delete";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<DeleteCnamebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteCnameResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9090,7 +8602,6 @@ impl crate::Request for GetCnameToken {
 
     const ACTION: &'static str = "GetCnameToken";
     const URL_PATH: &'static str = "/?comp=token";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9130,7 +8641,6 @@ impl crate::Request for CreateCnameToken {
 
     const ACTION: &'static str = "CreateCnameToken";
     const URL_PATH: &'static str = "/?cname&comp=token";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<CnameTokenbody>;
 
@@ -9180,11 +8690,10 @@ impl crate::Request for PutStyle {
 
     const ACTION: &'static str = "PutStyle";
     const URL_PATH: &'static str = "/?style";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutStylebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutStyleResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9222,7 +8731,6 @@ impl crate::Request for ListStyle {
 
     const ACTION: &'static str = "ListStyle";
     const URL_PATH: &'static str = "/?style";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9260,7 +8768,6 @@ impl crate::Request for GetStyle {
 
     const ACTION: &'static str = "GetStyle";
     const URL_PATH: &'static str = "/?style";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9306,11 +8813,10 @@ impl crate::Request for DeleteStyle {
 
     const ACTION: &'static str = "DeleteStyle";
     const URL_PATH: &'static str = "/?style";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteStyleResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9344,7 +8850,6 @@ impl crate::Request for GetBucketHttpsConfig {
 
     const ACTION: &'static str = "GetBucketHttpsConfig";
     const URL_PATH: &'static str = "/?httpsConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9381,11 +8886,10 @@ impl crate::Request for PutBucketHttpsConfig {
 
     const ACTION: &'static str = "PutBucketHttpsConfig";
     const URL_PATH: &'static str = "/?httpsConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<HttpsConfigbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketHttpsConfigResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9429,7 +8933,6 @@ impl crate::Request for CreateAccessPointForObjectProcess {
 
     const ACTION: &'static str = "CreateAccessPointForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PointForObjectProcessbody>;
 
@@ -9476,7 +8979,6 @@ impl crate::Request for GetAccessPointForObjectProcess {
 
     const ACTION: &'static str = "GetAccessPointForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9529,7 +9031,6 @@ impl crate::Request for ListAccessPointsForObjectProcess {
 
     const ACTION: &'static str = "ListAccessPointsForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9583,11 +9084,10 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
 
     const ACTION: &'static str = "DeleteAccessPointForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointForObjectProcessResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9630,7 +9130,6 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
 
     const ACTION: &'static str = "GetAccessPointConfigForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointConfigForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9683,11 +9182,10 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
 
     const ACTION: &'static str = "PutAccessPointConfigForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointConfigForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ConfigForObjectProcessbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointConfigForObjectProcessResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9734,11 +9232,10 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 
     const ACTION: &'static str = "PutAccessPointPolicyForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPolicyForObjectProcessResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9763,6 +9260,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 pub struct GetAccessPointPolicyForObjectProcess {
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
+    body: Vec<u8>,
 }
 
 impl sealed::Bound for GetAccessPointPolicyForObjectProcess {}
@@ -9772,6 +9270,7 @@ impl GetAccessPointPolicyForObjectProcess {
         Self {
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
+            body: Vec::new(),
         }
     }
 }
@@ -9781,9 +9280,8 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
 
     const ACTION: &'static str = "GetAccessPointPolicyForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = ();
+    type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointPolicyForObjectProcessResponse>;
 
@@ -9801,13 +9299,16 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
         headers
     }
 
-    fn to_body(self) -> Self::Body {}
+    fn to_body(self) -> Self::Body {
+        crate::OctetStream(self.body)
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPolicyForObjectProcess {
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
+    body: Vec<u8>,
 }
 
 impl sealed::Bound for DeleteAccessPointPolicyForObjectProcess {}
@@ -9817,12 +9318,8 @@ impl DeleteAccessPointPolicyForObjectProcess {
         Self {
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
+            body: Vec::new(),
         }
-    }
-}
-impl crate::ToFormData for DeleteAccessPointPolicyForObjectProcess {
-    fn to_form_data(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
     }
 }
 
@@ -9831,11 +9328,10 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
 
     const ACTION: &'static str = "DeleteAccessPointPolicyForObjectProcess";
     const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
-    type Body = crate::Form<Self>;
+    type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointPolicyForObjectProcessResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9852,7 +9348,7 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::Form(self)
+        crate::OctetStream(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9872,7 +9368,6 @@ impl crate::Request for GetPublicAccessBlock {
 
     const ACTION: &'static str = "GetPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -9909,11 +9404,10 @@ impl crate::Request for PutPublicAccessBlock {
 
     const ACTION: &'static str = "PutPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutPublicAccessBlockbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutPublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9949,11 +9443,10 @@ impl crate::Request for DeletePublicAccessBlock {
 
     const ACTION: &'static str = "DeletePublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeletePublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9984,7 +9477,6 @@ impl crate::Request for GetBucketPublicAccessBlock {
 
     const ACTION: &'static str = "GetBucketPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10021,11 +9513,10 @@ impl crate::Request for PutBucketPublicAccessBlock {
 
     const ACTION: &'static str = "PutBucketPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketPublicAccessBlockbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketPublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10061,11 +9552,10 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
 
     const ACTION: &'static str = "DeleteBucketPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketPublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10102,7 +9592,6 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
 
     const ACTION: &'static str = "GetAccessPointPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10150,11 +9639,10 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
 
     const ACTION: &'static str = "PutAccessPointPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PointPublicAccessBlockbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10202,11 +9690,10 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
 
     const ACTION: &'static str = "DeleteAccessPointPublicAccessBlock";
     const URL_PATH: &'static str = "/?publicAccessBlock";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteAccessPointPublicAccessBlockResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10243,7 +9730,6 @@ impl crate::Request for GetBucketArchiveDirectRead {
 
     const ACTION: &'static str = "GetBucketArchiveDirectRead";
     const URL_PATH: &'static str = "/?bucketArchiveDirectRead";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10280,11 +9766,10 @@ impl crate::Request for PutBucketArchiveDirectRead {
 
     const ACTION: &'static str = "PutBucketArchiveDirectRead";
     const URL_PATH: &'static str = "/?bucketArchiveDirectRead";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<DirectReadbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketArchiveDirectReadResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10319,11 +9804,10 @@ impl crate::Request for PutBucketOverwriteConfig {
 
     const ACTION: &'static str = "PutBucketOverwriteConfig";
     const URL_PATH: &'static str = "/?overwriteConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<OverwriteConfigbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketOverwriteConfigResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10354,7 +9838,6 @@ impl crate::Request for GetBucketOverwriteConfig {
 
     const ACTION: &'static str = "GetBucketOverwriteConfig";
     const URL_PATH: &'static str = "/?overwriteConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -10392,11 +9875,10 @@ impl crate::Request for DeleteBucketOverwriteConfig {
 
     const ACTION: &'static str = "DeleteBucketOverwriteConfig";
     const URL_PATH: &'static str = "/?overwriteConfig";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketOverwriteConfigResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -10460,6 +9942,11 @@ pub struct PutObject {
     /// > Key和Value需要先进行URL编码，如果某项没有”=“，则看作Value为空字符串。
     #[setters(generate = true, strip_option)]
     x_oss_tagging: Option<String>,
+    /// 使用PutObject接口时，如果配置以**x-oss-meta-***为前缀的参数，则该参数视为元数据，例如`x-oss-meta-location`。一个Object可以有多个类似的参数，但所有的元数据总大小不能超过8 KB。
+    ///
+    /// 元数据支持短划线（-）、数字、英文字母（a~z）。英文字符的大写字母会被转成小写字母，不支持下划线（_）在内的其他字符。
+    #[setters(generate = true, strip_option)]
+    x_oss_meta: Option<std::collections::HashMap<String, String>>,
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
@@ -10478,6 +9965,7 @@ impl PutObject {
             x_oss_object_acl: None,
             x_oss_storage_class: None,
             x_oss_tagging: None,
+            x_oss_meta: None,
             body: None,
         }
     }
@@ -10491,17 +9979,23 @@ impl crate::Request for PutObject {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::JsonResponseWrap<PutObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
-        let mut headers = Vec::with_capacity(7);
+        let mut headers = Vec::with_capacity(8);
 
         if let Some(f) = &self.x_oss_forbid_overwrite {
             headers.push(("x-oss-forbid-overwrite".into(), f.to_string()));
+        }
+
+        if let Some(map) = &self.x_oss_meta {
+            for (key, value) in map {
+                headers.push((format!("{}{}", "x-oss-meta-", key).into(), value.clone()));
+            }
         }
 
         if let Some(f) = &self.x_oss_object_acl {
@@ -10627,6 +10121,11 @@ pub struct CopyObject {
     ///   - **Replace**：忽略源Object的对象标签，直接采用请求中指定的对象标签。
     #[setters(generate = true, strip_option)]
     x_oss_tagging_directive: Option<String>,
+    /// 如果配置以x-oss-meta-*为前缀的参数，则该参数视为元数据。
+    /// 元数据大小限制：一个Object可以包含多个元数据，但所有的元数据总大小不能超过8 KB。
+    /// 元数据命名规则：支持短划线（-）、数字、英文字母（a~z）。英文字符的大写字母会被转成小写字母，不支持下划线（_）在内的其他字符。
+    #[setters(generate = true, strip_option)]
+    x_oss_meta: Option<std::collections::HashMap<String, String>>,
 }
 
 impl sealed::Bound for CopyObject {}
@@ -10649,6 +10148,7 @@ impl CopyObject {
             x_oss_storage_class: None,
             x_oss_tagging: None,
             x_oss_tagging_directive: None,
+            x_oss_meta: None,
         }
     }
 }
@@ -10663,7 +10163,6 @@ impl crate::Request for CopyObject {
 
     const ACTION: &'static str = "CopyObject";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -10674,7 +10173,7 @@ impl crate::Request for CopyObject {
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
-        let mut headers = Vec::with_capacity(14);
+        let mut headers = Vec::with_capacity(15);
         headers.push((
             "x-oss-copy-source".into(),
             self.x_oss_copy_source.to_string(),
@@ -10701,6 +10200,12 @@ impl crate::Request for CopyObject {
 
         if let Some(f) = &self.x_oss_forbid_overwrite {
             headers.push(("x-oss-forbid-overwrite".into(), f.to_string()));
+        }
+
+        if let Some(map) = &self.x_oss_meta {
+            for (key, value) in map {
+                headers.push((format!("{}{}", "x-oss-meta-", key).into(), value.clone()));
+            }
         }
 
         if let Some(f) = &self.x_oss_metadata_directive {
@@ -10843,7 +10348,7 @@ impl crate::Request for GetObject {
 
     type Body = ();
 
-    type ResponseWrap = crate::JsonResponseWrap<GetObjectResponse>;
+    type ResponseWrap = Vec<u8>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -10954,6 +10459,11 @@ pub struct AppendObject {
     /// ><notice> 该值仅在首次执行AppendObject操作时有效，后续追加时不生效。
     #[setters(generate = true, strip_option)]
     x_oss_storage_class: Option<StorageClass>,
+    /// 创建AppendObject时可以添加x-oss-meta-*，继续追加时不可以携带此参数。如果配置以x-oss-meta-*为前缀的参数，则该参数视为元数据。
+    /// 元数据大小限制：一个Object可以包含多个元数据，但所有的元数据总大小不能超过8 KB。
+    /// 元数据命名规则：支持短划线（-）、数字、英文字母（a~z）。英文字符的大写字母会被转成小写字母，不支持下划线（_）在内的其他字符。
+    #[setters(generate = true, strip_option)]
+    x_oss_meta: Option<std::collections::HashMap<String, String>>,
     /// 指定该Object的网页缓存行为。更多信息，请参见**[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)**。
     /// 默认值：无
     #[setters(generate = true, strip_option)]
@@ -10991,6 +10501,7 @@ impl AppendObject {
             x_oss_server_side_encryption: None,
             x_oss_object_acl: None,
             x_oss_storage_class: None,
+            x_oss_meta: None,
             cache_control: None,
             content_disposition: None,
             content_encoding: None,
@@ -11006,11 +10517,10 @@ impl crate::Request for AppendObject {
 
     const ACTION: &'static str = "AppendObject";
     const URL_PATH: &'static str = "/{key}?append";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<AppendObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11020,7 +10530,7 @@ impl crate::Request for AppendObject {
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
-        let mut headers = Vec::with_capacity(8);
+        let mut headers = Vec::with_capacity(9);
 
         if let Some(f) = &self.cache_control {
             headers.push(("Cache-Control".into(), f.to_string()));
@@ -11040,6 +10550,12 @@ impl crate::Request for AppendObject {
 
         if let Some(f) = &self.expires {
             headers.push(("Expires".into(), f.to_string()));
+        }
+
+        if let Some(map) = &self.x_oss_meta {
+            for (key, value) in map {
+                headers.push((format!("{}{}", "x-oss-meta-", key).into(), value.clone()));
+            }
         }
 
         if let Some(f) = &self.x_oss_object_acl {
@@ -11095,11 +10611,10 @@ impl crate::Request for SealAppendObject {
 
     const ACTION: &'static str = "SealAppendObject";
     const URL_PATH: &'static str = "/{key}?seal";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<SealAppendObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11154,7 +10669,7 @@ impl crate::Request for DeleteObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11224,11 +10739,10 @@ impl crate::Request for HeadObject {
 
     const ACTION: &'static str = "HeadObject";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<HeadObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11294,11 +10808,10 @@ impl crate::Request for GetObjectMeta {
 
     const ACTION: &'static str = "GetObjectMeta";
     const URL_PATH: &'static str = "/{key}?objectMeta";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<GetObjectMetaResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11350,11 +10863,10 @@ impl crate::Request for RestoreObject {
 
     const ACTION: &'static str = "RestoreObject";
     const URL_PATH: &'static str = "/{key}?restore";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<RestoreObjectbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<RestoreObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11403,11 +10915,10 @@ impl crate::Request for CleanRestoredObject {
 
     const ACTION: &'static str = "CleanRestoredObject";
     const URL_PATH: &'static str = "/{key}?cleanRestoredObject";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<CleanRestoredObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -11457,7 +10968,7 @@ impl crate::Request for SelectObject {
 
     type Body = crate::XmlBody<SelectObjectbody>;
 
-    type ResponseWrap = crate::JsonResponseWrap<SelectObjectResponse>;
+    type ResponseWrap = Vec<u8>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11507,7 +11018,6 @@ impl crate::Request for CreateSelectObjectMeta {
 
     const ACTION: &'static str = "CreateSelectObjectMeta";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ObjectMetabody>;
 
@@ -11632,7 +11142,6 @@ impl crate::Request for InitiateMultipartUpload {
 
     const ACTION: &'static str = "InitiateMultipartUpload";
     const URL_PATH: &'static str = "/{key}?uploads";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -11743,11 +11252,10 @@ impl crate::Request for UploadPart {
 
     const ACTION: &'static str = "UploadPart";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<UploadPartResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -11828,7 +11336,6 @@ impl crate::Request for CompleteMultipartUpload {
 
     const ACTION: &'static str = "CompleteMultipartUpload";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<MultipartUploadbody>;
 
@@ -11942,7 +11449,6 @@ impl crate::Request for UploadPartCopy {
 
     const ACTION: &'static str = "UploadPartCopy";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
@@ -12027,11 +11533,10 @@ impl crate::Request for AbortMultipartUpload {
 
     const ACTION: &'static str = "AbortMultipartUpload";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<AbortMultipartUploadResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12107,7 +11612,6 @@ impl crate::Request for ListMultipartUploads {
 
     const ACTION: &'static str = "ListMultipartUploads";
     const URL_PATH: &'static str = "/?uploads";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12195,7 +11699,6 @@ impl crate::Request for ListParts {
 
     const ACTION: &'static str = "ListParts";
     const URL_PATH: &'static str = "/{key}";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12274,11 +11777,10 @@ impl crate::Request for PutObjectAcl {
 
     const ACTION: &'static str = "PutObjectAcl";
     const URL_PATH: &'static str = "/{key}?acl";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutObjectAclResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12331,7 +11833,6 @@ impl crate::Request for GetObjectAcl {
 
     const ACTION: &'static str = "GetObjectAcl";
     const URL_PATH: &'static str = "/{key}?acl";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12425,11 +11926,10 @@ impl crate::Request for PutSymlink {
 
     const ACTION: &'static str = "PutSymlink";
     const URL_PATH: &'static str = "/{key}?symlink";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutSymlinkResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12491,11 +11991,10 @@ impl crate::Request for GetSymlink {
 
     const ACTION: &'static str = "GetSymlink";
     const URL_PATH: &'static str = "/{key}?symlink";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<GetSymlinkResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12547,11 +12046,10 @@ impl crate::Request for PutObjectTagging {
 
     const ACTION: &'static str = "PutObjectTagging";
     const URL_PATH: &'static str = "/{key}?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ObjectTaggingbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutObjectTaggingResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12601,7 +12099,6 @@ impl crate::Request for GetObjectTagging {
 
     const ACTION: &'static str = "GetObjectTagging";
     const URL_PATH: &'static str = "/{key}?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12658,11 +12155,10 @@ impl crate::Request for DeleteObjectTagging {
 
     const ACTION: &'static str = "DeleteObjectTagging";
     const URL_PATH: &'static str = "/{key}?tagging";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteObjectTaggingResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12712,7 +12208,6 @@ impl crate::Request for PutLiveChannel {
 
     const ACTION: &'static str = "PutLiveChannel";
     const URL_PATH: &'static str = "/{channel}?live";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<LiveChannelbody>;
 
@@ -12766,7 +12261,6 @@ impl crate::Request for ListLiveChannel {
 
     const ACTION: &'static str = "ListLiveChannel";
     const URL_PATH: &'static str = "/?live";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12823,11 +12317,10 @@ impl crate::Request for DeleteLiveChannel {
 
     const ACTION: &'static str = "DeleteLiveChannel";
     const URL_PATH: &'static str = "/{channel}?live";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteLiveChannelResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -12878,11 +12371,10 @@ impl crate::Request for PutLiveChannelStatus {
 
     const ACTION: &'static str = "PutLiveChannelStatus";
     const URL_PATH: &'static str = "/{channel}?live";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutLiveChannelStatusResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12925,7 +12417,6 @@ impl crate::Request for GetLiveChannelInfo {
 
     const ACTION: &'static str = "GetLiveChannelInfo";
     const URL_PATH: &'static str = "/{channel}?live";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -12967,7 +12458,6 @@ impl crate::Request for GetLiveChannelHistory {
 
     const ACTION: &'static str = "GetLiveChannelHistory";
     const URL_PATH: &'static str = "/{channel}?live&comp=history";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13009,7 +12499,6 @@ impl crate::Request for GetLiveChannelStat {
 
     const ACTION: &'static str = "GetLiveChannelStat";
     const URL_PATH: &'static str = "/{channel}?live&comp=stat";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13065,7 +12554,7 @@ impl crate::Request for GetVodPlaylist {
 
     type Body = ();
 
-    type ResponseWrap = crate::JsonResponseWrap<GetVodPlaylistResponse>;
+    type ResponseWrap = Vec<u8>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -13128,11 +12617,10 @@ impl crate::Request for PostVodPlaylist {
 
     const ACTION: &'static str = "PostVodPlaylist";
     const URL_PATH: &'static str = "/{channel}/{playlist}?vod";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PostVodPlaylistResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -13178,11 +12666,10 @@ impl crate::Request for PutChannel {
 
     const ACTION: &'static str = "PutChannel";
     const URL_PATH: &'static str = "/?img";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PutChannelbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutChannelResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13217,11 +12704,10 @@ impl crate::Request for PutBucketHash {
 
     const ACTION: &'static str = "PutBucketHash";
     const URL_PATH: &'static str = "/?objectHash";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<BucketHashbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketHashResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13256,11 +12742,10 @@ impl crate::Request for PutBucketCommonHeader {
 
     const ACTION: &'static str = "PutBucketCommonHeader";
     const URL_PATH: &'static str = "/?x-oss-common-header";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<CommonHeaderbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutBucketCommonHeaderResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13296,11 +12781,10 @@ impl crate::Request for DeleteBucketCommonHeader {
 
     const ACTION: &'static str = "DeleteBucketCommonHeader";
     const URL_PATH: &'static str = "/?x-oss-common-header";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<DeleteBucketCommonHeaderResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13335,11 +12819,10 @@ impl crate::Request for PutProcessConfiguration {
 
     const ACTION: &'static str = "PutProcessConfiguration";
     const URL_PATH: &'static str = "/?processConfiguration";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<ProcessConfigurationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<PutProcessConfigurationResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -13370,7 +12853,6 @@ impl crate::Request for GetBucketEventNotification {
 
     const ACTION: &'static str = "GetBucketEventNotification";
     const URL_PATH: &'static str = "/?eventNotification";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -13411,7 +12893,6 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
 
     const ACTION: &'static str = "PutDataLakeCachePrefetchJob";
     const URL_PATH: &'static str = "/?x-oss-datalake-cache-prefetch-job";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::XmlBody<PrefetchJobbody>;
 
@@ -13461,11 +12942,10 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
 
     const ACTION: &'static str = "StartDataLakeCachePrefetchJob";
     const URL_PATH: &'static str = "/?x-oss-datalake-cache-prefetch-job&x-oss-datalake-job-start";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<StartDataLakeCachePrefetchJobResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -13502,7 +12982,6 @@ impl crate::Request for ListDataLakeStorageTransferJob {
 
     const ACTION: &'static str = "ListDataLakeStorageTransferJob";
     const URL_PATH: &'static str = "/?x-oss-datalake-storage-transfer-job";
-    const RESPONSE_CONTENT_TYPE: crate::ResponseContentType = crate::ResponseContentType::Xml;
 
     type Body = ();
 
@@ -21088,12 +20567,12 @@ impl crate::FlatSerialize for CompleteMultipartUploadPartItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CompleteMultipartUpload {
+pub struct CompleteMultipartUploadSchema {
     #[serde(rename = "Part")]
     pub part: Vec<CompleteMultipartUploadPartItem>,
 }
 
-impl crate::FlatSerialize for CompleteMultipartUpload {
+impl crate::FlatSerialize for CompleteMultipartUploadSchema {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -21107,7 +20586,7 @@ impl crate::FlatSerialize for CompleteMultipartUpload {
 #[serde(default)]
 pub struct MultipartUploadbody {
     #[serde(rename = "CompleteMultipartUpload")]
-    pub complete_multipart_upload: CompleteMultipartUpload,
+    pub complete_multipart_upload: CompleteMultipartUploadSchema,
 }
 
 impl crate::FlatSerialize for MultipartUploadbody {
@@ -22682,6 +22161,12 @@ impl StorageClass {
     }
 }
 
+impl std::fmt::Display for StorageClass {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a StorageClass> for crate::QueryValue<'a> {
     fn from(value: &'a StorageClass) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -22726,6 +22211,12 @@ impl BucketACL {
     }
 }
 
+impl std::fmt::Display for BucketACL {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a BucketACL> for crate::QueryValue<'a> {
     fn from(value: &'a BucketACL) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -22767,6 +22258,12 @@ impl DataRedundancyType {
     }
 }
 
+impl std::fmt::Display for DataRedundancyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a DataRedundancyType> for crate::QueryValue<'a> {
     fn from(value: &'a DataRedundancyType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -22802,6 +22299,12 @@ impl EncodeType {
         match self {
             Self::Url => "url",
         }
+    }
+}
+
+impl std::fmt::Display for EncodeType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -22843,6 +22346,12 @@ impl BucketVersioningStatus {
             Self::Enabled => "Enabled",
             Self::Suspended => "Suspended",
         }
+    }
+}
+
+impl std::fmt::Display for BucketVersioningStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -22893,6 +22402,12 @@ impl ObjectACL {
     }
 }
 
+impl std::fmt::Display for ObjectACL {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a ObjectACL> for crate::QueryValue<'a> {
     fn from(value: &'a ObjectACL) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -22931,6 +22446,12 @@ impl BucketWormState {
             Self::InProgress => "InProgress",
             Self::Locked => "Locked",
         }
+    }
+}
+
+impl std::fmt::Display for BucketWormState {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -22975,6 +22496,12 @@ impl ReplicationDestinationTransferType {
     }
 }
 
+impl std::fmt::Display for ReplicationDestinationTransferType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a ReplicationDestinationTransferType> for crate::QueryValue<'a> {
     fn from(value: &'a ReplicationDestinationTransferType) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -23013,6 +22540,12 @@ impl ReplicationRuleHistoricalObjectReplication {
             Self::Enabled => "enabled",
             Self::Disabled => "disabled",
         }
+    }
+}
+
+impl std::fmt::Display for ReplicationRuleHistoricalObjectReplication {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23057,6 +22590,12 @@ impl ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus {
     }
 }
 
+impl std::fmt::Display for ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus>
     for crate::QueryValue<'a>
 {
@@ -23094,6 +22633,12 @@ impl InventoryFormat {
         match self {
             Self::CSV => "CSV",
         }
+    }
+}
+
+impl std::fmt::Display for InventoryFormat {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23137,6 +22682,12 @@ impl InventoryFrequency {
             Self::Daily => "Daily",
             Self::Weekly => "Weekly",
         }
+    }
+}
+
+impl std::fmt::Display for InventoryFrequency {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23193,6 +22744,12 @@ impl InventoryOptionalField {
     }
 }
 
+impl std::fmt::Display for InventoryOptionalField {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a InventoryOptionalField> for crate::QueryValue<'a> {
     fn from(value: &'a InventoryOptionalField) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -23231,6 +22788,12 @@ impl AccessMonitorStatus {
             Self::Enabled => "Enabled",
             Self::Disabled => "Disabled",
         }
+    }
+}
+
+impl std::fmt::Display for AccessMonitorStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23275,6 +22838,12 @@ impl MetaQueryOrder {
     }
 }
 
+impl std::fmt::Display for MetaQueryOrder {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a MetaQueryOrder> for crate::QueryValue<'a> {
     fn from(value: &'a MetaQueryOrder) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -23313,6 +22882,12 @@ impl CompressionType {
             Self::None => "None",
             Self::GZIP => "GZIP",
         }
+    }
+}
+
+impl std::fmt::Display for CompressionType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23360,6 +22935,12 @@ impl FileHeaderInfo {
     }
 }
 
+impl std::fmt::Display for FileHeaderInfo {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
 impl<'a> From<&'a FileHeaderInfo> for crate::QueryValue<'a> {
     fn from(value: &'a FileHeaderInfo) -> Self {
         crate::QueryValue::from(value.as_str())
@@ -23400,6 +22981,12 @@ impl JSONType {
             Self::DOCUMENT => "DOCUMENT",
             Self::LINES => "LINES",
         }
+    }
+}
+
+impl std::fmt::Display for JSONType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
     }
 }
 
@@ -23459,32 +23046,6 @@ pub struct GetBucketStatResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketStatResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23595,45 +23156,6 @@ impl crate::ToCodeMessage for GetAccessPointPolicyResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteAccessPointPolicyResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteAccessPointPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutAccessPointPolicyResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutAccessPointPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteAccessPointResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteAccessPointResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CreateAccessPointResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23642,58 +23164,6 @@ pub struct CreateAccessPointResponse {
 }
 
 impl crate::ToCodeMessage for CreateAccessPointResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct InitiateBucketWormResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for InitiateBucketWormResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct AbortBucketWormResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for AbortBucketWormResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CompleteBucketWormResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for CompleteBucketWormResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ExtendBucketWormResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for ExtendBucketWormResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23716,19 +23186,6 @@ impl crate::ToCodeMessage for GetBucketWormResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutBucketAclResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23737,19 +23194,6 @@ pub struct GetBucketAclResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketLifecycleResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketLifecycleResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23772,32 +23216,6 @@ impl crate::ToCodeMessage for GetBucketLifecycleResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteBucketLifecycleResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketLifecycleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketTransferAccelerationResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketTransferAccelerationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketTransferAccelerationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23806,19 +23224,6 @@ pub struct GetBucketTransferAccelerationResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketTransferAccelerationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketVersioningResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketVersioningResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23856,38 +23261,12 @@ impl crate::ToCodeMessage for ListObjectVersionsResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutBucketPolicyResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 
 impl crate::ToCodeMessage for GetBucketPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketPolicyResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketPolicyResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23903,32 +23282,6 @@ pub struct GetBucketPolicyStatusResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketPolicyStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketRtcResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketRtcResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketReplicationResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketReplicationResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23981,32 +23334,6 @@ impl crate::ToCodeMessage for GetBucketReplicationProgressResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteBucketReplicationResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketReplicationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketInventoryResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketInventoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketInventoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24037,32 +23364,6 @@ impl crate::ToCodeMessage for ListBucketInventoryResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteBucketInventoryResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketInventoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketLoggingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketLoggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketLoggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24071,32 +23372,6 @@ pub struct GetBucketLoggingResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketLoggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketLoggingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketLoggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutUserDefinedLogFieldsConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutUserDefinedLogFieldsConfigResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24119,19 +23394,6 @@ impl crate::ToCodeMessage for GetUserDefinedLogFieldsConfigResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteUserDefinedLogFieldsConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteUserDefinedLogFieldsConfigResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketWebsiteResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24140,45 +23402,6 @@ pub struct GetBucketWebsiteResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketWebsiteResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketWebsiteResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketWebsiteResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketWebsiteResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketWebsiteResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketRefererResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketRefererResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24201,19 +23424,6 @@ impl crate::ToCodeMessage for GetBucketRefererResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutBucketTagsResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24222,19 +23432,6 @@ pub struct GetBucketTagsResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketTagsResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketTagsResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24304,32 +23501,6 @@ impl crate::ToCodeMessage for CreateBucketDataRedundancyTransitionResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteBucketDataRedundancyTransitionResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketDataRedundancyTransitionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketEncryptionResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketEncryptionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketEncryptionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24338,32 +23509,6 @@ pub struct GetBucketEncryptionResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketEncryptionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketEncryptionResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketEncryptionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketRequestPaymentResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketRequestPaymentResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24386,19 +23531,6 @@ impl crate::ToCodeMessage for GetBucketRequestPaymentResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutBucketCorsResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketCorsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketCorsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24407,45 +23539,6 @@ pub struct GetBucketCorsResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketCorsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketCorsResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketCorsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct OptionObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for OptionObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketAccessMonitorResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketAccessMonitorResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24483,19 +23576,6 @@ impl crate::ToCodeMessage for GetMetaQueryStatusResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct CloseMetaQueryResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for CloseMetaQueryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct DoMetaQueryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24511,45 +23591,6 @@ impl crate::ToCodeMessage for DoMetaQueryResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct OpenMetaQueryResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for OpenMetaQueryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct UpdateUserAntiDDosInfoResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for UpdateUserAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct UpdateBucketAntiDDosInfoResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for UpdateBucketAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListBucketAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24558,32 +23599,6 @@ pub struct ListBucketAntiDDosInfoResponse {
 }
 
 impl crate::ToCodeMessage for ListBucketAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct InitUserAntiDDosInfoResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for InitUserAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct InitBucketAntiDDosInfoResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for InitBucketAntiDDosInfoResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24621,32 +23636,6 @@ impl crate::ToCodeMessage for GetBucketResourceGroupResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutBucketResourceGroupResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketResourceGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutCnameResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutCnameResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListCnameResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24655,19 +23644,6 @@ pub struct ListCnameResponse {
 }
 
 impl crate::ToCodeMessage for ListCnameResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteCnameResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteCnameResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24705,19 +23681,6 @@ impl crate::ToCodeMessage for CreateCnameTokenResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutStyleResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutStyleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListStyleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24748,19 +23711,6 @@ impl crate::ToCodeMessage for GetStyleResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteStyleResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteStyleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketHttpsConfigResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24769,19 +23719,6 @@ pub struct GetBucketHttpsConfigResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketHttpsConfigResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketHttpsConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketHttpsConfigResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24834,19 +23771,6 @@ impl crate::ToCodeMessage for ListAccessPointsForObjectProcessResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteAccessPointForObjectProcessResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteAccessPointForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointConfigForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24862,51 +23786,12 @@ impl crate::ToCodeMessage for GetAccessPointConfigForObjectProcessResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutAccessPointConfigForObjectProcessResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutAccessPointConfigForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutAccessPointPolicyForObjectProcessResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutAccessPointPolicyForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointPolicyForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 
 impl crate::ToCodeMessage for GetAccessPointPolicyForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteAccessPointPolicyForObjectProcessResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteAccessPointPolicyForObjectProcessResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -24929,32 +23814,6 @@ impl crate::ToCodeMessage for GetPublicAccessBlockResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutPublicAccessBlockResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutPublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeletePublicAccessBlockResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeletePublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24963,32 +23822,6 @@ pub struct GetBucketPublicAccessBlockResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketPublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketPublicAccessBlockResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketPublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketPublicAccessBlockResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketPublicAccessBlockResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25024,19 +23857,6 @@ impl crate::ToCodeMessage for PutAccessPointPublicAccessBlockResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteAccessPointPublicAccessBlockResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteAccessPointPublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketArchiveDirectReadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25045,32 +23865,6 @@ pub struct GetBucketArchiveDirectReadResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketArchiveDirectReadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketArchiveDirectReadResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketArchiveDirectReadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketOverwriteConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketOverwriteConfigResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25093,32 +23887,6 @@ impl crate::ToCodeMessage for GetBucketOverwriteConfigResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct DeleteBucketOverwriteConfigResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketOverwriteConfigResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CopyObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25127,123 +23895,6 @@ pub struct CopyObjectResponse {
 }
 
 impl crate::ToCodeMessage for CopyObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct GetObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for GetObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct AppendObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for AppendObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct SealAppendObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for SealAppendObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct HeadObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for HeadObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct GetObjectMetaResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for GetObjectMetaResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct RestoreObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for RestoreObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CleanRestoredObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for CleanRestoredObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct SelectObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for SelectObjectResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25272,19 +23923,6 @@ pub struct InitiateMultipartUploadResponse {
 }
 
 impl crate::ToCodeMessage for InitiateMultipartUploadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct UploadPartResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for UploadPartResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25322,19 +23960,6 @@ impl crate::ToCodeMessage for UploadPartCopyResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct AbortMultipartUploadResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for AbortMultipartUploadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListMultipartUploadsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25365,19 +23990,6 @@ impl crate::ToCodeMessage for ListPartsResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutObjectAclResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutObjectAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25393,45 +24005,6 @@ impl crate::ToCodeMessage for GetObjectAclResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct PutSymlinkResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutSymlinkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct GetSymlinkResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for GetSymlinkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutObjectTaggingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutObjectTaggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectTaggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25440,19 +24013,6 @@ pub struct GetObjectTaggingResponse {
 }
 
 impl crate::ToCodeMessage for GetObjectTaggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteObjectTaggingResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteObjectTaggingResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25483,32 +24043,6 @@ pub struct ListLiveChannelResponse {
 }
 
 impl crate::ToCodeMessage for ListLiveChannelResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteLiveChannelResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteLiveChannelResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutLiveChannelStatusResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutLiveChannelStatusResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -25561,97 +24095,6 @@ impl crate::ToCodeMessage for GetLiveChannelStatResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
-pub struct GetVodPlaylistResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for GetVodPlaylistResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PostVodPlaylistResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PostVodPlaylistResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutChannelResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutChannelResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketHashResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketHashResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutBucketCommonHeaderResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutBucketCommonHeaderResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DeleteBucketCommonHeaderResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for DeleteBucketCommonHeaderResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutProcessConfigurationResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for PutProcessConfigurationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketEventNotificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25675,19 +24118,6 @@ pub struct PutDataLakeCachePrefetchJobResponse {
 }
 
 impl crate::ToCodeMessage for PutDataLakeCachePrefetchJobResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
-#[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct StartDataLakeCachePrefetchJobResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
-}
-
-impl crate::ToCodeMessage for StartDataLakeCachePrefetchJobResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
