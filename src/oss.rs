@@ -177,13 +177,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -214,7 +214,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -615,7 +615,7 @@ impl Connection {
     pub fn initiate_bucket_worm(
         &self,
         req: InitiateBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
         self.call(req)
     }
 
@@ -1198,7 +1198,7 @@ impl Connection {
     pub fn put_bucket_replication(
         &self,
         req: PutBucketReplication,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
         self.call(req)
     }
 
@@ -2122,7 +2122,7 @@ impl Connection {
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///
+    ///  
     ///
     /// # Path
     /// `/?cors`
@@ -2190,7 +2190,7 @@ impl Connection {
     pub fn option_object(
         &self,
         req: OptionObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
                 r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
@@ -2426,7 +2426,7 @@ impl Connection {
     pub fn init_user_anti_d_dos_info(
         &self,
         req: InitUserAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<InitUserAntiDDosInfoResponse>> + Send {
         self.call(req)
     }
 
@@ -3382,7 +3382,7 @@ impl Connection {
     pub fn put_object(
         &self,
         req: PutObject,
-    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -3403,7 +3403,7 @@ impl Connection {
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///
+    ///   
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -3502,7 +3502,7 @@ impl Connection {
     pub fn append_object(
         &self,
         req: AppendObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -3525,7 +3525,7 @@ impl Connection {
     pub fn seal_append_object(
         &self,
         req: SealAppendObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -3562,7 +3562,7 @@ impl Connection {
     pub fn delete_object(
         &self,
         req: DeleteObject,
-    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -3589,10 +3589,11 @@ impl Connection {
     pub fn head_object(
         &self,
         req: HeadObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported
+Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
         }
     }
@@ -3625,7 +3626,7 @@ impl Connection {
     pub fn get_object_meta(
         &self,
         req: GetObjectMeta,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
         async {
             todo!(
                 r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, or HttpMethod::Delete supported"##
@@ -3687,7 +3688,7 @@ impl Connection {
     pub fn restore_object(
         &self,
         req: RestoreObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -4044,7 +4045,7 @@ impl Connection {
     pub fn put_object_acl(
         &self,
         req: PutObjectAcl,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
         self.call(req)
     }
 
@@ -4109,7 +4110,7 @@ impl Connection {
     pub fn put_symlink(
         &self,
         req: PutSymlink,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
         self.call(req)
     }
 
@@ -4137,7 +4138,7 @@ impl Connection {
     pub fn get_symlink(
         &self,
         req: GetSymlink,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
         self.call(req)
     }
 
@@ -4177,7 +4178,7 @@ impl Connection {
     pub fn put_object_tagging(
         &self,
         req: PutObjectTagging,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
         self.call(req)
     }
 
@@ -5567,7 +5568,7 @@ impl crate::Request for InitiateBucketWorm {
 
     type Body = crate::XmlBody<InitiateBucketWormbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<InitiateBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -6407,7 +6408,7 @@ impl crate::Request for PutBucketReplication {
 
     type Body = crate::XmlBody<PutBucketReplicationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<PutBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -7804,7 +7805,7 @@ impl crate::Request for OptionObject {
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<OptionObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -8297,7 +8298,7 @@ impl crate::Request for InitUserAntiDDosInfo {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<InitUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -9979,12 +9980,12 @@ impl crate::Request for PutObject {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = ();
+    type ResponseWrap = crate::JsonResponseWrap<PutObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
-
+    
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         let mut headers = Vec::with_capacity(8);
 
@@ -10520,7 +10521,7 @@ impl crate::Request for AppendObject {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<AppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10614,7 +10615,7 @@ impl crate::Request for SealAppendObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<SealAppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10669,7 +10670,7 @@ impl crate::Request for DeleteObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = ();
+    type ResponseWrap = crate::JsonResponseWrap<DeleteObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10742,7 +10743,7 @@ impl crate::Request for HeadObject {
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<HeadObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10811,7 +10812,7 @@ impl crate::Request for GetObjectMeta {
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<GetObjectMetaResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10866,7 +10867,7 @@ impl crate::Request for RestoreObject {
 
     type Body = crate::XmlBody<RestoreObjectbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<RestoreObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11780,7 +11781,7 @@ impl crate::Request for PutObjectAcl {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<PutObjectAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11929,7 +11930,7 @@ impl crate::Request for PutSymlink {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<PutSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -11994,7 +11995,7 @@ impl crate::Request for GetSymlink {
 
     type Body = ();
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<GetSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12049,7 +12050,7 @@ impl crate::Request for PutObjectTagging {
 
     type Body = crate::XmlBody<ObjectTaggingbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<PutObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -23171,6 +23172,22 @@ impl crate::ToCodeMessage for CreateAccessPointResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
+pub struct InitiateBucketWormResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-worm-id
+    #[serde(skip)]
+    pub x_oss_worm_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for InitiateBucketWormResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
 pub struct GetBucketWormResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23282,6 +23299,22 @@ pub struct GetBucketPolicyStatusResponse {
 }
 
 impl crate::ToCodeMessage for GetBucketPolicyStatusResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct PutBucketReplicationResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-replication-rule-id
+    #[serde(skip)]
+    pub x_oss_replication_rule_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for PutBucketReplicationResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23546,6 +23579,34 @@ impl crate::ToCodeMessage for GetBucketCorsResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
+pub struct OptionObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: Access-Control-Allow-Origin
+    #[serde(skip)]
+    pub access_control_allow_origin: Option<String>,
+    /// Header field from response: Access-Control-Allow-Methods
+    #[serde(skip)]
+    pub access_control_allow_methods: Option<String>,
+    /// Header field from response: Access-Control-Allow-Headers
+    #[serde(skip)]
+    pub access_control_allow_headers: Option<String>,
+    /// Header field from response: Access-Control-Expose-Headers
+    #[serde(skip)]
+    pub access_control_expose_headers: Option<String>,
+    /// Header field from response: Access-Control-Max-Age
+    #[serde(skip)]
+    pub access_control_max_age: Option<i64>,
+}
+
+impl crate::ToCodeMessage for OptionObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
 pub struct GetBucketAccessMonitorResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23599,6 +23660,22 @@ pub struct ListBucketAntiDDosInfoResponse {
 }
 
 impl crate::ToCodeMessage for ListBucketAntiDDosInfoResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct InitUserAntiDDosInfoResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-defender-instance
+    #[serde(skip)]
+    pub x_oss_defender_instance: Option<String>,
+}
+
+impl crate::ToCodeMessage for InitUserAntiDDosInfoResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23887,14 +23964,207 @@ impl crate::ToCodeMessage for GetBucketOverwriteConfigResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
+pub struct PutObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-hash-crc64ecma
+    #[serde(skip)]
+    pub x_oss_hash_crc64ecma: Option<i64>,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for PutObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
 pub struct CopyObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
     #[serde(rename = "CopyObjectResult")]
     pub copy_object_result: ObjectResult,
+    /// Header field from response: x-oss-copy-source-version-id
+    #[serde(skip)]
+    pub x_oss_copy_source_version_id: Option<String>,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
 }
 
 impl crate::ToCodeMessage for CopyObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct AppendObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-next-append-position
+    #[serde(skip)]
+    pub x_oss_next_append_position: Option<i64>,
+    /// Header field from response: x-oss-hash-crc64ecma
+    #[serde(skip)]
+    pub x_oss_hash_crc64ecma: Option<String>,
+}
+
+impl crate::ToCodeMessage for AppendObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct SealAppendObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-sealed-time
+    #[serde(skip)]
+    pub x_oss_sealed_time: Option<String>,
+}
+
+impl crate::ToCodeMessage for SealAppendObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct DeleteObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-delete-marker
+    #[serde(skip)]
+    pub x_oss_delete_marker: Option<bool>,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for DeleteObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct HeadObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-server-side-encryption
+    #[serde(skip)]
+    pub x_oss_server_side_encryption: Option<String>,
+    /// Header field from response: x-oss-server-side-encryption-key-id
+    #[serde(skip)]
+    pub x_oss_server_side_encryption_key_id: Option<String>,
+    /// Header field from response: x-oss-storage-class
+    #[serde(skip)]
+    pub x_oss_storage_class: Option<String>,
+    /// Header field from response: x-oss-object-type
+    #[serde(skip)]
+    pub x_oss_object_type: Option<String>,
+    /// Header field from response: x-oss-next-append-position
+    #[serde(skip)]
+    pub x_oss_next_append_position: Option<i64>,
+    /// Header field from response: x-oss-hash-crc64ecma
+    #[serde(skip)]
+    pub x_oss_hash_crc64ecma: Option<String>,
+    /// Header field from response: x-oss-expiration
+    #[serde(skip)]
+    pub x_oss_expiration: Option<String>,
+    /// Header field from response: x-oss-restore
+    #[serde(skip)]
+    pub x_oss_restore: Option<String>,
+    /// Header field from response: x-oss-process-status
+    #[serde(skip)]
+    pub x_oss_process_status: Option<String>,
+    /// Header field from response: x-oss-request-charged
+    #[serde(skip)]
+    pub x_oss_request_charged: Option<String>,
+    /// Header field from response: Content-Md5
+    #[serde(skip)]
+    pub content_md5: Option<String>,
+    /// Header field from response: Content-Length
+    #[serde(skip)]
+    pub content_length: Option<i64>,
+    /// Header field from response: Last-Modified
+    #[serde(skip)]
+    pub last_modified: Option<String>,
+    /// Header field from response: Content-Type
+    #[serde(skip)]
+    pub content_type: Option<String>,
+    /// Header field from response: ETag
+    #[serde(skip)]
+    pub e_tag: Option<String>,
+    /// Header field from response: x-oss-transition-time
+    #[serde(skip)]
+    pub x_oss_transition_time: Option<String>,
+    /// Header field from response: x‑oss‑tagging‑count
+    #[serde(skip)]
+    pub x_oss_tagging_count: Option<i64>,
+}
+
+impl crate::ToCodeMessage for HeadObjectResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct GetObjectMetaResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+    /// Header field from response: ETag
+    #[serde(skip)]
+    pub e_tag: Option<String>,
+    /// Header field from response: Content-Length
+    #[serde(skip)]
+    pub content_length: Option<i64>,
+    /// Header field from response: x-oss-last-access-time
+    #[serde(skip)]
+    pub x_oss_last_access_time: Option<String>,
+    /// Header field from response: Last-Modifed
+    #[serde(skip)]
+    pub last_modifed: Option<String>,
+    /// Header field from response: x-oss-transition-time
+    #[serde(skip)]
+    pub x_oss_transition_time: Option<String>,
+}
+
+impl crate::ToCodeMessage for GetObjectMetaResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct RestoreObjectResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-object-restore-priority
+    #[serde(skip)]
+    pub x_oss_object_restore_priority: Option<String>,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for RestoreObjectResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
@@ -23935,6 +24205,9 @@ pub struct CompleteMultipartUploadResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "CompleteMultipartUploadResult")]
     pub complete_multipart_upload_result: CompleteMultipartUploadResult,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
 }
 
 impl crate::ToCodeMessage for CompleteMultipartUploadResponse {
@@ -23950,6 +24223,9 @@ pub struct UploadPartCopyResponse {
     pub code_message: crate::CodeMessage,
     #[serde(rename = "CopyPartResult")]
     pub copy_part_result: CopyPartResult,
+    /// Header field from response: x-oss-copy-source-version-id
+    #[serde(skip)]
+    pub x_oss_copy_source_version_id: Option<String>,
 }
 
 impl crate::ToCodeMessage for UploadPartCopyResponse {
@@ -23990,6 +24266,22 @@ impl crate::ToCodeMessage for ListPartsResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
+pub struct PutObjectAclResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for PutObjectAclResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
 pub struct GetObjectAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -23998,6 +24290,57 @@ pub struct GetObjectAclResponse {
 }
 
 impl crate::ToCodeMessage for GetObjectAclResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct PutSymlinkResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for PutSymlinkResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct GetSymlinkResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-symlink-target
+    #[serde(skip)]
+    pub x_oss_symlink_target: Option<String>,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for GetSymlinkResponse {
+    fn to_code_message(&self) -> &crate::CodeMessage {
+        &self.code_message
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
+pub struct PutObjectTaggingResponse {
+    #[serde(flatten)]
+    pub code_message: crate::CodeMessage,
+    /// Header field from response: x-oss-version-id
+    #[serde(skip)]
+    pub x_oss_version_id: Option<String>,
+}
+
+impl crate::ToCodeMessage for PutObjectTaggingResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &self.code_message
     }
