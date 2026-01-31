@@ -9,10 +9,11 @@ use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::borrow::Cow;
 use std::collections::HashMap;
 
+pub mod auth;
 mod common;
 mod v3;
 
-pub use v3::AccessKeySecret;
+pub use auth::{AccessKeySecret, AliyunAuth, Acs3HmacSha256, Oss4HmacSha256};
 
 #[cfg(feature = "ocr")]
 pub mod ocr;

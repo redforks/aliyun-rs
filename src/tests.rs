@@ -23,3 +23,6 @@ mod sms;
 
 #[cfg(feature = "ecs")]
 mod ecs;
+
+#[cfg(feature = "oss")]
+mod oss;

@@ -1,51 +1,50 @@
-use crate::{
-    IntoResponse, Request, Result,
-    v3::{AccessKeySecret, call},
-};
-use std::future::Future;
+use crate::{auth::AliyunAuth, v3::call, IntoResponse, Request, Result};
+use std::{future::Future, sync::Arc};
 
-#[derive(Clone)]
 struct _Connection {
-    access_key_secret: AccessKeySecret,
+    auth: Arc<dyn AliyunAuth>,
     version: &'static str,
     end_point: &'static str,
     http_client: reqwest::Client,
 }
 
 #[derive(Clone)]
-pub struct Connection(_Connection);
+pub struct Connection(Arc<_Connection>);
 
 impl Connection {
     pub fn new(
-        access_key_secret: AccessKeySecret,
+        auth: impl AliyunAuth + 'static,
         version: &'static str,
         end_point: &'static str,
     ) -> Self {
-        Self(_Connection {
-            access_key_secret,
+        Self(Arc::new(_Connection {
+            auth: Arc::new(auth),
             version,
             end_point,
             http_client: reqwest::Client::default(),
-        })
+        }))
     }
 
     pub fn with_client(
-        access_key_secret: AccessKeySecret,
+        auth: impl AliyunAuth + 'static,
         version: &'static str,
         end_point: &'static str,
         http_client: reqwest::Client,
     ) -> Self {
-        Self(_Connection {
-            access_key_secret,
+        Self(Arc::new(_Connection {
+            auth: Arc::new(auth),
             version,
             end_point,
             http_client,
-        })
+        }))
     }
 
-    pub fn call<R: Request>(&self, req: R) -> impl Future<Output = Result<<R::ResponseWrap as IntoResponse>::Response>> + Send {
+    pub fn call<R: Request>(
+        &self,
+        req: R,
+    ) -> impl Future<Output = Result<<R::ResponseWrap as IntoResponse>::Response>> + Send {
         call(
-            &self.0.access_key_secret,
+            self.0.auth.as_ref(),
             &self.0.http_client,
             self.0.version,
             self.0.end_point,

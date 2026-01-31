@@ -5,11 +5,14 @@ use http::{
     HeaderMap, HeaderValue, Method,
     header::{CONTENT_TYPE, IntoHeaderName},
 };
-use std::{borrow::Cow, collections::BTreeMap};
+use std::borrow::Cow;
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{FromBody, IntoBody as _, IntoResponse, QueryValue, Result, ToCodeMessage};
+use crate::{FromBody, IntoBody as _, IntoResponse, QueryValue, Result, ToCodeMessage, auth::AliyunAuth};
+
+// Re-export AccessKeySecret for backward compatibility
+pub use crate::auth::AccessKeySecret;
 
 /// Separate the request into several parts by '/', each part encode with percent_encode,
 /// and join them with '/'.
@@ -66,62 +69,9 @@ fn gen_headers<R: super::Request>(
     Ok(r)
 }
 
-fn canonical_headers(headers: &HeaderMap) -> Result<(String, String)> {
-    let headers = headers
-        .iter()
-        .filter_map(|(k, v)| {
-            let k = k.as_str().to_lowercase();
-            (k.starts_with("x-acs-") || k == "host" || k == "content-type").then(|| {
-                let v = v.to_str().context("convert header value to string")?;
-                Ok((k, v))
-            })
-        })
-        .collect::<Result<BTreeMap<_, _>>>()?;
-
-    let mut canonical_headers = String::new();
-    let mut signed_headers = String::new();
-    for (k, v) in &headers {
-        canonical_headers.push_str(k);
-        canonical_headers.push(':');
-        canonical_headers.push_str(v);
-        canonical_headers.push('\n');
-        signed_headers.push_str(k);
-        signed_headers.push(';');
-    }
-    // remove last ';' of signed_headers, canonical_headers should not remove last '\n'
-    signed_headers.pop();
-
-    Ok((canonical_headers, signed_headers))
-}
-
-const SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
-
-/// Type of ali access key and secret key.
-#[derive(Clone, Debug)]
-pub struct AccessKeySecret(pub Cow<'static, str>, pub Cow<'static, str>);
-
-impl AccessKeySecret {
-    #[inline]
-    pub fn new(key: impl Into<Cow<'static, str>>, secret: impl Into<Cow<'static, str>>) -> Self {
-        Self(key.into(), secret.into())
-    }
-}
-
-impl From<(&'static str, &'static str)> for AccessKeySecret {
-    fn from(value: (&'static str, &'static str)) -> Self {
-        Self(value.0.into(), value.1.into())
-    }
-}
-
-impl From<(Cow<'static, str>, Cow<'static, str>)> for AccessKeySecret {
-    fn from(value: (Cow<'static, str>, Cow<'static, str>)) -> Self {
-        Self(value.0, value.1)
-    }
-}
-
 /// Build http request according to authorization signature V3.
 pub async fn call<R>(
-    key_secret: &AccessKeySecret,
+    auth: &dyn AliyunAuth,
     http_client: &reqwest::Client,
     version: &'static str,
     end_point: &'static str,
@@ -142,7 +92,8 @@ where
         path.into()
     };
     let uri = canonical_uri_path(&url_path);
-    let query_string = canonical_query_string(req.to_query_params());
+    let query_params = req.to_query_params();
+    let query_string = canonical_query_string(query_params);
     let custom_headers = req.to_headers();
     let body = req.to_body();
     let content_type = if R::METHOD == Method::GET {
@@ -165,29 +116,20 @@ where
             http::header::HeaderValue::from_str(&value).context("Invalid custom header value")?;
         headers.insert(header_name, header_value);
     }
-    let (canonical_headers, header_names) = canonical_headers(&headers)?;
-    let canonical_request = format!(
-        "{}\n{}\n{}\n{}\n{}\n{}",
+    
+    // Use the auth trait to sign the request
+    let authorization = auth.sign(
+        &headers,
+        &uri,
+        &query_string,
         R::METHOD.as_str(),
-        uri,
-        query_string,
-        canonical_headers,
-        header_names,
-        hashed_request_payload
-    );
-    debug!("canonical_request: {:?}", canonical_request);
-    let hashed_canonical_request = hexed_sha256(&canonical_request);
-    let string_to_sign = format!("{}\n{}", SIGNATURE_ALGORITHM, hashed_canonical_request);
-    debug!("string_to_sign: {:?}", string_to_sign);
-    let signature = hexed_hmac_sha256(&key_secret.1, string_to_sign.as_bytes())?;
-    let ali_access_key_id = &key_secret.0;
+        &hashed_request_payload,
+    )?;
+    
     insert_str_header(
         &mut headers,
         http::header::AUTHORIZATION,
-        &format!(
-            "{} Credential={},SignedHeaders={},Signature={}",
-            SIGNATURE_ALGORITHM, ali_access_key_id, header_names, signature
-        ),
+        &authorization,
     )?;
     let mut url = format!("https://{}{}", end_point, url_path);
     if !query_string.is_empty() {
@@ -232,18 +174,6 @@ where
         }
     };
     Ok(resp)
-}
-
-/// Compute signature String using HMAC-SHA256, and encode use hex.
-fn hexed_hmac_sha256(key: &str, to_sign: &[u8]) -> Result<String> {
-    use hmac::{Hmac, Mac};
-    use sha2::Sha256;
-
-    let mut mac = Hmac::<Sha256>::new_from_slice(key.as_bytes())
-        .context("Create hmac from ali-key-secret")?;
-    mac.update(to_sign);
-    let result = mac.finalize().into_bytes();
-    Ok(hex::encode(result))
 }
 
 /// Percent-encodes a string per RFC 3986.
