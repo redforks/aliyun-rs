@@ -206,12 +206,14 @@ where
     .context("send request")?;
 
     let status = resp.status();
+    let resp_headers = resp.headers().clone();
     let resp_bytes = resp.bytes().await.context("Get response bytes")?;
     debug!("Response: {:?}", String::from_utf8_lossy(&resp_bytes));
 
     let resp = if status.is_success() {
         // Use ResponseWrap to deserialize response bytes
-        let wrap = R::ResponseWrap::from_body(resp_bytes.to_vec())?;
+        let mut wrap = R::ResponseWrap::from_body(resp_bytes.to_vec())?;
+        R::from_headers(&mut wrap, &resp_headers);
         wrap.to_code_message().check()?;
         // Convert ResponseWrap to Response type
         wrap.into_response()

@@ -2,6 +2,7 @@
 
 use anyhow::Context as _;
 use anyhow::anyhow;
+use http::HeaderMap;
 use http::{HeaderValue, Method};
 use reqwest::Body;
 use serde::{Deserialize, Serialize, de::DeserializeOwned};
@@ -649,6 +650,8 @@ trait Request: Sized + Send {
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([])
     }
+
+    fn from_headers(_resp: &mut Self::ResponseWrap, _headers: &HeaderMap<HeaderValue>) {}
 }
 
 trait IntoBody {

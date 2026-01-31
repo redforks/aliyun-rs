@@ -177,13 +177,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -214,7 +214,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -2122,7 +2122,7 @@ impl Connection {
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///  
+    ///
     ///
     /// # Path
     /// `/?cors`
@@ -3403,7 +3403,7 @@ impl Connection {
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///   
+    ///
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -5581,6 +5581,16 @@ impl crate::Request for InitiateBucketWorm {
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-worm-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_worm_id = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -6420,6 +6430,16 @@ impl crate::Request for PutBucketReplication {
 
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-replication-rule-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_replication_rule_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -7834,6 +7854,38 @@ impl crate::Request for OptionObject {
     }
 
     fn to_body(self) -> Self::Body {}
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("Access-Control-Allow-Origin") {
+            if let Ok(s) = value.to_str() {
+                inner.access_control_allow_origin = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Access-Control-Allow-Methods") {
+            if let Ok(s) = value.to_str() {
+                inner.access_control_allow_methods = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Access-Control-Allow-Headers") {
+            if let Ok(s) = value.to_str() {
+                inner.access_control_allow_headers = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Access-Control-Expose-Headers") {
+            if let Ok(s) = value.to_str() {
+                inner.access_control_expose_headers = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Access-Control-Max-Age") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.access_control_max_age = Some(parsed);
+                }
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -8310,6 +8362,16 @@ impl crate::Request for InitUserAntiDDosInfo {
 
     fn to_body(self) -> Self::Body {
         crate::Form(self)
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-defender-instance") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_defender_instance = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9980,12 +10042,12 @@ impl crate::Request for PutObject {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::JsonResponseWrap<PutObjectResponse>;
+    type ResponseWrap = PutObjectResponse;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
     }
-    
+
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         let mut headers = Vec::with_capacity(8);
 
@@ -10032,6 +10094,23 @@ impl crate::Request for PutObject {
 
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Headers-only response: resp is the unwrapped response struct directly
+        let inner = resp;
+        if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_hash_crc64ecma = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10250,6 +10329,21 @@ impl crate::Request for CopyObject {
 
     fn to_body(self) -> Self::Body {
         crate::Form(self)
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-copy-source-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_copy_source_version_id = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10581,6 +10675,23 @@ impl crate::Request for AppendObject {
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-next-append-position") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_next_append_position = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_hash_crc64ecma = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -10635,6 +10746,16 @@ impl crate::Request for SealAppendObject {
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-sealed-time") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_sealed_time = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -10670,7 +10791,7 @@ impl crate::Request for DeleteObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::JsonResponseWrap<DeleteObjectResponse>;
+    type ResponseWrap = DeleteObjectResponse;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10692,6 +10813,23 @@ impl crate::Request for DeleteObject {
 
     fn to_body(self) -> Self::Body {
         crate::Form(self)
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Headers-only response: resp is the unwrapped response struct directly
+        let inner = resp;
+        if let Some(value) = headers.get("x-oss-delete-marker") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<bool>() {
+                    inner.x_oss_delete_marker = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10782,6 +10920,102 @@ impl crate::Request for HeadObject {
     }
 
     fn to_body(self) -> Self::Body {}
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-server-side-encryption") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_server_side_encryption = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_server_side_encryption_key_id = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-storage-class") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_storage_class = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-object-type") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_object_type = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-next-append-position") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_next_append_position = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_hash_crc64ecma = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-expiration") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_expiration = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-restore") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_restore = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-process-status") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_process_status = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-request-charged") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_request_charged = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Md5") {
+            if let Ok(s) = value.to_str() {
+                inner.content_md5 = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Length") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.content_length = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("Last-Modified") {
+            if let Ok(s) = value.to_str() {
+                inner.last_modified = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Type") {
+            if let Ok(s) = value.to_str() {
+                inner.content_type = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("ETag") {
+            if let Ok(s) = value.to_str() {
+                inner.e_tag = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-transition-time") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_transition_time = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x‑oss‑tagging‑count") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_tagging_count = Some(parsed);
+                }
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -10833,6 +11067,43 @@ impl crate::Request for GetObjectMeta {
     }
 
     fn to_body(self) -> Self::Body {}
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("ETag") {
+            if let Ok(s) = value.to_str() {
+                inner.e_tag = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Length") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.content_length = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-last-access-time") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_last_access_time = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Last-Modifed") {
+            if let Ok(s) = value.to_str() {
+                inner.last_modifed = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-transition-time") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_transition_time = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -10889,6 +11160,21 @@ impl crate::Request for RestoreObject {
 
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-object-restore-priority") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_object_restore_priority = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11374,6 +11660,16 @@ impl crate::Request for CompleteMultipartUpload {
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -11502,6 +11798,16 @@ impl crate::Request for UploadPartCopy {
 
     fn to_body(self) -> Self::Body {
         crate::Form(self)
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-copy-source-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_copy_source_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11807,6 +12113,16 @@ impl crate::Request for PutObjectAcl {
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -11965,6 +12281,16 @@ impl crate::Request for PutSymlink {
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -12016,6 +12342,21 @@ impl crate::Request for GetSymlink {
     }
 
     fn to_body(self) -> Self::Body {}
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-symlink-target") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_symlink_target = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -12072,6 +12413,16 @@ impl crate::Request for PutObjectTagging {
 
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
+    }
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-version-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_version_id = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -23965,8 +24316,6 @@ impl crate::ToCodeMessage for GetBucketOverwriteConfigResponse {
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
     /// Header field from response: x-oss-hash-crc64ecma
     #[serde(skip)]
     pub x_oss_hash_crc64ecma: Option<i64>,
@@ -23977,7 +24326,14 @@ pub struct PutObjectResponse {
 
 impl crate::ToCodeMessage for PutObjectResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
+        &crate::CODE_MESSAGE
+    }
+}
+
+impl crate::IntoResponse for PutObjectResponse {
+    type Response = Self;
+    fn into_response(self) -> Self::Response {
+        self
     }
 }
 
@@ -24040,8 +24396,6 @@ impl crate::ToCodeMessage for SealAppendObjectResponse {
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteObjectResponse {
-    #[serde(flatten)]
-    pub code_message: crate::CodeMessage,
     /// Header field from response: x-oss-delete-marker
     #[serde(skip)]
     pub x_oss_delete_marker: Option<bool>,
@@ -24052,7 +24406,14 @@ pub struct DeleteObjectResponse {
 
 impl crate::ToCodeMessage for DeleteObjectResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
+        &crate::CODE_MESSAGE
+    }
+}
+
+impl crate::IntoResponse for DeleteObjectResponse {
+    type Response = Self;
+    fn into_response(self) -> Self::Response {
+        self
     }
 }
 
