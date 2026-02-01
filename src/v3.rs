@@ -119,7 +119,7 @@ where
     
     // Use the auth trait to sign the request
     let authorization = auth.sign(
-        &headers,
+        &mut headers,
         &uri,
         &query_string,
         R::METHOD.as_str(),

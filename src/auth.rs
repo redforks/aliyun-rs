@@ -7,7 +7,8 @@
 use std::borrow::Cow;
 
 use anyhow::Context;
-use http::HeaderMap;
+use http::{HeaderMap, HeaderValue};
+use time::OffsetDateTime;
 
 use crate::Result;
 
@@ -56,6 +57,7 @@ pub trait AliyunAuth: Send + Sync {
     ///
     /// # Arguments
     /// * `headers` - The request headers (should include x-acs-* headers, host, content-type, etc.)
+    ///               This is mutable to allow the implementation to add required headers.
     /// * `url` - The canonical URI path (e.g., "/")
     /// * `query_string` - The canonical query string (already URL-encoded and sorted)
     /// * `method` - The HTTP method (GET, POST, PUT, etc.)
@@ -65,7 +67,7 @@ pub trait AliyunAuth: Send + Sync {
     /// The complete Authorization header value.
     fn sign(
         &self,
-        headers: &HeaderMap,
+        headers: &mut HeaderMap,
         url: &str,
         query_string: &str,
         method: &str,
@@ -100,7 +102,7 @@ const ACS3_SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
 impl AliyunAuth for Acs3HmacSha256 {
     fn sign(
         &self,
-        headers: &HeaderMap,
+        headers: &mut HeaderMap,
         url: &str,
         query_string: &str,
         method: &str,
@@ -198,13 +200,30 @@ const OSS4_SIGNATURE_ALGORITHM: &str = "OSS4-HMAC-SHA256";
 impl AliyunAuth for Oss4HmacSha256 {
     fn sign(
         &self,
-        headers: &HeaderMap,
+        headers: &mut HeaderMap,
         url: &str,
         query_string: &str,
         method: &str,
         hashed_payload: &str,
     ) -> Result<String> {
         use std::collections::BTreeMap;
+
+        // Insert x-oss-date header if not present
+        if !headers.contains_key("x-oss-date") {
+            let timestamp = format_oss_timestamp(OffsetDateTime::now_utc())?;
+            headers.insert(
+                "x-oss-date",
+                HeaderValue::from_str(&timestamp).context("convert timestamp to header value")?,
+            );
+        }
+
+        // Insert x-oss-content-sha256 header if not present
+        if !headers.contains_key("x-oss-content-sha256") {
+            headers.insert(
+                "x-oss-content-sha256",
+                HeaderValue::from_static("UNSIGNED-PAYLOAD"),
+            );
+        }
 
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
@@ -390,6 +409,31 @@ fn hexed_sha256(s: impl AsRef<[u8]>) -> String {
     hex::encode(hasher.finalize())
 }
 
+/// Format datetime to OSS timestamp format like: 20240101T000000Z
+fn format_oss_timestamp(dt: OffsetDateTime) -> Result<String> {
+    use time::format_description::well_known::{Iso8601, iso8601::EncodedConfig};
+    use time::format_description::well_known::iso8601::Config;
+    use time::format_description::well_known::iso8601::TimePrecision;
+
+    const CONFIG: EncodedConfig = Config::DEFAULT
+        .set_time_precision(TimePrecision::Second {
+            decimal_digits: None,
+        })
+        .encode();
+    const FORMAT: Iso8601<CONFIG> = Iso8601::<CONFIG>;
+
+    let formatted = dt
+        .format(&FORMAT)
+        .context("format OSS timestamp failed")?;
+
+    // Convert from "2024-01-01T00:00:00Z" to "20240101T000000Z"
+    let oss_formatted = formatted
+        .replace("-", "")
+        .replace(":", "");
+
+    Ok(oss_formatted)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -434,12 +478,12 @@ mod tests {
     #[test]
     fn test_acs3_hmac_sha256_sign_empty_query() {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
-        let headers = create_test_headers_acs3();
+        let mut headers = create_test_headers_acs3();
         let query_string = "";
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));
@@ -450,12 +494,12 @@ mod tests {
     #[test]
     fn test_acs3_hmac_sha256_sign_with_query() {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
-        let headers = create_test_headers_acs3();
+        let mut headers = create_test_headers_acs3();
         let query_string = "PageSize=10&RegionId=cn-hangzhou";
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));
@@ -466,15 +510,15 @@ mod tests {
     #[test]
     fn test_acs3_hmac_sha256_deterministic() {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
-        let headers = create_test_headers_acs3();
+        let mut headers = create_test_headers_acs3();
         let query_string = "";
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let result1 = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
         let result2 = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert_eq!(result1, result2);
@@ -492,12 +536,12 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let headers = create_test_headers_oss4();
+        let mut headers = create_test_headers_oss4();
         let query_string = "";
         let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -511,12 +555,12 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let headers = create_test_headers_oss4();
+        let mut headers = create_test_headers_oss4();
         let query_string = "max-keys=100&prefix=test%2F";
         let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -530,15 +574,15 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let headers = create_test_headers_oss4();
+        let mut headers = create_test_headers_oss4();
         let query_string = "";
         let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let result1 = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
         let result2 = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert_eq!(result1, result2);
@@ -571,7 +615,7 @@ mod tests {
         let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         // The result should not contain x-acs-date
@@ -596,7 +640,7 @@ mod tests {
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
 
         // The signed headers should include x-acs-date but not x-oss-date
@@ -607,15 +651,15 @@ mod tests {
     #[test]
     fn test_different_methods_produce_different_signatures() {
         let auth = Acs3HmacSha256::new("test-key", "test-secret");
-        let headers = create_test_headers_acs3();
+        let mut headers = create_test_headers_acs3();
         let query_string = "";
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let get_result = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
         let post_result = auth
-            .sign(&headers, "/", query_string, "POST", hashed_payload)
+            .sign(&mut headers, "/", query_string, "POST", hashed_payload)
             .unwrap();
 
         assert_ne!(get_result, post_result);
@@ -624,15 +668,15 @@ mod tests {
     #[test]
     fn test_different_urls_produce_different_signatures() {
         let auth = Acs3HmacSha256::new("test-key", "test-secret");
-        let headers = create_test_headers_acs3();
+        let mut headers = create_test_headers_acs3();
         let query_string = "";
         let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
         let result1 = auth
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
             .unwrap();
         let result2 = auth
-            .sign(&headers, "/test/path", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/test/path", query_string, "GET", hashed_payload)
             .unwrap();
 
         assert_ne!(result1, result2);
@@ -713,7 +757,7 @@ mod tests {
 
         let result = auth
             .sign(
-                &headers,
+                &mut headers,
                 "/examplebucket/exampleobject",
                 "",
                 "PUT",
