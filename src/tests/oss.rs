@@ -38,10 +38,9 @@ async fn test_list_buckets() {
             let buckets = &response.list_all_my_buckets_result.buckets.bucket;
             println!("Found {} bucket(s)", buckets.len());
             for bucket in buckets {
-                println!("  - {} (region: {}, created: {})", 
-                    bucket.name, 
-                    bucket.region, 
-                    bucket.creation_date
+                println!(
+                    "  - {} (region: {}, created: {})",
+                    bucket.name, bucket.region, bucket.creation_date
                 );
             }
         }
@@ -58,20 +57,14 @@ async fn test_list_buckets_with_prefix() {
 
     let result = conn
         .list_buckets(ListBuckets::new().prefix("test-".to_string()))
-        .await;
+        .await
+        .unwrap();
 
-    match result {
-        Ok(response) => {
-            println!("List buckets with prefix 'test-':");
-            let buckets = &response.list_all_my_buckets_result.buckets.bucket;
-            println!("Found {} bucket(s) with prefix 'test-'", buckets.len());
-            for bucket in buckets {
-                println!("  - {} (region: {})", bucket.name, bucket.region);
-            }
-        }
-        Err(e) => {
-            println!("List buckets with prefix failed: {:?}", e);
-        }
+    println!("List buckets with prefix 'test-':");
+    let buckets = &result.list_all_my_buckets_result.buckets.bucket;
+    println!("Found {} bucket(s) with prefix 'test-'", buckets.len());
+    for bucket in buckets {
+        println!("  - {} (region: {})", bucket.name, bucket.region);
     }
 }
 

@@ -88,7 +88,8 @@ impl Connection {
         Self(crate::common::Connection::new(
             crate::auth::Oss4HmacSha256::new(
                 app_key_secret,
-                std::borrow::Cow::Borrowed(endpoint.into()),
+                // std::borrow::Cow::Borrowed(endpoint.into()),
+                std::borrow::Cow::Borrowed("cn-hangzhou"),
             ),
             "2019-05-17",
             endpoint.into(),
