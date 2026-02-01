@@ -46,25 +46,6 @@ impl From<(Cow<'static, str>, Cow<'static, str>)> for AccessKeySecret {
     }
 }
 
-/// Default implementation of AliyunAuth for AccessKeySecret using ACS3-HMAC-SHA256.
-/// This provides backward compatibility for existing code.
-impl AliyunAuth for AccessKeySecret {
-    fn sign(
-        &self,
-        headers: &HeaderMap,
-        url: &str,
-        query_string: &str,
-        method: &str,
-        hashed_payload: &str,
-    ) -> Result<String> {
-        Acs3HmacSha256(self.clone()).sign(headers, url, query_string, method, hashed_payload)
-    }
-
-    fn access_key_id(&self) -> &str {
-        &self.0
-    }
-}
-
 /// Trait for different Aliyun authorization algorithms.
 ///
 /// Different Aliyun cloud products may use different authorization algorithms:
@@ -565,14 +546,20 @@ mod tests {
 
     #[test]
     fn test_oss4_hmac_sha256_access_key_id() {
-        let auth = Oss4HmacSha256::new(AccessKeySecret::new("my-key-id", "my-secret"), "cn-hangzhou");
+        let auth = Oss4HmacSha256::new(
+            AccessKeySecret::new("my-key-id", "my-secret"),
+            "cn-hangzhou",
+        );
         assert_eq!(auth.access_key_id(), "my-key-id");
     }
 
     #[test]
     fn test_oss4_uses_x_oss_headers() {
         // OSS4 should include x-oss-* headers but not x-acs-* headers
-        let auth = Oss4HmacSha256::new(AccessKeySecret::new("test-key", "test-secret"), "cn-hangzhou");
+        let auth = Oss4HmacSha256::new(
+            AccessKeySecret::new("test-key", "test-secret"),
+            "cn-hangzhou",
+        );
         let mut headers = HeaderMap::new();
         headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
         headers.insert(
@@ -666,22 +653,6 @@ mod tests {
             hello_hash,
             "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
         );
-    }
-
-    #[test]
-    fn test_access_key_secret_backward_compatibility() {
-        // Test that AccessKeySecret implements AliyunAuth for backward compatibility
-        let key_secret = AccessKeySecret::new("test-key", "test-secret");
-        let headers = create_test_headers_acs3();
-        let query_string = "";
-        let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
-
-        let result = key_secret
-            .sign(&headers, "/", query_string, "GET", hashed_payload)
-            .unwrap();
-
-        // Should produce a valid ACS3-HMAC-SHA256 signature
-        assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-key,"));
     }
 
     #[test]

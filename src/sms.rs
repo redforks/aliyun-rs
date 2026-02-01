@@ -112,7 +112,7 @@ pub struct Connection(crate::common::Connection);
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
-            app_key_secret,
+            crate::auth::Acs3HmacSha256(app_key_secret),
             "2017-05-25",
             endpoint.into(),
         ))
@@ -124,7 +124,7 @@ impl Connection {
         client: reqwest::Client,
     ) -> Self {
         Self(crate::common::Connection::with_client(
-            app_key_secret,
+            crate::auth::Acs3HmacSha256(app_key_secret),
             "2017-05-25",
             endpoint.into(),
             client,

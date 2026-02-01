@@ -86,7 +86,10 @@ pub struct Connection(crate::common::Connection);
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
-            app_key_secret,
+            crate::auth::Oss4HmacSha256::new(
+                app_key_secret,
+                std::borrow::Cow::Borrowed(endpoint.into()),
+            ),
             "2019-05-17",
             endpoint.into(),
         ))
@@ -98,7 +101,10 @@ impl Connection {
         client: reqwest::Client,
     ) -> Self {
         Self(crate::common::Connection::with_client(
-            app_key_secret,
+            crate::auth::Oss4HmacSha256::new(
+                app_key_secret,
+                std::borrow::Cow::Borrowed(endpoint.into()),
+            ),
             "2019-05-17",
             endpoint.into(),
             client,
@@ -14963,14 +14969,14 @@ impl crate::FlatSerialize for LifecycleRuleNoncurrentVersionTransitionItem {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct LifecycleRuleFilterNot {
+pub struct LifecycleRuleFilterNotItem {
     #[serde(rename = "Prefix")]
     pub prefix: String,
     #[serde(rename = "Tag")]
     pub tag: Tag,
 }
 
-impl crate::FlatSerialize for LifecycleRuleFilterNot {
+impl crate::FlatSerialize for LifecycleRuleFilterNotItem {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -14985,7 +14991,7 @@ impl crate::FlatSerialize for LifecycleRuleFilterNot {
 #[serde(default)]
 pub struct LifecycleRuleFilter {
     #[serde(rename = "Not")]
-    pub not: LifecycleRuleFilterNot,
+    pub not: Vec<LifecycleRuleFilterNotItem>,
     #[serde(rename = "ObjectSizeGreaterThan")]
     pub object_size_greater_than: i64,
     #[serde(rename = "ObjectSizeLessThan")]
@@ -16164,6 +16170,75 @@ impl crate::FlatSerialize for InventoryConfigurationOptionalFields {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct IncrementInventorySchedule {
+    #[serde(rename = "Frequency")]
+    pub frequency: i64,
+}
+
+impl crate::FlatSerialize for IncrementInventorySchedule {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.frequency,
+            &format!("{}.Frequency", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct IncrementalInventoryOptionalFields {
+    #[serde(rename = "Field")]
+    pub field: Vec<String>,
+}
+
+impl crate::FlatSerialize for IncrementalInventoryOptionalFields {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct IncrementalInventory {
+    #[serde(rename = "IsEnabled")]
+    pub is_enabled: bool,
+    #[serde(rename = "Schedule")]
+    pub schedule: IncrementInventorySchedule,
+    #[serde(rename = "OptionalFields")]
+    pub optional_fields: IncrementalInventoryOptionalFields,
+}
+
+impl crate::FlatSerialize for IncrementalInventory {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(
+            &self.is_enabled,
+            &format!("{}.IsEnabled", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(&self.schedule, &format!("{}.Schedule", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.optional_fields,
+            &format!("{}.OptionalFields", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct InventoryConfiguration {
     #[serde(rename = "Id")]
     pub id: String,
@@ -16179,6 +16254,8 @@ pub struct InventoryConfiguration {
     pub included_object_versions: String,
     #[serde(rename = "OptionalFields")]
     pub optional_fields: InventoryConfigurationOptionalFields,
+    #[serde(rename = "IncrementalInventory")]
+    pub incremental_inventory: IncrementalInventory,
 }
 
 impl crate::FlatSerialize for InventoryConfiguration {
@@ -16208,6 +16285,11 @@ impl crate::FlatSerialize for InventoryConfiguration {
         crate::FlatSerialize::flat_serialize(
             &self.optional_fields,
             &format!("{}.OptionalFields", name),
+            params,
+        );
+        crate::FlatSerialize::flat_serialize(
+            &self.incremental_inventory,
+            &format!("{}.IncrementalInventory", name),
             params,
         );
     }
@@ -18337,6 +18419,74 @@ impl crate::FlatSerialize for MetaQueryFileAddresses {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
+pub struct MetaQueryRespFileInsightsVideo {
+    #[serde(rename = "Caption")]
+    pub caption: String,
+    #[serde(rename = "Description")]
+    pub description: String,
+}
+
+impl crate::FlatSerialize for MetaQueryRespFileInsightsVideo {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.caption, &format!("{}.Caption", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.description,
+            &format!("{}.Description", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryRespFileInsightsImage {
+    #[serde(rename = "Caption")]
+    pub caption: String,
+    #[serde(rename = "Description")]
+    pub description: String,
+}
+
+impl crate::FlatSerialize for MetaQueryRespFileInsightsImage {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.caption, &format!("{}.Caption", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.description,
+            &format!("{}.Description", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct MetaQueryRespFileInsights {
+    #[serde(rename = "Video")]
+    pub video: MetaQueryRespFileInsightsVideo,
+    #[serde(rename = "Image")]
+    pub image: MetaQueryRespFileInsightsImage,
+}
+
+impl crate::FlatSerialize for MetaQueryRespFileInsights {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.video, &format!("{}.Video", name), params);
+        crate::FlatSerialize::flat_serialize(&self.image, &format!("{}.Image", name), params);
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 pub struct MetaQueryFile {
     #[serde(rename = "Filename")]
     pub filename: String,
@@ -18424,6 +18574,8 @@ pub struct MetaQueryFile {
     pub subtitles: MetaQueryFileSubtitles,
     #[serde(rename = "Addresses")]
     pub addresses: MetaQueryFileAddresses,
+    #[serde(rename = "Insights")]
+    pub insights: MetaQueryRespFileInsights,
 }
 
 impl crate::FlatSerialize for MetaQueryFile {
@@ -18599,6 +18751,7 @@ impl crate::FlatSerialize for MetaQueryFile {
             &format!("{}.Addresses", name),
             params,
         );
+        crate::FlatSerialize::flat_serialize(&self.insights, &format!("{}.Insights", name), params);
     }
 }
 
