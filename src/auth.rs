@@ -162,14 +162,6 @@ impl Oss4HmacSha256 {
             region: region.into(),
         }
     }
-
-    /// Create from AccessKeySecret with a specific region.
-    pub fn with_region(credentials: AccessKeySecret, region: impl Into<Cow<'static, str>>) -> Self {
-        Self {
-            credentials,
-            region: region.into(),
-        }
-    }
 }
 
 const OSS4_SIGNATURE_ALGORITHM: &str = "OSS4-HMAC-SHA256";
@@ -427,7 +419,7 @@ fn build_oss4_canonical_request_and_additional_headers(
     for (k, v) in &canonical_headers_map {
         canonical_headers.push_str(k);
         canonical_headers.push(':');
-        canonical_headers.push_str(v.trim());
+        canonical_headers.push_str(v);
         canonical_headers.push('\n');
     }
 
