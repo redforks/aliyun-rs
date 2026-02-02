@@ -9,11 +9,9 @@ use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::borrow::Cow;
 use std::collections::HashMap;
 
-pub mod auth;
+mod auth;
 mod common;
 mod v3;
-
-pub use auth::{AccessKeySecret, AliyunAuth, Acs3HmacSha256, Oss4HmacSha256};
 
 #[cfg(feature = "ocr")]
 pub mod ocr;
@@ -50,7 +48,7 @@ pub enum Error {
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
-pub(crate) enum QueryValue<'a> {
+enum QueryValue<'a> {
     Str(&'a str),
     OwnedStr(String),
     I64(i64),

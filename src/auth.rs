@@ -11,7 +11,68 @@ use http::{HeaderMap, HeaderValue};
 use time::OffsetDateTime;
 use tracing::debug;
 
+use crate::QueryValue;
 use crate::Result;
+
+/// Percent-encodes a string per RFC 3986.
+///
+/// The `urlencoding` crate's default behavior matches Aliyun's requirements:
+/// - Spaces are encoded as `%20` (not `+`)
+/// - The `*` character is encoded as `%2A`
+/// - The `~` character is not encoded
+fn percent_encode(s: &str) -> Cow<'_, str> {
+    urlencoding::encode(s)
+}
+
+/// Build ACS3 canonical query string.
+///
+/// ACS3 behavior:
+/// - Sort by parameter name (before encoding)
+/// - Always include "=" even for empty values
+fn canonical_query_string_acs3(mut values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
+    // Sort by parameter name (before encoding)
+    values.sort_by(|a, b| a.0.cmp(&b.0));
+
+    values
+        .into_iter()
+        .map(|(k, v)| {
+            format!(
+                "{}={}",
+                percent_encode(&k),
+                percent_encode(&v.to_query_value())
+            )
+        })
+        .collect::<Vec<_>>()
+        .join("&")
+}
+
+/// Build OSS4 canonical query string.
+///
+/// OSS4 behavior:
+/// - Sort by URL-encoded parameter name (after encoding)
+/// - Omit "=" for empty values
+fn canonical_query_string_oss4(values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
+    use std::collections::BTreeMap;
+
+    let mut map: BTreeMap<String, (String, String)> = BTreeMap::new();
+    for (k, v) in values {
+        let encoded_key = percent_encode(&k).to_string();
+        let encoded_value = percent_encode(&v.to_query_value()).to_string();
+        let raw_value = v.to_query_value().to_string();
+        map.insert(encoded_key, (encoded_value, raw_value));
+    }
+
+    map.into_iter()
+        .map(|(encoded_key, (encoded_value, raw_value))| {
+            if raw_value.is_empty() {
+                encoded_key
+            } else {
+                format!("{}={}", encoded_key, encoded_value)
+            }
+        })
+        .collect::<Vec<_>>()
+        .join("&")
+}
 
 /// Type of ali access key and secret key.
 #[derive(Clone, Debug)]
@@ -77,6 +138,21 @@ pub trait AliyunAuth: Send + Sync {
 
     /// Returns the access key ID.
     fn access_key_id(&self) -> &str;
+
+    /// Build canonical query string from query parameters.
+    ///
+    /// Different authentication algorithms have different requirements:
+    /// - **ACS3**: Sort by parameter name, always include "=" even for empty values
+    /// - **OSS4**: Sort by URL-encoded parameter name, omit "=" for empty values
+    ///
+    /// # Arguments
+    /// * `values` - Vector of (key, value) pairs for query parameters
+    ///
+    /// # Returns
+    /// The canonical query string.
+    fn canonical_query_string(&self, values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
+        canonical_query_string_acs3(values)
+    }
 }
 
 /// ACS3-HMAC-SHA256 authorization algorithm.
@@ -160,6 +236,7 @@ pub struct Oss4HmacSha256 {
 
 impl Oss4HmacSha256 {
     pub const UNSIGNED_PAYLOAD: &'static str = "UNSIGNED-PAYLOAD";
+    const OSS4_SIGNATURE_ALGORITHM: &'static str = "OSS4-HMAC-SHA256";
 
     pub fn new(key_secret: AccessKeySecret, region: impl Into<Cow<'static, str>>) -> Self {
         Self {
@@ -168,8 +245,6 @@ impl Oss4HmacSha256 {
         }
     }
 }
-
-const OSS4_SIGNATURE_ALGORITHM: &str = "OSS4-HMAC-SHA256";
 
 impl AliyunAuth for Oss4HmacSha256 {
     fn sign(
@@ -230,7 +305,10 @@ impl AliyunAuth for Oss4HmacSha256 {
         // Hex(SHA256Hash(<CanonicalRequest>))
         let string_to_sign = format!(
             "{}\n{}\n{}\n{}",
-            OSS4_SIGNATURE_ALGORITHM, timestamp, scope, hashed_canonical_request
+            Self::OSS4_SIGNATURE_ALGORITHM,
+            timestamp,
+            scope,
+            hashed_canonical_request
         );
 
         // Calculate SigningKey using multi-step HMAC
@@ -254,18 +332,27 @@ impl AliyunAuth for Oss4HmacSha256 {
         Ok(if additional_headers_str.is_empty() {
             format!(
                 "{} Credential={}, Signature={}",
-                OSS4_SIGNATURE_ALGORITHM, credential, signature
+                Self::OSS4_SIGNATURE_ALGORITHM,
+                credential,
+                signature
             )
         } else {
             format!(
                 "{} Credential={}, Signature={}, AdditionalHeaders={}",
-                OSS4_SIGNATURE_ALGORITHM, credential, signature, additional_headers_str
+                Self::OSS4_SIGNATURE_ALGORITHM,
+                credential,
+                signature,
+                additional_headers_str
             )
         })
     }
 
     fn access_key_id(&self) -> &str {
         self.credentials.access_key_id()
+    }
+
+    fn canonical_query_string(&self, values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
+        canonical_query_string_oss4(values)
     }
 }
 

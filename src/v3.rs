@@ -9,7 +9,7 @@ use std::borrow::Cow;
 use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
-use crate::{FromBody, IntoBody as _, IntoResponse, QueryValue, Result, ToCodeMessage, auth::AliyunAuth};
+use crate::{FromBody, IntoBody as _, IntoResponse, Result, ToCodeMessage, auth::AliyunAuth};
 
 // Re-export AccessKeySecret for backward compatibility
 pub use crate::auth::AccessKeySecret;
@@ -21,20 +21,6 @@ fn canonical_uri_path(uri: &str) -> String {
         .map(percent_encode)
         .collect::<Vec<_>>()
         .join("/")
-}
-
-fn canonical_query_string(values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
-    values
-        .into_iter()
-        .map(|(k, v)| {
-            format!(
-                "{}={}",
-                percent_encode(&k),
-                percent_encode(&v.to_query_value())
-            )
-        })
-        .collect::<Vec<_>>()
-        .join("&")
 }
 
 fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &str) -> Result<()> {
@@ -93,7 +79,7 @@ where
     };
     let uri = canonical_uri_path(&url_path);
     let query_params = req.to_query_params();
-    let query_string = canonical_query_string(query_params);
+    let query_string = auth.canonical_query_string(query_params);
     let custom_headers = req.to_headers();
     let body = req.to_body();
     let content_type = if R::METHOD == Method::GET {
