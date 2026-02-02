@@ -136,9 +136,6 @@ pub trait AliyunAuth: Send + Sync {
         hashed_payload: &str,
     ) -> Result<String>;
 
-    /// Returns the access key ID.
-    fn access_key_id(&self) -> &str;
-
     /// Build canonical query string from query parameters.
     ///
     /// Different authentication algorithms have different requirements:
@@ -214,10 +211,6 @@ impl AliyunAuth for Acs3HmacSha256 {
             signed_headers,
             signature
         ))
-    }
-
-    fn access_key_id(&self) -> &str {
-        self.0.access_key_id()
     }
 }
 
@@ -345,10 +338,6 @@ impl AliyunAuth for Oss4HmacSha256 {
                 additional_headers_str
             )
         })
-    }
-
-    fn access_key_id(&self) -> &str {
-        self.credentials.access_key_id()
     }
 
     fn canonical_query_string(&self, values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
