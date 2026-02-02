@@ -159,6 +159,8 @@ pub struct Oss4HmacSha256 {
 }
 
 impl Oss4HmacSha256 {
+    pub const UNSIGNED_PAYLOAD: &'static str = "UNSIGNED-PAYLOAD";
+
     pub fn new(key_secret: AccessKeySecret, region: impl Into<Cow<'static, str>>) -> Self {
         Self {
             credentials: key_secret,
@@ -187,13 +189,11 @@ impl AliyunAuth for Oss4HmacSha256 {
             );
         }
 
-        // Insert x-oss-content-sha256 header if not present
-        if !headers.contains_key("x-oss-content-sha256") {
-            headers.insert(
-                "x-oss-content-sha256",
-                HeaderValue::from_static("UNSIGNED-PAYLOAD"),
-            );
-        }
+        // Always set x-oss-content-sha256 header
+        headers.insert(
+            "x-oss-content-sha256",
+            HeaderValue::from_static(Self::UNSIGNED_PAYLOAD),
+        );
 
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
@@ -434,7 +434,12 @@ fn build_oss4_canonical_request_and_additional_headers(
     // Build canonical request
     let canonical_request = format!(
         "{}\n{}\n{}\n{}\n{}\n{}",
-        method, url, query_string, canonical_headers, additional_headers_str, "UNSIGNED-PAYLOAD",
+        method,
+        url,
+        query_string,
+        canonical_headers,
+        additional_headers_str,
+        Oss4HmacSha256::UNSIGNED_PAYLOAD,
     );
 
     Ok((canonical_request, additional_headers_str))
@@ -568,10 +573,6 @@ mod tests {
             HeaderValue::from_static("ICy5YqxZB1uWSwcVLSNLcA=="),
         );
         headers.insert("content-type", HeaderValue::from_static("text/plain"));
-        headers.insert(
-            "x-oss-content-sha256",
-            HeaderValue::from_static("UNSIGNED-PAYLOAD"),
-        );
         headers.insert("x-oss-date", HeaderValue::from_static("20250411T064124Z"));
 
         let result = auth
@@ -580,7 +581,7 @@ mod tests {
                 "/examplebucket/exampleobject",
                 "",
                 "PUT",
-                "UNSIGNED-PAYLOAD",
+                "what ever",
             )
             .unwrap();
 
@@ -651,7 +652,7 @@ UNSIGNED-PAYLOAD";
         headers.insert("x-oss-date", HeaderValue::from_static("20250411T064124Z"));
 
         let result = auth
-            .sign(&mut headers, "/test", "", "GET", "UNSIGNED-PAYLOAD")
+            .sign(&mut headers, "/test", "", "GET", "what ever")
             .unwrap();
 
         // AdditionalHeaders should contain content-disposition but NOT content-type or content-md5
@@ -705,10 +706,6 @@ UNSIGNED-PAYLOAD";
             HeaderValue::from_static("ICy5YqxZB1uWSwcVLSNLcA=="),
         );
         headers.insert("content-type", HeaderValue::from_static("text/plain"));
-        headers.insert(
-            "x-oss-content-sha256",
-            HeaderValue::from_static("UNSIGNED-PAYLOAD"),
-        );
         headers.insert("x-oss-date", HeaderValue::from_static("20250411T064124Z"));
 
         let result = auth
@@ -717,7 +714,7 @@ UNSIGNED-PAYLOAD";
                 "/examplebucket/exampleobject",
                 "",
                 "PUT",
-                "UNSIGNED-PAYLOAD",
+                "what ever",
             )
             .unwrap();
 
@@ -1039,10 +1036,7 @@ UNSIGNED-PAYLOAD"#;
         headers.insert("ZAbc", HeaderValue::from_static("value"));
         headers.insert("XYZ", HeaderValue::from_static("value"));
         headers.insert("content-type", HeaderValue::from_static("text/plain"));
-        headers.insert(
-            "x-oss-content-sha256",
-            HeaderValue::from_static("UNSIGNED-PAYLOAD"),
-        );
+        // Note: x-oss-content-sha256 is automatically set by sign() method
         // The sign() method will add x-oss-date, but we need to control it
         // for deterministic testing with timestamp 1702743657 (2023-12-16 16:20:57 UTC)
         headers.insert("x-oss-date", HeaderValue::from_static("20231216T162057Z"));
@@ -1060,7 +1054,7 @@ UNSIGNED-PAYLOAD"#;
         let url = "/bucket/1234%2B-/123/1.txt";
 
         let result = auth
-            .sign(&mut headers, url, query_string, "PUT", "UNSIGNED-PAYLOAD")
+            .sign(&mut headers, url, query_string, "PUT", "what ever")
             .unwrap();
 
         // Verify the Authorization header format matches the oss2 SDK format:
