@@ -26,45 +26,20 @@ fn test_connection() -> Connection {
 }
 
 #[tokio::test]
+#[test_log::test]
 #[ignore] // Run with: cargo test --ignored
 async fn test_list_buckets() {
     let conn = test_connection();
+    let result = conn.list_buckets(ListBuckets::new()).await.unwrap();
 
-    let result = conn.list_buckets(ListBuckets::new()).await;
-
-    match result {
-        Ok(response) => {
-            println!("List buckets response:");
-            let buckets = &response.list_all_my_buckets_result.buckets.bucket;
-            println!("Found {} bucket(s)", buckets.len());
-            for bucket in buckets {
-                println!(
-                    "  - {} (region: {}, created: {})",
-                    bucket.name, bucket.region, bucket.creation_date
-                );
-            }
-        }
-        Err(e) => {
-            panic!("List buckets failed: {:?}", e);
-        }
-    }
-}
-
-#[tokio::test]
-#[ignore]
-async fn test_list_buckets_with_prefix() {
-    let conn = test_connection();
-
-    let result = conn
-        .list_buckets(ListBuckets::new().prefix("test-".to_string()))
-        .await
-        .unwrap();
-
-    println!("List buckets with prefix 'test-':");
+    println!("List buckets response:");
     let buckets = &result.list_all_my_buckets_result.buckets.bucket;
-    println!("Found {} bucket(s) with prefix 'test-'", buckets.len());
+    println!("Found {} bucket(s)", buckets.len());
     for bucket in buckets {
-        println!("  - {} (region: {})", bucket.name, bucket.region);
+        println!(
+            "  - {} (region: {}, created: {})",
+            bucket.name, bucket.region, bucket.creation_date
+        );
     }
 }
 

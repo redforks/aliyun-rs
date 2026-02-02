@@ -35,5 +35,6 @@ fc = []
 oss = []
 
 [dev-dependencies]
+test-log = { version = "0.2.19", features = ["trace"] }
 time = { version = "0.3.44", features = ["macros"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
