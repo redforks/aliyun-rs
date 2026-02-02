@@ -48,6 +48,59 @@ pub enum Endpoint {
     CnHangzhou,
 }
 
+impl Endpoint {
+    pub fn name(self) -> &'static str {
+        match self {
+            Endpoint::ApSoutheast1 => "ap-southeast-1",
+            Endpoint::ApSoutheast5 => "ap-southeast-5",
+            Endpoint::CnHongkong => "cn-hongkong",
+            Endpoint::ApNortheast2Pop => "ap-northeast-2-pop",
+            Endpoint::CnBeijingFinance1 => "cn-beijing-finance-1",
+            Endpoint::CnBeijingFinancePop => "cn-beijing-finance-pop",
+            Endpoint::CnBeijingGov1 => "cn-beijing-gov-1",
+            Endpoint::CnBeijingNu16B01 => "cn-beijing-nu16-b01",
+            Endpoint::CnChengdu => "cn-chengdu",
+            Endpoint::CnEdge1 => "cn-edge-1",
+            Endpoint::CnFujian => "cn-fujian",
+            Endpoint::CnHaidianCm12C01 => "cn-haidian-cm12-c01",
+            Endpoint::CnHangzhouBjB01 => "cn-hangzhou-bj-b01",
+            Endpoint::CnHangzhouFinance => "cn-hangzhou-finance",
+            Endpoint::CnHangzhouInternalProd1 => "cn-hangzhou-internal-prod-1",
+            Endpoint::CnHangzhouInternalTest1 => "cn-hangzhou-internal-test-1",
+            Endpoint::CnHangzhouInternalTest2 => "cn-hangzhou-internal-test-2",
+            Endpoint::CnHangzhouInternalTest3 => "cn-hangzhou-internal-test-3",
+            Endpoint::CnHangzhouTest306 => "cn-hangzhou-test-306",
+            Endpoint::CnHongkongFinancePop => "cn-hongkong-finance-pop",
+            Endpoint::CnHuhehaoteNebula1 => "cn-huhehaote-nebula-1",
+            Endpoint::CnNorth2Gov1 => "cn-north-2-gov-1",
+            Endpoint::CnQingdaoNebula => "cn-qingdao-nebula",
+            Endpoint::CnShanghaiEt15B01 => "cn-shanghai-et15-b01",
+            Endpoint::CnShanghaiEt2B01 => "cn-shanghai-et2-b01",
+            Endpoint::CnShanghaiFinance1 => "cn-shanghai-finance-1",
+            Endpoint::CnShanghaiInner => "cn-shanghai-inner",
+            Endpoint::CnShanghaiInternalTest1 => "cn-shanghai-internal-test-1",
+            Endpoint::CnShenzhen => "cn-shenzhen",
+            Endpoint::CnShenzhenFinance1 => "cn-shenzhen-finance-1",
+            Endpoint::CnShenzhenInner => "cn-shenzhen-inner",
+            Endpoint::CnShenzhenSt4D01 => "cn-shenzhen-st4-d01",
+            Endpoint::CnShenzhenSu18B01 => "cn-shenzhen-su18-b01",
+            Endpoint::CnWuhan => "cn-wuhan",
+            Endpoint::CnYushanfang => "cn-yushanfang",
+            Endpoint::CnZhangbei => "cn-zhangbei",
+            Endpoint::CnZhangbeiNa61B01 => "cn-zhangbei-na61-b01",
+            Endpoint::CnZhangjiakouNa62A01 => "cn-zhangjiakou-na62-a01",
+            Endpoint::CnZhengzhouNebula1 => "cn-zhengzhou-nebula-1",
+            Endpoint::EuCentral1 => "eu-central-1",
+            Endpoint::EuWest1Oxs => "eu-west-1-oxs",
+            Endpoint::RusWest1Pop => "rus-west-1-pop",
+            Endpoint::CnQingdao => "cn-qingdao",
+            Endpoint::CnZhangjiakou => "cn-zhangjiakou",
+            Endpoint::CnHuhehaote => "cn-huhehaote",
+            Endpoint::CnHangzhou => "cn-hangzhou",
+        }
+    }
+}
+
 impl From<Endpoint> for &'static str {
     fn from(ep: Endpoint) -> Self {
         match ep {

@@ -28,6 +28,39 @@ pub enum Endpoint {
     ApNortheast2,
 }
 
+impl Endpoint {
+    pub fn name(self) -> &'static str {
+        match self {
+            Endpoint::CnQingdao => "cn-qingdao",
+            Endpoint::CnBeijing => "cn-beijing",
+            Endpoint::CnZhangjiakou => "cn-zhangjiakou",
+            Endpoint::CnHuhehaote => "cn-huhehaote",
+            Endpoint::CnHangzhou => "cn-hangzhou",
+            Endpoint::CnShanghai => "cn-shanghai",
+            Endpoint::CnShenzhen => "cn-shenzhen",
+            Endpoint::CnChengdu => "cn-chengdu",
+            Endpoint::CnHongkong => "cn-hongkong",
+            Endpoint::ApNortheast1 => "ap-northeast-1",
+            Endpoint::ApSoutheast1 => "ap-southeast-1",
+            Endpoint::ApSoutheast2 => "ap-southeast-2",
+            Endpoint::ApSoutheast3 => "ap-southeast-3",
+            Endpoint::ApSoutheast5 => "ap-southeast-5",
+            Endpoint::UsEast1 => "us-east-1",
+            Endpoint::UsWest1 => "us-west-1",
+            Endpoint::EuWest1 => "eu-west-1",
+            Endpoint::EuCentral1 => "eu-central-1",
+            Endpoint::ApSouth1 => "ap-south-1",
+            Endpoint::CnHangzhouFinance => "cn-hangzhou-finance",
+            Endpoint::CnShanghaiFinance1 => "cn-shanghai-finance-1",
+            Endpoint::ApSoutheast7 => "ap-southeast-7",
+            Endpoint::MeCentral1 => "me-central-1",
+            Endpoint::CnHeyuanAcdr1 => "cn-heyuan-acdr-1",
+            Endpoint::CnWulanchabu => "cn-wulanchabu",
+            Endpoint::ApNortheast2 => "ap-northeast-2",
+        }
+    }
+}
+
 impl From<Endpoint> for &'static str {
     fn from(ep: Endpoint) -> Self {
         match ep {

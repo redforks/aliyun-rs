@@ -3,6 +3,14 @@ pub enum Endpoint {
     CnHangzhou,
 }
 
+impl Endpoint {
+    pub fn name(self) -> &'static str {
+        match self {
+            Endpoint::CnHangzhou => "cn-hangzhou",
+        }
+    }
+}
+
 impl From<Endpoint> for &'static str {
     fn from(ep: Endpoint) -> Self {
         match ep {

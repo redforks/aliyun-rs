@@ -40,6 +40,51 @@ pub enum Endpoint {
     UsSoutheast1,
 }
 
+impl Endpoint {
+    pub fn name(self) -> &'static str {
+        match self {
+            Endpoint::CnQingdao => "cn-qingdao",
+            Endpoint::CnBeijing => "cn-beijing",
+            Endpoint::CnZhangjiakou => "cn-zhangjiakou",
+            Endpoint::CnZhengzhouJva => "cn-zhengzhou-jva",
+            Endpoint::CnHuhehaote => "cn-huhehaote",
+            Endpoint::CnWulanchabu => "cn-wulanchabu",
+            Endpoint::CnHangzhou => "cn-hangzhou",
+            Endpoint::CnShanghai => "cn-shanghai",
+            Endpoint::CnNanjing => "cn-nanjing",
+            Endpoint::CnFuzhou => "cn-fuzhou",
+            Endpoint::CnShenzhen => "cn-shenzhen",
+            Endpoint::CnHeyuan => "cn-heyuan",
+            Endpoint::CnGuangzhou => "cn-guangzhou",
+            Endpoint::CnChengdu => "cn-chengdu",
+            Endpoint::CnWuhanLr => "cn-wuhan-lr",
+            Endpoint::CnHongkong => "cn-hongkong",
+            Endpoint::ApNortheast1 => "ap-northeast-1",
+            Endpoint::ApNortheast2 => "ap-northeast-2",
+            Endpoint::ApSoutheast1 => "ap-southeast-1",
+            Endpoint::ApSoutheast2 => "ap-southeast-2",
+            Endpoint::ApSoutheast3 => "ap-southeast-3",
+            Endpoint::ApSoutheast5 => "ap-southeast-5",
+            Endpoint::ApSoutheast6 => "ap-southeast-6",
+            Endpoint::UsEast1 => "us-east-1",
+            Endpoint::UsWest1 => "us-west-1",
+            Endpoint::EuWest1 => "eu-west-1",
+            Endpoint::EuCentral1 => "eu-central-1",
+            Endpoint::ApSouth1 => "ap-south-1",
+            Endpoint::MeEast1 => "me-east-1",
+            Endpoint::CnHangzhouFinance => "cn-hangzhou-finance",
+            Endpoint::CnShanghaiFinance1 => "cn-shanghai-finance-1",
+            Endpoint::CnShenzhenFinance1 => "cn-shenzhen-finance-1",
+            Endpoint::ApSoutheast7 => "ap-southeast-7",
+            Endpoint::CnBeijingFinance1 => "cn-beijing-finance-1",
+            Endpoint::MeCentral1 => "me-central-1",
+            Endpoint::CnHeyuanAcdr1 => "cn-heyuan-acdr-1",
+            Endpoint::NaSouth1 => "na-south-1",
+            Endpoint::UsSoutheast1 => "us-southeast-1",
+        }
+    }
+}
+
 impl From<Endpoint> for &'static str {
     fn from(ep: Endpoint) -> Self {
         match ep {
