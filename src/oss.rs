@@ -35,9 +35,49 @@ pub enum Endpoint {
     CnBeijingFinance1,
 }
 
+impl Endpoint {
+    pub fn name(self) -> &'static str {
+        match self {
+            Endpoint::CnWuhanLr => "cn-wuhan-lr",
+            Endpoint::CnQingdao => "cn-qingdao",
+            Endpoint::CnBeijing => "cn-beijing",
+            Endpoint::CnZhangjiakou => "cn-zhangjiakou",
+            Endpoint::CnHuhehaote => "cn-huhehaote",
+            Endpoint::CnWulanchabu => "cn-wulanchabu",
+            Endpoint::CnHangzhou => "cn-hangzhou",
+            Endpoint::CnShanghai => "cn-shanghai",
+            Endpoint::CnNanjing => "cn-nanjing",
+            Endpoint::CnFuzhou => "cn-fuzhou",
+            Endpoint::CnShenzhen => "cn-shenzhen",
+            Endpoint::CnHeyuan => "cn-heyuan",
+            Endpoint::CnGuangzhou => "cn-guangzhou",
+            Endpoint::CnChengdu => "cn-chengdu",
+            Endpoint::CnHongkong => "cn-hongkong",
+            Endpoint::ApNortheast1 => "ap-northeast-1",
+            Endpoint::ApNortheast2 => "ap-northeast-2",
+            Endpoint::ApSoutheast1 => "ap-southeast-1",
+            Endpoint::ApSoutheast2 => "ap-southeast-2",
+            Endpoint::ApSoutheast3 => "ap-southeast-3",
+            Endpoint::ApSoutheast5 => "ap-southeast-5",
+            Endpoint::ApSoutheast6 => "ap-southeast-6",
+            Endpoint::UsEast1 => "us-east-1",
+            Endpoint::UsWest1 => "us-west-1",
+            Endpoint::EuWest1 => "eu-west-1",
+            Endpoint::EuCentral1 => "eu-central-1",
+            Endpoint::ApSouth1 => "ap-south-1",
+            Endpoint::MeEast1 => "me-east-1",
+            Endpoint::CnHangzhouFinance => "cn-hangzhou-finance",
+            Endpoint::CnShanghaiFinance1 => "cn-shanghai-finance-1",
+            Endpoint::CnShenzhenFinance1 => "cn-shenzhen-finance-1",
+            Endpoint::ApSoutheast7 => "ap-southeast-7",
+            Endpoint::CnBeijingFinance1 => "cn-beijing-finance-1",
+        }
+    }
+}
+
 impl From<Endpoint> for &'static str {
     fn from(ep: Endpoint) -> Self {
-        match ep {
+        match self {
             Endpoint::CnWuhanLr => "oss-cn-wuhan-lr.aliyuncs.com",
             Endpoint::CnQingdao => "oss-cn-qingdao.aliyuncs.com",
             Endpoint::CnBeijing => "oss-cn-beijing.aliyuncs.com",
@@ -86,11 +126,7 @@ pub struct Connection(crate::common::Connection);
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
-            crate::auth::Oss4HmacSha256::new(
-                app_key_secret,
-                // std::borrow::Cow::Borrowed(endpoint.into()),
-                std::borrow::Cow::Borrowed("cn-hangzhou"),
-            ),
+            crate::auth::Oss4HmacSha256::new(app_key_secret, endpoint.name()),
             "2019-05-17",
             endpoint.into(),
         ))
@@ -102,10 +138,7 @@ impl Connection {
         client: reqwest::Client,
     ) -> Self {
         Self(crate::common::Connection::with_client(
-            crate::auth::Oss4HmacSha256::new(
-                app_key_secret,
-                std::borrow::Cow::Borrowed("cn-hangzhou"),
-            ),
+            crate::auth::Oss4HmacSha256::new(app_key_secret, endpoint.name()),
             "2019-05-17",
             endpoint.into(),
             client,
@@ -13429,61 +13462,18 @@ impl crate::FlatSerialize for Bucket {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ResultBuckets {
+pub struct ResponseBuckets {
     #[serde(rename = "Bucket")]
     pub bucket: Vec<Bucket>,
 }
 
-impl crate::FlatSerialize for ResultBuckets {
+impl crate::FlatSerialize for ResponseBuckets {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketsResult {
-    #[serde(rename = "Owner")]
-    pub owner: Owner,
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "Marker")]
-    pub marker: String,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i64,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "NextMarker")]
-    pub next_marker: String,
-    #[serde(rename = "Buckets")]
-    pub buckets: ResultBuckets,
-}
-
-impl crate::FlatSerialize for BucketsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.marker, &format!("{}.Marker", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_marker,
-            &format!("{}.NextMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.buckets, &format!("{}.Buckets", name), params);
     }
 }
 
@@ -13520,261 +13510,6 @@ impl crate::FlatSerialize for RegionInfo {
         crate::FlatSerialize::flat_serialize(
             &self.accelerate_endpoint,
             &format!("{}.AccelerateEndpoint", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct InfoList {
-    #[serde(rename = "RegionInfo")]
-    pub region_info: Vec<RegionInfo>,
-}
-
-impl crate::FlatSerialize for InfoList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.region_info,
-            &format!("{}.RegionInfo", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketStat {
-    #[serde(rename = "Storage")]
-    pub storage: i64,
-    #[serde(rename = "ObjectCount")]
-    pub object_count: i64,
-    #[serde(rename = "MultipartUploadCount")]
-    pub multipart_upload_count: i64,
-    #[serde(rename = "LiveChannelCount")]
-    pub live_channel_count: i64,
-    #[serde(rename = "MultipartPartCount")]
-    pub multipart_part_count: i64,
-    #[serde(rename = "DeleteMarkerCount")]
-    pub delete_marker_count: i64,
-    #[serde(rename = "LastModifiedTime")]
-    pub last_modified_time: i64,
-    #[serde(rename = "StandardStorage")]
-    pub standard_storage: i64,
-    #[serde(rename = "StandardObjectCount")]
-    pub standard_object_count: i64,
-    #[serde(rename = "InfrequentAccessStorage")]
-    pub infrequent_access_storage: i64,
-    #[serde(rename = "InfrequentAccessRealStorage")]
-    pub infrequent_access_real_storage: i64,
-    #[serde(rename = "InfrequentAccessObjectCount")]
-    pub infrequent_access_object_count: i64,
-    #[serde(rename = "ArchiveStorage")]
-    pub archive_storage: i64,
-    #[serde(rename = "ArchiveRealStorage")]
-    pub archive_real_storage: i64,
-    #[serde(rename = "ArchiveObjectCount")]
-    pub archive_object_count: i64,
-    #[serde(rename = "ColdArchiveStorage")]
-    pub cold_archive_storage: i64,
-    #[serde(rename = "ColdArchiveRealStorage")]
-    pub cold_archive_real_storage: i64,
-    #[serde(rename = "ColdArchiveObjectCount")]
-    pub cold_archive_object_count: i64,
-    #[serde(rename = "DeepColdArchiveStorage")]
-    pub deep_cold_archive_storage: i64,
-    #[serde(rename = "DeepColdArchiveRealStorage")]
-    pub deep_cold_archive_real_storage: i64,
-    #[serde(rename = "DeepColdArchiveObjectCount")]
-    pub deep_cold_archive_object_count: i64,
-    #[serde(rename = "MultipartPartStorage")]
-    pub multipart_part_storage: i64,
-    #[serde(rename = "StandardMultipartPartCount")]
-    pub standard_multipart_part_count: i64,
-    #[serde(rename = "StandardMultipartPartStorage")]
-    pub standard_multipart_part_storage: i64,
-    #[serde(rename = "InfrequentMultipartPartCount")]
-    pub infrequent_multipart_part_count: i64,
-    #[serde(rename = "InfrequentMultipartPartStorage")]
-    pub infrequent_multipart_part_storage: i64,
-    #[serde(rename = "ArchiveMultipartPartCount")]
-    pub archive_multipart_part_count: i64,
-    #[serde(rename = "ArchiveMultipartPartStorage")]
-    pub archive_multipart_part_storage: i64,
-    #[serde(rename = "ColdArchiveMultipartPartCount")]
-    pub cold_archive_multipart_part_count: i64,
-    #[serde(rename = "ColdArchiveMultipartPartStorage")]
-    pub cold_archive_multipart_part_storage: i64,
-    #[serde(rename = "DeepColdArchiveMultipartPartCount")]
-    pub deep_cold_archive_multipart_part_count: i64,
-    #[serde(rename = "DeepColdArchiveMultipartPartStorage")]
-    pub deep_cold_archive_multipart_part_storage: i64,
-}
-
-impl crate::FlatSerialize for BucketStat {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.storage, &format!("{}.Storage", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.object_count,
-            &format!("{}.ObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.multipart_upload_count,
-            &format!("{}.MultipartUploadCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.live_channel_count,
-            &format!("{}.LiveChannelCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.multipart_part_count,
-            &format!("{}.MultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_marker_count,
-            &format!("{}.DeleteMarkerCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.LastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.standard_storage,
-            &format!("{}.StandardStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.standard_object_count,
-            &format!("{}.StandardObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.infrequent_access_storage,
-            &format!("{}.InfrequentAccessStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.infrequent_access_real_storage,
-            &format!("{}.InfrequentAccessRealStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.infrequent_access_object_count,
-            &format!("{}.InfrequentAccessObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.archive_storage,
-            &format!("{}.ArchiveStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.archive_real_storage,
-            &format!("{}.ArchiveRealStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.archive_object_count,
-            &format!("{}.ArchiveObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cold_archive_storage,
-            &format!("{}.ColdArchiveStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cold_archive_real_storage,
-            &format!("{}.ColdArchiveRealStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cold_archive_object_count,
-            &format!("{}.ColdArchiveObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deep_cold_archive_storage,
-            &format!("{}.DeepColdArchiveStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deep_cold_archive_real_storage,
-            &format!("{}.DeepColdArchiveRealStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deep_cold_archive_object_count,
-            &format!("{}.DeepColdArchiveObjectCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.multipart_part_storage,
-            &format!("{}.MultipartPartStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.standard_multipart_part_count,
-            &format!("{}.StandardMultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.standard_multipart_part_storage,
-            &format!("{}.StandardMultipartPartStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.infrequent_multipart_part_count,
-            &format!("{}.InfrequentMultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.infrequent_multipart_part_storage,
-            &format!("{}.InfrequentMultipartPartStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.archive_multipart_part_count,
-            &format!("{}.ArchiveMultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.archive_multipart_part_storage,
-            &format!("{}.ArchiveMultipartPartStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cold_archive_multipart_part_count,
-            &format!("{}.ColdArchiveMultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cold_archive_multipart_part_storage,
-            &format!("{}.ColdArchiveMultipartPartStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deep_cold_archive_multipart_part_count,
-            &format!("{}.DeepColdArchiveMultipartPartCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deep_cold_archive_multipart_part_storage,
-            &format!("{}.DeepColdArchiveMultipartPartStorage", name),
             params,
         );
     }
@@ -13905,373 +13640,6 @@ impl crate::FlatSerialize for CommonPrefix {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ObjectsResponseListBucketResult {
-    #[serde(rename = "Name")]
-    pub name: String,
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "Marker")]
-    pub marker: String,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i32,
-    #[serde(rename = "Delimiter")]
-    pub delimiter: String,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-    #[serde(rename = "NextMarker")]
-    pub next_marker: String,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<ObjectSummary>,
-    #[serde(rename = "CommonPrefixes")]
-    pub common_prefixes: Vec<CommonPrefix>,
-}
-
-impl crate::FlatSerialize for ObjectsResponseListBucketResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.marker, &format!("{}.Marker", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delimiter,
-            &format!("{}.Delimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_marker,
-            &format!("{}.NextMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.common_prefixes,
-            &format!("{}.CommonPrefixes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct V2ResponseListBucketResult {
-    #[serde(rename = "Name")]
-    pub name: String,
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "StartAfter")]
-    pub start_after: String,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i32,
-    #[serde(rename = "Delimiter")]
-    pub delimiter: String,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "KeyCount")]
-    pub key_count: i32,
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-    #[serde(rename = "ContinuationToken")]
-    pub continuation_token: String,
-    #[serde(rename = "NextContinuationToken")]
-    pub next_continuation_token: String,
-    #[serde(rename = "Contents")]
-    pub contents: Vec<ObjectSummary>,
-    #[serde(rename = "CommonPrefixes")]
-    pub common_prefixes: Vec<CommonPrefix>,
-}
-
-impl crate::FlatSerialize for V2ResponseListBucketResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_after,
-            &format!("{}.StartAfter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delimiter,
-            &format!("{}.Delimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_count,
-            &format!("{}.KeyCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.continuation_token,
-            &format!("{}.ContinuationToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_continuation_token,
-            &format!("{}.NextContinuationToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.common_prefixes,
-            &format!("{}.CommonPrefixes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct AccessControlList {
-    #[serde(rename = "Grant")]
-    pub grant: ObjectACL,
-}
-
-impl crate::FlatSerialize for AccessControlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.grant, &format!("{}.Grant", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketInfoBucketServerSideEncryptionRule {
-    #[serde(rename = "SSEAlgorithm")]
-    pub sse_algorithm: String,
-    #[serde(rename = "KMSMasterKeyID")]
-    pub kms_master_key_id: String,
-    #[serde(rename = "KMSDataEncryption")]
-    pub kms_data_encryption: String,
-}
-
-impl crate::FlatSerialize for BucketInfoBucketServerSideEncryptionRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sse_algorithm,
-            &format!("{}.SSEAlgorithm", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_master_key_id,
-            &format!("{}.KMSMasterKeyID", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_data_encryption,
-            &format!("{}.KMSDataEncryption", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketInfoBucketBucketPolicy {
-    #[serde(rename = "LogBucket")]
-    pub log_bucket: String,
-    #[serde(rename = "LogPrefix")]
-    pub log_prefix: String,
-}
-
-impl crate::FlatSerialize for BucketInfoBucketBucketPolicy {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.log_bucket,
-            &format!("{}.LogBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.log_prefix,
-            &format!("{}.LogPrefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketInfoBucket {
-    #[serde(rename = "AccessMonitor")]
-    pub access_monitor: String,
-    #[serde(rename = "CreationDate")]
-    pub creation_date: String,
-    #[serde(rename = "CrossRegionReplication")]
-    pub cross_region_replication: String,
-    #[serde(rename = "DataRedundancyType")]
-    pub data_redundancy_type: DataRedundancyType,
-    #[serde(rename = "ExtranetEndpoint")]
-    pub extranet_endpoint: String,
-    #[serde(rename = "IntranetEndpoint")]
-    pub intranet_endpoint: String,
-    #[serde(rename = "Location")]
-    pub location: String,
-    #[serde(rename = "Name")]
-    pub name: String,
-    #[serde(rename = "ResourceGroupId")]
-    pub resource_group_id: String,
-    #[serde(rename = "StorageClass")]
-    pub storage_class: StorageClass,
-    #[serde(rename = "TransferAcceleration")]
-    pub transfer_acceleration: String,
-    #[serde(rename = "Versioning")]
-    pub versioning: BucketVersioningStatus,
-    #[serde(rename = "Owner")]
-    pub owner: Owner,
-    #[serde(rename = "AccessControlList")]
-    pub access_control_list: AccessControlList,
-    #[serde(rename = "ServerSideEncryptionRule")]
-    pub server_side_encryption_rule: BucketInfoBucketServerSideEncryptionRule,
-    #[serde(rename = "BucketPolicy")]
-    pub bucket_policy: BucketInfoBucketBucketPolicy,
-    #[serde(rename = "Comment")]
-    pub comment: String,
-    #[serde(rename = "BlockPublicAccess")]
-    pub block_public_access: bool,
-}
-
-impl crate::FlatSerialize for BucketInfoBucket {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_monitor,
-            &format!("{}.AccessMonitor", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_date,
-            &format!("{}.CreationDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cross_region_replication,
-            &format!("{}.CrossRegionReplication", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.data_redundancy_type,
-            &format!("{}.DataRedundancyType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.extranet_endpoint,
-            &format!("{}.ExtranetEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_endpoint,
-            &format!("{}.IntranetEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_class,
-            &format!("{}.StorageClass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.transfer_acceleration,
-            &format!("{}.TransferAcceleration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.versioning,
-            &format!("{}.Versioning", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_control_list,
-            &format!("{}.AccessControlList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.server_side_encryption_rule,
-            &format!("{}.ServerSideEncryptionRule", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bucket_policy,
-            &format!("{}.BucketPolicy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.comment, &format!("{}.Comment", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.block_public_access,
-            &format!("{}.BlockPublicAccess", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketInfo {
-    #[serde(rename = "Bucket")]
-    pub bucket: BucketInfoBucket,
-}
-
-impl crate::FlatSerialize for BucketInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct AccessPointVpcConfiguration {
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
@@ -14284,244 +13652,6 @@ impl crate::FlatSerialize for AccessPointVpcConfiguration {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct AccessPoint {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "AccessPointName")]
-    pub access_point_name: String,
-    #[serde(rename = "Alias")]
-    pub alias: String,
-    #[serde(rename = "NetworkOrigin")]
-    pub network_origin: String,
-    #[serde(rename = "VpcConfiguration")]
-    pub vpc_configuration: AccessPointVpcConfiguration,
-    #[serde(rename = "Status")]
-    pub status: String,
-}
-
-impl crate::FlatSerialize for AccessPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_name,
-            &format!("{}.AccessPointName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.alias, &format!("{}.Alias", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_origin,
-            &format!("{}.NetworkOrigin", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_configuration,
-            &format!("{}.VpcConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListAccessPointsResultAccessPoints {
-    #[serde(rename = "AccessPoint")]
-    pub access_point: Vec<AccessPoint>,
-}
-
-impl crate::FlatSerialize for ListAccessPointsResultAccessPoints {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point,
-            &format!("{}.AccessPoint", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListAccessPointsResult {
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: String,
-    #[serde(rename = "NextContinuationToken")]
-    pub next_continuation_token: String,
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
-    #[serde(rename = "AccessPoints")]
-    pub access_points: ListAccessPointsResultAccessPoints,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i32,
-}
-
-impl crate::FlatSerialize for ListAccessPointsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_continuation_token,
-            &format!("{}.NextContinuationToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_points,
-            &format!("{}.AccessPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetAccessPointResultEndpoints {
-    #[serde(rename = "PublicEndpoint")]
-    pub public_endpoint: String,
-    #[serde(rename = "InternalEndpoint")]
-    pub internal_endpoint: String,
-}
-
-impl crate::FlatSerialize for GetAccessPointResultEndpoints {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_endpoint,
-            &format!("{}.PublicEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internal_endpoint,
-            &format!("{}.InternalEndpoint", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct PublicAccessBlockConfiguration {
-    #[serde(rename = "BlockPublicAccess")]
-    pub block_public_access: bool,
-}
-
-impl crate::FlatSerialize for PublicAccessBlockConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.block_public_access,
-            &format!("{}.BlockPublicAccess", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetAccessPointResult {
-    #[serde(rename = "AccessPointName")]
-    pub access_point_name: String,
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
-    #[serde(rename = "NetworkOrigin")]
-    pub network_origin: String,
-    #[serde(rename = "VpcConfiguration")]
-    pub vpc_configuration: AccessPointVpcConfiguration,
-    #[serde(rename = "AccessPointArn")]
-    pub access_point_arn: String,
-    #[serde(rename = "Alias")]
-    pub alias: String,
-    #[serde(rename = "Status")]
-    pub status: String,
-    #[serde(rename = "Endpoints")]
-    pub endpoints: GetAccessPointResultEndpoints,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
-    #[serde(rename = "CreationDate")]
-    pub creation_date: String,
-}
-
-impl crate::FlatSerialize for GetAccessPointResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_name,
-            &format!("{}.AccessPointName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_origin,
-            &format!("{}.NetworkOrigin", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_configuration,
-            &format!("{}.VpcConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_arn,
-            &format!("{}.AccessPointArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.alias, &format!("{}.Alias", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.endpoints,
-            &format!("{}.Endpoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_access_block_configuration,
-            &format!("{}.PublicAccessBlockConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_date,
-            &format!("{}.CreationDate", name),
-            params,
-        );
     }
 }
 
@@ -14578,30 +13708,6 @@ impl crate::FlatSerialize for AccessPointbody {
             &format!("{}.CreateAccessPointConfiguration", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CreateAccessPointResult {
-    #[serde(rename = "AccessPointArn")]
-    pub access_point_arn: String,
-    #[serde(rename = "Alias")]
-    pub alias: String,
-}
-
-impl crate::FlatSerialize for CreateAccessPointResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_arn,
-            &format!("{}.AccessPointArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.alias, &format!("{}.Alias", name), params);
     }
 }
 
@@ -14691,83 +13797,18 @@ impl crate::FlatSerialize for ExtendBucketWormbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct WormConfiguration {
-    #[serde(rename = "WormId")]
-    pub worm_id: String,
-    #[serde(rename = "State")]
-    pub state: BucketWormState,
-    #[serde(rename = "RetentionPeriodInDays")]
-    pub retention_period_in_days: i32,
-    #[serde(rename = "CreationDate")]
-    pub creation_date: String,
-    #[serde(rename = "ExpirationDate")]
-    pub expiration_date: String,
-}
-
-impl crate::FlatSerialize for WormConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.worm_id, &format!("{}.WormId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_period_in_days,
-            &format!("{}.RetentionPeriodInDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_date,
-            &format!("{}.CreationDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expiration_date,
-            &format!("{}.ExpirationDate", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketAclResponseAccessControlPolicyAccessControlList {
+pub struct BucketAclResponseAccessControlList {
     #[serde(rename = "Grant")]
     pub grant: BucketACL,
 }
 
-impl crate::FlatSerialize for BucketAclResponseAccessControlPolicyAccessControlList {
+impl crate::FlatSerialize for BucketAclResponseAccessControlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.grant, &format!("{}.Grant", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketAclResponseAccessControlPolicy {
-    #[serde(rename = "Owner")]
-    pub owner: Owner,
-    #[serde(rename = "AccessControlList")]
-    pub access_control_list: BucketAclResponseAccessControlPolicyAccessControlList,
-}
-
-impl crate::FlatSerialize for BucketAclResponseAccessControlPolicy {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_control_list,
-            &format!("{}.AccessControlList", name),
-            params,
-        );
     }
 }
 
@@ -15168,23 +14209,6 @@ impl crate::FlatSerialize for TransferAccelerationbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct AccelerationConfiguration {
-    #[serde(rename = "Enabled")]
-    pub enabled: bool,
-}
-
-impl crate::FlatSerialize for AccelerationConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct VersioningConfiguration {
     #[serde(rename = "Status")]
     pub status: BucketVersioningStatus,
@@ -15218,23 +14242,6 @@ impl crate::FlatSerialize for BucketVersioningbody {
             &format!("{}.VersioningConfiguration", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseVersioningConfiguration {
-    #[serde(rename = "Status")]
-    pub status: BucketVersioningStatus,
-}
-
-impl crate::FlatSerialize for ResponseVersioningConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
     }
 }
 
@@ -15344,116 +14351,6 @@ impl crate::FlatSerialize for DeleteMarkerEntry {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct VersionsResult {
-    #[serde(rename = "Name")]
-    pub name: String,
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "KeyMarker")]
-    pub key_marker: String,
-    #[serde(rename = "VersionIdMarker")]
-    pub version_id_marker: String,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i64,
-    #[serde(rename = "Delimiter")]
-    pub delimiter: String,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-    #[serde(rename = "NextKeyMarker")]
-    pub next_key_marker: String,
-    #[serde(rename = "NextVersionIdMarker")]
-    pub next_version_id_marker: String,
-    #[serde(rename = "Version")]
-    pub version: Vec<ObjectVersion>,
-    #[serde(rename = "DeleteMarker")]
-    pub delete_marker: Vec<DeleteMarkerEntry>,
-    #[serde(rename = "CommonPrefixes")]
-    pub common_prefixes: Vec<CommonPrefix>,
-}
-
-impl crate::FlatSerialize for VersionsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.key_marker,
-            &format!("{}.KeyMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_id_marker,
-            &format!("{}.VersionIdMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delimiter,
-            &format!("{}.Delimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_key_marker,
-            &format!("{}.NextKeyMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_version_id_marker,
-            &format!("{}.NextVersionIdMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.version, &format!("{}.Version", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_marker,
-            &format!("{}.DeleteMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.common_prefixes,
-            &format!("{}.CommonPrefixes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct PolicyStatus {
-    #[serde(rename = "IsPublic")]
-    pub is_public: bool,
-}
-
-impl crate::FlatSerialize for PolicyStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_public,
-            &format!("{}.IsPublic", name),
-            params,
-        );
     }
 }
 
@@ -15726,23 +14623,6 @@ impl crate::FlatSerialize for PutBucketReplicationbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ResponseReplicationConfiguration {
-    #[serde(rename = "Rule")]
-    pub rule: Vec<ReplicationRule>,
-}
-
-impl crate::FlatSerialize for ResponseReplicationConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct LocationTransferTypeTransferTypes {
     #[serde(rename = "Type")]
     pub r#type: Vec<String>,
@@ -15784,12 +14664,12 @@ impl crate::FlatSerialize for LocationTransferType {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TypeConstraint {
+pub struct TransferTypeConstraint {
     #[serde(rename = "LocationTransferType")]
     pub location_transfer_type: Vec<LocationTransferType>,
 }
 
-impl crate::FlatSerialize for TypeConstraint {
+impl crate::FlatSerialize for TransferTypeConstraint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -15805,49 +14685,18 @@ impl crate::FlatSerialize for TypeConstraint {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct RtcConstraint {
+pub struct CConstraint {
     #[serde(rename = "Location")]
     pub location: Vec<String>,
 }
 
-impl crate::FlatSerialize for RtcConstraint {
+impl crate::FlatSerialize for CConstraint {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ReplicationLocation {
-    #[serde(rename = "Location")]
-    pub location: Vec<String>,
-    #[serde(rename = "LocationTransferTypeConstraint")]
-    pub location_transfer_type_constraint: TypeConstraint,
-    #[serde(rename = "LocationRTCConstraint")]
-    pub location_rtc_constraint: RtcConstraint,
-}
-
-impl crate::FlatSerialize for ReplicationLocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.location_transfer_type_constraint,
-            &format!("{}.LocationTransferTypeConstraint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.location_rtc_constraint,
-            &format!("{}.LocationRTCConstraint", name),
-            params,
-        );
     }
 }
 
@@ -15923,23 +14772,6 @@ impl crate::FlatSerialize for ReplicationProgressRule {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ReplicationProgress {
-    #[serde(rename = "Rule")]
-    pub rule: Vec<ReplicationProgressRule>,
-}
-
-impl crate::FlatSerialize for ReplicationProgress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
     }
 }
 
@@ -16312,41 +15144,6 @@ impl crate::FlatSerialize for BucketInventorybody {
         crate::FlatSerialize::flat_serialize(
             &self.inventory_configuration,
             &format!("{}.InventoryConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ConfigurationsResult {
-    #[serde(rename = "InventoryConfiguration")]
-    pub inventory_configuration: Vec<InventoryConfiguration>,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "NextContinuationToken")]
-    pub next_continuation_token: String,
-}
-
-impl crate::FlatSerialize for ConfigurationsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.inventory_configuration,
-            &format!("{}.InventoryConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_continuation_token,
-            &format!("{}.NextContinuationToken", name),
             params,
         );
     }
@@ -17427,23 +16224,6 @@ impl crate::FlatSerialize for BucketTagsbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TagsResponseTagging {
-    #[serde(rename = "TagSet")]
-    pub tag_set: TagSet,
-}
-
-impl crate::FlatSerialize for TagsResponseTagging {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_set, &format!("{}.TagSet", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct BucketDataRedundancyTransition {
     #[serde(rename = "Bucket")]
     pub bucket: String,
@@ -17493,83 +16273,6 @@ impl crate::FlatSerialize for BucketDataRedundancyTransition {
             &format!("{}.EstimatedRemainingTime", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct UserDataRedundancyTransitionResponseListBucketDataRedundancyTransition {
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "NextContinuationToken")]
-    pub next_continuation_token: String,
-    #[serde(rename = "BucketDataRedundancyTransition")]
-    pub bucket_data_redundancy_transition: Vec<BucketDataRedundancyTransition>,
-}
-
-impl crate::FlatSerialize
-    for UserDataRedundancyTransitionResponseListBucketDataRedundancyTransition
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_continuation_token,
-            &format!("{}.NextContinuationToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bucket_data_redundancy_transition,
-            &format!("{}.BucketDataRedundancyTransition", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct BucketDataRedundancyTransitionResponseListBucketDataRedundancyTransition {
-    #[serde(rename = "BucketDataRedundancyTransition")]
-    pub bucket_data_redundancy_transition: BucketDataRedundancyTransition,
-}
-
-impl crate::FlatSerialize
-    for BucketDataRedundancyTransitionResponseListBucketDataRedundancyTransition
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bucket_data_redundancy_transition,
-            &format!("{}.BucketDataRedundancyTransition", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseBucketDataRedundancyTransition {
-    #[serde(rename = "TaskId")]
-    pub task_id: String,
-}
-
-impl crate::FlatSerialize for ResponseBucketDataRedundancyTransition {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.TaskId", name), params);
     }
 }
 
@@ -17652,27 +16355,6 @@ impl crate::FlatSerialize for BucketEncryptionbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct EncryptionRule {
-    #[serde(rename = "ApplyServerSideEncryptionByDefault")]
-    pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
-}
-
-impl crate::FlatSerialize for EncryptionRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.apply_server_side_encryption_by_default,
-            &format!("{}.ApplyServerSideEncryptionByDefault", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct RequestPaymentConfiguration {
     #[serde(rename = "Payer")]
     pub payer: String,
@@ -17706,23 +16388,6 @@ impl crate::FlatSerialize for RequestPaymentbody {
             &format!("{}.RequestPaymentConfiguration", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct PaymentConfiguration {
-    #[serde(rename = "Payer")]
-    pub payer: String,
-}
-
-impl crate::FlatSerialize for PaymentConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.payer, &format!("{}.Payer", name), params);
     }
 }
 
@@ -17826,34 +16491,6 @@ impl crate::FlatSerialize for BucketCorsbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct SConfiguration {
-    #[serde(rename = "CORSRule")]
-    pub cors_rule: Vec<CORSRule>,
-    #[serde(rename = "ResponseVary")]
-    pub response_vary: bool,
-}
-
-impl crate::FlatSerialize for SConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cors_rule,
-            &format!("{}.CORSRule", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.response_vary,
-            &format!("{}.ResponseVary", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct AccessMonitorConfiguration {
     #[serde(rename = "Status")]
     pub status: AccessMonitorStatus,
@@ -17885,40 +16522,6 @@ impl crate::FlatSerialize for AccessMonitorbody {
         crate::FlatSerialize::flat_serialize(
             &self.access_monitor_configuration,
             &format!("{}.AccessMonitorConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct QueryStatus {
-    #[serde(rename = "State")]
-    pub state: String,
-    #[serde(rename = "Phase")]
-    pub phase: String,
-    #[serde(rename = "CreateTime")]
-    pub create_time: String,
-    #[serde(rename = "UpdateTime")]
-    pub update_time: String,
-}
-
-impl crate::FlatSerialize for QueryStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(&self.phase, &format!("{}.Phase", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.update_time,
-            &format!("{}.UpdateTime", name),
             params,
         );
     }
@@ -18064,829 +16667,6 @@ impl crate::FlatSerialize for DoMetaQuerybody {
         crate::FlatSerialize::flat_serialize(
             &self.meta_query,
             &format!("{}.MetaQuery", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryTagging {
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "Value")]
-    pub value: String,
-}
-
-impl crate::FlatSerialize for MetaQueryTagging {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileOssTagging {
-    #[serde(rename = "Tagging")]
-    pub tagging: Vec<MetaQueryTagging>,
-}
-
-impl crate::FlatSerialize for MetaQueryFileOssTagging {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tagging, &format!("{}.Tagging", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryUserMeta {
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "Value")]
-    pub value: String,
-}
-
-impl crate::FlatSerialize for MetaQueryUserMeta {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileOssUserMeta {
-    #[serde(rename = "UserMeta")]
-    pub user_meta: Vec<MetaQueryUserMeta>,
-}
-
-impl crate::FlatSerialize for MetaQueryFileOssUserMeta {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.user_meta,
-            &format!("{}.UserMeta", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespVideoStream {
-    #[serde(rename = "CodecName")]
-    pub codec_name: String,
-    #[serde(rename = "Language")]
-    pub language: String,
-    #[serde(rename = "Bitrate")]
-    pub bitrate: i64,
-    #[serde(rename = "FrameRate")]
-    pub frame_rate: String,
-    #[serde(rename = "StartTime")]
-    pub start_time: f64,
-    #[serde(rename = "Duration")]
-    pub duration: f64,
-    #[serde(rename = "FrameCount")]
-    pub frame_count: i64,
-    #[serde(rename = "BitDepth")]
-    pub bit_depth: i64,
-    #[serde(rename = "PixelFormat")]
-    pub pixel_format: String,
-    #[serde(rename = "ColorSpace")]
-    pub color_space: String,
-    #[serde(rename = "Height")]
-    pub height: i64,
-    #[serde(rename = "Width")]
-    pub width: i64,
-}
-
-impl crate::FlatSerialize for MetaQueryRespVideoStream {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.codec_name,
-            &format!("{}.CodecName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.language, &format!("{}.Language", name), params);
-        crate::FlatSerialize::flat_serialize(&self.bitrate, &format!("{}.Bitrate", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.frame_rate,
-            &format!("{}.FrameRate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.frame_count,
-            &format!("{}.FrameCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bit_depth,
-            &format!("{}.BitDepth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.pixel_format,
-            &format!("{}.PixelFormat", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.color_space,
-            &format!("{}.ColorSpace", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileVideoStreams {
-    #[serde(rename = "VideoStream")]
-    pub video_stream: MetaQueryRespVideoStream,
-}
-
-impl crate::FlatSerialize for MetaQueryFileVideoStreams {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.video_stream,
-            &format!("{}.VideoStream", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespAudioStream {
-    #[serde(rename = "CodecName")]
-    pub codec_name: String,
-    #[serde(rename = "Bitrate")]
-    pub bitrate: i64,
-    #[serde(rename = "SampleRate")]
-    pub sample_rate: i64,
-    #[serde(rename = "StartTime")]
-    pub start_time: f64,
-    #[serde(rename = "Duration")]
-    pub duration: f64,
-    #[serde(rename = "Channels")]
-    pub channels: i64,
-    #[serde(rename = "Language")]
-    pub language: String,
-}
-
-impl crate::FlatSerialize for MetaQueryRespAudioStream {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.codec_name,
-            &format!("{}.CodecName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bitrate, &format!("{}.Bitrate", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sample_rate,
-            &format!("{}.SampleRate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(&self.channels, &format!("{}.Channels", name), params);
-        crate::FlatSerialize::flat_serialize(&self.language, &format!("{}.Language", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileAudioStreams {
-    #[serde(rename = "AudioStream")]
-    pub audio_stream: MetaQueryRespAudioStream,
-}
-
-impl crate::FlatSerialize for MetaQueryFileAudioStreams {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.audio_stream,
-            &format!("{}.AudioStream", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespSubtitle {
-    #[serde(rename = "CodecName")]
-    pub codec_name: String,
-    #[serde(rename = "Language")]
-    pub language: String,
-    #[serde(rename = "StartTime")]
-    pub start_time: f64,
-    #[serde(rename = "Duration")]
-    pub duration: f64,
-}
-
-impl crate::FlatSerialize for MetaQueryRespSubtitle {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.codec_name,
-            &format!("{}.CodecName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.language, &format!("{}.Language", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileSubtitles {
-    #[serde(rename = "Subtitle")]
-    pub subtitle: MetaQueryRespSubtitle,
-}
-
-impl crate::FlatSerialize for MetaQueryFileSubtitles {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.subtitle, &format!("{}.Subtitle", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespAddress {
-    #[serde(rename = "AddressLine")]
-    pub address_line: String,
-    #[serde(rename = "City")]
-    pub city: String,
-    #[serde(rename = "District")]
-    pub district: String,
-    #[serde(rename = "Language")]
-    pub language: String,
-    #[serde(rename = "Province")]
-    pub province: String,
-    #[serde(rename = "Township")]
-    pub township: String,
-}
-
-impl crate::FlatSerialize for MetaQueryRespAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.address_line,
-            &format!("{}.AddressLine", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.city, &format!("{}.City", name), params);
-        crate::FlatSerialize::flat_serialize(&self.district, &format!("{}.District", name), params);
-        crate::FlatSerialize::flat_serialize(&self.language, &format!("{}.Language", name), params);
-        crate::FlatSerialize::flat_serialize(&self.province, &format!("{}.Province", name), params);
-        crate::FlatSerialize::flat_serialize(&self.township, &format!("{}.Township", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFileAddresses {
-    #[serde(rename = "Address")]
-    pub address: MetaQueryRespAddress,
-}
-
-impl crate::FlatSerialize for MetaQueryFileAddresses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.address, &format!("{}.Address", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespFileInsightsVideo {
-    #[serde(rename = "Caption")]
-    pub caption: String,
-    #[serde(rename = "Description")]
-    pub description: String,
-}
-
-impl crate::FlatSerialize for MetaQueryRespFileInsightsVideo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.caption, &format!("{}.Caption", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespFileInsightsImage {
-    #[serde(rename = "Caption")]
-    pub caption: String,
-    #[serde(rename = "Description")]
-    pub description: String,
-}
-
-impl crate::FlatSerialize for MetaQueryRespFileInsightsImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.caption, &format!("{}.Caption", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespFileInsights {
-    #[serde(rename = "Video")]
-    pub video: MetaQueryRespFileInsightsVideo,
-    #[serde(rename = "Image")]
-    pub image: MetaQueryRespFileInsightsImage,
-}
-
-impl crate::FlatSerialize for MetaQueryRespFileInsights {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.video, &format!("{}.Video", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image, &format!("{}.Image", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryFile {
-    #[serde(rename = "Filename")]
-    pub filename: String,
-    #[serde(rename = "Size")]
-    pub size: i64,
-    #[serde(rename = "FileModifiedTime")]
-    pub file_modified_time: String,
-    #[serde(rename = "OSSObjectType")]
-    pub oss_object_type: String,
-    #[serde(rename = "OSSStorageClass")]
-    pub oss_storage_class: String,
-    #[serde(rename = "ObjectACL")]
-    pub object_acl: String,
-    #[serde(rename = "ETag")]
-    pub e_tag: String,
-    #[serde(rename = "OSSCRC64")]
-    pub osscrc64: String,
-    #[serde(rename = "ServerSideEncryption")]
-    pub server_side_encryption: String,
-    #[serde(rename = "ServerSideEncryptionCustomerAlgorithm")]
-    pub server_side_encryption_customer_algorithm: String,
-    #[serde(rename = "OSSTaggingCount")]
-    pub oss_tagging_count: i64,
-    #[serde(rename = "OSSTagging")]
-    pub oss_tagging: MetaQueryFileOssTagging,
-    #[serde(rename = "OSSUserMeta")]
-    pub oss_user_meta: MetaQueryFileOssUserMeta,
-    #[serde(rename = "URI")]
-    pub uri: String,
-    #[serde(rename = "ProduceTime")]
-    pub produce_time: String,
-    #[serde(rename = "ContentType")]
-    pub content_type: String,
-    #[serde(rename = "MediaType")]
-    pub media_type: String,
-    #[serde(rename = "LatLong")]
-    pub lat_long: String,
-    #[serde(rename = "Title")]
-    pub title: String,
-    #[serde(rename = "OSSExpiration")]
-    pub oss_expiration: String,
-    #[serde(rename = "AccessControlAllowOrigin")]
-    pub access_control_allow_origin: String,
-    #[serde(rename = "AccessControlRequestMethod")]
-    pub access_control_request_method: String,
-    #[serde(rename = "ServerSideDataEncryption")]
-    pub server_side_data_encryption: String,
-    #[serde(rename = "ServerSideEncryptionKeyId")]
-    pub server_side_encryption_key_id: String,
-    #[serde(rename = "CacheControl")]
-    pub cache_control: String,
-    #[serde(rename = "ContentDisposition")]
-    pub content_disposition: String,
-    #[serde(rename = "ContentEncoding")]
-    pub content_encoding: String,
-    #[serde(rename = "ContentLanguage")]
-    pub content_language: String,
-    #[serde(rename = "ImageHeight")]
-    pub image_height: i64,
-    #[serde(rename = "ImageWidth")]
-    pub image_width: i64,
-    #[serde(rename = "VideoWidth")]
-    pub video_width: i64,
-    #[serde(rename = "VideoHeight")]
-    pub video_height: i64,
-    #[serde(rename = "Bitrate")]
-    pub bitrate: i64,
-    #[serde(rename = "Artist")]
-    pub artist: String,
-    #[serde(rename = "AlbumArtist")]
-    pub album_artist: String,
-    #[serde(rename = "Composer")]
-    pub composer: String,
-    #[serde(rename = "Performer")]
-    pub performer: String,
-    #[serde(rename = "Album")]
-    pub album: String,
-    #[serde(rename = "Duration")]
-    pub duration: f64,
-    #[serde(rename = "VideoStreams")]
-    pub video_streams: MetaQueryFileVideoStreams,
-    #[serde(rename = "AudioStreams")]
-    pub audio_streams: MetaQueryFileAudioStreams,
-    #[serde(rename = "Subtitles")]
-    pub subtitles: MetaQueryFileSubtitles,
-    #[serde(rename = "Addresses")]
-    pub addresses: MetaQueryFileAddresses,
-    #[serde(rename = "Insights")]
-    pub insights: MetaQueryRespFileInsights,
-}
-
-impl crate::FlatSerialize for MetaQueryFile {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.filename, &format!("{}.Filename", name), params);
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.file_modified_time,
-            &format!("{}.FileModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_object_type,
-            &format!("{}.OSSObjectType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_storage_class,
-            &format!("{}.OSSStorageClass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.object_acl,
-            &format!("{}.ObjectACL", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
-        crate::FlatSerialize::flat_serialize(&self.osscrc64, &format!("{}.OSSCRC64", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.server_side_encryption,
-            &format!("{}.ServerSideEncryption", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.server_side_encryption_customer_algorithm,
-            &format!("{}.ServerSideEncryptionCustomerAlgorithm", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_tagging_count,
-            &format!("{}.OSSTaggingCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_tagging,
-            &format!("{}.OSSTagging", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_user_meta,
-            &format!("{}.OSSUserMeta", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.uri, &format!("{}.URI", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.produce_time,
-            &format!("{}.ProduceTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.content_type,
-            &format!("{}.ContentType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.media_type,
-            &format!("{}.MediaType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.lat_long, &format!("{}.LatLong", name), params);
-        crate::FlatSerialize::flat_serialize(&self.title, &format!("{}.Title", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_expiration,
-            &format!("{}.OSSExpiration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_control_allow_origin,
-            &format!("{}.AccessControlAllowOrigin", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_control_request_method,
-            &format!("{}.AccessControlRequestMethod", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.server_side_data_encryption,
-            &format!("{}.ServerSideDataEncryption", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.server_side_encryption_key_id,
-            &format!("{}.ServerSideEncryptionKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cache_control,
-            &format!("{}.CacheControl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.content_disposition,
-            &format!("{}.ContentDisposition", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.content_encoding,
-            &format!("{}.ContentEncoding", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.content_language,
-            &format!("{}.ContentLanguage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_height,
-            &format!("{}.ImageHeight", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_width,
-            &format!("{}.ImageWidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.video_width,
-            &format!("{}.VideoWidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.video_height,
-            &format!("{}.VideoHeight", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bitrate, &format!("{}.Bitrate", name), params);
-        crate::FlatSerialize::flat_serialize(&self.artist, &format!("{}.Artist", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.album_artist,
-            &format!("{}.AlbumArtist", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.composer, &format!("{}.Composer", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.performer,
-            &format!("{}.Performer", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.album, &format!("{}.Album", name), params);
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.video_streams,
-            &format!("{}.VideoStreams", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audio_streams,
-            &format!("{}.AudioStreams", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.subtitles,
-            &format!("{}.Subtitles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.addresses,
-            &format!("{}.Addresses", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.insights, &format!("{}.Insights", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespFiles {
-    #[serde(rename = "File")]
-    pub file: Vec<MetaQueryFile>,
-}
-
-impl crate::FlatSerialize for MetaQueryRespFiles {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.file, &format!("{}.File", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryAggregationsResultGroupsGroupItem {
-    #[serde(rename = "Value")]
-    pub value: String,
-    #[serde(rename = "Count")]
-    pub count: i64,
-}
-
-impl crate::FlatSerialize for MetaQueryAggregationsResultGroupsGroupItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(&self.count, &format!("{}.Count", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryAggregationsResultGroups {
-    #[serde(rename = "Group")]
-    pub group: Vec<MetaQueryAggregationsResultGroupsGroupItem>,
-}
-
-impl crate::FlatSerialize for MetaQueryAggregationsResultGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.group, &format!("{}.Group", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryAggregationsResult {
-    #[serde(rename = "Field")]
-    pub field: String,
-    #[serde(rename = "Operation")]
-    pub operation: String,
-    #[serde(rename = "Value")]
-    pub value: f64,
-    #[serde(rename = "Groups")]
-    pub groups: MetaQueryAggregationsResultGroups,
-}
-
-impl crate::FlatSerialize for MetaQueryAggregationsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.operation,
-            &format!("{}.Operation", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(&self.groups, &format!("{}.Groups", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryRespAggregations {
-    #[serde(rename = "Aggregation")]
-    pub aggregation: Vec<MetaQueryAggregationsResult>,
-}
-
-impl crate::FlatSerialize for MetaQueryRespAggregations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.aggregation,
-            &format!("{}.Aggregation", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MetaQueryResp {
-    #[serde(rename = "NextToken")]
-    pub next_token: String,
-    #[serde(rename = "Files")]
-    pub files: MetaQueryRespFiles,
-    #[serde(rename = "Aggregations")]
-    pub aggregations: MetaQueryRespAggregations,
-}
-
-impl crate::FlatSerialize for MetaQueryResp {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.NextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.files, &format!("{}.Files", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.aggregations,
-            &format!("{}.Aggregations", name),
             params,
         );
     }
@@ -19070,37 +16850,6 @@ impl crate::FlatSerialize for BucketAntiDDOSInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct BucketAntiDDosInfoResponseAntiDDOSListConfiguration {
-    #[serde(rename = "Marker")]
-    pub marker: String,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "AntiDDOSConfiguration")]
-    pub anti_ddos_configuration: Vec<BucketAntiDDOSInfo>,
-}
-
-impl crate::FlatSerialize for BucketAntiDDosInfoResponseAntiDDOSListConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.marker, &format!("{}.Marker", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.anti_ddos_configuration,
-            &format!("{}.AntiDDOSConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct InitBucketAntiDDosInfobody {
     #[serde(rename = "AntiDDOSConfiguration")]
     pub anti_ddos_configuration: BucketAntiDDOSConfiguration,
@@ -19157,48 +16906,6 @@ impl crate::FlatSerialize for UserAntiDDOSInfo {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct UserAntiDDosInfoResponseAntiDDOSListConfiguration {
-    #[serde(rename = "AntiDDOSConfiguration")]
-    pub anti_ddos_configuration: Vec<UserAntiDDOSInfo>,
-}
-
-impl crate::FlatSerialize for UserAntiDDosInfoResponseAntiDDOSListConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.anti_ddos_configuration,
-            &format!("{}.AntiDDOSConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GroupConfiguration {
-    #[serde(rename = "ResourceGroupId")]
-    pub resource_group_id: String,
-}
-
-impl crate::FlatSerialize for GroupConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
     }
 }
 
@@ -19441,29 +17148,6 @@ impl crate::FlatSerialize for CnameInfo {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CnameResult {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Owner")]
-    pub owner: String,
-    #[serde(rename = "Cname")]
-    pub cname: Vec<CnameInfo>,
-}
-
-impl crate::FlatSerialize for CnameResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct CnamebodyBucketCnameConfigurationCname {
     #[serde(rename = "Domain")]
     pub domain: String,
@@ -19512,36 +17196,6 @@ impl crate::FlatSerialize for DeleteCnamebody {
         crate::FlatSerialize::flat_serialize(
             &self.bucket_cname_configuration,
             &format!("{}.BucketCnameConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CnameToken {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Cname")]
-    pub cname: String,
-    #[serde(rename = "Token")]
-    pub token: String,
-    #[serde(rename = "ExpireTime")]
-    pub expire_time: String,
-}
-
-impl crate::FlatSerialize for CnameToken {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
-        crate::FlatSerialize::flat_serialize(&self.token, &format!("{}.Token", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
             params,
         );
     }
@@ -19670,23 +17324,6 @@ impl crate::FlatSerialize for StyleInfo {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct StyleList {
-    #[serde(rename = "Style")]
-    pub style: Vec<StyleInfo>,
-}
-
-impl crate::FlatSerialize for StyleList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.style, &format!("{}.Style", name), params);
     }
 }
 
@@ -20049,42 +17686,14 @@ impl crate::FlatSerialize for PointForObjectProcessbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CreateAccessPointForObjectProcessResult {
-    #[serde(rename = "AccessPointForObjectProcessArn")]
-    pub access_point_for_object_process_arn: String,
-    #[serde(rename = "AccessPointForObjectProcessAlias")]
-    pub access_point_for_object_process_alias: String,
-}
-
-impl crate::FlatSerialize for CreateAccessPointForObjectProcessResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_for_object_process_arn,
-            &format!("{}.AccessPointForObjectProcessArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_for_object_process_alias,
-            &format!("{}.AccessPointForObjectProcessAlias", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResultEndpoints {
+pub struct ResponseEndpoints {
     #[serde(rename = "PublicEndpoint")]
     pub public_endpoint: String,
     #[serde(rename = "InternalEndpoint")]
     pub internal_endpoint: String,
 }
 
-impl crate::FlatSerialize for ResultEndpoints {
+impl crate::FlatSerialize for ResponseEndpoints {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -20105,79 +17714,20 @@ impl crate::FlatSerialize for ResultEndpoints {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetAccessPointForObjectProcessResult {
-    #[serde(rename = "AccessPointNameForObjectProcess")]
-    pub access_point_name_for_object_process: String,
-    #[serde(rename = "AccessPointForObjectProcessAlias")]
-    pub access_point_for_object_process_alias: String,
-    #[serde(rename = "AccessPointName")]
-    pub access_point_name: String,
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
-    #[serde(rename = "AccessPointForObjectProcessArn")]
-    pub access_point_for_object_process_arn: String,
-    #[serde(rename = "CreationDate")]
-    pub creation_date: String,
-    #[serde(rename = "Status")]
-    pub status: String,
-    #[serde(rename = "Endpoints")]
-    pub endpoints: ResultEndpoints,
-    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
-    pub allow_anonymous_access_for_object_process: String,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+pub struct PublicAccessBlockConfiguration {
+    #[serde(rename = "BlockPublicAccess")]
+    pub block_public_access: bool,
 }
 
-impl crate::FlatSerialize for GetAccessPointForObjectProcessResult {
+impl crate::FlatSerialize for PublicAccessBlockConfiguration {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(
-            &self.access_point_name_for_object_process,
-            &format!("{}.AccessPointNameForObjectProcess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_for_object_process_alias,
-            &format!("{}.AccessPointForObjectProcessAlias", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_name,
-            &format!("{}.AccessPointName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_for_object_process_arn,
-            &format!("{}.AccessPointForObjectProcessArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_date,
-            &format!("{}.CreationDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.endpoints,
-            &format!("{}.Endpoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_anonymous_access_for_object_process,
-            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_access_block_configuration,
-            &format!("{}.PublicAccessBlockConfiguration", name),
+            &self.block_public_access,
+            &format!("{}.BlockPublicAccess", name),
             params,
         );
     }
@@ -20185,7 +17735,7 @@ impl crate::FlatSerialize for GetAccessPointForObjectProcessResult {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct PointForObjectProcess {
+pub struct AccessPointForObjectProcess {
     #[serde(rename = "AccessPointNameForObjectProcess")]
     pub access_point_name_for_object_process: String,
     #[serde(rename = "AccessPointForObjectProcessAlias")]
@@ -20198,7 +17748,7 @@ pub struct PointForObjectProcess {
     pub allow_anonymous_access_for_object_process: String,
 }
 
-impl crate::FlatSerialize for PointForObjectProcess {
+impl crate::FlatSerialize for AccessPointForObjectProcess {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -20230,12 +17780,12 @@ impl crate::FlatSerialize for PointForObjectProcess {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct PointsForObjectProcess {
+pub struct AccessPointsForObjectProcess {
     #[serde(rename = "AccessPointForObjectProcess")]
-    pub access_point_for_object_process: Vec<PointForObjectProcess>,
+    pub access_point_for_object_process: Vec<AccessPointForObjectProcess>,
 }
 
-impl crate::FlatSerialize for PointsForObjectProcess {
+impl crate::FlatSerialize for AccessPointsForObjectProcess {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -20244,83 +17794,6 @@ impl crate::FlatSerialize for PointsForObjectProcess {
         crate::FlatSerialize::flat_serialize(
             &self.access_point_for_object_process,
             &format!("{}.AccessPointForObjectProcess", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct PointsForObjectProcessResult {
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "NextContinuationToken")]
-    pub next_continuation_token: String,
-    #[serde(rename = "AccountId")]
-    pub account_id: String,
-    #[serde(rename = "AccessPointsForObjectProcess")]
-    pub access_points_for_object_process: PointsForObjectProcess,
-}
-
-impl crate::FlatSerialize for PointsForObjectProcessResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_continuation_token,
-            &format!("{}.NextContinuationToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_points_for_object_process,
-            &format!("{}.AccessPointsForObjectProcess", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ConfigForObjectProcessResult {
-    #[serde(rename = "ObjectProcessConfiguration")]
-    pub object_process_configuration: ObjectProcessConfiguration,
-    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
-    pub allow_anonymous_access_for_object_process: String,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
-}
-
-impl crate::FlatSerialize for ConfigForObjectProcessResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.object_process_configuration,
-            &format!("{}.ObjectProcessConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_anonymous_access_for_object_process,
-            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_access_block_configuration,
-            &format!("{}.PublicAccessBlockConfiguration", name),
             params,
         );
     }
@@ -20571,30 +18044,6 @@ impl crate::FlatSerialize for OverwriteConfigbody {
         crate::FlatSerialize::flat_serialize(
             &self.overwrite_configuration,
             &format!("{}.OverwriteConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ObjectResult {
-    #[serde(rename = "ETag")]
-    pub e_tag: String,
-    #[serde(rename = "LastModified")]
-    pub last_modified: String,
-}
-
-impl crate::FlatSerialize for ObjectResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified,
-            &format!("{}.LastModified", name),
             params,
         );
     }
@@ -21010,40 +18459,6 @@ impl crate::FlatSerialize for ObjectMetabody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct InitiateMultipartUploadResult {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "UploadId")]
-    pub upload_id: String,
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-}
-
-impl crate::FlatSerialize for InitiateMultipartUploadResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.upload_id,
-            &format!("{}.UploadId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct CompleteMultipartUploadPartItem {
     #[serde(rename = "PartNumber")]
     pub part_number: i64,
@@ -21106,63 +18521,6 @@ impl crate::FlatSerialize for MultipartUploadbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CompleteMultipartUploadResult {
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-    #[serde(rename = "Location")]
-    pub location: String,
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "ETag")]
-    pub e_tag: String,
-}
-
-impl crate::FlatSerialize for CompleteMultipartUploadResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CopyPartResult {
-    #[serde(rename = "LastModified")]
-    pub last_modified: String,
-    #[serde(rename = "ETag")]
-    pub e_tag: String,
-}
-
-impl crate::FlatSerialize for CopyPartResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified,
-            &format!("{}.LastModified", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct Upload {
     #[serde(rename = "Key")]
     pub key: String,
@@ -21187,92 +18545,6 @@ impl crate::FlatSerialize for Upload {
         crate::FlatSerialize::flat_serialize(
             &self.initiated,
             &format!("{}.Initiated", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct UploadsResult {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "EncodingType")]
-    pub encoding_type: String,
-    #[serde(rename = "KeyMarker")]
-    pub key_marker: String,
-    #[serde(rename = "UploadIdMarker")]
-    pub upload_id_marker: String,
-    #[serde(rename = "NextKeyMarker")]
-    pub next_key_marker: String,
-    #[serde(rename = "NextUploadIdMarker")]
-    pub next_upload_id_marker: String,
-    #[serde(rename = "MaxUploads")]
-    pub max_uploads: i64,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "Delimiter")]
-    pub delimiter: String,
-    #[serde(rename = "Upload")]
-    pub upload: Vec<Upload>,
-    #[serde(rename = "CommonPrefixes")]
-    pub common_prefixes: Vec<CommonPrefix>,
-}
-
-impl crate::FlatSerialize for UploadsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.encoding_type,
-            &format!("{}.EncodingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_marker,
-            &format!("{}.KeyMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.upload_id_marker,
-            &format!("{}.UploadIdMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_key_marker,
-            &format!("{}.NextKeyMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_upload_id_marker,
-            &format!("{}.NextUploadIdMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_uploads,
-            &format!("{}.MaxUploads", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delimiter,
-            &format!("{}.Delimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.upload, &format!("{}.Upload", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.common_prefixes,
-            &format!("{}.CommonPrefixes", name),
             params,
         );
     }
@@ -21314,100 +18586,18 @@ impl crate::FlatSerialize for Part {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ListPartResult {
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Key")]
-    pub key: String,
-    #[serde(rename = "UploadId")]
-    pub upload_id: String,
-    #[serde(rename = "PartNumberMarker")]
-    pub part_number_marker: i64,
-    #[serde(rename = "NextPartNumberMarker")]
-    pub next_part_number_marker: i64,
-    #[serde(rename = "MaxParts")]
-    pub max_parts: i64,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "Part")]
-    pub part: Vec<Part>,
-}
-
-impl crate::FlatSerialize for ListPartResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.upload_id,
-            &format!("{}.UploadId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.part_number_marker,
-            &format!("{}.PartNumberMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_part_number_marker,
-            &format!("{}.NextPartNumberMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_parts,
-            &format!("{}.MaxParts", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.part, &format!("{}.Part", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ObjectAclResponseAccessControlPolicyAccessControlList {
+pub struct ObjectAclResponseAccessControlList {
     #[serde(rename = "Grant")]
     pub grant: ObjectACL,
 }
 
-impl crate::FlatSerialize for ObjectAclResponseAccessControlPolicyAccessControlList {
+impl crate::FlatSerialize for ObjectAclResponseAccessControlList {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.grant, &format!("{}.Grant", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ObjectAclResponseAccessControlPolicy {
-    #[serde(rename = "Owner")]
-    pub owner: Owner,
-    #[serde(rename = "AccessControlList")]
-    pub access_control_list: ObjectAclResponseAccessControlPolicyAccessControlList,
-}
-
-impl crate::FlatSerialize for ObjectAclResponseAccessControlPolicy {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_control_list,
-            &format!("{}.AccessControlList", name),
-            params,
-        );
     }
 }
 
@@ -21425,23 +18615,6 @@ impl crate::FlatSerialize for ObjectTaggingbody {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.tagging, &format!("{}.Tagging", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TaggingResponseTagging {
-    #[serde(rename = "TagSet")]
-    pub tag_set: TagSet,
-}
-
-impl crate::FlatSerialize for TaggingResponseTagging {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_set, &format!("{}.TagSet", name), params);
     }
 }
 
@@ -21608,34 +18781,6 @@ impl crate::FlatSerialize for LiveChannelPlayUrls {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CreateLiveChannelResult {
-    #[serde(rename = "PublishUrls")]
-    pub publish_urls: LiveChannelPublishUrls,
-    #[serde(rename = "PlayUrls")]
-    pub play_urls: LiveChannelPlayUrls,
-}
-
-impl crate::FlatSerialize for CreateLiveChannelResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.publish_urls,
-            &format!("{}.PublishUrls", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.play_urls,
-            &format!("{}.PlayUrls", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct LiveChannel {
     #[serde(rename = "Name")]
     pub name: String,
@@ -21684,77 +18829,6 @@ impl crate::FlatSerialize for LiveChannel {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct ListLiveChannelResult {
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "Marker")]
-    pub marker: String,
-    #[serde(rename = "MaxKeys")]
-    pub max_keys: i64,
-    #[serde(rename = "IsTruncated")]
-    pub is_truncated: bool,
-    #[serde(rename = "NextMarker")]
-    pub next_marker: String,
-    #[serde(rename = "LiveChannel")]
-    pub live_channel: Vec<LiveChannel>,
-}
-
-impl crate::FlatSerialize for ListLiveChannelResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.marker, &format!("{}.Marker", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_truncated,
-            &format!("{}.IsTruncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_marker,
-            &format!("{}.NextMarker", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.live_channel,
-            &format!("{}.LiveChannel", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ChannelConfiguration {
-    #[serde(rename = "Description")]
-    pub description: String,
-    #[serde(rename = "Status")]
-    pub status: String,
-    #[serde(rename = "Target")]
-    pub target: LiveChannelTarget,
-}
-
-impl crate::FlatSerialize for ChannelConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.target, &format!("{}.Target", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct LiveRecord {
     #[serde(rename = "StartTime")]
     pub start_time: String,
@@ -21779,27 +18853,6 @@ impl crate::FlatSerialize for LiveRecord {
         crate::FlatSerialize::flat_serialize(
             &self.remote_addr,
             &format!("{}.RemoteAddr", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ChannelHistory {
-    #[serde(rename = "LiveRecord")]
-    pub live_record: Vec<LiveRecord>,
-}
-
-impl crate::FlatSerialize for ChannelHistory {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.live_record,
-            &format!("{}.LiveRecord", name),
             params,
         );
     }
@@ -21870,43 +18923,6 @@ impl crate::FlatSerialize for LiveChannelAudio {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.codec, &format!("{}.Codec", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ChannelStat {
-    #[serde(rename = "Status")]
-    pub status: String,
-    #[serde(rename = "ConnectedTime")]
-    pub connected_time: String,
-    #[serde(rename = "RemoteAddr")]
-    pub remote_addr: String,
-    #[serde(rename = "Video")]
-    pub video: LiveChannelVideo,
-    #[serde(rename = "Audio")]
-    pub audio: LiveChannelAudio,
-}
-
-impl crate::FlatSerialize for ChannelStat {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.connected_time,
-            &format!("{}.ConnectedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.remote_addr,
-            &format!("{}.RemoteAddr", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.video, &format!("{}.Video", name), params);
-        crate::FlatSerialize::flat_serialize(&self.audio, &format!("{}.Audio", name), params);
     }
 }
 
@@ -22262,114 +19278,6 @@ impl crate::FlatSerialize for ProcessConfigurationbody {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct FunctionComputeConfigurationFilterKey {
-    #[serde(rename = "Prefix")]
-    pub prefix: String,
-    #[serde(rename = "Suffix")]
-    pub suffix: String,
-}
-
-impl crate::FlatSerialize for FunctionComputeConfigurationFilterKey {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.suffix, &format!("{}.Suffix", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct FunctionComputeConfigurationFilter {
-    #[serde(rename = "Key")]
-    pub key: FunctionComputeConfigurationFilterKey,
-}
-
-impl crate::FlatSerialize for FunctionComputeConfigurationFilter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct FunctionComputeConfigurationFunction {
-    #[serde(rename = "Arn")]
-    pub arn: String,
-    #[serde(rename = "AssumeRole")]
-    pub assume_role: String,
-}
-
-impl crate::FlatSerialize for FunctionComputeConfigurationFunction {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.arn, &format!("{}.Arn", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.assume_role,
-            &format!("{}.AssumeRole", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct FunctionComputeConfiguration {
-    #[serde(rename = "ID")]
-    pub id: String,
-    #[serde(rename = "Event")]
-    pub event: Vec<String>,
-    #[serde(rename = "Filter")]
-    pub filter: FunctionComputeConfigurationFilter,
-    #[serde(rename = "Function")]
-    pub function: FunctionComputeConfigurationFunction,
-}
-
-impl crate::FlatSerialize for FunctionComputeConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-        crate::FlatSerialize::flat_serialize(&self.event, &format!("{}.Event", name), params);
-        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.Filter", name), params);
-        crate::FlatSerialize::flat_serialize(&self.function, &format!("{}.Function", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct EventNotificationConfiguration {
-    #[serde(rename = "FunctionComputeConfiguration")]
-    pub function_compute_configuration: Vec<FunctionComputeConfiguration>,
-}
-
-impl crate::FlatSerialize for EventNotificationConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.function_compute_configuration,
-            &format!("{}.FunctionComputeConfiguration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct CreateDataLakeCachePrefetchJob {
     #[serde(rename = "Includes")]
     pub includes: Vec<String>,
@@ -22407,218 +19315,6 @@ impl crate::FlatSerialize for PrefetchJobbody {
         crate::FlatSerialize::flat_serialize(
             &self.create_data_lake_cache_prefetch_job,
             &format!("{}.CreateDataLakeCachePrefetchJob", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct JobID {
-    #[serde(rename = "ID")]
-    pub id: String,
-}
-
-impl crate::FlatSerialize for JobID {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobRulePrefixFilterIncludes {
-    #[serde(rename = "Include")]
-    pub include: Vec<String>,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJobRulePrefixFilterIncludes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.include, &format!("{}.Include", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobRulePrefixFilter {
-    #[serde(rename = "Includes")]
-    pub includes: DataLakeStorageTransferJobRulePrefixFilterIncludes,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJobRulePrefixFilter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.includes, &format!("{}.Includes", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobRule {
-    #[serde(rename = "PrefixFilter")]
-    pub prefix_filter: DataLakeStorageTransferJobRulePrefixFilter,
-    #[serde(rename = "Tag")]
-    pub tag: String,
-    #[serde(rename = "ExecutorRoleId")]
-    pub executor_role_id: String,
-    #[serde(rename = "LogBaseDir")]
-    pub log_base_dir: String,
-    #[serde(rename = "NeedVerify")]
-    pub need_verify: bool,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJobRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_filter,
-            &format!("{}.PrefixFilter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.executor_role_id,
-            &format!("{}.ExecutorRoleId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.log_base_dir,
-            &format!("{}.LogBaseDir", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.need_verify,
-            &format!("{}.NeedVerify", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobProgressInfo {
-    #[serde(rename = "Percent")]
-    pub percent: i64,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJobProgressInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.percent, &format!("{}.Percent", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJob {
-    #[serde(rename = "Id")]
-    pub id: String,
-    #[serde(rename = "HistoryId")]
-    pub history_id: String,
-    #[serde(rename = "Bucket")]
-    pub bucket: String,
-    #[serde(rename = "Type")]
-    pub r#type: i32,
-    #[serde(rename = "Status")]
-    pub status: String,
-    #[serde(rename = "CreateTime")]
-    pub create_time: i64,
-    #[serde(rename = "LastModifyTime")]
-    pub last_modify_time: i64,
-    #[serde(rename = "Rule")]
-    pub rule: DataLakeStorageTransferJobRule,
-    #[serde(rename = "ProgressInfo")]
-    pub progress_info: DataLakeStorageTransferJobProgressInfo,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJob {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.Id", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.history_id,
-            &format!("{}.HistoryId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modify_time,
-            &format!("{}.LastModifyTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.progress_info,
-            &format!("{}.ProgressInfo", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobs {
-    #[serde(rename = "Truncated")]
-    pub truncated: String,
-    #[serde(rename = "NextMarkerBucket")]
-    pub next_marker_bucket: String,
-    #[serde(rename = "NextMarkerJobId")]
-    pub next_marker_job_id: String,
-    #[serde(rename = "DataLakeStorageTransferJob")]
-    pub data_lake_storage_transfer_job: Vec<DataLakeStorageTransferJob>,
-}
-
-impl crate::FlatSerialize for DataLakeStorageTransferJobs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.truncated,
-            &format!("{}.Truncated", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_marker_bucket,
-            &format!("{}.NextMarkerBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_marker_job_id,
-            &format!("{}.NextMarkerJobId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.data_lake_storage_transfer_job,
-            &format!("{}.DataLakeStorageTransferJob", name),
             params,
         );
     }
@@ -22827,106 +19523,6 @@ impl crate::FlatSerialize for EncodeType {
 
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum BucketVersioningStatus {
-    #[serde(rename = "Enabled")]
-    Enabled,
-    #[serde(rename = "Suspended")]
-    Suspended,
-}
-
-impl Default for BucketVersioningStatus {
-    fn default() -> Self {
-        Self::Enabled
-    }
-}
-
-impl BucketVersioningStatus {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::Enabled => "Enabled",
-            Self::Suspended => "Suspended",
-        }
-    }
-}
-
-impl std::fmt::Display for BucketVersioningStatus {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.as_str())
-    }
-}
-
-impl<'a> From<&'a BucketVersioningStatus> for crate::QueryValue<'a> {
-    fn from(value: &'a BucketVersioningStatus) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for BucketVersioningStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
-pub enum ObjectACL {
-    #[serde(rename = "private")]
-    Private,
-    #[serde(rename = "public-read")]
-    PublicRead,
-    #[serde(rename = "public-read-write")]
-    PublicReadWrite,
-    #[serde(rename = "default")]
-    Default,
-}
-
-impl Default for ObjectACL {
-    fn default() -> Self {
-        Self::Private
-    }
-}
-
-impl ObjectACL {
-    /// Returns the string value of this enum variant as used in the API.
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Self::Private => "private",
-            Self::PublicRead => "public-read",
-            Self::PublicReadWrite => "public-read-write",
-            Self::Default => "default",
-        }
-    }
-}
-
-impl std::fmt::Display for ObjectACL {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.as_str())
-    }
-}
-
-impl<'a> From<&'a ObjectACL> for crate::QueryValue<'a> {
-    fn from(value: &'a ObjectACL) -> Self {
-        crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for ObjectACL {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
-/// Enum type marshalled as String
-#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum BucketWormState {
     #[serde(rename = "InProgress")]
     InProgress,
@@ -22963,6 +19559,53 @@ impl<'a> From<&'a BucketWormState> for crate::QueryValue<'a> {
 }
 
 impl crate::FlatSerialize for BucketWormState {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum BucketVersioningStatus {
+    #[serde(rename = "Enabled")]
+    Enabled,
+    #[serde(rename = "Suspended")]
+    Suspended,
+}
+
+impl Default for BucketVersioningStatus {
+    fn default() -> Self {
+        Self::Enabled
+    }
+}
+
+impl BucketVersioningStatus {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Enabled => "Enabled",
+            Self::Suspended => "Suspended",
+        }
+    }
+}
+
+impl std::fmt::Display for BucketVersioningStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
+impl<'a> From<&'a BucketVersioningStatus> for crate::QueryValue<'a> {
+    fn from(value: &'a BucketVersioningStatus) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for BucketVersioningStatus {
     fn flat_serialize<'a>(
         &'a self,
         name: &str,
@@ -23363,6 +20006,59 @@ impl crate::FlatSerialize for MetaQueryOrder {
 
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum ObjectACL {
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "public-read")]
+    PublicRead,
+    #[serde(rename = "public-read-write")]
+    PublicReadWrite,
+    #[serde(rename = "default")]
+    Default,
+}
+
+impl Default for ObjectACL {
+    fn default() -> Self {
+        Self::Private
+    }
+}
+
+impl ObjectACL {
+    /// Returns the string value of this enum variant as used in the API.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Private => "private",
+            Self::PublicRead => "public-read",
+            Self::PublicReadWrite => "public-read-write",
+            Self::Default => "default",
+        }
+    }
+}
+
+impl std::fmt::Display for ObjectACL {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.as_str())
+    }
+}
+
+impl<'a> From<&'a ObjectACL> for crate::QueryValue<'a> {
+    fn from(value: &'a ObjectACL) -> Self {
+        crate::QueryValue::from(value.as_str())
+    }
+}
+
+impl crate::FlatSerialize for ObjectACL {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        params.push((name.to_string().into(), self.into()));
+    }
+}
+
+/// Enum type marshalled as String
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum CompressionType {
     #[serde(rename = "None")]
     None,
@@ -23512,8 +20208,20 @@ impl crate::FlatSerialize for JSONType {
 pub struct ListBucketsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListAllMyBucketsResult")]
-    pub list_all_my_buckets_result: BucketsResult,
+    #[serde(rename = "Owner")]
+    pub owner: Owner,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "Marker")]
+    pub marker: String,
+    #[serde(rename = "MaxKeys")]
+    pub max_keys: i64,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "NextMarker")]
+    pub next_marker: String,
+    #[serde(rename = "Buckets")]
+    pub buckets: ResponseBuckets,
 }
 
 impl crate::ToCodeMessage for ListBucketsResponse {
@@ -23527,8 +20235,8 @@ impl crate::ToCodeMessage for ListBucketsResponse {
 pub struct DescribeRegionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RegionInfoList")]
-    pub region_info_list: InfoList,
+    #[serde(rename = "RegionInfo")]
+    pub region_info: Vec<RegionInfo>,
 }
 
 impl crate::ToCodeMessage for DescribeRegionsResponse {
@@ -23542,8 +20250,6 @@ impl crate::ToCodeMessage for DescribeRegionsResponse {
 pub struct GetBucketStatResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketStat")]
-    pub bucket_stat: BucketStat,
 }
 
 impl crate::ToCodeMessage for GetBucketStatResponse {
@@ -23557,8 +20263,26 @@ impl crate::ToCodeMessage for GetBucketStatResponse {
 pub struct ListObjectsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListBucketResult")]
-    pub list_bucket_result: ObjectsResponseListBucketResult,
+    #[serde(rename = "Name")]
+    pub name: String,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "Marker")]
+    pub marker: String,
+    #[serde(rename = "MaxKeys")]
+    pub max_keys: i32,
+    #[serde(rename = "Delimiter")]
+    pub delimiter: String,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
+    #[serde(rename = "NextMarker")]
+    pub next_marker: String,
+    #[serde(rename = "Contents")]
+    pub contents: Vec<ObjectSummary>,
+    #[serde(rename = "CommonPrefixes")]
+    pub common_prefixes: Vec<CommonPrefix>,
 }
 
 impl crate::ToCodeMessage for ListObjectsResponse {
@@ -23572,8 +20296,30 @@ impl crate::ToCodeMessage for ListObjectsResponse {
 pub struct ListObjectsV2Response {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListBucketResult")]
-    pub list_bucket_result: V2ResponseListBucketResult,
+    #[serde(rename = "Name")]
+    pub name: String,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "StartAfter")]
+    pub start_after: String,
+    #[serde(rename = "MaxKeys")]
+    pub max_keys: i32,
+    #[serde(rename = "Delimiter")]
+    pub delimiter: String,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "KeyCount")]
+    pub key_count: i32,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
+    #[serde(rename = "ContinuationToken")]
+    pub continuation_token: String,
+    #[serde(rename = "NextContinuationToken")]
+    pub next_continuation_token: String,
+    #[serde(rename = "Contents")]
+    pub contents: Vec<ObjectSummary>,
+    #[serde(rename = "CommonPrefixes")]
+    pub common_prefixes: Vec<CommonPrefix>,
 }
 
 impl crate::ToCodeMessage for ListObjectsV2Response {
@@ -23587,8 +20333,6 @@ impl crate::ToCodeMessage for ListObjectsV2Response {
 pub struct GetBucketInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketInfo")]
-    pub bucket_info: BucketInfo,
 }
 
 impl crate::ToCodeMessage for GetBucketInfoResponse {
@@ -23602,8 +20346,6 @@ impl crate::ToCodeMessage for GetBucketInfoResponse {
 pub struct GetBucketLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "LocationConstraint")]
-    pub location_constraint: String,
 }
 
 impl crate::ToCodeMessage for GetBucketLocationResponse {
@@ -23617,8 +20359,6 @@ impl crate::ToCodeMessage for GetBucketLocationResponse {
 pub struct ListAccessPointsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListAccessPointsResult")]
-    pub list_access_points_result: ListAccessPointsResult,
 }
 
 impl crate::ToCodeMessage for ListAccessPointsResponse {
@@ -23632,8 +20372,6 @@ impl crate::ToCodeMessage for ListAccessPointsResponse {
 pub struct GetAccessPointResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "GetAccessPointResult")]
-    pub get_access_point_result: GetAccessPointResult,
 }
 
 impl crate::ToCodeMessage for GetAccessPointResponse {
@@ -23660,8 +20398,6 @@ impl crate::ToCodeMessage for GetAccessPointPolicyResponse {
 pub struct CreateAccessPointResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CreateAccessPointResult")]
-    pub create_access_point_result: CreateAccessPointResult,
 }
 
 impl crate::ToCodeMessage for CreateAccessPointResponse {
@@ -23691,8 +20427,16 @@ impl crate::ToCodeMessage for InitiateBucketWormResponse {
 pub struct GetBucketWormResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "WormConfiguration")]
-    pub worm_configuration: WormConfiguration,
+    #[serde(rename = "WormId")]
+    pub worm_id: String,
+    #[serde(rename = "State")]
+    pub state: BucketWormState,
+    #[serde(rename = "RetentionPeriodInDays")]
+    pub retention_period_in_days: i32,
+    #[serde(rename = "CreationDate")]
+    pub creation_date: String,
+    #[serde(rename = "ExpirationDate")]
+    pub expiration_date: String,
 }
 
 impl crate::ToCodeMessage for GetBucketWormResponse {
@@ -23706,8 +20450,10 @@ impl crate::ToCodeMessage for GetBucketWormResponse {
 pub struct GetBucketAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AccessControlPolicy")]
-    pub access_control_policy: BucketAclResponseAccessControlPolicy,
+    #[serde(rename = "Owner")]
+    pub owner: Owner,
+    #[serde(rename = "AccessControlList")]
+    pub access_control_list: BucketAclResponseAccessControlList,
 }
 
 impl crate::ToCodeMessage for GetBucketAclResponse {
@@ -23721,8 +20467,6 @@ impl crate::ToCodeMessage for GetBucketAclResponse {
 pub struct GetBucketLifecycleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "LifecycleConfiguration")]
-    pub lifecycle_configuration: LifecycleConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketLifecycleResponse {
@@ -23736,8 +20480,8 @@ impl crate::ToCodeMessage for GetBucketLifecycleResponse {
 pub struct GetBucketTransferAccelerationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "TransferAccelerationConfiguration")]
-    pub transfer_acceleration_configuration: AccelerationConfiguration,
+    #[serde(rename = "Enabled")]
+    pub enabled: bool,
 }
 
 impl crate::ToCodeMessage for GetBucketTransferAccelerationResponse {
@@ -23751,8 +20495,8 @@ impl crate::ToCodeMessage for GetBucketTransferAccelerationResponse {
 pub struct GetBucketVersioningResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "VersioningConfiguration")]
-    pub versioning_configuration: ResponseVersioningConfiguration,
+    #[serde(rename = "Status")]
+    pub status: BucketVersioningStatus,
 }
 
 impl crate::ToCodeMessage for GetBucketVersioningResponse {
@@ -23766,8 +20510,32 @@ impl crate::ToCodeMessage for GetBucketVersioningResponse {
 pub struct ListObjectVersionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListVersionsResult")]
-    pub list_versions_result: VersionsResult,
+    #[serde(rename = "Name")]
+    pub name: String,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "KeyMarker")]
+    pub key_marker: String,
+    #[serde(rename = "VersionIdMarker")]
+    pub version_id_marker: String,
+    #[serde(rename = "MaxKeys")]
+    pub max_keys: i64,
+    #[serde(rename = "Delimiter")]
+    pub delimiter: String,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
+    #[serde(rename = "NextKeyMarker")]
+    pub next_key_marker: String,
+    #[serde(rename = "NextVersionIdMarker")]
+    pub next_version_id_marker: String,
+    #[serde(rename = "Version")]
+    pub version: Vec<ObjectVersion>,
+    #[serde(rename = "DeleteMarker")]
+    pub delete_marker: Vec<DeleteMarkerEntry>,
+    #[serde(rename = "CommonPrefixes")]
+    pub common_prefixes: Vec<CommonPrefix>,
 }
 
 impl crate::ToCodeMessage for ListObjectVersionsResponse {
@@ -23794,8 +20562,8 @@ impl crate::ToCodeMessage for GetBucketPolicyResponse {
 pub struct GetBucketPolicyStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "PolicyStatus")]
-    pub policy_status: PolicyStatus,
+    #[serde(rename = "IsPublic")]
+    pub is_public: bool,
 }
 
 impl crate::ToCodeMessage for GetBucketPolicyStatusResponse {
@@ -23825,8 +20593,8 @@ impl crate::ToCodeMessage for PutBucketReplicationResponse {
 pub struct GetBucketReplicationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ReplicationConfiguration")]
-    pub replication_configuration: ResponseReplicationConfiguration,
+    #[serde(rename = "Rule")]
+    pub rule: Vec<ReplicationRule>,
 }
 
 impl crate::ToCodeMessage for GetBucketReplicationResponse {
@@ -23840,8 +20608,12 @@ impl crate::ToCodeMessage for GetBucketReplicationResponse {
 pub struct GetBucketReplicationLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ReplicationLocation")]
-    pub replication_location: ReplicationLocation,
+    #[serde(rename = "Location")]
+    pub location: Vec<String>,
+    #[serde(rename = "LocationTransferTypeConstraint")]
+    pub location_transfer_type_constraint: TransferTypeConstraint,
+    #[serde(rename = "LocationRTCConstraint")]
+    pub location_rtc_constraint: CConstraint,
 }
 
 impl crate::ToCodeMessage for GetBucketReplicationLocationResponse {
@@ -23855,8 +20627,8 @@ impl crate::ToCodeMessage for GetBucketReplicationLocationResponse {
 pub struct GetBucketReplicationProgressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ReplicationProgress")]
-    pub replication_progress: ReplicationProgress,
+    #[serde(rename = "Rule")]
+    pub rule: Vec<ReplicationProgressRule>,
 }
 
 impl crate::ToCodeMessage for GetBucketReplicationProgressResponse {
@@ -23870,8 +20642,6 @@ impl crate::ToCodeMessage for GetBucketReplicationProgressResponse {
 pub struct GetBucketInventoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "InventoryConfiguration")]
-    pub inventory_configuration: InventoryConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketInventoryResponse {
@@ -23885,8 +20655,12 @@ impl crate::ToCodeMessage for GetBucketInventoryResponse {
 pub struct ListBucketInventoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListInventoryConfigurationsResult")]
-    pub list_inventory_configurations_result: ConfigurationsResult,
+    #[serde(rename = "InventoryConfiguration")]
+    pub inventory_configuration: Vec<InventoryConfiguration>,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "NextContinuationToken")]
+    pub next_continuation_token: String,
 }
 
 impl crate::ToCodeMessage for ListBucketInventoryResponse {
@@ -23900,8 +20674,6 @@ impl crate::ToCodeMessage for ListBucketInventoryResponse {
 pub struct GetBucketLoggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketLoggingStatus")]
-    pub bucket_logging_status: BucketLoggingStatus,
 }
 
 impl crate::ToCodeMessage for GetBucketLoggingResponse {
@@ -23915,8 +20687,6 @@ impl crate::ToCodeMessage for GetBucketLoggingResponse {
 pub struct GetUserDefinedLogFieldsConfigResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "UserDefinedLogFieldsConfiguration")]
-    pub user_defined_log_fields_configuration: UserDefinedLogFieldsConfiguration,
 }
 
 impl crate::ToCodeMessage for GetUserDefinedLogFieldsConfigResponse {
@@ -23930,8 +20700,6 @@ impl crate::ToCodeMessage for GetUserDefinedLogFieldsConfigResponse {
 pub struct GetBucketWebsiteResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "WebsiteConfiguration")]
-    pub website_configuration: WebsiteConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketWebsiteResponse {
@@ -23945,8 +20713,6 @@ impl crate::ToCodeMessage for GetBucketWebsiteResponse {
 pub struct GetBucketRefererResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RefererConfiguration")]
-    pub referer_configuration: RefererConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketRefererResponse {
@@ -23960,8 +20726,8 @@ impl crate::ToCodeMessage for GetBucketRefererResponse {
 pub struct GetBucketTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Tagging")]
-    pub tagging: TagsResponseTagging,
+    #[serde(rename = "TagSet")]
+    pub tag_set: TagSet,
 }
 
 impl crate::ToCodeMessage for GetBucketTagsResponse {
@@ -23975,9 +20741,12 @@ impl crate::ToCodeMessage for GetBucketTagsResponse {
 pub struct ListUserDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListBucketDataRedundancyTransition")]
-    pub list_bucket_data_redundancy_transition:
-        UserDataRedundancyTransitionResponseListBucketDataRedundancyTransition,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "NextContinuationToken")]
+    pub next_continuation_token: String,
+    #[serde(rename = "BucketDataRedundancyTransition")]
+    pub bucket_data_redundancy_transition: Vec<BucketDataRedundancyTransition>,
 }
 
 impl crate::ToCodeMessage for ListUserDataRedundancyTransitionResponse {
@@ -23991,9 +20760,8 @@ impl crate::ToCodeMessage for ListUserDataRedundancyTransitionResponse {
 pub struct ListBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListBucketDataRedundancyTransition")]
-    pub list_bucket_data_redundancy_transition:
-        BucketDataRedundancyTransitionResponseListBucketDataRedundancyTransition,
+    #[serde(rename = "BucketDataRedundancyTransition")]
+    pub bucket_data_redundancy_transition: BucketDataRedundancyTransition,
 }
 
 impl crate::ToCodeMessage for ListBucketDataRedundancyTransitionResponse {
@@ -24007,8 +20775,6 @@ impl crate::ToCodeMessage for ListBucketDataRedundancyTransitionResponse {
 pub struct GetBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketDataRedundancyTransition")]
-    pub bucket_data_redundancy_transition: BucketDataRedundancyTransition,
 }
 
 impl crate::ToCodeMessage for GetBucketDataRedundancyTransitionResponse {
@@ -24022,8 +20788,8 @@ impl crate::ToCodeMessage for GetBucketDataRedundancyTransitionResponse {
 pub struct CreateBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketDataRedundancyTransition")]
-    pub bucket_data_redundancy_transition: ResponseBucketDataRedundancyTransition,
+    #[serde(rename = "TaskId")]
+    pub task_id: String,
 }
 
 impl crate::ToCodeMessage for CreateBucketDataRedundancyTransitionResponse {
@@ -24037,8 +20803,8 @@ impl crate::ToCodeMessage for CreateBucketDataRedundancyTransitionResponse {
 pub struct GetBucketEncryptionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ServerSideEncryptionRule")]
-    pub server_side_encryption_rule: EncryptionRule,
+    #[serde(rename = "ApplyServerSideEncryptionByDefault")]
+    pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
 }
 
 impl crate::ToCodeMessage for GetBucketEncryptionResponse {
@@ -24052,8 +20818,8 @@ impl crate::ToCodeMessage for GetBucketEncryptionResponse {
 pub struct GetBucketRequestPaymentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "RequestPaymentConfiguration")]
-    pub request_payment_configuration: PaymentConfiguration,
+    #[serde(rename = "Payer")]
+    pub payer: String,
 }
 
 impl crate::ToCodeMessage for GetBucketRequestPaymentResponse {
@@ -24067,8 +20833,10 @@ impl crate::ToCodeMessage for GetBucketRequestPaymentResponse {
 pub struct GetBucketCorsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CORSConfiguration")]
-    pub cors_configuration: SConfiguration,
+    #[serde(rename = "CORSRule")]
+    pub cors_rule: Vec<CORSRule>,
+    #[serde(rename = "ResponseVary")]
+    pub response_vary: bool,
 }
 
 impl crate::ToCodeMessage for GetBucketCorsResponse {
@@ -24110,8 +20878,6 @@ impl crate::ToCodeMessage for OptionObjectResponse {
 pub struct GetBucketAccessMonitorResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AccessMonitorConfiguration")]
-    pub access_monitor_configuration: AccessMonitorConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketAccessMonitorResponse {
@@ -24125,8 +20891,14 @@ impl crate::ToCodeMessage for GetBucketAccessMonitorResponse {
 pub struct GetMetaQueryStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "MetaQueryStatus")]
-    pub meta_query_status: QueryStatus,
+    #[serde(rename = "State")]
+    pub state: String,
+    #[serde(rename = "Phase")]
+    pub phase: String,
+    #[serde(rename = "CreateTime")]
+    pub create_time: String,
+    #[serde(rename = "UpdateTime")]
+    pub update_time: String,
 }
 
 impl crate::ToCodeMessage for GetMetaQueryStatusResponse {
@@ -24140,8 +20912,6 @@ impl crate::ToCodeMessage for GetMetaQueryStatusResponse {
 pub struct DoMetaQueryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "MetaQuery")]
-    pub meta_query: MetaQueryResp,
 }
 
 impl crate::ToCodeMessage for DoMetaQueryResponse {
@@ -24155,8 +20925,12 @@ impl crate::ToCodeMessage for DoMetaQueryResponse {
 pub struct ListBucketAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AntiDDOSListConfiguration")]
-    pub anti_ddos_list_configuration: BucketAntiDDosInfoResponseAntiDDOSListConfiguration,
+    #[serde(rename = "Marker")]
+    pub marker: String,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "AntiDDOSConfiguration")]
+    pub anti_ddos_configuration: Vec<BucketAntiDDOSInfo>,
 }
 
 impl crate::ToCodeMessage for ListBucketAntiDDosInfoResponse {
@@ -24186,8 +20960,8 @@ impl crate::ToCodeMessage for InitUserAntiDDosInfoResponse {
 pub struct GetUserAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AntiDDOSListConfiguration")]
-    pub anti_ddos_list_configuration: UserAntiDDosInfoResponseAntiDDOSListConfiguration,
+    #[serde(rename = "AntiDDOSConfiguration")]
+    pub anti_ddos_configuration: Vec<UserAntiDDOSInfo>,
 }
 
 impl crate::ToCodeMessage for GetUserAntiDDosInfoResponse {
@@ -24201,8 +20975,8 @@ impl crate::ToCodeMessage for GetUserAntiDDosInfoResponse {
 pub struct GetBucketResourceGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "BucketResourceGroupConfiguration")]
-    pub bucket_resource_group_configuration: GroupConfiguration,
+    #[serde(rename = "ResourceGroupId")]
+    pub resource_group_id: String,
 }
 
 impl crate::ToCodeMessage for GetBucketResourceGroupResponse {
@@ -24216,8 +20990,12 @@ impl crate::ToCodeMessage for GetBucketResourceGroupResponse {
 pub struct ListCnameResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListCnameResult")]
-    pub list_cname_result: CnameResult,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "Owner")]
+    pub owner: String,
+    #[serde(rename = "Cname")]
+    pub cname: Vec<CnameInfo>,
 }
 
 impl crate::ToCodeMessage for ListCnameResponse {
@@ -24231,8 +21009,6 @@ impl crate::ToCodeMessage for ListCnameResponse {
 pub struct GetCnameTokenResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CnameToken")]
-    pub cname_token: CnameToken,
 }
 
 impl crate::ToCodeMessage for GetCnameTokenResponse {
@@ -24246,8 +21022,6 @@ impl crate::ToCodeMessage for GetCnameTokenResponse {
 pub struct CreateCnameTokenResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CnameToken")]
-    pub cname_token: CnameToken,
 }
 
 impl crate::ToCodeMessage for CreateCnameTokenResponse {
@@ -24261,8 +21035,8 @@ impl crate::ToCodeMessage for CreateCnameTokenResponse {
 pub struct ListStyleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "StyleList")]
-    pub style_list: StyleList,
+    #[serde(rename = "Style")]
+    pub style: Vec<StyleInfo>,
 }
 
 impl crate::ToCodeMessage for ListStyleResponse {
@@ -24276,8 +21050,6 @@ impl crate::ToCodeMessage for ListStyleResponse {
 pub struct GetStyleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Style")]
-    pub style: StyleInfo,
 }
 
 impl crate::ToCodeMessage for GetStyleResponse {
@@ -24291,8 +21063,6 @@ impl crate::ToCodeMessage for GetStyleResponse {
 pub struct GetBucketHttpsConfigResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "HttpsConfiguration")]
-    pub https_configuration: HttpsConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketHttpsConfigResponse {
@@ -24306,8 +21076,10 @@ impl crate::ToCodeMessage for GetBucketHttpsConfigResponse {
 pub struct CreateAccessPointForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CreateAccessPointForObjectProcessResult")]
-    pub create_access_point_for_object_process_result: CreateAccessPointForObjectProcessResult,
+    #[serde(rename = "AccessPointForObjectProcessArn")]
+    pub access_point_for_object_process_arn: String,
+    #[serde(rename = "AccessPointForObjectProcessAlias")]
+    pub access_point_for_object_process_alias: String,
 }
 
 impl crate::ToCodeMessage for CreateAccessPointForObjectProcessResponse {
@@ -24321,8 +21093,26 @@ impl crate::ToCodeMessage for CreateAccessPointForObjectProcessResponse {
 pub struct GetAccessPointForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "GetAccessPointForObjectProcessResult")]
-    pub get_access_point_for_object_process_result: GetAccessPointForObjectProcessResult,
+    #[serde(rename = "AccessPointNameForObjectProcess")]
+    pub access_point_name_for_object_process: String,
+    #[serde(rename = "AccessPointForObjectProcessAlias")]
+    pub access_point_for_object_process_alias: String,
+    #[serde(rename = "AccessPointName")]
+    pub access_point_name: String,
+    #[serde(rename = "AccountId")]
+    pub account_id: String,
+    #[serde(rename = "AccessPointForObjectProcessArn")]
+    pub access_point_for_object_process_arn: String,
+    #[serde(rename = "CreationDate")]
+    pub creation_date: String,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "Endpoints")]
+    pub endpoints: ResponseEndpoints,
+    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    pub allow_anonymous_access_for_object_process: String,
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
 
 impl crate::ToCodeMessage for GetAccessPointForObjectProcessResponse {
@@ -24336,8 +21126,14 @@ impl crate::ToCodeMessage for GetAccessPointForObjectProcessResponse {
 pub struct ListAccessPointsForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListAccessPointsForObjectProcessResult")]
-    pub list_access_points_for_object_process_result: PointsForObjectProcessResult,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "NextContinuationToken")]
+    pub next_continuation_token: String,
+    #[serde(rename = "AccountId")]
+    pub account_id: String,
+    #[serde(rename = "AccessPointsForObjectProcess")]
+    pub access_points_for_object_process: AccessPointsForObjectProcess,
 }
 
 impl crate::ToCodeMessage for ListAccessPointsForObjectProcessResponse {
@@ -24351,8 +21147,12 @@ impl crate::ToCodeMessage for ListAccessPointsForObjectProcessResponse {
 pub struct GetAccessPointConfigForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "GetAccessPointConfigForObjectProcessResult")]
-    pub get_access_point_config_for_object_process_result: ConfigForObjectProcessResult,
+    #[serde(rename = "ObjectProcessConfiguration")]
+    pub object_process_configuration: ObjectProcessConfiguration,
+    #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    pub allow_anonymous_access_for_object_process: String,
+    #[serde(rename = "PublicAccessBlockConfiguration")]
+    pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
 
 impl crate::ToCodeMessage for GetAccessPointConfigForObjectProcessResponse {
@@ -24379,8 +21179,6 @@ impl crate::ToCodeMessage for GetAccessPointPolicyForObjectProcessResponse {
 pub struct GetPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
 
 impl crate::ToCodeMessage for GetPublicAccessBlockResponse {
@@ -24394,8 +21192,6 @@ impl crate::ToCodeMessage for GetPublicAccessBlockResponse {
 pub struct GetBucketPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketPublicAccessBlockResponse {
@@ -24409,8 +21205,6 @@ impl crate::ToCodeMessage for GetBucketPublicAccessBlockResponse {
 pub struct GetAccessPointPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "PublicAccessBlockConfiguration")]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
 
 impl crate::ToCodeMessage for GetAccessPointPublicAccessBlockResponse {
@@ -24437,8 +21231,6 @@ impl crate::ToCodeMessage for PutAccessPointPublicAccessBlockResponse {
 pub struct GetBucketArchiveDirectReadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ArchiveDirectReadConfiguration")]
-    pub archive_direct_read_configuration: ArchiveDirectReadConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketArchiveDirectReadResponse {
@@ -24452,8 +21244,6 @@ impl crate::ToCodeMessage for GetBucketArchiveDirectReadResponse {
 pub struct GetBucketOverwriteConfigResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "OverwriteConfiguration")]
-    pub overwrite_configuration: OverwriteConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketOverwriteConfigResponse {
@@ -24491,8 +21281,10 @@ impl crate::IntoResponse for PutObjectResponse {
 pub struct CopyObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CopyObjectResult")]
-    pub copy_object_result: ObjectResult,
+    #[serde(rename = "ETag")]
+    pub e_tag: String,
+    #[serde(rename = "LastModified")]
+    pub last_modified: String,
     /// Header field from response: x-oss-copy-source-version-id
     #[serde(skip)]
     pub x_oss_copy_source_version_id: Option<String>,
@@ -24698,8 +21490,14 @@ impl crate::ToCodeMessage for CreateSelectObjectMetaResponse {
 pub struct InitiateMultipartUploadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "InitiateMultipartUploadResult")]
-    pub initiate_multipart_upload_result: InitiateMultipartUploadResult,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "UploadId")]
+    pub upload_id: String,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
 }
 
 impl crate::ToCodeMessage for InitiateMultipartUploadResponse {
@@ -24713,8 +21511,16 @@ impl crate::ToCodeMessage for InitiateMultipartUploadResponse {
 pub struct CompleteMultipartUploadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CompleteMultipartUploadResult")]
-    pub complete_multipart_upload_result: CompleteMultipartUploadResult,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
+    #[serde(rename = "Location")]
+    pub location: String,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "ETag")]
+    pub e_tag: String,
     /// Header field from response: x-oss-version-id
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
@@ -24731,8 +21537,10 @@ impl crate::ToCodeMessage for CompleteMultipartUploadResponse {
 pub struct UploadPartCopyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CopyPartResult")]
-    pub copy_part_result: CopyPartResult,
+    #[serde(rename = "LastModified")]
+    pub last_modified: String,
+    #[serde(rename = "ETag")]
+    pub e_tag: String,
     /// Header field from response: x-oss-copy-source-version-id
     #[serde(skip)]
     pub x_oss_copy_source_version_id: Option<String>,
@@ -24749,8 +21557,30 @@ impl crate::ToCodeMessage for UploadPartCopyResponse {
 pub struct ListMultipartUploadsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListMultipartUploadsResult")]
-    pub list_multipart_uploads_result: UploadsResult,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "EncodingType")]
+    pub encoding_type: String,
+    #[serde(rename = "KeyMarker")]
+    pub key_marker: String,
+    #[serde(rename = "UploadIdMarker")]
+    pub upload_id_marker: String,
+    #[serde(rename = "NextKeyMarker")]
+    pub next_key_marker: String,
+    #[serde(rename = "NextUploadIdMarker")]
+    pub next_upload_id_marker: String,
+    #[serde(rename = "MaxUploads")]
+    pub max_uploads: i64,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "Delimiter")]
+    pub delimiter: String,
+    #[serde(rename = "Upload")]
+    pub upload: Vec<Upload>,
+    #[serde(rename = "CommonPrefixes")]
+    pub common_prefixes: Vec<CommonPrefix>,
 }
 
 impl crate::ToCodeMessage for ListMultipartUploadsResponse {
@@ -24764,8 +21594,22 @@ impl crate::ToCodeMessage for ListMultipartUploadsResponse {
 pub struct ListPartsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListPartResult")]
-    pub list_part_result: ListPartResult,
+    #[serde(rename = "Bucket")]
+    pub bucket: String,
+    #[serde(rename = "Key")]
+    pub key: String,
+    #[serde(rename = "UploadId")]
+    pub upload_id: String,
+    #[serde(rename = "PartNumberMarker")]
+    pub part_number_marker: i64,
+    #[serde(rename = "NextPartNumberMarker")]
+    pub next_part_number_marker: i64,
+    #[serde(rename = "MaxParts")]
+    pub max_parts: i64,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "Part")]
+    pub part: Vec<Part>,
 }
 
 impl crate::ToCodeMessage for ListPartsResponse {
@@ -24795,8 +21639,10 @@ impl crate::ToCodeMessage for PutObjectAclResponse {
 pub struct GetObjectAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "AccessControlPolicy")]
-    pub access_control_policy: ObjectAclResponseAccessControlPolicy,
+    #[serde(rename = "Owner")]
+    pub owner: Owner,
+    #[serde(rename = "AccessControlList")]
+    pub access_control_list: ObjectAclResponseAccessControlList,
 }
 
 impl crate::ToCodeMessage for GetObjectAclResponse {
@@ -24861,8 +21707,8 @@ impl crate::ToCodeMessage for PutObjectTaggingResponse {
 pub struct GetObjectTaggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "Tagging")]
-    pub tagging: TaggingResponseTagging,
+    #[serde(rename = "TagSet")]
+    pub tag_set: TagSet,
 }
 
 impl crate::ToCodeMessage for GetObjectTaggingResponse {
@@ -24876,8 +21722,10 @@ impl crate::ToCodeMessage for GetObjectTaggingResponse {
 pub struct PutLiveChannelResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "CreateLiveChannelResult")]
-    pub create_live_channel_result: CreateLiveChannelResult,
+    #[serde(rename = "PublishUrls")]
+    pub publish_urls: LiveChannelPublishUrls,
+    #[serde(rename = "PlayUrls")]
+    pub play_urls: LiveChannelPlayUrls,
 }
 
 impl crate::ToCodeMessage for PutLiveChannelResponse {
@@ -24891,8 +21739,18 @@ impl crate::ToCodeMessage for PutLiveChannelResponse {
 pub struct ListLiveChannelResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "ListLiveChannelResult")]
-    pub list_live_channel_result: ListLiveChannelResult,
+    #[serde(rename = "Prefix")]
+    pub prefix: String,
+    #[serde(rename = "Marker")]
+    pub marker: String,
+    #[serde(rename = "MaxKeys")]
+    pub max_keys: i64,
+    #[serde(rename = "IsTruncated")]
+    pub is_truncated: bool,
+    #[serde(rename = "NextMarker")]
+    pub next_marker: String,
+    #[serde(rename = "LiveChannel")]
+    pub live_channel: Vec<LiveChannel>,
 }
 
 impl crate::ToCodeMessage for ListLiveChannelResponse {
@@ -24906,8 +21764,12 @@ impl crate::ToCodeMessage for ListLiveChannelResponse {
 pub struct GetLiveChannelInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "LiveChannelConfiguration")]
-    pub live_channel_configuration: ChannelConfiguration,
+    #[serde(rename = "Description")]
+    pub description: String,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "Target")]
+    pub target: LiveChannelTarget,
 }
 
 impl crate::ToCodeMessage for GetLiveChannelInfoResponse {
@@ -24921,8 +21783,8 @@ impl crate::ToCodeMessage for GetLiveChannelInfoResponse {
 pub struct GetLiveChannelHistoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "LiveChannelHistory")]
-    pub live_channel_history: ChannelHistory,
+    #[serde(rename = "LiveRecord")]
+    pub live_record: Vec<LiveRecord>,
 }
 
 impl crate::ToCodeMessage for GetLiveChannelHistoryResponse {
@@ -24936,8 +21798,16 @@ impl crate::ToCodeMessage for GetLiveChannelHistoryResponse {
 pub struct GetLiveChannelStatResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "LiveChannelStat")]
-    pub live_channel_stat: ChannelStat,
+    #[serde(rename = "Status")]
+    pub status: String,
+    #[serde(rename = "ConnectedTime")]
+    pub connected_time: String,
+    #[serde(rename = "RemoteAddr")]
+    pub remote_addr: String,
+    #[serde(rename = "Video")]
+    pub video: LiveChannelVideo,
+    #[serde(rename = "Audio")]
+    pub audio: LiveChannelAudio,
 }
 
 impl crate::ToCodeMessage for GetLiveChannelStatResponse {
@@ -24951,8 +21821,6 @@ impl crate::ToCodeMessage for GetLiveChannelStatResponse {
 pub struct GetBucketEventNotificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "NotificationConfiguration")]
-    pub notification_configuration: EventNotificationConfiguration,
 }
 
 impl crate::ToCodeMessage for GetBucketEventNotificationResponse {
@@ -24966,8 +21834,8 @@ impl crate::ToCodeMessage for GetBucketEventNotificationResponse {
 pub struct PutDataLakeCachePrefetchJobResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "DataLakeCachePrefetchJobID")]
-    pub data_lake_cache_prefetch_job_id: JobID,
+    #[serde(rename = "ID")]
+    pub id: String,
 }
 
 impl crate::ToCodeMessage for PutDataLakeCachePrefetchJobResponse {
@@ -24981,8 +21849,6 @@ impl crate::ToCodeMessage for PutDataLakeCachePrefetchJobResponse {
 pub struct ListDataLakeStorageTransferJobResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
-    #[serde(rename = "DataLakeStorageTransferJobs")]
-    pub data_lake_storage_transfer_jobs: DataLakeStorageTransferJobs,
 }
 
 impl crate::ToCodeMessage for ListDataLakeStorageTransferJobResponse {

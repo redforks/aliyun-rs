@@ -33,7 +33,8 @@ async fn test_list_buckets() {
     let result = conn.list_buckets(ListBuckets::new()).await.unwrap();
 
     println!("List buckets response:");
-    let buckets = &result.list_all_my_buckets_result.buckets.bucket;
+    let buckets = &result.buckets.bucket;
+    assert!(!buckets.is_empty());
     println!("Found {} bucket(s)", buckets.len());
     for bucket in buckets {
         println!(
@@ -44,31 +45,27 @@ async fn test_list_buckets() {
 }
 
 #[tokio::test]
+#[test_log::test]
 #[ignore]
 async fn test_describe_regions() {
     let conn = test_connection();
 
     let result = conn
-        .describe_regions(crate::oss::DescribeRegions::new())
-        .await;
+        .describe_regions(crate::oss::DescribeRegions::new().regions("oss-cn-hangzhou".to_owned()))
+        .await
+        .unwrap();
 
-    match result {
-        Ok(response) => {
-            println!("Describe regions response:");
-            let regions = &response.region_info_list.region_info;
-            println!("Found {} region(s)", regions.len());
-            for region in regions.iter().take(5) {
-                println!(
-                    "  - {} (internet: {}, internal: {})",
-                    region.region, region.internet_endpoint, region.internal_endpoint
-                );
-            }
-            if regions.len() > 5 {
-                println!("  ... and {} more regions", regions.len() - 5);
-            }
-        }
-        Err(e) => {
-            println!("Describe regions failed: {:?}", e);
-        }
+    println!("Describe regions response:");
+    let regions = &result.region_info;
+    assert!(!regions.is_empty());
+    println!("Found {} region(s)", regions.len());
+    for region in regions.iter().take(5) {
+        println!(
+            "  - {} (internet: {}, internal: {})",
+            region.region, region.internet_endpoint, region.internal_endpoint
+        );
+    }
+    if regions.len() > 5 {
+        println!("  ... and {} more regions", regions.len() - 5);
     }
 }
