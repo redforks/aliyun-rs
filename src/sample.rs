@@ -28,7 +28,7 @@ mod sealed {
 }
 
 #[derive(Clone)]
-pub struct Connection(crate::common::Connection);
+pub struct Connection(crate::common::Connection<Acs3HmacSha256>);
 
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: AccessKeySecret) -> Self {

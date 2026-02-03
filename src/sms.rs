@@ -160,7 +160,7 @@ mod sealed {
 }
 
 #[derive(Clone)]
-pub struct Connection(crate::common::Connection);
+pub struct Connection(crate::common::Connection<crate::auth::Acs3HmacSha256>);
 
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
@@ -192,7 +192,9 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
+}
 
+impl Connection {
     /// # 申请短信资质
     ///
     /// 根据工信部及运营商实名制发送短信的要求，国内短信需提供签名归属方的资质证件信息。请先申请短信资质，然后再申请签名和模板。

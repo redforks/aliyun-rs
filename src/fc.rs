@@ -100,7 +100,7 @@ mod sealed {
 }
 
 #[derive(Clone)]
-pub struct Connection(crate::common::Connection);
+pub struct Connection(crate::common::Connection<crate::auth::Acs3HmacSha256>);
 
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
@@ -132,7 +132,9 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
+}
 
+impl Connection {
     /// # 更新资源组
     ///
     /// 更新函数计算资源的资源组。

@@ -25,7 +25,7 @@ mod sealed {
 }
 
 #[derive(Clone)]
-pub struct Connection(crate::common::Connection);
+pub struct Connection(crate::common::Connection<crate::auth::Acs3HmacSha256>);
 
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: crate::v3::AccessKeySecret) -> Self {
@@ -57,7 +57,9 @@ impl Connection {
     > + Send {
         self.0.call(req)
     }
+}
 
+impl Connection {
     /// # OCR统一识别
     ///
     /// OCR统一识别接口支持识别多种图片类型，包括通用文字、个人卡证、发票等。您只需要通过Type参数指定图片类型，无须更换接口。
