@@ -11,6 +11,8 @@ use std::borrow::Cow;
 use time::OffsetDateTime;
 use tracing::debug;
 
+use reqwest::Body;
+
 /// Compute signature String using HMAC-SHA256, and encode use hex.
 fn hexed_hmac_sha256(key: &[u8], to_sign: &[u8]) -> Result<String> {
     let result = hmac_sha256(key, to_sign)?;
@@ -47,7 +49,6 @@ impl AliyunAuth for Oss4HmacSha256 {
         &self,
         _action: &str,
         _version: &str,
-        _hashed_content: &str,
     ) -> Result<HeaderMap> {
         let mut headers = HeaderMap::new();
         // Always set x-oss-content-sha256 header
@@ -71,7 +72,7 @@ impl AliyunAuth for Oss4HmacSha256 {
         path: &str,
         query_string: &str,
         method: &str,
-        _hashed_payload: &str,
+        _body: &Body,
     ) -> Result<String> {
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
@@ -289,17 +290,17 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let hashed_payload = "UNSIGNED-PAYLOAD";
+        let body: Body = b"".as_slice().into();
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", hashed_payload).unwrap();
+        let mut headers = auth.create_headers("", "").unwrap();
         // Then add other headers
         headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
 
         let query_string = "";
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", &body)
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -313,17 +314,17 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let hashed_payload = "UNSIGNED-PAYLOAD";
+        let body: Body = b"".as_slice().into();
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", hashed_payload).unwrap();
+        let mut headers = auth.create_headers("", "").unwrap();
         // Then add other headers
         headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
 
         let query_string = "max-keys=100&prefix=test%2F";
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", &body)
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -341,7 +342,7 @@ mod tests {
         );
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", "").unwrap();
+        let mut headers = auth.create_headers("", "").unwrap();
         // Then add other headers
         headers.insert(
             "content-disposition",
@@ -361,7 +362,7 @@ mod tests {
                 "/examplebucket/exampleobject",
                 "",
                 "PUT",
-                "what ever",
+                &b"".as_slice().into(),
             )
             .unwrap();
 
@@ -423,7 +424,7 @@ UNSIGNED-PAYLOAD";
         );
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", "").unwrap();
+        let mut headers = auth.create_headers("", "").unwrap();
         // Then add other headers
         headers.insert("content-type", HeaderValue::from_static("application/json"));
         headers.insert("content-md5", HeaderValue::from_static("abc123"));
@@ -434,7 +435,7 @@ UNSIGNED-PAYLOAD";
         headers.insert("x-oss-date", HeaderValue::from_static("20250411T064124Z"));
 
         let result = auth
-            .sign(&mut headers, "/test", "", "GET", "what ever")
+            .sign(&mut headers, "/test", "", "GET", &b"".as_slice().into())
             .unwrap();
 
         // AdditionalHeaders should contain content-disposition but NOT content-type or content-md5
@@ -478,7 +479,7 @@ UNSIGNED-PAYLOAD";
         );
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", "").unwrap();
+        let mut headers = auth.create_headers("", "").unwrap();
         // Then add other headers
         headers.insert(
             "content-disposition",
@@ -498,7 +499,7 @@ UNSIGNED-PAYLOAD";
                 "/examplebucket/exampleobject",
                 "",
                 "PUT",
-                "what ever",
+                &b"".as_slice().into(),
             )
             .unwrap();
 
@@ -752,7 +753,7 @@ UNSIGNED-PAYLOAD"#;
         let auth = Oss4HmacSha256::new(AccessKeySecret::new(access_key_id, secret), region);
 
         // 2. 构造 Headers - Create auth headers first
-        let mut headers = auth.create_headers("", "", "")?;
+        let mut headers = auth.create_headers("", "")?;
         // Then add other headers
         headers.insert("x-oss-date", timestamp.parse().unwrap());
         headers.insert("content-type", "text/plain".parse().unwrap());
@@ -765,7 +766,6 @@ UNSIGNED-PAYLOAD"#;
         let method = "PUT";
         let path = "/examplebucket/exampleobject";
         let query_string = "";
-        let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let (canonical_request, _) = build_oss4_canonical_request_and_additional_headers(
             method,
@@ -795,7 +795,7 @@ UNSIGNED-PAYLOAD"#;
         // 5. 验证最终签名 (Signature)
         // 文档中的签名值 (053edbf550ebd239b32a9cdfd93b0b2b3f2d223083aa61f75e9ac16856d61f23) 是基于错误的 SigningKey 计算得出的
         // 实际签名值应基于正确的 SigningKey 计算
-        let signature_res = auth.sign(&mut headers, path, query_string, method, hashed_payload)?;
+        let signature_res = auth.sign(&mut headers, path, query_string, method, &b"".as_slice().into())?;
 
         // 从 Authorization 字符串中截取 Signature 部分进行比对
         // 格式: ... Signature=d3694c2dfc5371ee6acd35e88c4871ac95a7ba01d3a2f476768fe61218590097
@@ -814,7 +814,7 @@ UNSIGNED-PAYLOAD"#;
         let auth = Oss4HmacSha256::new(AccessKeySecret::new("ak", "sk"), "cn-hangzhou");
 
         // Create auth headers first
-        let mut headers = auth.create_headers("", "", "")?;
+        let mut headers = auth.create_headers("", "")?;
         // Then add other headers
         headers.insert("x-oss-head1", HeaderValue::from_static("value"));
         headers.insert("abc", HeaderValue::from_static("value"));
@@ -837,7 +837,7 @@ UNSIGNED-PAYLOAD"#;
         let path = "/bucket/1234%2B-/123/1.txt";
 
         let result = auth
-            .sign(&mut headers, path, query_string, "PUT", "what ever")
+            .sign(&mut headers, path, query_string, "PUT", &b"".as_slice().into())
             .unwrap();
 
         // Verify the Authorization header format matches the oss2 SDK format:

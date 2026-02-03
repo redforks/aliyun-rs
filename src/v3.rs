@@ -38,10 +38,8 @@ where
 
     let content_type = body.content_type();
     let body = body.into_body()?;
-    let body_bytes = body.as_bytes().context("body should be bytes")?;
-    let hashed_request_payload = hexed_sha256(body_bytes);
 
-    let mut headers = auth.create_headers(R::ACTION, version, &hashed_request_payload)?;
+    let mut headers = auth.create_headers(R::ACTION, version)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
     }
@@ -59,7 +57,7 @@ where
         &url_path,
         &query_string,
         R::METHOD.as_str(),
-        &hashed_request_payload,
+        &body,
     )?;
 
     headers.insert(
@@ -109,27 +107,4 @@ where
         }
     };
     Ok(resp)
-}
-
-/// 1. sha256 hash the request s
-/// 1. hex encode the hash
-fn hexed_sha256(s: impl AsRef<[u8]>) -> String {
-    use sha2::{Digest, Sha256};
-
-    let mut hasher = Sha256::new();
-    hasher.update(s);
-    hex::encode(hasher.finalize())
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_hexed_sha256() {
-        assert_eq!(
-            hexed_sha256(""),
-            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-        );
-    }
 }

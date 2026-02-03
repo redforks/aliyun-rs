@@ -14,6 +14,8 @@ use time::format_description::well_known::{
     iso8601::{Config, EncodedConfig, TimePrecision},
 };
 
+use reqwest::Body;
+
 /// ACS3-HMAC-SHA256 authorization algorithm.
 ///
 /// This is the standard authorization algorithm used by most Aliyun cloud products
@@ -49,7 +51,6 @@ impl AliyunAuth for Acs3HmacSha256 {
         &self,
         action: &str,
         version: &str,
-        hashed_content: &str,
     ) -> Result<HeaderMap> {
         let mut headers = HeaderMap::new();
         headers.insert(
@@ -59,10 +60,6 @@ impl AliyunAuth for Acs3HmacSha256 {
         headers.insert(
             "x-acs-version",
             HeaderValue::try_from(version).context("convert to header value")?,
-        );
-        headers.insert(
-            "x-acs-content-sha256",
-            HeaderValue::try_from(hashed_content).context("convert to header value")?,
         );
 
         headers.insert(
@@ -104,8 +101,18 @@ impl AliyunAuth for Acs3HmacSha256 {
         path: &str,
         query_string: &str,
         method: &str,
-        hashed_payload: &str,
+        body: &Body,
     ) -> Result<String> {
+        // Compute hashed payload from body
+        let body_bytes = body.as_bytes().context("body should be bytes")?;
+        let hashed_payload = hexed_sha256(body_bytes);
+
+        // Set x-acs-content-sha256 header
+        headers.insert(
+            "x-acs-content-sha256",
+            HeaderValue::try_from(hashed_payload.as_str()).context("convert to header value")?,
+        );
+
         // Build canonical headers and signed headers
         let mut headers_map = headers
             .iter()
@@ -170,7 +177,6 @@ mod tests {
         auth.create_headers(
             "DescribeInstances",
             "2014-05-26",
-            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         )
         .unwrap()
     }
@@ -180,10 +186,10 @@ mod tests {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
         let mut headers = create_test_headers_acs3(&auth);
         let query_string = "";
-        let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+        let body: Body = b"".as_slice().into();
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", &body)
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));
@@ -196,10 +202,10 @@ mod tests {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
         let mut headers = create_test_headers_acs3(&auth);
         let query_string = "PageSize=10&RegionId=cn-hangzhou";
-        let hashed_payload = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+        let body: Body = b"".as_slice().into();
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", hashed_payload)
+            .sign(&mut headers, "/", query_string, "GET", &body)
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));

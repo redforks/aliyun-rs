@@ -65,7 +65,7 @@ pub trait AliyunAuth: Send + Sync {
     /// * `path` - The canonical URI path (e.g., "/")
     /// * `query_string` - The canonical query string (already URL-encoded and sorted)
     /// * `method` - The HTTP method (GET, POST, PUT, etc.)
-    /// * `hashed_payload` - The hex-encoded SHA256 hash of the request body
+    /// * `body` - The request body (only ACS3 uses this to compute the payload hash)
     ///
     /// # Returns
     /// The complete Authorization header value.
@@ -75,7 +75,7 @@ pub trait AliyunAuth: Send + Sync {
         path: &str,
         query_string: &str,
         method: &str,
-        hashed_payload: &str,
+        body: &reqwest::Body,
     ) -> Result<String>;
 
     /// Build canonical query string from query parameters.
@@ -94,13 +94,13 @@ pub trait AliyunAuth: Send + Sync {
     /// Create headers required for authentication.
     ///
     /// Different authentication algorithms require different headers:
-    /// - **ACS3**: x-acs-action, x-acs-version, x-acs-signature-nonce, x-acs-date, x-acs-content-sha256
-    /// - **OSS4**: Only x-oss-content-sha256 (other headers like x-oss-date are added during signing)
+    /// - **ACS3**: x-acs-action, x-acs-version, x-acs-signature-nonce, x-acs-date
+    ///            (x-acs-content-sha256 is set by sign() method)
+    /// - **OSS4**: x-oss-content-sha256, x-oss-date
     ///
     /// # Arguments
     /// * `action` - The API action to perform (e.g., "DescribeInstances")
     /// * `version` - The API version (e.g., "2014-05-26")
-    /// * `hashed_content` - The hex-encoded SHA256 hash of the request body
     ///
     /// # Returns
     /// A HeaderMap containing the authentication headers.
@@ -108,7 +108,6 @@ pub trait AliyunAuth: Send + Sync {
         &self,
         action: &str,
         version: &str,
-        hashed_content: &str,
     ) -> Result<HeaderMap>;
 }
 
