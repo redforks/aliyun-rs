@@ -120,7 +120,7 @@ pub trait AliyunAuth: Send + Sync {
     /// # Arguments
     /// * `headers` - The request headers (should include x-acs-* headers, host, content-type, etc.)
     ///               This is mutable to allow the implementation to add required headers.
-    /// * `url` - The canonical URI path (e.g., "/")
+    /// * `path` - The canonical URI path (e.g., "/")
     /// * `query_string` - The canonical query string (already URL-encoded and sorted)
     /// * `method` - The HTTP method (GET, POST, PUT, etc.)
     /// * `hashed_payload` - The hex-encoded SHA256 hash of the request body
@@ -130,7 +130,7 @@ pub trait AliyunAuth: Send + Sync {
     fn sign(
         &self,
         headers: &mut HeaderMap,
-        url: &str,
+        path: &str,
         query_string: &str,
         method: &str,
         hashed_payload: &str,
@@ -177,7 +177,7 @@ impl AliyunAuth for Acs3HmacSha256 {
     fn sign(
         &self,
         headers: &mut HeaderMap,
-        url: &str,
+        path: &str,
         query_string: &str,
         method: &str,
         hashed_payload: &str,
@@ -185,7 +185,7 @@ impl AliyunAuth for Acs3HmacSha256 {
         // Build canonical request and signed headers
         let (canonical_request, signed_headers) = build_acs3_canonical_request_and_headers(
             method,
-            url,
+            path,
             query_string,
             headers,
             hashed_payload,
@@ -243,7 +243,7 @@ impl AliyunAuth for Oss4HmacSha256 {
     fn sign(
         &self,
         headers: &mut HeaderMap,
-        url: &str,
+        path: &str,
         query_string: &str,
         method: &str,
         _hashed_payload: &str,
@@ -277,7 +277,7 @@ impl AliyunAuth for Oss4HmacSha256 {
         let (canonical_request, additional_headers_str) =
             build_oss4_canonical_request_and_additional_headers(
                 method,
-                url,
+                path,
                 query_string,
                 headers,
             )?;
@@ -414,7 +414,7 @@ fn format_oss_timestamp(dt: OffsetDateTime) -> Result<String> {
 /// Returns a tuple of (canonical_request, signed_headers).
 fn build_acs3_canonical_request_and_headers(
     method: &str,
-    url: &str,
+    path: &str,
     query_string: &str,
     headers: &HeaderMap,
     hashed_payload: &str,
@@ -449,7 +449,7 @@ fn build_acs3_canonical_request_and_headers(
     // Build canonical request
     let canonical_request = format!(
         "{}\n{}\n{}\n{}\n{}\n{}",
-        method, url, query_string, canonical_headers, signed_headers, hashed_payload
+        method, path, query_string, canonical_headers, signed_headers, hashed_payload
     );
 
     Ok((canonical_request, signed_headers))
@@ -460,7 +460,7 @@ fn build_acs3_canonical_request_and_headers(
 /// Returns a tuple of (canonical_request, additional_headers_str).
 fn build_oss4_canonical_request_and_additional_headers(
     method: &str,
-    url: &str,
+    path: &str,
     query_string: &str,
     headers: &HeaderMap,
 ) -> Result<(String, String)> {
@@ -511,7 +511,7 @@ fn build_oss4_canonical_request_and_additional_headers(
     let canonical_request = format!(
         "{}\n{}\n{}\n{}\n{}\n{}",
         method,
-        url,
+        path,
         query_string,
         canonical_headers,
         additional_headers_str,
@@ -1055,13 +1055,13 @@ UNSIGNED-PAYLOAD"#;
         // 3. 验证规范化请求 (Canonical Request)
         // 注意：根据文档示例，AdditionalHeaders 包含了 content-disposition 和 content-length
         let method = "PUT";
-        let url = "/examplebucket/exampleobject";
+        let path = "/examplebucket/exampleobject";
         let query_string = "";
         let hashed_payload = "UNSIGNED-PAYLOAD";
 
         let (canonical_request, _) = build_oss4_canonical_request_and_additional_headers(
             method,
-            url,
+            path,
             query_string,
             &headers,
         )?;
@@ -1087,7 +1087,7 @@ UNSIGNED-PAYLOAD"#;
         // 5. 验证最终签名 (Signature)
         // 文档中的签名值 (053edbf550ebd239b32a9cdfd93b0b2b3f2d223083aa61f75e9ac16856d61f23) 是基于错误的 SigningKey 计算得出的
         // 实际签名值应基于正确的 SigningKey 计算
-        let signature_res = auth.sign(&mut headers, url, query_string, method, hashed_payload)?;
+        let signature_res = auth.sign(&mut headers, path, query_string, method, hashed_payload)?;
 
         // 从 Authorization 字符串中截取 Signature 部分进行比对
         // 格式: ... Signature=d3694c2dfc5371ee6acd35e88c4871ac95a7ba01d3a2f476768fe61218590097
@@ -1127,10 +1127,10 @@ UNSIGNED-PAYLOAD"#;
         // For bucket='bucket', key='1234+-/123/1.txt':
         // uri = '/bucket/1234+-/123/1.txt'
         // canonical_uri = uri_encode('/bucket/1234+-/123/1.txt') = '/bucket/1234%2B-/123/1.txt'
-        let url = "/bucket/1234%2B-/123/1.txt";
+        let path = "/bucket/1234%2B-/123/1.txt";
 
         let result = auth
-            .sign(&mut headers, url, query_string, "PUT", "what ever")
+            .sign(&mut headers, path, query_string, "PUT", "what ever")
             .unwrap();
 
         // Verify the Authorization header format matches the oss2 SDK format:
