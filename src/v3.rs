@@ -24,7 +24,6 @@ fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &
 
 fn gen_headers<R: super::Request>(
     version: &'static str,
-    end_point: &'static str,
     hashed_content: &str,
 ) -> Result<HeaderMap> {
     let mut r = HeaderMap::new();
@@ -40,7 +39,6 @@ fn gen_headers<R: super::Request>(
         "x-acs-date",
         &format_datetime(OffsetDateTime::now_utc())?,
     )?;
-    insert_str_header(&mut r, "host", end_point)?;
     insert_str_header(&mut r, "x-acs-content-sha256", hashed_content)?;
 
     Ok(r)
@@ -76,7 +74,7 @@ where
     let body = body.into_body()?;
     let body_bytes = body.as_bytes().context("body should be bytes")?;
     let hashed_request_payload = hexed_sha256(body_bytes);
-    let mut headers = gen_headers::<R>(version, end_point, &hashed_request_payload)?;
+    let mut headers = gen_headers::<R>(version, &hashed_request_payload)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
     }
@@ -88,7 +86,7 @@ where
             http::header::HeaderValue::from_str(&value).context("Invalid custom header value")?;
         headers.insert(header_name, header_value);
     }
-    
+
     // Use the auth trait to sign the request
     let authorization = auth.sign(
         &mut headers,
@@ -97,12 +95,8 @@ where
         R::METHOD.as_str(),
         &hashed_request_payload,
     )?;
-    
-    insert_str_header(
-        &mut headers,
-        http::header::AUTHORIZATION,
-        &authorization,
-    )?;
+
+    insert_str_header(&mut headers, http::header::AUTHORIZATION, &authorization)?;
     let mut url = format!("https://{}{}", end_point, url_path);
     if !query_string.is_empty() {
         url.push('?');
