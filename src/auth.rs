@@ -150,6 +150,26 @@ pub trait AliyunAuth: Send + Sync {
     fn canonical_query_string(&self, values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
         canonical_query_string_acs3(values)
     }
+
+    /// Create headers required for authentication.
+    ///
+    /// Different authentication algorithms require different headers:
+    /// - **ACS3**: x-acs-action, x-acs-version, x-acs-signature-nonce, x-acs-date, x-acs-content-sha256
+    /// - **OSS4**: Only x-oss-content-sha256 (other headers like x-oss-date are added during signing)
+    ///
+    /// # Arguments
+    /// * `action` - The API action to perform (e.g., "DescribeInstances")
+    /// * `version` - The API version (e.g., "2014-05-26")
+    /// * `hashed_content` - The hex-encoded SHA256 hash of the request body
+    ///
+    /// # Returns
+    /// A HeaderMap containing the authentication headers.
+    fn create_headers(
+        &self,
+        action: &str,
+        version: &str,
+        hashed_content: &str,
+    ) -> Result<HeaderMap>;
 }
 
 /// ACS3-HMAC-SHA256 authorization algorithm.
@@ -160,6 +180,8 @@ pub trait AliyunAuth: Send + Sync {
 pub struct Acs3HmacSha256(pub AccessKeySecret);
 
 impl Acs3HmacSha256 {
+    const ACS3_SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
+
     pub fn new(key: impl Into<Cow<'static, str>>, secret: impl Into<Cow<'static, str>>) -> Self {
         Self(AccessKeySecret::new(key, secret))
     }
@@ -171,9 +193,62 @@ impl From<AccessKeySecret> for Acs3HmacSha256 {
     }
 }
 
-const ACS3_SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
+fn insert_str_header(
+    headers: &mut HeaderMap,
+    key: impl http::header::IntoHeaderName,
+    value: &str,
+) -> Result<()> {
+    headers.insert(
+        key,
+        HeaderValue::from_str(value).context("convert to header value")?,
+    );
+    Ok(())
+}
+
+/// Format datetime to format like: 2018-01-01T12:00:00Z
+pub fn format_acs3_datetime(dt: OffsetDateTime) -> Result<String> {
+    use time::format_description::well_known::iso8601::TimePrecision;
+    use time::format_description::well_known::{
+        Iso8601,
+        iso8601::{Config, EncodedConfig},
+    };
+
+    const CONFIG: EncodedConfig = Config::DEFAULT
+        .set_time_precision(TimePrecision::Second {
+            decimal_digits: None,
+        })
+        .encode();
+    const FORMAT: Iso8601<CONFIG> = Iso8601::<CONFIG>;
+
+    dt.format(&FORMAT)
+        .context("format rfc3339 failed")
+        .map_err(Into::into)
+}
 
 impl AliyunAuth for Acs3HmacSha256 {
+    fn create_headers(
+        &self,
+        action: &str,
+        version: &str,
+        hashed_content: &str,
+    ) -> Result<HeaderMap> {
+        let mut headers = HeaderMap::new();
+        insert_str_header(&mut headers, "x-acs-action", action)?;
+        insert_str_header(&mut headers, "x-acs-version", version)?;
+        insert_str_header(
+            &mut headers,
+            "x-acs-signature-nonce",
+            &uuid::Uuid::new_v4().to_string(),
+        )?;
+        insert_str_header(
+            &mut headers,
+            "x-acs-date",
+            &format_acs3_datetime(OffsetDateTime::now_utc())?,
+        )?;
+        insert_str_header(&mut headers, "x-acs-content-sha256", hashed_content)?;
+        Ok(headers)
+    }
+
     fn sign(
         &self,
         headers: &mut HeaderMap,
@@ -195,7 +270,7 @@ impl AliyunAuth for Acs3HmacSha256 {
         let hashed_canonical_request = hexed_sha256(&canonical_request);
 
         // Build string to sign
-        let string_to_sign = format!("{}\n{}", ACS3_SIGNATURE_ALGORITHM, hashed_canonical_request);
+        let string_to_sign = format!("{}\n{}", Self::ACS3_SIGNATURE_ALGORITHM, hashed_canonical_request);
 
         // Calculate signature
         let signature = hexed_hmac_sha256(
@@ -206,7 +281,7 @@ impl AliyunAuth for Acs3HmacSha256 {
         // Build Authorization header
         Ok(format!(
             "{} Credential={},SignedHeaders={},Signature={}",
-            ACS3_SIGNATURE_ALGORITHM,
+            Self::ACS3_SIGNATURE_ALGORITHM,
             self.0.access_key_id(),
             signed_headers,
             signature
@@ -240,6 +315,22 @@ impl Oss4HmacSha256 {
 }
 
 impl AliyunAuth for Oss4HmacSha256 {
+    fn create_headers(
+        &self,
+        _action: &str,
+        _version: &str,
+        _hashed_content: &str,
+    ) -> Result<HeaderMap> {
+        let mut headers = HeaderMap::new();
+        // Always set x-oss-content-sha256 header
+        headers.insert(
+            "x-oss-content-sha256",
+            HeaderValue::from_static(Self::UNSIGNED_PAYLOAD),
+        );
+
+        Ok(headers)
+    }
+
     fn sign(
         &self,
         headers: &mut HeaderMap,
@@ -1148,6 +1239,17 @@ UNSIGNED-PAYLOAD"#;
         // 2. Different canonical request construction
         // 3. Version differences in the SDK
         // The format is correct, which is what matters for compatibility
+
+        Ok(())
+    }
+
+    #[test]
+    fn test_format_acs3_datetime() -> Result<()> {
+        let dt = OffsetDateTime::from_unix_timestamp(0).context("create from unix time stamp 0")?;
+        assert_eq!(format_acs3_datetime(dt)?, "1970-01-01T00:00:00Z");
+
+        let dt = time::macros::datetime!(2018-01-01 12:00:00.123 UTC);
+        assert_eq!(format_acs3_datetime(dt)?, "2018-01-01T12:00:00Z");
 
         Ok(())
     }

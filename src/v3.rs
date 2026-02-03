@@ -6,7 +6,6 @@ use http::{
     header::{CONTENT_TYPE, IntoHeaderName},
 };
 use std::borrow::Cow;
-use time::{OffsetDateTime, format_description::well_known::iso8601::TimePrecision};
 use tracing::debug;
 
 use crate::{FromBody, IntoBody as _, IntoResponse, Result, ToCodeMessage, auth::AliyunAuth};
@@ -20,28 +19,6 @@ fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &
         HeaderValue::from_str(value).context("convert to header value")?,
     );
     Ok(())
-}
-
-fn gen_headers<R: super::Request>(
-    version: &'static str,
-    hashed_content: &str,
-) -> Result<HeaderMap> {
-    let mut r = HeaderMap::new();
-    insert_str_header(&mut r, "x-acs-action", R::ACTION)?;
-    insert_str_header(&mut r, "x-acs-version", version)?;
-    insert_str_header(
-        &mut r,
-        "x-acs-signature-nonce",
-        &uuid::Uuid::new_v4().to_string(),
-    )?;
-    insert_str_header(
-        &mut r,
-        "x-acs-date",
-        &format_datetime(OffsetDateTime::now_utc())?,
-    )?;
-    insert_str_header(&mut r, "x-acs-content-sha256", hashed_content)?;
-
-    Ok(r)
 }
 
 /// Build http request according to authorization signature V3.
@@ -74,7 +51,7 @@ where
     let body = body.into_body()?;
     let body_bytes = body.as_bytes().context("body should be bytes")?;
     let hashed_request_payload = hexed_sha256(body_bytes);
-    let mut headers = gen_headers::<R>(version, &hashed_request_payload)?;
+    let mut headers = auth.create_headers(R::ACTION, version, &hashed_request_payload)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
     }
@@ -152,38 +129,15 @@ fn hexed_sha256(s: impl AsRef<[u8]>) -> String {
     hex::encode(hasher.finalize())
 }
 
-/// Format datetime to format like: 2018-01-01T12:00:00Z
-fn format_datetime(dt: OffsetDateTime) -> Result<String> {
-    use time::format_description::well_known::{
-        Iso8601,
-        iso8601::{Config, EncodedConfig},
-    };
-
-    const CONFIG: EncodedConfig = Config::DEFAULT
-        .set_time_precision(TimePrecision::Second {
-            decimal_digits: None,
-        })
-        .encode();
-    const FORMAT: Iso8601<CONFIG> = Iso8601::<CONFIG>;
-
-    dt.format(&FORMAT)
-        .context("format rfc3339 failed")
-        .map_err(Into::into)
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-    use time::macros::datetime;
 
     #[test]
-    fn test_format_datetime() -> Result<()> {
-        let dt = OffsetDateTime::from_unix_timestamp(0).context("create from unix time stamp 0")?;
-        assert_eq!(format_datetime(dt)?, "1970-01-01T00:00:00Z");
-
-        let dt = datetime!(2018-01-01 12:00:00.123 UTC);
-        assert_eq!(format_datetime(dt)?, "2018-01-01T12:00:00Z");
-
-        Ok(())
+    fn test_hexed_sha256() {
+        assert_eq!(
+            hexed_sha256(""),
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        );
     }
 }
