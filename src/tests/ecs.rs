@@ -23,22 +23,16 @@ async fn test_describe_regions_english() {
         .accept_language("en-US".to_string())
         .resource_type("instance".to_string());
 
-    match conn.describe_regions(req).await {
-        Ok(response) => {
-            println!("DescribeRegions (English) succeeded:");
-            println!("  Number of regions: {}", response.regions.region.len());
-            println!(
-                "{:?}",
-                response
-                    .regions
-                    .region
-                    .iter()
-                    .map(|r| &r.region_id)
-                    .collect::<Vec<_>>()
-            );
-        }
-        Err(e) => {
-            println!("DescribeRegions (English) failed: {:#?}", e);
-        }
-    }
+    let response = conn.describe_regions(req).await.unwrap();
+    println!("DescribeRegions (English) succeeded:");
+    println!("  Number of regions: {}", response.regions.region.len());
+    println!(
+        "{:?}",
+        response
+            .regions
+            .region
+            .iter()
+            .map(|r| &r.region_id)
+            .collect::<Vec<_>>()
+    );
 }
