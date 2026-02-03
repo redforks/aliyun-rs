@@ -55,6 +55,12 @@ impl AliyunAuth for Oss4HmacSha256 {
             "x-oss-content-sha256",
             HeaderValue::from_static(Self::UNSIGNED_PAYLOAD),
         );
+        // Always set x-oss-date header
+        headers.insert(
+            "x-oss-date",
+            HeaderValue::from_str(&format_oss_timestamp(OffsetDateTime::now_utc())?)
+                .context("convert timestamp to header value")?,
+        );
 
         Ok(headers)
     }
@@ -67,15 +73,6 @@ impl AliyunAuth for Oss4HmacSha256 {
         method: &str,
         _hashed_payload: &str,
     ) -> Result<String> {
-        // Insert x-oss-date header if not present
-        if !headers.contains_key("x-oss-date") {
-            let timestamp = format_oss_timestamp(OffsetDateTime::now_utc())?;
-            headers.insert(
-                "x-oss-date",
-                HeaderValue::from_str(&timestamp).context("convert timestamp to header value")?,
-            );
-        }
-
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
             .get("x-oss-date")
