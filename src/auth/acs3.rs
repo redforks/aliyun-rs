@@ -47,11 +47,7 @@ fn format_acs3_datetime(dt: OffsetDateTime) -> Result<String> {
 }
 
 impl AliyunAuth for Acs3HmacSha256 {
-    fn create_headers(
-        &self,
-        action: &str,
-        version: &str,
-    ) -> Result<HeaderMap> {
+    fn create_headers(&self, action: &str, version: &str) -> Result<HeaderMap> {
         let mut headers = HeaderMap::new();
         headers.insert(
             "x-acs-action",
@@ -174,11 +170,8 @@ mod tests {
     use test_log::test;
 
     fn create_test_headers_acs3(auth: &Acs3HmacSha256) -> HeaderMap {
-        auth.create_headers(
-            "DescribeInstances",
-            "2014-05-26",
-        )
-        .unwrap()
+        auth.create_headers("DescribeInstances", "2014-05-26")
+            .unwrap()
     }
 
     #[test]
