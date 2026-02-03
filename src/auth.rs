@@ -188,18 +188,6 @@ impl Acs3HmacSha256 {
     }
 }
 
-fn insert_str_header(
-    headers: &mut HeaderMap,
-    key: impl http::header::IntoHeaderName,
-    value: &str,
-) -> Result<()> {
-    headers.insert(
-        key,
-        HeaderValue::from_str(value).context("convert to header value")?,
-    );
-    Ok(())
-}
-
 /// Format datetime to format like: 2018-01-01T12:00:00Z
 fn format_acs3_datetime(dt: OffsetDateTime) -> Result<String> {
     use time::format_description::well_known::iso8601::TimePrecision;
@@ -228,19 +216,31 @@ impl AliyunAuth for Acs3HmacSha256 {
         hashed_content: &str,
     ) -> Result<HeaderMap> {
         let mut headers = HeaderMap::new();
-        insert_str_header(&mut headers, "x-acs-action", action)?;
-        insert_str_header(&mut headers, "x-acs-version", version)?;
-        insert_str_header(
-            &mut headers,
+        headers.insert(
+            "x-acs-action",
+            HeaderValue::try_from(action).context("convert to header value")?,
+        );
+        headers.insert(
+            "x-acs-version",
+            HeaderValue::try_from(version).context("convert to header value")?,
+        );
+        headers.insert(
+            "x-acs-content-sha256",
+            HeaderValue::try_from(hashed_content).context("convert to header value")?,
+        );
+
+        headers.insert(
             "x-acs-signature-nonce",
-            &uuid::Uuid::new_v4().to_string(),
-        )?;
-        insert_str_header(
-            &mut headers,
+            HeaderValue::try_from(uuid::Uuid::new_v4().to_string())
+                .context("convert to header value")?,
+        );
+
+        headers.insert(
             "x-acs-date",
-            &format_acs3_datetime(OffsetDateTime::now_utc())?,
-        )?;
-        insert_str_header(&mut headers, "x-acs-content-sha256", hashed_content)?;
+            HeaderValue::try_from(format_acs3_datetime(OffsetDateTime::now_utc())?)
+                .context("convert to header value")?,
+        );
+
         Ok(headers)
     }
 
