@@ -154,7 +154,24 @@ impl AliyunAuth for Oss4HmacSha256 {
     }
 
     fn canonical_query_string(&self, values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
-        canonical_query_string_oss4(values)
+        let mut map: Vec<(String, String)> = Vec::new();
+        for (k, v) in values {
+            let encoded_key = percent_encode(&k).to_string();
+            let encoded_value = percent_encode(&v.to_query_value()).to_string();
+            map.push((encoded_key, encoded_value));
+        }
+        map.sort_by(|a, b| a.0.cmp(&b.0));
+
+        map.into_iter()
+            .map(|(encoded_key, encoded_value)| {
+                if encoded_value.is_empty() {
+                    encoded_key
+                } else {
+                    format!("{}={}", encoded_key, encoded_value)
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("&")
     }
 }
 
@@ -261,34 +278,6 @@ fn build_oss4_canonical_request_and_additional_headers(
     );
 
     Ok((canonical_request, additional_headers_str))
-}
-
-/// Build OSS4 canonical query string.
-///
-/// OSS4 behavior:
-/// - Sort by URL-encoded parameter name (after encoding)
-/// - Omit "=" for empty values
-fn canonical_query_string_oss4(values: Vec<(Cow<'static, str>, QueryValue)>) -> String {
-    use std::collections::BTreeMap;
-
-    let mut map: BTreeMap<String, (String, String)> = BTreeMap::new();
-    for (k, v) in values {
-        let encoded_key = percent_encode(&k).to_string();
-        let encoded_value = percent_encode(&v.to_query_value()).to_string();
-        let raw_value = v.to_query_value().to_string();
-        map.insert(encoded_key, (encoded_value, raw_value));
-    }
-
-    map.into_iter()
-        .map(|(encoded_key, (encoded_value, raw_value))| {
-            if raw_value.is_empty() {
-                encoded_key
-            } else {
-                format!("{}={}", encoded_key, encoded_value)
-            }
-        })
-        .collect::<Vec<_>>()
-        .join("&")
 }
 
 #[cfg(test)]
