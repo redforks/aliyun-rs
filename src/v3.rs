@@ -82,11 +82,7 @@ where
     let query_string = auth.canonical_query_string(query_params);
     let custom_headers = req.to_headers();
     let body = req.to_body();
-    let content_type = if R::METHOD == Method::GET {
-        None
-    } else {
-        Some(body.content_type())
-    };
+    let content_type = body.content_type();
     let body = body.into_body()?;
     let body_bytes = body.as_bytes().context("body should be bytes")?;
     let hashed_request_payload = hexed_sha256(body_bytes);

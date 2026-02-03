@@ -654,13 +654,13 @@ trait Request: Sized + Send {
 }
 
 trait IntoBody {
-    fn content_type(&self) -> HeaderValue;
+    fn content_type(&self) -> Option<HeaderValue>;
     fn into_body(self) -> Result<Body>;
 }
 
 impl IntoBody for () {
-    fn content_type(&self) -> HeaderValue {
-        unreachable!("Unit type should used with GET method")
+    fn content_type(&self) -> Option<HeaderValue> {
+        None
     }
 
     fn into_body(self) -> Result<Body> {
@@ -671,8 +671,10 @@ impl IntoBody for () {
 pub(crate) struct Form<T: ToFormData>(pub T);
 
 impl<T: ToFormData> IntoBody for Form<T> {
-    fn content_type(&self) -> HeaderValue {
-        HeaderValue::from_static("application/x-www-form-urlencoded")
+    fn content_type(&self) -> Option<HeaderValue> {
+        Some(HeaderValue::from_static(
+            "application/x-www-form-urlencoded",
+        ))
     }
 
     fn into_body(self) -> Result<Body> {
@@ -690,8 +692,8 @@ impl<T: ToFormData> IntoBody for Form<T> {
 pub(crate) struct OctetStream(pub Vec<u8>);
 
 impl IntoBody for OctetStream {
-    fn content_type(&self) -> HeaderValue {
-        HeaderValue::from_static("application/octet-stream")
+    fn content_type(&self) -> Option<HeaderValue> {
+        Some(HeaderValue::from_static("application/octet-stream"))
     }
 
     fn into_body(self) -> Result<Body> {
@@ -703,8 +705,8 @@ impl IntoBody for OctetStream {
 pub(crate) struct XmlBody<T: serde::Serialize>(pub T);
 
 impl<T: serde::Serialize> IntoBody for XmlBody<T> {
-    fn content_type(&self) -> HeaderValue {
-        HeaderValue::from_static("application/xml")
+    fn content_type(&self) -> Option<HeaderValue> {
+        Some(HeaderValue::from_static("application/xml"))
     }
 
     fn into_body(self) -> Result<Body> {
