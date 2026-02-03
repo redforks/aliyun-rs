@@ -4820,14 +4820,14 @@ impl crate::Request for DescribeRegions {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "DescribeRegions";
-    const URL_PATH: &'static str = "/?regions";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<DescribeRegionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("regions".into(), "".into()));
 
         if let Some(f) = &self.regions {
             params.push(("regions".into(), (f).into()));
@@ -4858,14 +4858,16 @@ impl crate::Request for GetBucketStat {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketStat";
-    const URL_PATH: &'static str = "/?stat";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketStatResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("stat".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5141,14 +5143,14 @@ impl crate::Request for ListObjectsV2 {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjectsV2";
-    const URL_PATH: &'static str = "/?list-type=2";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListObjectsV2Response>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(7);
+        let mut params = Vec::with_capacity(8);
+        params.push(("list-type".into(), "2".into()));
 
         if let Some(f) = &self.continuation_token {
             params.push(("continuation-token".into(), (f).into()));
@@ -5203,14 +5205,16 @@ impl crate::Request for GetBucketInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketInfo";
-    const URL_PATH: &'static str = "/?bucketInfo";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("bucketInfo".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5235,14 +5239,16 @@ impl crate::Request for GetBucketLocation {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLocation";
-    const URL_PATH: &'static str = "/?location";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketLocationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("location".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5281,14 +5287,14 @@ impl crate::Request for ListAccessPoints {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListAccessPoints";
-    const URL_PATH: &'static str = "/?accessPoint";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListAccessPointsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("accessPoint".into(), "".into()));
 
         if let Some(f) = &self.continuation_token {
             params.push(("continuation-token".into(), (f).into()));
@@ -5328,14 +5334,16 @@ impl crate::Request for GetAccessPoint {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPoint";
-    const URL_PATH: &'static str = "/?accessPoint";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPoint".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5371,14 +5379,16 @@ impl crate::Request for GetAccessPointPolicy {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointPolicy";
-    const URL_PATH: &'static str = "/?accessPointPolicy";
 
     type Body = ();
 
     type ResponseWrap = crate::JsonResponseWrap<GetAccessPointPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5419,14 +5429,16 @@ impl crate::Request for DeleteAccessPointPolicy {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteAccessPointPolicy";
-    const URL_PATH: &'static str = "/?accessPointPolicy";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::JsonResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5469,14 +5481,16 @@ impl crate::Request for PutAccessPointPolicy {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPolicy";
-    const URL_PATH: &'static str = "/?accessPointPolicy";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5519,14 +5533,16 @@ impl crate::Request for DeleteAccessPoint {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteAccessPoint";
-    const URL_PATH: &'static str = "/?accessPoint";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPoint".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5563,14 +5579,16 @@ impl crate::Request for CreateAccessPoint {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "CreateAccessPoint";
-    const URL_PATH: &'static str = "/?accessPoint";
 
     type Body = crate::XmlBody<AccessPointbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<CreateAccessPointResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPoint".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5601,14 +5619,16 @@ impl crate::Request for InitiateBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "InitiateBucketWorm";
-    const URL_PATH: &'static str = "/?worm";
 
     type Body = crate::XmlBody<InitiateBucketWormbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<InitiateBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("worm".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5650,14 +5670,16 @@ impl crate::Request for AbortBucketWorm {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "AbortBucketWorm";
-    const URL_PATH: &'static str = "/?worm";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("worm".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5741,14 +5763,14 @@ impl crate::Request for ExtendBucketWorm {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "ExtendBucketWorm";
-    const URL_PATH: &'static str = "/?wormExtend";
 
     type Body = crate::XmlBody<ExtendBucketWormbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("wormExtend".into(), "".into()));
         params.push(("wormId".into(), (&self.worm_id).into()));
 
         params
@@ -5778,14 +5800,16 @@ impl crate::Request for GetBucketWorm {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketWorm";
-    const URL_PATH: &'static str = "/?worm";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketWormResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("worm".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5825,14 +5849,16 @@ impl crate::Request for PutBucketAcl {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketAcl";
-    const URL_PATH: &'static str = "/?acl";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("acl".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5862,14 +5888,16 @@ impl crate::Request for GetBucketAcl {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketAcl";
-    const URL_PATH: &'static str = "/?acl";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("acl".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5908,14 +5936,16 @@ impl crate::Request for PutBucketLifecycle {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketLifecycle";
-    const URL_PATH: &'static str = "/?lifecycle";
 
     type Body = crate::XmlBody<BucketLifecyclebody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("lifecycle".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5948,14 +5978,16 @@ impl crate::Request for GetBucketLifecycle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLifecycle";
-    const URL_PATH: &'static str = "/?lifecycle";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketLifecycleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("lifecycle".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -5985,14 +6017,16 @@ impl crate::Request for DeleteBucketLifecycle {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketLifecycle";
-    const URL_PATH: &'static str = "/?lifecycle";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("lifecycle".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6023,14 +6057,16 @@ impl crate::Request for PutBucketTransferAcceleration {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketTransferAcceleration";
-    const URL_PATH: &'static str = "/?transferAcceleration";
 
     type Body = crate::XmlBody<TransferAccelerationbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("transferAcceleration".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6057,14 +6093,16 @@ impl crate::Request for GetBucketTransferAcceleration {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketTransferAcceleration";
-    const URL_PATH: &'static str = "/?transferAcceleration";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketTransferAccelerationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("transferAcceleration".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6093,14 +6131,16 @@ impl crate::Request for PutBucketVersioning {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketVersioning";
-    const URL_PATH: &'static str = "/?versioning";
 
     type Body = crate::XmlBody<BucketVersioningbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("versioning".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6127,14 +6167,16 @@ impl crate::Request for GetBucketVersioning {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketVersioning";
-    const URL_PATH: &'static str = "/?versioning";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketVersioningResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("versioning".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6211,14 +6253,14 @@ impl crate::Request for ListObjectVersions {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListObjectVersions";
-    const URL_PATH: &'static str = "/?versions";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListObjectVersionsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(6);
+        let mut params = Vec::with_capacity(7);
+        params.push(("versions".into(), "".into()));
 
         if let Some(f) = &self.delimiter {
             params.push(("delimiter".into(), (f).into()));
@@ -6272,14 +6314,16 @@ impl crate::Request for PutBucketPolicy {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketPolicy";
-    const URL_PATH: &'static str = "/?policy";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("policy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6306,14 +6350,16 @@ impl crate::Request for GetBucketPolicy {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketPolicy";
-    const URL_PATH: &'static str = "/?policy";
 
     type Body = ();
 
     type ResponseWrap = crate::JsonResponseWrap<GetBucketPolicyResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("policy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6343,14 +6389,16 @@ impl crate::Request for DeleteBucketPolicy {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketPolicy";
-    const URL_PATH: &'static str = "/?policy";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("policy".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6377,14 +6425,16 @@ impl crate::Request for GetBucketPolicyStatus {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketPolicyStatus";
-    const URL_PATH: &'static str = "/?policyStatus";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketPolicyStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("policyStatus".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6413,14 +6463,16 @@ impl crate::Request for PutBucketRtc {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketRtc";
-    const URL_PATH: &'static str = "/?rtc";
 
     type Body = crate::XmlBody<BucketRtcbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("rtc".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6451,14 +6503,17 @@ impl crate::Request for PutBucketReplication {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PutBucketReplication";
-    const URL_PATH: &'static str = "/?replication&comp=add";
 
     type Body = crate::XmlBody<PutBucketReplicationbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("replication".into(), "".into()));
+        params.push(("comp".into(), "add".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6495,14 +6550,16 @@ impl crate::Request for GetBucketReplication {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplication";
-    const URL_PATH: &'static str = "/?replication";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("replication".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6527,14 +6584,16 @@ impl crate::Request for GetBucketReplicationLocation {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplicationLocation";
-    const URL_PATH: &'static str = "/?replicationLocation";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationLocationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("replicationLocation".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6564,14 +6623,14 @@ impl crate::Request for GetBucketReplicationProgress {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReplicationProgress";
-    const URL_PATH: &'static str = "/?replicationProgress";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketReplicationProgressResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("replicationProgress".into(), "".into()));
         params.push(("rule-id".into(), (&self.rule_id).into()));
 
         params
@@ -6603,14 +6662,17 @@ impl crate::Request for DeleteBucketReplication {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteBucketReplication";
-    const URL_PATH: &'static str = "/?replication&comp=delete";
 
     type Body = crate::XmlBody<DeleteBucketReplicationbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("replication".into(), "".into()));
+        params.push(("comp".into(), "delete".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6646,14 +6708,14 @@ impl crate::Request for PutBucketInventory {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketInventory";
-    const URL_PATH: &'static str = "/?inventory";
 
     type Body = crate::XmlBody<BucketInventorybody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("inventory".into(), "".into()));
         params.push(("inventoryId".into(), (&self.inventory_id).into()));
 
         params
@@ -6688,14 +6750,14 @@ impl crate::Request for GetBucketInventory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketInventory";
-    const URL_PATH: &'static str = "/?inventory";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("inventory".into(), "".into()));
         params.push(("inventoryId".into(), (&self.inventory_id).into()));
 
         params
@@ -6729,14 +6791,14 @@ impl crate::Request for ListBucketInventory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketInventory";
-    const URL_PATH: &'static str = "/?inventory";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListBucketInventoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("inventory".into(), "".into()));
 
         if let Some(f) = &self.continuation_token {
             params.push(("continuation-token".into(), (f).into()));
@@ -6777,14 +6839,14 @@ impl crate::Request for DeleteBucketInventory {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketInventory";
-    const URL_PATH: &'static str = "/?inventory";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("inventory".into(), "".into()));
         params.push(("inventoryId".into(), (&self.inventory_id).into()));
 
         params
@@ -6818,14 +6880,16 @@ impl crate::Request for PutBucketLogging {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketLogging";
-    const URL_PATH: &'static str = "/?logging";
 
     type Body = crate::XmlBody<BucketLoggingbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("logging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6852,14 +6916,16 @@ impl crate::Request for GetBucketLogging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketLogging";
-    const URL_PATH: &'static str = "/?logging";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketLoggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("logging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6889,14 +6955,16 @@ impl crate::Request for DeleteBucketLogging {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketLogging";
-    const URL_PATH: &'static str = "/?logging";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("logging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6927,14 +6995,16 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutUserDefinedLogFieldsConfig";
-    const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
 
     type Body = crate::XmlBody<FieldsConfigbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("userDefinedLogFieldsConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6961,14 +7031,16 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetUserDefinedLogFieldsConfig";
-    const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetUserDefinedLogFieldsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("userDefinedLogFieldsConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -6998,14 +7070,16 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteUserDefinedLogFieldsConfig";
-    const URL_PATH: &'static str = "/?userDefinedLogFieldsConfig";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("userDefinedLogFieldsConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7032,14 +7106,16 @@ impl crate::Request for GetBucketWebsite {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketWebsite";
-    const URL_PATH: &'static str = "/?website";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketWebsiteResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("website".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7068,14 +7144,16 @@ impl crate::Request for PutBucketWebsite {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketWebsite";
-    const URL_PATH: &'static str = "/?website";
 
     type Body = crate::XmlBody<BucketWebsitebody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("website".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7107,14 +7185,16 @@ impl crate::Request for DeleteBucketWebsite {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketWebsite";
-    const URL_PATH: &'static str = "/?website";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("website".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7145,14 +7225,16 @@ impl crate::Request for PutBucketReferer {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketReferer";
-    const URL_PATH: &'static str = "/?referer";
 
     type Body = crate::XmlBody<BucketRefererbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("referer".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7179,14 +7261,16 @@ impl crate::Request for GetBucketReferer {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketReferer";
-    const URL_PATH: &'static str = "/?referer";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketRefererResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("referer".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7215,14 +7299,16 @@ impl crate::Request for PutBucketTags {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketTags";
-    const URL_PATH: &'static str = "/?tagging";
 
     type Body = crate::XmlBody<BucketTagsbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("tagging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7249,14 +7335,16 @@ impl crate::Request for GetBucketTags {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketTags";
-    const URL_PATH: &'static str = "/?tagging";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketTagsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("tagging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7286,14 +7374,16 @@ impl crate::Request for DeleteBucketTags {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketTags";
-    const URL_PATH: &'static str = "/?tagging";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("tagging".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7330,14 +7420,14 @@ impl crate::Request for ListUserDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListUserDataRedundancyTransition";
-    const URL_PATH: &'static str = "/?redundancyTransition";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListUserDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("redundancyTransition".into(), "".into()));
 
         if let Some(f) = &self.continuation_token {
             params.push(("continuation-token".into(), (f).into()));
@@ -7372,14 +7462,16 @@ impl crate::Request for ListBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketDataRedundancyTransition";
-    const URL_PATH: &'static str = "/?redundancyTransition";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("redundancyTransition".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7409,14 +7501,14 @@ impl crate::Request for GetBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketDataRedundancyTransition";
-    const URL_PATH: &'static str = "/?redundancyTransition";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("redundancyTransition".into(), "".into()));
         params.push((
             "x-oss-redundancy-transition-taskid".into(),
             (&self.x_oss_redundancy_transition_taskid).into(),
@@ -7457,14 +7549,14 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateBucketDataRedundancyTransition";
-    const URL_PATH: &'static str = "/?redundancyTransition";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<CreateBucketDataRedundancyTransitionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("redundancyTransition".into(), "".into()));
         params.push((
             "x-oss-target-redundancy-type".into(),
             (&self.x_oss_target_redundancy_type).into(),
@@ -7507,14 +7599,14 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketDataRedundancyTransition";
-    const URL_PATH: &'static str = "/?redundancyTransition";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("redundancyTransition".into(), "".into()));
         params.push((
             "x-oss-redundancy-transition-taskid".into(),
             (&self.x_oss_redundancy_transition_taskid).into(),
@@ -7551,14 +7643,16 @@ impl crate::Request for PutBucketEncryption {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketEncryption";
-    const URL_PATH: &'static str = "/?encryption";
 
     type Body = crate::XmlBody<BucketEncryptionbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("encryption".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7585,14 +7679,16 @@ impl crate::Request for GetBucketEncryption {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketEncryption";
-    const URL_PATH: &'static str = "/?encryption";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketEncryptionResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("encryption".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7622,14 +7718,16 @@ impl crate::Request for DeleteBucketEncryption {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketEncryption";
-    const URL_PATH: &'static str = "/?encryption";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("encryption".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7660,14 +7758,16 @@ impl crate::Request for PutBucketRequestPayment {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketRequestPayment";
-    const URL_PATH: &'static str = "/?requestPayment";
 
     type Body = crate::XmlBody<RequestPaymentbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("requestPayment".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7694,14 +7794,16 @@ impl crate::Request for GetBucketRequestPayment {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketRequestPayment";
-    const URL_PATH: &'static str = "/?requestPayment";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketRequestPaymentResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("requestPayment".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7730,14 +7832,16 @@ impl crate::Request for PutBucketCors {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketCors";
-    const URL_PATH: &'static str = "/?cors";
 
     type Body = crate::XmlBody<BucketCorsbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("cors".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7764,14 +7868,16 @@ impl crate::Request for GetBucketCors {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketCors";
-    const URL_PATH: &'static str = "/?cors";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketCorsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("cors".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7801,14 +7907,16 @@ impl crate::Request for DeleteBucketCors {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketCors";
-    const URL_PATH: &'static str = "/?cors";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("cors".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7944,14 +8052,16 @@ impl crate::Request for PutBucketAccessMonitor {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketAccessMonitor";
-    const URL_PATH: &'static str = "/?accessmonitor";
 
     type Body = crate::XmlBody<AccessMonitorbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessmonitor".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -7978,14 +8088,16 @@ impl crate::Request for GetBucketAccessMonitor {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketAccessMonitor";
-    const URL_PATH: &'static str = "/?accessmonitor";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketAccessMonitorResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessmonitor".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8010,14 +8122,16 @@ impl crate::Request for GetMetaQueryStatus {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetMetaQueryStatus";
-    const URL_PATH: &'static str = "/?metaQuery";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetMetaQueryStatusResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("metaQuery".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8047,14 +8161,17 @@ impl crate::Request for CloseMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CloseMetaQuery";
-    const URL_PATH: &'static str = "/?metaQuery&comp=delete";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("metaQuery".into(), "".into()));
+        params.push(("comp".into(), "delete".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8093,14 +8210,15 @@ impl crate::Request for DoMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DoMetaQuery";
-    const URL_PATH: &'static str = "/?metaQuery&comp=query";
 
     type Body = crate::XmlBody<DoMetaQuerybody>;
 
     type ResponseWrap = crate::XmlResponseWrap<DoMetaQueryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(3);
+        params.push(("metaQuery".into(), "".into()));
+        params.push(("comp".into(), "query".into()));
 
         if let Some(f) = &self.mode {
             params.push(("mode".into(), (f).into()));
@@ -8151,14 +8269,15 @@ impl crate::Request for OpenMetaQuery {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "OpenMetaQuery";
-    const URL_PATH: &'static str = "/?metaQuery&comp=add";
 
     type Body = crate::XmlBody<OpenMetaQuerybody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(4);
+        params.push(("metaQuery".into(), "".into()));
+        params.push(("comp".into(), "add".into()));
 
         if let Some(f) = &self.mode {
             params.push(("mode".into(), (f).into()));
@@ -8211,14 +8330,16 @@ impl crate::Request for UpdateUserAntiDDosInfo {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateUserAntiDDosInfo";
-    const URL_PATH: &'static str = "/?antiDDos";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("antiDDos".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8276,14 +8397,16 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "UpdateBucketAntiDDosInfo";
-    const URL_PATH: &'static str = "/?antiDDos";
 
     type Body = crate::XmlBody<UpdateBucketAntiDDosInfobody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("antiDDos".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8336,14 +8459,14 @@ impl crate::Request for ListBucketAntiDDosInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListBucketAntiDDosInfo";
-    const URL_PATH: &'static str = "/?bucketAntiDDos";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListBucketAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("bucketAntiDDos".into(), "".into()));
 
         if let Some(f) = &self.marker {
             params.push(("marker".into(), (f).into()));
@@ -8383,14 +8506,16 @@ impl crate::Request for InitUserAntiDDosInfo {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "InitUserAntiDDosInfo";
-    const URL_PATH: &'static str = "/?antiDDos";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<InitUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("antiDDos".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8442,14 +8567,16 @@ impl crate::Request for InitBucketAntiDDosInfo {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "InitBucketAntiDDosInfo";
-    const URL_PATH: &'static str = "/?antiDDos";
 
     type Body = crate::XmlBody<InitBucketAntiDDosInfobody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("antiDDos".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8486,14 +8613,16 @@ impl crate::Request for GetUserAntiDDosInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetUserAntiDDosInfo";
-    const URL_PATH: &'static str = "/?antiDDos";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetUserAntiDDosInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("antiDDos".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8518,14 +8647,16 @@ impl crate::Request for GetBucketResourceGroup {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketResourceGroup";
-    const URL_PATH: &'static str = "/?resourceGroup";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketResourceGroupResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("resourceGroup".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8554,14 +8685,16 @@ impl crate::Request for PutBucketResourceGroup {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketResourceGroup";
-    const URL_PATH: &'static str = "/?resourceGroup";
 
     type Body = crate::XmlBody<ResourceGroupbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("resourceGroup".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8592,14 +8725,17 @@ impl crate::Request for PutCname {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PutCname";
-    const URL_PATH: &'static str = "/?cname&comp=add";
 
     type Body = crate::XmlBody<PutCnamebody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("cname".into(), "".into()));
+        params.push(("comp".into(), "add".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8626,14 +8762,16 @@ impl crate::Request for ListCname {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListCname";
-    const URL_PATH: &'static str = "/?cname";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListCnameResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("cname".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8662,14 +8800,17 @@ impl crate::Request for DeleteCname {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "DeleteCname";
-    const URL_PATH: &'static str = "/?cname&comp=delete";
 
     type Body = crate::XmlBody<DeleteCnamebody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("cname".into(), "".into()));
+        params.push(("comp".into(), "delete".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8701,14 +8842,14 @@ impl crate::Request for GetCnameToken {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetCnameToken";
-    const URL_PATH: &'static str = "/?comp=token";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetCnameTokenResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("comp".into(), "token".into()));
         params.push(("cname".into(), (&self.cname).into()));
 
         params
@@ -8740,14 +8881,17 @@ impl crate::Request for CreateCnameToken {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CreateCnameToken";
-    const URL_PATH: &'static str = "/?cname&comp=token";
 
     type Body = crate::XmlBody<CnameTokenbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<CreateCnameTokenResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("cname".into(), "".into()));
+        params.push(("comp".into(), "token".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8789,14 +8933,14 @@ impl crate::Request for PutStyle {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutStyle";
-    const URL_PATH: &'static str = "/?style";
 
     type Body = crate::XmlBody<PutStylebody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("style".into(), "".into()));
 
         if let Some(f) = &self.category {
             params.push(("category".into(), (f).into()));
@@ -8830,14 +8974,16 @@ impl crate::Request for ListStyle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListStyle";
-    const URL_PATH: &'static str = "/?style";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("style".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8867,14 +9013,14 @@ impl crate::Request for GetStyle {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetStyle";
-    const URL_PATH: &'static str = "/?style";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetStyleResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("style".into(), "".into()));
         params.push(("styleName".into(), (&self.style_name).into()));
 
         params
@@ -8912,14 +9058,14 @@ impl crate::Request for DeleteStyle {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteStyle";
-    const URL_PATH: &'static str = "/?style";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("style".into(), "".into()));
         params.push(("styleName".into(), (&self.style_name).into()));
 
         params
@@ -8949,14 +9095,16 @@ impl crate::Request for GetBucketHttpsConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketHttpsConfig";
-    const URL_PATH: &'static str = "/?httpsConfig";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketHttpsConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("httpsConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -8985,14 +9133,16 @@ impl crate::Request for PutBucketHttpsConfig {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketHttpsConfig";
-    const URL_PATH: &'static str = "/?httpsConfig";
 
     type Body = crate::XmlBody<HttpsConfigbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("httpsConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9032,14 +9182,16 @@ impl crate::Request for CreateAccessPointForObjectProcess {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "CreateAccessPointForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointForObjectProcess";
 
     type Body = crate::XmlBody<PointForObjectProcessbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<CreateAccessPointForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9078,14 +9230,16 @@ impl crate::Request for GetAccessPointForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointForObjectProcess";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9130,14 +9284,14 @@ impl crate::Request for ListAccessPointsForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListAccessPointsForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointForObjectProcess";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListAccessPointsForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("accessPointForObjectProcess".into(), "".into()));
 
         if let Some(f) = &self.continuation_token {
             params.push(("continuation-token".into(), (f).into()));
@@ -9183,14 +9337,16 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteAccessPointForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointForObjectProcess";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9229,14 +9385,16 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointConfigForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointConfigForObjectProcess";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointConfigForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointConfigForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9281,14 +9439,16 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointConfigForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointConfigForObjectProcess";
 
     type Body = crate::XmlBody<ConfigForObjectProcessbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointConfigForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9331,14 +9491,16 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPolicyForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicyForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9379,14 +9541,16 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointPolicyForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointPolicyForObjectProcessResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicyForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9427,14 +9591,16 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteAccessPointPolicyForObjectProcess";
-    const URL_PATH: &'static str = "/?accessPointPolicyForObjectProcess";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("accessPointPolicyForObjectProcess".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9467,14 +9633,16 @@ impl crate::Request for GetPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9503,14 +9671,16 @@ impl crate::Request for PutPublicAccessBlock {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::XmlBody<PutPublicAccessBlockbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9542,14 +9712,16 @@ impl crate::Request for DeletePublicAccessBlock {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeletePublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9576,14 +9748,16 @@ impl crate::Request for GetBucketPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9612,14 +9786,16 @@ impl crate::Request for PutBucketPublicAccessBlock {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::XmlBody<BucketPublicAccessBlockbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9651,14 +9827,16 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("publicAccessBlock".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9691,14 +9869,14 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetAccessPointPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetAccessPointPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("publicAccessBlock".into(), "".into()));
 
         if let Some(f) = &self.x_oss_access_point_name {
             params.push(("x-oss-access-point-name".into(), (f).into()));
@@ -9738,14 +9916,14 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutAccessPointPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::XmlBody<PointPublicAccessBlockbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("publicAccessBlock".into(), "".into()));
         params.push((
             "x-oss-access-point-name".into(),
             (&self.x_oss_access_point_name).into(),
@@ -9789,14 +9967,14 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteAccessPointPublicAccessBlock";
-    const URL_PATH: &'static str = "/?publicAccessBlock";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("publicAccessBlock".into(), "".into()));
 
         if let Some(f) = &self.x_oss_access_point_name {
             params.push(("x-oss-access-point-name".into(), (f).into()));
@@ -9829,14 +10007,16 @@ impl crate::Request for GetBucketArchiveDirectRead {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketArchiveDirectRead";
-    const URL_PATH: &'static str = "/?bucketArchiveDirectRead";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketArchiveDirectReadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("bucketArchiveDirectRead".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9865,14 +10045,16 @@ impl crate::Request for PutBucketArchiveDirectRead {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketArchiveDirectRead";
-    const URL_PATH: &'static str = "/?bucketArchiveDirectRead";
 
     type Body = crate::XmlBody<DirectReadbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("bucketArchiveDirectRead".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9903,14 +10085,16 @@ impl crate::Request for PutBucketOverwriteConfig {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketOverwriteConfig";
-    const URL_PATH: &'static str = "/?overwriteConfig";
 
     type Body = crate::XmlBody<OverwriteConfigbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("overwriteConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9937,14 +10121,16 @@ impl crate::Request for GetBucketOverwriteConfig {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketOverwriteConfig";
-    const URL_PATH: &'static str = "/?overwriteConfig";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketOverwriteConfigResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("overwriteConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -9974,14 +10160,16 @@ impl crate::Request for DeleteBucketOverwriteConfig {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketOverwriteConfig";
-    const URL_PATH: &'static str = "/?overwriteConfig";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("overwriteConfig".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -10648,14 +10836,15 @@ impl crate::Request for AppendObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "AppendObject";
-    const URL_PATH: &'static str = "/{key}?append";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::OctetStream;
 
     type ResponseWrap = crate::XmlResponseWrap<AppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("append".into(), "".into()));
         params.push(("position".into(), (&self.position).into()));
 
         params
@@ -10759,14 +10948,15 @@ impl crate::Request for SealAppendObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "SealAppendObject";
-    const URL_PATH: &'static str = "/{key}?seal";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<SealAppendObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("seal".into(), "".into()));
         params.push(("position".into(), (&self.position).into()));
 
         params
@@ -11079,14 +11269,15 @@ impl crate::Request for GetObjectMeta {
     const METHOD: http::Method = http::Method::HEAD;
 
     const ACTION: &'static str = "GetObjectMeta";
-    const URL_PATH: &'static str = "/{key}?objectMeta";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetObjectMetaResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("objectMeta".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -11171,14 +11362,15 @@ impl crate::Request for RestoreObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "RestoreObject";
-    const URL_PATH: &'static str = "/{key}?restore";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::XmlBody<RestoreObjectbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<RestoreObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("restore".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -11238,14 +11430,17 @@ impl crate::Request for CleanRestoredObject {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "CleanRestoredObject";
-    const URL_PATH: &'static str = "/{key}?cleanRestoredObject";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("cleanRestoredObject".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -11465,14 +11660,15 @@ impl crate::Request for InitiateMultipartUpload {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "InitiateMultipartUpload";
-    const URL_PATH: &'static str = "/{key}?uploads";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<InitiateMultipartUploadResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("uploads".into(), "".into()));
 
         if let Some(f) = &self.encoding_type {
             params.push(("encoding-type".into(), (f).into()));
@@ -11955,14 +12151,14 @@ impl crate::Request for ListMultipartUploads {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListMultipartUploads";
-    const URL_PATH: &'static str = "/?uploads";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListMultipartUploadsResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(6);
+        let mut params = Vec::with_capacity(7);
+        params.push(("uploads".into(), "".into()));
 
         if let Some(f) = &self.delimiter {
             params.push(("delimiter".into(), (f).into()));
@@ -12120,14 +12316,15 @@ impl crate::Request for PutObjectAcl {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutObjectAcl";
-    const URL_PATH: &'static str = "/{key}?acl";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutObjectAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("acl".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12186,14 +12383,15 @@ impl crate::Request for GetObjectAcl {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetObjectAcl";
-    const URL_PATH: &'static str = "/{key}?acl";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetObjectAclResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("acl".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12279,14 +12477,17 @@ impl crate::Request for PutSymlink {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutSymlink";
-    const URL_PATH: &'static str = "/{key}?symlink";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("symlink".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12354,14 +12555,15 @@ impl crate::Request for GetSymlink {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetSymlink";
-    const URL_PATH: &'static str = "/{key}?symlink";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetSymlinkResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("symlink".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12424,14 +12626,15 @@ impl crate::Request for PutObjectTagging {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutObjectTagging";
-    const URL_PATH: &'static str = "/{key}?tagging";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::XmlBody<ObjectTaggingbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("tagging".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12487,14 +12690,15 @@ impl crate::Request for GetObjectTagging {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetObjectTagging";
-    const URL_PATH: &'static str = "/{key}?tagging";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetObjectTaggingResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("tagging".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12543,14 +12747,15 @@ impl crate::Request for DeleteObjectTagging {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteObjectTagging";
-    const URL_PATH: &'static str = "/{key}?tagging";
+    const URL_PATH: &'static str = "/{key}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("tagging".into(), "".into()));
 
         if let Some(f) = &self.version_id {
             params.push(("versionId".into(), (f).into()));
@@ -12596,14 +12801,17 @@ impl crate::Request for PutLiveChannel {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutLiveChannel";
-    const URL_PATH: &'static str = "/{channel}?live";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = crate::XmlBody<LiveChannelbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutLiveChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("live".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12649,14 +12857,14 @@ impl crate::Request for ListLiveChannel {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListLiveChannel";
-    const URL_PATH: &'static str = "/?live";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListLiveChannelResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(3);
+        let mut params = Vec::with_capacity(4);
+        params.push(("live".into(), "".into()));
 
         if let Some(f) = &self.marker {
             params.push(("marker".into(), (f).into()));
@@ -12705,14 +12913,17 @@ impl crate::Request for DeleteLiveChannel {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteLiveChannel";
-    const URL_PATH: &'static str = "/{channel}?live";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("live".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12759,14 +12970,15 @@ impl crate::Request for PutLiveChannelStatus {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutLiveChannelStatus";
-    const URL_PATH: &'static str = "/{channel}?live";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("live".into(), "".into()));
         params.push(("status".into(), (&self.status).into()));
 
         params
@@ -12805,14 +13017,17 @@ impl crate::Request for GetLiveChannelInfo {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelInfo";
-    const URL_PATH: &'static str = "/{channel}?live";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelInfoResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("live".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12846,14 +13061,18 @@ impl crate::Request for GetLiveChannelHistory {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelHistory";
-    const URL_PATH: &'static str = "/{channel}?live&comp=history";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelHistoryResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("live".into(), "".into()));
+        params.push(("comp".into(), "history".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12887,14 +13106,18 @@ impl crate::Request for GetLiveChannelStat {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetLiveChannelStat";
-    const URL_PATH: &'static str = "/{channel}?live&comp=stat";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetLiveChannelStatResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(2);
+        params.push(("live".into(), "".into()));
+        params.push(("comp".into(), "stat".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -12939,14 +13162,15 @@ impl crate::Request for GetVodPlaylist {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetVodPlaylist";
-    const URL_PATH: &'static str = "/{channel}?vod";
+    const URL_PATH: &'static str = "/{channel}";
 
     type Body = ();
 
     type ResponseWrap = Vec<u8>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("vod".into(), "".into()));
         params.push(("endTime".into(), (&self.end_time).into()));
         params.push(("startTime".into(), (&self.start_time).into()));
 
@@ -13005,14 +13229,15 @@ impl crate::Request for PostVodPlaylist {
     const METHOD: http::Method = http::Method::POST;
 
     const ACTION: &'static str = "PostVodPlaylist";
-    const URL_PATH: &'static str = "/{channel}/{playlist}?vod";
+    const URL_PATH: &'static str = "/{channel}/{playlist}";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(2);
+        let mut params = Vec::with_capacity(3);
+        params.push(("vod".into(), "".into()));
         params.push(("endTime".into(), (&self.end_time).into()));
         params.push(("startTime".into(), (&self.start_time).into()));
 
@@ -13054,14 +13279,16 @@ impl crate::Request for PutChannel {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutChannel";
-    const URL_PATH: &'static str = "/?img";
 
     type Body = crate::XmlBody<PutChannelbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("img".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13092,14 +13319,16 @@ impl crate::Request for PutBucketHash {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketHash";
-    const URL_PATH: &'static str = "/?objectHash";
 
     type Body = crate::XmlBody<BucketHashbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("objectHash".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13130,14 +13359,16 @@ impl crate::Request for PutBucketCommonHeader {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutBucketCommonHeader";
-    const URL_PATH: &'static str = "/?x-oss-common-header";
 
     type Body = crate::XmlBody<CommonHeaderbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("x-oss-common-header".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13169,14 +13400,16 @@ impl crate::Request for DeleteBucketCommonHeader {
     const METHOD: http::Method = http::Method::DELETE;
 
     const ACTION: &'static str = "DeleteBucketCommonHeader";
-    const URL_PATH: &'static str = "/?x-oss-common-header";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("x-oss-common-header".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13207,14 +13440,16 @@ impl crate::Request for PutProcessConfiguration {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutProcessConfiguration";
-    const URL_PATH: &'static str = "/?processConfiguration";
 
     type Body = crate::XmlBody<ProcessConfigurationbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("processConfiguration".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13241,14 +13476,16 @@ impl crate::Request for GetBucketEventNotification {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "GetBucketEventNotification";
-    const URL_PATH: &'static str = "/?eventNotification";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<GetBucketEventNotificationResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("eventNotification".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
@@ -13281,14 +13518,14 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "PutDataLakeCachePrefetchJob";
-    const URL_PATH: &'static str = "/?x-oss-datalake-cache-prefetch-job";
 
     type Body = crate::XmlBody<PrefetchJobbody>;
 
     type ResponseWrap = crate::XmlResponseWrap<PutDataLakeCachePrefetchJobResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(2);
+        params.push(("x-oss-datalake-cache-prefetch-job".into(), "".into()));
 
         if let Some(f) = &self.x_oss_datalake_job_id {
             params.push(("x-oss-datalake-job-id".into(), (f).into()));
@@ -13330,14 +13567,15 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
     const METHOD: http::Method = http::Method::PUT;
 
     const ACTION: &'static str = "StartDataLakeCachePrefetchJob";
-    const URL_PATH: &'static str = "/?x-oss-datalake-cache-prefetch-job&x-oss-datalake-job-start";
 
     type Body = crate::Form<Self>;
 
     type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        let mut params = Vec::with_capacity(1);
+        let mut params = Vec::with_capacity(3);
+        params.push(("x-oss-datalake-cache-prefetch-job".into(), "".into()));
+        params.push(("x-oss-datalake-job-start".into(), "".into()));
         params.push((
             "x-oss-datalake-job-id".into(),
             (&self.x_oss_datalake_job_id).into(),
@@ -13370,14 +13608,16 @@ impl crate::Request for ListDataLakeStorageTransferJob {
     const METHOD: http::Method = http::Method::GET;
 
     const ACTION: &'static str = "ListDataLakeStorageTransferJob";
-    const URL_PATH: &'static str = "/?x-oss-datalake-storage-transfer-job";
 
     type Body = ();
 
     type ResponseWrap = crate::XmlResponseWrap<ListDataLakeStorageTransferJobResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
-        Default::default()
+        let mut params = Vec::with_capacity(1);
+        params.push(("x-oss-datalake-storage-transfer-job".into(), "".into()));
+
+        params
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
