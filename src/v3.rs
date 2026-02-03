@@ -14,15 +14,6 @@ use crate::{FromBody, IntoBody as _, IntoResponse, Result, ToCodeMessage, auth::
 // Re-export AccessKeySecret for backward compatibility
 pub use crate::auth::AccessKeySecret;
 
-/// Separate the request into several parts by '/', each part encode with percent_encode,
-/// and join them with '/'.
-fn canonical_uri_path(uri: &str) -> String {
-    uri.split('/')
-        .map(percent_encode)
-        .collect::<Vec<_>>()
-        .join("/")
-}
-
 fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &str) -> Result<()> {
     headers.insert(
         key,
@@ -77,7 +68,6 @@ where
         }
         path.into()
     };
-    let uri = canonical_uri_path(&url_path);
     let query_params = req.to_query_params();
     let query_string = auth.canonical_query_string(query_params);
     let custom_headers = req.to_headers();
@@ -102,7 +92,7 @@ where
     // Use the auth trait to sign the request
     let authorization = auth.sign(
         &mut headers,
-        &uri,
+        &url_path,
         &query_string,
         R::METHOD.as_str(),
         &hashed_request_payload,
@@ -158,16 +148,6 @@ where
     Ok(resp)
 }
 
-/// Percent-encodes a string per RFC 3986.
-///
-/// The `urlencoding` crate's default behavior matches Aliyun's requirements:
-/// - Spaces are encoded as `%20` (not `+`)
-/// - The `*` character is encoded as `%2A`
-/// - The `~` character is not encoded
-fn percent_encode(s: &str) -> Cow<'_, str> {
-    urlencoding::encode(s)
-}
-
 /// 1. sha256 hash the request s
 /// 1. hex encode the hash
 fn hexed_sha256(s: impl AsRef<[u8]>) -> String {
@@ -211,19 +191,5 @@ mod tests {
         assert_eq!(format_datetime(dt)?, "2018-01-01T12:00:00Z");
 
         Ok(())
-    }
-
-    #[test]
-    fn test_percent_encode() {
-        assert_eq!(percent_encode(" "), "%20");
-        assert_eq!(percent_encode("*"), "%2A");
-        assert_eq!(percent_encode("~"), "~");
-    }
-
-    #[test]
-    fn test_canonical_uri_path() {
-        assert_eq!(canonical_uri_path("/"), "/");
-        assert_eq!(canonical_uri_path("a/b/c/"), "a/b/c/");
-        assert_eq!(canonical_uri_path("a/b/c//d"), "a/b/c//d");
     }
 }
