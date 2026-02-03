@@ -639,6 +639,11 @@ trait Request: Sized + Send {
         Vec::new()
     }
 
+    /// Used in oss api to change host name by bucket
+    fn process_endpoint(&self, endpoint: &'static str) -> Cow<'static, str> {
+        endpoint.into()
+    }
+
     /// Returns custom headers to be included in the request.
     fn to_headers(&self) -> Vec<(Cow<'static, str>, String)> {
         Vec::new()

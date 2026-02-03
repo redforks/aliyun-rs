@@ -15,7 +15,7 @@ pub async fn call<R>(
     auth: &dyn AliyunAuth,
     http_client: &reqwest::Client,
     version: &'static str,
-    end_point: &'static str,
+    endpoint: &'static str,
     req: R,
 ) -> Result<<R::ResponseWrap as IntoResponse>::Response>
 where
@@ -34,6 +34,7 @@ where
     };
     let query_string = auth.canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
+    let endpoint = req.process_endpoint(endpoint);
     let body = req.to_body();
     let content_type = body.content_type();
     let body = body.into_body()?;
@@ -63,7 +64,7 @@ where
         http::header::AUTHORIZATION,
         HeaderValue::try_from(authorization).context("convert to header value")?,
     );
-    let mut url = format!("https://{}{}", end_point, url_path);
+    let mut url = format!("https://{}{}", endpoint, url_path);
     if !query_string.is_empty() {
         url.push('?');
         url.push_str(&query_string);

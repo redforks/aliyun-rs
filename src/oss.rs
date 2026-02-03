@@ -302,7 +302,9 @@ impl Connection {
         &self,
         req: GetBucketStat,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketStatResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建存储空间
@@ -341,7 +343,9 @@ impl Connection {
         &self,
         req: PutBucket,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间
@@ -367,7 +371,9 @@ impl Connection {
         &self,
         req: DeleteBucket,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举存储空间中所有文件的信息
@@ -394,7 +400,9 @@ impl Connection {
         &self,
         req: ListObjects,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举存储空间中所有文件的信息V2
@@ -419,7 +427,9 @@ impl Connection {
         &self,
         req: ListObjectsV2,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsV2Response>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的相关信息
@@ -442,7 +452,9 @@ impl Connection {
         &self,
         req: GetBucketInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInfoResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的位置信息
@@ -465,7 +477,9 @@ impl Connection {
         &self,
         req: GetBucketLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLocationResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取接入点信息
@@ -511,7 +525,9 @@ impl Connection {
         &self,
         req: GetAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取接入点策略配置
@@ -534,7 +550,9 @@ impl Connection {
         &self,
         req: GetAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPolicyResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除接入点策略
@@ -557,7 +575,9 @@ impl Connection {
         &self,
         req: DeleteAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 配置接入点策略
@@ -580,7 +600,9 @@ impl Connection {
         &self,
         req: PutAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除接入点
@@ -603,7 +625,9 @@ impl Connection {
         &self,
         req: DeleteAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建接入点
@@ -629,7 +653,9 @@ impl Connection {
         &self,
         req: CreateAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 新建合规保留策略
@@ -658,7 +684,9 @@ impl Connection {
         &self,
         req: InitiateBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除未锁定的合规保留策略
@@ -689,7 +717,9 @@ impl Connection {
         &self,
         req: AbortBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 锁定合规保留策略
@@ -718,7 +748,9 @@ impl Connection {
         &self,
         req: CompleteBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 延长存储空间中文件的保留天数
@@ -753,7 +785,9 @@ impl Connection {
         &self,
         req: ExtendBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的合规保留策略信息
@@ -782,7 +816,9 @@ impl Connection {
         &self,
         req: GetBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWormResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置或修改存储空间的访问权限
@@ -811,7 +847,9 @@ impl Connection {
         &self,
         req: PutBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的访问权限
@@ -834,7 +872,9 @@ impl Connection {
         &self,
         req: GetBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAclResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的生命周期规则
@@ -865,7 +905,9 @@ impl Connection {
         &self,
         req: PutBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查询存储空间的生命周期规则
@@ -888,7 +930,9 @@ impl Connection {
         &self,
         req: GetBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLifecycleResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的生命周期规则
@@ -915,7 +959,9 @@ impl Connection {
         &self,
         req: DeleteBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 为存储空间配置传输加速
@@ -946,7 +992,9 @@ impl Connection {
         &self,
         req: PutBucketTransferAcceleration,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的传输加速配置
@@ -976,7 +1024,9 @@ impl Connection {
         req: GetBucketTransferAcceleration,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTransferAccelerationResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的版本控制状态
@@ -1009,7 +1059,9 @@ impl Connection {
         &self,
         req: PutBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取指定存储空间的版本控制状态
@@ -1032,7 +1084,9 @@ impl Connection {
         &self,
         req: GetBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketVersioningResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取文件的版本信息
@@ -1060,7 +1114,9 @@ impl Connection {
         &self,
         req: ListObjectVersions,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectVersionsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的授权策略
@@ -1093,7 +1149,9 @@ impl Connection {
         &self,
         req: PutBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的权限策略
@@ -1126,7 +1184,9 @@ impl Connection {
         &self,
         req: GetBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的权限策略
@@ -1159,7 +1219,9 @@ impl Connection {
         &self,
         req: DeleteBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间授权策略是否是公共访问
@@ -1185,7 +1247,9 @@ impl Connection {
         req: GetBucketPolicyStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyStatusResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置RTC
@@ -1208,7 +1272,9 @@ impl Connection {
         &self,
         req: PutBucketRtc,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 指定存储空间的数据复制规则
@@ -1241,7 +1307,9 @@ impl Connection {
         &self,
         req: PutBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的数据复制规则
@@ -1264,7 +1332,9 @@ impl Connection {
         &self,
         req: GetBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取可复制到的目标存储空间的地域
@@ -1288,7 +1358,9 @@ impl Connection {
         req: GetBucketReplicationLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationLocationResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的数据复制进度
@@ -1312,7 +1384,9 @@ impl Connection {
         req: GetBucketReplicationProgress,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationProgressResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 停止存储空间的数据复制并删除其复制配置
@@ -1341,7 +1415,9 @@ impl Connection {
         &self,
         req: DeleteBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 配置存储空间的清单规则
@@ -1390,7 +1466,9 @@ impl Connection {
         &self,
         req: PutBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的清单任务
@@ -1415,7 +1493,9 @@ impl Connection {
         &self,
         req: GetBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInventoryResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 批量获取存储空间的所有清单任务
@@ -1442,7 +1522,9 @@ impl Connection {
         &self,
         req: ListBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketInventoryResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的指定清单任务
@@ -1468,7 +1550,9 @@ impl Connection {
         &self,
         req: DeleteBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 开启存储空间的日志转存功能
@@ -1501,7 +1585,9 @@ impl Connection {
         &self,
         req: PutBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的访问日志配置
@@ -1524,7 +1610,9 @@ impl Connection {
         &self,
         req: GetBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLoggingResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 关闭存储空间的访问日志记录功能
@@ -1550,7 +1638,9 @@ impl Connection {
         &self,
         req: DeleteBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间实时日志用户自定义字段配置
@@ -1583,7 +1673,9 @@ impl Connection {
         &self,
         req: PutUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间实时日志用户自定义字段配置
@@ -1607,7 +1699,9 @@ impl Connection {
         req: GetUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetUserDefinedLogFieldsConfigResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间实时日志用户自定义字段配置
@@ -1630,7 +1724,9 @@ impl Connection {
         &self,
         req: DeleteUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的静态网站托管状态和规则
@@ -1653,7 +1749,9 @@ impl Connection {
         &self,
         req: GetBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWebsiteResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间为静态网站托管模式并设置跳转规则
@@ -1684,7 +1782,9 @@ impl Connection {
         &self,
         req: PutBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 关闭存储空间的静态网站托管模式以及跳转规则
@@ -1709,7 +1809,9 @@ impl Connection {
         &self,
         req: DeleteBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的防盗链
@@ -1732,7 +1834,9 @@ impl Connection {
         &self,
         req: PutBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看存储空间的防盗链相关配置
@@ -1755,7 +1859,9 @@ impl Connection {
         &self,
         req: GetBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRefererResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 为存储空间添加或修改标签
@@ -1784,7 +1890,9 @@ impl Connection {
         &self,
         req: PutBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的标签信息
@@ -1807,7 +1915,9 @@ impl Connection {
         &self,
         req: GetBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTagsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的标签
@@ -1832,7 +1942,9 @@ impl Connection {
         &self,
         req: DeleteBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举用户级别存储冗余类型转换任务
@@ -1883,7 +1995,9 @@ impl Connection {
         req: ListBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketDataRedundancyTransitionResponse>>
     + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间存储冗余转换任务
@@ -1910,7 +2024,9 @@ impl Connection {
         req: GetBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketDataRedundancyTransitionResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建存储冗余类型转换任务
@@ -1941,7 +2057,9 @@ impl Connection {
     ) -> impl std::future::Future<
         Output = crate::Result<CreateBucketDataRedundancyTransitionResponse>,
     > + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储冗余类型转换任务
@@ -1968,7 +2086,9 @@ impl Connection {
         &self,
         req: DeleteBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 配置存储空间的加密规则
@@ -1993,7 +2113,9 @@ impl Connection {
         &self,
         req: PutBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间的加密规则
@@ -2018,7 +2140,9 @@ impl Connection {
         &self,
         req: GetBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEncryptionResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的加密规则
@@ -2043,7 +2167,9 @@ impl Connection {
         &self,
         req: DeleteBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置请求者付费模式
@@ -2072,7 +2198,9 @@ impl Connection {
         &self,
         req: PutBucketRequestPayment,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取请求者付费模式配置信息
@@ -2096,7 +2224,9 @@ impl Connection {
         req: GetBucketRequestPayment,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRequestPaymentResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的跨域资源共享规则
@@ -2157,7 +2287,9 @@ impl Connection {
         &self,
         req: PutBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间当前的跨域资源共享规则
@@ -2182,7 +2314,9 @@ impl Connection {
         &self,
         req: GetBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketCorsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 关闭存储空间跨域资源共享功能
@@ -2208,7 +2342,9 @@ impl Connection {
         &self,
         req: DeleteBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 发送预检请求
@@ -2235,7 +2371,8 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
-                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or HttpMethod::Head supported"##
+                r##"Parameter 'bucket': Host parameters are not supported.
+Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or HttpMethod::Head supported"##
             );
         }
     }
@@ -2260,7 +2397,9 @@ impl Connection {
         &self,
         req: PutBucketAccessMonitor,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间访问追踪状态
@@ -2284,7 +2423,9 @@ impl Connection {
         req: GetBucketAccessMonitor,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAccessMonitorResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取元数据索引库信息
@@ -2307,7 +2448,9 @@ impl Connection {
         &self,
         req: GetMetaQueryStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetMetaQueryStatusResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 关闭存储空间元数据管理
@@ -2330,7 +2473,9 @@ impl Connection {
         &self,
         req: CloseMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查询满足条件的文件
@@ -2353,7 +2498,9 @@ impl Connection {
         &self,
         req: DoMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<DoMetaQueryResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 开启元数据管理功能
@@ -2376,7 +2523,9 @@ impl Connection {
         &self,
         req: OpenMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 更改高防OSS实例状态
@@ -2422,7 +2571,9 @@ impl Connection {
         &self,
         req: UpdateBucketAntiDDosInfo,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取Bucket防护信息列表
@@ -2492,7 +2643,9 @@ impl Connection {
         &self,
         req: InitBucketAntiDDosInfo,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查询高防OSS实例信息
@@ -2539,7 +2692,9 @@ impl Connection {
         req: GetBucketResourceGroup,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketResourceGroupResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间资源组
@@ -2562,7 +2717,9 @@ impl Connection {
         &self,
         req: PutBucketResourceGroup,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 绑定自定义域名
@@ -2585,7 +2742,9 @@ impl Connection {
         &self,
         req: PutCname,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查询自定义域名列表
@@ -2608,7 +2767,9 @@ impl Connection {
         &self,
         req: ListCname,
     ) -> impl std::future::Future<Output = crate::Result<ListCnameResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除Cname
@@ -2631,7 +2792,9 @@ impl Connection {
         &self,
         req: DeleteCname,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取CnameToken
@@ -2654,7 +2817,9 @@ impl Connection {
         &self,
         req: GetCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<GetCnameTokenResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建CnameToken
@@ -2677,7 +2842,9 @@ impl Connection {
         &self,
         req: CreateCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<CreateCnameTokenResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 新增图片样式
@@ -2700,7 +2867,9 @@ impl Connection {
         &self,
         req: PutStyle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查询图片样式
@@ -2723,7 +2892,9 @@ impl Connection {
         &self,
         req: ListStyle,
     ) -> impl std::future::Future<Output = crate::Result<ListStyleResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取图片样式
@@ -2746,7 +2917,9 @@ impl Connection {
         &self,
         req: GetStyle,
     ) -> impl std::future::Future<Output = crate::Result<GetStyleResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除图片样式
@@ -2769,7 +2942,9 @@ impl Connection {
         &self,
         req: DeleteStyle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间HTTPS配置
@@ -2796,7 +2971,9 @@ impl Connection {
         &self,
         req: GetBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketHttpsConfigResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间HTTPS配置
@@ -2819,7 +2996,9 @@ impl Connection {
         &self,
         req: PutBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建对象FC接入点
@@ -2847,7 +3026,9 @@ impl Connection {
         req: CreateAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointForObjectProcessResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取对象FC接入点详情
@@ -2873,7 +3054,9 @@ impl Connection {
         req: GetAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointForObjectProcessResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举对象FC接入点
@@ -2924,7 +3107,9 @@ impl Connection {
         &self,
         req: DeleteAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取对象FC接入点配置
@@ -2951,7 +3136,9 @@ impl Connection {
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointConfigForObjectProcessResponse>,
     > + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改对象FC接入点配置
@@ -2976,7 +3163,9 @@ impl Connection {
         &self,
         req: PutAccessPointConfigForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改对象FC接入点授权策略
@@ -3001,7 +3190,9 @@ impl Connection {
         &self,
         req: PutAccessPointPolicyForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取对象FC接入点策略
@@ -3029,7 +3220,9 @@ impl Connection {
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointPolicyForObjectProcessResponse>,
     > + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除对象FC接入点策略
@@ -3054,7 +3247,9 @@ impl Connection {
         &self,
         req: DeleteAccessPointPolicyForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取用户级别阻止公共访问配置
@@ -3147,7 +3342,9 @@ impl Connection {
         req: GetBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPublicAccessBlockResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 开启/关闭存储空间阻止公共访问配置
@@ -3170,7 +3367,9 @@ impl Connection {
         &self,
         req: PutBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间阻止公共访问配置
@@ -3193,7 +3392,9 @@ impl Connection {
         &self,
         req: DeleteBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取接入点阻止公共访问配置
@@ -3217,7 +3418,9 @@ impl Connection {
         req: GetAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPublicAccessBlockResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改接入点阻止公共访问配置
@@ -3242,7 +3445,10 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
-            todo!(r##"API must have 200 or 204 response"##);
+            todo!(
+                r##"Parameter 'bucket': Host parameters are not supported.
+API must have 200 or 204 response"##
+            );
         }
     }
 
@@ -3266,7 +3472,9 @@ impl Connection {
         &self,
         req: DeleteAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间归档直读配置
@@ -3293,7 +3501,9 @@ impl Connection {
         req: GetBucketArchiveDirectRead,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketArchiveDirectReadResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间归档直读配置
@@ -3322,7 +3532,9 @@ impl Connection {
         &self,
         req: PutBucketArchiveDirectRead,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间禁止覆盖写规则
@@ -3345,7 +3557,9 @@ impl Connection {
         &self,
         req: PutBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间禁止覆盖写规则
@@ -3369,7 +3583,9 @@ impl Connection {
         req: GetBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketOverwriteConfigResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的不覆盖写规则
@@ -3392,7 +3608,9 @@ impl Connection {
         &self,
         req: DeleteBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 上传文件
@@ -3425,7 +3643,9 @@ impl Connection {
         &self,
         req: PutObject,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 拷贝文件
@@ -3474,7 +3694,9 @@ impl Connection {
         &self,
         req: CopyObject,
     ) -> impl std::future::Future<Output = crate::Result<CopyObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取文件
@@ -3508,7 +3730,9 @@ impl Connection {
         &self,
         req: GetObject,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 以追加写的方式上传文件
@@ -3545,7 +3769,9 @@ impl Connection {
         &self,
         req: AppendObject,
     ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 封存可追加对象
@@ -3568,7 +3794,9 @@ impl Connection {
         &self,
         req: SealAppendObject,
     ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除文件
@@ -3605,7 +3833,9 @@ impl Connection {
         &self,
         req: DeleteObject,
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取文件的元信息
@@ -3634,7 +3864,8 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
+                r##"Parameter 'bucket': Host parameters are not supported.
+Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
         }
     }
@@ -3668,7 +3899,9 @@ impl Connection {
         &self,
         req: GetObjectMeta,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 解冻归档类型或冷归档的文件
@@ -3726,7 +3959,9 @@ impl Connection {
         &self,
         req: RestoreObject,
     ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 清理解冻副本
@@ -3749,7 +3984,9 @@ impl Connection {
         &self,
         req: CleanRestoredObject,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 对文件执行SQL语句并返回结果
@@ -3776,7 +4013,9 @@ impl Connection {
         &self,
         req: SelectObject,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取目标文件总行数、总列数以及Splits个数
@@ -3804,7 +4043,9 @@ impl Connection {
         req: CreateSelectObjectMeta,
     ) -> impl std::future::Future<Output = crate::Result<CreateSelectObjectMetaResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 通知OSS初始化分片上传事件
@@ -3834,7 +4075,9 @@ impl Connection {
         req: InitiateMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<InitiateMultipartUploadResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 分块上传数据
@@ -3865,7 +4108,9 @@ impl Connection {
         &self,
         req: UploadPart,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 完成整个文件的分片上传
@@ -3908,7 +4153,9 @@ impl Connection {
         req: CompleteMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<CompleteMultipartUploadResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 拷贝数据上传一个数据块
@@ -3955,7 +4202,9 @@ impl Connection {
         &self,
         req: UploadPartCopy,
     ) -> impl std::future::Future<Output = crate::Result<UploadPartCopyResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 取消分片上传事件并删除数据块数据
@@ -3985,7 +4234,9 @@ impl Connection {
         &self,
         req: AbortMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举执行中的分片上传事件
@@ -4010,7 +4261,9 @@ impl Connection {
         &self,
         req: ListMultipartUploads,
     ) -> impl std::future::Future<Output = crate::Result<ListMultipartUploadsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举所有成功上传的数据块
@@ -4037,7 +4290,9 @@ impl Connection {
         &self,
         req: ListParts,
     ) -> impl std::future::Future<Output = crate::Result<ListPartsResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改文件的访问权限
@@ -4083,7 +4338,9 @@ impl Connection {
         &self,
         req: PutObjectAcl,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取文件的访问权限
@@ -4112,7 +4369,9 @@ impl Connection {
         &self,
         req: GetObjectAcl,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectAclResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建OSS目标文件的软链接
@@ -4148,7 +4407,9 @@ impl Connection {
         &self,
         req: PutSymlink,
     ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取软链接
@@ -4176,7 +4437,9 @@ impl Connection {
         &self,
         req: GetSymlink,
     ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置或更新文件的标签信息
@@ -4216,7 +4479,9 @@ impl Connection {
         &self,
         req: PutObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取文件的标签信息
@@ -4244,7 +4509,9 @@ impl Connection {
         &self,
         req: GetObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectTaggingResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除对象的标签信息
@@ -4272,7 +4539,9 @@ impl Connection {
         &self,
         req: DeleteObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建直播推流
@@ -4298,7 +4567,9 @@ impl Connection {
         &self,
         req: PutLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 列举指定的直播推流
@@ -4321,7 +4592,9 @@ impl Connection {
         &self,
         req: ListLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<ListLiveChannelResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除指定的直播推流
@@ -4347,7 +4620,9 @@ impl Connection {
         &self,
         req: DeleteLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 切换直播推流状态
@@ -4374,7 +4649,9 @@ impl Connection {
         &self,
         req: PutLiveChannelStatus,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取直播推流的配置信息
@@ -4397,7 +4674,9 @@ impl Connection {
         &self,
         req: GetLiveChannelInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelInfoResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取直播推流的推流记录
@@ -4423,7 +4702,9 @@ impl Connection {
         req: GetLiveChannelHistory,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelHistoryResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取直播推流的推流状态信息
@@ -4446,7 +4727,9 @@ impl Connection {
         &self,
         req: GetLiveChannelStat,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelStatResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 查看直播推流的播放列表
@@ -4469,7 +4752,9 @@ impl Connection {
         &self,
         req: GetVodPlaylist,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 为直播推流生成点播的播放列表
@@ -4494,7 +4779,9 @@ impl Connection {
         &self,
         req: PostVodPlaylist,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 创建图片处理通道
@@ -4517,7 +4804,9 @@ impl Connection {
         &self,
         req: PutChannel,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间哈希算法配置
@@ -4540,7 +4829,9 @@ impl Connection {
         &self,
         req: PutBucketHash,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 设置存储空间的用户自定义响应头配置
@@ -4563,7 +4854,9 @@ impl Connection {
         &self,
         req: PutBucketCommonHeader,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 删除存储空间的用户自定义响应头配置
@@ -4586,7 +4879,9 @@ impl Connection {
         &self,
         req: DeleteBucketCommonHeader,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 修改存储空间媒体处理配置
@@ -4609,7 +4904,9 @@ impl Connection {
         &self,
         req: PutProcessConfiguration,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// # 获取存储空间事件通知配置
@@ -4633,7 +4930,9 @@ impl Connection {
         req: GetBucketEventNotification,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEventNotificationResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// 配置OSS加速器异步预热规则
@@ -4655,7 +4954,9 @@ impl Connection {
         req: PutDataLakeCachePrefetchJob,
     ) -> impl std::future::Future<Output = crate::Result<PutDataLakeCachePrefetchJobResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// 启动OSS加速器异步预热任务
@@ -4676,7 +4977,9 @@ impl Connection {
         &self,
         req: StartDataLakeCachePrefetchJob,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 
     /// 列举数据湖元数据转换任务
@@ -4698,7 +5001,9 @@ impl Connection {
         req: ListDataLakeStorageTransferJob,
     ) -> impl std::future::Future<Output = crate::Result<ListDataLakeStorageTransferJobResponse>> + Send
     {
-        self.call(req)
+        async {
+            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
+        }
     }
 }
 
