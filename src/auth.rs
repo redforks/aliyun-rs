@@ -76,7 +76,7 @@ fn canonical_query_string_oss4(values: Vec<(Cow<'static, str>, QueryValue)>) -> 
 
 /// Type of ali access key and secret key.
 #[derive(Clone, Debug)]
-pub struct AccessKeySecret(pub Cow<'static, str>, pub Cow<'static, str>);
+pub struct AccessKeySecret(Cow<'static, str>, Cow<'static, str>);
 
 impl AccessKeySecret {
     #[inline]
@@ -182,14 +182,9 @@ pub struct Acs3HmacSha256(pub AccessKeySecret);
 impl Acs3HmacSha256 {
     const ACS3_SIGNATURE_ALGORITHM: &str = "ACS3-HMAC-SHA256";
 
+    #[cfg(test)]
     pub fn new(key: impl Into<Cow<'static, str>>, secret: impl Into<Cow<'static, str>>) -> Self {
         Self(AccessKeySecret::new(key, secret))
-    }
-}
-
-impl From<AccessKeySecret> for Acs3HmacSha256 {
-    fn from(key_secret: AccessKeySecret) -> Self {
-        Self(key_secret)
     }
 }
 
@@ -206,7 +201,7 @@ fn insert_str_header(
 }
 
 /// Format datetime to format like: 2018-01-01T12:00:00Z
-pub fn format_acs3_datetime(dt: OffsetDateTime) -> Result<String> {
+fn format_acs3_datetime(dt: OffsetDateTime) -> Result<String> {
     use time::format_description::well_known::iso8601::TimePrecision;
     use time::format_description::well_known::{
         Iso8601,
@@ -270,7 +265,11 @@ impl AliyunAuth for Acs3HmacSha256 {
         let hashed_canonical_request = hexed_sha256(&canonical_request);
 
         // Build string to sign
-        let string_to_sign = format!("{}\n{}", Self::ACS3_SIGNATURE_ALGORITHM, hashed_canonical_request);
+        let string_to_sign = format!(
+            "{}\n{}",
+            Self::ACS3_SIGNATURE_ALGORITHM,
+            hashed_canonical_request
+        );
 
         // Calculate signature
         let signature = hexed_hmac_sha256(
@@ -298,8 +297,8 @@ impl AliyunAuth for Acs3HmacSha256 {
 /// - String to sign includes timestamp and scope
 #[derive(Clone, Debug)]
 pub struct Oss4HmacSha256 {
-    pub credentials: AccessKeySecret,
-    pub region: Cow<'static, str>,
+    credentials: AccessKeySecret,
+    region: Cow<'static, str>,
 }
 
 impl Oss4HmacSha256 {

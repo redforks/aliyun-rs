@@ -2,8 +2,8 @@
 use std::borrow::Cow;
 
 use crate::{
-    auth::{AccessKeySecret, Acs3HmacSha256},
     CodeMessage, IntoResponse, JsonResponseWrap, QueryValue, Request, Result,
+    auth::{AccessKeySecret, Acs3HmacSha256},
 };
 use serde::Deserialize;
 
@@ -33,7 +33,7 @@ pub struct Connection(crate::common::Connection);
 impl Connection {
     pub fn new(endpoint: Endpoint, app_key_secret: AccessKeySecret) -> Self {
         Self(crate::common::Connection::new(
-            Acs3HmacSha256::from(app_key_secret),
+            Acs3HmacSha256(app_key_secret),
             "2020-01-01",
             endpoint.into(),
         ))

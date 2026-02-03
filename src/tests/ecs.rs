@@ -4,11 +4,9 @@ use crate::ecs::{Connection, Endpoint};
 fn test_connection() -> Connection {
     let access_key = std::env::var("TEST_ALI_ACCESS_KEY")
         .expect("TEST_ALI_ACCESS_KEY environment variable not set");
-    let secret = crate::v3::AccessKeySecret(
-        access_key.into(),
-        std::env::var("TEST_ALI_SECRET")
-            .expect("TEST_ALI_SECRET environment variable not set")
-            .into(),
+    let secret = crate::v3::AccessKeySecret::new(
+        access_key,
+        std::env::var("TEST_ALI_SECRET").expect("TEST_ALI_SECRET environment variable not set"),
     );
     Connection::new(Endpoint::CnHangzhou, secret)
 }

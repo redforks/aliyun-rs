@@ -1,10 +1,7 @@
 //! Build authorization signature V3
 
 use anyhow::{Context, anyhow};
-use http::{
-    HeaderMap, HeaderValue, Method,
-    header::{CONTENT_TYPE, IntoHeaderName},
-};
+use http::{HeaderValue, Method, header::CONTENT_TYPE};
 use std::borrow::Cow;
 use tracing::debug;
 
@@ -12,14 +9,6 @@ use crate::{FromBody, IntoBody as _, IntoResponse, Result, ToCodeMessage, auth::
 
 // Re-export AccessKeySecret for backward compatibility
 pub use crate::auth::AccessKeySecret;
-
-fn insert_str_header(headers: &mut HeaderMap, key: impl IntoHeaderName, value: &str) -> Result<()> {
-    headers.insert(
-        key,
-        HeaderValue::from_str(value).context("convert to header value")?,
-    );
-    Ok(())
-}
 
 /// Build http request according to authorization signature V3.
 pub async fn call<R>(
@@ -46,15 +35,16 @@ where
     let query_string = auth.canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
     let body = req.to_body();
+
     let content_type = body.content_type();
     let body = body.into_body()?;
     let body_bytes = body.as_bytes().context("body should be bytes")?;
     let hashed_request_payload = hexed_sha256(body_bytes);
+
     let mut headers = auth.create_headers(R::ACTION, version, &hashed_request_payload)?;
     if let Some(content_type) = content_type {
         headers.insert(CONTENT_TYPE, content_type);
     }
-    // Add custom headers from the request
     for (name, value) in custom_headers {
         let header_name = http::header::HeaderName::from_bytes(name.as_bytes())
             .context("Invalid custom header name")?;
@@ -72,7 +62,10 @@ where
         &hashed_request_payload,
     )?;
 
-    insert_str_header(&mut headers, http::header::AUTHORIZATION, &authorization)?;
+    headers.insert(
+        http::header::AUTHORIZATION,
+        HeaderValue::try_from(authorization).context("convert to header value")?,
+    );
     let mut url = format!("https://{}{}", end_point, url_path);
     if !query_string.is_empty() {
         url.push('?');

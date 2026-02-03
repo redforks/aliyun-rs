@@ -16,11 +16,10 @@ use crate::v3::AccessKeySecret;
 fn test_connection() -> Connection {
     let access_key = std::env::var("TEST_ALI_ACCESS_KEY")
         .expect("TEST_ALI_ACCESS_KEY environment variable not set");
-    let secret = AccessKeySecret(
-        access_key.into(),
+    let secret = AccessKeySecret::new(
+        access_key,
         std::env::var("TEST_ALI_SECRET")
             .expect("TEST_ALI_SECRET environment variable not set")
-            .into(),
     );
     Connection::new(Endpoint::CnHangzhou, secret)
 }
