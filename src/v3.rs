@@ -43,8 +43,7 @@ where
         }
         path.into()
     };
-    let query_params = req.to_query_params();
-    let query_string = auth.canonical_query_string(query_params);
+    let query_string = auth.canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
     let body = req.to_body();
     let content_type = body.content_type();

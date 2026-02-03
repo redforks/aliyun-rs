@@ -348,12 +348,6 @@ impl AliyunAuth for Oss4HmacSha256 {
             );
         }
 
-        // Always set x-oss-content-sha256 header
-        headers.insert(
-            "x-oss-content-sha256",
-            HeaderValue::from_static(Self::UNSIGNED_PAYLOAD),
-        );
-
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
             .get("x-oss-date")
@@ -644,12 +638,6 @@ mod tests {
         headers
     }
 
-    fn create_test_headers_oss4() -> HeaderMap {
-        let mut headers = HeaderMap::new();
-        headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
-        headers
-    }
-
     #[test]
     fn test_acs3_hmac_sha256_sign_empty_query() {
         let auth = Acs3HmacSha256::new("test-access-key-id", "test-access-key-secret");
@@ -688,9 +676,14 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let mut headers = create_test_headers_oss4();
-        let query_string = "";
         let hashed_payload = "UNSIGNED-PAYLOAD";
+
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", hashed_payload).unwrap();
+        // Then add other headers
+        headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
+
+        let query_string = "";
 
         let result = auth
             .sign(&mut headers, "/", query_string, "GET", hashed_payload)
@@ -707,9 +700,14 @@ mod tests {
             AccessKeySecret::new("test-access-key-id", "test-access-key-secret"),
             "cn-hangzhou",
         );
-        let mut headers = create_test_headers_oss4();
-        let query_string = "max-keys=100&prefix=test%2F";
         let hashed_payload = "UNSIGNED-PAYLOAD";
+
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", hashed_payload).unwrap();
+        // Then add other headers
+        headers.insert("x-oss-date", HeaderValue::from_static("20240101T000000Z"));
+
+        let query_string = "max-keys=100&prefix=test%2F";
 
         let result = auth
             .sign(&mut headers, "/", query_string, "GET", hashed_payload)
@@ -729,7 +727,9 @@ mod tests {
             "cn-hangzhou",
         );
 
-        let mut headers = HeaderMap::new();
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", "").unwrap();
+        // Then add other headers
         headers.insert(
             "content-disposition",
             HeaderValue::from_static("attachment"),
@@ -809,7 +809,9 @@ UNSIGNED-PAYLOAD";
             "cn-hangzhou",
         );
 
-        let mut headers = HeaderMap::new();
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", "").unwrap();
+        // Then add other headers
         headers.insert("content-type", HeaderValue::from_static("application/json"));
         headers.insert("content-md5", HeaderValue::from_static("abc123"));
         headers.insert(
@@ -862,7 +864,9 @@ UNSIGNED-PAYLOAD";
             "cn-hangzhou",
         );
 
-        let mut headers = HeaderMap::new();
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", "").unwrap();
+        // Then add other headers
         headers.insert(
             "content-disposition",
             HeaderValue::from_static("attachment"),
@@ -1134,10 +1138,10 @@ UNSIGNED-PAYLOAD"#;
 
         let auth = Oss4HmacSha256::new(AccessKeySecret::new(access_key_id, secret), region);
 
-        // 2. 构造 Headers
-        let mut headers = HeaderMap::new();
+        // 2. 构造 Headers - Create auth headers first
+        let mut headers = auth.create_headers("", "", "")?;
+        // Then add other headers
         headers.insert("x-oss-date", timestamp.parse().unwrap());
-        headers.insert("x-oss-content-sha256", "UNSIGNED-PAYLOAD".parse().unwrap());
         headers.insert("content-type", "text/plain".parse().unwrap());
         headers.insert("content-md5", "ICy5YqxZB1uWSwcVLSNLcA==".parse().unwrap());
         headers.insert("content-length", "3".parse().unwrap());
@@ -1196,16 +1200,15 @@ UNSIGNED-PAYLOAD"#;
         // Reference: https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/tests/test_signature_v4.py
         let auth = Oss4HmacSha256::new(AccessKeySecret::new("ak", "sk"), "cn-hangzhou");
 
-        // Create headers matching the Python test
-        let mut headers = HeaderMap::new();
+        // Create auth headers first
+        let mut headers = auth.create_headers("", "", "")?;
+        // Then add other headers
         headers.insert("x-oss-head1", HeaderValue::from_static("value"));
         headers.insert("abc", HeaderValue::from_static("value"));
         headers.insert("ZAbc", HeaderValue::from_static("value"));
         headers.insert("XYZ", HeaderValue::from_static("value"));
         headers.insert("content-type", HeaderValue::from_static("text/plain"));
-        // Note: x-oss-content-sha256 is automatically set by sign() method
-        // The sign() method will add x-oss-date, but we need to control it
-        // for deterministic testing with timestamp 1702743657 (2023-12-16 16:20:57 UTC)
+        // Add x-oss-date header for deterministic testing
         headers.insert("x-oss-date", HeaderValue::from_static("20231216T162057Z"));
 
         // URL encode parameters: quote_via=quote means spaces become %20 (standard percent encoding)
