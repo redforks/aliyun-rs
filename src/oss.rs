@@ -340,7 +340,7 @@ impl Connection {
     pub fn put_bucket(
         &self,
         req: PutBucket,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -366,7 +366,7 @@ impl Connection {
     pub fn delete_bucket(
         &self,
         req: DeleteBucket,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -579,7 +579,7 @@ impl Connection {
     pub fn put_access_point_policy(
         &self,
         req: PutAccessPointPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -602,7 +602,7 @@ impl Connection {
     pub fn delete_access_point(
         &self,
         req: DeleteAccessPoint,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -688,7 +688,7 @@ impl Connection {
     pub fn abort_bucket_worm(
         &self,
         req: AbortBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -717,7 +717,7 @@ impl Connection {
     pub fn complete_bucket_worm(
         &self,
         req: CompleteBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -752,7 +752,7 @@ impl Connection {
     pub fn extend_bucket_worm(
         &self,
         req: ExtendBucketWorm,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -810,7 +810,7 @@ impl Connection {
     pub fn put_bucket_acl(
         &self,
         req: PutBucketAcl,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -864,7 +864,7 @@ impl Connection {
     pub fn put_bucket_lifecycle(
         &self,
         req: PutBucketLifecycle,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -914,7 +914,7 @@ impl Connection {
     pub fn delete_bucket_lifecycle(
         &self,
         req: DeleteBucketLifecycle,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -945,7 +945,7 @@ impl Connection {
     pub fn put_bucket_transfer_acceleration(
         &self,
         req: PutBucketTransferAcceleration,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1008,7 +1008,7 @@ impl Connection {
     pub fn put_bucket_versioning(
         &self,
         req: PutBucketVersioning,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1092,7 +1092,7 @@ impl Connection {
     pub fn put_bucket_policy(
         &self,
         req: PutBucketPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1158,7 +1158,7 @@ impl Connection {
     pub fn delete_bucket_policy(
         &self,
         req: DeleteBucketPolicy,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1207,7 +1207,7 @@ impl Connection {
     pub fn put_bucket_rtc(
         &self,
         req: PutBucketRtc,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1340,7 +1340,7 @@ impl Connection {
     pub fn delete_bucket_replication(
         &self,
         req: DeleteBucketReplication,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1389,7 +1389,7 @@ impl Connection {
     pub fn put_bucket_inventory(
         &self,
         req: PutBucketInventory,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1467,7 +1467,7 @@ impl Connection {
     pub fn delete_bucket_inventory(
         &self,
         req: DeleteBucketInventory,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1500,7 +1500,7 @@ impl Connection {
     pub fn put_bucket_logging(
         &self,
         req: PutBucketLogging,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1549,7 +1549,7 @@ impl Connection {
     pub fn delete_bucket_logging(
         &self,
         req: DeleteBucketLogging,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1582,7 +1582,7 @@ impl Connection {
     pub fn put_user_defined_log_fields_config(
         &self,
         req: PutUserDefinedLogFieldsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1629,7 +1629,7 @@ impl Connection {
     pub fn delete_user_defined_log_fields_config(
         &self,
         req: DeleteUserDefinedLogFieldsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1683,7 +1683,7 @@ impl Connection {
     pub fn put_bucket_website(
         &self,
         req: PutBucketWebsite,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1708,7 +1708,7 @@ impl Connection {
     pub fn delete_bucket_website(
         &self,
         req: DeleteBucketWebsite,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1731,7 +1731,7 @@ impl Connection {
     pub fn put_bucket_referer(
         &self,
         req: PutBucketReferer,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1783,7 +1783,7 @@ impl Connection {
     pub fn put_bucket_tags(
         &self,
         req: PutBucketTags,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1831,7 +1831,7 @@ impl Connection {
     pub fn delete_bucket_tags(
         &self,
         req: DeleteBucketTags,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1967,7 +1967,7 @@ impl Connection {
     pub fn delete_bucket_data_redundancy_transition(
         &self,
         req: DeleteBucketDataRedundancyTransition,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -1992,7 +1992,7 @@ impl Connection {
     pub fn put_bucket_encryption(
         &self,
         req: PutBucketEncryption,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2042,7 +2042,7 @@ impl Connection {
     pub fn delete_bucket_encryption(
         &self,
         req: DeleteBucketEncryption,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2071,7 +2071,7 @@ impl Connection {
     pub fn put_bucket_request_payment(
         &self,
         req: PutBucketRequestPayment,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2156,7 +2156,7 @@ impl Connection {
     pub fn put_bucket_cors(
         &self,
         req: PutBucketCors,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2207,7 +2207,7 @@ impl Connection {
     pub fn delete_bucket_cors(
         &self,
         req: DeleteBucketCors,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2259,7 +2259,7 @@ impl Connection {
     pub fn put_bucket_access_monitor(
         &self,
         req: PutBucketAccessMonitor,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2329,7 +2329,7 @@ impl Connection {
     pub fn close_meta_query(
         &self,
         req: CloseMetaQuery,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2375,7 +2375,7 @@ impl Connection {
     pub fn open_meta_query(
         &self,
         req: OpenMetaQuery,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2398,7 +2398,7 @@ impl Connection {
     pub fn update_user_anti_d_dos_info(
         &self,
         req: UpdateUserAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2421,7 +2421,7 @@ impl Connection {
     pub fn update_bucket_anti_d_dos_info(
         &self,
         req: UpdateBucketAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2491,7 +2491,7 @@ impl Connection {
     pub fn init_bucket_anti_d_dos_info(
         &self,
         req: InitBucketAntiDDosInfo,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2561,7 +2561,7 @@ impl Connection {
     pub fn put_bucket_resource_group(
         &self,
         req: PutBucketResourceGroup,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2584,7 +2584,7 @@ impl Connection {
     pub fn put_cname(
         &self,
         req: PutCname,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2630,7 +2630,7 @@ impl Connection {
     pub fn delete_cname(
         &self,
         req: DeleteCname,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2699,7 +2699,7 @@ impl Connection {
     pub fn put_style(
         &self,
         req: PutStyle,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2768,7 +2768,7 @@ impl Connection {
     pub fn delete_style(
         &self,
         req: DeleteStyle,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2818,7 +2818,7 @@ impl Connection {
     pub fn put_bucket_https_config(
         &self,
         req: PutBucketHttpsConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2923,7 +2923,7 @@ impl Connection {
     pub fn delete_access_point_for_object_process(
         &self,
         req: DeleteAccessPointForObjectProcess,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -2975,7 +2975,7 @@ impl Connection {
     pub fn put_access_point_config_for_object_process(
         &self,
         req: PutAccessPointConfigForObjectProcess,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3000,7 +3000,7 @@ impl Connection {
     pub fn put_access_point_policy_for_object_process(
         &self,
         req: PutAccessPointPolicyForObjectProcess,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3053,7 +3053,7 @@ impl Connection {
     pub fn delete_access_point_policy_for_object_process(
         &self,
         req: DeleteAccessPointPolicyForObjectProcess,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3099,7 +3099,7 @@ impl Connection {
     pub fn put_public_access_block(
         &self,
         req: PutPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3122,7 +3122,7 @@ impl Connection {
     pub fn delete_public_access_block(
         &self,
         req: DeletePublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3169,7 +3169,7 @@ impl Connection {
     pub fn put_bucket_public_access_block(
         &self,
         req: PutBucketPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3192,7 +3192,7 @@ impl Connection {
     pub fn delete_bucket_public_access_block(
         &self,
         req: DeleteBucketPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3265,7 +3265,7 @@ impl Connection {
     pub fn delete_access_point_public_access_block(
         &self,
         req: DeleteAccessPointPublicAccessBlock,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3321,7 +3321,7 @@ impl Connection {
     pub fn put_bucket_archive_direct_read(
         &self,
         req: PutBucketArchiveDirectRead,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3344,7 +3344,7 @@ impl Connection {
     pub fn put_bucket_overwrite_config(
         &self,
         req: PutBucketOverwriteConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3391,7 +3391,7 @@ impl Connection {
     pub fn delete_bucket_overwrite_config(
         &self,
         req: DeleteBucketOverwriteConfig,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3748,7 +3748,7 @@ impl Connection {
     pub fn clean_restored_object(
         &self,
         req: CleanRestoredObject,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3864,7 +3864,7 @@ impl Connection {
     pub fn upload_part(
         &self,
         req: UploadPart,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -3984,7 +3984,7 @@ impl Connection {
     pub fn abort_multipart_upload(
         &self,
         req: AbortMultipartUpload,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4271,7 +4271,7 @@ impl Connection {
     pub fn delete_object_tagging(
         &self,
         req: DeleteObjectTagging,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4346,7 +4346,7 @@ impl Connection {
     pub fn delete_live_channel(
         &self,
         req: DeleteLiveChannel,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4373,7 +4373,7 @@ impl Connection {
     pub fn put_live_channel_status(
         &self,
         req: PutLiveChannelStatus,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4493,7 +4493,7 @@ impl Connection {
     pub fn post_vod_playlist(
         &self,
         req: PostVodPlaylist,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4516,7 +4516,7 @@ impl Connection {
     pub fn put_channel(
         &self,
         req: PutChannel,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4539,7 +4539,7 @@ impl Connection {
     pub fn put_bucket_hash(
         &self,
         req: PutBucketHash,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4562,7 +4562,7 @@ impl Connection {
     pub fn put_bucket_common_header(
         &self,
         req: PutBucketCommonHeader,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4585,7 +4585,7 @@ impl Connection {
     pub fn delete_bucket_common_header(
         &self,
         req: DeleteBucketCommonHeader,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4608,7 +4608,7 @@ impl Connection {
     pub fn put_process_configuration(
         &self,
         req: PutProcessConfiguration,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4675,7 +4675,7 @@ impl Connection {
     pub fn start_data_lake_cache_prefetch_job(
         &self,
         req: StartDataLakeCachePrefetchJob,
-    ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<()>> + Send {
         self.call(req)
     }
 
@@ -4946,7 +4946,7 @@ impl crate::Request for PutBucket {
 
     type Body = crate::XmlBody<CreateBucketConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5011,7 +5011,7 @@ impl crate::Request for DeleteBucket {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -5609,7 +5609,7 @@ impl crate::Request for PutAccessPointPolicy {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5672,7 +5672,7 @@ impl crate::Request for DeleteAccessPoint {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5848,7 +5848,7 @@ impl crate::Request for AbortBucketWorm {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5905,7 +5905,7 @@ impl crate::Request for CompleteBucketWorm {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -5963,7 +5963,7 @@ impl crate::Request for ExtendBucketWorm {
 
     type Body = crate::XmlBody<ExtendWormConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -6073,7 +6073,7 @@ impl crate::Request for PutBucketAcl {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6184,7 +6184,7 @@ impl crate::Request for PutBucketLifecycle {
 
     type Body = crate::XmlBody<LifecycleConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6291,7 +6291,7 @@ impl crate::Request for DeleteBucketLifecycle {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6344,7 +6344,7 @@ impl crate::Request for PutBucketTransferAcceleration {
 
     type Body = crate::XmlBody<TransferAccelerationConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6444,7 +6444,7 @@ impl crate::Request for PutBucketVersioning {
 
     type Body = crate::XmlBody<VersioningConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6664,7 +6664,7 @@ impl crate::Request for PutBucketPolicy {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6765,7 +6765,7 @@ impl crate::Request for DeleteBucketPolicy {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -6865,7 +6865,7 @@ impl crate::Request for PutBucketRtc {
 
     type Body = crate::XmlBody<RtcConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7127,7 +7127,7 @@ impl crate::Request for DeleteBucketReplication {
 
     type Body = crate::XmlBody<DeleteBucketReplicationbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7184,7 +7184,7 @@ impl crate::Request for PutBucketInventory {
 
     type Body = crate::XmlBody<InventoryConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7348,7 +7348,7 @@ impl crate::Request for DeleteBucketInventory {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -7402,7 +7402,7 @@ impl crate::Request for PutBucketLogging {
 
     type Body = crate::XmlBody<BucketLoggingStatus>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7503,7 +7503,7 @@ impl crate::Request for DeleteBucketLogging {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7556,7 +7556,7 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
 
     type Body = crate::XmlBody<UserDefinedLogFieldsConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7657,7 +7657,7 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7757,7 +7757,7 @@ impl crate::Request for PutBucketWebsite {
 
     type Body = crate::XmlBody<WebsiteConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7811,7 +7811,7 @@ impl crate::Request for DeleteBucketWebsite {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7864,7 +7864,7 @@ impl crate::Request for PutBucketReferer {
 
     type Body = crate::XmlBody<RefererConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -7964,7 +7964,7 @@ impl crate::Request for PutBucketTags {
 
     type Body = crate::XmlBody<Tagging>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8065,7 +8065,7 @@ impl crate::Request for DeleteBucketTags {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8342,7 +8342,7 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -8399,7 +8399,7 @@ impl crate::Request for PutBucketEncryption {
 
     type Body = crate::XmlBody<ServerSideEncryptionRule>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8500,7 +8500,7 @@ impl crate::Request for DeleteBucketEncryption {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8553,7 +8553,7 @@ impl crate::Request for PutBucketRequestPayment {
 
     type Body = crate::XmlBody<RequestPaymentConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8653,7 +8653,7 @@ impl crate::Request for PutBucketCors {
 
     type Body = crate::XmlBody<CORSConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8754,7 +8754,7 @@ impl crate::Request for DeleteBucketCors {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -8850,7 +8850,7 @@ impl crate::Request for OptionObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -8923,7 +8923,7 @@ impl crate::Request for PutBucketAccessMonitor {
 
     type Body = crate::XmlBody<AccessMonitorConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9071,7 +9071,7 @@ impl crate::Request for CloseMetaQuery {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9201,7 +9201,7 @@ impl crate::Request for OpenMetaQuery {
 
     type Body = crate::XmlBody<MetaQueryOpenRequest>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(4);
@@ -9270,7 +9270,7 @@ impl crate::Request for UpdateUserAntiDDosInfo {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9341,7 +9341,7 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
 
     type Body = crate::XmlBody<BucketAntiDDOSConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9523,7 +9523,7 @@ impl crate::Request for InitBucketAntiDDosInfo {
 
     type Body = crate::XmlBody<BucketAntiDDOSConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9667,7 +9667,7 @@ impl crate::Request for PutBucketResourceGroup {
 
     type Body = crate::XmlBody<BucketResourceGroupConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -9720,7 +9720,7 @@ impl crate::Request for PutCname {
 
     type Body = crate::XmlBody<BucketCnameConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9821,7 +9821,7 @@ impl crate::Request for DeleteCname {
 
     type Body = crate::XmlBody<DeleteCnamebody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -9989,7 +9989,7 @@ impl crate::Request for PutStyle {
 
     type Body = crate::XmlBody<Style>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -10149,7 +10149,7 @@ impl crate::Request for DeleteStyle {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -10250,7 +10250,7 @@ impl crate::Request for PutBucketHttpsConfig {
 
     type Body = crate::XmlBody<HttpsConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10496,7 +10496,7 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10626,7 +10626,7 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
 
     type Body = crate::XmlBody<ConfigForObjectProcessbody>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10692,7 +10692,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10820,7 +10820,7 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10908,7 +10908,7 @@ impl crate::Request for PutPublicAccessBlock {
 
     type Body = crate::XmlBody<PublicAccessBlockConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -10949,7 +10949,7 @@ impl crate::Request for DeletePublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11041,7 +11041,7 @@ impl crate::Request for PutBucketPublicAccessBlock {
 
     type Body = crate::XmlBody<PublicAccessBlockConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11095,7 +11095,7 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11206,7 +11206,7 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
 
     type Body = crate::XmlBody<PublicAccessBlockConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = crate::XmlResponseWrap<PutAccessPointPublicAccessBlockResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -11268,7 +11268,7 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -11372,7 +11372,7 @@ impl crate::Request for PutBucketArchiveDirectRead {
 
     type Body = crate::XmlBody<ArchiveDirectReadConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11425,7 +11425,7 @@ impl crate::Request for PutBucketOverwriteConfig {
 
     type Body = crate::XmlBody<OverwriteConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11526,7 +11526,7 @@ impl crate::Request for DeleteBucketOverwriteConfig {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -11688,7 +11688,7 @@ impl crate::Request for PutObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -11938,7 +11938,7 @@ impl crate::Request for CopyObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12135,7 +12135,7 @@ impl crate::Request for GetObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12310,7 +12310,7 @@ impl crate::Request for AppendObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12397,7 +12397,7 @@ impl crate::Request for SealAppendObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12476,7 +12476,7 @@ impl crate::Request for DeleteObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12595,7 +12595,7 @@ impl crate::Request for HeadObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12754,7 +12754,7 @@ impl crate::Request for GetObjectMeta {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12858,7 +12858,7 @@ impl crate::Request for RestoreObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -12921,7 +12921,7 @@ impl crate::Request for CleanRestoredObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12935,7 +12935,7 @@ impl crate::Request for CleanRestoredObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13003,7 +13003,7 @@ impl crate::Request for SelectObject {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13071,7 +13071,7 @@ impl crate::Request for CreateSelectObjectMeta {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13253,7 +13253,7 @@ impl crate::Request for InitiateMultipartUpload {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13316,7 +13316,7 @@ impl crate::Request for UploadPart {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -13331,7 +13331,7 @@ impl crate::Request for UploadPart {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13443,7 +13443,7 @@ impl crate::Request for CompleteMultipartUpload {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13594,7 +13594,7 @@ impl crate::Request for UploadPartCopy {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13659,7 +13659,7 @@ impl crate::Request for AbortMultipartUpload {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -13673,7 +13673,7 @@ impl crate::Request for AbortMultipartUpload {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13879,7 +13879,7 @@ impl crate::Request for ListParts {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -13965,7 +13965,7 @@ impl crate::Request for PutObjectAcl {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14040,7 +14040,7 @@ impl crate::Request for GetObjectAcl {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14163,7 +14163,7 @@ impl crate::Request for PutSymlink {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14238,7 +14238,7 @@ impl crate::Request for GetSymlink {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14320,7 +14320,7 @@ impl crate::Request for PutObjectTagging {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14395,7 +14395,7 @@ impl crate::Request for GetObjectTagging {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14445,7 +14445,7 @@ impl crate::Request for DeleteObjectTagging {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -14463,7 +14463,7 @@ impl crate::Request for DeleteObjectTagging {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("key", self.key.to_string())])
+        Box::new([("{key}", self.key.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14524,7 +14524,7 @@ impl crate::Request for PutLiveChannel {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14644,7 +14644,7 @@ impl crate::Request for DeleteLiveChannel {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -14658,7 +14658,7 @@ impl crate::Request for DeleteLiveChannel {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14716,7 +14716,7 @@ impl crate::Request for PutLiveChannelStatus {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(2);
@@ -14731,7 +14731,7 @@ impl crate::Request for PutLiveChannelStatus {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14788,7 +14788,7 @@ impl crate::Request for GetLiveChannelInfo {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14844,7 +14844,7 @@ impl crate::Request for GetLiveChannelHistory {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14900,7 +14900,7 @@ impl crate::Request for GetLiveChannelStat {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -14969,7 +14969,7 @@ impl crate::Request for GetVodPlaylist {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("channel", self.channel.to_string())])
+        Box::new([("{channel}", self.channel.to_string())])
     }
 
     fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
@@ -15032,7 +15032,7 @@ impl crate::Request for PostVodPlaylist {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
@@ -15049,8 +15049,8 @@ impl crate::Request for PostVodPlaylist {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("channel", self.channel.to_string()),
-            ("playlist", self.playlist.to_string()),
+            ("{channel}", self.channel.to_string()),
+            ("{playlist}", self.playlist.to_string()),
         ])
     }
 
@@ -15094,7 +15094,7 @@ impl crate::Request for PutChannel {
 
     type Body = crate::XmlBody<Channel>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -15147,7 +15147,7 @@ impl crate::Request for PutBucketHash {
 
     type Body = crate::XmlBody<ObjectHashConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -15200,7 +15200,7 @@ impl crate::Request for PutBucketCommonHeader {
 
     type Body = crate::XmlBody<CommonHeaders>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -15254,7 +15254,7 @@ impl crate::Request for DeleteBucketCommonHeader {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -15307,7 +15307,7 @@ impl crate::Request for PutProcessConfiguration {
 
     type Body = crate::XmlBody<BucketProcessConfiguration>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -15467,7 +15467,7 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = crate::XmlResponseWrap<crate::OpenObjectResponse>;
+    type ResponseWrap = ();
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(3);
