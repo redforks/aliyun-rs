@@ -73,6 +73,7 @@ impl AliyunAuth for Oss4HmacSha256 {
         query_string: &str,
         method: &str,
         _body: &Body,
+        resource_path: &str,
     ) -> Result<String> {
         // Extract timestamp from x-oss-date header (required)
         let timestamp = headers
@@ -85,10 +86,19 @@ impl AliyunAuth for Oss4HmacSha256 {
         let sign_date = &timestamp[..8];
 
         // Build canonical request and additional headers string
+        // For OSS, canonical path is resource_path + path, handling "/" duplication
+        let canonical_path = if resource_path.ends_with('/') && path.starts_with('/') {
+            format!("{}{}", resource_path, &path[1..])
+        } else if resource_path.ends_with('/') || path.starts_with('/') || path.is_empty() {
+            format!("{}{}", resource_path, path)
+        } else {
+            format!("{}/{}", resource_path, path)
+        };
+
         let (canonical_request, additional_headers_str) =
             build_oss4_canonical_request_and_additional_headers(
                 method,
-                path,
+                &canonical_path,
                 query_string,
                 headers,
             )?;
@@ -300,7 +310,7 @@ mod tests {
         let query_string = "";
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", &body)
+            .sign(&mut headers, "/", query_string, "GET", &body, "/")
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -324,7 +334,7 @@ mod tests {
         let query_string = "max-keys=100&prefix=test%2F";
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", &body)
+            .sign(&mut headers, "/", query_string, "GET", &body, "/")
             .unwrap();
 
         assert!(result.starts_with("OSS4-HMAC-SHA256 Credential=test-access-key-id/"));
@@ -363,6 +373,7 @@ mod tests {
                 "",
                 "PUT",
                 &b"".as_slice().into(),
+                "/",
             )
             .unwrap();
 
@@ -435,7 +446,7 @@ UNSIGNED-PAYLOAD";
         headers.insert("x-oss-date", HeaderValue::from_static("20250411T064124Z"));
 
         let result = auth
-            .sign(&mut headers, "/test", "", "GET", &b"".as_slice().into())
+            .sign(&mut headers, "/test", "", "GET", &b"".as_slice().into(), "/")
             .unwrap();
 
         // AdditionalHeaders should contain content-disposition but NOT content-type or content-md5
@@ -500,6 +511,7 @@ UNSIGNED-PAYLOAD";
                 "",
                 "PUT",
                 &b"".as_slice().into(),
+                "/",
             )
             .unwrap();
 
@@ -795,7 +807,7 @@ UNSIGNED-PAYLOAD"#;
         // 5. 验证最终签名 (Signature)
         // 文档中的签名值 (053edbf550ebd239b32a9cdfd93b0b2b3f2d223083aa61f75e9ac16856d61f23) 是基于错误的 SigningKey 计算得出的
         // 实际签名值应基于正确的 SigningKey 计算
-        let signature_res = auth.sign(&mut headers, path, query_string, method, &b"".as_slice().into())?;
+        let signature_res = auth.sign(&mut headers, path, query_string, method, &b"".as_slice().into(), "/")?;
 
         // 从 Authorization 字符串中截取 Signature 部分进行比对
         // 格式: ... Signature=d3694c2dfc5371ee6acd35e88c4871ac95a7ba01d3a2f476768fe61218590097
@@ -837,7 +849,7 @@ UNSIGNED-PAYLOAD"#;
         let path = "/bucket/1234%2B-/123/1.txt";
 
         let result = auth
-            .sign(&mut headers, path, query_string, "PUT", &b"".as_slice().into())
+            .sign(&mut headers, path, query_string, "PUT", &b"".as_slice().into(), "/")
             .unwrap();
 
         // Verify the Authorization header format matches the oss2 SDK format:

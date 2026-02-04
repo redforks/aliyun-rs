@@ -98,6 +98,7 @@ impl AliyunAuth for Acs3HmacSha256 {
         query_string: &str,
         method: &str,
         body: &Body,
+        _resource_path: &str,
     ) -> Result<String> {
         // Compute hashed payload from body
         let body_bytes = body.as_bytes().context("body should be bytes")?;
@@ -182,7 +183,7 @@ mod tests {
         let body: Body = b"".as_slice().into();
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", &body)
+            .sign(&mut headers, "/", query_string, "GET", &body, "/")
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));
@@ -198,7 +199,7 @@ mod tests {
         let body: Body = b"".as_slice().into();
 
         let result = auth
-            .sign(&mut headers, "/", query_string, "GET", &body)
+            .sign(&mut headers, "/", query_string, "GET", &body, "/")
             .unwrap();
 
         assert!(result.starts_with("ACS3-HMAC-SHA256 Credential=test-access-key-id,"));

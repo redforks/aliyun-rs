@@ -35,6 +35,7 @@ where
     let query_string = auth.canonical_query_string(req.to_query_params());
     let custom_headers = req.to_headers();
     let endpoint = req.process_endpoint(endpoint);
+    let resource_path = req.resource_path();
     let body = req.to_body();
     let content_type = body.content_type();
     let body = body.into_body()?;
@@ -58,6 +59,7 @@ where
         &query_string,
         R::METHOD.as_str(),
         &body,
+        resource_path.as_ref(),
     )?;
 
     headers.insert(

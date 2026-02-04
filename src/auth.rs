@@ -66,6 +66,7 @@ pub trait AliyunAuth: Send + Sync {
     /// * `query_string` - The canonical query string (already URL-encoded and sorted)
     /// * `method` - The HTTP method (GET, POST, PUT, etc.)
     /// * `body` - The request body (only ACS3 uses this to compute the payload hash)
+    /// * `resource_path` - The resource path for ROA-style APIs (e.g., "/bucket/object" for OSS)
     ///
     /// # Returns
     /// The complete Authorization header value.
@@ -76,6 +77,7 @@ pub trait AliyunAuth: Send + Sync {
         query_string: &str,
         method: &str,
         body: &reqwest::Body,
+        resource_path: &str,
     ) -> Result<String>;
 
     /// Build canonical query string from query parameters.

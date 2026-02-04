@@ -649,6 +649,12 @@ trait Request: Sized + Send {
         Vec::new()
     }
 
+    /// Returns the resource path for ROA-style APIs (e.g., "/bucket/object" for OSS).
+    /// Defaults to "/" for non-ROA APIs.
+    fn resource_path(&self) -> Cow<'static, str> {
+        "/".into()
+    }
+
     fn to_body(self) -> Self::Body;
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
