@@ -9,6 +9,8 @@
 //! (e.g., bucket-name.oss-cn-hangzhou.aliyuncs.com), which requires extending
 //! the Connection implementation.
 
+use maplit::hashmap;
+
 use crate::oss::{Connection, Endpoint, ListBuckets};
 use crate::v3::AccessKeySecret;
 
@@ -18,8 +20,7 @@ fn test_connection() -> Connection {
         .expect("TEST_ALI_ACCESS_KEY environment variable not set");
     let secret = AccessKeySecret::new(
         access_key,
-        std::env::var("TEST_ALI_SECRET")
-            .expect("TEST_ALI_SECRET environment variable not set")
+        std::env::var("TEST_ALI_SECRET").expect("TEST_ALI_SECRET environment variable not set"),
     );
     Connection::new(Endpoint::CnHangzhou, secret)
 }
@@ -93,7 +94,10 @@ async fn test_bucket_and_object_lifecycle() {
 
     // 2. List buckets and ensure the bucket is present
     println!("Step 2: Listing buckets to verify creation...");
-    let list_result = conn.list_buckets(crate::oss::ListBuckets::new()).await.unwrap();
+    let list_result = conn
+        .list_buckets(crate::oss::ListBuckets::new())
+        .await
+        .unwrap();
     let bucket_found = list_result
         .buckets
         .bucket
@@ -107,7 +111,11 @@ async fn test_bucket_and_object_lifecycle() {
     let object_content = b"hello world";
     println!("Step 3: Putting object '{}' to bucket...", object_key);
     conn.put_object(
-        PutObject::new(&bucket_name, object_key).body(object_content.to_vec()),
+        PutObject::new(&bucket_name, object_key)
+            .body(object_content.to_vec())
+            .x_oss_meta(
+                hashmap! {"p1".to_owned() => "v1".to_owned(), "p2".to_owned() => "v2".to_owned()},
+            ),
     )
     .await
     .expect("Failed to put object");
@@ -120,10 +128,13 @@ async fn test_bucket_and_object_lifecycle() {
         .await
         .expect("Failed to get object");
     assert_eq!(
-        retrieved_content, object_content,
+        &retrieved_content.body, object_content,
         "Retrieved content does not match original content"
     );
-    println!("Object retrieved successfully, content matches");
+    assert_eq!(
+        retrieved_content.x_oss_meta,
+        hashmap! {"p1".to_owned() => "v1".to_owned(), "p2".to_owned() => "v2".to_owned()}
+    );
 
     // 5. List files in the bucket and ensure that file is present
     println!("Step 5: Listing objects in bucket...");
@@ -131,10 +142,7 @@ async fn test_bucket_and_object_lifecycle() {
         .list_objects(ListObjects::new(&bucket_name))
         .await
         .expect("Failed to list objects");
-    let file_found = objects_result
-        .contents
-        .iter()
-        .any(|o| o.key == object_key);
+    let file_found = objects_result.contents.iter().any(|o| o.key == object_key);
     assert!(file_found, "Uploaded file not found in object list");
     println!("File found in bucket");
 
@@ -193,7 +201,10 @@ async fn clean_test_buckets() {
 
     // 1. List all buckets
     println!("Listing all buckets...");
-    let list_result = conn.list_buckets(crate::oss::ListBuckets::new()).await.unwrap();
+    let list_result = conn
+        .list_buckets(crate::oss::ListBuckets::new())
+        .await
+        .unwrap();
 
     // 2. Filter buckets that start with "ali-acs-test-"
     let test_buckets: Vec<_> = list_result
@@ -226,7 +237,10 @@ async fn clean_test_buckets() {
             .unwrap();
 
         if !objects_result.contents.is_empty() {
-            println!("  Found {} object(s) to delete:", objects_result.contents.len());
+            println!(
+                "  Found {} object(s) to delete:",
+                objects_result.contents.len()
+            );
 
             // Delete all objects
             for object in &objects_result.contents {

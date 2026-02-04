@@ -3507,7 +3507,7 @@ impl Connection {
     pub fn get_object(
         &self,
         req: GetObject,
-    ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
+    ) -> impl std::future::Future<Output = crate::Result<GetObjectResponse>> + Send {
         self.call(req)
     }
 
@@ -3632,11 +3632,7 @@ impl Connection {
         &self,
         req: HeadObject,
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
-        async {
-            todo!(
-                r##"Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
-            );
-        }
+        self.call(req)
     }
 
     /// # 获取文件的元数据信息
@@ -12068,7 +12064,7 @@ impl crate::Request for GetObject {
 
     type Body = ();
 
-    type ResponseWrap = crate::BinaryResponseWrap;
+    type ResponseWrap = crate::BinaryResponseWithMetaWrap<GetObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(7);
@@ -12147,6 +12143,107 @@ impl crate::Request for GetObject {
     }
 
     fn to_body(self) -> Self::Body {}
+
+    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
+        if let Some(value) = headers.get("x-oss-server-side-encryption") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_server_side_encryption = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_server_side_encryption_key_id = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-storage-class") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_storage_class = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-object-type") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_object_type = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-next-append-position") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_next_append_position = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_hash_crc64ecma = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-expiration") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_expiration = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-restore") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_restore = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-process-status") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_process_status = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-request-charged") {
+            if let Ok(s) = value.to_str() {
+                inner.x_oss_request_charged = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Md5") {
+            if let Ok(s) = value.to_str() {
+                inner.content_md5 = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Length") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.content_length = Some(parsed);
+                }
+            }
+        }
+        if let Some(value) = headers.get("Last-Modified") {
+            if let Ok(s) = value.to_str() {
+                inner.last_modified = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("Content-Type") {
+            if let Ok(s) = value.to_str() {
+                inner.content_type = Some(s.to_string());
+            }
+        }
+        if let Some(value) = headers.get("ETag") {
+            if let Ok(s) = value.to_str() {
+                inner.e_tag = Some(s.to_string());
+            }
+        }
+        // Handle wildcard headers matching prefix "x-oss-meta-"
+        for (k, v) in headers
+            .iter()
+            .filter(|(k, _)| k.as_str().starts_with("x-oss-meta-"))
+        {
+            let key = k.as_str().trim_start_matches("x-oss-meta-");
+            if let Ok(value) = v.to_str() {
+                inner.x_oss_meta.insert(key.to_owned(), value.to_owned());
+            }
+        }
+        if let Some(value) = headers.get("x-oss-tagging-count") {
+            if let Ok(s) = value.to_str() {
+                if let Ok(parsed) = s.parse::<i64>() {
+                    inner.x_oss_tagging_count = Some(parsed);
+                }
+            }
+        }
+    }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
@@ -12690,12 +12787,22 @@ impl crate::Request for HeadObject {
                 inner.e_tag = Some(s.to_string());
             }
         }
+        // Handle wildcard headers matching prefix "x-oss-meta-"
+        for (k, v) in headers
+            .iter()
+            .filter(|(k, _)| k.as_str().starts_with("x-oss-meta-"))
+        {
+            let key = k.as_str().trim_start_matches("x-oss-meta-");
+            if let Ok(value) = v.to_str() {
+                inner.x_oss_meta.insert(key.to_owned(), value.to_owned());
+            }
+        }
         if let Some(value) = headers.get("x-oss-transition-time") {
             if let Ok(s) = value.to_str() {
                 inner.x_oss_transition_time = Some(s.to_string());
             }
         }
-        if let Some(value) = headers.get("x‑oss‑tagging‑count") {
+        if let Some(value) = headers.get("x-oss-tagging-count") {
             if let Ok(s) = value.to_str() {
                 if let Ok(parsed) = s.parse::<i64>() {
                     inner.x_oss_tagging_count = Some(parsed);
@@ -22459,6 +22566,68 @@ impl crate::ToCodeMessage for CopyObjectResponse {
 
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
+pub struct GetObjectResponse {
+    pub body: Vec<u8>,
+    /// Header field from response: x-oss-server-side-encryption
+    #[serde(skip)]
+    pub x_oss_server_side_encryption: Option<String>,
+    /// Header field from response: x-oss-server-side-encryption-key-id
+    #[serde(skip)]
+    pub x_oss_server_side_encryption_key_id: Option<String>,
+    /// Header field from response: x-oss-storage-class
+    #[serde(skip)]
+    pub x_oss_storage_class: Option<String>,
+    /// Header field from response: x-oss-object-type
+    #[serde(skip)]
+    pub x_oss_object_type: Option<String>,
+    /// Header field from response: x-oss-next-append-position
+    #[serde(skip)]
+    pub x_oss_next_append_position: Option<i64>,
+    /// Header field from response: x-oss-hash-crc64ecma
+    #[serde(skip)]
+    pub x_oss_hash_crc64ecma: Option<String>,
+    /// Header field from response: x-oss-expiration
+    #[serde(skip)]
+    pub x_oss_expiration: Option<String>,
+    /// Header field from response: x-oss-restore
+    #[serde(skip)]
+    pub x_oss_restore: Option<String>,
+    /// Header field from response: x-oss-process-status
+    #[serde(skip)]
+    pub x_oss_process_status: Option<String>,
+    /// Header field from response: x-oss-request-charged
+    #[serde(skip)]
+    pub x_oss_request_charged: Option<String>,
+    /// Header field from response: Content-Md5
+    #[serde(skip)]
+    pub content_md5: Option<String>,
+    /// Header field from response: Content-Length
+    #[serde(skip)]
+    pub content_length: Option<i64>,
+    /// Header field from response: Last-Modified
+    #[serde(skip)]
+    pub last_modified: Option<String>,
+    /// Header field from response: Content-Type
+    #[serde(skip)]
+    pub content_type: Option<String>,
+    /// Header field from response: ETag
+    #[serde(skip)]
+    pub e_tag: Option<String>,
+    /// Wildcard header field from response: x-oss-meta-* (prefix: x-oss-meta-)
+    #[serde(skip)]
+    pub x_oss_meta: std::collections::HashMap<String, String>,
+    /// Header field from response: x-oss-tagging-count
+    #[serde(skip)]
+    pub x_oss_tagging_count: Option<i64>,
+}
+impl crate::BinaryWithMeta for GetObjectResponse {
+    fn set_binary(&mut self, bytes: Vec<u8>) {
+        self.body = bytes;
+    }
+}
+
+#[derive(Debug, Default, serde::Deserialize)]
+#[serde(default)]
 pub struct AppendObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -22559,10 +22728,13 @@ pub struct HeadObjectResponse {
     /// Header field from response: ETag
     #[serde(skip)]
     pub e_tag: Option<String>,
+    /// Wildcard header field from response: x-oss-meta-* (prefix: x-oss-meta-)
+    #[serde(skip)]
+    pub x_oss_meta: std::collections::HashMap<String, String>,
     /// Header field from response: x-oss-transition-time
     #[serde(skip)]
     pub x_oss_transition_time: Option<String>,
-    /// Header field from response: x‑oss‑tagging‑count
+    /// Header field from response: x-oss-tagging-count
     #[serde(skip)]
     pub x_oss_tagging_count: Option<i64>,
 }

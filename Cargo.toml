@@ -1,6 +1,6 @@
 [package]
 name = "ali-acs"
-version = "0.4.2"
+version = "0.5.0"
 edition = "2024"
 license = "MIT"
 description = "A type-safe, idiomatic Rust SDK for Alibaba Cloud services with complete protocol coverage"
@@ -34,6 +34,7 @@ ecs = []
 oss = []
 
 [dev-dependencies]
+maplit = "1.0.2"
 rand = "0.8"
 test-log = { version = "0.2.19", features = ["trace"] }
 time = { version = "0.3.44", features = ["macros"] }

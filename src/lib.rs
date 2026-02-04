@@ -667,6 +667,40 @@ impl IntoResponse for BinaryResponseWrap {
     }
 }
 
+trait BinaryWithMeta {
+    fn set_binary(&mut self, body: Vec<u8>);
+}
+
+/// Binary response wrapper with metadata from response headers.
+/// Wraps a struct containing `inner: T` (metadata from headers) and `body: Vec<u8>` (raw bytes).
+#[derive(Debug)]
+struct BinaryResponseWithMetaWrap<T: BinaryWithMeta + Default> {
+    /// Metadata extracted from response headers
+    pub inner: T,
+}
+
+impl<T: BinaryWithMeta + Default> FromBody for BinaryResponseWithMetaWrap<T> {
+    fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        let mut inner: T = Default::default();
+        inner.set_binary(bytes);
+        Ok(Self { inner })
+    }
+}
+
+impl<T: BinaryWithMeta + Default> ToCodeMessage for BinaryResponseWithMetaWrap<T> {
+    fn to_code_message(&self) -> &CodeMessage {
+        &CODE_MESSAGE
+    }
+}
+
+impl<T: BinaryWithMeta + Default> IntoResponse for BinaryResponseWithMetaWrap<T> {
+    type Response = T;
+
+    fn into_response(self) -> Self::Response {
+        self.inner
+    }
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
