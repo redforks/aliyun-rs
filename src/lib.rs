@@ -23,9 +23,6 @@ pub mod sms;
 #[cfg(feature = "ecs")]
 pub mod ecs;
 
-#[cfg(feature = "fc")]
-pub mod fc;
-
 #[cfg(feature = "oss")]
 pub mod oss;
 

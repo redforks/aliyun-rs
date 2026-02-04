@@ -65,7 +65,7 @@ impl AliyunAuth for Oss4HmacSha256 {
     fn sign(
         &self,
         headers: &mut HeaderMap,
-        path: &str,
+        _path: &str,
         query_string: &str,
         method: &str,
         _body: &Body,
