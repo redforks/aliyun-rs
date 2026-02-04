@@ -169,3 +169,72 @@ async fn test_bucket_and_object_lifecycle() {
 
     println!("All lifecycle tests passed!");
 }
+
+/// Cleanup test to remove all test buckets and their contents
+#[tokio::test]
+#[test_log::test]
+#[ignore]
+async fn clean_test_buckets() {
+    use crate::oss::{DeleteBucket, DeleteObject, ListObjects};
+
+    let conn = test_connection();
+
+    // 1. List all buckets
+    println!("Listing all buckets...");
+    let list_result = conn.list_buckets(crate::oss::ListBuckets::new()).await.unwrap();
+
+    // 2. Filter buckets that start with "ali-acs-test-"
+    let test_buckets: Vec<_> = list_result
+        .buckets
+        .bucket
+        .iter()
+        .filter(|b| b.name.starts_with("ali-acs-test-"))
+        .map(|b| b.name.clone())
+        .collect();
+
+    if test_buckets.is_empty() {
+        println!("No test buckets found to clean up.");
+        return;
+    }
+
+    println!("Found {} test bucket(s) to clean up:", test_buckets.len());
+    for bucket in &test_buckets {
+        println!("  - {}", bucket);
+    }
+
+    // 3. For each test bucket, delete all objects, then delete the bucket
+    for bucket_name in test_buckets {
+        println!("\nProcessing bucket: {}", bucket_name);
+
+        // List all objects in the bucket
+        println!("  Listing objects...");
+        let objects_result = conn
+            .list_objects(ListObjects::new(&bucket_name))
+            .await
+            .unwrap();
+
+        if !objects_result.contents.is_empty() {
+            println!("  Found {} object(s) to delete:", objects_result.contents.len());
+
+            // Delete all objects
+            for object in &objects_result.contents {
+                println!("    Deleting object: {}", object.key);
+                conn.delete_object(DeleteObject::new(&bucket_name, &object.key))
+                    .await
+                    .expect("Failed to delete object");
+            }
+            println!("  All objects deleted.");
+        } else {
+            println!("  No objects found in bucket.");
+        }
+
+        // Delete the bucket
+        println!("  Deleting bucket...");
+        conn.delete_bucket(DeleteBucket::new(&bucket_name))
+            .await
+            .expect("Failed to delete bucket");
+        println!("  Bucket deleted successfully.");
+    }
+
+    println!("\nCleanup complete!");
+}
