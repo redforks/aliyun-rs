@@ -14532,7 +14532,7 @@ impl crate::Request for PutLiveChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14666,7 +14666,7 @@ impl crate::Request for DeleteLiveChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14739,7 +14739,7 @@ impl crate::Request for PutLiveChannelStatus {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14796,7 +14796,7 @@ impl crate::Request for GetLiveChannelInfo {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14852,7 +14852,7 @@ impl crate::Request for GetLiveChannelHistory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14908,7 +14908,7 @@ impl crate::Request for GetLiveChannelStat {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14977,7 +14977,7 @@ impl crate::Request for GetVodPlaylist {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}", self.bucket, self.channel).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -15059,7 +15059,7 @@ impl crate::Request for PostVodPlaylist {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}/", self.bucket).into()
+        format!("/{}/{}/{}", self.bucket, self.channel, self.playlist).into()
     }
 
     fn to_body(self) -> Self::Body {
