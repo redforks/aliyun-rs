@@ -1834,7 +1834,7 @@ impl crate::Request for DeleteCustomDomain {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("domainName", self.domain_name.to_string())])
+        Box::new([("{domainName}", self.domain_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -1877,7 +1877,7 @@ impl crate::Request for GetCustomDomain {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("domainName", self.domain_name.to_string())])
+        Box::new([("{domainName}", self.domain_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -1981,7 +1981,7 @@ impl crate::Request for UpdateCustomDomain {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("domainName", self.domain_name.to_string())])
+        Box::new([("{domainName}", self.domain_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2033,8 +2033,8 @@ impl crate::Request for DeleteFunctionVersion {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("versionId", self.version_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{versionId}", self.version_id.to_string()),
         ])
     }
 
@@ -2088,7 +2088,7 @@ impl crate::Request for GetFunctionCode {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -2155,7 +2155,7 @@ impl crate::Request for ListFunctionVersions {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -2199,7 +2199,7 @@ impl crate::Request for PublishFunctionVersion {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2284,7 +2284,7 @@ impl crate::Request for DeleteFunction {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2337,7 +2337,7 @@ impl crate::Request for GetFunction {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -2542,7 +2542,7 @@ impl crate::Request for InvokeFunction {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2588,7 +2588,7 @@ impl crate::Request for UpdateFunction {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2636,7 +2636,7 @@ impl crate::Request for EnableFunctionInvocation {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2683,7 +2683,7 @@ impl crate::Request for DisableFunctionInvocation {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2735,8 +2735,8 @@ impl crate::Request for DeleteAlias {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("aliasName", self.alias_name.to_string()),
-            ("functionName", self.function_name.to_string()),
+            ("{aliasName}", self.alias_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
         ])
     }
 
@@ -2784,8 +2784,8 @@ impl crate::Request for GetAlias {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("aliasName", self.alias_name.to_string()),
-            ("functionName", self.function_name.to_string()),
+            ("{aliasName}", self.alias_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
         ])
     }
 
@@ -2853,7 +2853,7 @@ impl crate::Request for ListAliases {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -2901,8 +2901,8 @@ impl crate::Request for UpdateAlias {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("aliasName", self.alias_name.to_string()),
-            ("functionName", self.function_name.to_string()),
+            ("{aliasName}", self.alias_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
         ])
     }
 
@@ -2949,7 +2949,7 @@ impl crate::Request for CreateAlias {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -2995,7 +2995,7 @@ impl crate::Request for CreateTrigger {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3047,8 +3047,8 @@ impl crate::Request for DeleteTrigger {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("triggerName", self.trigger_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{triggerName}", self.trigger_name.to_string()),
         ])
     }
 
@@ -3096,8 +3096,8 @@ impl crate::Request for GetTrigger {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("triggerName", self.trigger_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{triggerName}", self.trigger_name.to_string()),
         ])
     }
 
@@ -3165,7 +3165,7 @@ impl crate::Request for ListTriggers {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -3213,8 +3213,8 @@ impl crate::Request for UpdateTrigger {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("triggerName", self.trigger_name.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{triggerName}", self.trigger_name.to_string()),
         ])
     }
 
@@ -3273,7 +3273,7 @@ impl crate::Request for DeleteAsyncInvokeConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3326,7 +3326,7 @@ impl crate::Request for GetAsyncInvokeConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -3440,7 +3440,7 @@ impl crate::Request for PutAsyncInvokeConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3498,7 +3498,7 @@ impl crate::Request for DeleteProvisionConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3551,7 +3551,7 @@ impl crate::Request for GetProvisionConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -3665,7 +3665,7 @@ impl crate::Request for PutProvisionConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3713,7 +3713,7 @@ impl crate::Request for DeleteConcurrencyConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3756,7 +3756,7 @@ impl crate::Request for GetConcurrencyConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -3860,7 +3860,7 @@ impl crate::Request for PutConcurrencyConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3906,7 +3906,7 @@ impl crate::Request for CreateLayerVersion {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("layerName", self.layer_name.to_string())])
+        Box::new([("{layerName}", self.layer_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -3958,8 +3958,8 @@ impl crate::Request for DeleteLayerVersion {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("layerName", self.layer_name.to_string()),
-            ("version", self.version.to_string()),
+            ("{layerName}", self.layer_name.to_string()),
+            ("{version}", self.version.to_string()),
         ])
     }
 
@@ -4007,8 +4007,8 @@ impl crate::Request for GetLayerVersion {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("layerName", self.layer_name.to_string()),
-            ("version", self.version.to_string()),
+            ("{layerName}", self.layer_name.to_string()),
+            ("{version}", self.version.to_string()),
         ])
     }
 
@@ -4048,7 +4048,7 @@ impl crate::Request for GetLayerVersionByArn {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("arn", self.arn.to_string())])
+        Box::new([("{arn}", self.arn.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4107,7 +4107,7 @@ impl crate::Request for ListLayerVersions {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("layerName", self.layer_name.to_string())])
+        Box::new([("{layerName}", self.layer_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4247,7 +4247,7 @@ impl crate::Request for PutLayerACL {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("layerName", self.layer_name.to_string())])
+        Box::new([("{layerName}", self.layer_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -4354,7 +4354,7 @@ impl crate::Request for ListInstances {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4395,7 +4395,7 @@ impl crate::Request for ListVpcBindings {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4439,7 +4439,7 @@ impl crate::Request for CreateVpcBinding {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -4491,8 +4491,8 @@ impl crate::Request for DeleteVpcBinding {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("vpcId", self.vpc_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{vpcId}", self.vpc_id.to_string()),
         ])
     }
 
@@ -4737,8 +4737,8 @@ impl crate::Request for GetAsyncTask {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("taskId", self.task_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{taskId}", self.task_id.to_string()),
         ])
     }
 
@@ -4883,7 +4883,7 @@ impl crate::Request for ListAsyncTasks {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4943,8 +4943,8 @@ impl crate::Request for StopAsyncTask {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("taskId", self.task_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{taskId}", self.task_id.to_string()),
         ])
     }
 
@@ -5002,7 +5002,7 @@ impl crate::Request for CreateSession {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -5059,8 +5059,8 @@ impl crate::Request for GetSession {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("sessionId", self.session_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{sessionId}", self.session_id.to_string()),
         ])
     }
 
@@ -5120,8 +5120,8 @@ impl crate::Request for UpdateSession {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("sessionId", self.session_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{sessionId}", self.session_id.to_string()),
         ])
     }
 
@@ -5207,7 +5207,7 @@ impl crate::Request for ListSessions {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5267,8 +5267,8 @@ impl crate::Request for DeleteSession {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([
-            ("functionName", self.function_name.to_string()),
-            ("sessionId", self.session_id.to_string()),
+            ("{functionName}", self.function_name.to_string()),
+            ("{sessionId}", self.session_id.to_string()),
         ])
     }
 
@@ -5326,7 +5326,7 @@ impl crate::Request for PutScalingConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -5384,7 +5384,7 @@ impl crate::Request for DeleteScalingConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {
@@ -5437,7 +5437,7 @@ impl crate::Request for GetScalingConfig {
     }
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
-        Box::new([("functionName", self.function_name.to_string())])
+        Box::new([("{functionName}", self.function_name.to_string())])
     }
 
     fn to_body(self) -> Self::Body {}

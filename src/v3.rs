@@ -77,6 +77,8 @@ where
         Method::POST => http_client.post(url).headers(headers).body(body),
         Method::PUT => http_client.put(url).headers(headers).body(body),
         Method::GET => http_client.get(url).headers(headers),
+        Method::DELETE => http_client.delete(url).headers(headers).body(body),
+        Method::HEAD => http_client.head(url).headers(headers),
         _ => unreachable!(),
     }
     .send()

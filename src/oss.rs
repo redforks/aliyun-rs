@@ -4884,7 +4884,7 @@ impl crate::Request for GetBucketStat {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -4975,7 +4975,7 @@ impl crate::Request for PutBucket {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5026,7 +5026,7 @@ impl crate::Request for DeleteBucket {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5126,7 +5126,7 @@ impl crate::Request for ListObjects {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5247,7 +5247,7 @@ impl crate::Request for ListObjectsV2 {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5294,7 +5294,7 @@ impl crate::Request for GetBucketInfo {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5341,7 +5341,7 @@ impl crate::Request for GetBucketLocation {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5453,7 +5453,7 @@ impl crate::Request for GetAccessPoint {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5509,7 +5509,7 @@ impl crate::Request for GetAccessPointPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5570,7 +5570,7 @@ impl crate::Request for DeleteAccessPointPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5633,7 +5633,7 @@ impl crate::Request for PutAccessPointPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5696,7 +5696,7 @@ impl crate::Request for DeleteAccessPoint {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5749,7 +5749,7 @@ impl crate::Request for CreateAccessPoint {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5802,7 +5802,7 @@ impl crate::Request for InitiateBucketWorm {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5866,7 +5866,7 @@ impl crate::Request for AbortBucketWorm {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5923,7 +5923,7 @@ impl crate::Request for CompleteBucketWorm {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -5982,7 +5982,7 @@ impl crate::Request for ExtendBucketWorm {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6031,7 +6031,7 @@ impl crate::Request for GetBucketWorm {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6094,7 +6094,7 @@ impl crate::Request for PutBucketAcl {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6143,7 +6143,7 @@ impl crate::Request for GetBucketAcl {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6208,7 +6208,7 @@ impl crate::Request for PutBucketLifecycle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6257,7 +6257,7 @@ impl crate::Request for GetBucketLifecycle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6309,7 +6309,7 @@ impl crate::Request for DeleteBucketLifecycle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6362,7 +6362,7 @@ impl crate::Request for PutBucketTransferAcceleration {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6411,7 +6411,7 @@ impl crate::Request for GetBucketTransferAcceleration {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6462,7 +6462,7 @@ impl crate::Request for PutBucketVersioning {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6511,7 +6511,7 @@ impl crate::Request for GetBucketVersioning {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6632,7 +6632,7 @@ impl crate::Request for ListObjectVersions {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6682,7 +6682,7 @@ impl crate::Request for PutBucketPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6731,7 +6731,7 @@ impl crate::Request for GetBucketPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6783,7 +6783,7 @@ impl crate::Request for DeleteBucketPolicy {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6832,7 +6832,7 @@ impl crate::Request for GetBucketPolicyStatus {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -6883,7 +6883,7 @@ impl crate::Request for PutBucketRtc {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6937,7 +6937,7 @@ impl crate::Request for PutBucketReplication {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -6996,7 +6996,7 @@ impl crate::Request for GetBucketReplication {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7043,7 +7043,7 @@ impl crate::Request for GetBucketReplicationLocation {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7094,7 +7094,7 @@ impl crate::Request for GetBucketReplicationProgress {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7146,7 +7146,7 @@ impl crate::Request for DeleteBucketReplication {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7203,7 +7203,7 @@ impl crate::Request for PutBucketInventory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7256,7 +7256,7 @@ impl crate::Request for GetBucketInventory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7311,7 +7311,7 @@ impl crate::Request for ListBucketInventory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7367,7 +7367,7 @@ impl crate::Request for DeleteBucketInventory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7420,7 +7420,7 @@ impl crate::Request for PutBucketLogging {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7469,7 +7469,7 @@ impl crate::Request for GetBucketLogging {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7521,7 +7521,7 @@ impl crate::Request for DeleteBucketLogging {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7574,7 +7574,7 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7623,7 +7623,7 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7675,7 +7675,7 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7724,7 +7724,7 @@ impl crate::Request for GetBucketWebsite {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7775,7 +7775,7 @@ impl crate::Request for PutBucketWebsite {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7829,7 +7829,7 @@ impl crate::Request for DeleteBucketWebsite {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7882,7 +7882,7 @@ impl crate::Request for PutBucketReferer {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7931,7 +7931,7 @@ impl crate::Request for GetBucketReferer {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -7982,7 +7982,7 @@ impl crate::Request for PutBucketTags {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8031,7 +8031,7 @@ impl crate::Request for GetBucketTags {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8083,7 +8083,7 @@ impl crate::Request for DeleteBucketTags {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8184,7 +8184,7 @@ impl crate::Request for ListBucketDataRedundancyTransition {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8241,7 +8241,7 @@ impl crate::Request for GetBucketDataRedundancyTransition {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8300,7 +8300,7 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8364,7 +8364,7 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8417,7 +8417,7 @@ impl crate::Request for PutBucketEncryption {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8466,7 +8466,7 @@ impl crate::Request for GetBucketEncryption {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8518,7 +8518,7 @@ impl crate::Request for DeleteBucketEncryption {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8571,7 +8571,7 @@ impl crate::Request for PutBucketRequestPayment {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8620,7 +8620,7 @@ impl crate::Request for GetBucketRequestPayment {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8671,7 +8671,7 @@ impl crate::Request for PutBucketCors {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8720,7 +8720,7 @@ impl crate::Request for GetBucketCors {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -8772,7 +8772,7 @@ impl crate::Request for DeleteBucketCors {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8941,7 +8941,7 @@ impl crate::Request for PutBucketAccessMonitor {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8990,7 +8990,7 @@ impl crate::Request for GetBucketAccessMonitor {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9037,7 +9037,7 @@ impl crate::Request for GetMetaQueryStatus {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9090,7 +9090,7 @@ impl crate::Request for CloseMetaQuery {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9154,7 +9154,7 @@ impl crate::Request for DoMetaQuery {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9228,7 +9228,7 @@ impl crate::Request for OpenMetaQuery {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9369,7 +9369,7 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9551,7 +9551,7 @@ impl crate::Request for InitBucketAntiDDosInfo {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9634,7 +9634,7 @@ impl crate::Request for GetBucketResourceGroup {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9685,7 +9685,7 @@ impl crate::Request for PutBucketResourceGroup {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9739,7 +9739,7 @@ impl crate::Request for PutCname {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9788,7 +9788,7 @@ impl crate::Request for ListCname {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9840,7 +9840,7 @@ impl crate::Request for DeleteCname {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -9893,7 +9893,7 @@ impl crate::Request for GetCnameToken {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9945,7 +9945,7 @@ impl crate::Request for CreateCnameToken {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10012,7 +10012,7 @@ impl crate::Request for PutStyle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10061,7 +10061,7 @@ impl crate::Request for ListStyle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -10112,7 +10112,7 @@ impl crate::Request for GetStyle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -10168,7 +10168,7 @@ impl crate::Request for DeleteStyle {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10217,7 +10217,7 @@ impl crate::Request for GetBucketHttpsConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -10268,7 +10268,7 @@ impl crate::Request for PutBucketHttpsConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10337,7 +10337,7 @@ impl crate::Request for CreateAccessPointForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10399,7 +10399,7 @@ impl crate::Request for GetAccessPointForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -10520,7 +10520,7 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10582,7 +10582,7 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -10650,7 +10650,7 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10716,7 +10716,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10780,7 +10780,7 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10844,7 +10844,7 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11008,7 +11008,7 @@ impl crate::Request for GetBucketPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11059,7 +11059,7 @@ impl crate::Request for PutBucketPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11113,7 +11113,7 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11170,7 +11170,7 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11228,7 +11228,7 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11290,7 +11290,7 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11339,7 +11339,7 @@ impl crate::Request for GetBucketArchiveDirectRead {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11390,7 +11390,7 @@ impl crate::Request for PutBucketArchiveDirectRead {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11443,7 +11443,7 @@ impl crate::Request for PutBucketOverwriteConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -11492,7 +11492,7 @@ impl crate::Request for GetBucketOverwriteConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11544,7 +11544,7 @@ impl crate::Request for DeleteBucketOverwriteConfig {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -13790,7 +13790,7 @@ impl crate::Request for ListMultipartUploads {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14532,7 +14532,7 @@ impl crate::Request for PutLiveChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14606,7 +14606,7 @@ impl crate::Request for ListLiveChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14666,7 +14666,7 @@ impl crate::Request for DeleteLiveChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14739,7 +14739,7 @@ impl crate::Request for PutLiveChannelStatus {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -14796,7 +14796,7 @@ impl crate::Request for GetLiveChannelInfo {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14852,7 +14852,7 @@ impl crate::Request for GetLiveChannelHistory {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14908,7 +14908,7 @@ impl crate::Request for GetLiveChannelStat {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -14977,7 +14977,7 @@ impl crate::Request for GetVodPlaylist {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -15059,7 +15059,7 @@ impl crate::Request for PostVodPlaylist {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15112,7 +15112,7 @@ impl crate::Request for PutChannel {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15165,7 +15165,7 @@ impl crate::Request for PutBucketHash {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15218,7 +15218,7 @@ impl crate::Request for PutBucketCommonHeader {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15272,7 +15272,7 @@ impl crate::Request for DeleteBucketCommonHeader {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15325,7 +15325,7 @@ impl crate::Request for PutProcessConfiguration {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15374,7 +15374,7 @@ impl crate::Request for GetBucketEventNotification {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -15430,7 +15430,7 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15490,7 +15490,7 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -15538,7 +15538,7 @@ impl crate::Request for ListDataLakeStorageTransferJob {
     }
 
     fn resource_path(&self) -> std::borrow::Cow<'static, str> {
-        format!("/{}", self.bucket).into()
+        format!("/{}/", self.bucket).into()
     }
 
     fn to_body(self) -> Self::Body {}
