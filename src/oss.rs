@@ -219,13 +219,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -256,7 +256,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -302,9 +302,7 @@ impl Connection {
         &self,
         req: GetBucketStat,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketStatResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建存储空间
@@ -343,9 +341,7 @@ impl Connection {
         &self,
         req: PutBucket,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间
@@ -371,9 +367,7 @@ impl Connection {
         &self,
         req: DeleteBucket,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举存储空间中所有文件的信息
@@ -400,9 +394,7 @@ impl Connection {
         &self,
         req: ListObjects,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举存储空间中所有文件的信息V2
@@ -427,9 +419,7 @@ impl Connection {
         &self,
         req: ListObjectsV2,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectsV2Response>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的相关信息
@@ -452,9 +442,7 @@ impl Connection {
         &self,
         req: GetBucketInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInfoResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的位置信息
@@ -477,9 +465,7 @@ impl Connection {
         &self,
         req: GetBucketLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLocationResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取接入点信息
@@ -525,9 +511,7 @@ impl Connection {
         &self,
         req: GetAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取接入点策略配置
@@ -550,9 +534,7 @@ impl Connection {
         &self,
         req: GetAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPolicyResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除接入点策略
@@ -575,9 +557,7 @@ impl Connection {
         &self,
         req: DeleteAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 配置接入点策略
@@ -600,9 +580,7 @@ impl Connection {
         &self,
         req: PutAccessPointPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除接入点
@@ -625,9 +603,7 @@ impl Connection {
         &self,
         req: DeleteAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建接入点
@@ -653,9 +629,7 @@ impl Connection {
         &self,
         req: CreateAccessPoint,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 新建合规保留策略
@@ -684,9 +658,7 @@ impl Connection {
         &self,
         req: InitiateBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<InitiateBucketWormResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除未锁定的合规保留策略
@@ -717,9 +689,7 @@ impl Connection {
         &self,
         req: AbortBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 锁定合规保留策略
@@ -748,9 +718,7 @@ impl Connection {
         &self,
         req: CompleteBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 延长存储空间中文件的保留天数
@@ -785,9 +753,7 @@ impl Connection {
         &self,
         req: ExtendBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的合规保留策略信息
@@ -816,9 +782,7 @@ impl Connection {
         &self,
         req: GetBucketWorm,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWormResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置或修改存储空间的访问权限
@@ -847,9 +811,7 @@ impl Connection {
         &self,
         req: PutBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的访问权限
@@ -872,9 +834,7 @@ impl Connection {
         &self,
         req: GetBucketAcl,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAclResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的生命周期规则
@@ -905,9 +865,7 @@ impl Connection {
         &self,
         req: PutBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查询存储空间的生命周期规则
@@ -930,9 +888,7 @@ impl Connection {
         &self,
         req: GetBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLifecycleResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的生命周期规则
@@ -959,9 +915,7 @@ impl Connection {
         &self,
         req: DeleteBucketLifecycle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 为存储空间配置传输加速
@@ -992,9 +946,7 @@ impl Connection {
         &self,
         req: PutBucketTransferAcceleration,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的传输加速配置
@@ -1024,9 +976,7 @@ impl Connection {
         req: GetBucketTransferAcceleration,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTransferAccelerationResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的版本控制状态
@@ -1059,9 +1009,7 @@ impl Connection {
         &self,
         req: PutBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取指定存储空间的版本控制状态
@@ -1084,9 +1032,7 @@ impl Connection {
         &self,
         req: GetBucketVersioning,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketVersioningResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取文件的版本信息
@@ -1114,9 +1060,7 @@ impl Connection {
         &self,
         req: ListObjectVersions,
     ) -> impl std::future::Future<Output = crate::Result<ListObjectVersionsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的授权策略
@@ -1149,9 +1093,7 @@ impl Connection {
         &self,
         req: PutBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的权限策略
@@ -1184,9 +1126,7 @@ impl Connection {
         &self,
         req: GetBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的权限策略
@@ -1219,9 +1159,7 @@ impl Connection {
         &self,
         req: DeleteBucketPolicy,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间授权策略是否是公共访问
@@ -1247,9 +1185,7 @@ impl Connection {
         req: GetBucketPolicyStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPolicyStatusResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置RTC
@@ -1272,9 +1208,7 @@ impl Connection {
         &self,
         req: PutBucketRtc,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 指定存储空间的数据复制规则
@@ -1307,9 +1241,7 @@ impl Connection {
         &self,
         req: PutBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<PutBucketReplicationResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的数据复制规则
@@ -1332,9 +1264,7 @@ impl Connection {
         &self,
         req: GetBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取可复制到的目标存储空间的地域
@@ -1358,9 +1288,7 @@ impl Connection {
         req: GetBucketReplicationLocation,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationLocationResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的数据复制进度
@@ -1384,9 +1312,7 @@ impl Connection {
         req: GetBucketReplicationProgress,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketReplicationProgressResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 停止存储空间的数据复制并删除其复制配置
@@ -1415,9 +1341,7 @@ impl Connection {
         &self,
         req: DeleteBucketReplication,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 配置存储空间的清单规则
@@ -1466,9 +1390,7 @@ impl Connection {
         &self,
         req: PutBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的清单任务
@@ -1493,9 +1415,7 @@ impl Connection {
         &self,
         req: GetBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketInventoryResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 批量获取存储空间的所有清单任务
@@ -1522,9 +1442,7 @@ impl Connection {
         &self,
         req: ListBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketInventoryResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的指定清单任务
@@ -1550,9 +1468,7 @@ impl Connection {
         &self,
         req: DeleteBucketInventory,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 开启存储空间的日志转存功能
@@ -1585,9 +1501,7 @@ impl Connection {
         &self,
         req: PutBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的访问日志配置
@@ -1610,9 +1524,7 @@ impl Connection {
         &self,
         req: GetBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketLoggingResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 关闭存储空间的访问日志记录功能
@@ -1638,9 +1550,7 @@ impl Connection {
         &self,
         req: DeleteBucketLogging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间实时日志用户自定义字段配置
@@ -1673,9 +1583,7 @@ impl Connection {
         &self,
         req: PutUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间实时日志用户自定义字段配置
@@ -1699,9 +1607,7 @@ impl Connection {
         req: GetUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetUserDefinedLogFieldsConfigResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间实时日志用户自定义字段配置
@@ -1724,9 +1630,7 @@ impl Connection {
         &self,
         req: DeleteUserDefinedLogFieldsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的静态网站托管状态和规则
@@ -1749,9 +1653,7 @@ impl Connection {
         &self,
         req: GetBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketWebsiteResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间为静态网站托管模式并设置跳转规则
@@ -1782,9 +1684,7 @@ impl Connection {
         &self,
         req: PutBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 关闭存储空间的静态网站托管模式以及跳转规则
@@ -1809,9 +1709,7 @@ impl Connection {
         &self,
         req: DeleteBucketWebsite,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的防盗链
@@ -1834,9 +1732,7 @@ impl Connection {
         &self,
         req: PutBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看存储空间的防盗链相关配置
@@ -1859,9 +1755,7 @@ impl Connection {
         &self,
         req: GetBucketReferer,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRefererResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 为存储空间添加或修改标签
@@ -1890,9 +1784,7 @@ impl Connection {
         &self,
         req: PutBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的标签信息
@@ -1915,9 +1807,7 @@ impl Connection {
         &self,
         req: GetBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketTagsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的标签
@@ -1942,9 +1832,7 @@ impl Connection {
         &self,
         req: DeleteBucketTags,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举用户级别存储冗余类型转换任务
@@ -1995,9 +1883,7 @@ impl Connection {
         req: ListBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<ListBucketDataRedundancyTransitionResponse>>
     + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间存储冗余转换任务
@@ -2024,9 +1910,7 @@ impl Connection {
         req: GetBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketDataRedundancyTransitionResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建存储冗余类型转换任务
@@ -2057,9 +1941,7 @@ impl Connection {
     ) -> impl std::future::Future<
         Output = crate::Result<CreateBucketDataRedundancyTransitionResponse>,
     > + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储冗余类型转换任务
@@ -2086,9 +1968,7 @@ impl Connection {
         &self,
         req: DeleteBucketDataRedundancyTransition,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 配置存储空间的加密规则
@@ -2113,9 +1993,7 @@ impl Connection {
         &self,
         req: PutBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间的加密规则
@@ -2140,9 +2018,7 @@ impl Connection {
         &self,
         req: GetBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEncryptionResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的加密规则
@@ -2167,9 +2043,7 @@ impl Connection {
         &self,
         req: DeleteBucketEncryption,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置请求者付费模式
@@ -2198,9 +2072,7 @@ impl Connection {
         &self,
         req: PutBucketRequestPayment,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取请求者付费模式配置信息
@@ -2224,9 +2096,7 @@ impl Connection {
         req: GetBucketRequestPayment,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketRequestPaymentResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的跨域资源共享规则
@@ -2287,16 +2157,14 @@ impl Connection {
         &self,
         req: PutBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间当前的跨域资源共享规则
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///  
+    ///
     ///
     /// # Path
     /// `/?cors`
@@ -2314,9 +2182,7 @@ impl Connection {
         &self,
         req: GetBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketCorsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 关闭存储空间跨域资源共享功能
@@ -2342,9 +2208,7 @@ impl Connection {
         &self,
         req: DeleteBucketCors,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 发送预检请求
@@ -2371,8 +2235,7 @@ impl Connection {
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Host parameters are not supported.
-Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or HttpMethod::Head supported"##
+                r##"Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or HttpMethod::Head supported"##
             );
         }
     }
@@ -2397,9 +2260,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutBucketAccessMonitor,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间访问追踪状态
@@ -2423,9 +2284,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: GetBucketAccessMonitor,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketAccessMonitorResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取元数据索引库信息
@@ -2448,9 +2307,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: GetMetaQueryStatus,
     ) -> impl std::future::Future<Output = crate::Result<GetMetaQueryStatusResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 关闭存储空间元数据管理
@@ -2473,9 +2330,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: CloseMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查询满足条件的文件
@@ -2498,9 +2353,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DoMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<DoMetaQueryResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 开启元数据管理功能
@@ -2523,9 +2376,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: OpenMetaQuery,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 更改高防OSS实例状态
@@ -2571,9 +2422,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: UpdateBucketAntiDDosInfo,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取Bucket防护信息列表
@@ -2643,9 +2492,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: InitBucketAntiDDosInfo,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查询高防OSS实例信息
@@ -2692,9 +2539,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: GetBucketResourceGroup,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketResourceGroupResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间资源组
@@ -2717,9 +2562,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutBucketResourceGroup,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 绑定自定义域名
@@ -2742,9 +2585,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutCname,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查询自定义域名列表
@@ -2767,9 +2608,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: ListCname,
     ) -> impl std::future::Future<Output = crate::Result<ListCnameResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除Cname
@@ -2792,9 +2631,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DeleteCname,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取CnameToken
@@ -2817,9 +2654,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: GetCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<GetCnameTokenResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建CnameToken
@@ -2842,9 +2677,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: CreateCnameToken,
     ) -> impl std::future::Future<Output = crate::Result<CreateCnameTokenResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 新增图片样式
@@ -2867,9 +2700,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutStyle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查询图片样式
@@ -2892,9 +2723,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: ListStyle,
     ) -> impl std::future::Future<Output = crate::Result<ListStyleResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取图片样式
@@ -2917,9 +2746,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: GetStyle,
     ) -> impl std::future::Future<Output = crate::Result<GetStyleResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除图片样式
@@ -2942,9 +2769,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DeleteStyle,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间HTTPS配置
@@ -2971,9 +2796,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: GetBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketHttpsConfigResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间HTTPS配置
@@ -2996,9 +2819,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutBucketHttpsConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建对象FC接入点
@@ -3026,9 +2847,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: CreateAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<CreateAccessPointForObjectProcessResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取对象FC接入点详情
@@ -3054,9 +2873,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: GetAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointForObjectProcessResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举对象FC接入点
@@ -3107,9 +2924,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DeleteAccessPointForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取对象FC接入点配置
@@ -3136,9 +2951,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointConfigForObjectProcessResponse>,
     > + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改对象FC接入点配置
@@ -3163,9 +2976,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutAccessPointConfigForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改对象FC接入点授权策略
@@ -3190,9 +3001,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutAccessPointPolicyForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取对象FC接入点策略
@@ -3220,9 +3029,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
     ) -> impl std::future::Future<
         Output = crate::Result<GetAccessPointPolicyForObjectProcessResponse>,
     > + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除对象FC接入点策略
@@ -3247,9 +3054,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DeleteAccessPointPolicyForObjectProcess,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取用户级别阻止公共访问配置
@@ -3342,9 +3147,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: GetBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketPublicAccessBlockResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 开启/关闭存储空间阻止公共访问配置
@@ -3367,9 +3170,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: PutBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间阻止公共访问配置
@@ -3392,9 +3193,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         &self,
         req: DeleteBucketPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取接入点阻止公共访问配置
@@ -3418,9 +3217,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
         req: GetAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<GetAccessPointPublicAccessBlockResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改接入点阻止公共访问配置
@@ -3445,10 +3242,7 @@ Only HttpMethod::Get, HttpMethod::Post, HttpMethod::Put, HttpMethod::Delete, or 
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
-            todo!(
-                r##"Parameter 'bucket': Host parameters are not supported.
-API must have 200 or 204 response"##
-            );
+            todo!(r##"API must have 200 or 204 response"##);
         }
     }
 
@@ -3472,9 +3266,7 @@ API must have 200 or 204 response"##
         &self,
         req: DeleteAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间归档直读配置
@@ -3501,9 +3293,7 @@ API must have 200 or 204 response"##
         req: GetBucketArchiveDirectRead,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketArchiveDirectReadResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间归档直读配置
@@ -3532,9 +3322,7 @@ API must have 200 or 204 response"##
         &self,
         req: PutBucketArchiveDirectRead,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间禁止覆盖写规则
@@ -3557,9 +3345,7 @@ API must have 200 or 204 response"##
         &self,
         req: PutBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间禁止覆盖写规则
@@ -3583,9 +3369,7 @@ API must have 200 or 204 response"##
         req: GetBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketOverwriteConfigResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的不覆盖写规则
@@ -3608,9 +3392,7 @@ API must have 200 or 204 response"##
         &self,
         req: DeleteBucketOverwriteConfig,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 上传文件
@@ -3643,9 +3425,7 @@ API must have 200 or 204 response"##
         &self,
         req: PutObject,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 拷贝文件
@@ -3665,7 +3445,7 @@ API must have 200 or 204 response"##
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///   
+    ///
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -3694,9 +3474,7 @@ API must have 200 or 204 response"##
         &self,
         req: CopyObject,
     ) -> impl std::future::Future<Output = crate::Result<CopyObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取文件
@@ -3730,9 +3508,7 @@ API must have 200 or 204 response"##
         &self,
         req: GetObject,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 以追加写的方式上传文件
@@ -3769,9 +3545,7 @@ API must have 200 or 204 response"##
         &self,
         req: AppendObject,
     ) -> impl std::future::Future<Output = crate::Result<AppendObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 封存可追加对象
@@ -3794,9 +3568,7 @@ API must have 200 or 204 response"##
         &self,
         req: SealAppendObject,
     ) -> impl std::future::Future<Output = crate::Result<SealAppendObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除文件
@@ -3833,9 +3605,7 @@ API must have 200 or 204 response"##
         &self,
         req: DeleteObject,
     ) -> impl std::future::Future<Output = crate::Result<DeleteObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取文件的元信息
@@ -3864,8 +3634,7 @@ API must have 200 or 204 response"##
     ) -> impl std::future::Future<Output = crate::Result<HeadObjectResponse>> + Send {
         async {
             todo!(
-                r##"Parameter 'bucket': Host parameters are not supported.
-Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
+                r##"Header 'x-oss-meta-*': Schema with additional_properties of type String is not supported. Only 'object' type is supported."##
             );
         }
     }
@@ -3899,9 +3668,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetObjectMeta,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectMetaResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 解冻归档类型或冷归档的文件
@@ -3959,9 +3726,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: RestoreObject,
     ) -> impl std::future::Future<Output = crate::Result<RestoreObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 清理解冻副本
@@ -3984,9 +3749,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: CleanRestoredObject,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 对文件执行SQL语句并返回结果
@@ -4013,9 +3776,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: SelectObject,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取目标文件总行数、总列数以及Splits个数
@@ -4043,9 +3804,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: CreateSelectObjectMeta,
     ) -> impl std::future::Future<Output = crate::Result<CreateSelectObjectMetaResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 通知OSS初始化分片上传事件
@@ -4075,9 +3834,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: InitiateMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<InitiateMultipartUploadResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 分块上传数据
@@ -4108,9 +3865,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: UploadPart,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 完成整个文件的分片上传
@@ -4153,9 +3908,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: CompleteMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<CompleteMultipartUploadResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 拷贝数据上传一个数据块
@@ -4202,9 +3955,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: UploadPartCopy,
     ) -> impl std::future::Future<Output = crate::Result<UploadPartCopyResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 取消分片上传事件并删除数据块数据
@@ -4234,9 +3985,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: AbortMultipartUpload,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举执行中的分片上传事件
@@ -4261,9 +4010,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: ListMultipartUploads,
     ) -> impl std::future::Future<Output = crate::Result<ListMultipartUploadsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举所有成功上传的数据块
@@ -4290,9 +4037,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: ListParts,
     ) -> impl std::future::Future<Output = crate::Result<ListPartsResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改文件的访问权限
@@ -4338,9 +4083,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutObjectAcl,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectAclResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取文件的访问权限
@@ -4369,9 +4112,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetObjectAcl,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectAclResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建OSS目标文件的软链接
@@ -4407,9 +4148,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutSymlink,
     ) -> impl std::future::Future<Output = crate::Result<PutSymlinkResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取软链接
@@ -4437,9 +4176,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetSymlink,
     ) -> impl std::future::Future<Output = crate::Result<GetSymlinkResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置或更新文件的标签信息
@@ -4479,9 +4216,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<PutObjectTaggingResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取文件的标签信息
@@ -4509,9 +4244,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<GetObjectTaggingResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除对象的标签信息
@@ -4539,9 +4272,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: DeleteObjectTagging,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建直播推流
@@ -4567,9 +4298,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<PutLiveChannelResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 列举指定的直播推流
@@ -4592,9 +4321,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: ListLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<ListLiveChannelResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除指定的直播推流
@@ -4620,9 +4347,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: DeleteLiveChannel,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 切换直播推流状态
@@ -4649,9 +4374,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutLiveChannelStatus,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取直播推流的配置信息
@@ -4674,9 +4397,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetLiveChannelInfo,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelInfoResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取直播推流的推流记录
@@ -4702,9 +4423,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: GetLiveChannelHistory,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelHistoryResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取直播推流的推流状态信息
@@ -4727,9 +4446,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetLiveChannelStat,
     ) -> impl std::future::Future<Output = crate::Result<GetLiveChannelStatResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 查看直播推流的播放列表
@@ -4752,9 +4469,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: GetVodPlaylist,
     ) -> impl std::future::Future<Output = crate::Result<Vec<u8>>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 为直播推流生成点播的播放列表
@@ -4779,9 +4494,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PostVodPlaylist,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 创建图片处理通道
@@ -4804,9 +4517,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutChannel,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间哈希算法配置
@@ -4829,9 +4540,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutBucketHash,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 设置存储空间的用户自定义响应头配置
@@ -4854,9 +4563,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutBucketCommonHeader,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 删除存储空间的用户自定义响应头配置
@@ -4879,9 +4586,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: DeleteBucketCommonHeader,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 修改存储空间媒体处理配置
@@ -4904,9 +4609,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: PutProcessConfiguration,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// # 获取存储空间事件通知配置
@@ -4930,9 +4633,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: GetBucketEventNotification,
     ) -> impl std::future::Future<Output = crate::Result<GetBucketEventNotificationResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// 配置OSS加速器异步预热规则
@@ -4954,9 +4655,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: PutDataLakeCachePrefetchJob,
     ) -> impl std::future::Future<Output = crate::Result<PutDataLakeCachePrefetchJobResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// 启动OSS加速器异步预热任务
@@ -4977,9 +4676,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         &self,
         req: StartDataLakeCachePrefetchJob,
     ) -> impl std::future::Future<Output = crate::Result<crate::OpenObjectResponse>> + Send {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 
     /// 列举数据湖元数据转换任务
@@ -5001,9 +4698,7 @@ Header 'x-oss-meta-*': Schema with additional_properties of type String is not s
         req: ListDataLakeStorageTransferJob,
     ) -> impl std::future::Future<Output = crate::Result<ListDataLakeStorageTransferJobResponse>> + Send
     {
-        async {
-            todo!(r##"Parameter 'bucket': Host parameters are not supported."##);
-        }
+        self.call(req)
     }
 }
 
@@ -5149,13 +4844,18 @@ impl crate::Request for DescribeRegions {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketStat {}
+pub struct GetBucketStat {
+    /// 要查询的Bucket
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketStat {}
 
 impl GetBucketStat {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -5179,11 +4879,21 @@ impl crate::Request for GetBucketStat {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucket {
+    /// Bucket名称。存储空间的命名规范如下：
+    ///
+    /// - 只能包括小写字母、数字和短划线（-）。
+    /// - 必须以小写字母或者数字开头和结尾。
+    /// - 长度必须在3~63字符之间。
+    bucket: String,
     /// 指定Bucket的访问权限ACL。包含如下三种访问权限：
     ///
     /// - public-read-write：公共读写
@@ -5214,8 +4924,9 @@ pub struct PutBucket {
 impl sealed::Bound for PutBucket {}
 
 impl PutBucket {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_acl: None,
             x_oss_resource_group_id: None,
             x_oss_bucket_tagging: None,
@@ -5255,19 +4966,28 @@ impl crate::Request for PutBucket {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucket {}
+pub struct DeleteBucket {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucket {}
 
 impl DeleteBucket {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucket {
@@ -5293,6 +5013,10 @@ impl crate::Request for DeleteBucket {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5300,6 +5024,8 @@ impl crate::Request for DeleteBucket {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjects {
+    /// Bucket名称。
+    bucket: String,
     /// 对Object名字进行分组的字符。所有Object名字包含指定的前缀，第一次出现delimiter字符之间的Object作为一组元素（即CommonPrefixes）。
     #[setters(generate = true, strip_option)]
     delimiter: Option<String>,
@@ -5332,8 +5058,9 @@ pub struct ListObjects {
 impl sealed::Bound for ListObjects {}
 
 impl ListObjects {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             delimiter: None,
             marker: None,
             max_keys: None,
@@ -5382,11 +5109,17 @@ impl crate::Request for ListObjects {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjectsV2 {
+    /// Bucket名称。
+    bucket: String,
     /// 对Object名字进行分组的字符。所有Object名字包含指定的前缀，第一次出现Delimiter字符之间的Object作为一组元素（即CommonPrefixes）。
     #[setters(generate = true, strip_option)]
     delimiter: Option<String>,
@@ -5431,8 +5164,9 @@ pub struct ListObjectsV2 {
 impl sealed::Bound for ListObjectsV2 {}
 
 impl ListObjectsV2 {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             delimiter: None,
             max_keys: None,
             prefix: None,
@@ -5492,17 +5226,26 @@ impl crate::Request for ListObjectsV2 {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketInfo {}
+pub struct GetBucketInfo {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketInfo {}
 
 impl GetBucketInfo {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -5526,17 +5269,26 @@ impl crate::Request for GetBucketInfo {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketLocation {}
+pub struct GetBucketLocation {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketLocation {}
 
 impl GetBucketLocation {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -5558,6 +5310,10 @@ impl crate::Request for GetBucketLocation {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -5621,6 +5377,8 @@ impl crate::Request for ListAccessPoints {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPoint {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     x_oss_access_point_name: String,
 }
@@ -5628,8 +5386,9 @@ pub struct GetAccessPoint {
 impl sealed::Bound for GetAccessPoint {}
 
 impl GetAccessPoint {
-    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: x_oss_access_point_name.into(),
         }
     }
@@ -5661,11 +5420,17 @@ impl crate::Request for GetAccessPoint {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPolicy {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     x_oss_access_point_name: String,
 }
@@ -5673,8 +5438,9 @@ pub struct GetAccessPointPolicy {
 impl sealed::Bound for GetAccessPointPolicy {}
 
 impl GetAccessPointPolicy {
-    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: x_oss_access_point_name.into(),
         }
     }
@@ -5706,11 +5472,17 @@ impl crate::Request for GetAccessPointPolicy {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPolicy {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     x_oss_access_point_name: String,
 }
@@ -5718,8 +5490,9 @@ pub struct DeleteAccessPointPolicy {
 impl sealed::Bound for DeleteAccessPointPolicy {}
 
 impl DeleteAccessPointPolicy {
-    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: x_oss_access_point_name.into(),
         }
     }
@@ -5756,6 +5529,10 @@ impl crate::Request for DeleteAccessPointPolicy {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5763,6 +5540,8 @@ impl crate::Request for DeleteAccessPointPolicy {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicy {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     #[setters(generate = true, strip_option)]
     x_oss_access_point_name: Option<String>,
@@ -5774,8 +5553,9 @@ pub struct PutAccessPointPolicy {
 impl sealed::Bound for PutAccessPointPolicy {}
 
 impl PutAccessPointPolicy {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: None,
             body: None,
         }
@@ -5808,6 +5588,10 @@ impl crate::Request for PutAccessPointPolicy {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -5815,6 +5599,8 @@ impl crate::Request for PutAccessPointPolicy {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPoint {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     x_oss_access_point_name: String,
 }
@@ -5822,8 +5608,9 @@ pub struct DeleteAccessPoint {
 impl sealed::Bound for DeleteAccessPoint {}
 
 impl DeleteAccessPoint {
-    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: x_oss_access_point_name.into(),
         }
     }
@@ -5860,6 +5647,10 @@ impl crate::Request for DeleteAccessPoint {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5867,6 +5658,8 @@ impl crate::Request for DeleteAccessPoint {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAccessPoint {
+    /// Bucket名称。
+    bucket: String,
     /// 保存接入点信息的容器。
     #[setters(generate = true, strip_option)]
     body: Option<AccessPointbody>,
@@ -5875,8 +5668,11 @@ pub struct CreateAccessPoint {
 impl sealed::Bound for CreateAccessPoint {}
 
 impl CreateAccessPoint {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -5900,6 +5696,10 @@ impl crate::Request for CreateAccessPoint {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -5907,6 +5707,8 @@ impl crate::Request for CreateAccessPoint {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitiateBucketWorm {
+    /// Bucket名称。
+    bucket: String,
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<InitiateBucketWormbody>,
@@ -5915,8 +5717,11 @@ pub struct InitiateBucketWorm {
 impl sealed::Bound for InitiateBucketWorm {}
 
 impl InitiateBucketWorm {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -5940,6 +5745,10 @@ impl crate::Request for InitiateBucketWorm {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -5956,13 +5765,18 @@ impl crate::Request for InitiateBucketWorm {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct AbortBucketWorm {}
+pub struct AbortBucketWorm {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for AbortBucketWorm {}
 
 impl AbortBucketWorm {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for AbortBucketWorm {
@@ -5991,6 +5805,10 @@ impl crate::Request for AbortBucketWorm {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -5998,6 +5816,8 @@ impl crate::Request for AbortBucketWorm {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CompleteBucketWorm {
+    /// Bucket名称。
+    bucket: String,
     /// 合规保留策略的ID。
     worm_id: String,
 }
@@ -6005,8 +5825,9 @@ pub struct CompleteBucketWorm {
 impl sealed::Bound for CompleteBucketWorm {}
 
 impl CompleteBucketWorm {
-    pub fn new(worm_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, worm_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             worm_id: worm_id.into(),
         }
     }
@@ -6037,6 +5858,10 @@ impl crate::Request for CompleteBucketWorm {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -6044,6 +5869,8 @@ impl crate::Request for CompleteBucketWorm {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ExtendBucketWorm {
+    /// Bucket名称。
+    bucket: String,
     /// 合规保留策略的ID。
     ///
     /// > 如果指定用于延长Object保留天数对应的合规保留策略ID不存在，则返回404。
@@ -6056,8 +5883,9 @@ pub struct ExtendBucketWorm {
 impl sealed::Bound for ExtendBucketWorm {}
 
 impl ExtendBucketWorm {
-    pub fn new(worm_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, worm_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             worm_id: worm_id.into(),
             body: None,
         }
@@ -6085,19 +5913,28 @@ impl crate::Request for ExtendBucketWorm {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketWorm {}
+pub struct GetBucketWorm {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketWorm {}
 
 impl GetBucketWorm {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6121,11 +5958,17 @@ impl crate::Request for GetBucketWorm {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketAcl {
+    /// Bucket名称。
+    bucket: String,
     /// 设置Bucket的访问权限ACL。PutBucketAcl接口通过Put请求中的x-oss-acl请求头来设置访问权限，如果没有该请求头，则访问权限设置不生效。
     /// <br>取值如下：
     ///
@@ -6138,8 +5981,9 @@ pub struct PutBucketAcl {
 impl sealed::Bound for PutBucketAcl {}
 
 impl PutBucketAcl {
-    pub fn new(x_oss_acl: impl Into<BucketACL>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_acl: impl Into<BucketACL>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_acl: x_oss_acl.into(),
         }
     }
@@ -6173,19 +6017,28 @@ impl crate::Request for PutBucketAcl {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketAcl {}
+pub struct GetBucketAcl {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketAcl {}
 
 impl GetBucketAcl {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6209,11 +6062,17 @@ impl crate::Request for GetBucketAcl {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketLifecycle {
+    /// Bucket名称。
+    bucket: String,
     /// 指定生命周期规则是否允许前缀重叠。取值如下：
     ///
     /// true：允许前缀重叠。
@@ -6229,8 +6088,9 @@ pub struct PutBucketLifecycle {
 impl sealed::Bound for PutBucketLifecycle {}
 
 impl PutBucketLifecycle {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_allow_same_action_overlap: None,
             body: None,
         }
@@ -6263,19 +6123,28 @@ impl crate::Request for PutBucketLifecycle {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketLifecycle {}
+pub struct GetBucketLifecycle {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketLifecycle {}
 
 impl GetBucketLifecycle {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6299,17 +6168,26 @@ impl crate::Request for GetBucketLifecycle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketLifecycle {}
+pub struct DeleteBucketLifecycle {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketLifecycle {}
 
 impl DeleteBucketLifecycle {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketLifecycle {
@@ -6338,6 +6216,10 @@ impl crate::Request for DeleteBucketLifecycle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -6345,6 +6227,8 @@ impl crate::Request for DeleteBucketLifecycle {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketTransferAcceleration {
+    /// Bucket名称。
+    bucket: String,
     /// 传输加速配置的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<TransferAccelerationbody>,
@@ -6353,8 +6237,11 @@ pub struct PutBucketTransferAcceleration {
 impl sealed::Bound for PutBucketTransferAcceleration {}
 
 impl PutBucketTransferAcceleration {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -6378,19 +6265,28 @@ impl crate::Request for PutBucketTransferAcceleration {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketTransferAcceleration {}
+pub struct GetBucketTransferAcceleration {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketTransferAcceleration {}
 
 impl GetBucketTransferAcceleration {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6414,11 +6310,17 @@ impl crate::Request for GetBucketTransferAcceleration {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketVersioning {
+    /// Bucket名称。
+    bucket: String,
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketVersioningbody>,
@@ -6427,8 +6329,11 @@ pub struct PutBucketVersioning {
 impl sealed::Bound for PutBucketVersioning {}
 
 impl PutBucketVersioning {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -6452,19 +6357,28 @@ impl crate::Request for PutBucketVersioning {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketVersioning {}
+pub struct GetBucketVersioning {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketVersioning {}
 
 impl GetBucketVersioning {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6488,11 +6402,17 @@ impl crate::Request for GetBucketVersioning {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjectVersions {
+    /// Bucket名称。
+    bucket: String,
     /// 对Object名字进行分组的字符。所有Object名字包含指定的前缀（prefix），第一次出现delimiter字符之间的Object作为一组元素（即CommonPrefixes）。
     /// 如果将prefix设为文件夹名称后，再把delimiter设置为正斜线（/），则只返回该文件夹下的文件，该文件夹下的子文件名在CommonPrefixes中返回，子文件夹下递归的文件和文件夹不显示。
     ///
@@ -6542,8 +6462,9 @@ pub struct ListObjectVersions {
 impl sealed::Bound for ListObjectVersions {}
 
 impl ListObjectVersions {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             delimiter: None,
             key_marker: None,
             version_id_marker: None,
@@ -6598,11 +6519,17 @@ impl crate::Request for ListObjectVersions {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketPolicy {
+    /// Bucket名称。
+    bucket: String,
     /// 请求体。
     body: Vec<u8>,
 }
@@ -6610,8 +6537,11 @@ pub struct PutBucketPolicy {
 impl sealed::Bound for PutBucketPolicy {}
 
 impl PutBucketPolicy {
-    pub fn new() -> Self {
-        Self { body: Vec::new() }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: Vec::new(),
+        }
     }
 }
 
@@ -6635,19 +6565,28 @@ impl crate::Request for PutBucketPolicy {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketPolicy {}
+pub struct GetBucketPolicy {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketPolicy {}
 
 impl GetBucketPolicy {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6671,17 +6610,26 @@ impl crate::Request for GetBucketPolicy {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketPolicy {}
+pub struct DeleteBucketPolicy {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketPolicy {}
 
 impl DeleteBucketPolicy {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketPolicy {
@@ -6710,19 +6658,28 @@ impl crate::Request for DeleteBucketPolicy {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketPolicyStatus {}
+pub struct GetBucketPolicyStatus {
+    /// 存储空间名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketPolicyStatus {}
 
 impl GetBucketPolicyStatus {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6746,11 +6703,17 @@ impl crate::Request for GetBucketPolicyStatus {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketRtc {
+    /// Bucket名称。
+    bucket: String,
     /// 保存RTC配置规则的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketRtcbody>,
@@ -6759,8 +6722,11 @@ pub struct PutBucketRtc {
 impl sealed::Bound for PutBucketRtc {}
 
 impl PutBucketRtc {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -6784,6 +6750,10 @@ impl crate::Request for PutBucketRtc {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -6791,6 +6761,8 @@ impl crate::Request for PutBucketRtc {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketReplication {
+    /// Bucket名称。
+    bucket: String,
     /// 指定数据复制配置的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<PutBucketReplicationbody>,
@@ -6799,8 +6771,11 @@ pub struct PutBucketReplication {
 impl sealed::Bound for PutBucketReplication {}
 
 impl PutBucketReplication {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -6825,6 +6800,10 @@ impl crate::Request for PutBucketReplication {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -6841,13 +6820,18 @@ impl crate::Request for PutBucketReplication {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketReplication {}
+pub struct GetBucketReplication {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketReplication {}
 
 impl GetBucketReplication {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6871,17 +6855,26 @@ impl crate::Request for GetBucketReplication {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketReplicationLocation {}
+pub struct GetBucketReplicationLocation {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketReplicationLocation {}
 
 impl GetBucketReplicationLocation {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -6905,11 +6898,17 @@ impl crate::Request for GetBucketReplicationLocation {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketReplicationProgress {
+    /// Bucket名称。
+    bucket: String,
     /// 复制规则对应的ID。此ID可从GetBucketReplication中获取。
     rule_id: String,
 }
@@ -6917,8 +6916,9 @@ pub struct GetBucketReplicationProgress {
 impl sealed::Bound for GetBucketReplicationProgress {}
 
 impl GetBucketReplicationProgress {
-    pub fn new(rule_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, rule_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             rule_id: rule_id.into(),
         }
     }
@@ -6945,11 +6945,17 @@ impl crate::Request for GetBucketReplicationProgress {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketReplication {
+    /// Bucket名称。
+    bucket: String,
     /// 保存需要删除的数据复制规则的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<DeleteBucketReplicationbody>,
@@ -6958,8 +6964,11 @@ pub struct DeleteBucketReplication {
 impl sealed::Bound for DeleteBucketReplication {}
 
 impl DeleteBucketReplication {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -6984,6 +6993,10 @@ impl crate::Request for DeleteBucketReplication {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -6991,6 +7004,8 @@ impl crate::Request for DeleteBucketReplication {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketInventory {
+    /// Bucket名称。
+    bucket: String,
     /// 配置的清单规则Id。
     inventory_id: String,
     /// 存储清单配置信息的请求体。
@@ -7001,8 +7016,9 @@ pub struct PutBucketInventory {
 impl sealed::Bound for PutBucketInventory {}
 
 impl PutBucketInventory {
-    pub fn new(inventory_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, inventory_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             inventory_id: inventory_id.into(),
             body: None,
         }
@@ -7030,6 +7046,10 @@ impl crate::Request for PutBucketInventory {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -7037,6 +7057,8 @@ impl crate::Request for PutBucketInventory {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketInventory {
+    /// Bucket名称。
+    bucket: String,
     /// 查询的清单规则Id。
     inventory_id: String,
 }
@@ -7044,8 +7066,9 @@ pub struct GetBucketInventory {
 impl sealed::Bound for GetBucketInventory {}
 
 impl GetBucketInventory {
-    pub fn new(inventory_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, inventory_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             inventory_id: inventory_id.into(),
         }
     }
@@ -7072,11 +7095,17 @@ impl crate::Request for GetBucketInventory {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListBucketInventory {
+    /// Bucket名称。
+    bucket: String,
     /// 指定List操作需要从此token开始。您可从ListBucketInventory结果中的NextContinuationToken获取此token。
     #[setters(generate = true, strip_option)]
     continuation_token: Option<String>,
@@ -7085,8 +7114,9 @@ pub struct ListBucketInventory {
 impl sealed::Bound for ListBucketInventory {}
 
 impl ListBucketInventory {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             continuation_token: None,
         }
     }
@@ -7116,11 +7146,17 @@ impl crate::Request for ListBucketInventory {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketInventory {
+    /// Bucket名称。
+    bucket: String,
     /// 删除的清单任务Id。
     inventory_id: String,
 }
@@ -7128,8 +7164,9 @@ pub struct DeleteBucketInventory {
 impl sealed::Bound for DeleteBucketInventory {}
 
 impl DeleteBucketInventory {
-    pub fn new(inventory_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, inventory_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             inventory_id: inventory_id.into(),
         }
     }
@@ -7161,6 +7198,10 @@ impl crate::Request for DeleteBucketInventory {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -7168,6 +7209,8 @@ impl crate::Request for DeleteBucketInventory {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketLogging {
+    /// Bucket名称。
+    bucket: String,
     /// 存储访问日志状态信息的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketLoggingbody>,
@@ -7176,8 +7219,11 @@ pub struct PutBucketLogging {
 impl sealed::Bound for PutBucketLogging {}
 
 impl PutBucketLogging {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7201,19 +7247,28 @@ impl crate::Request for PutBucketLogging {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketLogging {}
+pub struct GetBucketLogging {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketLogging {}
 
 impl GetBucketLogging {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7237,17 +7292,26 @@ impl crate::Request for GetBucketLogging {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketLogging {}
+pub struct DeleteBucketLogging {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketLogging {}
 
 impl DeleteBucketLogging {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketLogging {
@@ -7276,6 +7340,10 @@ impl crate::Request for DeleteBucketLogging {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -7283,6 +7351,8 @@ impl crate::Request for DeleteBucketLogging {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutUserDefinedLogFieldsConfig {
+    /// 存储空间名称。
+    bucket: String,
     /// 接口请求体。
     #[setters(generate = true, strip_option)]
     body: Option<FieldsConfigbody>,
@@ -7291,8 +7361,11 @@ pub struct PutUserDefinedLogFieldsConfig {
 impl sealed::Bound for PutUserDefinedLogFieldsConfig {}
 
 impl PutUserDefinedLogFieldsConfig {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7316,19 +7389,28 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetUserDefinedLogFieldsConfig {}
+pub struct GetUserDefinedLogFieldsConfig {
+    /// 存储空间名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetUserDefinedLogFieldsConfig {}
 
 impl GetUserDefinedLogFieldsConfig {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7352,17 +7434,26 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteUserDefinedLogFieldsConfig {}
+pub struct DeleteUserDefinedLogFieldsConfig {
+    /// 存储空间名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteUserDefinedLogFieldsConfig {}
 
 impl DeleteUserDefinedLogFieldsConfig {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteUserDefinedLogFieldsConfig {
@@ -7391,19 +7482,28 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketWebsite {}
+pub struct GetBucketWebsite {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketWebsite {}
 
 impl GetBucketWebsite {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7427,11 +7527,17 @@ impl crate::Request for GetBucketWebsite {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketWebsite {
+    /// Bucket名称。
+    bucket: String,
     /// 保存静态网站配置的容器。
     #[setters(generate = true, strip_option)]
     body: Option<BucketWebsitebody>,
@@ -7440,8 +7546,11 @@ pub struct PutBucketWebsite {
 impl sealed::Bound for PutBucketWebsite {}
 
 impl PutBucketWebsite {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7465,19 +7574,28 @@ impl crate::Request for PutBucketWebsite {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketWebsite {}
+pub struct DeleteBucketWebsite {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketWebsite {}
 
 impl DeleteBucketWebsite {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketWebsite {
@@ -7506,6 +7624,10 @@ impl crate::Request for DeleteBucketWebsite {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -7513,6 +7635,8 @@ impl crate::Request for DeleteBucketWebsite {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketReferer {
+    /// Bucket名称。
+    bucket: String,
     /// 保存Referer配置内容的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketRefererbody>,
@@ -7521,8 +7645,11 @@ pub struct PutBucketReferer {
 impl sealed::Bound for PutBucketReferer {}
 
 impl PutBucketReferer {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7546,19 +7673,28 @@ impl crate::Request for PutBucketReferer {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketReferer {}
+pub struct GetBucketReferer {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketReferer {}
 
 impl GetBucketReferer {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7582,11 +7718,17 @@ impl crate::Request for GetBucketReferer {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketTags {
+    /// Bucket名称。
+    bucket: String,
     /// 设置Bucket TagSet的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketTagsbody>,
@@ -7595,8 +7737,11 @@ pub struct PutBucketTags {
 impl sealed::Bound for PutBucketTags {}
 
 impl PutBucketTags {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7620,19 +7765,28 @@ impl crate::Request for PutBucketTags {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketTags {}
+pub struct GetBucketTags {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketTags {}
 
 impl GetBucketTags {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7656,17 +7810,26 @@ impl crate::Request for GetBucketTags {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketTags {}
+pub struct DeleteBucketTags {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketTags {}
 
 impl DeleteBucketTags {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketTags {
@@ -7693,6 +7856,10 @@ impl crate::Request for DeleteBucketTags {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -7753,13 +7920,18 @@ impl crate::Request for ListUserDataRedundancyTransition {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct ListBucketDataRedundancyTransition {}
+pub struct ListBucketDataRedundancyTransition {
+    /// 存储空间名称。
+    bucket: String,
+}
 
 impl sealed::Bound for ListBucketDataRedundancyTransition {}
 
 impl ListBucketDataRedundancyTransition {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -7783,11 +7955,17 @@ impl crate::Request for ListBucketDataRedundancyTransition {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketDataRedundancyTransition {
+    /// 存储空间名称。
+    bucket: String,
     /// 存储转换任务的ID。
     x_oss_redundancy_transition_taskid: String,
 }
@@ -7795,8 +7973,12 @@ pub struct GetBucketDataRedundancyTransition {
 impl sealed::Bound for GetBucketDataRedundancyTransition {}
 
 impl GetBucketDataRedundancyTransition {
-    pub fn new(x_oss_redundancy_transition_taskid: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_redundancy_transition_taskid: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_redundancy_transition_taskid: x_oss_redundancy_transition_taskid.into(),
         }
     }
@@ -7826,11 +8008,17 @@ impl crate::Request for GetBucketDataRedundancyTransition {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateBucketDataRedundancyTransition {
+    /// 要创建存储冗余类型转换任务的Bucket。
+    bucket: String,
     /// 目标存储冗余类型。OSS仅支持将LRS（本地冗余存储）转换为ZRS（同城冗余存储）。
     x_oss_target_redundancy_type: String,
 }
@@ -7838,8 +8026,9 @@ pub struct CreateBucketDataRedundancyTransition {
 impl sealed::Bound for CreateBucketDataRedundancyTransition {}
 
 impl CreateBucketDataRedundancyTransition {
-    pub fn new(x_oss_target_redundancy_type: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_target_redundancy_type: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_target_redundancy_type: x_oss_target_redundancy_type.into(),
         }
     }
@@ -7874,6 +8063,10 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -7881,6 +8074,8 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketDataRedundancyTransition {
+    /// 要删除存储冗余类型转换任务的Bucket。
+    bucket: String,
     /// 存储冗余转换任务的ID。
     x_oss_redundancy_transition_taskid: String,
 }
@@ -7888,8 +8083,12 @@ pub struct DeleteBucketDataRedundancyTransition {
 impl sealed::Bound for DeleteBucketDataRedundancyTransition {}
 
 impl DeleteBucketDataRedundancyTransition {
-    pub fn new(x_oss_redundancy_transition_taskid: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_redundancy_transition_taskid: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_redundancy_transition_taskid: x_oss_redundancy_transition_taskid.into(),
         }
     }
@@ -7924,6 +8123,10 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -7931,6 +8134,8 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketEncryption {
+    /// Bucket名称。
+    bucket: String,
     /// 配置服务器端加密规则的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketEncryptionbody>,
@@ -7939,8 +8144,11 @@ pub struct PutBucketEncryption {
 impl sealed::Bound for PutBucketEncryption {}
 
 impl PutBucketEncryption {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -7964,19 +8172,28 @@ impl crate::Request for PutBucketEncryption {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketEncryption {}
+pub struct GetBucketEncryption {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketEncryption {}
 
 impl GetBucketEncryption {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8000,17 +8217,26 @@ impl crate::Request for GetBucketEncryption {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketEncryption {}
+pub struct DeleteBucketEncryption {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketEncryption {}
 
 impl DeleteBucketEncryption {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketEncryption {
@@ -8039,6 +8265,10 @@ impl crate::Request for DeleteBucketEncryption {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -8046,6 +8276,8 @@ impl crate::Request for DeleteBucketEncryption {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketRequestPayment {
+    /// Bucket名称。
+    bucket: String,
     /// 配置请求者付费的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<RequestPaymentbody>,
@@ -8054,8 +8286,11 @@ pub struct PutBucketRequestPayment {
 impl sealed::Bound for PutBucketRequestPayment {}
 
 impl PutBucketRequestPayment {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -8079,19 +8314,28 @@ impl crate::Request for PutBucketRequestPayment {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketRequestPayment {}
+pub struct GetBucketRequestPayment {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketRequestPayment {}
 
 impl GetBucketRequestPayment {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8115,11 +8359,17 @@ impl crate::Request for GetBucketRequestPayment {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketCors {
+    /// Bucket名称。
+    bucket: String,
     /// 设置跨域资源共享规则的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<BucketCorsbody>,
@@ -8128,8 +8378,11 @@ pub struct PutBucketCors {
 impl sealed::Bound for PutBucketCors {}
 
 impl PutBucketCors {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -8153,19 +8406,28 @@ impl crate::Request for PutBucketCors {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketCors {}
+pub struct GetBucketCors {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketCors {}
 
 impl GetBucketCors {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8189,17 +8451,26 @@ impl crate::Request for GetBucketCors {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketCors {}
+pub struct DeleteBucketCors {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketCors {}
 
 impl DeleteBucketCors {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketCors {
@@ -8228,6 +8499,10 @@ impl crate::Request for DeleteBucketCors {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -8235,6 +8510,8 @@ impl crate::Request for DeleteBucketCors {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct OptionObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 请求来源域，用于标识跨域请求。
@@ -8257,8 +8534,9 @@ pub struct OptionObject {
 impl sealed::Bound for OptionObject {}
 
 impl OptionObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             origin: None,
             access_control_request_method: None,
@@ -8303,6 +8581,10 @@ impl crate::Request for OptionObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 
     fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
@@ -8340,6 +8622,8 @@ impl crate::Request for OptionObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketAccessMonitor {
+    /// Bucket名称。
+    bucket: String,
     /// 修改访问跟踪状态配置的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<AccessMonitorbody>,
@@ -8348,8 +8632,11 @@ pub struct PutBucketAccessMonitor {
 impl sealed::Bound for PutBucketAccessMonitor {}
 
 impl PutBucketAccessMonitor {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -8373,19 +8660,28 @@ impl crate::Request for PutBucketAccessMonitor {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketAccessMonitor {}
+pub struct GetBucketAccessMonitor {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketAccessMonitor {}
 
 impl GetBucketAccessMonitor {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8409,17 +8705,26 @@ impl crate::Request for GetBucketAccessMonitor {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetMetaQueryStatus {}
+pub struct GetMetaQueryStatus {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetMetaQueryStatus {}
 
 impl GetMetaQueryStatus {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8443,17 +8748,26 @@ impl crate::Request for GetMetaQueryStatus {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct CloseMetaQuery {}
+pub struct CloseMetaQuery {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for CloseMetaQuery {}
 
 impl CloseMetaQuery {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for CloseMetaQuery {
@@ -8483,6 +8797,10 @@ impl crate::Request for CloseMetaQuery {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -8490,6 +8808,8 @@ impl crate::Request for CloseMetaQuery {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DoMetaQuery {
+    /// Bucket名称。
+    bucket: String,
     /// 指定检索模式。
     /// - basic：标量检索（默认）
     /// - semantic：向量检索
@@ -8503,8 +8823,9 @@ pub struct DoMetaQuery {
 impl sealed::Bound for DoMetaQuery {}
 
 impl DoMetaQuery {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             mode: None,
             body: None,
         }
@@ -8536,6 +8857,10 @@ impl crate::Request for DoMetaQuery {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -8543,6 +8868,8 @@ impl crate::Request for DoMetaQuery {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct OpenMetaQuery {
+    /// Bucket名称。
+    bucket: String,
     /// 检索模式。取值如下：
     ///
     /// basic（默认值）：标量检索
@@ -8561,8 +8888,9 @@ pub struct OpenMetaQuery {
 impl sealed::Bound for OpenMetaQuery {}
 
 impl OpenMetaQuery {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             mode: None,
             role: None,
             body: None,
@@ -8597,6 +8925,10 @@ impl crate::Request for OpenMetaQuery {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8668,6 +9000,8 @@ impl crate::Request for UpdateUserAntiDDosInfo {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateBucketAntiDDosInfo {
+    /// Bucket名称。
+    bucket: String,
     /// 高防实例ID。
     x_oss_defender_instance: String,
     /// 更新高防实例状态。取值如下：
@@ -8687,10 +9021,12 @@ impl sealed::Bound for UpdateBucketAntiDDosInfo {}
 
 impl UpdateBucketAntiDDosInfo {
     pub fn new(
+        bucket: impl Into<String>,
         x_oss_defender_instance: impl Into<String>,
         x_oss_defender_status: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_defender_instance: x_oss_defender_instance.into(),
             x_oss_defender_status: x_oss_defender_status.into(),
             body: None,
@@ -8726,6 +9062,10 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
         ));
 
         headers
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8844,6 +9184,8 @@ impl crate::Request for InitUserAntiDDosInfo {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitBucketAntiDDosInfo {
+    /// Bucket名称。
+    bucket: String,
     /// 高防实例ID。
     x_oss_defender_instance: String,
     /// 高防实例类型。取值固定为AntiDDosPremimum。
@@ -8857,10 +9199,12 @@ impl sealed::Bound for InitBucketAntiDDosInfo {}
 
 impl InitBucketAntiDDosInfo {
     pub fn new(
+        bucket: impl Into<String>,
         x_oss_defender_instance: impl Into<String>,
         x_oss_defender_type: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_defender_instance: x_oss_defender_instance.into(),
             x_oss_defender_type: x_oss_defender_type.into(),
             body: None,
@@ -8896,6 +9240,10 @@ impl crate::Request for InitBucketAntiDDosInfo {
         ));
 
         headers
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -8938,13 +9286,18 @@ impl crate::Request for GetUserAntiDDosInfo {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketResourceGroup {}
+pub struct GetBucketResourceGroup {
+    /// 要查询的目标Bucket
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketResourceGroup {}
 
 impl GetBucketResourceGroup {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -8968,11 +9321,17 @@ impl crate::Request for GetBucketResourceGroup {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketResourceGroup {
+    /// 要修改的目标Bucket
+    bucket: String,
     /// 配置资源组ID的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<ResourceGroupbody>,
@@ -8981,8 +9340,11 @@ pub struct PutBucketResourceGroup {
 impl sealed::Bound for PutBucketResourceGroup {}
 
 impl PutBucketResourceGroup {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -9006,6 +9368,10 @@ impl crate::Request for PutBucketResourceGroup {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9013,6 +9379,8 @@ impl crate::Request for PutBucketResourceGroup {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutCname {
+    /// Bucket名称。
+    bucket: String,
     /// 保存Cname配置的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<PutCnamebody>,
@@ -9021,8 +9389,11 @@ pub struct PutCname {
 impl sealed::Bound for PutCname {}
 
 impl PutCname {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -9047,19 +9418,28 @@ impl crate::Request for PutCname {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct ListCname {}
+pub struct ListCname {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for ListCname {}
 
 impl ListCname {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -9083,11 +9463,17 @@ impl crate::Request for ListCname {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteCname {
+    /// Bucket名称。
+    bucket: String,
     /// 删除Cname配置信息的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<DeleteCnamebody>,
@@ -9096,8 +9482,11 @@ pub struct DeleteCname {
 impl sealed::Bound for DeleteCname {}
 
 impl DeleteCname {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -9122,6 +9511,10 @@ impl crate::Request for DeleteCname {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9129,6 +9522,8 @@ impl crate::Request for DeleteCname {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCnameToken {
+    /// Bucket名称。
+    bucket: String,
     /// 绑定的Cname名称。
     cname: String,
 }
@@ -9136,8 +9531,9 @@ pub struct GetCnameToken {
 impl sealed::Bound for GetCnameToken {}
 
 impl GetCnameToken {
-    pub fn new(cname: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, cname: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             cname: cname.into(),
         }
     }
@@ -9164,11 +9560,17 @@ impl crate::Request for GetCnameToken {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCnameToken {
+    /// Bucket名称。
+    bucket: String,
     /// 创建CnameToken的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<CnameTokenbody>,
@@ -9177,8 +9579,11 @@ pub struct CreateCnameToken {
 impl sealed::Bound for CreateCnameToken {}
 
 impl CreateCnameToken {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -9203,6 +9608,10 @@ impl crate::Request for CreateCnameToken {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9210,6 +9619,8 @@ impl crate::Request for CreateCnameToken {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutStyle {
+    /// Bucket名称。
+    bucket: String,
     /// 图片样式名称。
     style_name: String,
     /// 样式分类。
@@ -9225,8 +9636,9 @@ pub struct PutStyle {
 impl sealed::Bound for PutStyle {}
 
 impl PutStyle {
-    pub fn new(style_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, style_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             style_name: style_name.into(),
             category: None,
             body: None,
@@ -9259,19 +9671,28 @@ impl crate::Request for PutStyle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct ListStyle {}
+pub struct ListStyle {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for ListStyle {}
 
 impl ListStyle {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -9295,11 +9716,17 @@ impl crate::Request for ListStyle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetStyle {
+    /// Bucket名称。
+    bucket: String,
     /// 图片样式名称。
     style_name: String,
 }
@@ -9307,8 +9734,9 @@ pub struct GetStyle {
 impl sealed::Bound for GetStyle {}
 
 impl GetStyle {
-    pub fn new(style_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, style_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             style_name: style_name.into(),
         }
     }
@@ -9335,11 +9763,17 @@ impl crate::Request for GetStyle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteStyle {
+    /// Bucket名称。
+    bucket: String,
     /// 图片样式名称。
     style_name: String,
 }
@@ -9347,8 +9781,9 @@ pub struct DeleteStyle {
 impl sealed::Bound for DeleteStyle {}
 
 impl DeleteStyle {
-    pub fn new(style_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, style_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             style_name: style_name.into(),
         }
     }
@@ -9380,19 +9815,28 @@ impl crate::Request for DeleteStyle {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketHttpsConfig {}
+pub struct GetBucketHttpsConfig {
+    /// Bucket名称
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketHttpsConfig {}
 
 impl GetBucketHttpsConfig {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -9416,11 +9860,17 @@ impl crate::Request for GetBucketHttpsConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketHttpsConfig {
+    /// 存储空间名称
+    bucket: String,
     /// 保存HTTPS配置的请求体。
     #[setters(generate = true, strip_option)]
     body: Option<HttpsConfigbody>,
@@ -9429,8 +9879,11 @@ pub struct PutBucketHttpsConfig {
 impl sealed::Bound for PutBucketHttpsConfig {}
 
 impl PutBucketHttpsConfig {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -9454,6 +9907,10 @@ impl crate::Request for PutBucketHttpsConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9461,6 +9918,8 @@ impl crate::Request for PutBucketHttpsConfig {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAccessPointForObjectProcess {
+    /// 要创建对象FC接入点的Bucket。
+    bucket: String,
     /// 填写对象FC接入点名称。接入点命名规范说明如下：
     /// - 命名长度不能超过63个字符
     /// - 只允许包含小写字母、数字、短划线（-），且不能以短划线开头或结尾。
@@ -9474,8 +9933,12 @@ pub struct CreateAccessPointForObjectProcess {
 impl sealed::Bound for CreateAccessPointForObjectProcess {}
 
 impl CreateAccessPointForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
             body: None,
@@ -9509,6 +9972,10 @@ impl crate::Request for CreateAccessPointForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9516,6 +9983,8 @@ impl crate::Request for CreateAccessPointForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointForObjectProcess {
+    /// 存储空间名称。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
 }
@@ -9523,8 +9992,12 @@ pub struct GetAccessPointForObjectProcess {
 impl sealed::Bound for GetAccessPointForObjectProcess {}
 
 impl GetAccessPointForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
         }
@@ -9555,6 +10028,10 @@ impl crate::Request for GetAccessPointForObjectProcess {
         ));
 
         headers
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -9618,6 +10095,8 @@ impl crate::Request for ListAccessPointsForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointForObjectProcess {
+    /// 要删除对象FC接入点的Bucket。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
 }
@@ -9625,8 +10104,12 @@ pub struct DeleteAccessPointForObjectProcess {
 impl sealed::Bound for DeleteAccessPointForObjectProcess {}
 
 impl DeleteAccessPointForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
         }
@@ -9664,6 +10147,10 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -9671,6 +10158,8 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointConfigForObjectProcess {
+    /// 存储空间名称。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
 }
@@ -9678,8 +10167,12 @@ pub struct GetAccessPointConfigForObjectProcess {
 impl sealed::Bound for GetAccessPointConfigForObjectProcess {}
 
 impl GetAccessPointConfigForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
         }
@@ -9712,11 +10205,17 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointConfigForObjectProcess {
+    /// 存储空间名称。
+    bucket: String,
     /// 填写对象FC接入点名称。接入点命名规范说明如下：
     ///
     /// - 命名长度不能超过63个字符。
@@ -9731,8 +10230,12 @@ pub struct PutAccessPointConfigForObjectProcess {
 impl sealed::Bound for PutAccessPointConfigForObjectProcess {}
 
 impl PutAccessPointConfigForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
             body: None,
@@ -9766,6 +10269,10 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -9773,6 +10280,8 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicyForObjectProcess {
+    /// 存储空间名称。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
     /// 接口请求体。
@@ -9783,8 +10292,12 @@ pub struct PutAccessPointPolicyForObjectProcess {
 impl sealed::Bound for PutAccessPointPolicyForObjectProcess {}
 
 impl PutAccessPointPolicyForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
             body: None,
@@ -9818,6 +10331,10 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -9825,6 +10342,8 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPolicyForObjectProcess {
+    /// 存储空间名称。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
     body: Vec<u8>,
@@ -9833,8 +10352,12 @@ pub struct GetAccessPointPolicyForObjectProcess {
 impl sealed::Bound for GetAccessPointPolicyForObjectProcess {}
 
 impl GetAccessPointPolicyForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
             body: Vec::new(),
@@ -9868,6 +10391,10 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
         headers
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body)
     }
@@ -9875,6 +10402,8 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPolicyForObjectProcess {
+    /// 要删除对象FC接入点策略的Bucket。
+    bucket: String,
     /// 填写对象FC接入点名称。
     x_oss_access_point_for_object_process_name: String,
     body: Vec<u8>,
@@ -9883,8 +10412,12 @@ pub struct DeleteAccessPointPolicyForObjectProcess {
 impl sealed::Bound for DeleteAccessPointPolicyForObjectProcess {}
 
 impl DeleteAccessPointPolicyForObjectProcess {
-    pub fn new(x_oss_access_point_for_object_process_name: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        x_oss_access_point_for_object_process_name: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
             body: Vec::new(),
@@ -9916,6 +10449,10 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
         ));
 
         headers
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {
@@ -10039,13 +10576,18 @@ impl crate::Request for DeletePublicAccessBlock {
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketPublicAccessBlock {}
+pub struct GetBucketPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketPublicAccessBlock {}
 
 impl GetBucketPublicAccessBlock {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -10069,11 +10611,17 @@ impl crate::Request for GetBucketPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
     /// 接口请求体参数。
     #[setters(generate = true, strip_option)]
     body: Option<BucketPublicAccessBlockbody>,
@@ -10082,8 +10630,11 @@ pub struct PutBucketPublicAccessBlock {
 impl sealed::Bound for PutBucketPublicAccessBlock {}
 
 impl PutBucketPublicAccessBlock {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -10107,19 +10658,28 @@ impl crate::Request for PutBucketPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketPublicAccessBlock {}
+pub struct DeleteBucketPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketPublicAccessBlock {}
 
 impl DeleteBucketPublicAccessBlock {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketPublicAccessBlock {
@@ -10148,6 +10708,10 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -10155,6 +10719,8 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     #[setters(generate = true, strip_option)]
     x_oss_access_point_name: Option<String>,
@@ -10163,8 +10729,9 @@ pub struct GetAccessPointPublicAccessBlock {
 impl sealed::Bound for GetAccessPointPublicAccessBlock {}
 
 impl GetAccessPointPublicAccessBlock {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: None,
         }
     }
@@ -10194,11 +10761,17 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     x_oss_access_point_name: String,
     /// 接口请求体。
@@ -10209,8 +10782,9 @@ pub struct PutAccessPointPublicAccessBlock {
 impl sealed::Bound for PutAccessPointPublicAccessBlock {}
 
 impl PutAccessPointPublicAccessBlock {
-    pub fn new(x_oss_access_point_name: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_access_point_name: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: x_oss_access_point_name.into(),
             body: None,
         }
@@ -10241,6 +10815,10 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -10248,6 +10826,8 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPublicAccessBlock {
+    /// Bucket名称。
+    bucket: String,
     /// 接入点名称。
     #[setters(generate = true, strip_option)]
     x_oss_access_point_name: Option<String>,
@@ -10256,8 +10836,9 @@ pub struct DeleteAccessPointPublicAccessBlock {
 impl sealed::Bound for DeleteAccessPointPublicAccessBlock {}
 
 impl DeleteAccessPointPublicAccessBlock {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_access_point_name: None,
         }
     }
@@ -10292,19 +10873,28 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketArchiveDirectRead {}
+pub struct GetBucketArchiveDirectRead {
+    /// 存储空间名称。
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketArchiveDirectRead {}
 
 impl GetBucketArchiveDirectRead {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -10328,11 +10918,17 @@ impl crate::Request for GetBucketArchiveDirectRead {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketArchiveDirectRead {
+    /// 存储空间名称。
+    bucket: String,
     /// 接口请求体。
     #[setters(generate = true, strip_option)]
     body: Option<DirectReadbody>,
@@ -10341,8 +10937,11 @@ pub struct PutBucketArchiveDirectRead {
 impl sealed::Bound for PutBucketArchiveDirectRead {}
 
 impl PutBucketArchiveDirectRead {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -10366,6 +10965,10 @@ impl crate::Request for PutBucketArchiveDirectRead {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -10373,6 +10976,8 @@ impl crate::Request for PutBucketArchiveDirectRead {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketOverwriteConfig {
+    /// 存储空间名称
+    bucket: String,
     /// 接口请求体结构
     #[setters(generate = true, strip_option)]
     body: Option<OverwriteConfigbody>,
@@ -10381,8 +10986,11 @@ pub struct PutBucketOverwriteConfig {
 impl sealed::Bound for PutBucketOverwriteConfig {}
 
 impl PutBucketOverwriteConfig {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -10406,19 +11014,28 @@ impl crate::Request for PutBucketOverwriteConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketOverwriteConfig {}
+pub struct GetBucketOverwriteConfig {
+    /// 存储空间名称
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketOverwriteConfig {}
 
 impl GetBucketOverwriteConfig {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -10442,17 +11059,26 @@ impl crate::Request for GetBucketOverwriteConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketOverwriteConfig {}
+pub struct DeleteBucketOverwriteConfig {
+    /// 存储空间名称
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketOverwriteConfig {}
 
 impl DeleteBucketOverwriteConfig {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketOverwriteConfig {
@@ -10481,6 +11107,10 @@ impl crate::Request for DeleteBucketOverwriteConfig {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -10488,6 +11118,8 @@ impl crate::Request for DeleteBucketOverwriteConfig {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 指定PutObject操作时是否覆盖同名Object。 当目标Bucket处于已开启或已暂停的版本控制状态时，**x-oss-forbid-overwrite**请求Header设置无效，即允许覆盖同名Object。
@@ -10548,8 +11180,9 @@ pub struct PutObject {
 impl sealed::Bound for PutObject {}
 
 impl PutObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_forbid_overwrite: None,
             x_oss_server_side_encryption: None,
@@ -10622,6 +11255,10 @@ impl crate::Request for PutObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -10646,6 +11283,8 @@ impl crate::Request for PutObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CopyObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 指定拷贝的源地址。
@@ -10741,8 +11380,13 @@ pub struct CopyObject {
 impl sealed::Bound for CopyObject {}
 
 impl CopyObject {
-    pub fn new(key: impl Into<String>, x_oss_copy_source: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        x_oss_copy_source: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_copy_source: x_oss_copy_source.into(),
             x_oss_forbid_overwrite: None,
@@ -10857,6 +11501,10 @@ impl crate::Request for CopyObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -10879,6 +11527,8 @@ impl crate::Request for CopyObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 指定OSS返回请求的content-type头。
@@ -10945,8 +11595,9 @@ pub struct GetObject {
 impl sealed::Bound for GetObject {}
 
 impl GetObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             response_content_type: None,
             response_content_language: None,
@@ -11043,11 +11694,17 @@ impl crate::Request for GetObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AppendObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 用于指定从何处进行追加。 每次操作成功后，响应消息头x-oss-next-append-position会标明下一次追加的position。首次追加操作的position必须为0，后续追加操作的position是Object的当前大小。例如，第一次AppendObject请求指定position值为0，content-length是65536，则第二次AppendObject需要指定position为65536。
@@ -11119,8 +11776,13 @@ pub struct AppendObject {
 impl sealed::Bound for AppendObject {}
 
 impl AppendObject {
-    pub fn new(key: impl Into<String>, position: impl Into<i64>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        position: impl Into<i64>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             position: position.into(),
             x_oss_server_side_encryption: None,
@@ -11203,6 +11865,10 @@ impl crate::Request for AppendObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -11227,6 +11893,8 @@ impl crate::Request for AppendObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SealAppendObject {
+    /// 存储空间名称
+    bucket: String,
     /// Appendable Object的名称
     key: String,
     /// 用于指定从用户期望Seal时该文件的长度。
@@ -11236,8 +11904,13 @@ pub struct SealAppendObject {
 impl sealed::Bound for SealAppendObject {}
 
 impl SealAppendObject {
-    pub fn new(key: impl Into<String>, position: impl Into<i64>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        position: impl Into<i64>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             position: position.into(),
         }
@@ -11275,6 +11948,10 @@ impl crate::Request for SealAppendObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -11292,6 +11969,8 @@ impl crate::Request for SealAppendObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteObject {
+    /// Bucket信息。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// Object对应的版本ID。
@@ -11302,8 +11981,9 @@ pub struct DeleteObject {
 impl sealed::Bound for DeleteObject {}
 
 impl DeleteObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -11343,6 +12023,10 @@ impl crate::Request for DeleteObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -11367,6 +12051,8 @@ impl crate::Request for DeleteObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct HeadObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 请求Object的版本号。
@@ -11393,8 +12079,9 @@ pub struct HeadObject {
 impl sealed::Bound for HeadObject {}
 
 impl HeadObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
             if_modified_since: None,
@@ -11449,6 +12136,10 @@ impl crate::Request for HeadObject {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([("key", self.key.to_string())])
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11552,6 +12243,8 @@ impl crate::Request for HeadObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectMeta {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// Object的版本ID。只有查看Object指定版本的元数据信息时才显示该字段。
@@ -11562,8 +12255,9 @@ pub struct GetObjectMeta {
 impl sealed::Bound for GetObjectMeta {}
 
 impl GetObjectMeta {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -11597,6 +12291,10 @@ impl crate::Request for GetObjectMeta {
 
     fn get_path_args(&self) -> Box<[(&'static str, String)]> {
         Box::new([("key", self.key.to_string())])
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {}
@@ -11641,6 +12339,8 @@ impl crate::Request for GetObjectMeta {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RestoreObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 请求解冻的Obejct的版本号。
@@ -11654,8 +12354,9 @@ pub struct RestoreObject {
 impl sealed::Bound for RestoreObject {}
 
 impl RestoreObject {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
             body: None,
@@ -11692,6 +12393,10 @@ impl crate::Request for RestoreObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -11714,6 +12419,8 @@ impl crate::Request for RestoreObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CleanRestoredObject {
+    /// 存储空间名称
+    bucket: String,
     /// 要清理的解冻副本文件名称
     key: String,
 }
@@ -11721,8 +12428,11 @@ pub struct CleanRestoredObject {
 impl sealed::Bound for CleanRestoredObject {}
 
 impl CleanRestoredObject {
-    pub fn new(key: impl Into<String>) -> Self {
-        Self { key: key.into() }
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            key: key.into(),
+        }
     }
 }
 impl crate::ToFormData for CleanRestoredObject {
@@ -11756,6 +12466,10 @@ impl crate::Request for CleanRestoredObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -11763,6 +12477,8 @@ impl crate::Request for CleanRestoredObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SelectObject {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 如果是csv文件，该值需要设置为csv/select；如果是json文件，则需要设置为json/select。
@@ -11775,8 +12491,13 @@ pub struct SelectObject {
 impl sealed::Bound for SelectObject {}
 
 impl SelectObject {
-    pub fn new(key: impl Into<String>, x_oss_process: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        x_oss_process: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_process: x_oss_process.into(),
             body: None,
@@ -11809,6 +12530,10 @@ impl crate::Request for SelectObject {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -11816,6 +12541,8 @@ impl crate::Request for SelectObject {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSelectObjectMeta {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 如果是csv文件，该值需要设置为csv/meta；如果是json文件，则需要设置为json/meta。
@@ -11828,8 +12555,13 @@ pub struct CreateSelectObjectMeta {
 impl sealed::Bound for CreateSelectObjectMeta {}
 
 impl CreateSelectObjectMeta {
-    pub fn new(key: impl Into<String>, x_oss_process: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        x_oss_process: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_process: x_oss_process.into(),
             body: None,
@@ -11862,6 +12594,10 @@ impl crate::Request for CreateSelectObjectMeta {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -11869,6 +12605,9 @@ impl crate::Request for CreateSelectObjectMeta {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitiateMultipartUpload {
+    /// 初始化一个Multipart Upload事件的Bucket名称。
+    ///
+    bucket: String,
     /// 初始化一个Multipart Upload事件的Object名称。
     ///
     key: String,
@@ -11938,8 +12677,9 @@ pub struct InitiateMultipartUpload {
 impl sealed::Bound for InitiateMultipartUpload {}
 
 impl InitiateMultipartUpload {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             encoding_type: None,
             x_oss_forbid_overwrite: None,
@@ -12032,6 +12772,10 @@ impl crate::Request for InitiateMultipartUpload {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -12039,6 +12783,8 @@ impl crate::Request for InitiateMultipartUpload {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UploadPart {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 每一个上传的Part都有一个标识它的号码（partNumber）。
@@ -12059,11 +12805,13 @@ impl sealed::Bound for UploadPart {}
 
 impl UploadPart {
     pub fn new(
+        bucket: impl Into<String>,
         key: impl Into<String>,
         part_number: impl Into<i64>,
         upload_id: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             part_number: part_number.into(),
             upload_id: upload_id.into(),
@@ -12098,6 +12846,10 @@ impl crate::Request for UploadPart {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::OctetStream(self.body.unwrap_or_default())
     }
@@ -12105,6 +12857,8 @@ impl crate::Request for UploadPart {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CompleteMultipartUpload {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 此次MultipartUpload事件的唯一标识。
@@ -12144,8 +12898,13 @@ pub struct CompleteMultipartUpload {
 impl sealed::Bound for CompleteMultipartUpload {}
 
 impl CompleteMultipartUpload {
-    pub fn new(key: impl Into<String>, upload_id: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        upload_id: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             upload_id: upload_id.into(),
             encoding_type: None,
@@ -12195,6 +12954,10 @@ impl crate::Request for CompleteMultipartUpload {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -12212,6 +12975,8 @@ impl crate::Request for CompleteMultipartUpload {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UploadPartCopy {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 拷贝源地址（必须有可读权限）。
@@ -12255,12 +13020,14 @@ impl sealed::Bound for UploadPartCopy {}
 
 impl UploadPartCopy {
     pub fn new(
+        bucket: impl Into<String>,
         key: impl Into<String>,
         x_oss_copy_source: impl Into<String>,
         part_number: impl Into<i64>,
         upload_id: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_copy_source: x_oss_copy_source.into(),
             part_number: part_number.into(),
@@ -12334,6 +13101,10 @@ impl crate::Request for UploadPartCopy {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -12351,6 +13122,8 @@ impl crate::Request for UploadPartCopy {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AbortMultipartUpload {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 此次MultipartUpload事件的唯一标识。
@@ -12360,8 +13133,13 @@ pub struct AbortMultipartUpload {
 impl sealed::Bound for AbortMultipartUpload {}
 
 impl AbortMultipartUpload {
-    pub fn new(key: impl Into<String>, upload_id: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        upload_id: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             upload_id: upload_id.into(),
         }
@@ -12398,6 +13176,10 @@ impl crate::Request for AbortMultipartUpload {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -12405,6 +13187,8 @@ impl crate::Request for AbortMultipartUpload {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListMultipartUploads {
+    /// Bucket名称。
+    bucket: String,
     /// 用于对Object名称进行分组的字符。所有名称包含指定的前缀且首次出现delimiter字符之间的Object作为一组元素CommonPrefixes。
     #[setters(generate = true, strip_option)]
     delimiter: Option<String>,
@@ -12440,8 +13224,9 @@ pub struct ListMultipartUploads {
 impl sealed::Bound for ListMultipartUploads {}
 
 impl ListMultipartUploads {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             delimiter: None,
             max_uploads: None,
             key_marker: None,
@@ -12496,11 +13281,17 @@ impl crate::Request for ListMultipartUploads {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListParts {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// MultipartUpload事件的ID。
@@ -12528,8 +13319,13 @@ pub struct ListParts {
 impl sealed::Bound for ListParts {}
 
 impl ListParts {
-    pub fn new(key: impl Into<String>, upload_id: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        upload_id: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             upload_id: upload_id.into(),
             max_parts: None,
@@ -12578,11 +13374,17 @@ impl crate::Request for ListParts {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObjectAcl {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 指定OSS创建Object时的访问权限。
@@ -12603,8 +13405,13 @@ pub struct PutObjectAcl {
 impl sealed::Bound for PutObjectAcl {}
 
 impl PutObjectAcl {
-    pub fn new(key: impl Into<String>, x_oss_object_acl: impl Into<ObjectACL>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        x_oss_object_acl: impl Into<ObjectACL>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_object_acl: x_oss_object_acl.into(),
             version_id: None,
@@ -12649,6 +13456,10 @@ impl crate::Request for PutObjectAcl {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -12666,6 +13477,8 @@ impl crate::Request for PutObjectAcl {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectAcl {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// Object对应的版本。
@@ -12676,8 +13489,9 @@ pub struct GetObjectAcl {
 impl sealed::Bound for GetObjectAcl {}
 
 impl GetObjectAcl {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -12713,11 +13527,17 @@ impl crate::Request for GetObjectAcl {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutSymlink {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 软链接指向的目标文件。
@@ -12762,8 +13582,13 @@ pub struct PutSymlink {
 impl sealed::Bound for PutSymlink {}
 
 impl PutSymlink {
-    pub fn new(key: impl Into<String>, x_oss_symlink_target: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        key: impl Into<String>,
+        x_oss_symlink_target: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             x_oss_symlink_target: x_oss_symlink_target.into(),
             x_oss_object_acl: None,
@@ -12821,6 +13646,10 @@ impl crate::Request for PutSymlink {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -12838,6 +13667,8 @@ impl crate::Request for PutSymlink {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSymlink {
+    /// Bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 获取软链接的当前Object版本。
@@ -12848,8 +13679,9 @@ pub struct GetSymlink {
 impl sealed::Bound for GetSymlink {}
 
 impl GetSymlink {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -12885,6 +13717,10 @@ impl crate::Request for GetSymlink {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 
     fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
@@ -12905,6 +13741,8 @@ impl crate::Request for GetSymlink {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObjectTagging {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 版本对应的ID。
@@ -12918,8 +13756,9 @@ pub struct PutObjectTagging {
 impl sealed::Bound for PutObjectTagging {}
 
 impl PutObjectTagging {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
             body: None,
@@ -12956,6 +13795,10 @@ impl crate::Request for PutObjectTagging {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -12973,6 +13816,8 @@ impl crate::Request for PutObjectTagging {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectTagging {
+    /// Bucket名称。
+    bucket: String,
     /// Object的完整路径。
     key: String,
     /// 获取的目标Object的版本号。
@@ -12983,8 +13828,9 @@ pub struct GetObjectTagging {
 impl sealed::Bound for GetObjectTagging {}
 
 impl GetObjectTagging {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -13020,11 +13866,17 @@ impl crate::Request for GetObjectTagging {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteObjectTagging {
+    /// bucket名称。
+    bucket: String,
     /// Object完整路径。
     key: String,
     /// 删除的Object的版本号。
@@ -13035,8 +13887,9 @@ pub struct DeleteObjectTagging {
 impl sealed::Bound for DeleteObjectTagging {}
 
 impl DeleteObjectTagging {
-    pub fn new(key: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, key: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             key: key.into(),
             version_id: None,
         }
@@ -13077,6 +13930,10 @@ impl crate::Request for DeleteObjectTagging {
         Box::new([("key", self.key.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -13084,6 +13941,8 @@ impl crate::Request for DeleteObjectTagging {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutLiveChannel {
+    /// Bucket名称。
+    bucket: String,
     /// 频道名称。不能包含斜杠（/）。
     channel: String,
     /// 保存LiveChannel配置的请求体。
@@ -13094,8 +13953,9 @@ pub struct PutLiveChannel {
 impl sealed::Bound for PutLiveChannel {}
 
 impl PutLiveChannel {
-    pub fn new(channel: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, channel: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
             body: None,
         }
@@ -13127,6 +13987,10 @@ impl crate::Request for PutLiveChannel {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -13134,6 +13998,8 @@ impl crate::Request for PutLiveChannel {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListLiveChannel {
+    /// Bucket名称。
+    bucket: String,
     /// 设定结果从marker之后按字母排序的第一个开始返回。
     #[setters(generate = true, strip_option)]
     marker: Option<String>,
@@ -13149,8 +14015,9 @@ pub struct ListLiveChannel {
 impl sealed::Bound for ListLiveChannel {}
 
 impl ListLiveChannel {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             marker: None,
             max_keys: None,
             prefix: None,
@@ -13190,11 +14057,17 @@ impl crate::Request for ListLiveChannel {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteLiveChannel {
+    /// Bucket名称。
+    bucket: String,
     /// 指定LiveChannel名称，该LiveChannel必须存在。
     channel: String,
 }
@@ -13202,8 +14075,9 @@ pub struct DeleteLiveChannel {
 impl sealed::Bound for DeleteLiveChannel {}
 
 impl DeleteLiveChannel {
-    pub fn new(channel: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, channel: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
         }
     }
@@ -13239,6 +14113,10 @@ impl crate::Request for DeleteLiveChannel {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -13246,6 +14124,8 @@ impl crate::Request for DeleteLiveChannel {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutLiveChannelStatus {
+    /// Bucket名称。
+    bucket: String,
     /// 指定LiveChannel名称，该LiveChannel必须存在。
     channel: String,
     /// 设置LiveChannel的Status。
@@ -13258,8 +14138,13 @@ pub struct PutLiveChannelStatus {
 impl sealed::Bound for PutLiveChannelStatus {}
 
 impl PutLiveChannelStatus {
-    pub fn new(channel: impl Into<String>, status: impl Into<String>) -> Self {
+    pub fn new(
+        bucket: impl Into<String>,
+        channel: impl Into<String>,
+        status: impl Into<String>,
+    ) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
             status: status.into(),
         }
@@ -13297,6 +14182,10 @@ impl crate::Request for PutLiveChannelStatus {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -13304,6 +14193,8 @@ impl crate::Request for PutLiveChannelStatus {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelInfo {
+    /// Bucket名称。
+    bucket: String,
     /// 频道名称。不能包含斜杠（/）。
     channel: String,
 }
@@ -13311,8 +14202,9 @@ pub struct GetLiveChannelInfo {
 impl sealed::Bound for GetLiveChannelInfo {}
 
 impl GetLiveChannelInfo {
-    pub fn new(channel: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, channel: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
         }
     }
@@ -13343,11 +14235,17 @@ impl crate::Request for GetLiveChannelInfo {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelHistory {
+    /// Bucket名称。
+    bucket: String,
     /// LiveChannel名称。
     channel: String,
 }
@@ -13355,8 +14253,9 @@ pub struct GetLiveChannelHistory {
 impl sealed::Bound for GetLiveChannelHistory {}
 
 impl GetLiveChannelHistory {
-    pub fn new(channel: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, channel: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
         }
     }
@@ -13388,11 +14287,17 @@ impl crate::Request for GetLiveChannelHistory {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelStat {
+    /// Bucket名称。
+    bucket: String,
     /// Livechannel名称。
     channel: String,
 }
@@ -13400,8 +14305,9 @@ pub struct GetLiveChannelStat {
 impl sealed::Bound for GetLiveChannelStat {}
 
 impl GetLiveChannelStat {
-    pub fn new(channel: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, channel: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
         }
     }
@@ -13433,11 +14339,17 @@ impl crate::Request for GetLiveChannelStat {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetVodPlaylist {
+    /// Bucket名称。
+    bucket: String,
     /// 指定LiveChannel名称。该LiveChannel必须存在。
     channel: String,
     /// 指定查询ts文件的终止时间，格式为Unix timestamp。
@@ -13451,11 +14363,13 @@ impl sealed::Bound for GetVodPlaylist {}
 
 impl GetVodPlaylist {
     pub fn new(
+        bucket: impl Into<String>,
         channel: impl Into<String>,
         end_time: impl Into<String>,
         start_time: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
             end_time: end_time.into(),
             start_time: start_time.into(),
@@ -13490,11 +14404,17 @@ impl crate::Request for GetVodPlaylist {
         Box::new([("channel", self.channel.to_string())])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PostVodPlaylist {
+    /// Bucket名称。
+    bucket: String,
     /// 指定LiveChannel名称，该LiveChannel必须存在。
     channel: String,
     /// 指定生成的点播播放列表的名称，必须以“.m3u8”结尾。
@@ -13511,12 +14431,14 @@ impl sealed::Bound for PostVodPlaylist {}
 
 impl PostVodPlaylist {
     pub fn new(
+        bucket: impl Into<String>,
         channel: impl Into<String>,
         playlist: impl Into<String>,
         end_time: impl Into<String>,
         start_time: impl Into<String>,
     ) -> Self {
         Self {
+            bucket: bucket.into(),
             channel: channel.into(),
             playlist: playlist.into(),
             end_time: end_time.into(),
@@ -13560,6 +14482,10 @@ impl crate::Request for PostVodPlaylist {
         ])
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -13567,6 +14493,8 @@ impl crate::Request for PostVodPlaylist {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutChannel {
+    /// 存储空间名称
+    bucket: String,
     /// 接口请求体
     #[setters(generate = true, strip_option)]
     body: Option<PutChannelbody>,
@@ -13575,8 +14503,11 @@ pub struct PutChannel {
 impl sealed::Bound for PutChannel {}
 
 impl PutChannel {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -13600,6 +14531,10 @@ impl crate::Request for PutChannel {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -13607,6 +14542,8 @@ impl crate::Request for PutChannel {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketHash {
+    /// 存储空间名称
+    bucket: String,
     /// 接口请求体
     #[setters(generate = true, strip_option)]
     body: Option<BucketHashbody>,
@@ -13615,8 +14552,11 @@ pub struct PutBucketHash {
 impl sealed::Bound for PutBucketHash {}
 
 impl PutBucketHash {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -13640,6 +14580,10 @@ impl crate::Request for PutBucketHash {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -13647,6 +14591,8 @@ impl crate::Request for PutBucketHash {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketCommonHeader {
+    /// 存储空间名称
+    bucket: String,
     /// 接口请求体
     #[setters(generate = true, strip_option)]
     body: Option<CommonHeaderbody>,
@@ -13655,8 +14601,11 @@ pub struct PutBucketCommonHeader {
 impl sealed::Bound for PutBucketCommonHeader {}
 
 impl PutBucketCommonHeader {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -13680,19 +14629,28 @@ impl crate::Request for PutBucketCommonHeader {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct DeleteBucketCommonHeader {}
+pub struct DeleteBucketCommonHeader {
+    /// 存储空间名称
+    bucket: String,
+}
 
 impl sealed::Bound for DeleteBucketCommonHeader {}
 
 impl DeleteBucketCommonHeader {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 impl crate::ToFormData for DeleteBucketCommonHeader {
@@ -13721,6 +14679,10 @@ impl crate::Request for DeleteBucketCommonHeader {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
@@ -13728,6 +14690,8 @@ impl crate::Request for DeleteBucketCommonHeader {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutProcessConfiguration {
+    /// 存储空间名称
+    bucket: String,
     /// 请求结构体
     #[setters(generate = true, strip_option)]
     body: Option<ProcessConfigurationbody>,
@@ -13736,8 +14700,11 @@ pub struct PutProcessConfiguration {
 impl sealed::Bound for PutProcessConfiguration {}
 
 impl PutProcessConfiguration {
-    pub fn new() -> Self {
-        Self { body: None }
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+            body: None,
+        }
     }
 }
 
@@ -13761,19 +14728,28 @@ impl crate::Request for PutProcessConfiguration {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct GetBucketEventNotification {}
+pub struct GetBucketEventNotification {
+    /// 存储空间名称
+    bucket: String,
+}
 
 impl sealed::Bound for GetBucketEventNotification {}
 
 impl GetBucketEventNotification {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -13797,11 +14773,16 @@ impl crate::Request for GetBucketEventNotification {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {}
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutDataLakeCachePrefetchJob {
+    bucket: String,
     #[setters(generate = true, strip_option)]
     x_oss_datalake_job_id: Option<String>,
     #[setters(generate = true, strip_option)]
@@ -13811,8 +14792,9 @@ pub struct PutDataLakeCachePrefetchJob {
 impl sealed::Bound for PutDataLakeCachePrefetchJob {}
 
 impl PutDataLakeCachePrefetchJob {
-    pub fn new() -> Self {
+    pub fn new(bucket: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_datalake_job_id: None,
             body: None,
         }
@@ -13843,6 +14825,10 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::XmlBody(self.body.unwrap_or_default())
     }
@@ -13850,14 +14836,16 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartDataLakeCachePrefetchJob {
+    bucket: String,
     x_oss_datalake_job_id: String,
 }
 
 impl sealed::Bound for StartDataLakeCachePrefetchJob {}
 
 impl StartDataLakeCachePrefetchJob {
-    pub fn new(x_oss_datalake_job_id: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, x_oss_datalake_job_id: impl Into<String>) -> Self {
         Self {
+            bucket: bucket.into(),
             x_oss_datalake_job_id: x_oss_datalake_job_id.into(),
         }
     }
@@ -13893,19 +14881,27 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
         Default::default()
     }
 
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
+    }
+
     fn to_body(self) -> Self::Body {
         crate::Form(self)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
-pub struct ListDataLakeStorageTransferJob {}
+pub struct ListDataLakeStorageTransferJob {
+    bucket: String,
+}
 
 impl sealed::Bound for ListDataLakeStorageTransferJob {}
 
 impl ListDataLakeStorageTransferJob {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(bucket: impl Into<String>) -> Self {
+        Self {
+            bucket: bucket.into(),
+        }
     }
 }
 
@@ -13927,6 +14923,10 @@ impl crate::Request for ListDataLakeStorageTransferJob {
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
         Default::default()
+    }
+
+    fn process_endpoint(&self, endpoint: &'static str) -> std::borrow::Cow<'static, str> {
+        format!("{}.{}", self.bucket, endpoint).into()
     }
 
     fn to_body(self) -> Self::Body {}

@@ -69,6 +69,7 @@ where
         url.push('?');
         url.push_str(&query_string);
     }
+    debug!("{}", url);
     debug!("{:#?}", &headers);
     let resp = match R::METHOD {
         Method::POST => http_client.post(url).headers(headers).body(body),
