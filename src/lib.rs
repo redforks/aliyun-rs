@@ -8,6 +8,7 @@ use reqwest::Body;
 use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use std::borrow::Cow;
 use std::collections::HashMap;
+use tracing::debug;
 
 mod auth;
 mod common;
@@ -722,6 +723,7 @@ impl<T: serde::Serialize> IntoBody for XmlBody<T> {
 
     fn into_body(self) -> Result<Body> {
         let xml = quick_xml::se::to_string(&self.0).context("Failed to serialize body to XML")?;
+        debug!("XML Request body: {}", xml);
         Ok(xml.into())
     }
 }
