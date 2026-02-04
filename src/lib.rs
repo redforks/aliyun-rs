@@ -531,7 +531,7 @@ trait FromBody: Sized {
 
 /// JSON response wrapper that deserializes the inner type from JSON bytes.
 #[derive(Debug)]
-pub struct JsonResponseWrap<T> {
+struct JsonResponseWrap<T> {
     inner: T,
 }
 
@@ -573,12 +573,12 @@ impl<T: DeserializeOwned + ToCodeMessage + Default> FromBody for T {
         if bytes.is_empty() {
             return Ok(T::default());
         }
-        let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
-        if text.is_empty() {
-            return Ok(T::default());
-        }
-        let inner = serde_json::from_str(&text)
-            .with_context(|| format!("Decode response as JSON: {}", &text))?;
+        let inner = serde_json::from_slice(&bytes).with_context(|| {
+            format!(
+                "Decode response as JSON: {}",
+                &String::from_utf8_lossy(&bytes)
+            )
+        })?;
         Ok(inner)
     }
 }
@@ -600,7 +600,7 @@ impl IntoResponse for () {
 
 /// XML response wrapper that deserializes the inner type from XML bytes.
 #[derive(Debug)]
-pub struct XmlResponseWrap<T> {
+struct XmlResponseWrap<T> {
     inner: T,
 }
 

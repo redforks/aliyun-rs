@@ -74,7 +74,7 @@ async fn test_describe_regions() {
 #[test_log::test]
 #[ignore]
 async fn test_bucket_and_object_lifecycle() {
-    use crate::oss::{DeleteBucket, DeleteObject, ListObjects, PutBucket, PutObject};
+    use crate::oss::{DeleteBucket, DeleteObject, GetObject, ListObjects, PutBucket, PutObject};
 
     let conn = test_connection();
 
@@ -113,8 +113,20 @@ async fn test_bucket_and_object_lifecycle() {
     .expect("Failed to put object");
     println!("Object uploaded successfully");
 
-    // 4. List files in the bucket and ensure that file is present
-    println!("Step 4: Listing objects in bucket...");
+    // 4. Get the file from the bucket and verify content
+    println!("Step 4: Getting object '{}' from bucket...", object_key);
+    let retrieved_content = conn
+        .get_object(GetObject::new(&bucket_name, object_key))
+        .await
+        .expect("Failed to get object");
+    assert_eq!(
+        retrieved_content, object_content,
+        "Retrieved content does not match original content"
+    );
+    println!("Object retrieved successfully, content matches");
+
+    // 5. List files in the bucket and ensure that file is present
+    println!("Step 5: Listing objects in bucket...");
     let objects_result = conn
         .list_objects(ListObjects::new(&bucket_name))
         .await
@@ -126,8 +138,8 @@ async fn test_bucket_and_object_lifecycle() {
     assert!(file_found, "Uploaded file not found in object list");
     println!("File found in bucket");
 
-    // 5. Remove the file from the bucket
-    println!("Step 5: Deleting object from bucket...");
+    // 6. Remove the file from the bucket
+    println!("Step 6: Deleting object from bucket...");
     conn.delete_object(DeleteObject::new(&bucket_name, object_key))
         .await
         .expect("Failed to delete object");
@@ -146,15 +158,15 @@ async fn test_bucket_and_object_lifecycle() {
     assert!(!file_still_exists, "File still exists after deletion");
     println!("File verified as deleted");
 
-    // 6. Delete the bucket
-    println!("Step 6: Deleting bucket...");
+    // 7. Delete the bucket
+    println!("Step 7: Deleting bucket...");
     conn.delete_bucket(DeleteBucket::new(&bucket_name))
         .await
         .expect("Failed to delete bucket");
     println!("Bucket deleted successfully");
 
-    // 7. Ensure that the bucket is deleted
-    println!("Step 7: Verifying bucket is deleted...");
+    // 8. Ensure that the bucket is deleted
+    println!("Step 8: Verifying bucket is deleted...");
     let list_result_after_delete = conn
         .list_buckets(crate::oss::ListBuckets::new())
         .await

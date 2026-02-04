@@ -88,7 +88,6 @@ where
     let status = resp.status();
     let resp_headers = resp.headers().clone();
     let resp_bytes = resp.bytes().await.context("Get response bytes")?;
-    debug!("Response: {:?}", String::from_utf8_lossy(&resp_bytes));
 
     let resp = if status.is_success() {
         // Use ResponseWrap to deserialize response bytes
