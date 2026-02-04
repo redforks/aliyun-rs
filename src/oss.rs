@@ -219,13 +219,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -256,7 +256,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -2164,7 +2164,7 @@ impl Connection {
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///
+    ///  
     ///
     /// # Path
     /// `/?cors`
@@ -3445,7 +3445,7 @@ impl Connection {
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///
+    ///   
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。

@@ -14,6 +14,8 @@ mod auth;
 mod common;
 mod v3;
 
+pub use v3::AccessKeySecret;
+
 #[cfg(feature = "ocr")]
 pub mod ocr;
 
