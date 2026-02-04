@@ -12243,6 +12243,11 @@ impl crate::Request for GetObject {
                 }
             }
         }
+        if let Some(value) = headers.get("Content-Disposition") {
+            if let Ok(s) = value.to_str() {
+                inner.content_disposition = Some(s.to_string());
+            }
+        }
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -22619,6 +22624,9 @@ pub struct GetObjectResponse {
     /// Header field from response: x-oss-tagging-count
     #[serde(skip)]
     pub x_oss_tagging_count: Option<i64>,
+    /// Header field from response: Content-Disposition
+    #[serde(skip)]
+    pub content_disposition: Option<String>,
 }
 impl crate::BinaryWithMeta for GetObjectResponse {
     fn set_binary(&mut self, bytes: Vec<u8>) {
