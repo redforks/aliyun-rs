@@ -625,6 +625,33 @@ impl<T> IntoResponse for XmlResponseWrap<T> {
     }
 }
 
+/// Binary response wrapper that passes through raw bytes without deserialization.
+#[derive(Debug)]
+struct BinaryResponseWrap {
+    /// The raw response bytes
+    pub inner: Vec<u8>,
+}
+
+impl FromBody for BinaryResponseWrap {
+    fn from_body(bytes: Vec<u8>) -> Result<Self> {
+        Ok(Self { inner: bytes })
+    }
+}
+
+impl ToCodeMessage for BinaryResponseWrap {
+    fn to_code_message(&self) -> &CodeMessage {
+        &CODE_MESSAGE
+    }
+}
+
+impl IntoResponse for BinaryResponseWrap {
+    type Response = Vec<u8>;
+
+    fn into_response(self) -> Self::Response {
+        self.inner
+    }
+}
+
 /// Each api entry should implement this trait.
 trait Request: Sized + Send {
     const METHOD: Method;
@@ -759,20 +786,6 @@ static CODE_MESSAGE: CodeMessage = CodeMessage {
     code: String::new(),
     message: String::new(),
 };
-
-impl ToCodeMessage for Vec<u8> {
-    fn to_code_message(&self) -> &CodeMessage {
-        &CODE_MESSAGE
-    }
-}
-
-impl IntoResponse for Vec<u8> {
-    type Response = Vec<u8>;
-
-    fn into_response(self) -> Self::Response {
-        self
-    }
-}
 
 /// Generic response type for APIs without strongly-typed response definitions.
 /// This is used when an API produces JSON but doesn't define a 200 response schema.

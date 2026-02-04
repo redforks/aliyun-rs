@@ -2511,7 +2511,7 @@ impl crate::Request for InvokeFunction {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = Vec<u8>;
+    type ResponseWrap = crate::BinaryResponseWrap;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
