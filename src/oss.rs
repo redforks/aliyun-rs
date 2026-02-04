@@ -219,13 +219,13 @@ impl Connection {
     ///      <Region>oss-cn-hangzhou</Region>
     ///      <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     ///   <RegionInfo>
     ///      <Region>oss-cn-shanghai</Region>
     ///      <InternetEndpoint>oss-cn-shanghai.aliyuncs.com</InternetEndpoint>
     ///      <InternalEndpoint>oss-cn-shanghai-internal.aliyuncs.com</InternalEndpoint>
-    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///      <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -256,7 +256,7 @@ impl Connection {
     ///     <Region>oss-cn-hangzhou</Region>
     ///     <InternetEndpoint>oss-cn-hangzhou.aliyuncs.com</InternetEndpoint>
     ///     <InternalEndpoint>oss-cn-hangzhou-internal.aliyuncs.com</InternalEndpoint>
-    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>  
+    ///     <AccelerateEndpoint>oss-accelerate.aliyuncs.com</AccelerateEndpoint>
     ///   </RegionInfo>
     /// </RegionInfoList>
     /// ```
@@ -2164,7 +2164,7 @@ impl Connection {
     ///
     /// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
     ///
-    ///  
+    ///
     ///
     /// # Path
     /// `/?cors`
@@ -3445,7 +3445,7 @@ impl Connection {
     ///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
     ///
     ///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
-    ///   
+    ///
     ///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
     ///
     /// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
@@ -11641,7 +11641,7 @@ impl crate::Request for PutObject {
 
     type Body = crate::OctetStream;
 
-    type ResponseWrap = PutObjectResponse;
+    type ResponseWrap = crate::SelfResponseWrap<PutObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         Default::default()
@@ -11704,8 +11704,8 @@ impl crate::Request for PutObject {
     }
 
     fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
-        // Headers-only response: resp is the unwrapped response struct directly
-        let inner = resp;
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             if let Ok(s) = value.to_str() {
                 if let Ok(parsed) = s.parse::<i64>() {
@@ -12459,7 +12459,7 @@ impl crate::Request for DeleteObject {
 
     type Body = crate::Form<Self>;
 
-    type ResponseWrap = DeleteObjectResponse;
+    type ResponseWrap = crate::SelfResponseWrap<DeleteObjectResponse>;
 
     fn to_query_params(&self) -> Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'_>)> {
         let mut params = Vec::with_capacity(1);
@@ -12492,8 +12492,8 @@ impl crate::Request for DeleteObject {
     }
 
     fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
-        // Headers-only response: resp is the unwrapped response struct directly
-        let inner = resp;
+        // Unwrap the response wrapper to access inner response struct
+        let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-delete-marker") {
             if let Ok(s) = value.to_str() {
                 if let Ok(parsed) = s.parse::<bool>() {
@@ -22434,13 +22434,6 @@ impl crate::ToCodeMessage for PutObjectResponse {
     }
 }
 
-impl crate::IntoResponse for PutObjectResponse {
-    type Response = Self;
-    fn into_response(self) -> Self::Response {
-        self
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyObjectResponse {
@@ -22513,13 +22506,6 @@ pub struct DeleteObjectResponse {
 impl crate::ToCodeMessage for DeleteObjectResponse {
     fn to_code_message(&self) -> &crate::CodeMessage {
         &crate::CODE_MESSAGE
-    }
-}
-
-impl crate::IntoResponse for DeleteObjectResponse {
-    type Response = Self;
-    fn into_response(self) -> Self::Response {
-        self
     }
 }
 

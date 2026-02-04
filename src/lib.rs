@@ -550,6 +550,33 @@ impl<T: ToCodeMessage> ToCodeMessage for JsonResponseWrap<T> {
     }
 }
 
+#[derive(Debug)]
+struct SelfResponseWrap<T> {
+    pub inner: T,
+}
+
+impl<T> IntoResponse for SelfResponseWrap<T> {
+    type Response = T;
+
+    fn into_response(self) -> Self::Response {
+        self.inner
+    }
+}
+
+impl<T: Default> FromBody for SelfResponseWrap<T> {
+    fn from_body(_bytes: Vec<u8>) -> Result<Self> {
+        Ok(SelfResponseWrap {
+            inner: T::default(),
+        })
+    }
+}
+
+impl<T> ToCodeMessage for SelfResponseWrap<T> {
+    fn to_code_message(&self) -> &CodeMessage {
+        &CODE_MESSAGE
+    }
+}
+
 trait IntoResponse {
     type Response;
 
@@ -566,20 +593,9 @@ impl<T> IntoResponse for JsonResponseWrap<T> {
     }
 }
 
-// Compatibility layer: For existing code that uses Response directly
-impl<T: DeserializeOwned + ToCodeMessage + Default> FromBody for T {
-    fn from_body(bytes: Vec<u8>) -> Result<Self> {
-        // For empty response body, return default value (useful for unit type)
-        if bytes.is_empty() {
-            return Ok(T::default());
-        }
-        let inner = serde_json::from_slice(&bytes).with_context(|| {
-            format!(
-                "Decode response as JSON: {}",
-                &String::from_utf8_lossy(&bytes)
-            )
-        })?;
-        Ok(inner)
+impl FromBody for () {
+    fn from_body(_bytes: Vec<u8>) -> Result<Self> {
+        Ok(())
     }
 }
 
