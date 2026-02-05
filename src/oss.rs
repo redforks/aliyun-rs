@@ -11613,6 +11613,8 @@ pub struct PutObject {
     /// 指定Object的展示形式。取值如下： - Content-Disposition:inline：直接预览文件内容。 - Content-Disposition:attachment：以原文件名的形式下载到浏览器指定路径。 - Content-Disposition:attachment; filename="yourFileName"：以自定义文件名的形式下载到浏览器指定路径。 yourFileName用于自定义下载后的文件名称，例如example.jpg。 将Object下载到浏览器指定路径时： **说明** - 如果Object名称包含星号（*）、正斜线（/）等特殊字符时，可能会出现特殊字符转义的情况。例如，下载`example*.jpg`到本地时，`example*.jpg`可能会转义为`example_.jpg`。 - 如需确保下载名称中包含中文字符的Object到本地指定路径后，文件名称不出现乱码的现象，您需要将名称中包含的中文字符进行URL编码。例如，将`测试.txt`从OSS下载到本地后，需要保留文件名为`测试.txt`，需按照`"attachment;filename="+URLEncoder.encode("测试","UTF-8")+".txt;filename*=UTF-8''"+URLEncoder.encode("测试","UTF-8")+".txt"`的格式设置Content-Disposition，即attachment;filename=%E6%B5%8B%E8%AF%95.txt;filename*=UTF-8''%E6%B5%8B%E8%AF%95.txt。 通过文件URL访问文件时是预览还是以附件形式下载，与文件所在Bucket的创建时间、OSS开通时间以及使用的域名类型有关。更多信息，请参见[通过文件URL访问文件无法预览而是以附件形式下载？](https://help.aliyun.com/zh/oss/images-downloaded-as-an-attachment-instead-of-being-previewed-by-using-a-url#concept-2331929)。 默认值：无
     #[setters(generate = true, strip_option)]
     content_disposition: Option<String>,
+    #[setters(generate = true, strip_option)]
+    content_type: Option<String>,
     /// 声明Object的编码方式。必须按照Object的实际编码类型填写，否则可能造成客户端解析失败或下载失败。若Object未编码，请置空此项。取值如下： - identity（默认值）：表示Object未经过压缩或编码。 - gzip：表示Object采用Lempel-Ziv（LZ77）压缩算法以及32位CRC校验的编码方式。 - compress：表示Object采用Lempel-Ziv-Welch（LZW）压缩算法的编码方式。 - deflate：表示Object采用zlib结构和deflate压缩算法的编码方式。 - br：表示Object采用Brotli算法的编码方式。 默认值：无
     #[setters(generate = true, strip_option)]
     content_encoding: Option<String>,
@@ -11645,6 +11647,7 @@ impl PutObject {
             body: None,
             cache_control: None,
             content_disposition: None,
+            content_type: None,
             content_encoding: None,
             content_md5: None,
             content_length: None,
@@ -11668,7 +11671,7 @@ impl crate::Request for PutObject {
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
-        let mut headers = Vec::with_capacity(14);
+        let mut headers = Vec::with_capacity(15);
 
         if let Some(f) = &self.cache_control {
             headers.push(("Cache-Control".into(), f.to_string()));
@@ -11688,6 +11691,10 @@ impl crate::Request for PutObject {
 
         if let Some(f) = &self.content_md5 {
             headers.push(("Content-MD5".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.content_type {
+            headers.push(("Content-Type".into(), f.to_string()));
         }
 
         if let Some(f) = &self.expires {
