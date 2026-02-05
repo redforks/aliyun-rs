@@ -11607,6 +11607,24 @@ pub struct PutObject {
     /// 请求体。
     #[setters(generate = true, strip_option)]
     body: Option<Vec<u8>>,
+    /// 指定Object下载时的缓存行为。取值如下： - no-cache：不可直接使用缓存，而是先到服务端验证Object是否已更新。如果Object已更新，表明缓存已过期，需从服务端重新下载Object；如果Object未更新，表明缓存未过期，此时将使用本地缓存。 - no-store：所有内容都不会被缓存。 - public：所有内容都将被缓存。 - private：所有内容只在客户端缓存。 - max-age=<seconds>：缓存内容的相对过期时间，单位为秒。此选项仅在HTTP 1.1中可用。 默认值：无
+    #[setters(generate = true, strip_option)]
+    cache_control: Option<String>,
+    /// 指定Object的展示形式。取值如下： - Content-Disposition:inline：直接预览文件内容。 - Content-Disposition:attachment：以原文件名的形式下载到浏览器指定路径。 - Content-Disposition:attachment; filename="yourFileName"：以自定义文件名的形式下载到浏览器指定路径。 yourFileName用于自定义下载后的文件名称，例如example.jpg。 将Object下载到浏览器指定路径时： **说明** - 如果Object名称包含星号（*）、正斜线（/）等特殊字符时，可能会出现特殊字符转义的情况。例如，下载`example*.jpg`到本地时，`example*.jpg`可能会转义为`example_.jpg`。 - 如需确保下载名称中包含中文字符的Object到本地指定路径后，文件名称不出现乱码的现象，您需要将名称中包含的中文字符进行URL编码。例如，将`测试.txt`从OSS下载到本地后，需要保留文件名为`测试.txt`，需按照`"attachment;filename="+URLEncoder.encode("测试","UTF-8")+".txt;filename*=UTF-8''"+URLEncoder.encode("测试","UTF-8")+".txt"`的格式设置Content-Disposition，即attachment;filename=%E6%B5%8B%E8%AF%95.txt;filename*=UTF-8''%E6%B5%8B%E8%AF%95.txt。 通过文件URL访问文件时是预览还是以附件形式下载，与文件所在Bucket的创建时间、OSS开通时间以及使用的域名类型有关。更多信息，请参见[通过文件URL访问文件无法预览而是以附件形式下载？](https://help.aliyun.com/zh/oss/images-downloaded-as-an-attachment-instead-of-being-previewed-by-using-a-url#concept-2331929)。 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_disposition: Option<String>,
+    /// 声明Object的编码方式。必须按照Object的实际编码类型填写，否则可能造成客户端解析失败或下载失败。若Object未编码，请置空此项。取值如下： - identity（默认值）：表示Object未经过压缩或编码。 - gzip：表示Object采用Lempel-Ziv（LZ77）压缩算法以及32位CRC校验的编码方式。 - compress：表示Object采用Lempel-Ziv-Welch（LZW）压缩算法的编码方式。 - deflate：表示Object采用zlib结构和deflate压缩算法的编码方式。 - br：表示Object采用Brotli算法的编码方式。 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_encoding: Option<String>,
+    /// 用于检查消息内容完整性。Content-MD5是由MD5算法生成的值。设置该请求头后，OSS会计算消息体的Content-MD5并检查一致性。详细信息请参见[Content-MD5的计算方法](https://help.aliyun.com/zh/oss/developer-reference/include-signatures-in-the-authorization-header#section-i74-k35-5w4)。 为确保数据完整性，OSS提供多种数据MD5值校验方式。如需通过Content-MD5进行MD5验证，可将Content-MD5加入到请求头中。 默认值：无
+    #[setters(generate = true, strip_option)]
+    content_md5: Option<String>,
+    /// 描述HTTP消息体的传输大小，单位为字节。 如果请求头中的Content-Length值小于实际请求体传输的数据大小，OSS仍将成功创建Object，但Object大小等于Content-Length中定义的大小，超出部分数据将被丢弃。
+    #[setters(generate = true, strip_option)]
+    content_length: Option<String>,
+    /// 指定Object的过期时间。详细信息请参见[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
+    #[setters(generate = true, strip_option)]
+    expires: Option<String>,
 }
 
 impl sealed::Bound for PutObject {}
@@ -11625,6 +11643,12 @@ impl PutObject {
             x_oss_tagging: None,
             x_oss_meta: None,
             body: None,
+            cache_control: None,
+            content_disposition: None,
+            content_encoding: None,
+            content_md5: None,
+            content_length: None,
+            expires: None,
         }
     }
 }
@@ -11644,7 +11668,31 @@ impl crate::Request for PutObject {
     }
 
     fn to_headers(&self) -> Vec<(std::borrow::Cow<'static, str>, String)> {
-        let mut headers = Vec::with_capacity(8);
+        let mut headers = Vec::with_capacity(14);
+
+        if let Some(f) = &self.cache_control {
+            headers.push(("Cache-Control".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.content_disposition {
+            headers.push(("Content-Disposition".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.content_encoding {
+            headers.push(("Content-Encoding".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.content_length {
+            headers.push(("Content-Length".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.content_md5 {
+            headers.push(("Content-MD5".into(), f.to_string()));
+        }
+
+        if let Some(f) = &self.expires {
+            headers.push(("Expires".into(), f.to_string()));
+        }
 
         if let Some(f) = &self.x_oss_forbid_overwrite {
             headers.push(("x-oss-forbid-overwrite".into(), f.to_string()));
