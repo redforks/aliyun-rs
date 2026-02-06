@@ -7809,6 +7809,7 @@ impl crate::Request for VerifyVATInvoice {
     }
 }
 
+/// * 当图片类型为通用文字识别高精版时（**Type=Advanced**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AdvancedConfig {
@@ -7910,6 +7911,7 @@ impl crate::FlatSerialize for AdvancedConfig {
     }
 }
 
+/// * 当图片类型为身份证时（**Type=IdCard**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextIdCardConfig {
@@ -7939,6 +7941,7 @@ impl crate::FlatSerialize for TextIdCardConfig {
     }
 }
 
+/// * 当图片类型为国际身份证时（Type=**InternationalIdCard**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InternationalIdCardConfig {
@@ -7960,6 +7963,7 @@ impl crate::FlatSerialize for InternationalIdCardConfig {
     }
 }
 
+/// * 当图片类型为国际企业执照时（Type=**InternationalBusinessLicense**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LicenseConfig {
@@ -7981,6 +7985,7 @@ impl crate::FlatSerialize for LicenseConfig {
     }
 }
 
+/// * 当图片类型为通用多语言文字时（Type=**MultiLang**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LanConfig {
@@ -8005,6 +8010,7 @@ impl crate::FlatSerialize for LanConfig {
     }
 }
 
+/// * 当图片类型为表格时（Type=**Table**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableConfig {
@@ -8085,6 +8091,7 @@ impl crate::FlatSerialize for ImagePoint {
     }
 }
 
+/// 子图旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageRect {
@@ -8115,6 +8122,7 @@ impl crate::FlatSerialize for ImageRect {
     }
 }
 
+/// * 结构化信息明细，字典类型。Key为字段名称，Value为此字段对应的识别结果（包含字段值、坐标、置信度等）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct KvDetails {
@@ -8133,6 +8141,8 @@ impl crate::FlatSerialize for KvDetails {
     }
 }
 
+/// * 子图的结构化信息。
+/// * 个人卡证、票据等类型图片会返回结构化信息。例如身份证图片，此字段会包含姓名、性别等信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImagesItemKvInfo {
@@ -8186,6 +8196,7 @@ impl crate::FlatSerialize for BlockPoint {
     }
 }
 
+/// 文字块旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockRect {
@@ -8238,6 +8249,7 @@ impl crate::FlatSerialize for CharPoint {
     }
 }
 
+/// 单字旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CharRect {
@@ -8384,6 +8396,8 @@ impl crate::FlatSerialize for BlockDetail {
     }
 }
 
+/// * 子图文字块信息。
+/// * 当**Type**为**Advanced**、**General**、**MultiLang**、**Commerce**、**HandWriting**  时返回。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockInfo {
@@ -8414,6 +8428,7 @@ impl crate::FlatSerialize for BlockInfo {
     }
 }
 
+/// 表头信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemHeader {
@@ -8436,6 +8451,7 @@ impl crate::FlatSerialize for ItemHeader {
     }
 }
 
+/// 表尾信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFooter {
@@ -8480,6 +8496,7 @@ impl crate::FlatSerialize for CellPoint {
     }
 }
 
+/// 单元格旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CellRect {
@@ -8618,6 +8635,7 @@ impl crate::FlatSerialize for TablePoint {
     }
 }
 
+/// 表格旋转矩形坐标（当 **OutputCoordinate=“rectangle"** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableRect {
@@ -8722,6 +8740,7 @@ impl crate::FlatSerialize for TableDetail {
     }
 }
 
+/// 表格信息（当 **AdvancedConfig.OutputTable=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableInfo {
@@ -8804,6 +8823,7 @@ impl crate::FlatSerialize for RowDetail {
     }
 }
 
+/// 子图行信息（当 **AdvancedConfig.OutputRow=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RowInfo {
@@ -8872,6 +8892,7 @@ impl crate::FlatSerialize for ParagraphDetail {
     }
 }
 
+/// 子图段落信息（当 **AdvancedConfig.OutputParagraph=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParagraphInfo {
@@ -8924,6 +8945,7 @@ impl crate::FlatSerialize for QrCodePoint {
     }
 }
 
+/// 二维码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeRect {
@@ -8996,6 +9018,7 @@ impl crate::FlatSerialize for QrCodeDetail {
     }
 }
 
+/// 子图二维码信息（当 **OutputQrcode=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeInfo {
@@ -9048,6 +9071,7 @@ impl crate::FlatSerialize for BarCodePoint {
     }
 }
 
+/// 条形码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeRect {
@@ -9128,6 +9152,7 @@ impl crate::FlatSerialize for BarCodeDetail {
     }
 }
 
+/// 子图条形码信息（当 **OutputBarCode=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeInfo {
@@ -9158,6 +9183,12 @@ impl crate::FlatSerialize for BarCodeInfo {
     }
 }
 
+/// 子图包含的图案信息（当 **OutputFigure=true** 时返回）。字典类型，键为图案类型，值为此类型图案的信息。支持的图案类型如下：
+/// * blicense_title：营业执照标题
+/// * national_emblem：国徽
+/// * face：人脸
+/// * finger_print：指纹
+/// * signature：签名区域
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FigureInfo {
@@ -9176,6 +9207,7 @@ impl crate::FlatSerialize for FigureInfo {
     }
 }
 
+/// 子图印章识别结果，字典类型，键为字段名称，值为对应字段的识别结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemData {
@@ -9264,6 +9296,7 @@ impl crate::FlatSerialize for StampPoint {
     }
 }
 
+/// 印章旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampRect {
@@ -9336,6 +9369,7 @@ impl crate::FlatSerialize for StampDetail {
     }
 }
 
+/// 子图印章信息（当 **OutputStamp=true** 时返回）。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampInfo {
@@ -9366,6 +9400,7 @@ impl crate::FlatSerialize for StampInfo {
     }
 }
 
+/// 子图质量检测信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QualityInfo {
@@ -9541,6 +9576,7 @@ impl crate::FlatSerialize for TextResponseDataSubImage {
     }
 }
 
+/// 识别结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseData {
@@ -9636,6 +9672,7 @@ impl crate::FlatSerialize for TextResponseData {
     }
 }
 
+/// * 子图的结构化信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseDataSubImagesItemKvInfo {
@@ -9688,6 +9725,7 @@ impl crate::FlatSerialize for StructureResponseDataSubImage {
     }
 }
 
+/// 识别结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseData {
@@ -10148,6 +10186,59 @@ impl crate::FlatSerialize for LicenseCountry {
     }
 }
 
+/// #### 图片类型（Type）对应的KV信息字段说明。所有KV字段都是String类型。
+/// |Type | 类型描述 | 返回KV信息字段说明|
+/// |-----|-----|--|
+/// |IdCard | 身份证 | <ul> <li> 正面字段：<ul> <li> name：姓名 </li> <li> sex：性别 </li> <li> ethnicity：民族 </li> <li> birthDate：出生日期 </li> <li> address：住址 </li> <li> idNumber：身份证号码 </li> </ul> </li> <li> 背面字段：<ul> <li> issueAuthority：签发机关 </li> <li> validPeriod：有效期限 </li> </ul> </li>  </ul> |
+/// |BankCard | 银行卡 | <ul> <li> cardType：卡种 </li> <li> bankName：银行名称 </li> <li> cardNumber：银行卡号 </li> <li> validToDate：有效期限 </li> </ul> |
+/// |InternationalPassport | 国际护照 | <ul> <li> passportType：证件类型 </li> <li> surname：姓 </li> <li> givenName：名 </li> <li> passportNumber：护照号码 </li> <li> nationality：国家码 </li> <li> nameEn：英文姓名 </li> <li> name：非英文姓名 </li> <li> sex：性别 </li> <li> birthPlaceEn：出生地 </li> <li> birthPlace：非英文出生地 </li> <li> country：国籍 </li> <li> validToDate：有效期至 </li> <li> birthDate：出生日期 </li> <li> birthDateYmd：出生日期（年月日）</li> <li> issueDateYmd：签发日期 </li> <li> issuePlaceEn：签发地 </li> <li> issuePlace：非英文签发地 </li> <li> issueAuthorityEn：签发机关 </li> <li> issueAuthority：非英文签发机关 </li> <li> idNumber：身份号 </li> <li> mrzLine1：机读码一 </li> <li> mrzLine2：机读码二 </li> </ul> |
+/// |ChinesePassport | 中国护照 | <ul> <li> passportType：证件类型 </li> <li> countryCode：国家码 </li> <li> passportNumber：护照号码 </li> <li> nameEn：英文姓名 </li> <li> name：中文姓名 </li> <li> sex：性别 </li> <li> birthPlace：出生地 </li> <li> nationality：国籍 </li> <li> issuePlace：签发地 </li> <li> issueAuthority：签发机关 </li> <li> mrzLine1：机读码一 </li> <li> mrzLine2：机读码二 </li> <li> validToDate：有效期至 </li> <li> birthDate：出生日期 </li> <li> issueDate：签发日期 </li>  </ul> |
+/// |SocialSecurityCard | 社保卡 | <ul> <li> bankAccount：银行账号 </li> <li> cardNumber：社保保障卡号 </li> <li> idNumber：社会保障号码 </li> <li> issueDate：发卡日期 </li> <li> name：姓名 </li> <li> title：标题 </li> <li> validPeriod：有效期限 </li> </ul> |
+/// |PermitToHK_MO_TW | 往来港澳台通行证 | <ul> <li> permitType：证件类别 </li> <li> nameCn：中文姓名 </li> <li> nameEn：英文姓名 </li> <li> birthDate：出生日期 </li> <li> sex：性别 </li> <li> validPeriod：有效期限 </li> <li> issueAuthority：签发机关 </li> <li> issuePlace：签发地 </li> <li> permitNumber：证件号码 </li> <li> mrzCode：机读码 </li>  </ul> |
+/// |PermitToMainland | 来往中国大陆（内地）通行证 | <ul> <li> birthDate：出生日期 </li> <li> issueAuthority：签发机关 </li> <li> issueCount：	签发次数 </li> <li> issuePlace：签发地点 </li> <li> nameCn：中文姓名 </li> <li> nameEn：英文姓名 </li> <li> permitNumber：证件号码 </li> <li> permitType：证件类别 </li> <li> sex：性别 </li> <li> validPeriod：有效期限 </li>  </ul> |
+/// |HouseholdHead | 户口本户首页 | <ul> <li> Registrar：承办人签章 </li> <li> address：住址 </li> <li> householdNumber：	户号 </li> <li> householdType：户别 </li> <li> householderCommunity：户主社区 </li> <li> householderName：户主姓名 </li> <li> issueDate：签发日期 </li> <li> sectionNo：地段号 </li> </ul> |
+/// |HouseholdResident | 户口本常住人口页 | <ul> <li> birthDate：出生日期 </li> <li> birthPlace：出生地 </li> <li> bloodGroup：血型 </li> <li> educationalDegree：文化程度 </li> <li> employer：服务处所 </li> <li> ethnicity：民族 </li> <li> formerName：曾用名 </li> <li> householdNumber：户号 </li> <li> idCardNumber：身份证编号 </li> <li> immigratedToCityInfo：何时何地迁来本市 </li> <li> immigratedToResidenceInfo：何时由何地迁来本址 </li> <li> maritalStatus：婚姻状况 </li> <li> militaryServiceStatus：兵役状况 </li> <li> name：姓名 </li> <li> nativePlace：籍贯 </li> <li> occupation：职业 </li> <li> otherResidence：本市其他住址 </li> <li> registrar：承办人签章 </li> <li> registrationDate：登记日期 </li> <li> relation：与户主关系 </li> <li> religious：	宗教信仰 </li> <li> sex：性别 </li> <li> stature：身高 </li> </ul> |
+/// |EstateCertification | 不动产权证 | <ul> <li> area：面积 </li> <li> certificateNumber：证号 </li> <li> mutualOwnershipState：	共有情况 </li> <li> obligee：权利人 </li> <li> location：坐落地址 </li> <li> unitNumber：不动产单元号 </li> <li> rightType：权利类型 </li> <li> rightProperty：权利性质 </li> <li> usage：用途 </li> <li> serviceLife：使用期限 </li> <li> otherState：权利其他状况 </li> <li> buildingArea：房屋建筑面积 </li> </ul> |
+/// |BirthCertification | 出生证明 | <ul> <li> neonatalName：新生儿姓名 </li> <li> sex：性别 </li> <li> birthTime：出生时间 </li> <li> gestationalAge：出生孕周 </li> <li> birthWeight：	出生体重 </li> <li> birthLength：出生身长 </li> <li> birthPlace：出生地 </li> <li> medicalInstitutions：医疗机构名称 </li> <li> motherName：母亲姓名 </li> <li> motherAge：母亲年龄 </li> <li> motherNationality：母亲国籍 </li> <li> motherEthnicity：母亲民族 </li> <li> motherAddress：母亲住址 </li> <li> motherIdCardNumber：母亲有效身份证件号 </li> <li> fatherName：父亲姓名 </li> <li> fatherAge：父亲年龄 </li> <li> fatherNationality：父亲国籍 </li> <li> fatherEthnicity：父亲民族 </li> <li> fatherAddress：父亲住址 </li> <li> fatherIdCardNumber：	父亲有效身份证件号 </li> <li> issueAuthority：签发机构 </li> <li> issueDate：签发日期 </li> <li> certificateNumber：编号 </li> </ul> |
+/// |HKIdCard | 中国香港身份证 | <ul> <li> birthDate：出生日期 </li> <li> firstIssuedDate：首次签发日期 </li> <li> idNumber：身份证号码 </li> <li> issuedCode：签发标志 </li> <li> issuedDate：签发日期 </li> <li> nameCn：	中文姓名 </li> <li> nameCode：姓名电码 </li> <li> nameEn：英文姓名 </li> <li> sex：性别 </li> </ul> |
+/// |InternationalIdCard | 国际身份证 | <ul> <li> 印度身份证正面字段：<ul> <li> name：本国姓名</li> <li> nameEn：英文姓名</li> <li> birthDate：出生日期 </li> <li> sex：性别 </li> <li> cardNumber：证件号码</li> <li> virtualNumber：虚拟号码 </li> </ul> </li> <li> 印度身份证反面字段：<ul> <li> address：本国地址 </li> <li> addressEn：英文地址 </li> <li> cardNumber：证件号码 </li> <li> virtualNumber：虚拟号码 </li> </ul> </li> <li> 印度纳税人证件字段： <ul> <li> birthDate：生日 </li> <li> fatherName：父亲姓名 </li> <li> name：姓名 </li> <li> taxId：	税号 </li> </ul> </li> <li> 越南身份证正面字段：<ul> <li> birthDate：	出生日期 </li> <li> validToDate：有效期至 </li> <li> residence：居住地</li> <li> cardType：证件类型</li> <li> placeOfAncestry：原籍地 </li> <li> cardNumber：证件号码 </li> <li> name：姓名 </li> <li> sex：性别</li> <li> nationality：国籍 </li> </ul> </li> <li> 越南身份证反面字段：<ul> <li> issuer：签发人 </li> <li> mrzLine1：机读码一 </li> <li> mrzLine2：机读码二 </li> <li> mrzLine3：机读码三 </li> <li> personalCharacteristics：身份识别特征 </li> <li> issueDate：签发日期 </li> </ul> </li> <li> 韩国身份证字段：<ul> <li> name：本国姓名 </li> <li> nameChn：中文姓名 </li> <li> cardNumber：证件号码 </li> <li> address：住址 </li> <li> issueDate：签发日期 </li> <li> issuer：签发人 </li> </ul> </li> <li>孟加拉国身份证字段：<ul> <li>name：本国姓名 </li> <li>nameEn：英文姓名 </li> <li>fatherName：父亲姓名 </li> <li>motherName：母亲姓名 </li> <li>birthDate：出生日期 </li> <li>cardNumber：	身份证号 </li> </ul> </li> </ul> |
+/// |Stamp| 公章 | <ul> <li> companyId：进出口企业代码</li> <li> organizationName：组织名</li> <li> antiFakeCode：防伪编码</li> <li> otherText：其它文字</li> <li> topText：上环文字</li> <li> organizationNameEng：英文组织名 </li> <li> taxpayerId：纳税人识别号 </li> </ul>|   
+/// |Invoice| 增值税发票 | <ul> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> invoiceDate：开票日期 </li> <li> machineCode：机器编码 </li> <li> checkCode：校验码 </li> <li> purchaserName：受票方名称 </li> <li> passwordArea：密码区 </li> <li> invoiceAmountPreTax：不含税金额 </li> <li> invoiceTax：发票税额 </li> <li> totalAmountInWords：大写金额 </li> <li> totalAmount：发票金额 </li> <li> sellerName：销售方名称 </li> <li> sellerTaxNumber：销售方税号 </li> <li> sellerContactInfo：销售方地址、电话 </li> <li> sellerBankAccountInfo：销售方开户行、账号 </li> <li> drawer：开票人 </li> <li> title：标题 </li> <li> invoiceType：发票类型（电子普通发票、电子专用发票、专用发票、普通发票、通用发票） </li> <li> formType：联次 </li> <li> printedInvoiceCode：机打发票代码 </li> <li> printedInvoiceNumber：机打发票号码 </li> <li> purchaserBankAccountInfo：受票方开户行、账号 </li> <li> purchaserContactInfo：受票方地址、电话 </li> <li> purchaserTaxNumber：受票方税号 </li> <li> recipient：收款人 </li> <li> remarks：备注 </li> <li> reviewer：复核人 </li> <li> specialTag：特殊标识信息 </li> <li> invoiceDetails：发票详单 </li> </ul>|   
+/// |CarInvoice| 机动车销售统一发票 | <ul> <li> taxCode：税控码 </li> <li> invoiceDate：开票日期 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> machineCode：机器编号 </li> <li> purchaserName：购买方名称 </li> <li> purchaseCode：购买方身份证号码/组织机构代码 </li> <li> vehicleType：车辆类型 </li> <li> brandMode：厂牌型号 </li> <li> origin：产地 </li> <li> certificateNumber：合格证号 </li> <li> importCertificateNumber：进口证明书号 </li> <li> commodityInspectionNumber：商检单号 </li> <li> engineNumber：发动机号码 </li> <li> vinCode：车辆识别代号/车架号码 </li> <li> invoiceAmountCn：价税合计（大写） </li> <li> invoiceAmount：价税合计（小写） </li> <li> sellerName：销货单位名称 </li> <li> sellerContact：销货单位电话 </li> <li> sellerTaxNumber：销货单位纳税人识别号 </li> <li> sellerBankAccount：销货单位账号 </li> <li> sellerAddress：销货单位地址 </li> <li> sellerDepositaryBank：销货单位开户银行 </li> <li> taxRate：增值税税率或征收率 </li> <li> tax：增值税税额 </li> <li> taxAuthoritiesInfo：主管税务机关及代码 </li> <li> taxAuthoritiesName：主管税务机关 </li> <li> taxAuthoritiesCode：主管税务代码 </li> <li> preTaxAmount：不含税价 </li> <li> passengerLimitNumber：限乘人数 </li> <li> issuer：开票人 </li> <li> tonnage：吨位 </li> <li> purchaserTaxNumber：购买方纳税人识别号 </li> <li> taxPaymentNumber：完税凭证号码 </li> </ul>|   
+/// |QuotaInvoice| 定额发票 | <ul> <li>invoiceCode：发票代码</li> <li> invoiceNumber：发票号码 </li> <li> AmountInWords：大写金额 </li> <li> Amount：小写金额 </li> <li> title：发票标题 </li> <li> formType：联次 </li> </ul>|
+/// |AirItinerary| 航空行程单 | <ul> <li> agentCode：销售单位代号 </li> <li> caacDevelopmentFund：民航发展基金 </li> <li> endorsement：签注 </li> <li> fare：票价 </li> <li> flights：航班详单 </li> <li> fuelSurcharge：燃油附加费 </li> <li> idCardNumber：有效身份证号码 </li> <li> insurance：保险费 </li> <li> internationalFlightSign：国内国际标签 </li> <li> issueCompany：填开单位 </li> <li> issueDate：填开日期 </li> <li> otherTaxes：其他税费 </li> <li> passengerName：旅客姓名 </li> <li> pnrCode：PNR码 </li> <li> promptMessage：提示信息 </li> <li> serialNumber：印刷序号 </li> <li> ticketNumber：电子客票号码 </li> <li> totalAmount：合计 </li> <li> validationCode：验证码 </li> </ul>|
+/// |TrainTicket| 火车票 | <ul> <li> departureStation：出发站 </li> <li> arrivalStation：到达站 </li> <li> trainNumber：车次 </li> <li> departureTime：开车时间 </li> <li> seatNumber：座位号 </li> <li> fare：票价 </li> <li> ticketGate：检票口 </li> <li> seatType：座位类型 </li> <li> passengerInfo：旅客信息 </li> <li> passengerName：旅客姓名 </li> <li> ticketNumber：票号 </li> <li> ticketCode：售票码 </li> <li> saleInfo：售票车站信息 </li> </ul>|
+/// |TollInvoice| 过路过桥费发票 | <ul> <li> title：标题 </li> <li> formType：联次 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> date：日期 </li> <li> time：时间 </li> <li> vehicleType：车型 </li> <li> entranceName：入口 </li> <li> exitName：出口 </li> <li> totalAmount：总金额 </li> <li> ftype：是否是复印件（1：是，0：否） </li> </ul>|
+/// |RollTicket| 增值税发票卷票 | <ul> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> invoiceDate：开票日期 </li> <li> checkCode：校验码 </li> <li> sellerName：销售方名称 </li> <li> sellerTaxNumber：销售方税号 </li> <li> purchaserName：购买方名称 </li> <li> purchaserTaxCode：购买方税号 </li> <li> title：标题 </li> <li> IGNORE：机打号码 </li> <li> machineCode：机器编号 </li> <li> cashier：收款员 </li> <li> totalAmountInWords：合计金额（大写） </li> <li> totalAmount：合计金额（小写） </li> <li> invoiceDetails：发票详单 </li> <li> itemName：项目 </li> <li> quantity：数量 </li> <li> unitPrice：单价 </li> <li> amount：金额 </li> </ul>|
+/// |BankAcceptance| 银行承兑汇票 | <ul> <li> issueDate：出票日期 </li> <li> validToDate：到期日期 </li> <li> draftStatus：票据状态 </li> <li> draftNumber：票据号码 </li> <li> issuerName：出票人全称 </li> <li> issuerAccountNumber：出票人账号 </li> <li> issuerAccountBank：出票人开户银行 </li> <li> payeeName：收票人全称 </li> <li> payeeAccountNumber：收票人账号 </li> <li> payeeAccountBank：收票人开户银行 </li> <li> totalAmountInWords：票据金额大写 </li> <li> totalAmount：票据金额小写 </li> <li> acceptorName：承兑人全称 </li> <li> acceptorAccountNumber：承兑人账号 </li> <li> acceptorBankNumber：承兑人开户行行号 </li> <li> acceptorAccountBank：承兑人开户行名称 </li> <li> agreementNumber：交易合同号 </li> <li> assignability：能否转让 </li> <li> acceptanceDate：承兑日期 </li> </ul>|
+/// |BusShipTicket| 客运车船票 | <ul> <li> title：标题 </li> <li> formType：发票联次 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> date：日期 </li> <li> time：时间 </li> <li> departureStation：出发车站 </li> <li> arrivalStation：到达车站 </li> <li> totalAmount：总金额 </li> <li> passengerName：姓名 </li> <li> idcardNo：身份证号 </li> </ul>|
+/// |NonTaxInvoice| 非税收入发票 | <ul> <li> additionalInfo：其他信息 </li> <li> invoiceCode：票据代码 </li> <li> invoiceDate：开票日期 </li> <li> invoiceDetails：项目详单 </li> <li> invoiceNumber：票据号码 </li> <li> payeeName：收款单位 </li> <li> payerCreditCode：交款人统一社会信用代码 </li> <li> payerName：交款人 </li> <li> recipient：收款人 </li> <li> reviewer：复核人 </li> <li> title：标题 </li> <li> totalAmount：合计金额（小写） </li> <li> totalAmountInWords：合计金额（大写） </li> <li> validationCode：校验码 </li> </ul>|
+/// |CommonPrintedInvoice| 通用机打发票 | <ul> <li> title：标题 </li> <li> formType：发票联次 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> printedInvoiceCode：发票代码-机打 </li> <li> printedInvoiceNumber：发票号码-机打 </li> <li> invoiceDate：开票日期 </li> <li> totalAmount：合计金额 </li> <li> sellerName：销售方名称 </li> <li> sellerTaxNumber：销售方纳税人识别号 </li> <li> purchaserName：购买方名称</li> <li> purchaserTaxNumber：购买方纳税人识别号 </li> <li> drawer：开票人</li> <li> recipient：收款人 </li> <li> remarks：备注</li> <li> invoiceDetails：发票详单</li> <li> itemName：项目名称</li> <li> unit：单位</li> <li> quantity：数量</li> <li> unitPrice：单价</li> <li> amount：总值</li> <li> ftype：是否是复印件（1：是，0：否）</li> </ul>|
+/// |HotelConsume| 酒店流水 | <ul> <li> fax：传真 </li> <li> phone：电话 </li> <li> postCode：邮编 </li> <li> roomNo：房号 </li> <li> checkInDate：入住日期 </li> <li> departureDate：离店日期 </li> <li> memberNumber：会员号码 </li> <li> totalConsumption：消费总计 </li> <li> name：姓名 </li> <li> roomType：房型 </li> <li> numberOfGuests：住店人数 </li> <li> roomRate：房费 </li> <li> address：地址</li> <li> consumptionDetails：消费详单 </li> <li> _消费详单_ 内字段说明 <ul> <li> date：日期 </li> <li> item：项目 </li> <li> consumption：消费 </li> <li> payment：付款 </li> </ul> </li> </ul>|
+/// |PaymentRecord| 支付详情页 | <ul> <li> description：商品说明 </li> <li> orderNumber：订单号 </li> <li> paymentMethod：付款方式 </li> <li> paymentTime：支付时间 </li> <li> recipientName：收款方名称 </li> <li> totalAmount：合计金额 </li> </ul>|
+/// |PurchaseRecord| 电商订单页 | <ul> <li> orderNumber：订单编号 </li> <li> transactionTime：交易时间 </li> <li> deliveryInfo：收货信息 </li> <li> totalAmount：交易金额 </li> <li> shopName：店铺名称 </li> <li> ftype：是否是复印件（1：是，0：否）</li> <li> shoppingDetails：商品详单 </li> <li> 商品详单字段说明：<ul> <li> name：商品名称 </li>  <li> specification：商品规格 </li>  <li> price：商品单价 </li>  <li> quantity：商品数量 </li> </ul> </li> </ul>|
+/// |RideHailingItinerary| 网约车行程单 | <ul> <li> serviceProvider：服务商 </li> <li> applicationDate：申请日期 </li> <li> startTime：行程开始时间 </li> <li> endTime：行程结束时间 </li> <li> phoneNumber：行程人手机号 </li> <li> totalAmount：总金额 </li> <li> rideDetails：行程详单 </li> <li> Number：序号 </li> <li> carType：车型 </li> <li> pickUpTime：上车时间 </li> <li> city：城市 </li> <li> startPlace：起点 </li> <li> endPlace：终点 </li> <li> mileage：里程 </li> <li> amount：金额 </li> <li> remarks：备注 </li> </ul>|
+/// |ShoppingReceipt| 购物小票 | <ul> <li> shopName：开票方名称 </li> <li> receiptDate：开票日期 </li> <li> receiptTime：开票时间 </li> <li> contactNumber：联系电话 </li> <li> shopAddress：地址 </li> <li> totalAmount：合计（实付）金额 </li> <li> receiptDetails：商品详单 </li> </ul>|
+/// |TaxClearanceCertificate| 税收完税证明 | <ul> <li> certificateNumber：编号 </li> <li> drawer：填票人 </li> <li> formType：联次 </li> <li> issueDate：填发日期 </li> <li> name：纳税人名称 </li> <li> remarks：备注 </li> <li> taxAuthorityName：税务机关 </li> <li> taxClearanceDetails：完税详单 </li> <li> taxNumbe：纳税人识别号 </li> <li> totalAmount：合计金额（小写） </li> <li> totalAmountInWords：合计金额（大写）</li> </ul>|
+/// |UsedCarInvoice| 二手车销售统一发票 | <ul> <li> title：标题 </li> <li> formType：联次 </li> <li> invoiceDate：开票日期 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> printedInvoiceCode：机打代码 </li> <li> printedInvoiceNumber：机打号码 </li> <li> taxCode：税控码 </li> <li> purchaserName：买方单位/个人姓名 </li> <li> purchaserCode：买方单位代码/身份证号码 </li> <li> purchaserAddress：买方单位/个人地址</li> <li> purchaserPhoneNumber：买方电话 </li> <li> sellerName：卖方单位/个人姓名 </li> <li> sellerCode：卖方单位代码/身份证号码 </li> <li> sellerAddress：卖方单位/个人住址 </li> <li> sellerPhoneNumber：卖方电话 </li> <li> licensePlateNumber：车牌照号 </li> <li> certificateNumber：登记证号 </li> <li> vehicleType：车辆类型 </li> <li> vinCode：车架号/车辆识别代码 </li> <li> brandMode：厂牌型号</li> <li> vehicleAdministrationName：转入地车辆管理所名称</li> <li> totalAmountInWords：车价合计（大写） </li>  <li> totalAmount：车价合计（小写）</li> <li> marketName：二手车市场名称 </li> <li> marketTaxNumber：二手车市场纳税人识别号 </li> <li> marketAddress：二手车市场地址 </li> <li> marketBankAccountInfo：二手车市场开户银行及账户 </li> <li> marketPhoneNumber：二手车市场电话 </li> <li> remarks：备注 </li> <li> drawer：开票人 </li> </ul>|
+/// |VehicleLicense| 行驶证 | <ul> <li>行驶证正面字段：<ul> <li> address：住址 </li> <li> engineNumber：发动机号码 </li> <li> issueDate：发证日期 </li> <li> model：品牌型号 </li> <li> owner：所有人 </li> <li> licensePlateNumber：号牌号码 </li> <li> registrationDate：注册日期 </li> <li> useNature：使用性质 </li> <li> vehicleType：车辆类型 </li> <li> vinCode：车辆识别代码 </li> <li> issueAuthority：签发机关 </li> </ul> </li>  <li> 行驶证反面字段：<ul> <li> licensePlateNumber：号牌号码 </li> <li> inspectionRecord：检验记录 </li> <li> passengerCapacity：核定载人数 </li> <li> totalWeight：总质量 </li> <li> curbWeight：整备质量 </li> <li> permittedWeight：和钉载质量 </li> <li> overallDimension：外廓尺寸 </li> <li> tractionWeight：准牵引总质量 </li> <li> energySign：能源标志 </li> <li> recordNumber：档案编号 </li> <li> remarks：备注 </li> </ul> </li> </ul>|
+/// |DrivingLicense| 驾驶证 | <ul> <li>驾驶证正面字段：<ul> <li> licenseNumber：证号 </li> <li> name：姓名 </li> <li> sex：性别 </li> <li> nationality：国籍 </li> <li> address：住址 </li> <li> birthDate：出生日期 </li> <li> initialIssueDate：初次领证日期 </li> <li> approvedType：准驾类型 </li> <li> issueAuthority：发证单位 </li> <li> validFromDate：有效起始日期 </li> <li> validPeriod：有效期限 </li> </ul> </li>  <li> 驾驶证反面字段：<ul> <li> name：姓名 </li> <li> recordNumber：档案编号 </li> <li> record：记录 </li> <li> licenseNumber：证号 </li> </ul> </li> </ul>|
+/// |VehicleRegistration| 机动车登记证 | <ul> <li> acquisitionMethod：车辆获得方式 </li> <li> axleNumber：轴数 </li> <li> barCode：条形编号 </li> <li> cabPassengerCapacity：驾驶室载客 </li> <li> containerDimension：货箱内部尺寸 </li> <li> displacement：排量 </li> <li> engineNumber：发动机号 </li> <li> engineType：发动机型号 </li> <li> frontWheelTrack：轮距前 </li> <li> fuelType：燃料种类 </li> <li> isDomestic：国产/进口 </li> <li> issueAuthority：发证机关 </li> <li> issueDate：发证日期 </li> <li> manufactureDate：车辆出厂日期 </li> <li> manufactureName：制造厂名称 </li> <li> overallDimension：外轮廓尺寸 </li> <li> passengerCapacity：驾驶室载客 </li> <li> permittedWeight：核定载质量 </li> <li> power：功率 </li> <li> rearWheelTrack：轮距后 </li> <li> registrationAuthority：登记机关 </li> <li> registrationDate：登记日期 </li> <li> registrationNumber：机动车登记编号 </li> <li> springNumber：钢板弹簧数 </li> <li> steeringForm：转向形式 </li> <li> tireNumber：轮胎数 </li> <li> tireSize：轮胎规格 </li> <li> totalWeight：总质量 </li> <li> tractionWeight：准牵引总质量 </li> <li> useNature：使用性质 </li> <li> vehicleBrand：车辆品牌 </li> <li> vehicleColor：车身颜色 </li> <li> vehicleModel：车辆型号 </li> <li> vehicleOwnerInfo：机动车所有人/身份证明名称/号码 </li> <li> vehicleType：车辆类型 </li> <li> vinCode：车辆识别代号/车架号 </li> <li> wheelbase：轴距 </li> </ul> |
+/// |VehicleCertification| 车辆合格证 | <ul> <li> MaximumLoadMass：半挂车鞍座最大允许总质量 </li> <li> axleLoad：轴荷 </li> <li> axleNumber：轴数 </li> <li> cabPassengerCapacity：驾驶室准驾人数 </li> <li> certificateNumber：合格证编号 </li> <li> chassisCertificateNumber：底盘合格证编号 </li> <li> chassisId：底盘ID </li> <li> chassisModel：底盘型号 </li> <li> containerDimension：货箱内部尺寸 </li> <li> displacement：排量 </li> <li> emissionStandard：排放标准 </li> <li> engineModel：发动机型号 </li> <li> engineNumber：发动机号 </li> <li> equipmentWeight：装备质量 </li> <li> frontWheelTrack：轮距前 </li> <li> fuelConsumption：油耗 </li> <li> fuelType：燃料种类 </li> <li> issueDate：发证日期 </li> <li> manufactureDate：车辆制造日期 </li> <li> manufactureName：车辆制造企业名称 </li> <li> massUtilizationCoefficient：载质量利用系数 </li> <li> maxDesignSpeed：最高设计车速 </li> <li> maximumLadenMass：额定载质量 </li> <li> overallDimension：外廓尺寸 </li> <li> passengerCapacity：额定载客 </li> <li> power：功率 </li> <li> rearWheelTrack：轮距后 </li> <li> remarks：备注 </li> <li> springNumber：钢板弹簧数 </li> <li> steeringForm：转向形式 </li> <li> tireNumber：轮胎数 </li> <li> tireSize：轮胎规格 </li> <li> totalWeight：总质量 </li> <li> tractionWeight：准牵引总质量 </li> <li> vehicleBrand：车辆品牌 </li> <li> vehicleColor：车身颜色 </li> <li> vehicleModel：车辆型号 </li> <li> vehicleName：车辆名称 </li> <li> vinCode：车辆识别代号/车架号 </li> <li> wheelbase：轴距 </li> </ul> |
+/// |LicensePlateNumber| 车牌 | <ul> <li> data：车牌信息 </li> </ul> |
+/// |CarVinCode| 车辆vin码 | <ul> <li> vinCode：车牌vin码信息 </li> </ul>|
+/// |BusinessLicense| 营业执照 | <ul><li> title：标题 </li>  <li> creditCode：统一社会信用代码 </li> <li> companyName：营业名称 </li> <li> companyType：类型 </li> <li> businessAddress：营业场所/住所 </li> <li> legalPerson：法人/负责人 </li> <li> businessScope：经营范围 </li> <li> registeredCapital：注册资本 </li> <li> RegistrationDate：注册日期 </li> <li> issueDate：发证日期 </li> <li> validPeriod：营业期限 </li> <li> validFromDate：格式化营业期限起始日期 </li> <li> validToDate：格式化营业期限终止日期 </li> <li> companyForm：组成形式 </li> </ul> |
+/// |BusinessLicense| 国际企业执照 | <ul> <li>印度公司注册证字段：<ul><li>certificateType：证件类型</li><li>registrationNo：注册号</li><li>legalName：法定名称</li><li>tradeName：商号</li><li>businessConstitution：商业类型</li><li>businessAddress：地址</li><li>liabilityDate：责任日期</li><li>validFromDate：有效起始日期</li><li>validToDate：有效终止日期</li><li>registrationType：注册类型</li><li>particularsOfApprovingAuthority：审批机关详情</li><li>name：姓名</li><li>designation：委任</li><li>jurisdictionalOffice：管辖办事处</li><li>issueDate：签发日期</li></ul></li> <li>韩国商业登记证字段：<ul><li>certificateType：证件类型</li><li>issuanceNo：发行号</li><li>processingTime：处理时间</li><li>companyNameEn：英文公司名称</li><li>companyName：非英文公司名称</li><li>registrationNo：商业注册号</li><li>nameOfRepresentativeEn：英文法人姓名</li><li>nameOfRepresentative：非英文法人姓名</li><li>residentRegistrationNo：法人证件号</li><li>businessAddressEn：英文商业地址</li><li>businessAddress：非英文商业地址</li><li>businessCommencementDate：商业起始时间</li><li>businessRegistrationDate：商业注册时间</li><li>businessTypeEn：英文商业类型</li><li>businessType：非英文商业类型</li><li>businessItemEn：英文经营范围</li><li>businessItem：非英文经营范围</li><li>jointCompanyName：联合企业名称</li><li>jointCompanyRegistrationNo：联合企业注册号</li><li>issueDate：签发日期</li><li>issuer：签发人</li></ul> </li> </ul> |
+/// |MedicalDeviceManageLicense| 医疗器械经营许可证 | <ul><li>title：证照标题</li><li>licenseNumber：许可证编号</li><li>companyName：企业名称</li><li>businessType：经营方式</li><li>officeAddress：住所</li><li>businessScope：经营范围</li><li>businessAddress：经营场所</li><li>warehouseAddress：库房/仓库地址</li><li>issueDate：发证日期</li><li>issueAuthority：发证部门</li><li>legalRepresentative：法定代表人</li><li>responsiblePerson：企业负责人</li><li>qualityManager：质量管理人</li><li>registeredAddress：注册地址</li><li>validToDate：有效期限/许可期限</li></ul> |
+/// |MedicalDeviceProduceLicense| 医疗器械生产许可证 | <ul><li>registeredAddress：注册地址</li><li>issueDate：发证日期</li><li>licenseNumber：许可证编号</li><li>issueAuthority：发证部门</li><li>legalRepresentative：法定代表人</li><li>productionAddress：生产地址</li><li>responsiblePerson：企业负责人</li><li>companyName：企业名称</li><li>validToDate：有效期限</li><li>officeAddress：住所</li><li>productionScope：生产范围</li></ul> |
+/// |CosmeticProduceLicense| 化妆品生产许可证 | <ul><li>title：证照名称</li><li>enterpriseName：企业名称</li><li>creditCode：社会信用代码</li><li>officeAddress：住址</li><li>legalRepresentative：法定代表人</li><li>responsiblePerson：企业负责人</li><li>safetyManager：质量安全负责人</li><li>productionAddress：生产地址</li><li>licenceNumber：许可证编号</li><li>licensedItemScope：许可项目</li><li>regulatoryAuthority：日常监督管理机关</li><li>regulatoryPersonnel：日常监督管理人员</li><li>reportHotline：投诉举报电话</li><li>issueOfficer：签发人</li><li>issueAuthority：发证机关</li><li>issueDate：发证日期</li><li>validToDate：有效期至</li><li>ftype：是否是复印件</li></ul> |
+/// |TaxiInvoice| 出租车发票 | <ul> <li> date：乘车日期 </li> <li> dropOffTime：下车时间 </li> <li> fare：金额 </li> <li> invoiceCode：发票代码 </li> <li> invoiceNumber：发票号码 </li> <li> licensePlateNumber：车牌号 </li> <li> mileage：里程 </li> <li> pickUpTime：上车时间 </li> </ul> |
+/// |TrademarkCertificate| 商标注册证 | <ul><li>validToDate：有效期至</li><li>registeredAddress：注册人地址</li><li>registrationDate：注册日期</li><li>registrant：注册人</li><li>approvedRightScope：核定使用商品/服务项目</li><li>iprNumber：知识产权编号</li><li>certificateNumber：编码</li></ul> |
+/// |FoodProduceLicense| 食品生产许可证 | <ul> <li> producerName：生产者名称 </li> <li> creditCode：社会信用代码（身份证号码） </li> <li> legalRepresentative：法定代表人（负责人） </li> <li> officeAddress：住所 </li> <li> productionAddress：生产地址 </li> <li> foodType：食品类别 </li> <li> licenceNumber：许可证编号 </li> <li> regulatoryAuthority：日常监督管理机构 </li> <li> regulatoryPersonnel：日常监督管理人员 </li> <li> reportHotline：投诉举报电话 </li> <li> issueAuthority：发证机关 </li> <li> issueOfficer：签发人 </li> <li> issueDate：签发日期 </li> <li> validToDate：有效期至 </li> </ul> |
+/// |FoodManagementLicense| 食品经营许可证 | <ul> <li> operatorName：经营者名称 </li> <li> creditCode：社会信用代码（身份证号码） </li> <li> legalRepresentative：法定代表人（负责人） </li> <li> officeAddress：住所 </li> <li> businessAddress：经营场所 </li> <li> mainBusiness：主体业态 </li> <li> businessScope：经营项目 </li> <li> licenceNumber：许可证编号 </li> <li> regulatoryAuthority：日常监督管理机构 </li> <li> regulatoryPersonnel：日常监督管理人员 </li> <li> reportHotline：投诉举报电话 </li> <li> issueAuthority：发证机关 </li> <li> issueOfficer：签发人 </li> <li> issueDate：签发日期 </li> <li> standardizedIssueDate：格式化签发日期 </li> <li> validToDate：有效期至 </li> <li> standardizedValidToDate：格式化有效期至 </li> </ul> |
+/// |ClassIIMedicalDeviceManageLicense| 第二类医疗器械经营备案凭证 | <ul> <li> recordNumber：备案编号 </li> <li> companyName：企业名称 </li> <li> officeAddress：住所 </li> <li> businessAddress：经营场所 </li> <li> warehouseAddress：库房地址 </li> <li> businessType：经营方式 </li> <li> legalRepresentative：法定代表人 </li> <li> responsiblePerson：企业负责人 </li> <li> businessScope：经营范围 </li> <li> recordationAuthority：备案部门 </li> <li> recordationDate：备案日期 </li> </ul> |
+/// |WayBill| 电子面单 | <ul> <li> recipientName：收件人姓名 </li> <li> senderAddress：寄件人姓名 </li> <li> senderPhoneNumber：寄件人电话 </li> <li> senderAddress：寄件人地址 </li> <li> recipientPhoneNumber：收件人电话 </li> <li> recipientAddress：收件人地址 </li> </ul> |
+/// |BankAccountPermit| 银行开户许可证 | <ul> <li> bankAccount：账号 </li> <li> legalRepresentative：法定代表人 </li> <li> depositaryBank：开户银行 </li> <li> approvalNumber：核准号 </li> <li> customerName：名称 </li> <li> permitNumber：编号 </li> <li> title：标题 </li> </ul> |
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeAllTextResponse {
@@ -10167,6 +10258,22 @@ impl crate::ToCodeMessage for RecognizeAllTextResponse {
     }
 }
 
+/// #### 如何使用本接口
+///
+/// | 步骤 | 概述                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+/// | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+/// | 1    | 开通 [OCR 统一识别](https://common-buy.aliyun.com/?commodityCode=ocr_unity_public_cn) 服务。本接口在公测阶段，是免费接口，开通后即可调用。
+/// | 3    | 可以参照[调试页面](https://api.aliyun.com/api/ocr-api/2021-07-07/RecognizeGeneralStructure?sdkStyle=dara) 提供的代码示例完成 API 接入开发。接入完成后，调用 API 获取识别结果。如果使用子账号调用接口，需要阿里云账号（主账号）对 RAM 账号进行授权。创建 RAM 用户的具体操作，请参考：[创建 RAM 用户。](https://help.aliyun.com/document_detail/93720.html)文字识别服务提供一种系统授权策略，即**AliyunOCRFullAccess**。具体授权操作，请参见[在用户页面为 RAM 用户授权。](https://help.aliyun.com/document_detail/116146.html) |
+///
+/// #### 重要提示
+///
+/// | 类型     | 概述                                                                                                                                                                      |
+/// | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+/// | 图片格式 | <ul> <li>本接口支持：PNG、JPG、JPEG、PDF、BMP、GIF、TIFF、WebP。</li></ul>                                        |
+/// | 图片尺寸 | <ul> <li> 图片长宽需要大于 15 像素，小于 8192 像素。</li> <li>长宽比需要小于 50。</li> <li>如需达到较好识别效果，建议长宽均大于 500px。</li> </ul>                        |
+/// | 图片大小 | <ul> <li> 图片二进制文件不能超过 10MB。</li> <li> 图片过大会影响接口响应速度，建议使用小于 1.5M 图片进行识别，且通过传图片 URL 的方式调用接口。</li> </ul>                |
+/// | 其他提示 | <ul> <li>请保证整张图片内容及其边缘包含在图像内。 </li> <li> 本能力会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li><li> PDF类型文件仅识别第一页。 </li> </ul> |
+/// ---
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeGeneralStructureResponse {
@@ -10186,6 +10293,87 @@ impl crate::ToCodeMessage for RecognizeGeneralStructureResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度（当NeedRotate=true时，返回此字段）。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |figure|list|图片中的图案信息（当OutputFigure=true时，返回此字段）。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_tablesInfo|list|表格信息（当OutputTable=true时，返回此字段）。|
+/// |prism_paragraphsInfo|list|段落信息（当Paragraph=true时，返回此字段）。|
+/// |prism_rowsInfo|list|行信息（当Row=true时，返回此字段）。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |tableId|int|表格的id（当OutputTable=true时，返回此字段）。|
+/// |tableCellId|int|表格中单元格的id（当OutputTable=true时，返回此字段）。|
+/// |charInfo|list|单字信息。|
+///
+/// #### 单字信息（charInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |word|string|单字文字。|
+/// |prob|int|置信度。|
+/// |x|int|单字左上角横坐标。|
+/// |y|int|单字左上角纵坐标。|
+/// |w|int|单字宽度。|
+/// |h|int|单字高度。|
+///
+/// #### 表格信息（prism_tablesInfo字段。当OutputTable=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableId|int|表格id，和prism_wordsInfo信息中的tableId对应。|
+/// |xCellSize|int|表格中横坐标单元格的数量。|
+/// |yCellSize|int|表格中纵坐标单元格的数量。|
+/// |cellInfos|list|单元格信息。|
+///
+/// #### 单元格信息（cellInfos字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableCellId|int|表格中单元格id，和prism_wordsInfo信息中的tableCellId对应。|
+/// |word|string|单元格中的文字。|
+/// |xsc|int|xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |xec|int|xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内。|
+/// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
+/// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
+///
+/// #### 段落信息（prism_paragraphsInfo字段。当Paragraph=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |paragraphId|int|段落id，和prism_wordsInfo信息中的paragraphId对应。|
+/// |word|string|段落文字。|
+///
+/// #### 行信息（prism_rowsInfo字段。当Row=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |rowId|int|行id，和prism_wordsInfo信息中的rowId对应。|
+/// |word|string|行文字。|
+///
+/// #### 图案位置信息（figure字段。当OutputFigure=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。blicense_title营业执照标题，national_emblem中国国徽，barcode条形码，qrcode二维码，face人脸，finger_print指纹，signature签名，round_stamp圆形印章，oval_stamp椭圆印章，rectangular_stamp矩形印章，square_stamp方形印章，rhombus_stamp菱形印章|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeAdvancedResponse {
@@ -10205,6 +10393,68 @@ impl crate::ToCodeMessage for RecognizeAdvancedResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度（当NeedRotate=true时，返回此字段）。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_paragraphsInfo|list|段落信息（当Paragraph=true时，返回此字段）。|
+/// |prism_tablesInfo|list|表格信息（当OutputTable=true时，返回此字段）。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |tableId|int|表格的id（当OutputTable=true时，返回此字段）。|
+/// |tableCellId|int|表格中单元格的id（当OutputTable=true时，返回此字段）。|
+/// |charInfo|list|单字信息。|
+///
+/// #### 单字信息（charInfo字段。当OutputCharInfo=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |word|string|单字文字。|
+/// |prob|int|置信度。|
+/// |x|int|单字左上角横坐标。|
+/// |y|int|单字左上角纵坐标。|
+/// |w|int|单字宽度。|
+/// |h|int|单字高度。|
+///
+/// #### 表格信息（prism_tablesInfo字段。当OutputTable=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableId|int|表格id，和prism_wordsInfo信息中的tableId对应。|
+/// |xCellSize|int|表格中横坐标单元格的数量。|
+/// |yCellSize|int|表格中纵坐标单元格的数量。|
+/// |cellInfos|list|单元格信息。|
+///
+/// #### 单元格信息（cellInfos字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableCellId|int|表格中单元格id，和prism_wordsInfo信息中的tableCellId对应。|
+/// |word|string|单元格中的文字。|
+/// |xsc|int|xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |xec|int|xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内。|
+/// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
+/// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
+///
+/// #### 段落信息（prism_paragraphsInfo字段。当Paragraph=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |paragraphId|int|段落id，和prism_wordsInfo信息中的paragraphId对应。|
+/// |word|string|段落文字。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeHandwritingResponse {
@@ -10224,6 +10474,28 @@ impl crate::ToCodeMessage for RecognizeHandwritingResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度（当NeedRotate=true时，返回此字段）。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。如果最外层的 angle 不为 0，需要按照 angle 矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBasicResponse {
@@ -10243,6 +10515,27 @@ impl crate::ToCodeMessage for RecognizeBasicResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+/// |word|string|文字块的文字内容。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeGeneralResponse {
@@ -10262,6 +10555,60 @@ impl crate::ToCodeMessage for RecognizeGeneralResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_tablesInfo|list|表格信息。|
+/// |tableHeadTail|list|表头、表尾信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |tableId|int|表格的id（当OutputTable=true时并且该文字块在表格内则存在该字段，返回此字段）。|
+/// |tableCellId|int|表格中单元格的id（当OutputTable=true时并且该文字块在表格内则存在该字段，返回此字段）。|
+///
+///
+/// #### 表格信息（prism_tablesInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableId|int|表格id，和prism_wordsInfo信息中的tableId对应。|
+/// |xCellSize|int|表格中横坐标单元格的数量。|
+/// |yCellSize|int|表格中纵坐标单元格的数量。|
+/// |cellInfos|list|单元格信息。|
+///
+///
+/// #### 单元格信息（cellInfos字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableCellId|int|表格中单元格id，和prism_wordsInfo信息中的tableCellId对应。|
+/// |word|string|单元格中的文字。|
+/// |xsc|int|xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |xec|int|xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内。|
+/// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
+/// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
+///
+/// #### 表头、表尾信息（tableHeadTail字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |head|list|表头信息。|
+/// |tableId|int|表格ID（和**prism_tablesInfo**中的**tableId**对应）。|
+/// |tail|list|表尾信息。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTableOcrResponse {
@@ -10281,6 +10628,39 @@ impl crate::ToCodeMessage for RecognizeTableOcrResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息，正面为face字段，反面为back字段。|
+/// |sliceRect|list|结构化信息的坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|姓名。|
+/// |idNumber|string|证件号码。|
+/// |date|string|日期。|
+/// |time|string|时间。|
+/// |color|string|颜色。|
+/// |remarks|string|备注信息。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeHealthCodeResponse {
@@ -10300,6 +10680,73 @@ impl crate::ToCodeMessage for RecognizeHealthCodeResponse {
     }
 }
 
+/// ## 返回字段补充说明
+/// ```ignore
+/// 第一种返回格式（UseNewStyleOutput=false）
+/// angle    图片的角度，当NeedRotate为true时才会返回，0表示正向，90表示图片朝右，180朝下，270朝左
+/// content    识别出图片的文字块汇总
+/// height    算法矫正图片后的高度
+/// width    算法矫正图片后的宽度
+/// orgHeight    原图的高度
+/// orgWidth    原图的宽度
+/// prism_wnum    识别的文字块的数量，prism_wordsInfo数组的大小
+/// --------------------------prism-wordsInfo文字块数组内的字段说明--------------------------
+/// angle    文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换
+/// height    文字块的高度
+/// width    文字块的宽度
+/// pos    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// word    文字块内容
+/// tableId    当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id
+/// tableCellId    当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id
+/// paragraphId    当Paragraph为true返回该字段，表示段落id
+/// -----------------------------------------charInfo单字信息-------------------------------------------
+/// word    单字文字
+/// prob    置信度
+/// x    单字左上角横坐标
+/// y    单字左上角纵坐标
+/// w    单字宽度
+/// h    单字高度
+/// -----------------------------------------------------------------------------------------------------------
+/// -----------------------------------------------------------------------------------------------------------
+/// ----------------------------prism-tablesInfo表格数组内的字段说明---------------------------
+/// tableId    表格id，和prism_wordsInfo信息中的tableId对应
+/// xCellSize    表格中横坐标单元格的数量
+/// yCellSize    表格中纵坐标单元格的数量
+/// -------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系-----------
+/// tableCellId    表格中单元格id，和prism_wordsInfo信息中的tableCellId对应
+/// word    单元格中的文字
+/// xsc    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0
+/// xec    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内
+/// ysc    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0
+/// yec    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0
+/// pos    单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标
+///
+/// ------------------------------------------------------------------------------------
+/// 第二种返回格式（UseNewStyleOutput=true）
+/// docInfo    文档信息
+/// layouts    版面信息列表
+/// version    doc-json版本信息
+/// ----------------------------------------docInfo中的字段----------------------------------------
+/// pages    文档页面列表
+/// imageWidth    页面转图后的宽
+/// imageHeight    页面转图后的高
+/// pageIdAllDocs    页面在所有文档的页索引
+/// pageIdCurDoc    页面在当前文档的页索引
+/// ----------------------------------------layouts中的字段----------------------------------------
+/// alignment    间距枚举（LEFT、CENTER、RIGHT、BOTH）
+/// blocks    字块信息列表
+/// text    文本内容
+/// firstLinesChars    文字首行缩进
+/// index    版面阅读顺序
+/// lineHeight    行平均高度
+/// pageNum    单元格所在页数
+/// pos    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// type    版面类型（title：标题、table：表格、table_name：表格名、table_note：表注、multicolumn：多栏文字、formula：公式、contents_title：目录标题、contents：目录主体、text：普通文字、figure：图表、foot：页脚、head：页眉、side：侧栏）
+/// uniqueId    版面信息唯一id
+/// numCol    表格总列数
+/// numRow    表格总行数
+/// cells    单元格信息
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeDocumentStructureResponse {
@@ -10319,6 +10766,68 @@ impl crate::ToCodeMessage for RecognizeDocumentStructureResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息，正面为face字段，反面为back字段。|
+/// |figure|list|身份证人像面的人脸位置信息（当OutputFigure=true时，返回此字段）。|
+/// |sliceRect|object|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |warning|object|身份证质量检测信息（当OutputQualityInfo=true时，返回此字段）。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 正面识别结果（face字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|姓名。|
+/// |sex|string|性别。|
+/// |ethnicity|string|民族。|
+/// |birthDate|string|出生日期。|
+/// |address|string|住址。|
+/// |idNumber|string|身份证号码。|
+///
+/// #### 反面识别结果（back字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |issueAuthority|string|签发机关。|
+/// |validPeriod|string|有效期限。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 正面人像位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|人像图案左上角横坐标。|
+/// |y|int|人像图案左上角纵坐标。|
+/// |w|int|人像图案宽度。|
+/// |h|int|人像图案高度。|
+/// |box|object|人像图案坐标信息：人像图案中心横纵坐标，长宽，图案顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|人像图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 身份证质量检测识别结果（warning字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |isCopy|int|是否是复印件（1：是，0：否）。|
+/// |isReshoot|int|是否是翻拍（1：是，0：否）。|
+/// |completenessScore|float|完整度评分。|
+/// |qualityScore|float|整体质量分数。|
+/// |tamperScore|float|篡改指数（数值越大表示篡改可能性越大，推荐阈值：60）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeIdcardResponse {
@@ -10338,6 +10847,56 @@ impl crate::ToCodeMessage for RecognizeIdcardResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |passportType|string|证件类型。|
+/// |surname|string|姓。|
+/// |givenName|string|名。|
+/// |passportNumber|string|护照号码。|
+/// |nationality|string|国家码。|
+/// |nameEn|string|英文姓名。|
+/// |name|string|非英文姓名。|
+/// |sex|string|性别。|
+/// |birthPlaceEn|string|出生地。|
+/// |birthPlace|string|非英文出生地。|
+/// |country|string|国籍。|
+/// |validToDate|string|有效期至。|
+/// |birthDate|string|出生日期。|
+/// |birthDateYmd|string|出生日期-年月日。|
+/// |issueDateYmd|string|签发日期。|
+/// |issuePlaceEn|string|签发地。|
+/// |issuePlace|string|非英文签发地。|
+/// |issueAuthorityEn|string|签发机关。|
+/// |issueAuthority|string|非英文签发机关。|
+/// |idNumber|string|身份号。|
+/// |mrzLine1|string|机读码一。|
+/// |mrzLine2|string|机读码二。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizePassportResponse {
@@ -10357,6 +10916,68 @@ impl crate::ToCodeMessage for RecognizePassportResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（户主页***data***字段，当**IsResidentPage**不传或传false。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |Registrar|string|承办人签章。|
+/// |address|string|住址。|
+/// |householdNumber|string|户号。|
+/// |householdType|string|户别。|
+/// |householderCommunity|string|户主社区。|
+/// |householderName|string|户主姓名。|
+/// |issueDate|string|签发日期。|
+/// |sectionNo|string|地段号。|
+///
+/// #### 结构化信息（常住人口页***data***字段，当**IsResidentPage=true**。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |birthDate|string|出生日期。|
+/// |birthPlace|string|出生地。|
+/// |bloodGroup|string|血型。|
+/// |educationalDegree|string|文化程度。|
+/// |employer|string|服务处所。|
+/// |ethnicity|string|民族。|
+/// |formerName|string|曾用名。|
+/// |householdNumber|string|户号。|
+/// |idCardNumber|string|身份证编号。|
+/// |immigratedToCityInfo|string|何时何地迁来本市。|
+/// |immigratedToResidenceInfo|string|何时由何地迁来本址。|
+/// |maritalStatus|string|婚姻状况。|
+/// |militaryServiceStatus|string|兵役状况。|
+/// |name|string|姓名。|
+/// |nativePlace|string|籍贯。|
+/// |occupation|string|职业。|
+/// |otherResidence|string|本市其他住址。|
+/// |registrar|string|承办人签章。|
+/// |registrationDate|string|登记日期。|
+/// |relation|string|与户主关系。|
+/// |religious|string|宗教信仰。|
+/// |sex|string|性别。|
+/// |stature|string|身高。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeHouseholdResponse {
@@ -10376,6 +10997,47 @@ impl crate::ToCodeMessage for RecognizeHouseholdResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |figure|list|图片中的图案信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 识别结果（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |area|string|面积。|
+/// |certificateNumber|string|证号。|
+/// |mutualOwnershipState|string|共有情况。|
+/// |obligee|string|权利人。|
+/// |location|string|坐落地址。|
+/// |unitNumber|string|不动产单元号。|
+/// |rightType|string|权利类型。|
+/// |rightProperty|string|权利性质。|
+/// |usage|string|用途。|
+/// |serviceLife|string|使用期限。|
+/// |otherState|string|权利其他状况。|
+/// |buildingArea|string|房屋建筑面积。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEstateCertificationResponse {
@@ -10395,6 +11057,37 @@ impl crate::ToCodeMessage for RecognizeEstateCertificationResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |cardType|string|卡种（CC（贷记卡），SCC（准贷记卡），DCC（存贷合一卡），DC（储蓄卡），PC（预付卡））。|
+/// |bankName|string|银行名称。|
+/// |cardNumber|string|银行卡号。|
+/// |validToDate|string|有效期限。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBankCardResponse {
@@ -10414,6 +11107,57 @@ impl crate::ToCodeMessage for RecognizeBankCardResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |neonatalName|string|新生儿姓名。|
+/// |sex|string|性别。|
+/// |birthTime|string|出生时间。|
+/// |gestationalAge|string|出生孕周。|
+/// |birthWeight|string|出生体重。|
+/// |birthLength|string|出生身长。|
+/// |birthPlace|string|出生地。|
+/// |medicalInstitutions|string|医疗机构名称。|
+/// |motherName|string|母亲姓名。|
+/// |motherAge|string|母亲年龄。|
+/// |motherNationality|string|母亲国籍。|
+/// |motherEthnicity|string|母亲民族。|
+/// |motherAddress|string|母亲住址。|
+/// |motherIdCardNumber|string|母亲有效身份证件号。|
+/// |fatherName|string|父亲姓名。|
+/// |fatherAge|string|父亲年龄。|
+/// |fatherNationality|string|父亲国籍。|
+/// |fatherEthnicity|string|父亲民族。|
+/// |fatherAddress|string|父亲住址。|
+/// |fatherIdCardNumber|string|父亲有效身份证件号。|
+/// |issueAuthority|string|签发机构。|
+/// |issueDate|string|签发日期。|
+/// |certificateNumber|string|编号。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBirthCertificationResponse {
@@ -10433,6 +11177,31 @@ impl crate::ToCodeMessage for RecognizeBirthCertificationResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// passportType 证件类型
+/// countryCode  国家码
+/// passportNumber  护照号码
+/// nameEn  英文姓名
+/// name  中文姓名
+/// sex  性别
+/// birthPlace  出生地
+/// nationality  国籍
+/// issuePlace 签发地
+/// issueAuthority 签发机关
+/// mrzLine1  机读码一
+/// mrzLine2 机读码二
+/// validToDate  有效期至
+/// birthDate  出生日期
+/// issueDate  签发日期
+/// height            算法矫正图片后的高度
+/// width             算法矫正图片后的宽度
+/// orgHeight      原图的高度
+/// orgWidth       原图的宽度
+/// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
+/// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeChinesePassportResponse {
@@ -10452,6 +11221,43 @@ impl crate::ToCodeMessage for RecognizeChinesePassportResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |birthDate|string|出生日期。|
+/// |issueAuthority|string|签发机关。|
+/// |issueCount|string|签发次数。|
+/// |issuePlace|string|签发地点。|
+/// |nameCn|string|中文姓名。|
+/// |nameEn|string|英文姓名。|
+/// |permitNumber|string|证件号码。|
+/// |permitType|string|证件类别。|
+/// |sex|string|性别。|
+/// |validPeriod|string|有效期限。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeExitEntryPermitToMainlandResponse {
@@ -10471,6 +11277,27 @@ impl crate::ToCodeMessage for RecognizeExitEntryPermitToMainlandResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// permitType  证件类别
+/// nameCn 中文姓名
+/// nameEn 英文姓名
+/// birthDate 出生日期
+/// sex 性别
+/// validPeriod 有效期限
+/// issueAuthority 签发机关
+/// issuePlace 签发地
+/// permitNumber 证件号码
+/// mrzCode 机读码
+/// angle              角度：0-360，0表示向上，90表示向右，180表示向下，270度表示向左
+/// height            算法矫正图片后的高度
+/// width             算法矫正图片后的宽度
+/// orgHeight      原图的高度
+/// orgWidth       原图的宽度
+/// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
+/// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeExitEntryPermitToHKResponse {
@@ -10490,6 +11317,55 @@ impl crate::ToCodeMessage for RecognizeExitEntryPermitToHKResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |figure|list|身份证人像面的人脸位置信息。|
+/// |sliceRect|list|结构化信息的坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |birthDate|string|出生日期。|
+/// |firstIssuedDate|string|首次签发日期。|
+/// |idNumber|string|身份证号码。|
+/// |issuedCode|string|签发标志。|
+/// |issuedDate|string|签发日期。|
+/// |nameCn|string|中文姓名。|
+/// |nameCode|string|姓名电码。|
+/// |nameEn|string|英文姓名。|
+/// |sex|string|性别。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 正面人像位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|人像图案左上角横坐标。|
+/// |y|int|人像图案左上角纵坐标。|
+/// |w|int|人像图案宽度。|
+/// |h|int|人像图案高度。|
+/// |box|object|人像图案坐标信息：人像图案中心横纵坐标，长宽，图案顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|人像图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeHKIdcardResponse {
@@ -10509,6 +11385,41 @@ impl crate::ToCodeMessage for RecognizeHKIdcardResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |bankAccount|string|银行账号。|
+/// |cardNumber|string|社保保障卡号。|
+/// |idNumber|string|社会保障号码。|
+/// |issueDate|string|发卡日期。|
+/// |name|string|姓名。|
+/// |title|string|标题。|
+/// |validPeriod|string|有效期限。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
@@ -10528,6 +11439,102 @@ impl crate::ToCodeMessage for RecognizeSocialSecurityCardVersionIIResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息，正面为face字段，反面为back字段。|
+/// |sliceRect|list|结构化信息的坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 印度身份证正面识别结果（face字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|本国姓名。|
+/// |nameEn|string|英文姓名。|
+/// |birthDate|string|出生日期。|
+/// |sex|string|性别。|
+/// |cardNumber|string|证件号码。|
+/// |virtualNumber|string|虚拟号码。|
+///
+/// #### 印度身份证反面识别结果（back字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |address|string|本国地址。|
+/// |addressEn|string|英文地址。|
+/// |cardNumber|string|证件号码。|
+/// |virtualNumber|string|虚拟号码。|
+///
+/// #### 印度纳税人识别证识别结果
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |birthDate|string|生日。|
+/// |fatherName|string|父亲姓名。|
+/// |name|string|姓名。|
+/// |taxId|string|税号。|
+///
+///
+/// #### 越南身份证正面识别结果（face字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |birthDate|string|出生日期。|
+/// |validToDate|string|有效期至。|
+/// |residence|string|居住地。|
+/// |cardType|string|证件类型。|
+/// |placeOfAncestry|string|原籍地。|
+/// |cardNumber|string|证件号码。|
+/// |name|string|姓名。|
+/// |sex|string|性别。|
+/// |nationality|string|国籍。|
+///
+///
+/// #### 越南身份证反面识别结果（back字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |issuer|string|签发人。|
+/// |mrzLine1|string|机读码一。|
+/// |mrzLine2|string|机读码二。|
+/// |mrzLine3|string|机读码三。|
+/// |personalCharacteristics|string|身份识别特征。|
+/// |issueDate|string|签发日期。|
+///
+///
+/// #### 韩国身份证识别结果
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|本国姓名。|
+/// |nameChn|string|中文姓名。|
+/// |cardNumber|string|证件号码。|
+/// |address|string|住址。|
+/// |issueDate|string|签发日期。|
+/// |issuer|string|签发人。|
+///
+/// #### 孟加拉国身份证识别结果
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|本国姓名。|
+/// |nameEn|string|英文姓名。|
+/// |fatherName|string|父亲姓名。|
+/// |motherName|string|母亲姓名。|
+/// |birthDate|string|出生日期。|
+/// |cardNumber|string|身份证号。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeInternationalIdcardResponse {
@@ -10547,6 +11554,69 @@ impl crate::ToCodeMessage for RecognizeInternationalIdcardResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |count|int|识别的图片个数。|
+/// |subMsgs|list|图片信息。|
+///
+/// #### 发票信息（subMsgs字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |result|object|结构化信息。|
+/// |op|String|图片类型-英文。|
+/// |sliceRect|object|检测出的子图坐标信息。|
+/// |index|int|图片顺序。|
+/// |type|String|图片类型-中文。|
+///
+///
+/// #### op类型信息
+/// |类型|说明|
+/// |-----|---|
+/// |car_invoice|机动车销售发票|
+/// |bank_acceptance|银行承兑汇票|
+/// |train_ticket|火车票|
+/// |invoice|增值税发票|
+/// |air_itinerary|航空行程单|
+/// |taxi_ticket|出租车发票|
+/// |nontax_invoice|非税收入发票|
+/// |tax_clearance_certificate|税收完税证明|
+/// |used_car_invoice|二手车销售统一发票|
+/// |quota_invoice|定额发票|
+/// |toll_invoice|过路过桥费发票|
+/// |roll_ticket|增值税发票卷票|
+/// |bus_ship_ticket|客运车船票|
+/// |online_taxi_itinerary|网约车行程单|
+/// |common_printed_invoice|通用机打发票|
+///
+/// #### 结构化信息（result字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |data|object|结构化信息。|
+/// |sliceRect|object|检测出的子图坐标信息。|
+/// |angle|int|文字块的角度。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeMixedInvoicesResponse {
@@ -10566,6 +11636,83 @@ impl crate::ToCodeMessage for RecognizeMixedInvoicesResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |angle|int|文字块的角度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |codes|list|二维码信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 识别结果（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |invoiceCode|string|发票代码。|
+/// |invoiceNumber|string|发票号码。|
+/// |invoiceDate|string|开票日期。|
+/// |machineCode|string|机器编码。|
+/// |checkCode|string|校验码。|
+/// |purchaserName|string|受票方名称。|
+/// |passwordArea|string|密码区。|
+/// |invoiceAmountPreTax|string|不含税金额。|
+/// |invoiceTax|string|发票税额。|
+/// |totalAmountInWords|string|大写金额。|
+/// |totalAmount|string|发票金额。|
+/// |sellerName|string|销售方名称。|
+/// |sellerTaxNumber|string|销售方税号。|
+/// |sellerContactInfo|string|销售方地址、电话。|
+/// |sellerBankAccountInfo|string|销售方开户行、账号。|
+/// |drawer|string|开票人。|
+/// |title|string|标题。|
+/// |invoiceType|string|发票类型（数电专用发票、数电普通发票、电子普通发票、电子专用发票、专用发票、普通发票、通用发票）。|
+/// |formType|string|联次。|
+/// |printedInvoiceCode|string|机打发票代码。|
+/// |printedInvoiceNumber|string|机打发票号码。|
+/// |purchaserBankAccountInfo|string|受票方开户行、账号。|
+/// |purchaserContactInfo|string|受票方地址、电话。|
+/// |purchaserTaxNumber|string|受票方税号。|
+/// |recipient|string|收款人。|
+/// |remarks|string|备注。|
+/// |reviewer|string|复核人。|
+/// |specialTag|string|特殊标识信息。|
+/// |invoiceDetails|list|发票详单。|
+///
+/// #### 发票详单信息（invoiceDetails字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |itemName|string|货物或应税劳务、服务名称。|
+/// |specification|string|规格型号。|
+/// |unit|string|单位。|
+/// |quantity|string|数量。|
+/// |unitPrice|string|单价。|
+/// |amount|string|金额。|
+/// |taxRate|string|税率。|
+/// |tax|string|税额。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 二维码信息（codes字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|string|二维码地址。|
+/// |type|string|二维码类型。|
+/// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeInvoiceResponse {
@@ -10585,6 +11732,69 @@ impl crate::ToCodeMessage for RecognizeInvoiceResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+///
+/// #### 识别结果（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |taxCode|string|税控码。|
+/// |invoiceDate|string|开票日期。|
+/// |invoiceCode|string|发票代码。|
+/// |invoiceNumber|string|发票号码。|
+/// |machineCode|string|机器编号。|
+/// |purchaserName|string|购买方名称。|
+/// |purchaseCode|string|购买方身份证号码/组织机构代码。|
+/// |vehicleType|string|车辆类型。|
+/// |brandMode|string|厂牌型号。|
+/// |origin|string|产地。|
+/// |certificateNumber|string|合格证号。|
+/// |importCertificateNumber|string|进口证明书号。|
+/// |commodityInspectionNumber|string|商检单号。|
+/// |engineNumber|string|发动机号码。|
+/// |vinCode|string|车辆识别代号/车架号码。|
+/// |invoiceAmountCn|string|价税合计（大写）。|
+/// |invoiceAmount|string|价税合计（小写）。|
+/// |sellerName|string|销货单位名称。|
+/// |sellerContact|string|销货单位电话。|
+/// |sellerTaxNumber|string|销货单位纳税人识别号。|
+/// |sellerBankAccount|string|销货单位账号。|
+/// |sellerAddress|string|销货单位地址。|
+/// |sellerDepositaryBank|string|销货单位开户银行。|
+/// |taxRate|string|增值税税率或征收率。|
+/// |tax|string|增值税税额。|
+/// |taxAuthoritiesInfo|string|主管税务机关及代码。|
+/// |taxAuthoritiesName|string|主管税务机关。|
+/// |taxAuthoritiesCode|string|主管税务代码。|
+/// |preTaxAmount|string|不含税价。|
+/// |passengerLimitNumber|string|限乘人数。|
+/// |issuer|string|开票人。|
+/// |tonnage|string|吨位。|
+/// |purchaserTaxNumber|string|购买方纳税人识别号。|
+/// |taxPaymentNumber|string|完税凭证号码。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCarInvoiceResponse {
@@ -10604,6 +11814,16 @@ impl crate::ToCodeMessage for RecognizeCarInvoiceResponse {
     }
 }
 
+/// 中英文字段映射
+///
+/// ```ignore
+/// invoiceCode    发票代码
+/// invoiceNumber    发票号码
+/// AmountInWords    大写金额
+/// Amount    小写金额
+/// title    发票标题
+/// formType    联次
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeQuotaInvoiceResponse {
@@ -10623,6 +11843,67 @@ impl crate::ToCodeMessage for RecognizeQuotaInvoiceResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |agentCode|string|销售单位代号。|
+/// |caacDevelopmentFund|string|民航发展基金。|
+/// |endorsement|string|签注。|
+/// |fare|string|票价。|
+/// |flights|list|航班详单。|
+/// |fuelSurcharge|string|燃油附加费。|
+/// |idCardNumber|string|有效身份证号码。|
+/// |insurance|string|保险费。|
+/// |internationalFlightSign|string|国内国际标签。|
+/// |issueCompany|string|填开单位。|
+/// |issueDate|string|填开日期。|
+/// |otherTaxes|string|其他税费。|
+/// |passengerName|string|旅客姓名。|
+/// |pnrCode|string|PNR码。|
+/// |promptMessage|string|提示信息。|
+/// |serialNumber|string|印刷序号。|
+/// |ticketNumber|string|电子客票号码。|
+/// |totalAmount|string|合计。|
+/// |validationCode|string|验证码。|
+///
+/// #### 其他税费信息（flights字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |departureStation|string|出发站。|
+/// |arrivalStation|string|到达站。|
+/// |carrier|string|承运人。|
+/// |flightNumber|string|航班号。|
+/// |cabinClass|string|舱位等级。|
+/// |flightDate|string|乘机日期。|
+/// |flightTime|string|乘机时间。|
+/// |seatClass|string|座位等级。|
+/// |validFromDate|string|客票生效日期。|
+/// |validToDate|string|有效截止日期。|
+/// |freeBaggageAllowance|string|免费行李。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeAirItineraryResponse {
@@ -10642,6 +11923,54 @@ impl crate::ToCodeMessage for RecognizeAirItineraryResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+///
+/// #### 识别结果（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |departureStation|string|出发站。|
+/// |arrivalStation|string|到达站。|
+/// |trainNumber|string|车次。|
+/// |departureTime|string|开车时间。|
+/// |seatNumber|string|座位号。|
+/// |fare|string|票价。|
+/// |ticketGate|string|检票口。|
+/// |seatType|string|座位类型。|
+/// |passengerInfo|string|旅客信息。|
+/// |passengerName|string|旅客姓名。|
+/// |ticketNumber|string|票号。|
+/// |ticketCode|string|售票码。|
+/// |saleInfo|string|售票车站信息。|
+/// |electronicTicketNumber|string|电子客票号。|
+/// |buyerName|string|购买方名称。|
+/// |buyerCreditCode|string|购买方统一信用代码。|
+/// |title|string|标题。|
+/// |invoiceDate|string|开票日期。|
+/// |remarks|string|备注。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTrainInvoiceResponse {
@@ -10661,6 +11990,41 @@ impl crate::ToCodeMessage for RecognizeTrainInvoiceResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |date|string|乘车日期。|
+/// |dropOffTime|string|下车时间。|
+/// |fare|string|金额。|
+/// |invoiceCode|string|发票代码。|
+/// |invoiceNumber|string|发票号码。|
+/// |licensePlateNumber|string|车牌号。|
+/// |mileage|string|里程。|
+/// |pickUpTime|string|上车时间。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTaxiInvoiceResponse {
@@ -10680,6 +12044,29 @@ impl crate::ToCodeMessage for RecognizeTaxiInvoiceResponse {
     }
 }
 
+/// 中英文字段映射
+///
+/// ```ignore
+/// invoiceCode          发票代码
+/// invoiceNumber          发票号码
+/// invoiceDate          开票日期
+/// checkCode          校验码
+/// sellerName          销售方名称
+/// sellerTaxNumber          销售方税号
+/// purchaserName          购买方名称
+/// purchaserTaxCode          购买方税号
+/// title          标题
+/// IGNORE          机打号码
+/// machineCode          机器编号
+/// cashier          收款员
+/// totalAmountInWords          合计金额(大写)
+/// totalAmount          合计金额(小写)
+/// invoiceDetails          发票详单
+/// itemName            项目
+/// quantity            数量
+/// unitPrice            单价
+/// amount            金额
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeRollTicketResponse {
@@ -10699,6 +12086,54 @@ impl crate::ToCodeMessage for RecognizeRollTicketResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+///
+/// #### 识别结果（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |issueDate|string|出票日期。|
+/// |validToDate|string|到期日期。|
+/// |draftStatus|string|票据状态。|
+/// |draftNumber|string|票据号码。|
+/// |issuerName|string|出票人全称。|
+/// |issuerAccountNumber|string|出票人账号。|
+/// |issuerAccountBank|string|出票人开户银行。|
+/// |payeeName|string|收票人全称。|
+/// |payeeAccountNumber|string|收票人账号。|
+/// |payeeAccountBank|string|收票人开户银行。|
+/// |totalAmountInWords|string|票据金额大写。|
+/// |totalAmount|string|票据金额小写。|
+/// |acceptorName|string|承兑人全称。|
+/// |acceptorAccountNumber|string|承兑人账号。|
+/// |acceptorBankNumber|string|承兑人开户行行号。|
+/// |acceptorAccountBank|string|承兑人开户行名称。|
+/// |agreementNumber|string|交易合同号。|
+/// |assignability|string|能否转让。|
+/// |acceptanceDate|string|承兑日期。|
+/// |subDraftNumber|string|子票区间号。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBankAcceptanceResponse {
@@ -10718,6 +12153,35 @@ impl crate::ToCodeMessage for RecognizeBankAcceptanceResponse {
     }
 }
 
+/// ## 中英文字段映射
+/// ```ignore
+/// data    结构化信息
+/// prism_keyValueInfo    结构化信息的坐标信息
+/// sliceRect    图片中身份证子图区域的任意四边形表示，起始点为左上角，顺序为顺时针
+/// ftype    是否是复印件（1:是，0:否）
+/// ```
+/// *  **data**内字段说明
+/// ```ignore
+/// title    标题
+/// formType    发票联次
+/// invoiceCode    发票代码
+/// invoiceNumber    发票号码
+/// date    日期
+/// time    时间
+/// departureStation    出发车站
+/// arrivalStation    到达车站
+/// totalAmount    总金额
+/// passengerName    姓名
+/// idcardNo    身份证号
+/// ```
+/// * **prism_keyValueInfo数组**字段说明
+/// ```ignore
+/// key    识别出的字段名称
+/// keyProb    字段名称置信度
+/// value    识别出的字段名称对应的值
+/// valueProb    字段名称对应值的置信度
+/// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBusShipTicketResponse {
@@ -10737,6 +12201,57 @@ impl crate::ToCodeMessage for RecognizeBusShipTicketResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |additionalInfo|string|其他信息。|
+/// |invoiceCode|string|票据代码。|
+/// |invoiceDate|string|开票日期。|
+/// |invoiceDetails|list|项目详单。|
+/// |invoiceNumber|string|票据号码。|
+/// |payeeName|string|收款单位。|
+/// |payerCreditCode|string|交款人统一社会信用代码。|
+/// |payerName|string|交款人。|
+/// |recipient|string|收款人。|
+/// |reviewer|string|复核人。|
+/// |title|string|标题。|
+/// |totalAmount|string|合计金额（小写）。|
+/// |totalAmountInWords|string|合计金额（大写）。|
+/// |validationCode|string|校验码。|
+///
+/// #### 发票详单信息（invoiceDetails字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |amount|string|金额。|
+/// |name|string|项目名称。|
+/// |number|string|项目编号。|
+/// |quantity|string|数量。|
+/// |remark|string|备注。|
+/// |specification|string|标准。|
+/// |unit|string|单位。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeNonTaxInvoiceResponse {
@@ -10756,6 +12271,32 @@ impl crate::ToCodeMessage for RecognizeNonTaxInvoiceResponse {
     }
 }
 
+/// 中英文映射字段
+///
+/// ```ignore
+/// title           标题
+/// formType           发票联次
+/// invoiceCode           发票代码
+/// invoiceNumber           发票号码
+/// printedInvoiceCode          发票代码-机打
+/// printedInvoiceNumber           发票号码-机打
+/// invoiceDate           开票日期
+/// totalAmount           合计金额
+/// sellerName           销售方名称
+/// sellerTaxNumber           销售方纳税人识别号
+/// purchaserName           购买方名称
+/// purchaserTaxNumber           购买方纳税人识别号
+/// drawer           开票人
+/// recipient           收款人
+/// remarks           备注
+/// invoiceDetails           发票详单
+/// itemName           项目名称
+/// unit           单位
+/// quantity           数量
+/// unitPrice           单价
+/// amount           总值
+/// ftype           是否是复印件(1:是，0:否)
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCommonPrintedInvoiceResponse {
@@ -10775,6 +12316,29 @@ impl crate::ToCodeMessage for RecognizeCommonPrintedInvoiceResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// fax  传真
+/// phone  电话
+/// postCode  邮编
+/// roomNo  房号
+/// checkInDate  入住日期
+/// departureDate  离店日期
+/// memberNumber  会员号码
+/// totalConsumption  消费总计
+/// name  姓名
+/// roomType  房型
+/// numberOfGuests  住店人数
+/// roomRate  房费
+/// address  地址
+/// consumptionDetails  消费详单
+/// --------------------------consumptionDetails数组内的字段说明--------------------------
+/// date  日期
+/// item  项目
+/// consumption  消费
+/// payment  付款
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeHotelConsumeResponse {
@@ -10794,6 +12358,38 @@ impl crate::ToCodeMessage for RecognizeHotelConsumeResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |description|string|商品说明。|
+/// |orderNumber|string|订单号。|
+/// |paymentMethod|string|付款方式。|
+/// |paymentTime|string|支付时间。|
+/// |recipientName|string|收款方名称。|
+/// |totalAmount|string|合计金额。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizePaymentRecordResponse {
@@ -10813,6 +12409,22 @@ impl crate::ToCodeMessage for RecognizePaymentRecordResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// orderNumber  订单编号
+/// transactionTime  交易时间
+/// deliveryInfo  收货信息
+/// totalAmount  交易金额
+/// shopName  店铺名称
+/// shoppingDetails  商品详单
+/// ftype  是否是复印件
+/// --------------------------shoppingDetails数组内的字段说明--------------------------
+/// name  商品名称
+/// specification  商品规格
+/// price  商品单价
+/// quantity  商品数量
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizePurchaseRecordResponse {
@@ -10832,6 +12444,33 @@ impl crate::ToCodeMessage for RecognizePurchaseRecordResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// serviceProvider 服务商
+/// applicationDate 申请日期
+/// startTime 行程开始时间
+/// endTime 行程结束时间
+/// phoneNumber 行程人手机号
+/// totalAmount 总金额
+/// rideDetails 行程详单
+/// Number 序号
+/// carType 车型
+/// pickUpTime 上车时间
+/// city 城市
+/// startPlace  起点
+/// endPlace 终点
+/// mileage 里程
+/// amount 金额
+/// remarks 备注
+/// angle              角度：0-360，0表示向上，90表示向右，180表示向下，270度表示向左
+/// height            算法矫正图片后的高度
+/// width             算法矫正图片后的宽度
+/// orgHeight      原图的高度
+/// orgWidth       原图的宽度
+/// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
+/// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeRideHailingItineraryResponse {
@@ -10851,6 +12490,37 @@ impl crate::ToCodeMessage for RecognizeRideHailingItineraryResponse {
     }
 }
 
+/// ## 中英文字段映射
+/// ```ignore
+/// data    结构化信息
+/// prism_keyValueInfo    结构化信息的坐标信息
+/// ftype    是否是复印件（1:是，0:否）
+/// ```
+/// *  **data内字段说明**
+/// ```ignore
+/// shopName    开票方名称
+/// receiptDate    开票日期
+/// receiptTime    开票时间
+/// contactNumber    联系电话
+/// shopAddress    地址
+/// totalAmount    合计(实付)金额
+/// receiptDetails    商品详单
+/// ```
+/// * **prism_keyValueInfo数组**字段说明
+/// ```ignore
+/// key    识别出的字段名称
+/// keyProb    字段名称置信度
+/// value    识别出的字段名称对应的值
+/// valueProb    字段名称对应值的置信度
+/// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
+/// ```
+/// * **receiptDetails数组**字段说明
+/// ```ignore
+/// amount    小记
+/// itemName    品名
+/// quantity    数量
+/// unitPrice   单价
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeShoppingReceiptResponse {
@@ -10870,6 +12540,19 @@ impl crate::ToCodeMessage for RecognizeShoppingReceiptResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+///
+/// title          标题
+/// name          姓名
+/// idNumber          社会保障号码
+/// cardNumber          社保保障卡号
+/// bankAccount          银行账号
+/// issueDate          发卡日期
+/// validPeriod          有效期限
+/// ftype           是否是复印件(1:是，0:否)
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeSocialSecurityCardResponse {
@@ -10889,6 +12572,21 @@ impl crate::ToCodeMessage for RecognizeSocialSecurityCardResponse {
     }
 }
 
+/// 中英文映射字段
+///
+/// ```ignore
+/// title           标题  
+/// formType           联次  
+/// invoiceCode           发票代码  
+/// invoiceNumber           发票号码
+/// date           日期  
+/// time           时间  
+/// vehicleType           车型
+/// entranceName           入口  
+/// exitName           出口
+/// totalAmount          总金额
+/// ftype           是否是复印件(1:是，0:否)
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTollInvoiceResponse {
@@ -10908,6 +12606,54 @@ impl crate::ToCodeMessage for RecognizeTollInvoiceResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |certificateNumber|string|编号。|
+/// |drawer|string|填票人。|
+/// |formType|string|联次。|
+/// |issueDate|string|填发日期。|
+/// |name|string|纳税人名称。|
+/// |remarks|string|备注。|
+/// |taxAuthorityName|string|税务机关。|
+/// |taxClearanceDetails|list|完税详单。|
+/// |taxNumbe|string|纳税人识别号。|
+/// |totalAmount|string|合计金额（小写）。|
+/// |totalAmountInWords|string|合计金额（大写）。|
+///
+/// #### 完税详单（taxClearanceDetails字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |amount|string|实缴（退）金额。|
+/// |date|string|入（退）库时间。|
+/// |itemName|string|品目名称。|
+/// |taxPeriod|string|税款所属期。|
+/// |taxType|string|税种。|
+/// |voucherNumber|string|原凭证号。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTaxClearanceCertificateResponse {
@@ -10927,6 +12673,49 @@ impl crate::ToCodeMessage for RecognizeTaxClearanceCertificateResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// title 标题
+/// formType 联次
+/// invoiceDate 开票日期
+/// invoiceCode 发票代码
+/// invoiceNumber 发票号码
+/// printedInvoiceCode 机打代码
+/// printedInvoiceNumber 机打号码
+/// taxCode 税控码
+/// purchaserName 买方单位/个人
+/// purchaserCode 买方单位代码/身份证号码
+/// purchaserAddress 买方单位/个人地址
+/// purchaserPhoneNumber 买方电话
+/// sellerName 卖方单位/个人
+/// sellerCode 卖方单位代码/身份证号码
+/// sellerAddress 卖方单位/个人住址
+/// sellerPhoneNumber 卖方电话
+/// licensePlateNumber 车牌照号
+/// certificateNumber 登记证号
+/// vehicleType 车辆类型
+/// vinCode 车架号/车辆识别代码
+/// brandMode 厂牌型号
+/// vehicleAdministrationName  转入地车辆管理所名称
+/// totalAmountInWords 车价合计(大写)
+/// totalAmount 车价合计(小写)
+/// marketName 二手车市场名称
+/// marketTaxNumber 二手车市场纳税人识别号
+/// marketAddress 二手车市场地址
+/// marketBankAccountInfo 二手车市场开户银行及账户
+/// marketPhoneNumber 二手车市场电话
+/// remarks 备注
+/// drawer 开票人
+///
+/// angle              角度：0-360，0表示向上，90表示向右，180表示向下，270度表示向左</br>
+/// height            算法矫正图片后的高度
+/// width             算法矫正图片后的宽度
+/// orgHeight      原图的高度
+/// orgWidth       原图的宽度
+/// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
+/// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeUsedCarInvoiceResponse {
@@ -10946,6 +12735,59 @@ impl crate::ToCodeMessage for RecognizeUsedCarInvoiceResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |figure|list|图片中的图案信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |creditCode|string|统一社会信用代码。|
+/// |companyName|string|营业名称。|
+/// |companyType|string|类型。|
+/// |businessAddress|string|营业场所/住所。|
+/// |legalPerson|string|法人/负责人。|
+/// |businessScope|string|经营范围。|
+/// |registeredCapital|string|注册资本。|
+/// |RegistrationDate|string|注册日期。|
+/// |validPeriod|string|营业期限。|
+/// |validFromDate|string|格式化营业期限起始日期。|
+/// |validToDate|string|格式化营业期限终止日期。|
+/// |companyForm|string|组成形式。|
+/// |issueDate|string|发照日期。|
+/// |title|string|证照标题。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 图案位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBusinessLicenseResponse {
@@ -10965,6 +12807,38 @@ impl crate::ToCodeMessage for RecognizeBusinessLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |bankAccount|string|账号。|
+/// |legalRepresentative|string|法定代表人。|
+/// |depositaryBank|string|开户银行。|
+/// |approvalNumber|string|核准号。|
+/// |customerName|string|名称。|
+/// |permitNumber|string|编号。|
+/// |title|string|标题。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeBankAccountLicenseResponse {
@@ -10984,6 +12858,17 @@ impl crate::ToCodeMessage for RecognizeBankAccountLicenseResponse {
     }
 }
 
+/// 中英文字段映射
+///
+/// ```ignore
+/// validToDate有效期至
+/// registeredAddress注册人地址
+/// registrationDate注册日期
+/// registrant注册人
+/// approvedRightScope核定使用商品/服务项目
+/// iprNumber知识产权编号
+/// certificateNumber编码
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeTradeMarkCertificationResponse {
@@ -11003,6 +12888,55 @@ impl crate::ToCodeMessage for RecognizeTradeMarkCertificationResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |codes|list|二维码信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |producerName|string|生产者名称。|
+/// |creditCode|string|社会信用代码（身份证号码）。|
+/// |legalRepresentative|string|法定代表人（负责人）。|
+/// |officeAddress|string|住所。|
+/// |productionAddress|string|生产地址。|
+/// |foodType|string|食品类别。|
+/// |licenceNumber|string|许可证编号。|
+/// |regulatoryAuthority|string|日常监督管理机构。|
+/// |regulatoryPersonnel|string|日常监督管理人员。|
+/// |reportHotline|string|投诉举报电话。|
+/// |issueAuthority|string|发证机关。|
+/// |issueOfficer|string|签发人。|
+/// |issueDate|string|签发日期。|
+/// |validToDate|string|有效期至。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 二维码信息（codes字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|string|二维码地址。|
+/// |type|string|二维码类型。|
+/// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeFoodProduceLicenseResponse {
@@ -11022,6 +12956,58 @@ impl crate::ToCodeMessage for RecognizeFoodProduceLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |codes|list|二维码信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |operatorName|string|经营者名称。|
+/// |creditCode|string|社会信用代码（身份证号码）。|
+/// |legalRepresentative|string|法定代表人（负责人）。|
+/// |officeAddress|string|住所。|
+/// |businessAddress|string|经营场所。|
+/// |mainBusiness|string|主体业态。|
+/// |businessScope|string|经营项目。|
+/// |licenceNumber|string|许可证编号。|
+/// |regulatoryAuthority|string|日常监督管理机构。|
+/// |regulatoryPersonnel|string|日常监督管理人员。|
+/// |reportHotline|string|投诉举报电话。|
+/// |issueAuthority|string|发证机关。|
+/// |issueOfficer|string|签发人。|
+/// |issueDate|string|签发日期。|
+/// |standardizedIssueDate|string|标准化签发日期。|
+/// |validToDate|string|有效期至。|
+/// |standardizedValidToDate|string|标准化有效期至。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 二维码信息（codes字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|string|图案地址。|
+/// |type|string|图案类型。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeFoodManageLicenseResponse {
@@ -11041,6 +13027,25 @@ impl crate::ToCodeMessage for RecognizeFoodManageLicenseResponse {
     }
 }
 
+/// 中英文字段映射
+///
+/// ```ignore
+/// title证照标题
+/// licenseNumber许可证编号
+/// companyName企业名称
+/// businessType经营方式
+/// officeAddress住所
+/// businessScope经营范围
+/// businessAddress经营场所
+/// warehouseAddress库房/仓库地址
+/// issueDate发证日期
+/// issueAuthority发证部门
+/// legalRepresentative法定代表人
+/// responsiblePerson企业负责人
+/// qualityManager质量管理人
+/// registeredAddress注册地址
+/// validToDate有效期限/许可期限
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeMedicalDeviceManageLicenseResponse {
@@ -11060,6 +13065,21 @@ impl crate::ToCodeMessage for RecognizeMedicalDeviceManageLicenseResponse {
     }
 }
 
+/// 中英文字段映射
+///
+/// ```ignore
+/// registeredAddress注册地址
+/// issueDate发证日期
+/// licenseNumber许可证编号
+/// issueAuthority发证部门
+/// legalRepresentative法定代表人
+/// productionAddress生产地址
+/// responsiblePerson企业负责人
+/// companyName企业名称
+/// validToDate有效期限
+/// officeAddress住所
+/// productionScope生产范围
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
@@ -11079,6 +13099,55 @@ impl crate::ToCodeMessage for RecognizeMedicalDeviceProduceLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |figure|list|图片中的图案信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |recordNumber|string|备案编号。|
+/// |companyName|string|企业名称。|
+/// |officeAddress|string|住所。|
+/// |businessAddress|string|经营场所。|
+/// |warehouseAddress|string|库房地址。|
+/// |businessType|string|经营方式。|
+/// |legalRepresentative|string|法定代表人。|
+/// |responsiblePerson|string|企业负责人。|
+/// |businessScope|string|经营范围。|
+/// |recordationAuthority|string|备案部门。|
+/// |recordationDate|string|备案日期。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 图案位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
@@ -11098,6 +13167,28 @@ impl crate::ToCodeMessage for RecognizeCtwoMedicalDeviceManageLicenseResponse {
     }
 }
 
+/// 返回数据说明
+///
+/// ```ignore
+/// title  证照名称
+/// enterpriseName  企业名称
+/// creditCode  社会信用代码
+/// officeAddress  住址
+/// legalRepresentative  法定代表人
+/// responsiblePerson  企业负责人
+/// safetyManager 质量安全负责人
+/// productionAddress  生产地址
+/// licenceNumber  许可证编号
+/// licensedItemScope  许可项目
+/// regulatoryAuthority  日常监督管理机关
+/// regulatoryPersonnel  日常监督管理人员
+/// reportHotline  投诉举报电话
+/// issueOfficer  签发人
+/// issueAuthority  发证机关
+/// issueDate  发证日期
+/// validToDate  有效期至
+/// ftype 是否是复印件
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCosmeticProduceLicenseResponse {
@@ -11117,6 +13208,63 @@ impl crate::ToCodeMessage for RecognizeCosmeticProduceLicenseResponse {
     }
 }
 
+/// ## 中英文字段映射
+/// ```ignore
+/// data  结构化信息，face（身份证正面）和 back（身份证反面）
+/// prism_keyValueInfo  结构化信息的坐标信息
+/// sliceRect 检测出的子图坐标信息
+/// ftype    是否是复印件（1:是，0:否）
+/// ```
+/// *  **韩国商业登记证**字段说明
+/// ```ignore
+/// certificateType    证件类型
+/// issuanceNo    发行号
+/// processingTime    处理时间
+/// companyNameEn    英文公司名称
+/// companyName    非英文公司名称
+/// registrationNo    商业注册号
+/// nameOfRepresentativeEn    英文法人姓名
+/// nameOfRepresentative    非英文法人姓名
+/// residentRegistrationNo    法人证件号
+/// businessAddressEn    英文商业地址
+/// businessAddress    非英文商业地址
+/// businessCommencementDate    商业起始时间
+/// businessRegistrationDate    商业注册时间
+/// businessTypeEn    英文商业类型
+/// businessType    非英文商业类型
+/// businessItemEn    英文经营范围
+/// businessItem    非英文经营范围
+/// jointCompanyName    联合企业名称
+/// jointCompanyRegistrationNo    联合企业注册号
+/// issueDate    签发日期
+/// issuer    签发人
+/// ```
+/// * **印度公司注册证**字段说明
+/// ```ignore
+/// certificateType    证件类型
+/// registrationNo    注册号
+/// legalName    法定名称
+/// tradeName    商号
+/// businessConstitution    商业类型
+/// businessAddress    地址
+/// liabilityDate    责任日期
+/// validFromDate    有效起始日期
+/// validToDate    有效终止日期
+/// registrationType    注册类型
+/// particularsOfApprovingAuthority    审批机关详情
+/// name    姓名
+/// designation    委任
+/// jurisdictionalOffice    管辖办事处
+/// issueDate    签发日期
+/// ```
+/// * **prism_keyValueInfo数组**字段说明
+/// ```ignore
+/// key    识别出的字段名称
+/// keyProb    字段名称置信度
+/// value    识别出的字段名称对应的值
+/// valueProb    字段名称对应值的置信度
+/// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeInternationalBusinessLicenseResponse {
@@ -11136,6 +13284,61 @@ impl crate::ToCodeMessage for RecognizeInternationalBusinessLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息，正面为face字段，反面为back字段。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 正面识别结果（face字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |address|string|住址。|
+/// |engineNumber|string|发动机号码。|
+/// |issueDate|string|发证日期。|
+/// |model|string|品牌型号。|
+/// |owner|string|所有人。|
+/// |licensePlateNumber|string|号牌号码。|
+/// |registrationDate|string|注册日期。|
+/// |useNature|string|使用性质。|
+/// |vehicleType|string|车辆类型。|
+/// |vinCode|string|车辆识别代码。|
+/// |issueAuthority|string|签发机关。|
+///
+/// #### 反面识别结果（back字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |licensePlateNumber|string|号牌号码。|
+/// |inspectionRecord|string|检验记录。|
+/// |passengerCapacity|string|核定载人数。|
+/// |totalWeight|string|总质量。|
+/// |curbWeight|string|整备质量。|
+/// |permittedWeight|string|核定载质量。|
+/// |overallDimension|string|外廓尺寸。|
+/// |tractionWeight|string|准牵引总质量。|
+/// |energySign|string|能源标志。|
+/// |recordNumber|string|档案编号。|
+/// |remarks|string|备注。|
+/// |barcodeNumber|string|条形码编号。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeVehicleLicenseResponse {
@@ -11155,6 +13358,55 @@ impl crate::ToCodeMessage for RecognizeVehicleLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息，正面为face字段，反面为back字段。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 正面识别结果（face字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |licenseNumber|string|证号。|
+/// |name|string|姓名。|
+/// |sex|string|性别。|
+/// |nationality|string|国籍。|
+/// |address|string|住址。|
+/// |birthDate|string|出生日期。|
+/// |initialIssueDate|string|初次领证日期。|
+/// |approvedType|string|准驾类型。|
+/// |issueAuthority|string|发证单位。|
+/// |validFromDate|string|有效起始日期。|
+/// |validPeriod|string|有效期限。|
+///
+///
+/// #### 反面识别结果（back字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|姓名。|
+/// |recordNumber|string|档案编号。|
+/// |record|string|记录。|
+/// |licenseNumber|string|证号。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeDrivingLicenseResponse {
@@ -11174,6 +13426,37 @@ impl crate::ToCodeMessage for RecognizeDrivingLicenseResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |recipientName|string|收件人姓名。|
+/// |senderName|string|寄件人姓名。|
+/// |senderPhoneNumber|string|寄件人电话。|
+/// |senderAddress|string|寄件人地址。|
+/// |recipientPhoneNumber|string|收件人电话。|
+/// |recipientAddress|string|收件人地址。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeWaybillResponse {
@@ -11193,6 +13476,44 @@ impl crate::ToCodeMessage for RecognizeWaybillResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |structure_list|list|车牌信息（如果图中有多张车牌，此字段包含所有的车牌信息。数组中每条车牌数据的字段和**data**一致）。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |secondary_cls|string|车牌类型信息。|
+/// |data|object|车牌信息。|
+/// |info|list|结构化坐标信息。（和**prism_keyValueInfo**字段包含信息一致）。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 结构化坐标信息（info字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |key_prob|float|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |value_prob|float|字段名称对应值的置信度。|
+/// |value_pos|list|车牌在原图中的四个点坐标（左上角横坐标、左上角纵坐标、右上角横坐标、右上角纵坐标、右下角横坐标、右下角纵坐标、左下角横坐标、左下角纵坐标）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCarNumberResponse {
@@ -11212,6 +13533,35 @@ impl crate::ToCodeMessage for RecognizeCarNumberResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |vinCode|string|车牌vin码信息。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCarVinCodeResponse {
@@ -11231,6 +13581,78 @@ impl crate::ToCodeMessage for RecognizeCarVinCodeResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |codes|list|二维码信息。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |acquisitionMethod|string|车辆获得方式。|
+/// |axleNumber|string|轴数。|
+/// |barCode|string|条形编号。|
+/// |cabPassengerCapacity|string|驾驶室载客。|
+/// |containerDimension|string|货箱内部尺寸。|
+/// |displacement|string|排量。|
+/// |engineNumber|string|发动机号。|
+/// |engineType|string|发动机型号。|
+/// |frontWheelTrack|string|轮距前。|
+/// |fuelType|string|燃料种类。|
+/// |isDomestic|string|国产/进口。|
+/// |issueAuthority|string|发证机关。|
+/// |issueDate|string|发证日期。|
+/// |manufactureDate|string|车辆出厂日期。|
+/// |manufactureName|string|制造厂名称。|
+/// |overallDimension|string|外轮廓尺寸。|
+/// |passengerCapacity|string|核定载客。|
+/// |permittedWeight|string|核定载质量。|
+/// |power|string|功率。|
+/// |rearWheelTrack|string|轮距后。|
+/// |registrationAuthority|string|登记机关。|
+/// |registrationDate|string|登记日期。|
+/// |registrationNumber|string|机动车登记编号。|
+/// |springNumber|string|钢板弹簧数。|
+/// |steeringForm|string|转向形式。|
+/// |tireNumber|string|轮胎数。|
+/// |tireSize|string|轮胎规格。|
+/// |totalWeight|string|总质量。|
+/// |tractionWeight|string|准牵引总质量。|
+/// |useNature|string|使用性质。|
+/// |vehicleBrand|string|车辆品牌。|
+/// |vehicleColor|string|车身颜色。|
+/// |vehicleModel|string|车辆型号。|
+/// |vehicleOwnerInfo|string|机动车所有人/身份证明名称/号码。|
+/// |vehicleType|string|车辆类型。|
+/// |vinCode|string|车辆识别代号/车架号。|
+/// |wheelbase|string|轴距。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在算法矫正后的图片中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 二维码信息（codes字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|string|二维码地址。|
+/// |type|string|二维码类型。|
+/// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeVehicleRegistrationResponse {
@@ -11250,6 +13672,73 @@ impl crate::ToCodeMessage for RecognizeVehicleRegistrationResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+/// |sliceRect|list|检测出的子图坐标信息。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |MaximumLoadMass|string|半挂车鞍座最大允许总质量。|
+/// |axleLoad|string|轴荷。|
+/// |axleNumber|string|轴数。|
+/// |cabPassengerCapacity|string|驾驶室准驾人数。|
+/// |certificateNumber|string|合格证编号。|
+/// |chassisCertificateNumber|string|底盘合格证编号。|
+/// |chassisId|string|底盘ID。|
+/// |chassisModel|string|底盘型号。|
+/// |containerDimension|string|货箱内部尺寸。|
+/// |displacement|string|排量。|
+/// |emissionStandard|string|排放标准。|
+/// |engineModel|string|发动机型号。|
+/// |engineNumber|string|发动机号。|
+/// |equipmentWeight|string|装备质量。|
+/// |frontWheelTrack|string|轮距前。|
+/// |fuelConsumption|string|油耗。|
+/// |fuelType|string|燃料种类。枚举值为：天然气、汽油、混合动力、柴油、纯电动|
+/// |issueDate|string|发证日期。|
+/// |manufactureDate|string|车辆制造日期。|
+/// |manufactureName|string|车辆制造企业名称。|
+/// |massUtilizationCoefficient|string|载质量利用系数。|
+/// |maxDesignSpeed|string|最高设计车速。|
+/// |maximumLadenMass|string|额定载质量。|
+/// |overallDimension|string|外廓尺寸。|
+/// |passengerCapacity|string|额定载客。|
+/// |power|string|功率。|
+/// |rearWheelTrack|string|轮距后。|
+/// |remarks|string|备注。|
+/// |springNumber|string|钢板弹簧数。|
+/// |steeringForm|string|转向形式。|
+/// |tireNumber|string|轮胎数。|
+/// |tireSize|string|轮胎规格。|
+/// |totalWeight|string|总质量。|
+/// |tractionWeight|string|准牵引总质量。|
+/// |vehicleBrand|string|车辆品牌。|
+/// |vehicleColor|string|车身颜色。|
+/// |vehicleModel|string|车辆型号。|
+/// |vehicleName|string|车辆名称。|
+/// |vinCode|string|车辆识别代号/车架号。|
+/// |wheelbase|string|轴距。|
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeVehicleCertificationResponse {
@@ -11269,6 +13758,16 @@ impl crate::ToCodeMessage for RecognizeVehicleCertificationResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |content|string|识别出图片的文字块汇总，会包含latex公式，需要自行解析还原公式。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduFormulaResponse {
@@ -11288,6 +13787,25 @@ impl crate::ToCodeMessage for RecognizeEduFormulaResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |mathsInfo|list|识别出的公式内容，可能包含latex公式，需要自行解析还原。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 单字信息（mathInfos字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |pos|list|题目外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下。|
+/// |result|string|口算判题结果，right：正确，wrong：错误，unknown：未知。|
+/// |title|string|口算题目内容。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduOralCalculationResponse {
@@ -11307,6 +13825,52 @@ impl crate::ToCodeMessage for RecognizeEduOralCalculationResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总，可能包含latex公式，需要自行解析还原。|
+/// |figure|list|图片中的图案信息。当ImageType=scan才返回该字段。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |charInfo|list|单字信息。|
+///
+/// #### 单字信息（charInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |word|string|单字文字。|
+/// |prob|int|置信度。|
+/// |recClassify|int|文字属性分类。（0：中文印刷，1：拉丁语种，2：手写体，3：韩语，4：泰文，5：公式）|
+/// |x|int|单字左上角横坐标。|
+/// |y|int|单字左上角纵坐标。|
+/// |w|int|单字宽度。|
+/// |h|int|单字高度。|
+///
+/// #### 图案位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduPaperOcrResponse {
@@ -11326,6 +13890,45 @@ impl crate::ToCodeMessage for RecognizeEduPaperOcrResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+///
+/// #### 页面信息（page_list字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |page_id|int|页码。|
+/// |subject_list|list|题目列表。|
+/// |doc_index|int|输入的文档index,默认从1开始。|
+/// |angle|int|图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 题目列表信息（subject_list字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |ids|int|题号。|
+/// |ismultipage|boolean|题目是否跨页。|
+/// |text|int|切题后的文字信息，切题包含切题目和答案；可能包含latex公式，需要自行解析还原。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |content_list_info|list|内容列表。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+/// |word|string|文字块的文字内容。|
+///
+/// #### 内容信息（content_list_info字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |doc_index|int|输入的文档index,默认从1开始。|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduPaperCutResponse {
@@ -11345,6 +13948,51 @@ impl crate::ToCodeMessage for RecognizeEduPaperCutResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |content|string|识别出图片的文字块汇总。|
+/// |figure|list|图片中的图案信息。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+/// |word|string|文字块的文字内容。|
+/// |charInfo|list|单字信息。|
+/// |recClassify|int|文字属性分类。（0：“中文印刷”，1：“拉丁语种”，2：“手写体”，3：“韩语”，4：“泰文”，51：“公式”）。|
+///
+/// #### 单字信息（charInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |word|string|单字文字。|
+/// |prob|int|置信度。|
+/// |x|int|单字左上角横坐标。|
+/// |y|int|单字左上角纵坐标。|
+/// |w|int|单字宽度。|
+/// |h|int|单字高度。|
+///
+/// #### 图案位置信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|图案类型。|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduQuestionOcrResponse {
@@ -11364,6 +14012,84 @@ impl crate::ToCodeMessage for RecognizeEduQuestionOcrResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |doc_layout|list|版面信息。|
+/// |doc_sptext|list|特殊文字信息。|
+/// |figure|list|图案信息。|
+/// |page_id|int|页码。|
+/// |page_title|string|页标题。|
+/// |part_info|list|题型大类信息。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+///
+/// #### 题目列表信息（doc_layout字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |layout_type|string|文字类型（text：普通文字，special_text：特殊文字，table：表格，head：页眉，foot：页脚，side_column：侧栏）。|
+/// |pos|list|外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+///
+///
+/// #### 特殊文字信息（doc_sptext字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |layout_type|string|文字类型（bold：黑体，complex：特殊体）。|
+/// |pos|list|外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+///
+///
+/// #### 图案信息（figure字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|string|配图类型（subject_sline：分栏线，竖线；subject_bline：空格线/下划线，竖线；subject_bracket：括号；subject_quad：田字格和四线三格；subject_table：表格；subject_pattern：图案；subject_big_bracket：大括号；subject_match_question：连线题；subject_question：非材料题；subject_material：材料题）。|
+/// |x|int|图案左上角横坐标。|
+/// |y|int|图案左上角纵坐标。|
+/// |w|int|图案宽度。|
+/// |h|int|图案高度。|
+/// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
+/// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// #### 题型大类信息（part_info字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |part_title|string|题型标题（例如选择题，填空题，解答题）。|
+/// |pos_list|list|对应所有题型的外层大矩形的四个点的坐标数组。|
+/// |subject_list|list|题目列表。|
+///
+///
+/// #### 题目列表信息（subject_list字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |index|int|在part_info中的序号。|
+/// |type|int|题目类型（0：选择题；1：填空题；2：阅读理解（阅读+问答选择）；3：完型填空（阅读+选择）；4：阅读填空（阅读+填空）；5：问答题；6：选择题，多选多；7：填空、选择题混合；8：应用题；9：判断题；10：作图题；11：材料题；12：计算题；13：连线题；14：作文题；15：解答题；16：其他；17：图；18：表格）。|
+/// |text|string|整题文本信息，可能包含latex公式，需要自行解析还原。|
+/// |prob|int|置信度。|
+/// |post_list|list|整题外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+/// |answer_list|list|答案位置坐标。|
+/// |element_list|list|题目元素。|
+/// |figure_list|list|插图位置信息。|
+/// |table_list|list|表格位置信息。|
+/// |num_choices|int|选择题答案数量。|
+///
+/// #### 题目元素信息（element_list字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|int|题目元素类型（0：题干；1：选项；2：解析；3：答案）。|
+/// |text|string|整题文本信息，可能包含latex公式，需要自行解析还原。|
+/// |post_list|list|外层大矩形的四个点的坐标数组。|
+/// |content_list|list|内容数组。|
+///
+/// #### 内容数组信息（content_list字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |type|int|内容类型（0：图片；1：文本；2：公式）。|
+/// |string|string|整题文本信息，可能包含latex公式，需要自行解析还原。|
+/// |pos|list|外层大矩形的四个点的坐标数组。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEduPaperStructedResponse {
@@ -11383,6 +14109,61 @@ impl crate::ToCodeMessage for RecognizeEduPaperStructedResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度（当NeedRotate=true时，返回此字段）。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_tablesInfo|list|表格信息（当OutputTable=true时，返回此字段）。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |tableId|int|表格的id（当OutputTable=true时，返回此字段）。|
+/// |tableCellId|int|表格中单元格的id（当OutputTable=true时，返回此字段）。|
+/// |charInfo|list|单字信息。|
+///
+/// #### 单字信息（charInfo字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |word|string|单字文字。|
+/// |prob|int|置信度。|
+/// |x|int|单字左上角横坐标。|
+/// |y|int|单字左上角纵坐标。|
+/// |w|int|单字宽度。|
+/// |h|int|单字高度。|
+///
+/// #### 表格信息（prism_tablesInfo字段。当OutputTable=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableId|int|表格id，和prism_wordsInfo信息中的tableId对应。|
+/// |xCellSize|int|表格中横坐标单元格的数量。|
+/// |yCellSize|int|表格中纵坐标单元格的数量。|
+/// |cellInfos|list|单元格信息。|
+///
+/// #### 单元格信息（cellInfos字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableCellId|int|表格中单元格id，和prism_wordsInfo信息中的tableCellId对应。|
+/// |word|string|单元格中的文字。|
+/// |xsc|int|xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |xec|int|xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内。|
+/// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
+/// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeMultiLanguageResponse {
@@ -11402,6 +14183,50 @@ impl crate::ToCodeMessage for RecognizeMultiLanguageResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|图片的角度（当NeedRotate=true时，返回此字段）。0表示正向，90表示图片朝右，180朝下，270朝左。|
+/// |content|string|识别出图片的文字块汇总。|
+/// |prism_wordsInfo|list|文字块信息。|
+/// |prism_tablesInfo|list|表格信息（当OutputTable=true时，返回此字段）。|
+/// |prism_wnum|int|识别的文字块的数量，prism_wordsInfo数组的大小。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 文字块信息（prism_wordsInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |angle|int|文字块的角度。|
+/// |height|int|文字块的高度（需考虑文字块的角度）|
+/// |width|int|文字块的宽度（需考虑文字块的角度）|
+/// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。当NeedRotate=true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确。|
+/// |word|string|文字块的文字内容。|
+/// |tableId|int|表格的id（当OutputTable=true时，返回此字段）。|
+/// |tableCellId|int|表格中单元格的id（当OutputTable=true时，返回此字段）。|
+///
+/// #### 表格信息（prism_tablesInfo字段。当OutputTable=true时，返回此字段。）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableId|int|表格id，和prism_wordsInfo信息中的tableId对应。|
+/// |xCellSize|int|表格中横坐标单元格的数量。|
+/// |yCellSize|int|表格中纵坐标单元格的数量。|
+/// |cellInfos|list|单元格信息。|
+///
+/// #### 单元格信息（cellInfos字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |tableCellId|int|表格中单元格id，和prism_wordsInfo信息中的tableCellId对应。|
+/// |word|string|单元格中的文字。|
+/// |xsc|int|xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |xec|int|xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内。|
+/// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
+/// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
+/// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeEnglishResponse {
@@ -11421,6 +14246,47 @@ impl crate::ToCodeMessage for RecognizeEnglishResponse {
     }
 }
 
+/// 返回数据说明</br>
+///
+/// ```ignore
+/// angle                  图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左</br>
+/// content              识别出图片的文字块汇总</br>
+/// height                算法矫正图片后的高度</br>
+/// width                 算法矫正图片后的宽度</br>
+/// orgHeight          原图的高度</br>
+/// orgWidth           原图的宽度</br>
+/// prism_wnum      识别的文字块的数量，prism_wordsInfo数组的大小</br>
+/// -------------------------prism-wordsInfo文字块数组内的字段说明-------------------------</br>
+/// angle                 文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换</br>
+/// height                文字块的高度</br>
+/// width                 文字块的宽度</br>
+/// pos                    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下，当NeedRotate为true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确</br>
+/// word                  文字块的文字</br>
+/// tableId               当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id</br>
+/// tableCellId         当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id</br>
+/// ----------------------------------------charInfo单字信息-----------------------------------------</br>
+/// word                  单字文字</br>
+/// x                        单字左上角横坐标</br>
+/// y                        单字左上角纵坐标</br>
+/// w                       单字宽度
+/// <span>h                       单字高度</span></br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ---------------------------prism-tablesInfo表格数组内的字段说明--------------------------</br>
+/// tableId               表格id，和prism_wordsInfo信息中的tableId对应</br>
+/// xCellSize            表格中横坐标单元格的数量</br>
+/// yCellSize            表格中纵坐标单元格的数量</br>
+/// ------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系---------</br>
+/// tableCellId         表格中单元格id，和prism_wordsInfo信息中的tableCellId对应</br>
+/// word                 单元格中的文字</br>
+/// xsc                    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// xec                    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内</br>
+/// ysc                    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// yec                    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0</br>
+/// pos                   单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeThaiResponse {
@@ -11440,6 +14306,47 @@ impl crate::ToCodeMessage for RecognizeThaiResponse {
     }
 }
 
+/// 返回数据说明</br>
+///
+/// ```ignore
+/// angle                  图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左</br>
+/// content              识别出图片的文字块汇总</br>
+/// height                算法矫正图片后的高度</br>
+/// width                 算法矫正图片后的宽度</br>
+/// orgHeight          原图的高度</br>
+/// orgWidth           原图的宽度</br>
+/// prism_wnum      识别的文字块的数量，prism_wordsInfo数组的大小</br>
+/// -------------------------prism-wordsInfo文字块数组内的字段说明-------------------------</br>
+/// angle                 文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换</br>
+/// height                文字块的高度</br>
+/// width                 文字块的宽度</br>
+/// pos                    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下，当NeedRotate为true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确</br>
+/// word                  文字块的文字</br>
+/// tableId               当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id</br>
+/// tableCellId         当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id</br>
+/// ----------------------------------------charInfo单字信息-----------------------------------------</br>
+/// word                  单字文字</br>
+/// x                        单字左上角横坐标</br>
+/// y                        单字左上角纵坐标</br>
+/// w                       单字宽度
+/// <span>h                       单字高度</span></br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ---------------------------prism-tablesInfo表格数组内的字段说明--------------------------</br>
+/// tableId               表格id，和prism_wordsInfo信息中的tableId对应</br>
+/// xCellSize            表格中横坐标单元格的数量</br>
+/// yCellSize            表格中纵坐标单元格的数量</br>
+/// ------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系---------</br>
+/// tableCellId         表格中单元格id，和prism_wordsInfo信息中的tableCellId对应</br>
+/// word                 单元格中的文字</br>
+/// xsc                    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// xec                    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内</br>
+/// ysc                    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// yec                    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0</br>
+/// pos                   单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeJanpaneseResponse {
@@ -11459,6 +14366,47 @@ impl crate::ToCodeMessage for RecognizeJanpaneseResponse {
     }
 }
 
+/// 返回数据说明</br>
+///
+/// ```ignore
+/// angle                  图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左</br>
+/// content              识别出图片的文字块汇总</br>
+/// height                算法矫正图片后的高度</br>
+/// width                 算法矫正图片后的宽度</br>
+/// orgHeight          原图的高度</br>
+/// orgWidth           原图的宽度</br>
+/// prism_wnum      识别的文字块的数量，prism_wordsInfo数组的大小</br>
+/// -------------------------prism-wordsInfo文字块数组内的字段说明-------------------------</br>
+/// angle                 文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换</br>
+/// height                文字块的高度</br>
+/// width                 文字块的宽度</br>
+/// pos                    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下，当NeedRotate为true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确</br>
+/// word                  文字块的文字</br>
+/// tableId               当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id</br>
+/// tableCellId         当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id</br>
+/// ----------------------------------------charInfo单字信息-----------------------------------------</br>
+/// word                  单字文字</br>
+/// x                        单字左上角横坐标</br>
+/// y                        单字左上角纵坐标</br>
+/// w                       单字宽度
+/// <span>h                       单字高度</span></br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ---------------------------prism-tablesInfo表格数组内的字段说明--------------------------</br>
+/// tableId               表格id，和prism_wordsInfo信息中的tableId对应</br>
+/// xCellSize            表格中横坐标单元格的数量</br>
+/// yCellSize            表格中纵坐标单元格的数量</br>
+/// ------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系---------</br>
+/// tableCellId         表格中单元格id，和prism_wordsInfo信息中的tableCellId对应</br>
+/// word                 单元格中的文字</br>
+/// xsc                    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// xec                    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内</br>
+/// ysc                    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// yec                    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0</br>
+/// pos                   单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeKoreanResponse {
@@ -11478,6 +14426,47 @@ impl crate::ToCodeMessage for RecognizeKoreanResponse {
     }
 }
 
+/// 返回数据说明</br>
+///
+/// ```ignore
+/// angle                  图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左</br>
+/// content              识别出图片的文字块汇总</br>
+/// height                算法矫正图片后的高度</br>
+/// width                 算法矫正图片后的宽度</br>
+/// orgHeight          原图的高度</br>
+/// orgWidth           原图的宽度</br>
+/// prism_wnum      识别的文字块的数量，prism_wordsInfo数组的大小</br>
+/// -------------------------prism-wordsInfo文字块数组内的字段说明-------------------------</br>
+/// angle                 文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换</br>
+/// height                文字块的高度</br>
+/// width                 文字块的宽度</br>
+/// pos                    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下，当NeedRotate为true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确</br>
+/// word                  文字块的文字</br>
+/// tableId               当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id</br>
+/// tableCellId         当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id</br>
+/// ----------------------------------------charInfo单字信息-----------------------------------------</br>
+/// word                  单字文字</br>
+/// x                        单字左上角横坐标</br>
+/// y                        单字左上角纵坐标</br>
+/// w                       单字宽度
+/// <span>h                       单字高度</span></br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ---------------------------prism-tablesInfo表格数组内的字段说明--------------------------</br>
+/// tableId               表格id，和prism_wordsInfo信息中的tableId对应</br>
+/// xCellSize            表格中横坐标单元格的数量</br>
+/// yCellSize            表格中纵坐标单元格的数量</br>
+/// ------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系---------</br>
+/// tableCellId         表格中单元格id，和prism_wordsInfo信息中的tableCellId对应</br>
+/// word                 单元格中的文字</br>
+/// xsc                    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// xec                    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内</br>
+/// ysc                    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// yec                    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0</br>
+/// pos                   单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeLatinResponse {
@@ -11497,6 +14486,47 @@ impl crate::ToCodeMessage for RecognizeLatinResponse {
     }
 }
 
+/// 返回数据说明</br>
+///
+/// ```ignore
+/// angle                  图片的角度，0表示正向，90表示图片朝右，180朝下，270朝左</br>
+/// content              识别出图片的文字块汇总</br>
+/// height                算法矫正图片后的高度</br>
+/// width                 算法矫正图片后的宽度</br>
+/// orgHeight          原图的高度</br>
+/// orgWidth           原图的宽度</br>
+/// prism_wnum      识别的文字块的数量，prism_wordsInfo数组的大小</br>
+/// -------------------------prism-wordsInfo文字块数组内的字段说明-------------------------</br>
+/// angle                 文字块的角度，这个角度只影响width和height，当角度为-90、90、-270、270，width和height的值需要自行互换</br>
+/// height                文字块的高度</br>
+/// width                 文字块的宽度</br>
+/// pos                    文字块的外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下，当NeedRotate为true时，如果最外层的angle不为0，需要按照angle矫正图片后，坐标才准确</br>
+/// word                  文字块的文字</br>
+/// tableId               当OutputTable为true并且该文字块在表格内则存在该字段，tableId表示表格的id</br>
+/// tableCellId         当OutputTable为true并且该文字块在表格内则存在该字段，表示表格中单元格的id</br>
+/// ----------------------------------------charInfo单字信息-----------------------------------------</br>
+/// word                  单字文字</br>
+/// x                        单字左上角横坐标</br>
+/// y                        单字左上角纵坐标</br>
+/// w                       单字宽度
+/// <span>h                       单字高度</span></br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ---------------------------prism-tablesInfo表格数组内的字段说明--------------------------</br>
+/// tableId               表格id，和prism_wordsInfo信息中的tableId对应</br>
+/// xCellSize            表格中横坐标单元格的数量</br>
+/// yCellSize            表格中纵坐标单元格的数量</br>
+/// ------------cellInfos单元格信息，包含单元格在整个表格中的空间拓扑关系---------</br>
+/// tableCellId         表格中单元格id，和prism_wordsInfo信息中的tableCellId对应</br>
+/// word                 单元格中的文字</br>
+/// xsc                    xStartCell缩写，表示横轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// xec                    xEndCell缩写，表示横轴方向该单元格结束在第几个单元格，第一个单元格值为0，如果xsc和xec都为0说明该文字在横轴方向占据了一个单元格并且在第一个单元格内</br>
+/// ysc                    yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0</br>
+/// yec                    yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0</br>
+/// pos                   单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// --------------------------------------------------------------------------------------------------------</br>
+/// ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeRussianResponse {
@@ -11516,6 +14546,40 @@ impl crate::ToCodeMessage for RecognizeRussianResponse {
     }
 }
 
+/// #### 返回参数说明
+/// <br/>
+///
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |data|object|结构化信息。|
+/// |sliceRect|list|结构化信息的坐标信息。|
+/// |prism_keyValueInfo|list|结构化信息的坐标信息。|
+/// |ftype|int|是否为复印件（1：是，0：否）。|
+/// |height|int|算法矫正图片后的高度。|
+/// |width|int|算法矫正图片后的宽度。|
+/// |orgHeight|int|原图的高度。|
+/// |orgWidth|int|原图的宽度。|
+///
+/// #### 结构化信息（data字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |name|string|姓名。|
+/// |idNumber|string|证件号码。|
+/// |samplingDate|string|采样日期。|
+/// |samplingTime|string|采样时间。|
+/// |testOrganization|string|检测机构。|
+/// |testItem|string|检测项目。|
+/// |testResult|string|检测结果。|
+///
+///
+/// #### 结构化坐标信息（prism_keyValueInfo字段）
+/// |字段|类型|说明|
+/// |-----|---|--|
+/// |key|string|识别出的字段名称。|
+/// |keyProb|int|字段名称置信度。|
+/// |value|string|识别出的字段名称对应的值。|
+/// |valueProb|int|字段名称对应值的置信度。|
+/// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecognizeCovidTestReportResponse {
@@ -11535,6 +14599,23 @@ impl crate::ToCodeMessage for RecognizeCovidTestReportResponse {
     }
 }
 
+/// <br/>
+/// * <span style="font-size:larger;"> <b> 返回结果字段描述 </b></span>
+///   
+/// |字段名称|字段类型|描述|枚举值|
+/// |-------|------|---|------|
+/// | code | string | 状态码| 0、20001、20002、20003 |
+/// | data | bool | 三要素信息是否一致| true：一致 <br/>false：不一致|
+/// | message| string | 状态信息|（1）法人姓名、工商注册号一致 <br/> （2）此公司在数据库中不存在！<br/> （3） 输入的法人名字和公司法人名字不一致！<br/>（4）传入的注册号与工商注册号和统一社会信用代码都不一致！|
+///
+/// * <span style="font-size:larger;"> <b>code（状态码）、message（状态信息）、data（核验结果是否一致）对应关系</b> </span>
+///   
+/// |code|data|message|
+/// |---|---|----|
+/// |0|true|法人姓名、工商注册号一致|
+/// |20001|false|此公司在数据库中不存在！|
+/// |20002|false|输入的法人名字和公司法人名字不一致！|
+/// |20003|false|传入的注册号与工商注册号和统一社会信用代码都不一致！|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VerifyBusinessLicenseResponse {
@@ -11554,6 +14635,217 @@ impl crate::ToCodeMessage for VerifyBusinessLicenseResponse {
     }
 }
 
+/// * **返回结果字段描述**
+///
+/// |字段名称|字段类型|描述|
+/// |-------|------|---|
+/// |code   |string|状态码|
+/// |msg    |string|状态信息|
+/// |data   |string|发票信息（只有查验成功，此字段才不为空）|
+///
+/// * <span style="font-size:larger;"> <b> 返回结果data字段描述（非区块链发票)</b></span>
+///   
+/// |序号|字段名称|字段描述|字段类型|字段最大长度|是否一定返回|说明|
+/// |---|-------|-------|------|-------|----|----|
+/// |1|invoiceType|发票种类|string|2|是||
+/// |2|invoiceCode|发票代码|string|20|是||
+/// |3|invoiceNumber|发票号码|string|8|是||
+/// |4|inspectionAmount|查验次数|string|100|否||
+/// |5|salerName|销方名称|string|100|否||
+/// |6|salerTaxpayerNumber|销方税号|string|20|否||
+/// |7|salerAddressOrPhone|销方地址、电话|string|100|否||
+/// |8|salerBankAndNumber|销方开户行及账号|string|100|否||
+/// |9|purchaserTaxpayerNumber|购方税号|string|20|否||
+/// |10|purchaserName|购方名称|string|100|否||
+/// |11|purchaserAddressOrPhone|购方地址、电话|string|100|否||
+/// |12|purchaserBankAndNumber|购方开户行及账号|string|100|否||
+/// |13|invoiceDate|开票日期|string|8|否|格式：yyyymmdd|
+/// |14|invoiceMoney|发票金额|string|20|否||
+/// |15|allTax|发票税额|string|20|否||
+/// |16|allValoremTax|价税合计|string|16|否||
+/// |17|note|备注|string|200|否||
+/// |18|machineCode|机器编号|string|20|否||
+/// |19|checkCode|校验码|string|20|否||
+/// |20|blueInvoiceCode|蓝票发票代码|string|12|否||
+/// |21|blueInvoiceNo|蓝票发票号码|string|8|否||
+/// |22|invalidMark|作废标志|string|1|否|N：未作废，Y：已作废，H：冲红，7：部分冲红，8：全额冲红|
+/// |23|idCard|购方身份证号/组织机构代码|string|20|否|机动车、二手车发票返回该信息|
+/// |24|carType|车辆类型|string|80|否|机动车、二手车发票返回该信息|
+/// |25|brandVersion|厂牌型号|string|100|否|机动车、二手车发票返回该信息|
+/// |26|producingArea|产地|string|80|否|机动车发票返回该信息|
+/// |27|licenseCode|合格证号|string|100|否|机动车发票返回该信息|
+/// |28|inspectionNumber|商检单号|string|80|否|机动车发票返回该信息|
+/// |29|engineCode|发动机号|string|120|否|机动车发票返回该信息|
+/// |30|carframeCode|车辆识别代号/车架号码|string|40|否|机动车、二手车发票返回该信息|
+/// |31|importLicense|进口证明书号|string|80|否|机动车发票返回该信息|
+/// |32|taxUnitCode|主管税务机关代码|string|11|否|机动车发票返回该信息|
+/// |33|afterTaxCode|完税凭证号码|string|32|否|机动车发票返回该信息|
+/// |34|limitAmount|限乘人数|string|40|否|机动车发票返回该信息|
+/// |35|taxUnitName|主管税务机关名称|string|160|否|机动车发票返回该信息|
+/// |36|unit|吨位|string|40|否|机动车发票返回该信息|
+/// |37|taxRate|税率|string|32|否|机动车发票返回该信息|
+/// |38|salerAddress|销方地址|string|160|否|机动车发票返回该信息|
+/// |39|salerPhone|销方电话|string|80|否|机动车发票返回该信息|
+/// |40|salerBankName|销方开户银行|string|160|否|机动车发票返回该信息|
+/// |41|salerBankAccount|销方开户账号|string|80|否|机动车发票返回该信息|
+/// |42|carrierName|承运人名称|string|20|否|货物发票返回信息|
+/// |43|carrierTaxNo|承运人识别号|string|80|否|货物发票返回信息|
+/// |44|draweeName|受票方名称|string|20|否|货物发票返回信息|
+/// |45|draweeTaxNo|受票方识别号|string|80|否|货物发票返回信息|
+/// |46|receiveName|收货人名称|string|20|否|货物发票返回信息|
+/// |47|receiveTaxNo|收货人识别号|string|80|否|货物发票返回信息|
+/// |48|consignorName|发货人名称|string|20|否|货物发票返回信息|
+/// |49|consignorTaxNo|发货人识别号|string|80|否|货物发票返回信息|
+/// |50|transportGoodsInfo|运输货物信息|string|32|否|货物发票返回信息|
+/// |51|throughAddress|起运地、经由、到达地|string|32|否|货物发票返回信息|
+/// |52|taxDiskNumber|税控盘号|string|32|否|货物发票返回信息|
+/// |53|carTypeAndNumber|车种车号|string|15|否|货物发票返回信息|
+/// |54|vehicleTonnage|车船吨位|string|200|否|货物发票返回信息|
+/// |55|trafficFeeFlag|通行费标准|string|2|否|通行费发票返回信息<br/>Y：可抵扣通行费。N：不可抵扣通行费|
+/// |56|zeroTaxRateFlag|零税率标识|string|2|否|通行费发票返回信息为空表示非零税率<br/>1：税率栏位显示“免税”<br/>2：税率栏位显示“不征税”<br/>3：零税率|
+/// |57|licensePlate|车牌照号|string|100|否|二手车发票返回信息|
+/// |58|registrationNo|登记证号|string|100|否|二手车发票返回信息|
+/// |59|carPrice|车价合计|string|32|否|二手车发票返回信息|
+/// |60|transferredVehicleOffice|转入地车辆车管所名称|string|240|否|二手车发票返回信息|
+/// |61|purchaserUnitOrIndividual|买方单位/个人|string|240|否|二手车发票返回信息|
+/// |62|purchaserUnitcodeOrIdno|买方单位代码/身份证号|string|44|否|二手车发票返回信息|
+/// |63|purchaserUnitOrIndividualAddress|买方单位/个人住址|string|240|否|二手车发票返回信息|
+/// |64|purchaserPhone|买方电话|string|100|否|二手车发票返回信息|
+/// |65|sellerUnitOrIndividual|卖方单位/个人|string|240|否|二手车发票返回信息|
+/// |66|sellerUnitCodeOrIdno|卖方单位代码/身份证号|string|44|否|二手车发票返回信息|
+/// |67|sellerUnitOrIndividualAddress|卖方单位/个人住址|string|240|否|二手车发票返回信息|
+/// |68|sellerPhone|卖方电话|string|100|否|二手车发票返回信息|
+/// |69|businessUnit|经营、拍卖单位|string|240|否|二手车发票返回信息|
+/// |70|busmessUnitAddress|经营、拍卖单位地址|string|240|否|二手车发票返回信息|
+/// |71|businessUnitTaxNo|经营、拍卖单位纳税人识别号|string|44|否|二手车发票返回信息|
+/// |72|busmessUnitBankAndAccount|开户银行及账号|string|100|否|二手车发票返回信息|
+/// |73|busmessUnitPhone|经营、拍卖单位电话|string|100|否|二手车发票返回信息|
+/// |74|lemonMarket|二手车市场|string|240|否|二手车发票返回信息|
+/// |75|lemonMarketTaxNo|二手车市场纳税人识别号|string|44|否|二手车发票返回信息|
+/// |76|lemonMarketAddress|二手车市场地址|string|240|否|二手车发票返回信息|
+/// |77|lemonMarketBankAndAccount|二手车市场开户银行及账号|string|100|否|二手车发票返回信息|
+/// |78|lemonMarketPhone|二手车市场电话|string|100|否|二手车发票返回信息|
+/// |79|cyjgxx|验真结果|string|100|否|验真结果|
+///
+/// * <span style="font-size:larger;"> <b> 返回结果data字段描述（区块链发票）</b></span>
+///   
+/// |序号|字段名称|字段描述|字段类型|说明|
+/// |---|-------|-------|------|----|
+/// |1|invoiceCode|发票代码|string||
+/// |2|invoiceNo|发票号码|string||
+/// |3|checkCode|校验码|string||
+/// |4|billingDate|开票日期|string||
+/// |5|txHash|交易哈希|string||
+/// |6|amount|不含税总金额|string||
+/// |7|totalAmount|含税总金额|string||
+/// |8|taxAmount|税额|string||
+/// |9|sellerName|销方名称|string||
+/// |10|sellerTaxpayerId|销方纳税人识别号|string||
+/// |11|sellerAddress|销方地址|string||
+/// |12|sellerPhone|销方电话|string||
+/// |13|sellerBankInfo|销方开户银行名称|string||
+/// |14|buyerAddress|购方地址|string||
+/// |15|buyerPhone|购方电话|string||
+/// |16|buyerName|购方名称|string||
+/// |17|sellerBankAccount|销方开户银行账号|string||
+/// |18|buyerTaxpayerId|购方纳税人识别号|string||
+/// |19|buyerType|购买方类型|string||
+/// |20|status|发票状态|string|0：正常，1：失控，2：作废，3：红冲，4：异常|
+/// |21|checkedBy|复核人|string||
+/// |22|reviewedBy|审核人|string||
+/// |23|remark|开票备注|string||
+/// |24|drawer|开票人|string||
+/// |25|time|开票时间|string||
+/// |26|platformCode|平台编码|string||
+/// |27|platformName|平台名称|string||
+/// |28|orderId|订单流水号|string||
+/// |29|payId|支付流水号|string||
+/// |30|digitPaymentSign|电子支付标识|string||
+/// |31|invalidMark|是否作废|string||
+/// |32|item|发票明细集合|list|（以下为 **item** 字段的说明）|
+/// |1|+code|货物或应税劳务、服务编码|string||
+/// |2|+name|货物或应税劳务、服务名称|string||
+/// |3|+subName|商品名称|string||
+/// |4|+specModel|规格型号|string||
+/// |5|+unit|计量单位|string||
+/// |6|+count|数量|string||
+/// |7|+unitPrice|单价|string||
+/// |8|+amount|金额|string||
+/// |9|+taxFlag|含税标记|string||
+/// |10|+taxRate|税率|string||
+/// |11|+taxAmount|税额|string||
+/// |12|+taxPreferMark|是否享受税收优惠标识|string||
+/// |13|+taxPreferDescrip|享受税收优惠的具体说明|string||
+/// |14|+zeroTaxRateMark|零税率标识|string||
+/// |15|+deduction|差额开票时，从总额中扣除的金额|string||
+///
+/// * <span style="font-size:larger;"> <b> 返回结果detailList字段描述</b></span>
+///   
+/// |序号|字段名称|字段描述|字段类型|说明|
+/// |---|-------|-------|------|----|
+/// |1|detailNo|明细编号|string||
+/// |2|goodsName|货物名称|string||
+/// |3|detailAmount|金额|string||
+/// |4|num|数量|string||
+/// |5|taxRate|税率|string||
+/// |6|allTax|税额|string||
+/// |7|taxUnitPrice|含税单价|string||
+/// |8|taxDetailAmount|含税金额|string||
+/// |9|netValue|不含税单价|string||
+/// |10|standard|规格型号|string||
+/// |11|unit|计量单位|string||
+/// |12|expenseItem|费用项目|string|货物发票返回信息|
+/// |13|plate_no|车牌号|string|通行费发票返回信息|
+/// |14|type|类型|string|通行费发票返回信息|
+/// |15|trafficDateStart|通行日期起|string|通行费发票返回信息|
+/// |16|trafficDateEnd|通行日期止|string|通行费发票返回信息|
+/// |17|taxClassifyCode|税收分类编码|string||
+/// |18|rowNo|行号|string||
+///
+/// * **code（状态码）和msg（状态信息）对应关系，以及是否计费说明**
+///
+/// |code|msg|是否计费|
+/// |-------|------|---|
+/// |001|成功|**是**|
+/// |002|超过该张票当天查验次数|否|
+/// |005|请求不合法|否|
+/// |006|发票信息不一致|**是**|
+/// |009|所查发票不存在|**是**|
+/// |104|已超过最大查验量|否|
+/// |105|查询发票不规范。可能是以下原因导致：<ul> <li> 接口参数传入不完整或错误。</li> <li> 发票类型不支持（例如区块链发票）。</li> <li> 发票不是真实有效的。</li></ul>|否|
+/// |106|查验异常|否|
+/// |108|参数不为空|否|
+/// |109|参数长度不正确|否|
+/// |110|参数"InvoiceCode"的格式或取值范围错误|否|
+/// |111|参数"InvoiceSum"的格式或取值范围错误|否|
+/// |112|参数"VerifyCode"的格式或取值范围错误|否|
+/// |113|参数"InvoiceNo"的格式或取值范围错误|否|
+/// |114|校验码不正确，应为后六位|否|
+/// |115|超过服务有效期限限制|否|
+/// |1005|请核对四要素是否符合发票规范|**是**|
+/// |1010|日期格式不正确(请检查日期是否符合格式YYYYMMDD)|否|
+/// |1011|请求参数不完整|否|
+/// |1021|网络超时，税局升级维护|否|
+/// |10014|日期当天不能查验|否|
+/// |10015|开票金额：不合法的格式|否|
+/// |10016|检验码：不能为空|否|
+/// |10017|超过五年的不能查验|否|
+/// |10018|检验码：不合法的长度|否|
+/// |10020|没有查验权限|否|
+/// |000000|成功|**是**|
+/// |000001|查询无数据|否|
+/// |101000|系统异常|否|
+/// |111000|参数不能为空|否|
+/// |111001|参数格式不正确|否|
+/// |121000|内部处理失败|否|
+/// |121001|内部处理限流|否|
+/// |121002|内部处理超时|否|
+/// |131002|接口无权限|否|
+/// |131003|接口调用次数过限|否|
+/// |131004|接口已到期|否|
+/// |131005|接口调用频率过高|否|
+/// |152000|超过用户QPS调用阈值|否|
+/// |171000|数据源业务异常|否|
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VerifyVATInvoiceResponse {

@@ -15732,6 +15732,7 @@ impl crate::FlatSerialize for AcceleratePathsPathItem {
     }
 }
 
+/// 加速器加速路径集合
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AcceleratePaths {
@@ -15756,6 +15757,7 @@ impl crate::FlatSerialize for AcceleratePaths {
     }
 }
 
+/// 存储ACL信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessControlList {
@@ -15774,6 +15776,7 @@ impl crate::FlatSerialize for AccessControlList {
     }
 }
 
+/// 保存Bucket拥有者信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Owner {
@@ -15800,6 +15803,7 @@ impl crate::FlatSerialize for Owner {
     }
 }
 
+/// 保存Get Object ACL结果的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessControlPolicy {
@@ -15827,6 +15831,7 @@ impl crate::FlatSerialize for AccessControlPolicy {
     }
 }
 
+/// Bucket的访问跟踪状态配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessMonitorConfiguration {
@@ -15851,6 +15856,7 @@ impl crate::ToCodeMessage for AccessMonitorConfiguration {
     }
 }
 
+/// 保存VPC网络来源信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessPointVpcConfiguration {
@@ -15869,6 +15875,7 @@ impl crate::FlatSerialize for AccessPointVpcConfiguration {
     }
 }
 
+/// 保存单个接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessPoint {
@@ -15919,6 +15926,7 @@ impl crate::FlatSerialize for AccessPoint {
     }
 }
 
+/// 服务器端默认加密方式的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ApplyServerSideEncryptionByDefault {
@@ -15965,6 +15973,7 @@ impl crate::FlatSerialize for ApplyServerSideEncryptionByDefault {
     }
 }
 
+/// 保存归档直读状态的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ArchiveDirectReadConfiguration {
@@ -15991,6 +16000,7 @@ impl crate::ToCodeMessage for ArchiveDirectReadConfiguration {
     }
 }
 
+/// 异步 Fetch 任务配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncFetchTaskConfiguration {
@@ -16038,6 +16048,7 @@ impl crate::FlatSerialize for AsyncFetchTaskConfiguration {
     }
 }
 
+/// 异步 fetch 任务信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncFetchTaskInfo {
@@ -16072,6 +16083,7 @@ impl crate::FlatSerialize for AsyncFetchTaskInfo {
     }
 }
 
+/// 异步 Fetch 任务返回结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncFetchTaskResult {
@@ -16089,6 +16101,7 @@ impl crate::FlatSerialize for AsyncFetchTaskResult {
     }
 }
 
+/// 保存Bucket信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Bucket {
@@ -16147,6 +16160,7 @@ impl crate::FlatSerialize for Bucket {
     }
 }
 
+/// 保存域名信息列表的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketAntiDDOSConfigurationCnames {
@@ -16165,6 +16179,7 @@ impl crate::FlatSerialize for BucketAntiDDOSConfigurationCnames {
     }
 }
 
+/// 保存高防实例配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketAntiDDOSConfiguration {
@@ -16183,6 +16198,7 @@ impl crate::FlatSerialize for BucketAntiDDOSConfiguration {
     }
 }
 
+/// 保存自定义域名的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketAntiDDOSInfoCnames {
@@ -16201,6 +16217,7 @@ impl crate::FlatSerialize for BucketAntiDDOSInfoCnames {
     }
 }
 
+/// 保存高防实例信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketAntiDDOSInfo {
@@ -16303,6 +16320,7 @@ impl crate::FlatSerialize for BucketChannelConfigRuleListRuleItem {
     }
 }
 
+/// 规则列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketChannelConfigRuleList {
@@ -16321,6 +16339,7 @@ impl crate::FlatSerialize for BucketChannelConfigRuleList {
     }
 }
 
+/// Bucket图片处理通道配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketChannelConfig {
@@ -16355,6 +16374,7 @@ impl crate::FlatSerialize for BucketChannelConfig {
     }
 }
 
+/// 保存Cname的证书配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CertificateConfiguration {
@@ -16409,6 +16429,7 @@ impl crate::FlatSerialize for CertificateConfiguration {
     }
 }
 
+/// Cname信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketCnameConfigurationCname {
@@ -16435,6 +16456,7 @@ impl crate::FlatSerialize for BucketCnameConfigurationCname {
     }
 }
 
+/// Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketCnameConfiguration {
@@ -16453,6 +16475,7 @@ impl crate::FlatSerialize for BucketCnameConfiguration {
     }
 }
 
+/// Bucket存储冗余转换任务详情
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketDataRedundancyTransition {
@@ -16525,6 +16548,7 @@ impl crate::ToCodeMessage for BucketDataRedundancyTransition {
     }
 }
 
+/// Bucket服务端加密配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketInfoBucketServerSideEncryptionRule {
@@ -16567,6 +16591,7 @@ impl crate::FlatSerialize for BucketInfoBucketServerSideEncryptionRule {
     }
 }
 
+/// Bucket日志配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketInfoBucketBucketPolicy {
@@ -16597,6 +16622,7 @@ impl crate::FlatSerialize for BucketInfoBucketBucketPolicy {
     }
 }
 
+/// 保存Bucket信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketInfoBucket {
@@ -16739,6 +16765,7 @@ impl crate::FlatSerialize for BucketInfoBucket {
     }
 }
 
+/// 保存Bucket信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketInfo {
@@ -16763,6 +16790,7 @@ impl crate::ToCodeMessage for BucketInfo {
     }
 }
 
+/// 访问日志信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LoggingEnabled {
@@ -16801,6 +16829,7 @@ impl crate::FlatSerialize for LoggingEnabled {
     }
 }
 
+/// 存储访问日志状态信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketLoggingStatus {
@@ -16829,6 +16858,7 @@ impl crate::ToCodeMessage for BucketLoggingStatus {
     }
 }
 
+/// Bucket图片处理配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketProcessConfiguration {
@@ -16891,6 +16921,7 @@ impl crate::FlatSerialize for BucketProcessConfiguration {
     }
 }
 
+/// 存储空间级别QoS配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketQoSConfiguration {
@@ -16985,6 +17016,7 @@ impl crate::FlatSerialize for BucketQoSConfiguration {
     }
 }
 
+/// Bucket资源组配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketResourceGroupConfiguration {
@@ -17007,6 +17039,7 @@ impl crate::FlatSerialize for BucketResourceGroupConfiguration {
     }
 }
 
+/// BucketStat结构的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketStat {
@@ -17279,6 +17312,9 @@ impl crate::ToCodeMessage for BucketStat {
     }
 }
 
+/// CORS规则的容器。
+///
+/// 每个Bucket最多允许10条CORS规则。上传的XML文档最大允许16 KB。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CORSRule {
@@ -17339,6 +17375,7 @@ impl crate::FlatSerialize for CORSRule {
     }
 }
 
+/// Bucket的CORS规则容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CORSConfiguration {
@@ -17376,6 +17413,7 @@ impl crate::FlatSerialize for CORSConfiguration {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CSVInput {
@@ -17458,6 +17496,7 @@ impl crate::FlatSerialize for CSVInput {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CSVOutput {
@@ -17507,6 +17546,7 @@ impl crate::FlatSerialize for CacheQuotaConfigurationQuotaDesc {
     }
 }
 
+/// 加速器容量配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CacheQuotaConfiguration {
@@ -17528,6 +17568,7 @@ impl crate::FlatSerialize for CacheQuotaConfiguration {
     }
 }
 
+/// 加速器基本信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CacheBaseInfo {
@@ -17566,6 +17607,7 @@ impl crate::FlatSerialize for CacheBaseInfo {
     }
 }
 
+/// 加速器关联存储空间信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CacheBucketInfo {
@@ -17656,6 +17698,7 @@ impl crate::FlatSerialize for CacheConfigurationCaches {
     }
 }
 
+/// 存储空间加速器配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CacheConfiguration {
@@ -17690,6 +17733,7 @@ impl crate::FlatSerialize for CacheDetailInfoBuckets {
     }
 }
 
+/// 加速器详细信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CacheDetailInfo {
@@ -17765,6 +17809,7 @@ impl crate::FlatSerialize for CallbackPolicyPolicyItemItem {
     }
 }
 
+/// 回调规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CallbackPolicy {
@@ -17787,6 +17832,7 @@ impl crate::FlatSerialize for CallbackPolicy {
     }
 }
 
+/// xxx
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Channel {
@@ -17861,6 +17907,7 @@ impl crate::FlatSerialize for Channel {
     }
 }
 
+/// 图片处理频道配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ChannelInfo {
@@ -17923,6 +17970,7 @@ impl crate::FlatSerialize for ChannelInfo {
     }
 }
 
+/// 证书信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnameCertificate {
@@ -17981,6 +18029,7 @@ impl crate::FlatSerialize for CnameCertificate {
     }
 }
 
+/// Cname信息概况。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnameInfo {
@@ -18023,6 +18072,7 @@ impl crate::FlatSerialize for CnameInfo {
     }
 }
 
+/// Cname信息概况
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnameSummary {
@@ -18061,6 +18111,7 @@ impl crate::FlatSerialize for CnameSummary {
     }
 }
 
+/// CnameToken的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnameToken {
@@ -18101,6 +18152,7 @@ impl crate::ToCodeMessage for CnameToken {
     }
 }
 
+/// 存放bucket备注内容的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommentConfiguration {
@@ -18118,6 +18170,7 @@ impl crate::FlatSerialize for CommentConfiguration {
     }
 }
 
+/// 存放用户自定义HTTP Header的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommonHeadersHeaderItem {
@@ -18140,6 +18193,7 @@ impl crate::FlatSerialize for CommonHeadersHeaderItem {
     }
 }
 
+/// 存放用户自定义HTTP Header配置的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommonHeaders {
@@ -18158,6 +18212,7 @@ impl crate::FlatSerialize for CommonHeaders {
     }
 }
 
+/// 如果请求中指定了delimiter参数，则OSS返回的响应中包含CommonPrefixes元素。该元素标明以delimiter结尾，并有共同前缀的Object名称的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommonPrefix {
@@ -18176,6 +18231,7 @@ impl crate::FlatSerialize for CommonPrefix {
     }
 }
 
+/// 保存已上传Part信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CompleteMultipartUploadPartItem {
@@ -18206,6 +18262,7 @@ impl crate::FlatSerialize for CompleteMultipartUploadPartItem {
     }
 }
 
+/// 保存CompleteMultipartUpload请求内容的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CompleteMultipartUploadSchema {
@@ -18224,6 +18281,7 @@ impl crate::FlatSerialize for CompleteMultipartUploadSchema {
     }
 }
 
+/// CopyObject的结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyObjectResult {
@@ -18255,6 +18313,7 @@ impl crate::FlatSerialize for CopyObjectResult {
     }
 }
 
+/// CopyObject的结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyPartResult {
@@ -18284,6 +18343,7 @@ impl crate::FlatSerialize for CopyPartResult {
     }
 }
 
+/// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAccessPointConfiguration {
@@ -18330,6 +18390,7 @@ impl crate::FlatSerialize for CreateAccessPointConfiguration {
     }
 }
 
+/// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAccessPointResult {
@@ -18362,6 +18423,7 @@ impl crate::ToCodeMessage for CreateAccessPointResult {
     }
 }
 
+/// Bucket存储类型和数据容灾类型的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateBucketConfiguration {
@@ -18404,6 +18466,7 @@ impl crate::FlatSerialize for CreateBucketConfiguration {
     }
 }
 
+/// 加速器创建参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCacheConfiguration {
@@ -18435,6 +18498,7 @@ impl crate::FlatSerialize for CreateCacheConfiguration {
     }
 }
 
+/// oss cache异步预热规则
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDataLakeCachePrefetchJob {
@@ -18458,6 +18522,7 @@ impl crate::FlatSerialize for CreateDataLakeCachePrefetchJob {
     }
 }
 
+/// 数据湖元数据转换任务配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDataLakeStorageTransferJob {
@@ -18530,6 +18595,7 @@ impl crate::FlatSerialize for CreateFileGroupPartItem {
     }
 }
 
+/// 创建FileGroup类型文件的请求
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateFileGroup {
@@ -18547,6 +18613,7 @@ impl crate::FlatSerialize for CreateFileGroup {
     }
 }
 
+/// 创建FileGroup类型文件的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateFileGroupResult {
@@ -18573,6 +18640,7 @@ impl crate::FlatSerialize for CreateFileGroupResult {
     }
 }
 
+/// 创建预留空间的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateLargeReservedCapacityResult {
@@ -18599,6 +18667,7 @@ impl crate::FlatSerialize for CreateLargeReservedCapacityResult {
     }
 }
 
+/// ObjectLink类型文件创建结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateObjectLinkResult {
@@ -18667,6 +18736,7 @@ impl crate::FlatSerialize for DataAcceleratorBasicInfomation {
     }
 }
 
+/// 数据湖加速器信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataAccelerator {
@@ -18783,6 +18853,7 @@ impl crate::FlatSerialize for DataLakeCachePrefetchJobRulePrefixFilter {
     }
 }
 
+/// oss加速器异步预热规则
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeCachePrefetchJobRule {
@@ -18807,6 +18878,7 @@ impl crate::FlatSerialize for DataLakeCachePrefetchJobRule {
     }
 }
 
+/// oss加速器异步预热配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeCachePrefetchJob {
@@ -18857,6 +18929,7 @@ impl crate::FlatSerialize for DataLakeCachePrefetchJob {
     }
 }
 
+/// oss加速器异步预热任务执行记录
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeCachePrefetchJobHistory {
@@ -18938,6 +19011,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobRulePrefixFilter {
     }
 }
 
+/// 数据湖元数据转换任务规则
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRule {
@@ -19000,6 +19074,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobProgressInfo {
     }
 }
 
+/// 数据湖元数据转换任务配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJob {
@@ -19141,6 +19216,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobHistoryDetailInfo {
     }
 }
 
+/// 数据湖元数据转换历史任务
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobHistory {
@@ -19195,6 +19271,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobHistory {
     }
 }
 
+/// 数据湖元数据转换历史任务ID
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobHistoryId {
@@ -19216,6 +19293,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobHistoryId {
     }
 }
 
+/// 数据湖元数据转换任务ID
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobId {
@@ -19233,6 +19311,7 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobId {
     }
 }
 
+/// 数据湖元数据转换任务列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobs {
@@ -19281,6 +19360,7 @@ impl crate::ToCodeMessage for DataLakeStorageTransferJobs {
     }
 }
 
+/// 对象标识符。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectIdentifier {
@@ -19307,6 +19387,7 @@ impl crate::FlatSerialize for ObjectIdentifier {
     }
 }
 
+/// 保存DeleteMultipleObjects请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Delete {
@@ -19335,6 +19416,8 @@ impl crate::FlatSerialize for Delete {
     }
 }
 
+/// 保存删除标记的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteMarkerEntry {
@@ -19386,6 +19469,8 @@ impl crate::FlatSerialize for DeleteMarkerEntry {
     }
 }
 
+/// 保存被成功删除的Object的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeletedObject {
@@ -19429,6 +19514,7 @@ impl crate::FlatSerialize for DeletedObject {
     }
 }
 
+/// 错误响应。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Error {
@@ -19463,6 +19549,7 @@ impl crate::FlatSerialize for Error {
     }
 }
 
+/// 404页面的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ErrorDocument {
@@ -19489,6 +19576,7 @@ impl crate::FlatSerialize for ErrorDocument {
     }
 }
 
+/// Object过滤配置键
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionComputeConfigurationFilterKey {
@@ -19511,6 +19599,7 @@ impl crate::FlatSerialize for FunctionComputeConfigurationFilterKey {
     }
 }
 
+/// Object过滤配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionComputeConfigurationFilter {
@@ -19529,6 +19618,7 @@ impl crate::FlatSerialize for FunctionComputeConfigurationFilter {
     }
 }
 
+/// 函数计算配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionComputeConfigurationFunction {
@@ -19555,6 +19645,7 @@ impl crate::FlatSerialize for FunctionComputeConfigurationFunction {
     }
 }
 
+/// 函数计算服务配置项
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionComputeConfiguration {
@@ -19585,6 +19676,7 @@ impl crate::FlatSerialize for FunctionComputeConfiguration {
     }
 }
 
+/// 存储空间事件通知配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventNotificationConfiguration {
@@ -19613,6 +19705,7 @@ impl crate::ToCodeMessage for EventNotificationConfiguration {
     }
 }
 
+/// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExtendWormConfiguration {
@@ -19673,6 +19766,7 @@ impl crate::FlatSerialize for FileGroupInfoFilePartPartItem {
     }
 }
 
+/// FileGroup类型文件的信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileGroupInfoFilePart {
@@ -19690,6 +19784,7 @@ impl crate::FlatSerialize for FileGroupInfoFilePart {
     }
 }
 
+/// FileGroup类型文件的信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileGroupInfo {
@@ -19728,6 +19823,7 @@ impl crate::FlatSerialize for FileGroupInfo {
     }
 }
 
+/// 保存接入点网络来源信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointResultEndpoints {
@@ -19758,6 +19854,7 @@ impl crate::FlatSerialize for GetAccessPointResultEndpoints {
     }
 }
 
+/// 阻止公共访问的配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PublicAccessBlockConfiguration {
@@ -19788,6 +19885,7 @@ impl crate::ToCodeMessage for PublicAccessBlockConfiguration {
     }
 }
 
+/// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointResult {
@@ -19884,6 +19982,7 @@ impl crate::ToCodeMessage for GetAccessPointResult {
     }
 }
 
+/// Bucket图片处理通道配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketProcessConfiguration {
@@ -19943,6 +20042,7 @@ impl crate::FlatSerialize for GetBucketProcessConfiguration {
     }
 }
 
+/// xxx
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetChannelResult {
@@ -20097,6 +20197,7 @@ impl crate::FlatSerialize for GetObjectInfoResult {
     }
 }
 
+/// 流控配额信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QoSConfiguration {
@@ -20183,6 +20284,7 @@ impl crate::FlatSerialize for QoSConfiguration {
     }
 }
 
+/// 获取资源池信息的响应体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetResourcePoolInfoResp {
@@ -20220,6 +20322,7 @@ impl crate::FlatSerialize for GetResourcePoolInfoResp {
     }
 }
 
+/// 存储空间TLS版本配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HttpsConfigurationTls {
@@ -20246,6 +20349,7 @@ impl crate::FlatSerialize for HttpsConfigurationTls {
     }
 }
 
+/// 存储空间加密套件配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HttpsConfigurationCipherSuite {
@@ -20288,6 +20392,7 @@ impl crate::FlatSerialize for HttpsConfigurationCipherSuite {
     }
 }
 
+/// 存储空间TLS版本配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HttpsConfiguration {
@@ -20389,6 +20494,8 @@ impl crate::FlatSerialize for IncrementalInventory {
     }
 }
 
+/// 默认主页的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct IndexDocument {
@@ -20428,6 +20535,7 @@ impl crate::FlatSerialize for IndexDocument {
     }
 }
 
+/// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InitiateWormConfiguration {
@@ -20450,6 +20558,7 @@ impl crate::FlatSerialize for InitiateWormConfiguration {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct JSONInput {
@@ -20489,6 +20598,7 @@ impl crate::FlatSerialize for JSONInput {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InputSerialization {
@@ -20519,6 +20629,8 @@ impl crate::FlatSerialize for InputSerialization {
     }
 }
 
+/// 保存SSE-KMS加密密钥的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SSEKMS {
@@ -20537,6 +20649,7 @@ impl crate::FlatSerialize for SSEKMS {
     }
 }
 
+/// 清单文件的加密方式。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryEncryption {
@@ -20559,6 +20672,7 @@ impl crate::FlatSerialize for InventoryEncryption {
     }
 }
 
+/// 清单结果导出后存放的Bucket信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryOSSBucketDestination {
@@ -20605,6 +20719,7 @@ impl crate::FlatSerialize for InventoryOSSBucketDestination {
     }
 }
 
+/// 存放清单结果的信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryDestination {
@@ -20627,6 +20742,7 @@ impl crate::FlatSerialize for InventoryDestination {
     }
 }
 
+/// Contains the frequency that inventory lists are exported
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventorySchedule {
@@ -20655,6 +20771,7 @@ impl crate::FlatSerialize for InventorySchedule {
     }
 }
 
+/// 清单筛选的前缀。指定前缀后，清单将筛选出符合前缀设置的对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryFilter {
@@ -20713,6 +20830,7 @@ impl crate::FlatSerialize for InventoryFilter {
     }
 }
 
+/// 清单结果中包含的配置项列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryConfigurationOptionalFields {
@@ -20740,6 +20858,8 @@ impl crate::FlatSerialize for InventoryConfigurationOptionalFields {
     }
 }
 
+/// 存储清单配置信息的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InventoryConfiguration {
@@ -20819,6 +20939,7 @@ impl crate::ToCodeMessage for InventoryConfiguration {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct JSONOutput {
@@ -20842,6 +20963,8 @@ impl crate::FlatSerialize for JSONOutput {
     }
 }
 
+/// 指定Object生命周期规则的过期属性。 对于受版本控制的Bucket，指定的过期属性只对Object的当前版本生效。
+/// <br>Object的过期时间必须大于转储为IA或Archive类型的时间。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleExpiration {
@@ -20881,6 +21004,12 @@ impl crate::FlatSerialize for LifecycleRuleExpiration {
     }
 }
 
+/// 指定Object在有效生命周期中，OSS何时将Object转储为IA、Archive和ColdArchive存储类型 。
+/// Standard Bucket中的Standard Object可以转储为IA、Archive或ColdArchive存储类型，但转储Archive存储类型的时间必须比转储IA存储类型的时间长。例如Transition
+/// IA设置Days为30，Transition Archive设置Days必须大于30。
+///
+/// > Days或CreatedBeforeDate只能二选一。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleTransitionItem {
@@ -20957,6 +21086,7 @@ impl crate::FlatSerialize for LifecycleRuleTransitionItem {
     }
 }
 
+/// 指定未完成分片上传的过期属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleAbortMultipartUpload {
@@ -20983,6 +21113,7 @@ impl crate::FlatSerialize for LifecycleRuleAbortMultipartUpload {
     }
 }
 
+/// 设置Bucket Tag的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Tag {
@@ -21013,6 +21144,7 @@ impl crate::FlatSerialize for Tag {
     }
 }
 
+/// 指定Object非当前版本生命周期规则的过期属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleNoncurrentVersionExpiration {
@@ -21035,6 +21167,8 @@ impl crate::FlatSerialize for LifecycleRuleNoncurrentVersionExpiration {
     }
 }
 
+/// 在有效的生命周期规则中，OSS何时将指定Object的非当前版本转储为IA或者Archive存储类型 。
+/// Standard类型的Object转储为Archive类型的时间必须大于转储为IA类型的时间。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleNoncurrentVersionTransitionItem {
@@ -21129,6 +21263,7 @@ impl crate::FlatSerialize for LifecycleRuleFilterNotItem {
     }
 }
 
+/// 本条规则的排除条件。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRuleFilter {
@@ -21163,6 +21298,10 @@ impl crate::FlatSerialize for LifecycleRuleFilter {
     }
 }
 
+/// 生命周期规则的容器。
+///   - 不支持Archive Bucket创建转储规则。
+///   - Object设置过期时间必须大于转储为IA或者Archive存储类型的时间。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleRule {
@@ -21256,6 +21395,7 @@ impl crate::FlatSerialize for LifecycleRule {
     }
 }
 
+/// Lifecycle配置的容器，最多可容纳1000条规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleConfiguration {
@@ -21280,6 +21420,7 @@ impl crate::ToCodeMessage for LifecycleConfiguration {
     }
 }
 
+/// 保存所有接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAccessPointsResultAccessPoints {
@@ -21302,6 +21443,7 @@ impl crate::FlatSerialize for ListAccessPointsResultAccessPoints {
     }
 }
 
+/// 保存本次列举接入点信息结果的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAccessPointsResult {
@@ -21375,6 +21517,7 @@ impl crate::FlatSerialize for ListAllMyCacheResultCaches {
     }
 }
 
+/// 加速器列举结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAllMyCacheResult {
@@ -21418,6 +21561,7 @@ impl crate::FlatSerialize for ListAllMyCacheResult {
     }
 }
 
+/// 保存请求者QoS配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RequesterQoSInfo {
@@ -21448,6 +21592,7 @@ impl crate::FlatSerialize for RequesterQoSInfo {
     }
 }
 
+/// 列举Bucket级别请求者流控的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListBucketRequesterQoSInfosResult {
@@ -21498,6 +21643,7 @@ impl crate::FlatSerialize for ListBucketRequesterQoSInfosResult {
     }
 }
 
+/// oss加速器异步预热任务执行历史记录
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListDataLakeCachePrefetchJobHistory {
@@ -21519,6 +21665,7 @@ impl crate::FlatSerialize for ListDataLakeCachePrefetchJobHistory {
     }
 }
 
+/// 数据湖元数据转换历史任务列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListDataLakeStorageTransferJobHistory {
@@ -21540,6 +21687,7 @@ impl crate::FlatSerialize for ListDataLakeStorageTransferJobHistory {
     }
 }
 
+/// 资源池中Bucket的信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcePoolBucket {
@@ -21566,6 +21714,7 @@ impl crate::FlatSerialize for ResourcePoolBucket {
     }
 }
 
+/// 列举资源池中Bucket列表的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListResourcePoolBucketsResult {
@@ -21620,6 +21769,7 @@ impl crate::FlatSerialize for ListResourcePoolBucketsResult {
     }
 }
 
+/// 列举资源池级别请求者流控的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListResourcePoolRequesterQoSInfosResult {
@@ -21674,6 +21824,7 @@ impl crate::FlatSerialize for ListResourcePoolRequesterQoSInfosResult {
     }
 }
 
+/// 用户资源池简略信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcePoolSimpleInfo {
@@ -21700,6 +21851,7 @@ impl crate::FlatSerialize for ResourcePoolSimpleInfo {
     }
 }
 
+/// 列举当前用户在特定地域资源池的结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListResourcePoolsResult {
@@ -21771,6 +21923,7 @@ impl crate::FlatSerialize for ListUserRegionsResultRegions {
     }
 }
 
+/// 列举用户 Bucket 所属的区域
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListUserRegionsResult {
@@ -21832,6 +21985,7 @@ impl crate::FlatSerialize for VirtualBucket {
     }
 }
 
+/// 列举的虚拟 Bucket 配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListVirtualBucketResult {
@@ -21853,6 +22007,7 @@ impl crate::FlatSerialize for ListVirtualBucketResult {
     }
 }
 
+/// 保存推流地址的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelPublishUrls {
@@ -21874,6 +22029,7 @@ impl crate::FlatSerialize for LiveChannelPublishUrls {
     }
 }
 
+/// 保存播放地址的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelPlayUrls {
@@ -21892,6 +22048,7 @@ impl crate::FlatSerialize for LiveChannelPlayUrls {
     }
 }
 
+/// 保存返回每个LiveChannel信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannel {
@@ -21950,6 +22107,8 @@ impl crate::FlatSerialize for LiveChannel {
     }
 }
 
+/// 当Status为Live时，保存音频流信息的容器。
+/// > Video、Audio容器只有在Status为Live时才会返回，但Status为Live时不一定返回这两个容器。例如，客户端已经连接到LiveChannel，但尚未发送音视频数据，这种情况不会返回这两个容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelAudio {
@@ -21986,6 +22145,8 @@ impl crate::FlatSerialize for LiveChannelAudio {
     }
 }
 
+/// 保存转储配置的容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelTarget {
@@ -22046,6 +22207,7 @@ impl crate::FlatSerialize for LiveChannelTarget {
     }
 }
 
+/// 保存高频截图操作Snapshot 选项的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelSnapshot {
@@ -22090,6 +22252,7 @@ impl crate::FlatSerialize for LiveChannelSnapshot {
     }
 }
 
+/// 保存LiveChannel配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelConfiguration {
@@ -22127,6 +22290,8 @@ impl crate::FlatSerialize for LiveChannelConfiguration {
     }
 }
 
+/// 当Status为Live时，保存视频流信息的容器。
+/// > **说明** Video、Audio容器只有在Status为Live时才会返回，但Status为Live时不一定返回这两个容器。例如，客户端已经连接到LiveChannel，但尚未发送音视频数据，这种情况不会返回这两个容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveChannelVideo {
@@ -22172,6 +22337,7 @@ impl crate::FlatSerialize for LiveChannelVideo {
     }
 }
 
+/// 保存一次推流记录信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LiveRecord {
@@ -22206,6 +22372,7 @@ impl crate::FlatSerialize for LiveRecord {
     }
 }
 
+/// 传输类型容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LocationTransferTypeTransferTypes {
@@ -22227,6 +22394,8 @@ impl crate::FlatSerialize for LocationTransferTypeTransferTypes {
     }
 }
 
+/// 包含TransferType的Location信息容器。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LocationTransferType {
@@ -22253,6 +22422,7 @@ impl crate::FlatSerialize for LocationTransferType {
     }
 }
 
+/// 聚合操作信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryAggregation {
@@ -22287,6 +22457,7 @@ impl crate::FlatSerialize for MetaQueryAggregation {
     }
 }
 
+/// 聚合操作信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryAggregations {
@@ -22309,6 +22480,7 @@ impl crate::FlatSerialize for MetaQueryAggregations {
     }
 }
 
+/// 多媒体元数据检索条件。仅用于向量检索
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryMediaTypes {
@@ -22331,6 +22503,7 @@ impl crate::FlatSerialize for MetaQueryMediaTypes {
     }
 }
 
+/// 查询条件的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQuery {
@@ -22428,6 +22601,7 @@ impl crate::FlatSerialize for MetaQueryAggregationsResultGroupsGroupItem {
     }
 }
 
+/// 分组聚合的结果列表的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryAggregationsResultGroups {
@@ -22446,6 +22620,7 @@ impl crate::FlatSerialize for MetaQueryAggregationsResultGroups {
     }
 }
 
+/// 数据索引查询聚合结果
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryAggregationsResult {
@@ -22480,6 +22655,7 @@ impl crate::FlatSerialize for MetaQueryAggregationsResult {
     }
 }
 
+/// 对象所附标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryTagging {
@@ -22502,6 +22678,7 @@ impl crate::FlatSerialize for MetaQueryTagging {
     }
 }
 
+/// 对象的标签列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileOssTagging {
@@ -22520,6 +22697,7 @@ impl crate::FlatSerialize for MetaQueryFileOssTagging {
     }
 }
 
+/// 用户自定义元数据
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryUserMeta {
@@ -22542,6 +22720,7 @@ impl crate::FlatSerialize for MetaQueryUserMeta {
     }
 }
 
+/// 对象的自定义元数据列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileOssUserMeta {
@@ -22564,6 +22743,7 @@ impl crate::FlatSerialize for MetaQueryFileOssUserMeta {
     }
 }
 
+/// 数据索引向量检索结果中的视频流信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespVideoStream {
@@ -22654,6 +22834,7 @@ impl crate::FlatSerialize for MetaQueryRespVideoStream {
     }
 }
 
+/// 视频流列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileVideoStreams {
@@ -22676,6 +22857,7 @@ impl crate::FlatSerialize for MetaQueryFileVideoStreams {
     }
 }
 
+/// 数据索引向量检索结果中的音频流信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespAudioStream {
@@ -22730,6 +22912,7 @@ impl crate::FlatSerialize for MetaQueryRespAudioStream {
     }
 }
 
+/// 音频流列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileAudioStreams {
@@ -22752,6 +22935,7 @@ impl crate::FlatSerialize for MetaQueryFileAudioStreams {
     }
 }
 
+/// 数据索引向量检索结果中的字幕流信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespSubtitle {
@@ -22790,6 +22974,7 @@ impl crate::FlatSerialize for MetaQueryRespSubtitle {
     }
 }
 
+/// 字幕流列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileSubtitles {
@@ -22808,6 +22993,7 @@ impl crate::FlatSerialize for MetaQueryFileSubtitles {
     }
 }
 
+/// 数据索引向量检索结果中的地址信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespAddress {
@@ -22850,6 +23036,7 @@ impl crate::FlatSerialize for MetaQueryRespAddress {
     }
 }
 
+/// 地址信息列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFileAddresses {
@@ -22936,6 +23123,7 @@ impl crate::FlatSerialize for MetaQueryRespFileInsights {
     }
 }
 
+/// A short description of struct
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryFile {
@@ -23267,6 +23455,7 @@ impl crate::FlatSerialize for MetaQueryOpenRequestFilters {
     }
 }
 
+/// 为开启元数据管理功能的请求体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryOpenRequest {
@@ -23284,6 +23473,7 @@ impl crate::FlatSerialize for MetaQueryOpenRequest {
     }
 }
 
+/// Object信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFiles {
@@ -23302,6 +23492,7 @@ impl crate::FlatSerialize for MetaQueryRespFiles {
     }
 }
 
+/// 聚合操作结果信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespAggregations {
@@ -23324,6 +23515,7 @@ impl crate::FlatSerialize for MetaQueryRespAggregations {
     }
 }
 
+/// 数据索引查询响应体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryResp {
@@ -23381,6 +23573,7 @@ impl crate::FlatSerialize for NotificationConfigurationTopicConfigurationItem {
     }
 }
 
+/// BucketNotification 配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NotificationConfiguration {
@@ -23402,6 +23595,7 @@ impl crate::FlatSerialize for NotificationConfiguration {
     }
 }
 
+/// Object哈希算法配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectHashConfiguration {
@@ -23460,6 +23654,7 @@ impl crate::FlatSerialize for ObjectLinkInfoPartItem {
     }
 }
 
+/// ObjectLink类型文件信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectLinkInfo {
@@ -23477,6 +23672,7 @@ impl crate::FlatSerialize for ObjectLinkInfo {
     }
 }
 
+/// 返回的文件元信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectSummary {
@@ -23555,6 +23751,7 @@ impl crate::FlatSerialize for ObjectSummary {
     }
 }
 
+/// 保存通过对象FC接入点发起请求信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationAllowedFeatures {
@@ -23577,6 +23774,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationAllowedFeatures {
     }
 }
 
+/// 保存操作信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemActions
@@ -23598,6 +23796,7 @@ impl crate::FlatSerialize
     }
 }
 
+/// 保存函数计算信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationFunctionCompute
@@ -23621,6 +23820,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurat
     }
 }
 
+/// 保存自定义转发请求头列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeaturesCustomForwardHeaders
@@ -23640,6 +23840,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurat
     }
 }
 
+/// 保存额外特性配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures {
@@ -23658,6 +23859,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurat
     }
 }
 
+/// 保存转换信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation {
@@ -23680,6 +23882,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurat
     }
 }
 
+/// 保存转换配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItem {
@@ -23708,6 +23911,7 @@ impl crate::FlatSerialize
     }
 }
 
+/// 保存转换配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfigurationTransformationConfigurations {
@@ -23731,6 +23935,7 @@ impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurat
     }
 }
 
+/// 对象FC接入点的配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectProcessConfiguration {
@@ -23761,6 +23966,7 @@ impl crate::FlatSerialize for ObjectProcessConfiguration {
     }
 }
 
+/// 保存除删除标记以外的Object版本的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectVersion {
@@ -23848,6 +24054,7 @@ impl crate::FlatSerialize for ObjectVersion {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OutputSerialization {
@@ -23914,6 +24121,7 @@ impl crate::FlatSerialize for OutputSerialization {
     }
 }
 
+/// 保存规则生效的账号与角色列表的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OverwriteConfigurationRuleItemPrincipals {
@@ -23936,6 +24144,7 @@ impl crate::FlatSerialize for OverwriteConfigurationRuleItemPrincipals {
     }
 }
 
+/// 单个Bucket最多支持配置100条规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OverwriteConfigurationRuleItem {
@@ -23974,6 +24183,7 @@ impl crate::FlatSerialize for OverwriteConfigurationRuleItem {
     }
 }
 
+/// 禁止覆盖写的配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OverwriteConfiguration {
@@ -23998,6 +24208,7 @@ impl crate::ToCodeMessage for OverwriteConfiguration {
     }
 }
 
+/// 保存已上传Part信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Part {
@@ -24060,6 +24271,7 @@ impl crate::FlatSerialize for PromoteDataLakeCacheReqObject {
     }
 }
 
+/// 加速器缓存管理请求
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PromoteDataLakeCacheReq {
@@ -24077,6 +24289,7 @@ impl crate::FlatSerialize for PromoteDataLakeCacheReq {
     }
 }
 
+/// 图片处理频道配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutChannelConfiguration {
@@ -24143,6 +24356,7 @@ impl crate::FlatSerialize for PutChannelConfiguration {
     }
 }
 
+/// 保存Prefix的容器，每个复制规则中，最多能指定10个Prefix。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationPrefixSet {
@@ -24164,6 +24378,7 @@ impl crate::FlatSerialize for ReplicationPrefixSet {
     }
 }
 
+/// 保存目标Bucket信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationDestination {
@@ -24197,6 +24412,7 @@ impl crate::FlatSerialize for ReplicationDestination {
     }
 }
 
+/// 用于筛选使用SSE-KMS加密对象的容器。如果在数据复制规则中指定了SourceSelectionCriteria，则必须指定该元素。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
@@ -24217,6 +24433,7 @@ impl crate::FlatSerialize for ReplicationSourceSelectionCriteriaSseKmsEncryptedO
     }
 }
 
+/// 用于标识要复制的源对象的其他筛选条件的容器。当前OSS仅支持针对SSE-KMS加密的源对象指定筛选条件。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationSourceSelectionCriteria {
@@ -24239,6 +24456,7 @@ impl crate::FlatSerialize for ReplicationSourceSelectionCriteria {
     }
 }
 
+/// 目标对象加密配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationEncryptionConfiguration {
@@ -24261,6 +24479,7 @@ impl crate::FlatSerialize for ReplicationEncryptionConfiguration {
     }
 }
 
+/// 数据复制时间控制功能的状态
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RTC {
@@ -24279,6 +24498,7 @@ impl crate::FlatSerialize for RTC {
     }
 }
 
+/// 数据复制规则
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutReplicationRule {
@@ -24353,6 +24573,7 @@ impl crate::FlatSerialize for PutReplicationRule {
     }
 }
 
+/// 带有备注信息的QoS配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QoSConfigurationWithRemark {
@@ -24443,6 +24664,8 @@ impl crate::FlatSerialize for QoSConfigurationWithRemark {
     }
 }
 
+/// 保存Referer访问白名单的容器。
+/// > **说明**PutBucketReferer为覆盖语义，即RefererList中的新指定的白名单列表将覆盖已配置的白名单列表。当您上传的RefererList为空时（即不包含Referer请求元素），此操作将清空RefererList中已配置的白名单列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RefererConfigurationRefererList {
@@ -24461,6 +24684,7 @@ impl crate::FlatSerialize for RefererConfigurationRefererList {
     }
 }
 
+/// 保存Referer访问黑名单
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RefererConfigurationRefererBlacklist {
@@ -24479,6 +24703,7 @@ impl crate::FlatSerialize for RefererConfigurationRefererBlacklist {
     }
 }
 
+/// 保存Referer配置内容的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RefererConfiguration {
@@ -24551,6 +24776,7 @@ impl crate::ToCodeMessage for RefererConfiguration {
     }
 }
 
+/// 地域信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegionInfo {
@@ -24593,6 +24819,7 @@ impl crate::FlatSerialize for RegionInfo {
     }
 }
 
+/// 数据复制配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationConfiguration {
@@ -24611,6 +24838,7 @@ impl crate::FlatSerialize for ReplicationConfiguration {
     }
 }
 
+/// 保存复制进度的容器，仅当数据处于同步状态（doing）时才返回此元素。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationProgressRuleProgress {
@@ -24643,6 +24871,7 @@ impl crate::FlatSerialize for ReplicationProgressRuleProgress {
     }
 }
 
+/// 数据复制进度信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationProgressRule {
@@ -24709,6 +24938,7 @@ impl crate::FlatSerialize for ReplicationProgressRule {
     }
 }
 
+/// 数据复制规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationRule {
@@ -24800,6 +25030,7 @@ impl crate::FlatSerialize for ReplicationRule {
     }
 }
 
+/// 数据复制规则进度信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationRuleProgress {
@@ -24835,6 +25066,7 @@ impl crate::FlatSerialize for ReplicationRuleProgress {
     }
 }
 
+/// 保存需要删除的数据复制规则的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplicationRules {
@@ -24853,6 +25085,7 @@ impl crate::FlatSerialize for ReplicationRules {
     }
 }
 
+/// 请求付费配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RequestPaymentConfiguration {
@@ -24876,6 +25109,7 @@ impl crate::FlatSerialize for RequestPaymentConfiguration {
     }
 }
 
+/// 创建预留空间的配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedCapacityCreateConfiguration {
@@ -24909,6 +25143,7 @@ impl crate::FlatSerialize for ReservedCapacityCreateConfiguration {
     }
 }
 
+/// 创建预留空间的信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedCapacityRecord {
@@ -24992,6 +25227,7 @@ impl crate::FlatSerialize for ReservedCapacityRecord {
     }
 }
 
+/// 创建预留空间的信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedCapacityRecordList {
@@ -25013,6 +25249,7 @@ impl crate::FlatSerialize for ReservedCapacityRecordList {
     }
 }
 
+/// 修改预留空间配置的请求
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedCapacityUpdateConfiguration {
@@ -25036,6 +25273,7 @@ impl crate::FlatSerialize for ReservedCapacityUpdateConfiguration {
     }
 }
 
+/// 指定规则适应的操作的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseHeaderConfigurationRuleItemFilters {
@@ -25058,6 +25296,7 @@ impl crate::FlatSerialize for ResponseHeaderConfigurationRuleItemFilters {
     }
 }
 
+/// 指定隐藏哪些响应头的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseHeaderConfigurationRuleItemHideHeaders {
@@ -25076,6 +25315,7 @@ impl crate::FlatSerialize for ResponseHeaderConfigurationRuleItemHideHeaders {
     }
 }
 
+/// 保存响应头规则的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseHeaderConfigurationRuleItem {
@@ -25106,6 +25346,7 @@ impl crate::FlatSerialize for ResponseHeaderConfigurationRuleItem {
     }
 }
 
+/// 保存响应头规则的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseHeaderConfiguration {
@@ -25124,6 +25365,8 @@ impl crate::FlatSerialize for ResponseHeaderConfiguration {
     }
 }
 
+/// 解冻优先级的容器。只有解冻冷归档类型的Object时才生效。
+/// 如果不传入JobParameters节点，则解冻优先级默认为Standard。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RestoreRequestJobParameters {
@@ -25145,6 +25388,7 @@ impl crate::FlatSerialize for RestoreRequestJobParameters {
     }
 }
 
+/// 解冻请求信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RestoreRequest {
@@ -25210,6 +25454,9 @@ impl crate::FlatSerialize for RoutingRuleConditionIncludeHeaderItem {
     }
 }
 
+/// 匹配的条件。
+/// 如果指定的项都满足，则执行此规则。只有满足此容器下的各个节点的所有条件才算匹配。
+/// >如果指定了父节点RoutingRule，则必须指定此项。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleCondition {
@@ -25256,6 +25503,8 @@ impl crate::FlatSerialize for RoutingRuleCondition {
     }
 }
 
+/// 设置一个Header传到源站，不管请求中是否携带这些指定的Header，回源时都会设置这些Header。只有设置RedirectType为Mirror时才生效。
+/// 此容器最多可指定10组。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorHeadersSetItem {
@@ -25280,6 +25529,7 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorHeadersSetItem {
     }
 }
 
+/// 指定镜像回源时携带的Header。只有设置RedirectType为Mirror时才生效。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorHeaders {
@@ -25341,6 +25591,7 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorTaggingsTaggingsItem {
     }
 }
 
+/// 镜像回源保存文件时根据参数保存标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorTaggings {
@@ -25381,6 +25632,7 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorReturnHeadersReturnHeader
     }
 }
 
+/// 保存镜像回源返回响应头规则的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorReturnHeaders {
@@ -25403,6 +25655,7 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorReturnHeaders {
     }
 }
 
+/// 镜像回源源站认证信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorAuth {
@@ -25491,6 +25744,7 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorMultiAlternatesMirrorMult
     }
 }
 
+/// 镜像回源多源站配置列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirectMirrorMultiAlternates {
@@ -25514,6 +25768,8 @@ impl crate::FlatSerialize for RoutingRuleRedirectMirrorMultiAlternates {
     }
 }
 
+/// 指定匹配此规则后执行的动作。
+/// >如果指定了父节点RoutingRule，则必须指定此项。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleRedirect {
@@ -25851,6 +26107,7 @@ impl crate::FlatSerialize for RoutingRuleRedirect {
     }
 }
 
+/// 需要执行的Lua脚本配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRuleLuaConfig {
@@ -25869,6 +26126,7 @@ impl crate::FlatSerialize for RoutingRuleLuaConfig {
     }
 }
 
+/// 指定跳转规则或者镜像回源规则，最多指定20个RoutingRule。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RoutingRule {
@@ -25916,6 +26174,7 @@ impl crate::FlatSerialize for RoutingRule {
     }
 }
 
+/// 数据复制时间控制配置容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RtcConfiguration {
@@ -25938,6 +26197,7 @@ impl crate::FlatSerialize for RtcConfiguration {
     }
 }
 
+/// 保存SelectMetaRequest信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SelectMetaRequest {
@@ -25969,6 +26229,7 @@ impl crate::FlatSerialize for SelectMetaRequest {
     }
 }
 
+/// 保存CreateSelectObjectMeta信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SelectMetaStatus {
@@ -26037,6 +26298,7 @@ impl crate::ToCodeMessage for SelectMetaStatus {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SelectRequestOptions {
@@ -26074,6 +26336,7 @@ impl crate::FlatSerialize for SelectRequestOptions {
     }
 }
 
+/// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SelectRequest {
@@ -26116,6 +26379,7 @@ impl crate::FlatSerialize for SelectRequest {
     }
 }
 
+/// 服务器端加密规则的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ServerSideEncryptionRule {
@@ -26138,6 +26402,7 @@ impl crate::FlatSerialize for ServerSideEncryptionRule {
     }
 }
 
+/// 保存Content信息列表的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Style {
@@ -26160,6 +26425,7 @@ impl crate::FlatSerialize for Style {
     }
 }
 
+/// 包含存储空间图片处理样式信息的结构体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StyleInfo {
@@ -26208,6 +26474,7 @@ impl crate::ToCodeMessage for StyleInfo {
     }
 }
 
+/// 标签集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagSet {
@@ -26226,6 +26493,7 @@ impl crate::FlatSerialize for TagSet {
     }
 }
 
+/// 设置Bucket TagSet的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Tagging {
@@ -26244,6 +26512,7 @@ impl crate::FlatSerialize for Tagging {
     }
 }
 
+/// 传输加速配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TransferAccelerationConfiguration {
@@ -26266,6 +26535,7 @@ impl crate::FlatSerialize for TransferAccelerationConfiguration {
     }
 }
 
+/// 保存Multipart Upload事件信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Upload {
@@ -26304,6 +26574,7 @@ impl crate::FlatSerialize for Upload {
     }
 }
 
+/// 高防实例信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UserAntiDDOSInfo {
@@ -26356,6 +26627,7 @@ impl crate::FlatSerialize for UserAntiDDOSInfo {
     }
 }
 
+/// 自定义请求头配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UserDefinedLogFieldsConfigurationHeaderSet {
@@ -26374,6 +26646,7 @@ impl crate::FlatSerialize for UserDefinedLogFieldsConfigurationHeaderSet {
     }
 }
 
+/// 自定义查询参数配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UserDefinedLogFieldsConfigurationParamSet {
@@ -26396,6 +26669,7 @@ impl crate::FlatSerialize for UserDefinedLogFieldsConfigurationParamSet {
     }
 }
 
+/// 存储空间实时日志中用户自定义字段配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UserDefinedLogFieldsConfiguration {
@@ -26432,6 +26706,7 @@ impl crate::ToCodeMessage for UserDefinedLogFieldsConfiguration {
     }
 }
 
+/// 用户级别流控配额
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UserQosConfiguration {
@@ -26534,6 +26809,7 @@ impl crate::FlatSerialize for UserQosConfiguration {
     }
 }
 
+/// 保存版本控制状态的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersioningConfiguration {
@@ -26573,6 +26849,7 @@ impl crate::FlatSerialize for VirtualBucketConfigurationRealBucketItem {
     }
 }
 
+/// 虚拟Bucket配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VirtualBucketConfiguration {
@@ -26594,6 +26871,9 @@ impl crate::FlatSerialize for VirtualBucketConfiguration {
     }
 }
 
+/// RoutingRule的容器。
+///
+/// >至少指定IndexDocument、ErrorDocument、RoutingRules三个容器中的一个。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WebsiteConfigurationRoutingRules {
@@ -26616,6 +26896,7 @@ impl crate::FlatSerialize for WebsiteConfigurationRoutingRules {
     }
 }
 
+/// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WebsiteConfiguration {
@@ -26666,6 +26947,7 @@ impl crate::ToCodeMessage for WebsiteConfiguration {
     }
 }
 
+/// 保存Bucket信息列表的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseBuckets {
@@ -26684,6 +26966,7 @@ impl crate::FlatSerialize for ResponseBuckets {
     }
 }
 
+/// 存储ACL信息的容器类。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BucketAclResponseAccessControlList {
@@ -26702,6 +26985,7 @@ impl crate::FlatSerialize for BucketAclResponseAccessControlList {
     }
 }
 
+/// 保存数据复制配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutBucketReplicationbody {
@@ -26719,6 +27003,7 @@ impl crate::FlatSerialize for PutBucketReplicationbody {
     }
 }
 
+/// 包含TransferType约束的Location信息容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TransferTypeConstraint {
@@ -26741,6 +27026,7 @@ impl crate::FlatSerialize for TransferTypeConstraint {
     }
 }
 
+/// 包含RTC约束的Location信息容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CConstraint {
@@ -26759,6 +27045,7 @@ impl crate::FlatSerialize for CConstraint {
     }
 }
 
+/// 保存需要删除的数据复制规则的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteBucketReplicationbody {
@@ -26777,6 +27064,7 @@ impl crate::FlatSerialize for DeleteBucketReplicationbody {
     }
 }
 
+/// 保存目标Cname域名的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnamebodyCname {
@@ -26795,6 +27083,7 @@ impl crate::FlatSerialize for CnamebodyCname {
     }
 }
 
+/// 保存Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteCnamebody {
@@ -26813,6 +27102,7 @@ impl crate::FlatSerialize for DeleteCnamebody {
     }
 }
 
+/// 保存要生成Token的Cname域名。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TokenbodyCname {
@@ -26831,6 +27121,7 @@ impl crate::FlatSerialize for TokenbodyCname {
     }
 }
 
+/// 保存Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CnameTokenbody {
@@ -26849,6 +27140,7 @@ impl crate::FlatSerialize for CnameTokenbody {
     }
 }
 
+/// 保存对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PointForObjectProcessbody {
@@ -26889,6 +27181,7 @@ impl crate::FlatSerialize for PointForObjectProcessbody {
     }
 }
 
+/// 保存对象FC接入点访问域名信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEndpoints {
@@ -26919,6 +27212,7 @@ impl crate::FlatSerialize for ResponseEndpoints {
     }
 }
 
+/// 保存单个对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessPointForObjectProcess {
@@ -26976,6 +27270,7 @@ impl crate::FlatSerialize for AccessPointForObjectProcess {
     }
 }
 
+/// 保存所有对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccessPointsForObjectProcess {
@@ -26998,6 +27293,7 @@ impl crate::FlatSerialize for AccessPointsForObjectProcess {
     }
 }
 
+/// 保存对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigForObjectProcessbody {
@@ -27038,6 +27334,7 @@ impl crate::FlatSerialize for ConfigForObjectProcessbody {
     }
 }
 
+/// 存储ACL信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ObjectAclResponseAccessControlList {
@@ -28035,6 +28332,9 @@ impl crate::FlatSerialize for ReplicationRuleHistoricalObjectReplication {
     }
 }
 
+/// - 您也可以通过设置prefix、marker或者max-keys参数列举满足指定条件的存储空间。
+/// - 要列举存储空间，您必须有oss:GetService (ListBuckets)权限。具体操作，请参见[为RAM用户授权自定义的权限策略](https://help.aliyun.com/document_detail/199058.htm?spm=a2c4g.11186623.0.0.48be7590hCA8LI#section-ucu-jv0-zip)。
+/// - 调用接口时，如果所有Bucket已返回，则返回参数的XML中不包含Prefix、Marker、MaxKeys、IsTruncated和NextMarker响应元素。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListBucketsResponse {
@@ -28071,6 +28371,7 @@ impl crate::ToCodeMessage for ListBucketsResponse {
     }
 }
 
+/// 只支持在二级域名（例如oss-cn-hangzhou.aliyuncs.com）上调用DescribeRegions接口。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsResponse {
@@ -28087,6 +28388,9 @@ impl crate::ToCodeMessage for DescribeRegionsResponse {
     }
 }
 
+/// - GetBucket (ListObjects)接口已修订为GetBucketV2 (ListObjectsV2)。建议您在开发应用程序时使用较新的版本GetBucketV2 (ListObjectsV2)。为保证向后兼容性，OSS继续支持GetBucket (ListObjects)。有关GetBucketV2 (ListObjectsV2)的更多信息，请参见[GetBucketV2 (ListObjectsV2)](~~187544~~)。
+///
+/// - 执行GetBucket (ListObjects)请求时不会返回Object中自定义的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListObjectsResponse {
@@ -28136,6 +28440,7 @@ impl crate::ToCodeMessage for ListObjectsResponse {
     }
 }
 
+/// 执行GetBucketV2 (ListObjectsV2)请求时不会返回Object中自定义的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListObjectsV2Response {
@@ -28217,6 +28522,11 @@ impl crate::ToCodeMessage for GetAccessPointPolicyResponse {
     }
 }
 
+/// 对象存储OSS支持WORM（Write Once Read Many）特性，允许以不可删除、不可篡改的方式保存和使用数据。OSS允许针对存储空间（Bucket）设置基于时间的合规保留策略，保护周期为1天到70年。
+///
+/// - 当基于时间的合规保留策略创建24小时后未提交锁定，则该策略自动失效。当合规保留策略锁定后，您可以在Bucket中上传和读取文件（Object），但是在Object的保留时间到期之前，不允许删除Object及合规保留策略。Object的保留时间到期后，才可以删除Object。关于合规保留策略的更多信息，请参见[合规保留策略](~~90564~~)。
+///
+/// - 同一个Bucket中，版本控制和合规保留策略无法同时配置。如果Bucket已开启版本控制功能，则无法再配置保留策略。关于版本控制功能更多信息，请参见[版本控制介绍](~~109685~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InitiateBucketWormResponse {
@@ -28233,6 +28543,11 @@ impl crate::ToCodeMessage for InitiateBucketWormResponse {
     }
 }
 
+/// 对象存储OSS支持WORM（Write Once Read Many）特性，允许您以不可删除、不可篡改的方式保存和使用数据。OSS允许针对Bucket设置基于时间的合规保留策略，保护周期为1天到70年。<br>
+/// 当合规保留策略锁定后，您可以在Bucket中上传和读取文件（Object），但是在Object的保留时间到期之前，不允许删除Object及合规保留策略。Object的保留时间到期后，才可以删除Object。
+///
+///
+/// > 若指定用来获取Bucket的合规保留策略信息对应的WORM ID不存在，则返回404。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketWormResponse {
@@ -28284,6 +28599,11 @@ impl crate::ToCodeMessage for GetBucketAclResponse {
     }
 }
 
+/// - 只有Bucket拥有者以及被授予oss:GetBucketTransferAcceleration权限的RAM用户才能发起获取传输加速配置的请求。
+///
+/// - 如果Bucket未配置过传输加速，调用该接口时不返回加速配置状态。
+///
+/// 有关传输加速的更多信息，请参见开发指南的[传输加速](~~131312~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketTransferAccelerationResponse {
@@ -28316,6 +28636,10 @@ impl crate::ToCodeMessage for GetBucketVersioningResponse {
     }
 }
 
+/// - GetBucket(ListObjects)接口仅返回Object的当前版本，且当前版本不能为删除标记。
+/// - GetBucketVersions(ListObjectVersions)接口返回Bucket中所有Object的所有版本。
+///
+/// 不同Object之间按字母排序返回，同一个Object的不同版本则按从新到旧排序，与版本ID的字母序无关。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListObjectVersionsResponse {
@@ -28372,6 +28696,15 @@ impl crate::ToCodeMessage for ListObjectVersionsResponse {
     }
 }
 
+/// - 向其他账号的RAM用户授权访问。
+///
+/// 您可以授予其他账号的RAM用户访问您的OSS资源的权限。
+///
+/// - 向匿名用户授予带特定IP条件限制的访问权限。
+///
+/// 某些场景下，您需要向匿名用户授予带IP限制的访问策略。例如，企业内部的机密文档，只允许在企业内部访问，不允许在其他区域访问。由于企业内部人员较多，如果针对每个人配置RAM Policy，工作量非常大。此时，您可以基于Bucket Policy设置带IP限制的访问策略，从而高效方便地进行授权。
+///
+/// 有关Bucket Policy的配置详情及场景案例，请参见[使用Bucket Policy授权其他用户访问OSS资源](~~85111~~)。有关Policy语法，请参见[权限策略语法和结构](~~93739~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketPolicyResponse {
@@ -28385,6 +28718,7 @@ impl crate::ToCodeMessage for GetBucketPolicyResponse {
     }
 }
 
+/// 阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进行查看，您必须拥有`oss:GetBucketPolicyStatus`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketPolicyStatusResponse {
@@ -28403,6 +28737,15 @@ impl crate::ToCodeMessage for GetBucketPolicyStatusResponse {
     }
 }
 
+/// 数据复制是以异步（近实时）方式将源Bucket中的文件（Object）以及对Object的创建、更新和删除等操作自动复制到目标Bucket。使用数据复制时，有如下注意事项：
+///
+/// - 数据复制采用异步复制，数据复制到目标Bucket需要一定的时间，通常几分钟到几小时不等，具体取决于数据的大小。
+///
+/// - 源Bucket与目标Bucket的名称不能相同。
+///
+/// - 使用跨区域复制时，源Bucket与目标Bucket必须处于不同的数据中心；使用同地域复制时，源Bucket与目标Bucket必须处于相同的数据中心。
+///
+/// 关于数据复制的更多信息，请分别参见[跨区域复制介绍](https://help.aliyun.com/document_detail/31864.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-zjp-31z-5db)和[同区域复制介绍](https://help.aliyun.com/document_detail/254865.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-2067125)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutBucketReplicationResponse {
@@ -28475,6 +28818,9 @@ impl crate::ToCodeMessage for GetBucketReplicationProgressResponse {
     }
 }
 
+/// - 单次请求最多可获取100条清单配置项内容。若需获取超过100条清单配置项，则需发送多次请求，并保留相应的token，作为下一次请求的参数。
+///
+/// - 调用该请求时，请确保您有足够的权限对存储空间的清单任务进行操作。存储空间所有者默认拥有该权限，若您无该项权限，请先向存储空间所有者申请该项操作的权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListBucketInventoryResponse {
@@ -28545,6 +28891,8 @@ impl crate::ToCodeMessage for ListUserDataRedundancyTransitionResponse {
     }
 }
 
+/// - 要列举Bucket下所有的存储冗余转换任务，您必须具有`oss:ListBucketDataRedundancyTransition`权限。具体操作，请参见[为RAM用户授权自定义的权限策略](~~199058~~)。
+/// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListBucketDataRedundancyTransitionResponse {
@@ -28561,6 +28909,11 @@ impl crate::ToCodeMessage for ListBucketDataRedundancyTransitionResponse {
     }
 }
 
+/// - Bucket所属地域支持转换存储冗余类型。支持转换存储冗余类型的地域：华东1（杭州）、华东2（上海）、华北2（北京）、华北3（张家口）、华北6（乌兰察布）、华南1（深圳）、中国香港、日本（东京）、新加坡、印度尼西亚（雅加达）、德国（法兰克福）
+/// - Bucket的存储冗余类型必须为本地冗余存储。OSS仅支持将本地冗余存储转换为同城冗余存储。
+/// - Bucket的存储类型必须为标准存储、低频访问存储或归档存储，但Bucket中的文件的存储类型可以为冷归档存储和深度冷归档存储。冷归档存储和深度冷归档存储的文件转换后依然为本地冗余存储。冷归档存储和深度冷归档存储的Bucket不支持转换存储冗余类型。
+/// - 要创建存储冗余转换任务，您必须具有oss:CreateBucketDataRedundancyTransition权限。具体操作，请参见为[RAM用户授权自定义的权限策略](~~199058~~)。
+/// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateBucketDataRedundancyTransitionResponse {
@@ -28577,6 +28930,7 @@ impl crate::ToCodeMessage for CreateBucketDataRedundancyTransitionResponse {
     }
 }
 
+/// 只有Bucket的拥有者及授权的RAM用户才能获取Bucket的加密规则，否则返回403错误。有关Bucket加密的更多信息，请参见**[服务器端加密](~~31871~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketEncryptionResponse {
@@ -28611,6 +28965,7 @@ impl crate::ToCodeMessage for GetBucketRequestPaymentResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketCorsResponse {
@@ -28634,6 +28989,7 @@ impl crate::ToCodeMessage for GetBucketCorsResponse {
     }
 }
 
+/// Options请求是由浏览器自动根据是否跨域来决定是否发送。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionObjectResponse {
@@ -28817,6 +29173,9 @@ impl crate::ToCodeMessage for ListStyleResponse {
     }
 }
 
+/// - 阿里云账号默认拥有创建对象FC接入点的权限。如果您希望通过RAM用户或者STS的方式创建对象FC接入点，您必须拥有`oss:CreateAccessPointForObjectProcess`权限。
+/// - 单个阿里云账号支持创建1000个对象FC接入点。
+/// - 单个Bucket支持创建100个对象FC接入点。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAccessPointForObjectProcessResponse {
@@ -28836,6 +29195,7 @@ impl crate::ToCodeMessage for CreateAccessPointForObjectProcessResponse {
     }
 }
 
+/// 阿里云账号默认拥有获取对象FC接入点基础信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点基础信息，您必须拥有`oss:GetAccessPointForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointForObjectProcessResponse {
@@ -28885,6 +29245,7 @@ impl crate::ToCodeMessage for GetAccessPointForObjectProcessResponse {
     }
 }
 
+/// 阿里云账号默认拥有获取对象FC接入点信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点信息，您必须拥有`oss:ListAccessPointsForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAccessPointsForObjectProcessResponse {
@@ -28913,6 +29274,7 @@ impl crate::ToCodeMessage for ListAccessPointsForObjectProcessResponse {
     }
 }
 
+/// 阿里云账号默认拥有获取对象FC接入点配置信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点配置信息，您必须拥有`oss:GetAccessPointConfigForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointConfigForObjectProcessResponse {
@@ -28935,6 +29297,7 @@ impl crate::ToCodeMessage for GetAccessPointConfigForObjectProcessResponse {
     }
 }
 
+/// 阿里云账号默认拥有获取对象FC接入点权限策略配置的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点的权限策略配置，您必须拥有`oss:GetAccessPointPolicyForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointPolicyForObjectProcessResponse {
@@ -28961,6 +29324,18 @@ impl crate::ToCodeMessage for PutAccessPointPublicAccessBlockResponse {
     }
 }
 
+/// **注意事项**
+///
+/// - 添加的Object大小不能超过5 GB。
+///
+/// - 默认情况下，如果已存在同名Object且对该Object有访问权限，则新添加的Object将覆盖原有的Object，并返回200 OK。
+///
+/// - OSS没有文件夹的概念，所有资源都是以文件来存储，但您可以通过创建一个以正斜线（/）结尾，大小为0的Object来创建模拟文件夹。
+///
+/// **版本控制**
+///
+/// - 在已开启版本控制的Bucket中，OSS会为新添加的Object自动生成唯一的版本ID，并在响应Header中通过x-oss-version-id形式返回。
+/// - 在暂停了版本控制的Bucket中，新添加的Object的版本ID为null。OSS会保证同一个Object仅有一个null的版本ID。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutObjectResponse {
@@ -28978,6 +29353,31 @@ impl crate::ToCodeMessage for PutObjectResponse {
     }
 }
 
+/// **版本控制**
+///
+/// - `x-oss-copy-source`默认拷贝Object的当前版本，您可以在x-oss-copy-source中加入versionId来拷贝指定的Object版本。拷贝Object时，如果源Object的对应版本为删除标记，则返回404表示该Object不存在。
+/// - 如果需要恢复Object的早期版本为当前版本，您只需将Object的早期版本拷贝到同一个Bucket中，OSS会将该Object对应早期版本置为当前版本。
+/// - 如果目标Bucket已开启版本控制，OSS将会为新拷贝的Object自动生成唯一的版本ID，此版本ID将会在响应Header中的x-oss-version-id返回。如果目标Bucket未开启或者暂停了版本控制，OSS将会为新拷贝的Object自动生成version ID为null的版本，且会覆盖原有versionId为null的版本。
+///
+/// **使用限制**
+///
+/// - 使用CopyObject接口时，Object的大小限制说明如下：
+///
+///     - 如果源Bucket和目标Bucket相同，则Object的大小无限制。
+///
+///     - 如果源Bucket和目标Bucket不同，则建议拷贝小于1 GB的Object。当您需要拷贝大于1 GB的Object时，请使用[UploadPartCopy](~~31994~~)接口。
+///   
+///      使用CopyObject或UploadPartCopy接口均要求对源Object有读权限。
+///
+/// - 在非版本控制的Bucket中，当调用CopyObject接口拷贝文件时，如果源Object与目标Object为同一个Object，则OSS只修改源Object的元数据，不拷贝源Object的内容。
+/// - 在版本控制的Bucket中，不支持拷贝通过追加上传方式生成的Object。
+/// - 如果源Object为软链接，则只拷贝软链接，无法拷贝软链接指向的文件内容。
+///
+/// **计量计费**
+///
+/// - 调用一次CopyObject接口会对源Object和目标Object所在的Bucket各增加一次Get请求次数。
+/// - 调用CopyObject接口会对目标Object所在的Bucket增加相应的存储量。
+/// - 调用CopyObject接口更改Object存储类型会涉及数据覆盖。例如低频访问IA创建后10天内被覆盖为标准存储Standard，则会产生20天的低频访问不足规定时长容量费用。关于存储费用的更多信息，请参见**[存储费用](~~173534~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyObjectResponse {
@@ -29003,6 +29403,16 @@ impl crate::ToCodeMessage for CopyObjectResponse {
     }
 }
 
+/// **注意事项**
+///
+/// - GetObject接口默认可通过HTTP和HTTPS两种方式访问。如果要设置仅允许通过HTTPS方式访问，请使用Bucket Policy的授权访问方式。具体操作，请参见[通过Bucket Policy授权用户访问指定资源](~~85111~~)。
+///
+/// - 如果Object类型为归档类型，需要先完成解冻文件（RestoreObject）请求，且该请求不能超时。
+///
+/// **版本控制**
+///
+/// 默认情况下，调用GetObject接口仅返回Object的当前版本。
+/// 如果在查询参数中指定Object的versionId，则返回指定的Object版本。当versionId指定为null时，则返回versionId为null的Object版本。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetObjectResponse {
@@ -29068,6 +29478,19 @@ impl crate::BinaryWithMeta for GetObjectResponse {
     }
 }
 
+/// **版本控制**
+///
+/// 在目标Bucket处于开启或暂停版本控制状态下，对Appendable类型Object执行相关操作时，有如下注意事项：
+/// - 仅允许对当前版本为Appendable类型的Object执行追加上传（AppendObject）操作，且OSS不会为该Appendable类型的Object生成历史版本。
+/// - 对当前版本为Appendable类型的Object执行PutObject或DeleteObject操作时，OSS会将该Appendable类型的Object保留为历史版本，但该Object不允许继续追加。
+/// - 不支持对Appendable类型Object执行拷贝操作。
+/// - 不支持对非Appendable类型的Object，包括Normal Object、删除标记（Delete Marker）等执行AppendObject操作。
+///
+/// **使用限制**
+///
+/// - 通过AppendObject方式最后生成的Object大小不得超过5 GB。
+/// - 处于[合规保留策略](~~90564~~)保护期的Object不支持AppendObject操作。
+/// - AppendableObject不支持指定CMK ID进行服务端KMS加密。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AppendObjectResponse {
@@ -29103,6 +29526,22 @@ impl crate::ToCodeMessage for SealAppendObjectResponse {
     }
 }
 
+/// **注意事项**
+///
+/// - 要删除文件，您必须有Object的写权限。
+/// - 无论要删除的Object是否存在，删除成功后均会返回204状态码。
+/// - 如果Object类型为软链接，使用DeleteObject接口只会删除该软链接。
+///
+/// **版本控制**
+///
+/// 版本控制状态下的删除行为说明如下：
+///
+/// - 未指定versionId（临时删除）：
+/// 如果在未指定versionId的情况下执行删除操作时，默认不会删除Object的当前版本，而是对当前版本插入删除标记（Delete Marker）。此时，在未指定versionId的情况下执行GetObject操作，OSS会检测到当前版本为删除标记，并返回`404 Not Found`。此外，响应中还会返回header：`x-oss-delete-marker = true`以及新生成的删除标记的版本号`x-oss-version-id`。
+/// `x-oss-delete-marker`的值为true，表示与返回的`x-oss-version-id`对应的版本为删除标记。
+///
+/// - 指定versionId（永久删除）：
+/// 如果在指定versionId的情况下执行删除操作时，OSS会根据`params`中指定的`versionId`参数永久删除该版本。如果要删除ID为“null”的版本，请在`params`参数中添加`params['versionId'] = “null”`，OSS将“null”字符串当成“null”的versionId，从而删除versionId为“null”的Object。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteObjectResponse {
@@ -29120,6 +29559,9 @@ impl crate::ToCodeMessage for DeleteObjectResponse {
     }
 }
 
+/// - 使用此接口不会返回文件内容。
+///
+/// - HeadObject操作默认获取Object当前版本的元信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HeadObjectResponse {
@@ -29187,6 +29629,14 @@ impl crate::ToCodeMessage for HeadObjectResponse {
     }
 }
 
+/// **注意事项**
+/// - 文件（Object）的元数据信息包括该Object的ETag、Size、LastModified信息，且不返回该Object的内容。如果Object类型为软链接，则会返回软链接自身信息。
+/// - 当Bucket未启用版本控制时，要获取文件的元数据信息，您必须有oss:GetObject权限。当Bucket已启用版本控制时，要获取文件指定版本（请求中携带了x-oss-version-id请求头）的元数据信息，您必须有oss:GetObjectVersion权限。具体操作，请参见[为RAM用户授权自定义的RAM Policy](~~199058~~)。
+///
+/// **版本控制**
+///
+/// GetObjectMeta操作默认获取Object当前版本的元数据信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元数据信息。
+///
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetObjectMetaResponse {
@@ -29218,6 +29668,40 @@ impl crate::ToCodeMessage for GetObjectMetaResponse {
     }
 }
 
+/// **版本控制**
+///
+/// Object的各个版本可以对应不同的存储类型。调用RestoreObject接口默认解冻Object当前版本，您可以通过指定versionId的方式来解冻Object指定版本。
+///
+/// >- RestoreObject接口只针对归档或冷归档类型的Object，不适用于标准类型和低频访问类型的Object。
+/// - 如果针对该Object第一次调用RestoreObject接口，则返回202。
+/// - 如果已经成功调用过RestoreObject接口，且Object已完成解冻，再次调用时返回200 OK。
+///
+/// **解冻过程说明**
+///
+/// 对于归档类型或者冷归档类型的Object，如果需要读取Object，请提前解冻。归档类型的Object解冻有分钟级延迟，冷归档类型的Object解冻有数小时延迟。
+///
+/// 归档类型或者冷归档类型的Object在执行解冻前后的状态变换过程如下：
+///
+/// 1、 Object初始时处于冷冻状态。
+///
+/// 2、提交一次解冻请求后，Object处于解冻中状态。
+///
+/// 3、服务端完成解冻任务后，Object进入解冻状态，此时您可以读取Object。
+/// - 对于归档类型的Object，解冻状态默认持续24小时，24小时内再次调用RestoreObject接口则解冻状态会自动延长24小时，一次解冻流程内可有效调用7次RestoreObject接口达到最长7天的解冻持续时间。您也可以通过传入解冻天数，一次调用RestoreObject接口指定最长7天的解冻持续时间。
+/// - 对于冷归档类型的Object，您可以指定解冻天数和解冻优先级，解冻天数最短为1天，最长为7天。不同解冻优先级的首字节取回时间如下：
+///
+///   - 高优先级（Expedited）：表示1小时内完成解冻。
+///   - 标准（Standard）：表示2~5小时内完成解冻。如果不传入JobParameters节点，则默认为Standard。
+///   - 批量（Bulk）：表示5~12小时内完成解冻。
+///
+/// 4、解冻状态结束后，Object再次返回到冷冻状态。
+///
+/// **计费说明**
+///
+/// 状态变换过程中产生的相关费用如下：
+/// - 对处于冷冻状态的Object执行解冻操作，会产生数据取回费用。
+/// - 解冻状态最多延长7天。在此期间不再重复收取数据取回费用。
+/// - 解冻状态结束后，Object又回到冷冻状态，再次执行解冻操作会收取数据取回费用。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RestoreObjectResponse {
@@ -29237,6 +29721,11 @@ impl crate::ToCodeMessage for RestoreObjectResponse {
     }
 }
 
+/// - 调用接口会返回一个OSS服务器创建的全局唯一的Upload ID，用于标识本次Multipart Upload事件。您可以根据这个ID来发起相关的操作，例如中止Multipart Upload、查询Multipart Upload等。
+///
+/// - 初始化MultipartUpload请求，并不影响已存在的同名Object。
+///
+/// - 该操作计算认证签名时，需要添加`?uploads`到`CanonicalizedResource`中。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InitiateMultipartUploadResponse {
@@ -29262,6 +29751,24 @@ impl crate::ToCodeMessage for InitiateMultipartUploadResponse {
     }
 }
 
+/// **注意事项**
+///
+///
+/// 调用CompleteMultipartUpload操作时，用户必须提供所有有效的Part列表（包括PartNumber和ETag）。OSS收到用户提交的Part列表后，会逐一验证每个Part的有效性。当所有的Part验证通过后，OSS将把这些Part组合成一个完整的Object。
+/// - 确认Part的大小：CompleteMultipartUpload时会确认除最后一个Part以外所有Part的大小是否都大于或等于100 KB，并检查用户提交的Part列表中的每一个PartNumber和ETag。所以在上传Part时，客户端除了需要记录Part号码外，还需要记录每次上传Part成功后服务器返回的ETag值。
+///
+/// - 处理请求：由于OSS处理CompleteMultipartUpload请求时会持续一定的时间。在这段时间内，如果客户端与OSS之间连接中断，OSS仍会继续该请求。
+///
+/// - PartNumber：服务端在调用CompleteMultipartUpload接口时会对PartNumber做校验。
+/// PartNumber取值为1~10000。PartNumber可以不连续，但必须升序排列。例如第一个Part的PartNumber是1，第二个Part的PartNumber可以是5。
+///
+/// - UploadId：同一个Object可以同时拥有不同的UploadId，当Complete一个UploadId后，此UploadId将无效，但该Object的其他UploadId不受影响。
+///
+/// - x-oss-server-side-encryption请求头：如果调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则在CompleteMultipartUpload的响应头中返回x-oss-server-side-encryption，其值表示该Object的服务器端加密算法。
+///
+/// **版本控制**
+///
+/// 在开启版本控制的情况下，调用CompleteMultipartUpload接口来完成整个文件的MultipartUpload，OSS会为整个文件生成唯一的版本ID，并在响应header中以x-oss-version-id的形式返回。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CompleteMultipartUploadResponse {
@@ -29297,6 +29804,29 @@ impl crate::ToCodeMessage for CompleteMultipartUploadResponse {
     }
 }
 
+/// 该接口为通过在UploadPart请求的基础上增加一个请求头x-oss-copy-source来调用UploadPartCopy接口，实现从一个已存在的Object中拷贝数据来上传一个Part。
+///
+/// **注意事项**
+/// <br>当拷贝一个大于1 GB的文件时，必须使用UploadPartCopy的方式进行拷贝。如果想通过单个操作拷贝小于1 GB的文件，请参见[CopyObject](https://help.aliyun.com/document_detail/31979.htm?spm=a2c4g.11186623.0.0.49aa29d6oRCP8o#t4696.html)。
+/// <br>使用UploadPartCopy接口时，有如下注意事项：
+///
+/// - 不允许拷贝以AppendObject方式上传的Object。
+///
+/// - 执行UploadPartCopy的源Bucket地址和目标Bucket地址必须是同一个Region。
+///
+/// - 调用该接口上传Part数据前，必须先调用InitiateMultipartUpload接口来获取一个OSS服务器颁发的Upload ID。
+///
+/// - 若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在UploadPart响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法，详情请参见[InitiateMultipartUpload](~~31992~~)。
+///
+/// - MultipartUpload要求除最后一个Part以外，其他的Part大小都要大于100 KB。因不确定是否为最后一个Part，UploadPart接口并不会立即校验上传Part的大小，只有当CompleteMultipartUpload的时候才会校验。
+///
+/// **版本控制**
+///
+/// UploadPartCopy默认从一个已存在的Object的当前版本中拷贝数据来上传一个Part。允许通过在请求头x-oss-copy-source中附带versionId的子条件，实现从Object的指定版本进行拷贝，例如x-oss-copy-source : /SourceBucketName/SourceObjectName?versionId=111111。
+/// >SourceObjectName要进行URL编码。响应中将会返回被拷贝Object的versionId：x-oss-copy-source-version-id。
+///
+/// 如果未指定versionId且拷贝Object的当前版本为删除标记（Delete Marker），OSS将返回404 Not Found。通过指定versionId来拷贝删除标记时，OSS将返回400 Bad Request。
+///
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UploadPartCopyResponse {
@@ -29319,6 +29849,7 @@ impl crate::ToCodeMessage for UploadPartCopyResponse {
     }
 }
 
+/// 调用ListMultipartUploads接口列举所有执行中的Multipart Upload事件，即已经初始化但还未完成（Complete）或者还未中止（Abort）的Multipart Upload事件。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListMultipartUploadsResponse {
@@ -29372,6 +29903,9 @@ impl crate::ToCodeMessage for ListMultipartUploadsResponse {
     }
 }
 
+/// - OSS的返回结果按照Part号码升序排列。
+///
+/// - 由于网络传输可能出错，所以不推荐使用ListParts返回结果中的Part Number和ETag值来生成已经上传成功的Part列表。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListPartsResponse {
@@ -29409,6 +29943,28 @@ impl crate::ToCodeMessage for ListPartsResponse {
     }
 }
 
+/// **注意事项**
+///
+/// 此操作只有Bucket Owner有权限执行，且需对Object有读写权限。
+///
+/// **版本控制**
+///
+/// 调用PutObjectACL接口时，默认只能设置Object当前版本的ACL。您可以通过指定versionId参数来设置指定Object版本的ACL。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
+///
+/// **ACL说明**
+///
+/// PutObjectACL接口通过Put请求中的`x-oss-object-acl`头来设置Object ACL。目前Object包括如下四种访问权限。
+///
+/// - private：Object是私有资源。只有该Object的Owner拥有该Object的读写权限，其他用户没有权限操作该Object。
+/// - public-read：Object是公共读资源。Object Owner拥有该Object的读写权限。非Object Owner只有该Object的读权限。
+/// - public-read-write：Object是公共读写资源。所有用户拥有对该Object的读写权限。
+/// - default：Object遵循其所在Bucket的读写权限，即Bucket是什么权限，Object就是什么权限。
+///
+/// >**注意**
+/// - Object ACL优先级高于Bucket ACL。例如Bucket ACL是private的，而Object ACL是public-read-write的，则所有用户都拥有该Object的访问权限，即使该Bucket是私有Bucket。如果某个Object未设置过ACL，则访问权限遵循Bucket ACL。
+/// - Object的读操作包括GetObject、HeadObject、CopyObject和UploadPartCopy中的对原Object的读；Object的写操作包括PutObject、PostObject、AppendObject、DeleteObject、DeleteMultipleObjects、CompleteMultipartUpload以及CopyObject对新Object的写。
+/// - 您还可以在进行Object的写操作时，在请求头中带上x-oss-object-acl来设置Object
+///  ACL，效果与PutObjectACL等同。例如PutObject时在请求头中带上x-oss-object-acl可以在上传一个Object的同时设置此Object的ACL。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutObjectAclResponse {
@@ -29425,6 +29981,11 @@ impl crate::ToCodeMessage for PutObjectAclResponse {
     }
 }
 
+/// **版本控制**
+///
+/// 调用GetObjectACL接口时，默认只能获取Object当前版本的ACL。您可以通过指定versionId参数来获取指定Object版本的ACL。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
+///
+/// >如果一个Object从未设置过ACL，则调用GetObjectACL时，返回的ObjectACL为default，表示该Object的ACL遵循Bucket ACL。即如果Bucket的访问权限是private，则该Object的访问权限也是private。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetObjectAclResponse {
@@ -29444,6 +30005,18 @@ impl crate::ToCodeMessage for GetObjectAclResponse {
     }
 }
 
+/// **注意事项**
+///
+/// - 使用PutSymlink接口创建软链接时不会检查目标文件是否存在、目标文件类型是否合法以及目标文件是否有访问权限。
+/// - Symlink自身的访问权限（ACL）以及目标文件的ACL检查仅会在GetObject等需要访问目标文件的API中进行。
+/// - 使用PutSymlink接口时，携带以x-oss-meta-为前缀的参数，则被视为user meta，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的user meta总大小不能超过8 KB。
+/// - 默认情况下，如果试图添加的文件已经存在，并且有访问权限，则新添加的文件将覆盖原来的文件，成功添加后将返回200 OK。
+///
+/// **版本控制**
+///
+/// 您可以通过TargetObject创建的软链接指向TargetObject的当前版本。
+/// 软链接本身也可以有多个版本，每个不同的版本可以指向不同的TargetObject，版本ID由OSS自动生成，在响应Header中返回x-oss-version-id。
+///
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutSymlinkResponse {
@@ -29460,6 +30033,10 @@ impl crate::ToCodeMessage for PutSymlinkResponse {
     }
 }
 
+/// **版本控制**
+///
+/// GetSymlink接口默认获取软链接的当前版本。允许通过指定versionId来获取指定版本。如果软链接的当前版本为删除标记，OSS会返回404 Not Found，在响应header中返回x-oss-delete-marker = true以及版本ID : x-oss-version-id。删除标记没有关联数据，因此也没有软链接指向的TargetObject。
+///
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSymlinkResponse {
@@ -29479,6 +30056,22 @@ impl crate::ToCodeMessage for GetSymlinkResponse {
     }
 }
 
+/// **注意事项**
+///
+/// - 对象标签使用一组键值对（Key-Value）标记对象。
+/// - 单个Object最多能设置10个标签，Key不能重复。
+/// - 每个Key长度不能超过128字符，每个Value长度不能超过256字符。
+/// - Key和Value区分大小写。
+/// - 标签的合法字符集包括大小写字母、数字、空格和以下符号：
+/// +‑=._:/
+/// 通过HTTP Header的方式设置标签且标签中包含任意字符时，您需要对标签的Key和Value进行URL编码。
+/// - 更改标签信息不会更新Object的Last‑Modified时间。
+///
+/// 关于对象标签的更多信息，请参见[对象标签](~~106678~~)。
+///
+/// **版本控制**
+///
+/// 调用PutObjectTagging接口时，默认设置Object当前版本的标签信息。您可以通过指定versionId参数来设置指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutObjectTaggingResponse {
@@ -29495,6 +30088,10 @@ impl crate::ToCodeMessage for PutObjectTaggingResponse {
     }
 }
 
+/// **版本控制**
+///
+/// 调用GetObjectTagging接口时，默认只能获取Object当前版本的标签信息。您可以通过指定versionId参数来获取指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
+///
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetObjectTaggingResponse {
@@ -29511,6 +30108,8 @@ impl crate::ToCodeMessage for GetObjectTaggingResponse {
     }
 }
 
+/// 通过RTMP协议上传音视频数据前，必须先调用该接口创建一个LiveChannel。调用该接口会返回RTMP推流地址，以及对应的播放地址。
+/// <br>您可以使用返回的地址进行推流、播放，您还可以根据该LiveChannel的名称来发起相关的操作，如查询推流状态、查询推流记录、禁止推流等。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutLiveChannelResponse {
@@ -29591,6 +30190,7 @@ impl crate::ToCodeMessage for GetLiveChannelInfoResponse {
     }
 }
 
+/// 使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetLiveChannelHistoryResponse {

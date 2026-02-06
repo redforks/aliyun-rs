@@ -5512,6 +5512,7 @@ impl crate::Request for ListScalingConfigs {
     fn to_body(self) -> Self::Body {}
 }
 
+/// 镜像加速信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccelerationInfo {
@@ -5530,6 +5531,7 @@ impl crate::FlatSerialize for AccelerationInfo {
     }
 }
 
+/// 别名信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Alias {
@@ -5598,6 +5600,7 @@ impl crate::ToCodeMessage for Alias {
     }
 }
 
+/// 异步调用目标结构体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Destination {
@@ -5620,6 +5623,7 @@ impl crate::FlatSerialize for Destination {
     }
 }
 
+/// 异步调用目标的配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DestinationConfig {
@@ -5650,6 +5654,7 @@ impl crate::FlatSerialize for DestinationConfig {
     }
 }
 
+/// 异步调用配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncConfig {
@@ -5726,6 +5731,7 @@ impl crate::ToCodeMessage for AsyncConfig {
     }
 }
 
+/// 任务事件内容
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncTaskEvent {
@@ -5782,6 +5788,7 @@ impl crate::FlatSerialize for AsyncTaskEvent {
     }
 }
 
+/// 异步任务信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncTask {
@@ -5925,6 +5932,7 @@ impl crate::ToCodeMessage for AsyncTask {
     }
 }
 
+/// 权限认证配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthConfig {
@@ -5955,6 +5963,7 @@ impl crate::FlatSerialize for AuthConfig {
     }
 }
 
+/// EventBridge 触发器的批处理窗口配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BatchWindow {
@@ -5985,6 +5994,7 @@ impl crate::FlatSerialize for BatchWindow {
     }
 }
 
+/// 证书配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CertConfig {
@@ -6099,6 +6109,7 @@ impl crate::ToCodeMessage for ChangeResourceGroupOutput {
     }
 }
 
+/// 函数并发配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConcurrencyConfig {
@@ -6135,6 +6146,7 @@ impl crate::ToCodeMessage for ConcurrencyConfig {
     }
 }
 
+/// 将携带相同 Cookie 信息的请求路由到同一个实例。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CookieSessionAffinityConfig {
@@ -6181,6 +6193,7 @@ impl crate::FlatSerialize for CookieSessionAffinityConfig {
     }
 }
 
+/// 创建别名的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAliasInput {
@@ -6227,6 +6240,7 @@ impl crate::FlatSerialize for CreateAliasInput {
     }
 }
 
+/// 自定义域名完全匹配重写规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EqualRule {
@@ -6253,6 +6267,7 @@ impl crate::FlatSerialize for EqualRule {
     }
 }
 
+/// 自定义域名正则重写规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegexRule {
@@ -6279,6 +6294,7 @@ impl crate::FlatSerialize for RegexRule {
     }
 }
 
+/// 自定义域名通配符重写规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WildcardRule {
@@ -6305,6 +6321,7 @@ impl crate::FlatSerialize for WildcardRule {
     }
 }
 
+/// 重写规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RewriteConfig {
@@ -6343,6 +6360,7 @@ impl crate::FlatSerialize for RewriteConfig {
     }
 }
 
+/// 自定义域名路由配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PathConfig {
@@ -6389,6 +6407,7 @@ impl crate::FlatSerialize for PathConfig {
     }
 }
 
+/// 路由匹配规则配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteConfig {
@@ -6407,6 +6426,7 @@ impl crate::FlatSerialize for RouteConfig {
     }
 }
 
+/// TLS配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TLSConfig {
@@ -6445,6 +6465,7 @@ impl crate::FlatSerialize for TLSConfig {
     }
 }
 
+/// 自定义域名WAF配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WAFConfig {
@@ -6467,6 +6488,7 @@ impl crate::FlatSerialize for WAFConfig {
     }
 }
 
+/// 创建自定义域名的请求信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCustomDomainInput {
@@ -6533,6 +6555,9 @@ impl crate::FlatSerialize for CreateCustomDomainInput {
     }
 }
 
+/// 函数代码配置。可以使用两种方式提供代码包：
+/// 1. 直接将代码包的内容包含在请求中，此时zipFile必须设置。
+/// 2. 将代码包上传到OSS，在请求中包含OSS文件的地址，此时ossBucketName和ossObjectName必须设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InputCodeLocation {
@@ -6571,6 +6596,7 @@ impl crate::FlatSerialize for InputCodeLocation {
     }
 }
 
+/// 函数自定义健康检查配置，仅适用于Custom Runtime和Custom Container。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomHealthCheckConfig {
@@ -6633,6 +6659,7 @@ impl crate::FlatSerialize for CustomHealthCheckConfig {
     }
 }
 
+/// 镜像仓库的认证信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegistryAuthConfig {
@@ -6659,6 +6686,7 @@ impl crate::FlatSerialize for RegistryAuthConfig {
     }
 }
 
+/// 镜像仓库的证书信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegistryCertConfig {
@@ -6685,6 +6713,7 @@ impl crate::FlatSerialize for RegistryCertConfig {
     }
 }
 
+/// 镜像仓库的网络信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegistryNetworkConfig {
@@ -6719,6 +6748,7 @@ impl crate::FlatSerialize for RegistryNetworkConfig {
     }
 }
 
+/// 镜像仓库的配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegistryConfig {
@@ -6757,6 +6787,7 @@ impl crate::FlatSerialize for RegistryConfig {
     }
 }
 
+/// 自定义容器运行时的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomContainerConfig {
@@ -6839,6 +6870,7 @@ impl crate::FlatSerialize for CustomContainerConfig {
     }
 }
 
+/// DNS解析配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DNSOption {
@@ -6861,6 +6893,7 @@ impl crate::FlatSerialize for DNSOption {
     }
 }
 
+/// 函数自定义DNS配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomDNS {
@@ -6895,6 +6928,7 @@ impl crate::FlatSerialize for CustomDNS {
     }
 }
 
+/// 自定义运行时的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomRuntimeConfig {
@@ -6929,6 +6963,7 @@ impl crate::FlatSerialize for CustomRuntimeConfig {
     }
 }
 
+/// 函数GPU配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GPUConfig {
@@ -6961,6 +6996,7 @@ impl crate::FlatSerialize for GPUConfig {
     }
 }
 
+/// 实例生命周期回调方法配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LifecycleHook {
@@ -6987,6 +7023,7 @@ impl crate::FlatSerialize for LifecycleHook {
     }
 }
 
+/// 实例生命周期回调方法配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceLifecycleConfig {
@@ -7013,6 +7050,7 @@ impl crate::FlatSerialize for InstanceLifecycleConfig {
     }
 }
 
+/// 函数日志配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LogConfig {
@@ -7059,6 +7097,7 @@ impl crate::FlatSerialize for LogConfig {
     }
 }
 
+/// NAS挂载点列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NASMountConfig {
@@ -7097,6 +7136,7 @@ impl crate::FlatSerialize for NASMountConfig {
     }
 }
 
+/// NAS配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NASConfig {
@@ -7127,6 +7167,7 @@ impl crate::FlatSerialize for NASConfig {
     }
 }
 
+/// OSS挂载点配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OSSMountPoint {
@@ -7177,6 +7218,7 @@ impl crate::FlatSerialize for OSSMountPoint {
     }
 }
 
+/// OSS挂载配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OSSMountConfig {
@@ -7199,6 +7241,7 @@ impl crate::FlatSerialize for OSSMountConfig {
     }
 }
 
+/// 链路追踪配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TracingConfig {
@@ -7221,6 +7264,7 @@ impl crate::FlatSerialize for TracingConfig {
     }
 }
 
+/// VPC配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VPCConfig {
@@ -7259,6 +7303,7 @@ impl crate::FlatSerialize for VPCConfig {
     }
 }
 
+/// 标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Tag {
@@ -7346,6 +7391,7 @@ impl crate::FlatSerialize for PolarFsConfig {
     }
 }
 
+/// 函数创建请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateFunctionInput {
@@ -7603,6 +7649,7 @@ impl crate::FlatSerialize for CreateFunctionInput {
     }
 }
 
+/// 创建层版本的请求参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateLayerVersionInput {
@@ -7641,6 +7688,7 @@ impl crate::FlatSerialize for CreateLayerVersionInput {
     }
 }
 
+/// 创建会话的参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSessionInput {
@@ -7710,6 +7758,7 @@ impl crate::FlatSerialize for CreateSessionInput {
     }
 }
 
+/// 创建触发器的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateTriggerInput {
@@ -7797,6 +7846,7 @@ impl crate::FlatSerialize for CreateTriggerInput {
     }
 }
 
+/// 创建VPC绑定请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateVpcBindingInput {
@@ -7815,6 +7865,7 @@ impl crate::FlatSerialize for CreateVpcBindingInput {
     }
 }
 
+/// 自定义域名信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomDomain {
@@ -7927,6 +7978,7 @@ impl crate::ToCodeMessage for CustomDomain {
     }
 }
 
+/// EventBridge 触发器的死信队列配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeadLetterQueue {
@@ -7945,6 +7997,7 @@ impl crate::FlatSerialize for DeadLetterQueue {
     }
 }
 
+/// EventBridge 触发器的事件推送配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeliveryOption {
@@ -7975,6 +8028,7 @@ impl crate::FlatSerialize for DeliveryOption {
     }
 }
 
+/// 地域对象
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutputRegionsRegionItem {
@@ -8005,6 +8059,7 @@ impl crate::FlatSerialize for DescribeRegionsOutputRegionsRegionItem {
     }
 }
 
+/// 地域信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutputRegions {
@@ -8023,6 +8078,7 @@ impl crate::FlatSerialize for DescribeRegionsOutputRegions {
     }
 }
 
+/// 响应
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutput {
@@ -8223,6 +8279,7 @@ impl crate::FlatSerialize for ElasticConfigStatus {
     }
 }
 
+/// 错误信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Error {
@@ -8253,6 +8310,7 @@ impl crate::FlatSerialize for Error {
     }
 }
 
+/// EventBridge 触发器的 sink 端配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventSinkConfig {
@@ -8275,6 +8333,7 @@ impl crate::FlatSerialize for EventSinkConfig {
     }
 }
 
+/// EventBridge 数据传输服务DTS版的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceDTSParameters {
@@ -8333,6 +8392,7 @@ impl crate::FlatSerialize for SourceDTSParameters {
     }
 }
 
+/// EventBridge 消息队列Kafka版的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceKafkaParameters {
@@ -8407,6 +8467,7 @@ impl crate::FlatSerialize for SourceKafkaParameters {
     }
 }
 
+/// EventBridge 轻量消息队列（原 MNS）版的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceMNSParameters {
@@ -8445,6 +8506,7 @@ impl crate::FlatSerialize for SourceMNSParameters {
     }
 }
 
+/// EventBridge 消息队列MQTT版的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceMQTTParameters {
@@ -8479,6 +8541,7 @@ impl crate::FlatSerialize for SourceMQTTParameters {
     }
 }
 
+/// EventBridge 消息队列RabbitMQ版的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceRabbitMQParameters {
@@ -8525,6 +8588,7 @@ impl crate::FlatSerialize for SourceRabbitMQParameters {
     }
 }
 
+/// EventBridge 消息队列RocketMQ版的自定义事件源参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceRocketMQParameters {
@@ -8663,6 +8727,7 @@ impl crate::FlatSerialize for SourceRocketMQParameters {
     }
 }
 
+/// EventBridge 触发器的自定义事件源参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventSourceParameters {
@@ -8725,6 +8790,7 @@ impl crate::FlatSerialize for EventSourceParameters {
     }
 }
 
+/// EventBridge 触发器的事件源配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventSourceConfig {
@@ -8771,6 +8837,7 @@ impl crate::FlatSerialize for EventSourceConfig {
     }
 }
 
+/// 事件推送失败时的重试策略。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RetryStrategy {
@@ -8797,6 +8864,7 @@ impl crate::FlatSerialize for RetryStrategy {
     }
 }
 
+/// EventBridge 触发器运行环境参数配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunOptions {
@@ -8857,6 +8925,7 @@ impl crate::FlatSerialize for RunOptions {
     }
 }
 
+/// EventBridge 触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventBridgeTriggerConfig {
@@ -8931,6 +9000,7 @@ impl crate::FlatSerialize for EventBridgeTriggerConfig {
     }
 }
 
+/// OSS 触发器过滤规则描述
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Key {
@@ -8953,6 +9023,7 @@ impl crate::FlatSerialize for Key {
     }
 }
 
+/// OSS 触发器配置过滤器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Filter {
@@ -8971,6 +9042,7 @@ impl crate::FlatSerialize for Filter {
     }
 }
 
+/// 函数配置的层信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionLayer {
@@ -9020,6 +9092,7 @@ impl crate::FlatSerialize for FunctionRestriction {
     }
 }
 
+/// 函数配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Function {
@@ -9432,6 +9505,7 @@ impl crate::FlatSerialize for GetInstanceLifecycleEventsOutput {
     }
 }
 
+/// 查询标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GetResourceTagsOutput {
@@ -9466,6 +9540,7 @@ impl crate::FlatSerialize for GetResourceTagsOutput {
     }
 }
 
+/// HTTP 触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HTTPTrigger {
@@ -9496,6 +9571,7 @@ impl crate::FlatSerialize for HTTPTrigger {
     }
 }
 
+/// HTTP 触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HTTPTriggerConfig {
@@ -9544,6 +9620,7 @@ impl crate::FlatSerialize for HTTPTriggerConfig {
     }
 }
 
+/// 通过 HTTP 请求头传递客户端会话标识，函数计算基于该标识进行哈希计算，确保相同标识的请求被路由到同一个实例。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HeaderFieldSessionAffinityConfig {
@@ -9598,6 +9675,7 @@ impl crate::FlatSerialize for HeaderFieldSessionAffinityConfig {
     }
 }
 
+/// 函数实例信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceInfo {
@@ -9659,6 +9737,7 @@ impl crate::FlatSerialize for InstanceInfo {
     }
 }
 
+/// SLS 触发器任务配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct JobConfig {
@@ -9689,6 +9768,7 @@ impl crate::FlatSerialize for JobConfig {
     }
 }
 
+/// 代码包配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OutputCodeLocation {
@@ -9715,6 +9795,7 @@ impl crate::FlatSerialize for OutputCodeLocation {
     }
 }
 
+/// 层的详细信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Layer {
@@ -9807,6 +9888,7 @@ impl crate::ToCodeMessage for Layer {
     }
 }
 
+/// 函数别名列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAliasesOutput {
@@ -9839,6 +9921,7 @@ impl crate::ToCodeMessage for ListAliasesOutput {
     }
 }
 
+/// 获取函数异步配置列表的响应信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAsyncInvokeConfigOutput {
@@ -9871,6 +9954,7 @@ impl crate::ToCodeMessage for ListAsyncInvokeConfigOutput {
     }
 }
 
+/// 列举异步任务信息响应内容。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAsyncTaskOutput {
@@ -9903,6 +9987,7 @@ impl crate::ToCodeMessage for ListAsyncTaskOutput {
     }
 }
 
+/// 获取函数的并发配置列表信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListConcurrencyConfigsOutput {
@@ -9935,6 +10020,7 @@ impl crate::ToCodeMessage for ListConcurrencyConfigsOutput {
     }
 }
 
+/// 获取自定义域名列表的响应信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListCustomDomainOutput {
@@ -9999,6 +10085,7 @@ impl crate::FlatSerialize for ListElasticConfigsOutput {
     }
 }
 
+/// 获取函数列表响应信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListFunctionsOutput {
@@ -10035,6 +10122,7 @@ impl crate::ToCodeMessage for ListFunctionsOutput {
     }
 }
 
+/// 查询返回的实例信息列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListInstancesOutput {
@@ -10070,6 +10158,7 @@ impl crate::ToCodeMessage for ListInstancesOutput {
     }
 }
 
+/// 获取指定层的版本列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListLayerVersionOutput {
@@ -10102,6 +10191,7 @@ impl crate::ToCodeMessage for ListLayerVersionOutput {
     }
 }
 
+/// 获取层列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListLayersOutput {
@@ -10134,6 +10224,7 @@ impl crate::ToCodeMessage for ListLayersOutput {
     }
 }
 
+/// 定时策略配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledAction {
@@ -10184,6 +10275,7 @@ impl crate::FlatSerialize for ScheduledAction {
     }
 }
 
+/// 指标追踪伸缩策略配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TargetTrackingPolicy {
@@ -10254,6 +10346,7 @@ impl crate::FlatSerialize for TargetTrackingPolicy {
     }
 }
 
+/// 函数预留配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisionConfig {
@@ -10344,6 +10437,7 @@ impl crate::ToCodeMessage for ProvisionConfig {
     }
 }
 
+/// 获取函数预留配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListProvisionConfigsOutput {
@@ -10778,6 +10872,7 @@ impl crate::ToCodeMessage for ListScalingConfigsOutput {
     }
 }
 
+/// 会话信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Session {
@@ -10908,6 +11003,7 @@ impl crate::ToCodeMessage for Session {
     }
 }
 
+/// 函数会话列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListSessionsOutput {
@@ -10940,6 +11036,7 @@ impl crate::ToCodeMessage for ListSessionsOutput {
     }
 }
 
+/// 资源标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResource {
@@ -10984,6 +11081,7 @@ impl crate::FlatSerialize for TagResource {
     }
 }
 
+/// 查询绑定指定标签的资源信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesOutput {
@@ -11028,6 +11126,7 @@ impl crate::ToCodeMessage for ListTagResourcesOutput {
     }
 }
 
+/// 资源标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Resource {
@@ -11062,6 +11161,7 @@ impl crate::FlatSerialize for Resource {
     }
 }
 
+/// 具有指定标签的资源列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTaggedResourcesOutput {
@@ -11092,6 +11192,7 @@ impl crate::FlatSerialize for ListTaggedResourcesOutput {
     }
 }
 
+/// 触发器的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Trigger {
@@ -11212,6 +11313,7 @@ impl crate::ToCodeMessage for Trigger {
     }
 }
 
+/// 获取触发器列表的响应结构体。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTriggersOutput {
@@ -11244,6 +11346,7 @@ impl crate::ToCodeMessage for ListTriggersOutput {
     }
 }
 
+/// 版本信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct Version {
@@ -11296,6 +11399,7 @@ impl crate::ToCodeMessage for Version {
     }
 }
 
+/// 列出版本的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListVersionsOutput {
@@ -11336,6 +11440,7 @@ impl crate::ToCodeMessage for ListVersionsOutput {
     }
 }
 
+/// 列出服务/函数下的全部VPC绑定的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListVpcBindingsOutput {
@@ -11360,6 +11465,7 @@ impl crate::ToCodeMessage for ListVpcBindingsOutput {
     }
 }
 
+/// 基于 MCP SSE 协议规范，函数计算确保客户端携带相同 Session ID 的请求始终路由到同一个实例。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MCPSSESessionAffinityConfig {
@@ -11390,6 +11496,7 @@ impl crate::FlatSerialize for MCPSSESessionAffinityConfig {
     }
 }
 
+/// MCP Streamable 亲和性配置结构
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MCPStreamableSessionAffinityConfig {
@@ -11428,6 +11535,7 @@ impl crate::FlatSerialize for MCPStreamableSessionAffinityConfig {
     }
 }
 
+/// 轻量消息队列（原 MNS） 主题触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MNSTopicTriggerConfig {
@@ -11476,6 +11584,7 @@ impl crate::FlatSerialize for MNSTopicTriggerConfig {
     }
 }
 
+/// OSS 触发器配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OSSTriggerConfig {
@@ -11498,6 +11607,7 @@ impl crate::FlatSerialize for OSSTriggerConfig {
     }
 }
 
+/// 函数代码包信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OutputFuncCode {
@@ -11526,6 +11636,7 @@ impl crate::ToCodeMessage for OutputFuncCode {
     }
 }
 
+/// 发布版本的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PublishVersionInput {
@@ -11548,6 +11659,7 @@ impl crate::FlatSerialize for PublishVersionInput {
     }
 }
 
+/// 函数异步配置信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutAsyncInvokeConfigInput {
@@ -11594,6 +11706,7 @@ impl crate::FlatSerialize for PutAsyncInvokeConfigInput {
     }
 }
 
+/// 设置函数的并发配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutConcurrencyInput {
@@ -11658,6 +11771,7 @@ impl crate::FlatSerialize for PutElasticConfigInput {
     }
 }
 
+/// 申请或更新预留资源的配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PutProvisionConfigInput {
@@ -11802,6 +11916,7 @@ impl crate::FlatSerialize for ResidentConfig {
     }
 }
 
+/// SLS 触发器日志配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SLSTriggerLogConfig {
@@ -11824,6 +11939,7 @@ impl crate::FlatSerialize for SLSTriggerLogConfig {
     }
 }
 
+/// SLS 触发器配置事件源配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SourceConfig {
@@ -11850,6 +11966,7 @@ impl crate::FlatSerialize for SourceConfig {
     }
 }
 
+/// SLS 触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SLSTriggerConfig {
@@ -11928,6 +12045,7 @@ impl crate::FlatSerialize for ScalingStatus {
     }
 }
 
+/// 给指定资源打标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourceInput {
@@ -11954,6 +12072,7 @@ impl crate::FlatSerialize for TagResourceInput {
     }
 }
 
+/// 给指定资源打标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesInput {
@@ -11988,6 +12107,7 @@ impl crate::FlatSerialize for TagResourcesInput {
     }
 }
 
+/// 定时触发器配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TimerTriggerConfig {
@@ -12018,6 +12138,7 @@ impl crate::FlatSerialize for TimerTriggerConfig {
     }
 }
 
+/// 更新别名的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateAliasInput {
@@ -12056,6 +12177,7 @@ impl crate::FlatSerialize for UpdateAliasInput {
     }
 }
 
+/// 更新自定义域名的请求信息
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateCustomDomainInput {
@@ -12114,6 +12236,7 @@ impl crate::FlatSerialize for UpdateCustomDomainInput {
     }
 }
 
+/// 函数更新请求参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateFunctionInput {
@@ -12376,6 +12499,7 @@ impl crate::FlatSerialize for UpdateResidentResourcePoolInput {
     }
 }
 
+/// 更新会话的参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateSessionInput {
@@ -12414,6 +12538,7 @@ impl crate::FlatSerialize for UpdateSessionInput {
     }
 }
 
+/// 更新触发器的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpdateTriggerInput {
@@ -12460,6 +12585,7 @@ impl crate::FlatSerialize for UpdateTriggerInput {
     }
 }
 
+/// 禁止调用的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionInvocationbody {
@@ -12486,6 +12612,7 @@ impl crate::FlatSerialize for FunctionInvocationbody {
     }
 }
 
+/// 标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcesTag {
@@ -12984,6 +13111,7 @@ impl crate::ToCodeMessage for EnableFunctionInvocationResponse {
     }
 }
 
+/// 请谨慎对生产环境的函数调用该接口，避免由于函数被禁止调用导致业务受损。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableFunctionInvocationResponse {

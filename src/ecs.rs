@@ -56469,6 +56469,7 @@ impl crate::FlatSerialize for ResponseZones {
     }
 }
 
+/// 支持的可供创建的具体资源组成的数组。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource
@@ -56540,6 +56541,7 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAva
     }
 }
 
+/// 可供创建的具体资源集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource {
@@ -56599,6 +56601,7 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAva
     }
 }
 
+/// 可用区库存信息的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZone {
@@ -56926,6 +56929,7 @@ impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZoneIte
     }
 }
 
+/// 条件列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionsCondition {
@@ -56968,6 +56972,7 @@ impl crate::FlatSerialize for ItemConditions {
     }
 }
 
+/// 有条件支持的可供创建的具体资源列表。满足条件后，可以将当前资源变更到列表中的资源。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionSupportedResource {
@@ -57257,6 +57262,7 @@ impl crate::FlatSerialize for ItemZones {
     }
 }
 
+/// 实例规格名称。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceType {
@@ -57410,6 +57416,7 @@ impl crate::FlatSerialize for ResponseData {
     }
 }
 
+/// 数据盘列表集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceDataDisk {
@@ -57487,6 +57494,11 @@ impl crate::FlatSerialize for DescribePriceDataDisk {
     }
 }
 
+/// 弹性保障-分时保障重复规则。
+///
+///
+/// > -  修改重复规则时，**修改前和修改后的总保障时长必须相同**。更多修改示例，请参见[修改重复规则](~~2867405~~)。
+/// > -  修改后的重复规则将于次日生效。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PriceRecurrenceRule {
@@ -57711,6 +57723,7 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfos {
     }
 }
 
+/// 价格。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPrice {
@@ -57772,6 +57785,7 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPrice {
     }
 }
 
+/// 市场镜像价格。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePrice {
@@ -57818,6 +57832,7 @@ impl crate::FlatSerialize for ImagePrice {
     }
 }
 
+/// 关联价格。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RelatedPrice {
@@ -57840,6 +57855,7 @@ impl crate::FlatSerialize for RelatedPrice {
     }
 }
 
+/// 价格信息类型（Price），包括价格和优惠规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfo {
@@ -58030,6 +58046,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfos {
     }
 }
 
+/// 价格。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPrice {
@@ -58083,6 +58100,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPrice {
     }
 }
 
+/// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfo {
@@ -58104,6 +58122,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfo {
     }
 }
 
+/// 数据盘类型信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceDataDisk {
@@ -58208,6 +58227,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoRules {
     }
 }
 
+/// 定价规则子集。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
@@ -58256,6 +58276,7 @@ impl crate::FlatSerialize
     }
 }
 
+/// 配置明细价格信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo {
@@ -58335,6 +58356,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPriceDetailInfos
     }
 }
 
+/// 价格。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPrice {
@@ -58388,6 +58410,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPrice {
     }
 }
 
+/// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfo {
@@ -58409,6 +58432,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfo {
     }
 }
 
+/// 数据盘信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesDataDisk {
@@ -58593,6 +58617,7 @@ impl crate::FlatSerialize for InstancesDataDisk {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesArn {
@@ -58627,6 +58652,7 @@ impl crate::FlatSerialize for InstancesArn {
     }
 }
 
+/// 弹性网卡信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesNetworkInterface {
@@ -58949,6 +58975,7 @@ impl crate::FlatSerialize for InstancesNetworkInterface {
     }
 }
 
+/// 实例、云盘和主网卡的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunInstancesTag {
@@ -58971,6 +58998,7 @@ impl crate::FlatSerialize for RunInstancesTag {
     }
 }
 
+/// 系统盘相关参数，目前专属块存储集群ID（`StorageClusterId`）需要通过该参数设置参数值。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesSystemDisk {
@@ -59052,6 +59080,7 @@ impl crate::FlatSerialize for InstancesSystemDisk {
     }
 }
 
+/// 镜像相关属性信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesImageOptions {
@@ -59078,6 +59107,7 @@ impl crate::FlatSerialize for InstancesImageOptions {
     }
 }
 
+/// 网络相关属性参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesNetworkOptions {
@@ -59124,6 +59154,11 @@ impl crate::FlatSerialize for InstancesNetworkOptions {
     }
 }
 
+/// 实例的私网域名配置信息集合。
+///
+///
+/// 关于私网域名解析，请参见[ECS私网域名解析
+/// ](~~2844797~~)。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesPrivateDnsNameOptions {
@@ -59206,6 +59241,7 @@ impl crate::FlatSerialize for InstancesPrivateDnsNameOptions {
     }
 }
 
+/// 实例时钟相关属性参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesClockOptions {
@@ -59435,6 +59471,7 @@ impl crate::FlatSerialize for InstanceArn {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateInstanceTag {
@@ -59459,6 +59496,7 @@ impl crate::FlatSerialize for CreateInstanceTag {
     }
 }
 
+/// 系统盘相关参数，目前专属块存储集群ID（`StorageClusterId`）需要通过该参数设置参数值。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemDisk {
@@ -59743,6 +59781,7 @@ impl crate::FlatSerialize for InstanceStatuses {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesTag {
@@ -59791,6 +59830,7 @@ impl crate::FlatSerialize for ItemInnerIpAddress {
     }
 }
 
+/// 弹性公网IP绑定信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEipAddress {
@@ -59849,6 +59889,7 @@ impl crate::FlatSerialize for ItemEipAddress {
     }
 }
 
+/// 镜像相关属性信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemImageOptions {
@@ -59932,6 +59973,7 @@ impl crate::FlatSerialize for InstancesInstanceItemTags {
     }
 }
 
+/// > 该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HibernationOptions {
@@ -59954,6 +59996,7 @@ impl crate::FlatSerialize for HibernationOptions {
     }
 }
 
+/// > 该参数正在邀测中，暂不支持使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AdditionalInfo {
@@ -59976,6 +60019,7 @@ impl crate::FlatSerialize for AdditionalInfo {
     }
 }
 
+/// 元数据选项集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetadataOptions {
@@ -60019,6 +60063,7 @@ impl crate::FlatSerialize for MetadataOptions {
     }
 }
 
+/// CPU配置详情。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemCpuOptions {
@@ -60085,6 +60130,13 @@ impl crate::FlatSerialize for InstanceItemCpuOptions {
     }
 }
 
+/// 实例的私网域名配置信息集合。
+///
+///
+/// 关于私网域名解析，请参见[ECS私网域名解析
+/// ](~~2844797~~)。
+///
+/// > 仅当请求参数`AdditionalAttributes`取值包含`PRIVATE_DNS_OPTIONS`时，返回该参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateDnsNameOptions {
@@ -60207,6 +60259,7 @@ impl crate::FlatSerialize for ItemVpcAttributesPrivateIpAddress {
     }
 }
 
+/// 专有网络VPC属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemVpcAttributes {
@@ -60248,6 +60301,7 @@ impl crate::FlatSerialize for ItemVpcAttributes {
     }
 }
 
+/// 专有宿主机实例的属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceAttribute {
@@ -60490,6 +60544,7 @@ impl crate::FlatSerialize for InterfaceItemPrivateIpSets {
     }
 }
 
+/// 实例包含的弹性网卡集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemNetworkInterfacesNetworkInterface {
@@ -60584,6 +60639,7 @@ impl crate::FlatSerialize for ItemNetworkInterfaces {
     }
 }
 
+/// 云服务器ECS的容量预留相关参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationAttr {
@@ -60614,6 +60670,7 @@ impl crate::FlatSerialize for ReservationAttr {
     }
 }
 
+/// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDedicatedHostAttribute {
@@ -61327,6 +61384,7 @@ impl crate::FlatSerialize for DescribeInstancesResponseInstances {
     }
 }
 
+/// 实例规格族所属代数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeFamily {
@@ -61379,6 +61437,7 @@ impl crate::FlatSerialize for ResponseInstanceTypeFamilies {
     }
 }
 
+/// 物理网卡信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CardInfo {
@@ -61445,6 +61504,7 @@ impl crate::FlatSerialize for BootModes {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEnhancedNetwork {
@@ -61505,6 +61565,7 @@ impl crate::FlatSerialize for TopologyTypes {
     }
 }
 
+/// CPU设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemCpuOptions {
@@ -61556,6 +61617,7 @@ impl crate::FlatSerialize for TypeItemCpuOptions {
     }
 }
 
+/// 规格支持的时钟。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemClock {
@@ -61581,6 +61643,7 @@ impl crate::FlatSerialize for ItemClock {
     }
 }
 
+/// 规格属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesAttribute {
@@ -61697,6 +61760,7 @@ impl crate::FlatSerialize for WeightingInfos {
     }
 }
 
+/// 规格支持的带宽权重
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthWeighting {
@@ -61718,6 +61782,7 @@ impl crate::FlatSerialize for BandwidthWeighting {
     }
 }
 
+/// 网络相关信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkInfo {
@@ -61740,6 +61805,7 @@ impl crate::FlatSerialize for NetworkInfo {
     }
 }
 
+/// 实例规格集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponseInstanceTypesInstanceType {
@@ -62253,6 +62319,7 @@ impl crate::FlatSerialize for ResponseVpcAttributesPrivateIpAddress {
     }
 }
 
+/// 专有网络VPC属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcAttributes {
@@ -62294,6 +62361,7 @@ impl crate::FlatSerialize for ResponseVpcAttributes {
     }
 }
 
+/// 弹性公网IP绑定信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEipAddress {
@@ -62345,6 +62413,7 @@ impl crate::FlatSerialize for ResponseEipAddress {
     }
 }
 
+/// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDedicatedHostAttribute {
@@ -62375,6 +62444,13 @@ impl crate::FlatSerialize for ResponseDedicatedHostAttribute {
     }
 }
 
+/// 锁定类型。可能值：
+///
+/// - financial：因欠费被锁定。
+/// - security：因安全原因被锁定。
+/// - Recycling：抢占式实例的待释放锁定状态。
+/// - dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
+/// - refunded：因退款被锁定。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseOperationLocksLockReason {
@@ -62431,6 +62507,8 @@ impl crate::FlatSerialize for ResponseOperationLocks {
     }
 }
 
+/// 网络相关属性参数。
+/// > 该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkOptions {
@@ -62482,6 +62560,7 @@ impl crate::FlatSerialize for ResponseNetworkOptions {
     }
 }
 
+/// >该参数正在邀测中，暂不开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectionOptions {
@@ -62504,6 +62583,11 @@ impl crate::FlatSerialize for ConnectionOptions {
     }
 }
 
+/// 实例的私网域名配置信息集合。
+///
+///
+/// 关于私网域名解析，请参见[ECS私网域名解析
+/// ](~~2844797~~)。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributePrivateDnsNameOptions {
@@ -62638,6 +62722,7 @@ impl crate::FlatSerialize for InstanceChargeTypeResponseFeeOfInstances {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceSpecDisk {
@@ -62668,6 +62753,7 @@ impl crate::FlatSerialize for ModifyInstanceSpecDisk {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrepayInstanceSpecDisk {
@@ -62698,6 +62784,7 @@ impl crate::FlatSerialize for PrepayInstanceSpecDisk {
     }
 }
 
+/// 实例RAM角色类型。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResult {
@@ -63211,6 +63298,7 @@ impl crate::FlatSerialize for SpotZones {
     }
 }
 
+/// 创建自定义镜像使用的云盘和快照。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageDiskDeviceMapping {
@@ -63261,6 +63349,7 @@ impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageTag {
@@ -63285,6 +63374,7 @@ impl crate::FlatSerialize for CreateImageTag {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageFeatures {
@@ -63311,6 +63401,7 @@ impl crate::FlatSerialize for CreateImageFeatures {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesTag {
@@ -63337,6 +63428,7 @@ impl crate::FlatSerialize for ImagesTag {
     }
 }
 
+/// 查询资源时的筛选条件列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesFilter {
@@ -63372,6 +63464,7 @@ impl crate::FlatSerialize for ImagesFilter {
     }
 }
 
+/// 镜像下包含云盘和快照的映射关系。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDiskDeviceMappingsDiskDeviceMapping {
@@ -63468,6 +63561,7 @@ impl crate::FlatSerialize for ItemDiskDeviceMappings {
     }
 }
 
+/// 镜像的标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageItemTagsTag {
@@ -63512,6 +63606,7 @@ impl crate::FlatSerialize for ImageItemTags {
     }
 }
 
+/// 镜像检测项列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemsItem {
@@ -63574,6 +63669,7 @@ impl crate::FlatSerialize for OptionsItems {
     }
 }
 
+/// 镜像检测相关结果。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetectionOptions {
@@ -63599,6 +63695,7 @@ impl crate::FlatSerialize for DetectionOptions {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFeatures {
@@ -63682,6 +63779,7 @@ impl crate::FlatSerialize for ItemFeatures {
     }
 }
 
+/// 镜像信息images组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesImage {
@@ -63973,6 +64071,7 @@ impl crate::FlatSerialize for ResponseImages {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeFeatures {
@@ -64134,6 +64233,7 @@ impl crate::FlatSerialize for ResponseImageTags {
     }
 }
 
+/// 返回的镜像信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImage {
@@ -64308,6 +64408,7 @@ impl crate::FlatSerialize for ResponseImage {
     }
 }
 
+/// 查询资源时的筛选条件列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypesFilter {
@@ -64332,6 +64433,7 @@ impl crate::FlatSerialize for TypesFilter {
     }
 }
 
+/// 由InstanceTypeItemType组成的实例规格集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportInstanceTypesResponseInstanceTypesInstanceType {
@@ -64400,6 +64502,7 @@ impl crate::FlatSerialize for SupportInstanceTypesResponseInstanceTypes {
     }
 }
 
+/// 共享组。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ShareGroup {
@@ -64440,6 +64543,7 @@ impl crate::FlatSerialize for ShareGroups {
     }
 }
 
+/// 阿里云注册用户。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccountsAccount {
@@ -64488,6 +64592,7 @@ impl crate::FlatSerialize for ResponseAccounts {
     }
 }
 
+/// 创建的自定义镜像信息列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageDiskDeviceMapping {
@@ -64569,6 +64674,7 @@ impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
     }
 }
 
+/// 镜像的标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageTag {
@@ -64591,6 +64697,7 @@ impl crate::FlatSerialize for ImportImageTag {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageFeatures {
@@ -64628,6 +64735,7 @@ impl crate::FlatSerialize for ImportImageFeatures {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyImageTag {
@@ -64912,6 +65020,7 @@ impl crate::FlatSerialize for ImageComponent {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineTag {
@@ -64989,6 +65098,7 @@ impl crate::FlatSerialize for OptionsDiskDeviceMapping {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptionsFeatures {
@@ -65042,6 +65152,7 @@ impl crate::FlatSerialize for OptionsImportImageTag {
     }
 }
 
+/// 导入镜像的属性和设置。当`BaseImageType=OSS`时，需要设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptions {
@@ -65202,6 +65313,7 @@ impl crate::FlatSerialize for PipelineImportImageOptions {
     }
 }
 
+/// 高级设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineAdvancedOptions {
@@ -65238,6 +65350,7 @@ impl crate::FlatSerialize for PipelineAdvancedOptions {
     }
 }
 
+/// 目标镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImageOptionsImageFeatures {
@@ -65285,6 +65398,7 @@ impl crate::FlatSerialize for OptionsImageTag {
     }
 }
 
+/// 目标镜像属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImageOptions {
@@ -65342,6 +65456,7 @@ impl crate::FlatSerialize for PipelineImageOptions {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelinesTag {
@@ -65528,6 +65643,7 @@ impl crate::FlatSerialize for OptionsDiskDeviceMappings {
     }
 }
 
+/// 镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptionsFeatures {
@@ -65600,6 +65716,7 @@ impl crate::FlatSerialize for ImportImageTags {
     }
 }
 
+/// 导入镜像的属性和设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptions {
@@ -65738,6 +65855,7 @@ impl crate::FlatSerialize for ItemImportImageOptions {
     }
 }
 
+/// 高级设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAdvancedOptions {
@@ -65772,6 +65890,7 @@ impl crate::FlatSerialize for ItemAdvancedOptions {
     }
 }
 
+/// 目标镜像特性相关属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImageOptionsImageFeatures {
@@ -65845,6 +65964,7 @@ impl crate::FlatSerialize for OptionsImageTags {
     }
 }
 
+/// 目标镜像属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemImageOptions {
@@ -66154,6 +66274,7 @@ impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
     }
 }
 
+/// 标签对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionTag {
@@ -66176,6 +66297,7 @@ impl crate::FlatSerialize for ExecutionTag {
     }
 }
 
+/// 标签对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionsTag {
@@ -66198,6 +66320,7 @@ impl crate::FlatSerialize for ExecutionsTag {
     }
 }
 
+/// 标签对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSetItemTagsTag {
@@ -66242,6 +66365,7 @@ impl crate::FlatSerialize for ExecutionSetItemTags {
     }
 }
 
+/// 镜像构建任务的详细信息组成的列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSet {
@@ -66346,6 +66470,7 @@ impl crate::FlatSerialize for PipelineExecution {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelImagePipelineExecutionTemplateTag {
@@ -66368,6 +66493,7 @@ impl crate::FlatSerialize for CancelImagePipelineExecutionTemplateTag {
     }
 }
 
+/// 磁盘的标签信息列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskTag {
@@ -66392,6 +66518,7 @@ impl crate::FlatSerialize for DiskTag {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDiskArn {
@@ -66426,6 +66553,7 @@ impl crate::FlatSerialize for CreateDiskArn {
     }
 }
 
+/// 磁盘标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksTag {
@@ -66452,6 +66580,7 @@ impl crate::FlatSerialize for DisksTag {
     }
 }
 
+/// 磁盘锁定原因类型。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemOperationLocksOperationLock {
@@ -66496,6 +66625,7 @@ impl crate::FlatSerialize for DiskItemOperationLocks {
     }
 }
 
+/// 共享存储挂载到实例上的信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MountInstance {
@@ -66552,6 +66682,7 @@ impl crate::FlatSerialize for MountInstances {
     }
 }
 
+/// 磁盘的标签集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemTagsTag {
@@ -66596,6 +66727,7 @@ impl crate::FlatSerialize for DiskItemTags {
     }
 }
 
+/// 磁盘所涉及的挂载信息。由`Attachment`对象组成的列表，查询共享块存储时不返回该列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachmentsAttachment {
@@ -66652,6 +66784,11 @@ impl crate::FlatSerialize for ItemAttachments {
     }
 }
 
+/// 数据存放地集合。
+///
+/// 只有入参指定 `AdditionalAttributes.N = Placement` 时，才会返回该字段。
+///
+/// > 当前仅有ESSD 同城冗余类型（cloud_regional_disk_auto）磁盘具有有效值。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPlacement {
@@ -66670,6 +66807,7 @@ impl crate::FlatSerialize for ItemPlacement {
     }
 }
 
+/// 磁盘信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDisksDisk {
@@ -67111,6 +67249,7 @@ impl crate::FlatSerialize for ResponseDisks {
     }
 }
 
+/// 磁盘性能控制参数集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ControlOptions {
@@ -67339,6 +67478,7 @@ impl crate::FlatSerialize for DisksResponseOperationProgressSet {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSnapshotTag {
@@ -67712,6 +67852,7 @@ impl crate::FlatSerialize for ResponseSnapshots {
     }
 }
 
+/// 新快照的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopySnapshotTag {
@@ -67930,6 +68071,7 @@ impl crate::FlatSerialize for SnapshotGroupTag {
     }
 }
 
+/// 快照一致性组的标签键值对。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupsTag {
@@ -68418,6 +68560,7 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfigurationArn {
     }
 }
 
+/// 快照异地备份加密参数对象
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyCopyEncryptionConfiguration {
@@ -68457,6 +68600,7 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExTag {
@@ -68479,6 +68623,7 @@ impl crate::FlatSerialize for ExTag {
     }
 }
 
+/// 自动快照策略的标签键值集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyItemTagsTag {
@@ -68523,6 +68668,7 @@ impl crate::FlatSerialize for PolicyItemTags {
     }
 }
 
+/// 快照跨地域复制加密参数对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCopyEncryptionConfiguration {
@@ -68558,6 +68704,7 @@ impl crate::FlatSerialize for ItemCopyEncryptionConfiguration {
     }
 }
 
+/// 自动快照策略详情AutoSnapshotPolicy组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPolicy {
@@ -68730,6 +68877,7 @@ impl crate::FlatSerialize for SnapshotPolicies {
     }
 }
 
+/// 自动快照策略的关联关系。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyAssociation {
@@ -68812,6 +68960,7 @@ impl crate::FlatSerialize for ExCopyEncryptionConfigurationArn {
     }
 }
 
+/// 快照跨地域复制加密参数对象
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExCopyEncryptionConfiguration {
@@ -68915,6 +69064,7 @@ impl crate::FlatSerialize for SnapshotPackages {
     }
 }
 
+/// 公网带宽上限信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthsBandwidth {
@@ -69018,6 +69168,7 @@ impl crate::FlatSerialize for ResponseLinks {
     }
 }
 
+/// 弹性网卡的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceTag {
@@ -69040,6 +69191,7 @@ impl crate::FlatSerialize for InterfaceTag {
     }
 }
 
+/// 弹性网卡通讯参数集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceNetworkInterfaceTrafficConfig {
@@ -69142,6 +69294,9 @@ impl crate::FlatSerialize for InterfaceNetworkInterfaceTrafficConfig {
     }
 }
 
+/// 网络连接跟踪配置信息集合。
+///
+/// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceConnectionTrackingConfiguration {
@@ -69190,6 +69345,7 @@ impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
     }
 }
 
+/// >参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceEnhancedNetwork {
@@ -69348,6 +69504,7 @@ impl crate::FlatSerialize for InterfaceResponseTags {
     }
 }
 
+/// > 该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6SetsIpv6Set {
@@ -69500,6 +69657,7 @@ impl crate::FlatSerialize for InterfacesTag {
     }
 }
 
+/// 弹性网卡关联的弹性公网IP。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
@@ -69793,6 +69951,7 @@ impl crate::FlatSerialize for SetItemSecurityGroupIds {
     }
 }
 
+/// 弹性网卡辅助私有IP地址关联的弹性公网IP。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemAssociatedPublicIp {
@@ -69823,6 +69982,7 @@ impl crate::FlatSerialize for InterfaceSetItemAssociatedPublicIp {
     }
 }
 
+/// > 该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttachment {
@@ -70141,6 +70301,7 @@ impl crate::FlatSerialize for InterfaceSets {
     }
 }
 
+/// > 该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeTag {
@@ -70185,6 +70346,7 @@ impl crate::FlatSerialize for InterfaceAttributeResponseSecurityGroupIds {
     }
 }
 
+/// 弹性网卡辅助私有IP地址关联的弹性公网IP。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAssociatedPublicIp {
@@ -70237,6 +70399,7 @@ impl crate::FlatSerialize for InterfaceIds {
     }
 }
 
+/// > 该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAttachment {
@@ -70292,6 +70455,7 @@ impl crate::FlatSerialize for ResponseAttachment {
     }
 }
 
+/// 弹性网卡辅助私有IP地址关联的弹性公网IP。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
@@ -70322,6 +70486,7 @@ impl crate::FlatSerialize for ResponsePrivateIpSetsPrivateIpSetItemAssociatedPub
     }
 }
 
+/// PrivateIpSet组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponsePrivateIpSetsPrivateIpSet {
@@ -70380,6 +70545,7 @@ impl crate::FlatSerialize for AttributeResponsePrivateIpSets {
     }
 }
 
+/// 弹性网卡已分配的ipv6地址。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6SetsIpv6Set {
@@ -70508,6 +70674,7 @@ impl crate::FlatSerialize for AttributeResponseIpv6PrefixSets {
     }
 }
 
+/// 弹性网卡的标签集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseTagsTag {
@@ -70552,6 +70719,7 @@ impl crate::FlatSerialize for AttributeResponseTags {
     }
 }
 
+/// >该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpecificationSet {
@@ -70612,6 +70780,7 @@ impl crate::FlatSerialize for SpecificationSlaveInterfaceSpecification {
     }
 }
 
+/// >该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BondInterfaceSpecification {
@@ -70641,6 +70810,7 @@ impl crate::FlatSerialize for BondInterfaceSpecification {
     }
 }
 
+/// >该参数正在邀测中，暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSlaveInterfaceSpecification {
@@ -70679,6 +70849,7 @@ impl crate::FlatSerialize for ResponseSlaveInterfaceSpecification {
     }
 }
 
+/// 弹性网卡通讯参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfaceTrafficConfig {
@@ -70717,6 +70888,12 @@ impl crate::FlatSerialize for ResponseNetworkInterfaceTrafficConfig {
     }
 }
 
+/// 网络连接跟踪配置信息集合。
+///
+/// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
+///
+///
+/// > 仅当入参`Attribute`取值为：`ConnectionTrackingConfiguration`时，返回该参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseConnectionTrackingConfiguration {
@@ -70763,6 +70940,7 @@ impl crate::FlatSerialize for ResponseConnectionTrackingConfiguration {
     }
 }
 
+/// 该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEnhancedNetwork {
@@ -70807,6 +70985,7 @@ impl crate::FlatSerialize for ResponseEnhancedNetwork {
     }
 }
 
+/// QoS 限速设置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigQoS {
@@ -70853,6 +71032,7 @@ impl crate::FlatSerialize for ConfigQoS {
     }
 }
 
+/// QoS 限速设置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SConfig {
@@ -70879,6 +71059,7 @@ impl crate::FlatSerialize for SConfig {
     }
 }
 
+/// 弹性网卡通讯参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeNetworkInterfaceTrafficConfig {
@@ -70966,6 +71147,9 @@ impl crate::FlatSerialize for AttributeNetworkInterfaceTrafficConfig {
     }
 }
 
+/// 网络连接跟踪配置信息集合。
+///
+/// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeConnectionTrackingConfiguration {
@@ -71014,6 +71198,7 @@ impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
     }
 }
 
+/// 该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeEnhancedNetwork {
@@ -71102,6 +71287,7 @@ impl crate::FlatSerialize for SetIpv4PrefixSet {
     }
 }
 
+/// 已分配辅助私网IP地址的弹性网卡信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesSet {
@@ -71182,6 +71368,7 @@ impl crate::FlatSerialize for AddressesResponseIpv6PrefixSets {
     }
 }
 
+/// 弹性网卡权限列表组成的信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfacePermission {
@@ -71374,6 +71561,7 @@ impl crate::FlatSerialize for PrefixListEntry {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListTag {
@@ -71398,6 +71586,7 @@ impl crate::FlatSerialize for PrefixListTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListsTag {
@@ -71422,6 +71611,7 @@ impl crate::FlatSerialize for PrefixListsTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTagsTag {
@@ -71670,6 +71860,7 @@ impl crate::FlatSerialize for ListAssociations {
     }
 }
 
+/// 添加的前缀列表信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListAddEntry {
@@ -71701,6 +71892,7 @@ impl crate::FlatSerialize for PrefixListAddEntry {
     }
 }
 
+/// 删除的前缀列表信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListRemoveEntry {
@@ -71723,6 +71915,7 @@ impl crate::FlatSerialize for PrefixListRemoveEntry {
     }
 }
 
+/// 端口列表条目集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListEntry {
@@ -71757,6 +71950,7 @@ impl crate::FlatSerialize for RangeListEntry {
     }
 }
 
+/// 端口列表绑定的标签键值对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListTag {
@@ -71783,6 +71977,7 @@ impl crate::FlatSerialize for RangeListTag {
     }
 }
 
+/// 端口列表绑定的标签键值对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListsTag {
@@ -71807,6 +72002,7 @@ impl crate::FlatSerialize for RangeListsTag {
     }
 }
 
+/// 端口列表的标签集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListsItemTag {
@@ -71833,6 +72029,7 @@ impl crate::FlatSerialize for ListsItemTag {
     }
 }
 
+/// 端口列表信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeList {
@@ -71907,6 +72104,7 @@ impl crate::FlatSerialize for RangeList {
     }
 }
 
+/// 端口列表条目对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEntry {
@@ -71937,6 +72135,7 @@ impl crate::FlatSerialize for ResponseEntry {
     }
 }
 
+/// 端口列表已关联的资源信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListAssociation {
@@ -71967,6 +72166,7 @@ impl crate::FlatSerialize for RangeListAssociation {
     }
 }
 
+/// 增加或修改的端口列表条目对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListAddEntry {
@@ -72003,6 +72203,7 @@ impl crate::FlatSerialize for RangeListAddEntry {
     }
 }
 
+/// 删除的端口列表条目对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListRemoveEntry {
@@ -72029,6 +72230,7 @@ impl crate::FlatSerialize for RangeListRemoveEntry {
     }
 }
 
+/// 安全组绑定的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupTag {
@@ -72055,6 +72257,7 @@ impl crate::FlatSerialize for SecurityGroupTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupsTag {
@@ -72081,6 +72284,7 @@ impl crate::FlatSerialize for SecurityGroupsTag {
     }
 }
 
+/// 安全组的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupItemTagsTag {
@@ -72125,6 +72329,7 @@ impl crate::FlatSerialize for SecurityGroupItemTags {
     }
 }
 
+/// 安全组信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupsSecurityGroup {
@@ -72529,6 +72734,7 @@ impl crate::FlatSerialize for PolicyIds {
     }
 }
 
+/// 安全组规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupPermission {
@@ -72736,6 +72942,7 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupPermission {
     }
 }
 
+/// 安全组规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupPermission {
@@ -72937,6 +73144,7 @@ impl crate::FlatSerialize for RevokeSecurityGroupPermission {
     }
 }
 
+/// 安全组权限规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupEgressPermission {
@@ -73136,6 +73344,7 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupEgressPermission {
     }
 }
 
+/// 安全组规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupEgressPermission {
@@ -73333,6 +73542,7 @@ impl crate::FlatSerialize for RevokeSecurityGroupEgressPermission {
     }
 }
 
+/// 正在授权给这个安全组的其他安全组信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReferencingSecurityGroup {
@@ -73381,6 +73591,7 @@ impl crate::FlatSerialize for ReferencingSecurityGroups {
     }
 }
 
+/// 安全组和被授权的安全组信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupReference {
@@ -73432,6 +73643,7 @@ impl crate::FlatSerialize for GroupReferences {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateKeyPairTag {
@@ -73454,6 +73666,7 @@ impl crate::FlatSerialize for CreateKeyPairTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportKeyPairTag {
@@ -73723,6 +73936,7 @@ impl crate::FlatSerialize for DetachKeyPairResponseResults {
     }
 }
 
+/// 启动模版自身的标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateTemplateTag {
@@ -73745,6 +73959,7 @@ impl crate::FlatSerialize for TemplateTemplateTag {
     }
 }
 
+/// 数据盘信息列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateDataDisk {
@@ -73899,6 +74114,7 @@ impl crate::FlatSerialize for TemplateDataDisk {
     }
 }
 
+/// 弹性网卡信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateNetworkInterface {
@@ -74046,6 +74262,7 @@ impl crate::FlatSerialize for TemplateNetworkInterface {
     }
 }
 
+/// 通过该模板的版本创建的实例、云盘和主网卡的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchTemplateTag {
@@ -74068,6 +74285,7 @@ impl crate::FlatSerialize for LaunchTemplateTag {
     }
 }
 
+/// 镜像相关属性信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateImageOptions {
@@ -74093,6 +74311,7 @@ impl crate::FlatSerialize for TemplateImageOptions {
     }
 }
 
+/// 安全选项。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSecurityOptions {
@@ -74128,6 +74347,7 @@ impl crate::FlatSerialize for TemplateSecurityOptions {
     }
 }
 
+/// 启动模版自身的标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplatesTemplateTag {
@@ -74152,6 +74372,7 @@ impl crate::FlatSerialize for TemplatesTemplateTag {
     }
 }
 
+/// 启动模版自身的标签对信息列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSetItemTagsTag {
@@ -74199,6 +74420,7 @@ impl crate::FlatSerialize for TemplateSetItemTags {
     }
 }
 
+/// 实例启动模板的信息集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSet {
@@ -74328,6 +74550,7 @@ impl crate::FlatSerialize for VersionNumbers {
     }
 }
 
+/// 数据盘列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionDataDisk {
@@ -74483,6 +74706,7 @@ impl crate::FlatSerialize for VersionDataDisk {
     }
 }
 
+/// 弹性网卡信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionNetworkInterface {
@@ -74591,6 +74815,7 @@ impl crate::FlatSerialize for VersionNetworkInterface {
     }
 }
 
+/// 通过该版本创建的实例、云盘和主网卡的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionTag {
@@ -74613,6 +74838,7 @@ impl crate::FlatSerialize for VersionTag {
     }
 }
 
+/// 镜像相关属性信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionImageOptions {
@@ -74638,6 +74864,7 @@ impl crate::FlatSerialize for VersionImageOptions {
     }
 }
 
+/// 安全选项。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSecurityOptions {
@@ -74673,6 +74900,7 @@ impl crate::FlatSerialize for VersionSecurityOptions {
     }
 }
 
+/// 数据盘集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksDataDisk {
@@ -74843,6 +75071,7 @@ impl crate::FlatSerialize for InterfaceItemSecurityGroupIds {
     }
 }
 
+/// 辅助弹性网卡的属性集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataNetworkInterfacesNetworkInterface {
@@ -74959,6 +75188,7 @@ impl crate::FlatSerialize for DataNetworkInterfaces {
     }
 }
 
+/// 实例的标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsInstanceTag {
@@ -75027,6 +75257,7 @@ impl crate::FlatSerialize for DataSecurityGroupIds {
     }
 }
 
+/// 镜像相关属性信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataImageOptions {
@@ -75052,6 +75283,7 @@ impl crate::FlatSerialize for DataImageOptions {
     }
 }
 
+/// 安全选项。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataSecurityOptions {
@@ -75087,6 +75319,7 @@ impl crate::FlatSerialize for DataSecurityOptions {
     }
 }
 
+/// 模板具体配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateData {
@@ -75635,6 +75868,7 @@ impl crate::FlatSerialize for TemplateData {
     }
 }
 
+/// 模板版本的信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSet {
@@ -75795,6 +76029,7 @@ impl crate::FlatSerialize for TemplateVersions {
     }
 }
 
+/// 扩展启动模板信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
@@ -75920,6 +76155,7 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
     }
 }
 
+/// 扩展启动模板云盘配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationDataDisk {
@@ -76099,6 +76335,7 @@ impl crate::FlatSerialize for ConfigurationDataDisk {
     }
 }
 
+/// 扩展启动模板标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationTag {
@@ -76121,6 +76358,7 @@ impl crate::FlatSerialize for ConfigurationTag {
     }
 }
 
+/// 实例系统盘信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SystemDiskConfig {
@@ -76148,6 +76386,7 @@ impl crate::FlatSerialize for SystemDiskConfig {
     }
 }
 
+/// 实例数据盘信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDiskConfig {
@@ -76175,6 +76414,7 @@ impl crate::FlatSerialize for DataDiskConfig {
     }
 }
 
+/// 实例的系统盘信息。同时指定启动模板与启动配置信息时，优先使用启动模板。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationSystemDisk {
@@ -76268,6 +76508,7 @@ impl crate::FlatSerialize for ConfigurationSystemDisk {
     }
 }
 
+/// >该参数正在邀测中，暂不支持使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchConfigurationArn {
@@ -76302,6 +76543,7 @@ impl crate::FlatSerialize for LaunchConfigurationArn {
     }
 }
 
+/// 弹性供应组绑定的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupTag {
@@ -76328,6 +76570,9 @@ impl crate::FlatSerialize for ProvisioningGroupTag {
     }
 }
 
+/// 创建实例时使用的资源池策略。当您设置该参数后，需要注意：
+/// - 该参数只在创建按量付费实例时生效。
+/// - 仅创建一次性同步交付类型的弹性供应组（`AutoProvisioningGroupType=instant`）时，该参数生效。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PoolOptions {
@@ -76363,6 +76608,10 @@ impl crate::FlatSerialize for PoolOptions {
     }
 }
 
+/// 镜像相关属性信息。
+///
+/// 当您设置该参数后，需要注意：
+/// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationImageOptions {
@@ -76436,6 +76685,7 @@ impl crate::FlatSerialize for ConfigurationSecurityOptions {
     }
 }
 
+/// CPU相关配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationCpuOptions {
@@ -76470,6 +76720,7 @@ impl crate::FlatSerialize for ConfigurationCpuOptions {
     }
 }
 
+/// 启动配置参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchConfiguration {
@@ -76610,6 +76861,7 @@ impl crate::FlatSerialize for LaunchConfiguration {
     }
 }
 
+/// 实例规格的最小容量。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityDistribution {
@@ -76642,6 +76894,7 @@ impl crate::FlatSerialize for CapacityDistribution {
     }
 }
 
+/// 包年包月实例的容量详细配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PaidOptions {
@@ -76686,6 +76939,7 @@ impl crate::FlatSerialize for ResultItemInstanceIds {
     }
 }
 
+/// 弹性供应组创建的实例组成的集合。该集合值仅当弹性供应组的交付类型为一次性同步交付（`instant`）时返回。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchResult {
@@ -76772,6 +77026,7 @@ impl crate::FlatSerialize for LaunchResults {
     }
 }
 
+/// 弹性供应组绑定的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupsTag {
@@ -76870,6 +77125,7 @@ impl crate::FlatSerialize for TemplateConfigs {
     }
 }
 
+/// 抢占式实例相关的策略。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotOptions {
@@ -76917,6 +77173,7 @@ impl crate::FlatSerialize for SpotOptions {
     }
 }
 
+/// 按量付费实例相关的策略。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GoOptions {
@@ -76945,6 +77202,7 @@ impl crate::FlatSerialize for GoOptions {
     }
 }
 
+/// 弹性供应组的目标容量设置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacitySpecification {
@@ -76998,6 +77256,7 @@ impl crate::FlatSerialize for CapacitySpecification {
     }
 }
 
+/// 弹性供应组绑定的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupItemTagsTag {
@@ -77046,6 +77305,7 @@ impl crate::FlatSerialize for ProvisioningGroupItemTags {
     }
 }
 
+/// 弹性供应组的详细信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroup {
@@ -77374,6 +77634,7 @@ impl crate::FlatSerialize for GroupInstancesResponseInstances {
     }
 }
 
+/// 扩展启动模板列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
@@ -77754,6 +78015,7 @@ impl crate::FlatSerialize for DeploymentSets {
     }
 }
 
+/// 标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceTag {
@@ -77776,6 +78038,7 @@ impl crate::FlatSerialize for AssuranceTag {
     }
 }
 
+/// 弹性保障-分时保障重复规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateElasticityAssuranceRecurrenceRule {
@@ -77831,6 +78094,7 @@ impl crate::FlatSerialize for CreateElasticityAssuranceRecurrenceRule {
     }
 }
 
+/// 标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssurancesTag {
@@ -77855,6 +78119,7 @@ impl crate::FlatSerialize for AssurancesTag {
     }
 }
 
+/// >该参数暂未开放使用。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceUsage {
@@ -77915,6 +78180,7 @@ impl crate::FlatSerialize for AssuranceUsages {
     }
 }
 
+/// 资源分配详情。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemAllocatedResourcesAllocatedResource {
@@ -77994,6 +78260,7 @@ impl crate::FlatSerialize for AssuranceItemItemAllocatedResources {
     }
 }
 
+/// 弹性保障服务绑定的标签键值对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemTagsTag {
@@ -78038,6 +78305,7 @@ impl crate::FlatSerialize for AssuranceItemItemTags {
     }
 }
 
+/// 弹性保障-分时保障重复规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RulesRecurrenceRule {
@@ -78109,6 +78377,7 @@ impl crate::FlatSerialize for RecurrenceRules {
     }
 }
 
+/// 弹性保障服务详细信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItem {
@@ -78343,6 +78612,9 @@ impl crate::FlatSerialize for ElasticityAssurance {
     }
 }
 
+/// 弹性保障-分时保障重复规则。
+///
+/// > 修改后的重复规则将于次日生效。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyElasticityAssuranceRecurrenceRule {
@@ -78420,6 +78692,7 @@ impl crate::FlatSerialize for OptionsIdSet {
     }
 }
 
+/// 弹性保障服务自动续费属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceRenewAttribute {
@@ -78494,6 +78767,7 @@ impl crate::FlatSerialize for AssuranceRenewAttributes {
     }
 }
 
+/// 标签对。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationTag {
@@ -78516,6 +78790,7 @@ impl crate::FlatSerialize for ReservationTag {
     }
 }
 
+/// 标签对。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationsTag {
@@ -78540,6 +78815,7 @@ impl crate::FlatSerialize for ReservationsTag {
     }
 }
 
+/// 已使用的实例详情。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationUsage {
@@ -78679,6 +78955,7 @@ impl crate::FlatSerialize for ReservationItemItemAllocatedResources {
     }
 }
 
+/// 容量预定服务绑定的标签键值对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemTagsTag {
@@ -78723,6 +79000,7 @@ impl crate::FlatSerialize for ReservationItemItemTags {
     }
 }
 
+/// 容量预定服务详细信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItem {
@@ -78914,6 +79192,7 @@ impl crate::FlatSerialize for ReservationSet {
     }
 }
 
+/// 容量预定服务已匹配的实例列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemInstanceIdSet {
@@ -78958,6 +79237,7 @@ impl crate::FlatSerialize for CapacityReservation {
     }
 }
 
+/// 实例匹配的私有池信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesResponseInstancesInstance {
@@ -79062,6 +79342,7 @@ impl crate::FlatSerialize for OfferingResponseReservedInstanceIdSets {
     }
 }
 
+/// 标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstancesTag {
@@ -79086,6 +79367,7 @@ impl crate::FlatSerialize for ReservedInstancesTag {
     }
 }
 
+/// 是否被锁定。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemOperationLocksOperationLock {
@@ -79130,6 +79412,7 @@ impl crate::FlatSerialize for ReservedInstanceItemOperationLocks {
     }
 }
 
+/// 预留实例券的标签对信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemTagsTag {
@@ -79174,6 +79457,7 @@ impl crate::FlatSerialize for ReservedInstanceItemTags {
     }
 }
 
+/// 由ReservedInstance组成的数组格式，返回预留实例券的详细信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstance {
@@ -79339,6 +79623,7 @@ impl crate::FlatSerialize for ReservedInstances {
     }
 }
 
+/// 预留实例券的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesConfiguration {
@@ -79515,6 +79800,7 @@ impl crate::FlatSerialize for ReservedInstanceRenewAttributes {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitTag {
@@ -79738,6 +80024,7 @@ impl crate::FlatSerialize for CapacityUnits {
     }
 }
 
+/// 标签对。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunCommandTag {
@@ -79766,6 +80053,7 @@ impl crate::FlatSerialize for RunCommandTag {
     }
 }
 
+/// 用于筛选实例的标签。可以在不指定InstanceId的情况下，向具有相同标签的实例批量执行命令。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunCommandResourceTag {
@@ -79802,6 +80090,7 @@ impl crate::FlatSerialize for RunCommandResourceTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCommandTag {
@@ -79831,6 +80120,7 @@ impl crate::FlatSerialize for CreateCommandTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvokeCommandTag {
@@ -79860,6 +80150,7 @@ impl crate::FlatSerialize for InvokeCommandTag {
     }
 }
 
+/// 用于筛选实例的标签。可以在不指定InstanceId的情况下，向具有相同标签的实例批量执行命令。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvokeCommandResourceTag {
@@ -79898,6 +80189,7 @@ impl crate::FlatSerialize for InvokeCommandResourceTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsTag {
@@ -79926,6 +80218,7 @@ impl crate::FlatSerialize for InvocationsTag {
     }
 }
 
+/// 执行状态列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance {
@@ -80156,6 +80449,7 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemInvoke
     }
 }
 
+/// 命令执行的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemTagsTag {
@@ -80200,6 +80494,7 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemTags {
     }
 }
 
+/// 任务创建的时间。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocation {
@@ -80431,6 +80726,7 @@ impl crate::FlatSerialize for InvocationsResponseInvocations {
     }
 }
 
+/// 标签列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResultsTag {
@@ -80459,6 +80755,7 @@ impl crate::FlatSerialize for InvocationResultsTag {
     }
 }
 
+/// 命令执行的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemTagsTag {
@@ -80784,6 +81081,7 @@ impl crate::FlatSerialize for InvocationResults {
     }
 }
 
+/// 命令执行结果的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInvocation {
@@ -80837,6 +81135,7 @@ impl crate::FlatSerialize for ResponseInvocation {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandsTag {
@@ -80887,6 +81186,7 @@ impl crate::FlatSerialize for PossibleValues {
     }
 }
 
+/// 自定义参数详细信息列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterDefinition {
@@ -80994,6 +81294,7 @@ impl crate::FlatSerialize for ParameterNames {
     }
 }
 
+/// 命令的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandItemTagsTag {
@@ -81038,6 +81339,7 @@ impl crate::FlatSerialize for CommandItemTags {
     }
 }
 
+/// 命令创建时间。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandsCommand {
@@ -81187,6 +81489,7 @@ impl crate::FlatSerialize for ResponseCommands {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileTag {
@@ -81215,6 +81518,7 @@ impl crate::FlatSerialize for FileTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileResultsTag {
@@ -81392,6 +81696,7 @@ impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemInvokeInst
     }
 }
 
+/// 文件下发的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemTagsTag {
@@ -81730,6 +82035,7 @@ impl crate::FlatSerialize for EncryptionOptions {
     }
 }
 
+/// 连接信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectionsConnection {
@@ -81836,6 +82142,7 @@ impl crate::FlatSerialize for ItemConnections {
     }
 }
 
+/// 会话信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SessionsSession {
@@ -81941,6 +82248,7 @@ impl crate::FlatSerialize for ResponseSessions {
     }
 }
 
+/// OSS投递配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsOssDeliveryConfig {
@@ -82004,6 +82312,7 @@ impl crate::FlatSerialize for SettingsOssDeliveryConfig {
     }
 }
 
+/// SLS投递配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsSlsDeliveryConfig {
@@ -82039,6 +82348,7 @@ impl crate::FlatSerialize for SettingsSlsDeliveryConfig {
     }
 }
 
+/// 云助手Agent升级配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsAgentUpgradeConfig {
@@ -82088,6 +82398,7 @@ impl crate::FlatSerialize for SettingsAgentUpgradeConfig {
     }
 }
 
+/// 云助手会话功能配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsSessionManagerConfig {
@@ -82115,6 +82426,7 @@ impl crate::FlatSerialize for SettingsSessionManagerConfig {
     }
 }
 
+/// OSS投递配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsOssDeliveryConfig {
@@ -82206,6 +82518,7 @@ impl crate::FlatSerialize for OssDeliveryConfigs {
     }
 }
 
+/// SLS投递配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsSlsDeliveryConfig {
@@ -82294,6 +82607,7 @@ impl crate::FlatSerialize for UpgradeWindows {
     }
 }
 
+/// 云助手Agent升级配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAgentUpgradeConfig {
@@ -82327,6 +82641,7 @@ impl crate::FlatSerialize for ResponseAgentUpgradeConfig {
     }
 }
 
+/// 云助手会话功能配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSessionManagerConfig {
@@ -82354,6 +82669,7 @@ impl crate::FlatSerialize for ResponseSessionManagerConfig {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationTag {
@@ -82382,6 +82698,7 @@ impl crate::FlatSerialize for ActivationTag {
     }
 }
 
+/// 标签列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationsTag {
@@ -82410,6 +82727,7 @@ impl crate::FlatSerialize for ActivationsTag {
     }
 }
 
+/// 托管实例激活码的标签信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTag {
@@ -82538,6 +82856,7 @@ impl crate::FlatSerialize for ActivationList {
     }
 }
 
+/// 激活码及使用情况信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableActivationResponseActivation {
@@ -82628,6 +82947,7 @@ impl crate::FlatSerialize for DisableActivationResponseActivation {
     }
 }
 
+/// 激活码及使用情况信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteActivationResponseActivation {
@@ -82714,6 +83034,7 @@ impl crate::FlatSerialize for DeleteActivationResponseActivation {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ManagedInstancesTag {
@@ -82742,6 +83063,7 @@ impl crate::FlatSerialize for ManagedInstancesTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesItemTag {
@@ -82908,6 +83230,7 @@ impl crate::FlatSerialize for InstancesResponseInstance {
     }
 }
 
+/// 托管实例信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyManagedInstanceResponseInstance {
@@ -82938,6 +83261,7 @@ impl crate::FlatSerialize for ModifyManagedInstanceResponseInstance {
     }
 }
 
+/// 托管实例的信息组成的集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeregisterManagedInstanceResponseInstance {
@@ -83056,6 +83380,7 @@ impl crate::FlatSerialize for DeregisterManagedInstanceResponseInstance {
     }
 }
 
+/// 插件状态列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPluginStatus {
@@ -83140,6 +83465,7 @@ impl crate::FlatSerialize for ItemPluginStatusSet {
     }
 }
 
+/// 实例插件状态列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancePluginStatus {
@@ -83191,6 +83517,7 @@ impl crate::FlatSerialize for InstancePluginStatusSet {
     }
 }
 
+/// 事件状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventCycleStatus {
@@ -83213,6 +83540,7 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemEventCycleStatus {
     }
 }
 
+/// 事件类型。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventType {
@@ -83323,6 +83651,21 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttributeInact
     }
 }
 
+/// 本地盘实例系统事件拓展属性。
+///
+/// 不同事件类型，返回值有所不同。
+///
+/// 当事件类型不在以下列表中时，该数据为空。
+///
+/// - SystemMaintenance.StopAndRepair
+/// - SystemMaintenance.CleanInactiveDisks
+/// - SecurityPunish.Locked
+/// - SecurityPunish.WebsiteBanned
+/// - SystemUpgrade.Migrate
+/// - SystemMaintenance.RebootAndIsolateErrorDisk
+/// - SystemMaintenance.RebootAndReInitErrorDisk
+/// - SystemMaintenance.ReInitErrorDisk
+/// - SystemMaintenance.IsolateErrorDisk
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttribute {
@@ -83462,6 +83805,7 @@ impl crate::FlatSerialize for ScheduledSystemEventSet {
     }
 }
 
+/// 实例生命周期状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemStatus {
@@ -83484,6 +83828,7 @@ impl crate::FlatSerialize for InstanceFullStatusTypeItemStatus {
     }
 }
 
+/// 实例的健康状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemHealthStatus {
@@ -83571,6 +83916,7 @@ impl crate::FlatSerialize for InstanceFullStatusSet {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StatusTag {
@@ -83595,6 +83941,7 @@ impl crate::FlatSerialize for StatusTag {
     }
 }
 
+/// 事件类型。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventTypeItemEventType {
@@ -83693,6 +84040,7 @@ impl crate::FlatSerialize for DiskEventSet {
     }
 }
 
+/// 块存储生命周期状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemStatus {
@@ -83715,6 +84063,7 @@ impl crate::FlatSerialize for DiskFullStatusTypeItemStatus {
     }
 }
 
+/// 块存储健康状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemHealthStatus {
@@ -83812,6 +84161,7 @@ impl crate::FlatSerialize for DiskFullStatusSet {
     }
 }
 
+/// 系统事件支持的标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventsTag {
@@ -83834,6 +84184,7 @@ impl crate::FlatSerialize for EventsTag {
     }
 }
 
+/// 系统事件类型。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventType {
@@ -83856,6 +84207,7 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemEventType {
     }
 }
 
+/// 系统事件的生命周期状态。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventCycleStatus {
@@ -83878,6 +84230,7 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemEventCycleStatus {
     }
 }
 
+/// 已释放但需要清理的非活跃云盘或本地盘信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk {
@@ -83988,6 +84341,7 @@ impl crate::FlatSerialize for MigrationOptions {
     }
 }
 
+/// 事件扩展属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttribute {
@@ -84113,6 +84467,7 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemExtendedAttribute {
     }
 }
 
+/// 实例历史系统事件。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventType {
@@ -84259,6 +84614,7 @@ impl crate::FlatSerialize for EventIdSet {
     }
 }
 
+/// 诊断指标。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseMetric {
@@ -84563,6 +84919,7 @@ impl crate::FlatSerialize for ResponseReports {
     }
 }
 
+/// 诊断问题列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemIssuesIssue {
@@ -84697,6 +85054,7 @@ impl crate::FlatSerialize for MetricResults {
     }
 }
 
+/// 云盘的监控数据集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskMonitorData {
@@ -85183,6 +85541,7 @@ impl crate::FlatSerialize for SupportedValues {
     }
 }
 
+/// 实例的运维动作属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OnMaintenance {
@@ -85287,6 +85646,8 @@ impl crate::FlatSerialize for MaintenanceAttributes {
     }
 }
 
+/// 维护时间窗口列表。
+///
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesMaintenanceWindow {
@@ -85313,6 +85674,7 @@ impl crate::FlatSerialize for AttributesMaintenanceWindow {
     }
 }
 
+/// 标签对象。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesTag {
@@ -85335,6 +85697,7 @@ impl crate::FlatSerialize for TagResourcesTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesTag {
@@ -85377,6 +85740,7 @@ impl crate::FlatSerialize for ListTagResourcesTag {
     }
 }
 
+/// Tag过滤规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagFilter {
@@ -85499,6 +85863,7 @@ impl crate::FlatSerialize for ResponseTagResources {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AllocateDedicatedHostsTag {
@@ -85914,6 +86279,7 @@ impl crate::FlatSerialize for ItemCapacityAvailableInstanceTypes {
     }
 }
 
+/// 专有宿主机性能指标集合。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacity {
@@ -86014,6 +86380,7 @@ impl crate::FlatSerialize for ItemCapacity {
     }
 }
 
+/// 专有宿主机的网络属性值。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkAttributes {
@@ -86044,6 +86411,7 @@ impl crate::FlatSerialize for NetworkAttributes {
     }
 }
 
+/// 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostDetailInfo {
@@ -86066,6 +86434,7 @@ impl crate::FlatSerialize for HostDetailInfo {
     }
 }
 
+/// 专有宿主机所属托管资源池（Managed Private Space）ID。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DedicatedHost {
@@ -86686,6 +87055,7 @@ impl crate::FlatSerialize for HostRenewAttributes {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterTag {
@@ -86708,6 +87078,7 @@ impl crate::FlatSerialize for ClusterTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClustersTag {
@@ -86915,6 +87286,7 @@ impl crate::FlatSerialize for ClusterCapacityAvailableInstanceTypes {
     }
 }
 
+/// 专有宿主机组容量。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacity {
@@ -89656,6 +90028,7 @@ impl crate::FlatSerialize for AddTagsTag {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ByTagsTag {
@@ -89736,6 +90109,7 @@ impl crate::FlatSerialize for ResponseResources {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTagsTag {
@@ -89760,6 +90134,7 @@ impl crate::FlatSerialize for DescribeTagsTag {
     }
 }
 
+/// 资源类型计数。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeCount {
@@ -89838,6 +90213,7 @@ impl crate::FlatSerialize for TypeCount {
     }
 }
 
+/// 满足所有筛选条件的标签。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsResponseTagsTag {
@@ -89890,6 +90266,7 @@ impl crate::FlatSerialize for TagsResponseTags {
     }
 }
 
+/// 标签列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RemoveTagsTag {
@@ -89914,6 +90291,7 @@ impl crate::FlatSerialize for RemoveTagsTag {
     }
 }
 
+/// QoS 限速设置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SQoS {
@@ -91047,6 +91425,7 @@ impl crate::FlatSerialize for MigrationType {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsResponse {
@@ -91065,6 +91444,7 @@ impl crate::ToCodeMessage for DescribeRegionsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeZonesResponse {
@@ -91083,6 +91463,7 @@ impl crate::ToCodeMessage for DescribeZonesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAvailableResourceResponse {
@@ -91101,6 +91482,7 @@ impl crate::ToCodeMessage for DescribeAvailableResourceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAccountAttributesResponse {
@@ -91119,6 +91501,7 @@ impl crate::ToCodeMessage for DescribeAccountAttributesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeResourcesModificationResponse {
@@ -91137,6 +91520,7 @@ impl crate::ToCodeMessage for DescribeResourcesModificationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRecommendInstanceTypeResponse {
@@ -91155,6 +91539,7 @@ impl crate::ToCodeMessage for DescribeRecommendInstanceTypeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponse {
@@ -91174,6 +91559,7 @@ impl crate::ToCodeMessage for DescribePriceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRenewalPriceResponse {
@@ -91193,6 +91579,7 @@ impl crate::ToCodeMessage for DescribeRenewalPriceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceModificationPriceResponse {
@@ -91212,6 +91599,134 @@ impl crate::ToCodeMessage for DescribeInstanceModificationPriceResponse {
     }
 }
 
+/// <props="china">
+/// 创建实例会产生计费，计费项包括[实例规格](~~25398~~)、[镜像](~~179021~~)、[块存储](~~179022~~)和[公网带宽](~~25411~~)。请确保在使用该接口前，已充分了解ECS产品的收费方式和[价格](https://www.aliyun.com/price/product#/ecs/detail)。
+/// </props>
+/// <props="intl">请确保在使用该接口前，已充分了解ECS产品的收费方式和[价格](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl)。
+/// </props>
+///
+/// 本接口为异步接口，当前创建实例请求发送成功后会返回实例ID，实例的创建和启动不是立即完成的，您可以调用[DescribeInstanceStatus](~~2679688~~)查看实例信息，当返回信息中的状态为`Running`时代表创建并启动成功。
+///
+/// ### 使用须知
+///
+/// <props="china">
+///
+/// - 请确保您的账号已通过实名认证。更多信息，请参见[账号实名认证相关文档](~~48263~~)。
+///
+/// </props>
+///
+/// - 当资源库存不足以完成当前实例创建时，阿里云会立即发送一个实例创建失败事件（SystemFailure.Delete），您可以通过[DescribeInstanceHistoryEvents](~~2679897~~)查看是否存在实例创建失败事件。更多信息，请参见[实例创建失败事件](~~2545990~~)。
+/// - 请确保您创建的实例总数或者全实例规格 vCPU 不会超出系统配额。更多信息，请参见[配额中心](https://quotas.console.aliyun.com/products/ecs/quotas)。
+/// - 创建专有网络VPC类型实例前，请预先在相应的阿里云地域[创建VPC](~~65430~~)。
+///
+/// ### 注意事项
+/// - 若实例计费方式为包年包月（`PrePaid`），在付款时默认会使用您可用的优惠券。
+/// - 单个请求最多能创建100台实例，超出100台，建议您分批或并发调用。
+/// - 如果参数`InternetMaxBandwidthOut`的值大于0，则自动为实例分配公网IP。
+/// > 单个地域下，单个阿里云账号按固定带宽计费的公网带宽峰值总和存在限制，请参见[公网带宽限制](~~25412#BandwidthQuota~~)。
+///
+///
+/// ### 使用建议
+///
+/// - **测试场景**：可以通过设置`DryRun=true`发送预检请求。
+/// - **释放实例**：您可以通过参数`AutoReleaseTime`设置实例自动释放时间，或者调用[DeleteInstances](~~2679710~~)进行手动释放。
+/// - **管理与检索**：建议您为每批次启动的实例指定标签（`Tag.N.Key`和`Tag.N.Value`），并且为主机名（`HostName`）和实例名称（`InstanceName`）添加有序后缀（`UniqueSuffix`）。具体操作，请参见[批量设置有序的实例名称或主机名称](~~196048~~)。
+/// - **启动模板**：利用实例启动模板能为您免除每次创建实例时都需要填入大量配置参数的麻烦，您可以通过[CreateLaunchTemplate](~~2679729~~)创建实例启动模板后，在`RunInstances`请求中指定`LaunchTemplateId`和`LaunchTemplateVersion`使用启动模板。
+/// - **关闭超线程**：在内存密集型业务场景，可以通过设置`CpuOptions.ThreadsPerCore=1`关闭超线程来提高内存配比。
+/// - **开启巨型帧**：可以指定 `NetworkOptions.EnableJumboFrame=true`在创建时开启`Jumbo frame`特性。 更多信息，请参见 [ECS实例MTU](~~200512~~)。
+///
+/// ## 请求示例
+/// 假设您需要在华东 1（杭州）地域创建一些 ECS 实例。期望使用特定的镜像、实例规格、安全组和虚拟交换机，同时配置一定容量的系统盘和数据盘，并分配公网 IP 和设定实例名称与密码。相关配置请求参数如下：
+/// ```ignore
+/// RegionId:"cn-hangzhou", //设置华东 1（杭州）地域
+/// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", //设置镜像ID
+/// InstanceType:"ecs.g7.large", //设置实例规格
+/// SecurityGroupId:"sg-bp150uqocpf9jj70****", //设置安全组 ID
+/// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", //设置虚拟交换机 ID
+/// SystemDisk:{
+///   Category:"cloud_essd", //设置系统盘类别为ESSD云盘
+///   Size:40, //设置系统盘大小为40GiB
+/// },
+/// DataDisk:[
+///   {
+///     Category:"cloud_essd", //设置数据盘类别为ESSD云盘
+///     Size:100, //设置数据盘大小为100GiB
+///   }
+/// ],
+/// HostName:"ECS-test", //设置实例主机名称
+/// Password:"ECS@test1234", //设置实例登录密码
+/// InternetMaxBandwidthOut:10 //设置公网出带宽为10Mbit/s
+/// ```
+/// 在上述配置的基础上，创建不同类型实例：
+/// <details>
+/// <summary>示例：创建5台自动续费的包年包月实例</summary>
+///
+/// ```ignore
+/// Amount:5, //创建数量为5台
+/// InstanceChargeType:"PrePaid", //表示包年包月
+/// PeriodUnit:"Month", //设置时长单位为"月"
+/// Period:1, //设置时长为1个月
+/// AutoRenew:true, //表示自动续费
+/// AutoRenewPeriod:1 //续费时长为1个月
+/// ```
+/// </details>
+///
+/// <details>
+/// <summary>示例：创建10台按量付费实例</summary>
+///
+/// ```ignore
+/// Amount:10, //创建数量为10台
+/// InstanceChargeType:"PostPaid", //表示按量付费
+/// SpotStrategy:"NoSpot" //默认值，表示正常按量付费
+/// ```
+/// </details>
+///
+/// <details>
+/// <summary>示例：创建20台抢占式实例，并设置竞价策略和保留时长</summary>
+///
+/// ```ignore
+/// Amount:20, //创建数量为20台
+/// InstanceChargeType:"PostPaid",
+/// SpotStrategy:"SpotAsPriceGo", //表示抢占式实例的竞价策略为根据市场价格自动出价
+/// SpotDuration:1 //设置抢占式实例的保留时长为1小时
+/// ```
+/// </details>
+///
+/// 假设您已通过[CreateLaunchTemplate](~~2679729~~)创建了一个实例启动模版，现在需要使用该模版在华东 1（杭州）地域创建一些 ECS 实例。示例如下：
+///
+/// <details>
+/// <summary>示例：根据实例启动模版创建10台ECS实例</summary>
+///
+/// ```ignore
+/// RegionId:"cn-hangzhou", //设置华东 1（杭州）地域
+/// Amount:10, //创建数量为10台
+/// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" //设置实例启动模版ID
+/// ```
+///
+/// </details>
+///
+/// ><notice>实例的参数和模版内的参数同时指定时，优先以实例参数创建。例如：模版内的付费方式是包年包月，同时`InstanceChargeType`设定为`PostPaid`，创建的即为按量付费类型实例。></notice>
+///
+/// <details>
+/// <summary>示例：使用全镜像（包含系统盘和数据盘的整机镜像）创建1台实例</summary>
+///
+/// ```ignore
+/// RegionId:"cn-hangzhou", //设置华东 1（杭州）地域
+/// ImageId = m-bp13ohd32cvzpq9e****，//自定义镜像ID
+/// InstanceType = ecs.u1-c1m1.large，//实例类型
+/// SecurityGroupId = sg-bp10jztp6b0sdsyl****，//安全组ID
+/// VSwitchId = vsw-bp19wo63nleroq22g****，//交换机ID
+/// SystemDisk.Size = 50，//设置全镜像自带的系统盘大小
+/// SystemDisk.Category = cloud_auto，//设置全镜像自带的系统盘的云盘种类
+/// DataDisk.0.Device = /dev/xvdb，//设置全镜像自带的数据盘的挂载点
+/// DataDisk.0.Size = 50，//设置全镜像自带的数据盘的容量大小
+/// DataDisk.0.Category = cloud_essd，//设置全镜像自带的数据盘的云盘种类
+/// DataDisk.1.Device = /dev/xvdc，//新增数据盘的挂载点，如果您需要使用新增的数据盘替换全镜像自带的数据盘，可设置DataDisk.1.Device = /dev/xvdb（全镜像中数据盘的默认挂载点）。
+/// DataDisk.1.Size = 70，//新增数据盘的容量大小
+/// DataDisk.1.Category = cloud_auto，//新增数据盘的云盘种类
+/// ```
+///
+/// </details>
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RunInstancesResponse {
@@ -91236,6 +91751,7 @@ impl crate::ToCodeMessage for RunInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateInstanceResponse {
@@ -91261,6 +91777,7 @@ impl crate::ToCodeMessage for CreateInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstanceResponse {
@@ -91277,6 +91794,7 @@ impl crate::ToCodeMessage for StartInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstancesResponse {
@@ -91295,6 +91813,7 @@ impl crate::ToCodeMessage for StartInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstanceResponse {
@@ -91311,6 +91830,7 @@ impl crate::ToCodeMessage for StopInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstancesResponse {
@@ -91329,6 +91849,7 @@ impl crate::ToCodeMessage for StopInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstanceResponse {
@@ -91345,6 +91866,7 @@ impl crate::ToCodeMessage for RebootInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstancesResponse {
@@ -91363,6 +91885,7 @@ impl crate::ToCodeMessage for RebootInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteInstanceResponse {
@@ -91379,6 +91902,7 @@ impl crate::ToCodeMessage for DeleteInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteInstancesResponse {
@@ -91395,6 +91919,7 @@ impl crate::ToCodeMessage for DeleteInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceStatusResponse {
@@ -91422,6 +91947,13 @@ impl crate::ToCodeMessage for DescribeInstanceStatusResponse {
     }
 }
 
+/// ### 使用须知
+/// - 通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。更多信息，请参见[CLI参数格式说明](~~110340~~)。
+/// - 如果您使用的是RAM用户账号或者RAM角色，当用户或者角色缺乏接口权限时，将会返回空列表。
+///
+/// ### 使用建议
+/// - 通过请求参数DryRun发送预检请求，可以检查参数有效性和授权情况。
+/// - 分页查询首页时，仅需设置`MaxResults`以限制返回信息的条目数，返回结果中的`NextToken`值将作为查询后续页的凭证。查询后续页时，将`NextToken`参数设置为上一次返回结果中获取到的`NextToken`值作为查询凭证，并设置`MaxResults`限制返回条目数。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesResponse {
@@ -91454,6 +91986,7 @@ impl crate::ToCodeMessage for DescribeInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypeFamiliesResponse {
@@ -91472,6 +92005,21 @@ impl crate::ToCodeMessage for DescribeInstanceTypeFamiliesResponse {
     }
 }
 
+/// - **分页查询**：您可以设置MaxResults参数以限制返回值中实例规格的条目数，如果只返回了部分被查询到的实例规格的条目数，则会同步返回NextToken参数值。再次调用该接口，设置上次调用该接口返回的NextToken参数值以及MaxResults参数，以实现分页查询实例规格信息。
+///
+/// - 若您调用该API时未传入NextToken参数进行分页获取，默认只返回第一页（不超过100条）数据，若需要更多数据，请您传入NextToken进行分页获取或传入过滤条件来限制返回的数据范围。
+///
+/// >  MaxResults（每页最大条目数）参数的最大值为100，对于在2022年调用过本API的用户，MaxResults参数的最大值仍为1600，在2023年11月15日及之后，我们将对所有用户的MaxResults参数的最大值缩小到100，不再支持1600。
+///
+/// - DescribeInstanceTypes仅查询实例规格的配置和性能信息。如果您需要查询具体地域下可购买的实例规格，请使用[DescribeAvailableResource](~~66186~~)。
+///
+/// <props="china">
+/// - 如果您需要使用非售卖可见的实例规格或特别的规格需求，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。
+///   </props>
+///
+/// <props="intl">
+/// - 如果您需要使用非售卖可见的实例规格或特别的规格需求，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)。
+/// </props>
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponse {
@@ -91647,6 +92195,7 @@ impl crate::ToCodeMessage for DescribeInstanceAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceAttributeResponse {
@@ -91663,6 +92212,11 @@ impl crate::ToCodeMessage for ModifyInstanceAttributeResponse {
     }
 }
 
+/// 调用该接口时，您需要注意：
+///
+/// -  当前接口是异步接口。调用后返回异步任务ID。通查查询异步任务结果来判断是否执行完成。
+///
+/// -  修改 PtpStatus，需要对应的规格支持设置该参数。具体支持的实例规格，可以查询实例规格列表（[DescribeInstanceTypes](~~25620~~)）。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceClockOptionsResponse {
@@ -91684,6 +92238,13 @@ impl crate::ToCodeMessage for ModifyInstanceClockOptionsResponse {
     }
 }
 
+/// 调用该接口时，您需要注意：
+///
+/// -  当前接口是异步接口。调用后返回异步任务ID。通查查询异步任务结果来判断是否执行完成。
+///
+/// -  当前接口每次调用仅支持修改一个属性。如果修改多个属性，请分多次调用。
+///
+/// -  修改BandwidthWeighting，需要对应的规格支持设置该参数。您可以通过[DescribeInstanceTypes](~~2679699~~)查询当前实例规格是否支持带宽权重及支持的带宽权重值。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceNetworkOptionsResponse {
@@ -91705,6 +92266,24 @@ impl crate::ToCodeMessage for ModifyInstanceNetworkOptionsResponse {
     }
 }
 
+/// ### 使用须知
+/// - 请确保在使用该接口前，您已充分了解的云服务器ECS的[包年包月](~~56220~~)、[按量付费](~~40653~~)等计费方式和<props="china">[价格](https://www.aliyun.com/price/product#/ecs/detail)</props><props="intl">[价格](https://www.alibabacloud.com/product/ecs#pricing)</props>。</props>
+/// - 请确保目标实例的状态为**运行中**（`Running`）或者**已停止**（`Stopped`），并且账号无欠费。
+/// - 更换计费方式后，默认自动扣费。请确保账户余额充足，否则会生成异常订单，此时只能作废订单。如果您的账户余额不足，可以将参数`AutoPay`置为`false`，此时会生成正常的未支付订单，您可以登录[ECS管理控制台](https://ecs.console.aliyun.com/)支付。
+///
+/// ### 注意事项
+/// - **包年包月转按量付费**：
+/// <props="china">
+///     - 包年包月实例转按量实例的时候，新计费方式将覆盖实例的整个生命周期。您会收到修改前后的实例计费的价格差退款，退还到您的原付款渠道中，已使用的代金券将不退回。
+/// </props>
+/// <props="intl">
+///     - 包年包月实例转按量实例的时候，新计费方式将覆盖实例的整个生命周期。您会收到修改前后的实例计费的价格差退款，退还到您的原付款渠道中，已使用的代金券将不退回。
+/// </props>
+///     - **退款规则**：您在一个月内能自由操作的退款额度有限且不累计，消耗完退款额度后，只能等待次月转换计费方式。一次转换计费消耗的退款额度公式为**vCPU数 \*（退款天数*24±浮动小时数）**。更多信息，请参见[包年包月转按量付费](~~85517~~)。
+/// - **按量付费转包年包月**：
+///     - 支持将实例挂载的所有按量付费数据盘同时转换为包年包月数据盘。
+///     - 如果按量付费实例已经设置了释放时间，则不能调用该接口。更多信息，请参见[包年包月转按量付费](~~49884~~)。
+///     - 若实例处于节省停机模式需先启动实例。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceChargeTypeResponse {
@@ -91726,6 +92305,7 @@ impl crate::ToCodeMessage for ModifyInstanceChargeTypeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceSpecResponse {
@@ -91742,6 +92322,7 @@ impl crate::ToCodeMessage for ModifyInstanceSpecResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyPrepayInstanceSpecResponse {
@@ -91761,6 +92342,7 @@ impl crate::ToCodeMessage for ModifyPrepayInstanceSpecResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceAutoReleaseTimeResponse {
@@ -91777,6 +92359,7 @@ impl crate::ToCodeMessage for ModifyInstanceAutoReleaseTimeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResponse {
@@ -91804,6 +92387,7 @@ impl crate::ToCodeMessage for AttachInstanceRamRoleResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceRamRoleResponse {
@@ -91828,6 +92412,7 @@ impl crate::ToCodeMessage for DescribeInstanceRamRoleResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachInstanceRamRoleResponse {
@@ -91855,6 +92440,7 @@ impl crate::ToCodeMessage for DetachInstanceRamRoleResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceVncUrlResponse {
@@ -91876,6 +92462,7 @@ impl crate::ToCodeMessage for DescribeInstanceVncUrlResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceVncPasswdResponse {
@@ -91892,6 +92479,7 @@ impl crate::ToCodeMessage for ModifyInstanceVncPasswdResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceMetadataOptionsResponse {
@@ -91908,6 +92496,7 @@ impl crate::ToCodeMessage for ModifyInstanceMetadataOptionsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeUserDataResponse {
@@ -91935,6 +92524,7 @@ impl crate::ToCodeMessage for DescribeUserDataResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewInstanceResponse {
@@ -91954,6 +92544,7 @@ impl crate::ToCodeMessage for RenewInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceAutoRenewAttributeResponse {
@@ -91981,6 +92572,7 @@ impl crate::ToCodeMessage for DescribeInstanceAutoRenewAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceAutoRenewAttributeResponse {
@@ -91997,6 +92589,7 @@ impl crate::ToCodeMessage for ModifyInstanceAutoRenewAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReActivateInstancesResponse {
@@ -92013,6 +92606,7 @@ impl crate::ToCodeMessage for ReActivateInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSpotPriceHistoryResponse {
@@ -92041,6 +92635,7 @@ impl crate::ToCodeMessage for DescribeSpotPriceHistoryResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSpotAdviceResponse {
@@ -92062,6 +92657,7 @@ impl crate::ToCodeMessage for DescribeSpotAdviceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageResponse {
@@ -92081,6 +92677,7 @@ impl crate::ToCodeMessage for CreateImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImagesResponse {
@@ -92127,6 +92724,7 @@ impl crate::ToCodeMessage for ModifyImageAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteImageResponse {
@@ -92143,6 +92741,7 @@ impl crate::ToCodeMessage for DeleteImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImageFromFamilyResponse {
@@ -92162,6 +92761,7 @@ impl crate::ToCodeMessage for DescribeImageFromFamilyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImageSupportInstanceTypesResponse {
@@ -92186,6 +92786,7 @@ impl crate::ToCodeMessage for DescribeImageSupportInstanceTypesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImageSharePermissionResponse {
@@ -92221,6 +92822,7 @@ impl crate::ToCodeMessage for DescribeImageSharePermissionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyImageSharePermissionResponse {
@@ -92252,6 +92854,125 @@ impl crate::ToCodeMessage for ModifyImageShareGroupPermissionResponse {
     }
 }
 
+/// ### 接口说明
+///
+/// 调用该接口时，您需要注意：
+///
+/// - 您必须提前上传镜像文件到对象存储OSS。具体操作，请参见[上传文件](~~31886~~)。
+///
+/// - 为避免部分服务器、虚拟机或者云主机的操作系统在导入自定义镜像后，创建的ECS实例无法启动，您需要在导入镜像前检查是否需要在源服务器中安装virtio驱动。具体操作，请参见[安装virtio驱动](~~62423~~)。
+///
+/// - 首次导入镜像时，您必须提前通过访问控制RAM授权ECS访问您的OSS Bucket，否则会报错`NoSetRoletoECSServiceAccount`或`InvalidOperation.CloudBoxImageImportRoleRequired`。分为以下两种场景情况：
+///
+///   - **不通过云盒导入镜像文件**：您可以通过RAM管理控制台一键完成授权操作，具体的授权页面，请参见[云资源访问授权](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D)。您也可以手动完成授权操作，部分操作中策略与权限如下所示。具体操作，请参见[账号访问控制](~~25481~~)。
+///
+///     1. 创建角色`AliyunECSImageImportDefaultRole`（必须是这个名称，否则导入镜像会失败），角色的策略为：
+/// ```ignore
+///         {
+/// 			"Statement": [
+/// 			{
+/// 				"Action": "sts:AssumeRole",
+/// 				"Effect": "Allow",
+/// 				"Principal": {
+/// 				"Service": [
+/// 					"ecs.aliyuncs.com"
+/// 				]
+/// 				}
+/// 			}
+///         ],
+/// 			"Version": "1"
+///         }
+///         ```
+///
+///     2. 在该角色下，添加系统策略`AliyunECSImageImportRolePolicy`。您也可以创建自定义策略，权限必须包含：
+/// ```ignore
+///
+///         {
+/// 			"Version": "1",
+/// 			"Statement": [
+/// 			{
+/// 				"Action": [
+///         				"oss:GetObject",
+///         				"oss:GetBucketLocation",
+///         				"oss:GetBucketInfo"
+/// 			],
+///         			"Resource": "*",
+///         			"Effect": "Allow"
+///         			}
+/// 			]
+///         }
+///         
+///         ```
+///
+///   - **通过云盒导入镜像文件**：您可以通过RAM管理控制台一键完成授权操作，具体的授权页面，请参见[云资源访问授权](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D)。您也可以手动完成授权操作，部分操作中策略与权限如下所示。具体操作，请参见[账号访问控制](~~25481~~)。
+///
+///     1. 创建角色`AliyunECSCloudBoxImageImportDefaultRole`（必须是这个名称，否则导入镜像会失败），角色的策略为：
+/// ```ignore
+///         {
+/// 			"Statement": [
+/// 			{
+/// 				"Action": "sts:AssumeRole",
+/// 				"Effect": "Allow",
+/// 				"Principal": {
+/// 				"Service": [
+/// 					"ecs.aliyuncs.com"
+/// 				]
+/// 				}
+/// 			}
+///         ],
+/// 			"Version": "1"
+///         }
+///         ```
+///
+///     2. 在该角色下，添加系统策略`AliyunECSCloudBoxImageImportRolePolicy`。您也可以创建自定义策略，权限必须包含：
+/// ```ignore
+///
+///         {
+/// 			"Version": "1",
+/// 			"Statement": [
+/// 			{
+/// 				"Action": [
+///         				"oss-cloudbox:GetObject",
+///         				"oss-cloudbox:GetBucketLocation",
+///         				"oss-cloudbox:GetBucketInfo"
+/// 			],
+///         			"Resource": "*",
+///         			"Effect": "Allow"
+///         			}
+/// 			]
+///         }
+///         
+///         ```
+///
+/// - 不能删除正在导入的镜像，只能调用[CancelTask](~~25624~~)取消导入镜像任务。
+///
+/// - 导入镜像的地域必须跟镜像文件上传的OSS Bucket的地域相同。
+///
+/// - 参数`DiskDeviceMapping.N`中N的取值范围为1~17。N为1时表示系统盘，N为2~17时表示数据盘，当N大于17时系统会自动忽略。
+///
+/// - 当参数`Architecture`取值为`arm64`，或者参数`Platform`取值为`CentOS Stream`、`Anolis`、`AlmaLinux`、`UOS`、`Kylin`或`Rocky Linux`时，您需要注意：
+///
+///     - 为了使导入后的镜像支持配置密码或者支持修改密钥对，镜像必须满足以下条件：
+///
+///         - 操作系统的内核需要支持`CONFIG_FW_CFG_SYSFS`特性。Linux社区内核4.6版本之后默认支持该特性，CentOS的内核在3.10.0-826.el7版本之后默认支持该特性。您可以在该镜像对应的服务器内运行`grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)`命令，如果回显结果中包含`CONFIG_FW_CFG_SYSFS=y`信息，则说明该镜像中的内核已支持`CONFIG_FW_CFG_SYSFS`特性。
+///
+///
+///         - 操作系统中已安装阿里云最新版本cloud-init。其中，19.1版本cloud-init必须在19.1.3版本及以上，部分低版本操作系统中的0.7.6a版本cloud-init必须在0.7.6a15版本及以上。具体操作，请参见[安装cloud-init](~~57803~~)。
+///
+///         - 操作系统需要支持SHA-512加密算法。
+///
+///     - 为了使导入后的镜像支持扩容云盘与扩容文件系统，镜像必须满足以下条件：
+///
+///         - 操作系统的内核版本需要高于3.6版本。
+///
+///         - 支持growpart命令。支持该命令需要安装`cloud-utils-growpart`包，不同操作系统安装方式有所不同。具体操作，请参见[扩容分区和文件系统（Linux）](~~2949817#bb3b1f02e51pj~~)。
+///
+///         - 支持resize2fs命令。支持该命令需要安装`e2fsprogs`包，该包在操作系统中默认已安装，如果没有安装您需要自行安装。
+///
+///         - 操作系统中已安装阿里云最新版本cloud-init。其中，19.1版本cloud-init必须在19.1.3版本及以上，部分低版本操作系统中的0.7.6a版本cloud-init必须在0.7.6a15版本及以上。具体操作，请参见[安装cloud-init](~~57803~~)。
+/// - 如果您待导入的自定义镜像对应的系统架构为arm64时，您需要设置其RTC时钟使用UTC时间标准。具体操作，请参见[Linux时间和时区说明](~~405080~~)。
+///
+/// - 强烈建议在导入镜像时配置镜像检测参数，有助于系统帮助优化您的镜像。更多信息，请参见[镜像检测概述](~~439819~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageResponse {
@@ -92277,6 +92998,7 @@ impl crate::ToCodeMessage for ImportImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ExportImageResponse {
@@ -92299,6 +93021,7 @@ impl crate::ToCodeMessage for ExportImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyImageResponse {
@@ -92318,6 +93041,7 @@ impl crate::ToCodeMessage for CopyImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelCopyImageResponse {
@@ -92334,6 +93058,7 @@ impl crate::ToCodeMessage for CancelCopyImageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageComponentResponse {
@@ -92353,6 +93078,7 @@ impl crate::ToCodeMessage for CreateImageComponentResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImageComponentsResponse {
@@ -92380,6 +93106,7 @@ impl crate::ToCodeMessage for DescribeImageComponentsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteImageComponentResponse {
@@ -92396,6 +93123,7 @@ impl crate::ToCodeMessage for DeleteImageComponentResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImagePipelineResponse {
@@ -92415,6 +93143,7 @@ impl crate::ToCodeMessage for CreateImagePipelineResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImagePipelinesResponse {
@@ -92442,6 +93171,7 @@ impl crate::ToCodeMessage for DescribeImagePipelinesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteImagePipelineResponse {
@@ -92458,6 +93188,7 @@ impl crate::ToCodeMessage for DeleteImagePipelineResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartImagePipelineExecutionResponse {
@@ -92477,6 +93208,7 @@ impl crate::ToCodeMessage for StartImagePipelineExecutionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeImagePipelineExecutionsResponse {
@@ -92504,6 +93236,7 @@ impl crate::ToCodeMessage for DescribeImagePipelineExecutionsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelImagePipelineExecutionResponse {
@@ -92520,6 +93253,7 @@ impl crate::ToCodeMessage for CancelImagePipelineExecutionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDiskResponse {
@@ -92544,6 +93278,7 @@ impl crate::ToCodeMessage for CreateDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDisksResponse {
@@ -92575,6 +93310,7 @@ impl crate::ToCodeMessage for DescribeDisksResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachDiskResponse {
@@ -92591,6 +93327,7 @@ impl crate::ToCodeMessage for AttachDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachDiskResponse {
@@ -92607,6 +93344,7 @@ impl crate::ToCodeMessage for DetachDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResizeDiskResponse {
@@ -92628,6 +93366,7 @@ impl crate::ToCodeMessage for ResizeDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiskAttributeResponse {
@@ -92644,6 +93383,18 @@ impl crate::ToCodeMessage for ModifyDiskAttributeResponse {
     }
 }
 
+/// 转换数据盘计费方式前，请仔细阅读[转换云盘计费方式](~~145018~~)。
+///
+/// 使用该接口时，请注意：
+///
+/// - 不支持修改挂载在按量付费实例上数据盘的计费方式，按量付费实例仅支持挂载按量付费云盘。
+/// - 数据盘挂载的实例不能为到期停机状态。
+/// - 更换计费方式前后的价格差退款会退还到您的原付费方式中，已使用的代金券不退回。
+/// - 每块云盘成功修改计费方式一次，五分钟内不能再次修改。  
+/// <props="china">- 开启多重挂载特性的云盘，仅支持按量付费的计费方式，不能转换为包年包月的计费方式。</props>
+///
+///
+/// 更换计费方式后，默认自动扣费。您需要确保账户余额充足，否则会生成异常订单，此时只能作废订单。如果您的账户余额不足，可以将参数AutoPay置为false，此时会生成正常的未支付订单，您可以登录阿里云**费用与成本**后，在<props="china"><ph>[我的订单](https://usercenter2.aliyun.com/order/list)</ph></props><props="intl"><ph>[订单管理](https://usercenter2-intl.aliyun.com/order/list)</ph></props>页面支付。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiskChargeTypeResponse {
@@ -92663,6 +93414,7 @@ impl crate::ToCodeMessage for ModifyDiskChargeTypeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiskSpecResponse {
@@ -92689,6 +93441,7 @@ impl crate::ToCodeMessage for ModifyDiskSpecResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReplaceSystemDiskResponse {
@@ -92708,6 +93461,7 @@ impl crate::ToCodeMessage for ReplaceSystemDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResetDiskResponse {
@@ -92724,6 +93478,7 @@ impl crate::ToCodeMessage for ResetDiskResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResetDisksResponse {
@@ -92742,6 +93497,7 @@ impl crate::ToCodeMessage for ResetDisksResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReInitDiskResponse {
@@ -92758,6 +93514,21 @@ impl crate::ToCodeMessage for ReInitDiskResponse {
     }
 }
 
+/// > 专属块存储集群功能目前支持华东1（杭州）、华东2（上海）、华北2（北京）、华北3（张家口）、华北6（乌兰察布）、华南1（深圳）、华南2（河源）、印度尼西亚（雅加达）、德国（法兰克福）以及华南1 金融云地域。
+///
+/// 请确保在使用该接口前，您已充分了解云盘和专属块存储集群的计费方式和价格，并且专属块存储集群未到期，账号未处于欠费状态。更多信息，请参见[专属块存储计费](~~208883~~)和[块存储计费](~~179022~~)。
+///
+/// 调用该接口时，您需要注意：
+/// - 云盘和专属块存储集群必须在同一个可用区。
+/// - 仅支持按量付费云盘，包年包月云盘需要先转成按量付费。具体操作，请参见[转换云盘计费方式](~~145018~~)。
+/// - 迁移时云盘规格需要和目标集群支持的云盘规格保持一致，当在不同专属块存储集群之间迁移时允许变更云盘规格，使其和目标集群支持的云盘规格保持一致。
+/// - 云盘的状态必须是**使用中**（In_use）状态或者**待挂载**（Available）状态。
+/// - 若云盘已挂载到ECS实例上，实例必须处于**运行中**（Running）状态或者**已停止**（Stopped）状态，ECS实例不能处于已过期状态。
+/// - 由于ESSD云盘性能级别受容量限制，如果您无法升级性能级别，可以扩容后重新操作。更多信息，请参见[ResizeDisk](~~25522~~)和[ESSD云盘](~~122389~~)。
+/// - 一个账号在同一地域内最多同时进行5个云盘迁移任务。
+/// - 迁移过程中不允许取消迁移、创建快照、变配、扩容、挂载、卸载、重新初始化云盘等操作。
+///
+/// > 云盘迁移后遵循目标集群对应的计费方式、云盘规格和能力，调用接口后立即生效，阿里云按照新的云盘类型及云盘性能级别进行计费。更多信息，请参见[专属块存储计费](~~208883~~)和[块存储计费](~~179022~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiskDeploymentResponse {
@@ -92777,6 +93548,7 @@ impl crate::ToCodeMessage for ModifyDiskDeploymentResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteDiskResponse {
@@ -92793,6 +93565,32 @@ impl crate::ToCodeMessage for DeleteDiskResponse {
     }
 }
 
+/// <props="china">
+///
+/// > EBS账号级默认加密功能当前仅对部分地域和用户开放，若您有使用需求，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。
+///
+/// </props>
+///
+/// <props="intl">
+///
+/// > EBS账号级默认加密功能当前仅对部分地域和用户开放，若您有使用需求，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)。
+///
+/// </props>
+///
+/// - **使用须知**
+///   - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
+///   - 开启块存储账号级默认加密前，您需要先[开通KMS产品服务](~~480156~~)。
+///   - 开启块存储账号级默认加密后，限制只能新购加密云盘，详情见[加密云盘_使用限制](~~59643#50de175230erj~~)。
+///
+/// - **注意事项**
+///     - 开启块存储账号级默认加密后，新购的按量付费或包年包月云盘都必须是加密云盘，您可以使用块存储账号级默认加密配置的KMS密钥ID，也可以修改成其他任意的KMS密钥ID。
+///
+///     - 首次启用块存储账号级默认加密时，默认使用服务密钥。
+///
+/// - **使用建议**
+///     - 您可以通过 [DescribeDiskEncryptionByDefaultStatus](~~2851493~~) 和 [DescribeDiskDefaultKMSKeyId](~~2851490~~) 查询指定地域块存储账号级默认加密功能是否开启以及使用的KMS密钥ID。
+///     - 您可以通过 [ModifyDiskDefaultKMSKeyId](~~2851492~~) 或 [ResetDiskDefaultKMSKeyId](~~2851539~~) 修改或重置块存储账号级默认加密的KMS密钥。
+///     - 您可以通过 [DisableDiskEncryptionByDefault](~~2851491~~) 关闭指定地域块存储账号级默认加密功能。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EnableDiskEncryptionByDefaultResponse {
@@ -92853,6 +93651,9 @@ impl crate::ToCodeMessage for DescribeDiskDefaultKMSKeyIdResponse {
     }
 }
 
+/// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
+/// - 指定地域需要开启块存储账号级默认加密功能。
+/// - 首次使用主密钥，需要先为ECS授权`AliyunECSDiskEncryptDefaultRole`角色，允许ECS访问KMS资源，详情见[通过RAM角色授予访问KMS密钥的权限](~~2838993~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiskDefaultKMSKeyIdResponse {
@@ -92869,6 +93670,8 @@ impl crate::ToCodeMessage for ModifyDiskDefaultKMSKeyIdResponse {
     }
 }
 
+/// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
+/// - 指定地域需要开启**块存储账号级默认加密**功能。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResetDiskDefaultKMSKeyIdResponse {
@@ -92885,6 +93688,12 @@ impl crate::ToCodeMessage for ResetDiskDefaultKMSKeyIdResponse {
     }
 }
 
+/// - **使用须知**
+///   - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
+///
+/// - **注意事项**
+///   - 关闭块存储账号级默认加密后，已创建的云盘加密状态不受影响。
+///   - 关闭块存储账号级默认加密后，您依旧可以在新购云盘时手动选择加密云盘。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableDiskEncryptionByDefaultResponse {
@@ -92917,6 +93726,7 @@ impl crate::ToCodeMessage for OpenSnapshotServiceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSnapshotResponse {
@@ -92936,6 +93746,7 @@ impl crate::ToCodeMessage for CreateSnapshotResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotsResponse {
@@ -92968,6 +93779,7 @@ impl crate::ToCodeMessage for DescribeSnapshotsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotsUsageResponse {
@@ -92990,6 +93802,7 @@ impl crate::ToCodeMessage for DescribeSnapshotsUsageResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySnapshotAttributeResponse {
@@ -93006,6 +93819,15 @@ impl crate::ToCodeMessage for ModifySnapshotAttributeResponse {
     }
 }
 
+/// <props="china">
+/// **请确保在使用该接口前，已充分了解归档快照产品的收费方式和[价格](https://www.aliyun.com/price/product?#/disk/detail/disk)。**
+/// </props>
+///
+/// - 归档快照不支持还原为标准快照。
+///
+/// - 标准快照创建完成之后，必须至少已保留14天，才能进行归档。
+///
+/// - 共享来的快照、云产品托管的快照、云盒内的快照不支持归档。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySnapshotCategoryResponse {
@@ -93025,6 +93847,7 @@ impl crate::ToCodeMessage for ModifySnapshotCategoryResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CopySnapshotResponse {
@@ -93044,6 +93867,7 @@ impl crate::ToCodeMessage for CopySnapshotResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSnapshotResponse {
@@ -93060,6 +93884,7 @@ impl crate::ToCodeMessage for DeleteSnapshotResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotLinksResponse {
@@ -93091,6 +93916,23 @@ impl crate::ToCodeMessage for DescribeSnapshotLinksResponse {
     }
 }
 
+/// 您可以设置`InstanceId`为实例内的指定云盘创建快照一致性组；也可以只使用`DiskId.N`为同可用区内多台ECS实例挂载的多块云盘创建快照一致性组。
+///
+/// > `DiskId.N`不可与`ExcludeDiskId.N`同时设置。此外，如果设置了`InstanceId`，则`DiskId.N`只能设置指定实例内已挂载的云盘，不再支持设置多个跨实例的云盘ID。
+///
+/// 创建快照一致性组时，请注意：
+///
+/// - 待创建快照的云盘必须处于**使用中**（`In_use`）或**待挂载**（`Available`）的状态。
+///
+///     - 如果云盘处于**使用中**（`In_use`）的状态，则ECS实例状态为**运行中**（`Running`）或者**已停止**（`Stopped`）。
+///     - 如果云盘处于**待挂载**（`Available`）的状态，则需要保证云盘有过挂载到ECS实例的历史操作。从未挂载过ECS实例的云盘不支持创建快照。
+///
+/// - 目前快照一致性组只支持ESSD系列云盘（ESSD、ESSD AutoPL、ESSD Entry）。
+/// - 单个快照一致性组最多包括16块云盘（包括系统盘和数据盘），且总容量不超过32 TiB。
+/// - 您自行创建的快照会一直保留，请定期删除不再需要的快照，避免快照容量持续扣费。
+/// - 开启多重挂载特性的云盘不支持创建快照一致性组。如果实例挂载了开启多重挂载特性的云盘，您需要设置`ExcludeDiskId.N`参数排除该云盘。
+///
+/// 关于快照一致性组的功能、计费等信息，请参见[快照一致性组](~~199625~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSnapshotGroupResponse {
@@ -93110,6 +93952,7 @@ impl crate::ToCodeMessage for CreateSnapshotGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotGroupsResponse {
@@ -93133,6 +93976,7 @@ impl crate::ToCodeMessage for DescribeSnapshotGroupsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySnapshotGroupResponse {
@@ -93149,6 +93993,7 @@ impl crate::ToCodeMessage for ModifySnapshotGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSnapshotGroupResponse {
@@ -93167,6 +94012,7 @@ impl crate::ToCodeMessage for DeleteSnapshotGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAutoSnapshotPolicyResponse {
@@ -93186,6 +94032,7 @@ impl crate::ToCodeMessage for CreateAutoSnapshotPolicyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAutoSnapshotPolicyExResponse {
@@ -93234,6 +94081,7 @@ impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyAssociationsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyAutoSnapshotPolicyExResponse {
@@ -93250,6 +94098,7 @@ impl crate::ToCodeMessage for ModifyAutoSnapshotPolicyExResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ApplyAutoSnapshotPolicyResponse {
@@ -93266,6 +94115,7 @@ impl crate::ToCodeMessage for ApplyAutoSnapshotPolicyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelAutoSnapshotPolicyResponse {
@@ -93282,6 +94132,7 @@ impl crate::ToCodeMessage for CancelAutoSnapshotPolicyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteAutoSnapshotPolicyResponse {
@@ -93298,6 +94149,7 @@ impl crate::ToCodeMessage for DeleteAutoSnapshotPolicyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotPackageResponse {
@@ -93343,6 +94195,7 @@ impl crate::ToCodeMessage for DescribeBandwidthLimitationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceNetworkSpecResponse {
@@ -93362,6 +94215,7 @@ impl crate::ToCodeMessage for ModifyInstanceNetworkSpecResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AllocatePublicIpAddressResponse {
@@ -93381,6 +94235,7 @@ impl crate::ToCodeMessage for AllocatePublicIpAddressResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConvertNatPublicIpToEipResponse {
@@ -93397,6 +94252,7 @@ impl crate::ToCodeMessage for ConvertNatPublicIpToEipResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceVpcAttributeResponse {
@@ -93413,6 +94269,7 @@ impl crate::ToCodeMessage for ModifyInstanceVpcAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeClassicLinkInstancesResponse {
@@ -93440,6 +94297,7 @@ impl crate::ToCodeMessage for DescribeClassicLinkInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachClassicLinkVpcResponse {
@@ -93456,6 +94314,7 @@ impl crate::ToCodeMessage for AttachClassicLinkVpcResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachClassicLinkVpcResponse {
@@ -93472,6 +94331,7 @@ impl crate::ToCodeMessage for DetachClassicLinkVpcResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateNetworkInterfaceResponse {
@@ -93545,6 +94405,7 @@ impl crate::ToCodeMessage for CreateNetworkInterfaceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeNetworkInterfacesResponse {
@@ -93736,6 +94597,7 @@ impl crate::ToCodeMessage for DescribeNetworkInterfaceAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyNetworkInterfaceAttributeResponse {
@@ -93752,6 +94614,24 @@ impl crate::ToCodeMessage for ModifyNetworkInterfaceAttributeResponse {
     }
 }
 
+/// 调用该接口时，您需要注意：
+///
+/// -  弹性网卡必须处于可用（Available）状态。
+///
+/// -  如果弹性网卡已经附加到ECS实例，必须先从实例分离（[DetachNetworkInterface](~~58514~~)），才能删除弹性网卡。
+///
+/// -  删除弹性网卡之后：
+///
+///     - 弹性网卡的所有私有地址（包括主私网地址和辅助私网地址）会自动释放。
+///
+///     - 被删除的弹性网卡退出所属的所有安全组。
+/// -  本接口为异步接口，调用成功后，您可以通过查询弹性网卡状态或监听网卡操作事件来感知操作结果， 弹性网卡状态机如下图所示：
+/// ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+///     - Deleting说明删除弹性网卡请求发送成功，弹性网卡正在删除中。
+///     - 若无法查询到弹性网卡，说明弹性网卡删除成功。
+///     - 若弹性网卡状态长时间为Deleting说明删除失败，此时您可以重新发起删除请求弹性网卡操作。      
+///
+/// **调用示例详情参见**[删除弹性网卡](~~471553~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteNetworkInterfaceResponse {
@@ -93768,6 +94648,25 @@ impl crate::ToCodeMessage for DeleteNetworkInterfaceResponse {
     }
 }
 
+/// 调用该接口时，请注意：
+///
+/// - 弹性网卡必须处于**可用**（`Available`）状态，一个弹性网卡只能同时附加到一台相同可用区且相同专有网络的实例上。
+///
+/// - 实例需处于运行中（Running）或者已停止（Stopped）状态，部分实例规格的实例在附加弹性网卡时必须为已停止（Stopped）状态，更多信息，请参见[附加弹性网卡](~~58503~~)中的需要停止实例的ECS实例规格章节。
+///
+///     > 如果实例最后一次启动时间在2018年4月1日之前（包括但不限于启动新购的实例、重启、重开机），您必须提前调用RebootInstance重启一直保持运行中状态的实例，否则无法附加弹性网卡。
+///
+/// - 一台实例可以同时附加多个弹性网卡，更多信息，请参见[弹性网卡概述](~~58496~~)。
+///   
+/// - 弹性网卡所在的交换机必须与实例所在交换机属于同一可用区且同一专有网络VPC。   
+///
+/// - 该接口为异步接口，调用成功后，您可以通过查询弹性网卡状态或监听网卡操作事件的方式来感知操作结果。 弹性网卡状态机如下图所示：
+/// ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221124/esgu/AttachNetworkInterface.jpg)
+///     - Attaching说明附加弹性网卡请求发送成功，弹性网卡正在附加到ECS实例中。
+///     - InUse说明弹性网卡已附加到ECS实例。
+///     - Available说明弹性网卡附加到ECS实例失败。   
+///
+/// **调用示例详情参见**[附加弹性网卡](~~471550~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachNetworkInterfaceResponse {
@@ -93784,6 +94683,7 @@ impl crate::ToCodeMessage for AttachNetworkInterfaceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachNetworkInterfaceResponse {
@@ -93800,6 +94700,7 @@ impl crate::ToCodeMessage for DetachNetworkInterfaceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssignPrivateIpAddressesResponse {
@@ -93819,6 +94720,7 @@ impl crate::ToCodeMessage for AssignPrivateIpAddressesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnassignPrivateIpAddressesResponse {
@@ -93835,6 +94737,7 @@ impl crate::ToCodeMessage for UnassignPrivateIpAddressesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssignIpv6AddressesResponse {
@@ -93858,6 +94761,7 @@ impl crate::ToCodeMessage for AssignIpv6AddressesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnassignIpv6AddressesResponse {
@@ -93874,6 +94778,7 @@ impl crate::ToCodeMessage for UnassignIpv6AddressesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateNetworkInterfacePermissionResponse {
@@ -93893,6 +94798,7 @@ impl crate::ToCodeMessage for CreateNetworkInterfacePermissionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeNetworkInterfacePermissionsResponse {
@@ -93920,6 +94826,7 @@ impl crate::ToCodeMessage for DescribeNetworkInterfacePermissionsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreatePrefixListResponse {
@@ -93939,6 +94846,7 @@ impl crate::ToCodeMessage for CreatePrefixListResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePrefixListsResponse {
@@ -93960,6 +94868,7 @@ impl crate::ToCodeMessage for DescribePrefixListsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePrefixListAttributesResponse {
@@ -93999,6 +94908,7 @@ impl crate::ToCodeMessage for DescribePrefixListAttributesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePrefixListAssociationsResponse {
@@ -94020,6 +94930,7 @@ impl crate::ToCodeMessage for DescribePrefixListAssociationsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyPrefixListResponse {
@@ -94036,6 +94947,7 @@ impl crate::ToCodeMessage for ModifyPrefixListResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeletePrefixListResponse {
@@ -94166,6 +95078,7 @@ impl crate::ToCodeMessage for DeletePortRangeListResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSecurityGroupResponse {
@@ -94185,6 +95098,7 @@ impl crate::ToCodeMessage for CreateSecurityGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSecurityGroupsResponse {
@@ -94222,6 +95136,7 @@ impl crate::ToCodeMessage for DescribeSecurityGroupsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSecurityGroupAttributeResponse {
@@ -94266,6 +95181,7 @@ impl crate::ToCodeMessage for DescribeSecurityGroupAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySecurityGroupPolicyResponse {
@@ -94282,6 +95198,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupPolicyResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySecurityGroupAttributeResponse {
@@ -94298,6 +95215,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteSecurityGroupResponse {
@@ -94314,6 +95232,7 @@ impl crate::ToCodeMessage for DeleteSecurityGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupResponse {
@@ -94330,6 +95249,7 @@ impl crate::ToCodeMessage for AuthorizeSecurityGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySecurityGroupRuleResponse {
@@ -94346,6 +95266,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupRuleResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupResponse {
@@ -94362,6 +95283,63 @@ impl crate::ToCodeMessage for RevokeSecurityGroupResponse {
     }
 }
 
+/// ### 使用须知
+/// - **数量限制：** 单张弹性网卡关联的所有安全组的规则（包括入方向规则与出方向规则）数量之和不能超过1000。具体限制请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。  
+/// - **优先级设置：** 安全组出方向规则优先级（Priority）可选范围为1~100。数字越小，代表优先级越高，优先级相同的安全组规则，优先以拒绝访问（drop）的规则为准。
+///
+/// ### 注意事项
+/// 如果指定的安全组规则已存在，此次调用成功，但不会增加规则。
+///
+///
+/// ### 规则确定方式
+///
+/// 确定一条安全组出方向规则必要的一组相关参数：
+///
+/// - 目的端设置：选择DestCidrIp（IPv4 地址）、Ipv6DestCidrIp（IPv6 地址）、DestPrefixListId（前缀列表 ID）、DestGroupId（目的端安全组）中的一项。
+/// - 目的端口范围：PortRange。
+/// - 协议类型：IpProtocol。
+/// - 权限策略：Policy。
+///
+/// > 企业安全组不支持授权其他安全组访问，普通安全组支持授权的安全组数量最多为 20 个。
+///
+/// ### 请求示例
+///
+/// 假设要在杭州地域下指定安全组中增加几条不同目的端的出方向规则：
+///
+///   - 增加指定IP地址段的访问权限。
+///
+/// ```ignore
+///     "RegionId":"cn-hangzhou",  //设置地域
+///     "SecurityGroupId":"sg-bp17vs63txqxbds9***", //设置安全组
+///     "Permissions":[
+///          {
+///            "DestCidrIp":"10.0.0.0/8", //设置目的端IPv4 地址
+///            "PortRange":"-1/-1", //设置端口范围
+///            "IpProtocol":"ICMP", //设置协议类型
+///            "Policy":"Accept" //设置访问策略
+///          }
+///     ]
+///     ```
+///
+///   - 增加一条其他安全组和一条前缀列表的访问权限。
+///
+/// ```ignore
+///     "RegionId":"cn-hangzhou",
+///     "SecurityGroupId":"sg-bp17vs63txqxbds9***",
+///     "Permissions":[
+///          {
+///            "DestGroupId":"sg-bp67acfmxazb4pi***", //设置目的端安全组
+///            "PortRange":"22/22",
+///            "IpProtocol":"TCP",
+///            "Policy":"Drop"
+///          },{
+///            "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", //设置目的端前缀列表
+///            "PortRange":"22/22",
+///            "IpProtocol":"TCP",
+///            "Policy":"Drop"
+///          }
+///     ]
+///     ```
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupEgressResponse {
@@ -94378,6 +95356,7 @@ impl crate::ToCodeMessage for AuthorizeSecurityGroupEgressResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifySecurityGroupEgressRuleResponse {
@@ -94394,6 +95373,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupEgressRuleResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupEgressResponse {
@@ -94410,6 +95390,7 @@ impl crate::ToCodeMessage for RevokeSecurityGroupEgressResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSecurityGroupReferencesResponse {
@@ -94428,6 +95409,7 @@ impl crate::ToCodeMessage for DescribeSecurityGroupReferencesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct JoinSecurityGroupResponse {
@@ -94444,6 +95426,7 @@ impl crate::ToCodeMessage for JoinSecurityGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LeaveSecurityGroupResponse {
@@ -94460,6 +95443,7 @@ impl crate::ToCodeMessage for LeaveSecurityGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateKeyPairResponse {
@@ -94488,6 +95472,7 @@ impl crate::ToCodeMessage for CreateKeyPairResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportKeyPairResponse {
@@ -94510,6 +95495,7 @@ impl crate::ToCodeMessage for ImportKeyPairResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeKeyPairsResponse {
@@ -94537,6 +95523,7 @@ impl crate::ToCodeMessage for DescribeKeyPairsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachKeyPairResponse {
@@ -94564,6 +95551,7 @@ impl crate::ToCodeMessage for AttachKeyPairResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachKeyPairResponse {
@@ -94591,6 +95579,7 @@ impl crate::ToCodeMessage for DetachKeyPairResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteKeyPairsResponse {
@@ -94607,6 +95596,7 @@ impl crate::ToCodeMessage for DeleteKeyPairsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateLaunchTemplateResponse {
@@ -94629,6 +95619,7 @@ impl crate::ToCodeMessage for CreateLaunchTemplateResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeLaunchTemplatesResponse {
@@ -94656,6 +95647,7 @@ impl crate::ToCodeMessage for DescribeLaunchTemplatesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteLaunchTemplateResponse {
@@ -94679,6 +95671,7 @@ impl crate::ToCodeMessage for DeleteLaunchTemplateResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateLaunchTemplateVersionResponse {
@@ -94703,6 +95696,7 @@ impl crate::ToCodeMessage for CreateLaunchTemplateVersionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeLaunchTemplateVersionsResponse {
@@ -94730,6 +95724,7 @@ impl crate::ToCodeMessage for DescribeLaunchTemplateVersionsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyLaunchTemplateDefaultVersionResponse {
@@ -94749,6 +95744,7 @@ impl crate::ToCodeMessage for ModifyLaunchTemplateDefaultVersionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteLaunchTemplateVersionResponse {
@@ -94767,6 +95763,7 @@ impl crate::ToCodeMessage for DeleteLaunchTemplateVersionResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAutoProvisioningGroupResponse {
@@ -94788,6 +95785,7 @@ impl crate::ToCodeMessage for CreateAutoProvisioningGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAutoProvisioningGroupsResponse {
@@ -94815,6 +95813,7 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAutoProvisioningGroupInstancesResponse {
@@ -94842,6 +95841,7 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyAutoProvisioningGroupResponse {
@@ -94858,6 +95858,7 @@ impl crate::ToCodeMessage for ModifyAutoProvisioningGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAutoProvisioningGroupHistoryResponse {
@@ -94885,6 +95886,7 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupHistoryResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteAutoProvisioningGroupResponse {
@@ -94901,6 +95903,7 @@ impl crate::ToCodeMessage for DeleteAutoProvisioningGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDeploymentSetResponse {
@@ -94920,6 +95923,7 @@ impl crate::ToCodeMessage for CreateDeploymentSetResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
@@ -94939,6 +95943,7 @@ impl crate::ToCodeMessage for DescribeDeploymentSetSupportedInstanceTypeFamilyRe
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDeploymentSetsResponse {
@@ -94969,6 +95974,7 @@ impl crate::ToCodeMessage for DescribeDeploymentSetsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceDeploymentResponse {
@@ -94985,6 +95991,7 @@ impl crate::ToCodeMessage for ModifyInstanceDeploymentResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDeploymentSetAttributeResponse {
@@ -95001,6 +96008,7 @@ impl crate::ToCodeMessage for ModifyDeploymentSetAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteDeploymentSetResponse {
@@ -95017,6 +96025,7 @@ impl crate::ToCodeMessage for DeleteDeploymentSetResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateElasticityAssuranceResponse {
@@ -95039,6 +96048,7 @@ impl crate::ToCodeMessage for CreateElasticityAssuranceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeElasticityAssurancesResponse {
@@ -95066,6 +96076,7 @@ impl crate::ToCodeMessage for DescribeElasticityAssurancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeElasticityAssuranceInstancesResponse {
@@ -95093,6 +96104,7 @@ impl crate::ToCodeMessage for DescribeElasticityAssuranceInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyElasticityAssuranceResponse {
@@ -95164,6 +96176,9 @@ impl crate::ToCodeMessage for DescribeElasticityAssuranceAutoRenewAttributeRespo
     }
 }
 
+/// 请确保在使用该接口前，已充分了解弹性保障产品的收费方式和<props="china">[价格](https://www.aliyun.com/price/product#/ecs/detail)</props><props="intl">[价格](https://www.alibabacloud.com/zh?spm=5176.28117011.nav-v2-dropdown-language.exp-location-zh.9ae4165bF98IHz&_p_lc=1)</props>。
+///
+/// 购买弹性保障服务前，您可以调用[DescribeElasticityAssurances](~~2679748~~)查询可购买的弹性保障服务。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PurchaseElasticityAssuranceResponse {
@@ -95180,6 +96195,7 @@ impl crate::ToCodeMessage for PurchaseElasticityAssuranceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCapacityReservationResponse {
@@ -95199,6 +96215,7 @@ impl crate::ToCodeMessage for CreateCapacityReservationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeCapacityReservationsResponse {
@@ -95253,6 +96270,7 @@ impl crate::ToCodeMessage for DescribeCapacityReservationInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyCapacityReservationResponse {
@@ -95269,6 +96287,7 @@ impl crate::ToCodeMessage for ModifyCapacityReservationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceAttachmentAttributesResponse {
@@ -95296,6 +96315,7 @@ impl crate::ToCodeMessage for DescribeInstanceAttachmentAttributesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceAttachmentAttributesResponse {
@@ -95312,6 +96332,7 @@ impl crate::ToCodeMessage for ModifyInstanceAttachmentAttributesResponse {
     }
 }
 
+/// 立即生效的容量预定服务，当释放方式为手动释放时，调用该接口可直接释放容量预定服务。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReleaseCapacityReservationResponse {
@@ -95328,6 +96349,7 @@ impl crate::ToCodeMessage for ReleaseCapacityReservationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PurchaseReservedInstancesOfferingResponse {
@@ -95349,6 +96371,7 @@ impl crate::ToCodeMessage for PurchaseReservedInstancesOfferingResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeReservedInstancesResponse {
@@ -95376,6 +96399,7 @@ impl crate::ToCodeMessage for DescribeReservedInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyReservedInstancesResponse {
@@ -95394,6 +96418,7 @@ impl crate::ToCodeMessage for ModifyReservedInstancesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyReservedInstanceAttributeResponse {
@@ -95413,6 +96438,21 @@ impl crate::ToCodeMessage for ModifyReservedInstanceAttributeResponse {
     }
 }
 
+/// <props="china">
+///
+/// **请确保在使用该接口前，已充分了解预留实例券的收费方式和[价格](https://www.aliyun.com/price/product#/ecs/detail)。**
+///
+/// </props>
+///
+/// <props="intl">
+///
+/// **请确保在使用该接口前，已充分了解预留实例券的收费方式和[价格](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl)。**
+///
+/// </props>
+///
+/// - 预留实例券支持手动续费和自动续费两种续费方式，详细信息请参见[预留实例券续费说明](~~100371#53bfc50b78sta~~)。
+/// - 您可以调用[DescribeReservedInstances](~~100065~~)查询已购买的预留实例券。
+/// - 该接口支持开启自动续费，但不支持取消自动续费，您可以通过[ModifyReservedInstanceAutoRenewAttribute](~~2679786~~)取消自动续费。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewReservedInstancesResponse {
@@ -95468,6 +96508,7 @@ impl crate::ToCodeMessage for ModifyReservedInstanceAutoRenewAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PurchaseStorageCapacityUnitResponse {
@@ -95489,6 +96530,7 @@ impl crate::ToCodeMessage for PurchaseStorageCapacityUnitResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeStorageCapacityUnitsResponse {
@@ -95516,6 +96558,7 @@ impl crate::ToCodeMessage for DescribeStorageCapacityUnitsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyStorageCapacityUnitAttributeResponse {
@@ -95532,6 +96575,7 @@ impl crate::ToCodeMessage for ModifyStorageCapacityUnitAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RunCommandResponse {
@@ -95554,6 +96598,7 @@ impl crate::ToCodeMessage for RunCommandResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCommandResponse {
@@ -95573,6 +96618,7 @@ impl crate::ToCodeMessage for CreateCommandResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvokeCommandResponse {
@@ -95592,6 +96638,7 @@ impl crate::ToCodeMessage for InvokeCommandResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInvocationsResponse {
@@ -95622,6 +96669,7 @@ impl crate::ToCodeMessage for DescribeInvocationsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInvocationResultsResponse {
@@ -95641,6 +96689,21 @@ impl crate::ToCodeMessage for DescribeInvocationResultsResponse {
     }
 }
 
+/// - 支持修改以下执行方式的任务（参见[DescribeInvocations](~~2679916~~)返回的`RepeatMode`值）：
+///     - Period：周期执行。
+///     - NextRebootOnly：当实例下一次启动时，自动执行命令。
+///     - EveryReboot：实例每一次启动都将自动执行命令。
+/// - 支持修改以下状态的任务（参见[DescribeInvocations](~~2679916~~)返回的`InvocationStatus`值）：
+///     - Pending：系统正在校验或发送命令。存在至少一台实例的命令执行状态为Pending，则总执行状态为Pending。
+///     - Running：命令正在实例上运行。存在至少一台实例的命令执行状态为Running，则总执行状态为Running。
+///     - Scheduled：定时执行的命令已发送，等待运行。存在至少一台实例的命令执行状态为Scheduled，则总执行状态为Scheduled。
+///     - Stopping：正在停止任务。存在至少一台实例的命令执行状态为Stopping，则总执行状态为Stopping。
+/// - 修改定时任务执行信息（包括命令内容、自定义参数、执行频率）前，已执行的ECS实例或托管实例的云助手Agent版本需要高于以下对应的版本。
+///     - Linux：2.2.3.541
+///     - Windows：2.1.3.541
+///     - 如果调用结果返回`InvalidOperation.CloudAssistantVersionUnsupported`错误码，请将云助手Agent更新至最新版本。
+/// - 当您执行一个云助手公共命令时，无法修改命令内容`CommandContent`。
+/// - 当您修改了命令内容`CommandContent`，且调用[InvokeCommand](~~64841~~)或调用[RunCommand](~~141751~~)时设置`KeepCommand`为`true`创建任务，将会新增一条命令并长期保留，并占用云助手命令配额；在一个地域下，您最多可以保有500～50,000条云助手命令。您也可以申请提升配额，关于如何查询及提升配额，请参见[配额管理](~~184116~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInvocationAttributeResponse {
@@ -95663,6 +96726,7 @@ impl crate::ToCodeMessage for ModifyInvocationAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInvocationResponse {
@@ -95679,6 +96743,7 @@ impl crate::ToCodeMessage for StopInvocationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeCommandsResponse {
@@ -95709,6 +96774,7 @@ impl crate::ToCodeMessage for DescribeCommandsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyCommandResponse {
@@ -95725,6 +96791,7 @@ impl crate::ToCodeMessage for ModifyCommandResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteCommandResponse {
@@ -95741,6 +96808,7 @@ impl crate::ToCodeMessage for DeleteCommandResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendFileResponse {
@@ -95760,6 +96828,7 @@ impl crate::ToCodeMessage for SendFileResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSendFileResultsResponse {
@@ -95790,6 +96859,7 @@ impl crate::ToCodeMessage for DescribeSendFileResultsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeCloudAssistantStatusResponse {
@@ -95820,6 +96890,7 @@ impl crate::ToCodeMessage for DescribeCloudAssistantStatusResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstallCloudAssistantResponse {
@@ -95836,6 +96907,21 @@ impl crate::ToCodeMessage for InstallCloudAssistantResponse {
     }
 }
 
+/// ## 接口说明
+///
+/// 当您通过代码定制化远程连接客户端时，可以调用该接口获取远程连接ECS实例的WebSocketUrl。调用该接口时您需要注意：
+///
+/// - 指定的ECS实例必须处于运行中（Running）状态。
+/// - 指定的ECS实例必须安装了云助手Agent。您可以调用[DescribeCloudAssistantStatus](~~87346~~)查询ECS实例是否已安装云助手Agent，并可以查询云助手Agent的版本号。
+///     - 如果您的ECS实例没有安装云助手Agent，请调用[InstallCloudAssistant](~~85916~~)安装。
+///     - 云助手Agent的版本需要高于以下版本才支持会话管理功能。如果您需要升级云助手Agent版本，请参见[升级或禁止升级云助手Agent](~~134383~~)。
+///         - Linux操作系统：2.2.3.256
+///         - Windows操作系统：2.1.3.256
+/// - 成功调用该接口后，WebSocketUrl有效时长为10分钟。
+/// - 在会话建立后，3分钟没有数据传输，云助手会关闭链接。
+/// - 同一地域下，已创建并可用的会话不能超过1000个，单台ECS实例处于连接状态的会话不能超过20个，单个会话连接的带宽限制为200kb/s。
+/// - 端口转发功能，目前只支持TCP端口转发，不支持UDP。
+/// - 若想永久关闭会话，并使WebSocketUrl失效，请调用EndTerminalSession接口。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartTerminalSessionResponse {
@@ -95861,6 +96947,9 @@ impl crate::ToCodeMessage for StartTerminalSessionResponse {
     }
 }
 
+/// - 关闭指定Session数据连接，Session不可再使用。
+///
+/// - Session关联的WebSocket URL也会失效，不可再使用。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EndTerminalSessionResponse {
@@ -95877,6 +96966,7 @@ impl crate::ToCodeMessage for EndTerminalSessionResponse {
     }
 }
 
+/// 支持查看4周内创建的Session Manager会话记录。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTerminalSessionsResponse {
@@ -95940,6 +97030,7 @@ impl crate::ToCodeMessage for DescribeCloudAssistantSettingsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateActivationResponse {
@@ -95962,6 +97053,7 @@ impl crate::ToCodeMessage for CreateActivationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeActivationsResponse {
@@ -95993,6 +97085,7 @@ impl crate::ToCodeMessage for DescribeActivationsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableActivationResponse {
@@ -96012,6 +97105,7 @@ impl crate::ToCodeMessage for DisableActivationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteActivationResponse {
@@ -96031,6 +97125,7 @@ impl crate::ToCodeMessage for DeleteActivationResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeManagedInstancesResponse {
@@ -96062,6 +97157,9 @@ impl crate::ToCodeMessage for DescribeManagedInstancesResponse {
     }
 }
 
+/// ## 接口说明
+///
+/// 目前调用ModifyManagedInstance接口仅支持修改一台托管实例的名称。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyManagedInstanceResponse {
@@ -96081,6 +97179,7 @@ impl crate::ToCodeMessage for ModifyManagedInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeregisterManagedInstanceResponse {
@@ -96100,6 +97199,10 @@ impl crate::ToCodeMessage for DeregisterManagedInstanceResponse {
     }
 }
 
+/// - 实例的云助手Agent版本不低于以下版本，才可以查询到实例内云助手插件状态：
+///     - Linux：2.2.3.344。
+///     - Windows：2.1.3.344。
+/// - 分页查询首页时，仅需设置`MaxResults`以限制返回信息的条目数，返回结果中的`NextToken`将作为查询后续页的凭证。查询后续页时，将`NextToken`参数设置为上一次返回结果中获取到的`NextToken`作为查询凭证，并设置`MaxResults`限制返回条目数。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListPluginStatusResponse {
@@ -96130,6 +97233,7 @@ impl crate::ToCodeMessage for ListPluginStatusResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesFullStatusResponse {
@@ -96157,6 +97261,7 @@ impl crate::ToCodeMessage for DescribeInstancesFullStatusResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDisksFullStatusResponse {
@@ -96184,6 +97289,7 @@ impl crate::ToCodeMessage for DescribeDisksFullStatusResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceHistoryEventsResponse {
@@ -96223,6 +97329,7 @@ impl crate::ToCodeMessage for DescribeInstanceHistoryEventsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSimulatedSystemEventsResponse {
@@ -96241,6 +97348,7 @@ impl crate::ToCodeMessage for CreateSimulatedSystemEventsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelSimulatedSystemEventsResponse {
@@ -96257,6 +97365,7 @@ impl crate::ToCodeMessage for CancelSimulatedSystemEventsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AcceptInquiredSystemEventResponse {
@@ -96469,6 +97578,7 @@ impl crate::ToCodeMessage for DescribeDiagnosticReportAttributesResponse {
     }
 }
 
+/// 不支持删除诊断中的报告。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteDiagnosticReportsResponse {
@@ -96485,6 +97595,7 @@ impl crate::ToCodeMessage for DeleteDiagnosticReportsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetInstanceScreenshotResponse {
@@ -96507,6 +97618,7 @@ impl crate::ToCodeMessage for GetInstanceScreenshotResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetInstanceConsoleOutputResponse {
@@ -96532,6 +97644,7 @@ impl crate::ToCodeMessage for GetInstanceConsoleOutputResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiskMonitorDataResponse {
@@ -96553,6 +97666,7 @@ impl crate::ToCodeMessage for DescribeDiskMonitorDataResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceMonitorDataResponse {
@@ -96571,6 +97685,7 @@ impl crate::ToCodeMessage for DescribeInstanceMonitorDataResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeEniMonitorDataResponse {
@@ -96592,6 +97707,7 @@ impl crate::ToCodeMessage for DescribeEniMonitorDataResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeSnapshotMonitorDataResponse {
@@ -96610,6 +97726,7 @@ impl crate::ToCodeMessage for DescribeSnapshotMonitorDataResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceMaintenanceAttributesResponse {
@@ -96637,6 +97754,7 @@ impl crate::ToCodeMessage for DescribeInstanceMaintenanceAttributesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceMaintenanceAttributesResponse {
@@ -96653,6 +97771,7 @@ impl crate::ToCodeMessage for ModifyInstanceMaintenanceAttributesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RedeployInstanceResponse {
@@ -96674,6 +97793,7 @@ impl crate::ToCodeMessage for RedeployInstanceResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportInstancesStatusResponse {
@@ -96690,6 +97810,7 @@ impl crate::ToCodeMessage for ReportInstancesStatusResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesResponse {
@@ -96706,6 +97827,7 @@ impl crate::ToCodeMessage for TagResourcesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesResponse {
@@ -96727,6 +97849,7 @@ impl crate::ToCodeMessage for ListTagResourcesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UntagResourcesResponse {
@@ -96743,6 +97866,7 @@ impl crate::ToCodeMessage for UntagResourcesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct JoinResourceGroupResponse {
@@ -96759,6 +97883,7 @@ impl crate::ToCodeMessage for JoinResourceGroupResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AllocateDedicatedHostsResponse {
@@ -96782,6 +97907,7 @@ impl crate::ToCodeMessage for AllocateDedicatedHostsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostsResponse {
@@ -96812,6 +97938,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostTypesResponse {
@@ -96830,6 +97957,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostTypesResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDedicatedHostAttributeResponse {
@@ -96846,6 +97974,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDedicatedHostsChargeTypeResponse {
@@ -96867,6 +97996,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostsChargeTypeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostAutoRenewResponse {
@@ -96885,6 +98015,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostAutoRenewResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
@@ -96901,6 +98032,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAutoRenewAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewDedicatedHostsResponse {
@@ -96920,6 +98052,7 @@ impl crate::ToCodeMessage for RenewDedicatedHostsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
@@ -96936,6 +98069,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAutoReleaseTimeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RedeployDedicatedHostResponse {
@@ -96952,6 +98086,7 @@ impl crate::ToCodeMessage for RedeployDedicatedHostResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReleaseDedicatedHostResponse {
@@ -96968,6 +98103,7 @@ impl crate::ToCodeMessage for ReleaseDedicatedHostResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDedicatedHostClusterResponse {
@@ -96987,6 +98123,7 @@ impl crate::ToCodeMessage for CreateDedicatedHostClusterResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDedicatedHostClusterAttributeResponse {
@@ -97003,6 +98140,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostClusterAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostClustersResponse {
@@ -97030,6 +98168,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostClustersResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteDedicatedHostClusterResponse {
@@ -97046,6 +98185,7 @@ impl crate::ToCodeMessage for DeleteDedicatedHostClusterResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateHpcClusterResponse {
@@ -97065,6 +98205,7 @@ impl crate::ToCodeMessage for CreateHpcClusterResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeHpcClustersResponse {
@@ -97092,6 +98233,7 @@ impl crate::ToCodeMessage for DescribeHpcClustersResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyHpcClusterAttributeResponse {
@@ -97108,6 +98250,7 @@ impl crate::ToCodeMessage for ModifyHpcClusterAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteHpcClusterResponse {
@@ -97124,6 +98267,7 @@ impl crate::ToCodeMessage for DeleteHpcClusterResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTasksResponse {
@@ -97154,6 +98298,7 @@ impl crate::ToCodeMessage for DescribeTasksResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTaskAttributeResponse {
@@ -97209,6 +98354,7 @@ impl crate::ToCodeMessage for DescribeTaskAttributeResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelTaskResponse {
@@ -98007,6 +99153,7 @@ impl crate::ToCodeMessage for UnassociateEipAddressResponse {
     }
 }
 
+/// > 该接口已升级，不建议继续使用。新版接口的使用说明，请参见[AllocateEipAddress](~~120192~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AllocateEipAddressResponse {
@@ -98422,6 +99569,7 @@ impl crate::ToCodeMessage for ReleasePublicIpAddressResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddTagsResponse {
@@ -98438,6 +99586,7 @@ impl crate::ToCodeMessage for AddTagsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeResourceByTagsResponse {
@@ -98465,6 +99614,7 @@ impl crate::ToCodeMessage for DescribeResourceByTagsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTagsResponse {
@@ -98492,6 +99642,7 @@ impl crate::ToCodeMessage for DescribeTagsResponse {
     }
 }
 
+///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RemoveTagsResponse {
