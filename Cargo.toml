@@ -1,6 +1,6 @@
 [package]
 name = "ali-acs"
-version = "0.5.6"
+version = "0.5.5"
 edition = "2024"
 license = "MIT"
 description = "A type-safe, idiomatic Rust SDK for Alibaba Cloud services with complete protocol coverage"
