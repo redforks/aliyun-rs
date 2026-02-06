@@ -2231,7 +2231,7 @@ impl Connection {
     ///
     pub fn option_object(
         &self,
-        req: OptionObject,
+        _req: OptionObject,
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
@@ -3238,7 +3238,7 @@ impl Connection {
     ///
     pub fn put_access_point_public_access_block(
         &self,
-        req: PutAccessPointPublicAccessBlock,
+        _req: PutAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
