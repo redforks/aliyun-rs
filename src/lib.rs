@@ -28,6 +28,9 @@ pub mod ecs;
 #[cfg(feature = "oss")]
 pub mod oss;
 
+#[cfg(feature = "fc")]
+pub mod fc;
+
 #[cfg(test)]
 mod sample;
 
