@@ -1601,6 +1601,12 @@ impl Connection {
     /// # Path
     /// `/2023-03-30/functions/{functionName}/scaling-config`
     ///
+    /// # Request Content-Type
+    /// - `application/json`
+    ///
+    /// # Response Content-Type
+    /// - `application/json`
+    ///
     /// # Methods
     /// - PUT
     ///
@@ -1668,7 +1674,7 @@ impl Connection {
 pub struct ChangeResourceGroup {
     /// 更新资源组请求信息
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<ChangeResourceGroupInput>,
 }
 
 impl sealed::Bound for ChangeResourceGroup {}
@@ -1685,7 +1691,7 @@ impl crate::Request for ChangeResourceGroup {
     const ACTION: &'static str = "ChangeResourceGroup";
     const URL_PATH: &'static str = "/2023-03-30/resource-groups";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<ChangeResourceGroupInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<ChangeResourceGroupOutput>;
 
@@ -1698,7 +1704,7 @@ impl crate::Request for ChangeResourceGroup {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -1757,14 +1763,16 @@ impl crate::Request for DescribeRegions {
 #[setters(generate = false)]
 pub struct CreateCustomDomain {
     /// 自定义域名信息
-    body: Vec<u8>,
+    body: CreateCustomDomainInput,
 }
 
 impl sealed::Bound for CreateCustomDomain {}
 
 impl CreateCustomDomain {
     pub fn new() -> Self {
-        Self { body: Vec::new() }
+        Self {
+            body: Default::default(),
+        }
     }
 }
 
@@ -1774,7 +1782,7 @@ impl crate::Request for CreateCustomDomain {
     const ACTION: &'static str = "CreateCustomDomain";
     const URL_PATH: &'static str = "/2023-03-30/custom-domains";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateCustomDomainInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<CustomDomain>;
 
@@ -1787,7 +1795,7 @@ impl crate::Request for CreateCustomDomain {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -1945,7 +1953,7 @@ pub struct UpdateCustomDomain {
     /// 域名
     domain_name: String,
     /// 自定义域名信息
-    body: Vec<u8>,
+    body: UpdateCustomDomainInput,
 }
 
 impl sealed::Bound for UpdateCustomDomain {}
@@ -1954,7 +1962,7 @@ impl UpdateCustomDomain {
     pub fn new(domain_name: impl Into<String>) -> Self {
         Self {
             domain_name: domain_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -1965,7 +1973,7 @@ impl crate::Request for UpdateCustomDomain {
     const ACTION: &'static str = "UpdateCustomDomain";
     const URL_PATH: &'static str = "/2023-03-30/custom-domains/{domainName}";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<UpdateCustomDomainInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<CustomDomain>;
 
@@ -1982,7 +1990,7 @@ impl crate::Request for UpdateCustomDomain {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2163,7 +2171,7 @@ pub struct PublishFunctionVersion {
     /// 函数名称
     function_name: String,
     /// 函数版本信息
-    body: Vec<u8>,
+    body: PublishVersionInput,
 }
 
 impl sealed::Bound for PublishFunctionVersion {}
@@ -2172,7 +2180,7 @@ impl PublishFunctionVersion {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -2183,7 +2191,7 @@ impl crate::Request for PublishFunctionVersion {
     const ACTION: &'static str = "PublishFunctionVersion";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/versions";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<PublishVersionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Version>;
 
@@ -2200,21 +2208,23 @@ impl crate::Request for PublishFunctionVersion {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateFunction {
     /// 函数配置信息
-    body: Vec<u8>,
+    body: CreateFunctionInput,
 }
 
 impl sealed::Bound for CreateFunction {}
 
 impl CreateFunction {
     pub fn new() -> Self {
-        Self { body: Vec::new() }
+        Self {
+            body: Default::default(),
+        }
     }
 }
 
@@ -2224,7 +2234,7 @@ impl crate::Request for CreateFunction {
     const ACTION: &'static str = "CreateFunction";
     const URL_PATH: &'static str = "/2023-03-30/functions";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateFunctionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Function>;
 
@@ -2237,7 +2247,7 @@ impl crate::Request for CreateFunction {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2552,7 +2562,7 @@ pub struct UpdateFunction {
     /// 函数名称
     function_name: String,
     /// 函数信息
-    body: Vec<u8>,
+    body: UpdateFunctionInput,
 }
 
 impl sealed::Bound for UpdateFunction {}
@@ -2561,7 +2571,7 @@ impl UpdateFunction {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -2572,7 +2582,7 @@ impl crate::Request for UpdateFunction {
     const ACTION: &'static str = "UpdateFunction";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<UpdateFunctionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Function>;
 
@@ -2589,7 +2599,7 @@ impl crate::Request for UpdateFunction {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2645,7 +2655,7 @@ impl crate::Request for EnableFunctionInvocation {
 pub struct DisableFunctionInvocation {
     /// 禁止调用的请求参数
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<FunctionInvocationbody>,
     /// 禁止调用的函数名称
     function_name: String,
 }
@@ -2667,7 +2677,7 @@ impl crate::Request for DisableFunctionInvocation {
     const ACTION: &'static str = "DisableFunctionInvocation";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/invoke/disable";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<FunctionInvocationbody>;
 
     type ResponseWrap = crate::JsonResponseWrap<DisableFunctionInvocationResponse>;
 
@@ -2684,7 +2694,7 @@ impl crate::Request for DisableFunctionInvocation {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2863,7 +2873,7 @@ pub struct UpdateAlias {
     /// 函数别名名称
     alias_name: String,
     /// 待更新的别名信息
-    body: Vec<u8>,
+    body: UpdateAliasInput,
 }
 
 impl sealed::Bound for UpdateAlias {}
@@ -2873,7 +2883,7 @@ impl UpdateAlias {
         Self {
             function_name: function_name.into(),
             alias_name: alias_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -2884,7 +2894,7 @@ impl crate::Request for UpdateAlias {
     const ACTION: &'static str = "UpdateAlias";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/aliases/{aliasName}";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<UpdateAliasInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Alias>;
 
@@ -2904,7 +2914,7 @@ impl crate::Request for UpdateAlias {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2913,7 +2923,7 @@ pub struct CreateAlias {
     /// 函数名称
     function_name: String,
     /// 创建别名的请求参数
-    body: Vec<u8>,
+    body: CreateAliasInput,
 }
 
 impl sealed::Bound for CreateAlias {}
@@ -2922,7 +2932,7 @@ impl CreateAlias {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -2933,7 +2943,7 @@ impl crate::Request for CreateAlias {
     const ACTION: &'static str = "CreateAlias";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/aliases";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateAliasInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Alias>;
 
@@ -2950,7 +2960,7 @@ impl crate::Request for CreateAlias {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -2959,7 +2969,7 @@ pub struct CreateTrigger {
     /// 函数名称
     function_name: String,
     /// 触发器配置
-    body: Vec<u8>,
+    body: CreateTriggerInput,
 }
 
 impl sealed::Bound for CreateTrigger {}
@@ -2968,7 +2978,7 @@ impl CreateTrigger {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -2979,7 +2989,7 @@ impl crate::Request for CreateTrigger {
     const ACTION: &'static str = "CreateTrigger";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/triggers";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateTriggerInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Trigger>;
 
@@ -2996,7 +3006,7 @@ impl crate::Request for CreateTrigger {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3175,7 +3185,7 @@ pub struct UpdateTrigger {
     /// 触发器名称
     trigger_name: String,
     /// 触发器配置
-    body: Vec<u8>,
+    body: UpdateTriggerInput,
 }
 
 impl sealed::Bound for UpdateTrigger {}
@@ -3185,7 +3195,7 @@ impl UpdateTrigger {
         Self {
             function_name: function_name.into(),
             trigger_name: trigger_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -3196,7 +3206,7 @@ impl crate::Request for UpdateTrigger {
     const ACTION: &'static str = "UpdateTrigger";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/triggers/{triggerName}";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<UpdateTriggerInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Trigger>;
 
@@ -3216,7 +3226,7 @@ impl crate::Request for UpdateTrigger {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3392,7 +3402,7 @@ impl crate::Request for ListAsyncInvokeConfigs {
 #[setters(generate = false)]
 pub struct PutAsyncInvokeConfig {
     /// 函数异步调用配置
-    body: Vec<u8>,
+    body: PutAsyncInvokeConfigInput,
     /// 函数名称
     function_name: String,
     /// 函数版本或别名
@@ -3405,7 +3415,7 @@ impl sealed::Bound for PutAsyncInvokeConfig {}
 impl PutAsyncInvokeConfig {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
-            body: Vec::new(),
+            body: Default::default(),
             function_name: function_name.into(),
             qualifier: None,
         }
@@ -3418,7 +3428,7 @@ impl crate::Request for PutAsyncInvokeConfig {
     const ACTION: &'static str = "PutAsyncInvokeConfig";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/async-invoke-config";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<PutAsyncInvokeConfigInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<AsyncConfig>;
 
@@ -3441,7 +3451,7 @@ impl crate::Request for PutAsyncInvokeConfig {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3622,7 +3632,7 @@ pub struct PutProvisionConfig {
     #[setters(generate = true, strip_option)]
     qualifier: Option<String>,
     /// 预留配置信息
-    body: Vec<u8>,
+    body: PutProvisionConfigInput,
 }
 
 impl sealed::Bound for PutProvisionConfig {}
@@ -3632,7 +3642,7 @@ impl PutProvisionConfig {
         Self {
             function_name: function_name.into(),
             qualifier: None,
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -3643,7 +3653,7 @@ impl crate::Request for PutProvisionConfig {
     const ACTION: &'static str = "PutProvisionConfig";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/provision-config";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<PutProvisionConfigInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<ProvisionConfig>;
 
@@ -3666,7 +3676,7 @@ impl crate::Request for PutProvisionConfig {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3824,7 +3834,7 @@ pub struct PutConcurrencyConfig {
     /// 函数名称
     function_name: String,
     /// 函数并发度配置信息
-    body: Vec<u8>,
+    body: PutConcurrencyInput,
 }
 
 impl sealed::Bound for PutConcurrencyConfig {}
@@ -3833,7 +3843,7 @@ impl PutConcurrencyConfig {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -3844,7 +3854,7 @@ impl crate::Request for PutConcurrencyConfig {
     const ACTION: &'static str = "PutConcurrencyConfig";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/concurrency";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<PutConcurrencyInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<ConcurrencyConfig>;
 
@@ -3861,7 +3871,7 @@ impl crate::Request for PutConcurrencyConfig {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -3870,7 +3880,7 @@ pub struct CreateLayerVersion {
     /// 层名称
     layer_name: String,
     /// 层配置信息
-    body: Vec<u8>,
+    body: CreateLayerVersionInput,
 }
 
 impl sealed::Bound for CreateLayerVersion {}
@@ -3879,7 +3889,7 @@ impl CreateLayerVersion {
     pub fn new(layer_name: impl Into<String>) -> Self {
         Self {
             layer_name: layer_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -3890,7 +3900,7 @@ impl crate::Request for CreateLayerVersion {
     const ACTION: &'static str = "CreateLayerVersion";
     const URL_PATH: &'static str = "/2023-03-30/layers/{layerName}/versions";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateLayerVersionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Layer>;
 
@@ -3907,7 +3917,7 @@ impl crate::Request for CreateLayerVersion {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4403,7 +4413,7 @@ pub struct CreateVpcBinding {
     /// 函数名称
     function_name: String,
     /// VPC绑定配置
-    body: Vec<u8>,
+    body: CreateVpcBindingInput,
 }
 
 impl sealed::Bound for CreateVpcBinding {}
@@ -4412,7 +4422,7 @@ impl CreateVpcBinding {
     pub fn new(function_name: impl Into<String>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -4423,7 +4433,7 @@ impl crate::Request for CreateVpcBinding {
     const ACTION: &'static str = "CreateVpcBinding";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/vpc-bindings";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateVpcBindingInput>;
 
     type ResponseWrap = ();
 
@@ -4440,7 +4450,7 @@ impl crate::Request for CreateVpcBinding {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4501,14 +4511,16 @@ impl crate::Request for DeleteVpcBinding {
 #[setters(generate = false)]
 pub struct TagResources {
     /// 资源标签配置
-    body: Vec<u8>,
+    body: TagResourcesInput,
 }
 
 impl sealed::Bound for TagResources {}
 
 impl TagResources {
     pub fn new() -> Self {
-        Self { body: Vec::new() }
+        Self {
+            body: Default::default(),
+        }
     }
 }
 
@@ -4518,7 +4530,7 @@ impl crate::Request for TagResources {
     const ACTION: &'static str = "TagResources";
     const URL_PATH: &'static str = "/2023-03-30/tags-v2";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<TagResourcesInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<crate::OpenObjectResponse>;
 
@@ -4531,7 +4543,7 @@ impl crate::Request for TagResources {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body)
+        crate::JsonBody(self.body)
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -4959,7 +4971,7 @@ pub struct CreateSession {
     qualifier: Option<String>,
     /// 创建会话配置
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<CreateSessionInput>,
 }
 
 impl sealed::Bound for CreateSession {}
@@ -4980,7 +4992,7 @@ impl crate::Request for CreateSession {
     const ACTION: &'static str = "CreateSession";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/sessions";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<CreateSessionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Session>;
 
@@ -5003,7 +5015,7 @@ impl crate::Request for CreateSession {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5075,7 +5087,7 @@ pub struct UpdateSession {
     qualifier: Option<String>,
     /// 会话更新配置
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<UpdateSessionInput>,
 }
 
 impl sealed::Bound for UpdateSession {}
@@ -5097,7 +5109,7 @@ impl crate::Request for UpdateSession {
     const ACTION: &'static str = "UpdateSession";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/sessions/{sessionId}";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<UpdateSessionInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<Session>;
 
@@ -5123,7 +5135,7 @@ impl crate::Request for UpdateSession {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -5283,7 +5295,7 @@ pub struct PutScalingConfig {
     qualifier: Option<String>,
     /// 函数弹性配置
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<PutScalingConfigInput>,
 }
 
 impl sealed::Bound for PutScalingConfig {}
@@ -5304,7 +5316,7 @@ impl crate::Request for PutScalingConfig {
     const ACTION: &'static str = "PutScalingConfig";
     const URL_PATH: &'static str = "/2023-03-30/functions/{functionName}/scaling-config";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<PutScalingConfigInput>;
 
     type ResponseWrap = crate::JsonResponseWrap<ScalingConfigStatus>;
 
@@ -5327,7 +5339,7 @@ impl crate::Request for PutScalingConfig {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11728,6 +11740,30 @@ impl crate::FlatSerialize for UpdateTriggerInput {
         crate::FlatSerialize::flat_serialize(
             &self.trigger_config,
             &format!("{}.triggerConfig", name),
+            params,
+        );
+    }
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[serde(default)]
+pub struct FunctionInvocationbody {
+    #[serde(rename = "reason")]
+    pub reason: String,
+    #[serde(rename = "abortOngoingRequest")]
+    pub abort_ongoing_request: bool,
+}
+
+impl crate::FlatSerialize for FunctionInvocationbody {
+    fn flat_serialize<'a>(
+        &'a self,
+        name: &str,
+        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
+    ) {
+        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.reason", name), params);
+        crate::FlatSerialize::flat_serialize(
+            &self.abort_ongoing_request,
+            &format!("{}.abortOngoingRequest", name),
             params,
         );
     }

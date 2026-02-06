@@ -807,6 +807,21 @@ impl<T: serde::Serialize> IntoBody for XmlBody<T> {
     }
 }
 
+/// Body wrapper for JSON-serialized data using application/json content type.
+pub(crate) struct JsonBody<T: serde::Serialize>(pub T);
+
+impl<T: serde::Serialize> IntoBody for JsonBody<T> {
+    fn content_type(&self) -> Option<HeaderValue> {
+        Some(HeaderValue::from_static("application/json"))
+    }
+
+    fn into_body(self) -> Result<Body> {
+        let json = serde_json::to_string(&self.0).context("Failed to serialize body to JSON")?;
+        debug!("JSON Request body: {}", json);
+        Ok(json.into())
+    }
+}
+
 #[derive(Debug, Deserialize, Default, thiserror::Error)]
 #[serde(rename_all = "PascalCase")]
 #[error("{code}: {message}")]

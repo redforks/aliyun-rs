@@ -5580,7 +5580,7 @@ pub struct PutAccessPointPolicy {
     x_oss_access_point_name: Option<String>,
     /// 接入点策略配置内容。
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<String>,
 }
 
 impl sealed::Bound for PutAccessPointPolicy {}
@@ -5600,7 +5600,7 @@ impl crate::Request for PutAccessPointPolicy {
 
     const ACTION: &'static str = "PutAccessPointPolicy";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<String>;
 
     type ResponseWrap = ();
 
@@ -5630,7 +5630,7 @@ impl crate::Request for PutAccessPointPolicy {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6645,7 +6645,7 @@ impl PutBucketPolicy {
     pub fn new(bucket: impl Into<String>) -> Self {
         Self {
             bucket: bucket.into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -10659,7 +10659,7 @@ pub struct PutAccessPointPolicyForObjectProcess {
     x_oss_access_point_for_object_process_name: String,
     /// 接口请求体。
     #[setters(generate = true, strip_option)]
-    body: Option<Vec<u8>>,
+    body: Option<String>,
 }
 
 impl sealed::Bound for PutAccessPointPolicyForObjectProcess {}
@@ -10683,7 +10683,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
 
     const ACTION: &'static str = "PutAccessPointPolicyForObjectProcess";
 
-    type Body = crate::OctetStream;
+    type Body = crate::JsonBody<String>;
 
     type ResponseWrap = ();
 
@@ -10713,7 +10713,7 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
     }
 
     fn to_body(self) -> Self::Body {
-        crate::OctetStream(self.body.unwrap_or_default())
+        crate::JsonBody(self.body.unwrap_or_default())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -10737,7 +10737,7 @@ impl GetAccessPointPolicyForObjectProcess {
             bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
@@ -10801,7 +10801,7 @@ impl DeleteAccessPointPolicyForObjectProcess {
             bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
-            body: Vec::new(),
+            body: Default::default(),
         }
     }
 }
