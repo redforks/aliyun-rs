@@ -55936,12 +55936,19 @@ impl crate::Request for DisableNetworkInterfaceQoS {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegionsRegion {
+    ///  集群是否售罄。可能值：
+    ///
+    /// - available。
+    /// - soldOut。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 地域对应的接入地址（Endpoint）。
     #[serde(rename = "RegionEndpoint")]
     pub region_endpoint: String,
+    /// 地域名称。
     #[serde(rename = "LocalName")]
     pub local_name: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
 }
@@ -55974,6 +55981,7 @@ impl crate::FlatSerialize for RegionsRegion {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseRegions {
+    /// 地域信息集合。
     #[serde(rename = "Region")]
     pub region: Vec<RegionsRegion>,
 }
@@ -55991,6 +55999,7 @@ impl crate::FlatSerialize for ResponseRegions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SystemDiskCategories {
+    /// 系统盘类型列表。
     #[serde(rename = "supportedSystemDiskCategory")]
     pub supported_system_disk_category: Vec<String>,
 }
@@ -56012,6 +56021,7 @@ impl crate::FlatSerialize for SystemDiskCategories {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceGenerations {
+    /// 支持的实例规格族代数列表。
     #[serde(rename = "supportedInstanceGeneration")]
     pub supported_instance_generation: Vec<String>,
 }
@@ -56033,6 +56043,7 @@ impl crate::FlatSerialize for InstanceGenerations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDiskCategories {
+    /// 允许创建的数据盘类型。
     #[serde(rename = "supportedDataDiskCategory")]
     pub supported_data_disk_category: Vec<String>,
 }
@@ -56054,6 +56065,7 @@ impl crate::FlatSerialize for DataDiskCategories {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceTypes {
+    /// 实例规格列表。
     #[serde(rename = "supportedInstanceType")]
     pub supported_instance_type: Vec<String>,
 }
@@ -56075,6 +56087,7 @@ impl crate::FlatSerialize for ItemInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceTypeFamilies {
+    /// 允许创建的实例规格族列表。
     #[serde(rename = "supportedInstanceTypeFamily")]
     pub supported_instance_type_family: Vec<String>,
 }
@@ -56096,6 +56109,7 @@ impl crate::FlatSerialize for ItemInstanceTypeFamilies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InfoItemNetworkTypes {
+    /// 支持的网络类型列表。
     #[serde(rename = "supportedNetworkCategory")]
     pub supported_network_category: Vec<String>,
 }
@@ -56117,6 +56131,7 @@ impl crate::FlatSerialize for InfoItemNetworkTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcesInfo {
+    /// 是否为I/O优化实例。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: bool,
     #[serde(rename = "SystemDiskCategories")]
@@ -56180,6 +56195,7 @@ impl crate::FlatSerialize for ResourcesInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ZonesZoneItemAvailableResources {
+    /// 可供创建的具体资源组成的数组。
     #[serde(rename = "ResourcesInfo")]
     pub resources_info: Vec<ResourcesInfo>,
 }
@@ -56201,6 +56217,13 @@ impl crate::FlatSerialize for ZonesZoneItemAvailableResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceCreation {
+    /// 允许创建的资源类型。可能值：
+    ///
+    /// - VSwitch：交换机。
+    /// - IoOptimized：I/O优化实例。
+    /// - Instance：实例。
+    /// - DedicatedHost：专有宿主机。
+    /// - Disk：云盘。
     #[serde(rename = "ResourceTypes")]
     pub resource_types: Vec<String>,
 }
@@ -56222,6 +56245,7 @@ impl crate::FlatSerialize for ResourceCreation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostGenerations {
+    /// 支持的专有宿主机代数列表。
     #[serde(rename = "DedicatedHostGeneration")]
     pub dedicated_host_generation: Vec<String>,
 }
@@ -56243,6 +56267,7 @@ impl crate::FlatSerialize for HostGenerations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAvailableInstanceTypes {
+    /// 当前可用区下可创建的所有规格列表。
     #[serde(rename = "InstanceTypes")]
     pub instance_types: Vec<String>,
 }
@@ -56264,6 +56289,12 @@ impl crate::FlatSerialize for ItemAvailableInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AvailableDiskCategories {
+    /// 允许创建的云盘种类集合。可能值：
+    ///
+    /// - cloud：普通云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_essd：ESSD云盘。
     #[serde(rename = "DiskCategories")]
     pub disk_categories: Vec<String>,
 }
@@ -56285,6 +56316,7 @@ impl crate::FlatSerialize for AvailableDiskCategories {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AvailableDedicatedHostTypes {
+    /// 支持的专有宿主机规格列表。
     #[serde(rename = "DedicatedHostType")]
     pub dedicated_host_type: Vec<String>,
 }
@@ -56306,6 +56338,7 @@ impl crate::FlatSerialize for AvailableDedicatedHostTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VolumeCategories {
+    /// 支持的共享存储类型。
     #[serde(rename = "VolumeCategories")]
     pub volume_categories: Vec<String>,
 }
@@ -56327,10 +56360,24 @@ impl crate::FlatSerialize for VolumeCategories {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseZonesZone {
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 可用区类型。可能值：
+    ///
+    /// <props="china">
+    /// - AvailabilityZone：公共云可用区。
+    /// - CloudBoxZone：云盒可用区。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">
+    /// - AvailabilityZone：公共云可用区。
+    ///
+    /// </props>
     #[serde(rename = "ZoneType")]
     pub zone_type: String,
+    /// 可用区本地语言名。
     #[serde(rename = "LocalName")]
     pub local_name: String,
     #[serde(rename = "AvailableResources")]
@@ -56407,6 +56454,7 @@ impl crate::FlatSerialize for ResponseZonesZone {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseZones {
+    /// 可用区及可用区下支持的资源信息集合。
     #[serde(rename = "Zone")]
     pub zone: Vec<ResponseZonesZone>,
 }
@@ -56425,16 +56473,36 @@ impl crate::FlatSerialize for ResponseZones {
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource
 {
+    /// 具体资源类型的状态描述。可能值：
+    ///           
+    /// - Available：资源可售。
+    /// - SoldOut：资源已售罄。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 资源值。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 云盘容量范围的最大值。
+    ///
+    /// > 仅当入参DestinationResource取值为`SystemDisk`或`DataDisk`时该参数才生效。
     #[serde(rename = "Max")]
     pub max: i32,
+    /// 云盘容量的单位。
+    ///
+    /// > 仅当入参DestinationResource取值为`SystemDisk`或`DataDisk`时该参数才生效。
     #[serde(rename = "Unit")]
     pub unit: String,
+    /// 根据库存情况对资源状态进行详细描述。可能值：
+    ///
+    /// - WithStock：当前有库存，且会持续补充资源。
+    /// - ClosedWithStock：当前有库存，但不会继续补充资源。
+    /// - WithoutStock：库存售罄，将会补充资源，建议选用WithStock状态的产品规格。
+    /// - ClosedWithoutStock：库存售罄，且不补充资源，请选用WithStock状态的产品规格。
     #[serde(rename = "StatusCategory")]
     pub status_category: String,
+    /// 云盘容量范围的最小值。
+    ///
+    /// > 仅当入参DestinationResource取值为`SystemDisk`或`DataDisk`时该参数才生效。
     #[serde(rename = "Min")]
     pub min: i32,
 }
@@ -56457,6 +56525,7 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAva
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
+    /// 支持的可供创建的具体资源组成的数组。
     #[serde(rename = "SupportedResource")]
     pub supported_resource: Vec<ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource>,
 }
@@ -56474,6 +56543,16 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAva
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource {
+    /// 资源类型。可能值： 
+    ///           
+    /// - Zone：可用区。
+    /// - IoOptimized：I/O优化。 
+    /// - InstanceType：实例规格。
+    /// - SystemDisk：系统盘。 
+    /// - DataDisk：数据盘。 
+    /// - Network：网络类型。
+    /// - ddh：专有宿主机。
+    ///           
     #[serde(rename = "Type")]
     pub r#type: String,
     #[serde(rename = "SupportedResources")]
@@ -56500,6 +56579,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResources {
+    /// 可供创建的具体资源组成的数组。
     #[serde(rename = "AvailableResource")]
     pub available_resource:
         Vec<ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource>,
@@ -56522,12 +56602,24 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAva
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZone {
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 可用区的状态描述。可能值：
+    ///           
+    /// - Available：资源可售 ，代表该可用区有可售的任意资源，不仅指待查询的某一种资源。
+    /// - SoldOut：资源已售罄，代表该可用区下已没有可售卖的任何资源。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 根据可用区下库存情况对可用区状态进行详细描述。可能值：
+    ///
+    /// - WithStock：当前有库存，且会持续补充资源。
+    /// - ClosedWithStock：当前有库存，但不会继续补充资源。
+    /// - WithoutStock：库存售罄，将会补充资源，建议选用WithStock状态的产品规格。
+    /// - ClosedWithoutStock：库存售罄，且不补充资源，请选用WithStock状态的产品规格。
     #[serde(rename = "StatusCategory")]
     pub status_category: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "AvailableResources")]
@@ -56563,6 +56655,7 @@ impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZone {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZones {
+    /// 可用区库存信息的集合。
     #[serde(rename = "AvailableZone")]
     pub available_zone: Vec<ResourceResponseAvailableZonesAvailableZone>,
 }
@@ -56584,18 +56677,57 @@ impl crate::FlatSerialize for ResourceResponseAvailableZones {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ValueItem {
+    /// 数据盘的云盘种类。可能值：
+    /// -   cloud_efficiency：高效云盘。
+    /// -   cloud_ssd：SSD云盘。
+    /// -   cloud_essd：ESSD云盘。
     #[serde(rename = "DiskCategory")]
     pub disk_category: String,
+    /// 当前地域下某类资源的使用配额具体数值。可能值：
+    ///
+    /// 以下分类返回值为0或正整数：
+    ///
+    /// - max-security-groups
+    /// - max-elastic-network-interfaces
+    /// - max-postpaid-instance-vcpu-count
+    /// - max-spot-instance-vcpu-count
+    /// - used-postpaid-instance-vcpu-count
+    /// - used-spot-instance-vcpu-count
+    /// - max-postpaid-yundisk-capacity（该参数值已弃用）
+    /// - used-postpaid-yundisk-capacity（该参数值已弃用）
+    /// - max-dedicated-hosts
+    /// - max-axt-command-count
+    /// - max-axt-invocation-daily
+    ///
+    /// - max-cloud-assistant-activation-count
+    ///
+    /// 分类为supported-postpay-instance-types时返回值：实例规格取值。参见[实例规格族](~~25378~~)。
+    ///
+    /// 分类为real-name-authentications时返回值：
+    ///
+    /// - yes
+    /// - none
+    /// - unnecessary
+    ///
+    /// 分类为instance-network-type时返回值：
+    ///
+    /// - vpc
+    /// - classic
     #[serde(rename = "Value")]
     pub value: String,
+    /// 特权到期时间，仅存在到期时间的账号特权会返回该参数。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间。格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 特权属性类型的数量。
     #[serde(rename = "Count")]
     pub count: i32,
+    /// 实例计费方式。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
 }
@@ -56635,6 +56767,7 @@ impl crate::FlatSerialize for ValueItem {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeValues {
+    /// 资源的使用配额具体数值。
     #[serde(rename = "ValueItem")]
     pub value_item: Vec<ValueItem>,
 }
@@ -56656,6 +56789,24 @@ impl crate::FlatSerialize for AttributeValues {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeItem {
+    /// 资源在指定地域下的使用配额分类。可能值：
+    ///
+    /// - instance-network-type：可选择的网络类型。
+    /// - max-security-groups：安全组数量。
+    /// - max-elastic-network-interfaces：弹性网卡的数量。
+    /// - max-postpaid-instance-vcpu-count：按量付费实例的vCPU核数上限。
+    /// - max-spot-instance-vcpu-count：抢占式实例vCPU核数上限。
+    /// - used-postpaid-instance-vcpu-count：已使用按量付费实例的vCPU核数。
+    /// - used-spot-instance-vcpu-count：已使用抢占式实例vCPU核数。
+    /// - max-postpaid-yundisk-capacity：用作数据盘的按量付费云盘的总容量上限。（该参数值已弃用）
+    /// - used-postpaid-yundisk-capacity：已使用的用作数据盘的按量付费云盘容量。（该参数值已弃用）
+    /// - max-dedicated-hosts：专用宿主机数量。
+    /// - supported-postpaid-instance-types：按量付费I/O优化实例规格。
+    /// - max-axt-command-count：云助手命令的数量。
+    /// - max-axt-invocation-daily：每天可以执行的云助手命令次数。
+    /// - real-name-authentication：账号是否完成了实名认证。
+    ///
+    /// - max-cloud-assistant-activation-count：可创建的云助手托管实例激活码数量上限。
     #[serde(rename = "AttributeName")]
     pub attribute_name: String,
     #[serde(rename = "AttributeValues")]
@@ -56684,6 +56835,7 @@ impl crate::FlatSerialize for AttributeItem {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeItems {
+    /// 指定地域下账号特权AccountAttributeItem的信息集合。
     #[serde(rename = "AccountAttributeItem")]
     pub account_attribute_item: Vec<AttributeItem>,
 }
@@ -56706,16 +56858,37 @@ impl crate::FlatSerialize for AttributeItems {
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource
 {
+    /// 资源状态。可能值：
+    ///           
+    /// - Available：资源充足。
+    /// - SoldOut：资源已售罄。
+    ///           
     #[serde(rename = "Status")]
     pub status: String,
+    /// 资源值。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 云盘容量范围的最大值。
+    ///
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Max")]
     pub max: i32,
+    /// 云盘容量的单位。
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Unit")]
     pub unit: String,
+    /// 根据库存详细分类资源类别。可能值：
+    ///
+    /// - WithStock：库存充足。
+    ///
+    /// - ClosedWithStock：库存接近水位低线。
+    ///
+    /// - WithoutStock：库存告罄。
     #[serde(rename = "StatusCategory")]
     pub status_category: String,
+    /// 云盘容量范围的最小值。
+    ///
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Min")]
     pub min: i32,
 }
@@ -56738,6 +56911,7 @@ impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZoneIte
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
+    /// 支持的可供创建的具体资源组成的数组。
     #[serde(rename = "SupportedResource")]
     pub supported_resource: Vec<ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource>,
 }
@@ -56755,6 +56929,9 @@ impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZoneIte
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionsCondition {
+    /// 条件名。目前可选值：
+    ///
+    /// DiskCategory：盘类型不满足。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -56772,6 +56949,7 @@ impl crate::FlatSerialize for ConditionsCondition {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemConditions {
+    /// 条件列表。
     #[serde(rename = "Condition")]
     pub condition: Vec<ConditionsCondition>,
 }
@@ -56795,16 +56973,38 @@ impl crate::FlatSerialize for ItemConditions {
 pub struct ConditionSupportedResource {
     #[serde(rename = "Conditions")]
     pub conditions: ItemConditions,
+    /// 资源的库存状态。可能值：
+    ///
+    /// - Available：资源充足。
+    ///
+    /// - SoldOut：资源已售罄。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 资源值。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 云盘容量范围的最大值。
+    ///
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Max")]
     pub max: i32,
+    /// 云盘容量的单位。
+    ///
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Unit")]
     pub unit: String,
+    /// 根据库存详细分类资源类别。可能值：
+    ///
+    /// - WithStock：库存充足。
+    ///
+    /// - ClosedWithStock：库存接近水位低线。
+    ///
+    /// - WithoutStock：库存告罄。
     #[serde(rename = "StatusCategory")]
     pub status_category: String,
+    /// 云盘容量范围的最小值。
+    ///
+    /// 仅当入参DestinationResource取值为SystemDisk时该参数才生效。
     #[serde(rename = "Min")]
     pub min: i32,
 }
@@ -56836,6 +57036,7 @@ impl crate::FlatSerialize for ConditionSupportedResource {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionSupportedResources {
+    /// 有条件支持的可供创建的具体资源列表。满足条件后，可以将当前资源变更到列表中的资源。
     #[serde(rename = "ConditionSupportedResource")]
     pub condition_supported_resource: Vec<ConditionSupportedResource>,
 }
@@ -56857,6 +57058,10 @@ impl crate::FlatSerialize for ConditionSupportedResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource {
+    /// 资源类型。可能值： 
+    ///           
+    /// - InstanceType：实例规格。
+    /// - SystemDisk：系统盘类型。
     #[serde(rename = "Type")]
     pub r#type: String,
     #[serde(rename = "SupportedResources")]
@@ -56890,6 +57095,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources {
+    /// 可供创建的具体资源组成的数组。
     #[serde(rename = "AvailableResource")]
     pub available_resource:
         Vec<ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource>,
@@ -56914,12 +57120,24 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZone {
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 资源状态。可能值：
+    ///           
+    /// - Available：资源充足。
+    /// - SoldOut：资源已售罄。
+    ///           
     #[serde(rename = "Status")]
     pub status: String,
+    /// 根据库存详细分类资源类别。可能值：
+    ///
+    /// - WithStock：库存充足。
+    /// - ClosedWithStock：库存接近水位低线。
+    /// - WithoutStock：库存告罄。
     #[serde(rename = "StatusCategory")]
     pub status_category: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "AvailableResources")]
@@ -56955,6 +57173,7 @@ impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZone {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZones {
+    /// 数据中心信息AvailableZone组成的集合。
     #[serde(rename = "AvailableZone")]
     pub available_zone: Vec<ModificationResponseAvailableZonesAvailableZone>,
 }
@@ -56976,6 +57195,7 @@ impl crate::FlatSerialize for ModificationResponseAvailableZones {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ZoneItemNetworkTypes {
+    /// 实例规格的网络类型集合。
     #[serde(rename = "NetworkType")]
     pub network_type: Vec<String>,
 }
@@ -56997,6 +57217,7 @@ impl crate::FlatSerialize for ZoneItemNetworkTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemZonesZone {
+    /// 实例规格所在的可用区ID。
     #[serde(rename = "ZoneNo")]
     pub zone_no: String,
     #[serde(rename = "NetworkTypes")]
@@ -57021,6 +57242,7 @@ impl crate::FlatSerialize for ItemZonesZone {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemZones {
+    /// 实例规格所在的可用区集合。
     #[serde(rename = "zone")]
     pub zone: Vec<ItemZonesZone>,
 }
@@ -57038,16 +57260,22 @@ impl crate::FlatSerialize for ItemZones {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceType {
+    /// 实例规格是否支持I/O优化。
     #[serde(rename = "SupportIoOptimized")]
     pub support_io_optimized: String,
+    /// 实例规格的vCPU核数。
     #[serde(rename = "Cores")]
     pub cores: i32,
+    /// 实例规格的内存大小，单位为MB。
     #[serde(rename = "Memory")]
     pub memory: i32,
+    /// 实例规格名称。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 实例规格族。
     #[serde(rename = "InstanceTypeFamily")]
     pub instance_type_family: String,
+    /// 实例规格族系列。
     #[serde(rename = "Generation")]
     pub generation: String,
 }
@@ -57086,24 +57314,33 @@ impl crate::FlatSerialize for ItemInstanceType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RecommendInstanceType {
+    /// 实例规格的商品编码。
     #[serde(rename = "CommodityCode")]
     pub commodity_code: String,
+    /// 实例规格所在的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 排序优先级。
     #[serde(rename = "Priority")]
     pub priority: i32,
+    /// ECS实例的网络类型。
     #[serde(rename = "NetworkType")]
     pub network_type: String,
+    /// 在哪种场景下推荐实例规格。
     #[serde(rename = "Scene")]
     pub scene: String,
+    /// 抢占式实例的抢占策略。
     #[serde(rename = "SpotStrategy")]
     pub spot_strategy: String,
+    /// 实例规格所在的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 实例的计费方式。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
     #[serde(rename = "Zones")]
     pub zones: ItemZones,
+    /// 实例规格名称。
     #[serde(rename = "InstanceType")]
     pub instance_type: ItemInstanceType,
 }
@@ -57154,6 +57391,7 @@ impl crate::FlatSerialize for RecommendInstanceType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseData {
+    /// 推荐的实例规格集合。
     #[serde(rename = "RecommendInstanceType")]
     pub recommend_instance_type: Vec<RecommendInstanceType>,
 }
@@ -57175,12 +57413,55 @@ impl crate::FlatSerialize for ResponseData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceDataDisk {
+    /// 第N块数据盘的云盘种类。取值范围：
+    ///
+    /// - cloud：普通云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - ephemeral_ssd：本地SSD盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud_auto：ESSD AutoPL云盘。
+    /// <props="china">
+    /// - cloud_essd_entry：ESSD Entry云盘。
+    /// </props>
+    ///
+    /// N的取值范围：1~16。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 第N块数据盘的容量大小，内存单位为GiB。取值范围：
+    ///
+    /// - cloud：5~2000。
+    /// - cloud_efficiency：20~32768。
+    /// - cloud_ssd：20~32768。
+    /// - cloud_auto：1~32768。
+    /// <props="china">
+    /// - cloud_essd_entry：10~32768。
+    /// </props>
+    /// - cloud_essd：具体取值范围与`DataDisk.N.PerformanceLevel`的取值有关。
+    ///     - PL0：1~32768。
+    ///     - PL1：20~32768。
+    ///     - PL2：461~32768。
+    ///     - PL3：1261~32768。
+    /// - ephemeral_ssd：5~800。
+    ///
+    /// N的取值范围：1~16。
     #[serde(rename = "Size")]
     pub size: i64,
+    /// 第N块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.N.Category=cloud_essd`时该参数有效。取值范围：
+    ///
+    /// - PL0。
+    /// - PL1（默认）。
+    /// - PL2。
+    /// - PL3。
+    ///
+    /// N的取值范围：1~16。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50000}。
+    ///
+    /// >当`DiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
 }
@@ -57209,12 +57490,29 @@ impl crate::FlatSerialize for DescribePriceDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PriceRecurrenceRule {
+    /// 分时保障生效时间，取值必须为整点。
+    ///
+    /// > 同时指定StartHour和EndHour，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
     pub start_hour: i32,
+    /// 重复规则的策略类型。取值范围：
+    /// -  Daily：按天重复。
+    /// - Weekly：按周重复。
+    /// - Monthly：按月重复。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
     pub recurrence_type: String,
+    /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
     pub end_hour: i32,
+    /// 重复规则执行数值。
+    ///
+    /// - `RecurrenceType`为`Daily`时，只能填一个值，取值范围：1~31。表示每几天执行一次。
+    /// - `RecurrenceType`为`Weekly`时，可以填入多个值，多个值间使用半角逗号（,）隔开。周日、周一、周二、周三、周四、周五、周六的值依次为：0,1,2,3,4,5,6。例如`1,2`表示周一和周二执行。
+    /// - `RecurrenceType`为`Monthly`时，格式为`A-B`。A、B的取值范围为1~31，并且B必须大于等于A。例如：`1-5`表示每月的1~5日重复执行。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: String,
 }
@@ -57247,8 +57545,10 @@ impl crate::FlatSerialize for PriceRecurrenceRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoRulesRule {
+    /// 活动规则描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 活动规则ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57271,6 +57571,7 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoRulesRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoRules {
+    /// 活动规则。
     #[serde(rename = "Rule")]
     pub rule: Vec<DescribePriceResponsePriceInfoRulesRule>,
 }
@@ -57288,8 +57589,10 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoRules {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
+    /// 规则子集描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 活动规则ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57314,6 +57617,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
+    /// 定价规则子集。
     #[serde(rename = "Rule")]
     pub rule: Vec<DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
@@ -57331,14 +57635,24 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfosDeta
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo {
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣价。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 配置名称。可能值：
+    ///
+    /// -  instanceType：实例。
+    /// - bandwidth：带宽。
+    /// - image：镜像。
+    /// - systemDisk：系统盘。
+    /// - dataDisk：数据盘。
     #[serde(rename = "Resource")]
     pub resource: String,
     #[serde(rename = "SubRules")]
     pub sub_rules: DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules,
+    /// 成交价。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
 }
@@ -57376,6 +57690,9 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfosDeta
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfos {
+    /// 配置明细价格信息。
+    ///
+    /// > 仅当ResourceType = instance时返回。
     #[serde(rename = "DetailInfo")]
     pub detail_info: Vec<DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
@@ -57397,14 +57714,23 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfos {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPrice {
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 0预付或部分预付的预留实例券的小时价。
     #[serde(rename = "ReservedInstanceHourPrice")]
     pub reserved_instance_hour_price: f32,
+    /// 折扣。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 最终价，为原价减去折扣。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "DetailInfos")]
@@ -57449,12 +57775,20 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfoPrice {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePrice {
+    /// 货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 最终价，为原价减去折扣。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
 }
@@ -57487,6 +57821,7 @@ impl crate::FlatSerialize for ImagePrice {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RelatedPrice {
+    /// 市场镜像价格。
     #[serde(rename = "MarketplaceImagePrice")]
     pub marketplace_image_price: ImagePrice,
 }
@@ -57510,8 +57845,10 @@ impl crate::FlatSerialize for RelatedPrice {
 pub struct DescribePriceResponsePriceInfo {
     #[serde(rename = "Rules")]
     pub rules: DescribePriceResponsePriceInfoRules,
+    /// 价格。
     #[serde(rename = "Price")]
     pub price: DescribePriceResponsePriceInfoPrice,
+    /// 关联价格。
     #[serde(rename = "RelatedPrice")]
     pub related_price: RelatedPrice,
 }
@@ -57535,8 +57872,10 @@ impl crate::FlatSerialize for DescribePriceResponsePriceInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoRulesRule {
+    /// 活动规则描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 活动ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57559,6 +57898,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoRulesRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoRules {
+    /// 活动规则。
     #[serde(rename = "Rule")]
     pub rule: Vec<RenewalPriceResponsePriceInfoRulesRule>,
 }
@@ -57576,8 +57916,10 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoRules {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
+    /// 定价规则描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 定价规则ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57602,6 +57944,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
+    /// 定价规则子集。
     #[serde(rename = "Rule")]
     pub rule: Vec<RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
@@ -57619,12 +57962,16 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfosDetai
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo {
+    /// 价格对应的资源名称。
     #[serde(rename = "Resource")]
     pub resource: String,
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣价。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 成交价。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "SubRules")]
@@ -57664,6 +58011,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfosDetai
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfos {
+    /// 资源定价详情。
     #[serde(rename = "DetailInfo")]
     pub detail_info: Vec<RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
@@ -57685,12 +58033,20 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfos {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPrice {
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 最终价，为原价减去折扣。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "DetailInfos")]
@@ -57732,6 +58088,7 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPrice {
 pub struct RenewalPriceResponsePriceInfo {
     #[serde(rename = "Rules")]
     pub rules: RenewalPriceResponsePriceInfoRules,
+    /// 价格。
     #[serde(rename = "Price")]
     pub price: RenewalPriceResponsePriceInfoPrice,
 }
@@ -57750,10 +58107,43 @@ impl crate::FlatSerialize for RenewalPriceResponsePriceInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceDataDisk {
+    /// 当数据盘类型为ESSD云盘时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 默认值：PL1。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘的容量大小。N的取值范围：1~16，内存单位为GiB。取值范围：
+    ///
+    /// - cloud_efficiency：20~32768。
+    /// - cloud_ssd：20~32768。
+    /// - cloud_essd：具体取值范围与`DataDisk.N.PerformanceLevel`的取值有关。    
+    ///     - PL0：1~32768。
+    ///     - PL1：20~32768。
+    ///     - PL2：461~32768。
+    ///     - PL3：1261~32768。
+    /// - cloud：5~2000。
+    ///
+    /// 默认值：指定数据盘类型相应的容量大小的最小值。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘类型。当您需要查询ECS实例挂载的新包年包月数据盘的价格时，可以传入该参数值。N的取值范围：1~16。取值范围：
+    ///
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud：普通云盘。
+    ///
+    /// 默认值：无。
+    ///
+    /// > 查询时，实例规格参数（`InstanceType`）和数据盘参数（`DataDisk.N.*`）不得同时为空，必须至少指定一个。
+    ///
     #[serde(rename = "Category")]
     pub category: String,
 }
@@ -57777,8 +58167,10 @@ impl crate::FlatSerialize for ModificationPriceDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoRulesRule {
+    /// 活动规则描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 活动ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57801,6 +58193,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoRulesRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoRules {
+    /// 活动规则。
     #[serde(rename = "Rule")]
     pub rule: Vec<ModificationPriceResponsePriceInfoRulesRule>,
 }
@@ -57818,8 +58211,10 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoRules {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
+    /// 规则子集描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 活动规则ID。
     #[serde(rename = "RuleId")]
     pub rule_id: i64,
 }
@@ -57844,6 +58239,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
+    /// 定价规则子集。
     #[serde(rename = "Rule")]
     pub rule: Vec<ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
@@ -57863,12 +58259,22 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo {
+    /// 配置名称。可能值：
+    ///
+    /// -  instanceType：实例。
+    /// - bandwidth：带宽。
+    /// - image：镜像。
+    /// - systemDisk：系统盘。
+    /// - dataDisk：数据盘。
     #[serde(rename = "Resource")]
     pub resource: String,
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣价。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 成交价。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "SubRules")]
@@ -57908,6 +58314,9 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPriceDetailInfos
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfos {
+    /// 配置明细价格信息。
+    ///
+    /// > 仅当ResourceType = instance时返回。
     #[serde(rename = "DetailInfo")]
     pub detail_info: Vec<ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
@@ -57929,12 +58338,20 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPriceDetailInfos
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPrice {
+    /// 原价。
     #[serde(rename = "OriginalPrice")]
     pub original_price: f32,
+    /// 折扣。
     #[serde(rename = "DiscountPrice")]
     pub discount_price: f32,
+    /// 货币单位。可能值：
+    ///
+    /// - 中国站：CNY。
+    ///
+    /// - 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 最终价，为原价减去折扣。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "DetailInfos")]
@@ -57976,6 +58393,7 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPrice {
 pub struct ModificationPriceResponsePriceInfo {
     #[serde(rename = "Rules")]
     pub rules: ModificationPriceResponsePriceInfoRules,
+    /// 价格。
     #[serde(rename = "Price")]
     pub price: ModificationPriceResponsePriceInfoPrice,
 }
@@ -57994,34 +58412,111 @@ impl crate::FlatSerialize for ModificationPriceResponsePriceInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1（默认）：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 数据盘N是否加密。取值范围：
+    /// - true：加密。
+    /// - false：不加密。
+    ///
+    /// 默认值：false。
+    ///
+    ///
+    /// ><notice>当使用共享加密镜像，创建基于加密快照的云盘时，必须指定该云盘的请求参数Encrypted=true，以确保创建出的云盘使用的是被共享方自己的密钥。></notice>
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 数据盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 创建数据盘N使用的快照。N的取值范围为1~16。
+    ///
+    /// 指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
+    ///
+    /// - 1~25块数据盘：/dev/xvd`[b-z]`
+    ///
+    /// - 大于25块数据盘：/dev/xvd`[aa-zz]`，例如第26块数据盘会被命名为/dev/xvdaa，第27块数据盘为/dev/xvdab，以此类推。
+    ///
+    /// > - 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
+    /// > - 使用全境像创建实例时，全镜像中的数据盘会作为ECS实例的前1-n个数据盘被创建出来。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 第n个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
+    ///
+    /// - cloud_efficiency：20~32768。
+    /// - cloud_ssd：20~32768。
+    /// - cloud_essd：具体取值范围与`DataDisk.N.PerformanceLevel`的取值有关。
+    ///     - PL0：1~65,536。
+    ///     - PL1：20~65,536。
+    ///     - PL2：461~65,536。
+    ///     - PL3：1261~65,536。
+    /// - cloud：5~2000。
+    /// - cloud_auto：1~65,536。
+    /// - cloud_essd_entry：10~32768。
+    ///
+    /// >该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘N的云盘种类。取值范围：
+    ///
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud：普通云盘。
+    /// - cloud_auto：ESSD AutoPL云盘。
+    /// - cloud_regional_disk_auto：ESSD 同城冗余云盘。
+    /// - cloud_essd_entry：ESSD Entry云盘。
+    ///   >仅当`InstanceType`设置为`ecs.u1`或`ecs.e`规格族时，该参数支持`cloud_essd_entry`。
+    /// - elastic_ephemeral_disk_standard：弹性临时盘-标准版。
+    /// - elastic_ephemeral_disk_premium：弹性临时盘-高级版。
+    ///
+    /// 对于I/O优化实例，默认值为cloud_efficiency。对于非I/O优化实例，默认值为cloud。
     #[serde(rename = "Category")]
     pub category: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: String,
+    /// 表示数据盘是否随实例释放。取值范围：
+    /// - true：数据盘随实例释放。
+    /// - false：数据盘不随实例释放。
+    ///
+    /// 默认值为true。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为数据盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: String,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50000}。
+    ///
+    /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
 }
@@ -58101,10 +58596,13 @@ impl crate::FlatSerialize for InstancesDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesArn {
+    /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -58132,40 +58630,222 @@ impl crate::FlatSerialize for InstancesArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesNetworkInterface {
+    /// 弹性网卡所属的虚拟交换机ID。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。  
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数。此时该参数的作用等同于`VSwitchId`，但需要注意不能同时设置`VSwitchId`参数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的虚拟交换机。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 弹性网卡名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 弹性网卡的描述。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    /// - 长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 弹性网卡所属的安全组ID。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数。此时该参数的作用等同于`SecurityGroupId`，但需要注意不能再设置`SecurityGroupId`、`SecurityGroupIds.N`或`NetworkInterface.N.SecurityGroupIds.N`。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 添加一张弹性网卡并设置主IP地址。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    ///     - 设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡。如果`Amount`参数取值大于1，且设置了主网卡并设置了该参数，则表示在批量创建ECS实例时，以指定的主IP地址为起始地址，依次为多台ECS实例分配连续的主IP地址，但需要注意，此时不支持再为实例绑定辅助网卡。
+    ///     - 需要注意，如果`Amount`参数取值大于1且已为主网卡设置了该参数，则不支持再设置辅助网卡（即不支持再设置`NetworkInterface.2.InstanceType=Secondary`）。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则该参数的作用等同于`PrivateIpAddress`，但需要注意不能同时设置`PrivateIpAddress`参数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，表示为辅助网卡设置主IP地址。默认从网卡所属的交换机网段中随机选择一个IP地址。
+    ///
+    /// >- 每个交换机的第1个和最后3个IP地址为系统保留地址，不支持指定。
+    /// 例如，交换机的网段为192.168.1.0/24，则192.168.1.0、192.168.1.253、192.168.1.254和192.168.1.255这4个地址是系统保留地址。
     #[serde(rename = "PrimaryIpAddress")]
     pub primary_ip_address: String,
+    /// 弹性网卡队列数。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    ///
+    /// - 不能超过实例规格允许的单块网卡最大队列数。
+    ///
+    /// - 实例的所有网卡累加队列数不能超过实例规格允许的队列数总配额。实例规格的单块网卡最大队列数和总配额可以通过[DescribeInstanceTypes](~~25620~~)接口查询`MaximumQueueNumberPerEni`、`TotalEniQueueQuantity`字段。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，且设置了该参数取值，则不能再设置`NetworkInterfaceQueueNumber`参数。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
+    /// 弹性网卡所属的一个或多个安全组ID。
+    ///
+    /// - N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    /// - 第二个N表示可以指定一个或多个安全组ID。N的取值范围与实例能够加入安全组配额有关。更多信息，请参见[安全组限制](~~25412#SecurityGroupQuota1~~)。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数或`NetworkInterface.N.SecurityGroupId`。此时该参数的作用等同于`SecurityGroupIds.N`，但需要注意不能再设置`SecurityGroupId`、`SecurityGroupIds.N`或`NetworkInterface.N.SecurityGroupId`。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
+    /// 网卡的通讯模式。参数取值范围：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
+    ///
+    /// 默认值：Standard。
+    ///
+    /// >RDMA模式的弹性网卡数量不能超过该实例规格族的限制。更多信息，请参见[实例规格族](~~25378~~)。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// RDMA网卡队列数。
+    ///
+    /// 如果要为创建的实例附加多张RDMA网卡，建议根据实例规格支持的RDMA网卡的`QueuePairNumber`上限值和规划要使用的网卡数量，手动为每张网卡指定QueuePairNumber，并确保所有网卡的QueuePairNumber总数不超过该实例规格允许的最大值。调用[DescribeInstanceTypes](~~2679699~~)查看实例规格的上限。
+    ///
+    /// ><notice>如果RDMA网卡未指定QueuePairNumber，则默认使用该实例规格支持的所有RDMA网卡的QueuePairNumber上限值。因此，一旦附加了一张未设置QueuePairNumber的RDMA网卡，就不能再添加更多RDMA网卡了（普通网卡不受此限制）。</notice>
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i64,
+    /// 弹性网卡类型。N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
+    ///
+    /// 参数取值范围：
+    ///
+    /// - Primary：主网卡。
+    /// - Secondary：辅助网卡。
+    ///
+    /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 为主网卡指定随机生成的IPv6地址数量。取值范围：1~10
+    ///
+    /// 您需要注意：
+    ///
+    /// - `NetworkInterface.N.InstanceType`取值为`Primary`时，设置该参数才会生效。如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则不能设置该参数。
+    ///
+    /// - 设置该参数后，您不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6Address.N`。
     #[serde(rename = "Ipv6AddressCount")]
     pub ipv6_address_count: i64,
+    /// 为主网卡指定一个或多个IPv6地址。支持设置最多10个IPv6地址，即第二个N的取值范围：1~10。
+    ///
+    /// 取值示例：`Ipv6Address.1=2001:db8:1234:1a00::***`
+    ///
+    /// 您需要注意：
+    ///
+    /// - `NetworkInterface.N.InstanceType`取值为`Primary`时，设置该参数才会生效。如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则不能设置该参数。
+    ///
+    /// - 设置该参数后，`Amount`取值只能为1，且不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6AddressCount`。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: Vec<String>,
+    /// 网卡指定的物理网卡索引。
+    ///
+    /// 您需要注意：
+    /// - 只有特定实例规格支持指定物理网卡索引。
+    /// - NetworkInterface.N.InstanceType取值为Primary时，对于支持物理网卡的实例规格，如果设置此参数，只能设置为0。
+    /// - NetworkInterface.N.InstanceType取值为Secondary或者空值，对于支持物理网卡的实例规格，此参数可以依据实例规格设置。更多信息，请参见[实例规格族](~~25378~~)。
     #[serde(rename = "NetworkCardIndex")]
     pub network_card_index: i32,
+    /// 释放实例时是否保留网卡。取值范围：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
+    ///
+    /// 默认值：true。
+    ///
+    /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
+    /// 随实例附加的弹性网卡ID。
+    ///
+    /// 设置该参数后，`Amount`取值只能为 1。
+    ///
+    /// >该参数只对辅助弹性网卡生效。指定一个现有辅助弹性网卡后，您将无法配置其它网卡创建参数。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 弹性网卡入方向队列深度。
+    ///
+    ///
+    /// <props="china">
+    ///
+    /// >该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)联系加白。
+    ///
+    /// </props>
+    ///
+    ///
+    ///
+    ///
+    /// <props="intl">
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)联系加白。
+    ///
+    /// </props>
+    ///
+    /// 使用该参数时，您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    ///
+    /// - 目前仅适用于Linux镜像。
+    ///
+    /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
     pub rx_queue_size: i32,
+    /// 弹性网卡出方向队列深度。
+    ///
+    ///
+    /// <props="china">
+    ///
+    /// >该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)联系加白。
+    ///
+    /// </props>
+    ///
+    ///
+    ///
+    ///
+    /// <props="intl">
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)联系加白。
+    ///
+    /// </props>
+    ///
+    /// 使用该参数时，您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    ///
+    /// - 目前仅适用于Linux镜像。
+    ///
+    /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
     pub tx_queue_size: i32,
+    /// 是否开启源/目的检查功能。建议您打开该功能，以提高网络安全。可能值：
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    ///
+    /// 默认值：false。
+    ///
+    /// > 仅部分地域支持该功能。使用前，请认真阅读[源/目的检查](~~2863210~~)。
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: bool,
 }
@@ -58272,8 +58952,10 @@ impl crate::FlatSerialize for InstancesNetworkInterface {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunInstancesTag {
+    /// 实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或 https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 实例、云盘和主网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -58292,16 +58974,41 @@ impl crate::FlatSerialize for RunInstancesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesSystemDisk {
+    /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: String,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}。
+    ///
+    /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 系统盘是否加密。取值范围：
+    ///
+    /// - true：加密。
+    ///
+    /// - false：不加密。
+    ///
+    /// 默认值：false。
+    ///
+    /// >中国（香港）D可用区、新加坡A可用区暂不支持在创建实例时加密系统盘。
+    ///
+    /// ><notice>当使用共享加密镜像，创建基于加密快照的云盘时，必须指定该云盘的请求参数Encrypted=true，以确保创建出的云盘使用的是被共享方自己的密钥。></notice>
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 系统盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: String,
 }
@@ -58348,6 +59055,11 @@ impl crate::FlatSerialize for InstancesSystemDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesImageOptions {
+    /// 使用该镜像的实例是否支持使用ecs-user用户登录。可能值：
+    ///
+    /// - true：是
+    ///
+    /// - false：否
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
 }
@@ -58369,10 +59081,21 @@ impl crate::FlatSerialize for InstancesImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesNetworkOptions {
+    /// 实例是否开启Jumbo frame特性。参数取值范围：
+    ///
+    /// - false：不开启Jumbo frame, 该实例下的所有网卡（包括主网卡及辅助网卡）MTU取值为1500。
+    ///
+    /// - true：开启Jumbo frame, 该实例下的所有网卡（包括主网卡及辅助网卡）的MTU取值为8500。
+    ///
+    /// 默认值：true。
+    ///
+    /// >只有八代以上部分实例规格支持开启Jumbo frame特性。更多信息请参见[ECS实例MTU](~~200512~~)。
     #[serde(rename = "EnableJumboFrame")]
     pub enable_jumbo_frame: bool,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableNetworkEncryption")]
     pub enable_network_encryption: bool,
+    /// 实例的带宽权重值。不同实例规格支持的取值范围不一致。具体实例规格支持的取值可以根据实例规格查询DescribeInstanceTypes，接口返回的BandwidthWeighting即为该规格支持的带宽权重档位。字典值可以取返回值中的name字段，如Vpc-L1，Ebs-L1等。
     #[serde(rename = "BandwidthWeighting")]
     pub bandwidth_weighting: String,
 }
@@ -58404,14 +59127,47 @@ impl crate::FlatSerialize for InstancesNetworkOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesPrivateDnsNameOptions {
+    /// 开启/关闭实例ID类型的域名到 IPv4的解析。取值范围：
+    ///
+    /// - true：开启。
+    ///
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsARecord")]
     pub enable_instance_id_dns_a_record: bool,
+    /// 开启/关闭实例 ID 类型的域名到 IPv6 的解析。取值范围：
+    ///
+    /// - true：开启。
+    ///
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsAAAARecord")]
     pub enable_instance_id_dns_aaaa_record: bool,
+    /// 开启/关闭IP类型的域名到IPv4 的解析。取值范围：
+    ///
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsARecord")]
     pub enable_ip_dns_a_record: bool,
+    /// 开启/关闭IPv4到IP类型的域名解析。取值范围：
+    ///
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsPtrRecord")]
     pub enable_ip_dns_ptr_record: bool,
+    /// 主机名类型，取值范围：
+    ///
+    /// - Custom：自定义。
+    /// - IpBased：基于IP格式的主机。
+    /// - InstanceIdBased：基于实例ID格式的主机名。
+    ///
+    /// 默认值：Custom。
     #[serde(rename = "HostnameType")]
     pub hostname_type: String,
 }
@@ -58453,6 +59209,13 @@ impl crate::FlatSerialize for InstancesPrivateDnsNameOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesClockOptions {
+    /// PTP 状态值。取值范围：
+    ///
+    /// - enabled：打开 PTP。
+    ///
+    /// - disabled：关闭 PTP。
+    ///
+    /// 默认值：disabled。
     #[serde(rename = "PtpStatus")]
     pub ptp_status: String,
 }
@@ -58474,6 +59237,7 @@ impl crate::FlatSerialize for InstancesClockOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceIdSets {
+    /// 实例ID列表。
     #[serde(rename = "InstanceIdSet")]
     pub instance_id_set: Vec<String>,
 }
@@ -58495,28 +59259,87 @@ impl crate::FlatSerialize for ResponseInstanceIdSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1（默认）：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 创建数据盘N使用的快照。N的取值范围为1~16。
+    ///
+    /// - 指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。
+    ///
+    /// - 不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 第n个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
+    ///
+    /// -   cloud_efficiency：20~32768。
+    /// -   cloud_ssd：20~32768。
+    /// -   cloud_essd：具体取值范围与 `DataDisk.N.PerformanceLevel`的取值有关。
+    ///     - PL0：1~65,536。
+    ///     - PL1：20~65,536。
+    ///     - PL2：461~65,536。
+    ///     - PL3：1261~65,536。
+    /// -   cloud：5~2000。
+    ///
+    /// >该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘的挂载点。
+    ///
+    /// >该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 数据盘名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘N的云盘种类。取值范围：
+    ///
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud：普通云盘。
+    /// - cloud_auto：ESSD AutoPL云盘。
+    /// - cloud_essd_entry：ESSD Entry云盘。
+    ///   >仅当`InstanceType`设置为`ecs.u1`或`ecs.e`规格族时，该参数支持`cloud_essd_entry`。
+    /// - elastic_ephemeral_disk_standard：弹性临时盘-标准版。
+    /// - elastic_ephemeral_disk_premium：弹性临时盘-高级版。
+    ///
+    /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 数据盘是否随实例释放。
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// 默认值为true。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 云盘使用的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: String,
+    /// 数据盘N是否加密。
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    ///
+    /// 默认值为false。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为数据盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: String,
 }
@@ -58581,10 +59404,13 @@ impl crate::FlatSerialize for InstanceDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceArn {
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -58612,8 +59438,12 @@ impl crate::FlatSerialize for InstanceArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateInstanceTag {
+    /// 实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。
+    ///
+    /// > 为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -58632,6 +59462,7 @@ impl crate::FlatSerialize for CreateInstanceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemDisk {
+    /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: String,
 }
@@ -58653,14 +59484,19 @@ impl crate::FlatSerialize for InstanceSystemDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstancesResponseInstanceResponsesInstanceResponse {
+    /// 实例操作结果错误码。返回值200为成功，更多请参见下文错误码列表。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 实例操作返回错误信息。返回值success为成功，更多请参见下文错误码列表。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例当前状态。
     #[serde(rename = "CurrentStatus")]
     pub current_status: String,
+    /// 操作前实例的状态。
     #[serde(rename = "PreviousStatus")]
     pub previous_status: String,
 }
@@ -58694,6 +59530,7 @@ impl crate::FlatSerialize for StartInstancesResponseInstanceResponsesInstanceRes
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstancesResponseInstanceResponses {
+    /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
     #[serde(rename = "InstanceResponse")]
     pub instance_response: Vec<StartInstancesResponseInstanceResponsesInstanceResponse>,
 }
@@ -58715,14 +59552,19 @@ impl crate::FlatSerialize for StartInstancesResponseInstanceResponses {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstancesResponseInstanceResponsesInstanceResponse {
+    /// 实例操作结果错误码。返回值为200表示操作成功。更多信息，请参见下文错误码列表。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 实例操作返回错误信息。返回值为`success`表示操作成功。更多信息，请参见下文错误码列表。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例当前状态。
     #[serde(rename = "CurrentStatus")]
     pub current_status: String,
+    /// 实例操作前状态。
     #[serde(rename = "PreviousStatus")]
     pub previous_status: String,
 }
@@ -58756,6 +59598,7 @@ impl crate::FlatSerialize for StopInstancesResponseInstanceResponsesInstanceResp
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstancesResponseInstanceResponses {
+    /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
     #[serde(rename = "InstanceResponse")]
     pub instance_response: Vec<StopInstancesResponseInstanceResponsesInstanceResponse>,
 }
@@ -58777,14 +59620,19 @@ impl crate::FlatSerialize for StopInstancesResponseInstanceResponses {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstancesResponseInstanceResponsesInstanceResponse {
+    /// 实例操作结果错误码。返回值为200表示操作成功。更多信息，请参见下文错误码列表。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 实例操作返回错误信息。返回值为Success表示操作成功。更多信息，请参见下文错误码列表。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例当前状态。
     #[serde(rename = "CurrentStatus")]
     pub current_status: String,
+    /// 实例操作前状态。
     #[serde(rename = "PreviousStatus")]
     pub previous_status: String,
 }
@@ -58818,6 +59666,7 @@ impl crate::FlatSerialize for RebootInstancesResponseInstanceResponsesInstanceRe
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstancesResponseInstanceResponses {
+    /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
     #[serde(rename = "InstanceResponse")]
     pub instance_response: Vec<RebootInstancesResponseInstanceResponsesInstanceResponse>,
 }
@@ -58839,8 +59688,20 @@ impl crate::FlatSerialize for RebootInstancesResponseInstanceResponses {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceStatus {
+    /// 实例状态。可能值：
+    ///
+    /// - Pending：创建中。
+    ///
+    /// - Running：运行中。
+    ///
+    /// - Starting：启动中。
+    ///
+    /// - Stopping：停止中。
+    ///
+    /// - Stopped：已停止。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -58863,6 +59724,7 @@ impl crate::FlatSerialize for InstanceStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceStatuses {
+    /// 实例ID和状态（InstanceStatus）的集合。
     #[serde(rename = "InstanceStatus")]
     pub instance_status: Vec<InstanceStatus>,
 }
@@ -58884,8 +59746,14 @@ impl crate::FlatSerialize for InstanceStatuses {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesTag {
+    /// 标签值。
+    ///
+    /// > 为提高兼容性，建议您使用另一个`Tag.N.Value`参数。
     #[serde(rename = "value")]
     pub value: String,
+    /// 实例的标签键。N的取值范围为1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -58904,6 +59772,7 @@ impl crate::FlatSerialize for DescribeInstancesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInnerIpAddress {
+    /// 经典网络类型实例的内网IP地址列表。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -58925,14 +59794,23 @@ impl crate::FlatSerialize for ItemInnerIpAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEipAddress {
+    /// 弹性公网IP的公网带宽限速，单位为Mbit/s。
     #[serde(rename = "Bandwidth")]
     pub bandwidth: i32,
+    /// 弹性公网IP的ID。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
+    /// 弹性公网IP。
     #[serde(rename = "IpAddress")]
     pub ip_address: String,
+    /// 是否可以解绑弹性公网IP。
     #[serde(rename = "IsSupportUnassociate")]
     pub is_support_unassociate: bool,
+    /// 弹性公网IP的计费方式。
+    ///
+    /// - PayByBandwidth：按带宽计费。
+    ///
+    /// - PayByTraffic：按流量计费。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
 }
@@ -58974,8 +59852,19 @@ impl crate::FlatSerialize for ItemEipAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemImageOptions {
+    /// 使用该镜像的实例是否支持使用ecs-user用户登录。可能值：
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
+    /// 当前操作系统是否支持通过NVMe协议访问磁盘。可能值：
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    /// > 当请求参数AdditionalAttributes包含CURRENT_OS_NVME_SUPPORTED时才会返回该参数。
     #[serde(rename = "CurrentOSNVMeSupported")]
     pub current_osnv_me_supported: bool,
 }
@@ -59002,8 +59891,10 @@ impl crate::FlatSerialize for InstanceItemImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemTagsTag {
+    /// 实例的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 实例的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -59026,6 +59917,7 @@ impl crate::FlatSerialize for InstancesInstanceItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemTags {
+    /// 实例的标签集合。
     #[serde(rename = "Tag")]
     pub tag: Vec<InstancesInstanceItemTagsTag>,
 }
@@ -59043,6 +59935,7 @@ impl crate::FlatSerialize for InstancesInstanceItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HibernationOptions {
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "Configured")]
     pub configured: bool,
 }
@@ -59064,6 +59957,7 @@ impl crate::FlatSerialize for HibernationOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AdditionalInfo {
+    /// > 该参数正在邀测中，暂不支持使用。
     #[serde(rename = "EnableHighDensityMode")]
     pub enable_high_density_mode: bool,
 }
@@ -59085,10 +59979,18 @@ impl crate::FlatSerialize for AdditionalInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetadataOptions {
+    /// > 该参数暂未开放使用。
     #[serde(rename = "HttpPutResponseHopLimit")]
     pub http_put_response_hop_limit: i32,
+    /// 访问实例元数据时是否强制使用加固模式（IMDSv2）。可能值：
+    ///
+    /// - optional：不强制使用。
+    /// - required：强制使用。
     #[serde(rename = "HttpTokens")]
     pub http_tokens: String,
+    /// 是否启用实例元数据的访问通道。可能值：
+    /// - enabled：启用。
+    /// - disabled：禁用。
     #[serde(rename = "HttpEndpoint")]
     pub http_endpoint: String,
 }
@@ -59120,6 +60022,10 @@ impl crate::FlatSerialize for MetadataOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemCpuOptions {
+    /// 实例的CPU拓扑类型。可能值：
+    ///
+    /// - HT离散模式：ContinuousCoreToHTMapping
+    /// - HT连续模式：DiscreteCoreToHTMapping
     #[serde(rename = "TopologyType")]
     pub topology_type: String,
     #[serde(rename = "TurboMode")]
@@ -59128,10 +60034,13 @@ pub struct InstanceItemCpuOptions {
     pub enable_visst: bool,
     #[serde(rename = "EnableVRDT")]
     pub enable_vrdt: bool,
+    /// CPU线程数。
     #[serde(rename = "ThreadsPerCore")]
     pub threads_per_core: i32,
+    /// >该参数已废弃。
     #[serde(rename = "Numa")]
     pub numa: String,
+    /// 物理CPU核心数。
     #[serde(rename = "CoreCount")]
     pub core_count: i32,
 }
@@ -59179,14 +60088,43 @@ impl crate::FlatSerialize for InstanceItemCpuOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateDnsNameOptions {
+    /// 开启/关闭实例ID类型的域名到 IPv4的解析。可能值：
+    ///  
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsARecord")]
     pub enable_instance_id_dns_a_record: bool,
+    /// 主机名类型，可能值：
+    ///
+    /// - Custom：自定义。
+    /// - IpBased：基于IP格式的主机。
+    /// - InstanceIdBased：基于实例ID格式的主机名。
+    ///
+    /// 默认值：Custom。
     #[serde(rename = "HostnameType")]
     pub hostname_type: String,
+    /// 开启/关闭IPv4到IP类型的域名解析。可能值：
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsPtrRecord")]
     pub enable_ip_dns_ptr_record: bool,
+    /// 开启/关闭IP类型的域名到IPv4 的解析。可能值：
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsARecord")]
     pub enable_ip_dns_a_record: bool,
+    /// 开启/关闭实例 ID 类型的域名到 IPv6 的解析。可能值：
+    ///  
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsAAAARecord")]
     pub enable_instance_id_dns_aaaa_record: bool,
 }
@@ -59228,6 +60166,7 @@ impl crate::FlatSerialize for ItemPrivateDnsNameOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemSecurityGroupIds {
+    /// 实例所属安全组ID列表。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -59249,6 +60188,7 @@ impl crate::FlatSerialize for InstanceItemSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemVpcAttributesPrivateIpAddress {
+    /// 私有IP地址列表。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -59272,10 +60212,13 @@ impl crate::FlatSerialize for ItemVpcAttributesPrivateIpAddress {
 pub struct ItemVpcAttributes {
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: ItemVpcAttributesPrivateIpAddress,
+    /// 专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 虚拟交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 云产品的IP，用于VPC云产品之间的网络互通。
     #[serde(rename = "NatIpAddress")]
     pub nat_ip_address: String,
 }
@@ -59308,8 +60251,18 @@ impl crate::FlatSerialize for ItemVpcAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceAttribute {
+    /// 实例的宿主机类型是否为专有宿主机。可能值：
+    ///
+    /// - default：实例的宿主机类型不是专有宿主机。
+    ///
+    /// - host：实例的宿主机类型为专有宿主机。
     #[serde(rename = "Tenancy")]
     pub tenancy: String,
+    /// 专有宿主机实例是否与专有宿主机关联。可能值：
+    ///
+    /// - default：专有宿主机实例不与专有宿主机关联。停机不收费实例重启后，可能会放置在自动资源部署池中的其它专有宿主机上。
+    ///
+    /// - host：专有宿主机实例与专有宿主机关联。停机不收费实例重启后，仍放置在原专有宿主机上。
     #[serde(rename = "Affinity")]
     pub affinity: String,
 }
@@ -59328,6 +60281,7 @@ impl crate::FlatSerialize for InstanceAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPublicIpAddress {
+    /// 实例公网IP地址列表。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -59349,6 +60303,7 @@ impl crate::FlatSerialize for ItemPublicIpAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6SetsIpv6Set {
+    /// 弹性网卡已分配的IPv6地址。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: String,
 }
@@ -59370,6 +60325,7 @@ impl crate::FlatSerialize for InterfaceItemIpv6SetsIpv6Set {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6Sets {
+    /// 弹性网卡已分配的IPv6地址集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
     #[serde(rename = "Ipv6Set")]
     pub ipv6_set: Vec<InterfaceItemIpv6SetsIpv6Set>,
 }
@@ -59387,6 +60343,7 @@ impl crate::FlatSerialize for InterfaceItemIpv6Sets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6PrefixSetsIpv6PrefixSet {
+    /// 弹性网卡已分配的IPv6前缀。
     #[serde(rename = "Ipv6Prefix")]
     pub ipv6_prefix: String,
 }
@@ -59408,6 +60365,7 @@ impl crate::FlatSerialize for InterfaceItemIpv6PrefixSetsIpv6PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6PrefixSets {
+    /// 弹性网卡已分配的IPv6前缀集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
     #[serde(rename = "Ipv6PrefixSet")]
     pub ipv6_prefix_set: Vec<InterfaceItemIpv6PrefixSetsIpv6PrefixSet>,
 }
@@ -59429,6 +60387,7 @@ impl crate::FlatSerialize for InterfaceItemIpv6PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv4PrefixSetsIpv4PrefixSet {
+    /// 弹性网卡已分配的IPv4前缀。
     #[serde(rename = "Ipv4Prefix")]
     pub ipv4_prefix: String,
 }
@@ -59450,6 +60409,7 @@ impl crate::FlatSerialize for InterfaceItemIpv4PrefixSetsIpv4PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv4PrefixSets {
+    /// 弹性网卡已分配的IPv4前缀集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
     #[serde(rename = "Ipv4PrefixSet")]
     pub ipv4_prefix_set: Vec<InterfaceItemIpv4PrefixSetsIpv4PrefixSet>,
 }
@@ -59471,10 +60431,19 @@ impl crate::FlatSerialize for InterfaceItemIpv4PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemPrivateIpSetsPrivateIpSet {
+    /// 实例的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 实例的私网域名。
+    ///
+    ///
+    /// > 仅当`HostnameType`取值为`IpBased`或者`InstanceIdBased`时，返回固定格式的私网域名。
     #[serde(rename = "PrivateDnsName")]
     pub private_dns_name: String,
+    /// 是否是主私网IP地址，可能值：
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "Primary")]
     pub primary: bool,
 }
@@ -59502,6 +60471,7 @@ impl crate::FlatSerialize for InterfaceItemPrivateIpSetsPrivateIpSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemPrivateIpSets {
+    /// PrivateIpSet组成的集合。
     #[serde(rename = "PrivateIpSet")]
     pub private_ip_set: Vec<InterfaceItemPrivateIpSetsPrivateIpSet>,
 }
@@ -59523,16 +60493,22 @@ impl crate::FlatSerialize for InterfaceItemPrivateIpSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemNetworkInterfacesNetworkInterface {
+    /// 弹性网卡类型。可能值：
+    /// - Primary：主网卡。
+    /// - Secondary：辅助弹性网卡。
     #[serde(rename = "Type")]
     pub r#type: String,
     #[serde(rename = "Ipv6Sets")]
     pub ipv6_sets: InterfaceItemIpv6Sets,
     #[serde(rename = "Ipv6PrefixSets")]
     pub ipv6_prefix_sets: InterfaceItemIpv6PrefixSets,
+    /// 弹性网卡主私有IP地址。
     #[serde(rename = "PrimaryIpAddress")]
     pub primary_ip_address: String,
+    /// 弹性网卡的MAC地址。
     #[serde(rename = "MacAddress")]
     pub mac_address: String,
+    /// 弹性网卡的ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
     #[serde(rename = "Ipv4PrefixSets")]
@@ -59589,6 +60565,7 @@ impl crate::FlatSerialize for ItemNetworkInterfacesNetworkInterface {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemNetworkInterfaces {
+    /// 实例包含的弹性网卡集合。
     #[serde(rename = "NetworkInterface")]
     pub network_interface: Vec<ItemNetworkInterfacesNetworkInterface>,
 }
@@ -59610,8 +60587,10 @@ impl crate::FlatSerialize for ItemNetworkInterfaces {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationAttr {
+    /// 容量预留偏好。
     #[serde(rename = "CapacityReservationPreference")]
     pub capacity_reservation_preference: String,
+    /// 容量预留ID。
     #[serde(rename = "CapacityReservationId")]
     pub capacity_reservation_id: String,
 }
@@ -59638,10 +60617,13 @@ impl crate::FlatSerialize for ReservationAttr {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDedicatedHostAttribute {
+    /// 专有宿主机ID。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: String,
+    /// 专有宿主机名称。
     #[serde(rename = "DedicatedHostName")]
     pub dedicated_host_name: String,
+    /// 专有宿主机集群ID。
     #[serde(rename = "DedicatedHostClusterId")]
     pub dedicated_host_cluster_id: String,
 }
@@ -59673,8 +60655,16 @@ impl crate::FlatSerialize for ItemDedicatedHostAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemOperationLocksLockReason {
+    /// 锁定类型。可能值：
+    ///
+    /// - financial：因欠费被锁定。
+    /// - security：因安全原因被锁定。
+    /// - Recycling：抢占式实例的待释放锁定状态。
+    /// - dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
+    /// - refunded：因退款被锁定。
     #[serde(rename = "LockReason")]
     pub lock_reason: String,
+    /// 实例被锁定的描述信息。
     #[serde(rename = "LockMsg")]
     pub lock_msg: String,
 }
@@ -59697,6 +60687,7 @@ impl crate::FlatSerialize for InstanceItemOperationLocksLockReason {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemOperationLocks {
+    /// 实例的锁定原因。
     #[serde(rename = "LockReason")]
     pub lock_reason: Vec<InstanceItemOperationLocksLockReason>,
 }
@@ -59718,6 +60709,7 @@ impl crate::FlatSerialize for InstancesInstanceItemOperationLocks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RdmaIpAddress {
+    /// HPC实例的RDMA网络IP列表。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -59760,140 +60752,254 @@ impl crate::FlatSerialize for ItemClockOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesResponseInstancesInstance {
+    /// 实例所属的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 内存大小，单位为MiB。
     #[serde(rename = "Memory")]
     pub memory: i32,
+    /// 实例的计费方式。可能值：
+    ///
+    /// - PrePaid：包年包月。
+    /// - PostPaid：按量付费。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
+    /// vCPU数。
     #[serde(rename = "Cpu")]
     pub cpu: i32,
+    /// 实例的操作系统名称。
     #[serde(rename = "OSName")]
     pub os_name: String,
+    /// 实例网络类型。可能值：
+    ///
+    /// - classic：经典网络。
+    /// - vpc：专有网络VPC。
     #[serde(rename = "InstanceNetworkType")]
     pub instance_network_type: String,
     #[serde(rename = "InnerIpAddress")]
     pub inner_ip_address: ItemInnerIpAddress,
+    /// 过期时间。以ISO 8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO 8601](~~25696~~)。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 实例运行的镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 弹性公网IP绑定信息。
     #[serde(rename = "EipAddress")]
     pub eip_address: ItemEipAddress,
+    /// 镜像相关属性信息。
     #[serde(rename = "ImageOptions")]
     pub image_options: InstanceItemImageOptions,
+    /// 实例的VLAN ID。
+    ///
+    /// >该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
     #[serde(rename = "VlanId")]
     pub vlan_id: String,
+    /// 实例主机名。
     #[serde(rename = "HostName")]
     pub host_name: String,
     #[serde(rename = "Tags")]
     pub tags: InstancesInstanceItemTags,
+    /// 实例状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "HibernationOptions")]
     pub hibernation_options: HibernationOptions,
+    /// > 该参数正在邀测中，暂不支持使用。
     #[serde(rename = "AdditionalInfo")]
     pub additional_info: AdditionalInfo,
+    /// 元数据选项集合。
     #[serde(rename = "MetadataOptions")]
     pub metadata_options: MetadataOptions,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例停机后是否继续收费。可能值：
+    ///
+    /// - KeepCharging：停机后继续收费，为您继续保留库存资源。
+    /// - StopCharging：停机后不收费。停机后，我们释放实例对应的资源，例如vCPU、内存和公网IP等资源。重启是否成功依赖于当前地域中是否仍有资源库存。
+    /// - Not-applicable：本实例不支持停机不收费功能。
     #[serde(rename = "StoppedMode")]
     pub stopped_mode: String,
+    /// CPU配置详情。
     #[serde(rename = "CpuOptions")]
     pub cpu_options: InstanceItemCpuOptions,
+    /// 实例最近一次的启动时间。以ISO 8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO 8601](~~25696~~)。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 实例的私网域名配置信息集合。
+    ///
+    ///
+    /// 关于私网域名解析，请参见[ECS私网域名解析
+    /// ](~~2844797~~)。
+    ///
+    /// > 仅当请求参数`AdditionalAttributes`取值包含`PRIVATE_DNS_OPTIONS`时，返回该参数。
     #[serde(rename = "PrivateDnsNameOptions")]
     pub private_dns_name_options: ItemPrivateDnsNameOptions,
+    /// 实例释放保护属性，指定是否支持通过控制台或API（DeleteInstance）释放实例。
+    ///
+    /// - true：已开启实例释放保护。
+    /// - false：未开启实例释放保护。
+    ///
+    /// > 该属性仅适用于按量付费实例，且只能限制手动释放操作，对系统释放操作不生效。
     #[serde(rename = "DeletionProtection")]
     pub deletion_protection: bool,
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: InstanceItemSecurityGroupIds,
+    /// 专有网络VPC属性。
     #[serde(rename = "VpcAttributes")]
     pub vpc_attributes: ItemVpcAttributes,
+    /// 网络计费类型。可能值：
+    ///
+    /// - PayByBandwidth：按固定带宽计费。
+    /// - PayByTraffic：按使用流量计费。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
+    /// 部署集ID。
     #[serde(rename = "DeploymentSetId")]
     pub deployment_set_id: String,
+    /// 实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 平台发起抢占式实例中断时，抢占式实例的中断模式。可能值：
+    ///
+    /// - Terminate：释放。
+    ///
+    /// - Stop：节省停机。
     #[serde(rename = "SpotInterruptionBehavior")]
     pub spot_interruption_behavior: String,
+    /// 公网出带宽最大值，单位：Mbit/s。
     #[serde(rename = "InternetMaxBandwidthOut")]
     pub internet_max_bandwidth_out: i32,
+    /// 实例序列号。
     #[serde(rename = "SerialNumber")]
     pub serial_number: String,
+    /// 实例的操作系统类型，分为Windows Server和Linux两种。可能值：
+    ///
+    /// - windows。
+    /// - linux。
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 实例创建时间。以ISO 8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO 8601](~~25696~~)。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 按量付费实例的自动释放时间。
     #[serde(rename = "AutoReleaseTime")]
     pub auto_release_time: String,
+    /// 实例描述。
     #[serde(rename = "Description")]
     pub description: String,
     #[serde(rename = "EnableNVS")]
     pub enable_nvs: bool,
+    /// 实例挂载的本地存储容量。单位：GiB。
     #[serde(rename = "LocalStorageCapacity")]
     pub local_storage_capacity: i64,
+    /// 实例规格族。
     #[serde(rename = "InstanceTypeFamily")]
     pub instance_type_family: String,
+    /// 专有宿主机实例的属性。
     #[serde(rename = "DedicatedInstanceAttribute")]
     pub dedicated_instance_attribute: InstanceAttribute,
+    /// 抢占式实例的保留时长，单位为小时。可能值：
+    ///
+    /// - 1：创建后阿里云会保证实例运行1小时不会被自动释放；超过1小时后，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    /// - 0：创建后，阿里云不保证实例运行1小时，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    ///
+    /// 实例回收前5分钟阿里云会通过ECS系统事件向您发送通知。抢占式实例按秒计费，建议您结合具体任务执行耗时来选择合适的保留时长。
+    ///
+    /// >当SpotStrategy值为SpotWithPriceLimit或SpotAsPriceGo时返回该参数。
     #[serde(rename = "SpotDuration")]
     pub spot_duration: i32,
+    /// 实例挂载的本地存储数量。
     #[serde(rename = "LocalStorageAmount")]
     pub local_storage_amount: i32,
     #[serde(rename = "PublicIpAddress")]
     pub public_ip_address: ItemPublicIpAddress,
+    /// 实例规格附带的GPU类型。
     #[serde(rename = "GPUSpec")]
     pub gpu_spec: String,
     #[serde(rename = "NetworkInterfaces")]
     pub network_interfaces: ItemNetworkInterfaces,
+    /// 实例的每小时最高价格。支持最大3位小数，参数SpotStrategy=SpotWithPriceLimit时，该参数生效。
     #[serde(rename = "SpotPriceLimit")]
     pub spot_price_limit: f32,
+    /// > 该参数已弃用，不再返回有意义的数据。
     #[serde(rename = "SaleCycle")]
     pub sale_cycle: String,
+    /// 实例是否可以挂载数据盘。
+    ///
+    /// - true：可以挂载数据盘。
+    /// - false：不可以挂载数据盘。
     #[serde(rename = "DeviceAvailable")]
     pub device_available: bool,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 按量实例的竞价策略。可能值：
+    ///
+    /// - NoSpot：正常按量付费实例。
+    /// - SpotWithPriceLimit：设置上限价格的抢占式实例。
+    /// - SpotAsPriceGo：系统自动出价，最高按量付费价格的抢占式实例。
     #[serde(rename = "SpotStrategy")]
     pub spot_strategy: String,
+    /// 实例操作系统的英文名称。
     #[serde(rename = "OSNameEn")]
     pub os_name_en: String,
+    /// 密钥对名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 是否为I/O优化型实例。
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: bool,
+    /// 实例所属可用区。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 实例所在的集群ID。
+    ///
+    /// >该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
     #[serde(rename = "ClusterId")]
     pub cluster_id: String,
+    /// 实例所属的HPC集群ID。
     #[serde(rename = "HpcClusterId")]
     pub hpc_cluster_id: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "ISP")]
     pub isp: String,
+    /// ECS实例绑定部署集分散部署时，实例在部署集中的分组位置。
     #[serde(rename = "DeploymentSetGroupNo")]
     pub deployment_set_group_no: i32,
+    /// 云服务器ECS的容量预留相关参数。
     #[serde(rename = "EcsCapacityReservationAttr")]
     pub ecs_capacity_reservation_attr: ReservationAttr,
+    /// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
     #[serde(rename = "DedicatedHostAttribute")]
     pub dedicated_host_attribute: ItemDedicatedHostAttribute,
+    /// 实例规格附带的GPU数量。
     #[serde(rename = "GPUAmount")]
     pub gpu_amount: i32,
     #[serde(rename = "OperationLocks")]
     pub operation_locks: InstancesInstanceItemOperationLocks,
     #[serde(rename = "RdmaIpAddress")]
     pub rdma_ip_address: RdmaIpAddress,
+    /// 公网入带宽最大值，单位：Mbit/s。
     #[serde(rename = "InternetMaxBandwidthIn")]
     pub internet_max_bandwidth_in: i32,
     #[serde(rename = "ClockOptions")]
     pub clock_options: ItemClockOptions,
+    /// 实例是否可以回收。
     #[serde(rename = "Recyclable")]
     pub recyclable: bool,
+    /// 实例所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 突发性能实例的运行模式。可能值：
+    ///
+    /// - Standard：标准模式。有关实例性能的更多信息，请参见[什么是突发性能实例](~~59977~~)中的性能约束模式章节。
+    /// - Unlimited：无性能约束模式，有关实例性能的更多信息，请参见[什么是突发性能实例](~~59977~~)中的无性能约束模式章节。
     #[serde(rename = "CreditSpecification")]
     pub credit_specification: String,
 }
@@ -60206,6 +61312,7 @@ impl crate::FlatSerialize for DescribeInstancesResponseInstancesInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesResponseInstances {
+    /// 由Instances组成的数组格式，返回实例的信息。
     #[serde(rename = "Instance")]
     pub instance: Vec<DescribeInstancesResponseInstancesInstance>,
 }
@@ -60223,8 +61330,10 @@ impl crate::FlatSerialize for DescribeInstancesResponseInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeFamily {
+    /// 实例规格族所属代数。
     #[serde(rename = "Generation")]
     pub generation: String,
+    /// 实例规格族ID。
     #[serde(rename = "InstanceTypeFamilyId")]
     pub instance_type_family_id: String,
 }
@@ -60251,6 +61360,7 @@ impl crate::FlatSerialize for TypeFamily {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceTypeFamilies {
+    /// 由实例规格族InstanceTypeFamily组成的集合。
     #[serde(rename = "InstanceTypeFamily")]
     pub instance_type_family: Vec<TypeFamily>,
 }
@@ -60272,6 +61382,7 @@ impl crate::FlatSerialize for ResponseInstanceTypeFamilies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CardInfo {
+    /// 物理网卡索引。
     #[serde(rename = "NetworkCardIndex")]
     pub network_card_index: i32,
 }
@@ -60293,6 +61404,7 @@ impl crate::FlatSerialize for CardInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkCards {
+    /// 物理网卡信息列表。
     #[serde(rename = "NetworkCardInfo")]
     pub network_card_info: Vec<CardInfo>,
 }
@@ -60314,6 +61426,7 @@ impl crate::FlatSerialize for NetworkCards {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BootModes {
+    /// 规格支持的启动模式。
     #[serde(rename = "SupportedBootMode")]
     pub supported_boot_mode: Vec<String>,
 }
@@ -60335,10 +61448,13 @@ impl crate::FlatSerialize for BootModes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEnhancedNetwork {
+    /// >该参数暂未开放使用。
     #[serde(rename = "SriovSupport")]
     pub sriov_support: bool,
+    /// >该参数暂未开放使用。
     #[serde(rename = "VfQueueNumberPerEni")]
     pub vf_queue_number_per_eni: i32,
+    /// >该参数暂未开放使用。
     #[serde(rename = "RssSupport")]
     pub rss_support: bool,
 }
@@ -60370,6 +61486,7 @@ impl crate::FlatSerialize for ItemEnhancedNetwork {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TopologyTypes {
+    /// 实例规格支持的 CPU 拓扑类型数组。
     #[serde(rename = "SupportedTopologyType")]
     pub supported_topology_type: Vec<String>,
 }
@@ -60393,12 +61510,18 @@ impl crate::FlatSerialize for TopologyTypes {
 pub struct TypeItemCpuOptions {
     #[serde(rename = "SupportedTopologyTypes")]
     pub supported_topology_types: TopologyTypes,
+    /// CPU每个核心的线程数。
+    ///
+    /// > `CpuOptions.ThreadsPerCore=1`表示关闭CPU超线程。
     #[serde(rename = "ThreadsPerCore")]
     pub threads_per_core: i32,
+    /// CPU核心数。
     #[serde(rename = "Core")]
     pub core: i32,
+    /// CPU选项步长。
     #[serde(rename = "CoreFactor")]
     pub core_factor: i32,
+    /// 是否支持开关超线程。
     #[serde(rename = "HyperThreadingAdjustable")]
     pub hyper_threading_adjustable: bool,
 }
@@ -60436,6 +61559,10 @@ impl crate::FlatSerialize for TypeItemCpuOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemClock {
+    /// 是否支持开启PTP，可能值：
+    ///
+    /// - supported：支持
+    /// - unsupported：不支持
     #[serde(rename = "PtpSupport")]
     pub ptp_support: String,
 }
@@ -60457,8 +61584,10 @@ impl crate::FlatSerialize for ItemClock {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesAttribute {
+    /// 属性名。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 属性值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -60477,6 +61606,7 @@ impl crate::FlatSerialize for AttributesAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttributes {
+    /// 规格属性列表。
     #[serde(rename = "Attribute")]
     pub attribute: Vec<AttributesAttribute>,
 }
@@ -60498,14 +61628,19 @@ impl crate::FlatSerialize for ItemAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WeightingInfo {
+    /// 网络基础带宽。单位：Kbit/s
     #[serde(rename = "VpcBandwidth")]
     pub vpc_bandwidth: i64,
+    /// 存储突发带宽，该规格不支持存储性能突发时不返回。单位：Kbit/s
     #[serde(rename = "EbsBurstBandwidth")]
     pub ebs_burst_bandwidth: i64,
+    /// 存储基础带宽。单位：Kbit/s
     #[serde(rename = "EbsBandwidth")]
     pub ebs_bandwidth: i64,
+    /// 网络突发带宽，该规格不支持网络性能突发时不返回。单位：Kbit/s
     #[serde(rename = "VpcBurstBandwidth")]
     pub vpc_burst_bandwidth: i64,
+    /// 带宽权重名称
     #[serde(rename = "Name")]
     pub name: String,
 }
@@ -60543,6 +61678,7 @@ impl crate::FlatSerialize for WeightingInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WeightingInfos {
+    /// 带宽权重信息。需要在入参AdditionalAttributes 中指定NetworkInfo.BandwidthWeighting 时才返回该字段。
     #[serde(rename = "WeightingInfo")]
     pub weighting_info: Vec<WeightingInfo>,
 }
@@ -60585,6 +61721,7 @@ impl crate::FlatSerialize for BandwidthWeighting {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkInfo {
+    /// 规格支持的带宽权重
     #[serde(rename = "BandwidthWeighting")]
     pub bandwidth_weighting: BandwidthWeighting,
 }
@@ -60606,94 +61743,176 @@ impl crate::FlatSerialize for NetworkInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponseInstanceTypesInstanceType {
+    /// 支持挂载的所有网卡（包括主网卡、弹性网卡、中继网卡等）上限。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EniTotalQuantity")]
     pub eni_total_quantity: i32,
+    /// 本地盘类型。更多信息，请参见[本地盘](~~63138~~)。可能值：
+    ///
+    /// - local_hdd_pro：实例规格族d1ne和d1搭载的SATA HDD本地盘。
+    /// - local_ssd_pro：实例规格族i2、i2g、i1、ga1和gn5等搭载的NVMe SSD本地盘。
     #[serde(rename = "LocalStorageCategory")]
     pub local_storage_category: String,
+    /// 主网卡默认队列数。
     #[serde(rename = "PrimaryEniQueueNumber")]
     pub primary_eni_queue_number: i32,
+    /// 内存大小。单位：GiB。
     #[serde(rename = "MemorySize")]
     pub memory_size: f32,
+    /// 实例挂载的本地盘的单盘容量。单位：GiB。
     #[serde(rename = "LocalStorageCapacity")]
     pub local_storage_capacity: i64,
+    /// 实例规格族级别。可能值：
+    ///
+    /// - EntryLevel：入门级（共享型）。
+    /// - EnterpriseLevel：企业级。
+    /// - CreditEntryLevel：积分入门级。更多信息，请参见[突发性能实例](~~59977~~)。
     #[serde(rename = "InstanceFamilyLevel")]
     pub instance_family_level: String,
+    /// 内网入方向网络收发包能力。单位：pps。
     #[serde(rename = "InstancePpsRx")]
     pub instance_pps_rx: i64,
+    /// 单块弹性网卡的IPv6地址上限。
     #[serde(rename = "EniIpv6AddressQuantity")]
     pub eni_ipv6_address_quantity: i32,
+    /// 单块弹性网卡最大队列数。包括主网卡及辅助网卡支持的队列数。
     #[serde(rename = "MaximumQueueNumberPerEni")]
     pub maximum_queue_number_per_eni: i32,
+    /// 实例规格ID。
     #[serde(rename = "InstanceTypeId")]
     pub instance_type_id: String,
+    /// 最大内网入方向带宽限制。单位：kbit/s
     #[serde(rename = "InstanceBandwidthRx")]
     pub instance_bandwidth_rx: i32,
+    /// 辅助弹性网卡默认队列数。
     #[serde(rename = "SecondaryEniQueueNumber")]
     pub secondary_eni_queue_number: i32,
+    /// GPU类型。
     #[serde(rename = "GPUSpec")]
     pub gpu_spec: String,
+    /// 最大内网出方向带宽限制。单位：kbit/s
     #[serde(rename = "InstanceBandwidthTx")]
     pub instance_bandwidth_tx: i32,
+    /// 实例所有弹性RDMA网卡（ERI）的QP（QueuePair）队列数上限和实例规格有关，对于：
+    /// - 企业级CPU实例：`QueuePairNumber`，即实例规格允许的所有弹性RDMA网卡的QP数量上限。
+    ///
+    /// - GPU实例：允许的所有网卡QP数上限为`QueuePairNumber * NetworkCardQuantity`。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
+    /// 弹性RDMA网卡（ERI）数量。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EriQuantity")]
     pub eri_quantity: i32,
+    /// GPU数量。
     #[serde(rename = "GPUAmount")]
     pub gpu_amount: i32,
+    /// 实例规格允许修改的弹性网卡队列数总配额。
     #[serde(rename = "TotalEniQueueQuantity")]
     pub total_eni_queue_quantity: i32,
+    /// 实例规格所挂载的云盘是否支持NVMe。可能值：
+    /// - required：支持。表示云盘以NVMe的方式挂载。
+    /// - unsupported：不支持。表示云盘不以NVMe的方式挂载。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
+    /// 支持挂载的云盘数量上限。
     #[serde(rename = "DiskQuantity")]
     pub disk_quantity: i32,
+    /// 突发性能实例t5、t6的初始vCPU积分值。
     #[serde(rename = "InitialCredit")]
     pub initial_credit: i32,
+    /// 实例挂载的本地盘的数量。
     #[serde(rename = "LocalStorageAmount")]
     pub local_storage_amount: i32,
+    /// 突发性能实例t5、t6的基准vCPU计算性能（所有vCPU之和）。
     #[serde(rename = "BaselineCredit")]
     pub baseline_credit: i32,
+    /// 内网出方向网络收发包能力。单位：pps。
     #[serde(rename = "InstancePpsTx")]
     pub instance_pps_tx: i64,
+    /// 单块弹性网卡的IPv4地址上限。
     #[serde(rename = "EniPrivateIpAddressQuantity")]
     pub eni_private_ip_address_quantity: i32,
+    /// vCPU内核数目。
     #[serde(rename = "CpuCoreCount")]
     pub cpu_core_count: i32,
+    /// 实例规格族。
     #[serde(rename = "InstanceTypeFamily")]
     pub instance_type_family: String,
+    /// 支持挂载的弹性网卡上限。
     #[serde(rename = "EniQuantity")]
     pub eni_quantity: i32,
+    /// 实例规格所挂载的网卡是否支持中继。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EniTrunkSupported")]
     pub eni_trunk_supported: bool,
+    /// CPU基频，单位GHz。
     #[serde(rename = "CpuSpeedFrequency")]
     pub cpu_speed_frequency: f32,
+    /// CPU睿频，单位GHz。
     #[serde(rename = "CpuTurboFrequency")]
     pub cpu_turbo_frequency: f32,
+    /// 处理器型号。
     #[serde(rename = "PhysicalProcessorModel")]
     pub physical_processor_model: String,
+    /// 实例是否支持VPC网络流量加密，可能值：
+    ///
+    /// - true：支持VPC网络流量加密。
+    /// - false：不支持VPC网络流量加密。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "NetworkEncryptionSupport")]
     pub network_encryption_support: bool,
+    /// 实例规格分类。可能值：
+    ///
+    /// - General-purpose： 通用型。
+    /// - Compute-optimized：计算型。
+    /// - Memory-optimized：内存型。
+    /// - Big data：大数据型。
+    /// - Local SSDs ：本地SSD型。
+    /// - High Clock Speed ：高主频型。
+    /// - Enhanced ：增强型。
+    /// - Shared：共享型。
+    /// - Compute-optimized with GPU ：GPU计算型。
+    /// - Visual Compute-optimized ：视觉计算型。
+    /// - Heterogeneous Service ：异构服务型。
+    /// - Compute-optimized with FPGA ：FPGA计算型。
+    /// - Compute-optimized with NPU ：NPU计算型。
+    /// - ECS Bare Metal ：弹性裸金属服务器。
+    /// - Super Computing Cluster：超级计算集群。
+    /// - High Performance Compute：高性能计算型。
     #[serde(rename = "InstanceCategory")]
     pub instance_category: String,
+    /// CPU架构，可能值：
+    ///
+    /// - X86。
+    /// - ARM。
     #[serde(rename = "CpuArchitecture")]
     pub cpu_architecture: String,
+    /// 规格对应的单块GPU显存。单位：GiB。
     #[serde(rename = "GPUMemorySize")]
     pub gpu_memory_size: f32,
+    /// 实例规格支持的物理网卡数量。
     #[serde(rename = "NetworkCardQuantity")]
     pub network_card_quantity: i32,
     #[serde(rename = "NetworkCards")]
     pub network_cards: NetworkCards,
     #[serde(rename = "SupportedBootModes")]
     pub supported_boot_modes: BootModes,
+    /// >该参数暂未开放使用。
     #[serde(rename = "EnhancedNetwork")]
     pub enhanced_network: ItemEnhancedNetwork,
+    /// CPU设置。
     #[serde(rename = "CpuOptions")]
     pub cpu_options: TypeItemCpuOptions,
+    /// 是否支持巨型帧。
     #[serde(rename = "JumboFrameSupport")]
     pub jumbo_frame_support: bool,
+    /// 规格支持的时钟。
     #[serde(rename = "Clock")]
     pub clock: ItemClock,
     #[serde(rename = "Attributes")]
     pub attributes: ItemAttributes,
+    /// 网络相关信息。
     #[serde(rename = "NetworkInfo")]
     pub network_info: NetworkInfo,
 }
@@ -60927,6 +62146,7 @@ impl crate::FlatSerialize for DescribeInstanceTypesResponseInstanceTypesInstance
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponseInstanceTypes {
+    /// 实例规格集合。
     #[serde(rename = "InstanceType")]
     pub instance_type: Vec<DescribeInstanceTypesResponseInstanceTypesInstanceType>,
 }
@@ -60948,6 +62168,7 @@ impl crate::FlatSerialize for DescribeInstanceTypesResponseInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceAttributeResponseSecurityGroupIds {
+    /// 实例所属安全组集合。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -60969,6 +62190,7 @@ impl crate::FlatSerialize for InstanceAttributeResponseSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePublicIpAddress {
+    /// 实例公网IP地址。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -60990,6 +62212,7 @@ impl crate::FlatSerialize for ResponsePublicIpAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInnerIpAddress {
+    /// 经典网络类型实例的内网IP地址。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -61011,6 +62234,7 @@ impl crate::FlatSerialize for ResponseInnerIpAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcAttributesPrivateIpAddress {
+    /// 私有IP地址。
     #[serde(rename = "IpAddress")]
     pub ip_address: Vec<String>,
 }
@@ -61032,10 +62256,13 @@ impl crate::FlatSerialize for ResponseVpcAttributesPrivateIpAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcAttributes {
+    /// 专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 云产品的IP，用于VPC云产品之间的网络互通。
     #[serde(rename = "NatIpAddress")]
     pub nat_ip_address: String,
+    /// 虚拟交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
     #[serde(rename = "PrivateIpAddress")]
@@ -61070,12 +62297,21 @@ impl crate::FlatSerialize for ResponseVpcAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEipAddress {
+    /// 公网带宽计费方式。可能值：
+    ///
+    /// - PayByBandwidth：按固定带宽计费。
+    /// - PayByTraffic：按使用流量计费。
+    ///
+    /// > **按使用流量计费**模式下的出入带宽峰值都是带宽上限，不作为业务承诺指标。当出现资源争抢时，带宽峰值可能会受到限制。如果您的业务需要有带宽的保障，请使用**按固定带宽计费**模式。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
+    /// 弹性公网IP。
     #[serde(rename = "IpAddress")]
     pub ip_address: String,
+    /// 弹性公网IP的公网带宽限速，单位为Mbit/s。
     #[serde(rename = "Bandwidth")]
     pub bandwidth: i32,
+    /// 弹性公网IP的ID。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
 }
@@ -61112,8 +62348,10 @@ impl crate::FlatSerialize for ResponseEipAddress {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDedicatedHostAttribute {
+    /// 专有宿主机的名称。
     #[serde(rename = "DedicatedHostName")]
     pub dedicated_host_name: String,
+    /// 专有宿主机ID。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: String,
 }
@@ -61140,6 +62378,13 @@ impl crate::FlatSerialize for ResponseDedicatedHostAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseOperationLocksLockReason {
+    /// 锁定类型。可能值：
+    ///
+    /// - financial：因欠费被锁定。
+    /// - security：因安全原因被锁定。
+    /// - Recycling：抢占式实例的待释放锁定状态。
+    /// - dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
+    /// - refunded：因退款被锁定。
     #[serde(rename = "LockReason")]
     pub lock_reason: String,
 }
@@ -61161,6 +62406,13 @@ impl crate::FlatSerialize for ResponseOperationLocksLockReason {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseOperationLocks {
+    /// 锁定类型。可能值：
+    ///
+    /// - financial：因欠费被锁定。
+    /// - security：因安全原因被锁定。
+    /// - Recycling：抢占式实例的待释放锁定状态。
+    /// - dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
+    /// - refunded：因退款被锁定。
     #[serde(rename = "LockReason")]
     pub lock_reason: Vec<ResponseOperationLocksLockReason>,
 }
@@ -61182,10 +62434,26 @@ impl crate::FlatSerialize for ResponseOperationLocks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkOptions {
+    /// 实例是否开启了Jumbo frame特性。 可能值：
+    ///
+    /// - true：开启。
+    ///
+    /// - false：未开启。
+    ///
+    /// 更多信息，请参见[ECS实例MTU](~~200512~~)。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableJumboFrame")]
     pub enable_jumbo_frame: bool,
+    /// 实例是否开启VPC网络流量加密，可能值：
+    ///
+    /// - true：开启。
+    /// - false：未开启。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableNetworkEncryption")]
     pub enable_network_encryption: bool,
+    /// 带宽权重。
+    ///
+    /// 不同规格支持设置的值不一样，您可以通过[DescribeInstanceTypes](~~2679699~~)查询当前实例规格支持的带宽权重值。
     #[serde(rename = "BandwidthWeighting")]
     pub bandwidth_weighting: String,
 }
@@ -61217,8 +62485,10 @@ impl crate::FlatSerialize for ResponseNetworkOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectionOptions {
+    /// >该参数正在邀测中，暂不开放使用。
     #[serde(rename = "Password")]
     pub password: String,
+    /// >该参数正在邀测中，暂不开放使用。
     #[serde(rename = "Type")]
     pub r#type: String,
 }
@@ -61237,14 +62507,43 @@ impl crate::FlatSerialize for ConnectionOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributePrivateDnsNameOptions {
+    /// 开启/关闭实例ID类型的域名到 IPv4的解析。可能值：
+    ///  
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsARecord")]
     pub enable_instance_id_dns_a_record: bool,
+    /// 开启/关闭实例 ID 类型的域名到 IPv6 的解析。可能值：
+    ///  
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsAAAARecord")]
     pub enable_instance_id_dns_aaaa_record: bool,
+    /// 开启/关闭IP类型的域名到IPv4 的解析。可能值：
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsARecord")]
     pub enable_ip_dns_a_record: bool,
+    /// 开启/关闭IPv4到IP类型的域名解析。可能值：
+    /// - true：开启。
+    /// - false：关闭。
+    ///
+    /// 默认值：false。
     #[serde(rename = "EnableIpDnsPtrRecord")]
     pub enable_ip_dns_ptr_record: bool,
+    /// 主机名类型，可能值：
+    ///
+    /// - Custom：自定义。
+    /// - IpBased：基于IP格式的主机。
+    /// - InstanceIdBased：基于实例ID格式的主机名。
+    ///
+    /// 默认值：Custom。
     #[serde(rename = "HostnameType")]
     pub hostname_type: String,
 }
@@ -61286,10 +62585,17 @@ impl crate::FlatSerialize for AttributePrivateDnsNameOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance {
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 账单费用货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 费用数值。
     #[serde(rename = "Fee")]
     pub fee: String,
 }
@@ -61313,6 +62619,7 @@ impl crate::FlatSerialize for InstanceChargeTypeResponseFeeOfInstancesFeeOfInsta
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceChargeTypeResponseFeeOfInstances {
+    /// 订单费用详情。
     #[serde(rename = "FeeOfInstance")]
     pub fee_of_instance: Vec<InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance>,
 }
@@ -61334,10 +62641,13 @@ impl crate::FlatSerialize for InstanceChargeTypeResponseFeeOfInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyInstanceSpecDisk {
+    /// >该参数暂未开放使用。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Category")]
     pub category: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
 }
@@ -61361,10 +62671,13 @@ impl crate::FlatSerialize for ModifyInstanceSpecDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrepayInstanceSpecDisk {
+    /// >该参数暂未开放使用。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Category")]
     pub category: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
 }
@@ -61388,12 +62701,16 @@ impl crate::FlatSerialize for PrepayInstanceSpecDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResult {
+    /// 判断是否成功授予实例RAM角色。返回值为200表示成功授予，返回其他值表示授予失败，失败原因参见错误码。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 判断是否成功授予实例RAM角色。返回值为Success表示成功授予，返回其他值表示授予失败，失败原因参见错误码。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 是否成功授予实例RAM角色。
     #[serde(rename = "Success")]
     pub success: bool,
 }
@@ -61418,6 +62735,7 @@ impl crate::FlatSerialize for AttachInstanceRamRoleResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResults {
+    /// 由实例RAM角色类型（AttachInstanceRamRoleResult）组成的信息集。
     #[serde(rename = "AttachInstanceRamRoleResult")]
     pub attach_instance_ram_role_result: Vec<AttachInstanceRamRoleResult>,
 }
@@ -61439,8 +62757,10 @@ impl crate::FlatSerialize for AttachInstanceRamRoleResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRamRoleSetsInstanceRamRoleSet {
+    /// 实例RAM角色名称。
     #[serde(rename = "RamRoleName")]
     pub ram_role_name: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -61467,6 +62787,7 @@ impl crate::FlatSerialize for ResponseInstanceRamRoleSetsInstanceRamRoleSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRamRoleSets {
+    /// 由实例ID和RAM角色名称（InstanceRamRoleSet）组成的信息集。
     #[serde(rename = "InstanceRamRoleSet")]
     pub instance_ram_role_set: Vec<ResponseInstanceRamRoleSetsInstanceRamRoleSet>,
 }
@@ -61488,8 +62809,10 @@ impl crate::FlatSerialize for ResponseInstanceRamRoleSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceRamRoleSetsInstanceRamRoleSet {
+    /// 收回实例RAM角色名称。
     #[serde(rename = "RamRoleName")]
     pub ram_role_name: String,
+    /// 被收回的实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -61516,6 +62839,7 @@ impl crate::FlatSerialize for ItemInstanceRamRoleSetsInstanceRamRoleSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceRamRoleSets {
+    /// 收回的实例ID和实例RAM角色名称集合。
     #[serde(rename = "InstanceRamRoleSet")]
     pub instance_ram_role_set: Vec<ItemInstanceRamRoleSetsInstanceRamRoleSet>,
 }
@@ -61537,12 +62861,16 @@ impl crate::FlatSerialize for ItemInstanceRamRoleSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachInstanceRamRoleResult {
+    /// 判断是否成功收回实例RAM角色。返回值为200表示成功收回，返回其他值表示收回失败，失败原因参见错误码。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 判断是否成功收回实例RAM角色。返回值为Success表示成功收回，返回其他值表示收回失败，失败原因参见错误码。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 被收回实例RAM角色的实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 是否成功收回实例RAM角色。
     #[serde(rename = "Success")]
     pub success: bool,
     #[serde(rename = "InstanceRamRoleSets")]
@@ -61574,6 +62902,7 @@ impl crate::FlatSerialize for DetachInstanceRamRoleResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachInstanceRamRoleResults {
+    /// 由被收回的实例ID和收回实例RAM角色名称等（DetachInstanceRamRoleResult）组成的信息集。
     #[serde(rename = "DetachInstanceRamRoleResult")]
     pub detach_instance_ram_role_result: Vec<DetachInstanceRamRoleResult>,
 }
@@ -61595,14 +62924,25 @@ impl crate::FlatSerialize for DetachInstanceRamRoleResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesInstanceRenewAttribute {
+    /// 自动续费时长的单位。
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 自动续费时长。
     #[serde(rename = "Duration")]
     pub duration: i32,
+    /// 实例的自动续费状态。可能值：
+    ///
+    /// - AutoRenewal：设置为自动续费。
+    ///
+    /// - Normal：取消自动续费。
+    ///
+    /// - NotRenewal：不再续费，系统不再发送到期提醒，只在到期前第三天发送不续费提醒。不再续费的ECS实例可以通过[ModifyInstanceAutoRenewAttribute](~~52843~~)更改成待续费（`Normal`）后，再自行续费或设置为自动续费。
     #[serde(rename = "RenewalStatus")]
     pub renewal_status: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 是否已设置自动续费。
     #[serde(rename = "AutoRenewEnabled")]
     pub auto_renew_enabled: bool,
 }
@@ -61640,6 +62980,7 @@ impl crate::FlatSerialize for AttributesInstanceRenewAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRenewAttributes {
+    /// 实例续费的属性InstanceRenewAttribute的集合。
     #[serde(rename = "InstanceRenewAttribute")]
     pub instance_renew_attribute: Vec<AttributesInstanceRenewAttribute>,
 }
@@ -61661,18 +63002,25 @@ impl crate::FlatSerialize for ResponseInstanceRenewAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PriceType {
+    /// 抢占式实例是否为I/O优化实例。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: String,
+    /// 抢占式实例所属的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 抢占式实例价格。
     #[serde(rename = "SpotPrice")]
     pub spot_price: f32,
+    /// 时间格式为`yyyy-MM-ddTHH:mm:ssZ`的价格时间。
     #[serde(rename = "Timestamp")]
     pub timestamp: String,
+    /// 抢占式实例的网络类型。
     #[serde(rename = "NetworkType")]
     pub network_type: String,
+    /// 抢占式实例的实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 按量付费实例部分原价。
     #[serde(rename = "OriginPrice")]
     pub origin_price: f32,
 }
@@ -61720,6 +63068,7 @@ impl crate::FlatSerialize for PriceType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotPrices {
+    /// 抢占价格详情。
     #[serde(rename = "SpotPriceType")]
     pub spot_price_type: Vec<PriceType>,
 }
@@ -61741,12 +63090,23 @@ impl crate::FlatSerialize for SpotPrices {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotResource {
+    /// 近30天抢占式实例的释放率的范围，对应`InterruptionRate`返回值。可能值：
+    ///
+    /// - 0-3%
+    /// - 3-5%
+    /// - 5-10%
+    /// - 10-100%
     #[serde(rename = "InterruptRateDesc")]
     pub interrupt_rate_desc: String,
+    /// 近30天抢占式实例的均价相比按量付费实例价格的折扣率。单位：%。可能值：1~100。
+    ///
+    /// 您可以根据该返回值计算抢占式实例的均价。例如，按量付费实例的价格为1，该返回值为20（即20%），则近30天抢占式实例的均价为0.2。
     #[serde(rename = "AverageSpotDiscount")]
     pub average_spot_discount: i32,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 近30天抢占式实例的平均释放率。单位：%。
     #[serde(rename = "InterruptionRate")]
     pub interruption_rate: f32,
 }
@@ -61783,6 +63143,7 @@ impl crate::FlatSerialize for SpotResource {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotResources {
+    /// 近30天抢占式实例的释放率、折扣率等信息组成的数组。
     #[serde(rename = "AvailableSpotResource")]
     pub available_spot_resource: Vec<SpotResource>,
 }
@@ -61804,6 +63165,7 @@ impl crate::FlatSerialize for SpotResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotZone {
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
     #[serde(rename = "AvailableSpotResources")]
@@ -61828,6 +63190,9 @@ impl crate::FlatSerialize for SpotZone {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotZones {
+    /// 可用区及其对应的抢占式实例相关信息组成的数组。
+    ///
+    /// > 返回值的顺序按照实例规格的历史平均折扣率排序。
     #[serde(rename = "AvailableSpotZone")]
     pub available_spot_zone: Vec<SpotZone>,
 }
@@ -61849,12 +63214,28 @@ impl crate::FlatSerialize for SpotZones {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageDiskDeviceMapping {
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 云盘的大小，单位为GiB。DiskDeviceMapping.N.Size的取值和默认值和DiskDeviceMapping.N.SnapshotId有关：
+    ///
+    /// - 如果没有指定SnapshotId，Size取值以及默认值为：
+    ///     - 普通云盘：5~2000GiB，默认为5。
+    ///     - 其他云盘：20~32768GiB，默认为20。
+    /// - 如果指定了SnapshotId，Size取值必须大于等于SnapshotId的大小，默认为SnapshotId的大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 指定在自定义镜像中的设备名称。取值范围：
+    ///
+    /// - 系统盘的设备名必须为：/dev/xvda。
+    ///
+    /// - 数据盘设备名从/dev/xvdb 依次排序到/dev/xvdz，不能重复。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 指定在新镜像中的云盘类型。您可以通过该参数使用数据盘快照作为镜像的系统盘，如果不指定，默认为快照对应的云盘类型。取值范围：
+    ///
+    /// - system：系统盘。只能指定 1 块系统盘快照。
+    /// - data：数据盘。最多可以指定 16 块数据盘快照。
     #[serde(rename = "DiskType")]
     pub disk_type: String,
 }
@@ -61883,8 +63264,12 @@ impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageTag {
+    /// 镜像的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 镜像的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -61903,6 +63288,11 @@ impl crate::FlatSerialize for CreateImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateImageFeatures {
+    /// 镜像的元数据访问模式，可能值：
+    /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
+    /// - v2：通过该镜像创建ECS实例时，支持将元数据访问模式设置为“仅加固模式”。
+    ///
+    /// 默认值：当使用快照创建镜像时，默认为v1。当使用实例创建镜像时，默认取实例创建时镜像的ImdsSupport属性值。
     #[serde(rename = "ImdsSupport")]
     pub imds_support: String,
 }
@@ -61924,8 +63314,14 @@ impl crate::FlatSerialize for CreateImageFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesTag {
+    /// 镜像的标签键。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 镜像的标签值。
+    ///
+    /// >该参数即将被弃用，为提高兼容性，建议您使用另一个`Tag.N.Value`参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -61944,8 +63340,23 @@ impl crate::FlatSerialize for ImagesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesFilter {
+    /// 查询资源时的筛选键。取值范围：
+    ///
+    /// - 当该参数取值为`CreationStartTime`时，可以查询在指定时间点（`Filter.N.Value`）后创建的资源信息。
+    /// - 当该参数取值为`CreationEndTime`时，可以查询在指定时间点（`Filter.N.Value`）前创建的资源信息。
+    /// - 当该参数取值为`NetworkType`时，可以查询指定网络类型的资源信息。
+    /// - 当该参数取值为`CpuOnlineUpgrade`、`CpuOnlineDowngrade`、`MemoryOnlineUpgrade`、`MemoryOnlineDowngrade`中的任何一个值时，可以查询指定镜像的CPU或内存的热插拔支持情况。
+    ///
+    /// 默认值：null。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 查询资源时的筛选值。
+    /// - 当（`Filter.N.Key`）为`CreationStartTime`或`CreationEndTime`时，格式为：`yyyy-MM-ddTHH:mmZ`，采用 UTC+0 时区。
+    /// - 当（`Filter.N.Key`）为`NetworkType`时，可以指定网络类型的值有：`vpc`、`classic`等。
+    ///
+    /// - 当（`Filter.N.Key`）取值为`CpuOnlineUpgrade`、`CpuOnlineDowngrade`、`MemoryOnlineUpgrade`、`MemoryOnlineDowngrade`时，该值可以取`supported`或`unsupported`。
+    ///
+    /// 默认值：null。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -61964,24 +63375,34 @@ impl crate::FlatSerialize for ImagesFilter {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDiskDeviceMappingsDiskDeviceMapping {
+    /// 镜像的类型。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 导入镜像所属OSS的bucket。
     #[serde(rename = "ImportOSSBucket")]
     pub import_oss_bucket: String,
+    /// 对于复制中的镜像，返回复制任务的进度。
     #[serde(rename = "Progress")]
     pub progress: String,
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 导入镜像所属OSS的object。
     #[serde(rename = "ImportOSSObject")]
     pub import_oss_object: String,
+    /// 云盘的设备信息，例如/dev/xvdb。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 云盘的大小。单位为GiB。
     #[serde(rename = "Size")]
     pub size: String,
+    /// 对于复制中的镜像，返回复制任务的剩余时间，单位：秒。
     #[serde(rename = "RemainTime")]
     pub remain_time: i32,
+    /// 镜像格式。
     #[serde(rename = "Format")]
     pub format: String,
+    /// > 该参数正在邀测中。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
 }
@@ -62028,6 +63449,7 @@ impl crate::FlatSerialize for ItemDiskDeviceMappingsDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDiskDeviceMappings {
+    /// 镜像下包含云盘和快照的映射关系。
     #[serde(rename = "DiskDeviceMapping")]
     pub disk_device_mapping: Vec<ItemDiskDeviceMappingsDiskDeviceMapping>,
 }
@@ -62049,8 +63471,10 @@ impl crate::FlatSerialize for ItemDiskDeviceMappings {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageItemTagsTag {
+    /// 镜像的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 镜像的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -62073,6 +63497,7 @@ impl crate::FlatSerialize for ImageItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageItemTags {
+    /// 镜像的标签对信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ImageItemTagsTag>,
 }
@@ -62090,12 +63515,22 @@ impl crate::FlatSerialize for ImageItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemsItem {
+    /// 镜像检测项名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 镜像检测项结果。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 导入的自定义镜像检测项是否存在风险，如果存在风险返回此字段，不存在风险则不返回。
+    ///
+    /// 风险等级可能值：
+    ///
+    /// - High：严重，影响实例能否启动成功，强烈建议修复。
+    ///
+    /// - Medium：重要，影响实例启动性能或者实例配置等，建议优化。
     #[serde(rename = "RiskLevel")]
     pub risk_level: String,
+    /// 检测项可能存在的缺陷。
     #[serde(rename = "RiskCode")]
     pub risk_code: String,
 }
@@ -62124,6 +63559,7 @@ impl crate::FlatSerialize for ItemsItem {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsItems {
+    /// 镜像检测项列表。
     #[serde(rename = "Item")]
     pub item: Vec<ItemsItem>,
 }
@@ -62141,6 +63577,11 @@ impl crate::FlatSerialize for OptionsItems {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetectionOptions {
+    /// 镜像检测任务状态。可能值：
+    ///
+    /// - Processing：检测中。
+    ///
+    /// - Finished：检测完成。
     #[serde(rename = "Status")]
     pub status: String,
     #[serde(rename = "Items")]
@@ -62161,16 +63602,43 @@ impl crate::FlatSerialize for DetectionOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFeatures {
+    /// 镜像是否支持NVMe。可能值：
+    ///
+    /// - supported：支持。表示以该镜像创建的实例支持NVMe协议。
+    ///
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持NVMe协议。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
+    /// 镜像的元数据访问模式，可能值：
+    /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
+    /// - v2：通过该镜像创建ECS实例时，支持将元数据访问模式设置为“仅加固模式”。
+    ///
+    ///
+    /// [实例元数据概述](~~108460~~)。
     #[serde(rename = "ImdsSupport")]
     pub imds_support: String,
+    /// 是否支持CPU热升配。可能值：
+    ///  
+    /// - supported：支持。
+    /// - unsupported	：不支持。
     #[serde(rename = "CpuOnlineUpgrade")]
     pub cpu_online_upgrade: String,
+    /// 是否支持CPU热降配。可能值：
+    ///  
+    /// - supported：支持。
+    /// - unsupported	：不支持。
     #[serde(rename = "CpuOnlineDowngrade")]
     pub cpu_online_downgrade: String,
+    /// 是否支持内存热升配。可能值：
+    ///  
+    /// - supported：支持。
+    /// - unsupported	：不支持。
     #[serde(rename = "MemoryOnlineUpgrade")]
     pub memory_online_upgrade: String,
+    /// 是否支持内存热降配。可能值：
+    ///  
+    /// - supported：支持。
+    /// - unsupported	：不支持。
     #[serde(rename = "MemoryOnlineDowngrade")]
     pub memory_online_downgrade: String,
 }
@@ -62217,68 +63685,136 @@ impl crate::FlatSerialize for ItemFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesImage {
+    /// 镜像的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 镜像的状态。可能值：
+    ///
+    /// - UnAvailable：不可用。
+    /// - Available：可用。
+    /// - Creating：创建中。
+    /// - CreateFailed：创建失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 镜像族系名称。
     #[serde(rename = "ImageFamily")]
     pub image_family: String,
+    /// 镜像完成的进度，单位为百分比。
     #[serde(rename = "Progress")]
     pub progress: String,
+    /// 是否是拷贝的镜像。
     #[serde(rename = "IsCopied")]
     pub is_copied: bool,
+    /// 是否可以在I/O优化实例上运行。
     #[serde(rename = "IsSupportIoOptimized")]
     pub is_support_io_optimized: bool,
+    /// 镜像来源。可能值：
+    ///
+    /// - system：阿里云提供的公共镜像。
+    /// - self：您创建的自定义镜像。
+    /// - others：其他阿里云用户提供的共享镜像或社区镜像。
+    /// - marketplace：云市场镜像提供的镜像。
     #[serde(rename = "ImageOwnerAlias")]
     pub image_owner_alias: String,
+    /// 是否支持Cloud Init。
     #[serde(rename = "IsSupportCloudinit")]
     pub is_support_cloudinit: bool,
+    /// 镜像版本。
     #[serde(rename = "ImageVersion")]
     pub image_version: String,
+    /// 有引用关系的资源类型。可能值：
+    ///
+    /// - instance：创建了一台或多台ECS实例。
+    /// - none：未创建过ECS实例。
     #[serde(rename = "Usage")]
     pub usage: String,
+    /// 是否共享过该自定义镜像给其他用户。
     #[serde(rename = "IsSelfShared")]
     pub is_self_shared: String,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 镜像大小，单位：GiB。
+    /// <notice>
+    /// 如果镜像包含数据盘，此参数仅代表镜像关联的系统盘快照大小。
+    /// </notice>
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 镜像所在的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 操作系统平台。
     #[serde(rename = "Platform")]
     pub platform: String,
+    /// 操作系统的英文显示名称。
     #[serde(rename = "OSNameEn")]
     pub os_name_en: String,
+    /// 镜像的名称。
     #[serde(rename = "ImageName")]
     pub image_name: String,
+    /// 操作系统的中文显示名称。
     #[serde(rename = "OSName")]
     pub os_name: String,
+    /// 镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 操作系统类型。可能值：
+    ///
+    /// - windows。
+    /// - linux。
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 是否订阅了该镜像的商品码对应的镜像商品的服务条款。
     #[serde(rename = "IsSubscribed")]
     pub is_subscribed: bool,
+    /// 云市场镜像中的镜像商品标识。
     #[serde(rename = "ProductCode")]
     pub product_code: String,
+    /// 镜像系统架构类型。可能值：
+    ///
+    /// - i386。
+    /// - x86_64。
+    /// - arm64。
     #[serde(rename = "Architecture")]
     pub architecture: String,
+    /// 镜像的启动模式。可能值：
+    /// - BIOS：BIOS启动模式。
+    /// - UEFI：UEFI启动模式。
+    ///
+    /// - UEFI-Preferred：双启动模式。
+    ///
+    /// 更多关于镜像的启动模式说明，请参见[镜像启动模式](~~2244655#b9caa9b8bb1wf~~)。
     #[serde(rename = "BootMode")]
     pub boot_mode: String,
     #[serde(rename = "DiskDeviceMappings")]
     pub disk_device_mappings: ItemDiskDeviceMappings,
     #[serde(rename = "Tags")]
     pub tags: ImageItemTags,
+    /// 是否为公开镜像。公开镜像包括阿里云提供的公共镜像以及您已发布为社区镜像的自定义镜像。可能值：
+    ///
+    /// - true：公开镜像。
+    /// - false：非公开镜像。
+    ///
+    ///
     #[serde(rename = "IsPublic")]
     pub is_public: bool,
+    /// 镜像所属的阿里云账号ID。该参数仅在查询共享镜像以及社区镜像时生效。
     #[serde(rename = "ImageOwnerId")]
     pub image_owner_id: i64,
+    /// 当前镜像是否支持非root用户登录。可能值：
+    ///
+    /// - true：支持。
+    ///
+    /// - false：不支持。
     #[serde(rename = "LoginAsNonRootSupported")]
     pub login_as_non_root_supported: bool,
+    /// 社区镜像认证企业名称。
     #[serde(rename = "SupplierName")]
     pub supplier_name: String,
+    /// 镜像检测相关结果。
     #[serde(rename = "DetectionOptions")]
     pub detection_options: DetectionOptions,
+    /// 镜像特性相关属性。
     #[serde(rename = "Features")]
     pub features: ItemFeatures,
     #[serde(rename = "LicenseType")]
@@ -62422,6 +63958,7 @@ impl crate::FlatSerialize for ImagesImage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImages {
+    /// 镜像信息Images组成的集合。
     #[serde(rename = "Image")]
     pub image: Vec<ImagesImage>,
 }
@@ -62439,8 +63976,20 @@ impl crate::FlatSerialize for ResponseImages {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeFeatures {
+    /// 镜像是否支持NVMe。可能值：
+    ///
+    /// - supported：支持。表示以该镜像创建的实例支持NVMe协议。
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持NVMe协议。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
+    /// 镜像的元数据访问模式，可能值：
+    /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
+    /// - v2：通过该镜像创建ECS实例时，支持将元数据访问模式设置为“仅加固模式”。
+    /// <notice>
+    ///
+    ///   ImdsSupport不允许从v2修改为v1，若需要修改，可通过该镜像关联的快照重新创建一个新的镜像并设置为v1。
+    ///
+    /// </notice>
     #[serde(rename = "ImdsSupport")]
     pub imds_support: String,
 }
@@ -62467,18 +64016,26 @@ impl crate::FlatSerialize for AttributeFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageDiskDeviceMappingsDiskDeviceMapping {
+    /// 镜像的类型。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 导入镜像所属OSS的Bucket。
     #[serde(rename = "ImportOSSBucket")]
     pub import_oss_bucket: String,
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 导入镜像所属OSS的Object。
     #[serde(rename = "ImportOSSObject")]
     pub import_oss_object: String,
+    /// 云盘大小，单位GiB。
     #[serde(rename = "Size")]
     pub size: String,
+    /// 云盘的设备信息，例如/dev/xvdb。
+    /// > 该参数即将停止使用，为提高代码的兼容性，建议您尽量不要使用该参数。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 镜像格式。
     #[serde(rename = "Format")]
     pub format: String,
 }
@@ -62514,6 +64071,7 @@ impl crate::FlatSerialize for ImageDiskDeviceMappingsDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageDiskDeviceMappings {
+    /// 镜像下包含云盘和快照的映射关系。
     #[serde(rename = "DiskDeviceMapping")]
     pub disk_device_mapping: Vec<ImageDiskDeviceMappingsDiskDeviceMapping>,
 }
@@ -62535,8 +64093,10 @@ impl crate::FlatSerialize for ImageDiskDeviceMappings {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageTagsTag {
+    /// 自定义镜像的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 自定义镜像的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -62559,6 +64119,7 @@ impl crate::FlatSerialize for ImageTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImageTags {
+    /// 镜像的标签对信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ImageTagsTag>,
 }
@@ -62576,46 +64137,81 @@ impl crate::FlatSerialize for ResponseImageTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImage {
+    /// 镜像的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 镜像的状态。可能值：
+    /// - UnAvailable：不可用
+    /// - Available：可用
+    /// - Creating：创建中
+    /// - CreateFailed：创建失败
     #[serde(rename = "Status")]
     pub status: String,
+    /// 镜像族系。
     #[serde(rename = "ImageFamily")]
     pub image_family: String,
+    /// 镜像完成的进度，单位为百分比。
     #[serde(rename = "Progress")]
     pub progress: String,
+    /// 是否是复制的镜像。
     #[serde(rename = "IsCopied")]
     pub is_copied: bool,
+    /// 是否可以在I/O优化实例上运行。
     #[serde(rename = "IsSupportIoOptimized")]
     pub is_support_io_optimized: bool,
+    /// 镜像所有者别名。可能值：
+    /// - system：公共镜像。
+    /// - self：您的自定义镜像。
+    /// - others：其他用户的公开镜像。
+    /// - marketplace：云市场镜像。
     #[serde(rename = "ImageOwnerAlias")]
     pub image_owner_alias: String,
+    /// 是否支持cloud-init。
     #[serde(rename = "IsSupportCloudinit")]
     pub is_support_cloudinit: bool,
+    /// 镜像版本。
     #[serde(rename = "ImageVersion")]
     pub image_version: String,
+    /// 有引用关系的资源类型。可能值：
+    /// - instance：创建了一台或多台ECS实例。
+    /// - none：未创建过ECS实例。
     #[serde(rename = "Usage")]
     pub usage: String,
+    /// 是否共享过该自定义镜像给其他用户。
     #[serde(rename = "IsSelfShared")]
     pub is_self_shared: String,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 镜像大小，单位GiB。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 操作系统平台。
     #[serde(rename = "Platform")]
     pub platform: String,
+    /// 镜像的名称。
     #[serde(rename = "ImageName")]
     pub image_name: String,
+    /// 操作系统的中文显示名称。
     #[serde(rename = "OSName")]
     pub os_name: String,
+    /// 镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 操作系统类型。可能值：
+    /// - windows
+    /// - linux
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 是否订阅了该镜像商品码对应的镜像商品服务条款。
     #[serde(rename = "IsSubscribed")]
     pub is_subscribed: bool,
+    /// 镜像市场的镜像商品标示。
     #[serde(rename = "ProductCode")]
     pub product_code: String,
+    /// 镜像系统架构类型。可能值：
+    /// - i386
+    /// - x86_64
     #[serde(rename = "Architecture")]
     pub architecture: String,
     #[serde(rename = "DiskDeviceMappings")]
@@ -62715,8 +64311,12 @@ impl crate::FlatSerialize for ResponseImage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypesFilter {
+    /// 指定过滤条件Key，当前只支持过滤镜像ID。取值范围：
+    /// -  imageId：过滤条件为镜像ID。
+    /// -  filter：过滤条件为镜像ID。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 指定过滤条件Value。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -62735,12 +64335,16 @@ impl crate::FlatSerialize for TypesFilter {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportInstanceTypesResponseInstanceTypesInstanceType {
+    /// 镜像支持的实例规格ID。
     #[serde(rename = "InstanceTypeId")]
     pub instance_type_id: String,
+    /// 实例规格族。
     #[serde(rename = "InstanceTypeFamily")]
     pub instance_type_family: String,
+    /// 实例规格的vCPU内核数目。
     #[serde(rename = "CpuCoreCount")]
     pub cpu_core_count: i32,
+    /// 实例规格的内存大小，单位GiB。
     #[serde(rename = "MemorySize")]
     pub memory_size: f32,
 }
@@ -62777,6 +64381,7 @@ impl crate::FlatSerialize for SupportInstanceTypesResponseInstanceTypesInstanceT
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportInstanceTypesResponseInstanceTypes {
+    /// 由InstanceTypeItemType组成的实例规格集合。
     #[serde(rename = "InstanceType")]
     pub instance_type: Vec<SupportInstanceTypesResponseInstanceTypesInstanceType>,
 }
@@ -62798,6 +64403,7 @@ impl crate::FlatSerialize for SupportInstanceTypesResponseInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ShareGroup {
+    /// 共享分组。
     #[serde(rename = "Group")]
     pub group: String,
 }
@@ -62815,6 +64421,7 @@ impl crate::FlatSerialize for ShareGroup {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ShareGroups {
+    /// 共享组。
     #[serde(rename = "ShareGroup")]
     pub share_group: Vec<ShareGroup>,
 }
@@ -62836,8 +64443,10 @@ impl crate::FlatSerialize for ShareGroups {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AccountsAccount {
+    /// 阿里云账号ID。
     #[serde(rename = "AliyunId")]
     pub aliyun_id: String,
+    /// 镜像共享开始时间。时间格式按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC时间。 格式为：yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "SharedTime")]
     pub shared_time: String,
 }
@@ -62864,6 +64473,7 @@ impl crate::FlatSerialize for AccountsAccount {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAccounts {
+    /// 阿里云注册用户。
     #[serde(rename = "Account")]
     pub account: Vec<AccountsAccount>,
 }
@@ -62881,16 +64491,49 @@ impl crate::FlatSerialize for ResponseAccounts {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageDiskDeviceMapping {
+    /// 自定义镜像大小。单位：GiB。
+    ///
+    /// 该空间由系统盘和数据盘组成，您必须保证系统盘的空间大小大于等于导入的镜像文件大小。取值范围：
+    ///
+    /// - N=1时，表示系统盘，取值范围：1 GiB~2048 GiB。
+    /// - N=2~17时，表示数据盘。取值范围：1 GiB~2048 GiB。
+    ///
+    /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
+    ///
+    /// >该参数即将被弃用，为提高兼容性，请尽量使用`DiskDeviceMapping.N.DiskImageSize`参数。
     #[serde(rename = "DiskImSize")]
     pub disk_im_size: i32,
+    /// 指定DiskDeviceMapping.N.Device在自定义镜像中的设备名。
+    ///
+    /// > 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 镜像文件所在的OSS Bucket。
+    ///
+    /// > 首次导入镜像到该OSS Bucket前，请参见本文档的**接口说明**添加RAM授权策略，否则会报错`NoSetRoletoECSServiceAccount`。
     #[serde(rename = "OSSBucket")]
     pub oss_bucket: String,
+    /// 镜像格式。取值范围：
+    ///
+    /// - RAW。
+    /// - VHD。
+    /// - QCOW2。
+    /// - VMDK（邀测中）。
+    ///
+    /// 默认值：无，表示阿里云自动检测镜像格式，以检测格式为准。
     #[serde(rename = "Format")]
     pub format: String,
+    /// 镜像上传至OSS Bucket后，保存在Bucket中的镜像文件的文件名（key）。
     #[serde(rename = "OSSObject")]
     pub oss_object: String,
+    /// 导入镜像后，自定义镜像的空间大小。
+    ///
+    /// 该空间由系统盘和数据盘组成，您必须保证系统盘的空间大小大于等于导入的镜像文件大小。取值范围：
+    ///
+    /// - N=1时，表示系统盘，取值范围：1 GiB~2048 GiB。
+    /// - N=2~17时，表示数据盘。取值范围：1 GiB~2048 GiB。
+    ///
+    /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
     #[serde(rename = "DiskImageSize")]
     pub disk_image_size: i32,
 }
@@ -62929,8 +64572,10 @@ impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageTag {
+    /// 镜像的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或者`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 镜像的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -62949,8 +64594,17 @@ impl crate::FlatSerialize for ImportImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageFeatures {
+    /// 镜像是否支持NVMe。可能值：
+    ///
+    ///  - supported：支持。表示以该镜像创建的实例支持NVMe协议。
+    ///  - unsupported：不支持。表示以该镜像创建的实例不支持NVMe协议。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
+    /// 镜像的元数据访问模式，可能值：
+    /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
+    /// - v2：通过该镜像创建ECS实例时，支持将元数据访问模式设置为“仅加固模式”。
+    ///
+    /// 默认值：v1。
     #[serde(rename = "ImdsSupport")]
     pub imds_support: String,
 }
@@ -62977,8 +64631,10 @@ impl crate::FlatSerialize for ImportImageFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopyImageTag {
+    /// 复制后的镜像的标签值。N的取值范围为1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 复制后的镜像的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -62997,8 +64653,10 @@ impl crate::FlatSerialize for CopyImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentTag {
+    /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -63017,8 +64675,10 @@ impl crate::FlatSerialize for ComponentTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentsTag {
+    /// 标签键。N的取值范围：1~20
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N的取值范围：1~20
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -63037,8 +64697,10 @@ impl crate::FlatSerialize for ComponentsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSetItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -63061,6 +64723,7 @@ impl crate::FlatSerialize for ComponentSetItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSetItemTags {
+    /// 标签键值对列表。
     #[serde(rename = "Tag")]
     pub tag: Vec<ComponentSetItemTagsTag>,
 }
@@ -63078,10 +64741,18 @@ impl crate::FlatSerialize for ComponentSetItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParametersParameter {
+    /// 参数名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 参数类型。
+    ///
+    /// 取值范围：
+    /// - String
+    /// - Number
+    /// - Boolean
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 参数默认值。
     #[serde(rename = "DefaultValue")]
     pub default_value: String,
 }
@@ -63105,6 +64776,7 @@ impl crate::FlatSerialize for ParametersParameter {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemParameters {
+    /// 镜像组件包含的参数列表。
     #[serde(rename = "Parameter")]
     pub parameter: Vec<ParametersParameter>,
 }
@@ -63126,26 +64798,39 @@ impl crate::FlatSerialize for ItemParameters {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSet {
+    /// 组件创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 组件支持的操作系统。
     #[serde(rename = "SystemType")]
     pub system_type: String,
+    /// 镜像组件ID。
     #[serde(rename = "ImageComponentId")]
     pub image_component_id: String,
+    /// 组件类型。
     #[serde(rename = "ComponentType")]
     pub component_type: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 组件名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 组件内容。
     #[serde(rename = "Content")]
     pub content: String,
+    /// 镜像组件类型。可能值：
+    ///
+    /// - SELF：您创建的自定义镜像组件。
+    /// - ALIYUN：阿里云提供的系统组件。
     #[serde(rename = "Owner")]
     pub owner: String,
     #[serde(rename = "Tags")]
     pub tags: ComponentSetItemTags,
+    /// 组件版本号。
     #[serde(rename = "ComponentVersion")]
     pub component_version: String,
     #[serde(rename = "Parameters")]
@@ -63208,6 +64893,7 @@ impl crate::FlatSerialize for ComponentSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageComponent {
+    /// 镜像组件的详细信息组成的列表。
     #[serde(rename = "ImageComponentSet")]
     pub image_component_set: Vec<ComponentSet>,
 }
@@ -63229,8 +64915,10 @@ impl crate::FlatSerialize for ImageComponent {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineTag {
+    /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -63249,12 +64937,29 @@ impl crate::FlatSerialize for PipelineTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMapping {
+    /// 镜像文件所在的OSS Bucket。
     #[serde(rename = "OSSBucket")]
     pub oss_bucket: String,
+    /// 镜像上传至OSS Bucket后，保存在Bucket中的镜像文件的文件名（key）。
     #[serde(rename = "OSSObject")]
     pub oss_object: String,
+    /// 镜像格式。取值范围：
+    ///
+    /// - RAW。
+    /// - VHD。
+    /// - QCOW2。
+    ///
+    /// 默认值：无，表示阿里云自动检测镜像格式，以检测格式为准。
     #[serde(rename = "Format")]
     pub format: String,
+    /// 导入镜像后，自定义镜像的空间大小。
+    ///
+    /// 该空间由系统盘和数据盘组成，您必须保证系统盘的空间大小大于等于导入的镜像文件大小。取值范围：
+    ///
+    /// - N=1时，表示系统盘，取值范围：1 GiB~2048 GiB。
+    /// - N=2~17时，表示数据盘。取值范围：1 GiB~2048 GiB。
+    ///
+    /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
     #[serde(rename = "DiskImageSize")]
     pub disk_image_size: i32,
 }
@@ -63287,6 +64992,11 @@ impl crate::FlatSerialize for OptionsDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptionsFeatures {
+    /// 导入的原始镜像是否支持 NVMe。可能值：
+    /// - supported：支持。表示以该镜像创建的实例支持 NVMe 协议。
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持 NVMe 协议。
+    ///
+    /// 默认值：unsupported。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
     #[serde(rename = "ImdsSupport")]
@@ -63335,20 +65045,87 @@ impl crate::FlatSerialize for OptionsImportImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptions {
+    /// 指定数据盘快照做镜像的系统盘后，需要通过Architecture确定系统盘的系统架构。取值范围：
+    ///
+    /// - x86_64。
+    /// - arm64。
+    ///
+    /// 默认值为x86_64。
     #[serde(rename = "Architecture")]
     pub architecture: String,
+    /// 操作系统类型。可能值：
+    ///
+    /// - windows。
+    /// - linux。
+    ///
+    /// 默认值：linux。
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 操作系统版本。取值范围：
+    /// - Aliyun
+    /// - Anolis
+    /// - CentOS
+    /// - Ubuntu
+    /// - CoreOS
+    /// - SUSE
+    /// - Debian
+    /// - OpenSUSE
+    /// - FreeBSD
+    /// - RedHat
+    /// - Kylin
+    /// - UOS
+    /// - Fedora
+    /// - Fedora CoreOS
+    /// - CentOS Stream
+    /// - AlmaLinux
+    /// - Rocky Linux
+    /// - Gentoo
+    /// - Customized Linux
+    /// - Others Linux
+    /// - Windows Server 2022
+    /// - Windows Server 2019
+    /// - Windows Server 2016
+    /// - Windows Server 2012
+    /// - Windows Server 2008
+    /// - Windows Server 2003
+    /// - Other Windows
+    ///
+    /// 默认值：当操作系统类型为Linux时为Others Linux，否则为Other Windows。
     #[serde(rename = "Platform")]
     pub platform: String,
+    /// 修改镜像的启动模式。取值范围：
+    ///
+    /// - BIOS：BIOS启动模式。
+    /// - UEFI：UEFI启动模式。
+    ///
+    /// 默认值：BIOS。如果`Architecture=arm64`，则该参数默认值为UEFI，且只能设置为UEFI。
+    ///
+    /// <notice>
+    ///
+    /// 为了避免使用镜像不支持的启动模式导致实例无法正常启动，请您务必在选择该参数之前了解目标镜像支持的启动模式。镜像启动模式详情，请参见[镜像启动模式](~~2244655#b9caa9b8bb1wf~~)。
+    ///
+    /// </notice>
     #[serde(rename = "BootMode")]
     pub boot_mode: String,
+    /// 导入镜像后，激活操作系统采用的许可证类型。取值范围：
+    ///
+    /// - Auto：由阿里云检测源操作系统并分配许可证。自动模式下，系统优先搜索您设置的`Platform`是否有阿里云官方渠道的许可证并分配给导入的镜像，如果缺乏该类许可，会切换成BYOL（Bring Your Own License）方式。
+    /// - Aliyun：根据您设置的`Platform`采用阿里云官方渠道的许可证。
+    /// - BYOL：源操作系统自带的许可证。采用BYOL时，您必须确保您的许可证密钥支持在阿里云使用。
+    ///
+    /// 默认值：Auto。
+    ///
     #[serde(rename = "LicenseType")]
     pub license_type: String,
+    /// 创建的自定义镜像信息列表。
+    /// - N=1 时，表示系统盘.
+    /// - N=2~17 时，表示数据盘。
     #[serde(rename = "DiskDeviceMappings")]
     pub disk_device_mappings: Vec<OptionsDiskDeviceMapping>,
+    /// 镜像特性相关属性。
     #[serde(rename = "Features")]
     pub features: PipelineImportImageOptionsFeatures,
+    /// > 该参数正在邀测中。
     #[serde(rename = "RetainImportedImage")]
     pub retain_imported_image: bool,
     #[serde(rename = "RetentionStrategy")]
@@ -63428,8 +65205,16 @@ impl crate::FlatSerialize for PipelineImportImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineAdvancedOptions {
+    /// 是否保留云助手。构建过程中，系统会自动在中转实例中安装云助手以执行命令，您可以选择是否在构建的目标镜像中保留。可能值：
+    /// - true：保留。
+    /// - false：不保留。
+    ///
+    /// 默认值：false。
+    /// >该设置不会对您镜像中自带的云助手产生任何影响。
     #[serde(rename = "RetainCloudAssistant")]
     pub retain_cloud_assistant: bool,
+    /// 是否禁用目标镜像名称自动增加后缀。可能值：
+    /// - disable：禁用。
     #[serde(rename = "ImageNameSuffix")]
     pub image_name_suffix: String,
 }
@@ -63456,6 +65241,10 @@ impl crate::FlatSerialize for PipelineAdvancedOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImageOptionsImageFeatures {
+    /// 构建的目标镜像是否支持 NVMe。可能值：
+    /// - supported：支持。表示以该镜像创建的实例支持 NVMe 协议。
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持 NVMe 协议。
+    /// - auto：自动检测。由系统自动检测您的镜像是否安装NVMe驱动，该行为发生在构建阶段前，若您在构建时安装或者卸载了NVMe驱动，可能会出现结果偏差，建议您根据构建内容设置为supported或unsupported。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
 }
@@ -63477,8 +65266,10 @@ impl crate::FlatSerialize for PipelineImageOptionsImageFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsImageTag {
+    /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -63497,14 +65288,22 @@ impl crate::FlatSerialize for OptionsImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineImageOptions {
+    /// 目标镜像名称前缀。长度为2~64个字符，必须以大小写字母或中文开头，不能以`http://`和`https://`开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
+    ///
+    /// 最终完整的镜像名称由系统自动拼接名称前缀与构建任务ID（`ExecutionId`），格式为`{ImageName}_{ExecutionId}`。
+    ///
     #[serde(rename = "ImageName")]
     pub image_name: String,
+    /// 目标镜像族系。长度为 2~128 个英文或中文字符。必须以大小写字母或中文开头，不能以 aliyun 和 acs:开头，不能包含 http://或者 https://。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "ImageFamily")]
     pub image_family: String,
+    /// 描述信息。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 目标镜像特性相关属性。
     #[serde(rename = "ImageFeatures")]
     pub image_features: PipelineImageOptionsImageFeatures,
+    /// 目标镜像标签。
     #[serde(rename = "ImageTags")]
     pub image_tags: Vec<OptionsImageTag>,
 }
@@ -63546,8 +65345,10 @@ impl crate::FlatSerialize for PipelineImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelinesTag {
+    /// 标签键。N的取值范围：1~20。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -63566,8 +65367,10 @@ impl crate::FlatSerialize for PipelinesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSetItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -63590,6 +65393,7 @@ impl crate::FlatSerialize for PipelineSetItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSetItemTags {
+    /// 标签键值对列表。
     #[serde(rename = "Tag")]
     pub tag: Vec<PipelineSetItemTagsTag>,
 }
@@ -63607,6 +65411,7 @@ impl crate::FlatSerialize for PipelineSetItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RegionIds {
+    /// 目标镜像待分发的地域列表。
     #[serde(rename = "ToRegionId")]
     pub to_region_id: Vec<String>,
 }
@@ -63628,6 +65433,7 @@ impl crate::FlatSerialize for RegionIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddAccounts {
+    /// 目标镜像共享的阿里云账号ID。
     #[serde(rename = "AddAccount")]
     pub add_account: Vec<String>,
 }
@@ -63649,12 +65455,26 @@ impl crate::FlatSerialize for AddAccounts {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMappingsDiskDeviceMapping {
+    /// 镜像文件所在的 OSS Bucket。
     #[serde(rename = "OSSBucket")]
     pub oss_bucket: String,
+    /// 镜像上传至 OSS Bucket 后，保存在 Bucket 中的镜像文件的文件名（key）。
     #[serde(rename = "OSSObject")]
     pub oss_object: String,
+    /// 镜像格式。取值范围：
+    /// - RAW。
+    /// - VHD。
+    /// - QCOW2。
     #[serde(rename = "Format")]
     pub format: String,
+    /// 导入镜像后，自定义镜像的空间大小。
+    ///
+    /// 该空间由系统盘和数据盘组成，您必须保证系统盘的空间大小大于等于导入的镜像文件大小。取值范围：
+    ///
+    /// - N=1时，表示系统盘，取值范围：1 GiB~2048 GiB。
+    /// - N=2~17时，表示数据盘。取值范围：1 GiB~2048 GiB。
+    ///
+    /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
     #[serde(rename = "DiskImageSize")]
     pub disk_image_size: i32,
 }
@@ -63687,6 +65507,9 @@ impl crate::FlatSerialize for OptionsDiskDeviceMappingsDiskDeviceMapping {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMappings {
+    /// 创建的自定义镜像信息列表。
+    /// - N=1 时，表示系统盘.
+    /// - N=2~17 时，表示数据盘。
     #[serde(rename = "DiskDeviceMapping")]
     pub disk_device_mapping: Vec<OptionsDiskDeviceMappingsDiskDeviceMapping>,
 }
@@ -63708,6 +65531,9 @@ impl crate::FlatSerialize for OptionsDiskDeviceMappings {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptionsFeatures {
+    /// 导入的镜像是否支持 NVMe。可能值：
+    /// - supported：支持。表示以该镜像创建的实例支持 NVMe 协议。
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持 NVMe 协议。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
     #[serde(rename = "ImdsSupport")]
@@ -63777,20 +65603,65 @@ impl crate::FlatSerialize for ImportImageTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptions {
+    /// 系统架构。取值范围：
+    /// - x86_64。
+    /// - arm64。
     #[serde(rename = "Architecture")]
     pub architecture: String,
+    /// 操作系统类型。可能值：
+    ///
+    /// - windows。
+    /// - linux。
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 操作系统版本。取值范围：
+    /// - Aliyun
+    /// - Anolis
+    /// - CentOS
+    /// - Ubuntu
+    /// - CoreOS
+    /// - SUSE
+    /// - Debian
+    /// - OpenSUSE
+    /// - FreeBSD
+    /// - RedHat
+    /// - Kylin
+    /// - UOS
+    /// - Fedora
+    /// - Fedora CoreOS
+    /// - CentOS Stream
+    /// - AlmaLinux
+    /// - Rocky Linux
+    /// - Gentoo
+    /// - Customized Linux
+    /// - Others Linux
+    /// - Windows Server 2022
+    /// - Windows Server 2019
+    /// - Windows Server 2016
+    /// - Windows Server 2012
+    /// - Windows Server 2008
+    /// - Windows Server 2003
+    /// - Other Windows
     #[serde(rename = "Platform")]
     pub platform: String,
+    /// 导入镜像的启动模式。取值范围：
+    /// - BIOS：BIOS 启动模式。
+    /// - UEFI：UEFI 启动模式。
     #[serde(rename = "BootMode")]
     pub boot_mode: String,
+    /// 导入镜像后，激活操作系统采用的许可证类型。取值范围：
+    ///
+    /// - Auto：由阿里云检测源操作系统并分配许可证。自动模式下，系统优先搜索您设置的`Platform`是否有阿里云官方渠道的许可证并分配给导入的镜像，如果缺乏该类许可，会切换成BYOL（Bring Your Own License）方式。
+    /// - Aliyun：根据您设置的`Platform`采用阿里云官方渠道的许可证。
+    /// - BYOL：源操作系统自带的许可证。采用BYOL时，您必须确保您的许可证密钥支持在阿里云使用。
     #[serde(rename = "LicenseType")]
     pub license_type: String,
     #[serde(rename = "DiskDeviceMappings")]
     pub disk_device_mappings: OptionsDiskDeviceMappings,
+    /// 镜像特性相关属性。
     #[serde(rename = "Features")]
     pub features: ItemImportImageOptionsFeatures,
+    /// > 该参数正在邀测中。
     #[serde(rename = "RetainImportedImage")]
     pub retain_imported_image: bool,
     #[serde(rename = "RetentionStrategy")]
@@ -63870,8 +65741,14 @@ impl crate::FlatSerialize for ItemImportImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAdvancedOptions {
+    /// 是否保留云助手。构建过程中，系统会自动在中转实例中安装云助手以执行命令，您可以选择是否在构建的目标镜像中保留。可能值：
+    /// - true：保留。
+    /// - false：不保留。
+    /// >该设置不会对您镜像中自带的云助手产生任何影响。
     #[serde(rename = "RetainCloudAssistant")]
     pub retain_cloud_assistant: bool,
+    /// 是否禁用目标镜像名称自动增加后缀。可能值：
+    /// - disable：禁用。
     #[serde(rename = "ImageNameSuffix")]
     pub image_name_suffix: String,
 }
@@ -63898,6 +65775,10 @@ impl crate::FlatSerialize for ItemAdvancedOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImageOptionsImageFeatures {
+    /// 构建的目标镜像是否支持 NVMe。可能值：
+    /// - supported：支持。表示以该镜像创建的实例支持 NVMe 协议。
+    /// - unsupported：不支持。表示以该镜像创建的实例不支持 NVMe 协议。
+    /// - auto：自动检测。由系统自动检测您的镜像是否安装NVMe驱动，该行为发生在构建阶段前，若您在构建时安装或者卸载了NVMe驱动，可能会出现结果偏差，建议您根据构建内容设置为supported或unsupported。
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
 }
@@ -63919,8 +65800,10 @@ impl crate::FlatSerialize for ItemImageOptionsImageFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsImageTag {
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -63943,6 +65826,7 @@ impl crate::FlatSerialize for TagsImageTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsImageTags {
+    /// 目标镜像标签。
     #[serde(rename = "ImageTag")]
     pub image_tag: Vec<TagsImageTag>,
 }
@@ -63964,12 +65848,16 @@ impl crate::FlatSerialize for OptionsImageTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemImageOptions {
+    /// 目标镜像名称前缀。
     #[serde(rename = "ImageName")]
     pub image_name: String,
+    /// 目标镜像族系。
     #[serde(rename = "ImageFamily")]
     pub image_family: String,
+    /// 目标镜像的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 目标镜像特性相关属性。
     #[serde(rename = "ImageFeatures")]
     pub image_features: ItemImageOptionsImageFeatures,
     #[serde(rename = "ImageTags")]
@@ -64013,32 +65901,54 @@ impl crate::FlatSerialize for SetItemImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSet {
+    /// 模板创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 镜像构建失败后是否释放中转实例。
     #[serde(rename = "DeleteInstanceOnFailure")]
     pub delete_instance_on_failure: bool,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 中转实例的公网出带宽大小。单位：Mbit/s
     #[serde(rename = "InternetMaxBandwidthOut")]
     pub internet_max_bandwidth_out: i32,
+    /// 镜像模板ID。
     #[serde(rename = "ImagePipelineId")]
     pub image_pipeline_id: String,
+    /// VPC的交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 中转实例的系统盘大小。单位：GiB
     #[serde(rename = "SystemDiskSize")]
     pub system_disk_size: i32,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 源镜像。
+    /// - 当`BaseImageType=IMAGE`时，该参数值为自定义镜像ID。
+    /// - 当`BaseImageType=IMAGE_FAMILY`时，该参数值为镜像族系名称。
     #[serde(rename = "BaseImage")]
     pub base_image: String,
+    /// 企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 目标镜像名称前缀。
+    /// <notice>
+    /// 该参数已弃用。请使用ImageOptions.ImageName。
+    /// </notice>
     #[serde(rename = "ImageName")]
     pub image_name: String,
+    /// 源镜像类型。可能值：
+    ///
+    /// - IMAGE：自定义镜像。
+    /// - IMAGE_FAMILY：镜像族系。
     #[serde(rename = "BaseImageType")]
     pub base_image_type: String,
+    /// 模板名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 镜像模板内容。
     #[serde(rename = "BuildContent")]
     pub build_content: String,
     #[serde(rename = "Tags")]
@@ -64047,18 +65957,34 @@ pub struct PipelineSet {
     pub to_region_ids: RegionIds,
     #[serde(rename = "AddAccounts")]
     pub add_accounts: AddAccounts,
+    /// 镜像模版中的修复选项。
+    ///
+    /// 取值范围：
+    /// - Standard：标准模式。
     #[serde(rename = "RepairMode")]
     pub repair_mode: String,
+    /// 镜像测试模板内容。
     #[serde(rename = "TestContent")]
     pub test_content: String,
+    /// 目标镜像族系。
+    /// <notice>
+    /// 该参数已弃用。请使用ImageOptions.ImageFamily。
+    /// </notice>
     #[serde(rename = "ImageFamily")]
     pub image_family: String,
+    /// 构建的目标镜像是否支持 NVMe。
+    /// <notice>
+    /// 该参数已弃用。请使用ImageOptions. ImageFeatures.NvmeSupport。
+    /// </notice>
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: String,
+    /// 导入镜像的属性和设置。
     #[serde(rename = "ImportImageOptions")]
     pub import_image_options: ItemImportImageOptions,
+    /// 高级设置。
     #[serde(rename = "AdvancedOptions")]
     pub advanced_options: ItemAdvancedOptions,
+    /// 目标镜像属性。
     #[serde(rename = "ImageOptions")]
     pub image_options: SetItemImageOptions,
 }
@@ -64187,6 +66113,7 @@ impl crate::FlatSerialize for PipelineSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePipeline {
+    /// 镜像模板的详细信息组成的列表。
     #[serde(rename = "ImagePipelineSet")]
     pub image_pipeline_set: Vec<PipelineSet>,
 }
@@ -64208,8 +66135,10 @@ impl crate::FlatSerialize for ImagePipeline {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StartImagePipelineExecutionTemplateTag {
+    /// >该参数已废弃。
     #[serde(rename = "Key")]
     pub key: String,
+    /// >该参数已废弃。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -64228,8 +66157,10 @@ impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionTag {
+    /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -64248,8 +66179,10 @@ impl crate::FlatSerialize for ExecutionTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionsTag {
+    /// 标签键。N 的取值范围：1~20。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N 的取值范围：1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -64268,8 +66201,10 @@ impl crate::FlatSerialize for ExecutionsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSetItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -64292,6 +66227,7 @@ impl crate::FlatSerialize for ExecutionSetItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSetItemTags {
+    /// 标签列表。
     #[serde(rename = "Tag")]
     pub tag: Vec<ExecutionSetItemTagsTag>,
 }
@@ -64309,20 +66245,41 @@ impl crate::FlatSerialize for ExecutionSetItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSet {
+    /// 镜像构建任务的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 镜像模板ID。
     #[serde(rename = "ImagePipelineId")]
     pub image_pipeline_id: String,
+    /// 镜像构建任务的状态。可能值：
+    ///
+    /// - PREPARING：准备中。创建临时中转实例等资源。
+    /// - REPAIRING：修复中。修复源镜像。
+    /// - BUILDING：构建中。执行用户自定义命令以及创建镜像。
+    /// - TESTING：测试中。执行用户自定义测试命令。
+    /// - DISTRIBUTING：分发中。执行镜像复制以及共享。
+    /// - RELEASING：资源回收中。构建过程中生成的临时资源。
+    /// - SUCCESS：成功。构建成功。
+    /// - PARTITION_SUCCESS：部分成功。镜像已构建成功，但可能在分发或者资源清理等步骤出现了异常。
+    /// - FAILED：失败。构建镜像失败。
+    /// - TEST_FAILED：测试失败。镜像创建成功，但测试失败。
+    /// - CANCELLING：取消中。正在取消构建流程。
+    /// - CANCELLED：已取消。构建流程已取消。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 任务最近一次更新的时间。
     #[serde(rename = "ModifiedTime")]
     pub modified_time: String,
+    /// 企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 执行结果信息。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 目标镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 构建任务ID。
     #[serde(rename = "ExecutionId")]
     pub execution_id: String,
     #[serde(rename = "Tags")]
@@ -64370,6 +66327,7 @@ impl crate::FlatSerialize for ExecutionSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineExecution {
+    /// 镜像构建任务的详细信息组成的列表。
     #[serde(rename = "ImagePipelineExecutionSet")]
     pub image_pipeline_execution_set: Vec<ExecutionSet>,
 }
@@ -64391,8 +66349,10 @@ impl crate::FlatSerialize for PipelineExecution {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelImagePipelineExecutionTemplateTag {
+    /// >该参数暂未开放使用。
     #[serde(rename = "Key")]
     pub key: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -64411,8 +66371,12 @@ impl crate::FlatSerialize for CancelImagePipelineExecutionTemplateTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskTag {
+    /// 磁盘的标签键。N的取值范围：1~20。一旦传入Tag.N.Key值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 磁盘的标签值。
+    ///
+    /// > 为提高代码兼容性，请尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -64431,10 +66395,13 @@ impl crate::FlatSerialize for DiskTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDiskArn {
+    /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -64462,8 +66429,14 @@ impl crate::FlatSerialize for CreateDiskArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksTag {
+    /// 磁盘的标签键。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 磁盘的标签值。
+    ///
+    /// >为提高代码兼容性，请尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -64482,6 +66455,7 @@ impl crate::FlatSerialize for DisksTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemOperationLocksOperationLock {
+    /// 磁盘被安全锁定的原因。
     #[serde(rename = "LockReason")]
     pub lock_reason: String,
 }
@@ -64503,6 +66477,7 @@ impl crate::FlatSerialize for DiskItemOperationLocksOperationLock {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemOperationLocks {
+    /// 磁盘锁定原因类型。
     #[serde(rename = "OperationLock")]
     pub operation_lock: Vec<DiskItemOperationLocksOperationLock>,
 }
@@ -64524,10 +66499,13 @@ impl crate::FlatSerialize for DiskItemOperationLocks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MountInstance {
+    /// 挂载时间。按照[ISO 8601](~~25696~~)标准表示，使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "AttachedTime")]
     pub attached_time: String,
+    /// 磁盘挂载的实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 磁盘的挂载点。
     #[serde(rename = "Device")]
     pub device: String,
 }
@@ -64555,6 +66533,7 @@ impl crate::FlatSerialize for MountInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MountInstances {
+    /// 共享存储挂载到实例上的信息集合。
     #[serde(rename = "MountInstance")]
     pub mount_instance: Vec<MountInstance>,
 }
@@ -64576,8 +66555,10 @@ impl crate::FlatSerialize for MountInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -64600,6 +66581,7 @@ impl crate::FlatSerialize for DiskItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemTags {
+    /// 磁盘的标签集合。
     #[serde(rename = "Tag")]
     pub tag: Vec<DiskItemTagsTag>,
 }
@@ -64617,10 +66599,13 @@ impl crate::FlatSerialize for DiskItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachmentsAttachment {
+    /// 所挂载的实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 设备名称。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 挂载的时间，以UTC +0时间为准。
     #[serde(rename = "AttachedTime")]
     pub attached_time: String,
 }
@@ -64648,6 +66633,7 @@ impl crate::FlatSerialize for AttachmentsAttachment {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttachments {
+    /// 磁盘所涉及的挂载信息。由`Attachment`对象组成的列表，查询共享块存储时不返回该列表。
     #[serde(rename = "Attachment")]
     pub attachment: Vec<AttachmentsAttachment>,
 }
@@ -64669,6 +66655,7 @@ impl crate::FlatSerialize for ItemAttachments {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPlacement {
+    /// 实际数据存放的可用区列表。
     #[serde(rename = "ZoneIds")]
     pub zone_ids: String,
 }
@@ -64686,82 +66673,177 @@ impl crate::FlatSerialize for ItemPlacement {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDisksDisk {
+    /// 磁盘的序列号。
     #[serde(rename = "SerialNumber")]
     pub serial_number: String,
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 磁盘状态。可能值：
+    ///
+    /// -   In_use：使用中。
+    /// -   Available：待挂载。
+    /// -   Attaching：挂载中 。
+    /// -   Detaching：卸载中。
+    /// -   Creating：创建中。
+    /// -   ReIniting：初始化中。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 磁盘类型。可能值：
+    ///
+    /// - system：系统盘。
+    /// - data：数据盘。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// ESSD云盘的性能等级。可能值：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "BdfId")]
     pub bdf_id: String,
+    /// 云盘是否启用自动快照策略功能。
+    ///
+    ///
+    /// > 该参数已弃用。创建后的云盘默认启用自动快照策略功能，您只需要为云盘绑定自动快照策略即可正常使用。
     #[serde(rename = "EnableAutoSnapshot")]
     pub enable_auto_snapshot: bool,
+    /// 存储集ID。
     #[serde(rename = "StorageSetId")]
     pub storage_set_id: String,
+    /// 存储集中的最大分区数量。
     #[serde(rename = "StorageSetPartitionNumber")]
     pub storage_set_partition_number: i32,
+    /// 磁盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// 是否同时删除自动快照。可能值：
+    ///
+    /// - true：删除云盘上的快照。
+    /// - false：保留云盘上的快照。
+    ///
+    /// 通过[CreateSnapshot](~~25524~~)或者在控制台创建的快照，不受这个参数的影响，会始终保留。
     #[serde(rename = "DeleteAutoSnapshot")]
     pub delete_auto_snapshot: bool,
+    /// 云盘所属的专属块存储集群ID。如果您的云盘在公共云块存储集群中，则该返回值为空。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: String,
+    /// 是否为加密云盘。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 每秒读操作的次数上限，单位：次/s。
     #[serde(rename = "IOPSRead")]
     pub iops_read: i32,
+    /// 共享存储挂载的实例数量。
     #[serde(rename = "MountInstanceNum")]
     pub mount_instance_num: i32,
+    /// 磁盘描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 磁盘挂载的实例的设备名，例如/dev/xvdb。您需要注意：
+    ///
+    /// - 该参数仅在`Status`参数值为`In_use`或`Detaching`时才有值，其他状态时为空。
+    ///
+    /// - 对于开启多重挂载特性的云盘，该值始终为空。您可以通过返回的`Attachment`对象组成的列表，查看云盘所涉及的所有挂载信息。
+    ///
+    /// > 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 磁盘名称。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 磁盘是否可卸载。
     #[serde(rename = "Portable")]
     pub portable: bool,
+    /// 创建ECS实例时使用的镜像ID，只有通过镜像创建的云盘才有值，否则为空。这个值在云盘的生命周期内始终不变。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 云盘使用的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// 是否随实例释放。可能值：
+    ///
+    /// - true：释放实例时，这块磁盘随实例一起释放。
+    /// - false：释放实例时，这块磁盘保留不释放。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 该磁盘最后一次卸载时间。
     #[serde(rename = "DetachedTime")]
     pub detached_time: String,
+    /// 创建云盘使用的快照ID。
+    ///
+    /// 如果创建云盘时，没有指定快照，则该参数值为空。该参数值在云盘的生命周期内始终不变。
+    ///
     #[serde(rename = "SourceSnapshotId")]
     pub source_snapshot_id: String,
+    /// 云盘采用的自动快照策略ID。
+    /// > 该参数即将被弃用。如果云盘应用了多条自动快照策略，只会返回其中一条。建议您使用DescribeAutoSnapshotPolicyAssociations查询云盘应用的所有自动快照策略。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 云盘是否设置了自动快照策略。
     #[serde(rename = "EnableAutomatedSnapshotPolicy")]
     pub enable_automated_snapshot_policy: bool,
+    /// 每秒写操作的次数上限，单位：次/s。
     #[serde(rename = "IOPSWrite")]
     pub iops_write: i32,
+    /// 磁盘挂载的实例ID。您需要注意：
+    ///
+    /// - 该参数值仅在`Status`参数值为`In_use`或`Detaching`时才有值，其他状态时为空。
+    ///
+    /// - 对于开启多重挂载特性的云盘，该值始终为空。您可以通过返回的`Attachment`对象组成的列表，查看云盘所涉及的所有挂载信息。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 每秒读写（I/O）操作的次数上限，单位：次/s。
     #[serde(rename = "IOPS")]
     pub iops: i32,
+    /// 磁盘所属的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 包年包月磁盘的过期时间。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 磁盘大小，单位GiB。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 磁盘所在的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 磁盘的计费方式。可能值：
+    ///
+    /// - PrePaid：包年包月。
+    /// - PostPaid：按量付费。
     #[serde(rename = "DiskChargeType")]
     pub disk_charge_type: String,
+    /// 磁盘所属的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 该磁盘最后一次挂载的时间。按照ISO8601标准表示，使用UTC+0时间。格式为：yyyy-MM-ddThh:mmZ。
     #[serde(rename = "AttachedTime")]
     pub attached_time: String,
+    /// 磁盘种类。可能值：
+    ///
+    /// - cloud：普通云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud_auto：ESSD AutoPL云盘。
+    /// - local_ssd_pro：I/O密集型本地盘。
+    /// - local_hdd_pro：吞吐密集型本地盘。
+    /// - cloud_essd_entry：ESSD Entry云盘。
+    /// - elastic_ephemeral_disk_standard：弹性临时盘-标准版。
+    /// - elastic_ephemeral_disk_premium：弹性临时盘-高级版。
+    /// - ephemeral：（已停售）本地盘。
+    /// - ephemeral_ssd：（已停售）本地SSD盘。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 云市场的商品标识。
     #[serde(rename = "ProductCode")]
     pub product_code: String,
+    /// 云盘是否开启了多重挂载特性。
     #[serde(rename = "MultiAttach")]
     pub multi_attach: String,
     #[serde(rename = "OperationLocks")]
@@ -64772,16 +66854,35 @@ pub struct ResponseDisksDisk {
     pub tags: DiskItemTags,
     #[serde(rename = "Attachments")]
     pub attachments: ItemAttachments,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50000, 1000*容量-基准性能}。
+    /// 基准性能=min{1,800+50*容量, 50,000}。
+    ///
+    /// 当`DiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。可能值：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// 当`DiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
+    ///
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 单位时间内可以成功传输的数据数量，单位：MB/s。
     #[serde(rename = "Throughput")]
     pub throughput: i32,
+    /// 单位时间内系统可以成功读取的数据数量，单位：MB/s。
     #[serde(rename = "ThroughputRead")]
     pub throughput_read: i32,
+    /// 单位时间内系统可以成功写入的数据数量，单位：MB/s。
     #[serde(rename = "ThroughputWrite")]
     pub throughput_write: i32,
+    /// 数据存放地集合。
+    ///
+    /// 只有入参指定 `AdditionalAttributes.N = Placement` 时，才会返回该字段。
+    ///
+    /// > 当前仅有ESSD 同城冗余类型（cloud_regional_disk_auto）磁盘具有有效值。
     #[serde(rename = "Placement")]
     pub placement: ItemPlacement,
 }
@@ -64995,6 +67096,7 @@ impl crate::FlatSerialize for ResponseDisksDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDisks {
+    /// 磁盘信息组成的集合。
     #[serde(rename = "Disk")]
     pub disk: Vec<ResponseDisksDisk>,
 }
@@ -65012,10 +67114,27 @@ impl crate::FlatSerialize for ResponseDisks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ControlOptions {
+    /// 目标云盘IOPS。仅支持修改专属存储集群云盘IOPS。
+    ///
+    /// 取值范围：900~单盘最大IOPS，步长100。
+    ///
+    ///
+    /// 更多信息，请参见[云盘性能](~~25382~~)。
     #[serde(rename = "IOPS")]
     pub iops: i32,
+    /// 目标云盘吞吐量，仅支持修改专属存储集群云盘吞吐量，单位MB/s。
+    ///
+    /// 取值范围：60~单盘最大吞吐量。
+    ///
+    /// 更多信息，请参见[云盘性能](~~25382~~)。
     #[serde(rename = "Throughput")]
     pub throughput: i32,
+    /// 重置云盘性能，仅支持专属存储集群云盘。
+    ///
+    /// 设置该参数后，PerformanceControlOptions.IOPS和PerformanceControlOptions.Throughput参数不生效。
+    ///
+    ///
+    /// 目前仅支持设置为All（重置云盘IOPS和吞吐量到初始值）。
     #[serde(rename = "Recover")]
     pub recover: OptionsRecover,
 }
@@ -65039,10 +67158,13 @@ impl crate::FlatSerialize for ControlOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SystemDiskArn {
+    /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -65070,8 +67192,10 @@ impl crate::FlatSerialize for SystemDiskArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResetDisksDisk {
+    /// 实例快照中，指定云盘对应的快照ID。N的取值范围为1~10。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 指定待回滚的云盘ID。N的取值范围为1~10。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
 }
@@ -65094,8 +67218,10 @@ impl crate::FlatSerialize for ResetDisksDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
+    /// 资源名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 资源ID。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65116,6 +67242,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSet {
+    /// 资源信息。
     #[serde(rename = "RelatedItem")]
     pub related_item:
         Vec<DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
@@ -65138,10 +67265,23 @@ impl crate::FlatSerialize for DisksResponseOperationProgressSetOperationProgress
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgress {
+    /// 错误信息。回滚成功时返回空值。
+    ///
+    /// <props="intl">错误码和错误信息，请参见[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)。</props>
+    ///
+    /// <props="china">错误码和错误信息，请参见[错误中心](https://error-center.aliyun.com/status/product/Ecs)。</props>
     #[serde(rename = "ErrorMsg")]
     pub error_msg: String,
+    /// 错误码。回滚成功时返回空值。
+    ///
+    ///
+    /// <props="intl">错误码和错误信息，请参见[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)。</props>
+    ///
+    /// <props="china">错误码和错误信息，请参见[错误中心](https://error-center.aliyun.com/status/product/Ecs)。</props>
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 操作是否成功。
+    /// 成功返回Success，失败返回ErrorCode和ErrorMsg信息。
     #[serde(rename = "OperationStatus")]
     pub operation_status: String,
     #[serde(rename = "RelatedItemSet")]
@@ -65180,6 +67320,7 @@ impl crate::FlatSerialize for DisksResponseOperationProgressSetOperationProgress
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSet {
+    /// 回滚一个或多个云盘时的操作状态信息合集。
     #[serde(rename = "OperationProgress")]
     pub operation_progress: Vec<DisksResponseOperationProgressSetOperationProgress>,
 }
@@ -65201,8 +67342,12 @@ impl crate::FlatSerialize for DisksResponseOperationProgressSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateSnapshotTag {
+    /// 快照的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 快照的标签值。
+    ///
+    /// >  为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -65221,8 +67366,14 @@ impl crate::FlatSerialize for CreateSnapshotTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotsTag {
+    /// 快照的标签键。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -65241,8 +67392,10 @@ impl crate::FlatSerialize for SnapshotsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshotItemTagsTag {
+    /// 快照的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 快照的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -65265,6 +67418,7 @@ impl crate::FlatSerialize for ResponseSnapshotsSnapshotItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshotItemTags {
+    /// 标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<ResponseSnapshotsSnapshotItemTagsTag>,
 }
@@ -65282,60 +67436,124 @@ impl crate::FlatSerialize for ResponseSnapshotsSnapshotItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshot {
+    /// 快照状态。可能值：
+    ///
+    /// - progressing：正在创建。
+    /// - accomplished：创建成功。
+    /// - failed：创建失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 快照创建进度，单位为百分比。
     #[serde(rename = "Progress")]
     pub progress: String,
+    /// 是否开启了快照极速可用能力。可能值：
+    ///
+    /// - true：开启。ESSD云盘、ESSD Entry云盘默认开启该能力。
+    /// - false：关闭。即快照为未开启极速可用能力的标准快照。
+    ///
+    /// >该参数已弃用。ESSD云盘标准快照已升级为[默认极速可用](~~193667~~)，您无需额外配置，且不产生额外花销。
     #[serde(rename = "InstantAccess")]
     pub instant_access: bool,
+    /// 快照是否可用于创建云盘、回滚云盘、共享快照。可能值：
+    ///
+    /// - true：可用。
+    /// - false：不可用。
     #[serde(rename = "Available")]
     pub available: bool,
+    /// 正在创建的快照剩余完成时间，单位为秒。
     #[serde(rename = "RemainTime")]
     pub remain_time: i32,
+    /// 源云盘容量，单位：GiB。
     #[serde(rename = "SourceDiskSize")]
     pub source_disk_size: String,
+    /// 自动快照保留天数。
     #[serde(rename = "RetentionDays")]
     pub retention_days: i32,
+    /// 源云盘属性。可能值：
+    ///
+    /// - system
+    /// - data
     #[serde(rename = "SourceDiskType")]
     pub source_disk_type: String,
+    /// 原云盘类型。
+    ///
+    /// >该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
     #[serde(rename = "SourceStorageType")]
     pub source_storage_type: String,
+    /// 快照是否被用作创建镜像或云盘。可能值：
+    ///
+    /// - image：自定义镜像。
+    /// - disk：云盘。
+    /// - image_disk：自定义镜像和数据盘。
+    /// - none：暂未使用。
     #[serde(rename = "Usage")]
     pub usage: String,
+    /// 快照的最后变更时间。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "LastModifiedTime")]
     pub last_modified_time: String,
+    /// 该快照是否加密。可能值：
+    ///  
+    /// - true：是。
+    /// - false： 否。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 快照创建类型。可能值：
+    ///
+    /// - auto或者timer：自动创建快照。
+    /// - user：手动创建快照。
+    /// - all：所有的快照创建类型。
     #[serde(rename = "SnapshotType")]
     pub snapshot_type: String,
+    /// 源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。
     #[serde(rename = "SourceDiskId")]
     pub source_disk_id: String,
+    /// 快照显示名称。如果创建时指定了快照显示名称，则返回。
     #[serde(rename = "SnapshotName")]
     pub snapshot_name: String,
+    /// 设置快照极速可用功能的保留时间，保留时间到期后自动关闭快照极速可用功能。
+    ///
+    /// 默认与参数`RetentionDays`的值一致。
+    ///
+    /// >该参数已弃用。ESSD云盘标准快照已升级为[默认极速可用](~~193667~~)，您无需额外配置，且不产生额外花销。
     #[serde(rename = "InstantAccessRetentionDays")]
     pub instant_access_retention_days: i32,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 快照所属的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 快照类型。可能值：
+    /// - Standard：标准快照。
+    /// - Flash：本地快照。该参数取值即将被弃用，原本地快照更替为快照极速可用功能。
+    /// - archive：归档快照。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// 快照序列号。
     #[serde(rename = "SnapshotSN")]
     pub snapshot_sn: String,
+    /// 从云市场镜像继承的产品编号。
     #[serde(rename = "ProductCode")]
     pub product_code: String,
+    /// 源快照。
     #[serde(rename = "SourceSnapshotId")]
     pub source_snapshot_id: String,
+    /// 源快照地域。
     #[serde(rename = "SourceRegionId")]
     pub source_region_id: String,
+    /// 快照关联的快照链ID。
     #[serde(rename = "SnapshotLinkId")]
     pub snapshot_link_id: String,
     #[serde(rename = "Tags")]
@@ -65479,6 +67697,7 @@ impl crate::FlatSerialize for ResponseSnapshotsSnapshot {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshots {
+    /// 快照详情集合。
     #[serde(rename = "Snapshot")]
     pub snapshot: Vec<ResponseSnapshotsSnapshot>,
 }
@@ -65496,8 +67715,10 @@ impl crate::FlatSerialize for ResponseSnapshots {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CopySnapshotTag {
+    /// 新快照的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 新快照的标签值。一旦传入该值，允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65516,10 +67737,13 @@ impl crate::FlatSerialize for CopySnapshotTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotArn {
+    /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -65547,28 +67771,52 @@ impl crate::FlatSerialize for SnapshotArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotLink {
+    /// 是否开启了快照极速可用功能。可能值：
+    ///
+    /// - true：开启。仅ESSD云盘支持开启该功能。
+    /// - false：关闭。即快照为未开启快照极速可用功能的标准快照。
+    ///
+    /// >该参数已弃用。ESSD云盘标准快照已升级为[默认极速可用](~~193667~~)，您无需额外配置，且不产生额外花销。
     #[serde(rename = "InstantAccess")]
     pub instant_access: bool,
+    /// 快照链中所有快照的大小，单位：Byte。
     #[serde(rename = "TotalSize")]
     pub total_size: i64,
+    /// 源云盘的名称。
     #[serde(rename = "SourceDiskName")]
     pub source_disk_name: String,
+    /// 源云盘容量，单位：GiB。
     #[serde(rename = "SourceDiskSize")]
     pub source_disk_size: i32,
+    /// 源云盘的云盘类型。可能值：
+    ///
+    /// - system：系统盘。
+    /// - data：数据盘。
     #[serde(rename = "SourceDiskType")]
     pub source_disk_type: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 快照链ID。
     #[serde(rename = "SnapshotLinkId")]
     pub snapshot_link_id: String,
+    /// 快照总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 快照链源云盘所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 源云盘ID，如果快照的源云盘已经被删除，该字段仍旧保留。
     #[serde(rename = "SourceDiskId")]
     pub source_disk_id: String,
+    /// 实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 快照链类型。可能值：
+    ///
+    /// - standard: 标准快照链。
+    /// - archive: 归档快照链。
+    /// - flash: 极速可用快照链。
     #[serde(rename = "Category")]
     pub category: String,
 }
@@ -65641,6 +67889,7 @@ impl crate::FlatSerialize for SnapshotLink {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotLinks {
+    /// 快照链信息组成的集合。
     #[serde(rename = "SnapshotLink")]
     pub snapshot_link: Vec<SnapshotLink>,
 }
@@ -65662,8 +67911,10 @@ impl crate::FlatSerialize for SnapshotLinks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupTag {
+    /// 快照一致性组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 快照一致性组的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65682,8 +67933,10 @@ impl crate::FlatSerialize for SnapshotGroupTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupsTag {
+    /// 快照一致性组的标签键。N的取值范围为1~20。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 快照一致性组的标签值。N的取值范围为1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65702,8 +67955,10 @@ impl crate::FlatSerialize for SnapshotGroupsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupItemTagsTag {
+    /// 快照一致性组的标签键。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 快照一致性组的标签值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65722,6 +67977,7 @@ impl crate::FlatSerialize for SnapshotGroupItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupItemTags {
+    /// 快照一致性组的标签键值对。
     #[serde(rename = "Tag")]
     pub tag: Vec<SnapshotGroupItemTagsTag>,
 }
@@ -65739,8 +67995,10 @@ impl crate::FlatSerialize for SnapshotGroupItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshotItemTagsTag {
+    /// 快照一致性组内各个快照的标签键。Key和Value的默认值中提供了快照来源信息。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 快照一致性组内各个快照的标签值。Key和Value的默认值中提供了快照来源信息。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65759,6 +68017,7 @@ impl crate::FlatSerialize for ItemSnapshotsSnapshotItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshotItemTags {
+    /// 快照一致性组内各个快照的标签键值对。默认包含了快照来源的信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ItemSnapshotsSnapshotItemTagsTag>,
 }
@@ -65776,18 +68035,38 @@ impl crate::FlatSerialize for ItemSnapshotsSnapshotItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshot {
+    /// 源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。
     #[serde(rename = "SourceDiskId")]
     pub source_disk_id: String,
+    /// 快照创建进度，单位为百分比。
     #[serde(rename = "Progress")]
     pub progress: String,
+    /// 快照是否可用于创建云盘、回滚云盘、共享快照。可能值：
+    ///
+    /// - true：可用。
+    /// - false：不可用。
     #[serde(rename = "Available")]
     pub available: bool,
+    /// 快照极速可用功能的保留时间，保留时间到期后快照将自动释放。
+    ///
+    /// >该参数已弃用。ESSD云盘标准快照已升级为[默认极速可用](~~193667~~)，您无需额外配置，且不产生额外花销。
     #[serde(rename = "InstantAccessRetentionDays")]
     pub instant_access_retention_days: i32,
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 是否开启了快照极速可用能力。可能值：
+    ///
+    /// - true：开启。ESSD云盘默认开启该能力。
+    /// - false：关闭。即快照为未开启极速可用能力的标准快照。
+    ///
+    /// >该参数已弃用。ESSD云盘标准快照已升级为[默认极速可用](~~193667~~)，您无需额外配置，且不产生额外花销。
     #[serde(rename = "InstantAccess")]
     pub instant_access: bool,
+    /// 源云盘类型。可能值：
+    ///
+    /// - system：系统盘。
+    /// - data：数据盘。
     #[serde(rename = "SourceDiskType")]
     pub source_disk_type: String,
     #[serde(rename = "Tags")]
@@ -65838,6 +68117,7 @@ impl crate::FlatSerialize for ItemSnapshotsSnapshot {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshots {
+    /// 快照一致性组中包含的快照信息组成的数组。
     #[serde(rename = "Snapshot")]
     pub snapshot: Vec<ItemSnapshotsSnapshot>,
 }
@@ -65855,20 +68135,34 @@ impl crate::FlatSerialize for ItemSnapshots {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroup {
+    /// 快照一致性组的状态。可能值：
+    ///
+    /// - progressing：创建中。
+    ///
+    /// - accomplished：创建成功。
+    ///
+    /// - failed：创建失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "ProgressStatus")]
     pub progress_status: String,
+    /// 快照一致性组ID。
     #[serde(rename = "SnapshotGroupId")]
     pub snapshot_group_id: String,
+    /// 快照一致性组所属的实例ID。该参数仅当快照一致性组内的所有云盘快照属于同一实例时有返回值。如果您的快照一致性组内的多个云盘快照分别属于不同的ECS实例，则您可以通过返回结果中的`Snapshots.Snapshot.Tags.*`参数，查看组内单个快照所属的实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 快照一致性组的名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 快照一致性组所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
     #[serde(rename = "Tags")]
@@ -65927,6 +68221,7 @@ impl crate::FlatSerialize for SnapshotGroup {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroups {
+    /// 快照一致性组的信息组成的数组。
     #[serde(rename = "SnapshotGroup")]
     pub snapshot_group: Vec<SnapshotGroup>,
 }
@@ -65948,8 +68243,10 @@ impl crate::FlatSerialize for SnapshotGroups {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
+    /// 资源名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 资源ID。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -65970,6 +68267,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSet {
+    /// 资源信息。
     #[serde(rename = "RelatedItem")]
     pub related_item:
         Vec<GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
@@ -65992,10 +68290,21 @@ impl crate::FlatSerialize for GroupResponseOperationProgressSetOperationProgress
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgress {
+    /// 错误信息。删除成功时返回空值。
+    ///
+    /// <props="intl">错误码和错误信息，请参见[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)。</props>
+    ///
+    /// <props="china">错误码和错误信息，请参见[错误中心](https://error-center.aliyun.com/status/product/Ecs)。</props>
     #[serde(rename = "ErrorMsg")]
     pub error_msg: String,
+    /// 错误码。删除成功时返回空值。
+    ///
+    /// <props="intl">错误码和错误信息，请参见[错误中心](https://error-center.alibabacloud.com/status/product/Ecs)。</props>
+    ///
+    /// <props="china">错误码和错误信息，请参见[错误中心](https://error-center.aliyun.com/status/product/Ecs)。</props>
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 操作是否成功。成功返回Success，失败返回ErrorCode和ErrorMsg信息。
     #[serde(rename = "OperationStatus")]
     pub operation_status: String,
     #[serde(rename = "RelatedItemSet")]
@@ -66034,6 +68343,7 @@ impl crate::FlatSerialize for GroupResponseOperationProgressSetOperationProgress
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSet {
+    /// 删除快照一致性组时操作状态信息合集。
     #[serde(rename = "OperationProgress")]
     pub operation_progress: Vec<GroupResponseOperationProgressSetOperationProgress>,
 }
@@ -66055,8 +68365,10 @@ impl crate::FlatSerialize for GroupResponseOperationProgressSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyTag {
+    /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 自动快照策略的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -66075,10 +68387,13 @@ impl crate::FlatSerialize for PolicyTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyCopyEncryptionConfigurationArn {
+    /// > 该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -66106,10 +68421,18 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfigurationArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyCopyEncryptionConfiguration {
+    /// 是否开启快照异地加密备份。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// 默认值：false。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 快照异地加密备份使用的 KMS 密钥 ID
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "Arn")]
     pub arn: Vec<PolicyCopyEncryptionConfigurationArn>,
 }
@@ -66137,8 +68460,10 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExTag {
+    /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 自动快照策略的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -66157,8 +68482,10 @@ impl crate::FlatSerialize for ExTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyItemTagsTag {
+    /// 自动快照策略的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 自动快照策略的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -66181,6 +68508,7 @@ impl crate::FlatSerialize for PolicyItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyItemTags {
+    /// 自动快照策略的标签键值集合。
     #[serde(rename = "Tag")]
     pub tag: Vec<PolicyItemTagsTag>,
 }
@@ -66198,8 +68526,15 @@ impl crate::FlatSerialize for PolicyItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCopyEncryptionConfiguration {
+    /// 是否开启快照跨地域加密复制。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// 默认值：false。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 快照跨地域加密复制使用的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
 }
@@ -66226,38 +68561,67 @@ impl crate::FlatSerialize for ItemCopyEncryptionConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPolicy {
+    /// 指定自动快照的创建时间点。
+    ///
+    /// 使用UTC +8时间，单位为小时。从00:00~23:00共24个时间点可选，参数为0~23的数字，如：1代表在01:00时间点。可以选定多个时间点。
+    ///
+    /// 传递参数为JSON数组格式：`["0", "1", ... "23"]`，最多24个时间点，用半角逗号字符（,）隔开。
     #[serde(rename = "TimePoints")]
     pub time_points: String,
+    /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 自动快照策略状态。可能值：
+    ///
+    /// - Normal：正常。
+    /// - Expire：由于账号欠费无法使用该策略。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 自动快照策略的名称。
     #[serde(rename = "AutoSnapshotPolicyName")]
     pub auto_snapshot_policy_name: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "TargetCopyRegions")]
     pub target_copy_regions: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "CopiedSnapshotsRetentionDays")]
     pub copied_snapshots_retention_days: i32,
+    /// 自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 指定自动快照的保留时间，单位为天。可能值：
+    ///
+    /// -  -1：永久保存。
+    /// - 1~65536：指定保存天数。
     #[serde(rename = "RetentionDays")]
     pub retention_days: i32,
+    /// 自动快照策略所属的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 启用该策略的云盘数量。
     #[serde(rename = "DiskNums")]
     pub disk_nums: i32,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableCrossRegionCopy")]
     pub enable_cross_region_copy: bool,
+    /// 指定自动快照的重复日期。选定周一到周日中需要创建快照的日期，参数为1~7的数字，如1表示周一。允许选择多个日期。
     #[serde(rename = "RepeatWeekdays")]
     pub repeat_weekdays: String,
+    /// 启用该策略的拓展卷数量。
     #[serde(rename = "VolumeNums")]
     pub volume_nums: i32,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
     #[serde(rename = "Tags")]
     pub tags: PolicyItemTags,
+    /// 快照跨地域复制加密参数对象。
     #[serde(rename = "CopyEncryptionConfiguration")]
     pub copy_encryption_configuration: ItemCopyEncryptionConfiguration,
+    /// 自动快照策略类型。
+    ///
+    /// - Custom：用户定义的快照策略。
+    /// - System：系统定义的快照策略。
     #[serde(rename = "Type")]
     pub r#type: String,
 }
@@ -66347,6 +68711,7 @@ impl crate::FlatSerialize for SnapshotPolicy {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPolicies {
+    /// 自动快照策略详情AutoSnapshotPolicy组成的集合。
     #[serde(rename = "AutoSnapshotPolicy")]
     pub auto_snapshot_policy: Vec<SnapshotPolicy>,
 }
@@ -66368,8 +68733,10 @@ impl crate::FlatSerialize for SnapshotPolicies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyAssociation {
+    /// 自动快照策略 ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 云盘 ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
 }
@@ -66392,6 +68759,7 @@ impl crate::FlatSerialize for PolicyAssociation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyAssociations {
+    /// 自动快照策略的关联关系集合。
     #[serde(rename = "AutoSnapshotPolicyAssociation")]
     pub auto_snapshot_policy_association: Vec<PolicyAssociation>,
 }
@@ -66413,10 +68781,13 @@ impl crate::FlatSerialize for PolicyAssociations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExCopyEncryptionConfigurationArn {
+    /// 该参数暂未开放使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// 该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// 该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -66444,10 +68815,18 @@ impl crate::FlatSerialize for ExCopyEncryptionConfigurationArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ExCopyEncryptionConfiguration {
+    /// 是否开启快照跨地域加密复制。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// 默认值：false。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// 快照跨地域加密复制使用的 KMS 密钥 ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// 该参数暂未开放使用。
     #[serde(rename = "Arn")]
     pub arn: Vec<ExCopyEncryptionConfigurationArn>,
 }
@@ -66475,12 +68854,16 @@ impl crate::FlatSerialize for ExCopyEncryptionConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPackage {
+    /// 存储包名称。
     #[serde(rename = "DisplayName")]
     pub display_name: String,
+    /// 存储包的过期时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 存储包的购买时间。按照[ISO8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 存储包的最大容量。
     #[serde(rename = "InitCapacity")]
     pub init_capacity: i64,
 }
@@ -66513,6 +68896,7 @@ impl crate::FlatSerialize for SnapshotPackage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPackages {
+    /// 存储包信息组成的集合。
     #[serde(rename = "SnapshotPackage")]
     pub snapshot_package: Vec<SnapshotPackage>,
 }
@@ -66534,12 +68918,19 @@ impl crate::FlatSerialize for SnapshotPackages {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthsBandwidth {
+    /// 公网带宽的计费方式。可能值：
+    ///
+    /// - PayByBandwidth：按固定带宽计费。
+    /// - PayByTraffic：按使用流量计费。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
+    /// 公网带宽最大值。
     #[serde(rename = "Max")]
     pub max: i32,
+    /// 公网带宽最小值。
     #[serde(rename = "Min")]
     pub min: i32,
+    /// 公网带宽单位。
     #[serde(rename = "Unit")]
     pub unit: String,
 }
@@ -66564,6 +68955,7 @@ impl crate::FlatSerialize for BandwidthsBandwidth {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseBandwidths {
+    /// 公网带宽上限信息组成的集合。
     #[serde(rename = "Bandwidth")]
     pub bandwidth: Vec<BandwidthsBandwidth>,
 }
@@ -66585,8 +68977,10 @@ impl crate::FlatSerialize for ResponseBandwidths {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LinksLink {
+    /// VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -66609,6 +69003,7 @@ impl crate::FlatSerialize for LinksLink {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseLinks {
+    /// 返回经典网络类型实例和VPC连接信息。
     #[serde(rename = "Link")]
     pub link: Vec<LinksLink>,
 }
@@ -66626,8 +69021,10 @@ impl crate::FlatSerialize for ResponseLinks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceTag {
+    /// 弹性网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 弹性网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -66646,14 +69043,67 @@ impl crate::FlatSerialize for InterfaceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceNetworkInterfaceTrafficConfig {
+    /// 弹性网卡队列数。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
+    /// 弹性网卡的通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// RDMA 网卡队列数。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
+    /// 弹性网卡出方向队列深度。
+    ///
+    ///
+    /// <props="china">
+    ///
+    /// >该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)联系加白。
+    ///
+    /// </props>
+    ///
+    ///
+    ///
+    ///
+    /// <props="intl">
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)联系加白。
+    ///
+    /// </props>
+    ///
+    /// 使用该参数时，您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    ///
+    /// - 目前仅适用于Linux镜像。
+    ///
+    /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
     pub tx_queue_size: i32,
+    /// 弹性网卡入方向队列深度。
+    ///
+    ///
+    /// <props="china">
+    ///
+    /// >该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)联系加白。
+    ///
+    /// </props>
+    ///
+    ///
+    ///
+    ///
+    /// <props="intl">
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，若您有使用需求请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)联系加白。
+    ///
+    /// </props>
+    ///
+    /// 使用该参数时，您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    ///
+    /// - 目前仅适用于Linux镜像。
+    ///
+    /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
     pub rx_queue_size: i32,
 }
@@ -66695,10 +69145,23 @@ impl crate::FlatSerialize for InterfaceNetworkInterfaceTrafficConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceConnectionTrackingConfiguration {
+    /// 已建状态的TCP连接超时时间，单位：s（秒）。取值范围：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
+    ///
+    /// 默认值：910。
     #[serde(rename = "TcpEstablishedTimeout")]
     pub tcp_established_timeout: i32,
+    /// TCP等待与关闭超时时间，单位：s（秒）。取值范围：3~15内的整数。
+    ///
+    /// 默认值：3。
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，`TIME_WAIT`状态的连接超时时间默认值为15秒。
     #[serde(rename = "TcpClosedAndTimeWaitTimeout")]
     pub tcp_closed_and_time_wait_timeout: i32,
+    /// UDP流超时时间。单位：s（秒）。取值范围：[10, 20, 30, 60, 80, 100]。
+    ///
+    /// 默认值：30。
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，默认值为100秒。
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: i32,
 }
@@ -66730,8 +69193,10 @@ impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceEnhancedNetwork {
+    /// >该参数暂未开放使用。
     #[serde(rename = "EnableSriov")]
     pub enable_sriov: bool,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "EnableRss")]
     pub enable_rss: bool,
     #[serde(rename = "VirtualFunctionTotalQueueNumber")]
@@ -66772,6 +69237,7 @@ impl crate::FlatSerialize for InterfaceEnhancedNetwork {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseSecurityGroupIds {
+    /// 所属的安全组集合。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -66793,8 +69259,10 @@ impl crate::FlatSerialize for InterfaceResponseSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponsePrivateIpSetsPrivateIpSet {
+    /// 实例的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 是否是主私网IP地址。
     #[serde(rename = "Primary")]
     pub primary: bool,
 }
@@ -66817,6 +69285,7 @@ impl crate::FlatSerialize for InterfaceResponsePrivateIpSetsPrivateIpSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponsePrivateIpSets {
+    /// PrivateIpSet组成的集合。
     #[serde(rename = "PrivateIpSet")]
     pub private_ip_set: Vec<InterfaceResponsePrivateIpSetsPrivateIpSet>,
 }
@@ -66838,8 +69307,10 @@ impl crate::FlatSerialize for InterfaceResponsePrivateIpSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -66862,6 +69333,7 @@ impl crate::FlatSerialize for InterfaceResponseTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseTags {
+    /// 标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<InterfaceResponseTagsTag>,
 }
@@ -66879,6 +69351,7 @@ impl crate::FlatSerialize for InterfaceResponseTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6SetsIpv6Set {
+    /// IPv6地址。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: String,
 }
@@ -66900,6 +69373,7 @@ impl crate::FlatSerialize for InterfaceResponseIpv6SetsIpv6Set {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6Sets {
+    /// 弹性网卡已分配的IPv6地址。
     #[serde(rename = "Ipv6Set")]
     pub ipv6_set: Vec<InterfaceResponseIpv6SetsIpv6Set>,
 }
@@ -66917,6 +69391,7 @@ impl crate::FlatSerialize for InterfaceResponseIpv6Sets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv4PrefixSetsIpv4PrefixSet {
+    /// IPv4前缀。
     #[serde(rename = "Ipv4Prefix")]
     pub ipv4_prefix: String,
 }
@@ -66938,6 +69413,7 @@ impl crate::FlatSerialize for InterfaceResponseIpv4PrefixSetsIpv4PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv4PrefixSets {
+    /// 弹性网卡已分配的IPv4前缀集合。
     #[serde(rename = "Ipv4PrefixSet")]
     pub ipv4_prefix_set: Vec<InterfaceResponseIpv4PrefixSetsIpv4PrefixSet>,
 }
@@ -66959,6 +69435,7 @@ impl crate::FlatSerialize for InterfaceResponseIpv4PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6PrefixSetsIpv6PrefixSet {
+    /// IPv6前缀。
     #[serde(rename = "Ipv6Prefix")]
     pub ipv6_prefix: String,
 }
@@ -66980,6 +69457,7 @@ impl crate::FlatSerialize for InterfaceResponseIpv6PrefixSetsIpv6PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6PrefixSets {
+    /// 弹性网卡已分配的IPv6前缀集合。
     #[serde(rename = "Ipv6PrefixSet")]
     pub ipv6_prefix_set: Vec<InterfaceResponseIpv6PrefixSetsIpv6PrefixSet>,
 }
@@ -67001,8 +69479,12 @@ impl crate::FlatSerialize for InterfaceResponseIpv6PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfacesTag {
+    /// 弹性网卡的标签键。N的取值范围：1~20
     #[serde(rename = "Key")]
     pub key: String,
+    /// 弹性网卡的标签值。N的取值范围：1~20
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -67021,8 +69503,10 @@ impl crate::FlatSerialize for InterfacesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
+    /// 弹性公网IP地址。
     #[serde(rename = "PublicIpAddress")]
     pub public_ip_address: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
 }
@@ -67049,12 +69533,21 @@ impl crate::FlatSerialize for ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicI
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemPrivateIpSetsPrivateIpSet {
+    /// 实例的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 是否是主私网IP地址。可能值：
+    /// - true：主私网IP
+    /// - false：辅助私网IP
     #[serde(rename = "Primary")]
     pub primary: bool,
+    /// 弹性网卡关联的弹性公网IP。
     #[serde(rename = "AssociatedPublicIp")]
     pub associated_public_ip: ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp,
+    /// 实例的私网域名。
+    ///
+    ///
+    /// > 仅当实例的主机名类型`HostnameType`配置为`IP`格式或者`InstanceId`格式时，返回固定格式的私网域名。
     #[serde(rename = "PrivateDnsName")]
     pub private_dns_name: String,
 }
@@ -67087,6 +69580,7 @@ impl crate::FlatSerialize for SetItemPrivateIpSetsPrivateIpSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemPrivateIpSets {
+    /// PrivateIpSet组成的集合。
     #[serde(rename = "PrivateIpSet")]
     pub private_ip_set: Vec<SetItemPrivateIpSetsPrivateIpSet>,
 }
@@ -67108,6 +69602,7 @@ impl crate::FlatSerialize for SetItemPrivateIpSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6SetsIpv6Set {
+    /// 弹性网卡已分配的IPv6地址。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: String,
 }
@@ -67129,6 +69624,7 @@ impl crate::FlatSerialize for SetItemIpv6SetsIpv6Set {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6Sets {
+    /// 弹性网卡已分配的IPv6地址集合。
     #[serde(rename = "Ipv6Set")]
     pub ipv6_set: Vec<SetItemIpv6SetsIpv6Set>,
 }
@@ -67146,6 +69642,7 @@ impl crate::FlatSerialize for SetItemIpv6Sets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv4PrefixSetsIpv4PrefixSet {
+    /// 弹性网卡已分配的IPv4前缀。
     #[serde(rename = "Ipv4Prefix")]
     pub ipv4_prefix: String,
 }
@@ -67167,6 +69664,7 @@ impl crate::FlatSerialize for SetItemIpv4PrefixSetsIpv4PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv4PrefixSets {
+    /// 弹性网卡已分配的IPv4前缀集合。
     #[serde(rename = "Ipv4PrefixSet")]
     pub ipv4_prefix_set: Vec<SetItemIpv4PrefixSetsIpv4PrefixSet>,
 }
@@ -67188,6 +69686,7 @@ impl crate::FlatSerialize for SetItemIpv4PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6PrefixSetsIpv6PrefixSet {
+    /// 弹性网卡已分配的IPv6前缀。
     #[serde(rename = "Ipv6Prefix")]
     pub ipv6_prefix: String,
 }
@@ -67209,6 +69708,7 @@ impl crate::FlatSerialize for SetItemIpv6PrefixSetsIpv6PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6PrefixSets {
+    /// 弹性网卡已分配的IPv6前缀集合。
     #[serde(rename = "Ipv6PrefixSet")]
     pub ipv6_prefix_set: Vec<SetItemIpv6PrefixSetsIpv6PrefixSet>,
 }
@@ -67230,8 +69730,10 @@ impl crate::FlatSerialize for SetItemIpv6PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -67254,6 +69756,7 @@ impl crate::FlatSerialize for InterfaceSetItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemTags {
+    /// 标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<InterfaceSetItemTagsTag>,
 }
@@ -67271,6 +69774,7 @@ impl crate::FlatSerialize for InterfaceSetItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemSecurityGroupIds {
+    /// 所属的安全组集合。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -67292,8 +69796,10 @@ impl crate::FlatSerialize for SetItemSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemAssociatedPublicIp {
+    /// 弹性公网IP地址。
     #[serde(rename = "PublicIpAddress")]
     pub public_ip_address: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
 }
@@ -67320,12 +69826,18 @@ impl crate::FlatSerialize for InterfaceSetItemAssociatedPublicIp {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttachment {
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "DeviceIndex")]
     pub device_index: i32,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "TrunkNetworkInterfaceId")]
     pub trunk_network_interface_id: String,
+    /// 网卡挂载指定的物理网卡索引。
+    /// - 如果网卡是未挂载（Available）状态或者挂载时未指定索引，则不返回此值。
+    /// - 如果网卡是已挂载（InUse）状态且挂载时指定，此值表示网卡挂载指定的物理网卡索引。
     #[serde(rename = "NetworkCardIndex")]
     pub network_card_index: i32,
 }
@@ -67362,42 +69874,81 @@ impl crate::FlatSerialize for ItemAttachment {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkInterfaceSet {
+    /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 弹性网卡所属的专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 弹性网卡的类型。取值范围：
+    ///
+    /// - Primary：主网卡。
+    /// - Secondary：辅助网卡。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 弹性网卡的状态。取值范围：
+    ///
+    /// * Available：可用。
+    /// * Attaching：附加中。
+    /// * InUse：已附加。
+    /// * Detaching：分离中。
+    /// * Deleting：删除中。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 弹性网卡的通讯模式。可能值：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
+    /// > HighPerformance参数值只支持RDMA增强型实例规格族c7re，目前仅支持在华北2（北京）的可用区K设置该参数值。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 弹性网卡的名称。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 弹性网卡的MAC地址。
     #[serde(rename = "MacAddress")]
     pub mac_address: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 弹性网卡对应的虚商ID。
     #[serde(rename = "ServiceID")]
     pub service_id: i64,
+    /// 弹性网卡附加的实例ID。
+    ///
+    /// > 由其他阿里云服务管理和控制的弹性网卡不会返回实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 弹性网卡的所属账号ID。
     #[serde(rename = "OwnerId")]
     pub owner_id: String,
+    /// 该弹性网卡的使用者是否为云产品或虚商。
     #[serde(rename = "ServiceManaged")]
     pub service_managed: bool,
+    /// VPC的交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 弹性网卡的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 弹性网卡的队列数。
+    ///
+    /// - 如果辅助网卡是已挂载（InUse）状态且没有修改过队列数，则返回实例规格默认的辅助网卡队列数。
+    /// - 如果辅助网卡修改过队列数，则返回修改后的队列数。
+    /// - 如果辅助网卡是未挂载（Available）状态且未修改过队列数，则返回值为空。
+    /// - 主网卡返回实例规格默认的主网卡队列数。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
     #[serde(rename = "PrivateIpSets")]
@@ -67412,12 +69963,28 @@ pub struct NetworkInterfaceSet {
     pub tags: InterfaceSetItemTags,
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: SetItemSecurityGroupIds,
+    /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
     #[serde(rename = "AssociatedPublicIp")]
     pub associated_public_ip: InterfaceSetItemAssociatedPublicIp,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "Attachment")]
     pub attachment: ItemAttachment,
+    /// 释放实例时是否保留网卡。可能值：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
+    /// 是否开启源/目的检查功能。建议您打开该功能，以提高网络安全。可能值：
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    ///
+    /// 默认值：false。
+    ///
+    /// > 使用该参数前，请认真阅读[源/目的检查](~~2863210~~)。
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: bool,
 }
@@ -67555,6 +70122,7 @@ impl crate::FlatSerialize for NetworkInterfaceSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSets {
+    /// 弹性网卡信息组成的集合。
     #[serde(rename = "NetworkInterfaceSet")]
     pub network_interface_set: Vec<NetworkInterfaceSet>,
 }
@@ -67576,8 +70144,10 @@ impl crate::FlatSerialize for InterfaceSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeTag {
+    /// > 该参数暂未开放使用。
     #[serde(rename = "Key")]
     pub key: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -67596,6 +70166,7 @@ impl crate::FlatSerialize for AttributeTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceAttributeResponseSecurityGroupIds {
+    /// 弹性网卡所属的安全组集合。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -67617,8 +70188,10 @@ impl crate::FlatSerialize for InterfaceAttributeResponseSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAssociatedPublicIp {
+    /// 弹性公网IP地址。
     #[serde(rename = "PublicIpAddress")]
     pub public_ip_address: String,
+    /// 弹性公网IP的ID。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
 }
@@ -67645,6 +70218,7 @@ impl crate::FlatSerialize for ResponseAssociatedPublicIp {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceIds {
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "MemberNetworkInterfaceId")]
     pub member_network_interface_id: Vec<String>,
 }
@@ -67666,14 +70240,20 @@ impl crate::FlatSerialize for InterfaceIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAttachment {
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "DeviceIndex")]
     pub device_index: i32,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "TrunkNetworkInterfaceId")]
     pub trunk_network_interface_id: String,
     #[serde(rename = "MemberNetworkInterfaceIds")]
     pub member_network_interface_ids: InterfaceIds,
+    /// 网卡挂载指定的物理网卡索引。
+    /// - 如果网卡是未挂载（Available）状态或者挂载时未指定索引，则不返回此值。
+    /// - 如果网卡是已挂载（InUse）状态且挂载时指定，此值表示网卡挂载指定的物理网卡索引。
     #[serde(rename = "NetworkCardIndex")]
     pub network_card_index: i32,
 }
@@ -67715,8 +70295,10 @@ impl crate::FlatSerialize for ResponseAttachment {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
+    /// 弹性公网IP地址。
     #[serde(rename = "PublicIpAddress")]
     pub public_ip_address: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "AllocationId")]
     pub allocation_id: String,
 }
@@ -67743,10 +70325,15 @@ impl crate::FlatSerialize for ResponsePrivateIpSetsPrivateIpSetItemAssociatedPub
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponsePrivateIpSetsPrivateIpSet {
+    /// 弹性网卡的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 是否是主私网IP地址。可能值：
+    /// - true：主私网IP。
+    /// - false：辅助私网IP。
     #[serde(rename = "Primary")]
     pub primary: bool,
+    /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
     #[serde(rename = "AssociatedPublicIp")]
     pub associated_public_ip: ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp,
 }
@@ -67774,6 +70361,7 @@ impl crate::FlatSerialize for AttributeResponsePrivateIpSetsPrivateIpSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponsePrivateIpSets {
+    /// PrivateIpSet组成的集合。
     #[serde(rename = "PrivateIpSet")]
     pub private_ip_set: Vec<AttributeResponsePrivateIpSetsPrivateIpSet>,
 }
@@ -67795,6 +70383,7 @@ impl crate::FlatSerialize for AttributeResponsePrivateIpSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6SetsIpv6Set {
+    /// 为弹性网卡指定的IPv6地址。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: String,
 }
@@ -67816,6 +70405,7 @@ impl crate::FlatSerialize for AttributeResponseIpv6SetsIpv6Set {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6Sets {
+    /// 弹性网卡已分配的IPv6地址。
     #[serde(rename = "Ipv6Set")]
     pub ipv6_set: Vec<AttributeResponseIpv6SetsIpv6Set>,
 }
@@ -67833,6 +70423,7 @@ impl crate::FlatSerialize for AttributeResponseIpv6Sets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv4PrefixSetsIpv4PrefixSet {
+    /// 弹性网卡已分配的IPv4前缀。
     #[serde(rename = "Ipv4Prefix")]
     pub ipv4_prefix: String,
 }
@@ -67854,6 +70445,7 @@ impl crate::FlatSerialize for AttributeResponseIpv4PrefixSetsIpv4PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv4PrefixSets {
+    /// 弹性网卡已分配的IPv4前缀集合。
     #[serde(rename = "Ipv4PrefixSet")]
     pub ipv4_prefix_set: Vec<AttributeResponseIpv4PrefixSetsIpv4PrefixSet>,
 }
@@ -67875,6 +70467,7 @@ impl crate::FlatSerialize for AttributeResponseIpv4PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6PrefixSetsIpv6PrefixSet {
+    /// 弹性网卡已分配的IPv6前缀。
     #[serde(rename = "Ipv6Prefix")]
     pub ipv6_prefix: String,
 }
@@ -67896,6 +70489,7 @@ impl crate::FlatSerialize for AttributeResponseIpv6PrefixSetsIpv6PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6PrefixSets {
+    /// 弹性网卡已分配的IPv6前缀集合。
     #[serde(rename = "Ipv6PrefixSet")]
     pub ipv6_prefix_set: Vec<AttributeResponseIpv6PrefixSetsIpv6PrefixSet>,
 }
@@ -67917,8 +70511,10 @@ impl crate::FlatSerialize for AttributeResponseIpv6PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -67941,6 +70537,7 @@ impl crate::FlatSerialize for AttributeResponseTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseTags {
+    /// 弹性网卡的标签集合。
     #[serde(rename = "Tag")]
     pub tag: Vec<AttributeResponseTagsTag>,
 }
@@ -67958,10 +70555,13 @@ impl crate::FlatSerialize for AttributeResponseTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpecificationSet {
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "SlaveNetworkInterfaceId")]
     pub slave_network_interface_id: String,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "WorkState")]
     pub work_state: String,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "BondNetworkInterfaceId")]
     pub bond_network_interface_id: String,
 }
@@ -67993,6 +70593,7 @@ impl crate::FlatSerialize for SpecificationSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpecificationSlaveInterfaceSpecification {
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "SlaveInterfaceSpecificationSet")]
     pub slave_interface_specification_set: Vec<SpecificationSet>,
 }
@@ -68014,6 +70615,7 @@ impl crate::FlatSerialize for SpecificationSlaveInterfaceSpecification {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BondInterfaceSpecification {
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "BondMode")]
     pub bond_mode: String,
     #[serde(rename = "SlaveInterfaceSpecification")]
@@ -68042,10 +70644,13 @@ impl crate::FlatSerialize for BondInterfaceSpecification {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSlaveInterfaceSpecification {
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "SlaveNetworkInterfaceId")]
     pub slave_network_interface_id: String,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "WorkState")]
     pub work_state: String,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "BondNetworkInterfaceId")]
     pub bond_network_interface_id: String,
 }
@@ -68077,10 +70682,13 @@ impl crate::FlatSerialize for ResponseSlaveInterfaceSpecification {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfaceTrafficConfig {
+    /// 弹性网卡的通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 弹性网卡队列数。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
+    /// RDMA 网卡队列数。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
 }
@@ -68112,10 +70720,21 @@ impl crate::FlatSerialize for ResponseNetworkInterfaceTrafficConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseConnectionTrackingConfiguration {
+    /// 已建状态的TCP连接超时时间，单位：s（秒）。可能值：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
     #[serde(rename = "TcpEstablishedTimeout")]
     pub tcp_established_timeout: i32,
+    /// TCP等待与关闭超时时间，单位：s（秒）。可能值：3~15内的整数。
+    ///
+    ///
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，`TIME_WAIT`状态的连接超时时间默认值为15秒。
     #[serde(rename = "TcpClosedAndTimeWaitTimeout")]
     pub tcp_closed_and_time_wait_timeout: i32,
+    /// UDP流超时时间。单位：s（秒）。可能值：[10, 20, 30, 60, 80, 100]。
+    ///
+    ///
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，默认值为100秒。
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: i32,
 }
@@ -68147,8 +70766,10 @@ impl crate::FlatSerialize for ResponseConnectionTrackingConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEnhancedNetwork {
+    /// 该参数暂未开放使用。
     #[serde(rename = "EnableSriov")]
     pub enable_sriov: bool,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "EnableRss")]
     pub enable_rss: bool,
     #[serde(rename = "VirtualFunctionTotalQueueNumber")]
@@ -68189,14 +70810,19 @@ impl crate::FlatSerialize for ResponseEnhancedNetwork {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigQoS {
+    /// 最大内网出方向带宽限制
     #[serde(rename = "BandwidthTx")]
     pub bandwidth_tx: i64,
+    /// 最大内网入方向带宽限制
     #[serde(rename = "BandwidthRx")]
     pub bandwidth_rx: i64,
+    /// 内网出方向网络收发包能力
     #[serde(rename = "PpsTx")]
     pub pps_tx: i64,
+    /// 内网入方向网络收发包能力
     #[serde(rename = "PpsRx")]
     pub pps_rx: i64,
+    /// 会话数量的最大值
     #[serde(rename = "ConcurrentConnections")]
     pub concurrent_connections: i64,
 }
@@ -68230,8 +70856,10 @@ impl crate::FlatSerialize for ConfigQoS {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SConfig {
+    /// 是否启用 QoS 限速设置
     #[serde(rename = "EnableQoS")]
     pub enable_qo_s: bool,
+    /// QoS 限速设置
     #[serde(rename = "QoS")]
     pub qo_s: ConfigQoS,
 }
@@ -68254,14 +70882,52 @@ impl crate::FlatSerialize for SConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeNetworkInterfaceTrafficConfig {
+    /// 网卡的通讯模式。参数取值范围：
+    ///
+    /// - Standard：使用 TCP 通讯模式。
+    /// - HighPerformance：开启 ERI（Elastic RDMA Interface）接口，使用 RDMA 通讯模式。
+    ///
+    /// 当弹性网卡处于挂载态时，您需要注意：
+    /// - 实例的所有RDMA网卡数不能超过实例规格允许的RDMA网卡数配额。实例规格允许的RDMA网卡数配额可以通过 DescribeInstanceTypes 接口查询EriQuantity字段。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 弹性网卡队列数。
+    /// 当弹性网卡处于挂载态时，您需要注意：
+    /// - 不能超过实例规格允许的单块网卡最大队列数。
+    /// - 实例的所有网卡累加队列数不能超过实例规格允许的队列数总配额。实例规格的单块网卡最大队列数和总配额可以通过 DescribeInstanceTypes 接口查询MaximumQueueNumberPerEni、TotalEniQueueQuantity字段。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
+    /// RDMA 网卡队列数。
+    /// 当弹性网卡处于挂载态时，您需要注意：
+    /// - 不能超过实例规格允许的单块RDMA网卡最大队列数。实例规格允许的单块RDMA网卡最大队列数可以通过 DescribeInstanceTypes 接口查询QueuePairNumber字段。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
+    /// 弹性网卡入方向队列深度。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，如有需求请工单联系加白。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    /// - 目前仅适用于Linux镜像。
+    /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
     pub rx_queue_size: i32,
+    /// 弹性网卡出方向队列深度。
+    ///
+    /// > 该参数正在邀测中，暂未开放使用，如有需求请工单联系加白。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 仅适用于7代及以后ECS规格。
+    /// - 目前仅适用于Linux镜像。
+    /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
     pub tx_queue_size: i32,
 }
@@ -68303,10 +70969,23 @@ impl crate::FlatSerialize for AttributeNetworkInterfaceTrafficConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeConnectionTrackingConfiguration {
+    /// 已建状态的TCP连接超时时间，单位：s（秒）。取值范围：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
+    ///
+    /// 默认值：910。
     #[serde(rename = "TcpEstablishedTimeout")]
     pub tcp_established_timeout: i32,
+    /// TCP等待与关闭超时时间，单位：s（秒）。取值范围：3~15内的整数。
+    ///
+    /// 默认值：3。
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，`TIME_WAIT`状态的连接超时时间默认值为15秒。
     #[serde(rename = "TcpClosedAndTimeWaitTimeout")]
     pub tcp_closed_and_time_wait_timeout: i32,
+    /// UDP流超时时间。单位：s（秒）。取值范围：[10, 20, 30, 60, 80, 100]。
+    ///
+    /// 默认值：30。
+    ///
+    /// > 如果您的ECS实例配合NLB/CLB使用，默认值为100秒。
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: i32,
 }
@@ -68338,8 +71017,10 @@ impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeEnhancedNetwork {
+    /// 该参数暂未开放使用。
     #[serde(rename = "EnableSriov")]
     pub enable_sriov: bool,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "EnableRss")]
     pub enable_rss: bool,
     #[serde(rename = "VirtualFunctionTotalQueueNumber")]
@@ -68380,6 +71061,7 @@ impl crate::FlatSerialize for AttributeEnhancedNetwork {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPrivateIpSet {
+    /// 已分配的私网IP地址集合。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: Vec<String>,
 }
@@ -68401,6 +71083,7 @@ impl crate::FlatSerialize for SetPrivateIpSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetIpv4PrefixSet {
+    /// 已分配的IPv4前缀集合。
     #[serde(rename = "Ipv4Prefixes")]
     pub ipv4_prefixes: Vec<String>,
 }
@@ -68422,6 +71105,7 @@ impl crate::FlatSerialize for SetIpv4PrefixSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesSet {
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
     #[serde(rename = "PrivateIpSet")]
@@ -68457,6 +71141,7 @@ impl crate::FlatSerialize for AddressesSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesResponseIpv6Sets {
+    /// 弹性网卡已分配的IPv6地址。
     #[serde(rename = "Ipv6Address")]
     pub ipv6_address: Vec<String>,
 }
@@ -68478,6 +71163,7 @@ impl crate::FlatSerialize for AddressesResponseIpv6Sets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesResponseIpv6PrefixSets {
+    /// 弹性网卡已分配的IPv6前缀集合。
     #[serde(rename = "Ipv6Prefix")]
     pub ipv6_prefix: Vec<String>,
 }
@@ -68499,16 +71185,27 @@ impl crate::FlatSerialize for AddressesResponseIpv6PrefixSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfacePermission {
+    /// 弹性网卡权限。
     #[serde(rename = "Permission")]
     pub permission: String,
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 阿里云合作伙伴（认证ISV）账号ID。
     #[serde(rename = "AccountId")]
     pub account_id: i64,
+    /// 弹性网卡权限ID。
     #[serde(rename = "NetworkInterfacePermissionId")]
     pub network_interface_permission_id: String,
+    /// 阿里云服务名称。
     #[serde(rename = "ServiceName")]
     pub service_name: String,
+    /// 弹性网卡权限状态。可能值：
+    ///
+    /// - Pending：授权中。
+    /// - Granted：已授权。
+    /// - Revoking：撤销授权中。
+    /// - Revoked：已撤销授权。
     #[serde(rename = "PermissionState")]
     pub permission_state: String,
 }
@@ -68555,16 +71252,27 @@ impl crate::FlatSerialize for ResponseNetworkInterfacePermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PermissionsNetworkInterfacePermission {
+    /// 弹性网卡权限。
     #[serde(rename = "Permission")]
     pub permission: String,
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 阿里云合作伙伴（认证ISV）账号ID或个人用户ID。
     #[serde(rename = "AccountId")]
     pub account_id: i64,
+    /// 弹性网卡权限ID。
     #[serde(rename = "NetworkInterfacePermissionId")]
     pub network_interface_permission_id: String,
+    /// 阿里云服务名称。
     #[serde(rename = "ServiceName")]
     pub service_name: String,
+    /// 弹性网卡权限状态。可能值：
+    ///
+    /// - Pending：授权中
+    /// - Granted：已授权
+    /// - Revoking：撤销授权中
+    /// - Revoked：已撤销授权
     #[serde(rename = "PermissionState")]
     pub permission_state: String,
 }
@@ -68611,6 +71319,7 @@ impl crate::FlatSerialize for PermissionsNetworkInterfacePermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfacePermissions {
+    /// 弹性网卡权限列表组成的信息集合。
     #[serde(rename = "NetworkInterfacePermission")]
     pub network_interface_permission: Vec<PermissionsNetworkInterfacePermission>,
 }
@@ -68632,8 +71341,20 @@ impl crate::FlatSerialize for InterfacePermissions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListEntry {
+    /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 前缀列表条目的CIDR地址块信息。N的取值范围：0~200。注意事项：
+    ///
+    /// - 前缀列表的条目数量不能大于最大条目容量（`MaxEntries`）。
+    /// - 条目中的CIDR地址块类型根据地址族决定，一个前缀列表不能同时包含IPv4和IPv6的CIDR地址块。
+    /// - 多个条目中的CIDR地址块不能重复。例如，您不能设置两个192.168.1.0/24。
+    /// - 支持设置单IP地址，系统会自动转换为CIDR地址块。例如，您设置192.168.1.100，系统会自动转换成192.168.1.100/32。
+    /// - 如果使用IPv6 CIDR地址块，系统会自动转换成零压缩表示形式且字母转换为小写。例如，您设置2001:0DB8:0000:0000:0000:0000:0000:0000/32，系统会自动转换成2001:db8::/32。
+    ///
+    /// 关于CIDR地址块的详细信息，请参见[什么是CIDR](~~185311#598efe6ef1v00~~)。
+    ///
+    /// 默认值：空。
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
@@ -68656,8 +71377,12 @@ impl crate::FlatSerialize for PrefixListEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListTag {
+    /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 前缀列表的标签值。N的取值范围：1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://或https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -68676,8 +71401,12 @@ impl crate::FlatSerialize for PrefixListTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListsTag {
+    /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含`http://或者https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 前缀列表的标签值。N的取值范围：1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://或https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -68696,8 +71425,12 @@ impl crate::FlatSerialize for PrefixListsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTagsTag {
+    /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 前缀列表的标签值。N的取值范围：1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://或https://`。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -68720,6 +71453,7 @@ impl crate::FlatSerialize for ListItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTags {
+    /// 标签列表。
     #[serde(rename = "Tag")]
     pub tag: Vec<ListItemTagsTag>,
 }
@@ -68737,22 +71471,33 @@ impl crate::FlatSerialize for ListItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixList {
+    /// 前缀列表的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 关联资源的数量。
     #[serde(rename = "AssociationCount")]
     pub association_count: i32,
+    /// 前缀列表支持的最大条目容量。
     #[serde(rename = "MaxEntries")]
     pub max_entries: i32,
+    /// 前缀列表的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 前缀列表的地址族。可能值：
+    ///
+    /// - IPv4。
+    /// - IPv6。
     #[serde(rename = "AddressFamily")]
     pub address_family: String,
+    /// 前缀列表的名称。
     #[serde(rename = "PrefixListName")]
     pub prefix_list_name: String,
+    /// 前缀列表ID。
     #[serde(rename = "PrefixListId")]
     pub prefix_list_id: String,
     #[serde(rename = "Tags")]
     pub tags: ListItemTags,
+    /// 前缀列表所属的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
 }
@@ -68810,6 +71555,7 @@ impl crate::FlatSerialize for PrefixList {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixLists {
+    /// 前缀列表信息组成的数组。
     #[serde(rename = "PrefixList")]
     pub prefix_list: Vec<PrefixList>,
 }
@@ -68831,8 +71577,10 @@ impl crate::FlatSerialize for PrefixLists {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EntriesEntry {
+    /// 前缀列表条目的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 前缀列表条目的CIDR地址块信息。
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
@@ -68855,6 +71603,7 @@ impl crate::FlatSerialize for EntriesEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEntries {
+    /// 前缀列表中的条目信息组成的数组。
     #[serde(rename = "Entry")]
     pub entry: Vec<EntriesEntry>,
 }
@@ -68872,8 +71621,10 @@ impl crate::FlatSerialize for ResponseEntries {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListAssociation {
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 资源类型。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
 }
@@ -68900,6 +71651,7 @@ impl crate::FlatSerialize for PrefixListAssociation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAssociations {
+    /// 前缀列表已关联的资源信息组成的数组。
     #[serde(rename = "PrefixListAssociation")]
     pub prefix_list_association: Vec<PrefixListAssociation>,
 }
@@ -68921,8 +71673,15 @@ impl crate::FlatSerialize for ListAssociations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListAddEntry {
+    /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 添加的前缀列表条目的CIDR地址块信息。N的取值范围：0~200。
+    ///
+    /// 添加时请您注意：
+    /// - 前缀列表的条目数量，不能大于前缀列表支持的最大条目容量。您可以调用[DescribePrefixListAttributes](~~205872~~)查询指定前缀列表的最大条目容量信息。
+    /// - 不允许设置重复的CIDR地址块信息。
+    /// - 不允许与`RemoveEntry.N.Cidr`参数值重复。
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
@@ -68945,6 +71704,11 @@ impl crate::FlatSerialize for PrefixListAddEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListRemoveEntry {
+    /// 删除的前缀列表条目的CIDR地址块信息。N的取值范围：0~200。
+    ///
+    /// 删除时请您注意：
+    /// - 不允许设置重复的CIDR地址块信息。
+    /// - 不允许与`AddEntry.N.Cidr`参数值重复。
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
@@ -68962,8 +71726,14 @@ impl crate::FlatSerialize for PrefixListRemoveEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListEntry {
+    /// 端口范围。N 的取值范围：0~200。
+    ///
+    /// - 条目数量不能大于最大条目容量（`MaxEntries`）。
+    ///
+    /// - 多个条目中的`PortRange`不能重复。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 端口范围的描述信息。长度为 2~32 个英文或中文字符，不能以http://和https://开头。N 的取值范围：0~200。
     #[serde(rename = "Description")]
     pub description: String,
 }
@@ -68990,8 +71760,14 @@ impl crate::FlatSerialize for RangeListEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListTag {
+    /// 端口列表的标签键。
+    ///
+    /// 使用该参数时，不允许为空或空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 端口列表的标签值。
+    ///
+    /// 使用该参数时，不允许为空，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -69010,8 +71786,12 @@ impl crate::FlatSerialize for RangeListTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListsTag {
+    /// 实例的标签键。N的取值范围为1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -69030,8 +71810,10 @@ impl crate::FlatSerialize for RangeListsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListsItemTag {
+    /// 端口列表的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 端口列表的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -69054,20 +71836,28 @@ impl crate::FlatSerialize for ListsItemTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeList {
+    /// 端口列表 ID。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
+    /// 端口列表的名称。
     #[serde(rename = "PortRangeListName")]
     pub port_range_list_name: String,
+    /// 端口列表支持的最大条目容量。
     #[serde(rename = "MaxEntries")]
     pub max_entries: i32,
+    /// 关联资源的数量。
     #[serde(rename = "AssociationCount")]
     pub association_count: i32,
+    /// 端口列表的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口列表的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 端口列表所在的企业资源组 ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 端口列表的标签组成的数组。
     #[serde(rename = "Tags")]
     pub tags: Vec<ListsItemTag>,
 }
@@ -69120,8 +71910,10 @@ impl crate::FlatSerialize for RangeList {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEntry {
+    /// 端口范围。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 端口范围的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
 }
@@ -69148,8 +71940,10 @@ impl crate::FlatSerialize for ResponseEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListAssociation {
+    /// 资源 ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 资源类型。可能值：SecurityGroup。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
 }
@@ -69176,8 +71970,16 @@ impl crate::FlatSerialize for RangeListAssociation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListAddEntry {
+    /// 端口范围，N 的取值范围：0~200。使用限制：
+    ///
+    /// - 条目数量不能大于最大条目容量（`MaxEntries`）。
+    ///
+    /// - 不允许设置重复的 `PortRange`。
+    ///
+    /// - 不允许与`RemoveEntry.N.PortRange` 参数值重复。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 端口范围的描述信息。长度为 2~32 个英文或中文字符，不能以http://和https://开头。N 的取值范围：0~200。
     #[serde(rename = "Description")]
     pub description: String,
 }
@@ -69204,6 +72006,11 @@ impl crate::FlatSerialize for RangeListAddEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListRemoveEntry {
+    /// 端口范围，N 的取值范围：0~200。使用限制：
+    ///
+    /// - 不允许设置重复的`PortRange`。
+    ///
+    /// - 不允许与`AddEntry.N.PortRange` 参数值重复。
     #[serde(rename = "PortRange")]
     pub port_range: String,
 }
@@ -69225,8 +72032,14 @@ impl crate::FlatSerialize for RangeListRemoveEntry {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupTag {
+    /// 安全组的标签键。
+    ///
+    /// 一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 安全组的标签值。
+    ///
+    /// > 为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -69245,8 +72058,14 @@ impl crate::FlatSerialize for SecurityGroupTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupsTag {
+    /// 安全组的标签键。N的取值范围为1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 安全组的标签值。
+    ///
+    /// > 为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -69265,8 +72084,10 @@ impl crate::FlatSerialize for SecurityGroupsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupItemTagsTag {
+    /// 安全组的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 安全组的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -69289,6 +72110,7 @@ impl crate::FlatSerialize for SecurityGroupItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupItemTags {
+    /// 安全组的标签集合。
     #[serde(rename = "Tag")]
     pub tag: Vec<SecurityGroupItemTagsTag>,
 }
@@ -69306,32 +72128,56 @@ impl crate::FlatSerialize for SecurityGroupItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupsSecurityGroup {
+    /// 安全组ID。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 安全组名称。
     #[serde(rename = "SecurityGroupName")]
     pub security_group_name: String,
+    /// 安全组描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 安全组类型。可能值：
+    ///
+    /// - normal：普通安全组。
+    /// - enterprise：企业安全组。
     #[serde(rename = "SecurityGroupType")]
     pub security_group_type: String,
+    /// 安全组所属的专有网络。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC时间。格式为：yyyy-MM-ddThh:mmZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 安全组中已经容纳的私网IP数量，参见[安全组容量](~~605897#section-kj9-e46-6v5~~)。
+    ///
+    /// 当入参IsQueryEcsCount传入True时，该参数返回值有效。
+    ///
+    /// > 该参数已废弃。返回值中的数量仅供参考，非实时一致。
     #[serde(rename = "EcsCount")]
     pub ecs_count: i32,
+    /// 安全组中还可加入的私网IP数量，参见[安全组容量](~~605897#section-kj9-e46-6v5~~)。
+    ///
+    /// 当入参IsQueryEcsCount传入True时，该参数返回值有效。
+    ///
+    /// > 该参数已废弃。返回值中的数量仅供参考，非实时一致。
     #[serde(rename = "AvailableInstanceAmount")]
     pub available_instance_amount: i32,
+    /// 安全组所在的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 安全组的使用者是否为云产品或虚商。
     #[serde(rename = "ServiceManaged")]
     pub service_managed: bool,
+    /// 安全组对应的虚商ID。
     #[serde(rename = "ServiceID")]
     pub service_id: i64,
     #[serde(rename = "Tags")]
     pub tags: SecurityGroupItemTags,
+    /// 安全组中的规则数量。
     #[serde(rename = "RuleCount")]
     pub rule_count: i32,
+    /// 安全组中授权安全组访问的规则数量。
     #[serde(rename = "GroupToGroupRuleCount")]
     pub group_to_group_rule_count: i32,
 }
@@ -69410,6 +72256,7 @@ impl crate::FlatSerialize for GroupsSecurityGroup {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSecurityGroups {
+    /// 安全组信息集合。
     #[serde(rename = "SecurityGroup")]
     pub security_group: Vec<GroupsSecurityGroup>,
 }
@@ -69431,56 +72278,82 @@ impl crate::FlatSerialize for ResponseSecurityGroups {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PermissionsPermission {
+    /// 安全组规则ID。
     #[serde(rename = "SecurityGroupRuleId")]
     pub security_group_rule_id: String,
+    /// 授权方向。
     #[serde(rename = "Direction")]
     pub direction: String,
+    /// 源端安全组，用于入方向授权。
     #[serde(rename = "SourceGroupId")]
     pub source_group_id: String,
+    /// 目的端安全组所属阿里云账户ID。
     #[serde(rename = "DestGroupOwnerAccount")]
     pub dest_group_owner_account: String,
+    /// 目的端前缀列表ID，用于出方向授权。
     #[serde(rename = "DestPrefixListId")]
     pub dest_prefix_list_id: String,
+    /// 目的端前缀列表的名称。
     #[serde(rename = "DestPrefixListName")]
     pub dest_prefix_list_name: String,
+    /// 源端IP地址段，用于入方向授权。
     #[serde(rename = "SourceCidrIp")]
     pub source_cidr_ip: String,
+    /// 目的端IPv6地址段。
     #[serde(rename = "Ipv6DestCidrIp")]
     pub ipv6_dest_cidr_ip: String,
+    /// 创建时间，UTC时间。
     #[serde(rename = "CreateTime")]
     pub create_time: String,
+    /// 源端IPv6地址段。
     #[serde(rename = "Ipv6SourceCidrIp")]
     pub ipv6_source_cidr_ip: String,
+    /// 目的端安全组，用于出方向授权。
     #[serde(rename = "DestGroupId")]
     pub dest_group_id: String,
+    /// 目的端IP地址段，用于出方向授权。
     #[serde(rename = "DestCidrIp")]
     pub dest_cidr_ip: String,
+    /// IP协议。
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
+    /// 规则优先级。
     #[serde(rename = "Priority")]
     pub priority: String,
+    /// 目的端安全组名称。
     #[serde(rename = "DestGroupName")]
     pub dest_group_name: String,
+    /// 网络类型。
     #[serde(rename = "NicType")]
     pub nic_type: String,
+    /// 授权策略。
     #[serde(rename = "Policy")]
     pub policy: String,
+    /// 安全组描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口范围。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 源端前缀列表的名称。
     #[serde(rename = "SourcePrefixListName")]
     pub source_prefix_list_name: String,
+    /// 源端前缀列表ID，用于入方向授权。
     #[serde(rename = "SourcePrefixListId")]
     pub source_prefix_list_id: String,
+    /// 源端安全组所属阿里云账户ID。
     #[serde(rename = "SourceGroupOwnerAccount")]
     pub source_group_owner_account: String,
+    /// 源端安全组名称。
     #[serde(rename = "SourceGroupName")]
     pub source_group_name: String,
+    /// 源端端口范围。
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: String,
+    /// 端口列表 ID。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
+    /// 端口列表的名称。
     #[serde(rename = "PortRangeListName")]
     pub port_range_list_name: String,
 }
@@ -69615,6 +72488,7 @@ impl crate::FlatSerialize for PermissionsPermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePermissions {
+    /// 安全组权限规则集合。
     #[serde(rename = "Permission")]
     pub permission: Vec<PermissionsPermission>,
 }
@@ -69636,6 +72510,7 @@ impl crate::FlatSerialize for ResponsePermissions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyIds {
+    /// 安全组关联的快照策略ID列表。
     #[serde(rename = "SnapshotPolicyId")]
     pub snapshot_policy_id: Vec<String>,
 }
@@ -69657,36 +72532,129 @@ impl crate::FlatSerialize for PolicyIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupPermission {
+    /// 设置访问权限。取值范围：
+    ///
+    /// - accept：接受访问。
+    ///
+    /// - drop：拒绝访问，不返回拒绝信息，表现为发起端请求超时或者无法建立连接的类似信息。
+    ///
+    /// 默认值：accept。
     #[serde(rename = "Policy")]
     pub policy: String,
+    /// 安全组规则优先级，数字越小，代表优先级越高。取值范围：1~100。
+    ///
+    /// 默认值：1。
     #[serde(rename = "Priority")]
     pub priority: String,
+    /// 网络层/传输层协议。支持两类赋值：
+    /// 1. 不区分大小写的协议名。取值范围：
+    /// - ICMP
+    /// - GRE
+    /// - TCP
+    /// - UDP
+    /// - ALL：支持所有协议。
+    /// 2. 符合IANA规范的协议号取值，即0 到 255的整数。目前开放的地域列表：
+    /// - 菲律宾
+    /// - 英国
+    /// - 马来西亚
+    /// - 呼和浩特
+    /// - 青岛
+    /// - 美西
+    /// - 新加坡
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
+    /// 需要设置访问权限的源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "SourceCidrIp")]
     pub source_cidr_ip: String,
+    /// 需要设置访问权限的源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`SourceCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
     pub ipv6_source_cidr_ip: String,
+    /// 需要设置访问权限的源端安全组ID。
+    ///
+    /// - 至少设置`SourceGroupId`、`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourcePrefixListId`参数中的一项。
+    ///
+    /// - 如果指定了`SourceGroupId`，没有指定参数`SourceCidrIp`或`Ipv6SourceCidrIp`，则参数`NicType`取值只能为`intranet`。
+    ///
+    /// - 如果同时指定了`SourceGroupId`和`SourceCidrIp`，则默认以`SourceCidrIp`为准。
     #[serde(rename = "SourceGroupId")]
     pub source_group_id: String,
+    /// 需要设置访问权限的源端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
+    ///
+    /// 注意事项：
+    ///
+    /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
+    ///
+    /// - 当您指定了`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourceGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "SourcePrefixListId")]
     pub source_prefix_list_id: String,
+    /// 安全组开放的各协议相关的目的端口范围。取值范围：
+    ///
+    /// - TCP/UDP：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP：-1/-1。
+    /// - GRE：-1/-1。
+    /// - IpProtocol取值为ALL：-1/-1。
+    ///
+    /// 了解端口的应用场景，请参见[典型应用的常用端口](~~40724~~)。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 目的端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "DestCidrIp")]
     pub dest_cidr_ip: String,
+    /// 目的端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
     pub ipv6_dest_cidr_ip: String,
+    /// 安全组开放的各协议相关的源端端口范围。取值范围：
+    ///
+    /// - TCP/UDP协议：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - IpProtocol取值为ALL：-1/-1。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: String,
+    /// 跨账户设置安全组规则时，源端安全组所属的阿里云账户。
+    ///
+    /// - 如果`SourceGroupOwnerAccount`及`SourceGroupOwnerId`均未设置，则认为是设置您其他安全组的访问权限。
+    ///
+    /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerAccount")]
     pub source_group_owner_account: String,
+    /// 跨账户设置安全组规则时，源端安全组所属的阿里云账户ID。
+    ///
+    /// - 如果`SourceGroupOwnerAccount`及`SourceGroupOwnerId`均未设置，则认为是设置您其他安全组的访问权限。
+    ///
+    /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerId")]
     pub source_group_owner_id: i64,
+    /// 经典网络类型安全组规则的网卡类型。取值范围：
+    ///
+    /// - internet：公网网卡。
+    ///
+    /// - intranet：内网网卡。
+    ///
+    /// 专有网络VPC类型安全组规则无需设置网卡类型，默认为intranet，只能为intranet。
+    ///
+    /// 设置安全组之间互相访问时，即仅指定了DestGroupId参数时，只能为intranet。
+    ///
+    /// 默认值：internet。
     #[serde(rename = "NicType")]
     pub nic_type: String,
+    /// 安全组规则的描述信息。长度为1~512个字符。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口列表 ID。
+    /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
+    /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
+    /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
 }
@@ -69771,36 +72739,123 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupPermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupPermission {
+    /// 访问权限。取值范围：
+    ///          
+    /// - accept：接受访问。
+    /// - drop：拒绝访问，不返回拒绝信息，表现为发起端请求超时或者无法建立连接的类似信息。
+    ///
+    /// 默认值：accept。
     #[serde(rename = "Policy")]
     pub policy: String,
+    /// 安全组规则优先级，数字越小，代表优先级越高。取值范围：1~100。
+    ///
+    /// 默认值：1。
     #[serde(rename = "Priority")]
     pub priority: String,
+    /// 协议类型。取值不区分大小写。取值范围：
+    ///          
+    /// - TCP。
+    /// - UDP。
+    /// - ICMP。
+    /// - ICMPv6。
+    /// - GRE。
+    /// - ALL：支持所有协议。
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
+    /// 需要撤销访问权限的源端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "SourceCidrIp")]
     pub source_cidr_ip: String,
+    /// 需要撤销访问权限的源端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`SourceCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
     pub ipv6_source_cidr_ip: String,
+    /// 需要撤销访问权限的源端安全组ID。
+    ///
+    /// - 至少设置`SourceGroupId`、`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourcePrefixListId`参数中的一项。
+    ///
+    /// - 如果指定了`SourceGroupId`，没有指定参数`SourceCidrIp`或`Ipv6SourceCidrIp`，则参数NicType取值只能为intranet。
+    ///
+    /// - 如果同时指定了`SourceGroupId`和`SourceCidrIp`，则默认以`SourceCidrIp`为准。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 企业安全组不支持授权安全组访问。
+    ///
+    /// - 普通安全组支持授权的安全组数量最多为20个。
     #[serde(rename = "SourceGroupId")]
     pub source_group_id: String,
+    /// 需要撤销访问权限的源端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
+    ///
+    /// 注意事项：
+    ///
+    /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
+    /// - 当您指定了`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourceGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "SourcePrefixListId")]
     pub source_prefix_list_id: String,
+    /// 安全组开放的各协议相关的目的端口范围。取值范围：
+    ///          
+    /// - TCP/UDP协议：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 目的端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "DestCidrIp")]
     pub dest_cidr_ip: String,
+    /// 目的端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
+    ///
+    ///          
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
     pub ipv6_dest_cidr_ip: String,
+    /// 安全组开放的各协议相关的源端端口范围。取值范围：
+    ///          
+    /// - TCP/UDP协议：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - ALL：-1/-1。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: String,
+    /// 撤销跨账户授权的安全组规则时，源端安全组所属的阿里云账户。
+    ///
+    /// - 如果`SourceGroupOwnerAccount`及`SourceGroupOwnerId`均未设置，则认为是撤销您其他安全组的访问权限。
+    /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerAccount")]
     pub source_group_owner_account: String,
+    /// 撤销跨账户授权的安全组规则时，源端安全组所属的阿里云账户ID。
+    ///
+    /// - 如果`SourceGroupOwnerId`及`SourceGroupOwnerAccount`均未设置，则认为是撤销您其他安全组的访问权限。
+    /// - 如果您已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerId`无效。
     #[serde(rename = "SourceGroupOwnerId")]
     pub source_group_owner_id: i64,
+    /// 经典网络类型安全组规则的网卡类型。取值范围：
+    ///
+    /// - internet：公网网卡。
+    /// - intranet：内网网卡。
+    ///
+    /// 专有网络VPC类型安全组规则无需设置网卡类型，默认为intranet，只能为intranet。
+    ///
+    /// 撤销安全组之间授权规则，即指定了`SourceGroupId`参数时，只能为intranet。
+    ///
+    /// 默认值：internet。
     #[serde(rename = "NicType")]
     pub nic_type: String,
+    /// 安全组规则描述。长度为1~512个字符。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口列表 ID。
+    /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
+    /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
+    /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
 }
@@ -69885,36 +72940,121 @@ impl crate::FlatSerialize for RevokeSecurityGroupPermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupEgressPermission {
+    /// 设置访问权限。取值范围：
+    ///          
+    /// - accept：接受访问。
+    /// - drop：拒绝访问，不返回拒绝信息，表现为发起端请求超时或者无法建立连接的类似信息。
+    ///
+    /// 默认值：accept。
     #[serde(rename = "Policy")]
     pub policy: String,
+    /// 安全组规则优先级。数字越小，代表优先级越高。取值范围：1~100。
+    ///
+    /// 默认值：1。
     #[serde(rename = "Priority")]
     pub priority: String,
+    /// 网络层/传输层协议。支持两类赋值：
+    /// 1. 不区分大小写的协议名。取值范围：
+    /// - ICMP
+    /// - GRE
+    /// - TCP
+    /// - UDP
+    /// - ALL：支持所有协议。
+    /// 2. 符合IANA规范的协议号取值，即0 到 255的整数。目前开放的地域列表：
+    /// - 菲律宾
+    /// - 英国
+    /// - 马来西亚
+    /// - 呼和浩特
+    /// - 青岛
+    /// - 美西
+    /// - 新加坡
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
+    /// 需要设置访问权限的目的端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "DestCidrIp")]
     pub dest_cidr_ip: String,
+    /// 需要设置访问权限的目的端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
     pub ipv6_dest_cidr_ip: String,
+    /// 需要设置访问权限的目的端安全组ID。
+    ///
+    /// - 至少设置`DestGroupId`、`DestCidrIp`、`Ipv6DestCidrIp`或`DestPrefixListId`参数中的一项。
+    ///
+    /// - 如果指定了`DestGroupId`没有指定参数`DestCidrIp`，则参数`NicType`取值默认只能为intranet。
+    ///
+    /// - 如果同时指定了`DestGroupId`和`DestCidrIp`，则默认以`DestCidrIp`为准。
     #[serde(rename = "DestGroupId")]
     pub dest_group_id: String,
+    /// 需要设置访问权限的目的端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
+    ///
+    /// 注意事项：
+    ///
+    /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
+    ///
+    /// - 当您指定了`DestCidrIp`、`Ipv6DestCidrIp`或`DestGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "DestPrefixListId")]
     pub dest_prefix_list_id: String,
+    /// 安全组开放的各协议相关的目的端口范围。取值范围：
+    ///          
+    /// - TCP/UDP：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP：-1/-1。
+    /// - GRE：-1/-1。
+    /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourceCidrIp")]
     pub source_cidr_ip: String,
+    /// 源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
+    ///
+    /// >仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
     pub ipv6_source_cidr_ip: String,
+    /// 安全组开放的各协议相关的源端端口范围。取值范围：
+    ///          
+    /// - TCP/UDP协议：1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - ALL：-1/-1。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: String,
+    /// 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。
+    ///          
+    /// - 如果`DestGroupOwnerAccount`及`DestGroupOwnerId`均未设置，则认为是设置您其他安全组的访问权限。
+    /// - 如果已经设置参数`DestCidrIp`，则参数`DestGroupOwnerAccount`无效。
     #[serde(rename = "DestGroupOwnerAccount")]
     pub dest_group_owner_account: String,
+    /// 跨账户设置安全组规则时，目的端安全组所属的阿里云账户ID。
+    ///          
+    /// - 如果`DestGroupOwnerId`及`DestGroupOwnerAccount`均未设置，则认为是设置您其他安全组的访问权限。
+    /// - 如果您已经设置参数`DestCidrIp`，则参数`DestGroupOwnerId`无效。
     #[serde(rename = "DestGroupOwnerId")]
     pub dest_group_owner_id: i64,
+    /// 经典网络类型安全组规则的网卡类型。取值范围：
+    ///          
+    /// - internet：公网网卡。
+    /// - intranet：内网网卡。
+    ///     - 专有网络VPC类型安全组规则无需设置网卡类型，默认只能为intranet。
+    ///     - 设置安全组之间互相访问时，即仅指定了DestGroupId参数时，默认只能为intranet。
+    ///
+    /// 默认值：internet。
     #[serde(rename = "NicType")]
     pub nic_type: String,
+    /// 安全组规则的描述信息。长度为1~512个字符。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口列表 ID。
+    /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
+    /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
+    /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
 }
@@ -69999,36 +73139,119 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupEgressPermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupEgressPermission {
+    /// 访问权限。取值范围：
+    ///          
+    /// - accept：接受访问。
+    /// - drop：拒绝访问，不返回拒绝信息，表现为发起端请求超时或者无法建立连接的类似信息。
+    ///
+    /// 默认值：accept。
     #[serde(rename = "Policy")]
     pub policy: String,
+    /// 安全组规则优先级。数字越小，代表优先级越高。取值范围：1~100。
+    ///
+    /// 默认值：1。
     #[serde(rename = "Priority")]
     pub priority: String,
+    /// 协议类型。取值不区分大小写。取值范围：
+    ///          
+    /// - TCP。
+    /// - UDP。
+    /// - ICMP。
+    /// - ICMPv6。
+    /// - GRE。
+    /// - ALL：支持所有协议。
     #[serde(rename = "IpProtocol")]
     pub ip_protocol: String,
+    /// 需要撤销访问权限的目的端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "DestCidrIp")]
     pub dest_cidr_ip: String,
+    /// 需要撤销访问权限的目的端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
     pub ipv6_dest_cidr_ip: String,
+    /// 需要撤销访问权限的目的端安全组ID。
+    ///
+    /// - 至少设置一项`DestGroupId`或者`DestCidrIp`、`Ipv6DestCidrIp`或`DestPrefixListId`参数中的一项。
+    /// - 如果指定了`DestGroupId`没有指定参数`DestCidrIp`，则参数`NicType`取值只能为intranet。
+    /// - 如果同时指定了`DestGroupId`和`DestCidrIp`，则默认以`DestCidrIp`为准。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 企业安全组不支持授权安全组访问。
+    /// - 普通安全组支持授权的安全组数量最多为20个。
     #[serde(rename = "DestGroupId")]
     pub dest_group_id: String,
+    /// 需要撤销访问权限的目的端前缀列表。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
+    ///
+    /// 注意事项：
+    ///
+    /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
+    /// - 当您指定了`DestCidrIp`、`Ipv6DestCidrIp`、`DestGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "DestPrefixListId")]
     pub dest_prefix_list_id: String,
+    /// 安全组开放的各协议相关的目的端口范围。取值范围：
+    ///          
+    /// - TCP/UDP协议：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
     pub port_range: String,
+    /// 源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourceCidrIp")]
     pub source_cidr_ip: String,
+    /// 源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
+    ///
+    ///
+    /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
     pub ipv6_source_cidr_ip: String,
+    /// 安全组开放的各协议相关的源端端口范围。取值范围：
+    ///          
+    /// - TCP/UDP协议：取值范围为1~65535。使用正斜线（/）隔开起始端口和终止端口。例如：1/200。
+    /// - ICMP协议：-1/-1。
+    /// - GRE协议：-1/-1。
+    /// - ALL：-1/-1。
+    ///
+    /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
     pub source_port_range: String,
+    /// 撤销跨账户授权的安全组规则时，目的端安全组所属的阿里云账户。
+    ///
+    /// - 如果`DestGroupOwnerAccount`及`DestGroupOwnerId`均未设置，则认为是撤销您其他安全组的访问权限。
+    /// - 如果已经设置参数`DestCidrIp`，则参数`DestGroupOwnerAccount`无效。
     #[serde(rename = "DestGroupOwnerAccount")]
     pub dest_group_owner_account: String,
+    /// 撤销跨账户授权的安全组规则时，目的端安全组所属的阿里云账户。
+    ///
+    /// - 如果`DestGroupOwnerId`及`DestGroupOwnerAccount`均未设置，则认为是撤销您其他安全组的访问权限。  
+    /// - 如果您已经设置参数`DestCidrIp`，则参数`DestGroupOwnerId`无效。
     #[serde(rename = "DestGroupOwnerId")]
     pub dest_group_owner_id: String,
+    /// 经典网络类型安全组规则的网卡类型。取值范围：
+    ///
+    /// - internet：公网网卡。
+    /// - intranet：内网网卡。
+    ///
+    /// 专有网络VPC类型安全组规则无需设置网卡类型，默认为intranet，只能为intranet。
+    ///
+    /// 撤销安全组之间授权规则，即指定了`DestGroupId`参数时，只能为intranet。
+    ///
+    /// 默认值：internet。
     #[serde(rename = "NicType")]
     pub nic_type: String,
+    /// 安全组规则的描述。长度为1~512个字符。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 端口列表 ID。
+    /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
+    /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
+    /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
 }
@@ -70113,8 +73336,10 @@ impl crate::FlatSerialize for RevokeSecurityGroupEgressPermission {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReferencingSecurityGroup {
+    /// 其他安全组ID。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 其他安全组所属用户ID。
     #[serde(rename = "AliUid")]
     pub ali_uid: String,
 }
@@ -70137,6 +73362,7 @@ impl crate::FlatSerialize for ReferencingSecurityGroup {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReferencingSecurityGroups {
+    /// 正在授权给这个安全组的其他安全组信息集合。
     #[serde(rename = "ReferencingSecurityGroup")]
     pub referencing_security_group: Vec<ReferencingSecurityGroup>,
 }
@@ -70158,6 +73384,7 @@ impl crate::FlatSerialize for ReferencingSecurityGroups {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupReference {
+    /// 安全组ID。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
     #[serde(rename = "ReferencingSecurityGroups")]
@@ -70186,6 +73413,7 @@ impl crate::FlatSerialize for GroupReference {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupReferences {
+    /// 安全组和被授权的安全组信息集合。
     #[serde(rename = "SecurityGroupReference")]
     pub security_group_reference: Vec<GroupReference>,
 }
@@ -70207,8 +73435,10 @@ impl crate::FlatSerialize for GroupReferences {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateKeyPairTag {
+    /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 密钥对的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70227,8 +73457,10 @@ impl crate::FlatSerialize for CreateKeyPairTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportKeyPairTag {
+    /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 密钥对的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70247,8 +73479,12 @@ impl crate::FlatSerialize for ImportKeyPairTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PairsTag {
+    /// 密钥对的标签键。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 密钥对的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70267,8 +73503,10 @@ impl crate::FlatSerialize for PairsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PairItemTagsTag {
+    /// 密钥对的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 密钥对的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -70291,6 +73529,7 @@ impl crate::FlatSerialize for PairItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PairItemTags {
+    /// 密钥对的标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<PairItemTagsTag>,
 }
@@ -70308,14 +73547,19 @@ impl crate::FlatSerialize for PairItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct KeyPair {
+    /// 密钥对的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 密钥对的名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 密钥对的指纹。
     #[serde(rename = "KeyPairFingerPrint")]
     pub key_pair_finger_print: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 公钥内容。
     #[serde(rename = "PublicKey")]
     pub public_key: String,
     #[serde(rename = "Tags")]
@@ -70360,6 +73604,7 @@ impl crate::FlatSerialize for KeyPair {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct KeyPairs {
+    /// 密钥对信息集合。
     #[serde(rename = "KeyPair")]
     pub key_pair: Vec<KeyPair>,
 }
@@ -70377,12 +73622,16 @@ impl crate::FlatSerialize for KeyPairs {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachKeyPairResponseResultsResult {
+    /// 传递的操作状态码，其中200表示操作成功。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 传递的操作信息，当code=200时，message为successful。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 此次操作是否成功。
     #[serde(rename = "Success")]
     pub success: String,
 }
@@ -70407,6 +73656,7 @@ impl crate::FlatSerialize for AttachKeyPairResponseResultsResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachKeyPairResponseResults {
+    /// 绑定密钥对成功或失败的结果集合。
     #[serde(rename = "Result")]
     pub result: Vec<AttachKeyPairResponseResultsResult>,
 }
@@ -70424,12 +73674,16 @@ impl crate::FlatSerialize for AttachKeyPairResponseResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachKeyPairResponseResultsResult {
+    /// 传递的操作状态码，其中200表示操作成功。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 传递的操作信息。例如，当`Code=200`时，`Message`为`successful`。
     #[serde(rename = "Message")]
     pub message: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 此次操作是否成功。
     #[serde(rename = "Success")]
     pub success: String,
 }
@@ -70454,6 +73708,7 @@ impl crate::FlatSerialize for DetachKeyPairResponseResultsResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachKeyPairResponseResults {
+    /// 解绑密钥对成功或失败的结果集合。
     #[serde(rename = "Result")]
     pub result: Vec<DetachKeyPairResponseResultsResult>,
 }
@@ -70471,8 +73726,10 @@ impl crate::FlatSerialize for DetachKeyPairResponseResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateTemplateTag {
+    /// 启动模板的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 启动模板的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70491,30 +73748,91 @@ impl crate::FlatSerialize for TemplateTemplateTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1（默认）：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 创建数据盘N使用的快照。N的取值范围为1~16。指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。
+    ///
+    /// >不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 第N个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
+    ///
+    /// -   cloud：5~2000
+    /// -   cloud_efficiency：20~32768
+    /// -   cloud_ssd：20~32768
+    /// -   cloud_essd：具体取值范围与`DataDisk.N.PerformanceLevel`的取值有关。
+    ///     - PL0：1~32768。
+    ///     - PL1：20~32768。
+    ///     - PL2：461~32768。
+    ///     - PL3：1261~32768。
+    /// - cloud_auto：1~32,768。
+    /// - cloud_essd_entry：10~32,768。
+    ///
+    /// 该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
+    /// - 1~25块数据盘：/dev/xvd`[b-z]`
+    ///
+    /// - 大于25块数据盘：/dev/xvd`[aa-zz]`，例如第26块数据盘会被命名为/dev/xvdaa，第27块数据盘为/dev/xvdab，以此类推。
+    ///
+    /// > 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`或`https://`开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘n的云盘种类。取值范围：
+    ///
+    /// -   cloud：普通云盘。
+    /// -   cloud_efficiency：高效云盘。
+    /// -   cloud_ssd：SSD云盘。
+    /// -   cloud_essd：ESSD云盘。
+    /// -   cloud_auto：ESSD AutoPL 云盘
+    /// -   cloud_essd_entry：ESSD Entry 云盘。
+    ///
+    /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 表示数据盘是否随实例释放。取值范围：
+    ///
+    /// - true：随实例释放。
+    /// - false：不随实例释放。
+    ///
+    /// 默认值：true。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 数据盘是否加密。
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}
+    ///
+    /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
 }
@@ -70584,22 +73902,92 @@ impl crate::FlatSerialize for TemplateDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateNetworkInterface {
+    /// 弹性网卡所属的虚拟交换机ID。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数。此时该参数的作用等同于`VSwitchId`，但需要注意不能同时设置`VSwitchId`参数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的虚拟交换机。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 弹性网卡名称。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 辅助弹性网卡描述信息。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 弹性网卡所属的安全组ID。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数。此时该参数的作用等同于`SecurityGroupId`，但需要注意不能再设置`SecurityGroupId`、`SecurityGroupIds.N`或`NetworkInterface.N.SecurityGroupIds.N`。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 添加一张弹性网卡并设置主IP地址。
+    ///
+    /// 您需要注意：
+    ///
+    /// - N的取值范围为1~2：
+    ///     - 设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡。如果`Amount`参数取值大于1，且设置了主网卡并设置了该参数，则表示在批量创建ECS实例时，以指定的主IP地址为起始地址，依次为多台ECS实例分配连续的主IP地址，但需要注意，此时不支持再为实例绑定辅助网卡。
+    ///     - 设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡，但需要注意，如果`Amount`参数取值大于1且已为主网卡设置了该参数，则不支持再设置辅助网卡（即不支持再设置`NetworkInterface.2.InstanceType=Secondary`）。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则该参数的作用等同于`PrivateIpAddress`，但需要注意不能同时设置`PrivateIpAddress`参数。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，表示为辅助网卡设置主IP地址。默认从网卡所属的交换机网段中随机选择一个IP地址。
+    ///
+    /// > 创建ECS实例时，您最多能添加一张辅助网卡。实例创建成功后，您可以调用[CreateNetworkInterface](~~58504~~)和[AttachNetworkInterface](~~58515~~)添加更多的辅助网卡。
     #[serde(rename = "PrimaryIpAddress")]
     pub primary_ip_address: String,
+    /// 弹性网卡所属的一个或多个安全组ID。
+    ///
+    /// - 第一个N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    /// - 第二个N表示可以指定一个或多个安全组ID。N的取值范围与实例能够加入安全组配额有关，更多信息，请参见[安全组限制](~~25412#SecurityGroupQuota1~~)。
+    ///
+    /// 您需要注意：
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则必须设置该参数或`NetworkInterface.N.SecurityGroupId`。此时该参数的作用等同于`SecurityGroupIds.N`，但需要注意不能再设置`SecurityGroupId`、`SecurityGroupIds.N`或`NetworkInterface.N.SecurityGroupId`。
+    ///
+    /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
+    /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    ///
+    /// 参数取值范围：
+    ///
+    /// - Primary：主网卡。
+    /// - Secondary：辅助网卡。
+    ///
+    /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 主网卡的通讯模式。参数取值范围：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 释放实例时是否保留网卡。取值范围：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
+    ///
+    /// 默认值：true。
+    ///
+    /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
 }
@@ -70661,8 +74049,10 @@ impl crate::FlatSerialize for TemplateNetworkInterface {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchTemplateTag {
+    /// 通过该模板的版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 通过该模板的版本创建的实例、云盘和主网卡的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含 http://或者 https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70681,6 +74071,10 @@ impl crate::FlatSerialize for LaunchTemplateTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateImageOptions {
+    /// 使用该镜像的实例是否支持使用ecs-user用户登录。
+    /// 可能值：
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
 }
@@ -70702,6 +74096,20 @@ impl crate::FlatSerialize for TemplateImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSecurityOptions {
+    /// 可信系统模式。取值：vTPM。
+    ///
+    /// 目前，可信系统模式支持的实例规格族：
+    /// - g7、c7、r7。
+    /// - 安全增强型（g7t、c7t、r7t）。
+    ///
+    /// 当您创建以上实例规格族的ECS实例时，需要设置该参数。具体说明如下：
+    ///
+    /// - 如果您使用阿里云可信系统，请将该参数值设置为vTPM，在实例启动时即可通过阿里云可信系统完成可信校验。
+    /// - 如果您不使用阿里云可信系统，可以不设置该参数值，但您需要注意，如果您所创建的ECS实例使用了Enclave机密计算模式（`SecurityOptions.ConfidentialComputingMode=Enclave`），则该ECS实例也会启用可信系统。
+    /// - 通过OpenAPI创建可信系统的ECS实例时，只能调用`RunInstances`实现，`CreateInstance`目前不支持设置`SecurityOptions.TrustedSystemMode`参数。
+    /// >如果您在创建实例的时候指定其为可信实例，那么当您更换系统盘时只能使用支持可信系统的镜像。
+    ///
+    /// 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: String,
 }
@@ -70723,8 +74131,12 @@ impl crate::FlatSerialize for TemplateSecurityOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplatesTemplateTag {
+    /// 启动模板的标签键。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 启动模板的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -70743,8 +74155,10 @@ impl crate::FlatSerialize for TemplatesTemplateTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSetItemTagsTag {
+    /// 启动模板的标签键。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 启动模板的标签值。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -70767,6 +74181,10 @@ impl crate::FlatSerialize for TemplateSetItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSetItemTags {
+    /// 启动模版自身的标签对信息列表。
+    ///
+    ///
+    /// > 当前仅支持通过API创建和查询启动模板的标签，控制台无法创建或查看。
     #[serde(rename = "Tag")]
     pub tag: Vec<TemplateSetItemTagsTag>,
 }
@@ -70784,20 +74202,32 @@ impl crate::FlatSerialize for TemplateSetItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSet {
+    /// 模板名称。
     #[serde(rename = "LaunchTemplateName")]
     pub launch_template_name: String,
+    /// 模板默认版本号。
     #[serde(rename = "DefaultVersionNumber")]
     pub default_version_number: i64,
+    /// 模板新增或删除版本的时间。
+    ///
+    /// 按照ISO 8601标准表示，使用UTC时间。格式为：yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "ModifiedTime")]
     pub modified_time: String,
+    /// 模板ID。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
+    /// 启动模板创建时间。
+    ///
+    /// 按照ISO 8601标准表示，使用UTC时间。格式为：yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreateTime")]
     pub create_time: String,
+    /// 启动模板所在的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 模板的创建者，即阿里云账号ID。
     #[serde(rename = "CreatedBy")]
     pub created_by: String,
+    /// 模板最新版本号。
     #[serde(rename = "LatestVersionNumber")]
     pub latest_version_number: i64,
     #[serde(rename = "Tags")]
@@ -70857,6 +74287,7 @@ impl crate::FlatSerialize for TemplateSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSets {
+    /// 实例启动模板的信息集合列表。
     #[serde(rename = "LaunchTemplateSet")]
     pub launch_template_set: Vec<TemplateSet>,
 }
@@ -70878,6 +74309,7 @@ impl crate::FlatSerialize for TemplateSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionNumbers {
+    /// 删除的实例启动模板版本号集合。
     #[serde(rename = "versionNumbers")]
     pub version_numbers: Vec<i64>,
 }
@@ -70899,30 +74331,92 @@ impl crate::FlatSerialize for VersionNumbers {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1（默认）：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 创建数据盘N使用的快照。N的取值范围为1~16。指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。
+    ///
+    /// 不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 第N个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
+    ///
+    /// -   cloud：5~2000。
+    /// -   cloud_efficiency：20~32768。
+    /// -   cloud_ssd：20~32768。
+    /// -   cloud_essd：具体取值范围与`DataDisk.N.PerformanceLevel`的取值有关。   
+    ///     - PL0：1~32768。
+    ///     - PL1：20~32768。
+    ///     - PL2：461~32768。
+    ///     - PL3：1261~32768。
+    /// - cloud_auto：1~32,768。
+    /// - cloud_essd_entry：10~32,768。
+    ///
+    /// 该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
+    /// - 1~25块数据盘：/dev/xvd`[b-z]`
+    ///
+    /// - 大于25块数据盘：/dev/xvd`[aa-zz]`，例如第26块数据盘会被命名为/dev/xvdaa，第27块数据盘为/dev/xvdab，以此类推。
+    ///
+    /// > 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`或`https://`开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘N的云盘种类。取值范围：
+    ///
+    /// -   cloud：普通云盘。
+    /// -   cloud_efficiency：高效云盘。
+    /// -   cloud_ssd：SSD云盘。
+    /// -   cloud_auto：ESSD AutoPL云盘。
+    /// -   cloud_essd：ESSD云盘。
+    /// -   cloud_essd_entry：ESSD Entry 云盘。
+    ///
+    /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 表示数据盘是否随实例释放。取值范围：
+    ///
+    /// - true：随实例释放。
+    /// - false：不随实例释放。
+    ///
+    /// 默认值：true。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 数据盘是否加密。
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 是否修改ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}。
+    ///
+    /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
+    ///
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
 }
@@ -70992,22 +74486,53 @@ impl crate::FlatSerialize for VersionDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionNetworkInterface {
+    /// 辅助弹性网卡所属的虚拟交换机ID。实例与辅助弹性网卡必须在同一VPC的同一可用区中，可以分属于不同交换机。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 辅助弹性网卡名称。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 辅助弹性网卡描述信息。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 辅助弹性网卡所属安全组的ID。辅助弹性网卡的安全组和实例的安全组必须在同一个VPC下。`NetworkInterface.N`的N取值不能大于1。
+    ///
+    /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 辅助弹性网卡的主私有IP地址。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "PrimaryIpAddress")]
     pub primary_ip_address: String,
+    /// 辅助弹性网卡加入的一个或多个安全组。安全组和辅助弹性网卡必须在同一个专有网络VPC中。`SecurityGroupIds.N`的N取值范围与辅助弹性网卡能够加入安全组配额有关。更多信息，请参见[使用限制](~~25412~~)。`NetworkInterface.N`的N取值不能大于1。
+    ///
+    /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: Vec<String>,
+    /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
+    ///
+    /// 参数取值范围：
+    ///
+    /// - Primary：主网卡。
+    /// - Secondary：辅助网卡。
+    ///
+    /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 主网卡的通讯模式。取值范围：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 释放实例时是否保留网卡。取值范围：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
+    ///
+    /// 默认值：true。
+    ///
+    /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
 }
@@ -71069,8 +74594,10 @@ impl crate::FlatSerialize for VersionNetworkInterface {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionTag {
+    /// 通过该版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 通过该版本创建的实例、云盘和主网卡的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含 http://或者 https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -71089,6 +74616,10 @@ impl crate::FlatSerialize for VersionTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionImageOptions {
+    /// 使用该镜像的实例是否支持使用ecs-user用户登录。
+    /// 可能值：
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
 }
@@ -71110,6 +74641,20 @@ impl crate::FlatSerialize for VersionImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSecurityOptions {
+    /// 可信系统模式。取值：vTPM。
+    ///
+    /// 目前，可信系统模式支持的实例规格族：
+    /// - g7、c7、r7。
+    /// - 安全增强型（g7t、c7t、r7t）。
+    ///
+    /// 当您创建以上实例规格族的ECS实例时，需要设置该参数。具体说明如下：
+    ///
+    /// - 如果您使用阿里云可信系统，请将该参数值设置为vTPM，在实例启动时即可通过阿里云可信系统完成可信校验。
+    /// - 如果您不使用阿里云可信系统，可以不设置该参数值，但您需要注意，如果您所创建的ECS实例使用了Enclave机密计算模式（`SecurityOptions.ConfidentialComputingMode=Enclave`），则该ECS实例也会启用可信系统。
+    /// - 通过OpenAPI创建可信系统的ECS实例时，只能调用`RunInstances`实现，`CreateInstance`目前不支持设置`SecurityOptions.TrustedSystemMode`参数。
+    /// >如果您在创建实例的时候指定其为可信实例，那么当您更换系统盘时只能使用支持可信系统的镜像。
+    ///
+    /// 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: String,
 }
@@ -71131,30 +74676,61 @@ impl crate::FlatSerialize for VersionSecurityOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。当`Category=cloud_essd`时该参数有返回值。可能值：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 数据盘使用的快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
+    /// - 1~25块数据盘：/dev/xvd`[b-z]`
+    ///
+    /// - 大于25块数据盘：/dev/xvd`[aa-zz]`，例如第26块数据盘会被命名为/dev/xvdaa，第27块数据盘为/dev/xvdab，以此类推。
+    ///
+    /// > 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 数据盘大小。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘名称。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘的云盘种类。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 数据盘是否随实例释放而释放。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 数据盘是否加密。
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 是否修改ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}
+    ///
+    /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
+    ///
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
 }
@@ -71224,6 +74800,7 @@ impl crate::FlatSerialize for DisksDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDisks {
+    /// 数据盘集合。
     #[serde(rename = "DataDisk")]
     pub data_disk: Vec<DisksDataDisk>,
 }
@@ -71245,6 +74822,9 @@ impl crate::FlatSerialize for DataDisks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemSecurityGroupIds {
+    /// 辅助弹性网卡加入的一个或多个安全组。
+    ///
+    /// > SecurityGroupId和SecurityGroupIds不会同时返回值。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -71266,22 +74846,39 @@ impl crate::FlatSerialize for InterfaceItemSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataNetworkInterfacesNetworkInterface {
+    /// 辅助弹性网卡名称。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 弹性网卡所属的虚拟交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 辅助弹性网卡描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 辅助弹性网卡的主私有IP地址。
     #[serde(rename = "PrimaryIpAddress")]
     pub primary_ip_address: String,
+    /// 辅助弹性网卡所属的安全组ID。必须是同一个VPC下的安全组。
+    ///
+    /// > SecurityGroupId和SecurityGroupIds不会同时返回值。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: InterfaceItemSecurityGroupIds,
+    /// 实例的规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 主网卡的通讯模式。参数取值范围：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 释放实例时是否保留网卡。可能值：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
 }
@@ -71343,6 +74940,7 @@ impl crate::FlatSerialize for DataNetworkInterfacesNetworkInterface {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataNetworkInterfaces {
+    /// 辅助弹性网卡的属性集合。
     #[serde(rename = "NetworkInterface")]
     pub network_interface: Vec<DataNetworkInterfacesNetworkInterface>,
 }
@@ -71364,8 +74962,10 @@ impl crate::FlatSerialize for DataNetworkInterfaces {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsInstanceTag {
+    /// 实例的标签键。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 实例的标签值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -71384,6 +74984,7 @@ impl crate::FlatSerialize for TagsInstanceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataTags {
+    /// 实例的标签列表。
     #[serde(rename = "InstanceTag")]
     pub instance_tag: Vec<TagsInstanceTag>,
 }
@@ -71405,6 +75006,9 @@ impl crate::FlatSerialize for DataTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataSecurityGroupIds {
+    /// 实例加入的一个或多个安全组。
+    ///
+    /// > `SecurityGroupId`和`SecurityGroupIds`不会同时返回值。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: Vec<String>,
 }
@@ -71426,6 +75030,10 @@ impl crate::FlatSerialize for DataSecurityGroupIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataImageOptions {
+    /// 使用该镜像的实例是否支持使用ecs-user用户登录。
+    /// 可能值：
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
 }
@@ -71447,6 +75055,20 @@ impl crate::FlatSerialize for DataImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataSecurityOptions {
+    /// 可信系统模式。取值：vTPM。
+    ///
+    /// 目前，可信系统模式支持的实例规格族：
+    /// - g7、c7、r7。
+    /// - 安全增强型（g7t、c7t、r7t）。
+    ///
+    /// 当您创建以上实例规格族的ECS实例时，需要设置该参数。具体说明如下：
+    ///
+    /// - 如果您使用阿里云可信系统，请将该参数值设置为vTPM，在实例启动时即可通过阿里云可信系统完成可信校验。
+    /// - 如果您不使用阿里云可信系统，可以不设置该参数值，但您需要注意，如果您所创建的ECS实例使用了Enclave机密计算模式（`SecurityOptions.ConfidentialComputingMode=Enclave`），则该ECS实例也会启用可信系统。
+    /// - 通过OpenAPI创建可信系统的ECS实例时，只能调用`RunInstances`实现，`CreateInstance`目前不支持设置`SecurityOptions.TrustedSystemMode`参数。
+    /// >如果您在创建实例的时候指定其为可信实例，那么当您更换系统盘时只能使用支持可信系统的镜像。
+    ///
+    /// 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: String,
 }
@@ -71468,82 +75090,162 @@ impl crate::FlatSerialize for DataSecurityOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateData {
+    /// 部署集ID。
     #[serde(rename = "DeploymentSetId")]
     pub deployment_set_id: String,
+    /// 专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 创建ESSD云盘作为系统盘使用时，设置云盘的性能等级。可能值：
+    ///
+    /// - PL0（默认）：单盘最高随机读写IOPS 1万。
+    /// - PL1：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "SystemDisk.PerformanceLevel")]
     pub system_disk_performance_level: String,
+    /// 密钥对名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 实例的安全组ID。
+    ///
+    /// > `SecurityGroupId`和`SecurityGroupIds`不会同时返回值。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 网络类型。可能值：
+    ///
+    /// - classic：经典网络。
+    /// - vpc：专有网络VPC。
     #[serde(rename = "NetworkType")]
     pub network_type: String,
+    /// 按量付费实例的竞价策略。可能值：
+    ///
+    /// - NoSpot：正常按量付费实例。
+    /// - SpotWithPriceLimit：设置上限价格的抢占式实例。
+    /// - SpotAsPriceGo：系统自动出价，跟随当前市场实际价格。
     #[serde(rename = "SpotStrategy")]
     pub spot_strategy: String,
+    /// 是否启用实例操作系统配置。
     #[serde(rename = "EnableVmOsConfig")]
     pub enable_vm_os_config: bool,
+    /// 实例描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 抢占式实例的保留时长，单位为小时。 可能值：
+    /// - 1：创建后阿里云会保证实例运行1小时不会被自动释放；超过1小时后，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    /// - 0：创建后，阿里云不保证实例运行1小时，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    ///
+    /// 实例回收前5分钟阿里云会通过ECS系统事件向您发送通知。抢占式实例按秒计费，建议您结合具体任务执行耗时来选择合适的保留时长。
+    ///
+    /// > 当SpotStrategy值为SpotWithPriceLimit或SpotAsPriceGo时返回该参数。
     #[serde(rename = "SpotDuration")]
     pub spot_duration: i32,
+    /// 实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 是否开启安全加固。
     #[serde(rename = "SecurityEnhancementStrategy")]
     pub security_enhancement_strategy: String,
+    /// 实例自定义数据，以Base64方式编码。
     #[serde(rename = "UserData")]
     pub user_data: String,
+    /// 系统盘名称。
     #[serde(rename = "SystemDisk.DiskName")]
     pub system_disk_disk_name: String,
+    /// 系统盘大小，单位：GiB。
     #[serde(rename = "SystemDisk.Size")]
     pub system_disk_size: i32,
+    /// 设置实例的每小时最高价格。
     #[serde(rename = "SpotPriceLimit")]
     pub spot_price_limit: f32,
+    /// 是否继承原镜像里设置的用户名密码。
     #[serde(rename = "PasswordInherit")]
     pub password_inherit: bool,
+    /// 实例私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 实例使用的镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 系统盘是否随实例释放。可能值：
+    ///
+    /// - true：随实例释放。
+    ///
+    /// - false：不随实例释放。
     #[serde(rename = "SystemDisk.DeleteWithInstance")]
     pub system_disk_delete_with_instance: bool,
+    /// 系统盘的云盘种类。可能值：
+    ///
+    /// - cloud：普通云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_essd：ESSD云盘。您可以通过参数SystemDisk.PerformanceLevel设置云盘的性能等级。
+    ///
+    /// 已停售的实例规格且非I/O优化实例默认值为cloud，否则默认值为cloud_efficiency。
     #[serde(rename = "SystemDisk.Category")]
     pub system_disk_category: String,
+    /// 自动释放时间。
     #[serde(rename = "AutoReleaseTime")]
     pub auto_release_time: String,
+    /// 系统盘描述。
     #[serde(rename = "SystemDisk.Description")]
     pub system_disk_description: String,
+    /// 镜像来源。可能值：
+    ///
+    /// - system：阿里云提供的公共镜像。
+    /// - self：您创建的自定义镜像。
+    /// - others：其他阿里云用户共享给您的镜像。
+    /// - marketplace：云市场镜像。
     #[serde(rename = "ImageOwnerAlias")]
     pub image_owner_alias: String,
+    /// 实例主机名。
     #[serde(rename = "HostName")]
     pub host_name: String,
+    /// 系统盘总IOPS。
     #[serde(rename = "SystemDisk.Iops")]
     pub system_disk_iops: i32,
+    /// 自动快照策略ID。
     #[serde(rename = "SystemDisk.AutoSnapshotPolicyId")]
     pub system_disk_auto_snapshot_policy_id: String,
+    /// 公网出带宽最大值。
     #[serde(rename = "InternetMaxBandwidthOut")]
     pub internet_max_bandwidth_out: i32,
+    /// 公网入带宽最大值。
     #[serde(rename = "InternetMaxBandwidthIn")]
     pub internet_max_bandwidth_in: i32,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 购买资源的时长。
     #[serde(rename = "Period")]
     pub period: i32,
+    /// 实例计费类型。可能值：
+    ///
+    /// - PrePaid：包年包月。
+    /// - PostPaid：按量付费。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
+    /// 是否为I/O优化实例。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: String,
+    /// 实例RAM角色名称。
     #[serde(rename = "RamRoleName")]
     pub ram_role_name: String,
+    /// 实例所属的虚拟交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 启动模板所在的企业资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 公网带宽计费方式。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 实例的IPv6地址数量。
     #[serde(rename = "Ipv6AddressCount")]
     pub ipv6_address_count: i32,
     #[serde(rename = "DataDisks")]
@@ -71554,32 +75256,107 @@ pub struct TemplateData {
     pub tags: DataTags,
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: DataSecurityGroupIds,
+    /// ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}
+    ///
+    /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
     #[serde(rename = "SystemDisk.ProvisionedIops")]
     pub system_disk_provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
     #[serde(rename = "SystemDisk.BurstingEnabled")]
     pub system_disk_bursting_enabled: bool,
+    /// 系统盘是否加密。可能值：
+    ///
+    /// - true：加密。
+    /// - false：不加密。
+    ///
+    /// 默认值：false。
+    ///
+    /// >中国香港D可用区、新加坡A可用区暂不支持在创建实例时加密系统盘。
     #[serde(rename = "SystemDisk.Encrypted")]
     pub system_disk_encrypted: String,
+    /// 实例释放保护属性，指定是否支持通过控制台或API（[DeleteInstance](~~25507~~)）释放实例。取值范围：
+    /// - true：开启实例释放保护。
+    ///
+    /// - false：关闭实例释放保护。
+    ///
+    /// 默认值：false。
+    ///
+    /// >该属性仅适用于按量付费实例，且只能限制手动释放操作，对系统释放操作不生效。
     #[serde(rename = "DeletionProtection")]
     pub deletion_protection: bool,
+    /// 突发性能实例的运行模式。可能值：
+    ///
+    /// - Standard：标准模式，实例性能请参见[什么是突发性能实例](~~59977~~)下的性能约束模式章节。
+    /// - Unlimited：无性能约束模式，实例性能请参见[什么是突发性能实例](~~59977~~)下的无性能约束模式章节。
     #[serde(rename = "CreditSpecification")]
     pub credit_specification: String,
+    /// 是否要自动续费。当参数`InstanceChargeType`取值`PrePaid`时才生效。可能值：
+    ///
+    /// - true：自动续费。
+    /// - false：不自动续费。
+    ///
+    /// 默认值：false。
     #[serde(rename = "AutoRenew")]
     pub auto_renew: bool,
+    /// 单次自动续费的续费时长。可能值：
+    ///          
+    /// <props="china">
+    /// - PeriodUnit=Week时：1、2、3。
+    /// - PeriodUnit=Month时：1、2、3、6、12、24、36、48、60。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">PeriodUnit=Month时：1、2、3、6、12、24、36、48、60。</props>
+    ///
+    /// 默认值：1。
     #[serde(rename = "AutoRenewPeriod")]
     pub auto_renew_period: i32,
+    /// 包年包月计费方式的时长单位。可能值：
+    ///
+    /// <props="china">
+    /// - Week。
+    /// - Month（默认）。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">Month（默认）。</props>
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 是否启用实例元数据的访问通道。可能值：
+    ///
+    /// - enabled：启用。
+    /// - disabled：禁用。
+    ///
+    /// 默认值：enabled。
+    ///
+    /// > 有关实例元数据的信息，请参见[实例元数据概述](~~108460~~)。
     #[serde(rename = "HttpEndpoint")]
     pub http_endpoint: String,
+    /// 访问实例元数据时是否强制使用加固模式（IMDSv2）。可能值：
+    ///
+    /// - optional：不强制使用。
+    /// - required：强制使用。设置该取值后，普通模式无法访问实例元数据。
+    ///
+    /// 默认值：optional。
+    ///
+    /// > 有关访问实例元数据的模式，请参见[实例元数据概述](~~108460~~)。
     #[serde(rename = "HttpTokens")]
     pub http_tokens: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "HttpPutResponseHopLimit")]
     pub http_put_response_hop_limit: i32,
+    /// 系统盘对应的KMS密钥ID。
     #[serde(rename = "SystemDisk.KMSKeyId")]
     pub system_disk_kms_key_id: String,
+    /// 镜像相关属性信息。
     #[serde(rename = "ImageOptions")]
     pub image_options: DataImageOptions,
+    /// 安全选项。
     #[serde(rename = "SecurityOptions")]
     pub security_options: DataSecurityOptions,
 }
@@ -71861,22 +75638,31 @@ impl crate::FlatSerialize for TemplateData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSet {
+    /// 模板名称。
     #[serde(rename = "LaunchTemplateName")]
     pub launch_template_name: String,
+    /// 模板是否为默认版本。
     #[serde(rename = "DefaultVersion")]
     pub default_version: bool,
+    /// 模板版本号。
     #[serde(rename = "VersionNumber")]
     pub version_number: i64,
+    /// 模板修改时间。
     #[serde(rename = "ModifiedTime")]
     pub modified_time: String,
+    /// 模板ID。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
+    /// 模板创建时间。
     #[serde(rename = "CreateTime")]
     pub create_time: String,
+    /// 模板的创建者，即阿里云账号ID。
     #[serde(rename = "CreatedBy")]
     pub created_by: String,
+    /// 模板版本描述。
     #[serde(rename = "VersionDescription")]
     pub version_description: String,
+    /// 模板具体配置。
     #[serde(rename = "LaunchTemplateData")]
     pub launch_template_data: TemplateData,
 }
@@ -71938,6 +75724,7 @@ impl crate::FlatSerialize for VersionSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSets {
+    /// 模板版本的信息。
     #[serde(rename = "LaunchTemplateVersionSet")]
     pub launch_template_version_set: Vec<VersionSet>,
 }
@@ -71959,8 +75746,10 @@ impl crate::FlatSerialize for VersionSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateVersion {
+    /// 实例启动模板ID。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
+    /// 实例启动模板版本号。
     #[serde(rename = "LaunchTemplateVersionNumber")]
     pub launch_template_version_number: i64,
 }
@@ -71987,6 +75776,7 @@ impl crate::FlatSerialize for TemplateVersion {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateVersions {
+    /// 已删除的实例启动模板版本。
     #[serde(rename = "LaunchTemplateVersion")]
     pub launch_template_version: Vec<TemplateVersion>,
 }
@@ -72008,30 +75798,66 @@ impl crate::FlatSerialize for TemplateVersions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
+    /// 扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。
+    ///
+    /// > 设置了`LaunchTemplateConfig`后，`LaunchTemplateConfig.N.VSwitchId`为必选参数。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 扩展启动模板中，抢占式实例的价格上限。
+    ///
+    /// > 设置了`LaunchTemplateConfig`后，`LaunchTemplateConfig.N.MaxPrice`为必选参数。
     #[serde(rename = "MaxPrice")]
     pub max_price: f64,
+    /// 扩展启动模板的优先级，取值为0时优先级最高。取值范围：0 ~ +∞。
+    ///
     #[serde(rename = "Priority")]
     pub priority: i32,
+    /// 扩展启动模板对应的实例规格，N的取值范围：1~20。取值范围：请参见[实例规格族](~~25378~~)。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 扩展启动模板中，实例规格的权重。取值越高，单台实例满足计算力需求的能力越大，所需的实例数量越小。取值范围：大于0。
+    ///
+    /// 您可以根据指定实例规格的计算力和集群单节点最低计算力得出权重值。假设单节点最低计算力为8 vCPU、60 GiB，则：
+    ///
+    /// - 8 vCPU、60 GiB的实例规格权重可以设置为1。
+    /// - 16 vCPU、120 GiB的实例规格权重可以设置为2。
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: f64,
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "MaxQuantity")]
     pub max_quantity: i32,
+    /// 实例规格的vCPU内核数目列表。
     #[serde(rename = "Cores")]
     pub cores: Vec<i32>,
+    /// 实例规格的内存大小列表。
     #[serde(rename = "Memories")]
     pub memories: Vec<f32>,
+    /// 实例规格族级别，用于筛选符合要求的实例规格范围。取值范围：
+    ///
+    /// - EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见[共享型](~~108489~~)。
+    /// - EnterpriseLevel：企业级。性能稳定，资源独享，适用于对稳定性要求高的业务场景。更多信息，请参见[实例规格族](~~25378~~)。
+    /// - CreditEntryLevel：积分入门级，即突发性能实例。通过CPU积分来保证计算性能，适用于平时CPU使用率低、偶有突发CPU使用率的情况。更多信息，请参见[突发性能实例](~~59977~~)。
+    ///
+    /// N的取值范围：1~10。
     #[serde(rename = "InstanceFamilyLevel")]
     pub instance_family_level: String,
+    /// 需要排除的实例规格列表。
     #[serde(rename = "ExcludedInstanceTypes")]
     pub excluded_instance_types: Vec<String>,
+    /// 实例规格所属的架构类型列表。
     #[serde(rename = "Architectures")]
     pub architectures: Vec<String>,
+    /// 是否为性能突发实例规格。取值范围：
+    ///
+    /// - Exclude：不包含性能突发实例规格。
+    /// - Include：包含性能突发实例规格。
+    /// - Required：只包含性能突发实例规格。
+    ///
+    /// 默认值：Include。
     #[serde(rename = "BurstablePerformance")]
     pub burstable_performance: String,
+    /// 镜像ID，您可以通过该参数设置当前资源池使用的镜像，如果没有设置则默认使用 `LaunchConfiguration.ImageId`或者启动模板里配置的镜像信息。您可以通过[DescribeImages](~~25534~~)查询可用的镜像资源。
+    /// 注：仅当`AutoProvisioningGroupType = instant` 时支持该参数。
     #[serde(rename = "ImageId")]
     pub image_id: String,
 }
@@ -72097,32 +75923,111 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationDataDisk {
+    /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`LaunchConfiguration.DataDisk.N.Category`中的N保持一致。取值范围：
+    ///
+    /// - PL0：单盘最高随机读写IOPS 1万。
+    /// - PL1（默认）：单盘最高随机读写IOPS 5万。
+    /// - PL2：单盘最高随机读写IOPS 10万。
+    /// - PL3：单盘最高随机读写IOPS 100万。
+    ///
+    /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: String,
+    /// 数据盘对应的KMS密钥ID。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "KmsKeyId")]
     pub kms_key_id: String,
+    /// 数据盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 创建数据盘N使用的快照。N的取值范围为1~16。
+    ///
+    /// 指定该参数后，参数`LaunchConfiguration.DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 第N个数据盘的容量大小，N的取值范围为1~16，单位为GiB。取值范围：
+    ///
+    /// - cloud_efficiency：20~32768。
+    /// - cloud_ssd：20~32768。
+    /// - cloud_essd：具体取值范围与`LaunchConfiguration.DataDisk.N.PerformanceLevel`的取值有关。
+    ///     - PL0：40~32768。
+    ///     - PL1：20~32768。
+    ///     - PL2：461~32768。
+    ///     - PL3：1261~32768
+    /// - cloud：5~2000。
+    ///
+    /// > 该参数的取值必须大于等于参数`LaunchConfiguration.DataDisk.N.SnapshotId`指定的快照的大小。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Size")]
     pub size: i32,
+    /// 数据盘的挂载点。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角句号（.）、半角冒号（:）、下划线（_）或者短划线（-）。
+    ///
+    /// 默认值：空。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "DiskName")]
     pub disk_name: String,
+    /// 数据盘N的云盘类型。N的取值范围为1~16。取值范围：
+    ///
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - cloud：普通云盘。
+    ///
+    /// 对于I/O优化实例，默认值为cloud_efficiency。对于非I/O优化实例，默认值为cloud。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 数据盘是否随实例释放。取值范围：
+    /// - true：数据盘随实例释放。
+    /// - false：数据盘不随实例释放。
+    ///
+    /// 默认值：true。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "DeleteWithInstance")]
     pub delete_with_instance: bool,
+    /// 数据盘N是否加密。取值范围：
+    ///
+    /// - true：加密。
+    /// - false：不加密。
+    ///
+    /// 默认值：false。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
+    /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: String,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50000}。
+    ///
+    ///
+    /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 数据盘采用的自动快照策略 ID。
+    ///
+    /// 当您设置该参数后，需要注意：
+    /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
 }
@@ -72197,8 +76102,10 @@ impl crate::FlatSerialize for ConfigurationDataDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationTag {
+    /// 实例的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或`https://`。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 实例的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含`http://`或者`https://`。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -72217,6 +76124,12 @@ impl crate::FlatSerialize for ConfigurationTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SystemDiskConfig {
+    /// 实例系统盘类型。您可通过该参数指定多种候选磁盘类型，指定顺序作为各磁盘类型的优先级顺序，当某一种磁盘不可用时，自动更换磁盘类型。取值范围：
+    ///
+    /// -   cloud_efficiency：高效云盘。
+    /// -   cloud_ssd：SSD云盘。
+    /// -   cloud_essd：ESSD云盘。
+    /// -   cloud：普通云盘。
     #[serde(rename = "DiskCategory")]
     pub disk_category: String,
 }
@@ -72238,6 +76151,12 @@ impl crate::FlatSerialize for SystemDiskConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDiskConfig {
+    /// 实例数据盘类型。您可通过该参数指定多种候选磁盘类型，指定顺序作为各磁盘类型的优先级顺序，当某一种磁盘不可用时，自动更换磁盘类型。取值范围：
+    ///
+    /// -   cloud_efficiency：高效云盘。
+    /// -   cloud_ssd：SSD云盘。
+    /// -   cloud_essd：ESSD云盘。
+    /// -   cloud：普通云盘。
     #[serde(rename = "DiskCategory")]
     pub disk_category: String,
 }
@@ -72259,16 +76178,53 @@ impl crate::FlatSerialize for DataDiskConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationSystemDisk {
+    /// 系统盘N是否加密。取值范围：
+    ///
+    /// - true：加密。
+    ///
+    /// - false：不加密。
+    ///
+    /// 默认值：false。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Encrypted")]
     pub encrypted: String,
+    /// 系统盘对应的KMS密钥ID。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
+    /// 系统盘加密算法。取值范围：
+    ///
+    /// - aes-256。
+    ///
+    /// - sm4-128。
+    ///
+    /// 默认值：aes-256。
+    ///
+    /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
+    ///
+    /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: String,
+    /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
+    ///
+    /// 基准性能=min{1,800+50*容量, 50,000}。
+    /// > 当SystemDisk.Category取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: i64,
+    /// 是否开启Burst（性能突发）。取值范围：
+    ///
+    /// - true：是。
+    /// - false：否。
+    ///
+    /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: bool,
+    /// 系统盘采用的自动快照策略 ID。
+    ///
+    /// 当您设置该参数后，需要注意：
+    /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
 }
@@ -72315,10 +76271,13 @@ impl crate::FlatSerialize for ConfigurationSystemDisk {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchConfigurationArn {
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "Rolearn")]
     pub rolearn: String,
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "RoleType")]
     pub role_type: String,
+    /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: i64,
 }
@@ -72346,8 +76305,14 @@ impl crate::FlatSerialize for LaunchConfigurationArn {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupTag {
+    /// 弹性供应组的标签键。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 弹性供应组的标签值。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -72366,8 +76331,19 @@ impl crate::FlatSerialize for ProvisioningGroupTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PoolOptions {
+    /// 资源池包括弹性保障服务或容量预定服务生效后生成的私有池以及公共池，供实例启动时选择。取值范围：
+    ///
+    /// - PrivatePoolFirst：私有池优先。选择此种策略时，
+    /// 当指定了ResourcePoolOptions.PrivatePoolIds，优先使用指定的私有池。如果未指定私有池或指定的私有池容量不足，将自动匹配开放类型的私有池。如果没有符合条件的私有池，则使用公共池创建实例。
+    ///
+    /// - PrivatePoolOnly：仅限私有池。选择此种策略时，必须指定ResourcePoolOptions.PrivatePoolIds。如果指定的私有池容量不足，则实例会启动失败。
+    ///  
+    /// - PublicPoolOnly：使用公共池创建实例。
+    ///
+    /// 默认值：PublicPoolOnly。
     #[serde(rename = "Strategy")]
     pub strategy: String,
+    /// 私有池 ID。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入Target模式私有池 ID。
     #[serde(rename = "PrivatePoolIds")]
     pub private_pool_ids: Vec<String>,
 }
@@ -72390,6 +76366,9 @@ impl crate::FlatSerialize for PoolOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationImageOptions {
+    /// 使用该镜像的实例是否支持使用 ecs-user 用户登录。可能值：
+    /// - true：是
+    /// - false：否
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: bool,
 }
@@ -72460,8 +76439,18 @@ impl crate::FlatSerialize for ConfigurationSecurityOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigurationCpuOptions {
+    /// CPU 核心数。
+    ///
+    /// 默认值：请参见[自定义 CPU 选项](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769asTEobd)。
     #[serde(rename = "Core")]
     pub core: i32,
+    /// CPU 线程数。ECS 实例的 vCPU 数=CpuOptions.Core取值*CpuOptions.ThreadsPerCore取值。
+    ///
+    /// CpuOptions.ThreadsPerCore=1表示关闭 CPU 超线程。
+    ///
+    /// 仅部分实例规格支持设置 CPU 线程数。
+    ///
+    /// 取值范围和默认值：请参见[自定义 CPU 选项](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769aeIFsoj)。
     #[serde(rename = "ThreadsPerCore")]
     pub threads_per_core: i32,
 }
@@ -72484,24 +76473,84 @@ impl crate::FlatSerialize for ConfigurationCpuOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchConfiguration {
+    /// 购买资源的时长，单位由`PeriodUnit`指定。当创建包年包月实例时生效且为必选值。取值范围：
+    ///
+    /// <props="china">
+    /// - PeriodUnit=Week时，Period取值：1、2、3、4。
+    /// - PeriodUnit=Month时，Period取值：1、2、3、4、5、6、7、8、9、12、24、36、48、60。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">PeriodUnit=Month时，Period取值：1、2、3、6、12。</props>
+    ///
+    /// <props="partner">PeriodUnit=Month时，Period取值：1、2、3、6、12。</props>
     #[serde(rename = "Period")]
     pub period: i32,
+    /// 包年包月计费方式的时长单位。取值范围：
+    ///
+    /// <props="china">
+    /// - Week。
+    /// - Month（默认）。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">Month（默认）。</props>
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 是否要自动续费。创建包年包月实例时生效。取值范围：
+    ///
+    /// - true：自动续费。
+    /// - false（默认）：不自动续费。
     #[serde(rename = "AutoRenew")]
     pub auto_renew: bool,
+    /// 单次自动续费的续费时长。取值范围：
+    ///          
+    /// <props="china">
+    /// - PeriodUnit=Week时：1、2、3。
+    /// - PeriodUnit=Month时：1、2、3、6、12、24、36、48、60。
+    ///
+    /// </props>
+    ///
+    /// <props="intl">PeriodUnit=Month时：1、2、3、6、12、24、36、48、60。</props>
+    ///
+    /// 默认值：1。
     #[serde(rename = "AutoRenewPeriod")]
     pub auto_renew_period: i32,
+    /// 抢占式实例的保留时长，单位为小时。 默认值：1。取值范围：
+    /// - 1：创建后阿里云会保证实例运行1 小时不会被自动释放；超过 1 小时后，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    /// - 0：创建后，阿里云不保证实例运行1 小时，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
+    ///
+    /// 实例回收前 5 分钟阿里云会通过 ECS 系统事件向您发送通知。抢占式实例按秒计费，建议您结合具体任务执行耗时来选择合适的保留时长。
+    ///
+    /// 当您设置该参数后，需要注意：
+    /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "SpotDuration")]
     pub spot_duration: i32,
+    /// 抢占实例中断模式。取值范围：
+    ///
+    /// - Terminate：直接释放实例。
+    ///
+    /// - Stop：实例进入节省停机模式。
+    ///
+    /// 关于节省停机模式的更多说明，请参见[节省停机模式](~~63353~~)。
+    ///
+    /// 默认值：Terminate。
+    ///
+    /// 当您设置该参数后，需要注意：
+    /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "SpotInterruptionBehavior")]
     pub spot_interruption_behavior: String,
+    /// 镜像相关属性信息。
+    ///
+    /// 当您设置该参数后，需要注意：
+    /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "ImageOptions")]
     pub image_options: ConfigurationImageOptions,
     #[serde(rename = "SchedulerOptions")]
     pub scheduler_options: SchedulerOptions,
     #[serde(rename = "SecurityOptions")]
     pub security_options: ConfigurationSecurityOptions,
+    /// CPU相关配置。
     #[serde(rename = "CpuOptions")]
     pub cpu_options: ConfigurationCpuOptions,
 }
@@ -72564,8 +76613,12 @@ impl crate::FlatSerialize for LaunchConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityDistribution {
+    /// 实例规格集合。不允许重复，且规格在LaunchTemplateConfig.InstanceType范围内。
     #[serde(rename = "InstanceTypes")]
     pub instance_types: Vec<String>,
+    /// 在`InstanceTypes`范围内需要交付的最小实例数量。
+    ///
+    /// > `sum(MinTargetCapacity)<= TotalTargetCapacity`，即所有实例规格集合的MinTargetCapacity总和不能超过TotalTargetCapacity，且当任一个实例规格集合由于库存等原因无法满足MinTargetCapacity的要求时，整个请求都会创建失败。
     #[serde(rename = "MinTargetCapacity")]
     pub min_target_capacity: i32,
 }
@@ -72592,6 +76645,7 @@ impl crate::FlatSerialize for CapacityDistribution {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PaidOptions {
+    /// 不同实例规格的最小容量集合。仅当`AutoProvisioningGroupType = request` 时支持该参数。
     #[serde(rename = "SpecifyCapacityDistribution")]
     pub specify_capacity_distribution: Vec<CapacityDistribution>,
 }
@@ -72613,6 +76667,7 @@ impl crate::FlatSerialize for PaidOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemInstanceIds {
+    /// 成功创建的实例ID列表。
     #[serde(rename = "InstanceId")]
     pub instance_id: Vec<String>,
 }
@@ -72634,16 +76689,25 @@ impl crate::FlatSerialize for ResultItemInstanceIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchResult {
+    /// 实例所在的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 当实例创建失败时，返回的错误信息。
     #[serde(rename = "ErrorMsg")]
     pub error_msg: String,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 当实例创建失败时，返回的错误码。
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 按量实例的抢占策略。可能值：
+    /// - NoSpot：正常按量付费实例。
+    /// - SpotWithPriceLimit：设置上限价格的抢占式实例。
+    /// - SpotAsPriceGo：系统自动出价，跟随当前市场实际价格。
     #[serde(rename = "SpotStrategy")]
     pub spot_strategy: String,
+    /// 成功创建的实例ID列表内的实例数量。
     #[serde(rename = "Amount")]
     pub amount: i32,
     #[serde(rename = "InstanceIds")]
@@ -72689,6 +76753,7 @@ impl crate::FlatSerialize for LaunchResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchResults {
+    /// 弹性供应组创建的实例组成的集合。该集合值仅当弹性供应组的交付类型为一次性同步交付（`instant`）时返回。
     #[serde(rename = "LaunchResult")]
     pub launch_result: Vec<LaunchResult>,
 }
@@ -72710,8 +76775,14 @@ impl crate::FlatSerialize for LaunchResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupsTag {
+    /// 弹性供应组的标签键。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 弹性供应组的标签值。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -72730,14 +76801,19 @@ impl crate::FlatSerialize for ProvisioningGroupsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsLaunchTemplateConfig {
+    /// 扩展启动模板对应实例规格的价格上限。
     #[serde(rename = "MaxPrice")]
     pub max_price: f32,
+    /// 扩展启动模板对应的实例规格的优先级，取值为0时最高。
     #[serde(rename = "Priority")]
     pub priority: f32,
+    /// 扩展启动模板对应的虚拟交换机的ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 扩展启动模板对应的实例规格的权重。
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: f32,
+    /// 扩展启动模板对应的实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
 }
@@ -72775,6 +76851,7 @@ impl crate::FlatSerialize for ConfigsLaunchTemplateConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateConfigs {
+    /// 扩展启动模板的详细信息。
     #[serde(rename = "LaunchTemplateConfig")]
     pub launch_template_config: Vec<ConfigsLaunchTemplateConfig>,
 }
@@ -72796,10 +76873,22 @@ impl crate::FlatSerialize for TemplateConfigs {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotOptions {
+    /// 弹性供应组选择价格最低的实例规格创建实例的数量。
+    ///
+    /// > 该参数在创建弹性供应组时被设置，且不可修改。
     #[serde(rename = "InstancePoolsToUseCount")]
     pub instance_pools_to_use_count: i32,
+    /// 创建抢占式实例的策略。可能值：
+    ///
+    /// - lowest-price：成本优化策略。选择价格最低的实例规格。
+    ///
+    /// - diversified：均衡可用区分布策略。在扩展启动模板指定的可用区内创建实例，均匀分布到各可用区。
     #[serde(rename = "AllocationStrategy")]
     pub allocation_strategy: String,
+    /// 停止了超额的抢占式实例后的下一步动作。可能值：
+    ///
+    /// - stop：保持停止状态。
+    /// - terminate：释放。
     #[serde(rename = "InstanceInterruptionBehavior")]
     pub instance_interruption_behavior: String,
 }
@@ -72831,6 +76920,13 @@ impl crate::FlatSerialize for SpotOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GoOptions {
+    /// 创建按量付费实例的策略。可能值：
+    ///
+    /// - lowest-price：成本优化策略。选择价格最低的实例规格。
+    ///
+    /// - prioritized：优先级策略。按照LaunchTemplateConfig.N.Priority设定的优先级创建实例。
+    ///
+    /// > LaunchTemplateConfig.N.Priority在创建弹性供应组时设置，且不可修改。
     #[serde(rename = "AllocationStrategy")]
     pub allocation_strategy: String,
 }
@@ -72852,12 +76948,23 @@ impl crate::FlatSerialize for GoOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacitySpecification {
+    /// 抢占式实例的目标容量。
     #[serde(rename = "SpotTargetCapacity")]
     pub spot_target_capacity: f32,
+    /// 按量付费实例的目标容量。
     #[serde(rename = "PayAsYouGoTargetCapacity")]
     pub pay_as_you_go_target_capacity: f32,
+    /// `PayAsYouGoTargetCapacity`和`SpotTargetCapacity`之和小于`TotalTargetCapacity`时，指定的差额容量的计费方式。可能值：
+    ///
+    /// - PayAsYouGo：按量付费实例
+    /// - Spot：抢占式实例
     #[serde(rename = "DefaultTargetCapacityType")]
     pub default_target_capacity_type: String,
+    /// 弹性供应组的目标总容量，由以下三个部分组成：
+    ///
+    /// - PayAsYouGoTargetCapacity
+    /// - SpotTargetCapacity
+    /// - PayAsYouGoTargetCapacity和SpotTargetCapacity之外的差额容量
     #[serde(rename = "TotalTargetCapacity")]
     pub total_target_capacity: f32,
 }
@@ -72894,8 +77001,14 @@ impl crate::FlatSerialize for CapacitySpecification {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupItemTagsTag {
+    /// 弹性供应组的标签键。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 弹性供应组的标签值。
+    ///
+    /// N 的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -72918,6 +77031,7 @@ impl crate::FlatSerialize for ProvisioningGroupItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupItemTags {
+    /// 弹性供应组绑定的标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<ProvisioningGroupItemTagsTag>,
 }
@@ -72935,44 +77049,91 @@ impl crate::FlatSerialize for ProvisioningGroupItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroup {
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 弹性供应组的名称。
     #[serde(rename = "AutoProvisioningGroupName")]
     pub auto_provisioning_group_name: String,
+    /// 弹性供应组的状态。可能值：
+    ///
+    /// - submitted：完成创建，但弹性供应组尚未开始执行调度任务。
+    /// - active：弹性供应组已开始执行调度任务。
+    /// - deleted：弹性供应组已删除。
+    /// - delete-running：弹性供应组删除中。
+    /// - modifying：弹性供应组修改中。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 删除弹性供应组时，是否释放组内实例。可能值：
+    ///
+    /// - true：释放组内实例。
+    /// - false：保留组内实例。
     #[serde(rename = "TerminateInstances")]
     pub terminate_instances: bool,
+    /// 抢占式实例的最高价格。
+    ///
+    /// > 同时设置了MaxSpotPrice和LaunchTemplateConfig.N.MaxPrice时，以最低值为准。
+    ///
+    /// LaunchTemplateConfig.N.MaxPrice在创建弹性供应组时设置，且不可修改。
     #[serde(rename = "MaxSpotPrice")]
     pub max_spot_price: f32,
+    /// 弹性供应组整体调度的执行状态。可能值：
+    ///
+    /// - fulfilled：已成功完成调度任务。
+    /// - pending-fulfillment：创建实例中。
+    /// - pending-termination：移除实例中。
+    /// - error：调度时发生异常，未能交付实例集群。
     #[serde(rename = "State")]
     pub state: String,
+    /// 关联的实例启动模板的ID。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
+    /// 弹性供应组的启动时间，和`ValidUntil`结合确定有效时段。
     #[serde(rename = "ValidFrom")]
     pub valid_from: String,
+    /// 关联的实例启动模板的版本。
     #[serde(rename = "LaunchTemplateVersion")]
     pub launch_template_version: String,
+    /// 弹性供应组到期时，是否释放组内实例。可能值：
+    ///
+    /// - true：释放组内实例。
+    /// - false：只将组内实例移出弹性供应组。
     #[serde(rename = "TerminateInstancesWithExpiration")]
     pub terminate_instances_with_expiration: bool,
+    /// 所在地域的ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 弹性供应组的到期时间，和`ValidFrom`结合确定有效时段。
     #[serde(rename = "ValidUntil")]
     pub valid_until: String,
+    /// 交付类型。可能值：
+    ///
+    /// - request：一次性。供应组仅在启动时交付实例集群，调度失败后不再重试。
+    ///
+    /// - maintain：持续供应。供应组在启动时尝试交付实例集群，并监控实时容量，未达到目标容量则尝试继续创建ECS实例。
     #[serde(rename = "AutoProvisioningGroupType")]
     pub auto_provisioning_group_type: String,
+    /// 弹性供应组ID。
     #[serde(rename = "AutoProvisioningGroupId")]
     pub auto_provisioning_group_id: String,
+    /// 弹性供应组实时容量超过目标容量并触发缩容时，是否释放缩容的实例。可能值：
+    ///
+    /// - termination：释放缩容的实例。
+    /// - no-termination：只将缩容的实例移出弹性供应组。
     #[serde(rename = "ExcessCapacityTerminationPolicy")]
     pub excess_capacity_termination_policy: String,
+    /// 弹性供应组所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
     #[serde(rename = "LaunchTemplateConfigs")]
     pub launch_template_configs: TemplateConfigs,
+    /// 抢占式实例相关的策略。
     #[serde(rename = "SpotOptions")]
     pub spot_options: SpotOptions,
+    /// 按量付费实例相关的策略。
     #[serde(rename = "PayAsYouGoOptions")]
     pub pay_as_you_go_options: GoOptions,
+    /// 弹性供应组的目标容量设置。
     #[serde(rename = "TargetCapacitySpecification")]
     pub target_capacity_specification: CapacitySpecification,
     #[serde(rename = "Tags")]
@@ -73084,6 +77245,7 @@ impl crate::FlatSerialize for ProvisioningGroup {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroups {
+    /// 弹性供应组的详细信息。
     #[serde(rename = "AutoProvisioningGroup")]
     pub auto_provisioning_group: Vec<ProvisioningGroup>,
 }
@@ -73105,28 +77267,46 @@ impl crate::FlatSerialize for ProvisioningGroups {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupInstancesResponseInstancesInstance {
+    /// 实例状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 实例创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 是否为抢占式实例。
     #[serde(rename = "IsSpot")]
     pub is_spot: bool,
+    /// 实例的vCPU核数。
     #[serde(rename = "CPU")]
     pub cpu: i32,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例的网络类型，取值范围：
+    ///
+    /// - vpc：专有网络
+    /// - classic：经典网络
     #[serde(rename = "NetworkType")]
     pub network_type: String,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 实例所属地域的ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 是否为I/O优化型实例。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: bool,
+    /// 实例的操作系统类型，取值范围：
+    ///
+    /// - windows：操作系统类型为Windows。
+    /// - linux：操作系统类型为Linux。
     #[serde(rename = "OsType")]
     pub os_type: String,
+    /// 实例所属可用区。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 内存大小，单位MiB。
     #[serde(rename = "Memory")]
     pub memory: i32,
 }
@@ -73179,6 +77359,7 @@ impl crate::FlatSerialize for GroupInstancesResponseInstancesInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupInstancesResponseInstances {
+    /// 弹性供应组下所有实例的信息。
     #[serde(rename = "Instance")]
     pub instance: Vec<GroupInstancesResponseInstancesInstance>,
 }
@@ -73196,14 +77377,24 @@ impl crate::FlatSerialize for GroupInstancesResponseInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
+    /// 扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 扩展启动模板中，抢占式实例的价格上限。
     #[serde(rename = "MaxPrice")]
     pub max_price: f64,
+    /// 扩展启动模板的优先级，取值为0时优先级最高。取值范围：大于0。
     #[serde(rename = "Priority")]
     pub priority: i32,
+    /// 扩展启动模板对应的实例规格，N的取值范围：1~20。取值范围：请参见[实例规格族](~~25378~~)。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 扩展启动模板中，实例规格的权重。取值越高，单台实例满足计算力需求的能力越大，所需的实例数量越小。取值范围：大于0。
+    ///
+    /// 您可以根据指定实例规格的计算力和集群单节点最低计算力得出权重值。假设单节点最低计算力为8 vCPU、60 GiB，则：
+    ///
+    /// - 8 vCPU、60 GiB的实例规格权重可以设置为1。
+    /// - 16 vCPU、120 GiB的实例规格权重可以设置为2。
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: f64,
 }
@@ -73241,8 +77432,15 @@ impl crate::FlatSerialize for ModifyAutoProvisioningGroupLaunchTemplateConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivityDetail {
+    /// 单次调度任务一次实例创建活动的执行状态。可能值：
+    ///
+    /// - Successful：实例创建成功。
+    /// - Failed：实例创建失败。
+    /// - InProgress：实例创建中。
+    /// - Warning：实例部分创建成功。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 单次调度任务一次实例创建活动的执行详情。
     #[serde(rename = "Detail")]
     pub detail: String,
 }
@@ -73261,6 +77459,7 @@ impl crate::FlatSerialize for ActivityDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivityDetails {
+    /// 单次调度任务的详细信息。
     #[serde(rename = "ActivityDetail")]
     pub activity_detail: Vec<ActivityDetail>,
 }
@@ -73282,12 +77481,20 @@ impl crate::FlatSerialize for ActivityDetails {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupHistory {
+    /// 单次调度任务的状态。可能值：
+    ///
+    /// - prepare：调度任务执行中。
+    /// - success：调度任务执行成功。
+    /// - failed：调度任务执行失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 开始执行单次调度任务的时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 单次调度任务的ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 单次调度任务最后一次实例创建活动的执行时间。
     #[serde(rename = "LastEventTime")]
     pub last_event_time: String,
     #[serde(rename = "ActivityDetails")]
@@ -73323,6 +77530,7 @@ impl crate::FlatSerialize for GroupHistory {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupHistories {
+    /// 所有调度任务的信息。
     #[serde(rename = "AutoProvisioningGroupHistory")]
     pub auto_provisioning_group_history: Vec<GroupHistory>,
 }
@@ -73344,6 +77552,7 @@ impl crate::FlatSerialize for GroupHistories {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemInstanceIds {
+    /// 部署集内的实例ID列表。
     #[serde(rename = "InstanceId")]
     pub instance_id: Vec<String>,
 }
@@ -73365,10 +77574,13 @@ impl crate::FlatSerialize for SetItemInstanceIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacitiesCapacity {
+    /// 可用区ID。只返回部署集内存量ECS实例所属的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 部署集内属于该可用区的ECS实例数量。
     #[serde(rename = "UsedAmount")]
     pub used_amount: i32,
+    /// 该可用区内，还可以加入当前部署集的ECS实例数量。
     #[serde(rename = "AvailableAmount")]
     pub available_amount: i32,
 }
@@ -73396,6 +77608,7 @@ impl crate::FlatSerialize for CapacitiesCapacity {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacities {
+    /// 由Capacity组成的数组格式。仅当部署集内有存量ECS实例时提供返回结果，返回结果包含部署集可用区维度的容量信息。
     #[serde(rename = "Capacity")]
     pub capacity: Vec<CapacitiesCapacity>,
 }
@@ -73413,26 +77626,38 @@ impl crate::FlatSerialize for ItemCapacities {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeploymentSet {
+    /// 部署集的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 部署策略。
     #[serde(rename = "Strategy")]
     pub strategy: String,
+    /// 部署集ID。
     #[serde(rename = "DeploymentSetId")]
     pub deployment_set_id: String,
     #[serde(rename = "AccountId")]
     pub account_id: i64,
+    /// 部署策略。该返回值对应请求参数`Strategy`的值。
     #[serde(rename = "DeploymentStrategy")]
     pub deployment_strategy: String,
+    /// 部署集的描述信息。
     #[serde(rename = "DeploymentSetDescription")]
     pub deployment_set_description: String,
+    /// 部署域。
     #[serde(rename = "Domain")]
     pub domain: String,
+    /// 部署集中的分组数量。
+    ///
+    /// > 当部署集策略为部署集组高可用策略（AvailabilityGroup）时，该返回值生效。
     #[serde(rename = "GroupCount")]
     pub group_count: i32,
+    /// 部署粒度。
     #[serde(rename = "Granularity")]
     pub granularity: String,
+    /// 部署集名称。
     #[serde(rename = "DeploymentSetName")]
     pub deployment_set_name: String,
+    /// 部署集内的实例数量。
     #[serde(rename = "InstanceAmount")]
     pub instance_amount: i32,
     #[serde(rename = "InstanceIds")]
@@ -73510,6 +77735,7 @@ impl crate::FlatSerialize for DeploymentSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeploymentSets {
+    /// 由DeploymentSet组成的数组格式，返回部署集详细信息。
     #[serde(rename = "DeploymentSet")]
     pub deployment_set: Vec<DeploymentSet>,
 }
@@ -73531,8 +77757,10 @@ impl crate::FlatSerialize for DeploymentSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceTag {
+    /// 弹性保障服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 弹性保障服务的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -73551,12 +77779,29 @@ impl crate::FlatSerialize for AssuranceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateElasticityAssuranceRecurrenceRule {
+    /// 分时保障生效时间，取值必须为整点。
+    ///
+    /// > 同时指定`StartHour`和`EndHour`，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
     pub start_hour: i32,
+    /// 重复规则的策略类型。取值范围：
+    /// -  Daily：按天重复。
+    /// - Weekly：按周重复。
+    /// - Monthly：按月重复。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
     pub recurrence_type: String,
+    /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
     pub end_hour: i32,
+    /// 重复规则执行数值。
+    ///
+    /// - `RecurrenceType`为`Daily`时，只能填一个值，取值范围：1~31。表示每几天执行一次。
+    /// - `RecurrenceType`为`Weekly`时，可以填入多个值，多个值间使用半角逗号（,）隔开。周日、周一、周二、周三、周四、周五、周六的值依次为：0,1,2,3,4,5,6。例如`1,2`表示周一和周二执行。
+    /// - `RecurrenceType`为`Monthly`时，格式为`A-B`。A、B的取值范围为1~31，并且B必须大于等于A。例如：`1-5`表示每月的1~5日重复执行。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: String,
 }
@@ -73589,8 +77834,12 @@ impl crate::FlatSerialize for CreateElasticityAssuranceRecurrenceRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssurancesTag {
+    /// 标签键。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -73609,10 +77858,13 @@ impl crate::FlatSerialize for AssurancesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceUsage {
+    /// >该参数暂未开放使用。
     #[serde(rename = "AccountId")]
     pub account_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "ServiceName")]
     pub service_name: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "UsedAmount")]
     pub used_amount: i32,
 }
@@ -73644,6 +77896,7 @@ impl crate::FlatSerialize for AssuranceUsage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceUsages {
+    /// >该参数暂未开放使用。
     #[serde(rename = "ElasticityAssuranceUsage")]
     pub elasticity_assurance_usage: Vec<AssuranceUsage>,
 }
@@ -73665,14 +77918,19 @@ impl crate::FlatSerialize for AssuranceUsages {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemAllocatedResourcesAllocatedResource {
+    /// 已使用的实例的数量。
     #[serde(rename = "UsedAmount")]
     pub used_amount: i32,
+    /// 在一个实例规格内，需要预留的实例的总数量。
     #[serde(rename = "TotalAmount")]
     pub total_amount: i32,
+    /// >该参数暂未开放使用。
     #[serde(rename = "AvailableAmount")]
     pub available_amount: i32,
+    /// 弹性保障服务所属地域下的可用区ID。
     #[serde(rename = "zoneId")]
     pub zone_id: String,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
     #[serde(rename = "ElasticityAssuranceUsages")]
@@ -73717,6 +77975,7 @@ impl crate::FlatSerialize for AssuranceItemItemAllocatedResourcesAllocatedResour
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemAllocatedResources {
+    /// 资源分配详情。
     #[serde(rename = "AllocatedResource")]
     pub allocated_resource: Vec<AssuranceItemItemAllocatedResourcesAllocatedResource>,
 }
@@ -73738,8 +77997,10 @@ impl crate::FlatSerialize for AssuranceItemItemAllocatedResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -73762,6 +78023,7 @@ impl crate::FlatSerialize for AssuranceItemItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemTags {
+    /// 弹性保障服务绑定的标签键值对列表。
     #[serde(rename = "Tag")]
     pub tag: Vec<AssuranceItemItemTagsTag>,
 }
@@ -73779,12 +78041,23 @@ impl crate::FlatSerialize for AssuranceItemItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RulesRecurrenceRule {
+    /// 重复规则的策略类型。可能值：
+    /// -  Daily：按天重复。
+    /// - Weekly：按周重复。
+    /// - Monthly：按月重复。
     #[serde(rename = "RecurrenceType")]
     pub recurrence_type: String,
+    /// 重复规则执行数值。可能值
+    ///
+    /// - `RecurrenceType`为`Daily`时，只能填一个值，取值范围：1~31。表示每几天执行一次。
+    /// - `RecurrenceType`为`Weekly`时，可以填入多个值，多个值间使用半角逗号（,）隔开。周日、周一、周二、周三、周四、周五、周六的值依次为：0,1,2,3,4,5,6。例如`1,2`表示周一和周二执行。
+    /// - `RecurrenceType`为`Monthly`时，格式为`A-B`。A、B的取值范围为1~31，并且B必须大于等于A。例如：`1-5`表示每月的1~5日重复执行。
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: String,
+    /// 分时保障生效时间。
     #[serde(rename = "StartHour")]
     pub start_hour: i32,
+    /// 分时保障结束时间。
     #[serde(rename = "EndHour")]
     pub end_hour: i32,
 }
@@ -73817,6 +78090,7 @@ impl crate::FlatSerialize for RulesRecurrenceRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RecurrenceRules {
+    /// 弹性保障-分时保障重复规则列表。
     #[serde(rename = "RecurrenceRule")]
     pub recurrence_rule: Vec<RulesRecurrenceRule>,
 }
@@ -73838,42 +78112,75 @@ impl crate::FlatSerialize for RecurrenceRules {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItem {
+    /// 弹性保障服务的状态。可能值：
+    ///
+    /// - Preparing：准备中。
+    /// - Prepared：待生效。
+    /// - Active：生效中。
+    /// - Released：已释放。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 弹性保障服务的匹配模式。可能值：
+    ///
+    /// - Open：开放模式的弹性保障服务。启动实例时将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。
+    /// - Target：指定模式的弹性保障服务。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。
     #[serde(rename = "PrivatePoolOptionsMatchCriteria")]
     pub private_pool_options_match_criteria: String,
+    /// 弹性保障服务ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "UsedAssuranceTimes")]
     pub used_assurance_times: i32,
+    /// > 该参数暂未开放使用。
     #[serde(rename = "LatestStartTime")]
     pub latest_start_time: String,
+    /// 弹性保障服务名称。
     #[serde(rename = "PrivatePoolOptionsName")]
     pub private_pool_options_name: String,
+    /// 弹性保障服务所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 弹性保障服务失效时间。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 弹性保障服务生效时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 弹性保障服务描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 弹性保障服务的总次数。目前仅支持在服务生效期内的无限次模式。
     #[serde(rename = "TotalAssuranceTimes")]
     pub total_assurance_times: String,
     #[serde(rename = "AllocatedResources")]
     pub allocated_resources: AssuranceItemItemAllocatedResources,
     #[serde(rename = "Tags")]
     pub tags: AssuranceItemItemTags,
+    /// 实例的计费方式。目前仅支持按量付费。
+    ///
+    /// 可能值：PostPaid。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
+    /// 弹性保障生效方式。可能值：
+    ///
+    /// - Now：立即生效。
+    /// - Later：指定时间生效。
     #[serde(rename = "StartTimeType")]
     pub start_time_type: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "ElasticityAssuranceOwnerId")]
     pub elasticity_assurance_owner_id: String,
     #[serde(rename = "RecurrenceRules")]
     pub recurrence_rules: RecurrenceRules,
+    /// 弹性保障服务类型，可能值：
+    ///
+    /// - ElasticityAssurance：普通弹性保障。
+    ///
+    /// - TimeDivisionElasticityAssurance：分时弹性保障。
     #[serde(rename = "PackageType")]
     pub package_type: String,
 }
@@ -73973,6 +78280,7 @@ impl crate::FlatSerialize for AssuranceItem {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceSet {
+    /// 弹性保障服务详细信息组成的集合。
     #[serde(rename = "ElasticityAssuranceItem")]
     pub elasticity_assurance_item: Vec<AssuranceItem>,
 }
@@ -73994,6 +78302,7 @@ impl crate::FlatSerialize for AssuranceSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemInstanceIdSet {
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -74015,6 +78324,7 @@ impl crate::FlatSerialize for AssuranceItemInstanceIdSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ElasticityAssurance {
+    /// 弹性保障服务已匹配的实例列表。
     #[serde(rename = "InstanceIdSet")]
     pub instance_id_set: Vec<AssuranceItemInstanceIdSet>,
 }
@@ -74036,12 +78346,29 @@ impl crate::FlatSerialize for ElasticityAssurance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyElasticityAssuranceRecurrenceRule {
+    /// 重复规则的策略类型。取值范围：
+    /// -  Daily：按天重复。
+    /// - Weekly：按周重复。
+    /// - Monthly：按月重复。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
     pub recurrence_type: String,
+    /// 重复规则执行数值。
+    ///
+    /// - `RecurrenceType`为`Daily`时，只能填一个值，取值范围：1~31。表示每几天执行一次。
+    /// - `RecurrenceType`为`Weekly`时，可以填入多个值，多个值间使用半角逗号（,）隔开。周日、周一、周二、周三、周四、周五、周六的值依次为：0,1,2,3,4,5,6。例如`1,2`表示周一和周二执行。
+    /// - `RecurrenceType`为`Monthly`时，格式为`A-B`。A、B的取值范围为1~31，并且B必须大于等于A。例如：`1-5`表示每月的1~5日重复执行。
+    ///
+    /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: String,
+    /// 分时保障生效时间，取值必须为整点。
+    ///
+    /// > 同时指定`StartHour`和`EndHour`，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
     pub start_hour: i32,
+    /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
     pub end_hour: i32,
 }
@@ -74074,6 +78401,7 @@ impl crate::FlatSerialize for ModifyElasticityAssuranceRecurrenceRule {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsIdSet {
+    /// 弹性保障服务ID列表。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: Vec<String>,
 }
@@ -74095,12 +78423,26 @@ impl crate::FlatSerialize for OptionsIdSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceRenewAttribute {
+    /// 自动续费时长的单位，可能值：
+    ///
+    /// - Month（默认）
+    /// - Year
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 自动续费时长。可能值：
+    /// 1、2、3、6、12、24、36。
     #[serde(rename = "Period")]
     pub period: i32,
+    /// 弹性保障服务ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
+    /// 是否自动续费弹性保障。可能值：
+    ///
+    /// - AutoRenewal：设置为自动续费。
+    ///
+    /// - Normal：取消自动续费。
+    ///
+    /// - NotRenewal：不再续费。
     #[serde(rename = "RenewalStatus")]
     pub renewal_status: String,
 }
@@ -74133,6 +78475,7 @@ impl crate::FlatSerialize for AssuranceRenewAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceRenewAttributes {
+    /// 弹性保障服务自动续费属性组成的数组。
     #[serde(rename = "ElasticityAssuranceRenewAttribute")]
     pub elasticity_assurance_renew_attribute: Vec<AssuranceRenewAttribute>,
 }
@@ -74154,8 +78497,10 @@ impl crate::FlatSerialize for AssuranceRenewAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationTag {
+    /// 容量预定服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 容量预定服务的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -74174,8 +78519,12 @@ impl crate::FlatSerialize for ReservationTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationsTag {
+    /// 标签键。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。N表示可以设置多个标签值进行过滤，N的取值范围为1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -74194,10 +78543,13 @@ impl crate::FlatSerialize for ReservationsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationUsage {
+    /// 阿里云账号ID。
     #[serde(rename = "AccountId")]
     pub account_id: String,
+    /// 阿里云服务名称。
     #[serde(rename = "ServiceName")]
     pub service_name: String,
+    /// 该阿里云账号或服务已使用实例的数量。
     #[serde(rename = "UsedAmount")]
     pub used_amount: i32,
 }
@@ -74229,6 +78581,7 @@ impl crate::FlatSerialize for ReservationUsage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationUsages {
+    /// 已使用的实例详情列表。
     #[serde(rename = "CapacityReservationUsage")]
     pub capacity_reservation_usage: Vec<ReservationUsage>,
 }
@@ -74250,14 +78603,19 @@ impl crate::FlatSerialize for ReservationUsages {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemAllocatedResourcesAllocatedResource {
+    /// 已使用的实例的数量。
     #[serde(rename = "UsedAmount")]
     pub used_amount: i32,
+    /// 在一个实例规格内，需要预留的实例的总数量。
     #[serde(rename = "TotalAmount")]
     pub total_amount: i32,
+    /// 可用的实例数量。
     #[serde(rename = "AvailableAmount")]
     pub available_amount: i32,
+    /// 可用区ID。
     #[serde(rename = "zoneId")]
     pub zone_id: String,
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
     #[serde(rename = "CapacityReservationUsages")]
@@ -74302,6 +78660,7 @@ impl crate::FlatSerialize for ReservationItemItemAllocatedResourcesAllocatedReso
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemAllocatedResources {
+    /// 资源分配详情。
     #[serde(rename = "AllocatedResource")]
     pub allocated_resource: Vec<ReservationItemItemAllocatedResourcesAllocatedResource>,
 }
@@ -74323,8 +78682,10 @@ impl crate::FlatSerialize for ReservationItemItemAllocatedResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -74347,6 +78708,7 @@ impl crate::FlatSerialize for ReservationItemItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemTags {
+    /// 容量预定服务绑定的标签键值对信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ReservationItemItemTagsTag>,
 }
@@ -74364,42 +78726,80 @@ impl crate::FlatSerialize for ReservationItemItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItem {
+    /// 容量预定服务的状态。可能值：
+    ///
+    /// - Pending：初始化。
+    /// - Preparing：准备中。
+    /// - Prepared：待生效。
+    /// - Active：生效中。
+    /// - Released：已释放，包括手动释放与到期自动释放。
     #[serde(rename = "Status")]
     pub status: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "TimeSlot")]
     pub time_slot: String,
+    /// 容量预定服务生效后生成的私有资源池的类型。可能值：
+    ///
+    /// - Open：开放模式。启动实例时将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。
+    /// - Target：专用模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。
     #[serde(rename = "PrivatePoolOptionsMatchCriteria")]
     pub private_pool_options_match_criteria: String,
+    /// 容量预定服务ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
+    /// 容量预定服务名称。
     #[serde(rename = "PrivatePoolOptionsName")]
     pub private_pool_options_name: String,
+    /// 容量预定服务所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 容量预定服务中实例的付费类型。可能值：
+    ///
+    /// - PostPaid：按量付费。
+    /// - PrePaid：包年包月。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
+    /// 容量预定服务的失效时间。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 容量预定服务生效时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 容量预定服务的描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 容量预定服务的失效方式。可能值：
+    ///
+    /// - Limited：指定时间释放。
+    /// - Unlimited：手动释放。不限制时间。
     #[serde(rename = "EndTimeType")]
     pub end_time_type: String,
+    /// 容量预定服务所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 匹配的实例的操作系统。可能值：
+    ///
+    /// - windows。
+    /// - linux。
     #[serde(rename = "Platform")]
     pub platform: String,
     #[serde(rename = "AllocatedResources")]
     pub allocated_resources: ReservationItemItemAllocatedResources,
     #[serde(rename = "Tags")]
     pub tags: ReservationItemItemTags,
+    /// 容量预定生效方式。可能值：
+    ///
+    /// - Now：立即生效。
+    /// - Later：指定时间生效。
     #[serde(rename = "StartTimeType")]
     pub start_time_type: String,
+    /// 容量预定搭配的节省计划券ID。
     #[serde(rename = "SavingPlanId")]
     pub saving_plan_id: String,
+    /// 容量预定搭配的预留实例券ID。
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: String,
+    /// 容量预定资源包所有者ID。
     #[serde(rename = "CapacityReservationOwnerId")]
     pub capacity_reservation_owner_id: String,
 }
@@ -74495,6 +78895,7 @@ impl crate::FlatSerialize for ReservationItem {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationSet {
+    /// 容量预定服务详细信息组成的集合。
     #[serde(rename = "CapacityReservationItem")]
     pub capacity_reservation_item: Vec<ReservationItem>,
 }
@@ -74516,6 +78917,7 @@ impl crate::FlatSerialize for ReservationSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemInstanceIdSet {
+    /// 实例 ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -74537,6 +78939,7 @@ impl crate::FlatSerialize for ReservationItemInstanceIdSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityReservation {
+    /// 容量预定服务已匹配的实例列表。
     #[serde(rename = "InstanceIdSet")]
     pub instance_id_set: Vec<ReservationItemInstanceIdSet>,
 }
@@ -74558,10 +78961,17 @@ impl crate::FlatSerialize for CapacityReservation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesResponseInstancesInstance {
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例的私有池匹配模式。可能值：
+    ///
+    /// - Open：开放模式。实例自动匹配开放类型的私有池。
+    /// - Target：指定模式。实例匹配指定的私有池。
+    /// - None：不使用模式。实例不使用私有池。
     #[serde(rename = "PrivatePoolOptionsMatchCriteria")]
     pub private_pool_options_match_criteria: String,
+    /// 私有池ID。当`PrivatePoolOptionsMatchCriteria`返回值为`Open`时，私有池ID为系统自动匹配时所分配的私有池ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
 }
@@ -74593,6 +79003,7 @@ impl crate::FlatSerialize for AttributesResponseInstancesInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesResponseInstances {
+    /// 实例匹配的私有池信息组成的集合。
     #[serde(rename = "Instance")]
     pub instance: Vec<AttributesResponseInstancesInstance>,
 }
@@ -74610,8 +79021,10 @@ impl crate::FlatSerialize for AttributesResponseInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OfferingTag {
+    /// 预留实例券的标签键。不允许为空字符串，最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http:/`/或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 预留实例券的标签值。则不允许为空字符串，最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http:/`/或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -74630,6 +79043,7 @@ impl crate::FlatSerialize for OfferingTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OfferingResponseReservedInstanceIdSets {
+    /// 预留实例券ID列表。
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: Vec<String>,
 }
@@ -74651,8 +79065,12 @@ impl crate::FlatSerialize for OfferingResponseReservedInstanceIdSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstancesTag {
+    /// 预留实例券的标签键。不允许为空字符串，最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
+    ///
+    /// > 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个；如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 预留实例券的标签值。不允许为空字符串,最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -74671,6 +79089,7 @@ impl crate::FlatSerialize for ReservedInstancesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemOperationLocksOperationLock {
+    /// 锁定原因。
     #[serde(rename = "LockReason")]
     pub lock_reason: String,
 }
@@ -74692,6 +79111,7 @@ impl crate::FlatSerialize for InstanceItemOperationLocksOperationLock {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemOperationLocks {
+    /// 是否被锁定。
     #[serde(rename = "OperationLock")]
     pub operation_lock: Vec<InstanceItemOperationLocksOperationLock>,
 }
@@ -74713,8 +79133,10 @@ impl crate::FlatSerialize for ReservedInstanceItemOperationLocks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemTagsTag {
+    /// 预留实例券的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 预留实例券的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -74737,6 +79159,7 @@ impl crate::FlatSerialize for ReservedInstanceItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemTags {
+    /// 预留实例券的标签对信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ReservedInstanceItemTagsTag>,
 }
@@ -74754,36 +79177,59 @@ impl crate::FlatSerialize for ReservedInstanceItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstance {
+    /// 状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 名称。
     #[serde(rename = "ReservedInstanceName")]
     pub reserved_instance_name: String,
+    /// 预留实例券ID。
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: String,
+    /// 匹配的按量付费实例的规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 可以匹配同规格按量付费实例的数量。
     #[serde(rename = "InstanceAmount")]
     pub instance_amount: i32,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 付款类型。
     #[serde(rename = "OfferingType")]
     pub offering_type: String,
+    /// 生效时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 当AllocationType值为Shared时，该参数表示预留实例券的分配状态。可能值：
+    ///
+    /// - allocated：已分配给其他用户的预留实例券。
+    /// - beAllocated：被其他用户分配的预留实例券。
     #[serde(rename = "AllocationStatus")]
     pub allocation_status: String,
+    /// 到期时间。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 资源组。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 实例使用的镜像的操作系统类型。可能值：
+    ///
+    /// - Windows：Windows Server类型的操作系统。
+    ///
+    /// - Linux：Linux及类Unix类型的操作系统。
     #[serde(rename = "Platform")]
     pub platform: String,
+    /// 范围。
     #[serde(rename = "Scope")]
     pub scope: String,
     #[serde(rename = "OperationLocks")]
@@ -74874,6 +79320,7 @@ impl crate::FlatSerialize for ReservedInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstances {
+    /// 由ReservedInstance组成的数组格式，返回预留实例券的详细信息。
     #[serde(rename = "ReservedInstance")]
     pub reserved_instance: Vec<ReservedInstance>,
 }
@@ -74895,14 +79342,32 @@ impl crate::FlatSerialize for ReservedInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesConfiguration {
+    /// 预留实例券的名称。
+    ///
+    /// 长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "ReservedInstanceName")]
     pub reserved_instance_name: String,
+    /// 预留实例券所属的可用区编号。
+    ///
+    /// `Scope`参数值为`Zone`时，该参数为必填参数。
+    ///
+    /// 您可以调用[DescribeZones](~~25609~~)获取可用区列表。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 预留实例券的范围。取值范围：
+    ///
+    /// - Region：地域级别。
+    /// - Zone：可用区级别。
+    ///
+    /// 默认值：Region。
     #[serde(rename = "Scope")]
     pub scope: String,
+    /// 预留实例券可以匹配的实例规格。
+    ///
+    /// > 适用的实例规格持续更新，详情请参见[预留实例券概述](~~100370#3c1b682051vt4~~)。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 预留实例券可以同时匹配同规格按量付费实例的数量。取值范围：≥1。
     #[serde(rename = "InstanceAmount")]
     pub instance_amount: i32,
 }
@@ -74936,6 +79401,8 @@ impl crate::FlatSerialize for InstancesConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyReservedInstancesResponseReservedInstanceIdSets {
+    /// 预留实例券ID列表。
+    ///
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: Vec<String>,
 }
@@ -74957,6 +79424,7 @@ impl crate::FlatSerialize for ModifyReservedInstancesResponseReservedInstanceIdS
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewReservedInstancesResponseReservedInstanceIdSets {
+    /// 预留实例券ID列表。
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: Vec<String>,
 }
@@ -74978,12 +79446,23 @@ impl crate::FlatSerialize for RenewReservedInstancesResponseReservedInstanceIdSe
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceRenewAttribute {
+    /// 续费单位。
+    ///
+    /// <props="intl">可能值：Year。</props>
+    ///
+    /// <props="china">可能值：Year、Month。</props>
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 自动续费时长。
     #[serde(rename = "Duration")]
     pub duration: i32,
+    /// 预留实例券ID。
     #[serde(rename = "ReservedInstanceId")]
     pub reserved_instance_id: String,
+    /// 预留实例券自动续费状态。可能值：
+    ///
+    /// - AutoRenewal：自动续费。
+    /// - Normal：手动续费。
     #[serde(rename = "RenewalStatus")]
     pub renewal_status: String,
 }
@@ -75016,6 +79495,8 @@ impl crate::FlatSerialize for ReservedInstanceRenewAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceRenewAttributes {
+    /// 由ReservedInstanceRenewAttribute组成的数组格式，返回预留实例券的自动续费设置信息。
+    ///
     #[serde(rename = "ReservedInstanceRenewAttribute")]
     pub reserved_instance_renew_attribute: Vec<ReservedInstanceRenewAttribute>,
 }
@@ -75037,8 +79518,10 @@ impl crate::FlatSerialize for ReservedInstanceRenewAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitTag {
+    /// SCU的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// SCU的标签值。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -75057,6 +79540,7 @@ impl crate::FlatSerialize for UnitTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitIds {
+    /// SCU ID。
     #[serde(rename = "StorageCapacityUnitId")]
     pub storage_capacity_unit_id: Vec<String>,
 }
@@ -75078,8 +79562,10 @@ impl crate::FlatSerialize for UnitIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitsTag {
+    /// SCU的标签键。
     #[serde(rename = "Key")]
     pub key: String,
+    /// SCU的标签值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -75098,8 +79584,10 @@ impl crate::FlatSerialize for UnitsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitItemTagsTag {
+    /// SCU的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// SCU的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -75122,6 +79610,7 @@ impl crate::FlatSerialize for UnitItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitItemTags {
+    /// SCU标签键值对。
     #[serde(rename = "Tag")]
     pub tag: Vec<UnitItemTagsTag>,
 }
@@ -75139,24 +79628,40 @@ impl crate::FlatSerialize for UnitItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityUnit {
+    /// SCU的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// SCU的状态。可能值：
+    /// - Creating：创建中。
+    /// - Active：启用中。
+    /// - Expired：已过期。
+    /// - Pending：待生效。
     #[serde(rename = "Status")]
     pub status: String,
+    /// SCU的开始生效时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// SCU的容量。
     #[serde(rename = "Capacity")]
     pub capacity: i32,
+    /// SCU的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 当AllocationType值为Shared时，该参数表示SCU的分配状态。可能值：
+    /// - allocated：已分配给其他用户的SCU。
+    /// - beAllocated：被其他用户分配的SCU。
     #[serde(rename = "AllocationStatus")]
     pub allocation_status: String,
+    /// SCU的到期时间。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// SCU的ID。
     #[serde(rename = "StorageCapacityUnitId")]
     pub storage_capacity_unit_id: String,
+    /// SCU的名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// SCU的所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "Tags")]
@@ -75214,6 +79719,7 @@ impl crate::FlatSerialize for CapacityUnit {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityUnits {
+    /// 由StorageCapacityUnits组成的数组格式，返回的SCU详细信息集合。
     #[serde(rename = "StorageCapacityUnit")]
     pub storage_capacity_unit: Vec<CapacityUnit>,
 }
@@ -75235,8 +79741,16 @@ impl crate::FlatSerialize for CapacityUnits {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunCommandTag {
+    /// 命令执行的标签值。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 命令执行的标签键。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75255,8 +79769,24 @@ impl crate::FlatSerialize for RunCommandTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RunCommandResourceTag {
+    /// 用于筛选实例的标签值。
+    ///
+    /// 注意事项：
+    /// - 该值可以为空字符串。
+    /// - 最多支持128个字符，不能包含http://或https://。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 用于筛选实例的标签键。
+    ///
+    /// 注意事项：
+    ///
+    /// - 与参数InstanceId冲突，不能同时指定。
+    ///
+    /// - 一旦传入该值，则不允许为空字符串。
+    ///
+    /// - 标签下的实例数量不能超过InstanceId.N的数量限制；如果实例数量超出限制，建议通过添加批次标签等方式控制实例数量，例如batch: b1。
+    ///
+    /// - 最多支持64个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75275,8 +79805,17 @@ impl crate::FlatSerialize for RunCommandResourceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCommandTag {
+    /// 命令的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+    ///
     #[serde(rename = "Key")]
     pub key: String,
+    /// 命令的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -75295,8 +79834,17 @@ impl crate::FlatSerialize for CreateCommandTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvokeCommandTag {
+    /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75315,8 +79863,26 @@ impl crate::FlatSerialize for InvokeCommandTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvokeCommandResourceTag {
+    /// 用于筛选实例的标签值。
+    ///
+    /// 注意事项：
+    ///
+    /// - N的取值范围为1~10。
+    /// - 该值可以为空字符串。
+    /// - 最多支持128个字符，不能包含http://或https://。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 用于筛选实例的标签键。
+    ///
+    /// 注意事项：
+    ///
+    /// - 与参数InstanceId冲突，不能同时指定。
+    ///
+    /// - N的取值范围为1~10。一旦传入该值，则不允许为空字符串。
+    ///
+    /// - 标签下的实例数量不能超过InstanceId.N的数量限制；如果实例数量超出限制，建议通过添加批次标签等方式控制实例数量，例如batch: b1。
+    ///
+    /// - 最多支持64个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75335,8 +79901,16 @@ impl crate::FlatSerialize for InvokeCommandResourceTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsTag {
+    /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+    ///
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75355,38 +79929,126 @@ impl crate::FlatSerialize for InvocationsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance {
+    /// Output字段中文字长度超出24 KB后，截断丢弃的文字长度。
     #[serde(rename = "Dropped")]
     pub dropped: i32,
+    /// 单台实例的命令进度状态，可能值：
+    /// - Pending：系统正在校验或发送命令。
+    /// - Invalid：指定命令类型或参数有误。
+    /// - Aborted：向实例发送命令失败。实例必须在运行中，且命令可以1分钟内发送完成。
+    /// - Running：命令正在实例上运行。
+    /// - Success：
+    ///     - 单次执行的命令：命令执行完成，且退出码为0。
+    ///     - 定时执行的命令：上一次运行成功且退出码为0，且指定的时间已结束。
+    /// - Failed：
+    ///     -  单次执行的命令：命令执行完成，且退出码非0。
+    ///     -  定时执行的命令：上一次运行成功且退出码非0，且指定的时间将中止。
+    /// - Error：命令执行时发生异常无法继续。
+    /// - Timeout：命令执行超时。
+    /// - Cancelled：命令的执行动作已经取消，命令未曾启动。
+    /// - Stopping：正在停止任务。
+    /// - Terminated：命令运行时被终止。
+    /// - Scheduled：
+    ///     - 单次执行的命令：不适用，不会出现。
+    ///     - 定时执行的命令：等待运行。
     #[serde(rename = "InvocationStatus")]
     pub invocation_status: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 查询的命令是否在将来会自动执行。
     #[serde(rename = "Timed")]
     pub timed: bool,
+    /// 单台实例的命令进度状态。
+    ///
+    /// > 不推荐查看该返回值，推荐您查看`InvocationStatus`的返回值。
     #[serde(rename = "InstanceInvokeStatus")]
     pub instance_invoke_status: String,
+    /// 命令进程的退出代码。可能值：
+    ///
+    /// -  Linux实例为Shell进程的退出码。
+    /// -  Windows实例为Bat或者PowerShell进程的退出码。
     #[serde(rename = "ExitCode")]
     pub exit_code: i64,
+    /// 命令的下发失败或执行失败原因的详情，可能值：
+    /// - 空：命令运行正常。
+    /// - The security group rules denied access to the aliyun service：安全组规则拒绝访问云助手服务。
+    /// - The specified instance does not exist：指定的实例不存在或已释放。
+    /// - The specified instance was released during task execution：执行命令期间，该实例被释放。
+    /// - The specified instance was not running during task execution：开始执行命令时，该实例不在运行中。
+    /// - The OS type of the instance does not support the specified command type：命令不适用于指定的实例。
+    /// - The specified account does not exist：指定的账号不存在。
+    /// - The specified directory does not exist：指定的目录不存在。
+    /// - The cron expression is invalid：指定的执行时间表达式不合法。
+    /// - The aliyun service is not running on the instance：云助手Agent未运行。
+    /// - The aliyun service in the instance does not response：云助手Agent无响应。
+    /// - The aliyun service in the instance is upgrading during task execution：云助手Agent正在升级中。
+    /// - The aliyun service in the instance need to be upgraded to at least version <version> to support the <feature> feature：云助手Agent需要升级。<version>为该特性最低支持版本号，<feature>为具体特性。
+    /// - The command delivery has been timeout：发送命令超时。
+    /// - The command execution has been timeout：命令执行超时。
+    /// - The command execution got an exception：命令执行发生异常。
+    /// - The command execution exit code is not zero：命令执行结束，退出码非0。
+    /// - The specified instance was released during task execution：下发文件期间，该实例被释放。
     #[serde(rename = "ErrorInfo")]
     pub error_info: String,
+    /// 命令在实例中开始执行的时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 命令在该实例上执行的次数。
+    /// -  若执行方式为单次执行，则值为0或1。
+    /// -  若执行方式为定时执行，则值为执行过多少次。
     #[serde(rename = "Repeats")]
     pub repeats: i32,
+    /// 命令执行Output投递到OSS的文件URI地址，当投递失败/投递中时该字段为空字符串。
     #[serde(rename = "OssOutputUri")]
     pub oss_output_uri: String,
+    /// 命令执行Output投递状态。枚举值：
+    ///
+    /// - InProgress：投递中。
+    ///
+    /// - Finished：投递完成。
+    ///
+    /// - Failed：投递失败。
     #[serde(rename = "OssOutputStatus")]
     pub oss_output_status: String,
+    /// 命令进程的结束时间。
     #[serde(rename = "FinishTime")]
     pub finish_time: String,
+    /// 命令的输出信息。
+    ///
+    /// - 若ContentEncoding指定PlainText，返回原始输出信息。
+    /// - 若ContentEncoding指定Base64，返回Base64编码后的输出信息。
     #[serde(rename = "Output")]
     pub output: String,
+    /// 命令执行的开始时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 命令状态的更新时间。
     #[serde(rename = "UpdateTime")]
     pub update_time: String,
+    /// 命令的下发失败或执行失败原因的代码，可能值：
+    /// - 空：命令运行正常。
+    /// - InstanceNotExists：指定的实例不存在或已释放。
+    /// - InstanceReleased：执行命令期间，该实例被释放。
+    /// - InstanceNotRunning：开始执行命令时，该实例不在运行中。
+    /// - CommandNotApplicable：命令不适用于指定的实例。
+    /// - AccountNotExists：指定的执行命令的用户名不存在。
+    /// - DirectoryNotExists：指定的目录不存在。
+    /// - BadCronExpression：指定的执行时间表达式不合法。
+    /// - ClientNotRunning：云助手Agent未运行。
+    /// - ClientNotResponse：云助手Agent无响应。
+    /// - ClientIsUpgrading：云助手Agent正在升级中。
+    /// - ClientNeedUpgrade：云助手Agent需要升级。
+    /// - DeliveryTimeout：发送命令超时。
+    /// - ExecutionTimeout：命令执行超时。
+    /// - ExecutionException：命令执行发生异常。
+    /// - ExecutionInterrupted：命令执行任务中断。
+    /// - ExitCodeNonzero：命令执行结束，退出码非0。
+    /// - SecurityGroupRuleDenied：安全组规则拒绝访问云助手服务。
+    /// - TaskConcurrencyLimit：任务并发执行数量超过最大额度。
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 若调用了`StopInvocation`以停止命令执行，表示调用的时间。
     #[serde(rename = "StopTime")]
     pub stop_time: String,
 }
@@ -75474,6 +80136,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemInvokeInstances {
+    /// 执行目标实例集类型。
     #[serde(rename = "InvokeInstance")]
     pub invoke_instance:
         Vec<InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance>,
@@ -75496,8 +80159,10 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemInvoke
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemTagsTag {
+    /// 命令执行的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 命令执行的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -75520,6 +80185,7 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemTagsTa
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemTags {
+    /// 命令执行的标签信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<InvocationsResponseInvocationsInvocationItemTagsTag>,
 }
@@ -75537,48 +80203,102 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocation {
+    /// 命令执行Output OSS投递配置。
     #[serde(rename = "OssOutputDelivery")]
     pub oss_output_delivery: String,
+    /// 命令执行的总执行状态，总执行状态取决于本次调用的全部实例的共同执行状态，可能值：
+    /// - Pending：系统正在校验或发送命令。存在至少一台实例的命令执行状态为Pending，则总执行状态为Pending。
+    /// - Scheduled：定时执行的命令已发送，等待运行。存在至少一台实例的命令执行状态为Scheduled，则总执行状态为Scheduled。
+    /// - Running：命令正在实例上运行。存在至少一台实例的命令执行状态为Running，则总执行状态为Running。
+    /// - Success：各个实例上的命令执行状态均为Stopped或Success，且至少一个实例的命令执行状态是Success，则总执行状态为Success。
+    ///     - 立即运行的任务：命令执行完成，且退出码为0。
+    ///     - 定时运行的任务：最近一次执行成功且退出码为0，且指定的时间已全部完成。
+    /// - Failed：各个实例上的命令执行状态均为Stopped或Failed，则总执行状态为Failed。实例上的命令执行状态一项或多项为以下状态时，返回值均为Failed状态：
+    ///     - 命令校验失败（Invalid）。
+    ///     - 命令发送失败（Aborted）。
+    ///     - 命令执行完成但退出码非0（Failed）。
+    ///     - 命令执行超时（Timeout）。
+    ///     - 命令执行异常（Error）。
+    /// - Stopping：正在停止任务。存在至少一台实例的命令执行状态为Stopping，则总执行状态为Stopping。
+    /// - Stopped：任务已停止。所有实例的命令执行状态是Stopped，则总执行状态为Stopped。实例上的命令执行状态为以下状态时，返回值均为Stopped状态：
+    ///     - 任务已取消（Cancelled）。
+    ///     - 任务已终止（Terminated）。
+    /// - PartialFailed：部分实例执行成功且部分实例执行失败。各个实例的命令执行状态均为Success、Failed或Stopped，则总执行状态为PartialFailed。
+    ///
+    /// > 返回参数中的`InvokeStatus`与该参数意义相似，但建议您查看该返回值。
     #[serde(rename = "InvocationStatus")]
     pub invocation_status: String,
+    /// 命令中的自定义参数。
     #[serde(rename = "Parameters")]
     pub parameters: String,
+    /// 查询的命令是否在将来会自动执行。
     #[serde(rename = "Timed")]
     pub timed: bool,
+    /// 命令描述。
     #[serde(rename = "CommandDescription")]
     pub command_description: String,
+    /// 您创建的命令在ECS实例中执行时最大的超时时间，单位：秒。
+    ///
+    /// 当因为某种原因无法运行您创建的命令时，会出现超时现象。超时后，会强制终止命令进程，即取消命令的PID。
     #[serde(rename = "Timeout")]
     pub timeout: i64,
     #[serde(rename = "InvokeInstances")]
     pub invoke_instances: InvocationsResponseInvocationsInvocationItemInvokeInstances,
+    /// 命令内容。
+    ///
+    /// - 若ContentEncoding指定PlainText，返回原始脚本内容。
+    /// - 若ContentEncoding指定Base64，返回Base64编码后的脚本内容。
     #[serde(rename = "CommandContent")]
     pub command_content: String,
+    /// 命令执行路径。
     #[serde(rename = "WorkingDir")]
     pub working_dir: String,
+    /// 命令执行的方式。可能值：
+    ///
+    /// - Once：立即执行命令。
+    /// - Period：定时执行命令。
+    /// - NextRebootOnly：当实例下一次启动时，自动执行命令。
+    /// - EveryReboot：实例每一次启动都将自动执行命令。
+    /// - DryRun：只预检此次请求，命令执行不会实际生效，检查项包括请求参数、实例执行环境、云助手Agent运行状态等。
     #[serde(rename = "RepeatMode")]
     pub repeat_mode: String,
+    /// 命令总的执行状态。
+    /// > 不推荐查看该返回值，推荐您查看`InvocationStatus`的返回值。
     #[serde(rename = "InvokeStatus")]
     pub invoke_status: String,
+    /// 命令类型。
     #[serde(rename = "CommandType")]
     pub command_type: String,
+    /// ECS实例中执行命令的用户名称。
     #[serde(rename = "Username")]
     pub username: String,
+    /// 容器ID。
     #[serde(rename = "ContainerId")]
     pub container_id: String,
+    /// 容器名称。
     #[serde(rename = "ContainerName")]
     pub container_name: String,
+    /// 任务的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 定时执行命令的执行时间。
     #[serde(rename = "Frequency")]
     pub frequency: String,
+    /// 脚本执行的引导程序。长度不能超过 1 KB。
     #[serde(rename = "Launcher")]
     pub launcher: String,
+    /// 命令ID。
     #[serde(rename = "CommandId")]
     pub command_id: String,
+    /// 命令名称。
     #[serde(rename = "CommandName")]
     pub command_name: String,
+    /// 命令执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
+    /// 停止任务（手动停止或执行超时打断）时的模式。可能值：
+    /// - Process：停止当前脚本进程。
+    /// - ProcessTree：停止当前进程树（脚本进程以及它创建的所有子进程的集合）。
     #[serde(rename = "TerminationMode")]
     pub termination_mode: String,
     #[serde(rename = "Tags")]
@@ -75692,6 +80412,7 @@ impl crate::FlatSerialize for InvocationsResponseInvocationsInvocation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocations {
+    /// 命令执行记录组成的数组。
     #[serde(rename = "Invocation")]
     pub invocation: Vec<InvocationsResponseInvocationsInvocation>,
 }
@@ -75713,8 +80434,16 @@ impl crate::FlatSerialize for InvocationsResponseInvocations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResultsTag {
+    /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -75733,8 +80462,10 @@ impl crate::FlatSerialize for InvocationResultsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemTagsTag {
+    /// 命令执行的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 命令执行的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -75757,6 +80488,7 @@ impl crate::FlatSerialize for ResultItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemTags {
+    /// 命令执行的标签信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ResultItemTagsTag>,
 }
@@ -75774,50 +80506,158 @@ impl crate::FlatSerialize for ResultItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResult {
+    /// `Output`字段中文字长度超出24 KB后，截断并丢弃的文字长度。
     #[serde(rename = "Dropped")]
     pub dropped: i32,
+    /// 命令执行Output OSS投递配置。
     #[serde(rename = "OssOutputDelivery")]
     pub oss_output_delivery: String,
+    /// 单台实例的命令进度状态，可能值：
+    /// - Pending：系统正在校验或发送命令。
+    /// - Invalid：指定命令类型或参数有误。
+    /// - Aborted：向实例发送命令失败。实例必须在运行中，且命令可以1分钟内发送完成。
+    /// - Running：命令正在实例上执行。
+    /// - Success：
+    ///     - 单次执行的命令：命令执行完成，且退出码为0。
+    ///     - 定时执行的命令：上一次执行成功且退出码为0，且指定的执行时间已结束。
+    /// - Failed：
+    ///     - 单次执行的命令：命令执行完成，且退出码非0。
+    ///     - 定时执行的命令：上一次执行成功且退出码非0，且指定的执行时间将中止。
+    /// - Error：命令执行时发生异常无法继续。
+    /// - Timeout：命令执行超时。
+    /// - Cancelled：命令的执行动作已经取消，命令未曾启动。
+    /// - Stopping：正在停止执行的命令。
+    /// - Terminated：命令执行时被终止。
+    /// - Scheduled：
+    ///     - 单次执行的命令：不适用，不会出现。
+    ///     - 定时执行的命令：等待执行。
     #[serde(rename = "InvocationStatus")]
     pub invocation_status: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 命令的退出码。
+    ///
+    /// - Linux实例为Shell命令的退出码。
+    /// - Windows实例为Bat或者PowerShell命令的退出码。
     #[serde(rename = "ExitCode")]
     pub exit_code: i64,
+    /// 命令的下发失败或执行失败原因的详情，可能值：
+    /// - 空：命令运行正常。
+    /// - The security group rules denied access to the aliyun service：安全组规则拒绝访问云助手服务。
+    /// - The specified instance does not exist：指定的实例不存在或已释放。
+    /// - The specified instance was released during task execution：执行命令期间，该实例被释放。
+    /// - The specified instance was not running during task execution：开始执行命令时，该实例不在运行中。
+    /// - The OS type of the instance does not support the specified command type：命令不适用于指定的实例。
+    /// - The specified account does not exist：指定的账号不存在。
+    /// - The specified directory does not exist：指定的目录不存在。
+    /// - The cron expression is invalid：指定的执行时间表达式不合法。
+    /// - The aliyun service is not running on the instance：云助手Agent未运行。
+    /// - The aliyun service in the instance does not response：云助手Agent无响应。
+    /// - The aliyun service in the instance is upgrading during task execution：云助手Agent正在升级中。
+    /// - The aliyun service in the instance need to be upgraded to at least version <version> to support the <feature> feature：云助手Agent需要升级。<version>为该特性最低支持版本号，<feature>为具体特性。
+    /// - The command delivery has been timeout：发送命令超时。
+    /// - The command execution has been timeout：命令执行超时。
+    /// - The command execution got an exception：命令执行发生异常。
+    /// - The command execution exit code is not zero：命令执行结束，退出码非0。
+    /// - The specified instance was released during task execution：下发文件期间，该实例被释放。
     #[serde(rename = "ErrorInfo")]
     pub error_info: String,
+    /// 命令在实例中开始执行的时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 命令在该实例上执行的次数。
+    /// - 若执行方式为立即执行，则值为0或1。
+    /// - 若执行方式为定时执行，则值为执行过多少次。
     #[serde(rename = "Repeats")]
     pub repeats: i32,
+    /// 命令执行状态。可能值：
+    ///
+    /// - Running：运行中。
+    ///     - 定时执行：未手动停止定时执行命令前，执行状态一直为进行中。
+    ///     - 单次执行：一旦有进行中的命令进程，总的执行状态就为进行中。
+    /// - Finished：已完成。
+    ///     - 定时执行：命令进程不可能为执行完成。
+    ///     - 单次执行：所有实例全部完成执行。或者手动停止部分实例的命令进程，其余实例全部执行完成。
+    /// - Failed：执行失败。
+    ///     - 定时执行：命令进程不可能为执行失败。
+    ///     - 单次执行：所有实例全部执行失败。
+    /// - PartialFailed：部分执行失败。
+    ///     - 定时执行：命令进程不可能为部分失败。
+    ///     - 单次执行：部分实例有执行失败的命令进程，则总执行状态为部分失败。
+    /// - Stopped：命令执行已停止。
+    /// - Stopping：正在停止执行的命令。
     #[serde(rename = "InvokeRecordStatus")]
     pub invoke_record_status: String,
+    /// 命令执行的完成时间。如果命令执行出现超时情况，命令执行的完成时间以`StartTime`延迟执行命令的超时时间`Timeout`为准。
     #[serde(rename = "FinishedTime")]
     pub finished_time: String,
+    /// 命令执行Output投递到OSS的文件URI地址，当投递失败/投递中时该字段为空字符串。
     #[serde(rename = "OssOutputUri")]
     pub oss_output_uri: String,
+    /// 命令执行Output投递状态。枚举值：
+    ///
+    /// - InProgress：投递中。
+    ///
+    /// - Finished：投递完成。
+    ///
+    /// - Failed：投递失败。
     #[serde(rename = "OssOutputStatus")]
     pub oss_output_status: String,
+    /// 在ECS实例中执行命令的用户名称。
     #[serde(rename = "Username")]
     pub username: String,
+    /// 容器ID。
     #[serde(rename = "ContainerId")]
     pub container_id: String,
+    /// 容器名称。
     #[serde(rename = "ContainerName")]
     pub container_name: String,
+    /// 命令执行后的输出信息。
+    ///
+    /// - 若ContentEncoding指定PlainText，返回原始输出信息。
+    /// - 若ContentEncoding指定Base64，返回Base64编码后的输出信息。
     #[serde(rename = "Output")]
     pub output: String,
+    /// 脚本执行的引导程序。长度不能超过 1 KB。
     #[serde(rename = "Launcher")]
     pub launcher: String,
+    /// 命令ID。
     #[serde(rename = "CommandId")]
     pub command_id: String,
+    /// 命令下发失败或执行失败原因的代码，可能值：
+    /// - 空：命令执行正常。
+    /// - InstanceNotExists：指定的实例不存在或已释放。
+    /// - InstanceReleased：执行命令期间，该实例被释放。
+    /// - InstanceNotRunning：命令执行时，该实例不在运行中。
+    /// - CommandNotApplicable：命令不适用于指定的实例。
+    /// - AccountNotExists：指定的执行命令的用户名不存在。
+    /// - DirectoryNotExists：指定的目录不存在。
+    /// - BadCronExpression：指定的执行时间表达式不合法。
+    /// - ClientNotRunning：云助手Agent未运行。
+    /// - ClientNotResponse：云助手Agent无响应。
+    /// - ClientIsUpgrading：云助手Agent正在升级中。
+    /// - ClientNeedUpgrade：云助手Agent需要升级。
+    /// - DeliveryTimeout：发送命令超时。
+    /// - ExecutionTimeout：命令执行超时。
+    /// - ExecutionException：命令执行发生异常。
+    /// - ExecutionInterrupted：命令执行被中断。
+    /// - ExitCodeNonzero：命令执行结束，退出码非0。
+    /// - SecurityGroupRuleDenied：安全组规则拒绝访问云助手服务。
+    /// - TaskConcurrencyLimit：任务并发执行数量超过最大额度。
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 命令执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
+    /// 停止任务（手动停止或执行超时打断）时的模式。可能值：
+    /// - Process：停止当前脚本进程。
+    /// - ProcessTree：停止当前进程树（脚本进程以及它创建的所有子进程的集合）。
     #[serde(rename = "TerminationMode")]
     pub termination_mode: String,
     #[serde(rename = "Tags")]
     pub tags: ResultItemTags,
+    /// 若调用了`StopInvocation`以停止命令执行，表示调用的时间。
     #[serde(rename = "StopTime")]
     pub stop_time: String,
 }
@@ -75925,6 +80765,7 @@ impl crate::FlatSerialize for InvocationResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResults {
+    /// 命令执行结果集。
     #[serde(rename = "InvocationResult")]
     pub invocation_result: Vec<InvocationResult>,
 }
@@ -75946,12 +80787,16 @@ impl crate::FlatSerialize for InvocationResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInvocation {
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 命令总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "InvocationResults")]
@@ -75995,8 +80840,16 @@ impl crate::FlatSerialize for ResponseInvocation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandsTag {
+    /// 命令的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
+    /// 命令的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
 }
@@ -76015,6 +80868,7 @@ impl crate::FlatSerialize for CommandsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct PossibleValues {
+    /// 枚举类型自定义参数的可选值。
     #[serde(rename = "PossibleValue")]
     pub possible_value: Vec<String>,
 }
@@ -76036,16 +80890,27 @@ impl crate::FlatSerialize for PossibleValues {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterDefinition {
+    /// 自定义参数的默认值。
     #[serde(rename = "DefaultValue")]
     pub default_value: String,
+    /// 自定义参数描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 该自定义参数是否必填。
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    ///
+    /// 默认值：false。
     #[serde(rename = "Required")]
     pub required: bool,
+    /// 自定义参数名称。
     #[serde(rename = "ParameterName")]
     pub parameter_name: String,
     #[serde(rename = "PossibleValues")]
     pub possible_values: PossibleValues,
+    /// 自定义参数的正则表达式规则。
     #[serde(rename = "PatternRegex")]
     pub pattern_regex: String,
 }
@@ -76088,6 +80953,7 @@ impl crate::FlatSerialize for ParameterDefinition {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterDefinitions {
+    /// 自定义参数详细信息列表。
     #[serde(rename = "ParameterDefinition")]
     pub parameter_definition: Vec<ParameterDefinition>,
 }
@@ -76109,6 +80975,7 @@ impl crate::FlatSerialize for ParameterDefinitions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterNames {
+    /// 通过创建命令时的commandcontent解析出的自定义参数名列表，以列表（list）的形式返回。如未使用自定义参数功能，则返回空值列表。
     #[serde(rename = "ParameterName")]
     pub parameter_name: Vec<String>,
 }
@@ -76130,8 +80997,10 @@ impl crate::FlatSerialize for ParameterNames {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandItemTagsTag {
+    /// 命令的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 命令的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -76154,6 +81023,7 @@ impl crate::FlatSerialize for CommandItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandItemTags {
+    /// 命令的标签信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<CommandItemTagsTag>,
 }
@@ -76173,38 +81043,58 @@ impl crate::FlatSerialize for CommandItemTags {
 pub struct CommandsCommand {
     #[serde(rename = "ParameterDefinitions")]
     pub parameter_definitions: ParameterDefinitions,
+    /// 命令描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 公共命令的类目。
     #[serde(rename = "Category")]
     pub category: String,
+    /// 命令所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
     #[serde(rename = "ParameterNames")]
     pub parameter_names: ParameterNames,
+    /// 超时时间，单位：秒。
     #[serde(rename = "Timeout")]
     pub timeout: i64,
+    /// 公共命令的提供者。
     #[serde(rename = "Provider")]
     pub provider: String,
+    /// 命令名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 执行路径。
     #[serde(rename = "WorkingDir")]
     pub working_dir: String,
+    /// 命令内容，以Base64编码后传输。
+    ///
+    /// - 若ContentEncoding指定PlainText，返回原始脚本内容。
+    ///
+    /// - 若ContentEncoding指定Base64，返回Base64编码后的脚本内容。
     #[serde(rename = "CommandContent")]
     pub command_content: String,
+    /// 命令类型。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 公共命令的版本。如果多个命令属于同一个`Provider`，且名称与类目相同，则这些命令属于同一个命令的不同版本。您手动创建的云助手命令不会返回该值。
     #[serde(rename = "Version")]
     pub version: i32,
+    /// 使用该命令创建的任务数。
     #[serde(rename = "InvokeTimes")]
     pub invoke_times: i32,
+    /// 命令创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 脚本执行的引导程序。长度不能超过 1 KB。
     #[serde(rename = "Launcher")]
     pub launcher: String,
+    /// 公共命令是否是最新版本。如果多个命令属于同一个`Provider`，且名称与类目相同，则这些命令属于同一个命令的不同版本。您手动创建的云助手命令不会返回该值。
     #[serde(rename = "Latest")]
     pub latest: bool,
+    /// 该命令是否启用自定义参数。
     #[serde(rename = "EnableParameter")]
     pub enable_parameter: bool,
+    /// 命令ID。
     #[serde(rename = "CommandId")]
     pub command_id: String,
     #[serde(rename = "Tags")]
@@ -76282,6 +81172,7 @@ impl crate::FlatSerialize for CommandsCommand {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseCommands {
+    /// 命令数据集类型。
     #[serde(rename = "Command")]
     pub command: Vec<CommandsCommand>,
 }
@@ -76299,8 +81190,16 @@ impl crate::FlatSerialize for ResponseCommands {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileTag {
+    /// 文件下发的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 文件下发的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -76319,8 +81218,16 @@ impl crate::FlatSerialize for FileTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct FileResultsTag {
+    /// 文件下发的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 文件下发的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -76339,20 +81246,75 @@ impl crate::FlatSerialize for FileResultsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance {
+    /// 文件下发任务的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 下发任务在实例中开始执行的时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 单台实例下发任务的状态，可能值：
+    /// - Pending：系统正在校验或下发文件。
+    /// - Invalid：指定文件参数有误，校验失败。
+    /// - Running：正在实例上下发文件。
+    /// - Aborted：向实例下发文件失败。
+    /// - Success：文件下发完成。
+    /// - Failed：文件在实例内创建失败。
+    /// - Error：下发文件时发生异常无法继续。
+    /// - Timeout：下发文件超时。
     #[serde(rename = "InvocationStatus")]
     pub invocation_status: String,
+    /// 下发任务的结束时间。
     #[serde(rename = "FinishTime")]
     pub finish_time: String,
+    /// 任务状态的更新时间。
     #[serde(rename = "UpdateTime")]
     pub update_time: String,
+    /// 文件下发的失败或执行失败原因详情。可能值：
+    ///
+    /// - 空：文件下发正常。
+    /// - the specified instance does not exists：指定的实例不存在或已释放。
+    /// - the specified instance has been released.：下发文件期间，该实例被释放。
+    /// - the instance is not running when create task：创建下发文件任务时，该实例不在运行中。
+    /// - the specified account does not exists：指定的账号不存在。
+    /// - the aliyun service is not running on the instance：云助手Agent未运行。
+    /// - the aliyun service in the instance does not response：云助手Agent无响应。
+    /// - the aliyun service in the instance is upgrading now：云助手Agent正在升级中。
+    /// - the aliyun service in the instance need upgrade：云助手Agent需要升级。
+    /// - the command delivery has been timeout：下发文件超时。
+    /// - the file creation is failed due to unknown error：文件创建失败。
+    /// - the authority of file is invalid：文件权限不合法。
+    /// - File content is empty：文件内容为空。
+    /// - the content of file is invalid：文件内容不合法。
+    /// - File already exists：相同路径下存在同名文件。
+    /// - File name is invalid：文件名不合法。
+    /// - File path is invalid：文件路径不合法。
+    /// - Owner not exists：用户不存在。
+    /// - Group not exists：用户组不存在。
+    /// - Mode is invalid：文件权限设置不合法。
     #[serde(rename = "ErrorInfo")]
     pub error_info: String,
+    /// 文件下发的失败原因代码。可能值：
+    ///
+    /// - 空：文件下发正常。
+    /// - InstanceNotExists：指定的实例不存在或已释放。
+    /// - InstanceReleased：下发文件期间，该实例被释放。
+    /// - InstanceNotRunning：创建下发文件任务时，该实例不在运行中。
+    /// - AccountNotExists：指定的账号不存在。
+    /// - ClientNotRunning：云助手Agent未运行。
+    /// - ClientNotResponse：云助手Agent无响应。
+    /// - ClientIsUpgrading：云助手Agent正在升级中。
+    /// - ClientNeedUpgrade：云助手Agent需要升级。
+    /// - DeliveryTimeout：发送文件超时。
+    /// - FileCreateFail：文件创建失败。
+    /// - FileAlreadyExists：相同路径下存在同名文件。
+    /// - FileContentInvalid：文件内容不合法。
+    /// - FileNameInvalid：文件名不合法。
+    /// - FilePathInvalid：文件路径不合法。
+    /// - FileAuthorityInvalid：文件权限不合法。
+    /// - UserGroupNotExists：发送文件时指定的用户组不存在。
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -76411,6 +81373,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemInvokeInstances {
+    /// 下发文件目标实例集类型。
     #[serde(rename = "InvokeInstance")]
     pub invoke_instance: Vec<ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance>,
 }
@@ -76432,8 +81395,10 @@ impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemInvokeInst
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemTagsTag {
+    /// 文件下发的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 文件下发的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -76456,6 +81421,7 @@ impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemTags {
+    /// 文件下发的标签信息。
     #[serde(rename = "Tag")]
     pub tag: Vec<ResultsResponseInvocationsInvocationItemTagsTag>,
 }
@@ -76473,30 +81439,56 @@ impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocation {
+    /// 文件下发任务创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 文件的总下发状态。总状态取决于本次下发的全部实例的共同执行状态，可能值：
+    ///
+    /// - Pending：系统正在校验或下发文件。存在至少一台实例的文件下发状态为Pending，则总执行状态为Pending。
+    /// - Running：正在实例上下发文件。存在至少一台实例的文件下发状态为Running，则总执行状态为Running。
+    /// - Success：各个实例上的文件下发状态均为Success，则总执行状态为Success。
+    /// - Failed：各个实例上的文件下发状态均为Failed，则总执行状态为Failed。实例上的文件下发状态一项或多项为以下状态时，返回值均为Failed状态：
+    ///     - 指定文件参数有误，校验失败（Invalid）。
+    ///     - 向实例下发文件失败（Aborted）。
+    ///     - 文件在实例内创建失败（Failed）。
+    ///     - 下发文件超时（Timeout）。
+    ///     - 下发文件时发生异常无法继续（Error）。
+    /// - PartialFailed：部分实例文件下发成功且部分实例下发失败。各个实例的文件下发状态均为Success或Failed，则总执行状态为PartialFailed。
     #[serde(rename = "InvocationStatus")]
     pub invocation_status: String,
+    /// 文件内容类型。可能值：
+    /// - PlainText：普通文本。
+    /// - Base64：Base64编码。
     #[serde(rename = "ContentType")]
     pub content_type: String,
+    /// 目标路径。
     #[serde(rename = "TargetDir")]
     pub target_dir: String,
+    /// 文件的用户。
     #[serde(rename = "FileOwner")]
     pub file_owner: String,
+    /// 描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 下发实例的数量。
     #[serde(rename = "VmCount")]
     pub vm_count: i32,
+    /// 文件的权限。
     #[serde(rename = "FileMode")]
     pub file_mode: String,
+    /// 文件的用户组。
     #[serde(rename = "FileGroup")]
     pub file_group: String,
+    /// 执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
+    /// 文件名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 文件内容。
     #[serde(rename = "Content")]
     pub content: String,
+    /// 是否允许覆盖。
     #[serde(rename = "Overwrite")]
     pub overwrite: String,
     #[serde(rename = "InvokeInstances")]
@@ -76576,6 +81568,7 @@ impl crate::FlatSerialize for ResultsResponseInvocationsInvocation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocations {
+    /// 文件下发记录。
     #[serde(rename = "Invocation")]
     pub invocation: Vec<ResultsResponseInvocationsInvocation>,
 }
@@ -76597,22 +81590,43 @@ impl crate::FlatSerialize for ResultsResponseInvocations {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssistantStatus {
+    /// 实例内的云助手是否在运行中。可能值：
+    ///
+    /// - true：2分钟内有心跳。
+    ///
+    /// - false：2分钟内无心跳。
     #[serde(rename = "CloudAssistantStatus")]
     pub cloud_assistant_status: String,
+    /// 最近一次命令执行的时间。
     #[serde(rename = "LastInvokedTime")]
     pub last_invoked_time: String,
+    /// 云助手Agent版本号，若未安装或未运行云助手Agent，则该值为空。
     #[serde(rename = "CloudAssistantVersion")]
     pub cloud_assistant_version: String,
+    /// 实例内的云助手运行中的任务数。
     #[serde(rename = "ActiveTaskCount")]
     pub active_task_count: i64,
+    /// 实例内的云助手已完成的任务数。
     #[serde(rename = "InvocationCount")]
     pub invocation_count: i64,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 云助手最近一次心跳时间。该值平均每分钟（有上下5秒的随机浮动，最短55秒，最长65秒）更新一次。
     #[serde(rename = "LastHeartbeatTime")]
     pub last_heartbeat_time: String,
+    /// 实例操作系统类型。可能值：
+    ///
+    /// - Windows。
+    /// - Linux。
+    /// - FreeBSD。
     #[serde(rename = "OSType")]
     pub os_type: String,
+    /// 实例内的云助手是否支持会话管理功能。若不支持，表示云助手版本较低，请将客户端更新至最新版本。
+    ///
+    /// 云助手支持会话管理功能的最低版本如下：
+    /// - Linux：2.2.3.189
+    /// - Windows：2.1.3.189
     #[serde(rename = "SupportSessionManager")]
     pub support_session_manager: bool,
 }
@@ -76670,6 +81684,7 @@ impl crate::FlatSerialize for AssistantStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AssistantStatusSet {
+    /// 实例云助手安装状态结果集合。
     #[serde(rename = "InstanceCloudAssistantStatus")]
     pub instance_cloud_assistant_status: Vec<AssistantStatus>,
 }
@@ -76718,16 +81733,52 @@ impl crate::FlatSerialize for EncryptionOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectionsConnection {
+    /// 会话状态，可能值：
+    /// - Connecting：连接中。
+    /// - Connected：已连接。
+    /// - Terminated：会话已终止。
+    /// - Failed：连接失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 连接失败原因详情。仅在状态（Status）为Failed时返回该参数。
     #[serde(rename = "FailedDetail")]
     pub failed_detail: String,
+    /// 连接结束时间。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 连接开始时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 连接结束原因。
+    /// 仅在状态（`Status`）为`Disconnected`、`Terminated`、`Failed`时返回该参数。可能值：
+    /// - InstanceNotExists：指定的实例不存在或已释放。
+    /// - InstanceNotRunning：该实例不在运行中。
+    /// - DeliveryTimeout：连接超时。
+    /// - AgentNeedUpgrade：云助手 Agent 需要升级。
+    /// - AgentNotOnline：云助手Agent未连接到服务器。
+    /// - MessageFormatInvalid：消息格式不合法。
+    /// - AgentSocketClosed：连接正常关闭。
+    /// - ClientClosed：会话管理客户端关闭了连接。
+    /// - ReadFromTargetPortFailed：StartTerminalSession指定PortNumber数据转发时，从目标端口读取数据时失败。
+    /// - ReopenTargetPortFailed：StartTerminalSession指定PortNumber数据转发时，重新向目标端口发起TCP连接失败。
+    /// - OpenTargetPortFailed：StartTerminalSession指定PortNumber数据转发时，向目标端口发起TCP连接失败。
+    /// - WinptyPermissionDenied：对于Windows实例，为winpty.dll 或者 winty-agent.exe 增加指定用户的可读可执行权限失败。
+    /// - PasswordNameNotFound：未找到StartTerminalSession指定的PasswordName。
+    /// - ProcessSessionDataError：处理会话数据失败。
+    /// - SessionIdDuplicate：会话ID重复。
+    /// - SessionTimeout：会话超时（一次会话连接超过3小时会主动断开）。
+    /// - IdleTimeout：连接超时（180秒没有会话交互，认为连接空闲主动断开）。
+    /// - HomeDirPermissionDenied：待连接用户的home目录权限不足。
+    /// - HomeDirNotFound：待连接用户的home目录不存在。
+    /// - ShellCommandPermissionDenied：Shell程序权限不足（bash、csh没有可执行权限）。
+    /// - ShellCommandNotFound：Shell程序不存在（Linux系统--bash、FreeBSD系统--csh、Windows系统--powershell.exe文件不存在）。
+    /// - ObtainUserInfoFailed：获取Username参数信息失败（家目录信息）。
+    /// - ObtainUserIdentityFailed：获取Username参数鉴权信息失败(uid、gid、groups)。
+    /// - UserNotExists：StartTerminalSession时指定的Username不存在。
+    /// - MalformedCommandLine：StartTerminalSession时指定的CommandLine解析失败。
     #[serde(rename = "ClosedReason")]
     pub closed_reason: String,
 }
@@ -76766,6 +81817,7 @@ impl crate::FlatSerialize for ConnectionsConnection {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemConnections {
+    /// 连接信息列表。
     #[serde(rename = "Connection")]
     pub connection: Vec<ConnectionsConnection>,
 }
@@ -76789,20 +81841,34 @@ impl crate::FlatSerialize for ItemConnections {
 pub struct SessionsSession {
     #[serde(rename = "Connections")]
     pub connections: ItemConnections,
+    /// 身份类型。当前支持的身份类型包括：
+    /// - Account：阿里云账号（主账号）。
+    /// - RAMUser：RAM用户。
+    /// - AssumedRoleUser：RAM角色。
     #[serde(rename = "IdentityType")]
     pub identity_type: String,
+    /// 身份标识。按照身份类型`IdentityType`，取值如下：
+    /// - 当前调用者是阿里云账号：返回阿里云账号ID。
+    /// - 当前调用者是RAM用户：返回RAM用户ID。
+    /// - 当前调用者是角色扮演：返回角色扮演实际委托人ID。
     #[serde(rename = "PrincipalId")]
     pub principal_id: String,
+    /// 连接时的用户名。
     #[serde(rename = "Username")]
     pub username: String,
+    /// 会话的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 通过实例访问VPC内的目标服务地址。
     #[serde(rename = "TargetServer")]
     pub target_server: String,
+    /// ECS实例的端口号，用于数据转发。若未设置数据转发的端口号，则该值为空。
     #[serde(rename = "PortNumber")]
     pub port_number: i32,
+    /// 远程连接的客户IP。
     #[serde(rename = "ClientIP")]
     pub client_ip: String,
+    /// 会话ID。
     #[serde(rename = "SessionId")]
     pub session_id: String,
 }
@@ -76860,6 +81926,7 @@ impl crate::FlatSerialize for SessionsSession {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSessions {
+    /// 会话列表。
     #[serde(rename = "Session")]
     pub session: Vec<SessionsSession>,
 }
@@ -76877,16 +81944,31 @@ impl crate::FlatSerialize for ResponseSessions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsOssDeliveryConfig {
+    /// 是否开启投递到OSS功能。默认值：false。
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+    /// OSS存储空间名称。
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
+    /// OSS存储空间目录前缀。约束如下：
+    /// - 长度不得超过 254 个字符。
+    /// - 不能以正斜线（/）或者反斜线（\）开头。
+    ///
+    /// 注：传入""表示不需要目录前缀；若之前设置过，而当前不再需要目录前缀可传入""清空。
     #[serde(rename = "Prefix")]
     pub prefix: String,
+    /// OSS加密方式，可选值：
+    /// - Inherit：继承 Bucket；
+    /// - OssManaged：OSS 完全托管；
+    /// - KMS：KMS加密。
     #[serde(rename = "EncryptionType")]
     pub encryption_type: String,
+    /// OSS加密算法，可选值：
+    /// - AES256
+    /// - SM4
     #[serde(rename = "EncryptionAlgorithm")]
     pub encryption_algorithm: String,
+    /// 加密方式为KMS时，用户的主密钥CMK ID。
     #[serde(rename = "EncryptionKeyId")]
     pub encryption_key_id: String,
 }
@@ -76925,10 +82007,14 @@ impl crate::FlatSerialize for SettingsOssDeliveryConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsSlsDeliveryConfig {
+    /// 是否开启投递到SLS功能。
+    /// 默认值：false
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+    /// SLS项目名称。
     #[serde(rename = "ProjectName")]
     pub project_name: String,
+    /// SLS日志库名称。
     #[serde(rename = "LogstoreName")]
     pub logstore_name: String,
 }
@@ -76956,10 +82042,28 @@ impl crate::FlatSerialize for SettingsSlsDeliveryConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsAgentUpgradeConfig {
+    /// 是否开启自定义Agent升级配置。如设置为false，默认保持每30分钟尝试升级一次。
+    ///
+    /// 默认值：false。
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+    /// 允许升级的时间段列表，可精确到分，默认为 UTC 时区。
+    ///
+    /// 各时间段的间隔不能小于1小时。
+    ///
+    /// 格式：开始时间(HH:mm)-结束时间(HH:mm)。
+    ///
+    /// 如[
+    /// "02:00-03:00",
+    /// "05:00-06:00"
+    /// ]
+    /// 代表在 UTC 时区的每天2点-3点、5点-6点允许升级。
     #[serde(rename = "AllowedUpgradeWindow")]
     pub allowed_upgrade_window: Vec<String>,
+    /// 允许升级时间段的时区。默认为 UTC 时区。
+    /// 时区支持以下两种形式：
+    /// - 时区全称： 如Asia/Shanghai（中国/上海时间）、America/Los_Angeles（美国/洛杉矶时间）等。
+    /// - 时区相对于格林威治时间的偏移量： 如GMT+8:00（东八区）、GMT-7:00（西七区）等。小时位不支持添加前导零。
     #[serde(rename = "TimeZone")]
     pub time_zone: String,
 }
@@ -76987,6 +82091,12 @@ impl crate::FlatSerialize for SettingsAgentUpgradeConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SettingsSessionManagerConfig {
+    /// 云助手会话功能开关。取值范围：
+    /// * true: 开启；
+    /// * false: 关闭。
+    ///
+    /// 注意事项：
+    /// * 会话功能开启/关闭对全部地域生效。
     #[serde(rename = "SessionManagerEnabled")]
     pub session_manager_enabled: bool,
 }
@@ -77008,18 +82118,32 @@ impl crate::FlatSerialize for SettingsSessionManagerConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsOssDeliveryConfig {
+    /// OSS加密方式，可能值：
+    /// - Inherit：继承 Bucket；
+    /// - OssManaged：OSS 完全托管；
+    /// - KMS：KMS加密。
     #[serde(rename = "EncryptionType")]
     pub encryption_type: String,
+    /// OSS加密算法，可能值：
+    /// - AES256
+    /// - SM4
     #[serde(rename = "EncryptionAlgorithm")]
     pub encryption_algorithm: String,
+    /// 投递类型，可能值：
+    /// - SessionManager：会话操作记录。
+    /// - Invocation：任务执行记录。
     #[serde(rename = "DeliveryType")]
     pub delivery_type: String,
+    /// 是否开启投递到OSS功能。
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+    /// OSS存储空间名称。
     #[serde(rename = "BucketName")]
     pub bucket_name: String,
+    /// OSS存储空间目录前缀。
     #[serde(rename = "Prefix")]
     pub prefix: String,
+    /// 加密方式为KMS时，用户的主密钥CMK ID。
     #[serde(rename = "EncryptionKeyId")]
     pub encryption_key_id: String,
 }
@@ -77063,6 +82187,7 @@ impl crate::FlatSerialize for ConfigsOssDeliveryConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OssDeliveryConfigs {
+    /// OSS投递配置列表。
     #[serde(rename = "OssDeliveryConfig")]
     pub oss_delivery_config: Vec<ConfigsOssDeliveryConfig>,
 }
@@ -77084,12 +82209,18 @@ impl crate::FlatSerialize for OssDeliveryConfigs {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsSlsDeliveryConfig {
+    /// 投递类型，可能值：
+    /// - SessionManager：会话操作记录。
+    /// - Invocation：任务执行记录。
     #[serde(rename = "DeliveryType")]
     pub delivery_type: String,
+    /// SLS日志库名称。
     #[serde(rename = "LogstoreName")]
     pub logstore_name: String,
+    /// 是否开启投递到SLS功能。
     #[serde(rename = "Enabled")]
     pub enabled: bool,
+    /// SLS项目名称。
     #[serde(rename = "ProjectName")]
     pub project_name: String,
 }
@@ -77122,6 +82253,7 @@ impl crate::FlatSerialize for ConfigsSlsDeliveryConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SlsDeliveryConfigs {
+    /// SLS投递配置列表。
     #[serde(rename = "SlsDeliveryConfig")]
     pub sls_delivery_config: Vec<ConfigsSlsDeliveryConfig>,
 }
@@ -77143,6 +82275,7 @@ impl crate::FlatSerialize for SlsDeliveryConfigs {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct UpgradeWindows {
+    /// 允许升级的时间段列表。
     #[serde(rename = "AllowedUpgradeWindow")]
     pub allowed_upgrade_window: Vec<String>,
 }
@@ -77164,10 +82297,12 @@ impl crate::FlatSerialize for UpgradeWindows {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAgentUpgradeConfig {
+    /// 是否开启自定义Agent升级配置。如查询结果为false或空，默认保持每30分钟尝试升级一次。
     #[serde(rename = "Enabled")]
     pub enabled: bool,
     #[serde(rename = "AllowedUpgradeWindows")]
     pub allowed_upgrade_windows: UpgradeWindows,
+    /// 允许升级时间段的时区。
     #[serde(rename = "TimeZone")]
     pub time_zone: String,
 }
@@ -77195,6 +82330,12 @@ impl crate::FlatSerialize for ResponseAgentUpgradeConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSessionManagerConfig {
+    /// 云助手会话功能开关。取值范围：
+    /// * true: 开启；
+    /// * false: 关闭。
+    ///
+    /// 注意事项：
+    /// * 会话功能开启/关闭对全部地域生效。
     #[serde(rename = "SessionManagerEnabled")]
     pub session_manager_enabled: bool,
 }
@@ -77216,8 +82357,16 @@ impl crate::FlatSerialize for ResponseSessionManagerConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationTag {
+    /// 托管实例激活码的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 托管实例激活码的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -77236,8 +82385,16 @@ impl crate::FlatSerialize for ActivationTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationsTag {
+    /// 托管实例激活码的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 托管实例激活码的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -77256,8 +82413,10 @@ impl crate::FlatSerialize for ActivationsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTag {
+    /// 托管实例激活码的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 托管实例激活码的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -77280,28 +82439,40 @@ impl crate::FlatSerialize for ListItemTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationList {
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 已注销的实例数。
     #[serde(rename = "DeregisteredCount")]
     pub deregistered_count: i32,
+    /// 激活码用于注册托管实例的使用次数上限。
     #[serde(rename = "InstanceCount")]
     pub instance_count: i32,
+    /// 激活码对应的描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 已注册的实例数。
     #[serde(rename = "RegisteredCount")]
     pub registered_count: i32,
+    /// 默认的实例名称前缀。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 激活码是否被禁用。
     #[serde(rename = "Disabled")]
     pub disabled: bool,
+    /// 允许使用该激活码的主机IP。
     #[serde(rename = "IpAddressRange")]
     pub ip_address_range: String,
+    /// 激活码的有效时间。单位：小时。
     #[serde(rename = "TimeToLiveInHours")]
     pub time_to_live_in_hours: i64,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
+    /// 激活码所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 托管实例激活码的标签信息。
     #[serde(rename = "Tags")]
     pub tags: Vec<ListItemTag>,
 }
@@ -77370,24 +82541,34 @@ impl crate::FlatSerialize for ActivationList {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableActivationResponseActivation {
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 已注销的实例数。
     #[serde(rename = "DeregisteredCount")]
     pub deregistered_count: i32,
+    /// 激活码用于注册托管实例的使用次数上限。
     #[serde(rename = "InstanceCount")]
     pub instance_count: i32,
+    /// 激活码对应的描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 已注册的实例数。
     #[serde(rename = "RegisteredCount")]
     pub registered_count: i32,
+    /// 默认的实例名称前缀。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 激活码是否被禁用。
     #[serde(rename = "Disabled")]
     pub disabled: bool,
+    /// 允许使用该激活码的主机IP。
     #[serde(rename = "IpAddressRange")]
     pub ip_address_range: String,
+    /// 激活码的有效时间。单位：小时。
     #[serde(rename = "TimeToLiveInHours")]
     pub time_to_live_in_hours: i64,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
 }
@@ -77450,22 +82631,31 @@ impl crate::FlatSerialize for DisableActivationResponseActivation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteActivationResponseActivation {
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 已注销的实例数。
     #[serde(rename = "DeregisteredCount")]
     pub deregistered_count: i32,
+    /// 激活码用于注册托管实例的使用次数上限。
     #[serde(rename = "InstanceCount")]
     pub instance_count: i32,
+    /// 激活码对应的描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 已注册的实例数。
     #[serde(rename = "RegisteredCount")]
     pub registered_count: i32,
+    /// 默认的实例名称前缀。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 允许使用该激活码的主机IP。
     #[serde(rename = "IpAddressRange")]
     pub ip_address_range: String,
+    /// 激活码的有效时间。单位：小时。
     #[serde(rename = "TimeToLiveInHours")]
     pub time_to_live_in_hours: i64,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
 }
@@ -77527,8 +82717,16 @@ impl crate::FlatSerialize for DeleteActivationResponseActivation {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ManagedInstancesTag {
+    /// 托管实例的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 托管实例的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -77547,8 +82745,16 @@ impl crate::FlatSerialize for ManagedInstancesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesItemTag {
+    /// 托管实例的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个。使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，您需要使用[ListTagResources](~~110425~~)接口进行查询。
+    ///
+    /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 托管实例的标签值。N的取值范围为1~20。该值可以为空字符串。
+    ///
+    /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
 }
@@ -77571,36 +82777,56 @@ impl crate::FlatSerialize for InstancesItemTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesResponseInstance {
+    /// 最后一次执行云助手任务的时间。
     #[serde(rename = "LastInvokedTime")]
     pub last_invoked_time: String,
+    /// 托管实例是否已连接。
+    ///
+    /// - true：托管实例已连接，您可以通过云助手管理托管实例。
+    ///
+    /// - false：托管实例未连接，服务器可能停机或者云助手Agent未正确安装。
     #[serde(rename = "Connected")]
     pub connected: bool,
+    /// 托管实例的公网IP。
     #[serde(rename = "InternetIp")]
     pub internet_ip: String,
+    /// 托管实例主机名。
     #[serde(rename = "Hostname")]
     pub hostname: String,
+    /// 托管实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
+    /// 托管实例的内网IP。
     #[serde(rename = "IntranetIp")]
     pub intranet_ip: String,
+    /// 云助手Agent的版本号。
     #[serde(rename = "AgentVersion")]
     pub agent_version: String,
+    /// 托管实例的注册时间。
     #[serde(rename = "RegistrationTime")]
     pub registration_time: String,
+    /// 托管实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 托管实例的操作系统。
     #[serde(rename = "OsType")]
     pub os_type: String,
+    /// 操作系统的版本信息。
     #[serde(rename = "OsVersion")]
     pub os_version: String,
+    /// 托管实例执行云助手任务的次数。
     #[serde(rename = "InvocationCount")]
     pub invocation_count: i64,
+    /// 托管实例的机器码。
     #[serde(rename = "MachineId")]
     pub machine_id: String,
+    /// 标签列表。
     #[serde(rename = "Tags")]
     pub tags: Vec<InstancesItemTag>,
+    /// 托管实例所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
 }
@@ -77685,8 +82911,10 @@ impl crate::FlatSerialize for InstancesResponseInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyManagedInstanceResponseInstance {
+    /// 托管实例的名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 托管实例的ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
 }
@@ -77713,32 +82941,46 @@ impl crate::FlatSerialize for ModifyManagedInstanceResponseInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DeregisterManagedInstanceResponseInstance {
+    /// 最后一次执行云助手任务的时间。
     #[serde(rename = "LastInvokedTime")]
     pub last_invoked_time: String,
+    /// 托管实例的公网IP。
     #[serde(rename = "InternetIp")]
     pub internet_ip: String,
+    /// 托管实例主机名。
     #[serde(rename = "Hostname")]
     pub hostname: String,
+    /// 托管实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
+    /// 托管实例的内网IP。
     #[serde(rename = "IntranetIp")]
     pub intranet_ip: String,
+    /// 云助手Agent的版本号。
     #[serde(rename = "AgentVersion")]
     pub agent_version: String,
+    /// 托管实例的注册时间。
     #[serde(rename = "RegistrationTime")]
     pub registration_time: String,
+    /// 托管实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 托管实例的操作系统。
     #[serde(rename = "OsType")]
     pub os_type: String,
+    /// 操作系统的版本信息。
     #[serde(rename = "OsVersion")]
     pub os_version: String,
+    /// 托管实例执行云助手任务的次数。
     #[serde(rename = "InvocationCount")]
     pub invocation_count: i64,
+    /// 托管实例的机器码。
     #[serde(rename = "MachineId")]
     pub machine_id: String,
+    /// 托管实例所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
 }
@@ -77817,14 +83059,27 @@ impl crate::FlatSerialize for DeregisterManagedInstanceResponseInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPluginStatus {
+    /// 插件状态。取值范围：
+    ///
+    /// - NotInstalled：插件未安装。
+    /// - Installed：一次性插件已安装。
+    /// - Running：常驻插件运行中。
+    /// - Stopped：常驻插件未运行。
+    /// - Crashed：插件状态异常。
+    /// - Removed：插件已卸载。
+    /// - UnKnown：状态未知。
     #[serde(rename = "PluginStatus")]
     pub plugin_status: String,
+    /// 插件版本号。
     #[serde(rename = "PluginVersion")]
     pub plugin_version: String,
+    /// 插件名称。
     #[serde(rename = "PluginName")]
     pub plugin_name: String,
+    /// 云助手第一次上报插件状态的时间。
     #[serde(rename = "FirstHeartbeatTime")]
     pub first_heartbeat_time: String,
+    /// 云助手最近一次上报插件状态的时间。
     #[serde(rename = "LastHeartbeatTime")]
     pub last_heartbeat_time: String,
 }
@@ -77866,6 +83121,7 @@ impl crate::FlatSerialize for SetPluginStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPluginStatusSet {
+    /// 插件状态列表。
     #[serde(rename = "PluginStatus")]
     pub plugin_status: Vec<SetPluginStatus>,
 }
@@ -77887,6 +83143,7 @@ impl crate::FlatSerialize for ItemPluginStatusSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancePluginStatus {
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
     #[serde(rename = "PluginStatusSet")]
@@ -77915,6 +83172,7 @@ impl crate::FlatSerialize for InstancePluginStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancePluginStatusSet {
+    /// 实例插件状态列表。
     #[serde(rename = "InstancePluginStatus")]
     pub instance_plugin_status: Vec<InstancePluginStatus>,
 }
@@ -77936,8 +83194,10 @@ impl crate::FlatSerialize for InstancePluginStatusSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventCycleStatus {
+    /// 事件状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 事件状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -77956,8 +83216,10 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemEventCycleStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventType {
+    /// 事件类型名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 事件类型代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -77976,14 +83238,29 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk {
+    /// 云盘或本地盘的创建时间。按照[ISO 8601](~~25696~~)标准表示，使用UTC时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 云盘或本地盘大小，单位GiB。
     #[serde(rename = "DeviceSize")]
     pub device_size: String,
+    /// 云盘或本地盘种类。可能值：
+    /// - cloud：普通云盘
+    /// - cloud_efficiency：高效云盘
+    /// - cloud_ssd：SSD盘
+    /// - cloud_essd：ESSD云盘
+    /// - local_ssd_pro：I/O密集型本地盘
+    /// - local_hdd_pro：吞吐密集型本地盘
+    /// - ephemeral：（已停售）本地盘
+    /// - ephemeral_ssd：（已停售）本地SSD盘
     #[serde(rename = "DeviceCategory")]
     pub device_category: String,
+    /// 云盘或本地盘类型。可能值：
+    /// - system：系统盘
+    /// - data：数据盘
     #[serde(rename = "DeviceType")]
     pub device_type: String,
+    /// 云盘或本地盘的释放时间。按照[ISO 8601](~~25696~~)标准表示，使用UTC时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "ReleaseTime")]
     pub release_time: String,
 }
@@ -78027,6 +83304,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttributeInactiveDisks {
+    /// 已释放但需要清理的非活跃云盘或本地盘信息。
     #[serde(rename = "InactiveDisk")]
     pub inactive_disk: Vec<ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk>,
 }
@@ -78048,8 +83326,10 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttributeInact
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttribute {
+    /// 本地盘设备名。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 本地盘磁盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
     #[serde(rename = "InactiveDisks")]
@@ -78075,20 +83355,46 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventType {
+    /// 事件的发布时间，使用UTC+0时间。
     #[serde(rename = "EventPublishTime")]
     pub event_publish_time: String,
+    /// 实例事件ID。
     #[serde(rename = "EventId")]
     pub event_id: String,
+    /// 事件的计划执行时间，使用UTC+0时间。
     #[serde(rename = "NotBefore")]
     pub not_before: String,
+    /// 影响级别。
+    ///
+    /// > 不在白名单的用户，该参数为空。
     #[serde(rename = "ImpactLevel")]
     pub impact_level: String,
+    /// 系统事件的计划原因。
+    ///
+    /// > 当阿里云没有判断出异常原因时，该参数为空。
     #[serde(rename = "Reason")]
     pub reason: String,
+    /// 事件状态。
     #[serde(rename = "EventCycleStatus")]
     pub event_cycle_status: ScheduledSystemEventTypeItemEventCycleStatus,
+    /// 事件类型。
     #[serde(rename = "EventType")]
     pub event_type: ScheduledSystemEventTypeItemEventType,
+    /// 本地盘实例系统事件拓展属性。
+    ///
+    /// 不同事件类型，返回值有所不同。
+    ///
+    /// 当事件类型不在以下列表中时，该数据为空。
+    ///
+    /// - SystemMaintenance.StopAndRepair
+    /// - SystemMaintenance.CleanInactiveDisks
+    /// - SecurityPunish.Locked
+    /// - SecurityPunish.WebsiteBanned
+    /// - SystemUpgrade.Migrate
+    /// - SystemMaintenance.RebootAndIsolateErrorDisk
+    /// - SystemMaintenance.RebootAndReInitErrorDisk
+    /// - SystemMaintenance.ReInitErrorDisk
+    /// - SystemMaintenance.IsolateErrorDisk
     #[serde(rename = "ExtendedAttribute")]
     pub extended_attribute: ScheduledSystemEventTypeItemExtendedAttribute,
 }
@@ -78137,6 +83443,7 @@ impl crate::FlatSerialize for ScheduledSystemEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventSet {
+    /// 当前状态为Scheduled或Inquiring的系统事件数组。
     #[serde(rename = "ScheduledSystemEventType")]
     pub scheduled_system_event_type: Vec<ScheduledSystemEventType>,
 }
@@ -78158,8 +83465,10 @@ impl crate::FlatSerialize for ScheduledSystemEventSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemStatus {
+    /// 实例生命周期状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 实例生命周期状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78178,8 +83487,10 @@ impl crate::FlatSerialize for InstanceFullStatusTypeItemStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemHealthStatus {
+    /// 健康状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 健康状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78198,12 +83509,15 @@ impl crate::FlatSerialize for InstanceFullStatusTypeItemHealthStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusType {
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
     #[serde(rename = "ScheduledSystemEventSet")]
     pub scheduled_system_event_set: ScheduledSystemEventSet,
+    /// 实例生命周期状态。
     #[serde(rename = "Status")]
     pub status: InstanceFullStatusTypeItemStatus,
+    /// 实例的健康状态。
     #[serde(rename = "HealthStatus")]
     pub health_status: InstanceFullStatusTypeItemHealthStatus,
 }
@@ -78236,6 +83550,9 @@ impl crate::FlatSerialize for InstanceFullStatusType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusSet {
+    /// 实例全状态数组。
+    ///
+    /// > 当实例不存在时该数据为空。
     #[serde(rename = "InstanceFullStatusType")]
     pub instance_full_status_type: Vec<InstanceFullStatusType>,
 }
@@ -78257,8 +83574,12 @@ impl crate::FlatSerialize for InstanceFullStatusSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StatusTag {
+    /// 块存储资源绑定的标签键。N表示可以设置一个或多个标签键，且N的数值和`Tag.N.Value`参数中的N对应，构成键值对。N的取值范围：1~20。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 块存储资源绑定的标签值。N表示可以设置一个或多个标签值，且N的数值和`Tag.N.Key`参数中的N对应，构成键值对。N的取值范围：1~20。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -78277,8 +83598,14 @@ impl crate::FlatSerialize for StatusTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventTypeItemEventType {
+    /// 事件类型名称。可能值：
+    /// - Degraded：块存储性能降级。
+    /// - SeverelyDegraded：块存储性能严重降级。
+    /// - Stalled：块存储性能受到严重影响。
+    /// - ErrorDetected：本地盘出现损坏。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 事件类型代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78297,14 +83624,19 @@ impl crate::FlatSerialize for DiskEventTypeItemEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventType {
+    /// 块存储事件ID。
     #[serde(rename = "EventId")]
     pub event_id: String,
+    /// 事件结束时间。
     #[serde(rename = "EventEndTime")]
     pub event_end_time: String,
+    /// 事件发生时间。
     #[serde(rename = "EventTime")]
     pub event_time: String,
+    /// 影响级别。
     #[serde(rename = "ImpactLevel")]
     pub impact_level: String,
+    /// 事件类型。
     #[serde(rename = "EventType")]
     pub event_type: DiskEventTypeItemEventType,
 }
@@ -78342,6 +83674,7 @@ impl crate::FlatSerialize for DiskEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventSet {
+    /// 块存储事件数组。
     #[serde(rename = "DiskEventType")]
     pub disk_event_type: Vec<DiskEventType>,
 }
@@ -78363,8 +83696,10 @@ impl crate::FlatSerialize for DiskEventSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemStatus {
+    /// 块存储生命周期状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 块存储生命周期状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78383,8 +83718,10 @@ impl crate::FlatSerialize for DiskFullStatusTypeItemStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemHealthStatus {
+    /// 块存储健康状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 块存储健康状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78403,16 +83740,25 @@ impl crate::FlatSerialize for DiskFullStatusTypeItemHealthStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusType {
+    /// 块存储ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 块存储挂载于实例上的设备名，例如/dev/xvdb。
+    ///
+    /// 该参数仅在`Status`参数值为`In_use`时有值，其他状态时为空。
+    ///
+    /// > 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。
     #[serde(rename = "Device")]
     pub device: String,
     #[serde(rename = "DiskEventSet")]
     pub disk_event_set: DiskEventSet,
+    /// 块存储生命周期状态。
     #[serde(rename = "Status")]
     pub status: DiskFullStatusTypeItemStatus,
+    /// 块存储健康状态。
     #[serde(rename = "HealthStatus")]
     pub health_status: DiskFullStatusTypeItemHealthStatus,
 }
@@ -78447,6 +83793,7 @@ impl crate::FlatSerialize for DiskFullStatusType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusSet {
+    /// 块存储全状态数组。
     #[serde(rename = "DiskFullStatusType")]
     pub disk_full_status_type: Vec<DiskFullStatusType>,
 }
@@ -78468,8 +83815,10 @@ impl crate::FlatSerialize for DiskFullStatusSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventsTag {
+    /// 资源的标签键。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -78488,8 +83837,10 @@ impl crate::FlatSerialize for EventsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventType {
+    /// 系统事件类型名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 系统事件类型代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78508,8 +83859,10 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventCycleStatus {
+    /// 系统事件状态名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 系统事件状态代码。
     #[serde(rename = "Code")]
     pub code: i32,
 }
@@ -78528,14 +83881,29 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemEventCycleStatus {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk {
+    /// 云盘或本地盘创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 云盘或本地盘大小，单位GiB。
     #[serde(rename = "DeviceSize")]
     pub device_size: String,
+    /// 云盘或本地盘种类。可能值：
+    /// - cloud：普通云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD盘。
+    /// - cloud_essd：ESSD云盘。
+    /// - local_ssd_pro：I/O密集型本地盘。
+    /// - local_hdd_pro：吞吐密集型本地盘。
+    /// - ephemeral：（已停售）本地盘。
+    /// - ephemeral_ssd：（已停售）本地SSD盘。
     #[serde(rename = "DeviceCategory")]
     pub device_category: String,
+    /// 云盘或本地盘类型。可能值：
+    /// - system：系统盘。
+    /// - data：数据盘。
     #[serde(rename = "DeviceType")]
     pub device_type: String,
+    /// 云盘或本地盘释放时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "ReleaseTime")]
     pub release_time: String,
 }
@@ -78579,6 +83947,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisks {
+    /// 已释放但需要清理的非活跃云盘或本地盘信息列表。
     #[serde(rename = "InactiveDisk")]
     pub inactive_disk: Vec<InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk>,
 }
@@ -78600,6 +83969,7 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemExtendedAttributeInacti
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MigrationOptions {
+    /// 实例迁移选项。当前仅支持MigrationOptions（使用迁移计划迁移）。
     #[serde(rename = "MigrationOption")]
     pub migration_option: Vec<String>,
 }
@@ -78621,36 +83991,55 @@ impl crate::FlatSerialize for MigrationOptions {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttribute {
+    /// 本地盘设备名。
     #[serde(rename = "Device")]
     pub device: String,
+    /// 本地盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
     #[serde(rename = "InactiveDisks")]
     pub inactive_disks: InstanceSystemEventTypeItemExtendedAttributeInactiveDisks,
+    /// 宿主机类型。可能值：
+    ///
+    /// - ddh：专有宿主机。
+    /// - managedhost：智能全托管资源池中的物理机。
     #[serde(rename = "HostType")]
     pub host_type: String,
+    /// 宿主机ID。
     #[serde(rename = "HostId")]
     pub host_id: String,
     #[serde(rename = "MigrationOptions")]
     pub migration_options: MigrationOptions,
+    /// 受损云盘在线维修策略。可能值：IsolateOnly，表示仅支持隔离坏盘，不支持维修坏盘。
     #[serde(rename = "OnlineRepairPolicy")]
     pub online_repair_policy: String,
+    /// 云盒机柜号。
     #[serde(rename = "Rack")]
     pub rack: String,
+    /// 处罚类型。
     #[serde(rename = "PunishType")]
     pub punish_type: String,
+    /// 安全违规域名。
     #[serde(rename = "PunishDomain")]
     pub punish_domain: String,
+    /// 安全违规链接。
     #[serde(rename = "PunishUrl")]
     pub punish_url: String,
+    /// 安全违规code。
     #[serde(rename = "Code")]
     pub code: String,
+    /// 事件是否可以处理。
     #[serde(rename = "CanAccept")]
     pub can_accept: String,
+    /// 事件响应结果。可能值：
+    /// - true：事件响应成功。
+    /// - false：事件响应失败。
     #[serde(rename = "ResponseResult")]
     pub response_result: String,
+    /// 指标值。
     #[serde(rename = "MetricValue")]
     pub metric_value: String,
+    /// 指标名称。
     #[serde(rename = "MetricName")]
     pub metric_name: String,
 }
@@ -78727,28 +84116,44 @@ impl crate::FlatSerialize for InstanceSystemEventTypeItemExtendedAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventType {
+    /// 系统事件ID。
     #[serde(rename = "EventId")]
     pub event_id: String,
+    /// 系统事件发布时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "EventPublishTime")]
     pub event_publish_time: String,
+    /// 系统事件结束时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "EventFinishTime")]
     pub event_finish_time: String,
+    /// 资源类型。可能值：
+    ///
+    /// - instance：ECS实例。
+    /// - ddh：专有宿主机。
+    /// - managedhost：智能全托管资源池中的物理机。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 影响级别。
     #[serde(rename = "ImpactLevel")]
     pub impact_level: String,
+    /// 系统事件计划执行时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "NotBefore")]
     pub not_before: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 系统事件发生原因。
     #[serde(rename = "Reason")]
     pub reason: String,
+    /// 系统事件类型。
     #[serde(rename = "EventType")]
     pub event_type: InstanceSystemEventTypeItemEventType,
+    /// 系统事件的生命周期状态。
     #[serde(rename = "EventCycleStatus")]
     pub event_cycle_status: InstanceSystemEventTypeItemEventCycleStatus,
+    /// 事件扩展属性。
     #[serde(rename = "ExtendedAttribute")]
     pub extended_attribute: InstanceSystemEventTypeItemExtendedAttribute,
+    /// 系统事件发生原因分类代码。
     #[serde(rename = "ReasonCode")]
     pub reason_code: String,
 }
@@ -78817,6 +84222,7 @@ impl crate::FlatSerialize for InstanceSystemEventType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventSet {
+    /// 实例历史系统事件数组。
     #[serde(rename = "InstanceSystemEventType")]
     pub instance_system_event_type: Vec<InstanceSystemEventType>,
 }
@@ -78838,6 +84244,7 @@ impl crate::FlatSerialize for InstanceSystemEventSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EventIdSet {
+    /// 模拟事件ID（EventId）列表。
     #[serde(rename = "EventId")]
     pub event_id: Vec<String>,
 }
@@ -78855,18 +84262,29 @@ impl crate::FlatSerialize for EventIdSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseMetric {
+    /// 诊断指标ID。
     #[serde(rename = "MetricId")]
     pub metric_id: String,
+    /// 诊断指标名称。
     #[serde(rename = "MetricName")]
     pub metric_name: String,
+    /// 诊断指标分类。
     #[serde(rename = "MetricCategory")]
     pub metric_category: String,
+    /// 诊断指标描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 诊断指标支持的资源。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 是否需要在GuestOS内执行脚本。
     #[serde(rename = "GuestMetric")]
     pub guest_metric: bool,
+    /// 支持的操作系统。取值范围：
+    ///
+    /// - Windows：支持Windows操作系统。
+    /// - Linux：支持Linux操作系统。
+    /// - All：支持Windows和Linux操作系统。
     #[serde(rename = "SupportedOperatingSystem")]
     pub supported_operating_system: String,
 }
@@ -78918,16 +84336,25 @@ impl crate::FlatSerialize for ResponseMetric {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricSet {
+    /// 诊断指标集合ID。
     #[serde(rename = "MetricSetId")]
     pub metric_set_id: String,
+    /// 诊断指标集合的名称。
     #[serde(rename = "MetricSetName")]
     pub metric_set_name: String,
+    /// 诊断指标集合的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 诊断指标集合类型。取值范围：
+    ///
+    /// - User：用户。
+    /// - Common：公共。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 支持的资源类型。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 诊断指标列表。
     #[serde(rename = "MetricIds")]
     pub metric_ids: Vec<String>,
 }
@@ -78970,12 +84397,20 @@ impl crate::FlatSerialize for MetricSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportItemIssuesIssue {
+    /// 诊断指标ID。
     #[serde(rename = "MetricId")]
     pub metric_id: String,
+    /// 诊断指标分类。
     #[serde(rename = "MetricCategory")]
     pub metric_category: String,
+    /// 诊断问题的唯一识别码。
     #[serde(rename = "IssueId")]
     pub issue_id: String,
+    /// 诊断指标严重等级。严重等级由轻到重如下：
+    ///
+    /// - Info：有关联信息，可能与异常相关。
+    /// - Warn：有关联信息，可能导致异常。
+    /// - Critical：有关键异常。
     #[serde(rename = "Severity")]
     pub severity: String,
 }
@@ -79004,6 +84439,7 @@ impl crate::FlatSerialize for ReportItemIssuesIssue {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportItemIssues {
+    /// 诊断问题列表。
     #[serde(rename = "Issue")]
     pub issue: Vec<ReportItemIssuesIssue>,
 }
@@ -79021,24 +84457,40 @@ impl crate::FlatSerialize for ReportItemIssues {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportsReport {
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 资源类型。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 诊断指标集合ID。
     #[serde(rename = "MetricSetId")]
     pub metric_set_id: String,
+    /// 开始时间。调用[CreateDiagnosticReport](~~442490~~)接口创建诊断报告时传入的参数。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 结束时间。调用[CreateDiagnosticReport](~~442490~~)接口创建诊断报告时传入的参数。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 诊断报告ID。
     #[serde(rename = "ReportId")]
     pub report_id: String,
+    /// 诊断报告状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 诊断报告创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 诊断报告结束时间。
     #[serde(rename = "FinishedTime")]
     pub finished_time: String,
+    /// 严重等级。取值范围：
+    ///
+    /// - Unknown：初始状态，表示未开始诊断或者诊断过程程序异常退出，无诊断结论。
+    /// - Normal：诊断正常，没有发现问题。
+    /// - Info：有关联信息，可能与异常相关。
+    /// - Warn：有关联信息，可能导致异常。
+    /// - Critical：有关键异常。
     #[serde(rename = "Severity")]
     pub severity: String,
     #[serde(rename = "Issues")]
@@ -79096,6 +84548,7 @@ impl crate::FlatSerialize for ReportsReport {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseReports {
+    /// 诊断报告列表。
     #[serde(rename = "Report")]
     pub report: Vec<ReportsReport>,
 }
@@ -79113,12 +84566,20 @@ impl crate::FlatSerialize for ResponseReports {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemIssuesIssue {
+    /// 诊断问题的唯一识别码。
     #[serde(rename = "IssueId")]
     pub issue_id: String,
+    /// 诊断问题严重程度，严重等级由轻到重如下：
+    ///
+    /// - Info：有关联信息，可能与异常相关。
+    /// - Warn：有关联信息，可能导致异常。
+    /// - Critical：有关键异常。
     #[serde(rename = "Severity")]
     pub severity: String,
+    /// 诊断问题携带的额外数据，帮助理解问题更多信息，数据格式为JSON的字符串。
     #[serde(rename = "Additional")]
     pub additional: String,
+    /// 问题发生的时间。
     #[serde(rename = "OccurrenceTime")]
     pub occurrence_time: String,
 }
@@ -79147,6 +84608,7 @@ impl crate::FlatSerialize for ResultItemIssuesIssue {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemIssues {
+    /// 诊断问题列表。
     #[serde(rename = "Issue")]
     pub issue: Vec<ResultItemIssuesIssue>,
 }
@@ -79164,12 +84626,27 @@ impl crate::FlatSerialize for ResultItemIssues {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricResult {
+    /// 诊断指标ID。
     #[serde(rename = "MetricId")]
     pub metric_id: String,
+    /// 诊断指标分类。
     #[serde(rename = "MetricCategory")]
     pub metric_category: String,
+    /// 诊断指标严重等级。可能值：
+    ///
+    /// - Unknown：初始状态，表示未开始诊断或者诊断过程程序异常退出，无诊断结论。
+    /// - Normal：诊断正常，没有发现问题。
+    /// - Info：有关联信息，可能与异常相关。
+    /// - NotSupport：GuestOS版本不支持诊断该项目。
+    /// - Warn：有关联信息，可能导致异常。
+    /// - Critical：有关键异常。
     #[serde(rename = "Severity")]
     pub severity: String,
+    /// 指标诊断状态。可能值：
+    ///
+    /// - InProgress：诊断中。
+    /// - Finished：诊断完成。
+    /// - Failed：诊断失败。
     #[serde(rename = "Status")]
     pub status: String,
     #[serde(rename = "Issues")]
@@ -79201,6 +84678,7 @@ impl crate::FlatSerialize for MetricResult {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricResults {
+    /// 诊断集合中所有指标的诊断结果。
     #[serde(rename = "MetricResult")]
     pub metric_result: Vec<MetricResult>,
 }
@@ -79222,24 +84700,34 @@ impl crate::FlatSerialize for MetricResults {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskMonitorData {
+    /// 云盘读带宽，单位：Byte/s。
     #[serde(rename = "BPSRead")]
     pub bps_read: i32,
+    /// 云盘I/O读操作，单位：次/s。
     #[serde(rename = "IOPSRead")]
     pub iops_read: i32,
+    /// 云盘读时延。单位：μs（微秒）。
     #[serde(rename = "LatencyRead")]
     pub latency_read: i32,
+    /// 云盘读写总带宽，单位：Byte/s。
     #[serde(rename = "BPSTotal")]
     pub bps_total: i32,
+    /// 云盘I/O读写总操作，单位：次/s。
     #[serde(rename = "IOPSTotal")]
     pub iops_total: i32,
+    /// 查询监控信息的时间戳。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "TimeStamp")]
     pub time_stamp: String,
+    /// 云盘写时延。单位：μs（微秒）。
     #[serde(rename = "LatencyWrite")]
     pub latency_write: i32,
+    /// 云盘I/O写操作，单位：次/s。
     #[serde(rename = "IOPSWrite")]
     pub iops_write: i32,
+    /// 云盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// 云盘写带宽，单位：Byte/s。
     #[serde(rename = "BPSWrite")]
     pub bps_write: i32,
 }
@@ -79298,6 +84786,7 @@ impl crate::FlatSerialize for DiskMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskMonitorDataResponseMonitorData {
+    /// 云盘的监控数据集合。
     #[serde(rename = "DiskMonitorData")]
     pub disk_monitor_data: Vec<DiskMonitorData>,
 }
@@ -79319,38 +84808,55 @@ impl crate::FlatSerialize for DiskMonitorDataResponseMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceMonitorData {
+    /// 突发性能实例积分总数。
     #[serde(rename = "CPUCreditBalance")]
     pub cpu_credit_balance: f32,
+    /// 实例云盘（包括系统盘和数据盘）的读带宽，单位：Byte/s。
     #[serde(rename = "BPSRead")]
     pub bps_read: i32,
+    /// 在查询监控信息时（`TimeStamp`），实例在指定的间隔时间（`Period`）内发送的公网数据流量。单位：kbits。
     #[serde(rename = "InternetTX")]
     pub internet_tx: i32,
+    /// 实例vCPU的使用比例，单位：百分比（%）。
     #[serde(rename = "CPU")]
     pub cpu: i32,
+    /// 突发性能实例已使用的积分数。
     #[serde(rename = "CPUCreditUsage")]
     pub cpu_credit_usage: f32,
+    /// 实例云盘（包括系统盘和数据盘）的I/O写操作，单位：次/s。
     #[serde(rename = "IOPSWrite")]
     pub iops_write: i32,
+    /// 在查询监控信息时（`TimeStamp`），实例在指定的间隔时间（`Period`）内发送的内网数据流量。单位：kbits。
     #[serde(rename = "IntranetTX")]
     pub intranet_tx: i32,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例云盘（包括系统盘和数据盘）的写带宽，单位：Byte/s。
     #[serde(rename = "BPSWrite")]
     pub bps_write: i32,
+    /// 超额未支付积分。
     #[serde(rename = "CPUNotpaidSurplusCreditUsage")]
     pub cpu_notpaid_surplus_credit_usage: f32,
+    /// 超额积分（突发性能实例积分超限部分）。
     #[serde(rename = "CPUAdvanceCreditBalance")]
     pub cpu_advance_credit_balance: f32,
+    /// 实例云盘（包括系统盘和数据盘）的I/O读操作，单位：次/s。
     #[serde(rename = "IOPSRead")]
     pub iops_read: i32,
+    /// 实例的公网带宽，单位时间内的网络流量，单位：kbits/s。
     #[serde(rename = "InternetBandwidth")]
     pub internet_bandwidth: i32,
+    /// 在查询监控信息时（`TimeStamp`），实例在指定的间隔时间（`Period`）内接收的公网数据流量。单位：kbits。
     #[serde(rename = "InternetRX")]
     pub internet_rx: i32,
+    /// 查询监控信息的时间戳。
     #[serde(rename = "TimeStamp")]
     pub time_stamp: String,
+    /// 在查询监控信息时（`TimeStamp`），实例在指定的间隔时间（`Period`）内接收的内网数据流量。单位：kbits。
     #[serde(rename = "IntranetRX")]
     pub intranet_rx: i32,
+    /// 实例的内网带宽，单位时间内的网络流量，单位：kbits/s。
     #[serde(rename = "IntranetBandwidth")]
     pub intranet_bandwidth: i32,
 }
@@ -79444,6 +84950,7 @@ impl crate::FlatSerialize for InstanceMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceMonitorDataResponseMonitorData {
+    /// 实例的监控数据集合。
     #[serde(rename = "InstanceMonitorData")]
     pub instance_monitor_data: Vec<InstanceMonitorData>,
 }
@@ -79465,20 +84972,28 @@ impl crate::FlatSerialize for InstanceMonitorDataResponseMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EniMonitorData {
+    /// 辅助网卡接收的内网数据包，单位：packets。
     #[serde(rename = "PacketRx")]
     pub packet_rx: String,
+    /// 查询监控信息的时间戳。按照ISO 8601标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
     #[serde(rename = "TimeStamp")]
     pub time_stamp: String,
+    /// 辅助网卡接收丢弃的内网数据包，单位：packets。
     #[serde(rename = "DropPacketRx")]
     pub drop_packet_rx: String,
+    /// 辅助网卡ID。
     #[serde(rename = "EniId")]
     pub eni_id: String,
+    /// 辅助网卡发送丢弃的内网数据包，单位：packets。
     #[serde(rename = "DropPacketTx")]
     pub drop_packet_tx: String,
+    /// 辅助网卡发送的内网数据包，单位：packets。
     #[serde(rename = "PacketTx")]
     pub packet_tx: String,
+    /// 辅助网卡发送的内网数据平均速率，单位：kB/s。
     #[serde(rename = "IntranetTx")]
     pub intranet_tx: String,
+    /// 辅助网卡接收的内网数据平均速率，单位：kB/s。
     #[serde(rename = "IntranetRx")]
     pub intranet_rx: String,
 }
@@ -79531,6 +85046,7 @@ impl crate::FlatSerialize for EniMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct EniMonitorDataResponseMonitorData {
+    /// 辅助网卡流量的监控数据EniMonitorDataType组成的集合。
     #[serde(rename = "EniMonitorData")]
     pub eni_monitor_data: Vec<EniMonitorData>,
 }
@@ -79552,8 +85068,10 @@ impl crate::FlatSerialize for EniMonitorDataResponseMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DataPoint {
+    /// 快照总容量，单位：字节（Byte）。
     #[serde(rename = "Size")]
     pub size: i64,
+    /// 某一快照容量数值对应的时间戳。
     #[serde(rename = "TimeStamp")]
     pub time_stamp: String,
 }
@@ -79576,6 +85094,7 @@ impl crate::FlatSerialize for DataPoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotMonitorDataResponseMonitorData {
+    /// 快照容量变化数据的集合。
     #[serde(rename = "DataPoint")]
     pub data_point: Vec<DataPoint>,
 }
@@ -79597,8 +85116,10 @@ impl crate::FlatSerialize for SnapshotMonitorDataResponseMonitorData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct WindowsMaintenanceWindow {
+    /// 维护时间窗口结束时间。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 维护时间窗口开始时间。
     #[serde(rename = "StartTime")]
     pub start_time: String,
 }
@@ -79621,6 +85142,7 @@ impl crate::FlatSerialize for WindowsMaintenanceWindow {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceWindows {
+    /// 运维窗口实例的列表。
     #[serde(rename = "MaintenanceWindow")]
     pub maintenance_window: Vec<WindowsMaintenanceWindow>,
 }
@@ -79642,6 +85164,7 @@ impl crate::FlatSerialize for MaintenanceWindows {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportedValues {
+    /// 由维护动作组成的数组格式，返回支持的运维动作值列表。
     #[serde(rename = "SupportedValue")]
     pub supported_value: Vec<String>,
 }
@@ -79663,8 +85186,14 @@ impl crate::FlatSerialize for SupportedValues {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct OnMaintenance {
+    /// 维护动作，默认的值。
     #[serde(rename = "DefaultValue")]
     pub default_value: String,
+    /// 维护动作，当前生效的值。可能值：
+    ///
+    /// - Stop: 停止状态（即宕机）。
+    /// - AutoRecover：自动恢复。
+    /// - AutoRedeploy：宕机迁移，数据盘有损。
     #[serde(rename = "Value")]
     pub value: String,
     #[serde(rename = "SupportedValues")]
@@ -79694,12 +85223,15 @@ impl crate::FlatSerialize for OnMaintenance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceAttribute {
+    /// 实例宕机运维前是否发送事件通知。
     #[serde(rename = "NotifyOnMaintenance")]
     pub notify_on_maintenance: bool,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
     #[serde(rename = "MaintenanceWindows")]
     pub maintenance_windows: MaintenanceWindows,
+    /// 实例的运维动作属性。
     #[serde(rename = "ActionOnMaintenance")]
     pub action_on_maintenance: OnMaintenance,
 }
@@ -79736,6 +85268,7 @@ impl crate::FlatSerialize for MaintenanceAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceAttributes {
+    /// 运维属性的集合。
     #[serde(rename = "MaintenanceAttribute")]
     pub maintenance_attribute: Vec<MaintenanceAttribute>,
 }
@@ -79757,8 +85290,10 @@ impl crate::FlatSerialize for MaintenanceAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesMaintenanceWindow {
+    /// 维护时间窗口结束时间。必须为整小时，不允许设置分、秒。开始时间和结束时间必须同时设置，并且结束时间与开始时间需要间隔1~23个整小时。采用UTC +8时区，格式为`HH:mm:ss`。N的取值为1，只支持设置1个时间窗口。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 维护时间窗口开始时间。必须为整小时，不允许设置分、秒。开始时间和结束时间必须同时设置，并且结束时间与开始时间需要间隔1~23个整小时。采用UTC +8时区，格式为`HH:mm:ss`。N的取值为1，只支持设置1个时间窗口。
     #[serde(rename = "StartTime")]
     pub start_time: String,
 }
@@ -79781,8 +85316,10 @@ impl crate::FlatSerialize for AttributesMaintenanceWindow {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResourcesTag {
+    /// 标签键，不允许为空和空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 标签值。不允许为空，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -79801,8 +85338,30 @@ impl crate::FlatSerialize for TagResourcesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesTag {
+    /// 精确查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~20。
+    ///
+    /// `Tag.N`参数使用说明：
+    ///
+    /// - 方式一：用于精确查找绑定了指定标签的ECS资源，由一个键值对组成。
+    ///
+    ///     - 仅指定`Tag.N.Key`时，则返回关联该标签键的所有资源。
+    ///
+    ///     - 仅指定`Tag.N.Value`，则报错`InvalidParameter.TagValue`。
+    ///
+    ///     - 同时指定多个标签键值对时，仅同时满足所有标签键值对的ECS资源会被查找到。
+    ///
+    /// - 方式二：用于查询非默认资源组内的资源信息。`Key`的取值固定为`acs:rm:rgId`，对应的`Value`取值为资源组ID。
+    ///
+    ///     - 如果`Key`取值为`acs:rm:rgId`，则`Value`的取值只能是非默认资源组ID。如果指定的资源组ID为默认资源组，则会返回错误信息。
+    ///
+    ///     - 如果`Key`取值为`acs:rm:rgId`，则不支持再指定其他标签键值对。如果通过多个`Tag.N`参数同时查询资源组和标签对应的资源，则会返回错误信息。
+    ///
+    ///  
     #[serde(rename = "Key")]
     pub key: String,
+    /// 精确查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~20。
+    ///
+    /// > 当`Key=acs:rm:rgId`时，该参数只能传入资源组ID，且资源组ID不能为默认资源组。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -79821,8 +85380,22 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagFilter {
+    /// 模糊查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~5。具体的参数说明请参见`TagFilter.N.TagKey`参数描述。
     #[serde(rename = "TagValues")]
     pub tag_values: Vec<String>,
+    /// 模糊查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~5。
+    ///
+    ///  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
+    ///
+    /// - 通过标签键（`TagFilter.N.TagKey`）模糊查找ECS资源时，标签值（`TagFilter.N.TagValues.N`）必须为空。例如，模糊搜索标签键为`environment`的ECS资源时，`TagFilter.1.TagKey`可以设置为`env*`（前缀匹配的模糊搜索方式）、`*env*`（两边匹配的模糊搜索方式）或者`env`（精确搜索方式），而`TagFilter.1.TagValues`必须为空。
+    ///
+    /// - 通过标签值（`TagFilter.N.TagValues.N`）模糊查找ECS资源时，标签键（`TagFilter.N.TagKey`）必须设置为精确值。例如，模糊搜索标签键为`env`，标签值为`product`的ECS资源时，`TagFilter.1.TagKey`必须精确设置为`env`，`TagFilter.1.TagValues.1`可以设置为`proc*`（前缀匹配的模糊搜索方式）、`*proc*`（两边匹配的模糊搜索方式）或者`proc`（精确搜索方式）。同一个`TagKey`下只能用同一种搜索方式，如果设置了多个不同的搜索方式，则以第一个方式为准。
+    ///
+    /// - 标签键之间为交集关系，即仅同时满足您指定的所有标签键的ECS资源才会被查找到。
+    ///
+    /// - 同一标签键下的标签值之间为并集关系，即满足您为该标签键指定的任一标签值的ECS资源均会被查找到。
+    ///
+    /// > `TagFilter.N`与`Tag.N`参数不能同时使用，否则会返回错误信息。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -79845,12 +85418,36 @@ impl crate::FlatSerialize for TagFilter {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResource {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 资源类型。可能值：
+    ///
+    /// - instance：ECS实例。
+    /// - disk：磁盘。
+    /// - snapshot：快照。
+    /// - image：镜像。
+    /// - securitygroup：安全组。
+    /// - volume：存储卷。
+    /// - eni：弹性网卡。
+    /// - ddh：专有宿主机。
+    /// - ddhcluster：专有宿主机集群。
+    /// - keypair：SSH密钥对。
+    /// - launchtemplate：启动模板。
+    /// - reservedinstance：预留实例券。
+    /// - snapshotpolicy：自动快照策略。
+    /// - elasticityassurance：弹性保障。
+    /// - capacityreservation：容量预定。
+    /// - command：云助手命令。
+    /// - invocation：云助手命令执行结果。
+    /// - activation：云助手托管实例激活码。
+    /// - managedinstance：云助手托管实例。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -79883,6 +85480,7 @@ impl crate::FlatSerialize for TagResource {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseTagResources {
+    /// 由资源及其标签组成的集合，包含了资源ID、资源类型和标签键值等信息。
     #[serde(rename = "TagResource")]
     pub tag_resource: Vec<TagResource>,
 }
@@ -79904,8 +85502,14 @@ impl crate::FlatSerialize for ResponseTagResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AllocateDedicatedHostsTag {
+    /// 专有宿主机的标签键。N的取值范围：1~20。
+    ///
+    /// 一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun或者acs:开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 专有宿主机的标签值。N的取值范围：1~20。
+    ///
+    /// 一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -79924,6 +85528,7 @@ impl crate::FlatSerialize for AllocateDedicatedHostsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostIdSets {
+    /// 专有宿主机ID（DedicatedHostId）组成的列表。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: Vec<String>,
 }
@@ -79945,8 +85550,10 @@ impl crate::FlatSerialize for HostIdSets {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostsTag {
+    /// 专有宿主机的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 专有宿主机的标签值。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -79965,12 +85572,16 @@ impl crate::FlatSerialize for DescribeDedicatedHostsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstancesInstance {
+    /// 专有宿主机上创建的ECS实例规格信息。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 专有宿主机上创建的ECS实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例所处的Socket的序号。
     #[serde(rename = "SocketId")]
     pub socket_id: String,
+    /// ECS实例所有者的用户ID。
     #[serde(rename = "InstanceOwnerId")]
     pub instance_owner_id: i64,
 }
@@ -80007,6 +85618,7 @@ impl crate::FlatSerialize for ItemInstancesInstance {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstances {
+    /// 专有宿主机上创建的ECS实例。
     #[serde(rename = "Instance")]
     pub instance: Vec<ItemInstancesInstance>,
 }
@@ -80024,6 +85636,9 @@ impl crate::FlatSerialize for ItemInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemOperationLocksOperationLock {
+    /// 专有宿主机被锁定的原因。可能值：
+    /// - financial：因欠费被锁定。
+    /// - security：因安全原因被锁定。
     #[serde(rename = "LockReason")]
     pub lock_reason: String,
 }
@@ -80045,6 +85660,7 @@ impl crate::FlatSerialize for HostItemOperationLocksOperationLock {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemOperationLocks {
+    /// 专有宿主机资源被锁定原因。
     #[serde(rename = "OperationLock")]
     pub operation_lock: Vec<HostItemOperationLocksOperationLock>,
 }
@@ -80066,8 +85682,10 @@ impl crate::FlatSerialize for HostItemOperationLocks {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemTagsTag {
+    /// 专有宿主机的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 专有宿主机的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -80090,6 +85708,7 @@ impl crate::FlatSerialize for HostItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemTags {
+    /// 专有宿主机的标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<HostItemTagsTag>,
 }
@@ -80107,6 +85726,7 @@ impl crate::FlatSerialize for HostItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemSupportedInstanceTypeFamilies {
+    /// 专有宿主机支持的ECS实例规格族。
     #[serde(rename = "SupportedInstanceTypeFamily")]
     pub supported_instance_type_family: Vec<String>,
 }
@@ -80128,6 +85748,7 @@ impl crate::FlatSerialize for HostItemSupportedInstanceTypeFamilies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomInstanceTypeFamilies {
+    /// 专有宿主机支持的自定义实例规格族。
     #[serde(rename = "SupportedCustomInstanceTypeFamily")]
     pub supported_custom_instance_type_family: Vec<String>,
 }
@@ -80149,6 +85770,7 @@ impl crate::FlatSerialize for CustomInstanceTypeFamilies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemSupportedInstanceTypesList {
+    /// 专有宿主机支持的ECS实例规格。
     #[serde(rename = "SupportedInstanceTypesList")]
     pub supported_instance_types_list: Vec<String>,
 }
@@ -80170,14 +85792,19 @@ impl crate::FlatSerialize for HostItemSupportedInstanceTypesList {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SocketCapacity {
+    /// Socket序号。
     #[serde(rename = "SocketId")]
     pub socket_id: i32,
+    /// 剩余内存容量，单位：GiB。
     #[serde(rename = "AvailableMemory")]
     pub available_memory: f32,
+    /// 内存总容量，单位：GiB。
     #[serde(rename = "TotalMemory")]
     pub total_memory: f32,
+    /// 剩余的vCPU核数。
     #[serde(rename = "AvailableVcpu")]
     pub available_vcpu: i32,
+    /// vCPU总核数。
     #[serde(rename = "TotalVcpu")]
     pub total_vcpu: i32,
 }
@@ -80219,6 +85846,7 @@ impl crate::FlatSerialize for SocketCapacity {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SocketCapacities {
+    /// Socket维度容量信息。
     #[serde(rename = "SocketCapacity")]
     pub socket_capacity: Vec<SocketCapacity>,
 }
@@ -80289,22 +85917,31 @@ impl crate::FlatSerialize for ItemCapacityAvailableInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacity {
+    /// 剩余的内存容量，单位：GiB。
     #[serde(rename = "AvailableMemory")]
     pub available_memory: f32,
+    /// 本地盘类型。
     #[serde(rename = "LocalStorageCategory")]
     pub local_storage_category: String,
+    /// 内存总容量，单位：GiB。
     #[serde(rename = "TotalMemory")]
     pub total_memory: f32,
+    /// 本地盘总容量，单位：GiB。
     #[serde(rename = "TotalLocalStorage")]
     pub total_local_storage: i32,
+    /// vCPU总核数。
     #[serde(rename = "TotalVcpus")]
     pub total_vcpus: i32,
+    /// 总虚拟GPU数量。
     #[serde(rename = "TotalVgpus")]
     pub total_vgpus: i32,
+    /// 剩余的本地盘容量。单位：GiB。
     #[serde(rename = "AvailableLocalStorage")]
     pub available_local_storage: i32,
+    /// 剩余的vCPU核数。
     #[serde(rename = "AvailableVcpus")]
     pub available_vcpus: i32,
+    /// 可用虚拟GPU数量。
     #[serde(rename = "AvailableVgpus")]
     pub available_vgpus: i32,
     #[serde(rename = "SocketCapacities")]
@@ -80380,8 +86017,10 @@ impl crate::FlatSerialize for ItemCapacity {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkAttributes {
+    /// UDP超时时间。单位：S。当前仅支持60S。
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: i32,
+    /// SLB UDP超时时间。单位：S。当前仅支持60S。
     #[serde(rename = "SlbUdpTimeout")]
     pub slb_udp_timeout: i32,
 }
@@ -80408,6 +86047,7 @@ impl crate::FlatSerialize for NetworkAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostDetailInfo {
+    /// 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
     #[serde(rename = "SerialNumber")]
     pub serial_number: String,
 }
@@ -80429,50 +86069,93 @@ impl crate::FlatSerialize for HostDetailInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DedicatedHost {
+    /// 专有宿主机的创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 专有宿主机所属托管资源池（Managed Private Space）ID。
     #[serde(rename = "SchedulerOptions.ManagedPrivateSpaceId")]
     pub scheduler_options_managed_private_space_id: String,
+    /// 专有宿主机的使用状态。可能值：
+    ///
+    /// - Available：运行中。专有宿主机的正常运行状态。
+    ///
+    /// - UnderAssessment：物理机风险，即故障潜伏期，其物理机处于可用状态，但可能导致专有宿主机中的ECS实例出现问题。
+    ///
+    /// - PermanentFailure：故障。永久性故障，专有宿主机不可用。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 单个CPU的核数。
     #[serde(rename = "Cores")]
     pub cores: i32,
+    /// 专有宿主机是否加入自动部署资源池。取值范围：
+    ///
+    /// - on：加入自动部署资源池。
+    ///
+    /// - off：不加入自动部署资源池。
+    ///
+    /// 关于自动部署的更多信息，请参见[自动部署功能介绍](~~118938~~)。
     #[serde(rename = "AutoPlacement")]
     pub auto_placement: String,
+    /// GPU型号。
     #[serde(rename = "GPUSpec")]
     pub gpu_spec: String,
+    /// 自动释放时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。
     #[serde(rename = "AutoReleaseTime")]
     pub auto_release_time: String,
+    /// 专有宿主机的计费方式。
     #[serde(rename = "ChargeType")]
     pub charge_type: String,
+    /// CPU超卖比。取值范围为：1~5。
     #[serde(rename = "CpuOverCommitRatio")]
     pub cpu_over_commit_ratio: f32,
+    /// 当专有宿主机发生故障时，为其所宿实例设置迁移方案。取值范围：
+    ///
+    /// - Migrate：专有宿主机整机迁移至另一物理服务器，并对故障前非关机状态的实例进行启动。
+    ///
+    /// - Stop：在当前专有宿主机上停止实例，确认无法修复专有宿主机后，迁移实例到其他物理机并重新启动实例。
+    ///
+    /// 当专有宿主机上挂载云盘存储时，默认值为Migrate；当专有宿主机上挂载本地盘存储时默认值为Stop。
     #[serde(rename = "ActionOnMaintenance")]
     pub action_on_maintenance: String,
+    /// 包年包月单位。可能值：
+    /// - Month。
+    /// - Year。
     #[serde(rename = "SaleCycle")]
     pub sale_cycle: String,
+    /// 物理GPU数量。
     #[serde(rename = "PhysicalGpus")]
     pub physical_gpus: i32,
+    /// 专有宿主机所在地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 专有宿主机的名称。
     #[serde(rename = "DedicatedHostName")]
     pub dedicated_host_name: String,
+    /// 专有宿主机的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 专有宿主机所在的专有宿主机集群ID。
     #[serde(rename = "DedicatedHostClusterId")]
     pub dedicated_host_cluster_id: String,
+    /// 包年包月专有宿主机的到期时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 专有宿主机的规格类型。
     #[serde(rename = "DedicatedHostType")]
     pub dedicated_host_type: String,
+    /// 专有宿主机所在资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 专有宿主机ID。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: String,
+    /// 物理处理器（CPU）数量。
     #[serde(rename = "Sockets")]
     pub sockets: i32,
+    /// 专有宿主机机器码。
     #[serde(rename = "MachineId")]
     pub machine_id: String,
     #[serde(rename = "Instances")]
@@ -80487,12 +86170,16 @@ pub struct DedicatedHost {
     pub supported_custom_instance_type_families: CustomInstanceTypeFamilies,
     #[serde(rename = "SupportedInstanceTypesList")]
     pub supported_instance_types_list: HostItemSupportedInstanceTypesList,
+    /// 专有宿主机性能指标集合。
     #[serde(rename = "Capacity")]
     pub capacity: ItemCapacity,
+    /// 专有宿主机的网络属性值。
     #[serde(rename = "NetworkAttributes")]
     pub network_attributes: NetworkAttributes,
+    /// 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
     #[serde(rename = "HostDetailInfo")]
     pub host_detail_info: HostDetailInfo,
+    /// 专有宿主机所有者的用户ID。
     #[serde(rename = "DedicatedHostOwnerId")]
     pub dedicated_host_owner_id: i64,
 }
@@ -80646,6 +86333,7 @@ impl crate::FlatSerialize for DedicatedHost {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DedicatedHosts {
+    /// 专有宿主机的详细信息集合。
     #[serde(rename = "DedicatedHost")]
     pub dedicated_host: Vec<DedicatedHost>,
 }
@@ -80667,6 +86355,7 @@ impl crate::FlatSerialize for DedicatedHosts {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemSupportedInstanceTypeFamilies {
+    /// 专有宿主机支持的ECS实例规格族列表。
     #[serde(rename = "SupportedInstanceTypeFamily")]
     pub supported_instance_type_family: Vec<String>,
 }
@@ -80688,6 +86377,7 @@ impl crate::FlatSerialize for TypeItemSupportedInstanceTypeFamilies {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemSupportedInstanceTypesList {
+    /// 专有宿主机支持的ECS实例规格列表。
     #[serde(rename = "SupportedInstanceTypesList")]
     pub supported_instance_types_list: Vec<String>,
 }
@@ -80709,30 +86399,43 @@ impl crate::FlatSerialize for TypeItemSupportedInstanceTypesList {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostType {
+    /// 单个物理CPU的数量。
     #[serde(rename = "Cores")]
     pub cores: i32,
+    /// 本地盘类型。
     #[serde(rename = "LocalStorageCategory")]
     pub local_storage_category: String,
+    /// GPU型号。
     #[serde(rename = "GPUSpec")]
     pub gpu_spec: String,
+    /// 虚拟CPU总数量。
     #[serde(rename = "TotalVcpus")]
     pub total_vcpus: i32,
+    /// 支持设置CPU超卖比的范围。
     #[serde(rename = "CpuOverCommitRatioRange")]
     pub cpu_over_commit_ratio_range: String,
+    /// 物理GPU数量。
     #[serde(rename = "PhysicalGpus")]
     pub physical_gpus: i32,
+    /// 内存容量，单位：GiB。
     #[serde(rename = "MemorySize")]
     pub memory_size: f32,
+    /// 是否支持设置CPU超卖比。
     #[serde(rename = "SupportCpuOverCommitRatio")]
     pub support_cpu_over_commit_ratio: bool,
+    /// 一块本地盘容量，单位：GiB。
     #[serde(rename = "LocalStorageCapacity")]
     pub local_storage_capacity: i64,
+    /// 专有宿主机规格类型。
     #[serde(rename = "DedicatedHostType")]
     pub dedicated_host_type: String,
+    /// 专有宿主机上的本地盘数量。
     #[serde(rename = "LocalStorageAmount")]
     pub local_storage_amount: i32,
+    /// 虚拟GPU总数量。
     #[serde(rename = "TotalVgpus")]
     pub total_vgpus: i32,
+    /// 物理处理器（CPU）数量。
     #[serde(rename = "Sockets")]
     pub sockets: i32,
     #[serde(rename = "SupportedInstanceTypeFamilies")]
@@ -80816,6 +86519,7 @@ impl crate::FlatSerialize for HostType {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDedicatedHostTypes {
+    /// 返回专有宿主机规格的信息。
     #[serde(rename = "DedicatedHostType")]
     pub dedicated_host_type: Vec<HostType>,
 }
@@ -80837,10 +86541,17 @@ impl crate::FlatSerialize for ResponseDedicatedHostTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostsChargeTypeResponseFeeOfInstancesFeeOfInstance {
+    /// 专有宿主机ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 账单费用货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 费用数值。
     #[serde(rename = "Fee")]
     pub fee: String,
 }
@@ -80864,6 +86575,7 @@ impl crate::FlatSerialize for HostsChargeTypeResponseFeeOfInstancesFeeOfInstance
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostsChargeTypeResponseFeeOfInstances {
+    /// 订单费用详情。
     #[serde(rename = "FeeOfInstance")]
     pub fee_of_instance: Vec<HostsChargeTypeResponseFeeOfInstancesFeeOfInstance>,
 }
@@ -80885,16 +86597,34 @@ impl crate::FlatSerialize for HostsChargeTypeResponseFeeOfInstances {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostRenewAttribute {
+    /// 续费单位。可能值：
+    ///
+    /// - Week
+    /// - Month
     #[serde(rename = "PeriodUnit")]
     pub period_unit: String,
+    /// 自动续费时长。
     #[serde(rename = "Duration")]
     pub duration: i32,
+    /// 专有宿主机ID。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: String,
+    /// 是否自动续费包年包月专有宿主机。取值范围：
+    ///
+    /// - AutoRenewal：自动续费。
+    /// - Normal：待续费。
+    /// - NotRenewal：不续费，也不发送到期提醒。到期前第三天阿里云会发送不续费提醒。不续费的专有宿主机可以设置成待续费（Normal），再自行续费[RenewDedicatedHosts](~~93287~~)或设置为自动续费（AutoRenewal）。
     #[serde(rename = "RenewalStatus")]
     pub renewal_status: String,
+    /// 是否自动续费。可能值：
+    /// - true：自动续费
+    /// - false：不自动续费
     #[serde(rename = "AutoRenewEnabled")]
     pub auto_renew_enabled: bool,
+    /// 包年包月专有宿主机内的包年包月ECS实例自动续费时，如果ECS实例续费后的到期时间比专有宿主机的到期时间晚，则该专有宿主机是否随ECS实例自动续费。可能值：
+    ///
+    /// - AutoRenewWithEcs：跟随ECS实例自动续费。
+    /// - StopRenewWithEcs：不跟随ECS实例自动续费。
     #[serde(rename = "AutoRenewWithEcs")]
     pub auto_renew_with_ecs: String,
 }
@@ -80937,6 +86667,7 @@ impl crate::FlatSerialize for HostRenewAttribute {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostRenewAttributes {
+    /// 专有宿主机自动续费属性组成的数组。
     #[serde(rename = "DedicatedHostRenewAttribute")]
     pub dedicated_host_renew_attribute: Vec<HostRenewAttribute>,
 }
@@ -80958,8 +86689,10 @@ impl crate::FlatSerialize for HostRenewAttributes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterTag {
+    /// 专有宿主机组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 专有宿主机组的标签值。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -80978,8 +86711,12 @@ impl crate::FlatSerialize for ClusterTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClustersTag {
+    /// 专有宿主机组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。
+    ///
+    /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 专有宿主机组的标签值。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -80998,8 +86735,10 @@ impl crate::FlatSerialize for ClustersTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterItemTagsTag {
+    /// 专有宿主机组的标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 专有宿主机组的标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
 }
@@ -81022,6 +86761,7 @@ impl crate::FlatSerialize for ClusterItemTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterItemTags {
+    /// 专有宿主机组的标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<ClusterItemTagsTag>,
 }
@@ -81039,6 +86779,7 @@ impl crate::FlatSerialize for ClusterItemTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostIds {
+    /// 专有宿主机组下的专有宿主机ID列表。
     #[serde(rename = "DedicatedHostId")]
     pub dedicated_host_id: Vec<String>,
 }
@@ -81060,10 +86801,18 @@ impl crate::FlatSerialize for HostIds {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StorageCapacity {
+    /// 数据盘类型。可能值：
+    /// - cloud：普通云盘。
+    /// - cloud_efficiency：高效云盘。
+    /// - cloud_ssd：SSD云盘。
+    /// - ephemeral_ssd：本地SSD盘。
+    /// - cloud_essd：ESSD云盘。
     #[serde(rename = "DataDiskCategory")]
     pub data_disk_category: String,
+    /// 当前可用本地盘大小。单位：GiB。
     #[serde(rename = "AvailableDisk")]
     pub available_disk: i32,
+    /// 本地盘总大小。单位：GiB。
     #[serde(rename = "TotalDisk")]
     pub total_disk: i32,
 }
@@ -81095,6 +86844,7 @@ impl crate::FlatSerialize for StorageCapacity {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StorageCapacities {
+    /// 本地存储容量。
     #[serde(rename = "LocalStorageCapacity")]
     pub local_storage_capacity: Vec<StorageCapacity>,
 }
@@ -81116,8 +86866,10 @@ impl crate::FlatSerialize for StorageCapacities {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacityAvailableInstanceTypesAvailableInstanceType {
+    /// 实例规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 可用的实例规格容量。
     #[serde(rename = "AvailableInstanceCapacity")]
     pub available_instance_capacity: i32,
 }
@@ -81144,6 +86896,7 @@ impl crate::FlatSerialize for ClusterCapacityAvailableInstanceTypesAvailableInst
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacityAvailableInstanceTypes {
+    /// 专有宿主机组内ECS实例规格的可用容量。
     #[serde(rename = "AvailableInstanceType")]
     pub available_instance_type: Vec<ClusterCapacityAvailableInstanceTypesAvailableInstanceType>,
 }
@@ -81165,12 +86918,16 @@ impl crate::FlatSerialize for ClusterCapacityAvailableInstanceTypes {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacity {
+    /// 当前可用vCPU数。
     #[serde(rename = "AvailableVcpus")]
     pub available_vcpus: i32,
+    /// 当前可用内存大小。单位：GiB。
     #[serde(rename = "AvailableMemory")]
     pub available_memory: i32,
+    /// 总内存大小。单位：GiB。
     #[serde(rename = "TotalMemory")]
     pub total_memory: i32,
+    /// 总vCPU数。
     #[serde(rename = "TotalVcpus")]
     pub total_vcpus: i32,
     #[serde(rename = "LocalStorageCapacities")]
@@ -81221,22 +86978,29 @@ impl crate::FlatSerialize for ClusterCapacity {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostCluster {
+    /// 专有宿主机组描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 专有宿主机组ID。
     #[serde(rename = "DedicatedHostClusterId")]
     pub dedicated_host_cluster_id: String,
+    /// 专有宿主机组的资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 专有宿主机组所在的可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 专有宿主机组所在的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 专有宿主机组名称。
     #[serde(rename = "DedicatedHostClusterName")]
     pub dedicated_host_cluster_name: String,
     #[serde(rename = "Tags")]
     pub tags: ClusterItemTags,
     #[serde(rename = "DedicatedHostIds")]
     pub dedicated_host_ids: HostIds,
+    /// 专有宿主机组容量。
     #[serde(rename = "DedicatedHostClusterCapacity")]
     pub dedicated_host_cluster_capacity: ClusterCapacity,
 }
@@ -81290,6 +87054,7 @@ impl crate::FlatSerialize for HostCluster {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HostClusters {
+    /// 由一个或多个专有宿主机组信息组成的数组。
     #[serde(rename = "DedicatedHostCluster")]
     pub dedicated_host_cluster: Vec<HostCluster>,
 }
@@ -81311,10 +87076,13 @@ impl crate::FlatSerialize for HostClusters {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HpcCluster {
+    /// HPC集群ID。
     #[serde(rename = "HpcClusterId")]
     pub hpc_cluster_id: String,
+    /// HPC集群的名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// HPC集群的描述。
     #[serde(rename = "Description")]
     pub description: String,
 }
@@ -81342,6 +87110,7 @@ impl crate::FlatSerialize for HpcCluster {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct HpcClusters {
+    /// 由HpcCluster组成的数组格式，返回HPC集群的信息。
     #[serde(rename = "HpcCluster")]
     pub hpc_cluster: Vec<HpcCluster>,
 }
@@ -81363,18 +87132,25 @@ impl crate::FlatSerialize for HpcClusters {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SetTask {
+    /// 创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 任务状态。
     #[serde(rename = "TaskStatus")]
     pub task_status: String,
+    /// 结束时间。
     #[serde(rename = "FinishedTime")]
     pub finished_time: String,
+    /// 是否支持取消任务。
     #[serde(rename = "SupportCancel")]
     pub support_cancel: String,
+    /// 任务ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 任务名称。
     #[serde(rename = "TaskAction")]
     pub task_action: String,
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
 }
@@ -81422,6 +87198,7 @@ impl crate::FlatSerialize for SetTask {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TaskSet {
+    /// 任务集合。
     #[serde(rename = "Task")]
     pub task: Vec<SetTask>,
 }
@@ -81439,8 +87216,10 @@ impl crate::FlatSerialize for TaskSet {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
+    /// 相关项名称。
     #[serde(rename = "Name")]
     pub name: String,
+    /// 相关项值。
     #[serde(rename = "Value")]
     pub value: String,
 }
@@ -81461,6 +87240,7 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSet {
+    /// 资源信息类型。
     #[serde(rename = "RelatedItem")]
     pub related_item:
         Vec<AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
@@ -81485,10 +87265,13 @@ impl crate::FlatSerialize
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgress {
+    /// 错误信息。
     #[serde(rename = "ErrorMsg")]
     pub error_msg: String,
+    /// 错误代码。
     #[serde(rename = "ErrorCode")]
     pub error_code: String,
+    /// 操作状态。
     #[serde(rename = "OperationStatus")]
     pub operation_status: String,
     #[serde(rename = "RelatedItemSet")]
@@ -81527,6 +87310,7 @@ impl crate::FlatSerialize for AttributeResponseOperationProgressSetOperationProg
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSet {
+    /// 返回任务包含的信息，其中包括每一个子任务的状态和相关信息。
     #[serde(rename = "OperationProgress")]
     pub operation_progress: Vec<AttributeResponseOperationProgressSetOperationProgress>,
 }
@@ -83851,8 +89635,12 @@ impl crate::FlatSerialize for RouteTables {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AddTagsTag {
+    /// 资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https:// 。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -83871,8 +89659,12 @@ impl crate::FlatSerialize for AddTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ByTagsTag {
+    /// 资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -83891,10 +89683,13 @@ impl crate::FlatSerialize for ByTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcesResource {
+    /// 资源类型。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
 }
@@ -83926,6 +89721,7 @@ impl crate::FlatSerialize for ResourcesResource {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseResources {
+    /// 绑定标签的资源信息集合。
     #[serde(rename = "Resource")]
     pub resource: Vec<ResourcesResource>,
 }
@@ -83943,8 +89739,12 @@ impl crate::FlatSerialize for ResponseResources {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeTagsTag {
+    /// 资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -83963,28 +89763,40 @@ impl crate::FlatSerialize for DescribeTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeCount {
+    /// 该标签标记了多少实例。
     #[serde(rename = "Instance")]
     pub instance: i32,
+    /// 该标签标记了多少镜像。
     #[serde(rename = "Image")]
     pub image: i32,
+    /// 该标签标记了多少专有宿主机。
     #[serde(rename = "Ddh")]
     pub ddh: i32,
+    /// 该标签标记了多少自动快照策略。
     #[serde(rename = "SnapshotPolicy")]
     pub snapshot_policy: i32,
+    /// 该标签标记了多少安全组。
     #[serde(rename = "Securitygroup")]
     pub securitygroup: i32,
+    /// 该标签标记了多少快照。
     #[serde(rename = "Snapshot")]
     pub snapshot: i32,
+    /// 该标签标记了多少预留实例券。
     #[serde(rename = "ReservedInstance")]
     pub reserved_instance: i32,
+    /// 该标签标记了多少启动模板。
     #[serde(rename = "LaunchTemplate")]
     pub launch_template: i32,
+    /// 该标签标记了多少弹性网卡。
     #[serde(rename = "Eni")]
     pub eni: i32,
+    /// 该标签标记了多少磁盘。
     #[serde(rename = "Disk")]
     pub disk: i32,
+    /// 该标签标记了多少密钥对。
     #[serde(rename = "KeyPair")]
     pub key_pair: i32,
+    /// 该标签标记了多少存储卷。
     #[serde(rename = "Volume")]
     pub volume: i32,
 }
@@ -84029,10 +89841,13 @@ impl crate::FlatSerialize for TypeCount {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsResponseTagsTag {
+    /// 标签值。
     #[serde(rename = "TagValue")]
     pub tag_value: String,
+    /// 标签键。
     #[serde(rename = "TagKey")]
     pub tag_key: String,
+    /// 资源类型计数。
     #[serde(rename = "ResourceTypeCount")]
     pub resource_type_count: TypeCount,
 }
@@ -84060,6 +89875,7 @@ impl crate::FlatSerialize for TagsResponseTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsResponseTags {
+    /// 满足所有筛选条件的标签。
     #[serde(rename = "Tag")]
     pub tag: Vec<TagsResponseTagsTag>,
 }
@@ -84077,8 +89893,12 @@ impl crate::FlatSerialize for TagsResponseTags {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RemoveTagsTag {
+    /// 资源的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
     pub key: String,
+    /// 资源的标签值。
+    ///
+    /// >为提高兼容性，建议您尽量使用Tag.N.Value参数。
     #[serde(rename = "value")]
     pub value: String,
 }
@@ -84097,14 +89917,29 @@ impl crate::FlatSerialize for RemoveTagsTag {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct SQoS {
+    /// 最大内网出方向带宽限制。
+    ///
+    /// 单位：kbit/s，步长：1000（1Mbps），取值范围：[50000, +♾️)
     #[serde(rename = "BandwidthTx")]
     pub bandwidth_tx: i64,
+    /// 最大内网入方向带宽限制。
+    ///
+    /// 单位：kbit/s，步长：1000（1Mbps），取值范围：[50000, +♾️)
     #[serde(rename = "BandwidthRx")]
     pub bandwidth_rx: i64,
+    /// 内网出方向网络收发包能力
+    ///
+    /// 单位：pps，步长：10000，取值范围：[50000, +♾️)
     #[serde(rename = "PpsTx")]
     pub pps_tx: i64,
+    /// 内网入方向网络收发包能力
+    ///
+    /// 单位：pps，步长：10000，取值范围：[50000, +♾️)
     #[serde(rename = "PpsRx")]
     pub pps_rx: i64,
+    /// 会话数量的最大值
+    ///
+    /// 步长：10000
     #[serde(rename = "ConcurrentConnections")]
     pub concurrent_connections: i64,
 }
@@ -85217,6 +91052,7 @@ impl crate::FlatSerialize for MigrationType {
 pub struct DescribeRegionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Regions")]
@@ -85234,6 +91070,7 @@ impl crate::ToCodeMessage for DescribeRegionsResponse {
 pub struct DescribeZonesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Zones")]
@@ -85251,6 +91088,7 @@ impl crate::ToCodeMessage for DescribeZonesResponse {
 pub struct DescribeAvailableResourceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "AvailableZones")]
@@ -85268,6 +91106,7 @@ impl crate::ToCodeMessage for DescribeAvailableResourceResponse {
 pub struct DescribeAccountAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "AccountAttributeItems")]
@@ -85285,6 +91124,7 @@ impl crate::ToCodeMessage for DescribeAccountAttributesResponse {
 pub struct DescribeResourcesModificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "AvailableZones")]
@@ -85302,6 +91142,7 @@ impl crate::ToCodeMessage for DescribeResourcesModificationResponse {
 pub struct DescribeRecommendInstanceTypeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Data")]
@@ -85319,8 +91160,10 @@ impl crate::ToCodeMessage for DescribeRecommendInstanceTypeResponse {
 pub struct DescribePriceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 价格信息类型（Price），包括价格和优惠规则。
     #[serde(rename = "PriceInfo")]
     pub price_info: DescribePriceResponsePriceInfo,
 }
@@ -85336,8 +91179,10 @@ impl crate::ToCodeMessage for DescribePriceResponse {
 pub struct DescribeRenewalPriceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
     #[serde(rename = "PriceInfo")]
     pub price_info: RenewalPriceResponsePriceInfo,
 }
@@ -85353,8 +91198,10 @@ impl crate::ToCodeMessage for DescribeRenewalPriceResponse {
 pub struct DescribeInstanceModificationPriceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
     #[serde(rename = "PriceInfo")]
     pub price_info: ModificationPriceResponsePriceInfo,
 }
@@ -85370,10 +91217,13 @@ impl crate::ToCodeMessage for DescribeInstanceModificationPriceResponse {
 pub struct RunInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 订单成交价。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
     #[serde(rename = "InstanceIdSets")]
@@ -85391,12 +91241,16 @@ impl crate::ToCodeMessage for RunInstancesResponse {
 pub struct CreateInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 订单ID。该参数只有创建包年包月ECS实例（请求参数`InstanceChargeType=PrePaid`）时有返回值。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 订单成交价。
     #[serde(rename = "TradePrice")]
     pub trade_price: f32,
 }
@@ -85412,6 +91266,7 @@ impl crate::ToCodeMessage for CreateInstanceResponse {
 pub struct StartInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85427,6 +91282,7 @@ impl crate::ToCodeMessage for StartInstanceResponse {
 pub struct StartInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "InstanceResponses")]
@@ -85444,6 +91300,7 @@ impl crate::ToCodeMessage for StartInstancesResponse {
 pub struct StopInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85459,6 +91316,7 @@ impl crate::ToCodeMessage for StopInstanceResponse {
 pub struct StopInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "InstanceResponses")]
@@ -85476,6 +91334,7 @@ impl crate::ToCodeMessage for StopInstancesResponse {
 pub struct RebootInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85491,6 +91350,7 @@ impl crate::ToCodeMessage for RebootInstanceResponse {
 pub struct RebootInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "InstanceResponses")]
@@ -85508,6 +91368,7 @@ impl crate::ToCodeMessage for RebootInstancesResponse {
 pub struct DeleteInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85523,6 +91384,7 @@ impl crate::ToCodeMessage for DeleteInstanceResponse {
 pub struct DeleteInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85538,12 +91400,16 @@ impl crate::ToCodeMessage for DeleteInstancesResponse {
 pub struct DescribeInstanceStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 实例总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "InstanceStatuses")]
@@ -85561,14 +91427,21 @@ impl crate::ToCodeMessage for DescribeInstanceStatusResponse {
 pub struct DescribeInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 实例列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询到的实例总数。
+    ///
+    /// > 使用`MaxResults`和`NextToken`参数进行分页查询时，返回的`TotalCount`参数值无意义。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Instances")]
@@ -85586,6 +91459,7 @@ impl crate::ToCodeMessage for DescribeInstancesResponse {
 pub struct DescribeInstanceTypeFamiliesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "InstanceTypeFamilies")]
@@ -85603,10 +91477,12 @@ impl crate::ToCodeMessage for DescribeInstanceTypeFamiliesResponse {
 pub struct DescribeInstanceTypesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "InstanceTypes")]
     pub instance_types: DescribeInstanceTypesResponseInstanceTypes,
+    /// 本次调用返回的查询凭证（Token）。
     #[serde(rename = "NextToken")]
     pub next_token: String,
 }
@@ -85622,54 +91498,108 @@ impl crate::ToCodeMessage for DescribeInstanceTypesResponse {
 pub struct DescribeInstanceAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 实例状态。取值范围：
+    ///
+    /// - Pending：创建中。
+    /// - Running：运行中。
+    /// - Starting：启动中。
+    /// - Stopping：停止中。
+    /// - Stopped：已停止。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 实例序列号。
     #[serde(rename = "SerialNumber")]
     pub serial_number: String,
+    /// 实例创建时间。以ISO 8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO 8601](~~25696~~)。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 实例名称。
     #[serde(rename = "InstanceName")]
     pub instance_name: String,
+    /// 实例网络类型。取值范围：
+    ///          
+    /// - classic：经典网络。
+    /// - vpc：专有网络VPC。
     #[serde(rename = "InstanceNetworkType")]
     pub instance_network_type: String,
+    /// 内存大小，单位为MiB。
     #[serde(rename = "Memory")]
     pub memory: i32,
+    /// 实例运行的镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 实例所在的集群ID。
+    /// >该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
     #[serde(rename = "ClusterId")]
     pub cluster_id: String,
+    /// 实例的VLAN ID。
+    /// >该参数即将被弃用，为提高兼容性，请尽量使用其他参数。
     #[serde(rename = "VlanId")]
     pub vlan_id: String,
+    /// 实例停机后是否继续收费。可能值：
+    ///
+    /// - KeepCharging：停机后继续收费，为您继续保留库存资源。
+    /// - StopCharging：停机后不收费。停机后，我们释放实例对应的资源，例如vCPU、内存和公网IP等资源。重启是否成功依赖于当前地域中是否仍有资源库存。
+    /// - Not-applicable：本实例不支持停机不收费功能。
     #[serde(rename = "StoppedMode")]
     pub stopped_mode: String,
+    /// 实例主机名。
     #[serde(rename = "HostName")]
     pub host_name: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例的规格。
     #[serde(rename = "InstanceType")]
     pub instance_type: String,
+    /// 公网入带宽最大值，单位为Mbit/s。
     #[serde(rename = "InternetMaxBandwidthIn")]
     pub internet_max_bandwidth_in: i32,
+    /// 公网出带宽最大值，单位为Mbit/s。
     #[serde(rename = "InternetMaxBandwidthOut")]
     pub internet_max_bandwidth_out: i32,
+    /// 实例所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 实例的计费方式。可能值：
+    /// - PrePaid：包年包月。
+    /// - PostPaid：按量付费。
     #[serde(rename = "InstanceChargeType")]
     pub instance_charge_type: String,
+    /// 是否是I/O优化型实例。可能值：
+    ///
+    /// - optimized：I/O优化。
+    ///
+    /// - none：非I/O优化。
     #[serde(rename = "IoOptimized")]
     pub io_optimized: String,
+    /// vCPU处理器核心数量。
     #[serde(rename = "Cpu")]
     pub cpu: i32,
+    /// 过期时间。以ISO 8601为标准，并使用UTC+0时间，格式为yyyy-MM-ddTHH:mmZ。更多信息，请参见[ISO 8601](~~25696~~)。
     #[serde(rename = "ExpiredTime")]
     pub expired_time: String,
+    /// 实例所属可用区。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 公网带宽计费方式。可能值：
+    ///
+    /// - PayByBandwidth：按固定带宽计费。
+    /// - PayByTraffic：按使用流量计费。
+    ///
+    /// > **按使用流量计费**模式下的出入带宽峰值都是带宽上限，不作为业务承诺指标。当出现资源争抢时，带宽峰值可能会受到限制。如果您的业务需要有带宽的保障，请使用**按固定带宽计费**模式。
     #[serde(rename = "InternetChargeType")]
     pub internet_charge_type: String,
+    /// 突发性能实例的运行模式。可能值：
+    ///
+    /// - Standard：标准模式。有关实例性能的更多信息，请参见[性能模式](~~59977#section-svb-w9d-dju~~)。
+    /// - Unlimited：无性能约束模式，有关实例性能的更多信息，请参见[性能模式](~~59977#section-svb-w9d-dju~~)。
     #[serde(rename = "CreditSpecification")]
     pub credit_specification: String,
     #[serde(rename = "SecurityGroupIds")]
@@ -85678,18 +91608,35 @@ pub struct DescribeInstanceAttributeResponse {
     pub public_ip_address: ResponsePublicIpAddress,
     #[serde(rename = "InnerIpAddress")]
     pub inner_ip_address: ResponseInnerIpAddress,
+    /// 专有网络VPC属性。
     #[serde(rename = "VpcAttributes")]
     pub vpc_attributes: ResponseVpcAttributes,
+    /// 弹性公网IP绑定信息。
     #[serde(rename = "EipAddress")]
     pub eip_address: ResponseEipAddress,
+    /// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
     #[serde(rename = "DedicatedHostAttribute")]
     pub dedicated_host_attribute: ResponseDedicatedHostAttribute,
     #[serde(rename = "OperationLocks")]
     pub operation_locks: ResponseOperationLocks,
+    /// ECS实例是否开启了Jumbo frame特性。 可能值：
+    ///
+    /// - true：开启。
+    ///
+    /// - false：不开启。
+    ///
+    /// 更多信息，请参见[ECS实例MTU](~~200512~~)。
     #[serde(rename = "EnableJumboFrame")]
     pub enable_jumbo_frame: bool,
+    /// 实例是否开启VPC网络流量加密，可能值：
+    ///
+    /// - true：开启。
+    /// - false：未开启。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableNetworkEncryption")]
     pub enable_network_encryption: bool,
+    /// 网络相关属性参数。
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "NetworkOptions")]
     pub network_options: ResponseNetworkOptions,
 }
@@ -85705,6 +91652,7 @@ impl crate::ToCodeMessage for DescribeInstanceAttributeResponse {
 pub struct ModifyInstanceAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85720,8 +91668,12 @@ impl crate::ToCodeMessage for ModifyInstanceAttributeResponse {
 pub struct ModifyInstanceClockOptionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求 ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 修改任务 ID。
+    ///
+    /// 您可以使用[DescribeTasks](~~25622~~)接口查询修改结果。
     #[serde(rename = "TaskId")]
     pub task_id: String,
 }
@@ -85737,8 +91689,12 @@ impl crate::ToCodeMessage for ModifyInstanceClockOptionsResponse {
 pub struct ModifyInstanceNetworkOptionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 修改带宽权重的任务ID。
+    ///
+    /// 您可以使用[DescribeTaskAttribute](~~2679968~~)接口修改带宽权重结果。
     #[serde(rename = "TaskId")]
     pub task_id: String,
 }
@@ -85754,8 +91710,10 @@ impl crate::ToCodeMessage for ModifyInstanceNetworkOptionsResponse {
 pub struct ModifyInstanceChargeTypeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 订单ID。仅在付费方式修改为预付费时返回。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "FeeOfInstances")]
@@ -85773,6 +91731,7 @@ impl crate::ToCodeMessage for ModifyInstanceChargeTypeResponse {
 pub struct ModifyInstanceSpecResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85788,8 +91747,10 @@ impl crate::ToCodeMessage for ModifyInstanceSpecResponse {
 pub struct ModifyPrepayInstanceSpecResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 生成的订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85805,6 +91766,7 @@ impl crate::ToCodeMessage for ModifyPrepayInstanceSpecResponse {
 pub struct ModifyInstanceAutoReleaseTimeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85820,12 +91782,16 @@ impl crate::ToCodeMessage for ModifyInstanceAutoReleaseTimeResponse {
 pub struct AttachInstanceRamRoleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 实例RAM角色的名称。
     #[serde(rename = "RamRoleName")]
     pub ram_role_name: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 授予实例RAM角色的实例总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 授予实例RAM角色的实例失败个数。
     #[serde(rename = "FailCount")]
     pub fail_count: i32,
     #[serde(rename = "AttachInstanceRamRoleResults")]
@@ -85843,10 +91809,13 @@ impl crate::ToCodeMessage for AttachInstanceRamRoleResponse {
 pub struct DescribeInstanceRamRoleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的实例数量。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 实例所在的地域。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "InstanceRamRoleSets")]
@@ -85864,12 +91833,16 @@ impl crate::ToCodeMessage for DescribeInstanceRamRoleResponse {
 pub struct DetachInstanceRamRoleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 收回实例RAM角色名称。
     #[serde(rename = "RamRoleName")]
     pub ram_role_name: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 收回实例总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 收回失败的实例个数。
     #[serde(rename = "FailCount")]
     pub fail_count: i32,
     #[serde(rename = "DetachInstanceRamRoleResults")]
@@ -85887,8 +91860,12 @@ impl crate::ToCodeMessage for DetachInstanceRamRoleResponse {
 pub struct DescribeInstanceVncUrlResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// VNC登录地址。
+    ///
+    /// ><notice>**VNC登录地址存在时效性，有效期为15秒，调用接口成功后如果15秒内不使用该链接，该地址会自动失效，您需要重新调用接口获取。**></notice>
     #[serde(rename = "VncUrl")]
     pub vnc_url: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85904,6 +91881,7 @@ impl crate::ToCodeMessage for DescribeInstanceVncUrlResponse {
 pub struct ModifyInstanceVncPasswdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85919,6 +91897,7 @@ impl crate::ToCodeMessage for ModifyInstanceVncPasswdResponse {
 pub struct ModifyInstanceMetadataOptionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85934,12 +91913,18 @@ impl crate::ToCodeMessage for ModifyInstanceMetadataOptionsResponse {
 pub struct DescribeUserDataResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例的自定义数据。
+    ///
+    /// > 如果实例不存在自定义数据，则返回空字符串。
     #[serde(rename = "UserData")]
     pub user_data: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
 }
@@ -85955,8 +91940,10 @@ impl crate::ToCodeMessage for DescribeUserDataResponse {
 pub struct RenewInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -85972,12 +91959,16 @@ impl crate::ToCodeMessage for RenewInstanceResponse {
 pub struct DescribeInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 返回的实例总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "InstanceRenewAttributes")]
@@ -85995,6 +91986,7 @@ impl crate::ToCodeMessage for DescribeInstanceAutoRenewAttributeResponse {
 pub struct ModifyInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86010,6 +92002,7 @@ impl crate::ToCodeMessage for ModifyInstanceAutoRenewAttributeResponse {
 pub struct ReActivateInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86025,10 +92018,17 @@ impl crate::ToCodeMessage for ReActivateInstancesResponse {
 pub struct DescribeSpotPriceHistoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 价格的货币单位。
+    ///
+    /// 中国站：CNY。
+    ///
+    /// 国际站：USD。
     #[serde(rename = "Currency")]
     pub currency: String,
+    /// 下一页开始行，查询下一页的数据。参数`Offset`的指定值为该值。
     #[serde(rename = "NextOffset")]
     pub next_offset: i32,
     #[serde(rename = "SpotPrices")]
@@ -86046,8 +92046,10 @@ impl crate::ToCodeMessage for DescribeSpotPriceHistoryResponse {
 pub struct DescribeSpotAdviceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "AvailableSpotZones")]
@@ -86065,8 +92067,10 @@ impl crate::ToCodeMessage for DescribeSpotAdviceResponse {
 pub struct CreateImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86082,14 +92086,19 @@ impl crate::ToCodeMessage for CreateImageResponse {
 pub struct DescribeImagesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 当前分页包含多少条目。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 镜像总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 镜像所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "Images")]
@@ -86107,6 +92116,7 @@ impl crate::ToCodeMessage for DescribeImagesResponse {
 pub struct ModifyImageAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86122,6 +92132,7 @@ impl crate::ToCodeMessage for ModifyImageAttributeResponse {
 pub struct DeleteImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86137,8 +92148,10 @@ impl crate::ToCodeMessage for DeleteImageResponse {
 pub struct DescribeImageFromFamilyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的镜像信息。
     #[serde(rename = "Image")]
     pub image: ResponseImage,
 }
@@ -86154,10 +92167,13 @@ impl crate::ToCodeMessage for DescribeImageFromFamilyResponse {
 pub struct DescribeImageSupportInstanceTypesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询的镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 镜像所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "InstanceTypes")]
@@ -86175,16 +92191,22 @@ impl crate::ToCodeMessage for DescribeImageSupportInstanceTypesResponse {
 pub struct DescribeImageSharePermissionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果显示的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 每页的信息条目数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 记录总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 自定义镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 镜像所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "ShareGroups")]
@@ -86204,6 +92226,7 @@ impl crate::ToCodeMessage for DescribeImageSharePermissionResponse {
 pub struct ModifyImageSharePermissionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86234,12 +92257,16 @@ impl crate::ToCodeMessage for ModifyImageShareGroupPermissionResponse {
 pub struct ImportImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 镜像ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 导入镜像任务ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
 }
@@ -86255,10 +92282,13 @@ impl crate::ToCodeMessage for ImportImageResponse {
 pub struct ExportImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 导出镜像任务ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
 }
@@ -86274,8 +92304,10 @@ impl crate::ToCodeMessage for ExportImageResponse {
 pub struct CopyImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 复制后的镜像的ID。
     #[serde(rename = "ImageId")]
     pub image_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86291,6 +92323,7 @@ impl crate::ToCodeMessage for CopyImageResponse {
 pub struct CancelCopyImageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86306,8 +92339,10 @@ impl crate::ToCodeMessage for CancelCopyImageResponse {
 pub struct CreateImageComponentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 镜像组件ID。
     #[serde(rename = "ImageComponentId")]
     pub image_component_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86323,12 +92358,16 @@ impl crate::ToCodeMessage for CreateImageComponentResponse {
 pub struct DescribeImageComponentsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。具体使用方式请参见接口说明。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的镜像组件数量。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 分页查询时每页行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "ImageComponent")]
@@ -86346,6 +92385,7 @@ impl crate::ToCodeMessage for DescribeImageComponentsResponse {
 pub struct DeleteImageComponentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86361,8 +92401,10 @@ impl crate::ToCodeMessage for DeleteImageComponentResponse {
 pub struct CreateImagePipelineResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 镜像模板ID。
     #[serde(rename = "ImagePipelineId")]
     pub image_pipeline_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86378,12 +92420,16 @@ impl crate::ToCodeMessage for CreateImagePipelineResponse {
 pub struct DescribeImagePipelinesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。具体使用方式请参见接口说明。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的镜像模板数量。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 分页查询时每页行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "ImagePipeline")]
@@ -86401,6 +92447,7 @@ impl crate::ToCodeMessage for DescribeImagePipelinesResponse {
 pub struct DeleteImagePipelineResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86416,8 +92463,10 @@ impl crate::ToCodeMessage for DeleteImagePipelineResponse {
 pub struct StartImagePipelineExecutionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 构建任务ID。
     #[serde(rename = "ExecutionId")]
     pub execution_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86433,12 +92482,16 @@ impl crate::ToCodeMessage for StartImagePipelineExecutionResponse {
 pub struct DescribeImagePipelineExecutionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。具体使用方式请参见接口说明。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的镜像组件数量。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 分页查询时每页行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "ImagePipelineExecution")]
@@ -86456,6 +92509,7 @@ impl crate::ToCodeMessage for DescribeImagePipelineExecutionsResponse {
 pub struct CancelImagePipelineExecutionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86471,10 +92525,15 @@ impl crate::ToCodeMessage for CancelImagePipelineExecutionResponse {
 pub struct CreateDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 磁盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 生成的订单ID。
+    ///
+    /// > 仅在创建包年包月云盘时会返回订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -86490,14 +92549,20 @@ impl crate::ToCodeMessage for CreateDiskResponse {
 pub struct DescribeDisksResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// > 该参数即将下线，推荐您使用参数 `NextToken `与 `MaxResults `完成分页查询操作。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// > 该参数即将下线，推荐您使用参数 `NextToken `与 `MaxResults `完成分页查询操作。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果总条数。
+    /// > 使用`MaxResults`和`NextToken`参数进行分页查询时，返回的`TotalCount`参数值无效。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Disks")]
@@ -86515,6 +92580,7 @@ impl crate::ToCodeMessage for DescribeDisksResponse {
 pub struct AttachDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86530,6 +92596,7 @@ impl crate::ToCodeMessage for AttachDiskResponse {
 pub struct DetachDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86545,8 +92612,12 @@ impl crate::ToCodeMessage for DetachDiskResponse {
 pub struct ResizeDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 生成的订单ID。
+    ///
+    /// > 仅在扩容包年包月云盘时会返回订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86562,6 +92633,7 @@ impl crate::ToCodeMessage for ResizeDiskResponse {
 pub struct ModifyDiskAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86577,8 +92649,10 @@ impl crate::ToCodeMessage for ModifyDiskAttributeResponse {
 pub struct ModifyDiskChargeTypeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 生成的订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86594,10 +92668,17 @@ impl crate::ToCodeMessage for ModifyDiskChargeTypeResponse {
 pub struct ModifyDiskSpecResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 变配云盘的任务ID。
+    ///
+    /// > 如果您只修改了一块ESSD云盘的性能级别，则不会返回该参数。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 生成的订单ID。
+    ///
+    /// > 仅在变更或修改包年包月云盘时会返回订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -86613,8 +92694,10 @@ impl crate::ToCodeMessage for ModifyDiskSpecResponse {
 pub struct ReplaceSystemDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 新系统盘的云盘ID。
     #[serde(rename = "DiskId")]
     pub disk_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86630,6 +92713,7 @@ impl crate::ToCodeMessage for ReplaceSystemDiskResponse {
 pub struct ResetDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86645,6 +92729,7 @@ impl crate::ToCodeMessage for ResetDiskResponse {
 pub struct ResetDisksResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "OperationProgressSet")]
@@ -86662,6 +92747,7 @@ impl crate::ToCodeMessage for ResetDisksResponse {
 pub struct ReInitDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86677,8 +92763,10 @@ impl crate::ToCodeMessage for ReInitDiskResponse {
 pub struct ModifyDiskDeploymentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 云盘迁移的任务ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
 }
@@ -86694,6 +92782,7 @@ impl crate::ToCodeMessage for ModifyDiskDeploymentResponse {
 pub struct DeleteDiskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86709,6 +92798,7 @@ impl crate::ToCodeMessage for DeleteDiskResponse {
 pub struct EnableDiskEncryptionByDefaultResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86724,8 +92814,16 @@ impl crate::ToCodeMessage for EnableDiskEncryptionByDefaultResponse {
 pub struct DescribeDiskEncryptionByDefaultStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 是否开启块存储账号级默认加密
+    ///
+    /// - true：是。
+    ///
+    /// - false：否。
+    ///
+    /// 默认值false。
     #[serde(rename = "Encrypted")]
     pub encrypted: bool,
 }
@@ -86741,8 +92839,10 @@ impl crate::ToCodeMessage for DescribeDiskEncryptionByDefaultStatusResponse {
 pub struct DescribeDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: String,
 }
@@ -86758,6 +92858,7 @@ impl crate::ToCodeMessage for DescribeDiskDefaultKMSKeyIdResponse {
 pub struct ModifyDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86773,6 +92874,7 @@ impl crate::ToCodeMessage for ModifyDiskDefaultKMSKeyIdResponse {
 pub struct ResetDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86788,6 +92890,7 @@ impl crate::ToCodeMessage for ResetDiskDefaultKMSKeyIdResponse {
 pub struct DisableDiskEncryptionByDefaultResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86803,6 +92906,7 @@ impl crate::ToCodeMessage for DisableDiskEncryptionByDefaultResponse {
 pub struct OpenSnapshotServiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86818,8 +92922,10 @@ impl crate::ToCodeMessage for OpenSnapshotServiceResponse {
 pub struct CreateSnapshotResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 快照ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86835,14 +92941,21 @@ impl crate::ToCodeMessage for CreateSnapshotResponse {
 pub struct DescribeSnapshotsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 下一个查询起始标志。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// > 该参数即将下线，推荐您使用 NextToken 与 MaxResults 完成分页查询操作。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// > 该参数即将下线，推荐您使用 NextToken 与 MaxResults 完成分页查询操作。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 快照总个数。
+    ///
+    /// > 使用`MaxResults`和`NextToken`参数进行分页查询时，返回的`TotalCount`参数值无效。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Snapshots")]
@@ -86860,10 +92973,13 @@ impl crate::ToCodeMessage for DescribeSnapshotsResponse {
 pub struct DescribeSnapshotsUsageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 当前地域下已产生的快照容量，单位Byte。
     #[serde(rename = "SnapshotSize")]
     pub snapshot_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前地域下的快照总数。
     #[serde(rename = "SnapshotCount")]
     pub snapshot_count: i32,
 }
@@ -86879,6 +92995,7 @@ impl crate::ToCodeMessage for DescribeSnapshotsUsageResponse {
 pub struct ModifySnapshotAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86894,8 +93011,10 @@ impl crate::ToCodeMessage for ModifySnapshotAttributeResponse {
 pub struct ModifySnapshotCategoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 归档任务ID。您可以通过DescribeTasks接口查询任务的状态、进度。
     #[serde(rename = "TaskId")]
     pub task_id: String,
 }
@@ -86911,8 +93030,10 @@ impl crate::ToCodeMessage for ModifySnapshotCategoryResponse {
 pub struct CopySnapshotResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 新快照的ID。
     #[serde(rename = "SnapshotId")]
     pub snapshot_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86928,6 +93049,7 @@ impl crate::ToCodeMessage for CopySnapshotResponse {
 pub struct DeleteSnapshotResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86943,14 +93065,20 @@ impl crate::ToCodeMessage for DeleteSnapshotResponse {
 pub struct DescribeSnapshotLinksResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 快照链列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 快照链总个数。
+    /// > 使用`MaxResults`和`NextToken`参数进行分页查询时，返回的`TotalCount`参数值无效。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "SnapshotLinks")]
@@ -86968,8 +93096,10 @@ impl crate::ToCodeMessage for DescribeSnapshotLinksResponse {
 pub struct CreateSnapshotGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 快照一致性组ID。
     #[serde(rename = "SnapshotGroupId")]
     pub snapshot_group_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -86985,8 +93115,12 @@ impl crate::ToCodeMessage for CreateSnapshotGroupResponse {
 pub struct DescribeSnapshotGroupsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 下一个查询起始标志。
+    ///
+    /// > 该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SnapshotGroups")]
@@ -87004,6 +93138,7 @@ impl crate::ToCodeMessage for DescribeSnapshotGroupsResponse {
 pub struct ModifySnapshotGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87019,6 +93154,7 @@ impl crate::ToCodeMessage for ModifySnapshotGroupResponse {
 pub struct DeleteSnapshotGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "OperationProgressSet")]
@@ -87036,8 +93172,10 @@ impl crate::ToCodeMessage for DeleteSnapshotGroupResponse {
 pub struct CreateAutoSnapshotPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87053,12 +93191,16 @@ impl crate::ToCodeMessage for CreateAutoSnapshotPolicyResponse {
 pub struct DescribeAutoSnapshotPolicyExResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页展示返回的自动快照策略时的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 自动快照策略列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 自动快照策略的总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "AutoSnapshotPolicies")]
@@ -87076,8 +93218,10 @@ impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyExResponse {
 pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "AutoSnapshotPolicyAssociations")]
@@ -87095,6 +93239,7 @@ impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyAssociationsResponse {
 pub struct ModifyAutoSnapshotPolicyExResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87110,6 +93255,7 @@ impl crate::ToCodeMessage for ModifyAutoSnapshotPolicyExResponse {
 pub struct ApplyAutoSnapshotPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87125,6 +93271,7 @@ impl crate::ToCodeMessage for ApplyAutoSnapshotPolicyResponse {
 pub struct CancelAutoSnapshotPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87140,6 +93287,7 @@ impl crate::ToCodeMessage for CancelAutoSnapshotPolicyResponse {
 pub struct DeleteAutoSnapshotPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87155,12 +93303,16 @@ impl crate::ToCodeMessage for DeleteAutoSnapshotPolicyResponse {
 pub struct DescribeSnapshotPackageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// OSS存储包列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 返回的OSS存储包总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "SnapshotPackages")]
@@ -87178,6 +93330,7 @@ impl crate::ToCodeMessage for DescribeSnapshotPackageResponse {
 pub struct DescribeBandwidthLimitationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "Bandwidths")]
@@ -87195,8 +93348,10 @@ impl crate::ToCodeMessage for DescribeBandwidthLimitationResponse {
 pub struct ModifyInstanceNetworkSpecResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 订单ID。仅在修改包年包月（PrePaid）实例的带宽配置时返回。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87212,8 +93367,10 @@ impl crate::ToCodeMessage for ModifyInstanceNetworkSpecResponse {
 pub struct AllocatePublicIpAddressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 实例的公网IP地址。
     #[serde(rename = "IpAddress")]
     pub ip_address: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87229,6 +93386,7 @@ impl crate::ToCodeMessage for AllocatePublicIpAddressResponse {
 pub struct ConvertNatPublicIpToEipResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87244,6 +93402,7 @@ impl crate::ToCodeMessage for ConvertNatPublicIpToEipResponse {
 pub struct ModifyInstanceVpcAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87259,12 +93418,16 @@ impl crate::ToCodeMessage for ModifyInstanceVpcAttributeResponse {
 pub struct DescribeClassicLinkInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 分页查询的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 连接总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Links")]
@@ -87282,6 +93445,7 @@ impl crate::ToCodeMessage for DescribeClassicLinkInstancesResponse {
 pub struct AttachClassicLinkVpcResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87297,6 +93461,7 @@ impl crate::ToCodeMessage for AttachClassicLinkVpcResponse {
 pub struct DetachClassicLinkVpcResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87312,34 +93477,49 @@ impl crate::ToCodeMessage for DetachClassicLinkVpcResponse {
 pub struct CreateNetworkInterfaceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 弹性网卡的状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 弹性网卡的类型。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 网卡所属的专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 弹性网卡的名称。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 弹性网卡的MAC地址。
     #[serde(rename = "MacAddress")]
     pub mac_address: String,
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 弹性网卡对应的虚商ID。
     #[serde(rename = "ServiceID")]
     pub service_id: i64,
+    /// 弹性网卡的所属账号ID。
     #[serde(rename = "OwnerId")]
     pub owner_id: String,
+    /// 该弹性网卡的使用者是否为云产品或虚商。
     #[serde(rename = "ServiceManaged")]
     pub service_managed: bool,
+    /// VPC的交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 弹性网卡的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 资源组ID。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 弹性网卡的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
     #[serde(rename = "SecurityGroupIds")]
@@ -87354,6 +93534,7 @@ pub struct CreateNetworkInterfaceResponse {
     pub ipv4_prefix_sets: InterfaceResponseIpv4PrefixSets,
     #[serde(rename = "Ipv6PrefixSets")]
     pub ipv6_prefix_sets: InterfaceResponseIpv6PrefixSets,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: bool,
 }
@@ -87369,14 +93550,24 @@ impl crate::ToCodeMessage for CreateNetworkInterfaceResponse {
 pub struct DescribeNetworkInterfacesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 分页查询参数。
+    ///
+    /// > 该参数即将下线，推荐您使用NextToken与MaxResults完成分页查询操作。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 分页查询参数。
+    ///
+    /// > 该参数即将下线，推荐您使用NextToken与MaxResults完成分页查询操作。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回的弹性网卡总数。
+    /// > 使用`MaxResults`和`NextToken`参数进行分页查询时，返回的`TotalCount`参数值无意义。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "NetworkInterfaceSets")]
@@ -87394,50 +93585,101 @@ impl crate::ToCodeMessage for DescribeNetworkInterfacesResponse {
 pub struct DescribeNetworkInterfaceAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 弹性网卡的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 弹性网卡所属的专有网络VPC ID。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 弹性网卡类型。可能值：
+    ///
+    /// * Primary：主网卡。
+    /// * Secondary：辅助弹性网卡。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 弹性网卡的状态。可能值：
+    ///
+    /// * Available：可用。
+    /// * Attaching：附加中。
+    /// * InUse：已附加。
+    /// * Detaching：分离中。
+    /// * Deleting：删除中。
+    ///
+    /// 默认值：空，表示查询所有状态。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 弹性网卡的通讯模式。可能值：
+    ///
+    /// - Standard：使用TCP通讯模式。
+    /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
+    ///
+    /// > HighPerformance参数值只支持RDMA增强型实例规格族c7re。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
     pub network_interface_traffic_mode: String,
+    /// 弹性网卡的名称。
     #[serde(rename = "NetworkInterfaceName")]
     pub network_interface_name: String,
+    /// 弹性网卡的MAC地址。
     #[serde(rename = "MacAddress")]
     pub mac_address: String,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueuePairNumber")]
     pub queue_pair_number: i32,
+    /// 弹性网卡的ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
+    /// 弹性网卡对应的虚商ID。
     #[serde(rename = "ServiceID")]
     pub service_id: i64,
+    /// 弹性网卡附加的实例ID。
+    ///
+    /// > 由其他阿里云服务管理和控制的弹性网卡不会返回实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 弹性网卡的所属账号ID。
     #[serde(rename = "OwnerId")]
     pub owner_id: String,
+    /// 该弹性网卡的使用者是否为云产品或虚商。
     #[serde(rename = "ServiceManaged")]
     pub service_managed: bool,
+    /// 弹性网卡所属的交换机ID。
     #[serde(rename = "VSwitchId")]
     pub v_switch_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 弹性网卡描述。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 实例所属的企业资源组ID。使用该参数过滤资源时，资源数量不能超过1000个。
+    ///
+    /// >不支持默认资源组过滤。
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: String,
+    /// 可用区ID。
     #[serde(rename = "ZoneId")]
     pub zone_id: String,
+    /// 弹性网卡的私网IP地址。
     #[serde(rename = "PrivateIpAddress")]
     pub private_ip_address: String,
+    /// 弹性网卡的队列数。
+    /// * 弹性网卡为主网卡：返回实例规格默认的主网卡队列数。
+    ///
+    /// * 弹性网卡为辅助网卡：
+    ///     * 辅助网卡是已附加（InUse）状态：
+    ///         * 辅助网卡没有修改过队列数，则返回实例规格默认的辅助网卡队列数。
+    ///         * 辅助网卡修改过队列数，则返回修改后的队列数。
+    ///     * 辅助网卡是可用（Available）状态：
+    ///         * 辅助网卡未修改过队列数，则返回值为空。
+    ///         * 辅助网卡修改过队列数，则返回修改后的队列数。
     #[serde(rename = "QueueNumber")]
     pub queue_number: i32,
     #[serde(rename = "SecurityGroupIds")]
     pub security_group_ids: InterfaceAttributeResponseSecurityGroupIds,
+    /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
     #[serde(rename = "AssociatedPublicIp")]
     pub associated_public_ip: ResponseAssociatedPublicIp,
+    /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "Attachment")]
     pub attachment: ResponseAttachment,
     #[serde(rename = "PrivateIpSets")]
@@ -87450,22 +93692,40 @@ pub struct DescribeNetworkInterfaceAttributeResponse {
     pub ipv6_prefix_sets: AttributeResponseIpv6PrefixSets,
     #[serde(rename = "Tags")]
     pub tags: AttributeResponseTags,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "BondInterfaceSpecification")]
     pub bond_interface_specification: BondInterfaceSpecification,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "SlaveInterfaceSpecification")]
     pub slave_interface_specification: ResponseSlaveInterfaceSpecification,
+    /// 释放实例时是否保留网卡。可能值：
+    ///
+    /// - true：不保留。
+    ///
+    /// - false：保留。
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: bool,
+    /// >该参数正在邀测中，暂未开放使用。
     #[serde(rename = "TcpOptionAddressEnabled")]
     pub tcp_option_address_enabled: String,
+    /// 弹性网卡通讯参数
     #[serde(rename = "NetworkInterfaceTrafficConfig")]
     pub network_interface_traffic_config: ResponseNetworkInterfaceTrafficConfig,
+    /// 网络连接跟踪配置信息集合。
+    ///
+    /// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
+    ///
+    ///
+    /// > 仅当入参`Attribute`取值为：`ConnectionTrackingConfiguration`时，返回该参数。
     #[serde(rename = "ConnectionTrackingConfiguration")]
     pub connection_tracking_configuration: ResponseConnectionTrackingConfiguration,
+    /// 该参数暂未开放使用。
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: bool,
+    /// 该参数暂未开放使用。
     #[serde(rename = "EnhancedNetwork")]
     pub enhanced_network: ResponseEnhancedNetwork,
+    /// QoS 限速设置
     #[serde(rename = "QoSConfig")]
     pub qo_s_config: SConfig,
 }
@@ -87481,6 +93741,7 @@ impl crate::ToCodeMessage for DescribeNetworkInterfaceAttributeResponse {
 pub struct ModifyNetworkInterfaceAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87496,6 +93757,7 @@ impl crate::ToCodeMessage for ModifyNetworkInterfaceAttributeResponse {
 pub struct DeleteNetworkInterfaceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87511,6 +93773,7 @@ impl crate::ToCodeMessage for DeleteNetworkInterfaceResponse {
 pub struct AttachNetworkInterfaceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87526,6 +93789,7 @@ impl crate::ToCodeMessage for AttachNetworkInterfaceResponse {
 pub struct DetachNetworkInterfaceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87541,8 +93805,10 @@ impl crate::ToCodeMessage for DetachNetworkInterfaceResponse {
 pub struct AssignPrivateIpAddressesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 已分配辅助私网IP地址的弹性网卡信息组成的集合。
     #[serde(rename = "AssignedPrivateIpAddressesSet")]
     pub assigned_private_ip_addresses_set: AddressesSet,
 }
@@ -87558,6 +93824,7 @@ impl crate::ToCodeMessage for AssignPrivateIpAddressesResponse {
 pub struct UnassignPrivateIpAddressesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87573,8 +93840,10 @@ impl crate::ToCodeMessage for UnassignPrivateIpAddressesResponse {
 pub struct AssignIpv6AddressesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 弹性网卡ID。
     #[serde(rename = "NetworkInterfaceId")]
     pub network_interface_id: String,
     #[serde(rename = "Ipv6Sets")]
@@ -87594,6 +93863,7 @@ impl crate::ToCodeMessage for AssignIpv6AddressesResponse {
 pub struct UnassignIpv6AddressesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87609,8 +93879,10 @@ impl crate::ToCodeMessage for UnassignIpv6AddressesResponse {
 pub struct CreateNetworkInterfacePermissionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 弹性网卡权限列表组成的信息集合。
     #[serde(rename = "NetworkInterfacePermission")]
     pub network_interface_permission: ResponseNetworkInterfacePermission,
 }
@@ -87626,12 +93898,16 @@ impl crate::ToCodeMessage for CreateNetworkInterfacePermissionResponse {
 pub struct DescribeNetworkInterfacePermissionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 查询到的条目总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "NetworkInterfacePermissions")]
@@ -87649,8 +93925,10 @@ impl crate::ToCodeMessage for DescribeNetworkInterfacePermissionsResponse {
 pub struct CreatePrefixListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 前缀列表ID。
     #[serde(rename = "PrefixListId")]
     pub prefix_list_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87666,8 +93944,10 @@ impl crate::ToCodeMessage for CreatePrefixListResponse {
 pub struct DescribePrefixListsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。当该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "PrefixLists")]
@@ -87685,18 +93965,28 @@ impl crate::ToCodeMessage for DescribePrefixListsResponse {
 pub struct DescribePrefixListAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 前缀列表的创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 前缀列表支持的最大条目容量。
     #[serde(rename = "MaxEntries")]
     pub max_entries: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 前缀列表的描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 前缀列表的地址族。可能值：
+    ///
+    /// - IPv4。
+    /// - IPv6。
     #[serde(rename = "AddressFamily")]
     pub address_family: String,
+    /// 前缀列表的名称。
     #[serde(rename = "PrefixListName")]
     pub prefix_list_name: String,
+    /// 前缀列表ID。
     #[serde(rename = "PrefixListId")]
     pub prefix_list_id: String,
     #[serde(rename = "Entries")]
@@ -87714,8 +94004,10 @@ impl crate::ToCodeMessage for DescribePrefixListAttributesResponse {
 pub struct DescribePrefixListAssociationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。当该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "PrefixListAssociations")]
@@ -87733,6 +94025,7 @@ impl crate::ToCodeMessage for DescribePrefixListAssociationsResponse {
 pub struct ModifyPrefixListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87748,6 +94041,7 @@ impl crate::ToCodeMessage for ModifyPrefixListResponse {
 pub struct DeletePrefixListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87763,8 +94057,10 @@ impl crate::ToCodeMessage for DeletePrefixListResponse {
 pub struct CreatePortRangeListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 创建成功的端口列表 ID。
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: String,
 }
@@ -87780,10 +94076,13 @@ impl crate::ToCodeMessage for CreatePortRangeListResponse {
 pub struct DescribePortRangeListsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 本次调用返回的查询凭证（Token）。当该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 端口列表信息组成的数组。
     #[serde(rename = "PortRangeLists")]
     pub port_range_lists: Vec<RangeList>,
 }
@@ -87799,8 +94098,10 @@ impl crate::ToCodeMessage for DescribePortRangeListsResponse {
 pub struct DescribePortRangeListEntriesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 端口列表条目数组。
     #[serde(rename = "Entries")]
     pub entries: Vec<ResponseEntry>,
 }
@@ -87816,10 +94117,13 @@ impl crate::ToCodeMessage for DescribePortRangeListEntriesResponse {
 pub struct DescribePortRangeListAssociationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证（Token）。当该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 端口列表已关联的资源信息组成的数组。
     #[serde(rename = "PortRangeListAssociations")]
     pub port_range_list_associations: Vec<RangeListAssociation>,
 }
@@ -87835,6 +94139,7 @@ impl crate::ToCodeMessage for DescribePortRangeListAssociationsResponse {
 pub struct ModifyPortRangeListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87850,6 +94155,7 @@ impl crate::ToCodeMessage for ModifyPortRangeListResponse {
 pub struct DeletePortRangeListResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87865,8 +94171,10 @@ impl crate::ToCodeMessage for DeletePortRangeListResponse {
 pub struct CreateSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 安全组ID。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87882,18 +94190,28 @@ impl crate::ToCodeMessage for CreateSecurityGroupResponse {
 pub struct DescribeSecurityGroupsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 安全组所属地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 本次调用返回的查询凭证（Token）。当使用MaxResults和NextToken方式进行分页查询，且该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "SecurityGroups")]
     pub security_groups: ResponseSecurityGroups,
+    /// 安全组的总数。当您使用`MaxResults`与`NextToken`参数查询时，不会返回该参数值。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 当前页码。
+    ///
+    /// > 该参数即将下线，推荐您使用NextToken与MaxResults完成分页查询操作。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 每页行数。
+    ///
+    /// > 该参数即将下线，推荐您使用NextToken与MaxResults完成分页查询操作。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
 }
@@ -87909,22 +94227,33 @@ impl crate::ToCodeMessage for DescribeSecurityGroupsResponse {
 pub struct DescribeSecurityGroupAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// VPC ID。如果返回VPC ID，表示该安全组网络类型为VPC。否则，表示是经典网络类型安全组。
     #[serde(rename = "VpcId")]
     pub vpc_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 安全组内网络连通策略。可能值：
+    ///          
+    /// - Accept：内网互通。
+    /// - Drop：内网隔离。
     #[serde(rename = "InnerAccessPolicy")]
     pub inner_access_policy: String,
+    /// 安全组描述信息。
     #[serde(rename = "Description")]
     pub description: String,
+    /// 安全组ID。
     #[serde(rename = "SecurityGroupId")]
     pub security_group_id: String,
+    /// 安全组名称。
     #[serde(rename = "SecurityGroupName")]
     pub security_group_name: String,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "Permissions")]
     pub permissions: ResponsePermissions,
+    /// 本次调用返回的查询凭证（Token）。当使用`MaxResults`和`NextToken`方式进行分页查询，且该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "SnapshotPolicyIds")]
@@ -87942,6 +94271,7 @@ impl crate::ToCodeMessage for DescribeSecurityGroupAttributeResponse {
 pub struct ModifySecurityGroupPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87957,6 +94287,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupPolicyResponse {
 pub struct ModifySecurityGroupAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87972,6 +94303,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupAttributeResponse {
 pub struct DeleteSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -87987,6 +94319,7 @@ impl crate::ToCodeMessage for DeleteSecurityGroupResponse {
 pub struct AuthorizeSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88002,6 +94335,7 @@ impl crate::ToCodeMessage for AuthorizeSecurityGroupResponse {
 pub struct ModifySecurityGroupRuleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88017,6 +94351,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupRuleResponse {
 pub struct RevokeSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88032,6 +94367,7 @@ impl crate::ToCodeMessage for RevokeSecurityGroupResponse {
 pub struct AuthorizeSecurityGroupEgressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88047,6 +94383,7 @@ impl crate::ToCodeMessage for AuthorizeSecurityGroupEgressResponse {
 pub struct ModifySecurityGroupEgressRuleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88062,6 +94399,7 @@ impl crate::ToCodeMessage for ModifySecurityGroupEgressRuleResponse {
 pub struct RevokeSecurityGroupEgressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88077,6 +94415,7 @@ impl crate::ToCodeMessage for RevokeSecurityGroupEgressResponse {
 pub struct DescribeSecurityGroupReferencesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "SecurityGroupReferences")]
@@ -88094,6 +94433,7 @@ impl crate::ToCodeMessage for DescribeSecurityGroupReferencesResponse {
 pub struct JoinSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88109,6 +94449,7 @@ impl crate::ToCodeMessage for JoinSecurityGroupResponse {
 pub struct LeaveSecurityGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88124,14 +94465,19 @@ impl crate::ToCodeMessage for LeaveSecurityGroupResponse {
 pub struct CreateKeyPairResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 密钥对的私钥。PEM编码的PKCS#8格式的私钥部分。
     #[serde(rename = "PrivateKeyBody")]
     pub private_key_body: String,
+    /// 密钥对名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// SSH密钥对的ID。
     #[serde(rename = "KeyPairId")]
     pub key_pair_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 密钥对的指纹。根据RFC4716定义的公钥指纹格式，采用MD5信息摘要算法。更多信息，请参见[RFC4716](https://tools.ietf.org/html/rfc4716)。
     #[serde(rename = "KeyPairFingerPrint")]
     pub key_pair_finger_print: String,
 }
@@ -88147,10 +94493,13 @@ impl crate::ToCodeMessage for CreateKeyPairResponse {
 pub struct ImportKeyPairResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 密钥对名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 密钥对的指纹。根据RFC 4716定义的公钥指纹格式，采用MD5信息摘要算法。
     #[serde(rename = "KeyPairFingerPrint")]
     pub key_pair_finger_print: String,
 }
@@ -88166,12 +94515,16 @@ impl crate::ToCodeMessage for ImportKeyPairResponse {
 pub struct DescribeKeyPairsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 密钥对的总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "KeyPairs")]
@@ -88189,12 +94542,16 @@ impl crate::ToCodeMessage for DescribeKeyPairsResponse {
 pub struct AttachKeyPairResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 密钥对的名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 绑定密钥对的实例总数量。
     #[serde(rename = "TotalCount")]
     pub total_count: String,
+    /// 绑定密钥对失败的实例数量。
     #[serde(rename = "FailCount")]
     pub fail_count: String,
     #[serde(rename = "Results")]
@@ -88212,12 +94569,16 @@ impl crate::ToCodeMessage for AttachKeyPairResponse {
 pub struct DetachKeyPairResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 密钥对的名称。
     #[serde(rename = "KeyPairName")]
     pub key_pair_name: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 解绑密钥对的实例总数量。
     #[serde(rename = "TotalCount")]
     pub total_count: String,
+    /// 解绑密钥对失败的实例数量。
     #[serde(rename = "FailCount")]
     pub fail_count: String,
     #[serde(rename = "Results")]
@@ -88235,6 +94596,7 @@ impl crate::ToCodeMessage for DetachKeyPairResponse {
 pub struct DeleteKeyPairsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88250,10 +94612,13 @@ impl crate::ToCodeMessage for DeleteKeyPairsResponse {
 pub struct CreateLaunchTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 实例启动模板ID。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例启动模板版本号。
     #[serde(rename = "LaunchTemplateVersionNumber")]
     pub launch_template_version_number: i64,
 }
@@ -88269,12 +94634,16 @@ impl crate::ToCodeMessage for CreateLaunchTemplateResponse {
 pub struct DescribeLaunchTemplatesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 实例启动模板总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "LaunchTemplateSets")]
@@ -88292,8 +94661,12 @@ impl crate::ToCodeMessage for DescribeLaunchTemplatesResponse {
 pub struct DeleteLaunchTemplateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 启动模板ID。更多信息，请参见[DescribeLaunchTemplates](~~73759~~)。
+    ///
+    /// 使用启动模板创建实例时，您必须指定`LaunchTemplateId`或`LaunchTemplateName`以确定启动模板。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
     #[serde(rename = "LaunchTemplateVersionNumbers")]
@@ -88311,10 +94684,15 @@ impl crate::ToCodeMessage for DeleteLaunchTemplateResponse {
 pub struct CreateLaunchTemplateVersionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 创建成功的启动模板版本号。
     #[serde(rename = "LaunchTemplateVersionNumber")]
     pub launch_template_version_number: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 启动模板ID。更多信息，请参见[DescribeLaunchTemplates](~~73759~~)。
+    ///
+    /// 使用启动模板创建实例时，您必须指定`LaunchTemplateId`或`LaunchTemplateName`以确定启动模板。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
 }
@@ -88330,12 +94708,16 @@ impl crate::ToCodeMessage for CreateLaunchTemplateVersionResponse {
 pub struct DescribeLaunchTemplateVersionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 实例启动模板总数。？？？？？？？？？？
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "LaunchTemplateVersionSets")]
@@ -88353,8 +94735,10 @@ impl crate::ToCodeMessage for DescribeLaunchTemplateVersionsResponse {
 pub struct ModifyLaunchTemplateDefaultVersionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 启动模板ID。更多信息，请参见[DescribeLaunchTemplates](~~73759~~)。
     #[serde(rename = "LaunchTemplateId")]
     pub launch_template_id: String,
 }
@@ -88370,6 +94754,7 @@ impl crate::ToCodeMessage for ModifyLaunchTemplateDefaultVersionResponse {
 pub struct DeleteLaunchTemplateVersionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "LaunchTemplateVersions")]
@@ -88387,8 +94772,10 @@ impl crate::ToCodeMessage for DeleteLaunchTemplateVersionResponse {
 pub struct CreateAutoProvisioningGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 弹性供应组的ID。
     #[serde(rename = "AutoProvisioningGroupId")]
     pub auto_provisioning_group_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "LaunchResults")]
@@ -88406,12 +94793,16 @@ impl crate::ToCodeMessage for CreateAutoProvisioningGroupResponse {
 pub struct DescribeAutoProvisioningGroupsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 查询到的弹性供应组的个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "AutoProvisioningGroups")]
@@ -88429,12 +94820,16 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupsResponse {
 pub struct DescribeAutoProvisioningGroupInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 查询到的弹性供应组内实例的个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Instances")]
@@ -88452,6 +94847,7 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupInstancesResponse {
 pub struct ModifyAutoProvisioningGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88467,12 +94863,16 @@ impl crate::ToCodeMessage for ModifyAutoProvisioningGroupResponse {
 pub struct DescribeAutoProvisioningGroupHistoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 查询到的调度任务的总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "AutoProvisioningGroupHistories")]
@@ -88490,6 +94890,7 @@ impl crate::ToCodeMessage for DescribeAutoProvisioningGroupHistoryResponse {
 pub struct DeleteAutoProvisioningGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88505,8 +94906,10 @@ impl crate::ToCodeMessage for DeleteAutoProvisioningGroupResponse {
 pub struct CreateDeploymentSetResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 部署集ID。
     #[serde(rename = "DeploymentSetId")]
     pub deployment_set_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88522,8 +94925,10 @@ impl crate::ToCodeMessage for CreateDeploymentSetResponse {
 pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 支持对应部署集策略的实例规格族。
     #[serde(rename = "InstanceTypeFamilies")]
     pub instance_type_families: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88539,14 +94944,19 @@ impl crate::ToCodeMessage for DescribeDeploymentSetSupportedInstanceTypeFamilyRe
 pub struct DescribeDeploymentSetsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 部署集列表的页数。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询到的部署集总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 部署集所处的地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "DeploymentSets")]
@@ -88564,6 +94974,7 @@ impl crate::ToCodeMessage for DescribeDeploymentSetsResponse {
 pub struct ModifyInstanceDeploymentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88579,6 +94990,7 @@ impl crate::ToCodeMessage for ModifyInstanceDeploymentResponse {
 pub struct ModifyDeploymentSetAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88594,6 +95006,7 @@ impl crate::ToCodeMessage for ModifyDeploymentSetAttributeResponse {
 pub struct DeleteDeploymentSetResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88609,10 +95022,13 @@ impl crate::ToCodeMessage for DeleteDeploymentSetResponse {
 pub struct CreateElasticityAssuranceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 弹性保障服务ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
+    /// 生成的订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -88628,12 +95044,16 @@ impl crate::ToCodeMessage for CreateElasticityAssuranceResponse {
 pub struct DescribeElasticityAssurancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 弹性保障服务下一个查询起始标志。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 弹性保障服务每页显示行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "ElasticityAssuranceSet")]
@@ -88651,12 +95071,16 @@ impl crate::ToCodeMessage for DescribeElasticityAssurancesResponse {
 pub struct DescribeElasticityAssuranceInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 弹性保障服务下一个查询起始标志。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 分页查询时每页行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "ElasticityAssuranceItem")]
@@ -88674,6 +95098,7 @@ impl crate::ToCodeMessage for DescribeElasticityAssuranceInstancesResponse {
 pub struct ModifyElasticityAssuranceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88689,8 +95114,10 @@ impl crate::ToCodeMessage for ModifyElasticityAssuranceResponse {
 pub struct RenewElasticityAssurancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 续费订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
     #[serde(rename = "PrivatePoolOptionsIdSet")]
@@ -88708,6 +95135,7 @@ impl crate::ToCodeMessage for RenewElasticityAssurancesResponse {
 pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88723,6 +95151,7 @@ impl crate::ToCodeMessage for ModifyElasticityAssuranceAutoRenewAttributeRespons
 pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "ElasticityAssuranceRenewAttributes")]
@@ -88740,6 +95169,7 @@ impl crate::ToCodeMessage for DescribeElasticityAssuranceAutoRenewAttributeRespo
 pub struct PurchaseElasticityAssuranceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求 ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88755,8 +95185,10 @@ impl crate::ToCodeMessage for PurchaseElasticityAssuranceResponse {
 pub struct CreateCapacityReservationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 容量预定服务ID。
     #[serde(rename = "PrivatePoolOptionsId")]
     pub private_pool_options_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88772,12 +95204,16 @@ impl crate::ToCodeMessage for CreateCapacityReservationResponse {
 pub struct DescribeCapacityReservationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 容量预定服务下一个查询起始标志。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 容量预定服务每页显示行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "CapacityReservationSet")]
@@ -88795,12 +95231,16 @@ impl crate::ToCodeMessage for DescribeCapacityReservationsResponse {
 pub struct DescribeCapacityReservationInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 容量预定服务下一个查询起始标志。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求 ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 分页查询时每页行数。
     #[serde(rename = "MaxResults")]
     pub max_results: i32,
     #[serde(rename = "CapacityReservationItem")]
@@ -88818,6 +95258,7 @@ impl crate::ToCodeMessage for DescribeCapacityReservationInstancesResponse {
 pub struct ModifyCapacityReservationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88833,12 +95274,16 @@ impl crate::ToCodeMessage for ModifyCapacityReservationResponse {
 pub struct DescribeInstanceAttachmentAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例状态列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Instances")]
@@ -88856,6 +95301,7 @@ impl crate::ToCodeMessage for DescribeInstanceAttachmentAttributesResponse {
 pub struct ModifyInstanceAttachmentAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88871,6 +95317,7 @@ impl crate::ToCodeMessage for ModifyInstanceAttachmentAttributesResponse {
 pub struct ReleaseCapacityReservationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88886,10 +95333,12 @@ impl crate::ToCodeMessage for ReleaseCapacityReservationResponse {
 pub struct PurchaseReservedInstancesOfferingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "ReservedInstanceIdSets")]
     pub reserved_instance_id_sets: OfferingResponseReservedInstanceIdSets,
+    /// 订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -88905,12 +95354,16 @@ impl crate::ToCodeMessage for PurchaseReservedInstancesOfferingResponse {
 pub struct DescribeReservedInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 预留实例券列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 预留实例券的总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "ReservedInstances")]
@@ -88928,6 +95381,7 @@ impl crate::ToCodeMessage for DescribeReservedInstancesResponse {
 pub struct ModifyReservedInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "ReservedInstanceIdSets")]
@@ -88945,8 +95399,10 @@ impl crate::ToCodeMessage for ModifyReservedInstancesResponse {
 pub struct ModifyReservedInstanceAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// HTTP状态码。
     #[serde(rename = "HttpStatusCode")]
     pub http_status_code: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -88962,10 +95418,12 @@ impl crate::ToCodeMessage for ModifyReservedInstanceAttributeResponse {
 pub struct RenewReservedInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "ReservedInstanceIdSets")]
     pub reserved_instance_id_sets: RenewReservedInstancesResponseReservedInstanceIdSets,
+    /// 订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -88981,6 +95439,7 @@ impl crate::ToCodeMessage for RenewReservedInstancesResponse {
 pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "ReservedInstanceRenewAttributes")]
@@ -88998,6 +95457,7 @@ impl crate::ToCodeMessage for DescribeReservedInstanceAutoRenewAttributeResponse
 pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89013,8 +95473,10 @@ impl crate::ToCodeMessage for ModifyReservedInstanceAutoRenewAttributeResponse {
 pub struct PurchaseStorageCapacityUnitResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "StorageCapacityUnitIds")]
@@ -89032,12 +95494,16 @@ impl crate::ToCodeMessage for PurchaseStorageCapacityUnitResponse {
 pub struct DescribeStorageCapacityUnitsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// SCU列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// SCU总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "StorageCapacityUnits")]
@@ -89055,6 +95521,7 @@ impl crate::ToCodeMessage for DescribeStorageCapacityUnitsResponse {
 pub struct ModifyStorageCapacityUnitAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89070,10 +95537,13 @@ impl crate::ToCodeMessage for ModifyStorageCapacityUnitAttributeResponse {
 pub struct RunCommandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 命令ID。
     #[serde(rename = "CommandId")]
     pub command_id: String,
+    /// 命令执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
 }
@@ -89089,8 +95559,10 @@ impl crate::ToCodeMessage for RunCommandResponse {
 pub struct CreateCommandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 命令ID。
     #[serde(rename = "CommandId")]
     pub command_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89106,8 +95578,10 @@ impl crate::ToCodeMessage for CreateCommandResponse {
 pub struct InvokeCommandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 命令执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89123,14 +95597,19 @@ impl crate::ToCodeMessage for InvokeCommandResponse {
 pub struct DescribeInvocationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 命令总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "Invocations")]
@@ -89148,8 +95627,10 @@ impl crate::ToCodeMessage for DescribeInvocationsResponse {
 pub struct DescribeInvocationResultsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 命令执行结果的集合。
     #[serde(rename = "Invocation")]
     pub invocation: ResponseInvocation,
 }
@@ -89165,8 +95646,13 @@ impl crate::ToCodeMessage for DescribeInvocationResultsResponse {
 pub struct ModifyInvocationAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 命令ID。
+    ///    - 只有`CommandContent`发生变更，才新增一条命令，返回新增的`CommandId`。
+    ///    - 当`CommandContent`未变更时，不会新增命令，将返回当前正在执行命令的`CommandId`。
+    ///    - 若调用[InvokeCommand](~~64841~~)，或调用[RunCommand](~~141751~~)时选择了`KeepCommand`为`true`，将会保留新增的命令；否则执行完成或手动停止任务时，将删除任务所有关联的命令。
     #[serde(rename = "CommandId")]
     pub command_id: String,
 }
@@ -89182,6 +95668,7 @@ impl crate::ToCodeMessage for ModifyInvocationAttributeResponse {
 pub struct StopInvocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89197,14 +95684,19 @@ impl crate::ToCodeMessage for StopInvocationResponse {
 pub struct DescribeCommandsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 命令列表页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 命令总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "Commands")]
@@ -89222,6 +95714,7 @@ impl crate::ToCodeMessage for DescribeCommandsResponse {
 pub struct ModifyCommandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89237,6 +95730,7 @@ impl crate::ToCodeMessage for ModifyCommandResponse {
 pub struct DeleteCommandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89252,8 +95746,10 @@ impl crate::ToCodeMessage for DeleteCommandResponse {
 pub struct SendFileResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 命令执行ID。
     #[serde(rename = "InvokeId")]
     pub invoke_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89269,14 +95765,19 @@ impl crate::ToCodeMessage for SendFileResponse {
 pub struct DescribeSendFileResultsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果的当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 脚本总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "Invocations")]
@@ -89294,14 +95795,19 @@ impl crate::ToCodeMessage for DescribeSendFileResultsResponse {
 pub struct DescribeCloudAssistantStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 实例总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "InstanceCloudAssistantStatusSet")]
@@ -89319,6 +95825,7 @@ impl crate::ToCodeMessage for DescribeCloudAssistantStatusResponse {
 pub struct InstallCloudAssistantResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89334,12 +95841,16 @@ impl crate::ToCodeMessage for InstallCloudAssistantResponse {
 pub struct StartTerminalSessionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 会话ID。
     #[serde(rename = "SessionId")]
     pub session_id: String,
+    /// 附加在WebSocket的请求头部，用于系统校验本次请求。
     #[serde(rename = "SecurityToken")]
     pub security_token: String,
+    /// 远程连接ECS实例的WebSocket会话对应的URL。包含了会话ID（`SessionId`）以及用于系统校验的`SecurityToken`。
     #[serde(rename = "WebSocketUrl")]
     pub web_socket_url: String,
 }
@@ -89355,6 +95866,7 @@ impl crate::ToCodeMessage for StartTerminalSessionResponse {
 pub struct EndTerminalSessionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89370,8 +95882,10 @@ impl crate::ToCodeMessage for EndTerminalSessionResponse {
 pub struct DescribeTerminalSessionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "Sessions")]
@@ -89389,6 +95903,7 @@ impl crate::ToCodeMessage for DescribeTerminalSessionsResponse {
 pub struct ModifyCloudAssistantSettingsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89404,14 +95919,17 @@ impl crate::ToCodeMessage for ModifyCloudAssistantSettingsResponse {
 pub struct DescribeCloudAssistantSettingsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "OssDeliveryConfigs")]
     pub oss_delivery_configs: OssDeliveryConfigs,
     #[serde(rename = "SlsDeliveryConfigs")]
     pub sls_delivery_configs: SlsDeliveryConfigs,
+    /// 云助手Agent升级配置。
     #[serde(rename = "AgentUpgradeConfig")]
     pub agent_upgrade_config: ResponseAgentUpgradeConfig,
+    /// 云助手会话功能配置。
     #[serde(rename = "SessionManagerConfig")]
     pub session_manager_config: ResponseSessionManagerConfig,
 }
@@ -89427,10 +95945,13 @@ impl crate::ToCodeMessage for DescribeCloudAssistantSettingsResponse {
 pub struct CreateActivationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 激活码的代码。该代码仅在调用接口时返回一次，后续无法被查询。因此，请您务必妥善保存返回值。
     #[serde(rename = "ActivationCode")]
     pub activation_code: String,
+    /// 激活码ID。
     #[serde(rename = "ActivationId")]
     pub activation_id: String,
 }
@@ -89446,16 +95967,22 @@ impl crate::ToCodeMessage for CreateActivationResponse {
 pub struct DescribeActivationsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 激活码及使用情况信息组成的集合。
     #[serde(rename = "ActivationList")]
     pub activation_list: Vec<ActivationList>,
 }
@@ -89471,8 +95998,10 @@ impl crate::ToCodeMessage for DescribeActivationsResponse {
 pub struct DisableActivationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 激活码及使用情况信息组成的集合。
     #[serde(rename = "Activation")]
     pub activation: DisableActivationResponseActivation,
 }
@@ -89488,8 +96017,10 @@ impl crate::ToCodeMessage for DisableActivationResponse {
 pub struct DeleteActivationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 激活码及使用情况信息组成的集合。
     #[serde(rename = "Activation")]
     pub activation: DeleteActivationResponseActivation,
 }
@@ -89505,16 +96036,22 @@ impl crate::ToCodeMessage for DeleteActivationResponse {
 pub struct DescribeManagedInstancesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 托管实例列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 查询到的托管实例总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 托管实例列表。
     #[serde(rename = "Instances")]
     pub instances: Vec<InstancesResponseInstance>,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
 }
@@ -89530,8 +96067,10 @@ impl crate::ToCodeMessage for DescribeManagedInstancesResponse {
 pub struct ModifyManagedInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 托管实例信息组成的集合。
     #[serde(rename = "Instance")]
     pub instance: ModifyManagedInstanceResponseInstance,
 }
@@ -89547,8 +96086,10 @@ impl crate::ToCodeMessage for ModifyManagedInstanceResponse {
 pub struct DeregisterManagedInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 托管实例的信息组成的集合。
     #[serde(rename = "Instance")]
     pub instance: DeregisterManagedInstanceResponseInstance,
 }
@@ -89564,14 +96105,19 @@ impl crate::ToCodeMessage for DeregisterManagedInstanceResponse {
 pub struct ListPluginStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i64,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i64,
+    /// 符合查询条件的记录条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i64,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "InstancePluginStatusSet")]
@@ -89589,12 +96135,16 @@ impl crate::ToCodeMessage for ListPluginStatusResponse {
 pub struct DescribeInstancesFullStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页大小。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 总条数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "InstanceFullStatusSet")]
@@ -89612,12 +96162,16 @@ impl crate::ToCodeMessage for DescribeInstancesFullStatusResponse {
 pub struct DescribeDisksFullStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 每页大小。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 列表页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 全状态总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "DiskFullStatusSet")]
@@ -89635,16 +96189,30 @@ impl crate::ToCodeMessage for DescribeDisksFullStatusResponse {
 pub struct DescribeInstanceHistoryEventsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
+    ///
+    /// > * 使用MaxResults和NextToken参数进行分页查询时，返回的PageSize参数值无意义。
+    /// > * 该参数即将下线，推荐您使用 NextToken 与 MaxResults 完成分页查询操作。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例事件列表页码。
+    ///
+    /// > * 使用MaxResults和NextToken参数进行分页查询时，返回的PageNumber参数值无意义。
+    /// > * 该参数即将下线，推荐您使用 NextToken 与 MaxResults 完成分页查询操作。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 实例事件总个数。
+    ///
+    /// >  使用MaxResults和NextToken参数进行分页查询时，返回的TotalCount参数值无意义。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "InstanceSystemEventSet")]
     pub instance_system_event_set: InstanceSystemEventSet,
+    /// 本次调用返回的查询凭证值。
+    /// > 当使用 MaxResults 和 NextToken 参数进行分页查询时未返回NextToken,说明已经没有更多的数据要返回。
     #[serde(rename = "NextToken")]
     pub next_token: String,
 }
@@ -89660,6 +96228,7 @@ impl crate::ToCodeMessage for DescribeInstanceHistoryEventsResponse {
 pub struct CreateSimulatedSystemEventsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "EventIdSet")]
@@ -89677,6 +96246,7 @@ impl crate::ToCodeMessage for CreateSimulatedSystemEventsResponse {
 pub struct CancelSimulatedSystemEventsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89692,6 +96262,7 @@ impl crate::ToCodeMessage for CancelSimulatedSystemEventsResponse {
 pub struct AcceptInquiredSystemEventResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89707,10 +96278,13 @@ impl crate::ToCodeMessage for AcceptInquiredSystemEventResponse {
 pub struct DescribeDiagnosticMetricsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 诊断指标。
     #[serde(rename = "Metrics")]
     pub metrics: Vec<ResponseMetric>,
 }
@@ -89726,8 +96300,10 @@ impl crate::ToCodeMessage for DescribeDiagnosticMetricsResponse {
 pub struct CreateDiagnosticMetricSetResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 诊断指标集合的唯一识别码。
     #[serde(rename = "MetricSetId")]
     pub metric_set_id: String,
 }
@@ -89743,10 +96319,13 @@ impl crate::ToCodeMessage for CreateDiagnosticMetricSetResponse {
 pub struct DescribeDiagnosticMetricSetsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 诊断指标集合。
     #[serde(rename = "MetricSets")]
     pub metric_sets: Vec<MetricSet>,
 }
@@ -89762,6 +96341,7 @@ impl crate::ToCodeMessage for DescribeDiagnosticMetricSetsResponse {
 pub struct ModifyDiagnosticMetricSetResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89777,6 +96357,7 @@ impl crate::ToCodeMessage for ModifyDiagnosticMetricSetResponse {
 pub struct DeleteDiagnosticMetricSetsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89792,8 +96373,10 @@ impl crate::ToCodeMessage for DeleteDiagnosticMetricSetsResponse {
 pub struct CreateDiagnosticReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 诊断报告ID，资源诊断报告的唯一标志。
     #[serde(rename = "ReportId")]
     pub report_id: String,
 }
@@ -89809,8 +96392,10 @@ impl crate::ToCodeMessage for CreateDiagnosticReportResponse {
 pub struct DescribeDiagnosticReportsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 本次调用返回的查询凭证值。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "Reports")]
@@ -89828,30 +96413,52 @@ impl crate::ToCodeMessage for DescribeDiagnosticReportsResponse {
 pub struct DescribeDiagnosticReportAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 资源ID。
     #[serde(rename = "ResourceId")]
     pub resource_id: String,
+    /// 资源类型。支持的类型为instance。
     #[serde(rename = "ResourceType")]
     pub resource_type: String,
+    /// 诊断报告ID。资源诊断报告的唯一标志。
     #[serde(rename = "ReportId")]
     pub report_id: String,
+    /// 诊断报告状态。可能值：
+    ///
+    /// - InProgress：诊断中。
+    /// - Finished：诊断完成。
+    /// - Failed：诊断失败。
     #[serde(rename = "Status")]
     pub status: String,
+    /// 诊断报告创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 诊断报告完成时间。
     #[serde(rename = "FinishedTime")]
     pub finished_time: String,
+    /// 开始时间。调用[CreateDiagnosticReport](~~442490~~)接口创建诊断报告时传入的参数。
     #[serde(rename = "StartTime")]
     pub start_time: String,
+    /// 结束时间。调用[CreateDiagnosticReport](~~442490~~)接口创建诊断报告时传入的参数。
     #[serde(rename = "EndTime")]
     pub end_time: String,
+    /// 报告严重等级。所有指标中最严重的等级，严重等级由轻到重如下：
+    ///
+    /// - Unknown：初始状态，表示未开始诊断或者诊断过程程序异常退出，无诊断结论。
+    /// - Normal：诊断正常，没有发现问题。
+    /// - Info：有关联信息，可能与异常相关。
+    /// - Warn：有关联信息，可能导致异常。
+    /// - Critical：有关键异常。
     #[serde(rename = "Severity")]
     pub severity: String,
+    /// 诊断指标集合ID。
     #[serde(rename = "MetricSetId")]
     pub metric_set_id: String,
     #[serde(rename = "MetricResults")]
     pub metric_results: MetricResults,
+    /// 诊断报告的扩展属性。
     #[serde(rename = "Attributes")]
     pub attributes: String,
 }
@@ -89867,6 +96474,7 @@ impl crate::ToCodeMessage for DescribeDiagnosticReportAttributesResponse {
 pub struct DeleteDiagnosticReportsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -89882,10 +96490,13 @@ impl crate::ToCodeMessage for DeleteDiagnosticReportsResponse {
 pub struct GetInstanceScreenshotResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// JPG图像格式的实例截屏，返回Base64编码后的图像。
     #[serde(rename = "Screenshot")]
     pub screenshot: String,
 }
@@ -89901,12 +96512,16 @@ impl crate::ToCodeMessage for GetInstanceScreenshotResponse {
 pub struct GetInstanceConsoleOutputResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 该字段记录的是Linux内核日志打印最后一条日志时的北京时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "LastUpdateTime")]
     pub last_update_time: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 实例ID。
     #[serde(rename = "InstanceId")]
     pub instance_id: String,
+    /// 实例的系统命令行输出，根据Base64编码后输出。
     #[serde(rename = "ConsoleOutput")]
     pub console_output: String,
 }
@@ -89922,8 +96537,10 @@ impl crate::ToCodeMessage for GetInstanceConsoleOutputResponse {
 pub struct DescribeDiskMonitorDataResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 云盘使用信息的返回条目数量，即周期数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "MonitorData")]
@@ -89941,6 +96558,7 @@ impl crate::ToCodeMessage for DescribeDiskMonitorDataResponse {
 pub struct DescribeInstanceMonitorDataResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "MonitorData")]
@@ -89958,8 +96576,10 @@ impl crate::ToCodeMessage for DescribeInstanceMonitorDataResponse {
 pub struct DescribeEniMonitorDataResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 返回条目数量。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "MonitorData")]
@@ -89977,6 +96597,7 @@ impl crate::ToCodeMessage for DescribeEniMonitorDataResponse {
 pub struct DescribeSnapshotMonitorDataResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "MonitorData")]
@@ -89994,12 +96615,16 @@ impl crate::ToCodeMessage for DescribeSnapshotMonitorDataResponse {
 pub struct DescribeInstanceMaintenanceAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 单页返回的条数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 维护属性列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 查询到的维护属性总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "MaintenanceAttributes")]
@@ -90017,6 +96642,7 @@ impl crate::ToCodeMessage for DescribeInstanceMaintenanceAttributesResponse {
 pub struct ModifyInstanceMaintenanceAttributesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90032,8 +96658,12 @@ impl crate::ToCodeMessage for ModifyInstanceMaintenanceAttributesResponse {
 pub struct RedeployInstanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 重新部署的任务ID。
+    ///
+    /// 您可以使用[DescribeTasks](~~25622~~)接口查询迁移结果。
     #[serde(rename = "TaskId")]
     pub task_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90049,6 +96679,7 @@ impl crate::ToCodeMessage for RedeployInstanceResponse {
 pub struct ReportInstancesStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90064,6 +96695,7 @@ impl crate::ToCodeMessage for ReportInstancesStatusResponse {
 pub struct TagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90079,8 +96711,10 @@ impl crate::ToCodeMessage for TagResourcesResponse {
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 下一个查询开始Token。
     #[serde(rename = "NextToken")]
     pub next_token: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "TagResources")]
@@ -90098,6 +96732,7 @@ impl crate::ToCodeMessage for ListTagResourcesResponse {
 pub struct UntagResourcesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90113,6 +96748,7 @@ impl crate::ToCodeMessage for UntagResourcesResponse {
 pub struct JoinResourceGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90128,10 +96764,14 @@ impl crate::ToCodeMessage for JoinResourceGroupResponse {
 pub struct AllocateDedicatedHostsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "DedicatedHostIdSets")]
     pub dedicated_host_id_sets: HostIdSets,
+    /// 订单ID。
+    ///
+    /// >该参数只有创建包年包月专有宿主机（请求参数**ChargeType=PrePaid**）时才有返回值。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -90147,14 +96787,19 @@ impl crate::ToCodeMessage for AllocateDedicatedHostsResponse {
 pub struct DescribeDedicatedHostsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 专有宿主机列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 专有宿主机总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 本次调用返回的查询凭证（Token）。当使用 MaxResults 和 NextToken 方式进行分页查询，且该返回值为空时，表示无更多返回的数据信息。
     #[serde(rename = "NextToken")]
     pub next_token: String,
     #[serde(rename = "DedicatedHosts")]
@@ -90172,6 +96817,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostsResponse {
 pub struct DescribeDedicatedHostTypesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "DedicatedHostTypes")]
@@ -90189,6 +96835,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostTypesResponse {
 pub struct ModifyDedicatedHostAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90204,8 +96851,10 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAttributeResponse {
 pub struct ModifyDedicatedHostsChargeTypeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 订单ID。仅在付费方式修改为预付费时返回。
     #[serde(rename = "OrderId")]
     pub order_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "FeeOfInstances")]
@@ -90223,6 +96872,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostsChargeTypeResponse {
 pub struct DescribeDedicatedHostAutoRenewResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
     #[serde(rename = "DedicatedHostRenewAttributes")]
@@ -90240,6 +96890,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostAutoRenewResponse {
 pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90255,8 +96906,10 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAutoRenewAttributeResponse {
 pub struct RenewDedicatedHostsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 订单ID。
     #[serde(rename = "OrderId")]
     pub order_id: String,
 }
@@ -90272,6 +96925,7 @@ impl crate::ToCodeMessage for RenewDedicatedHostsResponse {
 pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90287,6 +96941,7 @@ impl crate::ToCodeMessage for ModifyDedicatedHostAutoReleaseTimeResponse {
 pub struct RedeployDedicatedHostResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90302,6 +96957,7 @@ impl crate::ToCodeMessage for RedeployDedicatedHostResponse {
 pub struct ReleaseDedicatedHostResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90317,8 +96973,10 @@ impl crate::ToCodeMessage for ReleaseDedicatedHostResponse {
 pub struct CreateDedicatedHostClusterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 专有宿主机组ID。
     #[serde(rename = "DedicatedHostClusterId")]
     pub dedicated_host_cluster_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90334,6 +96992,7 @@ impl crate::ToCodeMessage for CreateDedicatedHostClusterResponse {
 pub struct ModifyDedicatedHostClusterAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90349,12 +97008,16 @@ impl crate::ToCodeMessage for ModifyDedicatedHostClusterAttributeResponse {
 pub struct DescribeDedicatedHostClustersResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 专有宿主机组状态列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 专有宿主机总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "DedicatedHostClusters")]
@@ -90372,6 +97035,7 @@ impl crate::ToCodeMessage for DescribeDedicatedHostClustersResponse {
 pub struct DeleteDedicatedHostClusterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90387,8 +97051,10 @@ impl crate::ToCodeMessage for DeleteDedicatedHostClusterResponse {
 pub struct CreateHpcClusterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 集群ID。
     #[serde(rename = "HpcClusterId")]
     pub hpc_cluster_id: String,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90404,12 +97070,16 @@ impl crate::ToCodeMessage for CreateHpcClusterResponse {
 pub struct DescribeHpcClustersResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 输入时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// HPC集群列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// HPC集群总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "HpcClusters")]
@@ -90427,6 +97097,7 @@ impl crate::ToCodeMessage for DescribeHpcClustersResponse {
 pub struct ModifyHpcClusterAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90442,6 +97113,7 @@ impl crate::ToCodeMessage for ModifyHpcClusterAttributeResponse {
 pub struct DeleteHpcClusterResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -90457,14 +97129,19 @@ impl crate::ToCodeMessage for DeleteHpcClusterResponse {
 pub struct DescribeTasksResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 当前分页包含多少条目。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 分页查询的当前页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回结果的总条目数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
     #[serde(rename = "TaskSet")]
@@ -90482,28 +97159,44 @@ impl crate::ToCodeMessage for DescribeTasksResponse {
 pub struct DescribeTaskAttributeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 任务创建时间。
     #[serde(rename = "CreationTime")]
     pub creation_time: String,
+    /// 是否可以取消任务（[CancelTask](~~25624~~)）。取值范围：
+    ///          
+    /// - true：可以取消
+    /// - false：无法取消
+    ///          
     #[serde(rename = "SupportCancel")]
     pub support_cancel: String,
+    /// 任务总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
+    /// 成功任务数。
     #[serde(rename = "SuccessCount")]
     pub success_count: i32,
+    /// 地域ID。
     #[serde(rename = "RegionId")]
     pub region_id: String,
+    /// 任务操作的接口名称。
     #[serde(rename = "TaskAction")]
     pub task_action: String,
+    /// 失败任务数。
     #[serde(rename = "FailedCount")]
     pub failed_count: i32,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 任务状态。
     #[serde(rename = "TaskStatus")]
     pub task_status: String,
+    /// 任务进程。
     #[serde(rename = "TaskProcess")]
     pub task_process: String,
+    /// 任务完成时间。
     #[serde(rename = "FinishedTime")]
     pub finished_time: String,
+    /// 任务ID。
     #[serde(rename = "TaskId")]
     pub task_id: String,
     #[serde(rename = "OperationProgressSet")]
@@ -90521,6 +97214,7 @@ impl crate::ToCodeMessage for DescribeTaskAttributeResponse {
 pub struct CancelTaskResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -91714,8 +98408,10 @@ impl crate::ToCodeMessage for ExportSnapshotResponse {
 pub struct ReleasePublicIpAddressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// >该参数暂未开放使用。
     #[serde(rename = "RemainTimes")]
     pub remain_times: String,
 }
@@ -91731,6 +98427,7 @@ impl crate::ToCodeMessage for ReleasePublicIpAddressResponse {
 pub struct AddTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -91746,12 +98443,16 @@ impl crate::ToCodeMessage for AddTagsResponse {
 pub struct DescribeResourceByTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 查询结果显示的每页的信息条目数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 查询结果显示的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 返回的资源总数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Resources")]
@@ -91769,12 +98470,16 @@ impl crate::ToCodeMessage for DescribeResourceByTagsResponse {
 pub struct DescribeTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 分页查询时设置的每页行数。
     #[serde(rename = "PageSize")]
     pub page_size: i32,
+    /// 标签列表的页码。
     #[serde(rename = "PageNumber")]
     pub page_number: i32,
+    /// 标签总个数。
     #[serde(rename = "TotalCount")]
     pub total_count: i32,
     #[serde(rename = "Tags")]
@@ -91792,6 +98497,7 @@ impl crate::ToCodeMessage for DescribeTagsResponse {
 pub struct RemoveTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -91807,6 +98513,7 @@ impl crate::ToCodeMessage for RemoveTagsResponse {
 pub struct EnableNetworkInterfaceQoSResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }
@@ -91822,6 +98529,7 @@ impl crate::ToCodeMessage for EnableNetworkInterfaceQoSResponse {
 pub struct DisableNetworkInterfaceQoSResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
 }

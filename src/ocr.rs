@@ -7812,20 +7812,51 @@ impl crate::Request for VerifyVATInvoice {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct AdvancedConfig {
+    /// - 是否需要成行返回功能。开启后会返回**RowInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
     #[serde(rename = "OutputRow")]
     pub output_row: bool,
+    /// - 是否需要分段功能。开启后会返回**ParagraphInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
     #[serde(rename = "OutputParagraph")]
     pub output_paragraph: bool,
+    /// - 是否需要输出表格识别结果，包含单元格信息。开启后会返回**TableInfo**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别表格时开启此参数。
     #[serde(rename = "OutputTable")]
     pub output_table: bool,
+    /// - 是否需要输出单字识别结果。开启后，**BlockInfo**字段中会返回**CharInfos**字段（详见返回参数说明）。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
     #[serde(rename = "OutputCharInfo")]
     pub output_char_info: bool,
+    /// - 是否为无线表格或表格只有横线没有竖线。
+    /// - true：无线表格；false：有线表格。
+    /// - 默认值：false。
+    /// - **请注意**：仅当**OutputTable=true**时，设置此参数才生效。
     #[serde(rename = "IsLineLessTable")]
     pub is_line_less_table: bool,
+    /// - 是否是手写表格。
+    /// - true：是手写表格；false：不是手写表格。
+    /// - 默认值：false。
+    /// - **请注意**：仅当**OutputTable=true**时，设置此参数才生效。
     #[serde(rename = "IsHandWritingTable")]
     pub is_hand_writing_table: bool,
+    /// - 是否将识别的表格结果导出成 Excel，并以文件链接形式返回。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - 文件链接有效期为一小时。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableExcel")]
     pub output_table_excel: bool,
+    /// - 是否将识别的表格结果导出成 Html 格式结果，并以文件链接形式返回。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - 文件链接有效期为一小时。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: bool,
 }
@@ -7882,6 +7913,11 @@ impl crate::FlatSerialize for AdvancedConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextIdCardConfig {
+    /// - 是否需要身份证质量检测功能。
+    /// - 身份证质量检测功能包含：是否翻拍，是否是复印件，完整度评分，整体质量分数。
+    /// - true：需要；false：不需要。
+    /// - 默认值：false。
+    /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要身份证质量检测功能时开启此参数。
     #[serde(rename = "OutputIdCardQuality")]
     pub output_id_card_quality: bool,
     #[serde(rename = "Llm_rec")]
@@ -7906,6 +7942,10 @@ impl crate::FlatSerialize for TextIdCardConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InternationalIdCardConfig {
+    /// - 国家名称。
+    /// - 支持的国家类型：India，Vietnam，Korea，Bangladesh。
+    /// - 默认不需要传此参数，算法自动判断。
+    /// - **请注意**：如果指定国家名称，接口响应时间更短。
     #[serde(rename = "Country")]
     pub country: ConfigCountry,
 }
@@ -7923,6 +7963,10 @@ impl crate::FlatSerialize for InternationalIdCardConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LicenseConfig {
+    /// * 国家名称。
+    /// * 支持的国家类型：India，Korea。
+    /// * 默认不需要传此参数，算法自动判断。
+    /// * 请注意：如果指定国家名称，接口响应时间更短。
     #[serde(rename = "Country")]
     pub country: String,
 }
@@ -7940,6 +7984,9 @@ impl crate::FlatSerialize for LicenseConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct LanConfig {
+    /// - 支持的语言列表。
+    /// - chn：中文，eng：英文，ja：日文，lading：拉丁，kor：韩文，sx：手写，tai：泰文，rus：俄文，mys：马来文，idn：印尼文，viet：越南文，ukr：乌克兰。
+    /// - **请注意**：可以同时传多个语言参数，用逗号分隔。例如：Languages="eng,chn,lading"。但如果您确认图片的语言类型，建议传一种语言参数，算法识别效果更好。
     #[serde(rename = "Languages")]
     pub languages: String,
 }
@@ -7961,12 +8008,28 @@ impl crate::FlatSerialize for LanConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableConfig {
+    /// * 是否是手写表格。
+    /// * true：是手写表格；false：不是手写表格。
+    /// * 默认值：false。
     #[serde(rename = "IsHandWritingTable")]
     pub is_hand_writing_table: bool,
+    /// * 是否为无线表格或表格只有横线没有竖线。
+    /// * true：无线表格；false：有线表格。
+    /// * 默认值：false。
     #[serde(rename = "IsLineLessTable")]
     pub is_line_less_table: bool,
+    /// * 是否将识别的表格结果导出成 Excel，并以文件链接形式返回。
+    /// * true：需要；false：不需要。
+    /// * 默认值：false。
+    /// * 文件链接有效期为一小时。
+    /// * **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableExcel")]
     pub output_table_excel: bool,
+    /// * 是否将识别的表格结果导出成 Html 格式结果，并以文件链接形式返回。
+    /// * true：需要；false：不需要。
+    /// * 默认值：false。
+    /// * 文件链接有效期为一小时。
+    /// * **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: bool,
 }
@@ -8003,8 +8066,10 @@ impl crate::FlatSerialize for TableConfig {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8023,12 +8088,16 @@ impl crate::FlatSerialize for ImagePoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 子图宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 子图高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8067,10 +8136,14 @@ impl crate::FlatSerialize for KvDetails {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImagesItemKvInfo {
+    /// 子图所包含结构化信息的键值对数量。
     #[serde(rename = "KvCount")]
     pub kv_count: i32,
+    /// * 结构化信息文字内容。字典类型，**键**为字段名称，**值**为字段对应的识别结果。
+    /// * 不同图片类型（**Type**）的结构化字段不同。所有**Type**返回的结构化字段详见**返回结果补充说明**。
     #[serde(rename = "Data")]
     pub data: String,
+    /// * 结构化信息明细，字典类型。Key为字段名称，Value为此字段对应的识别结果（包含字段值、坐标、置信度等）。
     #[serde(rename = "KvDetails")]
     pub kv_details: KvDetails,
 }
@@ -8094,8 +8167,10 @@ impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockPoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8114,12 +8189,16 @@ impl crate::FlatSerialize for BlockPoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8140,8 +8219,10 @@ impl crate::FlatSerialize for BlockRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CharPoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8160,12 +8241,16 @@ impl crate::FlatSerialize for CharPoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CharRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8186,14 +8271,19 @@ impl crate::FlatSerialize for CharRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CharInfo {
+    /// 单字ID（编号从**0**开始）。
     #[serde(rename = "CharId")]
     pub char_id: i32,
+    /// 单字内容。
     #[serde(rename = "CharContent")]
     pub char_content: String,
+    /// 单字置信度（范围：0～100）。
     #[serde(rename = "CharConfidence")]
     pub char_confidence: i32,
+    /// 单字四点坐标（当 **OutputCoordinate=“points”** 时返回）。
     #[serde(rename = "CharPoints")]
     pub char_points: Vec<CharPoint>,
+    /// 单字旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
     #[serde(rename = "CharRect")]
     pub char_rect: CharRect,
 }
@@ -8231,18 +8321,25 @@ impl crate::FlatSerialize for CharInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockDetail {
+    /// 文字块ID（编号从**0**开始）。
     #[serde(rename = "BlockId")]
     pub block_id: i32,
+    /// 文字块顺时针旋转角度（范围：0～359）。
     #[serde(rename = "BlockAngle")]
     pub block_angle: i32,
+    /// 文字块的文字内容。
     #[serde(rename = "BlockContent")]
     pub block_content: String,
+    /// 文字块置信度（范围：0～100）。
     #[serde(rename = "BlockConfidence")]
     pub block_confidence: i32,
+    /// 文字块四点坐标（当 **OutputCoordinate="points"** 时返回）。
     #[serde(rename = "BlockPoints")]
     pub block_points: Vec<BlockPoint>,
+    /// 文字块旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
     #[serde(rename = "BlockRect")]
     pub block_rect: BlockRect,
+    /// 单字信息（当 **AdvancedConfig.OutputCharInfo=true** 时返回）。
     #[serde(rename = "CharInfos")]
     pub char_infos: Vec<CharInfo>,
 }
@@ -8290,8 +8387,10 @@ impl crate::FlatSerialize for BlockDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockInfo {
+    /// 子图文字块数量。
     #[serde(rename = "BlockCount")]
     pub block_count: i32,
+    /// 子图文字块信息明细。
     #[serde(rename = "BlockDetails")]
     pub block_details: Vec<BlockDetail>,
 }
@@ -8318,8 +8417,10 @@ impl crate::FlatSerialize for BlockInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemHeader {
+    /// 表头文字内容。
     #[serde(rename = "Contents")]
     pub contents: Vec<String>,
+    /// 文字块ID（编号从0开始）。
     #[serde(rename = "BlockId")]
     pub block_id: i32,
 }
@@ -8338,8 +8439,10 @@ impl crate::FlatSerialize for ItemHeader {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFooter {
+    /// 表尾文字内容。
     #[serde(rename = "Contents")]
     pub contents: Vec<String>,
+    /// 文字块ID（编号从**0**开始）。
     #[serde(rename = "BlockId")]
     pub block_id: i32,
 }
@@ -8358,8 +8461,10 @@ impl crate::FlatSerialize for ItemFooter {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CellPoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8378,12 +8483,16 @@ impl crate::FlatSerialize for CellPoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CellRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8404,24 +8513,34 @@ impl crate::FlatSerialize for CellRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct CellDetail {
+    /// 单元格ID（编号从**0**开始）。
     #[serde(rename = "CellId")]
     pub cell_id: i32,
+    /// 单元格文字内容。
     #[serde(rename = "CellContent")]
     pub cell_content: String,
+    /// 单元格起始行数。第一个单元格位置为**0**。
     #[serde(rename = "RowStart")]
     pub row_start: i32,
+    /// 单元格终止行数。第一个单元格位置为**0**。**RowStart=0** 且 **RowEnd=0** 表示此单元格只占据了第一行。
     #[serde(rename = "RowEnd")]
     pub row_end: i32,
+    /// 单元格起始列数。第一个单元格位置为**0**。
     #[serde(rename = "ColumnStart")]
     pub column_start: i32,
+    /// 单元格终止列数。第一个单元格位置为**0**。**ColumnStart=0** 且 **ColumnEnd=0** 表示此单元格只占据了第一列。
     #[serde(rename = "ColumnEnd")]
     pub column_end: i32,
+    /// 此单元格所包含的文字块ID。
     #[serde(rename = "BlockList")]
     pub block_list: Vec<i32>,
+    /// 单元格四点坐标（当 **OutputCoordinate="points"** 时返回）。
     #[serde(rename = "CellPoints")]
     pub cell_points: Vec<CellPoint>,
+    /// 单元格旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
     #[serde(rename = "CellRect")]
     pub cell_rect: CellRect,
+    /// 单元格顺时针旋转角度（范围：0～359）。
     #[serde(rename = "CellAngle")]
     pub cell_angle: i32,
 }
@@ -8480,8 +8599,10 @@ impl crate::FlatSerialize for CellDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TablePoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8500,12 +8621,16 @@ impl crate::FlatSerialize for TablePoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8526,22 +8651,31 @@ impl crate::FlatSerialize for TableRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableDetail {
+    /// 表格ID（编号从**0**开始）。
     #[serde(rename = "TableId")]
     pub table_id: i32,
+    /// 表格行数。
     #[serde(rename = "RowCount")]
     pub row_count: i32,
+    /// 表格列数。
     #[serde(rename = "ColumnCount")]
     pub column_count: i32,
+    /// 表格单元格数量。
     #[serde(rename = "CellCount")]
     pub cell_count: i32,
+    /// 表头信息。
     #[serde(rename = "Header")]
     pub header: ItemHeader,
+    /// 表尾信息。
     #[serde(rename = "Footer")]
     pub footer: ItemFooter,
+    /// 单元格信息明细。
     #[serde(rename = "CellDetails")]
     pub cell_details: Vec<CellDetail>,
+    /// 表格四点坐标（当 **OutputCoordinate=“points"** 时返回）。
     #[serde(rename = "TablePoints")]
     pub table_points: Vec<TablePoint>,
+    /// 表格旋转矩形坐标（当 **OutputCoordinate=“rectangle"** 时返回）。
     #[serde(rename = "TableRect")]
     pub table_rect: TableRect,
 }
@@ -8591,12 +8725,18 @@ impl crate::FlatSerialize for TableDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TableInfo {
+    /// 表格数量。
     #[serde(rename = "TableCount")]
     pub table_count: i32,
+    /// 表格信息明细。
     #[serde(rename = "TableDetails")]
     pub table_details: Vec<TableDetail>,
+    /// * 表格识别结果转成 Excel 后，导出的文件链接。
+    /// * 有效期：1小时。
     #[serde(rename = "TableExcel")]
     pub table_excel: String,
+    /// * 表格识别结果转成 Html 格式后，导出的文件链接。
+    /// * 有效期：1小时。
     #[serde(rename = "TableHtml")]
     pub table_html: String,
 }
@@ -8633,10 +8773,13 @@ impl crate::FlatSerialize for TableInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RowDetail {
+    /// 行ID（编号从**0**开始）。
     #[serde(rename = "RowId")]
     pub row_id: i32,
+    /// 行文字内容。
     #[serde(rename = "RowContent")]
     pub row_content: String,
+    /// 此行所包含的文字块ID列表。
     #[serde(rename = "BlockList")]
     pub block_list: Vec<i32>,
 }
@@ -8664,8 +8807,10 @@ impl crate::FlatSerialize for RowDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct RowInfo {
+    /// 子图包含的行数。
     #[serde(rename = "RowCount")]
     pub row_count: i32,
+    /// 子图行信息明细。
     #[serde(rename = "RowDetails")]
     pub row_details: Vec<RowDetail>,
 }
@@ -8692,10 +8837,13 @@ impl crate::FlatSerialize for RowInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParagraphDetail {
+    /// 段落ID（编号从**0**开始）。
     #[serde(rename = "ParagraphId")]
     pub paragraph_id: i32,
+    /// 段落文字内容。
     #[serde(rename = "ParagraphContent")]
     pub paragraph_content: String,
+    /// 此段所包含的文字块ID列表。
     #[serde(rename = "BlockList")]
     pub block_list: Vec<i32>,
 }
@@ -8727,8 +8875,10 @@ impl crate::FlatSerialize for ParagraphDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ParagraphInfo {
+    /// 子图所包含段落数量。
     #[serde(rename = "ParagraphCount")]
     pub paragraph_count: i32,
+    /// 子图段落信息明细。
     #[serde(rename = "ParagraphDetails")]
     pub paragraph_details: Vec<ParagraphDetail>,
 }
@@ -8755,8 +8905,10 @@ impl crate::FlatSerialize for ParagraphInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodePoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8775,12 +8927,16 @@ impl crate::FlatSerialize for QrCodePoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8801,12 +8957,16 @@ impl crate::FlatSerialize for QrCodeRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeDetail {
+    /// 二维码内容。
     #[serde(rename = "Data")]
     pub data: String,
+    /// 二维码四点坐标（当 **OutputCoordinate=“points”** 时返回）。
     #[serde(rename = "QrCodePoints")]
     pub qr_code_points: Vec<QrCodePoint>,
+    /// 二维码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
     #[serde(rename = "QrCodeRect")]
     pub qr_code_rect: QrCodeRect,
+    /// QrCode旋转角度（范围：0～359）。
     #[serde(rename = "QrCodeAngle")]
     pub qr_code_angle: i32,
 }
@@ -8839,8 +8999,10 @@ impl crate::FlatSerialize for QrCodeDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeInfo {
+    /// 子图二维码数量。
     #[serde(rename = "QrCodeCount")]
     pub qr_code_count: i32,
+    /// 子图二维码信息明细。
     #[serde(rename = "QrCodeDetails")]
     pub qr_code_details: Vec<QrCodeDetail>,
 }
@@ -8867,8 +9029,10 @@ impl crate::FlatSerialize for QrCodeInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodePoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -8887,12 +9051,16 @@ impl crate::FlatSerialize for BarCodePoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -8913,14 +9081,23 @@ impl crate::FlatSerialize for BarCodeRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeDetail {
+    /// 条形码类型。支持的类型如下：
+    /// * Codabar
+    /// * Code39
+    /// * Code93
+    /// * Code128
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 条形码内容。
     #[serde(rename = "Data")]
     pub data: String,
+    /// 条形码四点坐标（当 **OutputCoordinate=“points”** 时返回）。
     #[serde(rename = "BarCodePoints")]
     pub bar_code_points: Vec<BarCodePoint>,
+    /// 条形码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
     #[serde(rename = "BarCodeRect")]
     pub bar_code_rect: BarCodeRect,
+    /// 条形码顺时针旋转角度（范围：0～359）。
     #[serde(rename = "BarCodeAngle")]
     pub bar_code_angle: i32,
 }
@@ -8954,8 +9131,10 @@ impl crate::FlatSerialize for BarCodeDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeInfo {
+    /// 子图条形码数量。
     #[serde(rename = "BarCodeCount")]
     pub bar_code_count: i32,
+    /// 条形码信息明细。
     #[serde(rename = "BarCodeDetails")]
     pub bar_code_details: Vec<BarCodeDetail>,
 }
@@ -9000,18 +9179,25 @@ impl crate::FlatSerialize for FigureInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemData {
+    /// 进出口企业代码。
     #[serde(rename = "CompanyId")]
     pub company_id: String,
+    /// 组织名。
     #[serde(rename = "OrganizationName")]
     pub organization_name: String,
+    /// 防伪编码。
     #[serde(rename = "AntiFakeCode")]
     pub anti_fake_code: String,
+    /// 其它文字。
     #[serde(rename = "OtherText")]
     pub other_text: String,
+    /// 上环文字。
     #[serde(rename = "TopText")]
     pub top_text: String,
+    /// 英文组织名。
     #[serde(rename = "OrganizationNameEng")]
     pub organization_name_eng: String,
+    /// 纳税人识别号。
     #[serde(rename = "TaxpayerId")]
     pub taxpayer_id: String,
 }
@@ -9059,8 +9245,10 @@ impl crate::FlatSerialize for ItemData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampPoint {
+    /// 顶点横坐标。
     #[serde(rename = "X")]
     pub x: i32,
+    /// 顶点纵坐标。
     #[serde(rename = "Y")]
     pub y: i32,
 }
@@ -9079,12 +9267,16 @@ impl crate::FlatSerialize for StampPoint {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampRect {
+    /// 矩形中心点横坐标。
     #[serde(rename = "CenterX")]
     pub center_x: i32,
+    /// 矩形中心点纵坐标。
     #[serde(rename = "CenterY")]
     pub center_y: i32,
+    /// 矩形宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 矩形高度。
     #[serde(rename = "Height")]
     pub height: i32,
 }
@@ -9105,12 +9297,16 @@ impl crate::FlatSerialize for StampRect {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampDetail {
+    /// 子图印章识别结果，字典类型，键为字段名称，值为对应字段的识别结果。
     #[serde(rename = "Data")]
     pub data: ItemData,
+    /// 印章四点坐标（当 **OutputCoordinate=“points”** 时返回）。
     #[serde(rename = "StampPoints")]
     pub stamp_points: Vec<StampPoint>,
+    /// 印章旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
     #[serde(rename = "StampRect")]
     pub stamp_rect: StampRect,
+    /// 矩形顺时针旋转角度（范围：0～359）。
     #[serde(rename = "StampAngle")]
     pub stamp_angle: i32,
 }
@@ -9143,8 +9339,10 @@ impl crate::FlatSerialize for StampDetail {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StampInfo {
+    /// 子图印章数量。
     #[serde(rename = "StampCount")]
     pub stamp_count: i32,
+    /// 印章信息明细。
     #[serde(rename = "StampDetails")]
     pub stamp_details: Vec<StampDetail>,
 }
@@ -9171,14 +9369,19 @@ impl crate::FlatSerialize for StampInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct QualityInfo {
+    /// 是否为复印件
     #[serde(rename = "IsCopy")]
     pub is_copy: bool,
+    /// 是否是翻拍。仅支持身份证类型图片（**Type=IdCard**）。
     #[serde(rename = "IsReshoot")]
     pub is_reshoot: bool,
+    /// 完整度评分。仅支持身份证类型图片（**Type=IdCard**）。
     #[serde(rename = "CompletenessScore")]
     pub completeness_score: f32,
+    /// 整体质量分数。仅支持身份证类型图片（**Type=IdCard**）。
     #[serde(rename = "QualityScore")]
     pub quality_score: f32,
+    /// 篡改分数。仅支持身份证类型图片（**Type=IdCard**）。
     #[serde(rename = "TamperScore")]
     pub tamper_score: f32,
 }
@@ -9216,34 +9419,56 @@ impl crate::FlatSerialize for QualityInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImage {
+    /// 子图ID（编号从**0**开始）。
     #[serde(rename = "SubImageId")]
     pub sub_image_id: i32,
+    /// 子图类型（例如**身份证正面**、**增值税发票**等）。
     #[serde(rename = "Type")]
     pub r#type: String,
+    /// 子图顺时针旋转角度（范围：0～359度）。
     #[serde(rename = "Angle")]
     pub angle: i32,
+    /// 子图四点坐标（当 **OutputCoordinate=“points”** 时返回）。
     #[serde(rename = "SubImagePoints")]
     pub sub_image_points: Vec<ImagePoint>,
+    /// 子图旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
     #[serde(rename = "SubImageRect")]
     pub sub_image_rect: ImageRect,
+    /// * 子图的结构化信息。
+    /// * 个人卡证、票据等类型图片会返回结构化信息。例如身份证图片，此字段会包含姓名、性别等信息。
     #[serde(rename = "KvInfo")]
     pub kv_info: TextResponseDataSubImagesItemKvInfo,
+    /// * 子图文字块信息。
+    /// * 当**Type**为**Advanced**、**General**、**MultiLang**、**Commerce**、**HandWriting**  时返回。
     #[serde(rename = "BlockInfo")]
     pub block_info: BlockInfo,
+    /// 表格信息（当 **AdvancedConfig.OutputTable=true** 时返回）。
     #[serde(rename = "TableInfo")]
     pub table_info: TableInfo,
+    /// 子图行信息（当 **AdvancedConfig.OutputRow=true** 时返回）。
     #[serde(rename = "RowInfo")]
     pub row_info: RowInfo,
+    /// 子图段落信息（当 **AdvancedConfig.OutputParagraph=true** 时返回）。
     #[serde(rename = "ParagraphInfo")]
     pub paragraph_info: ParagraphInfo,
+    /// 子图二维码信息（当 **OutputQrcode=true** 时返回）。
     #[serde(rename = "QrCodeInfo")]
     pub qr_code_info: QrCodeInfo,
+    /// 子图条形码信息（当 **OutputBarCode=true** 时返回）。
     #[serde(rename = "BarCodeInfo")]
     pub bar_code_info: BarCodeInfo,
+    /// 子图包含的图案信息（当 **OutputFigure=true** 时返回）。字典类型，键为图案类型，值为此类型图案的信息。支持的图案类型如下：
+    /// * blicense_title：营业执照标题
+    /// * national_emblem：国徽
+    /// * face：人脸
+    /// * finger_print：指纹
+    /// * signature：签名区域
     #[serde(rename = "FigureInfo")]
     pub figure_info: FigureInfo,
+    /// 子图印章信息（当 **OutputStamp=true** 时返回）。
     #[serde(rename = "StampInfo")]
     pub stamp_info: StampInfo,
+    /// 子图质量检测信息。
     #[serde(rename = "QualityInfo")]
     pub quality_info: QualityInfo,
 }
@@ -9319,28 +9544,41 @@ impl crate::FlatSerialize for TextResponseDataSubImage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseData {
+    /// 原图高度。
     #[serde(rename = "Height")]
     pub height: i32,
+    /// 原图宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 图片包含的所有文字汇总。
     #[serde(rename = "Content")]
     pub content: String,
+    /// 图片包含的子图数量。
     #[serde(rename = "SubImageCount")]
     pub sub_image_count: i32,
+    /// 图片包含的子图信息。
     #[serde(rename = "SubImages")]
     pub sub_images: Vec<TextResponseDataSubImage>,
+    /// XML格式返回结果。
     #[serde(rename = "XmlResult")]
     pub xml_result: String,
+    /// 算法版本号。
     #[serde(rename = "AlgoVersion")]
     pub algo_version: String,
+    /// Debug信息（不为空时才返回此字段）。
     #[serde(rename = "DebugInfo")]
     pub debug_info: String,
+    /// 算法服务器信息列表（不为空时才返回此字段）。
     #[serde(rename = "AlgoServer")]
     pub algo_server: Vec<String>,
+    /// 是否是混贴类型。
     #[serde(rename = "IsMixedMode")]
     pub is_mixed_mode: bool,
+    /// PDF/OFD页码（从**1**开始）。
     #[serde(rename = "PageNo")]
     pub page_no: i32,
+    /// * 卡证、票据类型图片的结构化信息转成 Excel 格式后，导出的文件链接。
+    /// * 有效期：1小时。
     #[serde(rename = "KvExcelUrl")]
     pub kv_excel_url: String,
 }
@@ -9401,8 +9639,10 @@ impl crate::FlatSerialize for TextResponseData {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseDataSubImagesItemKvInfo {
+    /// 子图所包含结构化信息的键值对数量。
     #[serde(rename = "KvCount")]
     pub kv_count: i32,
+    /// * 结构化信息文字内容。字典类型，键为字段名称，值为字段对应的识别结果。
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -9421,10 +9661,13 @@ impl crate::FlatSerialize for StructureResponseDataSubImagesItemKvInfo {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseDataSubImage {
+    /// 子图ID（编号从**0**开始）。
     #[serde(rename = "SubImageId")]
     pub sub_image_id: i32,
+    /// 子图顺时针旋转角度（范围：0～359度）。
     #[serde(rename = "Angle")]
     pub angle: i32,
+    /// * 子图的结构化信息。
     #[serde(rename = "KvInfo")]
     pub kv_info: StructureResponseDataSubImagesItemKvInfo,
 }
@@ -9448,12 +9691,16 @@ impl crate::FlatSerialize for StructureResponseDataSubImage {
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseData {
+    /// 原图高度。
     #[serde(rename = "Height")]
     pub height: i32,
+    /// 原图宽度。
     #[serde(rename = "Width")]
     pub width: i32,
+    /// 图片包含的子图数量。
     #[serde(rename = "SubImageCount")]
     pub sub_image_count: i32,
+    /// 图片包含的子图信息。
     #[serde(rename = "SubImages")]
     pub sub_images: Vec<StructureResponseDataSubImage>,
 }
@@ -9906,8 +10153,10 @@ impl crate::FlatSerialize for LicenseCountry {
 pub struct RecognizeAllTextResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 识别结果。
     #[serde(rename = "Data")]
     pub data: TextResponseData,
 }
@@ -9923,8 +10172,10 @@ impl crate::ToCodeMessage for RecognizeAllTextResponse {
 pub struct RecognizeGeneralStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID。
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 识别结果。
     #[serde(rename = "Data")]
     pub data: StructureResponseData,
 }
@@ -9940,8 +10191,10 @@ impl crate::ToCodeMessage for RecognizeGeneralStructureResponse {
 pub struct RecognizeAdvancedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -9957,8 +10210,10 @@ impl crate::ToCodeMessage for RecognizeAdvancedResponse {
 pub struct RecognizeHandwritingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -9974,8 +10229,10 @@ impl crate::ToCodeMessage for RecognizeHandwritingResponse {
 pub struct RecognizeBasicResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -9991,8 +10248,10 @@ impl crate::ToCodeMessage for RecognizeBasicResponse {
 pub struct RecognizeGeneralResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10008,8 +10267,10 @@ impl crate::ToCodeMessage for RecognizeGeneralResponse {
 pub struct RecognizeTableOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10025,8 +10286,10 @@ impl crate::ToCodeMessage for RecognizeTableOcrResponse {
 pub struct RecognizeHealthCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10042,8 +10305,10 @@ impl crate::ToCodeMessage for RecognizeHealthCodeResponse {
 pub struct RecognizeDocumentStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10059,8 +10324,10 @@ impl crate::ToCodeMessage for RecognizeDocumentStructureResponse {
 pub struct RecognizeIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10076,8 +10343,10 @@ impl crate::ToCodeMessage for RecognizeIdcardResponse {
 pub struct RecognizePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10093,8 +10362,10 @@ impl crate::ToCodeMessage for RecognizePassportResponse {
 pub struct RecognizeHouseholdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10110,8 +10381,10 @@ impl crate::ToCodeMessage for RecognizeHouseholdResponse {
 pub struct RecognizeEstateCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10127,8 +10400,10 @@ impl crate::ToCodeMessage for RecognizeEstateCertificationResponse {
 pub struct RecognizeBankCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10144,8 +10419,10 @@ impl crate::ToCodeMessage for RecognizeBankCardResponse {
 pub struct RecognizeBirthCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10161,8 +10438,10 @@ impl crate::ToCodeMessage for RecognizeBirthCertificationResponse {
 pub struct RecognizeChinesePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10178,8 +10457,10 @@ impl crate::ToCodeMessage for RecognizeChinesePassportResponse {
 pub struct RecognizeExitEntryPermitToMainlandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10195,8 +10476,10 @@ impl crate::ToCodeMessage for RecognizeExitEntryPermitToMainlandResponse {
 pub struct RecognizeExitEntryPermitToHKResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10212,8 +10495,10 @@ impl crate::ToCodeMessage for RecognizeExitEntryPermitToHKResponse {
 pub struct RecognizeHKIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10229,8 +10514,10 @@ impl crate::ToCodeMessage for RecognizeHKIdcardResponse {
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10246,8 +10533,10 @@ impl crate::ToCodeMessage for RecognizeSocialSecurityCardVersionIIResponse {
 pub struct RecognizeInternationalIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 调用成功时，返回的设备事件记录。
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10263,8 +10552,10 @@ impl crate::ToCodeMessage for RecognizeInternationalIdcardResponse {
 pub struct RecognizeMixedInvoicesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10280,8 +10571,10 @@ impl crate::ToCodeMessage for RecognizeMixedInvoicesResponse {
 pub struct RecognizeInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10297,8 +10590,10 @@ impl crate::ToCodeMessage for RecognizeInvoiceResponse {
 pub struct RecognizeCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10314,8 +10609,10 @@ impl crate::ToCodeMessage for RecognizeCarInvoiceResponse {
 pub struct RecognizeQuotaInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10331,8 +10628,10 @@ impl crate::ToCodeMessage for RecognizeQuotaInvoiceResponse {
 pub struct RecognizeAirItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10348,8 +10647,10 @@ impl crate::ToCodeMessage for RecognizeAirItineraryResponse {
 pub struct RecognizeTrainInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10365,8 +10666,10 @@ impl crate::ToCodeMessage for RecognizeTrainInvoiceResponse {
 pub struct RecognizeTaxiInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10382,8 +10685,10 @@ impl crate::ToCodeMessage for RecognizeTaxiInvoiceResponse {
 pub struct RecognizeRollTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10399,8 +10704,10 @@ impl crate::ToCodeMessage for RecognizeRollTicketResponse {
 pub struct RecognizeBankAcceptanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10416,8 +10723,10 @@ impl crate::ToCodeMessage for RecognizeBankAcceptanceResponse {
 pub struct RecognizeBusShipTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10433,8 +10742,10 @@ impl crate::ToCodeMessage for RecognizeBusShipTicketResponse {
 pub struct RecognizeNonTaxInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10450,8 +10761,10 @@ impl crate::ToCodeMessage for RecognizeNonTaxInvoiceResponse {
 pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10467,8 +10780,10 @@ impl crate::ToCodeMessage for RecognizeCommonPrintedInvoiceResponse {
 pub struct RecognizeHotelConsumeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10484,8 +10799,10 @@ impl crate::ToCodeMessage for RecognizeHotelConsumeResponse {
 pub struct RecognizePaymentRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10501,8 +10818,10 @@ impl crate::ToCodeMessage for RecognizePaymentRecordResponse {
 pub struct RecognizePurchaseRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10518,8 +10837,10 @@ impl crate::ToCodeMessage for RecognizePurchaseRecordResponse {
 pub struct RecognizeRideHailingItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10535,8 +10856,10 @@ impl crate::ToCodeMessage for RecognizeRideHailingItineraryResponse {
 pub struct RecognizeShoppingReceiptResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10552,8 +10875,10 @@ impl crate::ToCodeMessage for RecognizeShoppingReceiptResponse {
 pub struct RecognizeSocialSecurityCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10569,8 +10894,10 @@ impl crate::ToCodeMessage for RecognizeSocialSecurityCardResponse {
 pub struct RecognizeTollInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10586,8 +10913,10 @@ impl crate::ToCodeMessage for RecognizeTollInvoiceResponse {
 pub struct RecognizeTaxClearanceCertificateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10603,8 +10932,10 @@ impl crate::ToCodeMessage for RecognizeTaxClearanceCertificateResponse {
 pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10620,8 +10951,10 @@ impl crate::ToCodeMessage for RecognizeUsedCarInvoiceResponse {
 pub struct RecognizeBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10637,8 +10970,10 @@ impl crate::ToCodeMessage for RecognizeBusinessLicenseResponse {
 pub struct RecognizeBankAccountLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10654,8 +10989,10 @@ impl crate::ToCodeMessage for RecognizeBankAccountLicenseResponse {
 pub struct RecognizeTradeMarkCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10671,8 +11008,10 @@ impl crate::ToCodeMessage for RecognizeTradeMarkCertificationResponse {
 pub struct RecognizeFoodProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10688,8 +11027,10 @@ impl crate::ToCodeMessage for RecognizeFoodProduceLicenseResponse {
 pub struct RecognizeFoodManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10705,8 +11046,10 @@ impl crate::ToCodeMessage for RecognizeFoodManageLicenseResponse {
 pub struct RecognizeMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10722,8 +11065,10 @@ impl crate::ToCodeMessage for RecognizeMedicalDeviceManageLicenseResponse {
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10739,8 +11084,10 @@ impl crate::ToCodeMessage for RecognizeMedicalDeviceProduceLicenseResponse {
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10756,8 +11103,10 @@ impl crate::ToCodeMessage for RecognizeCtwoMedicalDeviceManageLicenseResponse {
 pub struct RecognizeCosmeticProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10773,8 +11122,10 @@ impl crate::ToCodeMessage for RecognizeCosmeticProduceLicenseResponse {
 pub struct RecognizeInternationalBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10790,8 +11141,10 @@ impl crate::ToCodeMessage for RecognizeInternationalBusinessLicenseResponse {
 pub struct RecognizeVehicleLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10807,8 +11160,10 @@ impl crate::ToCodeMessage for RecognizeVehicleLicenseResponse {
 pub struct RecognizeDrivingLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10824,8 +11179,10 @@ impl crate::ToCodeMessage for RecognizeDrivingLicenseResponse {
 pub struct RecognizeWaybillResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10841,8 +11198,10 @@ impl crate::ToCodeMessage for RecognizeWaybillResponse {
 pub struct RecognizeCarNumberResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10858,8 +11217,10 @@ impl crate::ToCodeMessage for RecognizeCarNumberResponse {
 pub struct RecognizeCarVinCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10875,8 +11236,10 @@ impl crate::ToCodeMessage for RecognizeCarVinCodeResponse {
 pub struct RecognizeVehicleRegistrationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10892,8 +11255,10 @@ impl crate::ToCodeMessage for RecognizeVehicleRegistrationResponse {
 pub struct RecognizeVehicleCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10909,8 +11274,10 @@ impl crate::ToCodeMessage for RecognizeVehicleCertificationResponse {
 pub struct RecognizeEduFormulaResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10926,8 +11293,10 @@ impl crate::ToCodeMessage for RecognizeEduFormulaResponse {
 pub struct RecognizeEduOralCalculationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10943,8 +11312,10 @@ impl crate::ToCodeMessage for RecognizeEduOralCalculationResponse {
 pub struct RecognizeEduPaperOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10960,8 +11331,10 @@ impl crate::ToCodeMessage for RecognizeEduPaperOcrResponse {
 pub struct RecognizeEduPaperCutResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10977,8 +11350,10 @@ impl crate::ToCodeMessage for RecognizeEduPaperCutResponse {
 pub struct RecognizeEduQuestionOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -10994,8 +11369,10 @@ impl crate::ToCodeMessage for RecognizeEduQuestionOcrResponse {
 pub struct RecognizeEduPaperStructedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11011,8 +11388,10 @@ impl crate::ToCodeMessage for RecognizeEduPaperStructedResponse {
 pub struct RecognizeMultiLanguageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11028,8 +11407,10 @@ impl crate::ToCodeMessage for RecognizeMultiLanguageResponse {
 pub struct RecognizeEnglishResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11045,8 +11426,10 @@ impl crate::ToCodeMessage for RecognizeEnglishResponse {
 pub struct RecognizeThaiResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11062,8 +11445,10 @@ impl crate::ToCodeMessage for RecognizeThaiResponse {
 pub struct RecognizeJanpaneseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11079,8 +11464,10 @@ impl crate::ToCodeMessage for RecognizeJanpaneseResponse {
 pub struct RecognizeKoreanResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11096,8 +11483,10 @@ impl crate::ToCodeMessage for RecognizeKoreanResponse {
 pub struct RecognizeLatinResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11113,8 +11502,10 @@ impl crate::ToCodeMessage for RecognizeLatinResponse {
 pub struct RecognizeRussianResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11130,8 +11521,10 @@ impl crate::ToCodeMessage for RecognizeRussianResponse {
 pub struct RecognizeCovidTestReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11147,8 +11540,10 @@ impl crate::ToCodeMessage for RecognizeCovidTestReportResponse {
 pub struct VerifyBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
@@ -11164,8 +11559,10 @@ impl crate::ToCodeMessage for VerifyBusinessLicenseResponse {
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
+    /// 请求唯一 ID
     #[serde(rename = "RequestId")]
     pub request_id: String,
+    /// 返回数据
     #[serde(rename = "Data")]
     pub data: String,
 }
