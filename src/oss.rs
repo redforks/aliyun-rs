@@ -1,4 +1,4 @@
-#[derive(Clone, Copy, strum::EnumString)]
+#[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     CnWuhanLr,
     CnQingdao,
