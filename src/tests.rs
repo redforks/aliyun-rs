@@ -8,3 +8,6 @@ mod ecs;
 
 #[cfg(feature = "oss")]
 mod oss;
+
+#[cfg(feature = "fc")]
+mod fc;
