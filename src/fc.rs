@@ -6310,24 +6310,6 @@ impl crate::FlatSerialize for CustomRuntimeConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct CreateFunctionResponseenvironmentVariables {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for CreateFunctionResponseenvironmentVariables {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct GPUConfig {
     #[serde(rename = "gpuMemorySize")]
     pub gpu_memory_size: i32,
@@ -6588,27 +6570,9 @@ impl crate::FlatSerialize for OSSMountConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct TracingConfigParams {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for TracingConfigParams {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct TracingConfig {
     #[serde(rename = "params")]
-    pub params: TracingConfigParams,
+    pub params: std::collections::HashMap<String, String>,
     #[serde(rename = "type")]
     pub r#type: String,
 }
@@ -6769,42 +6733,6 @@ impl crate::FlatSerialize for PolarFsConfig {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct GetFunctionResponseenvironmentVariables {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for GetFunctionResponseenvironmentVariables {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct FunctionEnvironmentVariables {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for FunctionEnvironmentVariables {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct Function {
     #[serde(rename = "codeChecksum")]
     pub code_checksum: String,
@@ -6825,7 +6753,7 @@ pub struct Function {
     #[serde(rename = "diskSize")]
     pub disk_size: i32,
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: FunctionEnvironmentVariables,
+    pub environment_variables: std::collections::HashMap<String, String>,
     #[serde(rename = "functionArn")]
     pub function_arn: String,
     #[serde(rename = "functionId")]
@@ -7109,63 +7037,9 @@ impl crate::FlatSerialize for Function {
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
-pub struct UpdateFunctionResponseenvironmentVariables {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for UpdateFunctionResponseenvironmentVariables {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetAliasResponseadditionalVersionWeight {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, f64>,
-}
-
-impl crate::FlatSerialize for GetAliasResponseadditionalVersionWeight {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct AliasAdditionalVersionWeight {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, f64>,
-}
-
-impl crate::FlatSerialize for AliasAdditionalVersionWeight {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
 pub struct Alias {
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: AliasAdditionalVersionWeight,
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     #[serde(rename = "createdTime")]
@@ -7214,42 +7088,6 @@ impl crate::FlatSerialize for Alias {
             &format!("{}.versionId", name),
             params,
         );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct UpdateAliasResponseadditionalVersionWeight {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, f64>,
-}
-
-impl crate::FlatSerialize for UpdateAliasResponseadditionalVersionWeight {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CreateAliasResponseadditionalVersionWeight {
-    /// Additional properties not explicitly defined in the schema
-    #[serde(flatten)]
-    pub extra: std::collections::HashMap<String, f64>,
-}
-
-impl crate::FlatSerialize for CreateAliasResponseadditionalVersionWeight {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
     }
 }
 
@@ -9161,7 +8999,7 @@ pub struct CreateFunctionResponse {
     #[serde(rename = "diskSize")]
     pub disk_size: i32,
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: CreateFunctionResponseenvironmentVariables,
+    pub environment_variables: std::collections::HashMap<String, String>,
     #[serde(rename = "functionArn")]
     pub function_arn: String,
     #[serde(rename = "functionId")]
@@ -9266,7 +9104,7 @@ pub struct GetFunctionResponse {
     #[serde(rename = "diskSize")]
     pub disk_size: i32,
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: GetFunctionResponseenvironmentVariables,
+    pub environment_variables: std::collections::HashMap<String, String>,
     #[serde(rename = "functionArn")]
     pub function_arn: String,
     #[serde(rename = "functionId")]
@@ -9388,7 +9226,7 @@ pub struct UpdateFunctionResponse {
     #[serde(rename = "diskSize")]
     pub disk_size: i32,
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: UpdateFunctionResponseenvironmentVariables,
+    pub environment_variables: std::collections::HashMap<String, String>,
     #[serde(rename = "functionArn")]
     pub function_arn: String,
     #[serde(rename = "functionId")]
@@ -9505,7 +9343,7 @@ pub struct GetAliasResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: GetAliasResponseadditionalVersionWeight,
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     #[serde(rename = "createdTime")]
@@ -9547,7 +9385,7 @@ pub struct UpdateAliasResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: UpdateAliasResponseadditionalVersionWeight,
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     #[serde(rename = "createdTime")]
@@ -9572,7 +9410,7 @@ pub struct CreateAliasResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: CreateAliasResponseadditionalVersionWeight,
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     #[serde(rename = "createdTime")]
