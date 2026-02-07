@@ -1769,10 +1769,8 @@ pub struct CreateCustomDomain {
 impl sealed::Bound for CreateCustomDomain {}
 
 impl CreateCustomDomain {
-    pub fn new() -> Self {
-        Self {
-            body: Default::default(),
-        }
+    pub fn new(body: impl Into<CreateCustomDomainInput>) -> Self {
+        Self { body: body.into() }
     }
 }
 
@@ -1959,10 +1957,10 @@ pub struct UpdateCustomDomain {
 impl sealed::Bound for UpdateCustomDomain {}
 
 impl UpdateCustomDomain {
-    pub fn new(domain_name: impl Into<String>) -> Self {
+    pub fn new(domain_name: impl Into<String>, body: impl Into<UpdateCustomDomainInput>) -> Self {
         Self {
             domain_name: domain_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -2177,10 +2175,10 @@ pub struct PublishFunctionVersion {
 impl sealed::Bound for PublishFunctionVersion {}
 
 impl PublishFunctionVersion {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<PublishVersionInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -2221,10 +2219,8 @@ pub struct CreateFunction {
 impl sealed::Bound for CreateFunction {}
 
 impl CreateFunction {
-    pub fn new() -> Self {
-        Self {
-            body: Default::default(),
-        }
+    pub fn new(body: impl Into<CreateFunctionInput>) -> Self {
+        Self { body: body.into() }
     }
 }
 
@@ -2568,10 +2564,10 @@ pub struct UpdateFunction {
 impl sealed::Bound for UpdateFunction {}
 
 impl UpdateFunction {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<UpdateFunctionInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -2879,11 +2875,15 @@ pub struct UpdateAlias {
 impl sealed::Bound for UpdateAlias {}
 
 impl UpdateAlias {
-    pub fn new(function_name: impl Into<String>, alias_name: impl Into<String>) -> Self {
+    pub fn new(
+        function_name: impl Into<String>,
+        alias_name: impl Into<String>,
+        body: impl Into<UpdateAliasInput>,
+    ) -> Self {
         Self {
             function_name: function_name.into(),
             alias_name: alias_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -2929,10 +2929,10 @@ pub struct CreateAlias {
 impl sealed::Bound for CreateAlias {}
 
 impl CreateAlias {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<CreateAliasInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -2975,10 +2975,10 @@ pub struct CreateTrigger {
 impl sealed::Bound for CreateTrigger {}
 
 impl CreateTrigger {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<CreateTriggerInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -3191,11 +3191,15 @@ pub struct UpdateTrigger {
 impl sealed::Bound for UpdateTrigger {}
 
 impl UpdateTrigger {
-    pub fn new(function_name: impl Into<String>, trigger_name: impl Into<String>) -> Self {
+    pub fn new(
+        function_name: impl Into<String>,
+        trigger_name: impl Into<String>,
+        body: impl Into<UpdateTriggerInput>,
+    ) -> Self {
         Self {
             function_name: function_name.into(),
             trigger_name: trigger_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -3413,9 +3417,12 @@ pub struct PutAsyncInvokeConfig {
 impl sealed::Bound for PutAsyncInvokeConfig {}
 
 impl PutAsyncInvokeConfig {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(
+        body: impl Into<PutAsyncInvokeConfigInput>,
+        function_name: impl Into<String>,
+    ) -> Self {
         Self {
-            body: Default::default(),
+            body: body.into(),
             function_name: function_name.into(),
             qualifier: None,
         }
@@ -3638,11 +3645,11 @@ pub struct PutProvisionConfig {
 impl sealed::Bound for PutProvisionConfig {}
 
 impl PutProvisionConfig {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<PutProvisionConfigInput>) -> Self {
         Self {
             function_name: function_name.into(),
             qualifier: None,
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -3840,10 +3847,10 @@ pub struct PutConcurrencyConfig {
 impl sealed::Bound for PutConcurrencyConfig {}
 
 impl PutConcurrencyConfig {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<PutConcurrencyInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -3886,10 +3893,10 @@ pub struct CreateLayerVersion {
 impl sealed::Bound for CreateLayerVersion {}
 
 impl CreateLayerVersion {
-    pub fn new(layer_name: impl Into<String>) -> Self {
+    pub fn new(layer_name: impl Into<String>, body: impl Into<CreateLayerVersionInput>) -> Self {
         Self {
             layer_name: layer_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -4419,10 +4426,10 @@ pub struct CreateVpcBinding {
 impl sealed::Bound for CreateVpcBinding {}
 
 impl CreateVpcBinding {
-    pub fn new(function_name: impl Into<String>) -> Self {
+    pub fn new(function_name: impl Into<String>, body: impl Into<CreateVpcBindingInput>) -> Self {
         Self {
             function_name: function_name.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -4517,10 +4524,8 @@ pub struct TagResources {
 impl sealed::Bound for TagResources {}
 
 impl TagResources {
-    pub fn new() -> Self {
-        Self {
-            body: Default::default(),
-        }
+    pub fn new(body: impl Into<TagResourcesInput>) -> Self {
+        Self { body: body.into() }
     }
 }
 

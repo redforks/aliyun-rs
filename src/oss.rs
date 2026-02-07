@@ -6642,10 +6642,10 @@ pub struct PutBucketPolicy {
 impl sealed::Bound for PutBucketPolicy {}
 
 impl PutBucketPolicy {
-    pub fn new(bucket: impl Into<String>) -> Self {
+    pub fn new(bucket: impl Into<String>, body: impl Into<Vec<u8>>) -> Self {
         Self {
             bucket: bucket.into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -10732,12 +10732,13 @@ impl GetAccessPointPolicyForObjectProcess {
     pub fn new(
         bucket: impl Into<String>,
         x_oss_access_point_for_object_process_name: impl Into<String>,
+        body: impl Into<Vec<u8>>,
     ) -> Self {
         Self {
             bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
@@ -10796,12 +10797,13 @@ impl DeleteAccessPointPolicyForObjectProcess {
     pub fn new(
         bucket: impl Into<String>,
         x_oss_access_point_for_object_process_name: impl Into<String>,
+        body: impl Into<Vec<u8>>,
     ) -> Self {
         Self {
             bucket: bucket.into(),
             x_oss_access_point_for_object_process_name: x_oss_access_point_for_object_process_name
                 .into(),
-            body: Default::default(),
+            body: body.into(),
         }
     }
 }
