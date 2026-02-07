@@ -5523,7 +5523,7 @@ impl crate::Request for ListScalingConfigs {
 pub struct AccelerationInfo {
     /// 镜像加速状态
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: Option<String>,
 }
 
 impl crate::FlatSerialize for AccelerationInfo {
@@ -5542,22 +5542,23 @@ impl crate::FlatSerialize for AccelerationInfo {
 pub struct Alias {
     /// 灰度版本权重。
     #[serde(rename = "additionalVersionWeight")]
+    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称。
     #[serde(rename = "aliasName")]
-    pub alias_name: String,
+    pub alias_name: Option<String>,
     /// 创建时间。
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 别名描述信息。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 修改时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 别名指向的版本。
     #[serde(rename = "versionId")]
-    pub version_id: String,
+    pub version_id: Option<String>,
 }
 
 impl crate::FlatSerialize for Alias {
@@ -5611,7 +5612,7 @@ impl crate::ToCodeMessage for Alias {
 pub struct Destination {
     /// 异步调用目标资源描述符
     #[serde(rename = "destination")]
-    pub destination: String,
+    pub destination: Option<String>,
 }
 
 impl crate::FlatSerialize for Destination {
@@ -5634,10 +5635,10 @@ impl crate::FlatSerialize for Destination {
 pub struct DestinationConfig {
     /// 失败的回调目标结构体。
     #[serde(rename = "onFailure")]
-    pub on_failure: Destination,
+    pub on_failure: Option<Destination>,
     /// 成功的回调目标结构体。
     #[serde(rename = "onSuccess")]
-    pub on_success: Destination,
+    pub on_success: Option<Destination>,
 }
 
 impl crate::FlatSerialize for DestinationConfig {
@@ -5665,25 +5666,25 @@ impl crate::FlatSerialize for DestinationConfig {
 pub struct AsyncConfig {
     /// 是否开启异步任务
     #[serde(rename = "asyncTask")]
-    pub async_task: bool,
+    pub async_task: Option<bool>,
     /// 创建时间
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 目标配置
     #[serde(rename = "destinationConfig")]
-    pub destination_config: DestinationConfig,
+    pub destination_config: Option<DestinationConfig>,
     /// 函数资源标识
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     /// 最后修改时间
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 事件最大存活时间
     #[serde(rename = "maxAsyncEventAgeInSeconds")]
-    pub max_async_event_age_in_seconds: i64,
+    pub max_async_event_age_in_seconds: Option<i64>,
     /// 异步调用重试次数
     #[serde(rename = "maxAsyncRetryAttempts")]
-    pub max_async_retry_attempts: i64,
+    pub max_async_retry_attempts: Option<i64>,
 }
 
 impl crate::FlatSerialize for AsyncConfig {
@@ -5742,10 +5743,10 @@ impl crate::ToCodeMessage for AsyncConfig {
 pub struct AsyncTaskEvent {
     /// 事件负载内容
     #[serde(rename = "eventDetail")]
-    pub event_detail: String,
+    pub event_detail: Option<String>,
     /// 事件 ID
     #[serde(rename = "eventId")]
-    pub event_id: i64,
+    pub event_id: Option<i64>,
     /// 事件执行状态。
     ///
     /// - Enqueued：异步消息已入队，等待处理。
@@ -5766,10 +5767,10 @@ pub struct AsyncTaskEvent {
     ///
     /// - Retrying：异步调用因执行错误重试中。
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: Option<String>,
     /// 事件发生时间，单位毫秒
     #[serde(rename = "timestamp")]
-    pub timestamp: i64,
+    pub timestamp: Option<i64>,
 }
 
 impl crate::FlatSerialize for AsyncTaskEvent {
@@ -5799,38 +5800,39 @@ impl crate::FlatSerialize for AsyncTaskEvent {
 pub struct AsyncTask {
     /// 异步任务失败后的已重试次数
     #[serde(rename = "alreadyRetriedTimes")]
-    pub already_retried_times: i64,
+    pub already_retried_times: Option<i64>,
     /// 异步任务的最终状态
     #[serde(rename = "destinationStatus")]
-    pub destination_status: String,
+    pub destination_status: Option<String>,
     /// 异步任务的执行耗时
     #[serde(rename = "durationMs")]
-    pub duration_ms: i64,
+    pub duration_ms: Option<i64>,
     /// 异步任务结束时间，单位为毫秒
     #[serde(rename = "endTime")]
-    pub end_time: i64,
+    pub end_time: Option<i64>,
     /// 异步任务事件列表
     #[serde(rename = "events")]
+    #[serde(default)]
     pub events: Vec<AsyncTaskEvent>,
     /// 函数资源标识
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     /// 异步任务对应的实例 ID
     #[serde(rename = "instanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 本次异步任务对应的请求 ID
     #[serde(rename = "requestId")]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 异步任务执行完成后的响应内容。大小限制为 1 MB。
     /// 该字段当前处于内测阶段，如您需要使用，请[联系我们](~~2513733~~)为您开通。
     #[serde(rename = "returnPayload")]
-    pub return_payload: String,
+    pub return_payload: Option<String>,
     /// 异步任务开始时间，单位为毫秒
     #[serde(rename = "startedTime")]
-    pub started_time: i64,
+    pub started_time: Option<i64>,
     /// 异步任务的执行状态。
     ///
     /// - Enqueued：异步消息已入队，等待处理。
@@ -5851,16 +5853,16 @@ pub struct AsyncTask {
     ///
     /// - Retrying：异步调用因执行错误重试中。
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: Option<String>,
     /// 异步任务失败的错误消息
     #[serde(rename = "taskErrorMessage")]
-    pub task_error_message: String,
+    pub task_error_message: Option<String>,
     /// 异步任务 ID
     #[serde(rename = "taskId")]
-    pub task_id: String,
+    pub task_id: Option<String>,
     /// 异步任务执行时的入参内容
     #[serde(rename = "taskPayload")]
-    pub task_payload: String,
+    pub task_payload: Option<String>,
 }
 
 impl crate::FlatSerialize for AsyncTask {
@@ -5943,10 +5945,10 @@ impl crate::ToCodeMessage for AsyncTask {
 pub struct AuthConfig {
     /// 认证信息
     #[serde(rename = "authInfo")]
-    pub auth_info: String,
+    pub auth_info: Option<String>,
     /// 认证类型。anonymous, function或者jwt。
     #[serde(rename = "authType")]
-    pub auth_type: String,
+    pub auth_type: Option<String>,
 }
 
 impl crate::FlatSerialize for AuthConfig {
@@ -5974,10 +5976,10 @@ impl crate::FlatSerialize for AuthConfig {
 pub struct BatchWindow {
     /// 窗口中最大可容纳的事件数量。当达到此阈值，会触发窗口内的数据往下游推送。当存在多个窗口时，有一个窗口满足即触发。
     #[serde(rename = "CountBasedWindow")]
-    pub count_based_window: i32,
+    pub count_based_window: Option<i32>,
     /// 窗口中最大可容纳的时间范围内的事件（单位秒）。当达到此阈值，会触发窗口内的数据往下游推送。当存在多个窗口时，有一个窗口满足即触发。
     #[serde(rename = "TimeBasedWindow")]
-    pub time_based_window: i32,
+    pub time_based_window: Option<i32>,
 }
 
 impl crate::FlatSerialize for BatchWindow {
@@ -6042,11 +6044,11 @@ impl crate::FlatSerialize for CertConfig {
 #[serde(default)]
 pub struct ChangeResourceGroupInput {
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: Option<String>,
     #[serde(rename = "NewResourceGroupId")]
-    pub new_resource_group_id: String,
+    pub new_resource_group_id: Option<String>,
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
 }
 
 impl crate::FlatSerialize for ChangeResourceGroupInput {
@@ -6077,11 +6079,11 @@ impl crate::FlatSerialize for ChangeResourceGroupInput {
 #[serde(default)]
 pub struct ChangeResourceGroupOutput {
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: Option<String>,
     #[serde(rename = "NewResourceGroupId")]
-    pub new_resource_group_id: String,
+    pub new_resource_group_id: Option<String>,
     #[serde(rename = "OldResourceGroupId")]
-    pub old_resource_group_id: String,
+    pub old_resource_group_id: Option<String>,
 }
 
 impl crate::FlatSerialize for ChangeResourceGroupOutput {
@@ -6120,10 +6122,10 @@ impl crate::ToCodeMessage for ChangeResourceGroupOutput {
 pub struct ConcurrencyConfig {
     /// 阿里云资源的标识
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     /// 预留并发，函数预留账号并发的一部份，其他函数不可以使用这部份并发。预留并发包括预留实例和按量实例的总并发。
     #[serde(rename = "reservedConcurrency")]
-    pub reserved_concurrency: i64,
+    pub reserved_concurrency: Option<i64>,
 }
 
 impl crate::FlatSerialize for ConcurrencyConfig {
@@ -6157,16 +6159,16 @@ impl crate::ToCodeMessage for ConcurrencyConfig {
 pub struct CookieSessionAffinityConfig {
     /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
     #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: i64,
+    pub session_concurrency_per_instance: Option<i64>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
 }
 
 impl crate::FlatSerialize for CookieSessionAffinityConfig {
@@ -6204,13 +6206,14 @@ impl crate::FlatSerialize for CookieSessionAffinityConfig {
 pub struct CreateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
+    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     /// 别名描述信息
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 别名指向的版本
     #[serde(rename = "versionId")]
     pub version_id: String,
@@ -6332,12 +6335,15 @@ impl crate::FlatSerialize for WildcardRule {
 pub struct RewriteConfig {
     /// 精确匹配规则列表
     #[serde(rename = "equalRules")]
+    #[serde(default)]
     pub equal_rules: Vec<EqualRule>,
     /// 正则匹配规则列表
     #[serde(rename = "regexRules")]
+    #[serde(default)]
     pub regex_rules: Vec<RegexRule>,
     /// 通配匹配规则列表
     #[serde(rename = "wildcardRules")]
+    #[serde(default)]
     pub wildcard_rules: Vec<WildcardRule>,
 }
 
@@ -6374,16 +6380,17 @@ pub struct PathConfig {
     pub function_name: String,
     /// 支持的方法
     #[serde(rename = "methods")]
+    #[serde(default)]
     pub methods: Vec<String>,
     /// 路由匹配规则
     #[serde(rename = "path")]
     pub path: String,
     /// 版本或者别名
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 重写配置
     #[serde(rename = "rewriteConfig")]
-    pub rewrite_config: RewriteConfig,
+    pub rewrite_config: Option<RewriteConfig>,
 }
 
 impl crate::FlatSerialize for PathConfig {
@@ -6418,6 +6425,7 @@ impl crate::FlatSerialize for PathConfig {
 pub struct RouteConfig {
     /// 路由配置列表
     #[serde(rename = "routes")]
+    #[serde(default)]
     pub routes: Vec<PathConfig>,
 }
 
@@ -6440,7 +6448,7 @@ pub struct TLSConfig {
     pub cipher_suites: Vec<String>,
     /// TLS最大版本号。枚举值：TLSv1.3, TLSv1.2
     #[serde(rename = "maxVersion")]
-    pub max_version: String,
+    pub max_version: Option<String>,
     /// TLS最小版本号。枚举值：TLSv1.3, TLSv1.2
     #[serde(rename = "minVersion")]
     pub min_version: String,
@@ -6476,7 +6484,7 @@ impl crate::FlatSerialize for TLSConfig {
 pub struct WAFConfig {
     /// 是否开启WAF防护
     #[serde(rename = "enableWAF")]
-    pub enable_waf: bool,
+    pub enable_waf: Option<bool>,
 }
 
 impl crate::FlatSerialize for WAFConfig {
@@ -6499,25 +6507,25 @@ impl crate::FlatSerialize for WAFConfig {
 pub struct CreateCustomDomainInput {
     /// 权限认证配置。
     #[serde(rename = "authConfig")]
-    pub auth_config: AuthConfig,
+    pub auth_config: Option<AuthConfig>,
     /// HTTPS证书的信息。
     #[serde(rename = "certConfig")]
-    pub cert_config: CertConfig,
+    pub cert_config: Option<CertConfig>,
     /// 域名。填写已在阿里云备案或接入备案的自定义域名名称。
     #[serde(rename = "domainName")]
     pub domain_name: String,
     /// 域名支持的协议类型。HTTP：仅支持HTTP协议。HTTPS：仅支持HTTPS协议。HTTP,HTTPS：支持HTTP及HTTPS协议。
     #[serde(rename = "protocol")]
-    pub protocol: String,
+    pub protocol: Option<String>,
     /// 路由表：自定义域名访问时的PATH到Function的映射。
     #[serde(rename = "routeConfig")]
-    pub route_config: RouteConfig,
+    pub route_config: Option<RouteConfig>,
     /// TLS配置信息。
     #[serde(rename = "tlsConfig")]
-    pub tls_config: TLSConfig,
+    pub tls_config: Option<TLSConfig>,
     /// Web应用防火墙配置信息。
     #[serde(rename = "wafConfig")]
-    pub waf_config: WAFConfig,
+    pub waf_config: Option<WAFConfig>,
 }
 
 impl crate::FlatSerialize for CreateCustomDomainInput {
@@ -6568,16 +6576,16 @@ impl crate::FlatSerialize for CreateCustomDomainInput {
 pub struct InputCodeLocation {
     /// 函数代码包的CRC-64值。如果提供了checksum，则函数计算会校验代码包的checksum是否和提供的一致。
     #[serde(rename = "checksum")]
-    pub checksum: String,
+    pub checksum: Option<String>,
     /// 用户存放函数代码ZIP包的OSS Bucket名称。
     #[serde(rename = "ossBucketName")]
-    pub oss_bucket_name: String,
+    pub oss_bucket_name: Option<String>,
     /// 用户存放函数代码ZIP包的OSS Object名称。
     #[serde(rename = "ossObjectName")]
-    pub oss_object_name: String,
+    pub oss_object_name: Option<String>,
     /// 函数代码ZIP包的Base 64编码。
     #[serde(rename = "zipFile")]
-    pub zip_file: String,
+    pub zip_file: Option<String>,
 }
 
 impl crate::FlatSerialize for InputCodeLocation {
@@ -6607,22 +6615,22 @@ impl crate::FlatSerialize for InputCodeLocation {
 pub struct CustomHealthCheckConfig {
     /// 健康检查失败次数阈值，达到该值后系统认为检查失败。取值范围1~120。默认值为3。
     #[serde(rename = "failureThreshold")]
-    pub failure_threshold: i32,
+    pub failure_threshold: Option<i32>,
     /// 容器自定义健康检查URL地址。长度不超过2048个字符。
     #[serde(rename = "httpGetUrl")]
-    pub http_get_url: String,
+    pub http_get_url: Option<String>,
     /// 容器启动到发起健康检查的延迟。取值范围0~120。默认值为0。
     #[serde(rename = "initialDelaySeconds")]
-    pub initial_delay_seconds: i32,
+    pub initial_delay_seconds: Option<i32>,
     /// 健康检查周期。取值范围1~120。默认值为3。
     #[serde(rename = "periodSeconds")]
-    pub period_seconds: i32,
+    pub period_seconds: Option<i32>,
     /// 健康检查成功次数阈值，达到该值后系统认为检查成功。取值范围1~120。默认值为1。
     #[serde(rename = "successThreshold")]
-    pub success_threshold: i32,
+    pub success_threshold: Option<i32>,
     /// 健康检查超时时间。取值范围1~3。默认值为1。
     #[serde(rename = "timeoutSeconds")]
-    pub timeout_seconds: i32,
+    pub timeout_seconds: Option<i32>,
 }
 
 impl crate::FlatSerialize for CustomHealthCheckConfig {
@@ -6670,10 +6678,10 @@ impl crate::FlatSerialize for CustomHealthCheckConfig {
 pub struct RegistryAuthConfig {
     /// 镜像仓库密码
     #[serde(rename = "password")]
-    pub password: String,
+    pub password: Option<String>,
     /// 镜像仓库用户名
     #[serde(rename = "userName")]
-    pub user_name: String,
+    pub user_name: Option<String>,
 }
 
 impl crate::FlatSerialize for RegistryAuthConfig {
@@ -6697,10 +6705,10 @@ impl crate::FlatSerialize for RegistryAuthConfig {
 pub struct RegistryCertConfig {
     /// 是否跳过证书验证
     #[serde(rename = "insecure")]
-    pub insecure: bool,
+    pub insecure: Option<bool>,
     /// 镜像仓库CA证书
     #[serde(rename = "rootCaCertBase64")]
-    pub root_ca_cert_base64: String,
+    pub root_ca_cert_base64: Option<String>,
 }
 
 impl crate::FlatSerialize for RegistryCertConfig {
@@ -6724,13 +6732,13 @@ impl crate::FlatSerialize for RegistryCertConfig {
 pub struct RegistryNetworkConfig {
     /// 可以连通镜像仓库的SecurityGroup ID
     #[serde(rename = "securityGroupId")]
-    pub security_group_id: String,
+    pub security_group_id: Option<String>,
     /// 可以连通镜像仓库的VSwitch ID
     #[serde(rename = "vSwitchId")]
-    pub v_switch_id: String,
+    pub v_switch_id: Option<String>,
     /// 可以连通镜像仓库的VPC ID
     #[serde(rename = "vpcId")]
-    pub vpc_id: String,
+    pub vpc_id: Option<String>,
 }
 
 impl crate::FlatSerialize for RegistryNetworkConfig {
@@ -6759,13 +6767,13 @@ impl crate::FlatSerialize for RegistryNetworkConfig {
 pub struct RegistryConfig {
     /// 权限认证配置
     #[serde(rename = "authConfig")]
-    pub auth_config: RegistryAuthConfig,
+    pub auth_config: Option<RegistryAuthConfig>,
     /// 证书配置
     #[serde(rename = "certConfig")]
-    pub cert_config: RegistryCertConfig,
+    pub cert_config: Option<RegistryCertConfig>,
     /// 网络配置。
     #[serde(rename = "networkConfig")]
-    pub network_config: RegistryNetworkConfig,
+    pub network_config: Option<RegistryNetworkConfig>,
 }
 
 impl crate::FlatSerialize for RegistryConfig {
@@ -6798,34 +6806,36 @@ impl crate::FlatSerialize for RegistryConfig {
 pub struct CustomContainerConfig {
     /// 镜像加速信息。
     #[serde(rename = "accelerationInfo")]
-    pub acceleration_info: AccelerationInfo,
+    pub acceleration_info: Option<AccelerationInfo>,
     /// 是否开启镜像加速。Default表示开启镜像加速，None表示关闭镜像加速。
     #[serde(rename = "accelerationType")]
-    pub acceleration_type: String,
+    pub acceleration_type: Option<String>,
     /// ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入。
     #[serde(rename = "acrInstanceId")]
-    pub acr_instance_id: String,
+    pub acr_instance_id: Option<String>,
     /// 容器启动参数。
     #[serde(rename = "command")]
+    #[serde(default)]
     pub command: Vec<String>,
     /// 容器启动命令。
     #[serde(rename = "entrypoint")]
+    #[serde(default)]
     pub entrypoint: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
-    pub health_check_config: CustomHealthCheckConfig,
+    pub health_check_config: Option<CustomHealthCheckConfig>,
     /// 容器镜像地址。
     #[serde(rename = "image")]
-    pub image: String,
+    pub image: Option<String>,
     /// 自定义容器运行时HTTP Server的监听端口。
     #[serde(rename = "port")]
-    pub port: i32,
+    pub port: Option<i32>,
     /// registry related
     #[serde(rename = "registryConfig")]
-    pub registry_config: RegistryConfig,
+    pub registry_config: Option<RegistryConfig>,
     /// 所部署的镜像的实际digest版本，函数启动时实际使用此digest指定的代码版本。由GetFunction时返回，作为参数时无需提供。
     #[serde(rename = "resolvedImageUri")]
-    pub resolved_image_uri: String,
+    pub resolved_image_uri: Option<String>,
 }
 
 impl crate::FlatSerialize for CustomContainerConfig {
@@ -6881,10 +6891,10 @@ impl crate::FlatSerialize for CustomContainerConfig {
 pub struct DNSOption {
     /// 配置项名称
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: Option<String>,
     /// 配置项值
     #[serde(rename = "value")]
-    pub value: String,
+    pub value: Option<String>,
 }
 
 impl crate::FlatSerialize for DNSOption {
@@ -6904,12 +6914,15 @@ impl crate::FlatSerialize for DNSOption {
 pub struct CustomDNS {
     /// resolv.conf文件中的DNS解析配置列表。每一项对应一个键值对，格式为key:value，其中键为必填。
     #[serde(rename = "dnsOptions")]
+    #[serde(default)]
     pub dns_options: Vec<DNSOption>,
     /// DNS服务器的IP地址列表。
     #[serde(rename = "nameServers")]
+    #[serde(default)]
     pub name_servers: Vec<String>,
     /// DNS搜索域列表。
     #[serde(rename = "searches")]
+    #[serde(default)]
     pub searches: Vec<String>,
 }
 
@@ -6939,16 +6952,18 @@ impl crate::FlatSerialize for CustomDNS {
 pub struct CustomRuntimeConfig {
     /// 实例启动参数。
     #[serde(rename = "args")]
+    #[serde(default)]
     pub args: Vec<String>,
     /// 实例启动命令。
     #[serde(rename = "command")]
+    #[serde(default)]
     pub command: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
-    pub health_check_config: CustomHealthCheckConfig,
+    pub health_check_config: Option<CustomHealthCheckConfig>,
     /// HTTP Server的监听端口。
     #[serde(rename = "port")]
-    pub port: i32,
+    pub port: Option<i32>,
 }
 
 impl crate::FlatSerialize for CustomRuntimeConfig {
@@ -6974,7 +6989,7 @@ impl crate::FlatSerialize for CustomRuntimeConfig {
 pub struct GPUConfig {
     /// GPU显存规格，单位为MB，为1024MB的倍数
     #[serde(rename = "gpuMemorySize")]
-    pub gpu_memory_size: i32,
+    pub gpu_memory_size: Option<i32>,
     /// GPU实例类型。
     ///
     ///  - fc.gpu.tesla.1 表示 GPU Tesla 系列实例类型。
@@ -6983,7 +6998,7 @@ pub struct GPUConfig {
     ///
     ///  - fc.gpu.ada.1 表示 GPU Ada 系列实例类型。
     #[serde(rename = "gpuType")]
-    pub gpu_type: String,
+    pub gpu_type: Option<String>,
 }
 
 impl crate::FlatSerialize for GPUConfig {
@@ -7007,12 +7022,13 @@ impl crate::FlatSerialize for GPUConfig {
 pub struct LifecycleHook {
     /// 回调方法的执行入口，含义与请求处理程序类似。
     #[serde(rename = "handler")]
-    pub handler: String,
+    pub handler: Option<String>,
     /// 回调方法的超时时间，单位为秒。
     #[serde(rename = "timeout")]
-    pub timeout: i32,
+    pub timeout: Option<i32>,
     /// 函数生命周期初始化阶段回调指令，生命周期回调方法的执行入口 handler 和 command 不允许同时配置，只能有一个生效，同时配置会产生错误提示
     #[serde(rename = "command")]
+    #[serde(default)]
     pub command: Vec<String>,
 }
 
@@ -7034,10 +7050,10 @@ impl crate::FlatSerialize for LifecycleHook {
 pub struct InstanceLifecycleConfig {
     /// Initializer回调方法配置
     #[serde(rename = "initializer")]
-    pub initializer: LifecycleHook,
+    pub initializer: Option<LifecycleHook>,
     /// PreStop回调方法配置
     #[serde(rename = "preStop")]
-    pub pre_stop: LifecycleHook,
+    pub pre_stop: Option<LifecycleHook>,
 }
 
 impl crate::FlatSerialize for InstanceLifecycleConfig {
@@ -7061,19 +7077,19 @@ impl crate::FlatSerialize for InstanceLifecycleConfig {
 pub struct LogConfig {
     /// 是否开启实例级别指标。开启该功能后，您可以查看实例级别的CPU使用情况、内存使用情况、实例网络情况和实例内请求数等核心指标信息。false：默认值，表示关闭实例级别指标。true：表示开启实例级别指标。
     #[serde(rename = "enableInstanceMetrics")]
-    pub enable_instance_metrics: bool,
+    pub enable_instance_metrics: Option<bool>,
     /// 是否开启请求级别指标。开启该功能后，您可以查看该服务下所有函数的某次调用所消耗的时间及内存。false：表示关闭请求级别指标。true：默认值，表示开启请求级别指标。
     #[serde(rename = "enableRequestMetrics")]
-    pub enable_request_metrics: bool,
+    pub enable_request_metrics: Option<bool>,
     /// 日志行首匹配规则
     #[serde(rename = "logBeginRule")]
-    pub log_begin_rule: String,
+    pub log_begin_rule: Option<String>,
     /// 日志服务的Logstore名称。
     #[serde(rename = "logstore")]
-    pub logstore: String,
+    pub logstore: Option<String>,
     /// 日志服务的Project名称
     #[serde(rename = "project")]
-    pub project: String,
+    pub project: Option<String>,
 }
 
 impl crate::FlatSerialize for LogConfig {
@@ -7108,13 +7124,13 @@ impl crate::FlatSerialize for LogConfig {
 pub struct NASMountConfig {
     /// 使用传输加密方式挂载。 说明：仅通用型NAS支持传输加密
     #[serde(rename = "enableTLS")]
-    pub enable_tls: bool,
+    pub enable_tls: Option<bool>,
     /// 本地挂载目录。
     #[serde(rename = "mountDir")]
-    pub mount_dir: String,
+    pub mount_dir: Option<String>,
     /// NAS服务器地址。
     #[serde(rename = "serverAddr")]
-    pub server_addr: String,
+    pub server_addr: Option<String>,
 }
 
 impl crate::FlatSerialize for NASMountConfig {
@@ -7147,13 +7163,14 @@ impl crate::FlatSerialize for NASMountConfig {
 pub struct NASConfig {
     /// 群组ID。
     #[serde(rename = "groupId")]
-    pub group_id: i32,
+    pub group_id: Option<i32>,
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
+    #[serde(default)]
     pub mount_points: Vec<NASMountConfig>,
     /// 账号ID。
     #[serde(rename = "userId")]
-    pub user_id: i32,
+    pub user_id: Option<i32>,
 }
 
 impl crate::FlatSerialize for NASConfig {
@@ -7178,19 +7195,19 @@ impl crate::FlatSerialize for NASConfig {
 pub struct OSSMountPoint {
     /// 挂载的OSS Bucket。
     #[serde(rename = "bucketName")]
-    pub bucket_name: String,
+    pub bucket_name: Option<String>,
     /// 挂载的OSS Bucket路径。
     #[serde(rename = "bucketPath")]
-    pub bucket_path: String,
+    pub bucket_path: Option<String>,
     /// OSS访问地址。
     #[serde(rename = "endpoint")]
-    pub endpoint: String,
+    pub endpoint: Option<String>,
     /// 挂载目录。
     #[serde(rename = "mountDir")]
-    pub mount_dir: String,
+    pub mount_dir: Option<String>,
     /// 是否只读。
     #[serde(rename = "readOnly")]
-    pub read_only: bool,
+    pub read_only: Option<bool>,
 }
 
 impl crate::FlatSerialize for OSSMountPoint {
@@ -7229,6 +7246,7 @@ impl crate::FlatSerialize for OSSMountPoint {
 pub struct OSSMountConfig {
     /// OSS挂载点列表。
     #[serde(rename = "mountPoints")]
+    #[serde(default)]
     pub mount_points: Vec<OSSMountPoint>,
 }
 
@@ -7252,10 +7270,11 @@ impl crate::FlatSerialize for OSSMountConfig {
 pub struct TracingConfig {
     /// 链路追踪参数。参数为map[string]string，其中key为"endpoint"，value为您的链路追踪内网接入点。 例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces 。
     #[serde(rename = "params")]
+    #[serde(default)]
     pub params: std::collections::HashMap<String, String>,
     /// 链路追踪协议类型，目前只支持Jaeger。
     #[serde(rename = "type")]
-    pub r#type: String,
+    pub r#type: Option<String>,
 }
 
 impl crate::FlatSerialize for TracingConfig {
@@ -7275,16 +7294,17 @@ impl crate::FlatSerialize for TracingConfig {
 pub struct VPCConfig {
     /// 安全组ID。
     #[serde(rename = "securityGroupId")]
-    pub security_group_id: String,
+    pub security_group_id: Option<String>,
     /// 交换机列表。
     #[serde(rename = "vSwitchIds")]
+    #[serde(default)]
     pub v_switch_ids: Vec<String>,
     /// VPC网络ID。
     #[serde(rename = "vpcId")]
-    pub vpc_id: String,
+    pub vpc_id: Option<String>,
     /// 授予函数计算访问用户VPC所需权限的RAM角色
     #[serde(rename = "role")]
-    pub role: String,
+    pub role: Option<String>,
 }
 
 impl crate::FlatSerialize for VPCConfig {
@@ -7314,10 +7334,10 @@ impl crate::FlatSerialize for VPCConfig {
 pub struct Tag {
     /// 标签名
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: Option<String>,
     /// 标签值
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: Option<String>,
 }
 
 impl crate::FlatSerialize for Tag {
@@ -7335,11 +7355,11 @@ impl crate::FlatSerialize for Tag {
 #[serde(default)]
 pub struct PolarFsMountConfig {
     #[serde(rename = "instanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     #[serde(rename = "mountDir")]
-    pub mount_dir: String,
+    pub mount_dir: Option<String>,
     #[serde(rename = "remoteDir")]
-    pub remote_dir: String,
+    pub remote_dir: Option<String>,
 }
 
 impl crate::FlatSerialize for PolarFsMountConfig {
@@ -7371,12 +7391,13 @@ impl crate::FlatSerialize for PolarFsMountConfig {
 pub struct PolarFsConfig {
     /// 群组ID。
     #[serde(rename = "groupId")]
-    pub group_id: i32,
+    pub group_id: Option<i32>,
     /// 账号ID。
     #[serde(rename = "userId")]
-    pub user_id: i32,
+    pub user_id: Option<i32>,
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
+    #[serde(default)]
     pub mount_points: Vec<PolarFsMountConfig>,
 }
 
@@ -7402,109 +7423,112 @@ impl crate::FlatSerialize for PolarFsConfig {
 pub struct CreateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
     #[serde(rename = "code")]
-    pub code: InputCodeLocation,
+    pub code: Option<InputCodeLocation>,
     /// 函数的CPU规格，单位为vCPU，为0.05 vCPU的倍数。最小值为0.05，最大值为16。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "cpu")]
-    pub cpu: f32,
+    pub cpu: Option<f32>,
     /// 自定义容器运行时的相关配置，成功配置后函数可以使用自定义容器镜像执行函数。code和customContainerConfig二选一。
     #[serde(rename = "customContainerConfig")]
-    pub custom_container_config: CustomContainerConfig,
+    pub custom_container_config: Option<CustomContainerConfig>,
     /// 自定义DNS配置。
     #[serde(rename = "customDNS")]
-    pub custom_dns: CustomDNS,
+    pub custom_dns: Option<CustomDNS>,
     /// 自定义运行时配置。
     #[serde(rename = "customRuntimeConfig")]
-    pub custom_runtime_config: CustomRuntimeConfig,
+    pub custom_runtime_config: Option<CustomRuntimeConfig>,
     /// 函数的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 函数的磁盘规格，单位为MB，可选值为512 MB或10240 MB。
     #[serde(rename = "diskSize")]
-    pub disk_size: i32,
+    pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
+    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数的名称。只能包含字母、数字、下划线（_）和短划线（-），不能以数字、短划线（-）开头，长度范围为1~64个字符。
     #[serde(rename = "functionName")]
     pub function_name: String,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
-    pub gpu_config: GPUConfig,
+    pub gpu_config: Option<GPUConfig>,
     /// 函数执行的入口，具体格式和运行时相关。
     #[serde(rename = "handler")]
     pub handler: String,
     /// 实例最大并发度。
     #[serde(rename = "instanceConcurrency")]
-    pub instance_concurrency: i32,
+    pub instance_concurrency: Option<i32>,
     /// 实例生命周期回调方法配置。
     #[serde(rename = "instanceLifecycleConfig")]
-    pub instance_lifecycle_config: InstanceLifecycleConfig,
+    pub instance_lifecycle_config: Option<InstanceLifecycleConfig>,
     /// 是否允许函数访问公网。默认值为true。
     #[serde(rename = "internetAccess")]
-    pub internet_access: bool,
+    pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
+    #[serde(default)]
     pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
-    pub log_config: LogConfig,
+    pub log_config: Option<LogConfig>,
     /// 函数的内存规格，单位为MB，内存大小为64 MB的倍数。最小值为128MB，最大值为32GB。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "memorySize")]
-    pub memory_size: i32,
+    pub memory_size: Option<i32>,
     /// NAS配置。配置此参数后，函数可以访问指定的NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// OSS挂载配置。
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     /// 用户授权给函数计算的RAM角色，设置后函数计算将扮演该角色生成临时访问凭证。在函数中可以使用该角色的临时访问凭证来访问指定的阿里云服务，例如OSS和OTS。
     #[serde(rename = "role")]
-    pub role: String,
+    pub role: Option<String>,
     /// 函数的运行时环境。目前支持的运行环境有：nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, python3.12, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, custom.debian11, custom.debian12, custom-container。
     #[serde(rename = "runtime")]
     pub runtime: String,
     /// 函数运行的超时时间，单位为秒，最小1秒，最大值为86400秒，默认值是3秒。函数超过这个时间后会被终止执行。
     #[serde(rename = "timeout")]
-    pub timeout: i32,
+    pub timeout: Option<i32>,
     /// 链路追踪配置。当函数计算与链路追踪集成后，您可以记录请求在函数计算的耗时时间、查看函数的冷启动时间、记录函数内部时间的消耗等。
     #[serde(rename = "tracingConfig")]
-    pub tracing_config: TracingConfig,
+    pub tracing_config: Option<TracingConfig>,
     /// VPC配置。配置此参数后，函数可以访问指定的VPC资源。
     #[serde(rename = "vpcConfig")]
-    pub vpc_config: VPCConfig,
+    pub vpc_config: Option<VPCConfig>,
     /// 标签列表
     #[serde(rename = "tags")]
+    #[serde(default)]
     pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
-    pub disable_ondemand: bool,
+    pub disable_ondemand: Option<bool>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
-    pub session_affinity: String,
+    pub session_affinity: Option<String>,
     /// 是否允许 GPU 函数的预留实例常驻，启用该功能时，创建的函数实例不会被注入 STS token。
     #[serde(rename = "enableLongLiving")]
-    pub enable_long_living: bool,
+    pub enable_long_living: Option<bool>,
     #[serde(rename = "resourceGroupId")]
-    pub resource_group_id: String,
+    pub resource_group_id: Option<String>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
-    pub instance_isolation_mode: CreateFunctionInputInstanceIsolationMode,
+    pub instance_isolation_mode: Option<CreateFunctionInputInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
-    pub session_affinity_config: String,
+    pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间。
     #[serde(rename = "idleTimeout")]
-    pub idle_timeout: i32,
+    pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
     /// Env: 环境变量不注入
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
-    pub disable_inject_credentials: CreateFunctionInputDisableInjectCredentials,
+    pub disable_inject_credentials: Option<CreateFunctionInputDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 impl crate::FlatSerialize for CreateFunctionInput {
@@ -7660,16 +7684,17 @@ impl crate::FlatSerialize for CreateFunctionInput {
 pub struct CreateLayerVersionInput {
     /// 层的代码信息。
     #[serde(rename = "code")]
-    pub code: InputCodeLocation,
+    pub code: Option<InputCodeLocation>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
+    #[serde(default)]
     pub compatible_runtime: Vec<String>,
     /// 层版本的描述信息。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 层的许可协议。
     #[serde(rename = "license")]
-    pub license: String,
+    pub license: Option<String>,
 }
 
 impl crate::FlatSerialize for CreateLayerVersionInput {
@@ -7699,24 +7724,24 @@ impl crate::FlatSerialize for CreateLayerVersionInput {
 pub struct CreateSessionInput {
     /// Session生命周期
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// NAS配置，配置后Session关联的实例可以访问指定NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// 可自定义会话ID。不配置时由服务端生成。若配置则将此配置作为会话ID。仅适用于HEADER_FIELD亲和模式，
     /// 格式规范：长度限制[0,64]，仅以 **a-zA-Z0-9_** 字符做首字符，非首字符可为 **a-zA-Z0-9_-**。
     #[serde(rename = "sessionId")]
-    pub session_id: String,
+    pub session_id: Option<String>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 impl crate::FlatSerialize for CreateSessionInput {
@@ -7769,16 +7794,16 @@ impl crate::FlatSerialize for CreateSessionInput {
 pub struct CreateTriggerInput {
     /// 触发器的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 事件源（如OSS）调用函数所需的角色。
     #[serde(rename = "invocationRole")]
-    pub invocation_role: String,
+    pub invocation_role: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 触发器事件源的Aliyun Resource Name。
     #[serde(rename = "sourceArn")]
-    pub source_arn: String,
+    pub source_arn: Option<String>,
     /// 触发器配置，针对不同类型的触发器，配置有所不同。具体格式请参见如下对应的数据结构：
     ///   - OSS触发器：请参见[OSSTriggerConfig](~~2766465~~)。
     ///   - 日志服务触发器：请参见[SLSTriggerConfig](~~2766469~~)。
@@ -7876,40 +7901,40 @@ impl crate::FlatSerialize for CreateVpcBindingInput {
 pub struct CustomDomain {
     /// 您的阿里云账号（主账号）ID。
     #[serde(rename = "accountId")]
-    pub account_id: String,
+    pub account_id: Option<String>,
     /// 函数计算的API版本。
     #[serde(rename = "apiVersion")]
-    pub api_version: String,
+    pub api_version: Option<String>,
     /// 权限认证配置
     #[serde(rename = "authConfig")]
-    pub auth_config: AuthConfig,
+    pub auth_config: Option<AuthConfig>,
     /// HTTPS证书的信息。
     #[serde(rename = "certConfig")]
-    pub cert_config: CertConfig,
+    pub cert_config: Option<CertConfig>,
     /// 自定义域名的创建时间。
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 域名。
     #[serde(rename = "domainName")]
-    pub domain_name: String,
+    pub domain_name: Option<String>,
     /// 自定义域名上一次被更新的时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 域名支持的协议类型。HTTP：仅支持HTTP协议。HTTPS：仅支持HTTPS协议。HTTP,HTTPS：支持HTTP及HTTPS协议。
     #[serde(rename = "protocol")]
-    pub protocol: String,
+    pub protocol: Option<String>,
     /// 路由表：自定义域名访问时的PATH到Function的映射。
     #[serde(rename = "routeConfig")]
-    pub route_config: RouteConfig,
+    pub route_config: Option<RouteConfig>,
     /// 子域名的数量。
     #[serde(rename = "subdomainCount")]
-    pub subdomain_count: String,
+    pub subdomain_count: Option<String>,
     /// TLS配置信息。
     #[serde(rename = "tlsConfig")]
-    pub tls_config: TLSConfig,
+    pub tls_config: Option<TLSConfig>,
     /// Web应用防火墙配置信息。
     #[serde(rename = "wafConfig")]
-    pub waf_config: WAFConfig,
+    pub waf_config: Option<WAFConfig>,
 }
 
 impl crate::FlatSerialize for CustomDomain {
@@ -7989,7 +8014,7 @@ impl crate::ToCodeMessage for CustomDomain {
 pub struct DeadLetterQueue {
     /// 死信队列的 ARN
     #[serde(rename = "Arn")]
-    pub arn: String,
+    pub arn: Option<String>,
 }
 
 impl crate::FlatSerialize for DeadLetterQueue {
@@ -8008,10 +8033,10 @@ impl crate::FlatSerialize for DeadLetterQueue {
 pub struct DeliveryOption {
     /// 上游事件源投递事件到函数计算的并发最大值，目前仅针对在 Kafka 作为事件源时有效。
     #[serde(rename = "concurrency")]
-    pub concurrency: i64,
+    pub concurrency: Option<i64>,
     /// 函数入口参数 event 中每个数据元素的格式。CloudEvents：以通用格式描述事件数据的规范，包含事件描述以及事件负载数据，旨在简化不同服务、平台间的事件声明和传输，默认值。RawData：只投递事件负载数据，不包含CloudEvents格式中的其它元数据信息。
     #[serde(rename = "eventSchema")]
-    pub event_schema: String,
+    pub event_schema: Option<String>,
 }
 
 impl crate::FlatSerialize for DeliveryOption {
@@ -8039,10 +8064,10 @@ impl crate::FlatSerialize for DeliveryOption {
 pub struct DescribeRegionsOutputRegionsRegionItem {
     /// 地域ID
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 地域名称
     #[serde(rename = "LocalName")]
-    pub local_name: String,
+    pub local_name: Option<String>,
 }
 
 impl crate::FlatSerialize for DescribeRegionsOutputRegionsRegionItem {
@@ -8070,6 +8095,7 @@ impl crate::FlatSerialize for DescribeRegionsOutputRegionsRegionItem {
 pub struct DescribeRegionsOutputRegions {
     /// 地域信息集合
     #[serde(rename = "Region")]
+    #[serde(default)]
     pub region: Vec<DescribeRegionsOutputRegionsRegionItem>,
 }
 
@@ -8089,7 +8115,7 @@ impl crate::FlatSerialize for DescribeRegionsOutputRegions {
 pub struct DescribeRegionsOutput {
     /// 地域信息
     #[serde(rename = "Regions")]
-    pub regions: DescribeRegionsOutputRegions,
+    pub regions: Option<DescribeRegionsOutputRegions>,
 }
 
 impl crate::FlatSerialize for DescribeRegionsOutput {
@@ -8112,17 +8138,17 @@ impl crate::ToCodeMessage for DescribeRegionsOutput {
 #[serde(default)]
 pub struct ScheduledPolicy {
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: Option<String>,
     #[serde(rename = "startTime")]
-    pub start_time: String,
+    pub start_time: Option<String>,
     #[serde(rename = "endTime")]
-    pub end_time: String,
+    pub end_time: Option<String>,
     #[serde(rename = "target")]
-    pub target: i64,
+    pub target: Option<i64>,
     #[serde(rename = "scheduleExpression")]
-    pub schedule_expression: String,
+    pub schedule_expression: Option<String>,
     #[serde(rename = "timeZone")]
-    pub time_zone: String,
+    pub time_zone: Option<String>,
 }
 
 impl crate::FlatSerialize for ScheduledPolicy {
@@ -8156,21 +8182,21 @@ impl crate::FlatSerialize for ScheduledPolicy {
 #[serde(default)]
 pub struct ScalingPolicy {
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: Option<String>,
     #[serde(rename = "startTime")]
-    pub start_time: String,
+    pub start_time: Option<String>,
     #[serde(rename = "endTime")]
-    pub end_time: String,
+    pub end_time: Option<String>,
     #[serde(rename = "metricType")]
-    pub metric_type: String,
+    pub metric_type: Option<String>,
     #[serde(rename = "metricTarget")]
-    pub metric_target: f32,
+    pub metric_target: Option<f32>,
     #[serde(rename = "minInstances")]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "maxInstances")]
-    pub max_instances: i64,
+    pub max_instances: Option<i64>,
     #[serde(rename = "timeZone")]
-    pub time_zone: String,
+    pub time_zone: Option<String>,
 }
 
 impl crate::FlatSerialize for ScalingPolicy {
@@ -8218,21 +8244,23 @@ impl crate::FlatSerialize for ScalingPolicy {
 #[serde(default)]
 pub struct ElasticConfigStatus {
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: String,
+    pub resident_pool_id: Option<String>,
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     #[serde(rename = "currentInstances")]
-    pub current_instances: i64,
+    pub current_instances: Option<i64>,
     #[serde(rename = "currentError")]
-    pub current_error: String,
+    pub current_error: Option<String>,
     #[serde(rename = "minInstances")]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "scheduledPolicies")]
+    #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "scalingPolicies")]
+    #[serde(default)]
     pub scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "targetInstances")]
-    pub target_instances: i64,
+    pub target_instances: Option<i64>,
 }
 
 impl crate::FlatSerialize for ElasticConfigStatus {
@@ -8290,13 +8318,13 @@ impl crate::FlatSerialize for ElasticConfigStatus {
 pub struct Error {
     /// 错误码
     #[serde(rename = "Code")]
-    pub code: String,
+    pub code: Option<String>,
     /// 错误信息
     #[serde(rename = "Message")]
-    pub message: String,
+    pub message: Option<String>,
     /// 请求ID
     #[serde(rename = "RequestId")]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 
 impl crate::FlatSerialize for Error {
@@ -8321,7 +8349,7 @@ impl crate::FlatSerialize for Error {
 pub struct EventSinkConfig {
     /// 事件推送配置
     #[serde(rename = "deliveryOption")]
-    pub delivery_option: DeliveryOption,
+    pub delivery_option: Option<DeliveryOption>,
 }
 
 impl crate::FlatSerialize for EventSinkConfig {
@@ -8344,28 +8372,28 @@ impl crate::FlatSerialize for EventSinkConfig {
 pub struct SourceDTSParameters {
     /// 数据订阅通道的网络地址及端口号信息。
     #[serde(rename = "BrokerUrl")]
-    pub broker_url: String,
+    pub broker_url: Option<String>,
     /// 消费位点，即SDK客户端消费第一条数据的时间戳，格式为Unix时间戳。
     #[serde(rename = "InitCheckPoint")]
-    pub init_check_point: i32,
+    pub init_check_point: Option<i32>,
     /// 消费组的账号密码。
     #[serde(rename = "Password")]
-    pub password: String,
+    pub password: Option<String>,
     /// 数据传输服务DTS版的实例所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 消费组ID。
     #[serde(rename = "Sid")]
-    pub sid: String,
+    pub sid: Option<String>,
     /// 任务 ID。
     #[serde(rename = "TaskId")]
-    pub task_id: String,
+    pub task_id: Option<String>,
     /// 数据订阅通道的订阅Topic。
     #[serde(rename = "Topic")]
-    pub topic: String,
+    pub topic: Option<String>,
     /// 消费组的账号。
     #[serde(rename = "Username")]
-    pub username: String,
+    pub username: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceDTSParameters {
@@ -8403,31 +8431,31 @@ impl crate::FlatSerialize for SourceDTSParameters {
 pub struct SourceKafkaParameters {
     /// 订阅该Topic的消费者所对应的Group ID。
     #[serde(rename = "ConsumerGroup")]
-    pub consumer_group: String,
+    pub consumer_group: Option<String>,
     /// 消息队列Kafka版的实例的ID。
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 网络配置 ：默认值Default，VPC网络是PublicNetwork。
     #[serde(rename = "Network")]
-    pub network: String,
+    pub network: Option<String>,
     /// 偏移量。earliest：最早消费位点。latest：最新消费位点。
     #[serde(rename = "OffsetReset")]
-    pub offset_reset: String,
+    pub offset_reset: Option<String>,
     /// 消息队列Kafka版的实例所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 安全组 ID
     #[serde(rename = "SecurityGroupId")]
-    pub security_group_id: String,
+    pub security_group_id: Option<String>,
     /// 消息队列 Kafka 版实例下的 Topic 名称
     #[serde(rename = "Topic")]
-    pub topic: String,
+    pub topic: Option<String>,
     /// 交换机 ID
     #[serde(rename = "VSwitchIds")]
-    pub v_switch_ids: String,
+    pub v_switch_ids: Option<String>,
     /// VPC 网络的 ID
     #[serde(rename = "VpcId")]
-    pub vpc_id: String,
+    pub vpc_id: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceKafkaParameters {
@@ -8478,13 +8506,13 @@ impl crate::FlatSerialize for SourceKafkaParameters {
 pub struct SourceMNSParameters {
     /// 是否开启Base64编码。true：开启 Base64 编码，默认值。false：不开启 Base64 编码。
     #[serde(rename = "IsBase64Decode")]
-    pub is_base64_decode: bool,
+    pub is_base64_decode: Option<bool>,
     /// 轻量消息队列（原 MNS）的Queue的名称。
     #[serde(rename = "QueueName")]
-    pub queue_name: String,
+    pub queue_name: Option<String>,
     /// 轻量消息队列（原 MNS）Queue所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceMNSParameters {
@@ -8517,13 +8545,13 @@ impl crate::FlatSerialize for SourceMNSParameters {
 pub struct SourceMQTTParameters {
     /// 消息队列MQTT版的实例的ID。
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 消息队列MQTT版的实例所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 消息队列MQTT版实例的Topic的名称。
     #[serde(rename = "Topic")]
-    pub topic: String,
+    pub topic: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceMQTTParameters {
@@ -8552,16 +8580,16 @@ impl crate::FlatSerialize for SourceMQTTParameters {
 pub struct SourceRabbitMQParameters {
     /// 消息队列RabbitMQ版的实例的ID。
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 消息队列RabbitMQ版实例的Queue的名称。
     #[serde(rename = "QueueName")]
-    pub queue_name: String,
+    pub queue_name: Option<String>,
     /// 消息队列RabbitMQ版的实例所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 消息队列RabbitMQ版实例的Vhost的名称。
     #[serde(rename = "VirtualHostName")]
-    pub virtual_host_name: String,
+    pub virtual_host_name: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceRabbitMQParameters {
@@ -8599,59 +8627,59 @@ impl crate::FlatSerialize for SourceRabbitMQParameters {
 pub struct SourceRocketMQParameters {
     /// 认证类型。取值为 ACL 或为空。取值为 ACL 表示开启鉴权，需填写 InstanceUsername 和 InstancePassword。
     #[serde(rename = "AuthType")]
-    pub auth_type: String,
+    pub auth_type: Option<String>,
     /// 消息过滤类型。
     #[serde(rename = "FilterType")]
-    pub filter_type: String,
+    pub filter_type: Option<String>,
     /// 消息队列 RocketMQ 版的 Group ID。
     #[serde(rename = "GroupID")]
-    pub group_id: String,
+    pub group_id: Option<String>,
     /// 消息队列 RocketMQ 版的实例接入点信息。
     #[serde(rename = "InstanceEndpoint")]
-    pub instance_endpoint: String,
+    pub instance_endpoint: Option<String>,
     /// 消息队列 RocketMQ 版的实例 ID。
     #[serde(rename = "InstanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 网络类型。
     #[serde(rename = "InstanceNetwork")]
-    pub instance_network: String,
+    pub instance_network: Option<String>,
     /// 消息队列 RocketMQ 版的实例的密码。
     #[serde(rename = "InstancePassword")]
-    pub instance_password: String,
+    pub instance_password: Option<String>,
     /// 安全组 ID。
     #[serde(rename = "InstanceSecurityGroupId")]
-    pub instance_security_group_id: String,
+    pub instance_security_group_id: Option<String>,
     /// 消息队列 RocketMQ 版的实例类型。
     #[serde(rename = "InstanceType")]
-    pub instance_type: String,
+    pub instance_type: Option<String>,
     /// 消息队列 RocketMQ 版的实例的用户名。使用公网访问时，SDK 代码中需要配置实例的用户名和密码，进行身份验证。
     #[serde(rename = "InstanceUsername")]
-    pub instance_username: String,
+    pub instance_username: Option<String>,
     /// 实例所关联的交换机 ID。
     #[serde(rename = "InstanceVSwitchIds")]
-    pub instance_v_switch_ids: String,
+    pub instance_v_switch_ids: Option<String>,
     /// 实例所关联的专有网络的 ID。
     #[serde(rename = "InstanceVpcId")]
-    pub instance_vpc_id: String,
+    pub instance_vpc_id: Option<String>,
     /// 消息的消费位点。
     ///
     /// - CONSUME_FROM_LAST_OFFSET：从最新位点开始消费，默认值。
     /// - CONSUME_FROM_FIRST_OFFSET：从最早位点开始消费。
     /// - CONSUME_FROM_TIMESTAMP：从指定时间点的位点开始消费。
     #[serde(rename = "Offset")]
-    pub offset: String,
+    pub offset: Option<String>,
     /// 消息队列RocketMQ版Queue所属地域。
     #[serde(rename = "RegionId")]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 消息的过滤标签。
     #[serde(rename = "Tag")]
-    pub tag: String,
+    pub tag: Option<String>,
     /// 时间戳。仅当参数 Offset 取值为 CONSUME_FROM_TIMESTAMP 时，该参数有效。
     #[serde(rename = "Timestamp")]
-    pub timestamp: i32,
+    pub timestamp: Option<i32>,
     /// 消息队列 RocketMQ 版实例的 Topic 名称。
     #[serde(rename = "Topic")]
-    pub topic: String,
+    pub topic: Option<String>,
 }
 
 impl crate::FlatSerialize for SourceRocketMQParameters {
@@ -8738,22 +8766,22 @@ impl crate::FlatSerialize for SourceRocketMQParameters {
 pub struct EventSourceParameters {
     /// 事件源为数据传输服务DTS时的自定义参数配置
     #[serde(rename = "sourceDTSParameters")]
-    pub source_dts_parameters: SourceDTSParameters,
+    pub source_dts_parameters: Option<SourceDTSParameters>,
     /// 事件源为消息队列Kafka版时的自定义参数配置
     #[serde(rename = "sourceKafkaParameters")]
-    pub source_kafka_parameters: SourceKafkaParameters,
+    pub source_kafka_parameters: Option<SourceKafkaParameters>,
     /// 事件源为轻量消息队列（原 MNS）时的自定义参数配置
     #[serde(rename = "sourceMNSParameters")]
-    pub source_mns_parameters: SourceMNSParameters,
+    pub source_mns_parameters: Option<SourceMNSParameters>,
     /// 事件源为云消息队列MQTT版时的自定义参数配置
     #[serde(rename = "sourceMQTTParameters")]
-    pub source_mqtt_parameters: SourceMQTTParameters,
+    pub source_mqtt_parameters: Option<SourceMQTTParameters>,
     /// 事件源为消息队列RabbitMQ版时的自定义参数配置
     #[serde(rename = "sourceRabbitMQParameters")]
-    pub source_rabbit_mq_parameters: SourceRabbitMQParameters,
+    pub source_rabbit_mq_parameters: Option<SourceRabbitMQParameters>,
     /// 事件源为消息队列RockerMQ版时的自定义参数配置
     #[serde(rename = "sourceRocketMQParameters")]
-    pub source_rocket_mq_parameters: SourceRocketMQParameters,
+    pub source_rocket_mq_parameters: Option<SourceRocketMQParameters>,
 }
 
 impl crate::FlatSerialize for EventSourceParameters {
@@ -8801,7 +8829,7 @@ impl crate::FlatSerialize for EventSourceParameters {
 pub struct EventSourceConfig {
     /// 自定义事件源参数，自定义事件源包括：MNS、RocketMQ、RabbitMQ、Kafka、MQTT、DTS。
     #[serde(rename = "eventSourceParameters")]
-    pub event_source_parameters: EventSourceParameters,
+    pub event_source_parameters: Option<EventSourceParameters>,
     /// 触发器事件源类型，包含如下几种类型：
     ///
     /// - **Default**：表示EventBridge 官方触发源。
@@ -8820,7 +8848,7 @@ pub struct EventSourceConfig {
     ///
     /// > 注意，该字段不可更新，更新时传入该字段将被忽略。
     #[serde(rename = "eventSourceType")]
-    pub event_source_type: String,
+    pub event_source_type: Option<String>,
 }
 
 impl crate::FlatSerialize for EventSourceConfig {
@@ -8852,7 +8880,7 @@ pub struct RetryStrategy {
     ///
     /// - **EXPONENTIAL_DECAY_RETRY**：指数衰减重试。
     #[serde(rename = "PushRetryStrategy")]
-    pub push_retry_strategy: String,
+    pub push_retry_strategy: Option<String>,
 }
 
 impl crate::FlatSerialize for RetryStrategy {
@@ -8875,10 +8903,10 @@ impl crate::FlatSerialize for RetryStrategy {
 pub struct RunOptions {
     /// 攒批窗口配置。
     #[serde(rename = "batchWindow")]
-    pub batch_window: BatchWindow,
+    pub batch_window: Option<BatchWindow>,
     /// 是否启用死信队列。配置该参数即为启用死信队列，默认不启用死信队列，超过重试策略后的消息将被丢弃。支持配置轻量消息队列（原 MNS）、云消息队列 RocketMQ 版、消息队列 Kafka 版以及事件总线 EventBridge。
     #[serde(rename = "deadLetterQueue")]
-    pub dead_letter_queue: DeadLetterQueue,
+    pub dead_letter_queue: Option<DeadLetterQueue>,
     /// 异常容忍策略，包含如下两种策略：
     ///
     /// - **NONE**：不容忍异常，默认值。
@@ -8887,17 +8915,17 @@ pub struct RunOptions {
     ///
     /// > 默认策略为**NONE**
     #[serde(rename = "errorsTolerance")]
-    pub errors_tolerance: String,
+    pub errors_tolerance: Option<String>,
     /// 消息数据推送到函数计算时的底层应用模式，包含如下两种模式：
     ///
     /// - **event-streaming**：事件流模式，按照数组格式推送事件，会根据用户推送配置将一个或多个消息事件以批的形式推送到函数中进行处理，适合端到端的流式数据处理场景，该模式下支持的事件源类型有轻量消息队列（原 MNS）、RocketMQ、RabbitMQ、Kafka、MQTT 以及 DTS。
     ///
     /// - **event-driven**：事件模式，每次会将单个消息作为事件参数传入函数中，事件遵循CloudEvents规范，该模式下支持的事件源有 Default、轻量消息队列（原 MNS）、RocketMQ 以及 RabbitMQ，注意，该模式下，不支持攒批配置。
     #[serde(rename = "mode")]
-    pub mode: String,
+    pub mode: Option<String>,
     /// 事件推送失败时的重试策略。
     #[serde(rename = "retryStrategy")]
-    pub retry_strategy: RetryStrategy,
+    pub retry_strategy: Option<RetryStrategy>,
 }
 
 impl crate::FlatSerialize for RunOptions {
@@ -8942,19 +8970,19 @@ pub struct EventBridgeTriggerConfig {
     ///
     /// > 默认取值为**false**
     #[serde(rename = "asyncInvocationType")]
-    pub async_invocation_type: bool,
+    pub async_invocation_type: Option<bool>,
     /// 事件模式。JSON格式，详细规则请参考[事件模式](~~181432~~)。
     #[serde(rename = "eventRuleFilterPattern")]
-    pub event_rule_filter_pattern: String,
+    pub event_rule_filter_pattern: Option<String>,
     /// 事件目标配置
     #[serde(rename = "eventSinkConfig")]
-    pub event_sink_config: EventSinkConfig,
+    pub event_sink_config: Option<EventSinkConfig>,
     /// 事件源配置。
     #[serde(rename = "eventSourceConfig")]
-    pub event_source_config: EventSourceConfig,
+    pub event_source_config: Option<EventSourceConfig>,
     /// 运行环境参数配置
     #[serde(rename = "runOptions")]
-    pub run_options: RunOptions,
+    pub run_options: Option<RunOptions>,
     /// 是否启用触发器，取值如下：
     ///
     /// - **true**：启用触发器。
@@ -8963,7 +8991,7 @@ pub struct EventBridgeTriggerConfig {
     ///
     /// > 默认取值为**true**
     #[serde(rename = "triggerEnable")]
-    pub trigger_enable: bool,
+    pub trigger_enable: Option<bool>,
 }
 
 impl crate::FlatSerialize for EventBridgeTriggerConfig {
@@ -9011,10 +9039,10 @@ impl crate::FlatSerialize for EventBridgeTriggerConfig {
 pub struct Key {
     /// 限定事件相关的资源名称，只关注以Prefix作为前缀的资源相关的事件，例如Prefix是“serverless_"，则只有以"serverless_"开始的资源相关的事件才能触发当前函数。
     #[serde(rename = "prefix")]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 限定事件相关的资源名称，只关注以Suffix作为后缀的资源相关的事件，例如Suffix是“.zip"，则只有以".zip"为后缀的资源相关的事件才能触发当前函数。
     #[serde(rename = "suffix")]
-    pub suffix: String,
+    pub suffix: Option<String>,
 }
 
 impl crate::FlatSerialize for Key {
@@ -9034,7 +9062,7 @@ impl crate::FlatSerialize for Key {
 pub struct Filter {
     /// 事件过滤规则描述。
     #[serde(rename = "key")]
-    pub key: Key,
+    pub key: Option<Key>,
 }
 
 impl crate::FlatSerialize for Filter {
@@ -9053,10 +9081,10 @@ impl crate::FlatSerialize for Filter {
 pub struct FunctionLayer {
     /// 层版本的资源标识。
     #[serde(rename = "arn")]
-    pub arn: String,
+    pub arn: Option<String>,
     /// 层的代码包大小，单位为Byte。
     #[serde(rename = "size")]
-    pub size: i64,
+    pub size: Option<i64>,
 }
 
 impl crate::FlatSerialize for FunctionLayer {
@@ -9074,11 +9102,11 @@ impl crate::FlatSerialize for FunctionLayer {
 #[serde(default)]
 pub struct FunctionRestriction {
     #[serde(rename = "reason")]
-    pub reason: String,
+    pub reason: Option<String>,
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     #[serde(rename = "disable")]
-    pub disable: bool,
+    pub disable: Option<bool>,
 }
 
 impl crate::FlatSerialize for FunctionRestriction {
@@ -9103,145 +9131,148 @@ impl crate::FlatSerialize for FunctionRestriction {
 pub struct Function {
     /// 函数代码包的CRC-64值。
     #[serde(rename = "codeChecksum")]
-    pub code_checksum: String,
+    pub code_checksum: Option<String>,
     /// 系统返回的函数代码包的大小，单位Byte。
     #[serde(rename = "codeSize")]
-    pub code_size: i64,
+    pub code_size: Option<i64>,
     /// 函数的CPU规格，单位为vCPU，为0.05 vCPU的倍数。最小值为0.05，最大值为16。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "cpu")]
-    pub cpu: f32,
+    pub cpu: Option<f32>,
     /// 函数的创建时间。
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 自定义容器运行时的相关配置，成功配置后函数可以使用自定义容器镜像执行函数。code和customContainerConfig二选一。
     #[serde(rename = "customContainerConfig")]
-    pub custom_container_config: CustomContainerConfig,
+    pub custom_container_config: Option<CustomContainerConfig>,
     /// 自定义DNS配置。
     #[serde(rename = "customDNS")]
-    pub custom_dns: CustomDNS,
+    pub custom_dns: Option<CustomDNS>,
     /// 自定义运行时配置。
     #[serde(rename = "customRuntimeConfig")]
-    pub custom_runtime_config: CustomRuntimeConfig,
+    pub custom_runtime_config: Option<CustomRuntimeConfig>,
     /// 函数的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 函数的磁盘规格，单位为MB，可选值为512 MB或10240 MB。
     #[serde(rename = "diskSize")]
-    pub disk_size: i32,
+    pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
+    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数资源标识。
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     /// 系统为每个函数生成的ID，全局唯一。
     #[serde(rename = "functionId")]
-    pub function_id: String,
+    pub function_id: Option<String>,
     /// 函数的名称。
     #[serde(rename = "functionName")]
-    pub function_name: String,
+    pub function_name: Option<String>,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
-    pub gpu_config: GPUConfig,
+    pub gpu_config: Option<GPUConfig>,
     /// 函数执行的入口，具体格式和运行时相关。
     #[serde(rename = "handler")]
-    pub handler: String,
+    pub handler: Option<String>,
     /// 实例最大并发度
     #[serde(rename = "instanceConcurrency")]
-    pub instance_concurrency: i32,
+    pub instance_concurrency: Option<i32>,
     /// 实例生命周期回调方法配置。
     #[serde(rename = "instanceLifecycleConfig")]
-    pub instance_lifecycle_config: InstanceLifecycleConfig,
+    pub instance_lifecycle_config: Option<InstanceLifecycleConfig>,
     /// 是否允许函数访问公网。默认值为true。
     #[serde(rename = "internetAccess")]
-    pub internet_access: bool,
+    pub internet_access: Option<bool>,
     /// 函数上一次被更新的时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 最近一次函数更新操作的状态，当函数新建成功时，此值为Successful，可选值：Successful、 Failed、 InProgress。
     #[serde(rename = "lastUpdateStatus")]
-    pub last_update_status: String,
+    pub last_update_status: Option<String>,
     /// 导致最近一次函数更新操作状态为当前值的原因。
     #[serde(rename = "lastUpdateStatusReason")]
-    pub last_update_status_reason: String,
+    pub last_update_status_reason: Option<String>,
     /// 导致最近一次函数更新操作状态为当前值的原因的状态码。
     #[serde(rename = "lastUpdateStatusReasonCode")]
-    pub last_update_status_reason_code: String,
+    pub last_update_status_reason_code: Option<String>,
     /// 层的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
     pub layers: Vec<FunctionLayer>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
-    pub log_config: LogConfig,
+    pub log_config: Option<LogConfig>,
     /// 函数的内存规格，单位为MB，内存大小为64 MB的倍数。最小值为128MB，最大值为32GB。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "memorySize")]
-    pub memory_size: i32,
+    pub memory_size: Option<i32>,
     /// NAS配置。配置此参数后，函数可以访问指定的NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// OSS挂载配置。
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     /// 用户授权给函数计算的RAM角色，设置后函数计算将扮演该角色生成临时访问凭证。在函数中可以使用该角色的临时访问凭证来访问指定的阿里云服务，例如OSS和OTS。
     #[serde(rename = "role")]
-    pub role: String,
+    pub role: Option<String>,
     /// 函数的运行时环境。目前支持的运行环境有：nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, python3.12, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, custom.debian11, custom.debian12, custom-container。
     #[serde(rename = "runtime")]
-    pub runtime: String,
+    pub runtime: Option<String>,
     /// 函数当前的状态。
     #[serde(rename = "state")]
-    pub state: String,
+    pub state: Option<String>,
     /// 函数处于当前状态的原因。
     #[serde(rename = "stateReason")]
-    pub state_reason: String,
+    pub state_reason: Option<String>,
     /// 函数处于当前状态的原因的状态码。
     #[serde(rename = "stateReasonCode")]
-    pub state_reason_code: String,
+    pub state_reason_code: Option<String>,
     /// 函数运行的超时时间，单位为秒，最小1秒，最大值为86400秒，默认值是3秒。函数超过这个时间后会被终止执行。
     #[serde(rename = "timeout")]
-    pub timeout: i32,
+    pub timeout: Option<i32>,
     /// 链路追踪配置。当函数计算与链路追踪集成后，您可以记录请求在函数计算的耗时时间、查看函数的冷启动时间、记录函数内部时间的消耗等。
     #[serde(rename = "tracingConfig")]
-    pub tracing_config: TracingConfig,
+    pub tracing_config: Option<TracingConfig>,
     /// VPC配置。配置此参数后，函数可以访问指定的VPC资源。
     #[serde(rename = "vpcConfig")]
-    pub vpc_config: VPCConfig,
+    pub vpc_config: Option<VPCConfig>,
     /// 标签列表
     #[serde(rename = "tags")]
+    #[serde(default)]
     pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
-    pub disable_ondemand: bool,
+    pub disable_ondemand: Option<bool>,
     #[serde(rename = "invocationRestriction")]
-    pub invocation_restriction: FunctionRestriction,
+    pub invocation_restriction: Option<FunctionRestriction>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
-    pub session_affinity: String,
+    pub session_affinity: Option<String>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "enableLongLiving")]
-    pub enable_long_living: bool,
+    pub enable_long_living: Option<bool>,
     /// 资源组 ID
     #[serde(rename = "resourceGroupId")]
-    pub resource_group_id: String,
+    pub resource_group_id: Option<String>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
-    pub instance_isolation_mode: FunctionInstanceIsolationMode,
+    pub instance_isolation_mode: Option<FunctionInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
-    pub session_affinity_config: String,
+    pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间
     #[serde(rename = "idleTimeout")]
-    pub idle_timeout: i32,
+    pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
     /// Env: 环境变量不注入
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
-    pub disable_inject_credentials: FunctionDisableInjectCredentials,
+    pub disable_inject_credentials: Option<FunctionDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 impl crate::FlatSerialize for Function {
@@ -9461,15 +9492,16 @@ impl crate::ToCodeMessage for Function {
 #[serde(default)]
 pub struct InstanceEventItem {
     #[serde(rename = "level")]
-    pub level: String,
+    pub level: Option<String>,
     #[serde(rename = "children")]
+    #[serde(default)]
     pub children: Vec<String>,
     #[serde(rename = "time")]
-    pub time: String,
+    pub time: Option<String>,
     #[serde(rename = "message")]
-    pub message: String,
+    pub message: Option<String>,
     #[serde(rename = "type")]
-    pub r#type: String,
+    pub r#type: Option<String>,
 }
 
 impl crate::FlatSerialize for InstanceEventItem {
@@ -9490,8 +9522,9 @@ impl crate::FlatSerialize for InstanceEventItem {
 #[serde(default)]
 pub struct GetInstanceLifecycleEventsOutput {
     #[serde(rename = "requestId")]
-    pub request_id: String,
+    pub request_id: Option<String>,
     #[serde(rename = "events")]
+    #[serde(default)]
     pub events: Vec<InstanceEventItem>,
 }
 
@@ -9516,12 +9549,13 @@ impl crate::FlatSerialize for GetInstanceLifecycleEventsOutput {
 pub struct GetResourceTagsOutput {
     /// 资源类型名称。函数计算3.0中的函数：ALIYUN::FC::FUNCTION,函数计算旧版本中的服务：ALIYUN::FC::SERVICE。
     #[serde(rename = "resouceType")]
-    pub resouce_type: String,
+    pub resouce_type: Option<String>,
     /// 阿里云资源描述符。
     #[serde(rename = "resourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: Option<String>,
     /// 标签字典。
     #[serde(rename = "tags")]
+    #[serde(default)]
     pub tags: std::collections::HashMap<String, String>,
 }
 
@@ -9551,10 +9585,10 @@ impl crate::FlatSerialize for GetResourceTagsOutput {
 pub struct HTTPTrigger {
     /// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
     #[serde(rename = "urlInternet")]
-    pub url_internet: String,
+    pub url_internet: Option<String>,
     /// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
     #[serde(rename = "urlIntranet")]
-    pub url_intranet: String,
+    pub url_intranet: Option<String>,
 }
 
 impl crate::FlatSerialize for HTTPTrigger {
@@ -9582,7 +9616,7 @@ impl crate::FlatSerialize for HTTPTrigger {
 pub struct HTTPTriggerConfig {
     /// 鉴权配置
     #[serde(rename = "authConfig")]
-    pub auth_config: String,
+    pub auth_config: Option<String>,
     /// 认证类型，包含如下两种类型：
     ///
     /// - **function**：表示需要认证。
@@ -9591,12 +9625,13 @@ pub struct HTTPTriggerConfig {
     ///
     /// > 默认类型为 **function**
     #[serde(rename = "authType")]
-    pub auth_type: String,
+    pub auth_type: Option<String>,
     /// 禁用默认公网域名访问的开关。设置为true时，访问函数默认提供的公网URL地址会返回403错误。设置为false时，不会有任何影响。
     #[serde(rename = "disableURLInternet")]
-    pub disable_url_internet: bool,
+    pub disable_url_internet: Option<bool>,
     /// 请求方法列表。允许同时支持多种方法。
     #[serde(rename = "methods")]
+    #[serde(default)]
     pub methods: Vec<String>,
 }
 
@@ -9631,19 +9666,19 @@ impl crate::FlatSerialize for HTTPTriggerConfig {
 pub struct HeaderFieldSessionAffinityConfig {
     /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
     #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: i64,
+    pub session_concurrency_per_instance: Option<i64>,
     /// 通过 HTTP 请求头传递客户端会话标识，不能以 x-fc- 前缀开头，以字母开头，非首字符可包含数字、中划线、下划线、字母，长度大于等于5个字符并且不超过40个字符。
     #[serde(rename = "affinityHeaderFieldName")]
-    pub affinity_header_field_name: String,
+    pub affinity_header_field_name: Option<String>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
 }
 
 impl crate::FlatSerialize for HeaderFieldSessionAffinityConfig {
@@ -9686,20 +9721,20 @@ impl crate::FlatSerialize for HeaderFieldSessionAffinityConfig {
 pub struct InstanceInfo {
     /// 实例ID。
     #[serde(rename = "instanceId")]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 实例所属函数的版本。如果是LATEST别名下的函数实例，则返回版本号为0。
     #[serde(rename = "versionId")]
-    pub version_id: String,
+    pub version_id: Option<String>,
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: Option<String>,
     #[serde(rename = "createdTimeMs")]
-    pub created_time_ms: i64,
+    pub created_time_ms: Option<i64>,
     #[serde(rename = "destroyedTimeMs")]
-    pub destroyed_time_ms: i64,
+    pub destroyed_time_ms: Option<i64>,
     #[serde(rename = "resourceType")]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
 }
 
 impl crate::FlatSerialize for InstanceInfo {
@@ -9748,10 +9783,10 @@ impl crate::FlatSerialize for InstanceInfo {
 pub struct JobConfig {
     /// 最大重试次数。取值范围为0～100。日志服务根据触发间隔每次触发函数执行时，如果遇到错误（例如权限不足、网络失败、函数执行异常返回等），该参数定义本次触发所允许的最大重试次数。对于本次触发，如果超过最大重试次数仍无法成功的，需要等到下一次触发间隔到来时，由日志服务再次触发函数执行。
     #[serde(rename = "maxRetryTime")]
-    pub max_retry_time: i32,
+    pub max_retry_time: Option<i32>,
     /// 日志服务触发函数运行的间隔。比如每隔120秒将logstore在最近120秒内的数据取出到函数服务，以执行自定义计算。
     #[serde(rename = "triggerInterval")]
-    pub trigger_interval: i32,
+    pub trigger_interval: Option<i32>,
 }
 
 impl crate::FlatSerialize for JobConfig {
@@ -9779,10 +9814,10 @@ impl crate::FlatSerialize for JobConfig {
 pub struct OutputCodeLocation {
     /// 代码包的地址。
     #[serde(rename = "location")]
-    pub location: String,
+    pub location: Option<String>,
     /// 代码包的类型。
     #[serde(rename = "repositoryType")]
-    pub repository_type: String,
+    pub repository_type: Option<String>,
 }
 
 impl crate::FlatSerialize for OutputCodeLocation {
@@ -9806,37 +9841,38 @@ impl crate::FlatSerialize for OutputCodeLocation {
 pub struct Layer {
     /// 层的权限。取值0代表私有，取值1代表公有。官方公共层默认为公有，自定义层可以设置为私有或者公有。
     #[serde(rename = "acl")]
-    pub acl: String,
+    pub acl: Option<String>,
     /// 层的代码包信息
     #[serde(rename = "code")]
-    pub code: OutputCodeLocation,
+    pub code: Option<OutputCodeLocation>,
     /// 层代码包的crc64校验码，根据ECMA-182标准计算得出。
     #[serde(rename = "codeChecksum")]
-    pub code_checksum: String,
+    pub code_checksum: Option<String>,
     /// 层的代码包大小，单位为Byte。
     #[serde(rename = "codeSize")]
-    pub code_size: i64,
+    pub code_size: Option<i64>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
+    #[serde(default)]
     pub compatible_runtime: Vec<String>,
     /// 层版本的创建时间。
     #[serde(rename = "createTime")]
-    pub create_time: String,
+    pub create_time: Option<String>,
     /// 版本的描述信息。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 层的名称。
     #[serde(rename = "layerName")]
     pub layer_name: String,
     /// 层版本资源的名称，格式为 acs:fc:{region}:{accountID}:layers/{layerName}/versions/{layerVersion}.
     #[serde(rename = "layerVersionArn")]
-    pub layer_version_arn: String,
+    pub layer_version_arn: Option<String>,
     /// 许可协议。
     #[serde(rename = "license")]
-    pub license: String,
+    pub license: Option<String>,
     /// 层的版本。
     #[serde(rename = "version")]
-    pub version: i32,
+    pub version: Option<i32>,
 }
 
 impl crate::FlatSerialize for Layer {
@@ -9899,10 +9935,11 @@ impl crate::ToCodeMessage for Layer {
 pub struct ListAliasesOutput {
     /// 别名列表
     #[serde(rename = "aliases")]
+    #[serde(default)]
     pub aliases: Vec<Alias>,
     /// 下一个版本名
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListAliasesOutput {
@@ -9932,10 +9969,11 @@ impl crate::ToCodeMessage for ListAliasesOutput {
 pub struct ListAsyncInvokeConfigOutput {
     /// 异步调用配置列表。
     #[serde(rename = "configs")]
+    #[serde(default)]
     pub configs: Vec<AsyncConfig>,
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListAsyncInvokeConfigOutput {
@@ -9965,9 +10003,10 @@ impl crate::ToCodeMessage for ListAsyncInvokeConfigOutput {
 pub struct ListAsyncTaskOutput {
     /// 分页标记，用来返回更多结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 异步任务信息列表。
     #[serde(rename = "tasks")]
+    #[serde(default)]
     pub tasks: Vec<AsyncTask>,
 }
 
@@ -9998,10 +10037,11 @@ impl crate::ToCodeMessage for ListAsyncTaskOutput {
 pub struct ListConcurrencyConfigsOutput {
     /// 并发配置列表。
     #[serde(rename = "configs")]
+    #[serde(default)]
     pub configs: Vec<ConcurrencyConfig>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListConcurrencyConfigsOutput {
@@ -10031,10 +10071,11 @@ impl crate::ToCodeMessage for ListConcurrencyConfigsOutput {
 pub struct ListCustomDomainOutput {
     /// 自定义域名列表
     #[serde(rename = "customDomains")]
+    #[serde(default)]
     pub custom_domains: Vec<CustomDomain>,
     /// 当符合查询条件的数据未读取完时，服务端会返回nextToken，此时可以使用nextToken继续读取后面的数据。第一次查询不需要提供这个参数。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListCustomDomainOutput {
@@ -10066,8 +10107,9 @@ impl crate::ToCodeMessage for ListCustomDomainOutput {
 #[serde(default)]
 pub struct ListElasticConfigsOutput {
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     #[serde(rename = "elasticConfigs")]
+    #[serde(default)]
     pub elastic_configs: Vec<ElasticConfigStatus>,
 }
 
@@ -10096,10 +10138,11 @@ impl crate::FlatSerialize for ListElasticConfigsOutput {
 pub struct ListFunctionsOutput {
     /// 函数信息列表
     #[serde(rename = "functions")]
+    #[serde(default)]
     pub functions: Vec<Function>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListFunctionsOutput {
@@ -10133,9 +10176,10 @@ impl crate::ToCodeMessage for ListFunctionsOutput {
 pub struct ListInstancesOutput {
     /// 实例列表信息
     #[serde(rename = "instances")]
+    #[serde(default)]
     pub instances: Vec<InstanceInfo>,
     #[serde(rename = "requestId")]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 
 impl crate::FlatSerialize for ListInstancesOutput {
@@ -10169,10 +10213,11 @@ impl crate::ToCodeMessage for ListInstancesOutput {
 pub struct ListLayerVersionOutput {
     /// 层版本的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始版本名，用来返回更多结果。
     #[serde(rename = "nextVersion")]
-    pub next_version: i32,
+    pub next_version: Option<i32>,
 }
 
 impl crate::FlatSerialize for ListLayerVersionOutput {
@@ -10202,10 +10247,11 @@ impl crate::ToCodeMessage for ListLayerVersionOutput {
 pub struct ListLayersOutput {
     /// 层的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始层名，用来返回更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
 }
 
 impl crate::FlatSerialize for ListLayersOutput {
@@ -10235,7 +10281,7 @@ impl crate::ToCodeMessage for ListLayersOutput {
 pub struct ScheduledAction {
     /// 策略失效时间。
     #[serde(rename = "endTime")]
-    pub end_time: String,
+    pub end_time: Option<String>,
     /// 策略名称。
     #[serde(rename = "name")]
     pub name: String,
@@ -10244,13 +10290,13 @@ pub struct ScheduledAction {
     pub schedule_expression: String,
     /// 策略生效时间。
     #[serde(rename = "startTime")]
-    pub start_time: String,
+    pub start_time: Option<String>,
     /// 预留的目标资源个数。
     #[serde(rename = "target")]
     pub target: i64,
     /// 时区。时区参数为空时，startTime、endTime和scheduleExpression的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    pub time_zone: String,
+    pub time_zone: Option<String>,
 }
 
 impl crate::FlatSerialize for ScheduledAction {
@@ -10286,7 +10332,7 @@ impl crate::FlatSerialize for ScheduledAction {
 pub struct TargetTrackingPolicy {
     /// 策略结束时间（UTC）。
     #[serde(rename = "endTime")]
-    pub end_time: String,
+    pub end_time: Option<String>,
     /// 扩容的最大值。
     #[serde(rename = "maxCapacity")]
     pub max_capacity: i64,
@@ -10304,10 +10350,10 @@ pub struct TargetTrackingPolicy {
     pub name: String,
     /// 策略开始生效时间（UTC）。
     #[serde(rename = "startTime")]
-    pub start_time: String,
+    pub start_time: Option<String>,
     /// 时区。时区参数为空时，startTime和endTime的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    pub time_zone: String,
+    pub time_zone: Option<String>,
 }
 
 impl crate::FlatSerialize for TargetTrackingPolicy {
@@ -10357,28 +10403,30 @@ impl crate::FlatSerialize for TargetTrackingPolicy {
 pub struct ProvisionConfig {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
+    #[serde(default)]
     pub scheduled_actions: Vec<ScheduledAction>,
     /// 预留实例创建失败时的错误信息。
     #[serde(rename = "currentError")]
-    pub current_error: String,
+    pub current_error: Option<String>,
     /// 所有指标追踪伸缩策略和定时策略失效时的默认资源个数。
     #[serde(rename = "defaultTarget")]
-    pub default_target: i64,
+    pub default_target: Option<i64>,
     /// 实际资源个数。
     #[serde(rename = "current")]
-    pub current: i64,
+    pub current: Option<i64>,
     /// 是否始终分配CPU给函数实例。
     #[serde(rename = "alwaysAllocateCPU")]
-    pub always_allocate_cpu: bool,
+    pub always_allocate_cpu: Option<bool>,
     /// 是否始终分配GPU给函数实例。
     #[serde(rename = "alwaysAllocateGPU")]
-    pub always_allocate_gpu: bool,
+    pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
+    #[serde(default)]
     pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// 函数的资源描述
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     /// 当前目标资源个数，如果存在指标追踪伸缩策略或定时策略，为策略计算的资源个数，否则为默认预留实例数。
     ///
     ///
@@ -10387,7 +10435,7 @@ pub struct ProvisionConfig {
     /// > - 在定时伸缩策略**生效期间**，target 与 defaultTarget 分别为 5 和 1。
     /// >-  在定时伸缩策略**失效期间**，target 与 defaultTarget 都为 1。
     #[serde(rename = "target")]
-    pub target: i64,
+    pub target: Option<i64>,
 }
 
 impl crate::FlatSerialize for ProvisionConfig {
@@ -10448,9 +10496,10 @@ impl crate::ToCodeMessage for ProvisionConfig {
 pub struct ListProvisionConfigsOutput {
     /// 下次查询的起始Token。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 函数预留配置列表。
     #[serde(rename = "provisionConfigs")]
+    #[serde(default)]
     pub provision_configs: Vec<ProvisionConfig>,
 }
 
@@ -10484,22 +10533,22 @@ impl crate::ToCodeMessage for ListProvisionConfigsOutput {
 pub struct ResidentResourceCapacity {
     /// GPU总卡数
     #[serde(rename = "totalGpuCards")]
-    pub total_gpu_cards: i64,
+    pub total_gpu_cards: Option<i64>,
     /// 总内存大小，单位 GB
     #[serde(rename = "totalMemorySize")]
-    pub total_memory_size: i64,
+    pub total_memory_size: Option<i64>,
     /// 总磁盘大小，单位 GB
     #[serde(rename = "totalDiskSize")]
-    pub total_disk_size: i64,
+    pub total_disk_size: Option<i64>,
     /// 总显存大小，单位 GB
     #[serde(rename = "totalGpuMemorySize")]
-    pub total_gpu_memory_size: i64,
+    pub total_gpu_memory_size: Option<i64>,
     /// CPU 总核数
     #[serde(rename = "totalCpuCores")]
-    pub total_cpu_cores: i64,
+    pub total_cpu_cores: Option<i64>,
     /// GPU 卡型
     #[serde(rename = "gpuType")]
-    pub gpu_type: String,
+    pub gpu_type: Option<String>,
 }
 
 impl crate::FlatSerialize for ResidentResourceCapacity {
@@ -10542,27 +10591,27 @@ impl crate::FlatSerialize for ResidentResourceCapacity {
 pub struct ResidentResourceAllocation {
     /// 使用该资源池的函数名
     #[serde(rename = "functionName")]
-    pub function_name: String,
+    pub function_name: Option<String>,
     /// 函数的别名
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 实例数
     #[serde(rename = "instanceCount")]
-    pub instance_count: i32,
+    pub instance_count: Option<i32>,
     /// CPU 占用总核数
     #[serde(rename = "totalCpuCores")]
-    pub total_cpu_cores: f64,
+    pub total_cpu_cores: Option<f64>,
     /// 内存占用大小，单位 GB
     #[serde(rename = "totalMemorySize")]
-    pub total_memory_size: f64,
+    pub total_memory_size: Option<f64>,
     /// 占用显存大小，单位 GB
     #[serde(rename = "totalGpuMemorySize")]
-    pub total_gpu_memory_size: f64,
+    pub total_gpu_memory_size: Option<f64>,
     /// 占用磁盘大小，单位 GB
     #[serde(rename = "totalDiskSize")]
-    pub total_disk_size: f64,
+    pub total_disk_size: Option<f64>,
     #[serde(rename = "instanceType")]
-    pub instance_type: String,
+    pub instance_type: Option<String>,
 }
 
 impl crate::FlatSerialize for ResidentResourceAllocation {
@@ -10618,8 +10667,9 @@ impl crate::FlatSerialize for ResidentResourceAllocation {
 #[serde(default)]
 pub struct ResidentResourceAllocationStatus {
     #[serde(rename = "lastAllocatedTime")]
-    pub last_allocated_time: String,
+    pub last_allocated_time: Option<String>,
     #[serde(rename = "lastAllocation")]
+    #[serde(default)]
     pub last_allocation: Vec<ResidentResourceAllocation>,
 }
 
@@ -10647,26 +10697,26 @@ impl crate::FlatSerialize for ResidentResourceAllocationStatus {
 pub struct ResidentResourcePool {
     /// 代表资源名称的资源属性字段
     #[serde(rename = "residentResourcePoolName")]
-    pub resident_resource_pool_name: String,
+    pub resident_resource_pool_name: Option<String>,
     /// 上次修改时间，包含扩容、续费、更名等操作
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 资源池过期时间
     #[serde(rename = "expireTime")]
-    pub expire_time: String,
+    pub expire_time: Option<String>,
     #[serde(rename = "resourcePoolConfig")]
-    pub resource_pool_config: ResidentResourceCapacity,
+    pub resource_pool_config: Option<ResidentResourceCapacity>,
     #[serde(rename = "residentResourcePoolId")]
-    pub resident_resource_pool_id: String,
+    pub resident_resource_pool_id: Option<String>,
     /// 资源池总体规格
     #[serde(rename = "resourcePoolCapacity")]
-    pub resource_pool_capacity: ResidentResourceCapacity,
+    pub resource_pool_capacity: Option<ResidentResourceCapacity>,
     /// 代表创建时间的资源属性字段
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 资源池实时分配情况，包含每个函数的具体分配情况
     #[serde(rename = "allocationStatus")]
-    pub allocation_status: ResidentResourceAllocationStatus,
+    pub allocation_status: Option<ResidentResourceAllocationStatus>,
 }
 
 impl crate::FlatSerialize for ResidentResourcePool {
@@ -10722,8 +10772,9 @@ impl crate::FlatSerialize for ResidentResourcePool {
 #[serde(default)]
 pub struct ListResidentResourcePoolsOutput {
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     #[serde(rename = "residentResourcePools")]
+    #[serde(default)]
     pub resident_resource_pools: Vec<ResidentResourcePool>,
 }
 
@@ -10750,27 +10801,29 @@ impl crate::FlatSerialize for ListResidentResourcePoolsOutput {
 #[serde(default)]
 pub struct ScalingConfigStatus {
     #[serde(rename = "functionArn")]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: String,
+    pub resident_pool_id: Option<String>,
     #[serde(rename = "minInstances")]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "currentInstances")]
-    pub current_instances: i64,
+    pub current_instances: Option<i64>,
     #[serde(rename = "currentError")]
-    pub current_error: String,
+    pub current_error: Option<String>,
     #[serde(rename = "targetInstances")]
-    pub target_instances: i64,
+    pub target_instances: Option<i64>,
     #[serde(rename = "enableOnDemandScaling")]
-    pub enable_on_demand_scaling: bool,
+    pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
+    #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "horizontalScalingPolicies")]
+    #[serde(default)]
     pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
-    pub enable_mix_mode: bool,
+    pub enable_mix_mode: Option<bool>,
     #[serde(rename = "requestDispatchPolicy")]
-    pub request_dispatch_policy: String,
+    pub request_dispatch_policy: Option<String>,
 }
 
 impl crate::FlatSerialize for ScalingConfigStatus {
@@ -10847,8 +10900,9 @@ impl crate::ToCodeMessage for ScalingConfigStatus {
 #[serde(default)]
 pub struct ListScalingConfigsOutput {
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     #[serde(rename = "scalingConfigs")]
+    #[serde(default)]
     pub scaling_configs: Vec<ScalingConfigStatus>,
 }
 
@@ -10883,44 +10937,44 @@ impl crate::ToCodeMessage for ListScalingConfigsOutput {
 pub struct Session {
     /// 函数会话唯一标识
     #[serde(rename = "sessionId")]
-    pub session_id: String,
+    pub session_id: Option<String>,
     /// Session所属函数名称
     #[serde(rename = "functionName")]
-    pub function_name: String,
+    pub function_name: Option<String>,
     /// 会话亲和类型
     #[serde(rename = "sessionAffinityType")]
-    pub session_affinity_type: String,
+    pub session_affinity_type: Option<String>,
     /// Session 生命周期最大值
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// Session 的创建时间
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// Session上一次被更新的时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// Session 状态：Active 代表 Session 有效，Expired代表 Session已过期
     #[serde(rename = "sessionStatus")]
-    pub session_status: String,
+    pub session_status: Option<String>,
     /// Session关联的函数实例ID
     #[serde(rename = "containerId")]
-    pub container_id: String,
+    pub container_id: Option<String>,
     /// 客户创建 Session 时传入的 Qualifier，如未传则为默认值 LATEST
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// NAS配置，配置后Session关联的实例可以访问指定NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 impl crate::FlatSerialize for Session {
@@ -11014,9 +11068,10 @@ impl crate::ToCodeMessage for Session {
 pub struct ListSessionsOutput {
     /// 下一次查询会话列表的起始位置。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 会话列表信息
     #[serde(rename = "sessions")]
+    #[serde(default)]
     pub sessions: Vec<Session>,
 }
 
@@ -11047,18 +11102,18 @@ impl crate::ToCodeMessage for ListSessionsOutput {
 pub struct TagResource {
     /// 阿里云资源描述符。
     #[serde(rename = "ResourceId")]
-    pub resource_id: String,
+    pub resource_id: Option<String>,
     /// 资源类型名称。
     ///
     /// 函数计算3.0中的函数类型：ALIYUN::FC::FUNCTION，简写：function。
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
     /// 标签键。
     #[serde(rename = "TagKey")]
-    pub tag_key: String,
+    pub tag_key: Option<String>,
     /// 标签值。
     #[serde(rename = "TagValue")]
-    pub tag_value: String,
+    pub tag_value: Option<String>,
 }
 
 impl crate::FlatSerialize for TagResource {
@@ -11092,12 +11147,13 @@ impl crate::FlatSerialize for TagResource {
 pub struct ListTagResourcesOutput {
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
     #[serde(rename = "NextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 查询到的资源和标签的信息。
     #[serde(rename = "TagResources")]
+    #[serde(default)]
     pub tag_resources: Vec<TagResource>,
 }
 
@@ -11137,12 +11193,13 @@ impl crate::ToCodeMessage for ListTagResourcesOutput {
 pub struct Resource {
     /// 资源类型名称。函数计算3.0中的函数：ALIYUN::FC::FUNCTION,函数计算旧版本中的服务：ALIYUN::FC::SERVICE。
     #[serde(rename = "resouceType")]
-    pub resouce_type: String,
+    pub resouce_type: Option<String>,
     /// 阿里云资源描述符。
     #[serde(rename = "resourceArn")]
-    pub resource_arn: String,
+    pub resource_arn: Option<String>,
     /// 标签字典。
     #[serde(rename = "tags")]
+    #[serde(default)]
     pub tags: std::collections::HashMap<String, String>,
 }
 
@@ -11172,9 +11229,10 @@ impl crate::FlatSerialize for Resource {
 pub struct ListTaggedResourcesOutput {
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 被打标签的资源列表。
     #[serde(rename = "resources")]
+    #[serde(default)]
     pub resources: Vec<Resource>,
 }
 
@@ -11203,43 +11261,43 @@ impl crate::FlatSerialize for ListTaggedResourcesOutput {
 pub struct Trigger {
     /// 触发器的创建时间。
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 触发器的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// HTTP 触发器信息。
     #[serde(rename = "httpTrigger")]
-    pub http_trigger: HTTPTrigger,
+    pub http_trigger: Option<HTTPTrigger>,
     /// 事件源（如OSS）调用函数所需的角色。
     #[serde(rename = "invocationRole")]
-    pub invocation_role: String,
+    pub invocation_role: Option<String>,
     /// 触发器的上次修改时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 触发器事件源的Aliyun Resource Name。
     #[serde(rename = "sourceArn")]
-    pub source_arn: String,
+    pub source_arn: Option<String>,
     /// 触发器的状态。
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: Option<String>,
     /// 函数的资源标识。
     #[serde(rename = "targetArn")]
-    pub target_arn: String,
+    pub target_arn: Option<String>,
     /// 触发器配置，针对不同类型的触发器，配置有所不同。
     #[serde(rename = "triggerConfig")]
-    pub trigger_config: String,
+    pub trigger_config: Option<String>,
     /// 触发器的唯一ID。
     #[serde(rename = "triggerId")]
-    pub trigger_id: String,
+    pub trigger_id: Option<String>,
     /// 触发器的名称。要求只能包含字母、数字、下划线(_)和短划线(-)。不能以数字、短划线(-)开头，长度限制为1~128个字符。
     #[serde(rename = "triggerName")]
-    pub trigger_name: String,
+    pub trigger_name: Option<String>,
     /// 触发器的类型。
     #[serde(rename = "triggerType")]
-    pub trigger_type: String,
+    pub trigger_type: Option<String>,
 }
 
 impl crate::FlatSerialize for Trigger {
@@ -11324,9 +11382,10 @@ impl crate::ToCodeMessage for Trigger {
 pub struct ListTriggersOutput {
     /// 下一个触发器的名称。用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 触发器列表。
     #[serde(rename = "triggers")]
+    #[serde(default)]
     pub triggers: Vec<Trigger>,
 }
 
@@ -11357,16 +11416,16 @@ impl crate::ToCodeMessage for ListTriggersOutput {
 pub struct Version {
     /// 创建时间
     #[serde(rename = "createdTime")]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// 版本描述信息
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 更新时间
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// 版本ID
     #[serde(rename = "versionId")]
-    pub version_id: String,
+    pub version_id: Option<String>,
 }
 
 impl crate::FlatSerialize for Version {
@@ -11410,12 +11469,13 @@ impl crate::ToCodeMessage for Version {
 pub struct ListVersionsOutput {
     /// 版本排序方式
     #[serde(rename = "direction")]
-    pub direction: String,
+    pub direction: Option<String>,
     /// 下一个版本ID
     #[serde(rename = "nextToken")]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 版本ID列表
     #[serde(rename = "versions")]
+    #[serde(default)]
     pub versions: Vec<Version>,
 }
 
@@ -11451,6 +11511,7 @@ impl crate::ToCodeMessage for ListVersionsOutput {
 pub struct ListVpcBindingsOutput {
     /// VPC实例ID列表
     #[serde(rename = "vpcIds")]
+    #[serde(default)]
     pub vpc_ids: Vec<String>,
 }
 
@@ -11476,10 +11537,10 @@ impl crate::ToCodeMessage for ListVpcBindingsOutput {
 pub struct MCPSSESessionAffinityConfig {
     /// SSE 路径
     #[serde(rename = "sseEndpointPath")]
-    pub sse_endpoint_path: String,
+    pub sse_endpoint_path: Option<String>,
     /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
     #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: i64,
+    pub session_concurrency_per_instance: Option<i64>,
 }
 
 impl crate::FlatSerialize for MCPSSESessionAffinityConfig {
@@ -11507,13 +11568,13 @@ impl crate::FlatSerialize for MCPSSESessionAffinityConfig {
 pub struct MCPStreamableSessionAffinityConfig {
     /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
     #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: i64,
+    pub session_concurrency_per_instance: Option<i64>,
 }
 
 impl crate::FlatSerialize for MCPStreamableSessionAffinityConfig {
@@ -11546,7 +11607,7 @@ impl crate::FlatSerialize for MCPStreamableSessionAffinityConfig {
 pub struct MNSTopicTriggerConfig {
     /// 过滤标签。只有收到包含了此处设置的过滤标签字符串的消息时，才会触发函数执行。
     #[serde(rename = "filterTag")]
-    pub filter_tag: String,
+    pub filter_tag: Option<String>,
     /// 触发事件的内容格式，目前支持如下两种格式：
     ///
     /// - **JSON**
@@ -11555,14 +11616,14 @@ pub struct MNSTopicTriggerConfig {
     ///
     /// > 默认格式为 STREAM。
     #[serde(rename = "notifyContentFormat")]
-    pub notify_content_format: String,
+    pub notify_content_format: Option<String>,
     /// 重试策略。
     ///
     /// - **BACKOFF_RETRY**：表示退避重试；重试3次，每次重试的间隔时间是10秒到20秒之间的随机值，默认值。
     ///
     /// - **EXPONENTIAL_DECAY_RETRY**：表示指数衰减重试；重试176次，每次重试的间隔时间指数递增至512秒，总计重试时间为1天。每次重试的具体间隔为：1，2，4，8，16，32，64，128，256，512，512...512（共167个512）。
     #[serde(rename = "notifyStrategy")]
-    pub notify_strategy: String,
+    pub notify_strategy: Option<String>,
 }
 
 impl crate::FlatSerialize for MNSTopicTriggerConfig {
@@ -11595,10 +11656,11 @@ impl crate::FlatSerialize for MNSTopicTriggerConfig {
 pub struct OSSTriggerConfig {
     /// 事件列表，请填写OSS对象存储相关的事件。事件类型请参见[OSS 触发事件列表](~~2513613~~)。
     #[serde(rename = "events")]
+    #[serde(default)]
     pub events: Vec<String>,
     /// 事件过滤规则。
     #[serde(rename = "filter")]
-    pub filter: Filter,
+    pub filter: Option<Filter>,
 }
 
 impl crate::FlatSerialize for OSSTriggerConfig {
@@ -11618,10 +11680,10 @@ impl crate::FlatSerialize for OSSTriggerConfig {
 pub struct OutputFuncCode {
     /// 函数代码包的CRC64值。
     #[serde(rename = "checksum")]
-    pub checksum: String,
+    pub checksum: Option<String>,
     /// 函数代码包的URL。
     #[serde(rename = "url")]
-    pub url: String,
+    pub url: Option<String>,
 }
 
 impl crate::FlatSerialize for OutputFuncCode {
@@ -11647,7 +11709,7 @@ impl crate::ToCodeMessage for OutputFuncCode {
 pub struct PublishVersionInput {
     /// 版本描述信息
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
 }
 
 impl crate::FlatSerialize for PublishVersionInput {
@@ -11670,16 +11732,16 @@ impl crate::FlatSerialize for PublishVersionInput {
 pub struct PutAsyncInvokeConfigInput {
     /// 是否开启异步任务（非必填）
     #[serde(rename = "asyncTask")]
-    pub async_task: bool,
+    pub async_task: Option<bool>,
     /// 异步调用目标的配置结构体（非必填）。
     #[serde(rename = "destinationConfig")]
-    pub destination_config: DestinationConfig,
+    pub destination_config: Option<DestinationConfig>,
     /// 消息最大存活时长（非必填），取值范围[1,604800]，默认为86400，单位为秒。
     #[serde(rename = "maxAsyncEventAgeInSeconds")]
-    pub max_async_event_age_in_seconds: i64,
+    pub max_async_event_age_in_seconds: Option<i64>,
     /// 异步调用失败后的最大重试次数，非必填。取值范围[0,8]。当您未进行配置时，系统内部默认重试次数为3。
     #[serde(rename = "maxAsyncRetryAttempts")]
-    pub max_async_retry_attempts: i64,
+    pub max_async_retry_attempts: Option<i64>,
 }
 
 impl crate::FlatSerialize for PutAsyncInvokeConfigInput {
@@ -11738,12 +11800,14 @@ impl crate::FlatSerialize for PutConcurrencyInput {
 #[serde(default)]
 pub struct PutElasticConfigInput {
     #[serde(rename = "minInstances")]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: String,
+    pub resident_pool_id: Option<String>,
     #[serde(rename = "scheduledPolicies")]
+    #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "scalingPolicies")]
+    #[serde(default)]
     pub scaling_policies: Vec<ScalingPolicy>,
 }
 
@@ -11782,20 +11846,22 @@ impl crate::FlatSerialize for PutElasticConfigInput {
 pub struct PutProvisionConfigInput {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
+    #[serde(default)]
     pub scheduled_actions: Vec<ScheduledAction>,
     /// 默认最小实例数，取值范围为[0,10000]。
     /// > - 未配置指标追踪弹性策略或定时弹性策略时，当前最小实例数等于您配置最小实例数。
     /// > - 如果您配置了多条最小实例数弹性策略，系统会计算每条策略触发时的最小实例数，并取当前时间有效的弹性策略中最小实例数的最大值作为当前最小实例数。
     #[serde(rename = "defaultTarget")]
-    pub default_target: i64,
+    pub default_target: Option<i64>,
     /// 是否始终分配CPU，默认为true。
     #[serde(rename = "alwaysAllocateCPU")]
-    pub always_allocate_cpu: bool,
+    pub always_allocate_cpu: Option<bool>,
     /// 是否始终分配GPU，默认为true。
     #[serde(rename = "alwaysAllocateGPU")]
-    pub always_allocate_gpu: bool,
+    pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
+    #[serde(default)]
     pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// ><notice>建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
     /// 预留的目标资源个数。取值范围为[0,10000]。
@@ -11842,19 +11908,21 @@ impl crate::FlatSerialize for PutProvisionConfigInput {
 #[serde(default)]
 pub struct PutScalingConfigInput {
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: String,
+    pub resident_pool_id: Option<String>,
     #[serde(rename = "minInstances")]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "enableOnDemandScaling")]
-    pub enable_on_demand_scaling: bool,
+    pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
+    #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "horizontalScalingPolicies")]
+    #[serde(default)]
     pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
-    pub enable_mix_mode: bool,
+    pub enable_mix_mode: Option<bool>,
     #[serde(rename = "requestDispatchPolicy")]
-    pub request_dispatch_policy: String,
+    pub request_dispatch_policy: Option<String>,
 }
 
 impl crate::FlatSerialize for PutScalingConfigInput {
@@ -11905,9 +11973,9 @@ impl crate::FlatSerialize for PutScalingConfigInput {
 #[serde(default)]
 pub struct ResidentConfig {
     #[serde(rename = "poolId")]
-    pub pool_id: String,
+    pub pool_id: Option<String>,
     #[serde(rename = "count")]
-    pub count: i64,
+    pub count: Option<i64>,
 }
 
 impl crate::FlatSerialize for ResidentConfig {
@@ -11927,10 +11995,10 @@ impl crate::FlatSerialize for ResidentConfig {
 pub struct SLSTriggerLogConfig {
     /// Logstore名称。触发函数的过程中发生的异常和函数执行统计信息会记录到该Logstore。
     #[serde(rename = "logstore")]
-    pub logstore: String,
+    pub logstore: Option<String>,
     /// Project名称。触发函数的过程中发生的异常和函数执行统计信息会记录到该Project下的Logstore中。
     #[serde(rename = "project")]
-    pub project: String,
+    pub project: Option<String>,
 }
 
 impl crate::FlatSerialize for SLSTriggerLogConfig {
@@ -11950,10 +12018,10 @@ impl crate::FlatSerialize for SLSTriggerLogConfig {
 pub struct SourceConfig {
     /// Logstore名称。当前触发器会定时从此Logstore中订阅数据，然后触发函数。
     #[serde(rename = "logstore")]
-    pub logstore: String,
+    pub logstore: Option<String>,
     /// 消费起始时间，单位为秒，若不指定，则会从最新数据开始消费。若指定，则会对指定时间之后写入的数据产生触发事件，针对存量数据消费，在追上实时触发进度以前会忽略触发间隔来追赶消费延迟，当追赶完成后，此时触发没有延迟，开始按照设置的触发事件间隔来触发函数调用。
     #[serde(rename = "startTime")]
-    pub start_time: i64,
+    pub start_time: Option<i64>,
 }
 
 impl crate::FlatSerialize for SourceConfig {
@@ -11977,19 +12045,20 @@ impl crate::FlatSerialize for SourceConfig {
 pub struct SLSTriggerConfig {
     /// 是否启用触发器
     #[serde(rename = "enable")]
-    pub enable: bool,
+    pub enable: Option<bool>,
     /// 调用参数。日志服务将该配置内容作为event的一部分传入函数，该配置内容必须是JSON格式的字符串。
     #[serde(rename = "functionParameter")]
+    #[serde(default)]
     pub function_parameter: std::collections::HashMap<String, String>,
     /// 触发器读取日志间隔及错误重试配置。
     #[serde(rename = "jobConfig")]
-    pub job_config: JobConfig,
+    pub job_config: Option<JobConfig>,
     /// 触发操作自身的日志配置。
     #[serde(rename = "logConfig")]
-    pub log_config: SLSTriggerLogConfig,
+    pub log_config: Option<SLSTriggerLogConfig>,
     /// 触发源配置。
     #[serde(rename = "sourceConfig")]
-    pub source_config: SourceConfig,
+    pub source_config: Option<SourceConfig>,
 }
 
 impl crate::FlatSerialize for SLSTriggerConfig {
@@ -12026,9 +12095,9 @@ impl crate::FlatSerialize for SLSTriggerConfig {
 #[serde(default)]
 pub struct ScalingStatus {
     #[serde(rename = "currentError")]
-    pub current_error: String,
+    pub current_error: Option<String>,
     #[serde(rename = "resourceCount")]
-    pub resource_count: i64,
+    pub resource_count: Option<i64>,
 }
 
 impl crate::FlatSerialize for ScalingStatus {
@@ -12086,7 +12155,7 @@ pub struct TagResourcesInput {
     pub resource_id: Vec<String>,
     /// 资源类型
     #[serde(rename = "ResourceType")]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
     /// 标签列表
     #[serde(rename = "Tag")]
     pub tag: Vec<Tag>,
@@ -12118,13 +12187,13 @@ impl crate::FlatSerialize for TagResourcesInput {
 pub struct TimerTriggerConfig {
     /// 触发周期表达式。按照时间间隔触发：以每间隔4分钟为例，表达式为 “@every 4m”。按照CRON表达式触发：常见格式类似 “0 0 4 * * *”
     #[serde(rename = "cronExpression")]
-    pub cron_expression: String,
+    pub cron_expression: Option<String>,
     /// 是否启用触发器
     #[serde(rename = "enable")]
-    pub enable: bool,
+    pub enable: Option<bool>,
     /// 输入自定义的参数，该触发消息将会作为event中payload的值。
     #[serde(rename = "payload")]
-    pub payload: String,
+    pub payload: Option<String>,
 }
 
 impl crate::FlatSerialize for TimerTriggerConfig {
@@ -12149,13 +12218,14 @@ impl crate::FlatSerialize for TimerTriggerConfig {
 pub struct UpdateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
+    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名的描述信息
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 别名指向的版本
     #[serde(rename = "versionId")]
-    pub version_id: String,
+    pub version_id: Option<String>,
 }
 
 impl crate::FlatSerialize for UpdateAliasInput {
@@ -12188,22 +12258,22 @@ impl crate::FlatSerialize for UpdateAliasInput {
 pub struct UpdateCustomDomainInput {
     /// 权限认证配置
     #[serde(rename = "authConfig")]
-    pub auth_config: AuthConfig,
+    pub auth_config: Option<AuthConfig>,
     /// HTTPS证书的信息。
     #[serde(rename = "certConfig")]
-    pub cert_config: CertConfig,
+    pub cert_config: Option<CertConfig>,
     /// 域名支持的协议类型。HTTP：仅支持HTTP协议。HTTPS：仅支持HTTPS协议。HTTP,HTTPS：支持HTTP及HTTPS协议。
     #[serde(rename = "protocol")]
-    pub protocol: String,
+    pub protocol: Option<String>,
     /// 路由表：自定义域名访问时的PATH到Function的映射。
     #[serde(rename = "routeConfig")]
-    pub route_config: RouteConfig,
+    pub route_config: Option<RouteConfig>,
     /// TLS配置信息。
     #[serde(rename = "tlsConfig")]
-    pub tls_config: TLSConfig,
+    pub tls_config: Option<TLSConfig>,
     /// Web应用防火墙配置信息。
     #[serde(rename = "wafConfig")]
-    pub waf_config: WAFConfig,
+    pub waf_config: Option<WAFConfig>,
 }
 
 impl crate::FlatSerialize for UpdateCustomDomainInput {
@@ -12247,101 +12317,103 @@ impl crate::FlatSerialize for UpdateCustomDomainInput {
 pub struct UpdateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
     #[serde(rename = "code")]
-    pub code: InputCodeLocation,
+    pub code: Option<InputCodeLocation>,
     /// 函数的CPU规格，单位为vCPU，取值需要为0.05 vCPU的倍数。
     #[serde(rename = "cpu")]
-    pub cpu: f32,
+    pub cpu: Option<f32>,
     /// 自定义容器运行时的相关配置，成功配置后函数可以使用自定义容器镜像执行函数。code和customContainerConfig二选一。
     #[serde(rename = "customContainerConfig")]
-    pub custom_container_config: CustomContainerConfig,
+    pub custom_container_config: Option<CustomContainerConfig>,
     /// 自定义DNS配置。
     #[serde(rename = "customDNS")]
-    pub custom_dns: CustomDNS,
+    pub custom_dns: Option<CustomDNS>,
     /// 自定义运行时配置。
     #[serde(rename = "customRuntimeConfig")]
-    pub custom_runtime_config: CustomRuntimeConfig,
+    pub custom_runtime_config: Option<CustomRuntimeConfig>,
     /// 函数的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 函数的磁盘规格，单位为MB，可选值为512 MB或10240 MB。
     #[serde(rename = "diskSize")]
-    pub disk_size: i32,
+    pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
+    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
-    pub gpu_config: GPUConfig,
+    pub gpu_config: Option<GPUConfig>,
     /// 函数执行的入口，具体格式和运行时相关。
     #[serde(rename = "handler")]
-    pub handler: String,
+    pub handler: Option<String>,
     /// 实例最大并发度。
     #[serde(rename = "instanceConcurrency")]
-    pub instance_concurrency: i32,
+    pub instance_concurrency: Option<i32>,
     /// 实例生命周期回调方法配置。
     #[serde(rename = "instanceLifecycleConfig")]
-    pub instance_lifecycle_config: InstanceLifecycleConfig,
+    pub instance_lifecycle_config: Option<InstanceLifecycleConfig>,
     /// 是否允许访问公网。
     #[serde(rename = "internetAccess")]
-    pub internet_access: bool,
+    pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
+    #[serde(default)]
     pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
-    pub log_config: LogConfig,
+    pub log_config: Option<LogConfig>,
     /// 函数的内存规格，单位为MB，内存大小为64 MB的倍数。不同的函数实例类型，内存规格存在差异。
     #[serde(rename = "memorySize")]
-    pub memory_size: i32,
+    pub memory_size: Option<i32>,
     /// NAS配置。配置此参数后，函数可以访问指定的NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// OSS挂载配置。
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     /// 授予函数计算所需权限的RAM角色，使用场景包含：1. 把函数产生的日志发送到您的日志库中。2. 为函数在执行过程中访问其他云资源生成的临时访问令牌。
     #[serde(rename = "role")]
-    pub role: String,
+    pub role: Option<String>,
     /// 函数的运行时环境。
     #[serde(rename = "runtime")]
-    pub runtime: String,
+    pub runtime: Option<String>,
     /// 函数运行的超时时间，单位为秒，最小1秒，默认3秒。函数超过这个时间后会被终止执行。
     #[serde(rename = "timeout")]
-    pub timeout: i32,
+    pub timeout: Option<i32>,
     /// 链路追踪配置。当函数计算与链路追踪集成后，您可以记录请求在函数计算的耗时时间、查看函数的冷启动时间、记录函数内部时间的消耗等。
     #[serde(rename = "tracingConfig")]
-    pub tracing_config: TracingConfig,
+    pub tracing_config: Option<TracingConfig>,
     /// VPC配置。配置此参数后，函数可以访问指定的VPC资源。
     #[serde(rename = "vpcConfig")]
-    pub vpc_config: VPCConfig,
+    pub vpc_config: Option<VPCConfig>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
-    pub disable_ondemand: bool,
+    pub disable_ondemand: Option<bool>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
-    pub session_affinity: String,
+    pub session_affinity: Option<String>,
     /// 是否允许 GPU 函数的预留实例常驻，启用该功能时，创建的函数实例不会被注入 STS token。
     #[serde(rename = "enableLongLiving")]
-    pub enable_long_living: bool,
+    pub enable_long_living: Option<bool>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
-    pub instance_isolation_mode: UpdateFunctionInputInstanceIsolationMode,
+    pub instance_isolation_mode: Option<UpdateFunctionInputInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
-    pub session_affinity_config: String,
+    pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间
     #[serde(rename = "idleTimeout")]
-    pub idle_timeout: i32,
+    pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
     /// Env: 环境变量不注入
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
-    pub disable_inject_credentials: UpdateFunctionInputDisableInjectCredentials,
+    pub disable_inject_credentials: Option<UpdateFunctionInputDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 impl crate::FlatSerialize for UpdateFunctionInput {
@@ -12484,9 +12556,9 @@ impl crate::FlatSerialize for UpdateFunctionInput {
 #[serde(default)]
 pub struct UpdateResidentResourcePoolInput {
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: Option<String>,
     #[serde(rename = "useScaling")]
-    pub use_scaling: bool,
+    pub use_scaling: Option<bool>,
 }
 
 impl crate::FlatSerialize for UpdateResidentResourcePoolInput {
@@ -12510,13 +12582,13 @@ impl crate::FlatSerialize for UpdateResidentResourcePoolInput {
 pub struct UpdateSessionInput {
     /// Session生命周期
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
 }
 
 impl crate::FlatSerialize for UpdateSessionInput {
@@ -12549,16 +12621,16 @@ impl crate::FlatSerialize for UpdateSessionInput {
 pub struct UpdateTriggerInput {
     /// 触发器的描述。
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: Option<String>,
     /// 事件源（如OSS）调用函数所需的角色。
     #[serde(rename = "invocationRole")]
-    pub invocation_role: String,
+    pub invocation_role: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// 触发器配置，针对不同类型的触发器，配置有所不同。
     #[serde(rename = "triggerConfig")]
-    pub trigger_config: String,
+    pub trigger_config: Option<String>,
 }
 
 impl crate::FlatSerialize for UpdateTriggerInput {
@@ -12596,10 +12668,10 @@ impl crate::FlatSerialize for UpdateTriggerInput {
 pub struct FunctionInvocationbody {
     /// 禁止函数调用的原因
     #[serde(rename = "reason")]
-    pub reason: String,
+    pub reason: Option<String>,
     /// 是否立即终止正在处理的所有请求
     #[serde(rename = "abortOngoingRequest")]
-    pub abort_ongoing_request: bool,
+    pub abort_ongoing_request: Option<bool>,
 }
 
 impl crate::FlatSerialize for FunctionInvocationbody {
@@ -12625,12 +12697,12 @@ pub struct ResourcesTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
-    pub key: String,
+    pub key: Option<String>,
     /// 标签值。
     ///
     /// 标签值最多支持128个字符，可以为空字符串。
     #[serde(rename = "Value")]
-    pub value: String,
+    pub value: Option<String>,
 }
 
 impl crate::FlatSerialize for ResourcesTag {
@@ -13107,6 +13179,7 @@ pub struct EnableFunctionInvocationResponse {
     pub code_message: crate::CodeMessage,
     /// 是否成功允许调用
     #[serde(rename = "success")]
+    #[serde(default)]
     pub success: bool,
 }
 
@@ -13124,6 +13197,7 @@ pub struct DisableFunctionInvocationResponse {
     pub code_message: crate::CodeMessage,
     /// 是否成功禁止调用
     #[serde(rename = "success")]
+    #[serde(default)]
     pub success: bool,
 }
 
