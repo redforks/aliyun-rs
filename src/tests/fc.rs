@@ -21,19 +21,22 @@ fn test_connection() -> Connection {
 #[tokio::test]
 #[ignore] // Run with: cargo test --ignored
 async fn test_describe_regions() {
-    let conn = test_connection();
-    let result = conn
-        .describe_regions(crate::fc::DescribeRegions::new())
-        .await
-        .unwrap();
+    todo!(
+        "wait refactoring of aliyun-rs-gen of Option handling of shared structs used in response only"
+    )
+    // let conn = test_connection();
+    // let result = conn
+    //     .describe_regions(crate::fc::DescribeRegions::new())
+    //     .await
+    //     .unwrap();
 
-    println!(
-        "Describe regions response: {} region(s) found",
-        result.regions.region.len()
-    );
-    for region in &result.regions.region {
-        println!("  - {}: {}", region.region_id, region.local_name);
-    }
+    // println!(
+    //     "Describe regions response: {} region(s) found",
+    //     result.regions.region.len()
+    // );
+    // for region in &result.regions.region {
+    //     println!("  - {}: {}", region.region_id, region.local_name);
+    // }
 }
 
 #[tokio::test]
