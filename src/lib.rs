@@ -1,21 +1,25 @@
 #![doc = include_str!("../README.md")]
 
-use anyhow::Context as _;
 use anyhow::anyhow;
 use http::HeaderMap;
 use http::{HeaderValue, Method};
-use reqwest::Body;
-use serde::{Deserialize, Serialize, de::DeserializeOwned};
+use serde::{Deserialize, Serialize};
 use std::borrow::Cow;
 use std::collections::HashMap;
-use tracing::debug;
 
 mod auth;
 mod common;
+mod from_body;
+mod into_body;
 mod query_value;
 mod serializes;
 mod v3;
 
+use from_body::{
+    BinaryResponseWithMetaWrap, BinaryResponseWrap, BinaryWithMeta, CODE_MESSAGE, FromBody,
+    IntoResponse, JsonResponseWrap, SelfResponseWrap, ToCodeMessage, XmlResponseWrap,
+};
+use into_body::{Form, IntoBody, JsonBody, OctetStream, XmlBody};
 use query_value::QueryValue;
 use serializes::{FlatSerialize, SimpleSerialize};
 pub use v3::AccessKeySecret;
@@ -132,193 +136,8 @@ pub type OpenObject = HashMap<String, Value>;
 /// Trait for types that can be converted to form data parameters.
 /// This is used instead of serde_urlencoded to support custom parameter styles
 /// like Flat and RepeatList.
-trait ToFormData {
+pub(crate) trait ToFormData {
     fn to_form_data(&self) -> Vec<(Cow<'static, str>, QueryValue<'_>)>;
-}
-
-/// Trait for types that can provide a reference to CodeMessage.
-/// This is used instead of AsRef<CodeMessage> to allow implementations
-/// for types like Vec<u8> that need to be deserialized into CodeMessage.
-trait ToCodeMessage {
-    fn to_code_message(&self) -> &CodeMessage;
-}
-
-/// Trait for types that can be deserialized from raw response bytes.
-trait FromBody: Sized {
-    fn from_body(bytes: Vec<u8>) -> Result<Self>;
-}
-
-/// JSON response wrapper that deserializes the inner type from JSON bytes.
-#[derive(Debug)]
-struct JsonResponseWrap<T> {
-    inner: T,
-}
-
-impl<T: DeserializeOwned> FromBody for JsonResponseWrap<T> {
-    fn from_body(bytes: Vec<u8>) -> Result<Self> {
-        let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
-        let inner = serde_json::from_str(&text)
-            .with_context(|| format!("Decode response as JSON: {}", &text))?;
-        Ok(Self { inner })
-    }
-}
-
-impl<T: ToCodeMessage> ToCodeMessage for JsonResponseWrap<T> {
-    fn to_code_message(&self) -> &CodeMessage {
-        self.inner.to_code_message()
-    }
-}
-
-#[derive(Debug)]
-struct SelfResponseWrap<T> {
-    pub inner: T,
-}
-
-impl<T> IntoResponse for SelfResponseWrap<T> {
-    type Response = T;
-
-    fn into_response(self) -> Self::Response {
-        self.inner
-    }
-}
-
-impl<T: Default> FromBody for SelfResponseWrap<T> {
-    fn from_body(_bytes: Vec<u8>) -> Result<Self> {
-        Ok(SelfResponseWrap {
-            inner: T::default(),
-        })
-    }
-}
-
-impl<T> ToCodeMessage for SelfResponseWrap<T> {
-    fn to_code_message(&self) -> &CodeMessage {
-        &CODE_MESSAGE
-    }
-}
-
-trait IntoResponse {
-    type Response;
-
-    fn into_response(self) -> Self::Response;
-}
-
-// Compatibility layer: Allow Response type to be convertible from JsonResponseWrap<Response>
-// This supports the new pattern where Response: From<ResponseWrap>
-impl<T> IntoResponse for JsonResponseWrap<T> {
-    type Response = T;
-
-    fn into_response(self) -> Self::Response {
-        self.inner
-    }
-}
-
-impl FromBody for () {
-    fn from_body(_bytes: Vec<u8>) -> Result<Self> {
-        Ok(())
-    }
-}
-
-// Unit type implementation for empty responses
-impl ToCodeMessage for () {
-    fn to_code_message(&self) -> &CodeMessage {
-        &CODE_MESSAGE
-    }
-}
-
-impl IntoResponse for () {
-    type Response = ();
-
-    fn into_response(self) -> Self::Response {
-        self
-    }
-}
-
-/// XML response wrapper that deserializes the inner type from XML bytes.
-#[derive(Debug)]
-struct XmlResponseWrap<T> {
-    inner: T,
-}
-
-impl<T: DeserializeOwned> FromBody for XmlResponseWrap<T> {
-    fn from_body(bytes: Vec<u8>) -> Result<Self> {
-        let inner = quick_xml::de::from_reader(&bytes[..]).context("Decode response as XML")?;
-        Ok(Self { inner })
-    }
-}
-
-impl<T: ToCodeMessage> ToCodeMessage for XmlResponseWrap<T> {
-    fn to_code_message(&self) -> &CodeMessage {
-        self.inner.to_code_message()
-    }
-}
-
-impl<T> IntoResponse for XmlResponseWrap<T> {
-    type Response = T;
-
-    fn into_response(self) -> Self::Response {
-        self.inner
-    }
-}
-
-/// Binary response wrapper that passes through raw bytes without deserialization.
-#[derive(Debug)]
-struct BinaryResponseWrap {
-    /// The raw response bytes
-    pub inner: Vec<u8>,
-}
-
-impl FromBody for BinaryResponseWrap {
-    fn from_body(bytes: Vec<u8>) -> Result<Self> {
-        Ok(Self { inner: bytes })
-    }
-}
-
-impl ToCodeMessage for BinaryResponseWrap {
-    fn to_code_message(&self) -> &CodeMessage {
-        &CODE_MESSAGE
-    }
-}
-
-impl IntoResponse for BinaryResponseWrap {
-    type Response = Vec<u8>;
-
-    fn into_response(self) -> Self::Response {
-        self.inner
-    }
-}
-
-trait BinaryWithMeta {
-    fn set_binary(&mut self, body: Vec<u8>);
-}
-
-/// Binary response wrapper with metadata from response headers.
-/// Wraps a struct containing `inner: T` (metadata from headers) and `body: Vec<u8>` (raw bytes).
-#[derive(Debug)]
-struct BinaryResponseWithMetaWrap<T: BinaryWithMeta + Default> {
-    /// Metadata extracted from response headers
-    pub inner: T,
-}
-
-impl<T: BinaryWithMeta + Default> FromBody for BinaryResponseWithMetaWrap<T> {
-    fn from_body(bytes: Vec<u8>) -> Result<Self> {
-        let mut inner: T = Default::default();
-        inner.set_binary(bytes);
-        Ok(Self { inner })
-    }
-}
-
-impl<T: BinaryWithMeta + Default> ToCodeMessage for BinaryResponseWithMetaWrap<T> {
-    fn to_code_message(&self) -> &CodeMessage {
-        &CODE_MESSAGE
-    }
-}
-
-impl<T: BinaryWithMeta + Default> IntoResponse for BinaryResponseWithMetaWrap<T> {
-    type Response = T;
-
-    fn into_response(self) -> Self::Response {
-        self.inner
-    }
 }
 
 /// Each api entry should implement this trait.
@@ -361,84 +180,6 @@ trait Request: Sized + Send {
     fn from_headers(_resp: &mut Self::ResponseWrap, _headers: &HeaderMap<HeaderValue>) {}
 }
 
-trait IntoBody {
-    fn content_type(&self) -> Option<HeaderValue>;
-    fn into_body(self) -> Result<Body>;
-}
-
-impl IntoBody for () {
-    fn content_type(&self) -> Option<HeaderValue> {
-        None
-    }
-
-    fn into_body(self) -> Result<Body> {
-        Ok(b"".as_slice().into())
-    }
-}
-
-pub(crate) struct Form<T: ToFormData>(pub T);
-
-impl<T: ToFormData> IntoBody for Form<T> {
-    fn content_type(&self) -> Option<HeaderValue> {
-        Some(HeaderValue::from_static(
-            "application/x-www-form-urlencoded",
-        ))
-    }
-
-    fn into_body(self) -> Result<Body> {
-        let params = self.0.to_form_data();
-        let encoded = params
-            .iter()
-            .map(|(k, v)| format!("{}={}", urlencoding::encode(k), v.url_encode()))
-            .collect::<Vec<_>>()
-            .join("&");
-        Ok(encoded.into())
-    }
-}
-
-/// Body wrapper for binary data using application/octet-stream content type.
-pub(crate) struct OctetStream(pub Vec<u8>);
-
-impl IntoBody for OctetStream {
-    fn content_type(&self) -> Option<HeaderValue> {
-        Some(HeaderValue::from_static("application/octet-stream"))
-    }
-
-    fn into_body(self) -> Result<Body> {
-        Ok(self.0.into())
-    }
-}
-
-/// Body wrapper for XML-serialized data using application/xml content type.
-pub(crate) struct XmlBody<T: serde::Serialize>(pub T);
-
-impl<T: serde::Serialize> IntoBody for XmlBody<T> {
-    fn content_type(&self) -> Option<HeaderValue> {
-        Some(HeaderValue::from_static("application/xml"))
-    }
-
-    fn into_body(self) -> Result<Body> {
-        let xml = quick_xml::se::to_string(&self.0).context("Failed to serialize body to XML")?;
-        debug!("XML Request body: {}", xml);
-        Ok(xml.into())
-    }
-}
-
-/// Body wrapper for JSON-serialized data using application/json content type.
-pub(crate) struct JsonBody<T: serde::Serialize>(pub T);
-
-impl<T: serde::Serialize> IntoBody for JsonBody<T> {
-    fn content_type(&self) -> Option<HeaderValue> {
-        Some(HeaderValue::from_static("application/json"))
-    }
-
-    fn into_body(self) -> Result<Body> {
-        let json = serde_json::to_string(&self.0).context("Failed to serialize body to JSON")?;
-        debug!("JSON Request body: {}", json);
-        Ok(json.into())
-    }
-}
-
 #[derive(Debug, Deserialize, Default, thiserror::Error)]
 #[serde(rename_all = "PascalCase")]
 #[error("{code}: {message}")]
@@ -464,12 +205,6 @@ impl From<CodeMessage> for Result<()> {
         value.check()
     }
 }
-
-/// Default CodeMessage for binary responses (which don't have structured response data)
-static CODE_MESSAGE: CodeMessage = CodeMessage {
-    code: String::new(),
-    message: String::new(),
-};
 
 /// Generic response type for APIs without strongly-typed response definitions.
 /// This is used when an API produces JSON but doesn't define a 200 response schema.
