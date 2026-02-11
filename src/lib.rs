@@ -20,9 +20,9 @@ use from_body::{
     IntoResponse, JsonResponseWrap, SelfResponseWrap, ToCodeMessage, XmlResponseWrap,
 };
 use into_body::{Form, IntoBody, JsonBody, OctetStream, XmlBody};
+pub use open_object::{OpenObject, OpenObjectResponse, Value};
 use query_value::QueryValue;
 use serializes::{FlatSerialize, SimpleSerialize};
-pub use open_object::{OpenObject, OpenObjectResponse, Value};
 pub use v3::AccessKeySecret;
 
 #[cfg(feature = "ocr")]
@@ -135,7 +135,6 @@ impl From<CodeMessage> for Result<()> {
 
 /// Macro to implement ToCodeMessage for Response types that have a flattened code_message field.
 /// Use this in generated code or for Response types.
-#[macro_export]
 macro_rules! impl_to_code_message {
     ($($ty:ty),* $(,)?) => {
         $(
@@ -147,3 +146,19 @@ macro_rules! impl_to_code_message {
         )*
     };
 }
+pub(crate) use impl_to_code_message;
+
+/// Macro to implement ToCodeMessage to return &crate::CODE_MESSAGE
+/// Use this in generated code or for Response types.
+macro_rules! impl_default_to_code_message {
+    ($($ty:ty),* $(,)?) => {
+        $(
+            impl $crate::ToCodeMessage for $ty {
+                fn to_code_message(&self) -> &$crate::CodeMessage {
+                    &$crate::CODE_MESSAGE
+                }
+            }
+        )*
+    };
+}
+pub(crate) use impl_default_to_code_message;

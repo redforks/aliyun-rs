@@ -5600,12 +5600,6 @@ impl crate::FlatSerialize for Alias {
     }
 }
 
-impl crate::ToCodeMessage for Alias {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 异步调用目标结构体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -5728,12 +5722,6 @@ impl crate::FlatSerialize for AsyncConfig {
             &format!("{}.maxAsyncRetryAttempts", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for AsyncConfig {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -5933,12 +5921,6 @@ impl crate::FlatSerialize for AsyncTask {
     }
 }
 
-impl crate::ToCodeMessage for AsyncTask {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 权限认证配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -6110,12 +6092,6 @@ impl crate::FlatSerialize for ChangeResourceGroupOutput {
     }
 }
 
-impl crate::ToCodeMessage for ChangeResourceGroupOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 函数并发配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -6144,12 +6120,6 @@ impl crate::FlatSerialize for ConcurrencyConfig {
             &format!("{}.reservedConcurrency", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ConcurrencyConfig {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -8002,12 +7972,6 @@ impl crate::FlatSerialize for CustomDomain {
     }
 }
 
-impl crate::ToCodeMessage for CustomDomain {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// EventBridge 触发器的死信队列配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -8125,12 +8089,6 @@ impl crate::FlatSerialize for DescribeRegionsOutput {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.regions, &format!("{}.Regions", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for DescribeRegionsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -9482,12 +9440,6 @@ impl crate::FlatSerialize for Function {
     }
 }
 
-impl crate::ToCodeMessage for Function {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceEventItem {
@@ -9923,12 +9875,6 @@ impl crate::FlatSerialize for Layer {
     }
 }
 
-impl crate::ToCodeMessage for Layer {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 函数别名列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -9954,12 +9900,6 @@ impl crate::FlatSerialize for ListAliasesOutput {
             &format!("{}.nextToken", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListAliasesOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -9991,12 +9931,6 @@ impl crate::FlatSerialize for ListAsyncInvokeConfigOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListAsyncInvokeConfigOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 列举异步任务信息响应内容。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10025,12 +9959,6 @@ impl crate::FlatSerialize for ListAsyncTaskOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListAsyncTaskOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 获取函数的并发配置列表信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10056,12 +9984,6 @@ impl crate::FlatSerialize for ListConcurrencyConfigsOutput {
             &format!("{}.nextToken", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListConcurrencyConfigsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -10094,12 +10016,6 @@ impl crate::FlatSerialize for ListCustomDomainOutput {
             &format!("{}.nextToken", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListCustomDomainOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -10164,12 +10080,6 @@ impl crate::FlatSerialize for ListFunctionsOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListFunctionsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 查询返回的实例信息列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10201,12 +10111,6 @@ impl crate::FlatSerialize for ListInstancesOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListInstancesOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 获取指定层的版本列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10235,12 +10139,6 @@ impl crate::FlatSerialize for ListLayerVersionOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListLayerVersionOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 获取层列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10266,12 +10164,6 @@ impl crate::FlatSerialize for ListLayersOutput {
             &format!("{}.nextToken", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListLayersOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -10484,12 +10376,6 @@ impl crate::FlatSerialize for ProvisionConfig {
     }
 }
 
-impl crate::ToCodeMessage for ProvisionConfig {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 获取函数预留配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -10519,12 +10405,6 @@ impl crate::FlatSerialize for ListProvisionConfigsOutput {
             &format!("{}.provisionConfigs", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListProvisionConfigsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -10890,12 +10770,6 @@ impl crate::FlatSerialize for ScalingConfigStatus {
     }
 }
 
-impl crate::ToCodeMessage for ScalingConfigStatus {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ListScalingConfigsOutput {
@@ -10922,12 +10796,6 @@ impl crate::FlatSerialize for ListScalingConfigsOutput {
             &format!("{}.scalingConfigs", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListScalingConfigsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -11056,12 +10924,6 @@ impl crate::FlatSerialize for Session {
     }
 }
 
-impl crate::ToCodeMessage for Session {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 函数会话列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -11087,12 +10949,6 @@ impl crate::FlatSerialize for ListSessionsOutput {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.sessions, &format!("{}.sessions", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for ListSessionsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -11178,12 +11034,6 @@ impl crate::FlatSerialize for ListTagResourcesOutput {
             &format!("{}.TagResources", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for ListTagResourcesOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -11370,12 +11220,6 @@ impl crate::FlatSerialize for Trigger {
     }
 }
 
-impl crate::ToCodeMessage for Trigger {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 获取触发器列表的响应结构体。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -11401,12 +11245,6 @@ impl crate::FlatSerialize for ListTriggersOutput {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.triggers, &format!("{}.triggers", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for ListTriggersOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -11457,12 +11295,6 @@ impl crate::FlatSerialize for Version {
     }
 }
 
-impl crate::ToCodeMessage for Version {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 列出版本的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -11499,12 +11331,6 @@ impl crate::FlatSerialize for ListVersionsOutput {
     }
 }
 
-impl crate::ToCodeMessage for ListVersionsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 列出服务/函数下的全部VPC绑定的请求参数
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -11522,12 +11348,6 @@ impl crate::FlatSerialize for ListVpcBindingsOutput {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.vpc_ids, &format!("{}.vpcIds", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for ListVpcBindingsOutput {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -11694,12 +11514,6 @@ impl crate::FlatSerialize for OutputFuncCode {
     ) {
         crate::FlatSerialize::flat_serialize(&self.checksum, &format!("{}.checksum", name), params);
         crate::FlatSerialize::flat_serialize(&self.url, &format!("{}.url", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for OutputFuncCode {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -13182,13 +12996,6 @@ pub struct EnableFunctionInvocationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for EnableFunctionInvocationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 请谨慎对生产环境的函数调用该接口，避免由于函数被禁止调用导致业务受损。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -13201,8 +13008,41 @@ pub struct DisableFunctionInvocationResponse {
     pub success: bool,
 }
 
-impl crate::ToCodeMessage for DisableFunctionInvocationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
+crate::impl_to_code_message!(
+    EnableFunctionInvocationResponse,
+    DisableFunctionInvocationResponse
+);
+
+crate::impl_default_to_code_message!(
+    Alias,
+    AsyncConfig,
+    AsyncTask,
+    ChangeResourceGroupOutput,
+    ConcurrencyConfig,
+    CustomDomain,
+    DescribeRegionsOutput,
+    Function,
+    Layer,
+    ListAliasesOutput,
+    ListAsyncInvokeConfigOutput,
+    ListAsyncTaskOutput,
+    ListConcurrencyConfigsOutput,
+    ListCustomDomainOutput,
+    ListFunctionsOutput,
+    ListInstancesOutput,
+    ListLayerVersionOutput,
+    ListLayersOutput,
+    ProvisionConfig,
+    ListProvisionConfigsOutput,
+    ScalingConfigStatus,
+    ListScalingConfigsOutput,
+    Session,
+    ListSessionsOutput,
+    ListTagResourcesOutput,
+    Trigger,
+    ListTriggersOutput,
+    Version,
+    ListVersionsOutput,
+    ListVpcBindingsOutput,
+    OutputFuncCode
+);

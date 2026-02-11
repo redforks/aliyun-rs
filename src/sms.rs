@@ -9460,13 +9460,6 @@ pub struct SubmitSmsQualificationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for SubmitSmsQualificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 支持全量查询或条件查询：
 ///   - **全量查询**：查询您当前帐户下所有短信资质，无需传参。默认全量查询。
 ///   - **条件查询**：支持根据资质名称、企业名称、法人姓名、审核状态、审核工单ID、资质用途进行查询，传入您希望筛选的参数即可。
@@ -9500,13 +9493,6 @@ pub struct QuerySmsQualificationRecordResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for QuerySmsQualificationRecordResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 本接口查询单个资质的详情（企业信息、法人信息、管理员信息）。
 /// - 如果需要查询您当前账号下所有资质信息，或需要查询审核详情，请调用[查询资质列表](~~QuerySmsQualificationRecord~~)。
 /// - 受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。特殊情况可能延长审核时间，请耐心等待。
@@ -9535,13 +9521,6 @@ pub struct QuerySingleSmsQualificationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for QuerySingleSmsQualificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 审核中的资质不支持修改，请等待审核流程结束或在短信服务控制台[撤回申请](https://dysms.console.aliyun.com/domestic/text/qualification)后再修改。
 /// - 修改后的短信资质**需要重新审核**（包括已审核通过的资质），请根据[资质材料说明](~~2384377~~)上传符合规范的材料。
 /// - **不支持修改**资质命名、申请用途、统一社会信用代码。
@@ -9572,13 +9551,6 @@ pub struct UpdateSmsQualificationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for UpdateSmsQualificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ><warning>资质删除后不能恢复，也无法在后续申请签名时选用，请谨慎操作。></warning>
 /// - 审核中的资质不支持修改或删除，您可以在短信服务[控制台](https://dysms.console.aliyun.com/domestic/text/qualification)撤回申请后操作。
 /// - 审核通过的资质若已被签名绑定则不支持删除。
@@ -9611,13 +9583,6 @@ pub struct DeleteSmsQualificationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for DeleteSmsQualificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 接收到手机验证码后，请传入[申请短信资质](~~SubmitSmsQualification~~)/[修改短信资质](~~UpdateSmsQualification~~)接口的`CertifyCode`参数中。
 /// - 您可以通过[ValidPhoneCode](~~ValidPhoneCode~~)接口校验短信验证码是否准确。
 /// - 本接口获取短信验证码有[流控限制](~~44335#section-0wh-xn6-0t7~~)，请勿频繁操作：针对同一个号码最多支持1条/分钟，5条/小时，10条/天。
@@ -9647,13 +9612,6 @@ pub struct RequiredPhoneCodeResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for RequiredPhoneCodeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 请先调用[获取手机验证码](~~RequiredPhoneCode~~)接口，阿里云将发送短信验证码至您填写的手机号码。
 /// - 本接口不影响短信资质申请流程，仅供验证短信验证码使用。实际申请时，请在[申请短信资质](~~SubmitSmsQualification~~)接口中的`CertifyCode`参数传入验证码。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9684,13 +9642,6 @@ pub struct ValidPhoneCodeResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for ValidPhoneCodeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 请您在使用前阅读[授权书规范](~~56741~~)，下载[授权委托书模板](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250414/bvpcmo/%E6%8E%88%E6%9D%83%E5%A7%94%E6%89%98%E4%B9%A6%E6%A8%A1%E7%89%88.doc)后，根据规范完成填写并盖章后上传。
 /// - 您创建的授权委托书可在后续申请短信资质/申请短信签名时使用，如果您的资质/签名涉及他用，则必须创建授权委托书并提交。
 /// - 创建授权委托书后，您可以通过[QuerySmsAuthorizationLetter](~~QuerySmsAuthorizationLetter~~)查询已创建的授权书详情；通过接口创建的授权书信息会同步在短信服务控制台。
@@ -9719,13 +9670,6 @@ pub struct CreateSmsAuthorizationLetterResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for CreateSmsAuthorizationLetterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 支持全量查询或条件查询：
 ///   - **全量查询**：查询您当前帐户下所有授权委托书信息，无需传参。默认全量查询。
 ///   - **条件查询**：支持根据授权委托书ID、签名名称、授权委托书审核状态进行查询，传入您希望筛选的参数即可。
@@ -9756,13 +9700,6 @@ pub struct QuerySmsAuthorizationLetterResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for QuerySmsAuthorizationLetterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 ///
 /// - 个人认证用户，同一个阿里云账号一个自然日支持申请一个正式签名；企业认证用户目前无限制。个人用户与企业用户权益区别详情请参见[使用须知](~~55324~~)。
@@ -9791,13 +9728,6 @@ pub struct CreateSmsSignResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for CreateSmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 仅可查询**首次创建**的签名资料或者**最新审核通过**的资料。
 ///
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
@@ -9921,13 +9851,6 @@ pub struct GetSmsSignResponse {
     #[serde(default)]
     pub app_icp_record_id: i64,
 }
-
-impl crate::ToCodeMessage for GetSmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 本接口可以查询您当前账号下**首次创建**的签名资料或者**最新审核通过**的签名详情。如果您需要查询应用场景内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsSign](~~GetSmsSign~~)接口通过签名名称查询单个签名审核详情。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -9955,13 +9878,6 @@ pub struct QuerySmsSignListResponse {
     #[serde(default)]
     pub page_size: i32,
 }
-
-impl crate::ToCodeMessage for QuerySmsSignListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 支持修改**未通过审核**和**已经审核通过**的签名，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后重新提交审核。
 /// - **未通过审核**的签名如需编辑名称，该接口不支持，您可以访问控制台页面进行修改。[短信服务签名控制台入口](https://dysms.console.aliyun.com/domestic/text/sign)。
@@ -9986,13 +9902,6 @@ pub struct UpdateSmsSignResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for UpdateSmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10008,13 +9917,6 @@ pub struct DeleteSmsSignResponse {
     #[serde(default)]
     pub sign_name: String,
 }
-
-impl crate::ToCodeMessage for DeleteSmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ChangeSignatureQualificationResponse {
@@ -10040,13 +9942,6 @@ pub struct ChangeSignatureQualificationResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for ChangeSignatureQualificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10062,13 +9957,6 @@ pub struct AddSmsSignResponse {
     #[serde(default)]
     pub sign_name: String,
 }
-
-impl crate::ToCodeMessage for AddSmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10084,13 +9972,6 @@ pub struct ModifySmsSignResponse {
     #[serde(default)]
     pub sign_name: String,
 }
-
-impl crate::ToCodeMessage for ModifySmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10126,13 +10007,6 @@ pub struct QuerySmsSignResponse {
     #[serde(default)]
     pub sign_name: String,
 }
-
-impl crate::ToCodeMessage for QuerySmsSignResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 商标应在国家知识产权局商标局-中国商标网中可查，且商标所有方与企业名称一致。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10160,13 +10034,6 @@ pub struct CreateSmsTrademarkResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for CreateSmsTrademarkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 传入商标id列表，返回商标详情。
 ///
 /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出商标id，然后使用此接口进一步查询详情。
@@ -10195,13 +10062,6 @@ pub struct QuerySmsTrademarkResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for QuerySmsTrademarkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 签名来源选择已上线APP，则需要上传ICP备案截图。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10229,13 +10089,6 @@ pub struct CreateSmsAppIcpRecordResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for CreateSmsAppIcpRecordResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 传入ICP备案id列表，返回ICP备案详情。
 ///
 /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出ICP备案id，然后使用此接口进一步查询详情。
@@ -10265,13 +10118,6 @@ pub struct QuerySmsAppIcpRecordResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for QuerySmsAppIcpRecordResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 ///
 /// - 通过接口申请短信模板，建议每次申请至少间隔30秒。
@@ -10309,13 +10155,6 @@ pub struct CreateSmsTemplateResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for CreateSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 审核时间：一般情况下，模板提交后，阿里云预计在2个小时内审核完成（审核工作时间：周一至周日9:00~21:00，法定节假日顺延）。
 ///
@@ -10442,13 +10281,6 @@ pub struct GetSmsTemplateResponse {
     #[serde(default)]
     pub vendor_audit_status: crate::OpenObject,
 }
-
-impl crate::ToCodeMessage for GetSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 本接口用于查询您当前账号下所有模板的模板详情。如果您需要查询模板变量内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsTemplate](~~GetSmsTemplate~~)接口通过模板Code查询单个模板审核详情。
 /// - 您也可登录短信服务控制台[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页查看您当前账号下所有模板的模板详情。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -10477,13 +10309,6 @@ pub struct QuerySmsTemplateListResponse {
     #[serde(default)]
     pub page_size: i32,
 }
-
-impl crate::ToCodeMessage for QuerySmsTemplateListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 仅支持修改未通过审核的模板，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后重新提交审核。
 ///
@@ -10517,13 +10342,6 @@ pub struct UpdateSmsTemplateResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for UpdateSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10539,13 +10357,6 @@ pub struct DeleteSmsTemplateResponse {
     #[serde(default)]
     pub template_code: String,
 }
-
-impl crate::ToCodeMessage for DeleteSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10563,13 +10374,6 @@ pub struct AddSmsTemplateResponse {
     #[serde(default)]
     pub template_code: String,
 }
-
-impl crate::ToCodeMessage for AddSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10585,13 +10389,6 @@ pub struct ModifySmsTemplateResponse {
     #[serde(default)]
     pub template_code: String,
 }
-
-impl crate::ToCodeMessage for ModifySmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 根据工信部规定与运营商[相关要求](~~2806975~~)，阿里云进行了模板相关API的功能改造。请您使用新接口[GetSmsTemplate-查询模板审核详情](~~2807433~~)，新接口查询结果返回参数中将比原有接口返回更多的模板详情信息。
 ///
 /// - 审核时间：一般情况下，模板提交后，阿里云预计在2个小时内审核完成（审核工作时间：周一至周日9:00~21:00，法定节假日顺延），建议您尽量在18:00前提交申请。
@@ -10650,13 +10447,6 @@ pub struct QuerySmsTemplateResponse {
     #[serde(default)]
     pub reason: String,
 }
-
-impl crate::ToCodeMessage for QuerySmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 本接口主要用于向单个手机号发送短信，也支持向多个手机号（单次最多支持 1000 个手机号）发送相同签名、相同模板变量的短信，群发存在一定延迟。如果您需要向多个手机号发送不同签名、不同模板变量的短信，请使用[SendBatchSms](~~419274~~)接口（单次最多支持100个手机号）。
 ///
 /// ### 注意事项
@@ -10682,13 +10472,6 @@ pub struct SendSmsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for SendSmsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### 基本信息
 /// - 本接口主要用于向多个手机号发送短信，支持发送不同签名、同一模板、不同模板变量的短信，单次调用最多支持 100 个手机号。
 /// - [服务接入点](~~419270~~) (Endpoint)：全局接入点域名为`dysmsapi.aliyuncs.com`。请参见[服务接入点](~~419270~~) ，根据您的使用地域，选择对应的接入点地址。
@@ -10719,13 +10502,6 @@ pub struct SendBatchSmsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for SendBatchSmsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 本接口主要用于查询指定日期下，向某个手机号码发送短信的记录详情。您也可以传入发送流水号（BizId），查询该号码的指定发送记录。
 ///
 /// - 本接口仅支持查询单个手机号码发送详情。如果需要批量查看短信发送详情，您可以使用[QuerySendStatistics](~~419276~~)接口，查询短信发送统计详情；或登录[控制台发送记录查询](https://dysms.console.aliyun.com/record)页面，查询发送详情。
@@ -10749,13 +10525,6 @@ pub struct QuerySendDetailsResponse {
     #[serde(default)]
     pub sms_send_detail_dtos: DetailDTOs,
 }
-
-impl crate::ToCodeMessage for QuerySendDetailsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 如果选择的时间范围较长的话，可以分页查看。指定每页显示的短信详情数量和查看的页数，即可分页查看发送记录。
 ///
 /// - 您可以登录[短信服务控制台](https://dysms.console.aliyun.com/dysms.htm#/overview)，在**业务统计**-**发送记录**页面查询发送详情。
@@ -10773,13 +10542,6 @@ pub struct QuerySendStatisticsResponse {
     #[serde(default)]
     pub data: StatisticsResponseData,
 }
-
-impl crate::ToCodeMessage for QuerySendStatisticsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 您在调用卡片短信相关API接口前，首先需要开通卡片短信功能，目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
 ///
 /// - 卡片短信模板中使用的图片、视频等素材资源可上传到OSS文件系统保存。文件上传操作，请参见[OSS文件上传](~~437303~~)。
@@ -10808,13 +10570,6 @@ pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(default)]
     pub data: ResponseData,
 }
-
-impl crate::ToCodeMessage for GetOSSInfoForCardTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -10839,13 +10594,6 @@ pub struct GetMediaResourceIdResponse {
     #[serde(default)]
     pub data: IdResponseData,
 }
-
-impl crate::ToCodeMessage for GetMediaResourceIdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -10868,13 +10616,6 @@ pub struct CreateCardSmsTemplateResponse {
     #[serde(default)]
     pub data: CreateCardSmsTemplateResponseData,
 }
-
-impl crate::ToCodeMessage for CreateCardSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
 /// - 您也可登录控制台[国内卡片短信](https://dysms.console.aliyun.com/domestic/card)页面，在模板管理页签内查询卡片短信模板的审核状态。
@@ -10902,13 +10643,6 @@ pub struct QueryCardSmsTemplateResponse {
     #[serde(default)]
     pub data: QueryCardSmsTemplateResponseData,
 }
-
-impl crate::ToCodeMessage for QueryCardSmsTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
 /// - 推荐使用新接口[QueryMobilesCardSupport](~~QueryMobilesCardSupport~~)查询手机号是否支持卡片短信。
@@ -10935,13 +10669,6 @@ pub struct CheckMobilesCardSupportResponse {
     #[serde(default)]
     pub data: CheckMobilesCardSupportResponseData,
 }
-
-impl crate::ToCodeMessage for CheckMobilesCardSupportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -10966,13 +10693,6 @@ pub struct QueryMobilesCardSupportResponse {
     #[serde(default)]
     pub data: QueryMobilesCardSupportResponseData,
 }
-
-impl crate::ToCodeMessage for QueryMobilesCardSupportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213273d4Xe6UEu#section-81n-72q-ybm)。
 ///
 /// ### QPS限制
@@ -10998,13 +10718,6 @@ pub struct GetCardSmsLinkResponse {
     #[serde(default)]
     pub data: LinkResponseData,
 }
-
-impl crate::ToCodeMessage for GetCardSmsLinkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetCardSmsDetailsResponse {
@@ -11027,13 +10740,6 @@ pub struct GetCardSmsDetailsResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for GetCardSmsDetailsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -11058,13 +10764,6 @@ pub struct QueryCardSmsTemplateReportResponse {
     #[serde(default)]
     pub data: ReportResponseData,
 }
-
-impl crate::ToCodeMessage for QueryCardSmsTemplateReportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 发送卡片短信为计费接口，卡片短信发送失败或渲染失败时不计费，详情请参见[多媒体短信定价](~~437951~~)。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213219fcSn2Ykj#section-81n-72q-ybm)。
 /// - 卡片短信超时时间建议设置为≥3S；发生超时失败的情况时，建议查看回执状态后再判断是否重试。同时建议您在调用此接口时，不要开启SDK重试逻辑，否则可能会造成多次发送的情况。超时和重试的相关设置，请参见[超时机制](~~262079~~)、[重试机制](~~262080~~)。
@@ -11095,13 +10794,6 @@ pub struct SendCardSmsResponse {
     #[serde(default)]
     pub data: SendCardSmsResponseData,
 }
-
-impl crate::ToCodeMessage for SendCardSmsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 发送卡片短信为计费接口，卡片短信发送失败或渲染失败时不计费，详情请参见[多媒体短信定价](~~437951~~)。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213219fcSn2Ykj#section-81n-72q-ybm)。
 /// - 卡片短信超时时间建议设置为≥3S；发生超时失败的情况时，建议查看回执状态后再判断是否重试。同时建议您在调用此接口时，不要开启SDK重试逻辑，否则可能会造成多次发送的情况。超时和重试的相关设置，请参见[超时机制](~~262079~~)、[重试机制](~~262080~~)。
@@ -11133,13 +10825,6 @@ pub struct SendBatchCardSmsResponse {
     #[serde(default)]
     pub data: BatchCardSmsResponseData,
 }
-
-impl crate::ToCodeMessage for SendBatchCardSmsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 您在申请资质/签名时，若用途为他用或涉及第三方，需要提供[授权委托书](~~56741~~)。
 /// - 请使用本接口获取OSS资源配置信息后，通过OSS上传相关资质材料。具体操作，可参见[通过OSS上传文件](~~2833114~~)。
 /// - 待上传的文件命名不支持包含中文和特殊符号。
@@ -11169,13 +10854,6 @@ pub struct GetQualificationOssInfoResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for GetQualificationOssInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 您在创建签名或模板时，可上传带有链接的登录页面、后台页面截图、软著、协议补充等资料。有助于审核人员了解您的业务详情。如果是多个资料，可拼成一个文件，支持png、jpg、jpeg、doc、docx、pdf格式。
 ///
 /// - 创建签名或模板所需的更多资料，可上传到OSS文件系统保存。文件上传操作，请参见[OSS上传文件](~~2833114~~)。
@@ -11200,13 +10878,6 @@ pub struct GetOSSInfoForUploadFileResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for GetOSSInfoForUploadFileResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetSmsOcrOssInfoResponse {
@@ -11233,13 +10904,6 @@ pub struct GetSmsOcrOssInfoResponse {
     #[serde(default)]
     pub success: bool,
 }
-
-impl crate::ToCodeMessage for GetSmsOcrOssInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 指标说明：
 ///
 /// - OTP发送量：验证码发送量。
@@ -11259,13 +10923,6 @@ pub struct SmsConversionIntlResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for SmsConversionIntlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 指标说明：转化率=OTP 转化量/OTP 发送量。
 /// - OTP发送量：验证码发送量。
 /// - OTP转化量：验证码转换量。（用户成功获取验证码，并进行回传）
@@ -11282,13 +10939,6 @@ pub struct ConversionDataIntlResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ConversionDataIntlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11304,13 +10954,6 @@ pub struct AddShortUrlResponse {
     #[serde(default)]
     pub data: AddShortUrlResponseData,
 }
-
-impl crate::ToCodeMessage for AddShortUrlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11322,13 +10965,6 @@ pub struct DeleteShortUrlResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteShortUrlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11344,13 +10980,6 @@ pub struct QueryShortUrlResponse {
     #[serde(default)]
     pub data: QueryShortUrlResponseData,
 }
-
-impl crate::ToCodeMessage for QueryShortUrlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11369,13 +10998,6 @@ pub struct ListTagResourcesResponse {
     #[serde(default)]
     pub tag_resources: ResponseTagResources,
 }
-
-impl crate::ToCodeMessage for ListTagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11394,13 +11016,6 @@ pub struct TagResourcesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for TagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -11421,11 +11036,64 @@ pub struct UntagResourcesResponse {
     pub request_id: String,
 }
 
-impl crate::ToCodeMessage for UntagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
+crate::impl_to_code_message!(
+    SubmitSmsQualificationResponse,
+    QuerySmsQualificationRecordResponse,
+    QuerySingleSmsQualificationResponse,
+    UpdateSmsQualificationResponse,
+    DeleteSmsQualificationResponse,
+    RequiredPhoneCodeResponse,
+    ValidPhoneCodeResponse,
+    CreateSmsAuthorizationLetterResponse,
+    QuerySmsAuthorizationLetterResponse,
+    CreateSmsSignResponse,
+    GetSmsSignResponse,
+    QuerySmsSignListResponse,
+    UpdateSmsSignResponse,
+    DeleteSmsSignResponse,
+    ChangeSignatureQualificationResponse,
+    AddSmsSignResponse,
+    ModifySmsSignResponse,
+    QuerySmsSignResponse,
+    CreateSmsTrademarkResponse,
+    QuerySmsTrademarkResponse,
+    CreateSmsAppIcpRecordResponse,
+    QuerySmsAppIcpRecordResponse,
+    CreateSmsTemplateResponse,
+    GetSmsTemplateResponse,
+    QuerySmsTemplateListResponse,
+    UpdateSmsTemplateResponse,
+    DeleteSmsTemplateResponse,
+    AddSmsTemplateResponse,
+    ModifySmsTemplateResponse,
+    QuerySmsTemplateResponse,
+    SendSmsResponse,
+    SendBatchSmsResponse,
+    QuerySendDetailsResponse,
+    QuerySendStatisticsResponse,
+    GetOSSInfoForCardTemplateResponse,
+    GetMediaResourceIdResponse,
+    CreateCardSmsTemplateResponse,
+    QueryCardSmsTemplateResponse,
+    CheckMobilesCardSupportResponse,
+    QueryMobilesCardSupportResponse,
+    GetCardSmsLinkResponse,
+    GetCardSmsDetailsResponse,
+    QueryCardSmsTemplateReportResponse,
+    SendCardSmsResponse,
+    SendBatchCardSmsResponse,
+    GetQualificationOssInfoResponse,
+    GetOSSInfoForUploadFileResponse,
+    GetSmsOcrOssInfoResponse,
+    SmsConversionIntlResponse,
+    ConversionDataIntlResponse,
+    AddShortUrlResponse,
+    DeleteShortUrlResponse,
+    QueryShortUrlResponse,
+    ListTagResourcesResponse,
+    TagResourcesResponse,
+    UntagResourcesResponse
+);
 
 use std::collections::HashMap;
 

@@ -93737,13 +93737,6 @@ pub struct DescribeRegionsResponse {
     #[serde(default)]
     pub regions: ResponseRegions,
 }
-
-impl crate::ToCodeMessage for DescribeRegionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93758,13 +93751,6 @@ pub struct DescribeZonesResponse {
     #[serde(default)]
     pub zones: ResponseZones,
 }
-
-impl crate::ToCodeMessage for DescribeZonesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93779,13 +93765,6 @@ pub struct DescribeAvailableResourceResponse {
     #[serde(default)]
     pub available_zones: ResourceResponseAvailableZones,
 }
-
-impl crate::ToCodeMessage for DescribeAvailableResourceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93800,13 +93779,6 @@ pub struct DescribeAccountAttributesResponse {
     #[serde(default)]
     pub account_attribute_items: AttributeItems,
 }
-
-impl crate::ToCodeMessage for DescribeAccountAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93821,13 +93793,6 @@ pub struct DescribeResourcesModificationResponse {
     #[serde(default)]
     pub available_zones: ModificationResponseAvailableZones,
 }
-
-impl crate::ToCodeMessage for DescribeResourcesModificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93842,13 +93807,6 @@ pub struct DescribeRecommendInstanceTypeResponse {
     #[serde(default)]
     pub data: ResponseData,
 }
-
-impl crate::ToCodeMessage for DescribeRecommendInstanceTypeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93864,13 +93822,6 @@ pub struct DescribePriceResponse {
     #[serde(default)]
     pub price_info: DescribePriceResponsePriceInfo,
 }
-
-impl crate::ToCodeMessage for DescribePriceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93886,13 +93837,6 @@ pub struct DescribeRenewalPriceResponse {
     #[serde(default)]
     pub price_info: RenewalPriceResponsePriceInfo,
 }
-
-impl crate::ToCodeMessage for DescribeRenewalPriceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -93908,13 +93852,6 @@ pub struct DescribeInstanceModificationPriceResponse {
     #[serde(default)]
     pub price_info: ModificationPriceResponsePriceInfo,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceModificationPriceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// <props="china">
 /// 创建实例会产生计费，计费项包括[实例规格](~~25398~~)、[镜像](~~179021~~)、[块存储](~~179022~~)和[公网带宽](~~25411~~)。请确保在使用该接口前，已充分了解ECS产品的收费方式和[价格](https://www.aliyun.com/price/product#/ecs/detail)。
 /// </props>
@@ -94064,13 +94001,6 @@ pub struct RunInstancesResponse {
     #[serde(default)]
     pub instance_id_sets: ResponseInstanceIdSets,
 }
-
-impl crate::ToCodeMessage for RunInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94094,13 +94024,6 @@ pub struct CreateInstanceResponse {
     #[serde(default)]
     pub trade_price: f32,
 }
-
-impl crate::ToCodeMessage for CreateInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94112,13 +94035,6 @@ pub struct StartInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for StartInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94133,13 +94049,6 @@ pub struct StartInstancesResponse {
     #[serde(default)]
     pub instance_responses: StartInstancesResponseInstanceResponses,
 }
-
-impl crate::ToCodeMessage for StartInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94151,13 +94060,6 @@ pub struct StopInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for StopInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94172,13 +94074,6 @@ pub struct StopInstancesResponse {
     #[serde(default)]
     pub instance_responses: StopInstancesResponseInstanceResponses,
 }
-
-impl crate::ToCodeMessage for StopInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94190,13 +94085,6 @@ pub struct RebootInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RebootInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94211,13 +94099,6 @@ pub struct RebootInstancesResponse {
     #[serde(default)]
     pub instance_responses: RebootInstancesResponseInstanceResponses,
 }
-
-impl crate::ToCodeMessage for RebootInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94229,13 +94110,6 @@ pub struct DeleteInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94247,13 +94121,6 @@ pub struct DeleteInstancesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94280,13 +94147,6 @@ pub struct DescribeInstanceStatusResponse {
     #[serde(default)]
     pub instance_statuses: InstanceStatuses,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### 使用须知
 /// - 通过阿里云CLI调用API时，不同数据类型的请求参数取值必须遵循格式要求。更多信息，请参见[CLI参数格式说明](~~110340~~)。
 /// - 如果您使用的是RAM用户账号或者RAM角色，当用户或者角色缺乏接口权限时，将会返回空列表。
@@ -94325,13 +94185,6 @@ pub struct DescribeInstancesResponse {
     #[serde(default)]
     pub instances: DescribeInstancesResponseInstances,
 }
-
-impl crate::ToCodeMessage for DescribeInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94346,13 +94199,6 @@ pub struct DescribeInstanceTypeFamiliesResponse {
     #[serde(default)]
     pub instance_type_families: ResponseInstanceTypeFamilies,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceTypeFamiliesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - **分页查询**：您可以设置MaxResults参数以限制返回值中实例规格的条目数，如果只返回了部分被查询到的实例规格的条目数，则会同步返回NextToken参数值。再次调用该接口，设置上次调用该接口返回的NextToken参数值以及MaxResults参数，以实现分页查询实例规格信息。
 ///
 /// - 若您调用该API时未传入NextToken参数进行分页获取，默认只返回第一页（不超过100条）数据，若需要更多数据，请您传入NextToken进行分页获取或传入过滤条件来限制返回的数据范围。
@@ -94385,13 +94231,6 @@ pub struct DescribeInstanceTypesResponse {
     #[serde(default)]
     pub next_token: String,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceTypesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceAttributeResponse {
@@ -94574,13 +94413,6 @@ pub struct DescribeInstanceAttributeResponse {
     #[serde(default)]
     pub network_options: ResponseNetworkOptions,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94592,13 +94424,6 @@ pub struct ModifyInstanceAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 调用该接口时，您需要注意：
 ///
 /// -  当前接口是异步接口。调用后返回异步任务ID。通查查询异步任务结果来判断是否执行完成。
@@ -94620,13 +94445,6 @@ pub struct ModifyInstanceClockOptionsResponse {
     #[serde(default)]
     pub task_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceClockOptionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 调用该接口时，您需要注意：
 ///
 /// -  当前接口是异步接口。调用后返回异步任务ID。通查查询异步任务结果来判断是否执行完成。
@@ -94650,13 +94468,6 @@ pub struct ModifyInstanceNetworkOptionsResponse {
     #[serde(default)]
     pub task_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceNetworkOptionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### 使用须知
 /// - 请确保在使用该接口前，您已充分了解的云服务器ECS的[包年包月](~~56220~~)、[按量付费](~~40653~~)等计费方式和<props="china">[价格](https://www.aliyun.com/price/product#/ecs/detail)</props><props="intl">[价格](https://www.alibabacloud.com/product/ecs#pricing)</props>。</props>
 /// - 请确保目标实例的状态为**运行中**（`Running`）或者**已停止**（`Stopped`），并且账号无欠费。
@@ -94692,13 +94503,6 @@ pub struct ModifyInstanceChargeTypeResponse {
     #[serde(default)]
     pub fee_of_instances: InstanceChargeTypeResponseFeeOfInstances,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceChargeTypeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94710,13 +94514,6 @@ pub struct ModifyInstanceSpecResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94732,13 +94529,6 @@ pub struct ModifyPrepayInstanceSpecResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyPrepayInstanceSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94750,13 +94540,6 @@ pub struct ModifyInstanceAutoReleaseTimeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceAutoReleaseTimeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94783,13 +94566,6 @@ pub struct AttachInstanceRamRoleResponse {
     #[serde(default)]
     pub attach_instance_ram_role_results: AttachInstanceRamRoleResults,
 }
-
-impl crate::ToCodeMessage for AttachInstanceRamRoleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94812,13 +94588,6 @@ pub struct DescribeInstanceRamRoleResponse {
     #[serde(default)]
     pub instance_ram_role_sets: ResponseInstanceRamRoleSets,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceRamRoleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94845,13 +94614,6 @@ pub struct DetachInstanceRamRoleResponse {
     #[serde(default)]
     pub detach_instance_ram_role_results: DetachInstanceRamRoleResults,
 }
-
-impl crate::ToCodeMessage for DetachInstanceRamRoleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94869,13 +94631,6 @@ pub struct DescribeInstanceVncUrlResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceVncUrlResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94887,13 +94642,6 @@ pub struct ModifyInstanceVncPasswdResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceVncPasswdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94905,13 +94653,6 @@ pub struct ModifyInstanceMetadataOptionsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceMetadataOptionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94937,13 +94678,6 @@ pub struct DescribeUserDataResponse {
     #[serde(default)]
     pub region_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeUserDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94959,13 +94693,6 @@ pub struct RenewInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RenewInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -94992,13 +94719,6 @@ pub struct DescribeInstanceAutoRenewAttributeResponse {
     #[serde(default)]
     pub instance_renew_attributes: ResponseInstanceRenewAttributes,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95010,13 +94730,6 @@ pub struct ModifyInstanceAutoRenewAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95028,13 +94741,6 @@ pub struct ReActivateInstancesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReActivateInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95061,13 +94767,6 @@ pub struct DescribeSpotPriceHistoryResponse {
     #[serde(default)]
     pub spot_prices: SpotPrices,
 }
-
-impl crate::ToCodeMessage for DescribeSpotPriceHistoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95086,13 +94785,6 @@ pub struct DescribeSpotAdviceResponse {
     #[serde(default)]
     pub available_spot_zones: SpotZones,
 }
-
-impl crate::ToCodeMessage for DescribeSpotAdviceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95108,13 +94800,6 @@ pub struct CreateImageResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95145,13 +94830,6 @@ pub struct DescribeImagesResponse {
     #[serde(default)]
     pub images: ResponseImages,
 }
-
-impl crate::ToCodeMessage for DescribeImagesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyImageAttributeResponse {
@@ -95162,13 +94840,6 @@ pub struct ModifyImageAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyImageAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95180,13 +94851,6 @@ pub struct DeleteImageResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95202,13 +94866,6 @@ pub struct DescribeImageFromFamilyResponse {
     #[serde(default)]
     pub image: ResponseImage,
 }
-
-impl crate::ToCodeMessage for DescribeImageFromFamilyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95231,13 +94888,6 @@ pub struct DescribeImageSupportInstanceTypesResponse {
     #[serde(default)]
     pub instance_types: SupportInstanceTypesResponseInstanceTypes,
 }
-
-impl crate::ToCodeMessage for DescribeImageSupportInstanceTypesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95275,13 +94925,6 @@ pub struct DescribeImageSharePermissionResponse {
     #[serde(default)]
     pub accounts: ResponseAccounts,
 }
-
-impl crate::ToCodeMessage for DescribeImageSharePermissionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95293,13 +94936,6 @@ pub struct ModifyImageSharePermissionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyImageSharePermissionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyImageShareGroupPermissionResponse {
@@ -95309,13 +94945,6 @@ pub struct ModifyImageShareGroupPermissionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyImageShareGroupPermissionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### 接口说明
 ///
 /// 调用该接口时，您需要注意：
@@ -95457,13 +95086,6 @@ pub struct ImportImageResponse {
     #[serde(default)]
     pub region_id: String,
 }
-
-impl crate::ToCodeMessage for ImportImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95483,13 +95105,6 @@ pub struct ExportImageResponse {
     #[serde(default)]
     pub region_id: String,
 }
-
-impl crate::ToCodeMessage for ExportImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95505,13 +95120,6 @@ pub struct CopyImageResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CopyImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95523,13 +95131,6 @@ pub struct CancelCopyImageResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelCopyImageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95545,13 +95146,6 @@ pub struct CreateImageComponentResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateImageComponentResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95578,13 +95172,6 @@ pub struct DescribeImageComponentsResponse {
     #[serde(default)]
     pub image_component: ImageComponent,
 }
-
-impl crate::ToCodeMessage for DescribeImageComponentsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95596,13 +95183,6 @@ pub struct DeleteImageComponentResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteImageComponentResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95618,13 +95198,6 @@ pub struct CreateImagePipelineResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateImagePipelineResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95651,13 +95224,6 @@ pub struct DescribeImagePipelinesResponse {
     #[serde(default)]
     pub image_pipeline: ImagePipeline,
 }
-
-impl crate::ToCodeMessage for DescribeImagePipelinesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95669,13 +95235,6 @@ pub struct DeleteImagePipelineResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteImagePipelineResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95691,13 +95250,6 @@ pub struct StartImagePipelineExecutionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for StartImagePipelineExecutionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95724,13 +95276,6 @@ pub struct DescribeImagePipelineExecutionsResponse {
     #[serde(default)]
     pub image_pipeline_execution: PipelineExecution,
 }
-
-impl crate::ToCodeMessage for DescribeImagePipelineExecutionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95742,13 +95287,6 @@ pub struct CancelImagePipelineExecutionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelImagePipelineExecutionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95770,13 +95308,6 @@ pub struct CreateDiskResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for CreateDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95808,13 +95339,6 @@ pub struct DescribeDisksResponse {
     #[serde(default)]
     pub disks: ResponseDisks,
 }
-
-impl crate::ToCodeMessage for DescribeDisksResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95826,13 +95350,6 @@ pub struct AttachDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AttachDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95844,13 +95361,6 @@ pub struct DetachDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DetachDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95868,13 +95378,6 @@ pub struct ResizeDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ResizeDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95886,13 +95389,6 @@ pub struct ModifyDiskAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiskAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 转换数据盘计费方式前，请仔细阅读[转换云盘计费方式](~~145018~~)。
 ///
 /// 使用该接口时，请注意：
@@ -95919,13 +95415,6 @@ pub struct ModifyDiskChargeTypeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiskChargeTypeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95949,13 +95438,6 @@ pub struct ModifyDiskSpecResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiskSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95971,13 +95453,6 @@ pub struct ReplaceSystemDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReplaceSystemDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -95989,13 +95464,6 @@ pub struct ResetDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ResetDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96010,13 +95478,6 @@ pub struct ResetDisksResponse {
     #[serde(default)]
     pub operation_progress_set: DisksResponseOperationProgressSet,
 }
-
-impl crate::ToCodeMessage for ResetDisksResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96028,13 +95489,6 @@ pub struct ReInitDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReInitDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// > 专属块存储集群功能目前支持华东1（杭州）、华东2（上海）、华北2（北京）、华北3（张家口）、华北6（乌兰察布）、华南1（深圳）、华南2（河源）、印度尼西亚（雅加达）、德国（法兰克福）以及华南1 金融云地域。
 ///
 /// 请确保在使用该接口前，您已充分了解云盘和专属块存储集群的计费方式和价格，并且专属块存储集群未到期，账号未处于欠费状态。更多信息，请参见[专属块存储计费](~~208883~~)和[块存储计费](~~179022~~)。
@@ -96064,13 +95518,6 @@ pub struct ModifyDiskDeploymentResponse {
     #[serde(default)]
     pub task_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiskDeploymentResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96082,13 +95529,6 @@ pub struct DeleteDiskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteDiskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// <props="china">
 ///
 /// > EBS账号级默认加密功能当前仅对部分地域和用户开放，若您有使用需求，请[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)。
@@ -96125,13 +95565,6 @@ pub struct EnableDiskEncryptionByDefaultResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for EnableDiskEncryptionByDefaultResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiskEncryptionByDefaultStatusResponse {
@@ -96152,13 +95585,6 @@ pub struct DescribeDiskEncryptionByDefaultStatusResponse {
     #[serde(default)]
     pub encrypted: bool,
 }
-
-impl crate::ToCodeMessage for DescribeDiskEncryptionByDefaultStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiskDefaultKMSKeyIdResponse {
@@ -96173,13 +95599,6 @@ pub struct DescribeDiskDefaultKMSKeyIdResponse {
     #[serde(default)]
     pub kms_key_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeDiskDefaultKMSKeyIdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
 /// - 指定地域需要开启块存储账号级默认加密功能。
 /// - 首次使用主密钥，需要先为ECS授权`AliyunECSDiskEncryptDefaultRole`角色，允许ECS访问KMS资源，详情见[通过RAM角色授予访问KMS密钥的权限](~~2838993~~)。
@@ -96193,13 +95612,6 @@ pub struct ModifyDiskDefaultKMSKeyIdResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiskDefaultKMSKeyIdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
 /// - 指定地域需要开启**块存储账号级默认加密**功能。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -96212,13 +95624,6 @@ pub struct ResetDiskDefaultKMSKeyIdResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ResetDiskDefaultKMSKeyIdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - **使用须知**
 ///   - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
 ///
@@ -96235,13 +95640,6 @@ pub struct DisableDiskEncryptionByDefaultResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DisableDiskEncryptionByDefaultResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OpenSnapshotServiceResponse {
@@ -96252,13 +95650,6 @@ pub struct OpenSnapshotServiceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for OpenSnapshotServiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96274,13 +95665,6 @@ pub struct CreateSnapshotResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateSnapshotResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96313,13 +95697,6 @@ pub struct DescribeSnapshotsResponse {
     #[serde(default)]
     pub snapshots: ResponseSnapshots,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96339,13 +95716,6 @@ pub struct DescribeSnapshotsUsageResponse {
     #[serde(default)]
     pub snapshot_count: i32,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotsUsageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96357,13 +95727,6 @@ pub struct ModifySnapshotAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySnapshotAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// <props="china">
 /// **请确保在使用该接口前，已充分了解归档快照产品的收费方式和[价格](https://www.aliyun.com/price/product?#/disk/detail/disk)。**
 /// </props>
@@ -96387,13 +95750,6 @@ pub struct ModifySnapshotCategoryResponse {
     #[serde(default)]
     pub task_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySnapshotCategoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96409,13 +95765,6 @@ pub struct CopySnapshotResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CopySnapshotResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96427,13 +95776,6 @@ pub struct DeleteSnapshotResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteSnapshotResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96465,13 +95807,6 @@ pub struct DescribeSnapshotLinksResponse {
     #[serde(default)]
     pub snapshot_links: SnapshotLinks,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotLinksResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 您可以设置`InstanceId`为实例内的指定云盘创建快照一致性组；也可以只使用`DiskId.N`为同可用区内多台ECS实例挂载的多块云盘创建快照一致性组。
 ///
 /// > `DiskId.N`不可与`ExcludeDiskId.N`同时设置。此外，如果设置了`InstanceId`，则`DiskId.N`只能设置指定实例内已挂载的云盘，不再支持设置多个跨实例的云盘ID。
@@ -96503,13 +95838,6 @@ pub struct CreateSnapshotGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateSnapshotGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96530,13 +95858,6 @@ pub struct DescribeSnapshotGroupsResponse {
     #[serde(default)]
     pub snapshot_groups: SnapshotGroups,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotGroupsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96548,13 +95869,6 @@ pub struct ModifySnapshotGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySnapshotGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96569,13 +95883,6 @@ pub struct DeleteSnapshotGroupResponse {
     #[serde(default)]
     pub operation_progress_set: GroupResponseOperationProgressSet,
 }
-
-impl crate::ToCodeMessage for DeleteSnapshotGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96591,13 +95898,6 @@ pub struct CreateAutoSnapshotPolicyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateAutoSnapshotPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96624,13 +95924,6 @@ pub struct DescribeAutoSnapshotPolicyExResponse {
     #[serde(default)]
     pub auto_snapshot_policies: SnapshotPolicies,
 }
-
-impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyExResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
@@ -96648,13 +95941,6 @@ pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
     #[serde(default)]
     pub auto_snapshot_policy_associations: PolicyAssociations,
 }
-
-impl crate::ToCodeMessage for DescribeAutoSnapshotPolicyAssociationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96666,13 +95952,6 @@ pub struct ModifyAutoSnapshotPolicyExResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyAutoSnapshotPolicyExResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96684,13 +95963,6 @@ pub struct ApplyAutoSnapshotPolicyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ApplyAutoSnapshotPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96702,13 +95974,6 @@ pub struct CancelAutoSnapshotPolicyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelAutoSnapshotPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96720,13 +95985,6 @@ pub struct DeleteAutoSnapshotPolicyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteAutoSnapshotPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96753,13 +96011,6 @@ pub struct DescribeSnapshotPackageResponse {
     #[serde(default)]
     pub snapshot_packages: SnapshotPackages,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotPackageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeBandwidthLimitationResponse {
@@ -96773,13 +96024,6 @@ pub struct DescribeBandwidthLimitationResponse {
     #[serde(default)]
     pub bandwidths: ResponseBandwidths,
 }
-
-impl crate::ToCodeMessage for DescribeBandwidthLimitationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96795,13 +96039,6 @@ pub struct ModifyInstanceNetworkSpecResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceNetworkSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96817,13 +96054,6 @@ pub struct AllocatePublicIpAddressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AllocatePublicIpAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96835,13 +96065,6 @@ pub struct ConvertNatPublicIpToEipResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ConvertNatPublicIpToEipResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96853,13 +96076,6 @@ pub struct ModifyInstanceVpcAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceVpcAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96886,13 +96102,6 @@ pub struct DescribeClassicLinkInstancesResponse {
     #[serde(default)]
     pub links: ResponseLinks,
 }
-
-impl crate::ToCodeMessage for DescribeClassicLinkInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96904,13 +96113,6 @@ pub struct AttachClassicLinkVpcResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AttachClassicLinkVpcResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -96922,13 +96124,6 @@ pub struct DetachClassicLinkVpcResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DetachClassicLinkVpcResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97018,13 +96213,6 @@ pub struct CreateNetworkInterfaceResponse {
     #[serde(default)]
     pub source_dest_check: bool,
 }
-
-impl crate::ToCodeMessage for CreateNetworkInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97060,13 +96248,6 @@ pub struct DescribeNetworkInterfacesResponse {
     #[serde(default)]
     pub network_interface_sets: InterfaceSets,
 }
-
-impl crate::ToCodeMessage for DescribeNetworkInterfacesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeNetworkInterfaceAttributeResponse {
@@ -97253,13 +96434,6 @@ pub struct DescribeNetworkInterfaceAttributeResponse {
     #[serde(default)]
     pub qo_s_config: SConfig,
 }
-
-impl crate::ToCodeMessage for DescribeNetworkInterfaceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97271,13 +96445,6 @@ pub struct ModifyNetworkInterfaceAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyNetworkInterfaceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 调用该接口时，您需要注意：
 ///
 /// -  弹性网卡必须处于可用（Available）状态。
@@ -97306,13 +96473,6 @@ pub struct DeleteNetworkInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteNetworkInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 调用该接口时，请注意：
 ///
 /// - 弹性网卡必须处于**可用**（`Available`）状态，一个弹性网卡只能同时附加到一台相同可用区且相同专有网络的实例上。
@@ -97342,13 +96502,6 @@ pub struct AttachNetworkInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AttachNetworkInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97360,13 +96513,6 @@ pub struct DetachNetworkInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DetachNetworkInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97382,13 +96528,6 @@ pub struct AssignPrivateIpAddressesResponse {
     #[serde(default)]
     pub assigned_private_ip_addresses_set: AddressesSet,
 }
-
-impl crate::ToCodeMessage for AssignPrivateIpAddressesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97400,13 +96539,6 @@ pub struct UnassignPrivateIpAddressesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for UnassignPrivateIpAddressesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97428,13 +96560,6 @@ pub struct AssignIpv6AddressesResponse {
     #[serde(default)]
     pub ipv6_prefix_sets: AddressesResponseIpv6PrefixSets,
 }
-
-impl crate::ToCodeMessage for AssignIpv6AddressesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97446,13 +96571,6 @@ pub struct UnassignIpv6AddressesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for UnassignIpv6AddressesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97468,13 +96586,6 @@ pub struct CreateNetworkInterfacePermissionResponse {
     #[serde(default)]
     pub network_interface_permission: ResponseNetworkInterfacePermission,
 }
-
-impl crate::ToCodeMessage for CreateNetworkInterfacePermissionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97501,13 +96612,6 @@ pub struct DescribeNetworkInterfacePermissionsResponse {
     #[serde(default)]
     pub network_interface_permissions: InterfacePermissions,
 }
-
-impl crate::ToCodeMessage for DescribeNetworkInterfacePermissionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97523,13 +96627,6 @@ pub struct CreatePrefixListResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreatePrefixListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97548,13 +96645,6 @@ pub struct DescribePrefixListsResponse {
     #[serde(default)]
     pub prefix_lists: PrefixLists,
 }
-
-impl crate::ToCodeMessage for DescribePrefixListsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97596,13 +96686,6 @@ pub struct DescribePrefixListAttributesResponse {
     #[serde(default)]
     pub entries: ResponseEntries,
 }
-
-impl crate::ToCodeMessage for DescribePrefixListAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97621,13 +96704,6 @@ pub struct DescribePrefixListAssociationsResponse {
     #[serde(default)]
     pub prefix_list_associations: ListAssociations,
 }
-
-impl crate::ToCodeMessage for DescribePrefixListAssociationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97639,13 +96715,6 @@ pub struct ModifyPrefixListResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyPrefixListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97657,13 +96726,6 @@ pub struct DeletePrefixListResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeletePrefixListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreatePortRangeListResponse {
@@ -97678,13 +96740,6 @@ pub struct CreatePortRangeListResponse {
     #[serde(default)]
     pub port_range_list_id: String,
 }
-
-impl crate::ToCodeMessage for CreatePortRangeListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePortRangeListsResponse {
@@ -97703,13 +96758,6 @@ pub struct DescribePortRangeListsResponse {
     #[serde(default)]
     pub port_range_lists: Vec<RangeList>,
 }
-
-impl crate::ToCodeMessage for DescribePortRangeListsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePortRangeListEntriesResponse {
@@ -97724,13 +96772,6 @@ pub struct DescribePortRangeListEntriesResponse {
     #[serde(default)]
     pub entries: Vec<ResponseEntry>,
 }
-
-impl crate::ToCodeMessage for DescribePortRangeListEntriesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePortRangeListAssociationsResponse {
@@ -97749,13 +96790,6 @@ pub struct DescribePortRangeListAssociationsResponse {
     #[serde(default)]
     pub port_range_list_associations: Vec<RangeListAssociation>,
 }
-
-impl crate::ToCodeMessage for DescribePortRangeListAssociationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyPortRangeListResponse {
@@ -97766,13 +96800,6 @@ pub struct ModifyPortRangeListResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyPortRangeListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeletePortRangeListResponse {
@@ -97783,13 +96810,6 @@ pub struct DeletePortRangeListResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeletePortRangeListResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97805,13 +96825,6 @@ pub struct CreateSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97850,13 +96863,6 @@ pub struct DescribeSecurityGroupsResponse {
     #[serde(default)]
     pub page_size: i32,
 }
-
-impl crate::ToCodeMessage for DescribeSecurityGroupsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97905,13 +96911,6 @@ pub struct DescribeSecurityGroupAttributeResponse {
     #[serde(default)]
     pub snapshot_policy_ids: PolicyIds,
 }
-
-impl crate::ToCodeMessage for DescribeSecurityGroupAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97923,13 +96922,6 @@ pub struct ModifySecurityGroupPolicyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySecurityGroupPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97941,13 +96933,6 @@ pub struct ModifySecurityGroupAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySecurityGroupAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97959,13 +96944,6 @@ pub struct DeleteSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97977,13 +96955,6 @@ pub struct AuthorizeSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AuthorizeSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -97995,13 +96966,6 @@ pub struct ModifySecurityGroupRuleResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySecurityGroupRuleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98013,13 +96977,6 @@ pub struct RevokeSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RevokeSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ### 使用须知
 /// - **数量限制：** 单张弹性网卡关联的所有安全组的规则（包括入方向规则与出方向规则）数量之和不能超过1000。具体限制请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。  
 /// - **优先级设置：** 安全组出方向规则优先级（Priority）可选范围为1~100。数字越小，代表优先级越高，优先级相同的安全组规则，优先以拒绝访问（drop）的规则为准。
@@ -98087,13 +97044,6 @@ pub struct AuthorizeSecurityGroupEgressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AuthorizeSecurityGroupEgressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98105,13 +97055,6 @@ pub struct ModifySecurityGroupEgressRuleResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifySecurityGroupEgressRuleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98123,13 +97066,6 @@ pub struct RevokeSecurityGroupEgressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RevokeSecurityGroupEgressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98144,13 +97080,6 @@ pub struct DescribeSecurityGroupReferencesResponse {
     #[serde(default)]
     pub security_group_references: GroupReferences,
 }
-
-impl crate::ToCodeMessage for DescribeSecurityGroupReferencesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98162,13 +97091,6 @@ pub struct JoinSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for JoinSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98180,13 +97102,6 @@ pub struct LeaveSecurityGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for LeaveSecurityGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98214,13 +97129,6 @@ pub struct CreateKeyPairResponse {
     #[serde(default)]
     pub key_pair_finger_print: String,
 }
-
-impl crate::ToCodeMessage for CreateKeyPairResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98240,13 +97148,6 @@ pub struct ImportKeyPairResponse {
     #[serde(default)]
     pub key_pair_finger_print: String,
 }
-
-impl crate::ToCodeMessage for ImportKeyPairResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98273,13 +97174,6 @@ pub struct DescribeKeyPairsResponse {
     #[serde(default)]
     pub key_pairs: KeyPairs,
 }
-
-impl crate::ToCodeMessage for DescribeKeyPairsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98306,13 +97200,6 @@ pub struct AttachKeyPairResponse {
     #[serde(default)]
     pub results: AttachKeyPairResponseResults,
 }
-
-impl crate::ToCodeMessage for AttachKeyPairResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98339,13 +97226,6 @@ pub struct DetachKeyPairResponse {
     #[serde(default)]
     pub results: DetachKeyPairResponseResults,
 }
-
-impl crate::ToCodeMessage for DetachKeyPairResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98357,13 +97237,6 @@ pub struct DeleteKeyPairsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteKeyPairsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98383,13 +97256,6 @@ pub struct CreateLaunchTemplateResponse {
     #[serde(default)]
     pub launch_template_version_number: i64,
 }
-
-impl crate::ToCodeMessage for CreateLaunchTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98416,13 +97282,6 @@ pub struct DescribeLaunchTemplatesResponse {
     #[serde(default)]
     pub launch_template_sets: TemplateSets,
 }
-
-impl crate::ToCodeMessage for DescribeLaunchTemplatesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98443,13 +97302,6 @@ pub struct DeleteLaunchTemplateResponse {
     #[serde(default)]
     pub launch_template_version_numbers: VersionNumbers,
 }
-
-impl crate::ToCodeMessage for DeleteLaunchTemplateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98471,13 +97323,6 @@ pub struct CreateLaunchTemplateVersionResponse {
     #[serde(default)]
     pub launch_template_id: String,
 }
-
-impl crate::ToCodeMessage for CreateLaunchTemplateVersionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98504,13 +97349,6 @@ pub struct DescribeLaunchTemplateVersionsResponse {
     #[serde(default)]
     pub launch_template_version_sets: VersionSets,
 }
-
-impl crate::ToCodeMessage for DescribeLaunchTemplateVersionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98526,13 +97364,6 @@ pub struct ModifyLaunchTemplateDefaultVersionResponse {
     #[serde(default)]
     pub launch_template_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyLaunchTemplateDefaultVersionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98547,13 +97378,6 @@ pub struct DeleteLaunchTemplateVersionResponse {
     #[serde(default)]
     pub launch_template_versions: TemplateVersions,
 }
-
-impl crate::ToCodeMessage for DeleteLaunchTemplateVersionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98572,13 +97396,6 @@ pub struct CreateAutoProvisioningGroupResponse {
     #[serde(default)]
     pub launch_results: LaunchResults,
 }
-
-impl crate::ToCodeMessage for CreateAutoProvisioningGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98605,13 +97422,6 @@ pub struct DescribeAutoProvisioningGroupsResponse {
     #[serde(default)]
     pub auto_provisioning_groups: ProvisioningGroups,
 }
-
-impl crate::ToCodeMessage for DescribeAutoProvisioningGroupsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98638,13 +97448,6 @@ pub struct DescribeAutoProvisioningGroupInstancesResponse {
     #[serde(default)]
     pub instances: GroupInstancesResponseInstances,
 }
-
-impl crate::ToCodeMessage for DescribeAutoProvisioningGroupInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98656,13 +97459,6 @@ pub struct ModifyAutoProvisioningGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyAutoProvisioningGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98689,13 +97485,6 @@ pub struct DescribeAutoProvisioningGroupHistoryResponse {
     #[serde(default)]
     pub auto_provisioning_group_histories: GroupHistories,
 }
-
-impl crate::ToCodeMessage for DescribeAutoProvisioningGroupHistoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98707,13 +97496,6 @@ pub struct DeleteAutoProvisioningGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteAutoProvisioningGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98729,13 +97511,6 @@ pub struct CreateDeploymentSetResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateDeploymentSetResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98751,13 +97526,6 @@ pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98788,13 +97556,6 @@ pub struct DescribeDeploymentSetsResponse {
     #[serde(default)]
     pub deployment_sets: DeploymentSets,
 }
-
-impl crate::ToCodeMessage for DescribeDeploymentSetsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98806,13 +97567,6 @@ pub struct ModifyInstanceDeploymentResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceDeploymentResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98824,13 +97578,6 @@ pub struct ModifyDeploymentSetAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDeploymentSetAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98842,13 +97589,6 @@ pub struct DeleteDeploymentSetResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteDeploymentSetResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98868,13 +97608,6 @@ pub struct CreateElasticityAssuranceResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for CreateElasticityAssuranceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98901,13 +97634,6 @@ pub struct DescribeElasticityAssurancesResponse {
     #[serde(default)]
     pub elasticity_assurance_set: AssuranceSet,
 }
-
-impl crate::ToCodeMessage for DescribeElasticityAssurancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98934,13 +97660,6 @@ pub struct DescribeElasticityAssuranceInstancesResponse {
     #[serde(default)]
     pub elasticity_assurance_item: ElasticityAssurance,
 }
-
-impl crate::ToCodeMessage for DescribeElasticityAssuranceInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -98952,13 +97671,6 @@ pub struct ModifyElasticityAssuranceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyElasticityAssuranceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewElasticityAssurancesResponse {
@@ -98976,13 +97688,6 @@ pub struct RenewElasticityAssurancesResponse {
     #[serde(default)]
     pub private_pool_options_id_set: OptionsIdSet,
 }
-
-impl crate::ToCodeMessage for RenewElasticityAssurancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
@@ -98993,13 +97698,6 @@ pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyElasticityAssuranceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
@@ -99013,13 +97711,6 @@ pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(default)]
     pub elasticity_assurance_renew_attributes: AssuranceRenewAttributes,
 }
-
-impl crate::ToCodeMessage for DescribeElasticityAssuranceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 请确保在使用该接口前，已充分了解弹性保障产品的收费方式和<props="china">[价格](https://www.aliyun.com/price/product#/ecs/detail)</props><props="intl">[价格](https://www.alibabacloud.com/zh?spm=5176.28117011.nav-v2-dropdown-language.exp-location-zh.9ae4165bF98IHz&_p_lc=1)</props>。
 ///
 /// 购买弹性保障服务前，您可以调用[DescribeElasticityAssurances](~~2679748~~)查询可购买的弹性保障服务。
@@ -99033,13 +97724,6 @@ pub struct PurchaseElasticityAssuranceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for PurchaseElasticityAssuranceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99055,13 +97739,6 @@ pub struct CreateCapacityReservationResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateCapacityReservationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99088,13 +97765,6 @@ pub struct DescribeCapacityReservationsResponse {
     #[serde(default)]
     pub capacity_reservation_set: ReservationSet,
 }
-
-impl crate::ToCodeMessage for DescribeCapacityReservationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeCapacityReservationInstancesResponse {
@@ -99120,13 +97790,6 @@ pub struct DescribeCapacityReservationInstancesResponse {
     #[serde(default)]
     pub capacity_reservation_item: CapacityReservation,
 }
-
-impl crate::ToCodeMessage for DescribeCapacityReservationInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99138,13 +97801,6 @@ pub struct ModifyCapacityReservationResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyCapacityReservationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99171,13 +97827,6 @@ pub struct DescribeInstanceAttachmentAttributesResponse {
     #[serde(default)]
     pub instances: AttributesResponseInstances,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceAttachmentAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99189,13 +97838,6 @@ pub struct ModifyInstanceAttachmentAttributesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceAttachmentAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 立即生效的容量预定服务，当释放方式为手动释放时，调用该接口可直接释放容量预定服务。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99207,13 +97849,6 @@ pub struct ReleaseCapacityReservationResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReleaseCapacityReservationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99232,13 +97867,6 @@ pub struct PurchaseReservedInstancesOfferingResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for PurchaseReservedInstancesOfferingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99265,13 +97893,6 @@ pub struct DescribeReservedInstancesResponse {
     #[serde(default)]
     pub reserved_instances: ReservedInstances,
 }
-
-impl crate::ToCodeMessage for DescribeReservedInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99286,13 +97907,6 @@ pub struct ModifyReservedInstancesResponse {
     #[serde(default)]
     pub reserved_instance_id_sets: ModifyReservedInstancesResponseReservedInstanceIdSets,
 }
-
-impl crate::ToCodeMessage for ModifyReservedInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99308,13 +97922,6 @@ pub struct ModifyReservedInstanceAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyReservedInstanceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// <props="china">
 ///
 /// **请确保在使用该接口前，已充分了解预留实例券的收费方式和[价格](https://www.aliyun.com/price/product#/ecs/detail)。**
@@ -99347,13 +97954,6 @@ pub struct RenewReservedInstancesResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for RenewReservedInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
@@ -99367,13 +97967,6 @@ pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
     #[serde(default)]
     pub reserved_instance_renew_attributes: ReservedInstanceRenewAttributes,
 }
-
-impl crate::ToCodeMessage for DescribeReservedInstanceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
@@ -99384,13 +97977,6 @@ pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyReservedInstanceAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99409,13 +97995,6 @@ pub struct PurchaseStorageCapacityUnitResponse {
     #[serde(default)]
     pub storage_capacity_unit_ids: UnitIds,
 }
-
-impl crate::ToCodeMessage for PurchaseStorageCapacityUnitResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99442,13 +98021,6 @@ pub struct DescribeStorageCapacityUnitsResponse {
     #[serde(default)]
     pub storage_capacity_units: CapacityUnits,
 }
-
-impl crate::ToCodeMessage for DescribeStorageCapacityUnitsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99460,13 +98032,6 @@ pub struct ModifyStorageCapacityUnitAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyStorageCapacityUnitAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99486,13 +98051,6 @@ pub struct RunCommandResponse {
     #[serde(default)]
     pub invoke_id: String,
 }
-
-impl crate::ToCodeMessage for RunCommandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99508,13 +98066,6 @@ pub struct CreateCommandResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateCommandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99530,13 +98081,6 @@ pub struct InvokeCommandResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for InvokeCommandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99567,13 +98111,6 @@ pub struct DescribeInvocationsResponse {
     #[serde(default)]
     pub invocations: InvocationsResponseInvocations,
 }
-
-impl crate::ToCodeMessage for DescribeInvocationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99589,13 +98126,6 @@ pub struct DescribeInvocationResultsResponse {
     #[serde(default)]
     pub invocation: ResponseInvocation,
 }
-
-impl crate::ToCodeMessage for DescribeInvocationResultsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 支持修改以下执行方式的任务（参见[DescribeInvocations](~~2679916~~)返回的`RepeatMode`值）：
 ///     - Period：周期执行。
 ///     - NextRebootOnly：当实例下一次启动时，自动执行命令。
@@ -99628,13 +98158,6 @@ pub struct ModifyInvocationAttributeResponse {
     #[serde(default)]
     pub command_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInvocationAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99646,13 +98169,6 @@ pub struct StopInvocationResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for StopInvocationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99683,13 +98199,6 @@ pub struct DescribeCommandsResponse {
     #[serde(default)]
     pub commands: ResponseCommands,
 }
-
-impl crate::ToCodeMessage for DescribeCommandsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99701,13 +98210,6 @@ pub struct ModifyCommandResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyCommandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99719,13 +98221,6 @@ pub struct DeleteCommandResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteCommandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99741,13 +98236,6 @@ pub struct SendFileResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for SendFileResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99778,13 +98266,6 @@ pub struct DescribeSendFileResultsResponse {
     #[serde(default)]
     pub invocations: ResultsResponseInvocations,
 }
-
-impl crate::ToCodeMessage for DescribeSendFileResultsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99815,13 +98296,6 @@ pub struct DescribeCloudAssistantStatusResponse {
     #[serde(default)]
     pub instance_cloud_assistant_status_set: AssistantStatusSet,
 }
-
-impl crate::ToCodeMessage for DescribeCloudAssistantStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99833,13 +98307,6 @@ pub struct InstallCloudAssistantResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for InstallCloudAssistantResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 接口说明
 ///
 /// 当您通过代码定制化远程连接客户端时，可以调用该接口获取远程连接ECS实例的WebSocketUrl。调用该接口时您需要注意：
@@ -99877,13 +98344,6 @@ pub struct StartTerminalSessionResponse {
     #[serde(default)]
     pub web_socket_url: String,
 }
-
-impl crate::ToCodeMessage for StartTerminalSessionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 关闭指定Session数据连接，Session不可再使用。
 ///
 /// - Session关联的WebSocket URL也会失效，不可再使用。
@@ -99897,13 +98357,6 @@ pub struct EndTerminalSessionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for EndTerminalSessionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 支持查看4周内创建的Session Manager会话记录。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99922,13 +98375,6 @@ pub struct DescribeTerminalSessionsResponse {
     #[serde(default)]
     pub sessions: ResponseSessions,
 }
-
-impl crate::ToCodeMessage for DescribeTerminalSessionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyCloudAssistantSettingsResponse {
@@ -99939,13 +98385,6 @@ pub struct ModifyCloudAssistantSettingsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyCloudAssistantSettingsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeCloudAssistantSettingsResponse {
@@ -99970,13 +98409,6 @@ pub struct DescribeCloudAssistantSettingsResponse {
     #[serde(default)]
     pub session_manager_config: ResponseSessionManagerConfig,
 }
-
-impl crate::ToCodeMessage for DescribeCloudAssistantSettingsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -99996,13 +98428,6 @@ pub struct CreateActivationResponse {
     #[serde(default)]
     pub activation_id: String,
 }
-
-impl crate::ToCodeMessage for CreateActivationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100034,13 +98459,6 @@ pub struct DescribeActivationsResponse {
     #[serde(default)]
     pub activation_list: Vec<ActivationList>,
 }
-
-impl crate::ToCodeMessage for DescribeActivationsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100056,13 +98474,6 @@ pub struct DisableActivationResponse {
     #[serde(default)]
     pub activation: DisableActivationResponseActivation,
 }
-
-impl crate::ToCodeMessage for DisableActivationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100078,13 +98489,6 @@ pub struct DeleteActivationResponse {
     #[serde(default)]
     pub activation: DeleteActivationResponseActivation,
 }
-
-impl crate::ToCodeMessage for DeleteActivationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100116,13 +98520,6 @@ pub struct DescribeManagedInstancesResponse {
     #[serde(default)]
     pub next_token: String,
 }
-
-impl crate::ToCodeMessage for DescribeManagedInstancesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 接口说明
 ///
 /// 目前调用ModifyManagedInstance接口仅支持修改一台托管实例的名称。
@@ -100140,13 +98537,6 @@ pub struct ModifyManagedInstanceResponse {
     #[serde(default)]
     pub instance: ModifyManagedInstanceResponseInstance,
 }
-
-impl crate::ToCodeMessage for ModifyManagedInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100162,13 +98552,6 @@ pub struct DeregisterManagedInstanceResponse {
     #[serde(default)]
     pub instance: DeregisterManagedInstanceResponseInstance,
 }
-
-impl crate::ToCodeMessage for DeregisterManagedInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 实例的云助手Agent版本不低于以下版本，才可以查询到实例内云助手插件状态：
 ///     - Linux：2.2.3.344。
 ///     - Windows：2.1.3.344。
@@ -100202,13 +98585,6 @@ pub struct ListPluginStatusResponse {
     #[serde(default)]
     pub instance_plugin_status_set: InstancePluginStatusSet,
 }
-
-impl crate::ToCodeMessage for ListPluginStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100235,13 +98611,6 @@ pub struct DescribeInstancesFullStatusResponse {
     #[serde(default)]
     pub instance_full_status_set: InstanceFullStatusSet,
 }
-
-impl crate::ToCodeMessage for DescribeInstancesFullStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100268,13 +98637,6 @@ pub struct DescribeDisksFullStatusResponse {
     #[serde(default)]
     pub disk_full_status_set: DiskFullStatusSet,
 }
-
-impl crate::ToCodeMessage for DescribeDisksFullStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100314,13 +98676,6 @@ pub struct DescribeInstanceHistoryEventsResponse {
     #[serde(default)]
     pub next_token: String,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceHistoryEventsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100335,13 +98690,6 @@ pub struct CreateSimulatedSystemEventsResponse {
     #[serde(default)]
     pub event_id_set: EventIdSet,
 }
-
-impl crate::ToCodeMessage for CreateSimulatedSystemEventsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100353,13 +98701,6 @@ pub struct CancelSimulatedSystemEventsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelSimulatedSystemEventsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100371,13 +98712,6 @@ pub struct AcceptInquiredSystemEventResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AcceptInquiredSystemEventResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiagnosticMetricsResponse {
@@ -100396,13 +98730,6 @@ pub struct DescribeDiagnosticMetricsResponse {
     #[serde(default)]
     pub metrics: Vec<ResponseMetric>,
 }
-
-impl crate::ToCodeMessage for DescribeDiagnosticMetricsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDiagnosticMetricSetResponse {
@@ -100417,13 +98744,6 @@ pub struct CreateDiagnosticMetricSetResponse {
     #[serde(default)]
     pub metric_set_id: String,
 }
-
-impl crate::ToCodeMessage for CreateDiagnosticMetricSetResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiagnosticMetricSetsResponse {
@@ -100442,13 +98762,6 @@ pub struct DescribeDiagnosticMetricSetsResponse {
     #[serde(default)]
     pub metric_sets: Vec<MetricSet>,
 }
-
-impl crate::ToCodeMessage for DescribeDiagnosticMetricSetsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyDiagnosticMetricSetResponse {
@@ -100459,13 +98772,6 @@ pub struct ModifyDiagnosticMetricSetResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDiagnosticMetricSetResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteDiagnosticMetricSetsResponse {
@@ -100476,13 +98782,6 @@ pub struct DeleteDiagnosticMetricSetsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteDiagnosticMetricSetsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateDiagnosticReportResponse {
@@ -100497,13 +98796,6 @@ pub struct CreateDiagnosticReportResponse {
     #[serde(default)]
     pub report_id: String,
 }
-
-impl crate::ToCodeMessage for CreateDiagnosticReportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiagnosticReportsResponse {
@@ -100521,13 +98813,6 @@ pub struct DescribeDiagnosticReportsResponse {
     #[serde(default)]
     pub reports: ResponseReports,
 }
-
-impl crate::ToCodeMessage for DescribeDiagnosticReportsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeDiagnosticReportAttributesResponse {
@@ -100595,13 +98880,6 @@ pub struct DescribeDiagnosticReportAttributesResponse {
     #[serde(default)]
     pub attributes: String,
 }
-
-impl crate::ToCodeMessage for DescribeDiagnosticReportAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 不支持删除诊断中的报告。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100613,13 +98891,6 @@ pub struct DeleteDiagnosticReportsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteDiagnosticReportsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100639,13 +98910,6 @@ pub struct GetInstanceScreenshotResponse {
     #[serde(default)]
     pub screenshot: String,
 }
-
-impl crate::ToCodeMessage for GetInstanceScreenshotResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100669,13 +98933,6 @@ pub struct GetInstanceConsoleOutputResponse {
     #[serde(default)]
     pub console_output: String,
 }
-
-impl crate::ToCodeMessage for GetInstanceConsoleOutputResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100694,13 +98951,6 @@ pub struct DescribeDiskMonitorDataResponse {
     #[serde(default)]
     pub monitor_data: DiskMonitorDataResponseMonitorData,
 }
-
-impl crate::ToCodeMessage for DescribeDiskMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100715,13 +98965,6 @@ pub struct DescribeInstanceMonitorDataResponse {
     #[serde(default)]
     pub monitor_data: InstanceMonitorDataResponseMonitorData,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100740,13 +98983,6 @@ pub struct DescribeEniMonitorDataResponse {
     #[serde(default)]
     pub monitor_data: EniMonitorDataResponseMonitorData,
 }
-
-impl crate::ToCodeMessage for DescribeEniMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100761,13 +98997,6 @@ pub struct DescribeSnapshotMonitorDataResponse {
     #[serde(default)]
     pub monitor_data: SnapshotMonitorDataResponseMonitorData,
 }
-
-impl crate::ToCodeMessage for DescribeSnapshotMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100794,13 +99023,6 @@ pub struct DescribeInstanceMaintenanceAttributesResponse {
     #[serde(default)]
     pub maintenance_attributes: MaintenanceAttributes,
 }
-
-impl crate::ToCodeMessage for DescribeInstanceMaintenanceAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100812,13 +99034,6 @@ pub struct ModifyInstanceMaintenanceAttributesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyInstanceMaintenanceAttributesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100836,13 +99051,6 @@ pub struct RedeployInstanceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RedeployInstanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100854,13 +99062,6 @@ pub struct ReportInstancesStatusResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReportInstancesStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100872,13 +99073,6 @@ pub struct TagResourcesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for TagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100897,13 +99091,6 @@ pub struct ListTagResourcesResponse {
     #[serde(default)]
     pub tag_resources: ResponseTagResources,
 }
-
-impl crate::ToCodeMessage for ListTagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100915,13 +99102,6 @@ pub struct UntagResourcesResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for UntagResourcesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100933,13 +99113,6 @@ pub struct JoinResourceGroupResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for JoinResourceGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100960,13 +99133,6 @@ pub struct AllocateDedicatedHostsResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for AllocateDedicatedHostsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -100997,13 +99163,6 @@ pub struct DescribeDedicatedHostsResponse {
     #[serde(default)]
     pub dedicated_hosts: DedicatedHosts,
 }
-
-impl crate::ToCodeMessage for DescribeDedicatedHostsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101018,13 +99177,6 @@ pub struct DescribeDedicatedHostTypesResponse {
     #[serde(default)]
     pub dedicated_host_types: ResponseDedicatedHostTypes,
 }
-
-impl crate::ToCodeMessage for DescribeDedicatedHostTypesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101036,13 +99188,6 @@ pub struct ModifyDedicatedHostAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDedicatedHostAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101061,13 +99206,6 @@ pub struct ModifyDedicatedHostsChargeTypeResponse {
     #[serde(default)]
     pub fee_of_instances: HostsChargeTypeResponseFeeOfInstances,
 }
-
-impl crate::ToCodeMessage for ModifyDedicatedHostsChargeTypeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101082,13 +99220,6 @@ pub struct DescribeDedicatedHostAutoRenewResponse {
     #[serde(default)]
     pub dedicated_host_renew_attributes: HostRenewAttributes,
 }
-
-impl crate::ToCodeMessage for DescribeDedicatedHostAutoRenewResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101100,13 +99231,6 @@ pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDedicatedHostAutoRenewAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101122,13 +99246,6 @@ pub struct RenewDedicatedHostsResponse {
     #[serde(default)]
     pub order_id: String,
 }
-
-impl crate::ToCodeMessage for RenewDedicatedHostsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101140,13 +99257,6 @@ pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDedicatedHostAutoReleaseTimeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101158,13 +99268,6 @@ pub struct RedeployDedicatedHostResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RedeployDedicatedHostResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101176,13 +99279,6 @@ pub struct ReleaseDedicatedHostResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReleaseDedicatedHostResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101198,13 +99294,6 @@ pub struct CreateDedicatedHostClusterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateDedicatedHostClusterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101216,13 +99305,6 @@ pub struct ModifyDedicatedHostClusterAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyDedicatedHostClusterAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101249,13 +99331,6 @@ pub struct DescribeDedicatedHostClustersResponse {
     #[serde(default)]
     pub dedicated_host_clusters: HostClusters,
 }
-
-impl crate::ToCodeMessage for DescribeDedicatedHostClustersResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101267,13 +99342,6 @@ pub struct DeleteDedicatedHostClusterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteDedicatedHostClusterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101289,13 +99357,6 @@ pub struct CreateHpcClusterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateHpcClusterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101322,13 +99383,6 @@ pub struct DescribeHpcClustersResponse {
     #[serde(default)]
     pub hpc_clusters: HpcClusters,
 }
-
-impl crate::ToCodeMessage for DescribeHpcClustersResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101340,13 +99394,6 @@ pub struct ModifyHpcClusterAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyHpcClusterAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101358,13 +99405,6 @@ pub struct DeleteHpcClusterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteHpcClusterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101395,13 +99435,6 @@ pub struct DescribeTasksResponse {
     #[serde(default)]
     pub task_set: TaskSet,
 }
-
-impl crate::ToCodeMessage for DescribeTasksResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101464,13 +99497,6 @@ pub struct DescribeTaskAttributeResponse {
     #[serde(default)]
     pub operation_progress_set: AttributeResponseOperationProgressSet,
 }
-
-impl crate::ToCodeMessage for DescribeTaskAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -101482,13 +99508,6 @@ pub struct CancelTaskResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelTaskResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeUserBusinessBehaviorResponse {
@@ -101501,13 +99520,6 @@ pub struct DescribeUserBusinessBehaviorResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeUserBusinessBehaviorResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyUserBusinessBehaviorResponse {
@@ -101517,13 +99529,6 @@ pub struct ModifyUserBusinessBehaviorResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyUserBusinessBehaviorResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeLimitationResponse {
@@ -101539,13 +99544,6 @@ pub struct DescribeLimitationResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DescribeLimitationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeClustersResponse {
@@ -101558,13 +99556,6 @@ pub struct DescribeClustersResponse {
     #[serde(default)]
     pub clusters: ResponseClusters,
 }
-
-impl crate::ToCodeMessage for DescribeClustersResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteNetworkInterfacePermissionResponse {
@@ -101574,13 +99565,6 @@ pub struct DeleteNetworkInterfacePermissionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteNetworkInterfacePermissionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteBandwidthPackageResponse {
@@ -101590,13 +99574,6 @@ pub struct DeleteBandwidthPackageResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteBandwidthPackageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyBandwidthPackageSpecResponse {
@@ -101606,13 +99583,6 @@ pub struct ModifyBandwidthPackageSpecResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyBandwidthPackageSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeBandwidthPackagesResponse {
@@ -101634,13 +99604,6 @@ pub struct DescribeBandwidthPackagesResponse {
     #[serde(default)]
     pub bandwidth_packages: BandwidthPackages,
 }
-
-impl crate::ToCodeMessage for DescribeBandwidthPackagesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateVSwitchResponse {
@@ -101653,13 +99616,6 @@ pub struct CreateVSwitchResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateVSwitchResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteVSwitchResponse {
@@ -101669,13 +99625,6 @@ pub struct DeleteVSwitchResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteVSwitchResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyVSwitchAttributeResponse {
@@ -101685,13 +99634,6 @@ pub struct ModifyVSwitchAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyVSwitchAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeVSwitchesResponse {
@@ -101713,13 +99655,6 @@ pub struct DescribeVSwitchesResponse {
     #[serde(default)]
     pub v_switches: VSwitches,
 }
-
-impl crate::ToCodeMessage for DescribeVSwitchesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreatePhysicalConnectionResponse {
@@ -101732,13 +99667,6 @@ pub struct CreatePhysicalConnectionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreatePhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeletePhysicalConnectionResponse {
@@ -101748,13 +99676,6 @@ pub struct DeletePhysicalConnectionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeletePhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyPhysicalConnectionAttributeResponse {
@@ -101764,13 +99685,6 @@ pub struct ModifyPhysicalConnectionAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyPhysicalConnectionAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EnablePhysicalConnectionResponse {
@@ -101780,13 +99694,6 @@ pub struct EnablePhysicalConnectionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for EnablePhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePhysicalConnectionsResponse {
@@ -101808,13 +99715,6 @@ pub struct DescribePhysicalConnectionsResponse {
     #[serde(default)]
     pub physical_connection_set: ResponsePhysicalConnectionSet,
 }
-
-impl crate::ToCodeMessage for DescribePhysicalConnectionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CancelPhysicalConnectionResponse {
@@ -101824,13 +99724,6 @@ pub struct CancelPhysicalConnectionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CancelPhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TerminatePhysicalConnectionResponse {
@@ -101840,13 +99733,6 @@ pub struct TerminatePhysicalConnectionResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for TerminatePhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateVpcResponse {
@@ -101865,13 +99751,6 @@ pub struct CreateVpcResponse {
     #[serde(default)]
     pub route_table_id: String,
 }
-
-impl crate::ToCodeMessage for CreateVpcResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteVpcResponse {
@@ -101881,13 +99760,6 @@ pub struct DeleteVpcResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteVpcResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeVpcsResponse {
@@ -101909,13 +99781,6 @@ pub struct DescribeVpcsResponse {
     #[serde(default)]
     pub vpcs: ResponseVpcs,
 }
-
-impl crate::ToCodeMessage for DescribeVpcsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyVpcAttributeResponse {
@@ -101925,13 +99790,6 @@ pub struct ModifyVpcAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyVpcAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RemoveBandwidthPackageIpsResponse {
@@ -101941,13 +99799,6 @@ pub struct RemoveBandwidthPackageIpsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RemoveBandwidthPackageIpsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateHaVipResponse {
@@ -101960,13 +99811,6 @@ pub struct CreateHaVipResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateHaVipResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteHaVipResponse {
@@ -101976,13 +99820,6 @@ pub struct DeleteHaVipResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteHaVipResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssociateHaVipResponse {
@@ -101992,13 +99829,6 @@ pub struct AssociateHaVipResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AssociateHaVipResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyHaVipAttributeResponse {
@@ -102008,13 +99838,6 @@ pub struct ModifyHaVipAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyHaVipAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeHaVipsResponse {
@@ -102036,13 +99859,6 @@ pub struct DescribeHaVipsResponse {
     #[serde(default)]
     pub ha_vips: HaVips,
 }
-
-impl crate::ToCodeMessage for DescribeHaVipsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnassociateHaVipResponse {
@@ -102052,13 +99868,6 @@ pub struct UnassociateHaVipResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for UnassociateHaVipResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateVirtualBorderRouterResponse {
@@ -102071,13 +99880,6 @@ pub struct CreateVirtualBorderRouterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateVirtualBorderRouterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteVirtualBorderRouterResponse {
@@ -102087,13 +99889,6 @@ pub struct DeleteVirtualBorderRouterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteVirtualBorderRouterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyVirtualBorderRouterAttributeResponse {
@@ -102103,13 +99898,6 @@ pub struct ModifyVirtualBorderRouterAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyVirtualBorderRouterAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecoverVirtualBorderRouterResponse {
@@ -102119,13 +99907,6 @@ pub struct RecoverVirtualBorderRouterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RecoverVirtualBorderRouterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TerminateVirtualBorderRouterResponse {
@@ -102135,13 +99916,6 @@ pub struct TerminateVirtualBorderRouterResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for TerminateVirtualBorderRouterResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeVirtualBorderRoutersResponse {
@@ -102163,13 +99937,6 @@ pub struct DescribeVirtualBorderRoutersResponse {
     #[serde(default)]
     pub virtual_border_router_set: RouterSet,
 }
-
-impl crate::ToCodeMessage for DescribeVirtualBorderRoutersResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
@@ -102191,13 +99958,6 @@ pub struct DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
     #[serde(default)]
     pub virtual_border_router_for_physical_connection_set: ForPhysicalConnectionSet,
 }
-
-impl crate::ToCodeMessage for DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateRouterInterfaceResponse {
@@ -102213,13 +99973,6 @@ pub struct CreateRouterInterfaceResponse {
     #[serde(default)]
     pub router_interface_id: String,
 }
-
-impl crate::ToCodeMessage for CreateRouterInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteRouterInterfaceResponse {
@@ -102229,13 +99982,6 @@ pub struct DeleteRouterInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteRouterInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivateRouterInterfaceResponse {
@@ -102245,13 +99991,6 @@ pub struct ActivateRouterInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ActivateRouterInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeactivateRouterInterfaceResponse {
@@ -102261,13 +100000,6 @@ pub struct DeactivateRouterInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeactivateRouterInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyRouterInterfaceAttributeResponse {
@@ -102277,13 +100009,6 @@ pub struct ModifyRouterInterfaceAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyRouterInterfaceAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyRouterInterfaceSpecResponse {
@@ -102296,13 +100021,6 @@ pub struct ModifyRouterInterfaceSpecResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyRouterInterfaceSpecResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyVRouterAttributeResponse {
@@ -102312,13 +100030,6 @@ pub struct ModifyVRouterAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyVRouterAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRouterInterfacesResponse {
@@ -102340,13 +100051,6 @@ pub struct DescribeRouterInterfacesResponse {
     #[serde(default)]
     pub router_interface_set: RouterInterfaceSet,
 }
-
-impl crate::ToCodeMessage for DescribeRouterInterfacesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnassociateEipAddressResponse {
@@ -102356,13 +100060,6 @@ pub struct UnassociateEipAddressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for UnassociateEipAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// > 该接口已升级，不建议继续使用。新版接口的使用说明，请参见[AllocateEipAddress](~~120192~~)。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -102379,13 +100076,6 @@ pub struct AllocateEipAddressResponse {
     #[serde(default)]
     pub eip_address: String,
 }
-
-impl crate::ToCodeMessage for AllocateEipAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyEipAddressAttributeResponse {
@@ -102395,13 +100085,6 @@ pub struct ModifyEipAddressAttributeResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyEipAddressAttributeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReleaseEipAddressResponse {
@@ -102411,13 +100094,6 @@ pub struct ReleaseEipAddressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ReleaseEipAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssociateEipAddressResponse {
@@ -102427,13 +100103,6 @@ pub struct AssociateEipAddressResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AssociateEipAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeEipAddressesResponse {
@@ -102455,13 +100124,6 @@ pub struct DescribeEipAddressesResponse {
     #[serde(default)]
     pub eip_addresses: ResponseEipAddresses,
 }
-
-impl crate::ToCodeMessage for DescribeEipAddressesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeEipMonitorDataResponse {
@@ -102474,13 +100136,6 @@ pub struct DescribeEipMonitorDataResponse {
     #[serde(default)]
     pub eip_monitor_datas: DescribeEipMonitorDataResponseEipMonitorDatas,
 }
-
-impl crate::ToCodeMessage for DescribeEipMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateNatGatewayResponse {
@@ -102499,13 +100154,6 @@ pub struct CreateNatGatewayResponse {
     #[serde(default)]
     pub bandwidth_package_ids: ResponseBandwidthPackageIds,
 }
-
-impl crate::ToCodeMessage for CreateNatGatewayResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteNatGatewayResponse {
@@ -102515,13 +100163,6 @@ pub struct DeleteNatGatewayResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteNatGatewayResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeNatGatewaysResponse {
@@ -102543,13 +100184,6 @@ pub struct DescribeNatGatewaysResponse {
     #[serde(default)]
     pub nat_gateways: NatGateways,
 }
-
-impl crate::ToCodeMessage for DescribeNatGatewaysResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeNewProjectEipMonitorDataResponse {
@@ -102562,13 +100196,6 @@ pub struct DescribeNewProjectEipMonitorDataResponse {
     #[serde(default)]
     pub eip_monitor_datas: ProjectEipMonitorDataResponseEipMonitorDatas,
 }
-
-impl crate::ToCodeMessage for DescribeNewProjectEipMonitorDataResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteRouteEntryResponse {
@@ -102578,13 +100205,6 @@ pub struct DeleteRouteEntryResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteRouteEntryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteForwardEntryResponse {
@@ -102594,13 +100214,6 @@ pub struct DeleteForwardEntryResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for DeleteForwardEntryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateForwardEntryResponse {
@@ -102613,13 +100226,6 @@ pub struct CreateForwardEntryResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateForwardEntryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddBandwidthPackageIpsResponse {
@@ -102629,13 +100235,6 @@ pub struct AddBandwidthPackageIpsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AddBandwidthPackageIpsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeVRoutersResponse {
@@ -102657,13 +100256,6 @@ pub struct DescribeVRoutersResponse {
     #[serde(default)]
     pub v_routers: VRouters,
 }
-
-impl crate::ToCodeMessage for DescribeVRoutersResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateRouteEntryResponse {
@@ -102673,13 +100265,6 @@ pub struct CreateRouteEntryResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for CreateRouteEntryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeForwardTableEntriesResponse {
@@ -102701,13 +100286,6 @@ pub struct DescribeForwardTableEntriesResponse {
     #[serde(default)]
     pub forward_table_entries: TableEntries,
 }
-
-impl crate::ToCodeMessage for DescribeForwardTableEntriesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyForwardEntryResponse {
@@ -102717,13 +100295,6 @@ pub struct ModifyForwardEntryResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ModifyForwardEntryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeAccessPointsResponse {
@@ -102745,13 +100316,6 @@ pub struct DescribeAccessPointsResponse {
     #[serde(default)]
     pub access_point_set: PointSet,
 }
-
-impl crate::ToCodeMessage for DescribeAccessPointsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRouteTablesResponse {
@@ -102773,13 +100337,6 @@ pub struct DescribeRouteTablesResponse {
     #[serde(default)]
     pub route_tables: RouteTables,
 }
-
-impl crate::ToCodeMessage for DescribeRouteTablesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectRouterInterfaceResponse {
@@ -102789,13 +100346,6 @@ pub struct ConnectRouterInterfaceResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ConnectRouterInterfaceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ExportSnapshotResponse {
@@ -102808,13 +100358,6 @@ pub struct ExportSnapshotResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for ExportSnapshotResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReleasePublicIpAddressResponse {
@@ -102829,13 +100372,6 @@ pub struct ReleasePublicIpAddressResponse {
     #[serde(default)]
     pub remain_times: String,
 }
-
-impl crate::ToCodeMessage for ReleasePublicIpAddressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -102847,13 +100383,6 @@ pub struct AddTagsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for AddTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -102880,13 +100409,6 @@ pub struct DescribeResourceByTagsResponse {
     #[serde(default)]
     pub resources: ResponseResources,
 }
-
-impl crate::ToCodeMessage for DescribeResourceByTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -102913,13 +100435,6 @@ pub struct DescribeTagsResponse {
     #[serde(default)]
     pub tags: TagsResponseTags,
 }
-
-impl crate::ToCodeMessage for DescribeTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -102931,13 +100446,6 @@ pub struct RemoveTagsResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for RemoveTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EnableNetworkInterfaceQoSResponse {
@@ -102948,13 +100456,6 @@ pub struct EnableNetworkInterfaceQoSResponse {
     #[serde(default)]
     pub request_id: String,
 }
-
-impl crate::ToCodeMessage for EnableNetworkInterfaceQoSResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableNetworkInterfaceQoSResponse {
@@ -102966,8 +100467,363 @@ pub struct DisableNetworkInterfaceQoSResponse {
     pub request_id: String,
 }
 
-impl crate::ToCodeMessage for DisableNetworkInterfaceQoSResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
+crate::impl_to_code_message!(
+    DescribeRegionsResponse,
+    DescribeZonesResponse,
+    DescribeAvailableResourceResponse,
+    DescribeAccountAttributesResponse,
+    DescribeResourcesModificationResponse,
+    DescribeRecommendInstanceTypeResponse,
+    DescribePriceResponse,
+    DescribeRenewalPriceResponse,
+    DescribeInstanceModificationPriceResponse,
+    RunInstancesResponse,
+    CreateInstanceResponse,
+    StartInstanceResponse,
+    StartInstancesResponse,
+    StopInstanceResponse,
+    StopInstancesResponse,
+    RebootInstanceResponse,
+    RebootInstancesResponse,
+    DeleteInstanceResponse,
+    DeleteInstancesResponse,
+    DescribeInstanceStatusResponse,
+    DescribeInstancesResponse,
+    DescribeInstanceTypeFamiliesResponse,
+    DescribeInstanceTypesResponse,
+    DescribeInstanceAttributeResponse,
+    ModifyInstanceAttributeResponse,
+    ModifyInstanceClockOptionsResponse,
+    ModifyInstanceNetworkOptionsResponse,
+    ModifyInstanceChargeTypeResponse,
+    ModifyInstanceSpecResponse,
+    ModifyPrepayInstanceSpecResponse,
+    ModifyInstanceAutoReleaseTimeResponse,
+    AttachInstanceRamRoleResponse,
+    DescribeInstanceRamRoleResponse,
+    DetachInstanceRamRoleResponse,
+    DescribeInstanceVncUrlResponse,
+    ModifyInstanceVncPasswdResponse,
+    ModifyInstanceMetadataOptionsResponse,
+    DescribeUserDataResponse,
+    RenewInstanceResponse,
+    DescribeInstanceAutoRenewAttributeResponse,
+    ModifyInstanceAutoRenewAttributeResponse,
+    ReActivateInstancesResponse,
+    DescribeSpotPriceHistoryResponse,
+    DescribeSpotAdviceResponse,
+    CreateImageResponse,
+    DescribeImagesResponse,
+    ModifyImageAttributeResponse,
+    DeleteImageResponse,
+    DescribeImageFromFamilyResponse,
+    DescribeImageSupportInstanceTypesResponse,
+    DescribeImageSharePermissionResponse,
+    ModifyImageSharePermissionResponse,
+    ModifyImageShareGroupPermissionResponse,
+    ImportImageResponse,
+    ExportImageResponse,
+    CopyImageResponse,
+    CancelCopyImageResponse,
+    CreateImageComponentResponse,
+    DescribeImageComponentsResponse,
+    DeleteImageComponentResponse,
+    CreateImagePipelineResponse,
+    DescribeImagePipelinesResponse,
+    DeleteImagePipelineResponse,
+    StartImagePipelineExecutionResponse,
+    DescribeImagePipelineExecutionsResponse,
+    CancelImagePipelineExecutionResponse,
+    CreateDiskResponse,
+    DescribeDisksResponse,
+    AttachDiskResponse,
+    DetachDiskResponse,
+    ResizeDiskResponse,
+    ModifyDiskAttributeResponse,
+    ModifyDiskChargeTypeResponse,
+    ModifyDiskSpecResponse,
+    ReplaceSystemDiskResponse,
+    ResetDiskResponse,
+    ResetDisksResponse,
+    ReInitDiskResponse,
+    ModifyDiskDeploymentResponse,
+    DeleteDiskResponse,
+    EnableDiskEncryptionByDefaultResponse,
+    DescribeDiskEncryptionByDefaultStatusResponse,
+    DescribeDiskDefaultKMSKeyIdResponse,
+    ModifyDiskDefaultKMSKeyIdResponse,
+    ResetDiskDefaultKMSKeyIdResponse,
+    DisableDiskEncryptionByDefaultResponse,
+    OpenSnapshotServiceResponse,
+    CreateSnapshotResponse,
+    DescribeSnapshotsResponse,
+    DescribeSnapshotsUsageResponse,
+    ModifySnapshotAttributeResponse,
+    ModifySnapshotCategoryResponse,
+    CopySnapshotResponse,
+    DeleteSnapshotResponse,
+    DescribeSnapshotLinksResponse,
+    CreateSnapshotGroupResponse,
+    DescribeSnapshotGroupsResponse,
+    ModifySnapshotGroupResponse,
+    DeleteSnapshotGroupResponse,
+    CreateAutoSnapshotPolicyResponse,
+    DescribeAutoSnapshotPolicyExResponse,
+    DescribeAutoSnapshotPolicyAssociationsResponse,
+    ModifyAutoSnapshotPolicyExResponse,
+    ApplyAutoSnapshotPolicyResponse,
+    CancelAutoSnapshotPolicyResponse,
+    DeleteAutoSnapshotPolicyResponse,
+    DescribeSnapshotPackageResponse,
+    DescribeBandwidthLimitationResponse,
+    ModifyInstanceNetworkSpecResponse,
+    AllocatePublicIpAddressResponse,
+    ConvertNatPublicIpToEipResponse,
+    ModifyInstanceVpcAttributeResponse,
+    DescribeClassicLinkInstancesResponse,
+    AttachClassicLinkVpcResponse,
+    DetachClassicLinkVpcResponse,
+    CreateNetworkInterfaceResponse,
+    DescribeNetworkInterfacesResponse,
+    DescribeNetworkInterfaceAttributeResponse,
+    ModifyNetworkInterfaceAttributeResponse,
+    DeleteNetworkInterfaceResponse,
+    AttachNetworkInterfaceResponse,
+    DetachNetworkInterfaceResponse,
+    AssignPrivateIpAddressesResponse,
+    UnassignPrivateIpAddressesResponse,
+    AssignIpv6AddressesResponse,
+    UnassignIpv6AddressesResponse,
+    CreateNetworkInterfacePermissionResponse,
+    DescribeNetworkInterfacePermissionsResponse,
+    CreatePrefixListResponse,
+    DescribePrefixListsResponse,
+    DescribePrefixListAttributesResponse,
+    DescribePrefixListAssociationsResponse,
+    ModifyPrefixListResponse,
+    DeletePrefixListResponse,
+    CreatePortRangeListResponse,
+    DescribePortRangeListsResponse,
+    DescribePortRangeListEntriesResponse,
+    DescribePortRangeListAssociationsResponse,
+    ModifyPortRangeListResponse,
+    DeletePortRangeListResponse,
+    CreateSecurityGroupResponse,
+    DescribeSecurityGroupsResponse,
+    DescribeSecurityGroupAttributeResponse,
+    ModifySecurityGroupPolicyResponse,
+    ModifySecurityGroupAttributeResponse,
+    DeleteSecurityGroupResponse,
+    AuthorizeSecurityGroupResponse,
+    ModifySecurityGroupRuleResponse,
+    RevokeSecurityGroupResponse,
+    AuthorizeSecurityGroupEgressResponse,
+    ModifySecurityGroupEgressRuleResponse,
+    RevokeSecurityGroupEgressResponse,
+    DescribeSecurityGroupReferencesResponse,
+    JoinSecurityGroupResponse,
+    LeaveSecurityGroupResponse,
+    CreateKeyPairResponse,
+    ImportKeyPairResponse,
+    DescribeKeyPairsResponse,
+    AttachKeyPairResponse,
+    DetachKeyPairResponse,
+    DeleteKeyPairsResponse,
+    CreateLaunchTemplateResponse,
+    DescribeLaunchTemplatesResponse,
+    DeleteLaunchTemplateResponse,
+    CreateLaunchTemplateVersionResponse,
+    DescribeLaunchTemplateVersionsResponse,
+    ModifyLaunchTemplateDefaultVersionResponse,
+    DeleteLaunchTemplateVersionResponse,
+    CreateAutoProvisioningGroupResponse,
+    DescribeAutoProvisioningGroupsResponse,
+    DescribeAutoProvisioningGroupInstancesResponse,
+    ModifyAutoProvisioningGroupResponse,
+    DescribeAutoProvisioningGroupHistoryResponse,
+    DeleteAutoProvisioningGroupResponse,
+    CreateDeploymentSetResponse,
+    DescribeDeploymentSetSupportedInstanceTypeFamilyResponse,
+    DescribeDeploymentSetsResponse,
+    ModifyInstanceDeploymentResponse,
+    ModifyDeploymentSetAttributeResponse,
+    DeleteDeploymentSetResponse,
+    CreateElasticityAssuranceResponse,
+    DescribeElasticityAssurancesResponse,
+    DescribeElasticityAssuranceInstancesResponse,
+    ModifyElasticityAssuranceResponse,
+    RenewElasticityAssurancesResponse,
+    ModifyElasticityAssuranceAutoRenewAttributeResponse,
+    DescribeElasticityAssuranceAutoRenewAttributeResponse,
+    PurchaseElasticityAssuranceResponse,
+    CreateCapacityReservationResponse,
+    DescribeCapacityReservationsResponse,
+    DescribeCapacityReservationInstancesResponse,
+    ModifyCapacityReservationResponse,
+    DescribeInstanceAttachmentAttributesResponse,
+    ModifyInstanceAttachmentAttributesResponse,
+    ReleaseCapacityReservationResponse,
+    PurchaseReservedInstancesOfferingResponse,
+    DescribeReservedInstancesResponse,
+    ModifyReservedInstancesResponse,
+    ModifyReservedInstanceAttributeResponse,
+    RenewReservedInstancesResponse,
+    DescribeReservedInstanceAutoRenewAttributeResponse,
+    ModifyReservedInstanceAutoRenewAttributeResponse,
+    PurchaseStorageCapacityUnitResponse,
+    DescribeStorageCapacityUnitsResponse,
+    ModifyStorageCapacityUnitAttributeResponse,
+    RunCommandResponse,
+    CreateCommandResponse,
+    InvokeCommandResponse,
+    DescribeInvocationsResponse,
+    DescribeInvocationResultsResponse,
+    ModifyInvocationAttributeResponse,
+    StopInvocationResponse,
+    DescribeCommandsResponse,
+    ModifyCommandResponse,
+    DeleteCommandResponse,
+    SendFileResponse,
+    DescribeSendFileResultsResponse,
+    DescribeCloudAssistantStatusResponse,
+    InstallCloudAssistantResponse,
+    StartTerminalSessionResponse,
+    EndTerminalSessionResponse,
+    DescribeTerminalSessionsResponse,
+    ModifyCloudAssistantSettingsResponse,
+    DescribeCloudAssistantSettingsResponse,
+    CreateActivationResponse,
+    DescribeActivationsResponse,
+    DisableActivationResponse,
+    DeleteActivationResponse,
+    DescribeManagedInstancesResponse,
+    ModifyManagedInstanceResponse,
+    DeregisterManagedInstanceResponse,
+    ListPluginStatusResponse,
+    DescribeInstancesFullStatusResponse,
+    DescribeDisksFullStatusResponse,
+    DescribeInstanceHistoryEventsResponse,
+    CreateSimulatedSystemEventsResponse,
+    CancelSimulatedSystemEventsResponse,
+    AcceptInquiredSystemEventResponse,
+    DescribeDiagnosticMetricsResponse,
+    CreateDiagnosticMetricSetResponse,
+    DescribeDiagnosticMetricSetsResponse,
+    ModifyDiagnosticMetricSetResponse,
+    DeleteDiagnosticMetricSetsResponse,
+    CreateDiagnosticReportResponse,
+    DescribeDiagnosticReportsResponse,
+    DescribeDiagnosticReportAttributesResponse,
+    DeleteDiagnosticReportsResponse,
+    GetInstanceScreenshotResponse,
+    GetInstanceConsoleOutputResponse,
+    DescribeDiskMonitorDataResponse,
+    DescribeInstanceMonitorDataResponse,
+    DescribeEniMonitorDataResponse,
+    DescribeSnapshotMonitorDataResponse,
+    DescribeInstanceMaintenanceAttributesResponse,
+    ModifyInstanceMaintenanceAttributesResponse,
+    RedeployInstanceResponse,
+    ReportInstancesStatusResponse,
+    TagResourcesResponse,
+    ListTagResourcesResponse,
+    UntagResourcesResponse,
+    JoinResourceGroupResponse,
+    AllocateDedicatedHostsResponse,
+    DescribeDedicatedHostsResponse,
+    DescribeDedicatedHostTypesResponse,
+    ModifyDedicatedHostAttributeResponse,
+    ModifyDedicatedHostsChargeTypeResponse,
+    DescribeDedicatedHostAutoRenewResponse,
+    ModifyDedicatedHostAutoRenewAttributeResponse,
+    RenewDedicatedHostsResponse,
+    ModifyDedicatedHostAutoReleaseTimeResponse,
+    RedeployDedicatedHostResponse,
+    ReleaseDedicatedHostResponse,
+    CreateDedicatedHostClusterResponse,
+    ModifyDedicatedHostClusterAttributeResponse,
+    DescribeDedicatedHostClustersResponse,
+    DeleteDedicatedHostClusterResponse,
+    CreateHpcClusterResponse,
+    DescribeHpcClustersResponse,
+    ModifyHpcClusterAttributeResponse,
+    DeleteHpcClusterResponse,
+    DescribeTasksResponse,
+    DescribeTaskAttributeResponse,
+    CancelTaskResponse,
+    DescribeUserBusinessBehaviorResponse,
+    ModifyUserBusinessBehaviorResponse,
+    DescribeLimitationResponse,
+    DescribeClustersResponse,
+    DeleteNetworkInterfacePermissionResponse,
+    DeleteBandwidthPackageResponse,
+    ModifyBandwidthPackageSpecResponse,
+    DescribeBandwidthPackagesResponse,
+    CreateVSwitchResponse,
+    DeleteVSwitchResponse,
+    ModifyVSwitchAttributeResponse,
+    DescribeVSwitchesResponse,
+    CreatePhysicalConnectionResponse,
+    DeletePhysicalConnectionResponse,
+    ModifyPhysicalConnectionAttributeResponse,
+    EnablePhysicalConnectionResponse,
+    DescribePhysicalConnectionsResponse,
+    CancelPhysicalConnectionResponse,
+    TerminatePhysicalConnectionResponse,
+    CreateVpcResponse,
+    DeleteVpcResponse,
+    DescribeVpcsResponse,
+    ModifyVpcAttributeResponse,
+    RemoveBandwidthPackageIpsResponse,
+    CreateHaVipResponse,
+    DeleteHaVipResponse,
+    AssociateHaVipResponse,
+    ModifyHaVipAttributeResponse,
+    DescribeHaVipsResponse,
+    UnassociateHaVipResponse,
+    CreateVirtualBorderRouterResponse,
+    DeleteVirtualBorderRouterResponse,
+    ModifyVirtualBorderRouterAttributeResponse,
+    RecoverVirtualBorderRouterResponse,
+    TerminateVirtualBorderRouterResponse,
+    DescribeVirtualBorderRoutersResponse,
+    DescribeVirtualBorderRoutersForPhysicalConnectionResponse,
+    CreateRouterInterfaceResponse,
+    DeleteRouterInterfaceResponse,
+    ActivateRouterInterfaceResponse,
+    DeactivateRouterInterfaceResponse,
+    ModifyRouterInterfaceAttributeResponse,
+    ModifyRouterInterfaceSpecResponse,
+    ModifyVRouterAttributeResponse,
+    DescribeRouterInterfacesResponse,
+    UnassociateEipAddressResponse,
+    AllocateEipAddressResponse,
+    ModifyEipAddressAttributeResponse,
+    ReleaseEipAddressResponse,
+    AssociateEipAddressResponse,
+    DescribeEipAddressesResponse,
+    DescribeEipMonitorDataResponse,
+    CreateNatGatewayResponse,
+    DeleteNatGatewayResponse,
+    DescribeNatGatewaysResponse,
+    DescribeNewProjectEipMonitorDataResponse,
+    DeleteRouteEntryResponse,
+    DeleteForwardEntryResponse,
+    CreateForwardEntryResponse,
+    AddBandwidthPackageIpsResponse,
+    DescribeVRoutersResponse,
+    CreateRouteEntryResponse,
+    DescribeForwardTableEntriesResponse,
+    ModifyForwardEntryResponse,
+    DescribeAccessPointsResponse,
+    DescribeRouteTablesResponse,
+    ConnectRouterInterfaceResponse,
+    ExportSnapshotResponse,
+    ReleasePublicIpAddressResponse,
+    AddTagsResponse,
+    DescribeResourceByTagsResponse,
+    DescribeTagsResponse,
+    RemoveTagsResponse,
+    EnableNetworkInterfaceQoSResponse,
+    DisableNetworkInterfaceQoSResponse
+);

@@ -10422,13 +10422,6 @@ pub struct RecognizeAllTextResponse {
     #[serde(default)]
     pub data: TextResponseData,
 }
-
-impl crate::ToCodeMessage for RecognizeAllTextResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 如何使用本接口
 ///
 /// | 步骤 | 概述                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -10459,13 +10452,6 @@ pub struct RecognizeGeneralStructureResponse {
     #[serde(default)]
     pub data: StructureResponseData,
 }
-
-impl crate::ToCodeMessage for RecognizeGeneralStructureResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10561,13 +10547,6 @@ pub struct RecognizeAdvancedResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeAdvancedResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10644,13 +10623,6 @@ pub struct RecognizeHandwritingResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeHandwritingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10687,13 +10659,6 @@ pub struct RecognizeBasicResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBasicResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10729,13 +10694,6 @@ pub struct RecognizeGeneralResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeGeneralResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10804,13 +10762,6 @@ pub struct RecognizeTableOcrResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTableOcrResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -10858,13 +10809,6 @@ pub struct RecognizeHealthCodeResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeHealthCodeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 返回字段补充说明
 /// ```ignore
 /// 第一种返回格式（UseNewStyleOutput=false）
@@ -10946,13 +10890,6 @@ pub struct RecognizeDocumentStructureResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeDocumentStructureResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11029,13 +10966,6 @@ pub struct RecognizeIdcardResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeIdcardResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11100,13 +11030,6 @@ pub struct RecognizePassportResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizePassportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11183,13 +11106,6 @@ pub struct RecognizeHouseholdResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeHouseholdResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11245,13 +11161,6 @@ pub struct RecognizeEstateCertificationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEstateCertificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11297,13 +11206,6 @@ pub struct RecognizeBankCardResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBankCardResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11369,13 +11271,6 @@ pub struct RecognizeBirthCertificationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBirthCertificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -11415,13 +11310,6 @@ pub struct RecognizeChinesePassportResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeChinesePassportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11473,13 +11361,6 @@ pub struct RecognizeExitEntryPermitToMainlandResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeExitEntryPermitToMainlandResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -11515,13 +11396,6 @@ pub struct RecognizeExitEntryPermitToHKResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeExitEntryPermitToHKResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11585,13 +11459,6 @@ pub struct RecognizeHKIdcardResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeHKIdcardResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11641,13 +11508,6 @@ pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeSocialSecurityCardVersionIIResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11758,13 +11618,6 @@ pub struct RecognizeInternationalIdcardResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeInternationalIdcardResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11842,13 +11695,6 @@ pub struct RecognizeMixedInvoicesResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeMixedInvoicesResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -11940,13 +11786,6 @@ pub struct RecognizeInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12024,13 +11863,6 @@ pub struct RecognizeCarInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCarInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文字段映射
 ///
 /// ```ignore
@@ -12055,13 +11887,6 @@ pub struct RecognizeQuotaInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeQuotaInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12137,13 +11962,6 @@ pub struct RecognizeAirItineraryResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeAirItineraryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12206,13 +12024,6 @@ pub struct RecognizeTrainInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTrainInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12262,13 +12073,6 @@ pub struct RecognizeTaxiInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTaxiInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文字段映射
 ///
 /// ```ignore
@@ -12306,13 +12110,6 @@ pub struct RecognizeRollTicketResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeRollTicketResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12375,13 +12172,6 @@ pub struct RecognizeBankAcceptanceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBankAcceptanceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 中英文字段映射
 /// ```ignore
 /// data    结构化信息
@@ -12425,13 +12215,6 @@ pub struct RecognizeBusShipTicketResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBusShipTicketResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12497,13 +12280,6 @@ pub struct RecognizeNonTaxInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeNonTaxInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文映射字段
 ///
 /// ```ignore
@@ -12544,13 +12320,6 @@ pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCommonPrintedInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -12588,13 +12357,6 @@ pub struct RecognizeHotelConsumeResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeHotelConsumeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12641,13 +12403,6 @@ pub struct RecognizePaymentRecordResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizePaymentRecordResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -12678,13 +12433,6 @@ pub struct RecognizePurchaseRecordResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizePurchaseRecordResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -12726,13 +12474,6 @@ pub struct RecognizeRideHailingItineraryResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeRideHailingItineraryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 中英文字段映射
 /// ```ignore
 /// data    结构化信息
@@ -12778,13 +12519,6 @@ pub struct RecognizeShoppingReceiptResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeShoppingReceiptResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -12812,13 +12546,6 @@ pub struct RecognizeSocialSecurityCardResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeSocialSecurityCardResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文映射字段
 ///
 /// ```ignore
@@ -12848,13 +12575,6 @@ pub struct RecognizeTollInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTollInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -12917,13 +12637,6 @@ pub struct RecognizeTaxClearanceCertificateResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTaxClearanceCertificateResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -12981,13 +12694,6 @@ pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeUsedCarInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13055,13 +12761,6 @@ pub struct RecognizeBusinessLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBusinessLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13108,13 +12807,6 @@ pub struct RecognizeBankAccountLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeBankAccountLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文字段映射
 ///
 /// ```ignore
@@ -13140,13 +12832,6 @@ pub struct RecognizeTradeMarkCertificationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeTradeMarkCertificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13210,13 +12895,6 @@ pub struct RecognizeFoodProduceLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeFoodProduceLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13283,13 +12961,6 @@ pub struct RecognizeFoodManageLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeFoodManageLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文字段映射
 ///
 /// ```ignore
@@ -13323,13 +12994,6 @@ pub struct RecognizeMedicalDeviceManageLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeMedicalDeviceManageLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 中英文字段映射
 ///
 /// ```ignore
@@ -13359,13 +13023,6 @@ pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeMedicalDeviceProduceLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13429,13 +13086,6 @@ pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCtwoMedicalDeviceManageLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明
 ///
 /// ```ignore
@@ -13472,13 +13122,6 @@ pub struct RecognizeCosmeticProduceLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCosmeticProduceLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// ## 中英文字段映射
 /// ```ignore
 /// data  结构化信息，face（身份证正面）和 back（身份证反面）
@@ -13550,13 +13193,6 @@ pub struct RecognizeInternationalBusinessLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeInternationalBusinessLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13626,13 +13262,6 @@ pub struct RecognizeVehicleLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeVehicleLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13696,13 +13325,6 @@ pub struct RecognizeDrivingLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeDrivingLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13748,13 +13370,6 @@ pub struct RecognizeWaybillResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeWaybillResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13807,13 +13422,6 @@ pub struct RecognizeCarNumberResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCarNumberResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13857,13 +13465,6 @@ pub struct RecognizeCarVinCodeResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCarVinCodeResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -13950,13 +13551,6 @@ pub struct RecognizeVehicleRegistrationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeVehicleRegistrationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14038,13 +13632,6 @@ pub struct RecognizeVehicleCertificationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeVehicleCertificationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14069,13 +13656,6 @@ pub struct RecognizeEduFormulaResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduFormulaResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14109,13 +13689,6 @@ pub struct RecognizeEduOralCalculationResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduOralCalculationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14176,13 +13749,6 @@ pub struct RecognizeEduPaperOcrResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduPaperOcrResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14236,13 +13802,6 @@ pub struct RecognizeEduPaperCutResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduPaperCutResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14302,13 +13861,6 @@ pub struct RecognizeEduQuestionOcrResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduQuestionOcrResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14401,13 +13953,6 @@ pub struct RecognizeEduPaperStructedResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEduPaperStructedResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14477,13 +14022,6 @@ pub struct RecognizeMultiLanguageResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeMultiLanguageResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14542,13 +14080,6 @@ pub struct RecognizeEnglishResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeEnglishResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明</br>
 ///
 /// ```ignore
@@ -14604,13 +14135,6 @@ pub struct RecognizeThaiResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeThaiResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明</br>
 ///
 /// ```ignore
@@ -14666,13 +14190,6 @@ pub struct RecognizeJanpaneseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeJanpaneseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明</br>
 ///
 /// ```ignore
@@ -14728,13 +14245,6 @@ pub struct RecognizeKoreanResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeKoreanResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明</br>
 ///
 /// ```ignore
@@ -14790,13 +14300,6 @@ pub struct RecognizeLatinResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeLatinResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 返回数据说明</br>
 ///
 /// ```ignore
@@ -14852,13 +14355,6 @@ pub struct RecognizeRussianResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeRussianResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// #### 返回参数说明
 /// <br/>
 ///
@@ -14907,13 +14403,6 @@ pub struct RecognizeCovidTestReportResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for RecognizeCovidTestReportResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// <br/>
 /// * <span style="font-size:larger;"> <b> 返回结果字段描述 </b></span>
 ///   
@@ -14945,13 +14434,6 @@ pub struct VerifyBusinessLicenseResponse {
     #[serde(default)]
     pub data: String,
 }
-
-impl crate::ToCodeMessage for VerifyBusinessLicenseResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// * **返回结果字段描述**
 ///
 /// |字段名称|字段类型|描述|
@@ -15178,8 +14660,80 @@ pub struct VerifyVATInvoiceResponse {
     pub data: String,
 }
 
-impl crate::ToCodeMessage for VerifyVATInvoiceResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
+crate::impl_to_code_message!(
+    RecognizeAllTextResponse,
+    RecognizeGeneralStructureResponse,
+    RecognizeAdvancedResponse,
+    RecognizeHandwritingResponse,
+    RecognizeBasicResponse,
+    RecognizeGeneralResponse,
+    RecognizeTableOcrResponse,
+    RecognizeHealthCodeResponse,
+    RecognizeDocumentStructureResponse,
+    RecognizeIdcardResponse,
+    RecognizePassportResponse,
+    RecognizeHouseholdResponse,
+    RecognizeEstateCertificationResponse,
+    RecognizeBankCardResponse,
+    RecognizeBirthCertificationResponse,
+    RecognizeChinesePassportResponse,
+    RecognizeExitEntryPermitToMainlandResponse,
+    RecognizeExitEntryPermitToHKResponse,
+    RecognizeHKIdcardResponse,
+    RecognizeSocialSecurityCardVersionIIResponse,
+    RecognizeInternationalIdcardResponse,
+    RecognizeMixedInvoicesResponse,
+    RecognizeInvoiceResponse,
+    RecognizeCarInvoiceResponse,
+    RecognizeQuotaInvoiceResponse,
+    RecognizeAirItineraryResponse,
+    RecognizeTrainInvoiceResponse,
+    RecognizeTaxiInvoiceResponse,
+    RecognizeRollTicketResponse,
+    RecognizeBankAcceptanceResponse,
+    RecognizeBusShipTicketResponse,
+    RecognizeNonTaxInvoiceResponse,
+    RecognizeCommonPrintedInvoiceResponse,
+    RecognizeHotelConsumeResponse,
+    RecognizePaymentRecordResponse,
+    RecognizePurchaseRecordResponse,
+    RecognizeRideHailingItineraryResponse,
+    RecognizeShoppingReceiptResponse,
+    RecognizeSocialSecurityCardResponse,
+    RecognizeTollInvoiceResponse,
+    RecognizeTaxClearanceCertificateResponse,
+    RecognizeUsedCarInvoiceResponse,
+    RecognizeBusinessLicenseResponse,
+    RecognizeBankAccountLicenseResponse,
+    RecognizeTradeMarkCertificationResponse,
+    RecognizeFoodProduceLicenseResponse,
+    RecognizeFoodManageLicenseResponse,
+    RecognizeMedicalDeviceManageLicenseResponse,
+    RecognizeMedicalDeviceProduceLicenseResponse,
+    RecognizeCtwoMedicalDeviceManageLicenseResponse,
+    RecognizeCosmeticProduceLicenseResponse,
+    RecognizeInternationalBusinessLicenseResponse,
+    RecognizeVehicleLicenseResponse,
+    RecognizeDrivingLicenseResponse,
+    RecognizeWaybillResponse,
+    RecognizeCarNumberResponse,
+    RecognizeCarVinCodeResponse,
+    RecognizeVehicleRegistrationResponse,
+    RecognizeVehicleCertificationResponse,
+    RecognizeEduFormulaResponse,
+    RecognizeEduOralCalculationResponse,
+    RecognizeEduPaperOcrResponse,
+    RecognizeEduPaperCutResponse,
+    RecognizeEduQuestionOcrResponse,
+    RecognizeEduPaperStructedResponse,
+    RecognizeMultiLanguageResponse,
+    RecognizeEnglishResponse,
+    RecognizeThaiResponse,
+    RecognizeJanpaneseResponse,
+    RecognizeKoreanResponse,
+    RecognizeLatinResponse,
+    RecognizeRussianResponse,
+    RecognizeCovidTestReportResponse,
+    VerifyBusinessLicenseResponse,
+    VerifyVATInvoiceResponse
+);

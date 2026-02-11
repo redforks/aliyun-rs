@@ -15853,12 +15853,6 @@ impl crate::FlatSerialize for AccessMonitorConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for AccessMonitorConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存VPC网络来源信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -15994,12 +15988,6 @@ impl crate::FlatSerialize for ArchiveDirectReadConfiguration {
         params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
     ) {
         crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for ArchiveDirectReadConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -16548,12 +16536,6 @@ impl crate::FlatSerialize for BucketDataRedundancyTransition {
     }
 }
 
-impl crate::ToCodeMessage for BucketDataRedundancyTransition {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// Bucket服务端加密配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -16790,12 +16772,6 @@ impl crate::FlatSerialize for BucketInfo {
     }
 }
 
-impl crate::ToCodeMessage for BucketInfo {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 访问日志信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -16855,12 +16831,6 @@ impl crate::FlatSerialize for BucketLoggingStatus {
             &format!("{}.LoggingEnabled", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for BucketLoggingStatus {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -17309,12 +17279,6 @@ impl crate::FlatSerialize for BucketStat {
             &format!("{}.DeepColdArchiveMultipartPartStorage", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for BucketStat {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -18159,12 +18123,6 @@ impl crate::FlatSerialize for CnameToken {
     }
 }
 
-impl crate::ToCodeMessage for CnameToken {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 存放bucket备注内容的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -18429,12 +18387,6 @@ impl crate::FlatSerialize for CreateAccessPointResult {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.alias, &format!("{}.Alias", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for CreateAccessPointResult {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -19377,12 +19329,6 @@ impl crate::FlatSerialize for DataLakeStorageTransferJobs {
     }
 }
 
-impl crate::ToCodeMessage for DataLakeStorageTransferJobs {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 对象标识符。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -19725,12 +19671,6 @@ impl crate::FlatSerialize for EventNotificationConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for EventNotificationConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -19906,12 +19846,6 @@ impl crate::FlatSerialize for PublicAccessBlockConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for PublicAccessBlockConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -20000,12 +19934,6 @@ impl crate::FlatSerialize for GetAccessPointResult {
             &format!("{}.CreationDate", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for GetAccessPointResult {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -20446,12 +20374,6 @@ impl crate::FlatSerialize for HttpsConfiguration {
             &format!("{}.CipherSuite", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for HttpsConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -20965,12 +20887,6 @@ impl crate::FlatSerialize for InventoryConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for InventoryConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -21451,12 +21367,6 @@ impl crate::FlatSerialize for LifecycleConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for LifecycleConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存所有接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -21529,12 +21439,6 @@ impl crate::FlatSerialize for ListAccessPointsResult {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.max_keys, &format!("{}.MaxKeys", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for ListAccessPointsResult {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -23607,12 +23511,6 @@ impl crate::FlatSerialize for MetaQueryResp {
     }
 }
 
-impl crate::ToCodeMessage for MetaQueryResp {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct NotificationConfigurationTopicConfigurationItem {
@@ -24268,12 +24166,6 @@ impl crate::FlatSerialize for OverwriteConfiguration {
     }
 }
 
-impl crate::ToCodeMessage for OverwriteConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存已上传Part信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -24836,12 +24728,6 @@ impl crate::FlatSerialize for RefererConfiguration {
             &format!("{}.RefererBlacklist", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for RefererConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -26373,12 +26259,6 @@ impl crate::FlatSerialize for SelectMetaStatus {
     }
 }
 
-impl crate::ToCodeMessage for SelectMetaStatus {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -26546,12 +26426,6 @@ impl crate::FlatSerialize for StyleInfo {
             params,
         );
         crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-    }
-}
-
-impl crate::ToCodeMessage for StyleInfo {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -26781,12 +26655,6 @@ impl crate::FlatSerialize for UserDefinedLogFieldsConfiguration {
             &format!("{}.ParamSet", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for UserDefinedLogFieldsConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -27024,12 +26892,6 @@ impl crate::FlatSerialize for WebsiteConfiguration {
             &format!("{}.RoutingRules", name),
             params,
         );
-    }
-}
-
-impl crate::ToCodeMessage for WebsiteConfiguration {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
     }
 }
 
@@ -28470,13 +28332,6 @@ pub struct ListBucketsResponse {
     #[serde(default)]
     pub buckets: ResponseBuckets,
 }
-
-impl crate::ToCodeMessage for ListBucketsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 只支持在二级域名（例如oss-cn-hangzhou.aliyuncs.com）上调用DescribeRegions接口。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -28488,13 +28343,6 @@ pub struct DescribeRegionsResponse {
     #[serde(default)]
     pub region_info: Vec<RegionInfo>,
 }
-
-impl crate::ToCodeMessage for DescribeRegionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - GetBucket (ListObjects)接口已修订为GetBucketV2 (ListObjectsV2)。建议您在开发应用程序时使用较新的版本GetBucketV2 (ListObjectsV2)。为保证向后兼容性，OSS继续支持GetBucket (ListObjects)。有关GetBucketV2 (ListObjectsV2)的更多信息，请参见[GetBucketV2 (ListObjectsV2)](~~187544~~)。
 ///
 /// - 执行GetBucket (ListObjects)请求时不会返回Object中自定义的元信息。
@@ -28550,13 +28398,6 @@ pub struct ListObjectsResponse {
     #[serde(default)]
     pub common_prefixes: Vec<CommonPrefix>,
 }
-
-impl crate::ToCodeMessage for ListObjectsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 执行GetBucketV2 (ListObjectsV2)请求时不会返回Object中自定义的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -28618,39 +28459,18 @@ pub struct ListObjectsV2Response {
     #[serde(default)]
     pub common_prefixes: Vec<CommonPrefix>,
 }
-
-impl crate::ToCodeMessage for ListObjectsV2Response {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-
-impl crate::ToCodeMessage for GetBucketLocationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetAccessPointPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-
-impl crate::ToCodeMessage for GetAccessPointPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 对象存储OSS支持WORM（Write Once Read Many）特性，允许以不可删除、不可篡改的方式保存和使用数据。OSS允许针对存储空间（Bucket）设置基于时间的合规保留策略，保护周期为1天到70年。
 ///
 /// - 当基于时间的合规保留策略创建24小时后未提交锁定，则该策略自动失效。当合规保留策略锁定后，您可以在Bucket中上传和读取文件（Object），但是在Object的保留时间到期之前，不允许删除Object及合规保留策略。Object的保留时间到期后，才可以删除Object。关于合规保留策略的更多信息，请参见[合规保留策略](~~90564~~)。
@@ -28665,13 +28485,6 @@ pub struct InitiateBucketWormResponse {
     #[serde(skip)]
     pub x_oss_worm_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for InitiateBucketWormResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 对象存储OSS支持WORM（Write Once Read Many）特性，允许您以不可删除、不可篡改的方式保存和使用数据。OSS允许针对Bucket设置基于时间的合规保留策略，保护周期为1天到70年。<br>
 /// 当合规保留策略锁定后，您可以在Bucket中上传和读取文件（Object），但是在Object的保留时间到期之前，不允许删除Object及合规保留策略。Object的保留时间到期后，才可以删除Object。
 ///
@@ -28707,13 +28520,6 @@ pub struct GetBucketWormResponse {
     #[serde(default)]
     pub expiration_date: String,
 }
-
-impl crate::ToCodeMessage for GetBucketWormResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketAclResponse {
@@ -28728,13 +28534,6 @@ pub struct GetBucketAclResponse {
     #[serde(default)]
     pub access_control_list: BucketAclResponseAccessControlList,
 }
-
-impl crate::ToCodeMessage for GetBucketAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 只有Bucket拥有者以及被授予oss:GetBucketTransferAcceleration权限的RAM用户才能发起获取传输加速配置的请求。
 ///
 /// - 如果Bucket未配置过传输加速，调用该接口时不返回加速配置状态。
@@ -28750,13 +28549,6 @@ pub struct GetBucketTransferAccelerationResponse {
     #[serde(default)]
     pub enabled: bool,
 }
-
-impl crate::ToCodeMessage for GetBucketTransferAccelerationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketVersioningResponse {
@@ -28767,13 +28559,6 @@ pub struct GetBucketVersioningResponse {
     #[serde(default)]
     pub status: BucketVersioningStatus,
 }
-
-impl crate::ToCodeMessage for GetBucketVersioningResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - GetBucket(ListObjects)接口仅返回Object的当前版本，且当前版本不能为删除标记。
 /// - GetBucketVersions(ListObjectVersions)接口返回Bucket中所有Object的所有版本。
 ///
@@ -28840,13 +28625,6 @@ pub struct ListObjectVersionsResponse {
     #[serde(default)]
     pub common_prefixes: Vec<CommonPrefix>,
 }
-
-impl crate::ToCodeMessage for ListObjectVersionsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 向其他账号的RAM用户授权访问。
 ///
 /// 您可以授予其他账号的RAM用户访问您的OSS资源的权限。
@@ -28862,13 +28640,6 @@ pub struct GetBucketPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-
-impl crate::ToCodeMessage for GetBucketPolicyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进行查看，您必须拥有`oss:GetBucketPolicyStatus`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -28882,13 +28653,6 @@ pub struct GetBucketPolicyStatusResponse {
     #[serde(default)]
     pub is_public: bool,
 }
-
-impl crate::ToCodeMessage for GetBucketPolicyStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 数据复制是以异步（近实时）方式将源Bucket中的文件（Object）以及对Object的创建、更新和删除等操作自动复制到目标Bucket。使用数据复制时，有如下注意事项：
 ///
 /// - 数据复制采用异步复制，数据复制到目标Bucket需要一定的时间，通常几分钟到几小时不等，具体取决于数据的大小。
@@ -28907,13 +28671,6 @@ pub struct PutBucketReplicationResponse {
     #[serde(skip)]
     pub x_oss_replication_rule_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for PutBucketReplicationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketReplicationResponse {
@@ -28924,13 +28681,6 @@ pub struct GetBucketReplicationResponse {
     #[serde(default)]
     pub rule: Vec<ReplicationRule>,
 }
-
-impl crate::ToCodeMessage for GetBucketReplicationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketReplicationLocationResponse {
@@ -28951,13 +28701,6 @@ pub struct GetBucketReplicationLocationResponse {
     #[serde(default)]
     pub location_rtc_constraint: CConstraint,
 }
-
-impl crate::ToCodeMessage for GetBucketReplicationLocationResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketReplicationProgressResponse {
@@ -28968,13 +28711,6 @@ pub struct GetBucketReplicationProgressResponse {
     #[serde(default)]
     pub rule: Vec<ReplicationProgressRule>,
 }
-
-impl crate::ToCodeMessage for GetBucketReplicationProgressResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 单次请求最多可获取100条清单配置项内容。若需获取超过100条清单配置项，则需发送多次请求，并保留相应的token，作为下一次请求的参数。
 ///
 /// - 调用该请求时，请确保您有足够的权限对存储空间的清单任务进行操作。存储空间所有者默认拥有该权限，若您无该项权限，请先向存储空间所有者申请该项操作的权限。
@@ -29002,13 +28738,6 @@ pub struct ListBucketInventoryResponse {
     #[serde(default)]
     pub next_continuation_token: String,
 }
-
-impl crate::ToCodeMessage for ListBucketInventoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketTagsResponse {
@@ -29019,13 +28748,6 @@ pub struct GetBucketTagsResponse {
     #[serde(default)]
     pub tag_set: TagSet,
 }
-
-impl crate::ToCodeMessage for GetBucketTagsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListUserDataRedundancyTransitionResponse {
@@ -29048,13 +28770,6 @@ pub struct ListUserDataRedundancyTransitionResponse {
     #[serde(default)]
     pub bucket_data_redundancy_transition: Vec<BucketDataRedundancyTransition>,
 }
-
-impl crate::ToCodeMessage for ListUserDataRedundancyTransitionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 要列举Bucket下所有的存储冗余转换任务，您必须具有`oss:ListBucketDataRedundancyTransition`权限。具体操作，请参见[为RAM用户授权自定义的权限策略](~~199058~~)。
 /// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -29067,13 +28782,6 @@ pub struct ListBucketDataRedundancyTransitionResponse {
     #[serde(default)]
     pub bucket_data_redundancy_transition: BucketDataRedundancyTransition,
 }
-
-impl crate::ToCodeMessage for ListBucketDataRedundancyTransitionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - Bucket所属地域支持转换存储冗余类型。支持转换存储冗余类型的地域：华东1（杭州）、华东2（上海）、华北2（北京）、华北3（张家口）、华北6（乌兰察布）、华南1（深圳）、中国香港、日本（东京）、新加坡、印度尼西亚（雅加达）、德国（法兰克福）
 /// - Bucket的存储冗余类型必须为本地冗余存储。OSS仅支持将本地冗余存储转换为同城冗余存储。
 /// - Bucket的存储类型必须为标准存储、低频访问存储或归档存储，但Bucket中的文件的存储类型可以为冷归档存储和深度冷归档存储。冷归档存储和深度冷归档存储的文件转换后依然为本地冗余存储。冷归档存储和深度冷归档存储的Bucket不支持转换存储冗余类型。
@@ -29089,13 +28797,6 @@ pub struct CreateBucketDataRedundancyTransitionResponse {
     #[serde(default)]
     pub task_id: String,
 }
-
-impl crate::ToCodeMessage for CreateBucketDataRedundancyTransitionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 只有Bucket的拥有者及授权的RAM用户才能获取Bucket的加密规则，否则返回403错误。有关Bucket加密的更多信息，请参见**[服务器端加密](~~31871~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29107,13 +28808,6 @@ pub struct GetBucketEncryptionResponse {
     #[serde(default)]
     pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
 }
-
-impl crate::ToCodeMessage for GetBucketEncryptionResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketRequestPaymentResponse {
@@ -29126,13 +28820,6 @@ pub struct GetBucketRequestPaymentResponse {
     #[serde(default)]
     pub payer: String,
 }
-
-impl crate::ToCodeMessage for GetBucketRequestPaymentResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29152,13 +28839,6 @@ pub struct GetBucketCorsResponse {
     #[serde(default)]
     pub response_vary: bool,
 }
-
-impl crate::ToCodeMessage for GetBucketCorsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// Options请求是由浏览器自动根据是否跨域来决定是否发送。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29181,13 +28861,6 @@ pub struct OptionObjectResponse {
     #[serde(skip)]
     pub access_control_max_age: Option<i64>,
 }
-
-impl crate::ToCodeMessage for OptionObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetMetaQueryStatusResponse {
@@ -29228,13 +28901,6 @@ pub struct GetMetaQueryStatusResponse {
     #[serde(default)]
     pub update_time: String,
 }
-
-impl crate::ToCodeMessage for GetMetaQueryStatusResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListBucketAntiDDosInfoResponse {
@@ -29257,13 +28923,6 @@ pub struct ListBucketAntiDDosInfoResponse {
     #[serde(default)]
     pub anti_ddos_configuration: Vec<BucketAntiDDOSInfo>,
 }
-
-impl crate::ToCodeMessage for ListBucketAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InitUserAntiDDosInfoResponse {
@@ -29273,13 +28932,6 @@ pub struct InitUserAntiDDosInfoResponse {
     #[serde(skip)]
     pub x_oss_defender_instance: Option<String>,
 }
-
-impl crate::ToCodeMessage for InitUserAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetUserAntiDDosInfoResponse {
@@ -29290,13 +28942,6 @@ pub struct GetUserAntiDDosInfoResponse {
     #[serde(default)]
     pub anti_ddos_configuration: Vec<UserAntiDDOSInfo>,
 }
-
-impl crate::ToCodeMessage for GetUserAntiDDosInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetBucketResourceGroupResponse {
@@ -29307,13 +28952,6 @@ pub struct GetBucketResourceGroupResponse {
     #[serde(default)]
     pub resource_group_id: String,
 }
-
-impl crate::ToCodeMessage for GetBucketResourceGroupResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListCnameResponse {
@@ -29332,13 +28970,6 @@ pub struct ListCnameResponse {
     #[serde(default)]
     pub cname: Vec<CnameInfo>,
 }
-
-impl crate::ToCodeMessage for ListCnameResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListStyleResponse {
@@ -29349,13 +28980,6 @@ pub struct ListStyleResponse {
     #[serde(default)]
     pub style: Vec<StyleInfo>,
 }
-
-impl crate::ToCodeMessage for ListStyleResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 阿里云账号默认拥有创建对象FC接入点的权限。如果您希望通过RAM用户或者STS的方式创建对象FC接入点，您必须拥有`oss:CreateAccessPointForObjectProcess`权限。
 /// - 单个阿里云账号支持创建1000个对象FC接入点。
 /// - 单个Bucket支持创建100个对象FC接入点。
@@ -29373,13 +28997,6 @@ pub struct CreateAccessPointForObjectProcessResponse {
     #[serde(default)]
     pub access_point_for_object_process_alias: String,
 }
-
-impl crate::ToCodeMessage for CreateAccessPointForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 阿里云账号默认拥有获取对象FC接入点基础信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点基础信息，您必须拥有`oss:GetAccessPointForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29433,13 +29050,6 @@ pub struct GetAccessPointForObjectProcessResponse {
     #[serde(default)]
     pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
-
-impl crate::ToCodeMessage for GetAccessPointForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 阿里云账号默认拥有获取对象FC接入点信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点信息，您必须拥有`oss:ListAccessPointsForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29466,13 +29076,6 @@ pub struct ListAccessPointsForObjectProcessResponse {
     #[serde(default)]
     pub access_points_for_object_process: AccessPointsForObjectProcess,
 }
-
-impl crate::ToCodeMessage for ListAccessPointsForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 阿里云账号默认拥有获取对象FC接入点配置信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点配置信息，您必须拥有`oss:GetAccessPointConfigForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29492,13 +29095,6 @@ pub struct GetAccessPointConfigForObjectProcessResponse {
     #[serde(default)]
     pub public_access_block_configuration: PublicAccessBlockConfiguration,
 }
-
-impl crate::ToCodeMessage for GetAccessPointConfigForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 阿里云账号默认拥有获取对象FC接入点权限策略配置的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点的权限策略配置，您必须拥有`oss:GetAccessPointPolicyForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -29506,26 +29102,12 @@ pub struct GetAccessPointPolicyForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-
-impl crate::ToCodeMessage for GetAccessPointPolicyForObjectProcessResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutAccessPointPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
-
-impl crate::ToCodeMessage for PutAccessPointPublicAccessBlockResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// - 添加的Object大小不能超过5 GB。
@@ -29548,13 +29130,6 @@ pub struct PutObjectResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for PutObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// **版本控制**
 ///
 /// - `x-oss-copy-source`默认拷贝Object的当前版本，您可以在x-oss-copy-source中加入versionId来拷贝指定的Object版本。拷贝Object时，如果源Object的对应版本为删除标记，则返回404表示该Object不存在。
@@ -29600,13 +29175,6 @@ pub struct CopyObjectResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for CopyObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// - GetObject接口默认可通过HTTP和HTTPS两种方式访问。如果要设置仅允许通过HTTPS方式访问，请使用Bucket Policy的授权访问方式。具体操作，请参见[通过Bucket Policy授权用户访问指定资源](~~85111~~)。
@@ -29681,7 +29249,6 @@ impl crate::BinaryWithMeta for GetObjectResponse {
         self.body = bytes;
     }
 }
-
 /// **版本控制**
 ///
 /// 在目标Bucket处于开启或暂停版本控制状态下，对Appendable类型Object执行相关操作时，有如下注意事项：
@@ -29707,13 +29274,6 @@ pub struct AppendObjectResponse {
     #[serde(skip)]
     pub x_oss_hash_crc64ecma: Option<String>,
 }
-
-impl crate::ToCodeMessage for AppendObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SealAppendObjectResponse {
@@ -29723,13 +29283,6 @@ pub struct SealAppendObjectResponse {
     #[serde(skip)]
     pub x_oss_sealed_time: Option<String>,
 }
-
-impl crate::ToCodeMessage for SealAppendObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// - 要删除文件，您必须有Object的写权限。
@@ -29756,13 +29309,6 @@ pub struct DeleteObjectResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for DeleteObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &crate::CODE_MESSAGE
-    }
-}
-
 /// - 使用此接口不会返回文件内容。
 ///
 /// - HeadObject操作默认获取Object当前版本的元信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元信息。
@@ -29826,13 +29372,6 @@ pub struct HeadObjectResponse {
     #[serde(skip)]
     pub x_oss_tagging_count: Option<i64>,
 }
-
-impl crate::ToCodeMessage for HeadObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 /// - 文件（Object）的元数据信息包括该Object的ETag、Size、LastModified信息，且不返回该Object的内容。如果Object类型为软链接，则会返回软链接自身信息。
 /// - 当Bucket未启用版本控制时，要获取文件的元数据信息，您必须有oss:GetObject权限。当Bucket已启用版本控制时，要获取文件指定版本（请求中携带了x-oss-version-id请求头）的元数据信息，您必须有oss:GetObjectVersion权限。具体操作，请参见[为RAM用户授权自定义的RAM Policy](~~199058~~)。
@@ -29865,13 +29404,6 @@ pub struct GetObjectMetaResponse {
     #[serde(skip)]
     pub x_oss_transition_time: Option<String>,
 }
-
-impl crate::ToCodeMessage for GetObjectMetaResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **版本控制**
 ///
 /// Object的各个版本可以对应不同的存储类型。调用RestoreObject接口默认解冻Object当前版本，您可以通过指定versionId的方式来解冻Object指定版本。
@@ -29918,13 +29450,6 @@ pub struct RestoreObjectResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for RestoreObjectResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - 调用接口会返回一个OSS服务器创建的全局唯一的Upload ID，用于标识本次Multipart Upload事件。您可以根据这个ID来发起相关的操作，例如中止Multipart Upload、查询Multipart Upload等。
 ///
 /// - 初始化MultipartUpload请求，并不影响已存在的同名Object。
@@ -29952,13 +29477,6 @@ pub struct InitiateMultipartUploadResponse {
     #[serde(default)]
     pub encoding_type: String,
 }
-
-impl crate::ToCodeMessage for InitiateMultipartUploadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 ///
@@ -30010,13 +29528,6 @@ pub struct CompleteMultipartUploadResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for CompleteMultipartUploadResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 该接口为通过在UploadPart请求的基础上增加一个请求头x-oss-copy-source来调用UploadPartCopy接口，实现从一个已存在的Object中拷贝数据来上传一个Part。
 ///
 /// **注意事项**
@@ -30057,13 +29568,6 @@ pub struct UploadPartCopyResponse {
     #[serde(skip)]
     pub x_oss_copy_source_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for UploadPartCopyResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 调用ListMultipartUploads接口列举所有执行中的Multipart Upload事件，即已经初始化但还未完成（Complete）或者还未中止（Abort）的Multipart Upload事件。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -30123,13 +29627,6 @@ pub struct ListMultipartUploadsResponse {
     #[serde(default)]
     pub common_prefixes: Vec<CommonPrefix>,
 }
-
-impl crate::ToCodeMessage for ListMultipartUploadsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// - OSS的返回结果按照Part号码升序排列。
 ///
 /// - 由于网络传输可能出错，所以不推荐使用ListParts返回结果中的Part Number和ETag值来生成已经上传成功的Part列表。
@@ -30171,13 +29668,6 @@ pub struct ListPartsResponse {
     #[serde(default)]
     pub part: Vec<Part>,
 }
-
-impl crate::ToCodeMessage for ListPartsResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// 此操作只有Bucket Owner有权限执行，且需对Object有读写权限。
@@ -30209,13 +29699,6 @@ pub struct PutObjectAclResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for PutObjectAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **版本控制**
 ///
 /// 调用GetObjectACL接口时，默认只能获取Object当前版本的ACL。您可以通过指定versionId参数来获取指定Object版本的ACL。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
@@ -30235,13 +29718,6 @@ pub struct GetObjectAclResponse {
     #[serde(default)]
     pub access_control_list: ObjectAclResponseAccessControlList,
 }
-
-impl crate::ToCodeMessage for GetObjectAclResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// - 使用PutSymlink接口创建软链接时不会检查目标文件是否存在、目标文件类型是否合法以及目标文件是否有访问权限。
@@ -30263,13 +29739,6 @@ pub struct PutSymlinkResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for PutSymlinkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **版本控制**
 ///
 /// GetSymlink接口默认获取软链接的当前版本。允许通过指定versionId来获取指定版本。如果软链接的当前版本为删除标记，OSS会返回404 Not Found，在响应header中返回x-oss-delete-marker = true以及版本ID : x-oss-version-id。删除标记没有关联数据，因此也没有软链接指向的TargetObject。
@@ -30286,13 +29755,6 @@ pub struct GetSymlinkResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for GetSymlinkResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **注意事项**
 ///
 /// - 对象标签使用一组键值对（Key-Value）标记对象。
@@ -30318,13 +29780,6 @@ pub struct PutObjectTaggingResponse {
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
 }
-
-impl crate::ToCodeMessage for PutObjectTaggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// **版本控制**
 ///
 /// 调用GetObjectTagging接口时，默认只能获取Object当前版本的标签信息。您可以通过指定versionId参数来获取指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
@@ -30339,13 +29794,6 @@ pub struct GetObjectTaggingResponse {
     #[serde(default)]
     pub tag_set: TagSet,
 }
-
-impl crate::ToCodeMessage for GetObjectTaggingResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 通过RTMP协议上传音视频数据前，必须先调用该接口创建一个LiveChannel。调用该接口会返回RTMP推流地址，以及对应的播放地址。
 /// <br>您可以使用返回的地址进行推流、播放，您还可以根据该LiveChannel的名称来发起相关的操作，如查询推流状态、查询推流记录、禁止推流等。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -30362,13 +29810,6 @@ pub struct PutLiveChannelResponse {
     #[serde(default)]
     pub play_urls: LiveChannelPlayUrls,
 }
-
-impl crate::ToCodeMessage for PutLiveChannelResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListLiveChannelResponse {
@@ -30403,13 +29844,6 @@ pub struct ListLiveChannelResponse {
     #[serde(default)]
     pub live_channel: Vec<LiveChannel>,
 }
-
-impl crate::ToCodeMessage for ListLiveChannelResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetLiveChannelInfoResponse {
@@ -30432,13 +29866,6 @@ pub struct GetLiveChannelInfoResponse {
     #[serde(default)]
     pub target: LiveChannelTarget,
 }
-
-impl crate::ToCodeMessage for GetLiveChannelInfoResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 /// 使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
@@ -30450,13 +29877,6 @@ pub struct GetLiveChannelHistoryResponse {
     #[serde(default)]
     pub live_record: Vec<LiveRecord>,
 }
-
-impl crate::ToCodeMessage for GetLiveChannelHistoryResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GetLiveChannelStatResponse {
@@ -30487,13 +29907,6 @@ pub struct GetLiveChannelStatResponse {
     #[serde(default)]
     pub audio: LiveChannelAudio,
 }
-
-impl crate::ToCodeMessage for GetLiveChannelStatResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
-
 #[derive(Debug, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PutDataLakeCachePrefetchJobResponse {
@@ -30504,11 +29917,99 @@ pub struct PutDataLakeCachePrefetchJobResponse {
     pub id: String,
 }
 
-impl crate::ToCodeMessage for PutDataLakeCachePrefetchJobResponse {
-    fn to_code_message(&self) -> &crate::CodeMessage {
-        &self.code_message
-    }
-}
+crate::impl_to_code_message!(
+    ListBucketsResponse,
+    DescribeRegionsResponse,
+    ListObjectsResponse,
+    ListObjectsV2Response,
+    GetBucketLocationResponse,
+    GetAccessPointPolicyResponse,
+    InitiateBucketWormResponse,
+    GetBucketWormResponse,
+    GetBucketAclResponse,
+    GetBucketTransferAccelerationResponse,
+    GetBucketVersioningResponse,
+    ListObjectVersionsResponse,
+    GetBucketPolicyResponse,
+    GetBucketPolicyStatusResponse,
+    PutBucketReplicationResponse,
+    GetBucketReplicationResponse,
+    GetBucketReplicationLocationResponse,
+    GetBucketReplicationProgressResponse,
+    ListBucketInventoryResponse,
+    GetBucketTagsResponse,
+    ListUserDataRedundancyTransitionResponse,
+    ListBucketDataRedundancyTransitionResponse,
+    CreateBucketDataRedundancyTransitionResponse,
+    GetBucketEncryptionResponse,
+    GetBucketRequestPaymentResponse,
+    GetBucketCorsResponse,
+    OptionObjectResponse,
+    GetMetaQueryStatusResponse,
+    ListBucketAntiDDosInfoResponse,
+    InitUserAntiDDosInfoResponse,
+    GetUserAntiDDosInfoResponse,
+    GetBucketResourceGroupResponse,
+    ListCnameResponse,
+    ListStyleResponse,
+    CreateAccessPointForObjectProcessResponse,
+    GetAccessPointForObjectProcessResponse,
+    ListAccessPointsForObjectProcessResponse,
+    GetAccessPointConfigForObjectProcessResponse,
+    GetAccessPointPolicyForObjectProcessResponse,
+    PutAccessPointPublicAccessBlockResponse,
+    CopyObjectResponse,
+    AppendObjectResponse,
+    SealAppendObjectResponse,
+    HeadObjectResponse,
+    GetObjectMetaResponse,
+    RestoreObjectResponse,
+    InitiateMultipartUploadResponse,
+    CompleteMultipartUploadResponse,
+    UploadPartCopyResponse,
+    ListMultipartUploadsResponse,
+    ListPartsResponse,
+    PutObjectAclResponse,
+    GetObjectAclResponse,
+    PutSymlinkResponse,
+    GetSymlinkResponse,
+    PutObjectTaggingResponse,
+    GetObjectTaggingResponse,
+    PutLiveChannelResponse,
+    ListLiveChannelResponse,
+    GetLiveChannelInfoResponse,
+    GetLiveChannelHistoryResponse,
+    GetLiveChannelStatResponse,
+    PutDataLakeCachePrefetchJobResponse
+);
+
+crate::impl_default_to_code_message!(
+    PutObjectResponse,
+    DeleteObjectResponse,
+    AccessMonitorConfiguration,
+    ArchiveDirectReadConfiguration,
+    BucketDataRedundancyTransition,
+    BucketInfo,
+    BucketLoggingStatus,
+    BucketStat,
+    CnameToken,
+    CreateAccessPointResult,
+    DataLakeStorageTransferJobs,
+    EventNotificationConfiguration,
+    PublicAccessBlockConfiguration,
+    GetAccessPointResult,
+    HttpsConfiguration,
+    InventoryConfiguration,
+    LifecycleConfiguration,
+    ListAccessPointsResult,
+    MetaQueryResp,
+    OverwriteConfiguration,
+    RefererConfiguration,
+    SelectMetaStatus,
+    StyleInfo,
+    UserDefinedLogFieldsConfiguration,
+    WebsiteConfiguration
+);
 
 impl Endpoint {
     fn internal_dns(self) -> &'static str {
