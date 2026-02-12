@@ -45,9 +45,6 @@ pub mod fc;
 #[cfg(test)]
 mod sample;
 
-#[cfg(test)]
-mod tests;
-
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error(transparent)]

@@ -11,8 +11,8 @@
 
 use maplit::hashmap;
 
-use crate::oss::{Connection, Endpoint, ListBuckets};
-use crate::v3::AccessKeySecret;
+use ali_acs::AccessKeySecret;
+use ali_acs::oss::{Connection, Endpoint, ListBuckets};
 
 /// Helper to get the connection from environment variables
 fn test_connection() -> Connection {
@@ -57,7 +57,7 @@ async fn test_describe_regions() {
     // let conn = test_connection();
 
     // let result = conn
-    //     .describe_regions(crate::oss::DescribeRegions::new().regions("oss-cn-hangzhou".to_owned()))
+    //     .describe_regions(ali_acs::oss::DescribeRegions::new().regions("oss-cn-hangzhou".to_owned()))
     //     .await
     //     .unwrap();
 
@@ -84,7 +84,7 @@ async fn test_bucket_and_object_lifecycle() {
     todo!(
         "wait refactoring of aliyun-rs-gen of Option handling of shared structs used in response only"
     )
-    // use crate::oss::{DeleteBucket, DeleteObject, GetObject, ListObjects, PutBucket, PutObject};
+    // use ali_acs::oss::{DeleteBucket, DeleteObject, GetObject, ListObjects, PutBucket, PutObject};
 
     // let conn = test_connection();
 
@@ -104,7 +104,7 @@ async fn test_bucket_and_object_lifecycle() {
     // // 2. List buckets and ensure the bucket is present
     // println!("Step 2: Listing buckets to verify creation...");
     // let list_result = conn
-    //     .list_buckets(crate::oss::ListBuckets::new())
+    //     .list_buckets(ali_acs::oss::ListBuckets::new())
     //     .await
     //     .unwrap();
     // let bucket_found = list_result
@@ -185,7 +185,7 @@ async fn test_bucket_and_object_lifecycle() {
     // // 8. Ensure that the bucket is deleted
     // println!("Step 8: Verifying bucket is deleted...");
     // let list_result_after_delete = conn
-    //     .list_buckets(crate::oss::ListBuckets::new())
+    //     .list_buckets(ali_acs::oss::ListBuckets::new())
     //     .await
     //     .unwrap();
     // let bucket_still_exists = list_result_after_delete
@@ -207,14 +207,14 @@ async fn clean_test_buckets() {
     todo!(
         "wait refactoring of aliyun-rs-gen of Option handling of shared structs used in response only"
     )
-    // use crate::oss::{DeleteBucket, DeleteObject, ListObjects};
+    // use ali_acs::oss::{DeleteBucket, DeleteObject, ListObjects};
 
     // let conn = test_connection();
 
     // // 1. List all buckets
     // println!("Listing all buckets...");
     // let list_result = conn
-    //     .list_buckets(crate::oss::ListBuckets::new())
+    //     .list_buckets(ali_acs::oss::ListBuckets::new())
     //     .await
     //     .unwrap();
 

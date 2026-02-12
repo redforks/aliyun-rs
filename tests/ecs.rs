@@ -1,10 +1,10 @@
-use crate::ecs::{Connection, Endpoint};
+use ali_acs::ecs::{Connection, Endpoint};
 
 /// Creates a test connection using environment variables.
 fn test_connection() -> Connection {
     let access_key = std::env::var("TEST_ALI_ACCESS_KEY")
         .expect("TEST_ALI_ACCESS_KEY environment variable not set");
-    let secret = crate::v3::AccessKeySecret::new(
+    let secret = ali_acs::AccessKeySecret::new(
         access_key,
         std::env::var("TEST_ALI_SECRET").expect("TEST_ALI_SECRET environment variable not set"),
     );
@@ -17,7 +17,7 @@ fn test_connection() -> Connection {
 async fn test_describe_regions_english() {
     let conn = test_connection();
 
-    let req = crate::ecs::DescribeRegions::new()
+    let req = ali_acs::ecs::DescribeRegions::new()
         .accept_language("en-US".to_string())
         .resource_type("instance".to_string());
 

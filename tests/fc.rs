@@ -3,8 +3,8 @@
 //! These tests validate that the Aliyun server accepts our requests.
 //! Set TEST_ALI_ACCESS_KEY and TEST_ALI_SECRET environment variables to run.
 
-use crate::fc::{Connection, Endpoint};
-use crate::v3::AccessKeySecret;
+use ali_acs::AccessKeySecret;
+use ali_acs::fc::{Connection, Endpoint};
 use rand::Rng;
 
 /// Helper to get the connection from environment variables
@@ -26,7 +26,7 @@ async fn test_describe_regions() {
     )
     // let conn = test_connection();
     // let result = conn
-    //     .describe_regions(crate::fc::DescribeRegions::new())
+    //     .describe_regions(ali_acs::fc::DescribeRegions::new())
     //     .await
     //     .unwrap();
 
@@ -56,18 +56,18 @@ async fn test_create_invoke_delete_function() {
     let zip_file_base64 = base64::engine::general_purpose::STANDARD.encode(&code_bytes);
 
     // Build the CreateFunctionInput
-    let input = crate::fc::CreateFunctionInput {
+    let input = ali_acs::fc::CreateFunctionInput {
         function_name: function_name.clone(),
         runtime: "custom.debian10".to_string(),
         handler: "index.handler".to_string(),
         cpu: Some(0.05),
         memory_size: Some(128),
         disk_size: Some(512),
-        code: Some(crate::fc::InputCodeLocation {
+        code: Some(ali_acs::fc::InputCodeLocation {
             zip_file: Some(zip_file_base64),
             ..Default::default()
         }),
-        custom_runtime_config: Some(crate::fc::CustomRuntimeConfig {
+        custom_runtime_config: Some(ali_acs::fc::CustomRuntimeConfig {
             command: vec!["/code/hello-fc".to_string()],
             port: Some(3000),
             ..Default::default()
@@ -78,7 +78,7 @@ async fn test_create_invoke_delete_function() {
 
     // Create the function
     let create_result = conn
-        .create_function(crate::fc::CreateFunction::new(input))
+        .create_function(ali_acs::fc::CreateFunction::new(input))
         .await
         .unwrap();
     println!(
@@ -91,14 +91,17 @@ async fn test_create_invoke_delete_function() {
         "authType": "anonymous",
         "methods": ["GET", "POST"]
     });
-    let trigger_input = crate::fc::CreateTriggerInput {
+    let trigger_input = ali_acs::fc::CreateTriggerInput {
         trigger_name: "http-trigger".to_string(),
         trigger_type: "http".to_string(),
         trigger_config: serde_json::to_string(&trigger_config).unwrap(),
         ..Default::default()
     };
     let trigger_result = conn
-        .create_trigger(crate::fc::CreateTrigger::new(&function_name, trigger_input))
+        .create_trigger(ali_acs::fc::CreateTrigger::new(
+            &function_name,
+            trigger_input,
+        ))
         .await
         .unwrap();
 
@@ -113,7 +116,7 @@ async fn test_create_invoke_delete_function() {
     let mut ready = false;
     for i in 0..30 {
         let func = conn
-            .get_function(crate::fc::GetFunction::new(&function_name))
+            .get_function(ali_acs::fc::GetFunction::new(&function_name))
             .await
             .unwrap();
         let state = func.state.as_deref().unwrap_or("Unknown");
@@ -139,7 +142,7 @@ async fn test_create_invoke_delete_function() {
     assert_eq!(body, "Hello, World!");
 
     // Clean up: delete the function (this also removes its triggers)
-    conn.delete_function(crate::fc::DeleteFunction::new(&function_name))
+    conn.delete_function(ali_acs::fc::DeleteFunction::new(&function_name))
         .await
         .unwrap();
     println!("Function {} deleted successfully", function_name);

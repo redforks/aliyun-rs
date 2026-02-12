@@ -5,8 +5,8 @@
 //!
 //! Test resources are created with "cirrus-test-" prefix for easy cleanup.
 
-use crate::sms::{Connection, Endpoint};
-use crate::v3::AccessKeySecret;
+use ali_acs::AccessKeySecret;
+use ali_acs::sms::{Connection, Endpoint};
 
 /// Helper to get the connection from environment variables
 fn test_connection() -> Connection {
@@ -35,7 +35,7 @@ async fn test_query_sms_sign_list() {
     let conn = test_connection();
 
     let result = conn
-        .query_sms_sign_list(crate::sms::QuerySmsSignList::new())
+        .query_sms_sign_list(ali_acs::sms::QuerySmsSignList::new())
         .await;
 
     match result {
@@ -54,7 +54,7 @@ async fn test_get_sms_sign_by_name() {
     let conn = test_connection();
 
     let result = conn
-        .get_sms_sign(crate::sms::GetSmsSign::new("test-sign"))
+        .get_sms_sign(ali_acs::sms::GetSmsSign::new("test-sign"))
         .await;
 
     match result {
@@ -73,7 +73,7 @@ async fn test_query_sms_sign() {
     let conn = test_connection();
 
     let result = conn
-        .query_sms_sign(crate::sms::QuerySmsSign::new("test-sign"))
+        .query_sms_sign(ali_acs::sms::QuerySmsSign::new("test-sign"))
         .await;
 
     match result {
@@ -92,7 +92,7 @@ async fn test_get_sms_template() {
     let conn = test_connection();
 
     let result = conn
-        .get_sms_template(crate::sms::GetSmsTemplate::new("SMS_template"))
+        .get_sms_template(ali_acs::sms::GetSmsTemplate::new("SMS_template"))
         .await;
 
     match result {
@@ -114,7 +114,7 @@ async fn test_send_sms() {
     let conn = test_connection();
 
     // Send a test SMS - this requires an approved sign and template
-    let send_request = crate::sms::SendSms::new(
+    let send_request = ali_acs::sms::SendSms::new(
         "15000000000",  // Test phone number - must be bound in console
         "test-sign",    // Must be an approved sign
         "SMS_template", // Must be an approved template
@@ -146,7 +146,8 @@ async fn test_query_send_details() {
     let send_date = format_date(time::OffsetDateTime::now_utc());
     let phone_number = "15000000000";
 
-    let query_request = crate::sms::QuerySendDetails::new(phone_number, &send_date, 10_i64, 1_i64);
+    let query_request =
+        ali_acs::sms::QuerySendDetails::new(phone_number, &send_date, 10_i64, 1_i64);
 
     let result = conn.query_send_details(query_request).await;
 
@@ -173,7 +174,7 @@ async fn test_query_sms_template_list() {
     let conn = test_connection();
 
     let result = conn
-        .query_sms_template_list(crate::sms::QuerySmsTemplateList::new())
+        .query_sms_template_list(ali_acs::sms::QuerySmsTemplateList::new())
         .await;
 
     match result {
@@ -198,7 +199,7 @@ async fn test_query_send_statistics() {
     let start_date = format_date(time::OffsetDateTime::now_utc() - time::Duration::days(7));
 
     let result = conn
-        .query_send_statistics(crate::sms::QuerySendStatistics::new(
+        .query_send_statistics(ali_acs::sms::QuerySendStatistics::new(
             0_i32,
             &start_date,
             &end_date,
@@ -230,7 +231,7 @@ async fn test_send_batch_sms() {
     let sign_names = r#"["test-sign","test-sign"]"#;
     let template_params = r#"[{"code":"1234"},{"code":"5678"}]"#;
 
-    let send_request = crate::sms::SendBatchSms::new(
+    let send_request = ali_acs::sms::SendBatchSms::new(
         phone_numbers,
         sign_names,
         "SMS_template", // Must be an approved template
