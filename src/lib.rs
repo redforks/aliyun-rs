@@ -104,7 +104,9 @@ trait Request: Sized + Send {
         Box::new([])
     }
 
-    fn from_headers(_resp: &mut Self::ResponseWrap, _headers: &HeaderMap<HeaderValue>) {}
+    fn from_headers(_resp: &mut Self::ResponseWrap, _headers: &HeaderMap<HeaderValue>) -> Result<()> {
+        Ok(())
+    }
 }
 
 #[derive(Debug, Deserialize, Default, thiserror::Error)]

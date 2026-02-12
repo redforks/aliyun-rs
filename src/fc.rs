@@ -12536,9 +12536,9 @@ pub enum CreateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
 }
 
 impl Default for CreateFunctionInputInstanceIsolationMode {
@@ -12552,8 +12552,8 @@ impl CreateFunctionInputInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
         }
     }
 }
@@ -12639,9 +12639,9 @@ pub enum FunctionInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
 }
 
 impl Default for FunctionInstanceIsolationMode {
@@ -12655,8 +12655,8 @@ impl FunctionInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
         }
     }
 }
@@ -12742,9 +12742,9 @@ pub enum UpdateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
 }
 
 impl Default for UpdateFunctionInputInstanceIsolationMode {
@@ -12758,8 +12758,8 @@ impl UpdateFunctionInputInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
         }
     }
 }

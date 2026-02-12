@@ -92,7 +92,7 @@ where
     let resp = if status.is_success() {
         // Use ResponseWrap to deserialize response bytes
         let mut wrap = R::ResponseWrap::from_body(resp_bytes.to_vec())?;
-        R::from_headers(&mut wrap, &resp_headers);
+        R::from_headers(&mut wrap, &resp_headers)?;
         wrap.to_code_message().check()?;
         // Convert ResponseWrap to Response type
         wrap.into_response()

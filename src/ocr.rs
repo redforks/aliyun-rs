@@ -9963,7 +9963,7 @@ pub enum TextType {
     #[serde(rename = "ChinesePassport")]
     ChinesePassport,
     #[serde(rename = "PermitToHK_MO_TW")]
-    PermitToHK_MO_TW,
+    PermitToHkMoTw,
     #[serde(rename = "PermitToMainland")]
     PermitToMainland,
     #[serde(rename = "HKIdCard")]
@@ -10079,7 +10079,7 @@ impl TextType {
             Self::BankCard => "BankCard",
             Self::BirthCertification => "BirthCertification",
             Self::ChinesePassport => "ChinesePassport",
-            Self::PermitToHK_MO_TW => "PermitToHK_MO_TW",
+            Self::PermitToHkMoTw => "PermitToHK_MO_TW",
             Self::PermitToMainland => "PermitToMainland",
             Self::HKIdCard => "HKIdCard",
             Self::SocialSecurityCard => "SocialSecurityCard",

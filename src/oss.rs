@@ -120,6 +120,8 @@ mod sealed {
     pub trait Bound {}
 }
 
+use anyhow::Context;
+
 #[derive(Clone)]
 pub struct Connection(crate::common::Connection<crate::auth::Oss4HmacSha256>);
 
@@ -2231,7 +2233,7 @@ impl Connection {
     ///
     pub fn option_object(
         &self,
-        req: OptionObject,
+        _req: OptionObject,
     ) -> impl std::future::Future<Output = crate::Result<OptionObjectResponse>> + Send {
         async {
             todo!(
@@ -3238,7 +3240,7 @@ impl Connection {
     ///
     pub fn put_access_point_public_access_block(
         &self,
-        req: PutAccessPointPublicAccessBlock,
+        _req: PutAccessPointPublicAccessBlock,
     ) -> impl std::future::Future<Output = crate::Result<PutAccessPointPublicAccessBlockResponse>> + Send
     {
         async {
@@ -5802,14 +5804,18 @@ impl crate::Request for InitiateBucketWorm {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-worm-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_worm_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_worm_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -6937,14 +6943,18 @@ impl crate::Request for PutBucketReplication {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-replication-rule-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_replication_rule_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_replication_rule_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -8856,36 +8866,38 @@ impl crate::Request for OptionObject {
 
     fn to_body(self) -> Self::Body {}
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("Access-Control-Allow-Origin") {
-            if let Ok(s) = value.to_str() {
-                inner.access_control_allow_origin = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.access_control_allow_origin = Some(parsed);
         }
         if let Some(value) = headers.get("Access-Control-Allow-Methods") {
-            if let Ok(s) = value.to_str() {
-                inner.access_control_allow_methods = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.access_control_allow_methods = Some(parsed);
         }
         if let Some(value) = headers.get("Access-Control-Allow-Headers") {
-            if let Ok(s) = value.to_str() {
-                inner.access_control_allow_headers = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.access_control_allow_headers = Some(parsed);
         }
         if let Some(value) = headers.get("Access-Control-Expose-Headers") {
-            if let Ok(s) = value.to_str() {
-                inner.access_control_expose_headers = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.access_control_expose_headers = Some(parsed);
         }
         if let Some(value) = headers.get("Access-Control-Max-Age") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.access_control_max_age = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.access_control_max_age = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -9468,14 +9480,18 @@ impl crate::Request for InitUserAntiDDosInfo {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-defender-instance") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_defender_instance = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_defender_instance = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -11753,21 +11769,23 @@ impl crate::Request for PutObject {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_hash_crc64ecma = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_hash_crc64ecma = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12003,19 +12021,23 @@ impl crate::Request for CopyObject {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-copy-source-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_copy_source_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_copy_source_version_id = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12198,87 +12220,86 @@ impl crate::Request for GetObject {
 
     fn to_body(self) -> Self::Body {}
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-server-side-encryption") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_server_side_encryption = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_server_side_encryption = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_server_side_encryption_key_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_server_side_encryption_key_id = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-storage-class") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_storage_class = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_storage_class = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-object-type") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_object_type = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_object_type = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-next-append-position") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_next_append_position = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_next_append_position = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_hash_crc64ecma = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_hash_crc64ecma = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-expiration") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_expiration = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_expiration = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-restore") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_restore = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_restore = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-process-status") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_process_status = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_process_status = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-request-charged") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_request_charged = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_request_charged = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Md5") {
-            if let Ok(s) = value.to_str() {
-                inner.content_md5 = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.content_md5 = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Length") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.content_length = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.content_length = Some(parsed);
         }
         if let Some(value) = headers.get("Last-Modified") {
-            if let Ok(s) = value.to_str() {
-                inner.last_modified = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.last_modified = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Type") {
-            if let Ok(s) = value.to_str() {
-                inner.content_type = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.content_type = Some(parsed);
         }
         if let Some(value) = headers.get("ETag") {
-            if let Ok(s) = value.to_str() {
-                inner.e_tag = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.e_tag = Some(parsed);
         }
         // Handle wildcard headers matching prefix "x-oss-meta-"
         for (k, v) in headers
@@ -12291,17 +12312,16 @@ impl crate::Request for GetObject {
             }
         }
         if let Some(value) = headers.get("x-oss-tagging-count") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_tagging_count = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_tagging_count = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Disposition") {
-            if let Ok(s) = value.to_str() {
-                inner.content_disposition = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.content_disposition = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12481,21 +12501,23 @@ impl crate::Request for AppendObject {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-next-append-position") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_next_append_position = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_next_append_position = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_hash_crc64ecma = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_hash_crc64ecma = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12568,14 +12590,18 @@ impl crate::Request for SealAppendObject {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-sealed-time") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_sealed_time = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_sealed_time = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12647,21 +12673,23 @@ impl crate::Request for DeleteObject {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-delete-marker") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<bool>() {
-                    inner.x_oss_delete_marker = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<bool>().context("parse header value")?;
+            inner.x_oss_delete_marker = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12764,87 +12792,86 @@ impl crate::Request for HeadObject {
 
     fn to_body(self) -> Self::Body {}
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-server-side-encryption") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_server_side_encryption = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_server_side_encryption = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_server_side_encryption_key_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_server_side_encryption_key_id = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-storage-class") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_storage_class = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_storage_class = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-object-type") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_object_type = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_object_type = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-next-append-position") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_next_append_position = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_next_append_position = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_hash_crc64ecma = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_hash_crc64ecma = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-expiration") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_expiration = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_expiration = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-restore") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_restore = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_restore = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-process-status") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_process_status = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_process_status = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-request-charged") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_request_charged = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_request_charged = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Md5") {
-            if let Ok(s) = value.to_str() {
-                inner.content_md5 = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.content_md5 = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Length") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.content_length = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.content_length = Some(parsed);
         }
         if let Some(value) = headers.get("Last-Modified") {
-            if let Ok(s) = value.to_str() {
-                inner.last_modified = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.last_modified = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Type") {
-            if let Ok(s) = value.to_str() {
-                inner.content_type = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.content_type = Some(parsed);
         }
         if let Some(value) = headers.get("ETag") {
-            if let Ok(s) = value.to_str() {
-                inner.e_tag = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.e_tag = Some(parsed);
         }
         // Handle wildcard headers matching prefix "x-oss-meta-"
         for (k, v) in headers
@@ -12857,17 +12884,16 @@ impl crate::Request for HeadObject {
             }
         }
         if let Some(value) = headers.get("x-oss-transition-time") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_transition_time = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_transition_time = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-tagging-count") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.x_oss_tagging_count = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.x_oss_tagging_count = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -12933,41 +12959,43 @@ impl crate::Request for GetObjectMeta {
 
     fn to_body(self) -> Self::Body {}
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
         if let Some(value) = headers.get("ETag") {
-            if let Ok(s) = value.to_str() {
-                inner.e_tag = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.e_tag = Some(parsed);
         }
         if let Some(value) = headers.get("Content-Length") {
-            if let Ok(s) = value.to_str() {
-                if let Ok(parsed) = s.parse::<i64>() {
-                    inner.content_length = Some(parsed);
-                }
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<i64>().context("parse header value")?;
+            inner.content_length = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-last-access-time") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_last_access_time = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_last_access_time = Some(parsed);
         }
         if let Some(value) = headers.get("Last-Modifed") {
-            if let Ok(s) = value.to_str() {
-                inner.last_modifed = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.last_modifed = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-transition-time") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_transition_time = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_transition_time = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13039,19 +13067,23 @@ impl crate::Request for RestoreObject {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-object-restore-priority") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_object_restore_priority = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_object_restore_priority = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13624,14 +13656,18 @@ impl crate::Request for CompleteMultipartUpload {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -13775,14 +13811,18 @@ impl crate::Request for UploadPartCopy {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-copy-source-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_copy_source_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_copy_source_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14146,14 +14186,18 @@ impl crate::Request for PutObjectAcl {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14344,14 +14388,18 @@ impl crate::Request for PutSymlink {
         crate::Form(self)
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14417,19 +14465,23 @@ impl crate::Request for GetSymlink {
 
     fn to_body(self) -> Self::Body {}
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-symlink-target") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_symlink_target = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_symlink_target = Some(parsed);
         }
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
@@ -14501,14 +14553,18 @@ impl crate::Request for PutObjectTagging {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 
-    fn from_headers(resp: &mut Self::ResponseWrap, headers: &http::HeaderMap<http::HeaderValue>) {
+    fn from_headers(
+        resp: &mut Self::ResponseWrap,
+        headers: &http::HeaderMap<http::HeaderValue>,
+    ) -> crate::Result<()> {
         // Unwrap the response wrapper to access inner response struct
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
-            if let Ok(s) = value.to_str() {
-                inner.x_oss_version_id = Some(s.to_string());
-            }
+            let s = value.to_str().context("convert header to string")?;
+            let parsed = s.parse::<String>().context("parse header value")?;
+            inner.x_oss_version_id = Some(parsed);
         }
+        Ok(())
     }
 }
 #[derive(derive_setters::Setters, Debug)]
