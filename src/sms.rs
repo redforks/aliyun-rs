@@ -1,3 +1,5 @@
+use anyhow::Context as _;
+
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     ApSoutheast1,

@@ -1,10 +1,12 @@
 #![doc = include_str!("../README.md")]
 
+use anyhow::Context as _;
 use anyhow::anyhow;
 use http::HeaderMap;
 use http::{HeaderValue, Method};
 use serde::Deserialize;
 use std::borrow::Cow;
+use std::str::FromStr;
 
 mod auth;
 mod common;
@@ -104,7 +106,10 @@ trait Request: Sized + Send {
         Box::new([])
     }
 
-    fn from_headers(_resp: &mut Self::ResponseWrap, _headers: &HeaderMap<HeaderValue>) -> Result<()> {
+    fn from_headers(
+        _resp: &mut Self::ResponseWrap,
+        _headers: &HeaderMap<HeaderValue>,
+    ) -> Result<()> {
         Ok(())
     }
 }
@@ -164,3 +169,17 @@ macro_rules! impl_default_to_code_message {
     };
 }
 pub(crate) use impl_default_to_code_message;
+
+trait ParseHeaderValue: Sized {
+    fn parse_header_value(s: &str) -> Result<Self>;
+}
+
+impl<T: FromStr> ParseHeaderValue for Option<T>
+where
+    T::Err: std::error::Error + Send + Sync + 'static,
+{
+    fn parse_header_value(s: &str) -> Result<Self> {
+        let v = s.parse::<T>().context("parse header value")?;
+        Ok(Some(v))
+    }
+}

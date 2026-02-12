@@ -1,3 +1,5 @@
+use anyhow::Context as _;
+
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     CnQingdao,
@@ -12536,9 +12538,9 @@ pub enum CreateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    RequestExclusive,
+    REQUEST_EXCLUSIVE,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SessionExclusive,
+    SESSION_EXCLUSIVE,
 }
 
 impl Default for CreateFunctionInputInstanceIsolationMode {
@@ -12552,8 +12554,8 @@ impl CreateFunctionInputInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
-            Self::SessionExclusive => "SESSION_EXCLUSIVE",
+            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
+            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
         }
     }
 }
@@ -12639,9 +12641,9 @@ pub enum FunctionInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SessionExclusive,
+    SESSION_EXCLUSIVE,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    RequestExclusive,
+    REQUEST_EXCLUSIVE,
 }
 
 impl Default for FunctionInstanceIsolationMode {
@@ -12655,8 +12657,8 @@ impl FunctionInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::SessionExclusive => "SESSION_EXCLUSIVE",
-            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
+            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
+            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
         }
     }
 }
@@ -12742,9 +12744,9 @@ pub enum UpdateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
     SHARE,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    RequestExclusive,
+    REQUEST_EXCLUSIVE,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SessionExclusive,
+    SESSION_EXCLUSIVE,
 }
 
 impl Default for UpdateFunctionInputInstanceIsolationMode {
@@ -12758,8 +12760,8 @@ impl UpdateFunctionInputInstanceIsolationMode {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::SHARE => "SHARE",
-            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
-            Self::SessionExclusive => "SESSION_EXCLUSIVE",
+            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
+            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
         }
     }
 }
