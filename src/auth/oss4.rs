@@ -82,7 +82,7 @@ impl AliyunAuth for Oss4HmacSha256 {
         let sign_date = &timestamp[..8];
 
         // Build canonical request and additional headers string
-        // For OSS, canonical path is resource_path + path, handling "/" duplication
+        // For OSS, canonical path is resource_path
         let canonical_path = resource_path;
         let (canonical_request, additional_headers_str) =
             build_oss4_canonical_request_and_additional_headers(
@@ -805,11 +805,11 @@ UNSIGNED-PAYLOAD"#;
         // 实际签名值应基于正确的 SigningKey 计算
         let signature_res = auth.sign(
             &mut headers,
-            path,
+            "",
             query_string,
             method,
             &b"".as_slice().into(),
-            "/",
+            path,
         )?;
 
         // 从 Authorization 字符串中截取 Signature 部分进行比对
@@ -854,11 +854,11 @@ UNSIGNED-PAYLOAD"#;
         let result = auth
             .sign(
                 &mut headers,
-                path,
+                "",
                 query_string,
                 "PUT",
                 &b"".as_slice().into(),
-                "/",
+                path,
             )
             .unwrap();
 
