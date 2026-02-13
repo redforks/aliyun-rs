@@ -12,7 +12,9 @@
 use maplit::hashmap;
 
 use ali_acs::AccessKeySecret;
-use ali_acs::oss::{Connection, Endpoint, ListBuckets};
+use ali_acs::oss::{
+    Connection, CreateBucketConfiguration, DataRedundancyType, Endpoint, ListBuckets, StorageClass,
+};
 
 /// Helper to get the connection from environment variables
 fn test_connection() -> Connection {
@@ -89,9 +91,14 @@ async fn test_bucket_and_object_lifecycle() {
 
     // 1. Create a new bucket
     println!("Step 1: Creating bucket...");
-    conn.put_bucket(PutBucket::new(&bucket_name))
-        .await
-        .expect("Failed to create bucket");
+    conn.put_bucket(
+        PutBucket::new(&bucket_name).body(CreateBucketConfiguration {
+            storage_class: Some(StorageClass::Ia),
+            data_redundancy_type: Some(DataRedundancyType::Lrs),
+        }),
+    )
+    .await
+    .expect("Failed to create bucket");
     println!("Bucket created successfully");
 
     // 2. List buckets and ensure the bucket is present
