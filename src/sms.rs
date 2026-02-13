@@ -1,5 +1,3 @@
-use anyhow::Context as _;
-
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     ApSoutheast1,
@@ -6515,7 +6513,7 @@ impl crate::Request for UntagResources {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SubmitSmsQualificationBusinessLicensePic {
     /// 营业证件类型。取值：
@@ -6538,7 +6536,6 @@ pub struct SubmitSmsQualificationBusinessLicensePic {
     #[serde(rename = "LicensePic")]
     pub license_pic: Option<String>,
 }
-
 impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
@@ -6554,14 +6551,13 @@ impl crate::FlatSerialize for SubmitSmsQualificationBusinessLicensePic {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SubmitSmsQualificationOtherFile {
     /// 更多资料文件，仅支持png、jpg、jpeg、doc、docx、pdf格式，文件不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     #[serde(rename = "LicensePic")]
     pub license_pic: Option<String>,
 }
-
 impl crate::FlatSerialize for SubmitSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
@@ -6577,7 +6573,7 @@ impl crate::FlatSerialize for SubmitSmsQualificationOtherFile {
 }
 
 /// 单个资质审核详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataList {
     /// 法人姓名。
@@ -6631,63 +6627,8 @@ pub struct DataList {
     pub use_by_self: String,
 }
 
-impl crate::FlatSerialize for DataList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_name,
-            &format!("{}.LegalPersonName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_remark,
-            &format!("{}.AuditRemark", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_name,
-            &format!("{}.CompanyName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.work_order_id,
-            &format!("{}.WorkOrderId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.state_name,
-            &format!("{}.StateName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_time,
-            &format!("{}.AuditTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_group_name,
-            &format!("{}.QualificationGroupName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.group_id, &format!("{}.GroupId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.use_by_self,
-            &format!("{}.UseBySelf", name),
-            params,
-        );
-    }
-}
-
 /// 资质审核列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QualificationRecordResponseData {
     /// 每页数据条数。
@@ -6708,24 +6649,7 @@ pub struct QualificationRecordResponseData {
     pub list: Vec<DataList>,
 }
 
-impl crate::FlatSerialize for QualificationRecordResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.page_size,
-            &format!("{}.PageSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.total, &format!("{}.Total", name), params);
-        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
-        crate::FlatSerialize::flat_serialize(&self.list, &format!("{}.List", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataBusinessLicensePic {
     /// 营业证件类型。取值：
@@ -6747,23 +6671,7 @@ pub struct DataBusinessLicensePic {
     pub pic_url: String,
 }
 
-impl crate::FlatSerialize for DataBusinessLicensePic {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataOtherFile {
     /// 更多资料文件路径参数。
@@ -6776,23 +6684,8 @@ pub struct DataOtherFile {
     pub pic_url: String,
 }
 
-impl crate::FlatSerialize for DataOtherFile {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.license_pic,
-            &format!("{}.LicensePic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.pic_url, &format!("{}.PicUrl", name), params);
-    }
-}
-
 /// 单个资质详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SmsQualificationResponseData {
     /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
@@ -6928,133 +6821,7 @@ pub struct SmsQualificationResponseData {
     pub admin_id_card_pic: String,
 }
 
-impl crate::FlatSerialize for SmsQualificationResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_exp_date,
-            &format!("{}.AdminIDCardExpDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_type,
-            &format!("{}.BusinessType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_front_face,
-            &format!("{}.AdminIDCardFrontFace", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.remark, &format!("{}.Remark", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_name,
-            &format!("{}.LegalPersonName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_name,
-            &format!("{}.CompanyName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_no,
-            &format!("{}.LegalPersonIDCardNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_license_pics,
-            &format!("{}.BusinessLicensePics", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_no,
-            &format!("{}.AdminIDCardNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_code,
-            &format!("{}.OrganizationCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_eff_time,
-            &format!("{}.LegalPersonIdCardEffTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_phone_no,
-            &format!("{}.AdminPhoneNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_name,
-            &format!("{}.QualificationName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_name,
-            &format!("{}.AdminName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.company_type,
-            &format!("{}.CompanyType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_type,
-            &format!("{}.AdminIDCardType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.use_by_self,
-            &format!("{}.UseBySelf", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eff_time_str,
-            &format!("{}.EffTimeStr", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualification_group_id,
-            &format!("{}.QualificationGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.whether_share,
-            &format!("{}.WhetherShare", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.work_order_id,
-            &format!("{}.WorkOrderId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.other_files,
-            &format!("{}.OtherFiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.legal_person_id_card_type,
-            &format!("{}.LegalPersonIDCardType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.admin_id_card_pic,
-            &format!("{}.AdminIDCardPic", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateSmsQualificationBusinessLicensePic {
     /// 营业证件类型。取值：
@@ -7075,7 +6842,6 @@ pub struct UpdateSmsQualificationBusinessLicensePic {
     #[serde(rename = "LicensePic")]
     pub license_pic: Option<String>,
 }
-
 impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePic {
     fn flat_serialize<'a>(
         &'a self,
@@ -7091,14 +6857,13 @@ impl crate::FlatSerialize for UpdateSmsQualificationBusinessLicensePic {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateSmsQualificationOtherFile {
     /// 更多资料文件，仅支持png、jpg、jpeg、doc、docx、pdf格式，文件不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     #[serde(rename = "LicensePic")]
     pub license_pic: Option<String>,
 }
-
 impl crate::FlatSerialize for UpdateSmsQualificationOtherFile {
     fn flat_serialize<'a>(
         &'a self,
@@ -7113,7 +6878,7 @@ impl crate::FlatSerialize for UpdateSmsQualificationOtherFile {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LetterResponseData {
     /// 委托授权方。
@@ -7163,59 +6928,8 @@ pub struct LetterResponseData {
     pub authorization_letter_name: String,
 }
 
-impl crate::FlatSerialize for LetterResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization,
-            &format!("{}.Authorization", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sign_scope,
-            &format!("{}.SignScope", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_exp_date,
-            &format!("{}.AuthorizationLetterExpDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_pic,
-            &format!("{}.AuthorizationLetterPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_code,
-            &format!("{}.OrganizationCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.proxy_authorization,
-            &format!("{}.ProxyAuthorization", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_id,
-            &format!("{}.AuthorizationLetterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_name,
-            &format!("{}.AuthorizationLetterName", name),
-            params,
-        );
-    }
-}
-
 /// 审核信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SignResponseAuditInfo {
     /// 审批未通过的原因。
@@ -7228,26 +6942,7 @@ pub struct SignResponseAuditInfo {
     pub audit_date: String,
 }
 
-impl crate::FlatSerialize for SignResponseAuditInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_date,
-            &format!("{}.AuditDate", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StatusReason {
     /// 报备状态原因码。取值：
@@ -7275,26 +6970,7 @@ pub struct StatusReason {
     pub reason_desc_list: Vec<String>,
 }
 
-impl crate::FlatSerialize for StatusReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reason_code,
-            &format!("{}.ReasonCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reason_desc_list,
-            &format!("{}.ReasonDescList", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetailList {
     /// 报备状态。取值：
@@ -7327,41 +7003,12 @@ pub struct DetailList {
     pub register_status_reasons: Vec<StatusReason>,
 }
 
-impl crate::FlatSerialize for DetailList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.register_status,
-            &format!("{}.RegisterStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operator_code,
-            &format!("{}.OperatorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operator_complete_time,
-            &format!("{}.OperatorCompleteTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.register_status_reasons,
-            &format!("{}.RegisterStatusReasons", name),
-            params,
-        );
-    }
-}
-
 /// 审核备注。
 ///
 /// - 如果审核状态为**审核通过**或**审核中**，参数Reason显示为“无审核备注”。
 ///
 /// - 如果审核状态为**审核未通过**，参数Reason显示审核的具体原因。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SignListItemReason {
     /// 审批未通过的备注信息。
@@ -7378,32 +7025,8 @@ pub struct SignListItemReason {
     pub reject_info: String,
 }
 
-impl crate::FlatSerialize for SignListItemReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_sub_info,
-            &format!("{}.RejectSubInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_date,
-            &format!("{}.RejectDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
-            params,
-        );
-    }
-}
-
 /// 结果列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SignList {
     /// 签名名称。
@@ -7468,59 +7091,8 @@ pub struct SignList {
     pub app_icp_record_id: i64,
 }
 
-impl crate::FlatSerialize for SignList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sign_name,
-            &format!("{}.SignName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_status,
-            &format!("{}.AuditStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.business_type,
-            &format!("{}.BusinessType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_id,
-            &format!("{}.AuthorizationLetterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.authorization_letter_audit_pass,
-            &format!("{}.authorizationLetterAuditPass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_id,
-            &format!("{}.TrademarkId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_id,
-            &format!("{}.AppIcpRecordId", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据结构。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SignatureQualificationResponseData {
     /// 本数据无返回，可忽略。
@@ -7541,25 +7113,8 @@ pub struct SignatureQualificationResponseData {
     pub err_code: String,
 }
 
-impl crate::FlatSerialize for SignatureQualificationResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.err_message,
-            &format!("{}.ErrMessage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
-    }
-}
-
 /// 签名数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AddSmsSignSignFileList {
     /// 签名的资质证明文件经base64编码后的字符串。图片不超过2 MB。个别场景下，申请签名需要上传证明文件。
@@ -7573,7 +7128,6 @@ pub struct AddSmsSignSignFileList {
     #[serde(rename = "FileSuffix")]
     pub file_suffix: String,
 }
-
 impl crate::FlatSerialize for AddSmsSignSignFileList {
     fn flat_serialize<'a>(
         &'a self,
@@ -7594,7 +7148,7 @@ impl crate::FlatSerialize for AddSmsSignSignFileList {
 }
 
 /// 签名文件列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ModifySmsSignSignFileList {
     /// 签名的纸质证明文件经base64编码后的字符串。图片不超过2 MB。
@@ -7609,7 +7163,6 @@ pub struct ModifySmsSignSignFileList {
     #[serde(rename = "FileSuffix")]
     pub file_suffix: String,
 }
-
 impl crate::FlatSerialize for ModifySmsSignSignFileList {
     fn flat_serialize<'a>(
         &'a self,
@@ -7630,7 +7183,7 @@ impl crate::FlatSerialize for ModifySmsSignSignFileList {
 }
 
 /// 商标详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TrademarkResponseData {
     /// 商标截图url地址
@@ -7663,52 +7216,8 @@ pub struct TrademarkResponseData {
     pub trademark_applicant_name: String,
 }
 
-impl crate::FlatSerialize for TrademarkResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_pic_url,
-            &format!("{}.TrademarkPicUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_registration_number,
-            &format!("{}.TrademarkRegistrationNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_name,
-            &format!("{}.TrademarkName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_pic,
-            &format!("{}.TrademarkPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_eff_exp_date,
-            &format!("{}.TrademarkEffExpDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_id,
-            &format!("{}.TrademarkId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trademark_applicant_name,
-            &format!("{}.TrademarkApplicantName", name),
-            params,
-        );
-    }
-}
-
 /// APP-ICP备案实体详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct IcpRecordResponseData {
     /// APP-ICP备案材料id
@@ -7745,53 +7254,8 @@ pub struct IcpRecordResponseData {
     pub app_service_name: String,
 }
 
-impl crate::FlatSerialize for IcpRecordResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_id,
-            &format!("{}.AppIcpRecordId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_pic,
-            &format!("{}.AppIcpRecordPic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_record_pic_url,
-            &format!("{}.AppIcpRecordPicUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_principal_unit_name,
-            &format!("{}.AppPrincipalUnitName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_icp_license_number,
-            &format!("{}.AppIcpLicenseNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.app_approval_date,
-            &format!("{}.AppApprovalDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.app_service_name,
-            &format!("{}.AppServiceName", name),
-            params,
-        );
-    }
-}
-
 /// 审核信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateResponseAuditInfo {
     /// 审核未通过的原因。
@@ -7804,26 +7268,7 @@ pub struct TemplateResponseAuditInfo {
     pub audit_date: String,
 }
 
-impl crate::FlatSerialize for TemplateResponseAuditInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_date,
-            &format!("{}.AuditDate", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseFileUrlList {
     /// 文件资料信息。兼容旧接口创建的信息。
@@ -7832,17 +7277,7 @@ pub struct ResponseFileUrlList {
     pub file_url: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseFileUrlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.file_url, &format!("{}.FileUrl", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataFileUrlList {
     /// 更多资料信息，补充上传业务证明文件或业务截图文件列表。
@@ -7851,22 +7286,8 @@ pub struct DataFileUrlList {
     pub more_data_file_url: Vec<String>,
 }
 
-impl crate::FlatSerialize for DataFileUrlList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.more_data_file_url,
-            &format!("{}.MoreDataFileUrl", name),
-            params,
-        );
-    }
-}
-
 /// 审核返回值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateListItemReason {
     /// 审核未通过的时间，格式为yyyy-MM-dd HH:mm:ss。
@@ -7883,32 +7304,8 @@ pub struct TemplateListItemReason {
     pub reject_sub_info: String,
 }
 
-impl crate::FlatSerialize for TemplateListItemReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_date,
-            &format!("{}.RejectDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_info,
-            &format!("{}.RejectInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reject_sub_info,
-            &format!("{}.RejectSubInfo", name),
-            params,
-        );
-    }
-}
-
 /// 单个模板详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateList {
     /// 短信模板Code。
@@ -8009,63 +7406,7 @@ pub struct TemplateList {
     pub traffic_driving: String,
 }
 
-impl crate::FlatSerialize for TemplateList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.template_name,
-            &format!("{}.TemplateName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.outer_template_type,
-            &format!("{}.OuterTemplateType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.audit_status,
-            &format!("{}.AuditStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.template_content,
-            &format!("{}.TemplateContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
-        crate::FlatSerialize::flat_serialize(&self.order_id, &format!("{}.OrderId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.template_type,
-            &format!("{}.TemplateType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.signature_name,
-            &format!("{}.SignatureName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.traffic_driving,
-            &format!("{}.TrafficDriving", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetailDto {
     /// 运营商短信状态码。
@@ -8113,44 +7454,7 @@ pub struct DetailDto {
     pub send_status: i64,
 }
 
-impl crate::FlatSerialize for DetailDto {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_date,
-            &format!("{}.ReceiveDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.phone_num,
-            &format!("{}.PhoneNum", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.send_status,
-            &format!("{}.SendStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetailDTOs {
     /// 短信发送明细。
@@ -8159,21 +7463,7 @@ pub struct DetailDTOs {
     pub sms_send_detail_dto: Vec<DetailDto>,
 }
 
-impl crate::FlatSerialize for DetailDTOs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sms_send_detail_dto,
-            &format!("{}.SmsSendDetailDTO", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TargetList {
     /// 发送成功的短信条数。
@@ -8198,42 +7488,8 @@ pub struct TargetList {
     pub send_date: String,
 }
 
-impl crate::FlatSerialize for TargetList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.responded_success_count,
-            &format!("{}.RespondedSuccessCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.responded_fail_count,
-            &format!("{}.RespondedFailCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.no_responded_count,
-            &format!("{}.NoRespondedCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StatisticsResponseData {
     /// 返回数据的总条数。
@@ -8246,27 +7502,8 @@ pub struct StatisticsResponseData {
     pub target_list: Vec<TargetList>,
 }
 
-impl crate::FlatSerialize for StatisticsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.total_size,
-            &format!("{}.TotalSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_list,
-            &format!("{}.TargetList", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseData {
     /// 短信签名。
@@ -8303,41 +7540,8 @@ pub struct ResponseData {
     pub bucket: String,
 }
 
-impl crate::FlatSerialize for ResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.ali_uid, &format!("{}.AliUid", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct IdResponseData {
     /// 资源ID。
@@ -8350,27 +7554,8 @@ pub struct IdResponseData {
     pub res_url_download: String,
 }
 
-impl crate::FlatSerialize for IdResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.res_url_download,
-            &format!("{}.ResUrlDownload", name),
-            params,
-        );
-    }
-}
-
 /// 返回对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CreateCardSmsTemplateResponseData {
     /// 卡片短信模板Code。您可以在控制台**卡片短信**[模板管理](https://dysms.console.aliyun.com/domestic/card)页面查看**模板Code**。
@@ -8381,22 +7566,8 @@ pub struct CreateCardSmsTemplateResponseData {
     pub template_code: String,
 }
 
-impl crate::FlatSerialize for CreateCardSmsTemplateResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryCardSmsTemplateResponseData {
     /// 返回模板列表。
@@ -8405,22 +7576,8 @@ pub struct QueryCardSmsTemplateResponseData {
     pub templates: Vec<crate::OpenObject>,
 }
 
-impl crate::FlatSerialize for QueryCardSmsTemplateResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.templates,
-            &format!("{}.Templates", name),
-            params,
-        );
-    }
-}
-
 /// 查询数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CheckMobilesCardSupportResponseDataQueryResult {
     /// 手机号码。
@@ -8437,19 +7594,8 @@ pub struct CheckMobilesCardSupportResponseDataQueryResult {
     pub support: bool,
 }
 
-impl crate::FlatSerialize for CheckMobilesCardSupportResponseDataQueryResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.mobile", name), params);
-        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.support", name), params);
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CheckMobilesCardSupportResponseData {
     /// 查询结果列表。
@@ -8458,22 +7604,8 @@ pub struct CheckMobilesCardSupportResponseData {
     pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResult>,
 }
 
-impl crate::FlatSerialize for CheckMobilesCardSupportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.query_result,
-            &format!("{}.queryResult", name),
-            params,
-        );
-    }
-}
-
 /// 查询值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponseDataQueryResult {
     /// 查询的手机号码。
@@ -8489,19 +7621,8 @@ pub struct QueryMobilesCardSupportResponseDataQueryResult {
     pub support: bool,
 }
 
-impl crate::FlatSerialize for QueryMobilesCardSupportResponseDataQueryResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.mobile, &format!("{}.Mobile", name), params);
-        crate::FlatSerialize::flat_serialize(&self.support, &format!("{}.Support", name), params);
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryMobilesCardSupportResponseData {
     /// 查询值。
@@ -8510,22 +7631,8 @@ pub struct QueryMobilesCardSupportResponseData {
     pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResult>,
 }
 
-impl crate::FlatSerialize for QueryMobilesCardSupportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.query_result,
-            &format!("{}.QueryResult", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LinkResponseData {
     /// 卡片短信模板审核状态。取值：
@@ -8555,42 +7662,8 @@ pub struct LinkResponseData {
     pub card_sign_names: String,
 }
 
-impl crate::FlatSerialize for LinkResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_phone_numbers,
-            &format!("{}.CardPhoneNumbers", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_sms_links,
-            &format!("{}.CardSmsLinks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_sign_names,
-            &format!("{}.CardSignNames", name),
-            params,
-        );
-    }
-}
-
 /// 卡片短信发送记录。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DTORecord {
     /// 模板code。
@@ -8648,64 +7721,8 @@ pub struct DTORecord {
     pub err_code: String,
 }
 
-impl crate::FlatSerialize for DTORecord {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.template_code,
-            &format!("{}.TemplateCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.render_date,
-            &format!("{}.RenderDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_date,
-            &format!("{}.ReceiveDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.render_status,
-            &format!("{}.RenderStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.receive_type,
-            &format!("{}.ReceiveType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_status,
-            &format!("{}.SendStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.out_id, &format!("{}.OutId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.phone_number,
-            &format!("{}.PhoneNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sms_content,
-            &format!("{}.SmsContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.send_date,
-            &format!("{}.SendDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.err_code, &format!("{}.ErrCode", name), params);
-    }
-}
-
 /// 卡片短信发送结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetailDTO {
     /// 总量。
@@ -8726,33 +7743,8 @@ pub struct DetailDTO {
     pub records: Vec<DTORecord>,
 }
 
-impl crate::FlatSerialize for DetailDTO {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.page_size,
-            &format!("{}.PageSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_page,
-            &format!("{}.CurrentPage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.records, &format!("{}.Records", name), params);
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportResponseData {
     /// 返回数据列表。
@@ -8761,18 +7753,8 @@ pub struct ReportResponseData {
     pub model: Vec<crate::OpenObject>,
 }
 
-impl crate::FlatSerialize for ReportResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.model, &format!("{}.model", name), params);
-    }
-}
-
 /// 卡片短信对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CardObject {
     /// 渲染失败后跳转链接。
@@ -8785,7 +7767,6 @@ pub struct CardObject {
     #[serde(rename = "mobile")]
     pub mobile: Option<String>,
 }
-
 impl crate::FlatSerialize for CardObject {
     fn flat_serialize<'a>(
         &'a self,
@@ -8807,7 +7788,7 @@ impl crate::FlatSerialize for CardObject {
 }
 
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SendCardSmsResponseData {
     /// 接收卡片短信的手机号。
@@ -8840,47 +7821,8 @@ pub struct SendCardSmsResponseData {
     pub biz_sms_id: String,
 }
 
-impl crate::FlatSerialize for SendCardSmsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.media_mobiles,
-            &format!("{}.MediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_card_id,
-            &format!("{}.BizCardId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_digital_id,
-            &format!("{}.BizDigitalId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_sms_id,
-            &format!("{}.BizSmsId", name),
-            params,
-        );
-    }
-}
-
 /// 返回数据。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BatchCardSmsResponseData {
     /// 接收卡片短信的手机号。
@@ -8913,47 +7855,8 @@ pub struct BatchCardSmsResponseData {
     pub biz_sms_id: String,
 }
 
-impl crate::FlatSerialize for BatchCardSmsResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.media_mobiles,
-            &format!("{}.MediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_card_id,
-            &format!("{}.BizCardId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_digital_id,
-            &format!("{}.BizDigitalId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.card_tmp_state,
-            &format!("{}.CardTmpState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_media_mobiles,
-            &format!("{}.NotMediaMobiles", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.biz_sms_id,
-            &format!("{}.BizSmsId", name),
-            params,
-        );
-    }
-}
-
 /// OSS配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InfoResponseData {
     /// 签名策略。
@@ -8982,35 +7885,8 @@ pub struct InfoResponseData {
     pub host: String,
 }
 
-impl crate::FlatSerialize for InfoResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(&self.expire, &format!("{}.Expire", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-    }
-}
-
 /// 返回结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseModel {
     /// 签名策略。
@@ -9039,39 +7915,8 @@ pub struct ResponseModel {
     pub expire_time: String,
 }
 
-impl crate::FlatSerialize for ResponseModel {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-    }
-}
-
 /// OSS配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InfoResponseModel {
     /// 签名策略。
@@ -9104,40 +7949,8 @@ pub struct InfoResponseModel {
     pub expire_time: String,
 }
 
-impl crate::FlatSerialize for InfoResponseModel {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_path,
-            &format!("{}.StartPath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.signature,
-            &format!("{}.Signature", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host, &format!("{}.Host", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.ExpireTime", name),
-            params,
-        );
-    }
-}
-
 /// 短链详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddShortUrlResponseData {
     /// 原始链接地址。
@@ -9156,32 +7969,8 @@ pub struct AddShortUrlResponseData {
     pub short_url: String,
 }
 
-impl crate::FlatSerialize for AddShortUrlResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.source_url,
-            &format!("{}.SourceUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_date,
-            &format!("{}.ExpireDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url,
-            &format!("{}.ShortUrl", name),
-            params,
-        );
-    }
-}
-
 /// 短链详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QueryShortUrlResponseData {
     /// 短链使用的UV数据。
@@ -9223,56 +8012,7 @@ pub struct QueryShortUrlResponseData {
     pub short_url: String,
 }
 
-impl crate::FlatSerialize for QueryShortUrlResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.unique_visitor_count,
-            &format!("{}.UniqueVisitorCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_url,
-            &format!("{}.SourceUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url_status,
-            &format!("{}.ShortUrlStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.page_view_count,
-            &format!("{}.PageViewCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_date,
-            &format!("{}.ExpireDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url_name,
-            &format!("{}.ShortUrlName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_date,
-            &format!("{}.CreateDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.short_url,
-            &format!("{}.ShortUrl", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ListTagResourcesTag {
     /// 标签键。
@@ -9282,7 +8022,6 @@ pub struct ListTagResourcesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ListTagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -9295,7 +8034,7 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 }
 
 /// 标签资源。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResource {
     /// 资源类型。
@@ -9316,32 +8055,7 @@ pub struct TagResource {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for TagResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseTagResources {
     /// 标签资源。
@@ -9350,22 +8064,8 @@ pub struct ResponseTagResources {
     pub tag_resource: Vec<TagResource>,
 }
 
-impl crate::FlatSerialize for ResponseTagResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_resource,
-            &format!("{}.TagResource", name),
-            params,
-        );
-    }
-}
-
 /// 标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TagResourcesTag {
     /// 标签键。
@@ -9375,7 +8075,6 @@ pub struct TagResourcesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for TagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -9391,14 +8090,14 @@ impl crate::FlatSerialize for TagResourcesTag {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum EncryptType {
     #[serde(rename = "SHA1")]
-    SHA1,
+    Sha1,
     #[serde(rename = "NORMAL")]
-    NORMAL,
+    Normal,
 }
 
 impl Default for EncryptType {
     fn default() -> Self {
-        Self::SHA1
+        Self::Sha1
     }
 }
 
@@ -9406,8 +8105,8 @@ impl EncryptType {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::SHA1 => "SHA1",
-            Self::NORMAL => "NORMAL",
+            Self::Sha1 => "SHA1",
+            Self::Normal => "NORMAL",
         }
     }
 }

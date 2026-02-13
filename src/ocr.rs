@@ -1,5 +1,3 @@
-use anyhow::Context as _;
-
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     CnHangzhou,
@@ -7812,7 +7810,7 @@ impl crate::Request for VerifyVATInvoice {
 }
 
 /// * 当图片类型为通用文字识别高精版时（**Type=Advanced**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AdvancedConfig {
     /// - 是否需要成行返回功能。开启后会返回**RowInfo**字段（详见返回参数说明）。
@@ -7863,7 +7861,6 @@ pub struct AdvancedConfig {
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: Option<bool>,
 }
-
 impl crate::FlatSerialize for AdvancedConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7914,7 +7911,7 @@ impl crate::FlatSerialize for AdvancedConfig {
 }
 
 /// * 当图片类型为身份证时（**Type=IdCard**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TextIdCardConfig {
     /// - 是否需要身份证质量检测功能。
@@ -7927,7 +7924,6 @@ pub struct TextIdCardConfig {
     #[serde(rename = "Llm_rec")]
     pub llm_rec: Option<bool>,
 }
-
 impl crate::FlatSerialize for TextIdCardConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7944,7 +7940,7 @@ impl crate::FlatSerialize for TextIdCardConfig {
 }
 
 /// * 当图片类型为国际身份证时（Type=**InternationalIdCard**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InternationalIdCardConfig {
     /// - 国家名称。
@@ -7954,7 +7950,6 @@ pub struct InternationalIdCardConfig {
     #[serde(rename = "Country")]
     pub country: Option<ConfigCountry>,
 }
-
 impl crate::FlatSerialize for InternationalIdCardConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7966,7 +7961,7 @@ impl crate::FlatSerialize for InternationalIdCardConfig {
 }
 
 /// * 当图片类型为国际企业执照时（Type=**InternationalBusinessLicense**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct LicenseConfig {
     /// * 国家名称。
@@ -7976,7 +7971,6 @@ pub struct LicenseConfig {
     #[serde(rename = "Country")]
     pub country: Option<String>,
 }
-
 impl crate::FlatSerialize for LicenseConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7988,7 +7982,7 @@ impl crate::FlatSerialize for LicenseConfig {
 }
 
 /// * 当图片类型为通用多语言文字时（Type=**MultiLang**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct LanConfig {
     /// - 支持的语言列表。
@@ -7997,7 +7991,6 @@ pub struct LanConfig {
     #[serde(rename = "Languages")]
     pub languages: Option<String>,
 }
-
 impl crate::FlatSerialize for LanConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -8013,7 +8006,7 @@ impl crate::FlatSerialize for LanConfig {
 }
 
 /// * 当图片类型为表格时（Type=**Table**），可通过本字段设置可选功能。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TableConfig {
     /// * 是否是手写表格。
@@ -8041,7 +8034,6 @@ pub struct TableConfig {
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: Option<bool>,
 }
-
 impl crate::FlatSerialize for TableConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -8071,7 +8063,7 @@ impl crate::FlatSerialize for TableConfig {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePoint {
     /// 顶点横坐标。
@@ -8084,19 +8076,8 @@ pub struct ImagePoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for ImagePoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 子图旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageRect {
     /// 矩形中心点横坐标。
@@ -8117,21 +8098,8 @@ pub struct ImageRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for ImageRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
 /// * 结构化信息明细，字典类型。Key为字段名称，Value为此字段对应的识别结果（包含字段值、坐标、置信度等）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct KvDetails {
     /// Additional properties not explicitly defined in the schema
@@ -8139,19 +8107,9 @@ pub struct KvDetails {
     pub extra: std::collections::HashMap<String, crate::Value>,
 }
 
-impl crate::FlatSerialize for KvDetails {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
 /// * 子图的结构化信息。
 /// * 个人卡证、票据等类型图片会返回结构化信息。例如身份证图片，此字段会包含姓名、性别等信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImagesItemKvInfo {
     /// 子图所包含结构化信息的键值对数量。
@@ -8169,23 +8127,7 @@ pub struct TextResponseDataSubImagesItemKvInfo {
     pub kv_details: KvDetails,
 }
 
-impl crate::FlatSerialize for TextResponseDataSubImagesItemKvInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.kv_details,
-            &format!("{}.KvDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockPoint {
     /// 顶点横坐标。
@@ -8198,19 +8140,8 @@ pub struct BlockPoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for BlockPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 文字块旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockRect {
     /// 矩形中心点横坐标。
@@ -8231,20 +8162,7 @@ pub struct BlockRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for BlockRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CharPoint {
     /// 顶点横坐标。
@@ -8257,19 +8175,8 @@ pub struct CharPoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for CharPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 单字旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CharRect {
     /// 矩形中心点横坐标。
@@ -8290,20 +8197,7 @@ pub struct CharRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for CharRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CharInfo {
     /// 单字ID（编号从**0**开始）。
@@ -8328,37 +8222,7 @@ pub struct CharInfo {
     pub char_rect: CharRect,
 }
 
-impl crate::FlatSerialize for CharInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.char_id, &format!("{}.CharId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.char_content,
-            &format!("{}.CharContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_confidence,
-            &format!("{}.CharConfidence", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_points,
-            &format!("{}.CharPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_rect,
-            &format!("{}.CharRect", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockDetail {
     /// 文字块ID（编号从**0**开始）。
@@ -8391,49 +8255,9 @@ pub struct BlockDetail {
     pub char_infos: Vec<CharInfo>,
 }
 
-impl crate::FlatSerialize for BlockDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.block_angle,
-            &format!("{}.BlockAngle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_content,
-            &format!("{}.BlockContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_confidence,
-            &format!("{}.BlockConfidence", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_points,
-            &format!("{}.BlockPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_rect,
-            &format!("{}.BlockRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.char_infos,
-            &format!("{}.CharInfos", name),
-            params,
-        );
-    }
-}
-
 /// * 子图文字块信息。
 /// * 当**Type**为**Advanced**、**General**、**MultiLang**、**Commerce**、**HandWriting**  时返回。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BlockInfo {
     /// 子图文字块数量。
@@ -8446,27 +8270,8 @@ pub struct BlockInfo {
     pub block_details: Vec<BlockDetail>,
 }
 
-impl crate::FlatSerialize for BlockInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.block_count,
-            &format!("{}.BlockCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_details,
-            &format!("{}.BlockDetails", name),
-            params,
-        );
-    }
-}
-
 /// 表头信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemHeader {
     /// 表头文字内容。
@@ -8479,19 +8284,8 @@ pub struct ItemHeader {
     pub block_id: i32,
 }
 
-impl crate::FlatSerialize for ItemHeader {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-    }
-}
-
 /// 表尾信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFooter {
     /// 表尾文字内容。
@@ -8504,18 +8298,7 @@ pub struct ItemFooter {
     pub block_id: i32,
 }
 
-impl crate::FlatSerialize for ItemFooter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.contents, &format!("{}.Contents", name), params);
-        crate::FlatSerialize::flat_serialize(&self.block_id, &format!("{}.BlockId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CellPoint {
     /// 顶点横坐标。
@@ -8528,19 +8311,8 @@ pub struct CellPoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for CellPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 单元格旋转矩形坐标（当 **OutputCoordinate="rectangle"** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CellRect {
     /// 矩形中心点横坐标。
@@ -8561,20 +8333,7 @@ pub struct CellRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for CellRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CellDetail {
     /// 单元格ID（编号从**0**开始）。
@@ -8619,58 +8378,7 @@ pub struct CellDetail {
     pub cell_angle: i32,
 }
 
-impl crate::FlatSerialize for CellDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cell_id, &format!("{}.CellId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_content,
-            &format!("{}.CellContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.row_start,
-            &format!("{}.RowStart", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.row_end, &format!("{}.RowEnd", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.column_start,
-            &format!("{}.ColumnStart", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.column_end,
-            &format!("{}.ColumnEnd", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_list,
-            &format!("{}.BlockList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_points,
-            &format!("{}.CellPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_rect,
-            &format!("{}.CellRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_angle,
-            &format!("{}.CellAngle", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TablePoint {
     /// 顶点横坐标。
@@ -8683,19 +8391,8 @@ pub struct TablePoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for TablePoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 表格旋转矩形坐标（当 **OutputCoordinate=“rectangle"** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TableRect {
     /// 矩形中心点横坐标。
@@ -8716,20 +8413,7 @@ pub struct TableRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for TableRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TableDetail {
     /// 表格ID（编号从**0**开始）。
@@ -8770,50 +8454,8 @@ pub struct TableDetail {
     pub table_rect: TableRect,
 }
 
-impl crate::FlatSerialize for TableDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.table_id, &format!("{}.TableId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.row_count,
-            &format!("{}.RowCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.column_count,
-            &format!("{}.ColumnCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_count,
-            &format!("{}.CellCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.Header", name), params);
-        crate::FlatSerialize::flat_serialize(&self.footer, &format!("{}.Footer", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cell_details,
-            &format!("{}.CellDetails", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_points,
-            &format!("{}.TablePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_rect,
-            &format!("{}.TableRect", name),
-            params,
-        );
-    }
-}
-
 /// 表格信息（当 **AdvancedConfig.OutputTable=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TableInfo {
     /// 表格数量。
@@ -8836,36 +8478,7 @@ pub struct TableInfo {
     pub table_html: String,
 }
 
-impl crate::FlatSerialize for TableInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.table_count,
-            &format!("{}.TableCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_details,
-            &format!("{}.TableDetails", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_excel,
-            &format!("{}.TableExcel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_html,
-            &format!("{}.TableHtml", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RowDetail {
     /// 行ID（编号从**0**开始）。
@@ -8882,28 +8495,8 @@ pub struct RowDetail {
     pub block_list: Vec<i32>,
 }
 
-impl crate::FlatSerialize for RowDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.row_id, &format!("{}.RowId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.row_content,
-            &format!("{}.RowContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_list,
-            &format!("{}.BlockList", name),
-            params,
-        );
-    }
-}
-
 /// 子图行信息（当 **AdvancedConfig.OutputRow=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RowInfo {
     /// 子图包含的行数。
@@ -8916,26 +8509,7 @@ pub struct RowInfo {
     pub row_details: Vec<RowDetail>,
 }
 
-impl crate::FlatSerialize for RowInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.row_count,
-            &format!("{}.RowCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.row_details,
-            &format!("{}.RowDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParagraphDetail {
     /// 段落ID（编号从**0**开始）。
@@ -8952,32 +8526,8 @@ pub struct ParagraphDetail {
     pub block_list: Vec<i32>,
 }
 
-impl crate::FlatSerialize for ParagraphDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_id,
-            &format!("{}.ParagraphId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_content,
-            &format!("{}.ParagraphContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.block_list,
-            &format!("{}.BlockList", name),
-            params,
-        );
-    }
-}
-
 /// 子图段落信息（当 **AdvancedConfig.OutputParagraph=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParagraphInfo {
     /// 子图所包含段落数量。
@@ -8990,26 +8540,7 @@ pub struct ParagraphInfo {
     pub paragraph_details: Vec<ParagraphDetail>,
 }
 
-impl crate::FlatSerialize for ParagraphInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_count,
-            &format!("{}.ParagraphCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_details,
-            &format!("{}.ParagraphDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodePoint {
     /// 顶点横坐标。
@@ -9022,19 +8553,8 @@ pub struct QrCodePoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for QrCodePoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 二维码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeRect {
     /// 矩形中心点横坐标。
@@ -9055,20 +8575,7 @@ pub struct QrCodeRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for QrCodeRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeDetail {
     /// 二维码内容。
@@ -9089,33 +8596,8 @@ pub struct QrCodeDetail {
     pub qr_code_angle: i32,
 }
 
-impl crate::FlatSerialize for QrCodeDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_points,
-            &format!("{}.QrCodePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_rect,
-            &format!("{}.QrCodeRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_angle,
-            &format!("{}.QrCodeAngle", name),
-            params,
-        );
-    }
-}
-
 /// 子图二维码信息（当 **OutputQrcode=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QrCodeInfo {
     /// 子图二维码数量。
@@ -9128,26 +8610,7 @@ pub struct QrCodeInfo {
     pub qr_code_details: Vec<QrCodeDetail>,
 }
 
-impl crate::FlatSerialize for QrCodeInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_count,
-            &format!("{}.QrCodeCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_details,
-            &format!("{}.QrCodeDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodePoint {
     /// 顶点横坐标。
@@ -9160,19 +8623,8 @@ pub struct BarCodePoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for BarCodePoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 条形码旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeRect {
     /// 矩形中心点横坐标。
@@ -9193,20 +8645,7 @@ pub struct BarCodeRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for BarCodeRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeDetail {
     /// 条形码类型。支持的类型如下：
@@ -9235,34 +8674,8 @@ pub struct BarCodeDetail {
     pub bar_code_angle: i32,
 }
 
-impl crate::FlatSerialize for BarCodeDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_points,
-            &format!("{}.BarCodePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_rect,
-            &format!("{}.BarCodeRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_angle,
-            &format!("{}.BarCodeAngle", name),
-            params,
-        );
-    }
-}
-
 /// 子图条形码信息（当 **OutputBarCode=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BarCodeInfo {
     /// 子图条形码数量。
@@ -9275,32 +8688,13 @@ pub struct BarCodeInfo {
     pub bar_code_details: Vec<BarCodeDetail>,
 }
 
-impl crate::FlatSerialize for BarCodeInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_count,
-            &format!("{}.BarCodeCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_details,
-            &format!("{}.BarCodeDetails", name),
-            params,
-        );
-    }
-}
-
 /// 子图包含的图案信息（当 **OutputFigure=true** 时返回）。字典类型，键为图案类型，值为此类型图案的信息。支持的图案类型如下：
 /// * blicense_title：营业执照标题
 /// * national_emblem：国徽
 /// * face：人脸
 /// * finger_print：指纹
 /// * signature：签名区域
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct FigureInfo {
     /// Additional properties not explicitly defined in the schema
@@ -9308,18 +8702,8 @@ pub struct FigureInfo {
     pub extra: std::collections::HashMap<String, crate::Value>,
 }
 
-impl crate::FlatSerialize for FigureInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.extra, name, params);
-    }
-}
-
 /// 子图印章识别结果，字典类型，键为字段名称，值为对应字段的识别结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemData {
     /// 进出口企业代码。
@@ -9352,47 +8736,7 @@ pub struct ItemData {
     pub taxpayer_id: String,
 }
 
-impl crate::FlatSerialize for ItemData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.company_id,
-            &format!("{}.CompanyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_name,
-            &format!("{}.OrganizationName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.anti_fake_code,
-            &format!("{}.AntiFakeCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.other_text,
-            &format!("{}.OtherText", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.top_text, &format!("{}.TopText", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.organization_name_eng,
-            &format!("{}.OrganizationNameEng", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.taxpayer_id,
-            &format!("{}.TaxpayerId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StampPoint {
     /// 顶点横坐标。
@@ -9405,19 +8749,8 @@ pub struct StampPoint {
     pub y: i32,
 }
 
-impl crate::FlatSerialize for StampPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.x, &format!("{}.X", name), params);
-        crate::FlatSerialize::flat_serialize(&self.y, &format!("{}.Y", name), params);
-    }
-}
-
 /// 印章旋转矩形坐标（当 **OutputCoordinate=“rectangle”** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StampRect {
     /// 矩形中心点横坐标。
@@ -9438,20 +8771,7 @@ pub struct StampRect {
     pub height: i32,
 }
 
-impl crate::FlatSerialize for StampRect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.center_x, &format!("{}.CenterX", name), params);
-        crate::FlatSerialize::flat_serialize(&self.center_y, &format!("{}.CenterY", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StampDetail {
     /// 子图印章识别结果，字典类型，键为字段名称，值为对应字段的识别结果。
@@ -9472,33 +8792,8 @@ pub struct StampDetail {
     pub stamp_angle: i32,
 }
 
-impl crate::FlatSerialize for StampDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_points,
-            &format!("{}.StampPoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_rect,
-            &format!("{}.StampRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_angle,
-            &format!("{}.StampAngle", name),
-            params,
-        );
-    }
-}
-
 /// 子图印章信息（当 **OutputStamp=true** 时返回）。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StampInfo {
     /// 子图印章数量。
@@ -9511,27 +8806,8 @@ pub struct StampInfo {
     pub stamp_details: Vec<StampDetail>,
 }
 
-impl crate::FlatSerialize for StampInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_count,
-            &format!("{}.StampCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_details,
-            &format!("{}.StampDetails", name),
-            params,
-        );
-    }
-}
-
 /// 子图质量检测信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct QualityInfo {
     /// 是否为复印件
@@ -9556,37 +8832,7 @@ pub struct QualityInfo {
     pub tamper_score: f32,
 }
 
-impl crate::FlatSerialize for QualityInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.is_copy, &format!("{}.IsCopy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_reshoot,
-            &format!("{}.IsReshoot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.completeness_score,
-            &format!("{}.CompletenessScore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.quality_score,
-            &format!("{}.QualityScore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tamper_score,
-            &format!("{}.TamperScore", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseDataSubImage {
     /// 子图ID（编号从**0**开始）。
@@ -9658,76 +8904,8 @@ pub struct TextResponseDataSubImage {
     pub quality_info: QualityInfo,
 }
 
-impl crate::FlatSerialize for TextResponseDataSubImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_id,
-            &format!("{}.SubImageId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_points,
-            &format!("{}.SubImagePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_rect,
-            &format!("{}.SubImageRect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.block_info,
-            &format!("{}.BlockInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.table_info,
-            &format!("{}.TableInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.row_info, &format!("{}.RowInfo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.paragraph_info,
-            &format!("{}.ParagraphInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qr_code_info,
-            &format!("{}.QrCodeInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bar_code_info,
-            &format!("{}.BarCodeInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.figure_info,
-            &format!("{}.FigureInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stamp_info,
-            &format!("{}.StampInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.quality_info,
-            &format!("{}.QualityInfo", name),
-            params,
-        );
-    }
-}
-
 /// 识别结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TextResponseData {
     /// 原图高度。
@@ -9781,61 +8959,8 @@ pub struct TextResponseData {
     pub kv_excel_url: String,
 }
 
-impl crate::FlatSerialize for TextResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_count,
-            &format!("{}.SubImageCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_images,
-            &format!("{}.SubImages", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.xml_result,
-            &format!("{}.XmlResult", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.algo_version,
-            &format!("{}.AlgoVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.debug_info,
-            &format!("{}.DebugInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.algo_server,
-            &format!("{}.AlgoServer", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_mixed_mode,
-            &format!("{}.IsMixedMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.page_no, &format!("{}.PageNo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.kv_excel_url,
-            &format!("{}.KvExcelUrl", name),
-            params,
-        );
-    }
-}
-
 /// * 子图的结构化信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseDataSubImagesItemKvInfo {
     /// 子图所包含结构化信息的键值对数量。
@@ -9848,18 +8973,7 @@ pub struct StructureResponseDataSubImagesItemKvInfo {
     pub data: String,
 }
 
-impl crate::FlatSerialize for StructureResponseDataSubImagesItemKvInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.kv_count, &format!("{}.KvCount", name), params);
-        crate::FlatSerialize::flat_serialize(&self.data, &format!("{}.Data", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseDataSubImage {
     /// 子图ID（编号从**0**开始）。
@@ -9876,24 +8990,8 @@ pub struct StructureResponseDataSubImage {
     pub kv_info: StructureResponseDataSubImagesItemKvInfo,
 }
 
-impl crate::FlatSerialize for StructureResponseDataSubImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_id,
-            &format!("{}.SubImageId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.angle, &format!("{}.Angle", name), params);
-        crate::FlatSerialize::flat_serialize(&self.kv_info, &format!("{}.KvInfo", name), params);
-    }
-}
-
 /// 识别结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StructureResponseData {
     /// 原图高度。
@@ -9912,27 +9010,6 @@ pub struct StructureResponseData {
     #[serde(rename = "SubImages")]
     #[serde(default)]
     pub sub_images: Vec<StructureResponseDataSubImage>,
-}
-
-impl crate::FlatSerialize for StructureResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.height, &format!("{}.Height", name), params);
-        crate::FlatSerialize::flat_serialize(&self.width, &format!("{}.Width", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_image_count,
-            &format!("{}.SubImageCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_images,
-            &format!("{}.SubImages", name),
-            params,
-        );
-    }
 }
 
 /// Enum type marshalled as String
@@ -9965,11 +9042,11 @@ pub enum TextType {
     #[serde(rename = "ChinesePassport")]
     ChinesePassport,
     #[serde(rename = "PermitToHK_MO_TW")]
-    PermitToHK_MO_TW,
+    PermitToHkMoTw,
     #[serde(rename = "PermitToMainland")]
     PermitToMainland,
     #[serde(rename = "HKIdCard")]
-    HKIdCard,
+    HkIdCard,
     #[serde(rename = "SocialSecurityCard")]
     SocialSecurityCard,
     #[serde(rename = "InternationalIdCard")]
@@ -10039,7 +9116,7 @@ pub enum TextType {
     #[serde(rename = "MedicalDeviceProduceLicense")]
     MedicalDeviceProduceLicense,
     #[serde(rename = "ClassIIMedicalDeviceManageLicense")]
-    ClassIIMedicalDeviceManageLicense,
+    ClassIiMedicalDeviceManageLicense,
     #[serde(rename = "CosmeticProduceLicense")]
     CosmeticProduceLicense,
     #[serde(rename = "VehicleRegistration")]
@@ -10081,9 +9158,9 @@ impl TextType {
             Self::BankCard => "BankCard",
             Self::BirthCertification => "BirthCertification",
             Self::ChinesePassport => "ChinesePassport",
-            Self::PermitToHK_MO_TW => "PermitToHK_MO_TW",
+            Self::PermitToHkMoTw => "PermitToHK_MO_TW",
             Self::PermitToMainland => "PermitToMainland",
-            Self::HKIdCard => "HKIdCard",
+            Self::HkIdCard => "HKIdCard",
             Self::SocialSecurityCard => "SocialSecurityCard",
             Self::InternationalIdCard => "InternationalIdCard",
             Self::Stamp => "Stamp",
@@ -10118,7 +9195,7 @@ impl TextType {
             Self::FoodManagementLicense => "FoodManagementLicense",
             Self::MedicalDeviceManageLicense => "MedicalDeviceManageLicense",
             Self::MedicalDeviceProduceLicense => "MedicalDeviceProduceLicense",
-            Self::ClassIIMedicalDeviceManageLicense => "ClassIIMedicalDeviceManageLicense",
+            Self::ClassIiMedicalDeviceManageLicense => "ClassIIMedicalDeviceManageLicense",
             Self::CosmeticProduceLicense => "CosmeticProduceLicense",
             Self::VehicleRegistration => "VehicleRegistration",
             Self::VehicleCertification => "VehicleCertification",

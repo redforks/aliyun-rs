@@ -1,5 +1,3 @@
-use anyhow::Context as _;
-
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     CnQingdao,
@@ -55935,7 +55933,7 @@ impl crate::Request for DisableNetworkInterfaceQoS {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RegionsRegion {
     ///  集群是否售罄。可能值：
@@ -55959,32 +55957,7 @@ pub struct RegionsRegion {
     pub region_id: String,
 }
 
-impl crate::FlatSerialize for RegionsRegion {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_endpoint,
-            &format!("{}.RegionEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_name,
-            &format!("{}.LocalName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseRegions {
     /// 地域信息集合。
@@ -55993,17 +55966,7 @@ pub struct ResponseRegions {
     pub region: Vec<RegionsRegion>,
 }
 
-impl crate::FlatSerialize for ResponseRegions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.region, &format!("{}.Region", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SystemDiskCategories {
     /// 系统盘类型列表。
@@ -56012,21 +55975,7 @@ pub struct SystemDiskCategories {
     pub supported_system_disk_category: Vec<String>,
 }
 
-impl crate::FlatSerialize for SystemDiskCategories {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_system_disk_category,
-            &format!("{}.supportedSystemDiskCategory", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceGenerations {
     /// 支持的实例规格族代数列表。
@@ -56035,21 +55984,7 @@ pub struct InstanceGenerations {
     pub supported_instance_generation: Vec<String>,
 }
 
-impl crate::FlatSerialize for InstanceGenerations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_generation,
-            &format!("{}.supportedInstanceGeneration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDiskCategories {
     /// 允许创建的数据盘类型。
@@ -56058,21 +55993,7 @@ pub struct DataDiskCategories {
     pub supported_data_disk_category: Vec<String>,
 }
 
-impl crate::FlatSerialize for DataDiskCategories {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_data_disk_category,
-            &format!("{}.supportedDataDiskCategory", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceTypes {
     /// 实例规格列表。
@@ -56081,21 +56002,7 @@ pub struct ItemInstanceTypes {
     pub supported_instance_type: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type,
-            &format!("{}.supportedInstanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceTypeFamilies {
     /// 允许创建的实例规格族列表。
@@ -56104,21 +56011,7 @@ pub struct ItemInstanceTypeFamilies {
     pub supported_instance_type_family: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemInstanceTypeFamilies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type_family,
-            &format!("{}.supportedInstanceTypeFamily", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InfoItemNetworkTypes {
     /// 支持的网络类型列表。
@@ -56127,21 +56020,7 @@ pub struct InfoItemNetworkTypes {
     pub supported_network_category: Vec<String>,
 }
 
-impl crate::FlatSerialize for InfoItemNetworkTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_network_category,
-            &format!("{}.supportedNetworkCategory", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcesInfo {
     /// 是否为I/O优化实例。
@@ -56168,51 +56047,7 @@ pub struct ResourcesInfo {
     pub network_types: InfoItemNetworkTypes,
 }
 
-impl crate::FlatSerialize for ResourcesInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.io_optimized,
-            &format!("{}.IoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_categories,
-            &format!("{}.SystemDiskCategories", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_generations,
-            &format!("{}.InstanceGenerations", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.data_disk_categories,
-            &format!("{}.DataDiskCategories", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_types,
-            &format!("{}.InstanceTypes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_families,
-            &format!("{}.InstanceTypeFamilies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_types,
-            &format!("{}.NetworkTypes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ZonesZoneItemAvailableResources {
     /// 可供创建的具体资源组成的数组。
@@ -56221,21 +56056,7 @@ pub struct ZonesZoneItemAvailableResources {
     pub resources_info: Vec<ResourcesInfo>,
 }
 
-impl crate::FlatSerialize for ZonesZoneItemAvailableResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resources_info,
-            &format!("{}.ResourcesInfo", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceCreation {
     /// 允许创建的资源类型。可能值：
@@ -56250,21 +56071,7 @@ pub struct ResourceCreation {
     pub resource_types: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResourceCreation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_types,
-            &format!("{}.ResourceTypes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostGenerations {
     /// 支持的专有宿主机代数列表。
@@ -56273,21 +56080,7 @@ pub struct HostGenerations {
     pub dedicated_host_generation: Vec<String>,
 }
 
-impl crate::FlatSerialize for HostGenerations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_generation,
-            &format!("{}.DedicatedHostGeneration", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAvailableInstanceTypes {
     /// 当前可用区下可创建的所有规格列表。
@@ -56296,21 +56089,7 @@ pub struct ItemAvailableInstanceTypes {
     pub instance_types: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemAvailableInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_types,
-            &format!("{}.InstanceTypes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AvailableDiskCategories {
     /// 允许创建的云盘种类集合。可能值：
@@ -56324,21 +56103,7 @@ pub struct AvailableDiskCategories {
     pub disk_categories: Vec<String>,
 }
 
-impl crate::FlatSerialize for AvailableDiskCategories {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_categories,
-            &format!("{}.DiskCategories", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AvailableDedicatedHostTypes {
     /// 支持的专有宿主机规格列表。
@@ -56347,21 +56112,7 @@ pub struct AvailableDedicatedHostTypes {
     pub dedicated_host_type: Vec<String>,
 }
 
-impl crate::FlatSerialize for AvailableDedicatedHostTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_type,
-            &format!("{}.DedicatedHostType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VolumeCategories {
     /// 支持的共享存储类型。
@@ -56370,21 +56121,7 @@ pub struct VolumeCategories {
     pub volume_categories: Vec<String>,
 }
 
-impl crate::FlatSerialize for VolumeCategories {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.volume_categories,
-            &format!("{}.VolumeCategories", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseZonesZone {
     /// 可用区ID。
@@ -56433,62 +56170,7 @@ pub struct ResponseZonesZone {
     pub available_volume_categories: VolumeCategories,
 }
 
-impl crate::FlatSerialize for ResponseZonesZone {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.zone_type,
-            &format!("{}.ZoneType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_name,
-            &format!("{}.LocalName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resources,
-            &format!("{}.AvailableResources", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resource_creation,
-            &format!("{}.AvailableResourceCreation", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_generations,
-            &format!("{}.DedicatedHostGenerations", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_types,
-            &format!("{}.AvailableInstanceTypes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_disk_categories,
-            &format!("{}.AvailableDiskCategories", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_dedicated_host_types,
-            &format!("{}.AvailableDedicatedHostTypes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_volume_categories,
-            &format!("{}.AvailableVolumeCategories", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseZones {
     /// 可用区及可用区下支持的资源信息集合。
@@ -56497,18 +56179,8 @@ pub struct ResponseZones {
     pub zone: Vec<ResponseZonesZone>,
 }
 
-impl crate::FlatSerialize for ResponseZones {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone, &format!("{}.Zone", name), params);
-    }
-}
-
 /// 支持的可供创建的具体资源组成的数组。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource
 {
@@ -56552,22 +56224,7 @@ pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvai
     pub min: i32,
 }
 
-impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max, &format!("{}.Max", name), params);
-        crate::FlatSerialize::flat_serialize(&self.unit, &format!("{}.Unit", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status_category, &format!("{}.StatusCategory", name), params);
-        crate::FlatSerialize::flat_serialize(&self.min, &format!("{}.Min", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
     /// 支持的可供创建的具体资源组成的数组。
@@ -56576,18 +56233,8 @@ pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvai
     pub supported_resource: Vec<ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource>,
 }
 
-impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.supported_resource, &format!("{}.SupportedResource", name), params);
-    }
-}
-
 /// 可供创建的具体资源集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource {
     /// 资源类型。可能值： 
@@ -56608,24 +56255,7 @@ pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvai
     pub supported_resources: ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources,
 }
 
-impl crate::FlatSerialize
-    for ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_resources,
-            &format!("{}.SupportedResources", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResources {
     /// 可供创建的具体资源组成的数组。
@@ -56635,22 +56265,8 @@ pub struct ResourceResponseAvailableZonesAvailableZoneItemAvailableResources {
         Vec<ResourceResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource>,
 }
 
-impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZoneItemAvailableResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resource,
-            &format!("{}.AvailableResource", name),
-            params,
-        );
-    }
-}
-
 /// 可用区库存信息的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZonesAvailableZone {
     /// 可用区ID。
@@ -56682,33 +56298,7 @@ pub struct ResourceResponseAvailableZonesAvailableZone {
     pub available_resources: ResourceResponseAvailableZonesAvailableZoneItemAvailableResources,
 }
 
-impl crate::FlatSerialize for ResourceResponseAvailableZonesAvailableZone {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.status_category,
-            &format!("{}.StatusCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resources,
-            &format!("{}.AvailableResources", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourceResponseAvailableZones {
     /// 可用区库存信息的集合。
@@ -56717,21 +56307,7 @@ pub struct ResourceResponseAvailableZones {
     pub available_zone: Vec<ResourceResponseAvailableZonesAvailableZone>,
 }
 
-impl crate::FlatSerialize for ResourceResponseAvailableZones {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_zone,
-            &format!("{}.AvailableZone", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ValueItem {
     /// 数据盘的云盘种类。可能值：
@@ -56796,39 +56372,7 @@ pub struct ValueItem {
     pub instance_charge_type: String,
 }
 
-impl crate::FlatSerialize for ValueItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_category,
-            &format!("{}.DiskCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.count, &format!("{}.Count", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeValues {
     /// 资源的使用配额具体数值。
@@ -56837,21 +56381,7 @@ pub struct AttributeValues {
     pub value_item: Vec<ValueItem>,
 }
 
-impl crate::FlatSerialize for AttributeValues {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.value_item,
-            &format!("{}.ValueItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeItem {
     /// 资源在指定地域下的使用配额分类。可能值：
@@ -56880,26 +56410,7 @@ pub struct AttributeItem {
     pub attribute_values: AttributeValues,
 }
 
-impl crate::FlatSerialize for AttributeItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.attribute_name,
-            &format!("{}.AttributeName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.attribute_values,
-            &format!("{}.AttributeValues", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeItems {
     /// 指定地域下账号特权AccountAttributeItem的信息集合。
@@ -56908,21 +56419,7 @@ pub struct AttributeItems {
     pub account_attribute_item: Vec<AttributeItem>,
 }
 
-impl crate::FlatSerialize for AttributeItems {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.account_attribute_item,
-            &format!("{}.AccountAttributeItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource
 {
@@ -56967,22 +56464,7 @@ pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources
     pub min: i32,
 }
 
-impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max, &format!("{}.Max", name), params);
-        crate::FlatSerialize::flat_serialize(&self.unit, &format!("{}.Unit", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status_category, &format!("{}.StatusCategory", name), params);
-        crate::FlatSerialize::flat_serialize(&self.min, &format!("{}.Min", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
     /// 支持的可供创建的具体资源组成的数组。
@@ -56991,18 +56473,8 @@ pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources
     pub supported_resource: Vec<ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResourcesSupportedResource>,
 }
 
-impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResourceItemSupportedResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.supported_resource, &format!("{}.SupportedResource", name), params);
-    }
-}
-
 /// 条件列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionsCondition {
     /// 条件名。目前可选值：
@@ -57013,17 +56485,7 @@ pub struct ConditionsCondition {
     pub key: String,
 }
 
-impl crate::FlatSerialize for ConditionsCondition {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemConditions {
     /// 条件列表。
@@ -57032,22 +56494,8 @@ pub struct ItemConditions {
     pub condition: Vec<ConditionsCondition>,
 }
 
-impl crate::FlatSerialize for ItemConditions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.condition,
-            &format!("{}.Condition", name),
-            params,
-        );
-    }
-}
-
 /// 有条件支持的可供创建的具体资源列表。满足条件后，可以将当前资源变更到列表中的资源。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionSupportedResource {
     #[serde(rename = "Conditions")]
@@ -57095,31 +56543,7 @@ pub struct ConditionSupportedResource {
     pub min: i32,
 }
 
-impl crate::FlatSerialize for ConditionSupportedResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.conditions,
-            &format!("{}.Conditions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(&self.max, &format!("{}.Max", name), params);
-        crate::FlatSerialize::flat_serialize(&self.unit, &format!("{}.Unit", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.status_category,
-            &format!("{}.StatusCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.min, &format!("{}.Min", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConditionSupportedResources {
     /// 有条件支持的可供创建的具体资源列表。满足条件后，可以将当前资源变更到列表中的资源。
@@ -57128,21 +56552,7 @@ pub struct ConditionSupportedResources {
     pub condition_supported_resource: Vec<ConditionSupportedResource>,
 }
 
-impl crate::FlatSerialize for ConditionSupportedResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.condition_supported_resource,
-            &format!("{}.ConditionSupportedResource", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource {
     /// 资源类型。可能值： 
@@ -57160,29 +56570,7 @@ pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources
     pub condition_supported_resources: ConditionSupportedResources,
 }
 
-impl crate::FlatSerialize
-    for ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_resources,
-            &format!("{}.SupportedResources", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.condition_supported_resources,
-            &format!("{}.ConditionSupportedResources", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources {
     /// 可供创建的具体资源组成的数组。
@@ -57192,23 +56580,7 @@ pub struct ModificationResponseAvailableZonesAvailableZoneItemAvailableResources
         Vec<ModificationResponseAvailableZonesAvailableZoneItemAvailableResourcesAvailableResource>,
 }
 
-impl crate::FlatSerialize
-    for ModificationResponseAvailableZonesAvailableZoneItemAvailableResources
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resource,
-            &format!("{}.AvailableResource", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZonesAvailableZone {
     /// 可用区ID。
@@ -57240,33 +56612,7 @@ pub struct ModificationResponseAvailableZonesAvailableZone {
     pub available_resources: ModificationResponseAvailableZonesAvailableZoneItemAvailableResources,
 }
 
-impl crate::FlatSerialize for ModificationResponseAvailableZonesAvailableZone {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.status_category,
-            &format!("{}.StatusCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_resources,
-            &format!("{}.AvailableResources", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationResponseAvailableZones {
     /// 数据中心信息AvailableZone组成的集合。
@@ -57275,21 +56621,7 @@ pub struct ModificationResponseAvailableZones {
     pub available_zone: Vec<ModificationResponseAvailableZonesAvailableZone>,
 }
 
-impl crate::FlatSerialize for ModificationResponseAvailableZones {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_zone,
-            &format!("{}.AvailableZone", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ZoneItemNetworkTypes {
     /// 实例规格的网络类型集合。
@@ -57298,21 +56630,7 @@ pub struct ZoneItemNetworkTypes {
     pub network_type: Vec<String>,
 }
 
-impl crate::FlatSerialize for ZoneItemNetworkTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_type,
-            &format!("{}.NetworkType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemZonesZone {
     /// 实例规格所在的可用区ID。
@@ -57324,22 +56642,7 @@ pub struct ItemZonesZone {
     pub network_types: ZoneItemNetworkTypes,
 }
 
-impl crate::FlatSerialize for ItemZonesZone {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_no, &format!("{}.ZoneNo", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_types,
-            &format!("{}.NetworkTypes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemZones {
     /// 实例规格所在的可用区集合。
@@ -57348,18 +56651,8 @@ pub struct ItemZones {
     pub zone: Vec<ItemZonesZone>,
 }
 
-impl crate::FlatSerialize for ItemZones {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone, &format!("{}.zone", name), params);
-    }
-}
-
 /// 实例规格名称。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceType {
     /// 实例规格是否支持I/O优化。
@@ -57388,38 +56681,7 @@ pub struct ItemInstanceType {
     pub generation: String,
 }
 
-impl crate::FlatSerialize for ItemInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.support_io_optimized,
-            &format!("{}.SupportIoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cores, &format!("{}.Cores", name), params);
-        crate::FlatSerialize::flat_serialize(&self.memory, &format!("{}.Memory", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family,
-            &format!("{}.InstanceTypeFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.generation,
-            &format!("{}.Generation", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecommendInstanceType {
     /// 实例规格的商品编码。
@@ -57463,50 +56725,7 @@ pub struct RecommendInstanceType {
     pub instance_type: ItemInstanceType,
 }
 
-impl crate::FlatSerialize for RecommendInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.commodity_code,
-            &format!("{}.CommodityCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.priority, &format!("{}.Priority", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_type,
-            &format!("{}.NetworkType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.scene, &format!("{}.Scene", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_strategy,
-            &format!("{}.SpotStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zones, &format!("{}.Zones", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseData {
     /// 推荐的实例规格集合。
@@ -57515,22 +56734,8 @@ pub struct ResponseData {
     pub recommend_instance_type: Vec<RecommendInstanceType>,
 }
 
-impl crate::FlatSerialize for ResponseData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.recommend_instance_type,
-            &format!("{}.RecommendInstanceType", name),
-            params,
-        );
-    }
-}
-
 /// 数据盘列表集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DescribePriceDataDisk {
     /// 第N块数据盘的云盘种类。取值范围：
@@ -57585,7 +56790,6 @@ pub struct DescribePriceDataDisk {
     #[serde(rename = "ProvisionedIops")]
     pub provisioned_iops: Option<i64>,
 }
-
 impl crate::FlatSerialize for DescribePriceDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -57612,7 +56816,7 @@ impl crate::FlatSerialize for DescribePriceDataDisk {
 ///
 /// > -  修改重复规则时，**修改前和修改后的总保障时长必须相同**。更多修改示例，请参见[修改重复规则](~~2867405~~)。
 /// > -  修改后的重复规则将于次日生效。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PriceRecurrenceRule {
     /// 分时保障生效时间，取值必须为整点。
@@ -57641,7 +56845,6 @@ pub struct PriceRecurrenceRule {
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: Option<String>,
 }
-
 impl crate::FlatSerialize for PriceRecurrenceRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -57667,7 +56870,7 @@ impl crate::FlatSerialize for PriceRecurrenceRule {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoRulesRule {
     /// 活动规则描述。
@@ -57680,22 +56883,7 @@ pub struct DescribePriceResponsePriceInfoRulesRule {
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoRulesRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoRules {
     /// 活动规则。
@@ -57704,17 +56892,7 @@ pub struct DescribePriceResponsePriceInfoRules {
     pub rule: Vec<DescribePriceResponsePriceInfoRulesRule>,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
     /// 规则子集描述。
@@ -57727,24 +56905,7 @@ pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesR
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize
-    for DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
     /// 定价规则子集。
@@ -57753,17 +56914,7 @@ pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules 
     pub rule: Vec<DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo {
     /// 原价。
@@ -57793,37 +56944,7 @@ pub struct DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo {
     pub trade_price: f32,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.resource, &format!("{}.Resource", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_rules,
-            &format!("{}.SubRules", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPriceDetailInfos {
     /// 配置明细价格信息。
@@ -57834,22 +56955,8 @@ pub struct DescribePriceResponsePriceInfoPriceDetailInfos {
     pub detail_info: Vec<DescribePriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoPriceDetailInfos {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_info,
-            &format!("{}.DetailInfo", name),
-            params,
-        );
-    }
-}
-
 /// 价格。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfoPrice {
     /// 原价。
@@ -57881,43 +56988,8 @@ pub struct DescribePriceResponsePriceInfoPrice {
     pub detail_infos: DescribePriceResponsePriceInfoPriceDetailInfos,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfoPrice {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_hour_price,
-            &format!("{}.ReservedInstanceHourPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_infos,
-            &format!("{}.DetailInfos", name),
-            params,
-        );
-    }
-}
-
 /// 市场镜像价格。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePrice {
     /// 货币单位。
@@ -57942,33 +57014,8 @@ pub struct ImagePrice {
     pub trade_price: f32,
 }
 
-impl crate::FlatSerialize for ImagePrice {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-    }
-}
-
 /// 关联价格。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RelatedPrice {
     /// 市场镜像价格。
@@ -57977,22 +57024,8 @@ pub struct RelatedPrice {
     pub marketplace_image_price: ImagePrice,
 }
 
-impl crate::FlatSerialize for RelatedPrice {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.marketplace_image_price,
-            &format!("{}.MarketplaceImagePrice", name),
-            params,
-        );
-    }
-}
-
 /// 价格信息类型（Price），包括价格和优惠规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribePriceResponsePriceInfo {
     #[serde(rename = "Rules")]
@@ -58008,23 +57041,7 @@ pub struct DescribePriceResponsePriceInfo {
     pub related_price: RelatedPrice,
 }
 
-impl crate::FlatSerialize for DescribePriceResponsePriceInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rules, &format!("{}.Rules", name), params);
-        crate::FlatSerialize::flat_serialize(&self.price, &format!("{}.Price", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.related_price,
-            &format!("{}.RelatedPrice", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoRulesRule {
     /// 活动规则描述。
@@ -58037,22 +57054,7 @@ pub struct RenewalPriceResponsePriceInfoRulesRule {
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoRulesRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoRules {
     /// 活动规则。
@@ -58061,17 +57063,7 @@ pub struct RenewalPriceResponsePriceInfoRules {
     pub rule: Vec<RenewalPriceResponsePriceInfoRulesRule>,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
     /// 定价规则描述。
@@ -58084,24 +57076,7 @@ pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRu
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize
-    for RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
     /// 定价规则子集。
@@ -58110,17 +57085,7 @@ pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
     pub rule: Vec<RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo {
     /// 价格对应的资源名称。
@@ -58144,37 +57109,7 @@ pub struct RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo {
     pub sub_rules: RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.resource, &format!("{}.Resource", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_rules,
-            &format!("{}.SubRules", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPriceDetailInfos {
     /// 资源定价详情。
@@ -58183,22 +57118,8 @@ pub struct RenewalPriceResponsePriceInfoPriceDetailInfos {
     pub detail_info: Vec<RenewalPriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPriceDetailInfos {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_info,
-            &format!("{}.DetailInfo", name),
-            params,
-        );
-    }
-}
-
 /// 价格。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfoPrice {
     /// 原价。
@@ -58226,38 +57147,8 @@ pub struct RenewalPriceResponsePriceInfoPrice {
     pub detail_infos: RenewalPriceResponsePriceInfoPriceDetailInfos,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfoPrice {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_infos,
-            &format!("{}.DetailInfos", name),
-            params,
-        );
-    }
-}
-
 /// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewalPriceResponsePriceInfo {
     #[serde(rename = "Rules")]
@@ -58269,19 +57160,8 @@ pub struct RenewalPriceResponsePriceInfo {
     pub price: RenewalPriceResponsePriceInfoPrice,
 }
 
-impl crate::FlatSerialize for RenewalPriceResponsePriceInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rules, &format!("{}.Rules", name), params);
-        crate::FlatSerialize::flat_serialize(&self.price, &format!("{}.Price", name), params);
-    }
-}
-
 /// 数据盘类型信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ModificationPriceDataDisk {
     /// 当数据盘类型为ESSD云盘时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
@@ -58324,7 +57204,6 @@ pub struct ModificationPriceDataDisk {
     #[serde(rename = "Category")]
     pub category: Option<String>,
 }
-
 impl crate::FlatSerialize for ModificationPriceDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -58341,7 +57220,7 @@ impl crate::FlatSerialize for ModificationPriceDataDisk {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoRulesRule {
     /// 活动规则描述。
@@ -58354,22 +57233,7 @@ pub struct ModificationPriceResponsePriceInfoRulesRule {
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfoRulesRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoRules {
     /// 活动规则。
@@ -58378,18 +57242,8 @@ pub struct ModificationPriceResponsePriceInfoRules {
     pub rule: Vec<ModificationPriceResponsePriceInfoRulesRule>,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfoRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
 /// 定价规则子集。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule {
     /// 规则子集描述。
@@ -58402,24 +57256,7 @@ pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRu
     pub rule_id: i64,
 }
 
-impl crate::FlatSerialize
-    for ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rule_id, &format!("{}.RuleId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules {
     /// 定价规则子集。
@@ -58428,20 +57265,8 @@ pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRu
     pub rule: Vec<ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRulesRule>,
 }
 
-impl crate::FlatSerialize
-    for ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
-}
-
 /// 配置明细价格信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo {
     /// 配置名称。可能值：
@@ -58471,37 +57296,7 @@ pub struct ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo {
     pub sub_rules: ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfoItemSubRules,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.resource, &format!("{}.Resource", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sub_rules,
-            &format!("{}.SubRules", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPriceDetailInfos {
     /// 配置明细价格信息。
@@ -58512,22 +57307,8 @@ pub struct ModificationPriceResponsePriceInfoPriceDetailInfos {
     pub detail_info: Vec<ModificationPriceResponsePriceInfoPriceDetailInfosDetailInfo>,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPriceDetailInfos {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_info,
-            &format!("{}.DetailInfo", name),
-            params,
-        );
-    }
-}
-
 /// 价格。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfoPrice {
     /// 原价。
@@ -58555,38 +57336,8 @@ pub struct ModificationPriceResponsePriceInfoPrice {
     pub detail_infos: ModificationPriceResponsePriceInfoPriceDetailInfos,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfoPrice {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.original_price,
-            &format!("{}.OriginalPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.discount_price,
-            &format!("{}.DiscountPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.trade_price,
-            &format!("{}.TradePrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.detail_infos,
-            &format!("{}.DetailInfos", name),
-            params,
-        );
-    }
-}
-
 /// 价格信息类型（PriceInfo）组成的数据类型，包括价格和优惠规则信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModificationPriceResponsePriceInfo {
     #[serde(rename = "Rules")]
@@ -58598,19 +57349,8 @@ pub struct ModificationPriceResponsePriceInfo {
     pub price: ModificationPriceResponsePriceInfoPrice,
 }
 
-impl crate::FlatSerialize for ModificationPriceResponsePriceInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rules, &format!("{}.Rules", name), params);
-        crate::FlatSerialize::flat_serialize(&self.price, &format!("{}.Price", name), params);
-    }
-}
-
 /// 数据盘信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
@@ -58721,7 +57461,6 @@ pub struct InstancesDataDisk {
     #[serde(rename = "BurstingEnabled")]
     pub bursting_enabled: Option<bool>,
 }
-
 impl crate::FlatSerialize for InstancesDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -58795,7 +57534,7 @@ impl crate::FlatSerialize for InstancesDataDisk {
 }
 
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesArn {
     /// >该参数暂未开放使用。
@@ -58808,7 +57547,6 @@ pub struct InstancesArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for InstancesArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -58830,7 +57568,7 @@ impl crate::FlatSerialize for InstancesArn {
 }
 
 /// 弹性网卡信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesNetworkInterface {
     /// 弹性网卡所属的虚拟交换机ID。
@@ -58912,7 +57650,6 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(default)]
     pub security_group_ids: Vec<String>,
     /// 网卡的通讯模式。参数取值范围：
     ///
@@ -58960,7 +57697,6 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 设置该参数后，`Amount`取值只能为1，且不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6AddressCount`。
     #[serde(rename = "Ipv6Address")]
-    #[serde(default)]
     pub ipv6_address: Vec<String>,
     /// 网卡指定的物理网卡索引。
     ///
@@ -59054,7 +57790,6 @@ pub struct InstancesNetworkInterface {
     #[serde(rename = "SourceDestCheck")]
     pub source_dest_check: Option<bool>,
 }
-
 impl crate::FlatSerialize for InstancesNetworkInterface {
     fn flat_serialize<'a>(
         &'a self,
@@ -59155,7 +57890,7 @@ impl crate::FlatSerialize for InstancesNetworkInterface {
 }
 
 /// 实例、云盘和主网卡的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RunInstancesTag {
     /// 实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或 https://。
@@ -59165,7 +57900,6 @@ pub struct RunInstancesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for RunInstancesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -59178,7 +57912,7 @@ impl crate::FlatSerialize for RunInstancesTag {
 }
 
 /// 系统盘相关参数，目前专属块存储集群ID（`StorageClusterId`）需要通过该参数设置参数值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesSystemDisk {
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
@@ -59219,7 +57953,6 @@ pub struct InstancesSystemDisk {
     #[serde(rename = "EncryptAlgorithm")]
     pub encrypt_algorithm: Option<String>,
 }
-
 impl crate::FlatSerialize for InstancesSystemDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -59260,7 +57993,7 @@ impl crate::FlatSerialize for InstancesSystemDisk {
 }
 
 /// 镜像相关属性信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesImageOptions {
     /// 使用该镜像的实例是否支持使用ecs-user用户登录。可能值：
@@ -59271,7 +58004,6 @@ pub struct InstancesImageOptions {
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: Option<bool>,
 }
-
 impl crate::FlatSerialize for InstancesImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -59287,7 +58019,7 @@ impl crate::FlatSerialize for InstancesImageOptions {
 }
 
 /// 网络相关属性参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesNetworkOptions {
     /// 实例是否开启Jumbo frame特性。参数取值范围：
@@ -59308,7 +58040,6 @@ pub struct InstancesNetworkOptions {
     #[serde(rename = "BandwidthWeighting")]
     pub bandwidth_weighting: Option<String>,
 }
-
 impl crate::FlatSerialize for InstancesNetworkOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -59338,7 +58069,7 @@ impl crate::FlatSerialize for InstancesNetworkOptions {
 ///
 /// 关于私网域名解析，请参见[ECS私网域名解析
 /// ](~~2844797~~)。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesPrivateDnsNameOptions {
     /// 开启/关闭实例ID类型的域名到 IPv4的解析。取值范围：
@@ -59385,7 +58116,6 @@ pub struct InstancesPrivateDnsNameOptions {
     #[serde(rename = "HostnameType")]
     pub hostname_type: Option<String>,
 }
-
 impl crate::FlatSerialize for InstancesPrivateDnsNameOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -59421,7 +58151,7 @@ impl crate::FlatSerialize for InstancesPrivateDnsNameOptions {
 }
 
 /// 实例时钟相关属性参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesClockOptions {
     /// PTP 状态值。取值范围：
@@ -59434,7 +58164,6 @@ pub struct InstancesClockOptions {
     #[serde(rename = "PtpStatus")]
     pub ptp_status: Option<String>,
 }
-
 impl crate::FlatSerialize for InstancesClockOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -59449,7 +58178,7 @@ impl crate::FlatSerialize for InstancesClockOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceIdSets {
     /// 实例ID列表。
@@ -59458,21 +58187,7 @@ pub struct ResponseInstanceIdSets {
     pub instance_id_set: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseInstanceIdSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id_set,
-            &format!("{}.InstanceIdSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstanceDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
@@ -59559,7 +58274,6 @@ pub struct InstanceDataDisk {
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: Option<String>,
 }
-
 impl crate::FlatSerialize for InstanceDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -59617,7 +58331,7 @@ impl crate::FlatSerialize for InstanceDataDisk {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstanceArn {
     /// >该参数正在邀测中，暂不支持使用。
@@ -59630,7 +58344,6 @@ pub struct InstanceArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for InstanceArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -59652,7 +58365,7 @@ impl crate::FlatSerialize for InstanceArn {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateInstanceTag {
     /// 标签键。
@@ -59664,7 +58377,6 @@ pub struct CreateInstanceTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateInstanceTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -59677,14 +58389,13 @@ impl crate::FlatSerialize for CreateInstanceTag {
 }
 
 /// 系统盘相关参数，目前专属块存储集群ID（`StorageClusterId`）需要通过该参数设置参数值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstanceSystemDisk {
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
     pub storage_cluster_id: Option<String>,
 }
-
 impl crate::FlatSerialize for InstanceSystemDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -59699,7 +58410,7 @@ impl crate::FlatSerialize for InstanceSystemDisk {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstancesResponseInstanceResponsesInstanceResponse {
     /// 实例操作结果错误码。返回值200为成功，更多请参见下文错误码列表。
@@ -59724,33 +58435,7 @@ pub struct StartInstancesResponseInstanceResponsesInstanceResponse {
     pub previous_status: String,
 }
 
-impl crate::FlatSerialize for StartInstancesResponseInstanceResponsesInstanceResponse {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_status,
-            &format!("{}.CurrentStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.previous_status,
-            &format!("{}.PreviousStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StartInstancesResponseInstanceResponses {
     /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
@@ -59759,21 +58444,7 @@ pub struct StartInstancesResponseInstanceResponses {
     pub instance_response: Vec<StartInstancesResponseInstanceResponsesInstanceResponse>,
 }
 
-impl crate::FlatSerialize for StartInstancesResponseInstanceResponses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_response,
-            &format!("{}.InstanceResponse", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstancesResponseInstanceResponsesInstanceResponse {
     /// 实例操作结果错误码。返回值为200表示操作成功。更多信息，请参见下文错误码列表。
@@ -59798,33 +58469,7 @@ pub struct StopInstancesResponseInstanceResponsesInstanceResponse {
     pub previous_status: String,
 }
 
-impl crate::FlatSerialize for StopInstancesResponseInstanceResponsesInstanceResponse {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_status,
-            &format!("{}.CurrentStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.previous_status,
-            &format!("{}.PreviousStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StopInstancesResponseInstanceResponses {
     /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
@@ -59833,21 +58478,7 @@ pub struct StopInstancesResponseInstanceResponses {
     pub instance_response: Vec<StopInstancesResponseInstanceResponsesInstanceResponse>,
 }
 
-impl crate::FlatSerialize for StopInstancesResponseInstanceResponses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_response,
-            &format!("{}.InstanceResponse", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstancesResponseInstanceResponsesInstanceResponse {
     /// 实例操作结果错误码。返回值为200表示操作成功。更多信息，请参见下文错误码列表。
@@ -59872,33 +58503,7 @@ pub struct RebootInstancesResponseInstanceResponsesInstanceResponse {
     pub previous_status: String,
 }
 
-impl crate::FlatSerialize for RebootInstancesResponseInstanceResponsesInstanceResponse {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_status,
-            &format!("{}.CurrentStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.previous_status,
-            &format!("{}.PreviousStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RebootInstancesResponseInstanceResponses {
     /// 由InstanceResponse组成的数组格式，返回每个实例操作的前后状态及操作结果。
@@ -59907,21 +58512,7 @@ pub struct RebootInstancesResponseInstanceResponses {
     pub instance_response: Vec<RebootInstancesResponseInstanceResponsesInstanceResponse>,
 }
 
-impl crate::FlatSerialize for RebootInstancesResponseInstanceResponses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_response,
-            &format!("{}.InstanceResponse", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceStatus {
     /// 实例状态。可能值：
@@ -59944,22 +58535,7 @@ pub struct InstanceStatus {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for InstanceStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceStatuses {
     /// 实例ID和状态（InstanceStatus）的集合。
@@ -59968,22 +58544,8 @@ pub struct InstanceStatuses {
     pub instance_status: Vec<InstanceStatus>,
 }
 
-impl crate::FlatSerialize for InstanceStatuses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_status,
-            &format!("{}.InstanceStatus", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DescribeInstancesTag {
     /// 实例的标签值。N的取值范围：1~20。
@@ -59995,7 +58557,6 @@ pub struct DescribeInstancesTag {
     #[serde(rename = "key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for DescribeInstancesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -60007,7 +58568,7 @@ impl crate::FlatSerialize for DescribeInstancesTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInnerIpAddress {
     /// 经典网络类型实例的内网IP地址列表。
@@ -60016,22 +58577,8 @@ pub struct ItemInnerIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemInnerIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
 /// 弹性公网IP绑定信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEipAddress {
     /// 弹性公网IP的公网带宽限速，单位为Mbit/s。
@@ -60060,42 +58607,8 @@ pub struct ItemEipAddress {
     pub internet_charge_type: String,
 }
 
-impl crate::FlatSerialize for ItemEipAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_support_unassociate,
-            &format!("{}.IsSupportUnassociate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-    }
-}
-
 /// 镜像相关属性信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemImageOptions {
     /// 使用该镜像的实例是否支持使用ecs-user用户登录。可能值：
@@ -60117,26 +58630,7 @@ pub struct InstanceItemImageOptions {
     pub current_osnv_me_supported: bool,
 }
 
-impl crate::FlatSerialize for InstanceItemImageOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.login_as_non_root,
-            &format!("{}.LoginAsNonRoot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_osnv_me_supported,
-            &format!("{}.CurrentOSNVMeSupported", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemTagsTag {
     /// 实例的标签键。
@@ -60149,22 +58643,7 @@ pub struct InstancesInstanceItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for InstancesInstanceItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemTags {
     /// 实例的标签集合。
@@ -60173,18 +58652,8 @@ pub struct InstancesInstanceItemTags {
     pub tag: Vec<InstancesInstanceItemTagsTag>,
 }
 
-impl crate::FlatSerialize for InstancesInstanceItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// > 该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HibernationOptions {
     /// > 该参数正在邀测中，暂未开放使用。
@@ -60193,22 +58662,8 @@ pub struct HibernationOptions {
     pub configured: bool,
 }
 
-impl crate::FlatSerialize for HibernationOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.configured,
-            &format!("{}.Configured", name),
-            params,
-        );
-    }
-}
-
 /// > 该参数正在邀测中，暂不支持使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AdditionalInfo {
     /// > 该参数正在邀测中，暂不支持使用。
@@ -60217,22 +58672,8 @@ pub struct AdditionalInfo {
     pub enable_high_density_mode: bool,
 }
 
-impl crate::FlatSerialize for AdditionalInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_high_density_mode,
-            &format!("{}.EnableHighDensityMode", name),
-            params,
-        );
-    }
-}
-
 /// 元数据选项集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetadataOptions {
     /// > 该参数暂未开放使用。
@@ -60254,32 +58695,8 @@ pub struct MetadataOptions {
     pub http_endpoint: String,
 }
 
-impl crate::FlatSerialize for MetadataOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.http_put_response_hop_limit,
-            &format!("{}.HttpPutResponseHopLimit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_tokens,
-            &format!("{}.HttpTokens", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_endpoint,
-            &format!("{}.HttpEndpoint", name),
-            params,
-        );
-    }
-}
-
 /// CPU配置详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemCpuOptions {
     /// 实例的CPU拓扑类型。可能值：
@@ -60312,46 +58729,6 @@ pub struct InstanceItemCpuOptions {
     pub core_count: i32,
 }
 
-impl crate::FlatSerialize for InstanceItemCpuOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.topology_type,
-            &format!("{}.TopologyType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.turbo_mode,
-            &format!("{}.TurboMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_visst,
-            &format!("{}.EnableVISST", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_vrdt,
-            &format!("{}.EnableVRDT", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.threads_per_core,
-            &format!("{}.ThreadsPerCore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.numa, &format!("{}.Numa", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.core_count,
-            &format!("{}.CoreCount", name),
-            params,
-        );
-    }
-}
-
 /// 实例的私网域名配置信息集合。
 ///
 ///
@@ -60359,7 +58736,7 @@ impl crate::FlatSerialize for InstanceItemCpuOptions {
 /// ](~~2844797~~)。
 ///
 /// > 仅当请求参数`AdditionalAttributes`取值包含`PRIVATE_DNS_OPTIONS`时，返回该参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateDnsNameOptions {
     /// 开启/关闭实例ID类型的域名到 IPv4的解析。可能值：
@@ -60408,41 +58785,7 @@ pub struct ItemPrivateDnsNameOptions {
     pub enable_instance_id_dns_aaaa_record: bool,
 }
 
-impl crate::FlatSerialize for ItemPrivateDnsNameOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_instance_id_dns_a_record,
-            &format!("{}.EnableInstanceIdDnsARecord", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.hostname_type,
-            &format!("{}.HostnameType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_ip_dns_ptr_record,
-            &format!("{}.EnableIpDnsPtrRecord", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_ip_dns_a_record,
-            &format!("{}.EnableIpDnsARecord", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_instance_id_dns_aaaa_record,
-            &format!("{}.EnableInstanceIdDnsAAAARecord", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemSecurityGroupIds {
     /// 实例所属安全组ID列表。
@@ -60451,21 +58794,7 @@ pub struct InstanceItemSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InstanceItemSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemVpcAttributesPrivateIpAddress {
     /// 私有IP地址列表。
@@ -60474,22 +58803,8 @@ pub struct ItemVpcAttributesPrivateIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemVpcAttributesPrivateIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
 /// 专有网络VPC属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemVpcAttributes {
     #[serde(rename = "PrivateIpAddress")]
@@ -60509,33 +58824,8 @@ pub struct ItemVpcAttributes {
     pub nat_ip_address: String,
 }
 
-impl crate::FlatSerialize for ItemVpcAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nat_ip_address,
-            &format!("{}.NatIpAddress", name),
-            params,
-        );
-    }
-}
-
 /// 专有宿主机实例的属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceAttribute {
     /// 实例的宿主机类型是否为专有宿主机。可能值：
@@ -60556,18 +58846,7 @@ pub struct InstanceAttribute {
     pub affinity: String,
 }
 
-impl crate::FlatSerialize for InstanceAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tenancy, &format!("{}.Tenancy", name), params);
-        crate::FlatSerialize::flat_serialize(&self.affinity, &format!("{}.Affinity", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPublicIpAddress {
     /// 实例公网IP地址列表。
@@ -60576,21 +58855,7 @@ pub struct ItemPublicIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemPublicIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6SetsIpv6Set {
     /// 弹性网卡已分配的IPv6地址。
@@ -60599,21 +58864,7 @@ pub struct InterfaceItemIpv6SetsIpv6Set {
     pub ipv6_address: String,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv6SetsIpv6Set {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address,
-            &format!("{}.Ipv6Address", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6Sets {
     /// 弹性网卡已分配的IPv6地址集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
@@ -60622,17 +58873,7 @@ pub struct InterfaceItemIpv6Sets {
     pub ipv6_set: Vec<InterfaceItemIpv6SetsIpv6Set>,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv6Sets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.ipv6_set, &format!("{}.Ipv6Set", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6PrefixSetsIpv6PrefixSet {
     /// 弹性网卡已分配的IPv6前缀。
@@ -60641,21 +58882,7 @@ pub struct InterfaceItemIpv6PrefixSetsIpv6PrefixSet {
     pub ipv6_prefix: String,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv6PrefixSetsIpv6PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix,
-            &format!("{}.Ipv6Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv6PrefixSets {
     /// 弹性网卡已分配的IPv6前缀集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
@@ -60664,21 +58891,7 @@ pub struct InterfaceItemIpv6PrefixSets {
     pub ipv6_prefix_set: Vec<InterfaceItemIpv6PrefixSetsIpv6PrefixSet>,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv6PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_set,
-            &format!("{}.Ipv6PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv4PrefixSetsIpv4PrefixSet {
     /// 弹性网卡已分配的IPv4前缀。
@@ -60687,21 +58900,7 @@ pub struct InterfaceItemIpv4PrefixSetsIpv4PrefixSet {
     pub ipv4_prefix: String,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv4PrefixSetsIpv4PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix,
-            &format!("{}.Ipv4Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemIpv4PrefixSets {
     /// 弹性网卡已分配的IPv4前缀集合。仅当请求参数`AdditionalAttributes.N`取值为`NETWORK_PRIMARY_ENI_IP`时，才会返回该参数值。
@@ -60710,21 +58909,7 @@ pub struct InterfaceItemIpv4PrefixSets {
     pub ipv4_prefix_set: Vec<InterfaceItemIpv4PrefixSetsIpv4PrefixSet>,
 }
 
-impl crate::FlatSerialize for InterfaceItemIpv4PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_set,
-            &format!("{}.Ipv4PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemPrivateIpSetsPrivateIpSet {
     /// 实例的私网IP地址。
@@ -60747,27 +58932,7 @@ pub struct InterfaceItemPrivateIpSetsPrivateIpSet {
     pub primary: bool,
 }
 
-impl crate::FlatSerialize for InterfaceItemPrivateIpSetsPrivateIpSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_dns_name,
-            &format!("{}.PrivateDnsName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.primary, &format!("{}.Primary", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemPrivateIpSets {
     /// PrivateIpSet组成的集合。
@@ -60776,22 +58941,8 @@ pub struct InterfaceItemPrivateIpSets {
     pub private_ip_set: Vec<InterfaceItemPrivateIpSetsPrivateIpSet>,
 }
 
-impl crate::FlatSerialize for InterfaceItemPrivateIpSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_set,
-            &format!("{}.PrivateIpSet", name),
-            params,
-        );
-    }
-}
-
 /// 实例包含的弹性网卡集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemNetworkInterfacesNetworkInterface {
     /// 弹性网卡类型。可能值：
@@ -60826,52 +58977,7 @@ pub struct ItemNetworkInterfacesNetworkInterface {
     pub private_ip_sets: InterfaceItemPrivateIpSets,
 }
 
-impl crate::FlatSerialize for ItemNetworkInterfacesNetworkInterface {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_sets,
-            &format!("{}.Ipv6Sets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_sets,
-            &format!("{}.Ipv6PrefixSets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.primary_ip_address,
-            &format!("{}.PrimaryIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mac_address,
-            &format!("{}.MacAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_id,
-            &format!("{}.NetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_sets,
-            &format!("{}.Ipv4PrefixSets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_sets,
-            &format!("{}.PrivateIpSets", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemNetworkInterfaces {
     /// 实例包含的弹性网卡集合。
@@ -60880,22 +58986,8 @@ pub struct ItemNetworkInterfaces {
     pub network_interface: Vec<ItemNetworkInterfacesNetworkInterface>,
 }
 
-impl crate::FlatSerialize for ItemNetworkInterfaces {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface,
-            &format!("{}.NetworkInterface", name),
-            params,
-        );
-    }
-}
-
 /// 云服务器ECS的容量预留相关参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationAttr {
     /// 容量预留偏好。
@@ -60908,27 +59000,8 @@ pub struct ReservationAttr {
     pub capacity_reservation_id: String,
 }
 
-impl crate::FlatSerialize for ReservationAttr {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_preference,
-            &format!("{}.CapacityReservationPreference", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_id,
-            &format!("{}.CapacityReservationId", name),
-            params,
-        );
-    }
-}
-
 /// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDedicatedHostAttribute {
     /// 专有宿主机ID。
@@ -60945,31 +59018,7 @@ pub struct ItemDedicatedHostAttribute {
     pub dedicated_host_cluster_id: String,
 }
 
-impl crate::FlatSerialize for ItemDedicatedHostAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_name,
-            &format!("{}.DedicatedHostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster_id,
-            &format!("{}.DedicatedHostClusterId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemOperationLocksLockReason {
     /// 锁定类型。可能值：
@@ -60988,22 +59037,7 @@ pub struct InstanceItemOperationLocksLockReason {
     pub lock_msg: String,
 }
 
-impl crate::FlatSerialize for InstanceItemOperationLocksLockReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.lock_msg, &format!("{}.LockMsg", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesInstanceItemOperationLocks {
     /// 实例的锁定原因。
@@ -61012,21 +59046,7 @@ pub struct InstancesInstanceItemOperationLocks {
     pub lock_reason: Vec<InstanceItemOperationLocksLockReason>,
 }
 
-impl crate::FlatSerialize for InstancesInstanceItemOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RdmaIpAddress {
     /// HPC实例的RDMA网络IP列表。
@@ -61035,21 +59055,7 @@ pub struct RdmaIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for RdmaIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemClockOptions {
     #[serde(rename = "PtpStatus")]
@@ -61057,21 +59063,7 @@ pub struct ItemClockOptions {
     pub ptp_status: String,
 }
 
-impl crate::FlatSerialize for ItemClockOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ptp_status,
-            &format!("{}.PtpStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesResponseInstancesInstance {
     /// 实例所属的企业资源组ID。
@@ -61394,312 +59386,7 @@ pub struct DescribeInstancesResponseInstancesInstance {
     pub credit_specification: String,
 }
 
-impl crate::FlatSerialize for DescribeInstancesResponseInstancesInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.memory, &format!("{}.Memory", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cpu, &format!("{}.Cpu", name), params);
-        crate::FlatSerialize::flat_serialize(&self.os_name, &format!("{}.OSName", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_network_type,
-            &format!("{}.InstanceNetworkType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.inner_ip_address,
-            &format!("{}.InnerIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_address,
-            &format!("{}.EipAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_options,
-            &format!("{}.ImageOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vlan_id, &format!("{}.VlanId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.host_name,
-            &format!("{}.HostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.hibernation_options,
-            &format!("{}.HibernationOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.additional_info,
-            &format!("{}.AdditionalInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metadata_options,
-            &format!("{}.MetadataOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stopped_mode,
-            &format!("{}.StoppedMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_options,
-            &format!("{}.CpuOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_dns_name_options,
-            &format!("{}.PrivateDnsNameOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deletion_protection,
-            &format!("{}.DeletionProtection", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_ids,
-            &format!("{}.SecurityGroupIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_attributes,
-            &format!("{}.VpcAttributes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_id,
-            &format!("{}.DeploymentSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_interruption_behavior,
-            &format!("{}.SpotInterruptionBehavior", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_max_bandwidth_out,
-            &format!("{}.InternetMaxBandwidthOut", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.serial_number,
-            &format!("{}.SerialNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OSType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_release_time,
-            &format!("{}.AutoReleaseTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_nvs,
-            &format!("{}.EnableNVS", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_capacity,
-            &format!("{}.LocalStorageCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family,
-            &format!("{}.InstanceTypeFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_instance_attribute,
-            &format!("{}.DedicatedInstanceAttribute", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_duration,
-            &format!("{}.SpotDuration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_amount,
-            &format!("{}.LocalStorageAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_address,
-            &format!("{}.PublicIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.gpu_spec, &format!("{}.GPUSpec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interfaces,
-            &format!("{}.NetworkInterfaces", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_price_limit,
-            &format!("{}.SpotPriceLimit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sale_cycle,
-            &format!("{}.SaleCycle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_available,
-            &format!("{}.DeviceAvailable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_strategy,
-            &format!("{}.SpotStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.os_name_en,
-            &format!("{}.OSNameEn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_pair_name,
-            &format!("{}.KeyPairName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.io_optimized,
-            &format!("{}.IoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cluster_id,
-            &format!("{}.ClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.hpc_cluster_id,
-            &format!("{}.HpcClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.isp, &format!("{}.ISP", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_group_no,
-            &format!("{}.DeploymentSetGroupNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ecs_capacity_reservation_attr,
-            &format!("{}.EcsCapacityReservationAttr", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_attribute,
-            &format!("{}.DedicatedHostAttribute", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.gpu_amount,
-            &format!("{}.GPUAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_locks,
-            &format!("{}.OperationLocks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.rdma_ip_address,
-            &format!("{}.RdmaIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_max_bandwidth_in,
-            &format!("{}.InternetMaxBandwidthIn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.clock_options,
-            &format!("{}.ClockOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.recyclable,
-            &format!("{}.Recyclable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.credit_specification,
-            &format!("{}.CreditSpecification", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstancesResponseInstances {
     /// 由Instances组成的数组格式，返回实例的信息。
@@ -61708,18 +59395,8 @@ pub struct DescribeInstancesResponseInstances {
     pub instance: Vec<DescribeInstancesResponseInstancesInstance>,
 }
 
-impl crate::FlatSerialize for DescribeInstancesResponseInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.instance, &format!("{}.Instance", name), params);
-    }
-}
-
 /// 实例规格族所属代数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeFamily {
     /// 实例规格族所属代数。
@@ -61732,26 +59409,7 @@ pub struct TypeFamily {
     pub instance_type_family_id: String,
 }
 
-impl crate::FlatSerialize for TypeFamily {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.generation,
-            &format!("{}.Generation", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family_id,
-            &format!("{}.InstanceTypeFamilyId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceTypeFamilies {
     /// 由实例规格族InstanceTypeFamily组成的集合。
@@ -61760,22 +59418,8 @@ pub struct ResponseInstanceTypeFamilies {
     pub instance_type_family: Vec<TypeFamily>,
 }
 
-impl crate::FlatSerialize for ResponseInstanceTypeFamilies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family,
-            &format!("{}.InstanceTypeFamily", name),
-            params,
-        );
-    }
-}
-
 /// 物理网卡信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CardInfo {
     /// 物理网卡索引。
@@ -61784,21 +59428,7 @@ pub struct CardInfo {
     pub network_card_index: i32,
 }
 
-impl crate::FlatSerialize for CardInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_card_index,
-            &format!("{}.NetworkCardIndex", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkCards {
     /// 物理网卡信息列表。
@@ -61807,21 +59437,7 @@ pub struct NetworkCards {
     pub network_card_info: Vec<CardInfo>,
 }
 
-impl crate::FlatSerialize for NetworkCards {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_card_info,
-            &format!("{}.NetworkCardInfo", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BootModes {
     /// 规格支持的启动模式。
@@ -61830,22 +59446,8 @@ pub struct BootModes {
     pub supported_boot_mode: Vec<String>,
 }
 
-impl crate::FlatSerialize for BootModes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_boot_mode,
-            &format!("{}.SupportedBootMode", name),
-            params,
-        );
-    }
-}
-
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemEnhancedNetwork {
     /// >该参数暂未开放使用。
@@ -61862,31 +59464,7 @@ pub struct ItemEnhancedNetwork {
     pub rss_support: bool,
 }
 
-impl crate::FlatSerialize for ItemEnhancedNetwork {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sriov_support,
-            &format!("{}.SriovSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vf_queue_number_per_eni,
-            &format!("{}.VfQueueNumberPerEni", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.rss_support,
-            &format!("{}.RssSupport", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TopologyTypes {
     /// 实例规格支持的 CPU 拓扑类型数组。
@@ -61895,22 +59473,8 @@ pub struct TopologyTypes {
     pub supported_topology_type: Vec<String>,
 }
 
-impl crate::FlatSerialize for TopologyTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_topology_type,
-            &format!("{}.SupportedTopologyType", name),
-            params,
-        );
-    }
-}
-
 /// CPU设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemCpuOptions {
     #[serde(rename = "SupportedTopologyTypes")]
@@ -61936,38 +59500,8 @@ pub struct TypeItemCpuOptions {
     pub hyper_threading_adjustable: bool,
 }
 
-impl crate::FlatSerialize for TypeItemCpuOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_topology_types,
-            &format!("{}.SupportedTopologyTypes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.threads_per_core,
-            &format!("{}.ThreadsPerCore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.core, &format!("{}.Core", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.core_factor,
-            &format!("{}.CoreFactor", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.hyper_threading_adjustable,
-            &format!("{}.HyperThreadingAdjustable", name),
-            params,
-        );
-    }
-}
-
 /// 规格支持的时钟。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemClock {
     /// 是否支持开启PTP，可能值：
@@ -61979,22 +59513,8 @@ pub struct ItemClock {
     pub ptp_support: String,
 }
 
-impl crate::FlatSerialize for ItemClock {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ptp_support,
-            &format!("{}.PtpSupport", name),
-            params,
-        );
-    }
-}
-
 /// 规格属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesAttribute {
     /// 属性名。
@@ -62007,18 +59527,7 @@ pub struct AttributesAttribute {
     pub value: String,
 }
 
-impl crate::FlatSerialize for AttributesAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttributes {
     /// 规格属性列表。
@@ -62027,21 +59536,7 @@ pub struct ItemAttributes {
     pub attribute: Vec<AttributesAttribute>,
 }
 
-impl crate::FlatSerialize for ItemAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.attribute,
-            &format!("{}.Attribute", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct WeightingInfo {
     /// 网络基础带宽。单位：Kbit/s
@@ -62066,37 +59561,7 @@ pub struct WeightingInfo {
     pub name: String,
 }
 
-impl crate::FlatSerialize for WeightingInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_bandwidth,
-            &format!("{}.VpcBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ebs_burst_bandwidth,
-            &format!("{}.EbsBurstBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ebs_bandwidth,
-            &format!("{}.EbsBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_burst_bandwidth,
-            &format!("{}.VpcBurstBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct WeightingInfos {
     /// 带宽权重信息。需要在入参AdditionalAttributes 中指定NetworkInfo.BandwidthWeighting 时才返回该字段。
@@ -62105,22 +59570,8 @@ pub struct WeightingInfos {
     pub weighting_info: Vec<WeightingInfo>,
 }
 
-impl crate::FlatSerialize for WeightingInfos {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.weighting_info,
-            &format!("{}.WeightingInfo", name),
-            params,
-        );
-    }
-}
-
 /// 规格支持的带宽权重
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthWeighting {
     #[serde(rename = "WeightingInfos")]
@@ -62128,22 +59579,8 @@ pub struct BandwidthWeighting {
     pub weighting_infos: WeightingInfos,
 }
 
-impl crate::FlatSerialize for BandwidthWeighting {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.weighting_infos,
-            &format!("{}.WeightingInfos", name),
-            params,
-        );
-    }
-}
-
 /// 网络相关信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkInfo {
     /// 规格支持的带宽权重
@@ -62152,22 +59589,8 @@ pub struct NetworkInfo {
     pub bandwidth_weighting: BandwidthWeighting,
 }
 
-impl crate::FlatSerialize for NetworkInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_weighting,
-            &format!("{}.BandwidthWeighting", name),
-            params,
-        );
-    }
-}
-
 /// 实例规格集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponseInstanceTypesInstanceType {
     /// 支持挂载的所有网卡（包括主网卡、弹性网卡、中继网卡等）上限。
@@ -62388,233 +59811,7 @@ pub struct DescribeInstanceTypesResponseInstanceTypesInstanceType {
     pub network_info: NetworkInfo,
 }
 
-impl crate::FlatSerialize for DescribeInstanceTypesResponseInstanceTypesInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_total_quantity,
-            &format!("{}.EniTotalQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_category,
-            &format!("{}.LocalStorageCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.primary_eni_queue_number,
-            &format!("{}.PrimaryEniQueueNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_size,
-            &format!("{}.MemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_capacity,
-            &format!("{}.LocalStorageCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_family_level,
-            &format!("{}.InstanceFamilyLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_pps_rx,
-            &format!("{}.InstancePpsRx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_ipv6_address_quantity,
-            &format!("{}.EniIpv6AddressQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.maximum_queue_number_per_eni,
-            &format!("{}.MaximumQueueNumberPerEni", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_id,
-            &format!("{}.InstanceTypeId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_bandwidth_rx,
-            &format!("{}.InstanceBandwidthRx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.secondary_eni_queue_number,
-            &format!("{}.SecondaryEniQueueNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.gpu_spec, &format!("{}.GPUSpec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_bandwidth_tx,
-            &format!("{}.InstanceBandwidthTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_pair_number,
-            &format!("{}.QueuePairNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eri_quantity,
-            &format!("{}.EriQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.gpu_amount,
-            &format!("{}.GPUAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_eni_queue_quantity,
-            &format!("{}.TotalEniQueueQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nvme_support,
-            &format!("{}.NvmeSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_quantity,
-            &format!("{}.DiskQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.initial_credit,
-            &format!("{}.InitialCredit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_amount,
-            &format!("{}.LocalStorageAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.baseline_credit,
-            &format!("{}.BaselineCredit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_pps_tx,
-            &format!("{}.InstancePpsTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_private_ip_address_quantity,
-            &format!("{}.EniPrivateIpAddressQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_core_count,
-            &format!("{}.CpuCoreCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family,
-            &format!("{}.InstanceTypeFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_quantity,
-            &format!("{}.EniQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_trunk_supported,
-            &format!("{}.EniTrunkSupported", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_speed_frequency,
-            &format!("{}.CpuSpeedFrequency", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_turbo_frequency,
-            &format!("{}.CpuTurboFrequency", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_processor_model,
-            &format!("{}.PhysicalProcessorModel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_encryption_support,
-            &format!("{}.NetworkEncryptionSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_category,
-            &format!("{}.InstanceCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_architecture,
-            &format!("{}.CpuArchitecture", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.gpu_memory_size,
-            &format!("{}.GPUMemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_card_quantity,
-            &format!("{}.NetworkCardQuantity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_cards,
-            &format!("{}.NetworkCards", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_boot_modes,
-            &format!("{}.SupportedBootModes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enhanced_network,
-            &format!("{}.EnhancedNetwork", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_options,
-            &format!("{}.CpuOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.jumbo_frame_support,
-            &format!("{}.JumboFrameSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.clock, &format!("{}.Clock", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.attributes,
-            &format!("{}.Attributes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_info,
-            &format!("{}.NetworkInfo", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeInstanceTypesResponseInstanceTypes {
     /// 实例规格集合。
@@ -62623,21 +59820,7 @@ pub struct DescribeInstanceTypesResponseInstanceTypes {
     pub instance_type: Vec<DescribeInstanceTypesResponseInstanceTypesInstanceType>,
 }
 
-impl crate::FlatSerialize for DescribeInstanceTypesResponseInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceAttributeResponseSecurityGroupIds {
     /// 实例所属安全组集合。
@@ -62646,21 +59829,7 @@ pub struct InstanceAttributeResponseSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InstanceAttributeResponseSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePublicIpAddress {
     /// 实例公网IP地址。
@@ -62669,21 +59838,7 @@ pub struct ResponsePublicIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponsePublicIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInnerIpAddress {
     /// 经典网络类型实例的内网IP地址。
@@ -62692,21 +59847,7 @@ pub struct ResponseInnerIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseInnerIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcAttributesPrivateIpAddress {
     /// 私有IP地址。
@@ -62715,22 +59856,8 @@ pub struct ResponseVpcAttributesPrivateIpAddress {
     pub ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseVpcAttributesPrivateIpAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-    }
-}
-
 /// 专有网络VPC属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcAttributes {
     /// 专有网络VPC ID。
@@ -62750,33 +59877,8 @@ pub struct ResponseVpcAttributes {
     pub private_ip_address: ResponseVpcAttributesPrivateIpAddress,
 }
 
-impl crate::FlatSerialize for ResponseVpcAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.nat_ip_address,
-            &format!("{}.NatIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-    }
-}
-
 /// 弹性公网IP绑定信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEipAddress {
     /// 公网带宽计费方式。可能值：
@@ -62802,37 +59904,8 @@ pub struct ResponseEipAddress {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for ResponseEipAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
 /// 由专有宿主机集群ID（DedicatedHostClusterId）、专有宿主机ID（DedicatedHostId）和名称（DedicatedHostName）组成的宿主机属性数组。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDedicatedHostAttribute {
     /// 专有宿主机的名称。
@@ -62845,25 +59918,6 @@ pub struct ResponseDedicatedHostAttribute {
     pub dedicated_host_id: String,
 }
 
-impl crate::FlatSerialize for ResponseDedicatedHostAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_name,
-            &format!("{}.DedicatedHostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-    }
-}
-
 /// 锁定类型。可能值：
 ///
 /// - financial：因欠费被锁定。
@@ -62871,7 +59925,7 @@ impl crate::FlatSerialize for ResponseDedicatedHostAttribute {
 /// - Recycling：抢占式实例的待释放锁定状态。
 /// - dedicatedhostfinancial：因为专有宿主机欠费导致ECS实例被锁定。
 /// - refunded：因退款被锁定。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseOperationLocksLockReason {
     /// 锁定类型。可能值：
@@ -62886,21 +59940,7 @@ pub struct ResponseOperationLocksLockReason {
     pub lock_reason: String,
 }
 
-impl crate::FlatSerialize for ResponseOperationLocksLockReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseOperationLocks {
     /// 锁定类型。可能值：
@@ -62915,23 +59955,9 @@ pub struct ResponseOperationLocks {
     pub lock_reason: Vec<ResponseOperationLocksLockReason>,
 }
 
-impl crate::FlatSerialize for ResponseOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
 /// 网络相关属性参数。
 /// > 该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkOptions {
     /// 实例是否开启了Jumbo frame特性。 可能值：
@@ -62961,32 +59987,8 @@ pub struct ResponseNetworkOptions {
     pub bandwidth_weighting: String,
 }
 
-impl crate::FlatSerialize for ResponseNetworkOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_jumbo_frame,
-            &format!("{}.EnableJumboFrame", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_network_encryption,
-            &format!("{}.EnableNetworkEncryption", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_weighting,
-            &format!("{}.BandwidthWeighting", name),
-            params,
-        );
-    }
-}
-
 /// >该参数正在邀测中，暂不开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConnectionOptions {
     /// >该参数正在邀测中，暂不开放使用。
@@ -62996,7 +59998,6 @@ pub struct ConnectionOptions {
     #[serde(rename = "Type")]
     pub r#type: Option<String>,
 }
-
 impl crate::FlatSerialize for ConnectionOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -63013,7 +60014,7 @@ impl crate::FlatSerialize for ConnectionOptions {
 ///
 /// 关于私网域名解析，请参见[ECS私网域名解析
 /// ](~~2844797~~)。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributePrivateDnsNameOptions {
     /// 开启/关闭实例ID类型的域名到 IPv4的解析。可能值：
@@ -63056,7 +60057,6 @@ pub struct AttributePrivateDnsNameOptions {
     #[serde(rename = "HostnameType")]
     pub hostname_type: Option<String>,
 }
-
 impl crate::FlatSerialize for AttributePrivateDnsNameOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -63091,7 +60091,7 @@ impl crate::FlatSerialize for AttributePrivateDnsNameOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance {
     /// 实例ID。
@@ -63112,23 +60112,7 @@ pub struct InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance {
     pub fee: String,
 }
 
-impl crate::FlatSerialize for InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(&self.fee, &format!("{}.Fee", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceChargeTypeResponseFeeOfInstances {
     /// 订单费用详情。
@@ -63137,22 +60121,8 @@ pub struct InstanceChargeTypeResponseFeeOfInstances {
     pub fee_of_instance: Vec<InstanceChargeTypeResponseFeeOfInstancesFeeOfInstance>,
 }
 
-impl crate::FlatSerialize for InstanceChargeTypeResponseFeeOfInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.fee_of_instance,
-            &format!("{}.FeeOfInstance", name),
-            params,
-        );
-    }
-}
-
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ModifyInstanceSpecDisk {
     /// >该参数暂未开放使用。
@@ -63165,7 +60135,6 @@ pub struct ModifyInstanceSpecDisk {
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: Option<String>,
 }
-
 impl crate::FlatSerialize for ModifyInstanceSpecDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -63183,7 +60152,7 @@ impl crate::FlatSerialize for ModifyInstanceSpecDisk {
 }
 
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrepayInstanceSpecDisk {
     /// >该参数暂未开放使用。
@@ -63196,7 +60165,6 @@ pub struct PrepayInstanceSpecDisk {
     #[serde(rename = "PerformanceLevel")]
     pub performance_level: Option<String>,
 }
-
 impl crate::FlatSerialize for PrepayInstanceSpecDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -63214,7 +60182,7 @@ impl crate::FlatSerialize for PrepayInstanceSpecDisk {
 }
 
 /// 实例RAM角色类型。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResult {
     /// 判断是否成功授予实例RAM角色。返回值为200表示成功授予，返回其他值表示授予失败，失败原因参见错误码。
@@ -63235,24 +60203,7 @@ pub struct AttachInstanceRamRoleResult {
     pub success: bool,
 }
 
-impl crate::FlatSerialize for AttachInstanceRamRoleResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachInstanceRamRoleResults {
     /// 由实例RAM角色类型（AttachInstanceRamRoleResult）组成的信息集。
@@ -63261,21 +60212,7 @@ pub struct AttachInstanceRamRoleResults {
     pub attach_instance_ram_role_result: Vec<AttachInstanceRamRoleResult>,
 }
 
-impl crate::FlatSerialize for AttachInstanceRamRoleResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.attach_instance_ram_role_result,
-            &format!("{}.AttachInstanceRamRoleResult", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRamRoleSetsInstanceRamRoleSet {
     /// 实例RAM角色名称。
@@ -63288,26 +60225,7 @@ pub struct ResponseInstanceRamRoleSetsInstanceRamRoleSet {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for ResponseInstanceRamRoleSetsInstanceRamRoleSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ram_role_name,
-            &format!("{}.RamRoleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRamRoleSets {
     /// 由实例ID和RAM角色名称（InstanceRamRoleSet）组成的信息集。
@@ -63316,21 +60234,7 @@ pub struct ResponseInstanceRamRoleSets {
     pub instance_ram_role_set: Vec<ResponseInstanceRamRoleSetsInstanceRamRoleSet>,
 }
 
-impl crate::FlatSerialize for ResponseInstanceRamRoleSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_ram_role_set,
-            &format!("{}.InstanceRamRoleSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceRamRoleSetsInstanceRamRoleSet {
     /// 收回实例RAM角色名称。
@@ -63343,26 +60247,7 @@ pub struct ItemInstanceRamRoleSetsInstanceRamRoleSet {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for ItemInstanceRamRoleSetsInstanceRamRoleSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ram_role_name,
-            &format!("{}.RamRoleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstanceRamRoleSets {
     /// 收回的实例ID和实例RAM角色名称集合。
@@ -63371,21 +60256,7 @@ pub struct ItemInstanceRamRoleSets {
     pub instance_ram_role_set: Vec<ItemInstanceRamRoleSetsInstanceRamRoleSet>,
 }
 
-impl crate::FlatSerialize for ItemInstanceRamRoleSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_ram_role_set,
-            &format!("{}.InstanceRamRoleSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachInstanceRamRoleResult {
     /// 判断是否成功收回实例RAM角色。返回值为200表示成功收回，返回其他值表示收回失败，失败原因参见错误码。
@@ -63409,29 +60280,7 @@ pub struct DetachInstanceRamRoleResult {
     pub instance_ram_role_sets: ItemInstanceRamRoleSets,
 }
 
-impl crate::FlatSerialize for DetachInstanceRamRoleResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_ram_role_sets,
-            &format!("{}.InstanceRamRoleSets", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachInstanceRamRoleResults {
     /// 由被收回的实例ID和收回实例RAM角色名称等（DetachInstanceRamRoleResult）组成的信息集。
@@ -63440,21 +60289,7 @@ pub struct DetachInstanceRamRoleResults {
     pub detach_instance_ram_role_result: Vec<DetachInstanceRamRoleResult>,
 }
 
-impl crate::FlatSerialize for DetachInstanceRamRoleResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.detach_instance_ram_role_result,
-            &format!("{}.DetachInstanceRamRoleResult", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesInstanceRenewAttribute {
     /// 自动续费时长的单位。
@@ -63485,37 +60320,7 @@ pub struct AttributesInstanceRenewAttribute {
     pub auto_renew_enabled: bool,
 }
 
-impl crate::FlatSerialize for AttributesInstanceRenewAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.period_unit,
-            &format!("{}.PeriodUnit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.renewal_status,
-            &format!("{}.RenewalStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_renew_enabled,
-            &format!("{}.AutoRenewEnabled", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInstanceRenewAttributes {
     /// 实例续费的属性InstanceRenewAttribute的集合。
@@ -63524,21 +60329,7 @@ pub struct ResponseInstanceRenewAttributes {
     pub instance_renew_attribute: Vec<AttributesInstanceRenewAttribute>,
 }
 
-impl crate::FlatSerialize for ResponseInstanceRenewAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_renew_attribute,
-            &format!("{}.InstanceRenewAttribute", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PriceType {
     /// 抢占式实例是否为I/O优化实例。
@@ -63571,47 +60362,7 @@ pub struct PriceType {
     pub origin_price: f32,
 }
 
-impl crate::FlatSerialize for PriceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.io_optimized,
-            &format!("{}.IoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_price,
-            &format!("{}.SpotPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.timestamp,
-            &format!("{}.Timestamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_type,
-            &format!("{}.NetworkType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.origin_price,
-            &format!("{}.OriginPrice", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotPrices {
     /// 抢占价格详情。
@@ -63620,21 +60371,7 @@ pub struct SpotPrices {
     pub spot_price_type: Vec<PriceType>,
 }
 
-impl crate::FlatSerialize for SpotPrices {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_price_type,
-            &format!("{}.SpotPriceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotResource {
     /// 近30天抢占式实例的释放率的范围，对应`InterruptionRate`返回值。可能值：
@@ -63662,36 +60399,7 @@ pub struct SpotResource {
     pub interruption_rate: f32,
 }
 
-impl crate::FlatSerialize for SpotResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.interrupt_rate_desc,
-            &format!("{}.InterruptRateDesc", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.average_spot_discount,
-            &format!("{}.AverageSpotDiscount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.interruption_rate,
-            &format!("{}.InterruptionRate", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotResources {
     /// 近30天抢占式实例的释放率、折扣率等信息组成的数组。
@@ -63700,21 +60408,7 @@ pub struct SpotResources {
     pub available_spot_resource: Vec<SpotResource>,
 }
 
-impl crate::FlatSerialize for SpotResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_spot_resource,
-            &format!("{}.AvailableSpotResource", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotZone {
     /// 可用区ID。
@@ -63726,22 +60420,7 @@ pub struct SpotZone {
     pub available_spot_resources: SpotResources,
 }
 
-impl crate::FlatSerialize for SpotZone {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.available_spot_resources,
-            &format!("{}.AvailableSpotResources", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotZones {
     /// 可用区及其对应的抢占式实例相关信息组成的数组。
@@ -63752,22 +60431,8 @@ pub struct SpotZones {
     pub available_spot_zone: Vec<SpotZone>,
 }
 
-impl crate::FlatSerialize for SpotZones {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_spot_zone,
-            &format!("{}.AvailableSpotZone", name),
-            params,
-        );
-    }
-}
-
 /// 创建自定义镜像使用的云盘和快照。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateImageDiskDeviceMapping {
     /// 快照ID。
@@ -63795,7 +60460,6 @@ pub struct CreateImageDiskDeviceMapping {
     #[serde(rename = "DiskType")]
     pub disk_type: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
     fn flat_serialize<'a>(
         &'a self,
@@ -63818,7 +60482,7 @@ impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateImageTag {
     /// 镜像的标签键。
@@ -63830,7 +60494,6 @@ pub struct CreateImageTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateImageTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -63843,7 +60506,7 @@ impl crate::FlatSerialize for CreateImageTag {
 }
 
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateImageFeatures {
     /// 镜像的元数据访问模式，可能值：
@@ -63854,7 +60517,6 @@ pub struct CreateImageFeatures {
     #[serde(rename = "ImdsSupport")]
     pub imds_support: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateImageFeatures {
     fn flat_serialize<'a>(
         &'a self,
@@ -63870,7 +60532,7 @@ impl crate::FlatSerialize for CreateImageFeatures {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImagesTag {
     /// 镜像的标签键。
@@ -63882,7 +60544,6 @@ pub struct ImagesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ImagesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -63895,7 +60556,7 @@ impl crate::FlatSerialize for ImagesTag {
 }
 
 /// 查询资源时的筛选条件列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImagesFilter {
     /// 查询资源时的筛选键。取值范围：
@@ -63918,7 +60579,6 @@ pub struct ImagesFilter {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ImagesFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -63931,7 +60591,7 @@ impl crate::FlatSerialize for ImagesFilter {
 }
 
 /// 镜像下包含云盘和快照的映射关系。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDiskDeviceMappingsDiskDeviceMapping {
     /// 镜像的类型。
@@ -63976,46 +60636,7 @@ pub struct ItemDiskDeviceMappingsDiskDeviceMapping {
     pub encrypted: bool,
 }
 
-impl crate::FlatSerialize for ItemDiskDeviceMappingsDiskDeviceMapping {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.import_oss_bucket,
-            &format!("{}.ImportOSSBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_id,
-            &format!("{}.SnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.import_oss_object,
-            &format!("{}.ImportOSSObject", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.remain_time,
-            &format!("{}.RemainTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.format, &format!("{}.Format", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.encrypted,
-            &format!("{}.Encrypted", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemDiskDeviceMappings {
     /// 镜像下包含云盘和快照的映射关系。
@@ -64024,22 +60645,8 @@ pub struct ItemDiskDeviceMappings {
     pub disk_device_mapping: Vec<ItemDiskDeviceMappingsDiskDeviceMapping>,
 }
 
-impl crate::FlatSerialize for ItemDiskDeviceMappings {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mapping,
-            &format!("{}.DiskDeviceMapping", name),
-            params,
-        );
-    }
-}
-
 /// 镜像的标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageItemTagsTag {
     /// 镜像的标签值。
@@ -64052,22 +60659,7 @@ pub struct ImageItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ImageItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageItemTags {
     /// 镜像的标签对信息。
@@ -64076,18 +60668,8 @@ pub struct ImageItemTags {
     pub tag: Vec<ImageItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ImageItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 镜像检测项列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemsItem {
     /// 镜像检测项名称。
@@ -64114,28 +60696,7 @@ pub struct ItemsItem {
     pub risk_code: String,
 }
 
-impl crate::FlatSerialize for ItemsItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.risk_level,
-            &format!("{}.RiskLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.risk_code,
-            &format!("{}.RiskCode", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsItems {
     /// 镜像检测项列表。
@@ -64144,18 +60705,8 @@ pub struct OptionsItems {
     pub item: Vec<ItemsItem>,
 }
 
-impl crate::FlatSerialize for OptionsItems {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.item, &format!("{}.Item", name), params);
-    }
-}
-
 /// 镜像检测相关结果。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetectionOptions {
     /// 镜像检测任务状态。可能值：
@@ -64171,19 +60722,8 @@ pub struct DetectionOptions {
     pub items: OptionsItems,
 }
 
-impl crate::FlatSerialize for DetectionOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.items, &format!("{}.Items", name), params);
-    }
-}
-
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemFeatures {
     /// 镜像是否支持NVMe。可能值：
@@ -64233,47 +60773,8 @@ pub struct ItemFeatures {
     pub memory_online_downgrade: String,
 }
 
-impl crate::FlatSerialize for ItemFeatures {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.nvme_support,
-            &format!("{}.NvmeSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.imds_support,
-            &format!("{}.ImdsSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_online_upgrade,
-            &format!("{}.CpuOnlineUpgrade", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_online_downgrade,
-            &format!("{}.CpuOnlineDowngrade", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_online_upgrade,
-            &format!("{}.MemoryOnlineUpgrade", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_online_downgrade,
-            &format!("{}.MemoryOnlineDowngrade", name),
-            params,
-        );
-    }
-}
-
 /// 镜像信息images组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagesImage {
     /// 镜像的创建时间。
@@ -64445,141 +60946,7 @@ pub struct ImagesImage {
     pub license_type: String,
 }
 
-impl crate::FlatSerialize for ImagesImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.image_family,
-            &format!("{}.ImageFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_copied,
-            &format!("{}.IsCopied", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_support_io_optimized,
-            &format!("{}.IsSupportIoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_owner_alias,
-            &format!("{}.ImageOwnerAlias", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_support_cloudinit,
-            &format!("{}.IsSupportCloudinit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_version,
-            &format!("{}.ImageVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.usage, &format!("{}.Usage", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_self_shared,
-            &format!("{}.IsSelfShared", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.platform, &format!("{}.Platform", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.os_name_en,
-            &format!("{}.OSNameEn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name,
-            &format!("{}.ImageName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_name, &format!("{}.OSName", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OSType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_subscribed,
-            &format!("{}.IsSubscribed", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.product_code,
-            &format!("{}.ProductCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.architecture,
-            &format!("{}.Architecture", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.boot_mode,
-            &format!("{}.BootMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mappings,
-            &format!("{}.DiskDeviceMappings", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_public,
-            &format!("{}.IsPublic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_owner_id,
-            &format!("{}.ImageOwnerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.login_as_non_root_supported,
-            &format!("{}.LoginAsNonRootSupported", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supplier_name,
-            &format!("{}.SupplierName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.detection_options,
-            &format!("{}.DetectionOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.features, &format!("{}.Features", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.license_type,
-            &format!("{}.LicenseType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImages {
     /// 镜像信息Images组成的集合。
@@ -64588,18 +60955,8 @@ pub struct ResponseImages {
     pub image: Vec<ImagesImage>,
 }
 
-impl crate::FlatSerialize for ResponseImages {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.image, &format!("{}.Image", name), params);
-    }
-}
-
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributeFeatures {
     /// 镜像是否支持NVMe。可能值：
@@ -64619,7 +60976,6 @@ pub struct AttributeFeatures {
     #[serde(rename = "ImdsSupport")]
     pub imds_support: Option<String>,
 }
-
 impl crate::FlatSerialize for AttributeFeatures {
     fn flat_serialize<'a>(
         &'a self,
@@ -64639,7 +60995,7 @@ impl crate::FlatSerialize for AttributeFeatures {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageDiskDeviceMappingsDiskDeviceMapping {
     /// 镜像的类型。
@@ -64673,35 +61029,7 @@ pub struct ImageDiskDeviceMappingsDiskDeviceMapping {
     pub format: String,
 }
 
-impl crate::FlatSerialize for ImageDiskDeviceMappingsDiskDeviceMapping {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.import_oss_bucket,
-            &format!("{}.ImportOSSBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_id,
-            &format!("{}.SnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.import_oss_object,
-            &format!("{}.ImportOSSObject", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(&self.format, &format!("{}.Format", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageDiskDeviceMappings {
     /// 镜像下包含云盘和快照的映射关系。
@@ -64710,21 +61038,7 @@ pub struct ImageDiskDeviceMappings {
     pub disk_device_mapping: Vec<ImageDiskDeviceMappingsDiskDeviceMapping>,
 }
 
-impl crate::FlatSerialize for ImageDiskDeviceMappings {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mapping,
-            &format!("{}.DiskDeviceMapping", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageTagsTag {
     /// 自定义镜像的标签值。
@@ -64737,22 +61051,7 @@ pub struct ImageTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ImageTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImageTags {
     /// 镜像的标签对信息。
@@ -64761,18 +61060,8 @@ pub struct ResponseImageTags {
     pub tag: Vec<ImageTagsTag>,
 }
 
-impl crate::FlatSerialize for ResponseImageTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 返回的镜像信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseImage {
     /// 镜像的创建时间。
@@ -64881,96 +61170,8 @@ pub struct ResponseImage {
     pub tags: ResponseImageTags,
 }
 
-impl crate::FlatSerialize for ResponseImage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.image_family,
-            &format!("{}.ImageFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_copied,
-            &format!("{}.IsCopied", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_support_io_optimized,
-            &format!("{}.IsSupportIoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_owner_alias,
-            &format!("{}.ImageOwnerAlias", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_support_cloudinit,
-            &format!("{}.IsSupportCloudinit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_version,
-            &format!("{}.ImageVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.usage, &format!("{}.Usage", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_self_shared,
-            &format!("{}.IsSelfShared", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(&self.platform, &format!("{}.Platform", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name,
-            &format!("{}.ImageName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_name, &format!("{}.OSName", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OSType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_subscribed,
-            &format!("{}.IsSubscribed", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.product_code,
-            &format!("{}.ProductCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.architecture,
-            &format!("{}.Architecture", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mappings,
-            &format!("{}.DiskDeviceMappings", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
 /// 查询资源时的筛选条件列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TypesFilter {
     /// 指定过滤条件Key，当前只支持过滤镜像ID。取值范围：
@@ -64982,7 +61183,6 @@ pub struct TypesFilter {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for TypesFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -64995,7 +61195,7 @@ impl crate::FlatSerialize for TypesFilter {
 }
 
 /// 由InstanceTypeItemType组成的实例规格集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportInstanceTypesResponseInstanceTypesInstanceType {
     /// 镜像支持的实例规格ID。
@@ -65016,36 +61216,7 @@ pub struct SupportInstanceTypesResponseInstanceTypesInstanceType {
     pub memory_size: f32,
 }
 
-impl crate::FlatSerialize for SupportInstanceTypesResponseInstanceTypesInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_id,
-            &format!("{}.InstanceTypeId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type_family,
-            &format!("{}.InstanceTypeFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_core_count,
-            &format!("{}.CpuCoreCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_size,
-            &format!("{}.MemorySize", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportInstanceTypesResponseInstanceTypes {
     /// 由InstanceTypeItemType组成的实例规格集合。
@@ -65054,22 +61225,8 @@ pub struct SupportInstanceTypesResponseInstanceTypes {
     pub instance_type: Vec<SupportInstanceTypesResponseInstanceTypesInstanceType>,
 }
 
-impl crate::FlatSerialize for SupportInstanceTypesResponseInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-    }
-}
-
 /// 共享组。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ShareGroup {
     /// 共享分组。
@@ -65078,17 +61235,7 @@ pub struct ShareGroup {
     pub group: String,
 }
 
-impl crate::FlatSerialize for ShareGroup {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.group, &format!("{}.Group", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ShareGroups {
     /// 共享组。
@@ -65097,22 +61244,8 @@ pub struct ShareGroups {
     pub share_group: Vec<ShareGroup>,
 }
 
-impl crate::FlatSerialize for ShareGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.share_group,
-            &format!("{}.ShareGroup", name),
-            params,
-        );
-    }
-}
-
 /// 阿里云注册用户。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AccountsAccount {
     /// 阿里云账号ID。
@@ -65125,26 +61258,7 @@ pub struct AccountsAccount {
     pub shared_time: String,
 }
 
-impl crate::FlatSerialize for AccountsAccount {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.aliyun_id,
-            &format!("{}.AliyunId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.shared_time,
-            &format!("{}.SharedTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAccounts {
     /// 阿里云注册用户。
@@ -65153,18 +61267,8 @@ pub struct ResponseAccounts {
     pub account: Vec<AccountsAccount>,
 }
 
-impl crate::FlatSerialize for ResponseAccounts {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.account, &format!("{}.Account", name), params);
-    }
-}
-
 /// 创建的自定义镜像信息列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImportImageDiskDeviceMapping {
     /// 自定义镜像大小。单位：GiB。
@@ -65213,7 +61317,6 @@ pub struct ImportImageDiskDeviceMapping {
     #[serde(rename = "DiskImageSize")]
     pub disk_image_size: Option<i32>,
 }
-
 impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
     fn flat_serialize<'a>(
         &'a self,
@@ -65246,7 +61349,7 @@ impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
 }
 
 /// 镜像的标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImportImageTag {
     /// 镜像的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或者`acs:`开头，不能包含`http://`或者`https://`。
@@ -65256,7 +61359,6 @@ pub struct ImportImageTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ImportImageTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65269,7 +61371,7 @@ impl crate::FlatSerialize for ImportImageTag {
 }
 
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImportImageFeatures {
     /// 镜像是否支持NVMe。可能值：
@@ -65286,7 +61388,6 @@ pub struct ImportImageFeatures {
     #[serde(rename = "ImdsSupport")]
     pub imds_support: Option<String>,
 }
-
 impl crate::FlatSerialize for ImportImageFeatures {
     fn flat_serialize<'a>(
         &'a self,
@@ -65307,7 +61408,7 @@ impl crate::FlatSerialize for ImportImageFeatures {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CopyImageTag {
     /// 复制后的镜像的标签值。N的取值范围为1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
@@ -65317,7 +61418,6 @@ pub struct CopyImageTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for CopyImageTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65329,7 +61429,7 @@ impl crate::FlatSerialize for CopyImageTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ComponentTag {
     /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
@@ -65339,7 +61439,6 @@ pub struct ComponentTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ComponentTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65351,7 +61450,7 @@ impl crate::FlatSerialize for ComponentTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ComponentsTag {
     /// 标签键。N的取值范围：1~20
@@ -65361,7 +61460,6 @@ pub struct ComponentsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ComponentsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65373,7 +61471,7 @@ impl crate::FlatSerialize for ComponentsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSetItemTagsTag {
     /// 标签值。
@@ -65386,22 +61484,7 @@ pub struct ComponentSetItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ComponentSetItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSetItemTags {
     /// 标签键值对列表。
@@ -65410,17 +61493,7 @@ pub struct ComponentSetItemTags {
     pub tag: Vec<ComponentSetItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ComponentSetItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParametersParameter {
     /// 参数名称。
@@ -65442,23 +61515,7 @@ pub struct ParametersParameter {
     pub default_value: String,
 }
 
-impl crate::FlatSerialize for ParametersParameter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.default_value,
-            &format!("{}.DefaultValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemParameters {
     /// 镜像组件包含的参数列表。
@@ -65467,21 +61524,7 @@ pub struct ItemParameters {
     pub parameter: Vec<ParametersParameter>,
 }
 
-impl crate::FlatSerialize for ItemParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter,
-            &format!("{}.Parameter", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ComponentSet {
     /// 组件创建时间。
@@ -65535,60 +61578,7 @@ pub struct ComponentSet {
     pub parameters: ItemParameters,
 }
 
-impl crate::FlatSerialize for ComponentSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_type,
-            &format!("{}.SystemType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_component_id,
-            &format!("{}.ImageComponentId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.component_type,
-            &format!("{}.ComponentType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-        crate::FlatSerialize::flat_serialize(&self.owner, &format!("{}.Owner", name), params);
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.component_version,
-            &format!("{}.ComponentVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.parameters,
-            &format!("{}.Parameters", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImageComponent {
     /// 镜像组件的详细信息组成的列表。
@@ -65597,22 +61587,8 @@ pub struct ImageComponent {
     pub image_component_set: Vec<ComponentSet>,
 }
 
-impl crate::FlatSerialize for ImageComponent {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.image_component_set,
-            &format!("{}.ImageComponentSet", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineTag {
     /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -65622,7 +61598,6 @@ pub struct PipelineTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PipelineTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65634,7 +61609,7 @@ impl crate::FlatSerialize for PipelineTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMapping {
     /// 镜像文件所在的OSS Bucket。
@@ -65663,7 +61638,6 @@ pub struct OptionsDiskDeviceMapping {
     #[serde(rename = "DiskImageSize")]
     pub disk_image_size: Option<i32>,
 }
-
 impl crate::FlatSerialize for OptionsDiskDeviceMapping {
     fn flat_serialize<'a>(
         &'a self,
@@ -65690,7 +61664,7 @@ impl crate::FlatSerialize for OptionsDiskDeviceMapping {
 }
 
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptionsFeatures {
     /// 导入的原始镜像是否支持 NVMe。可能值：
@@ -65703,7 +61677,6 @@ pub struct PipelineImportImageOptionsFeatures {
     #[serde(rename = "ImdsSupport")]
     pub imds_support: Option<String>,
 }
-
 impl crate::FlatSerialize for PipelineImportImageOptionsFeatures {
     fn flat_serialize<'a>(
         &'a self,
@@ -65723,7 +61696,7 @@ impl crate::FlatSerialize for PipelineImportImageOptionsFeatures {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct OptionsImportImageTag {
     #[serde(rename = "Key")]
@@ -65731,7 +61704,6 @@ pub struct OptionsImportImageTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for OptionsImportImageTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65744,7 +61716,7 @@ impl crate::FlatSerialize for OptionsImportImageTag {
 }
 
 /// 导入镜像的属性和设置。当`BaseImageType=OSS`时，需要设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineImportImageOptions {
     /// 指定数据盘快照做镜像的系统盘后，需要通过Architecture确定系统盘的系统架构。取值范围：
@@ -65823,7 +61795,6 @@ pub struct PipelineImportImageOptions {
     /// - N=1 时，表示系统盘.
     /// - N=2~17 时，表示数据盘。
     #[serde(rename = "DiskDeviceMappings")]
-    #[serde(default)]
     pub disk_device_mappings: Vec<OptionsDiskDeviceMapping>,
     /// 镜像特性相关属性。
     #[serde(rename = "Features")]
@@ -65840,10 +61811,8 @@ pub struct PipelineImportImageOptions {
     #[serde(rename = "RoleName")]
     pub role_name: Option<String>,
     #[serde(rename = "ImportImageTags")]
-    #[serde(default)]
     pub import_image_tags: Vec<OptionsImportImageTag>,
 }
-
 impl crate::FlatSerialize for PipelineImportImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -65907,7 +61876,7 @@ impl crate::FlatSerialize for PipelineImportImageOptions {
 }
 
 /// 高级设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineAdvancedOptions {
     /// 是否保留云助手。构建过程中，系统会自动在中转实例中安装云助手以执行命令，您可以选择是否在构建的目标镜像中保留。可能值：
@@ -65923,7 +61892,6 @@ pub struct PipelineAdvancedOptions {
     #[serde(rename = "ImageNameSuffix")]
     pub image_name_suffix: Option<String>,
 }
-
 impl crate::FlatSerialize for PipelineAdvancedOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -65944,7 +61912,7 @@ impl crate::FlatSerialize for PipelineAdvancedOptions {
 }
 
 /// 目标镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineImageOptionsImageFeatures {
     /// 构建的目标镜像是否支持 NVMe。可能值：
@@ -65954,7 +61922,6 @@ pub struct PipelineImageOptionsImageFeatures {
     #[serde(rename = "NvmeSupport")]
     pub nvme_support: Option<String>,
 }
-
 impl crate::FlatSerialize for PipelineImageOptionsImageFeatures {
     fn flat_serialize<'a>(
         &'a self,
@@ -65969,7 +61936,7 @@ impl crate::FlatSerialize for PipelineImageOptionsImageFeatures {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct OptionsImageTag {
     /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -65979,7 +61946,6 @@ pub struct OptionsImageTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for OptionsImageTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -65992,7 +61958,7 @@ impl crate::FlatSerialize for OptionsImageTag {
 }
 
 /// 目标镜像属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelineImageOptions {
     /// 目标镜像名称前缀。长度为2~64个字符，必须以大小写字母或中文开头，不能以`http://`和`https://`开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
@@ -66012,10 +61978,8 @@ pub struct PipelineImageOptions {
     pub image_features: Option<PipelineImageOptionsImageFeatures>,
     /// 目标镜像标签。
     #[serde(rename = "ImageTags")]
-    #[serde(default)]
     pub image_tags: Vec<OptionsImageTag>,
 }
-
 impl crate::FlatSerialize for PipelineImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -66051,7 +62015,7 @@ impl crate::FlatSerialize for PipelineImageOptions {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PipelinesTag {
     /// 标签键。N的取值范围：1~20。
@@ -66061,7 +62025,6 @@ pub struct PipelinesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PipelinesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -66073,7 +62036,7 @@ impl crate::FlatSerialize for PipelinesTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSetItemTagsTag {
     /// 标签值。
@@ -66086,22 +62049,7 @@ pub struct PipelineSetItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for PipelineSetItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSetItemTags {
     /// 标签键值对列表。
@@ -66110,17 +62058,7 @@ pub struct PipelineSetItemTags {
     pub tag: Vec<PipelineSetItemTagsTag>,
 }
 
-impl crate::FlatSerialize for PipelineSetItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RegionIds {
     /// 目标镜像待分发的地域列表。
@@ -66129,21 +62067,7 @@ pub struct RegionIds {
     pub to_region_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for RegionIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.to_region_id,
-            &format!("{}.ToRegionId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddAccounts {
     /// 目标镜像共享的阿里云账号ID。
@@ -66152,21 +62076,7 @@ pub struct AddAccounts {
     pub add_account: Vec<String>,
 }
 
-impl crate::FlatSerialize for AddAccounts {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.add_account,
-            &format!("{}.AddAccount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMappingsDiskDeviceMapping {
     /// 镜像文件所在的 OSS Bucket。
@@ -66197,32 +62107,7 @@ pub struct OptionsDiskDeviceMappingsDiskDeviceMapping {
     pub disk_image_size: i32,
 }
 
-impl crate::FlatSerialize for OptionsDiskDeviceMappingsDiskDeviceMapping {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_bucket,
-            &format!("{}.OSSBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_object,
-            &format!("{}.OSSObject", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.format, &format!("{}.Format", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_image_size,
-            &format!("{}.DiskImageSize", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsDiskDeviceMappings {
     /// 创建的自定义镜像信息列表。
@@ -66233,22 +62118,8 @@ pub struct OptionsDiskDeviceMappings {
     pub disk_device_mapping: Vec<OptionsDiskDeviceMappingsDiskDeviceMapping>,
 }
 
-impl crate::FlatSerialize for OptionsDiskDeviceMappings {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mapping,
-            &format!("{}.DiskDeviceMapping", name),
-            params,
-        );
-    }
-}
-
 /// 镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptionsFeatures {
     /// 导入的镜像是否支持 NVMe。可能值：
@@ -66262,26 +62133,7 @@ pub struct ItemImportImageOptionsFeatures {
     pub imds_support: String,
 }
 
-impl crate::FlatSerialize for ItemImportImageOptionsFeatures {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.nvme_support,
-            &format!("{}.NvmeSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.imds_support,
-            &format!("{}.ImdsSupport", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsImportImageTag {
     #[serde(rename = "Key")]
@@ -66292,18 +62144,7 @@ pub struct TagsImportImageTag {
     pub value: String,
 }
 
-impl crate::FlatSerialize for TagsImportImageTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImportImageTags {
     #[serde(rename = "ImportImageTag")]
@@ -66311,22 +62152,8 @@ pub struct ImportImageTags {
     pub import_image_tag: Vec<TagsImportImageTag>,
 }
 
-impl crate::FlatSerialize for ImportImageTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.import_image_tag,
-            &format!("{}.ImportImageTag", name),
-            params,
-        );
-    }
-}
-
 /// 导入镜像的属性和设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImportImageOptions {
     /// 系统架构。取值范围：
@@ -66415,70 +62242,8 @@ pub struct ItemImportImageOptions {
     pub import_image_tags: ImportImageTags,
 }
 
-impl crate::FlatSerialize for ItemImportImageOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.architecture,
-            &format!("{}.Architecture", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OSType", name), params);
-        crate::FlatSerialize::flat_serialize(&self.platform, &format!("{}.Platform", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.boot_mode,
-            &format!("{}.BootMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.license_type,
-            &format!("{}.LicenseType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_device_mappings,
-            &format!("{}.DiskDeviceMappings", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.features, &format!("{}.Features", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.retain_imported_image,
-            &format!("{}.RetainImportedImage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_strategy,
-            &format!("{}.RetentionStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name,
-            &format!("{}.ImageName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.role_name,
-            &format!("{}.RoleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.import_image_tags,
-            &format!("{}.ImportImageTags", name),
-            params,
-        );
-    }
-}
-
 /// 高级设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAdvancedOptions {
     /// 是否保留云助手。构建过程中，系统会自动在中转实例中安装云助手以执行命令，您可以选择是否在构建的目标镜像中保留。可能值：
@@ -66495,27 +62260,8 @@ pub struct ItemAdvancedOptions {
     pub image_name_suffix: String,
 }
 
-impl crate::FlatSerialize for ItemAdvancedOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.retain_cloud_assistant,
-            &format!("{}.RetainCloudAssistant", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name_suffix,
-            &format!("{}.ImageNameSuffix", name),
-            params,
-        );
-    }
-}
-
 /// 目标镜像特性相关属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemImageOptionsImageFeatures {
     /// 构建的目标镜像是否支持 NVMe。可能值：
@@ -66527,21 +62273,7 @@ pub struct ItemImageOptionsImageFeatures {
     pub nvme_support: String,
 }
 
-impl crate::FlatSerialize for ItemImageOptionsImageFeatures {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.nvme_support,
-            &format!("{}.NvmeSupport", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsImageTag {
     /// 标签键。
@@ -66554,22 +62286,7 @@ pub struct TagsImageTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for TagsImageTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsImageTags {
     /// 目标镜像标签。
@@ -66578,22 +62295,8 @@ pub struct OptionsImageTags {
     pub image_tag: Vec<TagsImageTag>,
 }
 
-impl crate::FlatSerialize for OptionsImageTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.image_tag,
-            &format!("{}.ImageTag", name),
-            params,
-        );
-    }
-}
-
 /// 目标镜像属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemImageOptions {
     /// 目标镜像名称前缀。
@@ -66617,41 +62320,7 @@ pub struct SetItemImageOptions {
     pub image_tags: OptionsImageTags,
 }
 
-impl crate::FlatSerialize for SetItemImageOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name,
-            &format!("{}.ImageName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_family,
-            &format!("{}.ImageFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_features,
-            &format!("{}.ImageFeatures", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_tags,
-            &format!("{}.ImageTags", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineSet {
     /// 模板创建时间。
@@ -66766,128 +62435,7 @@ pub struct PipelineSet {
     pub image_options: SetItemImageOptions,
 }
 
-impl crate::FlatSerialize for PipelineSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_instance_on_failure,
-            &format!("{}.DeleteInstanceOnFailure", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_max_bandwidth_out,
-            &format!("{}.InternetMaxBandwidthOut", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_pipeline_id,
-            &format!("{}.ImagePipelineId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_size,
-            &format!("{}.SystemDiskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.base_image,
-            &format!("{}.BaseImage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_name,
-            &format!("{}.ImageName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.base_image_type,
-            &format!("{}.BaseImageType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.build_content,
-            &format!("{}.BuildContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.to_region_ids,
-            &format!("{}.ToRegionIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.add_accounts,
-            &format!("{}.AddAccounts", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.repair_mode,
-            &format!("{}.RepairMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.test_content,
-            &format!("{}.TestContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_family,
-            &format!("{}.ImageFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nvme_support,
-            &format!("{}.NvmeSupport", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.import_image_options,
-            &format!("{}.ImportImageOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.advanced_options,
-            &format!("{}.AdvancedOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_options,
-            &format!("{}.ImageOptions", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ImagePipeline {
     /// 镜像模板的详细信息组成的列表。
@@ -66896,21 +62444,7 @@ pub struct ImagePipeline {
     pub image_pipeline_set: Vec<PipelineSet>,
 }
 
-impl crate::FlatSerialize for ImagePipeline {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.image_pipeline_set,
-            &format!("{}.ImagePipelineSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct StartImagePipelineExecutionTemplateTag {
     /// >该参数已废弃。
@@ -66920,7 +62454,6 @@ pub struct StartImagePipelineExecutionTemplateTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -66933,7 +62466,7 @@ impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
 }
 
 /// 标签对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ExecutionTag {
     /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -66943,7 +62476,6 @@ pub struct ExecutionTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ExecutionTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -66956,7 +62488,7 @@ impl crate::FlatSerialize for ExecutionTag {
 }
 
 /// 标签对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ExecutionsTag {
     /// 标签键。N 的取值范围：1~20。
@@ -66966,7 +62498,6 @@ pub struct ExecutionsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ExecutionsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -66979,7 +62510,7 @@ impl crate::FlatSerialize for ExecutionsTag {
 }
 
 /// 标签对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSetItemTagsTag {
     /// 标签值。
@@ -66992,22 +62523,7 @@ pub struct ExecutionSetItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ExecutionSetItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSetItemTags {
     /// 标签列表。
@@ -67016,18 +62532,8 @@ pub struct ExecutionSetItemTags {
     pub tag: Vec<ExecutionSetItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ExecutionSetItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 镜像构建任务的详细信息组成的列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ExecutionSet {
     /// 镜像构建任务的创建时间。
@@ -67080,45 +62586,7 @@ pub struct ExecutionSet {
     pub tags: ExecutionSetItemTags,
 }
 
-impl crate::FlatSerialize for ExecutionSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_pipeline_id,
-            &format!("{}.ImagePipelineId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.modified_time,
-            &format!("{}.ModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.execution_id,
-            &format!("{}.ExecutionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PipelineExecution {
     /// 镜像构建任务的详细信息组成的列表。
@@ -67127,22 +62595,8 @@ pub struct PipelineExecution {
     pub image_pipeline_execution_set: Vec<ExecutionSet>,
 }
 
-impl crate::FlatSerialize for PipelineExecution {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.image_pipeline_execution_set,
-            &format!("{}.ImagePipelineExecutionSet", name),
-            params,
-        );
-    }
-}
-
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CancelImagePipelineExecutionTemplateTag {
     /// >该参数暂未开放使用。
@@ -67152,7 +62606,6 @@ pub struct CancelImagePipelineExecutionTemplateTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CancelImagePipelineExecutionTemplateTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -67165,7 +62618,7 @@ impl crate::FlatSerialize for CancelImagePipelineExecutionTemplateTag {
 }
 
 /// 磁盘的标签信息列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DiskTag {
     /// 磁盘的标签键。
@@ -67177,7 +62630,6 @@ pub struct DiskTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for DiskTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -67190,7 +62642,7 @@ impl crate::FlatSerialize for DiskTag {
 }
 
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateDiskArn {
     /// >该参数暂未开放使用。
@@ -67203,7 +62655,6 @@ pub struct CreateDiskArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for CreateDiskArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -67225,7 +62676,7 @@ impl crate::FlatSerialize for CreateDiskArn {
 }
 
 /// 磁盘标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DisksTag {
     /// 磁盘的标签键。
@@ -67237,7 +62688,6 @@ pub struct DisksTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for DisksTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -67250,7 +62700,7 @@ impl crate::FlatSerialize for DisksTag {
 }
 
 /// 磁盘锁定原因类型。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemOperationLocksOperationLock {
     /// 磁盘被安全锁定的原因。
@@ -67259,21 +62709,7 @@ pub struct DiskItemOperationLocksOperationLock {
     pub lock_reason: String,
 }
 
-impl crate::FlatSerialize for DiskItemOperationLocksOperationLock {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemOperationLocks {
     /// 磁盘锁定原因类型。
@@ -67282,22 +62718,8 @@ pub struct DiskItemOperationLocks {
     pub operation_lock: Vec<DiskItemOperationLocksOperationLock>,
 }
 
-impl crate::FlatSerialize for DiskItemOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_lock,
-            &format!("{}.OperationLock", name),
-            params,
-        );
-    }
-}
-
 /// 共享存储挂载到实例上的信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MountInstance {
     /// 挂载时间。按照[ISO 8601](~~25696~~)标准表示，使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
@@ -67314,27 +62736,7 @@ pub struct MountInstance {
     pub device: String,
 }
 
-impl crate::FlatSerialize for MountInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.attached_time,
-            &format!("{}.AttachedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MountInstances {
     /// 共享存储挂载到实例上的信息集合。
@@ -67343,22 +62745,8 @@ pub struct MountInstances {
     pub mount_instance: Vec<MountInstance>,
 }
 
-impl crate::FlatSerialize for MountInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.mount_instance,
-            &format!("{}.MountInstance", name),
-            params,
-        );
-    }
-}
-
 /// 磁盘的标签集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemTagsTag {
     /// 标签值。
@@ -67371,22 +62759,7 @@ pub struct DiskItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for DiskItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskItemTags {
     /// 磁盘的标签集合。
@@ -67395,18 +62768,8 @@ pub struct DiskItemTags {
     pub tag: Vec<DiskItemTagsTag>,
 }
 
-impl crate::FlatSerialize for DiskItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 磁盘所涉及的挂载信息。由`Attachment`对象组成的列表，查询共享块存储时不返回该列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachmentsAttachment {
     /// 所挂载的实例ID。
@@ -67423,27 +62786,7 @@ pub struct AttachmentsAttachment {
     pub attached_time: String,
 }
 
-impl crate::FlatSerialize for AttachmentsAttachment {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.attached_time,
-            &format!("{}.AttachedTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttachments {
     /// 磁盘所涉及的挂载信息。由`Attachment`对象组成的列表，查询共享块存储时不返回该列表。
@@ -67452,26 +62795,12 @@ pub struct ItemAttachments {
     pub attachment: Vec<AttachmentsAttachment>,
 }
 
-impl crate::FlatSerialize for ItemAttachments {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.attachment,
-            &format!("{}.Attachment", name),
-            params,
-        );
-    }
-}
-
 /// 数据存放地集合。
 ///
 /// 只有入参指定 `AdditionalAttributes.N = Placement` 时，才会返回该字段。
 ///
 /// > 当前仅有ESSD 同城冗余类型（cloud_regional_disk_auto）磁盘具有有效值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPlacement {
     /// 实际数据存放的可用区列表。
@@ -67480,18 +62809,8 @@ pub struct ItemPlacement {
     pub zone_ids: String,
 }
 
-impl crate::FlatSerialize for ItemPlacement {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_ids, &format!("{}.ZoneIds", name), params);
-    }
-}
-
 /// 磁盘信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDisksDisk {
     /// 磁盘的序列号。
@@ -67757,213 +63076,7 @@ pub struct ResponseDisksDisk {
     pub placement: ItemPlacement,
 }
 
-impl crate::FlatSerialize for ResponseDisksDisk {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.serial_number,
-            &format!("{}.SerialNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.performance_level,
-            &format!("{}.PerformanceLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bdf_id, &format!("{}.BdfId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_auto_snapshot,
-            &format!("{}.EnableAutoSnapshot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_set_id,
-            &format!("{}.StorageSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_set_partition_number,
-            &format!("{}.StorageSetPartitionNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_auto_snapshot,
-            &format!("{}.DeleteAutoSnapshot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_cluster_id,
-            &format!("{}.StorageClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encrypted,
-            &format!("{}.Encrypted", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_read,
-            &format!("{}.IOPSRead", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mount_instance_num,
-            &format!("{}.MountInstanceNum", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_name,
-            &format!("{}.DiskName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.portable, &format!("{}.Portable", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_key_id,
-            &format!("{}.KMSKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_with_instance,
-            &format!("{}.DeleteWithInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.detached_time,
-            &format!("{}.DetachedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_snapshot_id,
-            &format!("{}.SourceSnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_id,
-            &format!("{}.AutoSnapshotPolicyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_automated_snapshot_policy,
-            &format!("{}.EnableAutomatedSnapshotPolicy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_write,
-            &format!("{}.IOPSWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.iops, &format!("{}.IOPS", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_charge_type,
-            &format!("{}.DiskChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.attached_time,
-            &format!("{}.AttachedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.product_code,
-            &format!("{}.ProductCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.multi_attach,
-            &format!("{}.MultiAttach", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_locks,
-            &format!("{}.OperationLocks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mount_instances,
-            &format!("{}.MountInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.attachments,
-            &format!("{}.Attachments", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.provisioned_iops,
-            &format!("{}.ProvisionedIops", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bursting_enabled,
-            &format!("{}.BurstingEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.throughput,
-            &format!("{}.Throughput", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.throughput_read,
-            &format!("{}.ThroughputRead", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.throughput_write,
-            &format!("{}.ThroughputWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.placement,
-            &format!("{}.Placement", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDisks {
     /// 磁盘信息组成的集合。
@@ -67972,18 +63085,8 @@ pub struct ResponseDisks {
     pub disk: Vec<ResponseDisksDisk>,
 }
 
-impl crate::FlatSerialize for ResponseDisks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.disk, &format!("{}.Disk", name), params);
-    }
-}
-
 /// 磁盘性能控制参数集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ControlOptions {
     /// 目标云盘IOPS。仅支持修改专属存储集群云盘IOPS。
@@ -68010,7 +63113,6 @@ pub struct ControlOptions {
     #[serde(rename = "Recover")]
     pub recover: Option<OptionsRecover>,
 }
-
 impl crate::FlatSerialize for ControlOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -68027,7 +63129,7 @@ impl crate::FlatSerialize for ControlOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SystemDiskArn {
     /// >该参数暂未开放使用。
@@ -68040,7 +63142,6 @@ pub struct SystemDiskArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for SystemDiskArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -68061,7 +63162,7 @@ impl crate::FlatSerialize for SystemDiskArn {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ResetDisksDisk {
     /// 实例快照中，指定云盘对应的快照ID。N的取值范围为1~10。
@@ -68071,7 +63172,6 @@ pub struct ResetDisksDisk {
     #[serde(rename = "DiskId")]
     pub disk_id: Option<String>,
 }
-
 impl crate::FlatSerialize for ResetDisksDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -68087,7 +63187,7 @@ impl crate::FlatSerialize for ResetDisksDisk {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
     /// 资源名称。
@@ -68100,20 +63200,7 @@ pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetR
     pub value: String,
 }
 
-impl crate::FlatSerialize
-    for DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSet {
     /// 资源信息。
@@ -68123,21 +63210,7 @@ pub struct DisksResponseOperationProgressSetOperationProgressItemRelatedItemSet 
         Vec<DisksResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
 }
 
-impl crate::FlatSerialize for DisksResponseOperationProgressSetOperationProgressItemRelatedItemSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item,
-            &format!("{}.RelatedItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSetOperationProgress {
     /// 错误信息。回滚成功时返回空值。
@@ -68167,36 +63240,7 @@ pub struct DisksResponseOperationProgressSetOperationProgress {
     pub related_item_set: DisksResponseOperationProgressSetOperationProgressItemRelatedItemSet,
 }
 
-impl crate::FlatSerialize for DisksResponseOperationProgressSetOperationProgress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.error_msg,
-            &format!("{}.ErrorMsg", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_status,
-            &format!("{}.OperationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item_set,
-            &format!("{}.RelatedItemSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksResponseOperationProgressSet {
     /// 回滚一个或多个云盘时的操作状态信息合集。
@@ -68205,22 +63249,8 @@ pub struct DisksResponseOperationProgressSet {
     pub operation_progress: Vec<DisksResponseOperationProgressSetOperationProgress>,
 }
 
-impl crate::FlatSerialize for DisksResponseOperationProgressSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_progress,
-            &format!("{}.OperationProgress", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateSnapshotTag {
     /// 快照的标签键。
@@ -68232,7 +63262,6 @@ pub struct CreateSnapshotTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateSnapshotTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -68244,7 +63273,7 @@ impl crate::FlatSerialize for CreateSnapshotTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SnapshotsTag {
     /// 资源的标签键。
@@ -68256,7 +63285,6 @@ pub struct SnapshotsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for SnapshotsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -68268,7 +63296,7 @@ impl crate::FlatSerialize for SnapshotsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshotItemTagsTag {
     /// 快照的标签值。
@@ -68281,22 +63309,7 @@ pub struct ResponseSnapshotsSnapshotItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ResponseSnapshotsSnapshotItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshotItemTags {
     /// 标签。
@@ -68305,17 +63318,7 @@ pub struct ResponseSnapshotsSnapshotItemTags {
     pub tag: Vec<ResponseSnapshotsSnapshotItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ResponseSnapshotsSnapshotItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshotsSnapshot {
     /// 快照状态。可能值：
@@ -68471,141 +63474,7 @@ pub struct ResponseSnapshotsSnapshot {
     pub tags: ResponseSnapshotsSnapshotItemTags,
 }
 
-impl crate::FlatSerialize for ResponseSnapshotsSnapshot {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instant_access,
-            &format!("{}.InstantAccess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available,
-            &format!("{}.Available", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.remain_time,
-            &format!("{}.RemainTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_size,
-            &format!("{}.SourceDiskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_days,
-            &format!("{}.RetentionDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_type,
-            &format!("{}.SourceDiskType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_storage_type,
-            &format!("{}.SourceStorageType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.usage, &format!("{}.Usage", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.LastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encrypted,
-            &format!("{}.Encrypted", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_type,
-            &format!("{}.SnapshotType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_id,
-            &format!("{}.SourceDiskId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_name,
-            &format!("{}.SnapshotName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instant_access_retention_days,
-            &format!("{}.InstantAccessRetentionDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_id,
-            &format!("{}.SnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_key_id,
-            &format!("{}.KMSKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_sn,
-            &format!("{}.SnapshotSN", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.product_code,
-            &format!("{}.ProductCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_snapshot_id,
-            &format!("{}.SourceSnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_region_id,
-            &format!("{}.SourceRegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_link_id,
-            &format!("{}.SnapshotLinkId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSnapshots {
     /// 快照详情集合。
@@ -68614,18 +63483,8 @@ pub struct ResponseSnapshots {
     pub snapshot: Vec<ResponseSnapshotsSnapshot>,
 }
 
-impl crate::FlatSerialize for ResponseSnapshots {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.snapshot, &format!("{}.Snapshot", name), params);
-    }
-}
-
 /// 新快照的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CopySnapshotTag {
     /// 新快照的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
@@ -68635,7 +63494,6 @@ pub struct CopySnapshotTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CopySnapshotTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -68647,7 +63505,7 @@ impl crate::FlatSerialize for CopySnapshotTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SnapshotArn {
     /// >该参数暂未开放使用。
@@ -68660,7 +63518,6 @@ pub struct SnapshotArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for SnapshotArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -68681,7 +63538,7 @@ impl crate::FlatSerialize for SnapshotArn {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotLink {
     /// 是否开启了快照极速可用功能。可能值：
@@ -68746,72 +63603,7 @@ pub struct SnapshotLink {
     pub category: String,
 }
 
-impl crate::FlatSerialize for SnapshotLink {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instant_access,
-            &format!("{}.InstantAccess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_size,
-            &format!("{}.TotalSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_name,
-            &format!("{}.SourceDiskName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_size,
-            &format!("{}.SourceDiskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_type,
-            &format!("{}.SourceDiskType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_link_id,
-            &format!("{}.SnapshotLinkId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_id,
-            &format!("{}.SourceDiskId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotLinks {
     /// 快照链信息组成的集合。
@@ -68820,21 +63612,7 @@ pub struct SnapshotLinks {
     pub snapshot_link: Vec<SnapshotLink>,
 }
 
-impl crate::FlatSerialize for SnapshotLinks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_link,
-            &format!("{}.SnapshotLink", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SnapshotGroupTag {
     /// 快照一致性组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
@@ -68844,7 +63622,6 @@ pub struct SnapshotGroupTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for SnapshotGroupTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -68857,7 +63634,7 @@ impl crate::FlatSerialize for SnapshotGroupTag {
 }
 
 /// 快照一致性组的标签键值对。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SnapshotGroupsTag {
     /// 快照一致性组的标签键。N的取值范围为1~20。
@@ -68867,7 +63644,6 @@ pub struct SnapshotGroupsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for SnapshotGroupsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -68879,7 +63655,7 @@ impl crate::FlatSerialize for SnapshotGroupsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupItemTagsTag {
     /// 快照一致性组的标签键。
@@ -68892,18 +63668,7 @@ pub struct SnapshotGroupItemTagsTag {
     pub value: String,
 }
 
-impl crate::FlatSerialize for SnapshotGroupItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroupItemTags {
     /// 快照一致性组的标签键值对。
@@ -68912,17 +63677,7 @@ pub struct SnapshotGroupItemTags {
     pub tag: Vec<SnapshotGroupItemTagsTag>,
 }
 
-impl crate::FlatSerialize for SnapshotGroupItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshotItemTagsTag {
     /// 快照一致性组内各个快照的标签键。Key和Value的默认值中提供了快照来源信息。
@@ -68935,18 +63690,7 @@ pub struct ItemSnapshotsSnapshotItemTagsTag {
     pub value: String,
 }
 
-impl crate::FlatSerialize for ItemSnapshotsSnapshotItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshotItemTags {
     /// 快照一致性组内各个快照的标签键值对。默认包含了快照来源的信息。
@@ -68955,17 +63699,7 @@ pub struct ItemSnapshotsSnapshotItemTags {
     pub tag: Vec<ItemSnapshotsSnapshotItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ItemSnapshotsSnapshotItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshotsSnapshot {
     /// 源云盘ID。如果快照的源云盘已经被释放，该字段仍旧保留。
@@ -69014,48 +63748,7 @@ pub struct ItemSnapshotsSnapshot {
     pub tags: ItemSnapshotsSnapshotItemTags,
 }
 
-impl crate::FlatSerialize for ItemSnapshotsSnapshot {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_id,
-            &format!("{}.SourceDiskId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.progress, &format!("{}.Progress", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.available,
-            &format!("{}.Available", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instant_access_retention_days,
-            &format!("{}.InstantAccessRetentionDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_id,
-            &format!("{}.SnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instant_access,
-            &format!("{}.InstantAccess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_disk_type,
-            &format!("{}.SourceDiskType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemSnapshots {
     /// 快照一致性组中包含的快照信息组成的数组。
@@ -69064,17 +63757,7 @@ pub struct ItemSnapshots {
     pub snapshot: Vec<ItemSnapshotsSnapshot>,
 }
 
-impl crate::FlatSerialize for ItemSnapshots {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.snapshot, &format!("{}.Snapshot", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroup {
     /// 快照一致性组的状态。可能值：
@@ -69123,54 +63806,7 @@ pub struct SnapshotGroup {
     pub snapshots: ItemSnapshots,
 }
 
-impl crate::FlatSerialize for SnapshotGroup {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.progress_status,
-            &format!("{}.ProgressStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_group_id,
-            &format!("{}.SnapshotGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshots,
-            &format!("{}.Snapshots", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotGroups {
     /// 快照一致性组的信息组成的数组。
@@ -69179,21 +63815,7 @@ pub struct SnapshotGroups {
     pub snapshot_group: Vec<SnapshotGroup>,
 }
 
-impl crate::FlatSerialize for SnapshotGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_group,
-            &format!("{}.SnapshotGroup", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
     /// 资源名称。
@@ -69206,20 +63828,7 @@ pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetR
     pub value: String,
 }
 
-impl crate::FlatSerialize
-    for GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSet {
     /// 资源信息。
@@ -69229,21 +63838,7 @@ pub struct GroupResponseOperationProgressSetOperationProgressItemRelatedItemSet 
         Vec<GroupResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
 }
 
-impl crate::FlatSerialize for GroupResponseOperationProgressSetOperationProgressItemRelatedItemSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item,
-            &format!("{}.RelatedItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSetOperationProgress {
     /// 错误信息。删除成功时返回空值。
@@ -69271,36 +63866,7 @@ pub struct GroupResponseOperationProgressSetOperationProgress {
     pub related_item_set: GroupResponseOperationProgressSetOperationProgressItemRelatedItemSet,
 }
 
-impl crate::FlatSerialize for GroupResponseOperationProgressSetOperationProgress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.error_msg,
-            &format!("{}.ErrorMsg", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_status,
-            &format!("{}.OperationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item_set,
-            &format!("{}.RelatedItemSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupResponseOperationProgressSet {
     /// 删除快照一致性组时操作状态信息合集。
@@ -69309,21 +63875,7 @@ pub struct GroupResponseOperationProgressSet {
     pub operation_progress: Vec<GroupResponseOperationProgressSetOperationProgress>,
 }
 
-impl crate::FlatSerialize for GroupResponseOperationProgressSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_progress,
-            &format!("{}.OperationProgress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PolicyTag {
     /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun或acs:开头，不能包含http://或https://。
@@ -69333,7 +63885,6 @@ pub struct PolicyTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PolicyTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -69345,7 +63896,7 @@ impl crate::FlatSerialize for PolicyTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PolicyCopyEncryptionConfigurationArn {
     /// > 该参数暂未开放使用。
@@ -69358,7 +63909,6 @@ pub struct PolicyCopyEncryptionConfigurationArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for PolicyCopyEncryptionConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -69380,7 +63930,7 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfigurationArn {
 }
 
 /// 快照异地备份加密参数对象
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PolicyCopyEncryptionConfiguration {
     /// 是否开启快照异地加密备份。取值范围：
@@ -69396,10 +63946,8 @@ pub struct PolicyCopyEncryptionConfiguration {
     pub kms_key_id: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    #[serde(default)]
     pub arn: Vec<PolicyCopyEncryptionConfigurationArn>,
 }
-
 impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -69421,7 +63969,7 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ExTag {
     /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
@@ -69431,7 +63979,6 @@ pub struct ExTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ExTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -69444,7 +63991,7 @@ impl crate::FlatSerialize for ExTag {
 }
 
 /// 自动快照策略的标签键值集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyItemTagsTag {
     /// 自动快照策略的标签值。
@@ -69457,22 +64004,7 @@ pub struct PolicyItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for PolicyItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyItemTags {
     /// 自动快照策略的标签键值集合。
@@ -69481,18 +64013,8 @@ pub struct PolicyItemTags {
     pub tag: Vec<PolicyItemTagsTag>,
 }
 
-impl crate::FlatSerialize for PolicyItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 快照跨地域复制加密参数对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCopyEncryptionConfiguration {
     /// 是否开启快照跨地域加密复制。取值范围：
@@ -69510,27 +64032,8 @@ pub struct ItemCopyEncryptionConfiguration {
     pub kms_key_id: String,
 }
 
-impl crate::FlatSerialize for ItemCopyEncryptionConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.encrypted,
-            &format!("{}.Encrypted", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_key_id,
-            &format!("{}.KMSKeyId", name),
-            params,
-        );
-    }
-}
-
 /// 自动快照策略详情AutoSnapshotPolicy组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPolicy {
     /// 指定自动快照的创建时间点。
@@ -69615,89 +64118,7 @@ pub struct SnapshotPolicy {
     pub r#type: String,
 }
 
-impl crate::FlatSerialize for SnapshotPolicy {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.time_points,
-            &format!("{}.TimePoints", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_name,
-            &format!("{}.AutoSnapshotPolicyName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_copy_regions,
-            &format!("{}.TargetCopyRegions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.copied_snapshots_retention_days,
-            &format!("{}.CopiedSnapshotsRetentionDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_id,
-            &format!("{}.AutoSnapshotPolicyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_days,
-            &format!("{}.RetentionDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_nums,
-            &format!("{}.DiskNums", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_cross_region_copy,
-            &format!("{}.EnableCrossRegionCopy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.repeat_weekdays,
-            &format!("{}.RepeatWeekdays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.volume_nums,
-            &format!("{}.VolumeNums", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.copy_encryption_configuration,
-            &format!("{}.CopyEncryptionConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPolicies {
     /// 自动快照策略详情AutoSnapshotPolicy组成的集合。
@@ -69706,22 +64127,8 @@ pub struct SnapshotPolicies {
     pub auto_snapshot_policy: Vec<SnapshotPolicy>,
 }
 
-impl crate::FlatSerialize for SnapshotPolicies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy,
-            &format!("{}.AutoSnapshotPolicy", name),
-            params,
-        );
-    }
-}
-
 /// 自动快照策略的关联关系。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyAssociation {
     /// 自动快照策略 ID。
@@ -69734,22 +64141,7 @@ pub struct PolicyAssociation {
     pub disk_id: String,
 }
 
-impl crate::FlatSerialize for PolicyAssociation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_id,
-            &format!("{}.AutoSnapshotPolicyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyAssociations {
     /// 自动快照策略的关联关系集合。
@@ -69758,21 +64150,7 @@ pub struct PolicyAssociations {
     pub auto_snapshot_policy_association: Vec<PolicyAssociation>,
 }
 
-impl crate::FlatSerialize for PolicyAssociations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_association,
-            &format!("{}.AutoSnapshotPolicyAssociation", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ExCopyEncryptionConfigurationArn {
     /// 该参数暂未开放使用。
@@ -69785,7 +64163,6 @@ pub struct ExCopyEncryptionConfigurationArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for ExCopyEncryptionConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -69807,7 +64184,7 @@ impl crate::FlatSerialize for ExCopyEncryptionConfigurationArn {
 }
 
 /// 快照跨地域复制加密参数对象
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ExCopyEncryptionConfiguration {
     /// 是否开启快照跨地域加密复制。取值范围：
@@ -69823,10 +64200,8 @@ pub struct ExCopyEncryptionConfiguration {
     pub kms_key_id: Option<String>,
     /// 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    #[serde(default)]
     pub arn: Vec<ExCopyEncryptionConfigurationArn>,
 }
-
 impl crate::FlatSerialize for ExCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -69847,7 +64222,7 @@ impl crate::FlatSerialize for ExCopyEncryptionConfiguration {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPackage {
     /// 存储包名称。
@@ -69868,32 +64243,7 @@ pub struct SnapshotPackage {
     pub init_capacity: i64,
 }
 
-impl crate::FlatSerialize for SnapshotPackage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.display_name,
-            &format!("{}.DisplayName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.init_capacity,
-            &format!("{}.InitCapacity", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotPackages {
     /// 存储包信息组成的集合。
@@ -69902,22 +64252,8 @@ pub struct SnapshotPackages {
     pub snapshot_package: Vec<SnapshotPackage>,
 }
 
-impl crate::FlatSerialize for SnapshotPackages {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_package,
-            &format!("{}.SnapshotPackage", name),
-            params,
-        );
-    }
-}
-
 /// 公网带宽上限信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthsBandwidth {
     /// 公网带宽的计费方式。可能值：
@@ -69941,24 +64277,7 @@ pub struct BandwidthsBandwidth {
     pub unit: String,
 }
 
-impl crate::FlatSerialize for BandwidthsBandwidth {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.max, &format!("{}.Max", name), params);
-        crate::FlatSerialize::flat_serialize(&self.min, &format!("{}.Min", name), params);
-        crate::FlatSerialize::flat_serialize(&self.unit, &format!("{}.Unit", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseBandwidths {
     /// 公网带宽上限信息组成的集合。
@@ -69967,21 +64286,7 @@ pub struct ResponseBandwidths {
     pub bandwidth: Vec<BandwidthsBandwidth>,
 }
 
-impl crate::FlatSerialize for ResponseBandwidths {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LinksLink {
     /// VPC ID。
@@ -69994,22 +64299,7 @@ pub struct LinksLink {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for LinksLink {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseLinks {
     /// 返回经典网络类型实例和VPC连接信息。
@@ -70018,18 +64308,8 @@ pub struct ResponseLinks {
     pub link: Vec<LinksLink>,
 }
 
-impl crate::FlatSerialize for ResponseLinks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.link, &format!("{}.Link", name), params);
-    }
-}
-
 /// 弹性网卡的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfaceTag {
     /// 弹性网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或者`https://`。
@@ -70039,7 +64319,6 @@ pub struct InterfaceTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for InterfaceTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -70052,7 +64331,7 @@ impl crate::FlatSerialize for InterfaceTag {
 }
 
 /// 弹性网卡通讯参数集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfaceNetworkInterfaceTrafficConfig {
     /// 弹性网卡队列数。
@@ -70119,7 +64398,6 @@ pub struct InterfaceNetworkInterfaceTrafficConfig {
     #[serde(rename = "RxQueueSize")]
     pub rx_queue_size: Option<i32>,
 }
-
 impl crate::FlatSerialize for InterfaceNetworkInterfaceTrafficConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -70157,7 +64435,7 @@ impl crate::FlatSerialize for InterfaceNetworkInterfaceTrafficConfig {
 /// 网络连接跟踪配置信息集合。
 ///
 /// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfaceConnectionTrackingConfiguration {
     /// 已建状态的TCP连接超时时间，单位：s（秒）。取值范围：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
@@ -70180,7 +64458,6 @@ pub struct InterfaceConnectionTrackingConfiguration {
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: Option<i32>,
 }
-
 impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -70206,7 +64483,7 @@ impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
 }
 
 /// >参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfaceEnhancedNetwork {
     /// >该参数暂未开放使用。
@@ -70220,7 +64497,6 @@ pub struct InterfaceEnhancedNetwork {
     #[serde(rename = "VirtualFunctionQuantity")]
     pub virtual_function_quantity: Option<i32>,
 }
-
 impl crate::FlatSerialize for InterfaceEnhancedNetwork {
     fn flat_serialize<'a>(
         &'a self,
@@ -70250,7 +64526,7 @@ impl crate::FlatSerialize for InterfaceEnhancedNetwork {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseSecurityGroupIds {
     /// 所属的安全组集合。
@@ -70259,21 +64535,7 @@ pub struct InterfaceResponseSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InterfaceResponseSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponsePrivateIpSetsPrivateIpSet {
     /// 实例的私网IP地址。
@@ -70286,22 +64548,7 @@ pub struct InterfaceResponsePrivateIpSetsPrivateIpSet {
     pub primary: bool,
 }
 
-impl crate::FlatSerialize for InterfaceResponsePrivateIpSetsPrivateIpSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.primary, &format!("{}.Primary", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponsePrivateIpSets {
     /// PrivateIpSet组成的集合。
@@ -70310,21 +64557,7 @@ pub struct InterfaceResponsePrivateIpSets {
     pub private_ip_set: Vec<InterfaceResponsePrivateIpSetsPrivateIpSet>,
 }
 
-impl crate::FlatSerialize for InterfaceResponsePrivateIpSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_set,
-            &format!("{}.PrivateIpSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseTagsTag {
     /// 标签值。
@@ -70337,22 +64570,7 @@ pub struct InterfaceResponseTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for InterfaceResponseTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseTags {
     /// 标签。
@@ -70361,18 +64579,8 @@ pub struct InterfaceResponseTags {
     pub tag: Vec<InterfaceResponseTagsTag>,
 }
 
-impl crate::FlatSerialize for InterfaceResponseTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// > 该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6SetsIpv6Set {
     /// IPv6地址。
@@ -70381,21 +64589,7 @@ pub struct InterfaceResponseIpv6SetsIpv6Set {
     pub ipv6_address: String,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv6SetsIpv6Set {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address,
-            &format!("{}.Ipv6Address", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6Sets {
     /// 弹性网卡已分配的IPv6地址。
@@ -70404,17 +64598,7 @@ pub struct InterfaceResponseIpv6Sets {
     pub ipv6_set: Vec<InterfaceResponseIpv6SetsIpv6Set>,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv6Sets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.ipv6_set, &format!("{}.Ipv6Set", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv4PrefixSetsIpv4PrefixSet {
     /// IPv4前缀。
@@ -70423,21 +64607,7 @@ pub struct InterfaceResponseIpv4PrefixSetsIpv4PrefixSet {
     pub ipv4_prefix: String,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv4PrefixSetsIpv4PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix,
-            &format!("{}.Ipv4Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv4PrefixSets {
     /// 弹性网卡已分配的IPv4前缀集合。
@@ -70446,21 +64616,7 @@ pub struct InterfaceResponseIpv4PrefixSets {
     pub ipv4_prefix_set: Vec<InterfaceResponseIpv4PrefixSetsIpv4PrefixSet>,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv4PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_set,
-            &format!("{}.Ipv4PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6PrefixSetsIpv6PrefixSet {
     /// IPv6前缀。
@@ -70469,21 +64625,7 @@ pub struct InterfaceResponseIpv6PrefixSetsIpv6PrefixSet {
     pub ipv6_prefix: String,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv6PrefixSetsIpv6PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix,
-            &format!("{}.Ipv6Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceResponseIpv6PrefixSets {
     /// 弹性网卡已分配的IPv6前缀集合。
@@ -70492,21 +64634,7 @@ pub struct InterfaceResponseIpv6PrefixSets {
     pub ipv6_prefix_set: Vec<InterfaceResponseIpv6PrefixSetsIpv6PrefixSet>,
 }
 
-impl crate::FlatSerialize for InterfaceResponseIpv6PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_set,
-            &format!("{}.Ipv6PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfacesTag {
     /// 弹性网卡的标签键。N的取值范围：1~20
@@ -70518,7 +64646,6 @@ pub struct InterfacesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for InterfacesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -70531,7 +64658,7 @@ impl crate::FlatSerialize for InterfacesTag {
 }
 
 /// 弹性网卡关联的弹性公网IP。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
     /// 弹性公网IP地址。
@@ -70544,26 +64671,7 @@ pub struct ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for ItemPrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_address,
-            &format!("{}.PublicIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemPrivateIpSetsPrivateIpSet {
     /// 实例的私网IP地址。
@@ -70589,32 +64697,7 @@ pub struct SetItemPrivateIpSetsPrivateIpSet {
     pub private_dns_name: String,
 }
 
-impl crate::FlatSerialize for SetItemPrivateIpSetsPrivateIpSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.primary, &format!("{}.Primary", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_public_ip,
-            &format!("{}.AssociatedPublicIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_dns_name,
-            &format!("{}.PrivateDnsName", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemPrivateIpSets {
     /// PrivateIpSet组成的集合。
@@ -70623,21 +64706,7 @@ pub struct SetItemPrivateIpSets {
     pub private_ip_set: Vec<SetItemPrivateIpSetsPrivateIpSet>,
 }
 
-impl crate::FlatSerialize for SetItemPrivateIpSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_set,
-            &format!("{}.PrivateIpSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6SetsIpv6Set {
     /// 弹性网卡已分配的IPv6地址。
@@ -70646,21 +64715,7 @@ pub struct SetItemIpv6SetsIpv6Set {
     pub ipv6_address: String,
 }
 
-impl crate::FlatSerialize for SetItemIpv6SetsIpv6Set {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address,
-            &format!("{}.Ipv6Address", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6Sets {
     /// 弹性网卡已分配的IPv6地址集合。
@@ -70669,17 +64724,7 @@ pub struct SetItemIpv6Sets {
     pub ipv6_set: Vec<SetItemIpv6SetsIpv6Set>,
 }
 
-impl crate::FlatSerialize for SetItemIpv6Sets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.ipv6_set, &format!("{}.Ipv6Set", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv4PrefixSetsIpv4PrefixSet {
     /// 弹性网卡已分配的IPv4前缀。
@@ -70688,21 +64733,7 @@ pub struct SetItemIpv4PrefixSetsIpv4PrefixSet {
     pub ipv4_prefix: String,
 }
 
-impl crate::FlatSerialize for SetItemIpv4PrefixSetsIpv4PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix,
-            &format!("{}.Ipv4Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv4PrefixSets {
     /// 弹性网卡已分配的IPv4前缀集合。
@@ -70711,21 +64742,7 @@ pub struct SetItemIpv4PrefixSets {
     pub ipv4_prefix_set: Vec<SetItemIpv4PrefixSetsIpv4PrefixSet>,
 }
 
-impl crate::FlatSerialize for SetItemIpv4PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_set,
-            &format!("{}.Ipv4PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6PrefixSetsIpv6PrefixSet {
     /// 弹性网卡已分配的IPv6前缀。
@@ -70734,21 +64751,7 @@ pub struct SetItemIpv6PrefixSetsIpv6PrefixSet {
     pub ipv6_prefix: String,
 }
 
-impl crate::FlatSerialize for SetItemIpv6PrefixSetsIpv6PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix,
-            &format!("{}.Ipv6Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemIpv6PrefixSets {
     /// 弹性网卡已分配的IPv6前缀集合。
@@ -70757,21 +64760,7 @@ pub struct SetItemIpv6PrefixSets {
     pub ipv6_prefix_set: Vec<SetItemIpv6PrefixSetsIpv6PrefixSet>,
 }
 
-impl crate::FlatSerialize for SetItemIpv6PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_set,
-            &format!("{}.Ipv6PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemTagsTag {
     /// 标签值。
@@ -70784,22 +64773,7 @@ pub struct InterfaceSetItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for InterfaceSetItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemTags {
     /// 标签。
@@ -70808,17 +64782,7 @@ pub struct InterfaceSetItemTags {
     pub tag: Vec<InterfaceSetItemTagsTag>,
 }
 
-impl crate::FlatSerialize for InterfaceSetItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemSecurityGroupIds {
     /// 所属的安全组集合。
@@ -70827,22 +64791,8 @@ pub struct SetItemSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for SetItemSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSetItemAssociatedPublicIp {
     /// 弹性公网IP地址。
@@ -70855,27 +64805,8 @@ pub struct InterfaceSetItemAssociatedPublicIp {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for InterfaceSetItemAssociatedPublicIp {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_address,
-            &format!("{}.PublicIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
 /// > 该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemAttachment {
     /// > 该参数正在邀测中，暂未开放使用。
@@ -70898,36 +64829,7 @@ pub struct ItemAttachment {
     pub network_card_index: i32,
 }
 
-impl crate::FlatSerialize for ItemAttachment {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.device_index,
-            &format!("{}.DeviceIndex", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trunk_network_interface_id,
-            &format!("{}.TrunkNetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_card_index,
-            &format!("{}.NetworkCardIndex", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkInterfaceSet {
     /// 创建时间。按照[ISO 8601](~~25696~~)标准表示，并使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
@@ -71074,137 +64976,7 @@ pub struct NetworkInterfaceSet {
     pub source_dest_check: bool,
 }
 
-impl crate::FlatSerialize for NetworkInterfaceSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_traffic_mode,
-            &format!("{}.NetworkInterfaceTrafficMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_name,
-            &format!("{}.NetworkInterfaceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mac_address,
-            &format!("{}.MacAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_pair_number,
-            &format!("{}.QueuePairNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_id,
-            &format!("{}.NetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_id,
-            &format!("{}.ServiceID", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.owner_id, &format!("{}.OwnerId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.service_managed,
-            &format!("{}.ServiceManaged", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_number,
-            &format!("{}.QueueNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_sets,
-            &format!("{}.PrivateIpSets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_sets,
-            &format!("{}.Ipv6Sets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_sets,
-            &format!("{}.Ipv4PrefixSets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_sets,
-            &format!("{}.Ipv6PrefixSets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_ids,
-            &format!("{}.SecurityGroupIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_public_ip,
-            &format!("{}.AssociatedPublicIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.attachment,
-            &format!("{}.Attachment", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_on_release,
-            &format!("{}.DeleteOnRelease", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_dest_check,
-            &format!("{}.SourceDestCheck", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceSets {
     /// 弹性网卡信息组成的集合。
@@ -71213,22 +64985,8 @@ pub struct InterfaceSets {
     pub network_interface_set: Vec<NetworkInterfaceSet>,
 }
 
-impl crate::FlatSerialize for InterfaceSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_set,
-            &format!("{}.NetworkInterfaceSet", name),
-            params,
-        );
-    }
-}
-
 /// > 该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributeTag {
     /// > 该参数暂未开放使用。
@@ -71238,7 +64996,6 @@ pub struct AttributeTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for AttributeTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -71250,7 +65007,7 @@ impl crate::FlatSerialize for AttributeTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceAttributeResponseSecurityGroupIds {
     /// 弹性网卡所属的安全组集合。
@@ -71259,22 +65016,8 @@ pub struct InterfaceAttributeResponseSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InterfaceAttributeResponseSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAssociatedPublicIp {
     /// 弹性公网IP地址。
@@ -71287,26 +65030,7 @@ pub struct ResponseAssociatedPublicIp {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for ResponseAssociatedPublicIp {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_address,
-            &format!("{}.PublicIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceIds {
     /// > 该参数正在邀测中，暂未开放使用。
@@ -71315,22 +65039,8 @@ pub struct InterfaceIds {
     pub member_network_interface_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InterfaceIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.member_network_interface_id,
-            &format!("{}.MemberNetworkInterfaceId", name),
-            params,
-        );
-    }
-}
-
 /// > 该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAttachment {
     /// >该参数正在邀测中，暂未开放使用。
@@ -71356,42 +65066,8 @@ pub struct ResponseAttachment {
     pub network_card_index: i32,
 }
 
-impl crate::FlatSerialize for ResponseAttachment {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.device_index,
-            &format!("{}.DeviceIndex", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trunk_network_interface_id,
-            &format!("{}.TrunkNetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.member_network_interface_ids,
-            &format!("{}.MemberNetworkInterfaceIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_card_index,
-            &format!("{}.NetworkCardIndex", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡辅助私有IP地址关联的弹性公网IP。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
     /// 弹性公网IP地址。
@@ -71404,27 +65080,8 @@ pub struct ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_address,
-            &format!("{}.PublicIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
 /// PrivateIpSet组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponsePrivateIpSetsPrivateIpSet {
     /// 弹性网卡的私网IP地址。
@@ -71443,27 +65100,7 @@ pub struct AttributeResponsePrivateIpSetsPrivateIpSet {
     pub associated_public_ip: ResponsePrivateIpSetsPrivateIpSetItemAssociatedPublicIp,
 }
 
-impl crate::FlatSerialize for AttributeResponsePrivateIpSetsPrivateIpSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.primary, &format!("{}.Primary", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_public_ip,
-            &format!("{}.AssociatedPublicIp", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponsePrivateIpSets {
     /// PrivateIpSet组成的集合。
@@ -71472,22 +65109,8 @@ pub struct AttributeResponsePrivateIpSets {
     pub private_ip_set: Vec<AttributeResponsePrivateIpSetsPrivateIpSet>,
 }
 
-impl crate::FlatSerialize for AttributeResponsePrivateIpSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_set,
-            &format!("{}.PrivateIpSet", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡已分配的ipv6地址。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6SetsIpv6Set {
     /// 为弹性网卡指定的IPv6地址。
@@ -71496,21 +65119,7 @@ pub struct AttributeResponseIpv6SetsIpv6Set {
     pub ipv6_address: String,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv6SetsIpv6Set {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address,
-            &format!("{}.Ipv6Address", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6Sets {
     /// 弹性网卡已分配的IPv6地址。
@@ -71519,17 +65128,7 @@ pub struct AttributeResponseIpv6Sets {
     pub ipv6_set: Vec<AttributeResponseIpv6SetsIpv6Set>,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv6Sets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.ipv6_set, &format!("{}.Ipv6Set", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv4PrefixSetsIpv4PrefixSet {
     /// 弹性网卡已分配的IPv4前缀。
@@ -71538,21 +65137,7 @@ pub struct AttributeResponseIpv4PrefixSetsIpv4PrefixSet {
     pub ipv4_prefix: String,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv4PrefixSetsIpv4PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix,
-            &format!("{}.Ipv4Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv4PrefixSets {
     /// 弹性网卡已分配的IPv4前缀集合。
@@ -71561,21 +65146,7 @@ pub struct AttributeResponseIpv4PrefixSets {
     pub ipv4_prefix_set: Vec<AttributeResponseIpv4PrefixSetsIpv4PrefixSet>,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv4PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_set,
-            &format!("{}.Ipv4PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6PrefixSetsIpv6PrefixSet {
     /// 弹性网卡已分配的IPv6前缀。
@@ -71584,21 +65155,7 @@ pub struct AttributeResponseIpv6PrefixSetsIpv6PrefixSet {
     pub ipv6_prefix: String,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv6PrefixSetsIpv6PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix,
-            &format!("{}.Ipv6Prefix", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseIpv6PrefixSets {
     /// 弹性网卡已分配的IPv6前缀集合。
@@ -71607,22 +65164,8 @@ pub struct AttributeResponseIpv6PrefixSets {
     pub ipv6_prefix_set: Vec<AttributeResponseIpv6PrefixSetsIpv6PrefixSet>,
 }
 
-impl crate::FlatSerialize for AttributeResponseIpv6PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix_set,
-            &format!("{}.Ipv6PrefixSet", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡的标签集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseTagsTag {
     /// 标签值。
@@ -71635,22 +65178,7 @@ pub struct AttributeResponseTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for AttributeResponseTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseTags {
     /// 弹性网卡的标签集合。
@@ -71659,18 +65187,8 @@ pub struct AttributeResponseTags {
     pub tag: Vec<AttributeResponseTagsTag>,
 }
 
-impl crate::FlatSerialize for AttributeResponseTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// >该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpecificationSet {
     /// >该参数正在邀测中，暂未开放使用。
@@ -71687,31 +65205,7 @@ pub struct SpecificationSet {
     pub bond_network_interface_id: String,
 }
 
-impl crate::FlatSerialize for SpecificationSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.slave_network_interface_id,
-            &format!("{}.SlaveNetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.work_state,
-            &format!("{}.WorkState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bond_network_interface_id,
-            &format!("{}.BondNetworkInterfaceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpecificationSlaveInterfaceSpecification {
     /// >该参数正在邀测中，暂未开放使用。
@@ -71720,22 +65214,8 @@ pub struct SpecificationSlaveInterfaceSpecification {
     pub slave_interface_specification_set: Vec<SpecificationSet>,
 }
 
-impl crate::FlatSerialize for SpecificationSlaveInterfaceSpecification {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.slave_interface_specification_set,
-            &format!("{}.SlaveInterfaceSpecificationSet", name),
-            params,
-        );
-    }
-}
-
 /// >该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BondInterfaceSpecification {
     /// >该参数正在邀测中，暂未开放使用。
@@ -71747,27 +65227,8 @@ pub struct BondInterfaceSpecification {
     pub slave_interface_specification: SpecificationSlaveInterfaceSpecification,
 }
 
-impl crate::FlatSerialize for BondInterfaceSpecification {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bond_mode,
-            &format!("{}.BondMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.slave_interface_specification,
-            &format!("{}.SlaveInterfaceSpecification", name),
-            params,
-        );
-    }
-}
-
 /// >该参数正在邀测中，暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSlaveInterfaceSpecification {
     /// >该参数正在邀测中，暂未开放使用。
@@ -71784,32 +65245,8 @@ pub struct ResponseSlaveInterfaceSpecification {
     pub bond_network_interface_id: String,
 }
 
-impl crate::FlatSerialize for ResponseSlaveInterfaceSpecification {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.slave_network_interface_id,
-            &format!("{}.SlaveNetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.work_state,
-            &format!("{}.WorkState", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bond_network_interface_id,
-            &format!("{}.BondNetworkInterfaceId", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡通讯参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfaceTrafficConfig {
     /// 弹性网卡的通讯模式。
@@ -71826,37 +65263,13 @@ pub struct ResponseNetworkInterfaceTrafficConfig {
     pub queue_pair_number: i32,
 }
 
-impl crate::FlatSerialize for ResponseNetworkInterfaceTrafficConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_traffic_mode,
-            &format!("{}.NetworkInterfaceTrafficMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_number,
-            &format!("{}.QueueNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_pair_number,
-            &format!("{}.QueuePairNumber", name),
-            params,
-        );
-    }
-}
-
 /// 网络连接跟踪配置信息集合。
 ///
 /// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
 ///
 ///
 /// > 仅当入参`Attribute`取值为：`ConnectionTrackingConfiguration`时，返回该参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseConnectionTrackingConfiguration {
     /// 已建状态的TCP连接超时时间，单位：s（秒）。可能值：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
@@ -71881,32 +65294,8 @@ pub struct ResponseConnectionTrackingConfiguration {
     pub udp_timeout: i32,
 }
 
-impl crate::FlatSerialize for ResponseConnectionTrackingConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tcp_established_timeout,
-            &format!("{}.TcpEstablishedTimeout", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tcp_closed_and_time_wait_timeout,
-            &format!("{}.TcpClosedAndTimeWaitTimeout", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.udp_timeout,
-            &format!("{}.UdpTimeout", name),
-            params,
-        );
-    }
-}
-
 /// 该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEnhancedNetwork {
     /// 该参数暂未开放使用。
@@ -71925,37 +65314,8 @@ pub struct ResponseEnhancedNetwork {
     pub virtual_function_quantity: i32,
 }
 
-impl crate::FlatSerialize for ResponseEnhancedNetwork {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_sriov,
-            &format!("{}.EnableSriov", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_rss,
-            &format!("{}.EnableRss", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.virtual_function_total_queue_number,
-            &format!("{}.VirtualFunctionTotalQueueNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.virtual_function_quantity,
-            &format!("{}.VirtualFunctionQuantity", name),
-            params,
-        );
-    }
-}
-
 /// QoS 限速设置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigQoS {
     /// 最大内网出方向带宽限制
@@ -71980,34 +65340,8 @@ pub struct ConfigQoS {
     pub concurrent_connections: i64,
 }
 
-impl crate::FlatSerialize for ConfigQoS {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_tx,
-            &format!("{}.BandwidthTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_rx,
-            &format!("{}.BandwidthRx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.pps_tx, &format!("{}.PpsTx", name), params);
-        crate::FlatSerialize::flat_serialize(&self.pps_rx, &format!("{}.PpsRx", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.concurrent_connections,
-            &format!("{}.ConcurrentConnections", name),
-            params,
-        );
-    }
-}
-
 /// QoS 限速设置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SConfig {
     /// 是否启用 QoS 限速设置
@@ -72020,23 +65354,8 @@ pub struct SConfig {
     pub qo_s: ConfigQoS,
 }
 
-impl crate::FlatSerialize for SConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_qo_s,
-            &format!("{}.EnableQoS", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.qo_s, &format!("{}.QoS", name), params);
-    }
-}
-
 /// 弹性网卡通讯参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributeNetworkInterfaceTrafficConfig {
     /// 网卡的通讯模式。参数取值范围：
@@ -72088,7 +65407,6 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     #[serde(rename = "TxQueueSize")]
     pub tx_queue_size: Option<i32>,
 }
-
 impl crate::FlatSerialize for AttributeNetworkInterfaceTrafficConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -72126,7 +65444,7 @@ impl crate::FlatSerialize for AttributeNetworkInterfaceTrafficConfig {
 /// 网络连接跟踪配置信息集合。
 ///
 /// 使用该参数前，请认真阅读[连接超时管理](~~2865958~~)。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributeConnectionTrackingConfiguration {
     /// 已建状态的TCP连接超时时间，单位：s（秒）。取值范围：[30, 60, 80, 100, 200, 300, 500, 700, 910]。
@@ -72149,7 +65467,6 @@ pub struct AttributeConnectionTrackingConfiguration {
     #[serde(rename = "UdpTimeout")]
     pub udp_timeout: Option<i32>,
 }
-
 impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -72175,7 +65492,7 @@ impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
 }
 
 /// 该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributeEnhancedNetwork {
     /// 该参数暂未开放使用。
@@ -72189,7 +65506,6 @@ pub struct AttributeEnhancedNetwork {
     #[serde(rename = "VirtualFunctionQuantity")]
     pub virtual_function_quantity: Option<i32>,
 }
-
 impl crate::FlatSerialize for AttributeEnhancedNetwork {
     fn flat_serialize<'a>(
         &'a self,
@@ -72219,7 +65535,7 @@ impl crate::FlatSerialize for AttributeEnhancedNetwork {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPrivateIpSet {
     /// 已分配的私网IP地址集合。
@@ -72228,21 +65544,7 @@ pub struct SetPrivateIpSet {
     pub private_ip_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for SetPrivateIpSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetIpv4PrefixSet {
     /// 已分配的IPv4前缀集合。
@@ -72251,22 +65553,8 @@ pub struct SetIpv4PrefixSet {
     pub ipv4_prefixes: Vec<String>,
 }
 
-impl crate::FlatSerialize for SetIpv4PrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefixes,
-            &format!("{}.Ipv4Prefixes", name),
-            params,
-        );
-    }
-}
-
 /// 已分配辅助私网IP地址的弹性网卡信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesSet {
     /// 弹性网卡ID。
@@ -72281,31 +65569,7 @@ pub struct AddressesSet {
     pub ipv4_prefix_set: SetIpv4PrefixSet,
 }
 
-impl crate::FlatSerialize for AddressesSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_id,
-            &format!("{}.NetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_set,
-            &format!("{}.PrivateIpSet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv4_prefix_set,
-            &format!("{}.Ipv4PrefixSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesResponseIpv6Sets {
     /// 弹性网卡已分配的IPv6地址。
@@ -72314,21 +65578,7 @@ pub struct AddressesResponseIpv6Sets {
     pub ipv6_address: Vec<String>,
 }
 
-impl crate::FlatSerialize for AddressesResponseIpv6Sets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address,
-            &format!("{}.Ipv6Address", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesResponseIpv6PrefixSets {
     /// 弹性网卡已分配的IPv6前缀集合。
@@ -72337,22 +65587,8 @@ pub struct AddressesResponseIpv6PrefixSets {
     pub ipv6_prefix: Vec<String>,
 }
 
-impl crate::FlatSerialize for AddressesResponseIpv6PrefixSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_prefix,
-            &format!("{}.Ipv6Prefix", name),
-            params,
-        );
-    }
-}
-
 /// 弹性网卡权限列表组成的信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseNetworkInterfacePermission {
     /// 弹性网卡权限。
@@ -72386,46 +65622,7 @@ pub struct ResponseNetworkInterfacePermission {
     pub permission_state: String,
 }
 
-impl crate::FlatSerialize for ResponseNetworkInterfacePermission {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.permission,
-            &format!("{}.Permission", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_id,
-            &format!("{}.NetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_permission_id,
-            &format!("{}.NetworkInterfacePermissionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_name,
-            &format!("{}.ServiceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.permission_state,
-            &format!("{}.PermissionState", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PermissionsNetworkInterfacePermission {
     /// 弹性网卡权限。
@@ -72459,46 +65656,7 @@ pub struct PermissionsNetworkInterfacePermission {
     pub permission_state: String,
 }
 
-impl crate::FlatSerialize for PermissionsNetworkInterfacePermission {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.permission,
-            &format!("{}.Permission", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_id,
-            &format!("{}.NetworkInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_permission_id,
-            &format!("{}.NetworkInterfacePermissionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_name,
-            &format!("{}.ServiceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.permission_state,
-            &format!("{}.PermissionState", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfacePermissions {
     /// 弹性网卡权限列表组成的信息集合。
@@ -72507,21 +65665,7 @@ pub struct InterfacePermissions {
     pub network_interface_permission: Vec<PermissionsNetworkInterfacePermission>,
 }
 
-impl crate::FlatSerialize for InterfacePermissions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_permission,
-            &format!("{}.NetworkInterfacePermission", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrefixListEntry {
     /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
@@ -72541,7 +65685,6 @@ pub struct PrefixListEntry {
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
-
 impl crate::FlatSerialize for PrefixListEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -72558,7 +65701,7 @@ impl crate::FlatSerialize for PrefixListEntry {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrefixListTag {
     /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -72570,7 +65713,6 @@ pub struct PrefixListTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PrefixListTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -72583,7 +65725,7 @@ impl crate::FlatSerialize for PrefixListTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrefixListsTag {
     /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含`http://或者https://`。
@@ -72595,7 +65737,6 @@ pub struct PrefixListsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PrefixListsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -72608,7 +65749,7 @@ impl crate::FlatSerialize for PrefixListsTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTagsTag {
     /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -72623,22 +65764,7 @@ pub struct ListItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ListItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTags {
     /// 标签列表。
@@ -72647,17 +65773,7 @@ pub struct ListItemTags {
     pub tag: Vec<ListItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ListItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixList {
     /// 前缀列表的创建时间。
@@ -72700,57 +65816,7 @@ pub struct PrefixList {
     pub resource_group_id: String,
 }
 
-impl crate::FlatSerialize for PrefixList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.association_count,
-            &format!("{}.AssociationCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_entries,
-            &format!("{}.MaxEntries", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.address_family,
-            &format!("{}.AddressFamily", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_list_name,
-            &format!("{}.PrefixListName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_list_id,
-            &format!("{}.PrefixListId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixLists {
     /// 前缀列表信息组成的数组。
@@ -72759,21 +65825,7 @@ pub struct PrefixLists {
     pub prefix_list: Vec<PrefixList>,
 }
 
-impl crate::FlatSerialize for PrefixLists {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_list,
-            &format!("{}.PrefixList", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EntriesEntry {
     /// 前缀列表条目的描述信息。
@@ -72786,22 +65838,7 @@ pub struct EntriesEntry {
     pub cidr: String,
 }
 
-impl crate::FlatSerialize for EntriesEntry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cidr, &format!("{}.Cidr", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEntries {
     /// 前缀列表中的条目信息组成的数组。
@@ -72810,17 +65847,7 @@ pub struct ResponseEntries {
     pub entry: Vec<EntriesEntry>,
 }
 
-impl crate::FlatSerialize for ResponseEntries {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.entry, &format!("{}.Entry", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PrefixListAssociation {
     /// 资源ID。
@@ -72833,26 +65860,7 @@ pub struct PrefixListAssociation {
     pub resource_type: String,
 }
 
-impl crate::FlatSerialize for PrefixListAssociation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAssociations {
     /// 前缀列表已关联的资源信息组成的数组。
@@ -72861,22 +65869,8 @@ pub struct ListAssociations {
     pub prefix_list_association: Vec<PrefixListAssociation>,
 }
 
-impl crate::FlatSerialize for ListAssociations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_list_association,
-            &format!("{}.PrefixListAssociation", name),
-            params,
-        );
-    }
-}
-
 /// 添加的前缀列表信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrefixListAddEntry {
     /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
@@ -72891,7 +65885,6 @@ pub struct PrefixListAddEntry {
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
-
 impl crate::FlatSerialize for PrefixListAddEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -72908,7 +65901,7 @@ impl crate::FlatSerialize for PrefixListAddEntry {
 }
 
 /// 删除的前缀列表信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PrefixListRemoveEntry {
     /// 删除的前缀列表条目的CIDR地址块信息。N的取值范围：0~200。
@@ -72919,7 +65912,6 @@ pub struct PrefixListRemoveEntry {
     #[serde(rename = "Cidr")]
     pub cidr: String,
 }
-
 impl crate::FlatSerialize for PrefixListRemoveEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -72931,7 +65923,7 @@ impl crate::FlatSerialize for PrefixListRemoveEntry {
 }
 
 /// 端口列表条目集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RangeListEntry {
     /// 端口范围。N 的取值范围：0~200。
@@ -72945,7 +65937,6 @@ pub struct RangeListEntry {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 }
-
 impl crate::FlatSerialize for RangeListEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -72966,7 +65957,7 @@ impl crate::FlatSerialize for RangeListEntry {
 }
 
 /// 端口列表绑定的标签键值对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RangeListTag {
     /// 端口列表的标签键。
@@ -72980,7 +65971,6 @@ pub struct RangeListTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for RangeListTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -72993,7 +65983,7 @@ impl crate::FlatSerialize for RangeListTag {
 }
 
 /// 端口列表绑定的标签键值对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RangeListsTag {
     /// 实例的标签键。N的取值范围为1~20。
@@ -73005,7 +65995,6 @@ pub struct RangeListsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for RangeListsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -73018,7 +66007,7 @@ impl crate::FlatSerialize for RangeListsTag {
 }
 
 /// 端口列表的标签集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListsItemTag {
     /// 端口列表的标签键。
@@ -73031,23 +66020,8 @@ pub struct ListsItemTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for ListsItemTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
 /// 端口列表信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeList {
     /// 端口列表 ID。
@@ -73084,53 +66058,8 @@ pub struct RangeList {
     pub tags: Vec<ListsItemTag>,
 }
 
-impl crate::FlatSerialize for RangeList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range_list_id,
-            &format!("{}.PortRangeListId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range_list_name,
-            &format!("{}.PortRangeListName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_entries,
-            &format!("{}.MaxEntries", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.association_count,
-            &format!("{}.AssociationCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
 /// 端口列表条目对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEntry {
     /// 端口范围。
@@ -73143,27 +66072,8 @@ pub struct ResponseEntry {
     pub description: String,
 }
 
-impl crate::FlatSerialize for ResponseEntry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range,
-            &format!("{}.PortRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-    }
-}
-
 /// 端口列表已关联的资源信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RangeListAssociation {
     /// 资源 ID。
@@ -73176,27 +66086,8 @@ pub struct RangeListAssociation {
     pub resource_type: String,
 }
 
-impl crate::FlatSerialize for RangeListAssociation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-    }
-}
-
 /// 增加或修改的端口列表条目对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RangeListAddEntry {
     /// 端口范围，N 的取值范围：0~200。使用限制：
@@ -73212,7 +66103,6 @@ pub struct RangeListAddEntry {
     #[serde(rename = "Description")]
     pub description: Option<String>,
 }
-
 impl crate::FlatSerialize for RangeListAddEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -73233,7 +66123,7 @@ impl crate::FlatSerialize for RangeListAddEntry {
 }
 
 /// 删除的端口列表条目对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RangeListRemoveEntry {
     /// 端口范围，N 的取值范围：0~200。使用限制：
@@ -73244,7 +66134,6 @@ pub struct RangeListRemoveEntry {
     #[serde(rename = "PortRange")]
     pub port_range: Option<String>,
 }
-
 impl crate::FlatSerialize for RangeListRemoveEntry {
     fn flat_serialize<'a>(
         &'a self,
@@ -73260,7 +66149,7 @@ impl crate::FlatSerialize for RangeListRemoveEntry {
 }
 
 /// 安全组绑定的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SecurityGroupTag {
     /// 安全组的标签键。
@@ -73274,7 +66163,6 @@ pub struct SecurityGroupTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for SecurityGroupTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -73287,7 +66175,7 @@ impl crate::FlatSerialize for SecurityGroupTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SecurityGroupsTag {
     /// 安全组的标签键。
@@ -73299,7 +66187,6 @@ pub struct SecurityGroupsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for SecurityGroupsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -73312,7 +66199,7 @@ impl crate::FlatSerialize for SecurityGroupsTag {
 }
 
 /// 安全组的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupItemTagsTag {
     /// 安全组的标签值。
@@ -73325,22 +66212,7 @@ pub struct SecurityGroupItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for SecurityGroupItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SecurityGroupItemTags {
     /// 安全组的标签集合。
@@ -73349,18 +66221,8 @@ pub struct SecurityGroupItemTags {
     pub tag: Vec<SecurityGroupItemTagsTag>,
 }
 
-impl crate::FlatSerialize for SecurityGroupItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 安全组信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupsSecurityGroup {
     /// 安全组ID。
@@ -73431,78 +66293,7 @@ pub struct GroupsSecurityGroup {
     pub group_to_group_rule_count: i32,
 }
 
-impl crate::FlatSerialize for GroupsSecurityGroup {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_name,
-            &format!("{}.SecurityGroupName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_type,
-            &format!("{}.SecurityGroupType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ecs_count,
-            &format!("{}.EcsCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_amount,
-            &format!("{}.AvailableInstanceAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_managed,
-            &format!("{}.ServiceManaged", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_id,
-            &format!("{}.ServiceID", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.rule_count,
-            &format!("{}.RuleCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.group_to_group_rule_count,
-            &format!("{}.GroupToGroupRuleCount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSecurityGroups {
     /// 安全组信息集合。
@@ -73511,21 +66302,7 @@ pub struct ResponseSecurityGroups {
     pub security_group: Vec<GroupsSecurityGroup>,
 }
 
-impl crate::FlatSerialize for ResponseSecurityGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group,
-            &format!("{}.SecurityGroup", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PermissionsPermission {
     /// 安全组规则ID。
@@ -73634,134 +66411,7 @@ pub struct PermissionsPermission {
     pub port_range_list_name: String,
 }
 
-impl crate::FlatSerialize for PermissionsPermission {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_rule_id,
-            &format!("{}.SecurityGroupRuleId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.direction,
-            &format!("{}.Direction", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_group_id,
-            &format!("{}.SourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_group_owner_account,
-            &format!("{}.DestGroupOwnerAccount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_prefix_list_id,
-            &format!("{}.DestPrefixListId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_prefix_list_name,
-            &format!("{}.DestPrefixListName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_cidr_ip,
-            &format!("{}.SourceCidrIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_dest_cidr_ip,
-            &format!("{}.Ipv6DestCidrIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_source_cidr_ip,
-            &format!("{}.Ipv6SourceCidrIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_group_id,
-            &format!("{}.DestGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_cidr_ip,
-            &format!("{}.DestCidrIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_protocol,
-            &format!("{}.IpProtocol", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.priority, &format!("{}.Priority", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_group_name,
-            &format!("{}.DestGroupName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.nic_type, &format!("{}.NicType", name), params);
-        crate::FlatSerialize::flat_serialize(&self.policy, &format!("{}.Policy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range,
-            &format!("{}.PortRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_prefix_list_name,
-            &format!("{}.SourcePrefixListName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_prefix_list_id,
-            &format!("{}.SourcePrefixListId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_group_owner_account,
-            &format!("{}.SourceGroupOwnerAccount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_group_name,
-            &format!("{}.SourceGroupName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_port_range,
-            &format!("{}.SourcePortRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range_list_id,
-            &format!("{}.PortRangeListId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_range_list_name,
-            &format!("{}.PortRangeListName", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePermissions {
     /// 安全组权限规则集合。
@@ -73770,21 +66420,7 @@ pub struct ResponsePermissions {
     pub permission: Vec<PermissionsPermission>,
 }
 
-impl crate::FlatSerialize for ResponsePermissions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.permission,
-            &format!("{}.Permission", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PolicyIds {
     /// 安全组关联的快照策略ID列表。
@@ -73793,22 +66429,8 @@ pub struct PolicyIds {
     pub snapshot_policy_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for PolicyIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_policy_id,
-            &format!("{}.SnapshotPolicyId", name),
-            params,
-        );
-    }
-}
-
 /// 安全组规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupPermission {
     /// 设置访问权限。取值范围：
@@ -73937,7 +66559,6 @@ pub struct AuthorizeSecurityGroupPermission {
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: Option<String>,
 }
-
 impl crate::FlatSerialize for AuthorizeSecurityGroupPermission {
     fn flat_serialize<'a>(
         &'a self,
@@ -74016,7 +66637,7 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupPermission {
 }
 
 /// 安全组规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupPermission {
     /// 访问权限。取值范围：
@@ -74139,7 +66760,6 @@ pub struct RevokeSecurityGroupPermission {
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: Option<String>,
 }
-
 impl crate::FlatSerialize for RevokeSecurityGroupPermission {
     fn flat_serialize<'a>(
         &'a self,
@@ -74218,7 +66838,7 @@ impl crate::FlatSerialize for RevokeSecurityGroupPermission {
 }
 
 /// 安全组权限规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AuthorizeSecurityGroupEgressPermission {
     /// 设置访问权限。取值范围：
@@ -74339,7 +66959,6 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: Option<String>,
 }
-
 impl crate::FlatSerialize for AuthorizeSecurityGroupEgressPermission {
     fn flat_serialize<'a>(
         &'a self,
@@ -74418,7 +67037,7 @@ impl crate::FlatSerialize for AuthorizeSecurityGroupEgressPermission {
 }
 
 /// 安全组规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RevokeSecurityGroupEgressPermission {
     /// 访问权限。取值范围：
@@ -74537,7 +67156,6 @@ pub struct RevokeSecurityGroupEgressPermission {
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: Option<String>,
 }
-
 impl crate::FlatSerialize for RevokeSecurityGroupEgressPermission {
     fn flat_serialize<'a>(
         &'a self,
@@ -74616,7 +67234,7 @@ impl crate::FlatSerialize for RevokeSecurityGroupEgressPermission {
 }
 
 /// 正在授权给这个安全组的其他安全组信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReferencingSecurityGroup {
     /// 其他安全组ID。
@@ -74629,22 +67247,7 @@ pub struct ReferencingSecurityGroup {
     pub ali_uid: String,
 }
 
-impl crate::FlatSerialize for ReferencingSecurityGroup {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.ali_uid, &format!("{}.AliUid", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReferencingSecurityGroups {
     /// 正在授权给这个安全组的其他安全组信息集合。
@@ -74653,22 +67256,8 @@ pub struct ReferencingSecurityGroups {
     pub referencing_security_group: Vec<ReferencingSecurityGroup>,
 }
 
-impl crate::FlatSerialize for ReferencingSecurityGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.referencing_security_group,
-            &format!("{}.ReferencingSecurityGroup", name),
-            params,
-        );
-    }
-}
-
 /// 安全组和被授权的安全组信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupReference {
     /// 安全组ID。
@@ -74680,26 +67269,7 @@ pub struct GroupReference {
     pub referencing_security_groups: ReferencingSecurityGroups,
 }
 
-impl crate::FlatSerialize for GroupReference {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.referencing_security_groups,
-            &format!("{}.ReferencingSecurityGroups", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupReferences {
     /// 安全组和被授权的安全组信息集合。
@@ -74708,22 +67278,8 @@ pub struct GroupReferences {
     pub security_group_reference: Vec<GroupReference>,
 }
 
-impl crate::FlatSerialize for GroupReferences {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_reference,
-            &format!("{}.SecurityGroupReference", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateKeyPairTag {
     /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或者`https://`。
@@ -74733,7 +67289,6 @@ pub struct CreateKeyPairTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateKeyPairTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -74746,7 +67301,7 @@ impl crate::FlatSerialize for CreateKeyPairTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ImportKeyPairTag {
     /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
@@ -74756,7 +67311,6 @@ pub struct ImportKeyPairTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ImportKeyPairTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -74768,7 +67322,7 @@ impl crate::FlatSerialize for ImportKeyPairTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PairsTag {
     /// 密钥对的标签键。N的取值范围：1~20。
@@ -74780,7 +67334,6 @@ pub struct PairsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for PairsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -74792,7 +67345,7 @@ impl crate::FlatSerialize for PairsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PairItemTagsTag {
     /// 密钥对的标签值。
@@ -74805,22 +67358,7 @@ pub struct PairItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for PairItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PairItemTags {
     /// 密钥对的标签。
@@ -74829,17 +67367,7 @@ pub struct PairItemTags {
     pub tag: Vec<PairItemTagsTag>,
 }
 
-impl crate::FlatSerialize for PairItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct KeyPair {
     /// 密钥对的创建时间。
@@ -74867,42 +67395,7 @@ pub struct KeyPair {
     pub tags: PairItemTags,
 }
 
-impl crate::FlatSerialize for KeyPair {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_pair_name,
-            &format!("{}.KeyPairName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_pair_finger_print,
-            &format!("{}.KeyPairFingerPrint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_key,
-            &format!("{}.PublicKey", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct KeyPairs {
     /// 密钥对信息集合。
@@ -74911,17 +67404,7 @@ pub struct KeyPairs {
     pub key_pair: Vec<KeyPair>,
 }
 
-impl crate::FlatSerialize for KeyPairs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key_pair, &format!("{}.KeyPair", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachKeyPairResponseResultsResult {
     /// 传递的操作状态码，其中200表示操作成功。
@@ -74942,24 +67425,7 @@ pub struct AttachKeyPairResponseResultsResult {
     pub success: String,
 }
 
-impl crate::FlatSerialize for AttachKeyPairResponseResultsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttachKeyPairResponseResults {
     /// 绑定密钥对成功或失败的结果集合。
@@ -74968,17 +67434,7 @@ pub struct AttachKeyPairResponseResults {
     pub result: Vec<AttachKeyPairResponseResultsResult>,
 }
 
-impl crate::FlatSerialize for AttachKeyPairResponseResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.result, &format!("{}.Result", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachKeyPairResponseResultsResult {
     /// 传递的操作状态码，其中200表示操作成功。
@@ -74999,24 +67455,7 @@ pub struct DetachKeyPairResponseResultsResult {
     pub success: String,
 }
 
-impl crate::FlatSerialize for DetachKeyPairResponseResultsResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.success, &format!("{}.Success", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DetachKeyPairResponseResults {
     /// 解绑密钥对成功或失败的结果集合。
@@ -75025,18 +67464,8 @@ pub struct DetachKeyPairResponseResults {
     pub result: Vec<DetachKeyPairResponseResultsResult>,
 }
 
-impl crate::FlatSerialize for DetachKeyPairResponseResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.result, &format!("{}.Result", name), params);
-    }
-}
-
 /// 启动模版自身的标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplateTemplateTag {
     /// 启动模板的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
@@ -75046,7 +67475,6 @@ pub struct TemplateTemplateTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for TemplateTemplateTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -75059,7 +67487,7 @@ impl crate::FlatSerialize for TemplateTemplateTag {
 }
 
 /// 数据盘信息列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplateDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
@@ -75150,7 +67578,6 @@ pub struct TemplateDataDisk {
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: Option<String>,
 }
-
 impl crate::FlatSerialize for TemplateDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -75214,7 +67641,7 @@ impl crate::FlatSerialize for TemplateDataDisk {
 }
 
 /// 弹性网卡信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplateNetworkInterface {
     /// 弹性网卡所属的虚拟交换机ID。
@@ -75277,7 +67704,6 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(default)]
     pub security_group_ids: Vec<String>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
@@ -75307,7 +67733,6 @@ pub struct TemplateNetworkInterface {
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: Option<bool>,
 }
-
 impl crate::FlatSerialize for TemplateNetworkInterface {
     fn flat_serialize<'a>(
         &'a self,
@@ -75363,7 +67788,7 @@ impl crate::FlatSerialize for TemplateNetworkInterface {
 }
 
 /// 通过该模板的版本创建的实例、云盘和主网卡的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct LaunchTemplateTag {
     /// 通过该模板的版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
@@ -75373,7 +67798,6 @@ pub struct LaunchTemplateTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for LaunchTemplateTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -75386,7 +67810,7 @@ impl crate::FlatSerialize for LaunchTemplateTag {
 }
 
 /// 镜像相关属性信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplateImageOptions {
     /// 使用该镜像的实例是否支持使用ecs-user用户登录。
@@ -75396,7 +67820,6 @@ pub struct TemplateImageOptions {
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: Option<bool>,
 }
-
 impl crate::FlatSerialize for TemplateImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -75412,7 +67835,7 @@ impl crate::FlatSerialize for TemplateImageOptions {
 }
 
 /// 安全选项。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplateSecurityOptions {
     /// 可信系统模式。取值：vTPM。
@@ -75432,7 +67855,6 @@ pub struct TemplateSecurityOptions {
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: Option<String>,
 }
-
 impl crate::FlatSerialize for TemplateSecurityOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -75448,7 +67870,7 @@ impl crate::FlatSerialize for TemplateSecurityOptions {
 }
 
 /// 启动模版自身的标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TemplatesTemplateTag {
     /// 启动模板的标签键。N的取值范围：1~20。
@@ -75460,7 +67882,6 @@ pub struct TemplatesTemplateTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for TemplatesTemplateTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -75473,7 +67894,7 @@ impl crate::FlatSerialize for TemplatesTemplateTag {
 }
 
 /// 启动模版自身的标签对信息列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSetItemTagsTag {
     /// 启动模板的标签键。
@@ -75486,22 +67907,7 @@ pub struct TemplateSetItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for TemplateSetItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSetItemTags {
     /// 启动模版自身的标签对信息列表。
@@ -75513,18 +67919,8 @@ pub struct TemplateSetItemTags {
     pub tag: Vec<TemplateSetItemTagsTag>,
 }
 
-impl crate::FlatSerialize for TemplateSetItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 实例启动模板的信息集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSet {
     /// 模板名称。
@@ -75568,57 +67964,7 @@ pub struct TemplateSet {
     pub tags: TemplateSetItemTags,
 }
 
-impl crate::FlatSerialize for TemplateSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_name,
-            &format!("{}.LaunchTemplateName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.default_version_number,
-            &format!("{}.DefaultVersionNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.modified_time,
-            &format!("{}.ModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_id,
-            &format!("{}.LaunchTemplateId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_by,
-            &format!("{}.CreatedBy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.latest_version_number,
-            &format!("{}.LatestVersionNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateSets {
     /// 实例启动模板的信息集合列表。
@@ -75627,21 +67973,7 @@ pub struct TemplateSets {
     pub launch_template_set: Vec<TemplateSet>,
 }
 
-impl crate::FlatSerialize for TemplateSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_set,
-            &format!("{}.LaunchTemplateSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionNumbers {
     /// 删除的实例启动模板版本号集合。
@@ -75650,22 +67982,8 @@ pub struct VersionNumbers {
     pub version_numbers: Vec<i64>,
 }
 
-impl crate::FlatSerialize for VersionNumbers {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.version_numbers,
-            &format!("{}.versionNumbers", name),
-            params,
-        );
-    }
-}
-
 /// 数据盘列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VersionDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`DataDisk.N.Category=cloud_essd`中的N保持一致。取值范围：
@@ -75757,7 +68075,6 @@ pub struct VersionDataDisk {
     #[serde(rename = "KMSKeyId")]
     pub kms_key_id: Option<String>,
 }
-
 impl crate::FlatSerialize for VersionDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -75821,7 +68138,7 @@ impl crate::FlatSerialize for VersionDataDisk {
 }
 
 /// 弹性网卡信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VersionNetworkInterface {
     /// 辅助弹性网卡所属的虚拟交换机ID。实例与辅助弹性网卡必须在同一VPC的同一可用区中，可以分属于不同交换机。`NetworkInterface.N`的N取值不能大于1。
@@ -75845,7 +68162,6 @@ pub struct VersionNetworkInterface {
     ///
     /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(default)]
     pub security_group_ids: Vec<String>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
@@ -75875,7 +68191,6 @@ pub struct VersionNetworkInterface {
     #[serde(rename = "DeleteOnRelease")]
     pub delete_on_release: Option<bool>,
 }
-
 impl crate::FlatSerialize for VersionNetworkInterface {
     fn flat_serialize<'a>(
         &'a self,
@@ -75931,7 +68246,7 @@ impl crate::FlatSerialize for VersionNetworkInterface {
 }
 
 /// 通过该版本创建的实例、云盘和主网卡的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VersionTag {
     /// 通过该版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
@@ -75941,7 +68256,6 @@ pub struct VersionTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for VersionTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -75954,7 +68268,7 @@ impl crate::FlatSerialize for VersionTag {
 }
 
 /// 镜像相关属性信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VersionImageOptions {
     /// 使用该镜像的实例是否支持使用ecs-user用户登录。
@@ -75964,7 +68278,6 @@ pub struct VersionImageOptions {
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: Option<bool>,
 }
-
 impl crate::FlatSerialize for VersionImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -75980,7 +68293,7 @@ impl crate::FlatSerialize for VersionImageOptions {
 }
 
 /// 安全选项。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VersionSecurityOptions {
     /// 可信系统模式。取值：vTPM。
@@ -76000,7 +68313,6 @@ pub struct VersionSecurityOptions {
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: Option<String>,
 }
-
 impl crate::FlatSerialize for VersionSecurityOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -76016,7 +68328,7 @@ impl crate::FlatSerialize for VersionSecurityOptions {
 }
 
 /// 数据盘集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisksDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。当`Category=cloud_essd`时该参数有返回值。可能值：
@@ -76091,69 +68403,7 @@ pub struct DisksDataDisk {
     pub kms_key_id: String,
 }
 
-impl crate::FlatSerialize for DisksDataDisk {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.performance_level,
-            &format!("{}.PerformanceLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_id,
-            &format!("{}.SnapshotId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_name,
-            &format!("{}.DiskName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_with_instance,
-            &format!("{}.DeleteWithInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encrypted,
-            &format!("{}.Encrypted", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.provisioned_iops,
-            &format!("{}.ProvisionedIops", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bursting_enabled,
-            &format!("{}.BurstingEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_snapshot_policy_id,
-            &format!("{}.AutoSnapshotPolicyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_key_id,
-            &format!("{}.KMSKeyId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataDisks {
     /// 数据盘集合。
@@ -76162,21 +68412,7 @@ pub struct DataDisks {
     pub data_disk: Vec<DisksDataDisk>,
 }
 
-impl crate::FlatSerialize for DataDisks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.data_disk,
-            &format!("{}.DataDisk", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceItemSecurityGroupIds {
     /// 辅助弹性网卡加入的一个或多个安全组。
@@ -76187,22 +68423,8 @@ pub struct InterfaceItemSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for InterfaceItemSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 辅助弹性网卡的属性集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataNetworkInterfacesNetworkInterface {
     /// 辅助弹性网卡名称。
@@ -76251,61 +68473,7 @@ pub struct DataNetworkInterfacesNetworkInterface {
     pub delete_on_release: bool,
 }
 
-impl crate::FlatSerialize for DataNetworkInterfacesNetworkInterface {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_name,
-            &format!("{}.NetworkInterfaceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.primary_ip_address,
-            &format!("{}.PrimaryIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_ids,
-            &format!("{}.SecurityGroupIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface_traffic_mode,
-            &format!("{}.NetworkInterfaceTrafficMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_on_release,
-            &format!("{}.DeleteOnRelease", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataNetworkInterfaces {
     /// 辅助弹性网卡的属性集合。
@@ -76314,22 +68482,8 @@ pub struct DataNetworkInterfaces {
     pub network_interface: Vec<DataNetworkInterfacesNetworkInterface>,
 }
 
-impl crate::FlatSerialize for DataNetworkInterfaces {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interface,
-            &format!("{}.NetworkInterface", name),
-            params,
-        );
-    }
-}
-
 /// 实例的标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsInstanceTag {
     /// 实例的标签键。
@@ -76342,18 +68496,7 @@ pub struct TagsInstanceTag {
     pub value: String,
 }
 
-impl crate::FlatSerialize for TagsInstanceTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataTags {
     /// 实例的标签列表。
@@ -76362,21 +68505,7 @@ pub struct DataTags {
     pub instance_tag: Vec<TagsInstanceTag>,
 }
 
-impl crate::FlatSerialize for DataTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_tag,
-            &format!("{}.InstanceTag", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataSecurityGroupIds {
     /// 实例加入的一个或多个安全组。
@@ -76387,22 +68516,8 @@ pub struct DataSecurityGroupIds {
     pub security_group_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for DataSecurityGroupIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 镜像相关属性信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataImageOptions {
     /// 使用该镜像的实例是否支持使用ecs-user用户登录。
@@ -76414,22 +68529,8 @@ pub struct DataImageOptions {
     pub login_as_non_root: bool,
 }
 
-impl crate::FlatSerialize for DataImageOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.login_as_non_root,
-            &format!("{}.LoginAsNonRoot", name),
-            params,
-        );
-    }
-}
-
 /// 安全选项。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataSecurityOptions {
     /// 可信系统模式。取值：vTPM。
@@ -76451,22 +68552,8 @@ pub struct DataSecurityOptions {
     pub trusted_system_mode: String,
 }
 
-impl crate::FlatSerialize for DataSecurityOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.trusted_system_mode,
-            &format!("{}.TrustedSystemMode", name),
-            params,
-        );
-    }
-}
-
 /// 模板具体配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateData {
     /// 部署集ID。
@@ -76797,282 +68884,8 @@ pub struct TemplateData {
     pub security_options: DataSecurityOptions,
 }
 
-impl crate::FlatSerialize for TemplateData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_id,
-            &format!("{}.DeploymentSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_performance_level,
-            &format!("{}.SystemDisk.PerformanceLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_pair_name,
-            &format!("{}.KeyPairName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_type,
-            &format!("{}.NetworkType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_strategy,
-            &format!("{}.SpotStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_vm_os_config,
-            &format!("{}.EnableVmOsConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_duration,
-            &format!("{}.SpotDuration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_enhancement_strategy,
-            &format!("{}.SecurityEnhancementStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.user_data,
-            &format!("{}.UserData", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_disk_name,
-            &format!("{}.SystemDisk.DiskName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_size,
-            &format!("{}.SystemDisk.Size", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_price_limit,
-            &format!("{}.SpotPriceLimit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.password_inherit,
-            &format!("{}.PasswordInherit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_ip_address,
-            &format!("{}.PrivateIpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.image_id, &format!("{}.ImageId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_delete_with_instance,
-            &format!("{}.SystemDisk.DeleteWithInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_category,
-            &format!("{}.SystemDisk.Category", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_release_time,
-            &format!("{}.AutoReleaseTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_description,
-            &format!("{}.SystemDisk.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_owner_alias,
-            &format!("{}.ImageOwnerAlias", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.host_name,
-            &format!("{}.HostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_iops,
-            &format!("{}.SystemDisk.Iops", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_auto_snapshot_policy_id,
-            &format!("{}.SystemDisk.AutoSnapshotPolicyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_max_bandwidth_out,
-            &format!("{}.InternetMaxBandwidthOut", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_max_bandwidth_in,
-            &format!("{}.InternetMaxBandwidthIn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.period, &format!("{}.Period", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.io_optimized,
-            &format!("{}.IoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ram_role_name,
-            &format!("{}.RamRoleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.ipv6_address_count,
-            &format!("{}.Ipv6AddressCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.data_disks,
-            &format!("{}.DataDisks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_interfaces,
-            &format!("{}.NetworkInterfaces", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_ids,
-            &format!("{}.SecurityGroupIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_provisioned_iops,
-            &format!("{}.SystemDisk.ProvisionedIops", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_bursting_enabled,
-            &format!("{}.SystemDisk.BurstingEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_encrypted,
-            &format!("{}.SystemDisk.Encrypted", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deletion_protection,
-            &format!("{}.DeletionProtection", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.credit_specification,
-            &format!("{}.CreditSpecification", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_renew,
-            &format!("{}.AutoRenew", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_renew_period,
-            &format!("{}.AutoRenewPeriod", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.period_unit,
-            &format!("{}.PeriodUnit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_endpoint,
-            &format!("{}.HttpEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_tokens,
-            &format!("{}.HttpTokens", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_put_response_hop_limit,
-            &format!("{}.HttpPutResponseHopLimit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.system_disk_kms_key_id,
-            &format!("{}.SystemDisk.KMSKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.image_options,
-            &format!("{}.ImageOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_options,
-            &format!("{}.SecurityOptions", name),
-            params,
-        );
-    }
-}
-
 /// 模板版本的信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSet {
     /// 模板名称。
@@ -77113,61 +68926,7 @@ pub struct VersionSet {
     pub launch_template_data: TemplateData,
 }
 
-impl crate::FlatSerialize for VersionSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_name,
-            &format!("{}.LaunchTemplateName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.default_version,
-            &format!("{}.DefaultVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_number,
-            &format!("{}.VersionNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.modified_time,
-            &format!("{}.ModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_id,
-            &format!("{}.LaunchTemplateId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_by,
-            &format!("{}.CreatedBy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_description,
-            &format!("{}.VersionDescription", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_data,
-            &format!("{}.LaunchTemplateData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VersionSets {
     /// 模板版本的信息。
@@ -77176,21 +68935,7 @@ pub struct VersionSets {
     pub launch_template_version_set: Vec<VersionSet>,
 }
 
-impl crate::FlatSerialize for VersionSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_version_set,
-            &format!("{}.LaunchTemplateVersionSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateVersion {
     /// 实例启动模板ID。
@@ -77203,26 +68948,7 @@ pub struct TemplateVersion {
     pub launch_template_version_number: i64,
 }
 
-impl crate::FlatSerialize for TemplateVersion {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_id,
-            &format!("{}.LaunchTemplateId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_version_number,
-            &format!("{}.LaunchTemplateVersionNumber", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateVersions {
     /// 已删除的实例启动模板版本。
@@ -77231,22 +68957,8 @@ pub struct TemplateVersions {
     pub launch_template_version: Vec<TemplateVersion>,
 }
 
-impl crate::FlatSerialize for TemplateVersions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_version,
-            &format!("{}.LaunchTemplateVersion", name),
-            params,
-        );
-    }
-}
-
 /// 扩展启动模板信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     /// 扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。
@@ -77279,11 +68991,9 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     pub max_quantity: Option<i32>,
     /// 实例规格的vCPU内核数目列表。
     #[serde(rename = "Cores")]
-    #[serde(default)]
     pub cores: Vec<i32>,
     /// 实例规格的内存大小列表。
     #[serde(rename = "Memories")]
-    #[serde(default)]
     pub memories: Vec<f32>,
     /// 实例规格族级别，用于筛选符合要求的实例规格范围。取值范围：
     ///
@@ -77296,11 +69006,9 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     pub instance_family_level: Option<String>,
     /// 需要排除的实例规格列表。
     #[serde(rename = "ExcludedInstanceTypes")]
-    #[serde(default)]
     pub excluded_instance_types: Vec<String>,
     /// 实例规格所属的架构类型列表。
     #[serde(rename = "Architectures")]
-    #[serde(default)]
     pub architectures: Vec<String>,
     /// 是否为性能突发实例规格。取值范围：
     ///
@@ -77316,7 +69024,6 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     #[serde(rename = "ImageId")]
     pub image_id: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -77376,7 +69083,7 @@ impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
 }
 
 /// 扩展启动模板云盘配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationDataDisk {
     /// 创建ESSD云盘作为数据盘使用时，设置云盘的性能等级。N的取值必须和`LaunchConfiguration.DataDisk.N.Category`中的N保持一致。取值范围：
@@ -77487,7 +69194,6 @@ pub struct ConfigurationDataDisk {
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: Option<String>,
 }
-
 impl crate::FlatSerialize for ConfigurationDataDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -77556,7 +69262,7 @@ impl crate::FlatSerialize for ConfigurationDataDisk {
 }
 
 /// 扩展启动模板标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationTag {
     /// 实例的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或`https://`。同时指定启动模板与启动配置信息时，优先使用启动模板。
@@ -77566,7 +69272,6 @@ pub struct ConfigurationTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ConfigurationTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -77579,7 +69284,7 @@ impl crate::FlatSerialize for ConfigurationTag {
 }
 
 /// 实例系统盘信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SystemDiskConfig {
     /// 实例系统盘类型。您可通过该参数指定多种候选磁盘类型，指定顺序作为各磁盘类型的优先级顺序，当某一种磁盘不可用时，自动更换磁盘类型。取值范围：
@@ -77591,7 +69296,6 @@ pub struct SystemDiskConfig {
     #[serde(rename = "DiskCategory")]
     pub disk_category: Option<String>,
 }
-
 impl crate::FlatSerialize for SystemDiskConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -77607,7 +69311,7 @@ impl crate::FlatSerialize for SystemDiskConfig {
 }
 
 /// 实例数据盘信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DataDiskConfig {
     /// 实例数据盘类型。您可通过该参数指定多种候选磁盘类型，指定顺序作为各磁盘类型的优先级顺序，当某一种磁盘不可用时，自动更换磁盘类型。取值范围：
@@ -77619,7 +69323,6 @@ pub struct DataDiskConfig {
     #[serde(rename = "DiskCategory")]
     pub disk_category: Option<String>,
 }
-
 impl crate::FlatSerialize for DataDiskConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -77635,7 +69338,7 @@ impl crate::FlatSerialize for DataDiskConfig {
 }
 
 /// 实例的系统盘信息。同时指定启动模板与启动配置信息时，优先使用启动模板。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationSystemDisk {
     /// 系统盘N是否加密。取值范围：
@@ -77688,7 +69391,6 @@ pub struct ConfigurationSystemDisk {
     #[serde(rename = "AutoSnapshotPolicyId")]
     pub auto_snapshot_policy_id: Option<String>,
 }
-
 impl crate::FlatSerialize for ConfigurationSystemDisk {
     fn flat_serialize<'a>(
         &'a self,
@@ -77729,7 +69431,7 @@ impl crate::FlatSerialize for ConfigurationSystemDisk {
 }
 
 /// >该参数正在邀测中，暂不支持使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct LaunchConfigurationArn {
     /// >该参数正在邀测中，暂不支持使用。
@@ -77742,7 +69444,6 @@ pub struct LaunchConfigurationArn {
     #[serde(rename = "AssumeRoleFor")]
     pub assume_role_for: Option<i64>,
 }
-
 impl crate::FlatSerialize for LaunchConfigurationArn {
     fn flat_serialize<'a>(
         &'a self,
@@ -77764,7 +69465,7 @@ impl crate::FlatSerialize for LaunchConfigurationArn {
 }
 
 /// 弹性供应组绑定的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ProvisioningGroupTag {
     /// 弹性供应组的标签键。
@@ -77778,7 +69479,6 @@ pub struct ProvisioningGroupTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ProvisioningGroupTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -77793,7 +69493,7 @@ impl crate::FlatSerialize for ProvisioningGroupTag {
 /// 创建实例时使用的资源池策略。当您设置该参数后，需要注意：
 /// - 该参数只在创建按量付费实例时生效。
 /// - 仅创建一次性同步交付类型的弹性供应组（`AutoProvisioningGroupType=instant`）时，该参数生效。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PoolOptions {
     /// 资源池包括弹性保障服务或容量预定服务生效后生成的私有池以及公共池，供实例启动时选择。取值范围：
@@ -77810,10 +69510,8 @@ pub struct PoolOptions {
     pub strategy: Option<String>,
     /// 私有池 ID。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入Target模式私有池 ID。
     #[serde(rename = "PrivatePoolIds")]
-    #[serde(default)]
     pub private_pool_ids: Vec<String>,
 }
-
 impl crate::FlatSerialize for PoolOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -77833,7 +69531,7 @@ impl crate::FlatSerialize for PoolOptions {
 ///
 /// 当您设置该参数后，需要注意：
 /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationImageOptions {
     /// 使用该镜像的实例是否支持使用 ecs-user 用户登录。可能值：
@@ -77842,7 +69540,6 @@ pub struct ConfigurationImageOptions {
     #[serde(rename = "LoginAsNonRoot")]
     pub login_as_non_root: Option<bool>,
 }
-
 impl crate::FlatSerialize for ConfigurationImageOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -77857,7 +69554,7 @@ impl crate::FlatSerialize for ConfigurationImageOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SchedulerOptions {
     #[serde(rename = "DedicatedHostId")]
@@ -77865,7 +69562,6 @@ pub struct SchedulerOptions {
     #[serde(rename = "DedicatedHostClusterId")]
     pub dedicated_host_cluster_id: Option<String>,
 }
-
 impl crate::FlatSerialize for SchedulerOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -77885,13 +69581,12 @@ impl crate::FlatSerialize for SchedulerOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationSecurityOptions {
     #[serde(rename = "TrustedSystemMode")]
     pub trusted_system_mode: Option<String>,
 }
-
 impl crate::FlatSerialize for ConfigurationSecurityOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -77907,7 +69602,7 @@ impl crate::FlatSerialize for ConfigurationSecurityOptions {
 }
 
 /// CPU相关配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConfigurationCpuOptions {
     /// CPU 核心数。
@@ -77925,7 +69620,6 @@ pub struct ConfigurationCpuOptions {
     #[serde(rename = "ThreadsPerCore")]
     pub threads_per_core: Option<i32>,
 }
-
 impl crate::FlatSerialize for ConfigurationCpuOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -77942,7 +69636,7 @@ impl crate::FlatSerialize for ConfigurationCpuOptions {
 }
 
 /// 启动配置参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct LaunchConfiguration {
     /// 购买资源的时长，单位由`PeriodUnit`指定。当创建包年包月实例时生效且为必选值。取值范围：
@@ -78026,7 +69720,6 @@ pub struct LaunchConfiguration {
     #[serde(rename = "CpuOptions")]
     pub cpu_options: Option<ConfigurationCpuOptions>,
 }
-
 impl crate::FlatSerialize for LaunchConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -78083,12 +69776,11 @@ impl crate::FlatSerialize for LaunchConfiguration {
 }
 
 /// 实例规格的最小容量。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CapacityDistribution {
     /// 实例规格集合。不允许重复，且规格在LaunchTemplateConfig.InstanceType范围内。
     #[serde(rename = "InstanceTypes")]
-    #[serde(default)]
     pub instance_types: Vec<String>,
     /// 在`InstanceTypes`范围内需要交付的最小实例数量。
     ///
@@ -78096,7 +69788,6 @@ pub struct CapacityDistribution {
     #[serde(rename = "MinTargetCapacity")]
     pub min_target_capacity: Option<i32>,
 }
-
 impl crate::FlatSerialize for CapacityDistribution {
     fn flat_serialize<'a>(
         &'a self,
@@ -78117,15 +69808,13 @@ impl crate::FlatSerialize for CapacityDistribution {
 }
 
 /// 包年包月实例的容量详细配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PaidOptions {
     /// 不同实例规格的最小容量集合。仅当`AutoProvisioningGroupType = request` 时支持该参数。
     #[serde(rename = "SpecifyCapacityDistribution")]
-    #[serde(default)]
     pub specify_capacity_distribution: Vec<CapacityDistribution>,
 }
-
 impl crate::FlatSerialize for PaidOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -78140,7 +69829,7 @@ impl crate::FlatSerialize for PaidOptions {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemInstanceIds {
     /// 成功创建的实例ID列表。
@@ -78149,22 +69838,8 @@ pub struct ResultItemInstanceIds {
     pub instance_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResultItemInstanceIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
 /// 弹性供应组创建的实例组成的集合。该集合值仅当弹性供应组的交付类型为一次性同步交付（`instant`）时返回。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchResult {
     /// 实例所在的可用区ID。
@@ -78199,43 +69874,7 @@ pub struct LaunchResult {
     pub instance_ids: ResultItemInstanceIds,
 }
 
-impl crate::FlatSerialize for LaunchResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.error_msg,
-            &format!("{}.ErrorMsg", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_strategy,
-            &format!("{}.SpotStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.amount, &format!("{}.Amount", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_ids,
-            &format!("{}.InstanceIds", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct LaunchResults {
     /// 弹性供应组创建的实例组成的集合。该集合值仅当弹性供应组的交付类型为一次性同步交付（`instant`）时返回。
@@ -78244,22 +69883,8 @@ pub struct LaunchResults {
     pub launch_result: Vec<LaunchResult>,
 }
 
-impl crate::FlatSerialize for LaunchResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_result,
-            &format!("{}.LaunchResult", name),
-            params,
-        );
-    }
-}
-
 /// 弹性供应组绑定的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ProvisioningGroupsTag {
     /// 弹性供应组的标签键。
@@ -78273,7 +69898,6 @@ pub struct ProvisioningGroupsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ProvisioningGroupsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -78285,7 +69909,7 @@ impl crate::FlatSerialize for ProvisioningGroupsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsLaunchTemplateConfig {
     /// 扩展启动模板对应实例规格的价格上限。
@@ -78310,37 +69934,7 @@ pub struct ConfigsLaunchTemplateConfig {
     pub instance_type: String,
 }
 
-impl crate::FlatSerialize for ConfigsLaunchTemplateConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.max_price,
-            &format!("{}.MaxPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.priority, &format!("{}.Priority", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.weighted_capacity,
-            &format!("{}.WeightedCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TemplateConfigs {
     /// 扩展启动模板的详细信息。
@@ -78349,22 +69943,8 @@ pub struct TemplateConfigs {
     pub launch_template_config: Vec<ConfigsLaunchTemplateConfig>,
 }
 
-impl crate::FlatSerialize for TemplateConfigs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_config,
-            &format!("{}.LaunchTemplateConfig", name),
-            params,
-        );
-    }
-}
-
 /// 抢占式实例相关的策略。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SpotOptions {
     /// 弹性供应组选择价格最低的实例规格创建实例的数量。
@@ -78390,32 +69970,8 @@ pub struct SpotOptions {
     pub instance_interruption_behavior: String,
 }
 
-impl crate::FlatSerialize for SpotOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_pools_to_use_count,
-            &format!("{}.InstancePoolsToUseCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_strategy,
-            &format!("{}.AllocationStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_interruption_behavior,
-            &format!("{}.InstanceInterruptionBehavior", name),
-            params,
-        );
-    }
-}
-
 /// 按量付费实例相关的策略。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GoOptions {
     /// 创建按量付费实例的策略。可能值：
@@ -78430,22 +69986,8 @@ pub struct GoOptions {
     pub allocation_strategy: String,
 }
 
-impl crate::FlatSerialize for GoOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_strategy,
-            &format!("{}.AllocationStrategy", name),
-            params,
-        );
-    }
-}
-
 /// 弹性供应组的目标容量设置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacitySpecification {
     /// 抢占式实例的目标容量。
@@ -78473,37 +70015,8 @@ pub struct CapacitySpecification {
     pub total_target_capacity: f32,
 }
 
-impl crate::FlatSerialize for CapacitySpecification {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_target_capacity,
-            &format!("{}.SpotTargetCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.pay_as_you_go_target_capacity,
-            &format!("{}.PayAsYouGoTargetCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.default_target_capacity_type,
-            &format!("{}.DefaultTargetCapacityType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_target_capacity,
-            &format!("{}.TotalTargetCapacity", name),
-            params,
-        );
-    }
-}
-
 /// 弹性供应组绑定的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupItemTagsTag {
     /// 弹性供应组的标签键。
@@ -78520,22 +70033,7 @@ pub struct ProvisioningGroupItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for ProvisioningGroupItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroupItemTags {
     /// 弹性供应组绑定的标签。
@@ -78544,18 +70042,8 @@ pub struct ProvisioningGroupItemTags {
     pub tag: Vec<ProvisioningGroupItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ProvisioningGroupItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 弹性供应组的详细信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroup {
     /// 创建时间。
@@ -78670,109 +70158,7 @@ pub struct ProvisioningGroup {
     pub tags: ProvisioningGroupItemTags,
 }
 
-impl crate::FlatSerialize for ProvisioningGroup {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_provisioning_group_name,
-            &format!("{}.AutoProvisioningGroupName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.terminate_instances,
-            &format!("{}.TerminateInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_spot_price,
-            &format!("{}.MaxSpotPrice", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.State", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_id,
-            &format!("{}.LaunchTemplateId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.valid_from,
-            &format!("{}.ValidFrom", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_version,
-            &format!("{}.LaunchTemplateVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.terminate_instances_with_expiration,
-            &format!("{}.TerminateInstancesWithExpiration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.valid_until,
-            &format!("{}.ValidUntil", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_provisioning_group_type,
-            &format!("{}.AutoProvisioningGroupType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_provisioning_group_id,
-            &format!("{}.AutoProvisioningGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.excess_capacity_termination_policy,
-            &format!("{}.ExcessCapacityTerminationPolicy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template_configs,
-            &format!("{}.LaunchTemplateConfigs", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.spot_options,
-            &format!("{}.SpotOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.pay_as_you_go_options,
-            &format!("{}.PayAsYouGoOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_capacity_specification,
-            &format!("{}.TargetCapacitySpecification", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisioningGroups {
     /// 弹性供应组的详细信息。
@@ -78781,21 +70167,7 @@ pub struct ProvisioningGroups {
     pub auto_provisioning_group: Vec<ProvisioningGroup>,
 }
 
-impl crate::FlatSerialize for ProvisioningGroups {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_provisioning_group,
-            &format!("{}.AutoProvisioningGroup", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupInstancesResponseInstancesInstance {
     /// 实例状态。
@@ -78854,52 +70226,7 @@ pub struct GroupInstancesResponseInstancesInstance {
     pub memory: i32,
 }
 
-impl crate::FlatSerialize for GroupInstancesResponseInstancesInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.is_spot, &format!("{}.IsSpot", name), params);
-        crate::FlatSerialize::flat_serialize(&self.cpu, &format!("{}.CPU", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_type,
-            &format!("{}.NetworkType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.io_optimized,
-            &format!("{}.IoOptimized", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OsType", name), params);
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.memory, &format!("{}.Memory", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupInstancesResponseInstances {
     /// 弹性供应组下所有实例的信息。
@@ -78908,18 +70235,8 @@ pub struct GroupInstancesResponseInstances {
     pub instance: Vec<GroupInstancesResponseInstancesInstance>,
 }
 
-impl crate::FlatSerialize for GroupInstancesResponseInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.instance, &format!("{}.Instance", name), params);
-    }
-}
-
 /// 扩展启动模板列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
     /// 扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。
@@ -78943,7 +70260,6 @@ pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
     #[serde(rename = "WeightedCapacity")]
     pub weighted_capacity: Option<f64>,
 }
-
 impl crate::FlatSerialize for ModifyAutoProvisioningGroupLaunchTemplateConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -78974,7 +70290,7 @@ impl crate::FlatSerialize for ModifyAutoProvisioningGroupLaunchTemplateConfig {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivityDetail {
     /// 单次调度任务一次实例创建活动的执行状态。可能值：
@@ -78992,18 +70308,7 @@ pub struct ActivityDetail {
     pub detail: String,
 }
 
-impl crate::FlatSerialize for ActivityDetail {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.detail, &format!("{}.Detail", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivityDetails {
     /// 单次调度任务的详细信息。
@@ -79012,21 +70317,7 @@ pub struct ActivityDetails {
     pub activity_detail: Vec<ActivityDetail>,
 }
 
-impl crate::FlatSerialize for ActivityDetails {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.activity_detail,
-            &format!("{}.ActivityDetail", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupHistory {
     /// 单次调度任务的状态。可能值：
@@ -79054,33 +70345,7 @@ pub struct GroupHistory {
     pub activity_details: ActivityDetails,
 }
 
-impl crate::FlatSerialize for GroupHistory {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.TaskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.last_event_time,
-            &format!("{}.LastEventTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activity_details,
-            &format!("{}.ActivityDetails", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct GroupHistories {
     /// 所有调度任务的信息。
@@ -79089,21 +70354,7 @@ pub struct GroupHistories {
     pub auto_provisioning_group_history: Vec<GroupHistory>,
 }
 
-impl crate::FlatSerialize for GroupHistories {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_provisioning_group_history,
-            &format!("{}.AutoProvisioningGroupHistory", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetItemInstanceIds {
     /// 部署集内的实例ID列表。
@@ -79112,21 +70363,7 @@ pub struct SetItemInstanceIds {
     pub instance_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for SetItemInstanceIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacitiesCapacity {
     /// 可用区ID。只返回部署集内存量ECS实例所属的可用区ID。
@@ -79143,27 +70380,7 @@ pub struct CapacitiesCapacity {
     pub available_amount: i32,
 }
 
-impl crate::FlatSerialize for CapacitiesCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.used_amount,
-            &format!("{}.UsedAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_amount,
-            &format!("{}.AvailableAmount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacities {
     /// 由Capacity组成的数组格式。仅当部署集内有存量ECS实例时提供返回结果，返回结果包含部署集可用区维度的容量信息。
@@ -79172,17 +70389,7 @@ pub struct ItemCapacities {
     pub capacity: Vec<CapacitiesCapacity>,
 }
 
-impl crate::FlatSerialize for ItemCapacities {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.capacity, &format!("{}.Capacity", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeploymentSet {
     /// 部署集的创建时间。
@@ -79238,73 +70445,7 @@ pub struct DeploymentSet {
     pub capacities: ItemCapacities,
 }
 
-impl crate::FlatSerialize for DeploymentSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.strategy, &format!("{}.Strategy", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_id,
-            &format!("{}.DeploymentSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_strategy,
-            &format!("{}.DeploymentStrategy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_description,
-            &format!("{}.DeploymentSetDescription", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.group_count,
-            &format!("{}.GroupCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.granularity,
-            &format!("{}.Granularity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set_name,
-            &format!("{}.DeploymentSetName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_amount,
-            &format!("{}.InstanceAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_ids,
-            &format!("{}.InstanceIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.capacities,
-            &format!("{}.Capacities", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeploymentSets {
     /// 由DeploymentSet组成的数组格式，返回部署集详细信息。
@@ -79313,22 +70454,8 @@ pub struct DeploymentSets {
     pub deployment_set: Vec<DeploymentSet>,
 }
 
-impl crate::FlatSerialize for DeploymentSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.deployment_set,
-            &format!("{}.DeploymentSet", name),
-            params,
-        );
-    }
-}
-
 /// 标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AssuranceTag {
     /// 弹性保障服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
@@ -79338,7 +70465,6 @@ pub struct AssuranceTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for AssuranceTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -79351,7 +70477,7 @@ impl crate::FlatSerialize for AssuranceTag {
 }
 
 /// 弹性保障-分时保障重复规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateElasticityAssuranceRecurrenceRule {
     /// 分时保障生效时间，取值必须为整点。
@@ -79380,7 +70506,6 @@ pub struct CreateElasticityAssuranceRecurrenceRule {
     #[serde(rename = "RecurrenceValue")]
     pub recurrence_value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateElasticityAssuranceRecurrenceRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -79407,7 +70532,7 @@ impl crate::FlatSerialize for CreateElasticityAssuranceRecurrenceRule {
 }
 
 /// 标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AssurancesTag {
     /// 标签键。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
@@ -79419,7 +70544,6 @@ pub struct AssurancesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for AssurancesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -79432,7 +70556,7 @@ impl crate::FlatSerialize for AssurancesTag {
 }
 
 /// >该参数暂未开放使用。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceUsage {
     /// >该参数暂未开放使用。
@@ -79449,31 +70573,7 @@ pub struct AssuranceUsage {
     pub used_amount: i32,
 }
 
-impl crate::FlatSerialize for AssuranceUsage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_name,
-            &format!("{}.ServiceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.used_amount,
-            &format!("{}.UsedAmount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceUsages {
     /// >该参数暂未开放使用。
@@ -79482,22 +70582,8 @@ pub struct AssuranceUsages {
     pub elasticity_assurance_usage: Vec<AssuranceUsage>,
 }
 
-impl crate::FlatSerialize for AssuranceUsages {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.elasticity_assurance_usage,
-            &format!("{}.ElasticityAssuranceUsage", name),
-            params,
-        );
-    }
-}
-
 /// 资源分配详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemAllocatedResourcesAllocatedResource {
     /// 已使用的实例的数量。
@@ -79525,42 +70611,7 @@ pub struct AssuranceItemItemAllocatedResourcesAllocatedResource {
     pub elasticity_assurance_usages: AssuranceUsages,
 }
 
-impl crate::FlatSerialize for AssuranceItemItemAllocatedResourcesAllocatedResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.used_amount,
-            &format!("{}.UsedAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_amount,
-            &format!("{}.TotalAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_amount,
-            &format!("{}.AvailableAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.zoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.elasticity_assurance_usages,
-            &format!("{}.ElasticityAssuranceUsages", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemAllocatedResources {
     /// 资源分配详情。
@@ -79569,22 +70620,8 @@ pub struct AssuranceItemItemAllocatedResources {
     pub allocated_resource: Vec<AssuranceItemItemAllocatedResourcesAllocatedResource>,
 }
 
-impl crate::FlatSerialize for AssuranceItemItemAllocatedResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allocated_resource,
-            &format!("{}.AllocatedResource", name),
-            params,
-        );
-    }
-}
-
 /// 弹性保障服务绑定的标签键值对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemTagsTag {
     /// 标签值。
@@ -79597,22 +70634,7 @@ pub struct AssuranceItemItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for AssuranceItemItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemItemTags {
     /// 弹性保障服务绑定的标签键值对列表。
@@ -79621,18 +70643,8 @@ pub struct AssuranceItemItemTags {
     pub tag: Vec<AssuranceItemItemTagsTag>,
 }
 
-impl crate::FlatSerialize for AssuranceItemItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 弹性保障-分时保障重复规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RulesRecurrenceRule {
     /// 重复规则的策略类型。可能值：
@@ -79660,32 +70672,7 @@ pub struct RulesRecurrenceRule {
     pub end_hour: i32,
 }
 
-impl crate::FlatSerialize for RulesRecurrenceRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.recurrence_type,
-            &format!("{}.RecurrenceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.recurrence_value,
-            &format!("{}.RecurrenceValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_hour,
-            &format!("{}.StartHour", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_hour, &format!("{}.EndHour", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RecurrenceRules {
     /// 弹性保障-分时保障重复规则列表。
@@ -79694,22 +70681,8 @@ pub struct RecurrenceRules {
     pub recurrence_rule: Vec<RulesRecurrenceRule>,
 }
 
-impl crate::FlatSerialize for RecurrenceRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.recurrence_rule,
-            &format!("{}.RecurrenceRule", name),
-            params,
-        );
-    }
-}
-
 /// 弹性保障服务详细信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItem {
     /// 弹性保障服务的状态。可能值：
@@ -79804,99 +70777,7 @@ pub struct AssuranceItem {
     pub package_type: String,
 }
 
-impl crate::FlatSerialize for AssuranceItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_match_criteria,
-            &format!("{}.PrivatePoolOptionsMatchCriteria", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_id,
-            &format!("{}.PrivatePoolOptionsId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.used_assurance_times,
-            &format!("{}.UsedAssuranceTimes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.latest_start_time,
-            &format!("{}.LatestStartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_name,
-            &format!("{}.PrivatePoolOptionsName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_assurance_times,
-            &format!("{}.TotalAssuranceTimes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocated_resources,
-            &format!("{}.AllocatedResources", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time_type,
-            &format!("{}.StartTimeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.elasticity_assurance_owner_id,
-            &format!("{}.ElasticityAssuranceOwnerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.recurrence_rules,
-            &format!("{}.RecurrenceRules", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.package_type,
-            &format!("{}.PackageType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceSet {
     /// 弹性保障服务详细信息组成的集合。
@@ -79905,21 +70786,7 @@ pub struct AssuranceSet {
     pub elasticity_assurance_item: Vec<AssuranceItem>,
 }
 
-impl crate::FlatSerialize for AssuranceSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.elasticity_assurance_item,
-            &format!("{}.ElasticityAssuranceItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceItemInstanceIdSet {
     /// 实例ID。
@@ -79928,21 +70795,7 @@ pub struct AssuranceItemInstanceIdSet {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for AssuranceItemInstanceIdSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ElasticityAssurance {
     /// 弹性保障服务已匹配的实例列表。
@@ -79951,24 +70804,10 @@ pub struct ElasticityAssurance {
     pub instance_id_set: Vec<AssuranceItemInstanceIdSet>,
 }
 
-impl crate::FlatSerialize for ElasticityAssurance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id_set,
-            &format!("{}.InstanceIdSet", name),
-            params,
-        );
-    }
-}
-
 /// 弹性保障-分时保障重复规则。
 ///
 /// > 修改后的重复规则将于次日生效。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ModifyElasticityAssuranceRecurrenceRule {
     /// 重复规则的策略类型。取值范围：
@@ -79997,7 +70836,6 @@ pub struct ModifyElasticityAssuranceRecurrenceRule {
     #[serde(rename = "EndHour")]
     pub end_hour: Option<i32>,
 }
-
 impl crate::FlatSerialize for ModifyElasticityAssuranceRecurrenceRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -80023,7 +70861,7 @@ impl crate::FlatSerialize for ModifyElasticityAssuranceRecurrenceRule {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OptionsIdSet {
     /// 弹性保障服务ID列表。
@@ -80032,22 +70870,8 @@ pub struct OptionsIdSet {
     pub private_pool_options_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for OptionsIdSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_id,
-            &format!("{}.PrivatePoolOptionsId", name),
-            params,
-        );
-    }
-}
-
 /// 弹性保障服务自动续费属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceRenewAttribute {
     /// 自动续费时长的单位，可能值：
@@ -80078,32 +70902,7 @@ pub struct AssuranceRenewAttribute {
     pub renewal_status: String,
 }
 
-impl crate::FlatSerialize for AssuranceRenewAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.period_unit,
-            &format!("{}.PeriodUnit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.period, &format!("{}.Period", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_id,
-            &format!("{}.PrivatePoolOptionsId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.renewal_status,
-            &format!("{}.RenewalStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssuranceRenewAttributes {
     /// 弹性保障服务自动续费属性组成的数组。
@@ -80112,22 +70911,8 @@ pub struct AssuranceRenewAttributes {
     pub elasticity_assurance_renew_attribute: Vec<AssuranceRenewAttribute>,
 }
 
-impl crate::FlatSerialize for AssuranceRenewAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.elasticity_assurance_renew_attribute,
-            &format!("{}.ElasticityAssuranceRenewAttribute", name),
-            params,
-        );
-    }
-}
-
 /// 标签对。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ReservationTag {
     /// 容量预定服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
@@ -80137,7 +70922,6 @@ pub struct ReservationTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for ReservationTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -80150,7 +70934,7 @@ impl crate::FlatSerialize for ReservationTag {
 }
 
 /// 标签对。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ReservationsTag {
     /// 标签键。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
@@ -80162,7 +70946,6 @@ pub struct ReservationsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ReservationsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -80175,7 +70958,7 @@ impl crate::FlatSerialize for ReservationsTag {
 }
 
 /// 已使用的实例详情。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationUsage {
     /// 阿里云账号ID。
@@ -80192,31 +70975,7 @@ pub struct ReservationUsage {
     pub used_amount: i32,
 }
 
-impl crate::FlatSerialize for ReservationUsage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.service_name,
-            &format!("{}.ServiceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.used_amount,
-            &format!("{}.UsedAmount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationUsages {
     /// 已使用的实例详情列表。
@@ -80225,21 +70984,7 @@ pub struct ReservationUsages {
     pub capacity_reservation_usage: Vec<ReservationUsage>,
 }
 
-impl crate::FlatSerialize for ReservationUsages {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_usage,
-            &format!("{}.CapacityReservationUsage", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemAllocatedResourcesAllocatedResource {
     /// 已使用的实例的数量。
@@ -80267,42 +71012,7 @@ pub struct ReservationItemItemAllocatedResourcesAllocatedResource {
     pub capacity_reservation_usages: ReservationUsages,
 }
 
-impl crate::FlatSerialize for ReservationItemItemAllocatedResourcesAllocatedResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.used_amount,
-            &format!("{}.UsedAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_amount,
-            &format!("{}.TotalAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_amount,
-            &format!("{}.AvailableAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.zoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_usages,
-            &format!("{}.CapacityReservationUsages", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemAllocatedResources {
     /// 资源分配详情。
@@ -80311,22 +71021,8 @@ pub struct ReservationItemItemAllocatedResources {
     pub allocated_resource: Vec<ReservationItemItemAllocatedResourcesAllocatedResource>,
 }
 
-impl crate::FlatSerialize for ReservationItemItemAllocatedResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allocated_resource,
-            &format!("{}.AllocatedResource", name),
-            params,
-        );
-    }
-}
-
 /// 容量预定服务绑定的标签键值对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemTagsTag {
     /// 标签值。
@@ -80339,22 +71035,7 @@ pub struct ReservationItemItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ReservationItemItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemItemTags {
     /// 容量预定服务绑定的标签键值对信息。
@@ -80363,18 +71044,8 @@ pub struct ReservationItemItemTags {
     pub tag: Vec<ReservationItemItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ReservationItemItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 容量预定服务详细信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItem {
     /// 容量预定服务的状态。可能值：
@@ -80474,95 +71145,7 @@ pub struct ReservationItem {
     pub capacity_reservation_owner_id: String,
 }
 
-impl crate::FlatSerialize for ReservationItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.time_slot,
-            &format!("{}.TimeSlot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_match_criteria,
-            &format!("{}.PrivatePoolOptionsMatchCriteria", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_id,
-            &format!("{}.PrivatePoolOptionsId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_name,
-            &format!("{}.PrivatePoolOptionsName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.end_time_type,
-            &format!("{}.EndTimeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.platform, &format!("{}.Platform", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.allocated_resources,
-            &format!("{}.AllocatedResources", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time_type,
-            &format!("{}.StartTimeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.saving_plan_id,
-            &format!("{}.SavingPlanId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_owner_id,
-            &format!("{}.CapacityReservationOwnerId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationSet {
     /// 容量预定服务详细信息组成的集合。
@@ -80571,22 +71154,8 @@ pub struct ReservationSet {
     pub capacity_reservation_item: Vec<ReservationItem>,
 }
 
-impl crate::FlatSerialize for ReservationSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.capacity_reservation_item,
-            &format!("{}.CapacityReservationItem", name),
-            params,
-        );
-    }
-}
-
 /// 容量预定服务已匹配的实例列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservationItemInstanceIdSet {
     /// 实例 ID。
@@ -80595,21 +71164,7 @@ pub struct ReservationItemInstanceIdSet {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for ReservationItemInstanceIdSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityReservation {
     /// 容量预定服务已匹配的实例列表。
@@ -80618,22 +71173,8 @@ pub struct CapacityReservation {
     pub instance_id_set: Vec<ReservationItemInstanceIdSet>,
 }
 
-impl crate::FlatSerialize for CapacityReservation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id_set,
-            &format!("{}.InstanceIdSet", name),
-            params,
-        );
-    }
-}
-
 /// 实例匹配的私有池信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesResponseInstancesInstance {
     /// 实例ID。
@@ -80654,31 +71195,7 @@ pub struct AttributesResponseInstancesInstance {
     pub private_pool_options_id: String,
 }
 
-impl crate::FlatSerialize for AttributesResponseInstancesInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_match_criteria,
-            &format!("{}.PrivatePoolOptionsMatchCriteria", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_pool_options_id,
-            &format!("{}.PrivatePoolOptionsId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributesResponseInstances {
     /// 实例匹配的私有池信息组成的集合。
@@ -80687,17 +71204,7 @@ pub struct AttributesResponseInstances {
     pub instance: Vec<AttributesResponseInstancesInstance>,
 }
 
-impl crate::FlatSerialize for AttributesResponseInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.instance, &format!("{}.Instance", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct OfferingTag {
     /// 预留实例券的标签键。不允许为空字符串，最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http:/`/或者`https://`。
@@ -80707,7 +71214,6 @@ pub struct OfferingTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for OfferingTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -80719,7 +71225,7 @@ impl crate::FlatSerialize for OfferingTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OfferingResponseReservedInstanceIdSets {
     /// 预留实例券ID列表。
@@ -80728,22 +71234,8 @@ pub struct OfferingResponseReservedInstanceIdSets {
     pub reserved_instance_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for OfferingResponseReservedInstanceIdSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-    }
-}
-
 /// 标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ReservedInstancesTag {
     /// 预留实例券的标签键。不允许为空字符串，最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
@@ -80755,7 +71247,6 @@ pub struct ReservedInstancesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ReservedInstancesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -80768,7 +71259,7 @@ impl crate::FlatSerialize for ReservedInstancesTag {
 }
 
 /// 是否被锁定。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceItemOperationLocksOperationLock {
     /// 锁定原因。
@@ -80777,21 +71268,7 @@ pub struct InstanceItemOperationLocksOperationLock {
     pub lock_reason: String,
 }
 
-impl crate::FlatSerialize for InstanceItemOperationLocksOperationLock {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemOperationLocks {
     /// 是否被锁定。
@@ -80800,22 +71277,8 @@ pub struct ReservedInstanceItemOperationLocks {
     pub operation_lock: Vec<InstanceItemOperationLocksOperationLock>,
 }
 
-impl crate::FlatSerialize for ReservedInstanceItemOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_lock,
-            &format!("{}.OperationLock", name),
-            params,
-        );
-    }
-}
-
 /// 预留实例券的标签对信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemTagsTag {
     /// 预留实例券的标签值。
@@ -80828,22 +71291,7 @@ pub struct ReservedInstanceItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ReservedInstanceItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceItemTags {
     /// 预留实例券的标签对信息。
@@ -80852,18 +71300,8 @@ pub struct ReservedInstanceItemTags {
     pub tag: Vec<ReservedInstanceItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ReservedInstanceItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 由ReservedInstance组成的数组格式，返回预留实例券的详细信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstance {
     /// 状态。
@@ -80945,86 +71383,7 @@ pub struct ReservedInstance {
     pub tags: ReservedInstanceItemTags,
 }
 
-impl crate::FlatSerialize for ReservedInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_name,
-            &format!("{}.ReservedInstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_amount,
-            &format!("{}.InstanceAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.offering_type,
-            &format!("{}.OfferingType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_status,
-            &format!("{}.AllocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.platform, &format!("{}.Platform", name), params);
-        crate::FlatSerialize::flat_serialize(&self.scope, &format!("{}.Scope", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_locks,
-            &format!("{}.OperationLocks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstances {
     /// 由ReservedInstance组成的数组格式，返回预留实例券的详细信息。
@@ -81033,22 +71392,8 @@ pub struct ReservedInstances {
     pub reserved_instance: Vec<ReservedInstance>,
 }
 
-impl crate::FlatSerialize for ReservedInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance,
-            &format!("{}.ReservedInstance", name),
-            params,
-        );
-    }
-}
-
 /// 预留实例券的配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InstancesConfiguration {
     /// 预留实例券的名称。
@@ -81080,7 +71425,6 @@ pub struct InstancesConfiguration {
     #[serde(rename = "InstanceAmount")]
     pub instance_amount: i32,
 }
-
 impl crate::FlatSerialize for InstancesConfiguration {
     fn flat_serialize<'a>(
         &'a self,
@@ -81107,7 +71451,7 @@ impl crate::FlatSerialize for InstancesConfiguration {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyReservedInstancesResponseReservedInstanceIdSets {
     /// 预留实例券ID列表。
@@ -81117,21 +71461,7 @@ pub struct ModifyReservedInstancesResponseReservedInstanceIdSets {
     pub reserved_instance_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ModifyReservedInstancesResponseReservedInstanceIdSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RenewReservedInstancesResponseReservedInstanceIdSets {
     /// 预留实例券ID列表。
@@ -81140,21 +71470,7 @@ pub struct RenewReservedInstancesResponseReservedInstanceIdSets {
     pub reserved_instance_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for RenewReservedInstancesResponseReservedInstanceIdSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceRenewAttribute {
     /// 续费单位。
@@ -81182,32 +71498,7 @@ pub struct ReservedInstanceRenewAttribute {
     pub renewal_status: String,
 }
 
-impl crate::FlatSerialize for ReservedInstanceRenewAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.period_unit,
-            &format!("{}.PeriodUnit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_id,
-            &format!("{}.ReservedInstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.renewal_status,
-            &format!("{}.RenewalStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReservedInstanceRenewAttributes {
     /// 由ReservedInstanceRenewAttribute组成的数组格式，返回预留实例券的自动续费设置信息。
@@ -81217,22 +71508,8 @@ pub struct ReservedInstanceRenewAttributes {
     pub reserved_instance_renew_attribute: Vec<ReservedInstanceRenewAttribute>,
 }
 
-impl crate::FlatSerialize for ReservedInstanceRenewAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance_renew_attribute,
-            &format!("{}.ReservedInstanceRenewAttribute", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UnitTag {
     /// SCU的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
@@ -81242,7 +71519,6 @@ pub struct UnitTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for UnitTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81254,7 +71530,7 @@ impl crate::FlatSerialize for UnitTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitIds {
     /// SCU ID。
@@ -81263,21 +71539,7 @@ pub struct UnitIds {
     pub storage_capacity_unit_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for UnitIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_capacity_unit_id,
-            &format!("{}.StorageCapacityUnitId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UnitsTag {
     /// SCU的标签键。
@@ -81287,7 +71549,6 @@ pub struct UnitsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for UnitsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81299,7 +71560,7 @@ impl crate::FlatSerialize for UnitsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitItemTagsTag {
     /// SCU的标签值。
@@ -81312,22 +71573,7 @@ pub struct UnitItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for UnitItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UnitItemTags {
     /// SCU标签键值对。
@@ -81336,17 +71582,7 @@ pub struct UnitItemTags {
     pub tag: Vec<UnitItemTagsTag>,
 }
 
-impl crate::FlatSerialize for UnitItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityUnit {
     /// SCU的创建时间。
@@ -81400,55 +71636,7 @@ pub struct CapacityUnit {
     pub tags: UnitItemTags,
 }
 
-impl crate::FlatSerialize for CapacityUnit {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.capacity, &format!("{}.Capacity", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_status,
-            &format!("{}.AllocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_capacity_unit_id,
-            &format!("{}.StorageCapacityUnitId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CapacityUnits {
     /// 由StorageCapacityUnits组成的数组格式，返回的SCU详细信息集合。
@@ -81457,22 +71645,8 @@ pub struct CapacityUnits {
     pub storage_capacity_unit: Vec<CapacityUnit>,
 }
 
-impl crate::FlatSerialize for CapacityUnits {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_capacity_unit,
-            &format!("{}.StorageCapacityUnit", name),
-            params,
-        );
-    }
-}
-
 /// 标签对。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RunCommandTag {
     /// 命令执行的标签值。该值可以为空字符串。
@@ -81488,7 +71662,6 @@ pub struct RunCommandTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for RunCommandTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81501,7 +71674,7 @@ impl crate::FlatSerialize for RunCommandTag {
 }
 
 /// 用于筛选实例的标签。可以在不指定InstanceId的情况下，向具有相同标签的实例批量执行命令。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RunCommandResourceTag {
     /// 用于筛选实例的标签值。
@@ -81525,7 +71698,6 @@ pub struct RunCommandResourceTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for RunCommandResourceTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81538,7 +71710,7 @@ impl crate::FlatSerialize for RunCommandResourceTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateCommandTag {
     /// 命令的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -81555,7 +71727,6 @@ pub struct CreateCommandTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateCommandTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81568,7 +71739,7 @@ impl crate::FlatSerialize for CreateCommandTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InvokeCommandTag {
     /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
@@ -81585,7 +71756,6 @@ pub struct InvokeCommandTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for InvokeCommandTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81598,7 +71768,7 @@ impl crate::FlatSerialize for InvokeCommandTag {
 }
 
 /// 用于筛选实例的标签。可以在不指定InstanceId的情况下，向具有相同标签的实例批量执行命令。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InvokeCommandResourceTag {
     /// 用于筛选实例的标签值。
@@ -81624,7 +71794,6 @@ pub struct InvokeCommandResourceTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for InvokeCommandResourceTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81637,7 +71806,7 @@ impl crate::FlatSerialize for InvokeCommandResourceTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InvocationsTag {
     /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
@@ -81653,7 +71822,6 @@ pub struct InvocationsTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for InvocationsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -81666,7 +71834,7 @@ impl crate::FlatSerialize for InvocationsTag {
 }
 
 /// 执行状态列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance {
     /// Output字段中文字长度超出24 KB后，截断丢弃的文字长度。
@@ -81810,87 +71978,7 @@ pub struct InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInst
     pub stop_time: String,
 }
 
-impl crate::FlatSerialize
-    for InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.dropped, &format!("{}.Dropped", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_status,
-            &format!("{}.InvocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.timed, &format!("{}.Timed", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_invoke_status,
-            &format!("{}.InstanceInvokeStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.exit_code,
-            &format!("{}.ExitCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_info,
-            &format!("{}.ErrorInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.repeats, &format!("{}.Repeats", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_uri,
-            &format!("{}.OssOutputUri", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_status,
-            &format!("{}.OssOutputStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.finish_time,
-            &format!("{}.FinishTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.output, &format!("{}.Output", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.update_time,
-            &format!("{}.UpdateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.stop_time,
-            &format!("{}.StopTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemInvokeInstances {
     /// 执行目标实例集类型。
@@ -81900,22 +71988,8 @@ pub struct InvocationsResponseInvocationsInvocationItemInvokeInstances {
         Vec<InvocationsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance>,
 }
 
-impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemInvokeInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_instance,
-            &format!("{}.InvokeInstance", name),
-            params,
-        );
-    }
-}
-
 /// 命令执行的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemTagsTag {
     /// 命令执行的标签键。
@@ -81928,22 +72002,7 @@ pub struct InvocationsResponseInvocationsInvocationItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocationItemTags {
     /// 命令执行的标签信息。
@@ -81952,18 +72011,8 @@ pub struct InvocationsResponseInvocationsInvocationItemTags {
     pub tag: Vec<InvocationsResponseInvocationsInvocationItemTagsTag>,
 }
 
-impl crate::FlatSerialize for InvocationsResponseInvocationsInvocationItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 任务创建的时间。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocationsInvocation {
     /// 命令执行Output OSS投递配置。
@@ -82091,111 +72140,7 @@ pub struct InvocationsResponseInvocationsInvocation {
     pub tags: InvocationsResponseInvocationsInvocationItemTags,
 }
 
-impl crate::FlatSerialize for InvocationsResponseInvocationsInvocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_delivery,
-            &format!("{}.OssOutputDelivery", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_status,
-            &format!("{}.InvocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.parameters,
-            &format!("{}.Parameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.timed, &format!("{}.Timed", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.command_description,
-            &format!("{}.CommandDescription", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.timeout, &format!("{}.Timeout", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_instances,
-            &format!("{}.InvokeInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.command_content,
-            &format!("{}.CommandContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.working_dir,
-            &format!("{}.WorkingDir", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.repeat_mode,
-            &format!("{}.RepeatMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_status,
-            &format!("{}.InvokeStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.command_type,
-            &format!("{}.CommandType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.username, &format!("{}.Username", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.container_id,
-            &format!("{}.ContainerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.container_name,
-            &format!("{}.ContainerName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.frequency,
-            &format!("{}.Frequency", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.launcher, &format!("{}.Launcher", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.command_id,
-            &format!("{}.CommandId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.command_name,
-            &format!("{}.CommandName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_id,
-            &format!("{}.InvokeId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.termination_mode,
-            &format!("{}.TerminationMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationsResponseInvocations {
     /// 命令执行记录组成的数组。
@@ -82204,22 +72149,8 @@ pub struct InvocationsResponseInvocations {
     pub invocation: Vec<InvocationsResponseInvocationsInvocation>,
 }
 
-impl crate::FlatSerialize for InvocationsResponseInvocations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation,
-            &format!("{}.Invocation", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InvocationResultsTag {
     /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
@@ -82235,7 +72166,6 @@ pub struct InvocationResultsTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for InvocationResultsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -82248,7 +72178,7 @@ impl crate::FlatSerialize for InvocationResultsTag {
 }
 
 /// 命令执行的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemTagsTag {
     /// 命令执行的标签键。
@@ -82261,22 +72191,7 @@ pub struct ResultItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for ResultItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemTags {
     /// 命令执行的标签信息。
@@ -82285,17 +72200,7 @@ pub struct ResultItemTags {
     pub tag: Vec<ResultItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ResultItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResult {
     /// `Output`字段中文字长度超出24 KB后，截断并丢弃的文字长度。
@@ -82477,107 +72382,7 @@ pub struct InvocationResult {
     pub stop_time: String,
 }
 
-impl crate::FlatSerialize for InvocationResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.dropped, &format!("{}.Dropped", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_delivery,
-            &format!("{}.OssOutputDelivery", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_status,
-            &format!("{}.InvocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.exit_code,
-            &format!("{}.ExitCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_info,
-            &format!("{}.ErrorInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.repeats, &format!("{}.Repeats", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_record_status,
-            &format!("{}.InvokeRecordStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.finished_time,
-            &format!("{}.FinishedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_uri,
-            &format!("{}.OssOutputUri", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_output_status,
-            &format!("{}.OssOutputStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.username, &format!("{}.Username", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.container_id,
-            &format!("{}.ContainerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.container_name,
-            &format!("{}.ContainerName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.output, &format!("{}.Output", name), params);
-        crate::FlatSerialize::flat_serialize(&self.launcher, &format!("{}.Launcher", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.command_id,
-            &format!("{}.CommandId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_id,
-            &format!("{}.InvokeId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.termination_mode,
-            &format!("{}.TerminationMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.stop_time,
-            &format!("{}.StopTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InvocationResults {
     /// 命令执行结果集。
@@ -82586,22 +72391,8 @@ pub struct InvocationResults {
     pub invocation_result: Vec<InvocationResult>,
 }
 
-impl crate::FlatSerialize for InvocationResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_result,
-            &format!("{}.InvocationResult", name),
-            params,
-        );
-    }
-}
-
 /// 命令执行结果的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseInvocation {
     /// 分页查询时设置的每页行数。
@@ -82625,42 +72416,8 @@ pub struct ResponseInvocation {
     pub invocation_results: InvocationResults,
 }
 
-impl crate::FlatSerialize for ResponseInvocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.page_size,
-            &format!("{}.PageSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.page_number,
-            &format!("{}.PageNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_count,
-            &format!("{}.TotalCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.NextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_results,
-            &format!("{}.InvocationResults", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CommandsTag {
     /// 命令的标签值。N的取值范围为1~20。该值可以为空字符串。
@@ -82676,7 +72433,6 @@ pub struct CommandsTag {
     #[serde(rename = "Key")]
     pub key: Option<String>,
 }
-
 impl crate::FlatSerialize for CommandsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -82688,7 +72444,7 @@ impl crate::FlatSerialize for CommandsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PossibleValues {
     /// 枚举类型自定义参数的可选值。
@@ -82697,22 +72453,8 @@ pub struct PossibleValues {
     pub possible_value: Vec<String>,
 }
 
-impl crate::FlatSerialize for PossibleValues {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.possible_value,
-            &format!("{}.PossibleValue", name),
-            params,
-        );
-    }
-}
-
 /// 自定义参数详细信息列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterDefinition {
     /// 自定义参数的默认值。
@@ -82746,42 +72488,7 @@ pub struct ParameterDefinition {
     pub pattern_regex: String,
 }
 
-impl crate::FlatSerialize for ParameterDefinition {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.default_value,
-            &format!("{}.DefaultValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.required, &format!("{}.Required", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter_name,
-            &format!("{}.ParameterName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.possible_values,
-            &format!("{}.PossibleValues", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.pattern_regex,
-            &format!("{}.PatternRegex", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterDefinitions {
     /// 自定义参数详细信息列表。
@@ -82790,21 +72497,7 @@ pub struct ParameterDefinitions {
     pub parameter_definition: Vec<ParameterDefinition>,
 }
 
-impl crate::FlatSerialize for ParameterDefinitions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter_definition,
-            &format!("{}.ParameterDefinition", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ParameterNames {
     /// 通过创建命令时的commandcontent解析出的自定义参数名列表，以列表（list）的形式返回。如未使用自定义参数功能，则返回空值列表。
@@ -82813,22 +72506,8 @@ pub struct ParameterNames {
     pub parameter_name: Vec<String>,
 }
 
-impl crate::FlatSerialize for ParameterNames {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter_name,
-            &format!("{}.ParameterName", name),
-            params,
-        );
-    }
-}
-
 /// 命令的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandItemTagsTag {
     /// 命令的标签键。
@@ -82841,22 +72520,7 @@ pub struct CommandItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for CommandItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandItemTags {
     /// 命令的标签信息。
@@ -82865,18 +72529,8 @@ pub struct CommandItemTags {
     pub tag: Vec<CommandItemTagsTag>,
 }
 
-impl crate::FlatSerialize for CommandItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 命令创建时间。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CommandsCommand {
     #[serde(rename = "ParameterDefinitions")]
@@ -82958,75 +72612,7 @@ pub struct CommandsCommand {
     pub tags: CommandItemTags,
 }
 
-impl crate::FlatSerialize for CommandsCommand {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter_definitions,
-            &format!("{}.ParameterDefinitions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.category, &format!("{}.Category", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter_names,
-            &format!("{}.ParameterNames", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.timeout, &format!("{}.Timeout", name), params);
-        crate::FlatSerialize::flat_serialize(&self.provider, &format!("{}.Provider", name), params);
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.working_dir,
-            &format!("{}.WorkingDir", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.command_content,
-            &format!("{}.CommandContent", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.version, &format!("{}.Version", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_times,
-            &format!("{}.InvokeTimes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.launcher, &format!("{}.Launcher", name), params);
-        crate::FlatSerialize::flat_serialize(&self.latest, &format!("{}.Latest", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_parameter,
-            &format!("{}.EnableParameter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.command_id,
-            &format!("{}.CommandId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseCommands {
     /// 命令数据集类型。
@@ -83035,18 +72621,8 @@ pub struct ResponseCommands {
     pub command: Vec<CommandsCommand>,
 }
 
-impl crate::FlatSerialize for ResponseCommands {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.command, &format!("{}.Command", name), params);
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct FileTag {
     /// 文件下发的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -83062,7 +72638,6 @@ pub struct FileTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for FileTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -83075,7 +72650,7 @@ impl crate::FlatSerialize for FileTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct FileResultsTag {
     /// 文件下发的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -83091,7 +72666,6 @@ pub struct FileResultsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for FileResultsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -83103,7 +72677,7 @@ impl crate::FlatSerialize for FileResultsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance {
     /// 文件下发任务的创建时间。
@@ -83187,58 +72761,7 @@ pub struct ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize
-    for ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_status,
-            &format!("{}.InvocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.finish_time,
-            &format!("{}.FinishTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.update_time,
-            &format!("{}.UpdateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_info,
-            &format!("{}.ErrorInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemInvokeInstances {
     /// 下发文件目标实例集类型。
@@ -83247,22 +72770,8 @@ pub struct ResultsResponseInvocationsInvocationItemInvokeInstances {
     pub invoke_instance: Vec<ResultsResponseInvocationsInvocationItemInvokeInstancesInvokeInstance>,
 }
 
-impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemInvokeInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_instance,
-            &format!("{}.InvokeInstance", name),
-            params,
-        );
-    }
-}
-
 /// 文件下发的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemTagsTag {
     /// 文件下发的标签键。
@@ -83275,22 +72784,7 @@ pub struct ResultsResponseInvocationsInvocationItemTagsTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocationItemTags {
     /// 文件下发的标签信息。
@@ -83299,17 +72793,7 @@ pub struct ResultsResponseInvocationsInvocationItemTags {
     pub tag: Vec<ResultsResponseInvocationsInvocationItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ResultsResponseInvocationsInvocationItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocationsInvocation {
     /// 文件下发任务创建时间。
@@ -83385,75 +72869,7 @@ pub struct ResultsResponseInvocationsInvocation {
     pub tags: ResultsResponseInvocationsInvocationItemTags,
 }
 
-impl crate::FlatSerialize for ResultsResponseInvocationsInvocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_status,
-            &format!("{}.InvocationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.content_type,
-            &format!("{}.ContentType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_dir,
-            &format!("{}.TargetDir", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.file_owner,
-            &format!("{}.FileOwner", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vm_count, &format!("{}.VmCount", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.file_mode,
-            &format!("{}.FileMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.file_group,
-            &format!("{}.FileGroup", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_id,
-            &format!("{}.InvokeId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.overwrite,
-            &format!("{}.Overwrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invoke_instances,
-            &format!("{}.InvokeInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultsResponseInvocations {
     /// 文件下发记录。
@@ -83462,21 +72878,7 @@ pub struct ResultsResponseInvocations {
     pub invocation: Vec<ResultsResponseInvocationsInvocation>,
 }
 
-impl crate::FlatSerialize for ResultsResponseInvocations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation,
-            &format!("{}.Invocation", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssistantStatus {
     /// 实例内的云助手是否在运行中。可能值：
@@ -83529,57 +72931,7 @@ pub struct AssistantStatus {
     pub support_session_manager: bool,
 }
 
-impl crate::FlatSerialize for AssistantStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cloud_assistant_status,
-            &format!("{}.CloudAssistantStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_invoked_time,
-            &format!("{}.LastInvokedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cloud_assistant_version,
-            &format!("{}.CloudAssistantVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.active_task_count,
-            &format!("{}.ActiveTaskCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_count,
-            &format!("{}.InvocationCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_heartbeat_time,
-            &format!("{}.LastHeartbeatTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OSType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.support_session_manager,
-            &format!("{}.SupportSessionManager", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssistantStatusSet {
     /// 实例云助手安装状态结果集合。
@@ -83588,21 +72940,7 @@ pub struct AssistantStatusSet {
     pub instance_cloud_assistant_status: Vec<AssistantStatus>,
 }
 
-impl crate::FlatSerialize for AssistantStatusSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_cloud_assistant_status,
-            &format!("{}.InstanceCloudAssistantStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct EncryptionOptions {
     #[serde(rename = "Enabled")]
@@ -83612,7 +72950,6 @@ pub struct EncryptionOptions {
     #[serde(rename = "Mode")]
     pub mode: Option<String>,
 }
-
 impl crate::FlatSerialize for EncryptionOptions {
     fn flat_serialize<'a>(
         &'a self,
@@ -83630,7 +72967,7 @@ impl crate::FlatSerialize for EncryptionOptions {
 }
 
 /// 连接信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConnectionsConnection {
     /// 会话状态，可能值：
@@ -83689,38 +73026,7 @@ pub struct ConnectionsConnection {
     pub closed_reason: String,
 }
 
-impl crate::FlatSerialize for ConnectionsConnection {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.failed_detail,
-            &format!("{}.FailedDetail", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.closed_reason,
-            &format!("{}.ClosedReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemConnections {
     /// 连接信息列表。
@@ -83729,22 +73035,8 @@ pub struct ItemConnections {
     pub connection: Vec<ConnectionsConnection>,
 }
 
-impl crate::FlatSerialize for ItemConnections {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.connection,
-            &format!("{}.Connection", name),
-            params,
-        );
-    }
-}
-
 /// 会话信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SessionsSession {
     #[serde(rename = "Connections")]
@@ -83790,57 +73082,7 @@ pub struct SessionsSession {
     pub session_id: String,
 }
 
-impl crate::FlatSerialize for SessionsSession {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.connections,
-            &format!("{}.Connections", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.identity_type,
-            &format!("{}.IdentityType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.principal_id,
-            &format!("{}.PrincipalId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.username, &format!("{}.Username", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_server,
-            &format!("{}.TargetServer", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_number,
-            &format!("{}.PortNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.client_ip,
-            &format!("{}.ClientIP", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_id,
-            &format!("{}.SessionId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSessions {
     /// 会话列表。
@@ -83849,18 +73091,8 @@ pub struct ResponseSessions {
     pub session: Vec<SessionsSession>,
 }
 
-impl crate::FlatSerialize for ResponseSessions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.session, &format!("{}.Session", name), params);
-    }
-}
-
 /// OSS投递配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SettingsOssDeliveryConfig {
     /// 是否开启投递到OSS功能。默认值：false。
@@ -83891,7 +73123,6 @@ pub struct SettingsOssDeliveryConfig {
     #[serde(rename = "EncryptionKeyId")]
     pub encryption_key_id: Option<String>,
 }
-
 impl crate::FlatSerialize for SettingsOssDeliveryConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -83924,7 +73155,7 @@ impl crate::FlatSerialize for SettingsOssDeliveryConfig {
 }
 
 /// SLS投递配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SettingsSlsDeliveryConfig {
     /// 是否开启投递到SLS功能。
@@ -83938,7 +73169,6 @@ pub struct SettingsSlsDeliveryConfig {
     #[serde(rename = "LogstoreName")]
     pub logstore_name: Option<String>,
 }
-
 impl crate::FlatSerialize for SettingsSlsDeliveryConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -83960,7 +73190,7 @@ impl crate::FlatSerialize for SettingsSlsDeliveryConfig {
 }
 
 /// 云助手Agent升级配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SettingsAgentUpgradeConfig {
     /// 是否开启自定义Agent升级配置。如设置为false，默认保持每30分钟尝试升级一次。
@@ -83980,7 +73210,6 @@ pub struct SettingsAgentUpgradeConfig {
     /// ]
     /// 代表在 UTC 时区的每天2点-3点、5点-6点允许升级。
     #[serde(rename = "AllowedUpgradeWindow")]
-    #[serde(default)]
     pub allowed_upgrade_window: Vec<String>,
     /// 允许升级时间段的时区。默认为 UTC 时区。
     /// 时区支持以下两种形式：
@@ -83989,7 +73218,6 @@ pub struct SettingsAgentUpgradeConfig {
     #[serde(rename = "TimeZone")]
     pub time_zone: Option<String>,
 }
-
 impl crate::FlatSerialize for SettingsAgentUpgradeConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -84011,7 +73239,7 @@ impl crate::FlatSerialize for SettingsAgentUpgradeConfig {
 }
 
 /// 云助手会话功能配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SettingsSessionManagerConfig {
     /// 云助手会话功能开关。取值范围：
@@ -84023,7 +73251,6 @@ pub struct SettingsSessionManagerConfig {
     #[serde(rename = "SessionManagerEnabled")]
     pub session_manager_enabled: Option<bool>,
 }
-
 impl crate::FlatSerialize for SettingsSessionManagerConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -84039,7 +73266,7 @@ impl crate::FlatSerialize for SettingsSessionManagerConfig {
 }
 
 /// OSS投递配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsOssDeliveryConfig {
     /// OSS加密方式，可能值：
@@ -84079,43 +73306,7 @@ pub struct ConfigsOssDeliveryConfig {
     pub encryption_key_id: String,
 }
 
-impl crate::FlatSerialize for ConfigsOssDeliveryConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.encryption_type,
-            &format!("{}.EncryptionType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encryption_algorithm,
-            &format!("{}.EncryptionAlgorithm", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.delivery_type,
-            &format!("{}.DeliveryType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.bucket_name,
-            &format!("{}.BucketName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.encryption_key_id,
-            &format!("{}.EncryptionKeyId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OssDeliveryConfigs {
     /// OSS投递配置列表。
@@ -84124,22 +73315,8 @@ pub struct OssDeliveryConfigs {
     pub oss_delivery_config: Vec<ConfigsOssDeliveryConfig>,
 }
 
-impl crate::FlatSerialize for OssDeliveryConfigs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_delivery_config,
-            &format!("{}.OssDeliveryConfig", name),
-            params,
-        );
-    }
-}
-
 /// SLS投递配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConfigsSlsDeliveryConfig {
     /// 投递类型，可能值：
@@ -84162,32 +73339,7 @@ pub struct ConfigsSlsDeliveryConfig {
     pub project_name: String,
 }
 
-impl crate::FlatSerialize for ConfigsSlsDeliveryConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.delivery_type,
-            &format!("{}.DeliveryType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.logstore_name,
-            &format!("{}.LogstoreName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.project_name,
-            &format!("{}.ProjectName", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SlsDeliveryConfigs {
     /// SLS投递配置列表。
@@ -84196,21 +73348,7 @@ pub struct SlsDeliveryConfigs {
     pub sls_delivery_config: Vec<ConfigsSlsDeliveryConfig>,
 }
 
-impl crate::FlatSerialize for SlsDeliveryConfigs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sls_delivery_config,
-            &format!("{}.SlsDeliveryConfig", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UpgradeWindows {
     /// 允许升级的时间段列表。
@@ -84219,22 +73357,8 @@ pub struct UpgradeWindows {
     pub allowed_upgrade_window: Vec<String>,
 }
 
-impl crate::FlatSerialize for UpgradeWindows {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_upgrade_window,
-            &format!("{}.AllowedUpgradeWindow", name),
-            params,
-        );
-    }
-}
-
 /// 云助手Agent升级配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseAgentUpgradeConfig {
     /// 是否开启自定义Agent升级配置。如查询结果为false或空，默认保持每30分钟尝试升级一次。
@@ -84250,28 +73374,8 @@ pub struct ResponseAgentUpgradeConfig {
     pub time_zone: String,
 }
 
-impl crate::FlatSerialize for ResponseAgentUpgradeConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_upgrade_windows,
-            &format!("{}.AllowedUpgradeWindows", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_zone,
-            &format!("{}.TimeZone", name),
-            params,
-        );
-    }
-}
-
 /// 云助手会话功能配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseSessionManagerConfig {
     /// 云助手会话功能开关。取值范围：
@@ -84285,22 +73389,8 @@ pub struct ResponseSessionManagerConfig {
     pub session_manager_enabled: bool,
 }
 
-impl crate::FlatSerialize for ResponseSessionManagerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.session_manager_enabled,
-            &format!("{}.SessionManagerEnabled", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ActivationTag {
     /// 托管实例激活码的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -84316,7 +73406,6 @@ pub struct ActivationTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ActivationTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -84329,7 +73418,7 @@ impl crate::FlatSerialize for ActivationTag {
 }
 
 /// 标签列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ActivationsTag {
     /// 托管实例激活码的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -84345,7 +73434,6 @@ pub struct ActivationsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ActivationsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -84358,7 +73446,7 @@ impl crate::FlatSerialize for ActivationsTag {
 }
 
 /// 托管实例激活码的标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListItemTag {
     /// 托管实例激活码的标签键。
@@ -84371,22 +73459,7 @@ pub struct ListItemTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for ListItemTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ActivationList {
     /// 创建时间。
@@ -84439,69 +73512,8 @@ pub struct ActivationList {
     pub tags: Vec<ListItemTag>,
 }
 
-impl crate::FlatSerialize for ActivationList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deregistered_count,
-            &format!("{}.DeregisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_count,
-            &format!("{}.InstanceCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.registered_count,
-            &format!("{}.RegisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disabled, &format!("{}.Disabled", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address_range,
-            &format!("{}.IpAddressRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_to_live_in_hours,
-            &format!("{}.TimeToLiveInHours", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_id,
-            &format!("{}.ActivationId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-    }
-}
-
 /// 激活码及使用情况信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DisableActivationResponseActivation {
     /// 创建时间。
@@ -84546,63 +73558,8 @@ pub struct DisableActivationResponseActivation {
     pub activation_id: String,
 }
 
-impl crate::FlatSerialize for DisableActivationResponseActivation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deregistered_count,
-            &format!("{}.DeregisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_count,
-            &format!("{}.InstanceCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.registered_count,
-            &format!("{}.RegisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disabled, &format!("{}.Disabled", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address_range,
-            &format!("{}.IpAddressRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_to_live_in_hours,
-            &format!("{}.TimeToLiveInHours", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_id,
-            &format!("{}.ActivationId", name),
-            params,
-        );
-    }
-}
-
 /// 激活码及使用情况信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeleteActivationResponseActivation {
     /// 创建时间。
@@ -84643,62 +73600,8 @@ pub struct DeleteActivationResponseActivation {
     pub activation_id: String,
 }
 
-impl crate::FlatSerialize for DeleteActivationResponseActivation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.deregistered_count,
-            &format!("{}.DeregisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_count,
-            &format!("{}.InstanceCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.registered_count,
-            &format!("{}.RegisteredCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address_range,
-            &format!("{}.IpAddressRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_to_live_in_hours,
-            &format!("{}.TimeToLiveInHours", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_id,
-            &format!("{}.ActivationId", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ManagedInstancesTag {
     /// 托管实例的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -84714,7 +73617,6 @@ pub struct ManagedInstancesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ManagedInstancesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -84727,7 +73629,7 @@ impl crate::FlatSerialize for ManagedInstancesTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesItemTag {
     /// 托管实例的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
@@ -84746,22 +73648,7 @@ pub struct InstancesItemTag {
     pub tag_value: String,
 }
 
-impl crate::FlatSerialize for InstancesItemTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancesResponseInstance {
     /// 最后一次执行云助手任务的时间。
@@ -84834,85 +73721,8 @@ pub struct InstancesResponseInstance {
     pub resource_group_id: String,
 }
 
-impl crate::FlatSerialize for InstancesResponseInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.last_invoked_time,
-            &format!("{}.LastInvokedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.connected,
-            &format!("{}.Connected", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_ip,
-            &format!("{}.InternetIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.hostname, &format!("{}.Hostname", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_id,
-            &format!("{}.ActivationId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_ip,
-            &format!("{}.IntranetIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.agent_version,
-            &format!("{}.AgentVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.registration_time,
-            &format!("{}.RegistrationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OsType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.os_version,
-            &format!("{}.OsVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_count,
-            &format!("{}.InvocationCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.machine_id,
-            &format!("{}.MachineId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 托管实例信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ModifyManagedInstanceResponseInstance {
     /// 托管实例的名称。
@@ -84925,27 +73735,8 @@ pub struct ModifyManagedInstanceResponseInstance {
     pub instance_id: String,
 }
 
-impl crate::FlatSerialize for ModifyManagedInstanceResponseInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-    }
-}
-
 /// 托管实例的信息组成的集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeregisterManagedInstanceResponseInstance {
     /// 最后一次执行云助手任务的时间。
@@ -85006,79 +73797,8 @@ pub struct DeregisterManagedInstanceResponseInstance {
     pub resource_group_id: String,
 }
 
-impl crate::FlatSerialize for DeregisterManagedInstanceResponseInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.last_invoked_time,
-            &format!("{}.LastInvokedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_ip,
-            &format!("{}.InternetIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.hostname, &format!("{}.Hostname", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_id,
-            &format!("{}.ActivationId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_ip,
-            &format!("{}.IntranetIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.agent_version,
-            &format!("{}.AgentVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.registration_time,
-            &format!("{}.RegistrationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_name,
-            &format!("{}.InstanceName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.os_type, &format!("{}.OsType", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.os_version,
-            &format!("{}.OsVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_count,
-            &format!("{}.InvocationCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.machine_id,
-            &format!("{}.MachineId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-    }
-}
-
 /// 插件状态列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPluginStatus {
     /// 插件状态。取值范围：
@@ -85111,41 +73831,7 @@ pub struct SetPluginStatus {
     pub last_heartbeat_time: String,
 }
 
-impl crate::FlatSerialize for SetPluginStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.plugin_status,
-            &format!("{}.PluginStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.plugin_version,
-            &format!("{}.PluginVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.plugin_name,
-            &format!("{}.PluginName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.first_heartbeat_time,
-            &format!("{}.FirstHeartbeatTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_heartbeat_time,
-            &format!("{}.LastHeartbeatTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemPluginStatusSet {
     /// 插件状态列表。
@@ -85154,22 +73840,8 @@ pub struct ItemPluginStatusSet {
     pub plugin_status: Vec<SetPluginStatus>,
 }
 
-impl crate::FlatSerialize for ItemPluginStatusSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.plugin_status,
-            &format!("{}.PluginStatus", name),
-            params,
-        );
-    }
-}
-
 /// 实例插件状态列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancePluginStatus {
     /// 实例ID。
@@ -85181,26 +73853,7 @@ pub struct InstancePluginStatus {
     pub plugin_status_set: ItemPluginStatusSet,
 }
 
-impl crate::FlatSerialize for InstancePluginStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.plugin_status_set,
-            &format!("{}.PluginStatusSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstancePluginStatusSet {
     /// 实例插件状态列表。
@@ -85209,22 +73862,8 @@ pub struct InstancePluginStatusSet {
     pub instance_plugin_status: Vec<InstancePluginStatus>,
 }
 
-impl crate::FlatSerialize for InstancePluginStatusSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_plugin_status,
-            &format!("{}.InstancePluginStatus", name),
-            params,
-        );
-    }
-}
-
 /// 事件状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventCycleStatus {
     /// 事件状态名称。
@@ -85237,19 +73876,8 @@ pub struct ScheduledSystemEventTypeItemEventCycleStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for ScheduledSystemEventTypeItemEventCycleStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
 /// 事件类型。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemEventType {
     /// 事件类型名称。
@@ -85262,18 +73890,7 @@ pub struct ScheduledSystemEventTypeItemEventType {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for ScheduledSystemEventTypeItemEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk {
     /// 云盘或本地盘的创建时间。按照[ISO 8601](~~25696~~)标准表示，使用UTC时间，格式为yyyy-MM-ddTHH:mm:ssZ。
@@ -85308,63 +73925,13 @@ pub struct ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDis
     pub release_time: String,
 }
 
-impl crate::FlatSerialize
-    for ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_size,
-            &format!("{}.DeviceSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_category,
-            &format!("{}.DeviceCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_type,
-            &format!("{}.DeviceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.release_time,
-            &format!("{}.ReleaseTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttributeInactiveDisks {
     /// 已释放但需要清理的非活跃云盘或本地盘信息。
     #[serde(rename = "InactiveDisk")]
     #[serde(default)]
     pub inactive_disk: Vec<ScheduledSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk>,
-}
-
-impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttributeInactiveDisks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.inactive_disk,
-            &format!("{}.InactiveDisk", name),
-            params,
-        );
-    }
 }
 
 /// 本地盘实例系统事件拓展属性。
@@ -85382,7 +73949,7 @@ impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttributeInact
 /// - SystemMaintenance.RebootAndReInitErrorDisk
 /// - SystemMaintenance.ReInitErrorDisk
 /// - SystemMaintenance.IsolateErrorDisk
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventTypeItemExtendedAttribute {
     /// 本地盘设备名。
@@ -85398,23 +73965,7 @@ pub struct ScheduledSystemEventTypeItemExtendedAttribute {
     pub inactive_disks: ScheduledSystemEventTypeItemExtendedAttributeInactiveDisks,
 }
 
-impl crate::FlatSerialize for ScheduledSystemEventTypeItemExtendedAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.inactive_disks,
-            &format!("{}.InactiveDisks", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventType {
     /// 事件的发布时间，使用UTC+0时间。
@@ -85469,48 +74020,7 @@ pub struct ScheduledSystemEventType {
     pub extended_attribute: ScheduledSystemEventTypeItemExtendedAttribute,
 }
 
-impl crate::FlatSerialize for ScheduledSystemEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.event_publish_time,
-            &format!("{}.EventPublishTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.event_id, &format!("{}.EventId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.not_before,
-            &format!("{}.NotBefore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.impact_level,
-            &format!("{}.ImpactLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.event_cycle_status,
-            &format!("{}.EventCycleStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_type,
-            &format!("{}.EventType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.extended_attribute,
-            &format!("{}.ExtendedAttribute", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledSystemEventSet {
     /// 当前状态为Scheduled或Inquiring的系统事件数组。
@@ -85519,22 +74029,8 @@ pub struct ScheduledSystemEventSet {
     pub scheduled_system_event_type: Vec<ScheduledSystemEventType>,
 }
 
-impl crate::FlatSerialize for ScheduledSystemEventSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_system_event_type,
-            &format!("{}.ScheduledSystemEventType", name),
-            params,
-        );
-    }
-}
-
 /// 实例生命周期状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemStatus {
     /// 实例生命周期状态名称。
@@ -85547,19 +74043,8 @@ pub struct InstanceFullStatusTypeItemStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for InstanceFullStatusTypeItemStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
 /// 实例的健康状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusTypeItemHealthStatus {
     /// 健康状态名称。
@@ -85572,18 +74057,7 @@ pub struct InstanceFullStatusTypeItemHealthStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for InstanceFullStatusTypeItemHealthStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusType {
     /// 实例ID。
@@ -85603,32 +74077,7 @@ pub struct InstanceFullStatusType {
     pub health_status: InstanceFullStatusTypeItemHealthStatus,
 }
 
-impl crate::FlatSerialize for InstanceFullStatusType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_system_event_set,
-            &format!("{}.ScheduledSystemEventSet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.health_status,
-            &format!("{}.HealthStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceFullStatusSet {
     /// 实例全状态数组。
@@ -85639,22 +74088,8 @@ pub struct InstanceFullStatusSet {
     pub instance_full_status_type: Vec<InstanceFullStatusType>,
 }
 
-impl crate::FlatSerialize for InstanceFullStatusSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_full_status_type,
-            &format!("{}.InstanceFullStatusType", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct StatusTag {
     /// 块存储资源绑定的标签键。N表示可以设置一个或多个标签键，且N的数值和`Tag.N.Value`参数中的N对应，构成键值对。N的取值范围：1~20。
@@ -85666,7 +74101,6 @@ pub struct StatusTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for StatusTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -85679,7 +74113,7 @@ impl crate::FlatSerialize for StatusTag {
 }
 
 /// 事件类型。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventTypeItemEventType {
     /// 事件类型名称。可能值：
@@ -85696,18 +74130,7 @@ pub struct DiskEventTypeItemEventType {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for DiskEventTypeItemEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventType {
     /// 块存储事件ID。
@@ -85732,37 +74155,7 @@ pub struct DiskEventType {
     pub event_type: DiskEventTypeItemEventType,
 }
 
-impl crate::FlatSerialize for DiskEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.event_id, &format!("{}.EventId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.event_end_time,
-            &format!("{}.EventEndTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_time,
-            &format!("{}.EventTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.impact_level,
-            &format!("{}.ImpactLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_type,
-            &format!("{}.EventType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskEventSet {
     /// 块存储事件数组。
@@ -85771,22 +74164,8 @@ pub struct DiskEventSet {
     pub disk_event_type: Vec<DiskEventType>,
 }
 
-impl crate::FlatSerialize for DiskEventSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_event_type,
-            &format!("{}.DiskEventType", name),
-            params,
-        );
-    }
-}
-
 /// 块存储生命周期状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemStatus {
     /// 块存储生命周期状态名称。
@@ -85799,19 +74178,8 @@ pub struct DiskFullStatusTypeItemStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for DiskFullStatusTypeItemStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
 /// 块存储健康状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusTypeItemHealthStatus {
     /// 块存储健康状态名称。
@@ -85824,18 +74192,7 @@ pub struct DiskFullStatusTypeItemHealthStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for DiskFullStatusTypeItemHealthStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusType {
     /// 块存储ID。
@@ -85867,34 +74224,7 @@ pub struct DiskFullStatusType {
     pub health_status: DiskFullStatusTypeItemHealthStatus,
 }
 
-impl crate::FlatSerialize for DiskFullStatusType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_event_set,
-            &format!("{}.DiskEventSet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.health_status,
-            &format!("{}.HealthStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskFullStatusSet {
     /// 块存储全状态数组。
@@ -85903,22 +74233,8 @@ pub struct DiskFullStatusSet {
     pub disk_full_status_type: Vec<DiskFullStatusType>,
 }
 
-impl crate::FlatSerialize for DiskFullStatusSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_full_status_type,
-            &format!("{}.DiskFullStatusType", name),
-            params,
-        );
-    }
-}
-
 /// 系统事件支持的标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct EventsTag {
     /// 资源的标签键。
@@ -85928,7 +74244,6 @@ pub struct EventsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for EventsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -85941,7 +74256,7 @@ impl crate::FlatSerialize for EventsTag {
 }
 
 /// 系统事件类型。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventType {
     /// 系统事件类型名称。
@@ -85954,19 +74269,8 @@ pub struct InstanceSystemEventTypeItemEventType {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventTypeItemEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
 /// 系统事件的生命周期状态。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemEventCycleStatus {
     /// 系统事件状态名称。
@@ -85979,19 +74283,8 @@ pub struct InstanceSystemEventTypeItemEventCycleStatus {
     pub code: i32,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventTypeItemEventCycleStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-    }
-}
-
 /// 已释放但需要清理的非活跃云盘或本地盘信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk {
     /// 云盘或本地盘创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
@@ -86026,43 +74319,7 @@ pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk
     pub release_time: String,
 }
 
-impl crate::FlatSerialize
-    for InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_size,
-            &format!("{}.DeviceSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_category,
-            &format!("{}.DeviceCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.device_type,
-            &format!("{}.DeviceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.release_time,
-            &format!("{}.ReleaseTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisks {
     /// 已释放但需要清理的非活跃云盘或本地盘信息列表。
@@ -86071,21 +74328,7 @@ pub struct InstanceSystemEventTypeItemExtendedAttributeInactiveDisks {
     pub inactive_disk: Vec<InstanceSystemEventTypeItemExtendedAttributeInactiveDisksInactiveDisk>,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventTypeItemExtendedAttributeInactiveDisks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.inactive_disk,
-            &format!("{}.InactiveDisk", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MigrationOptions {
     /// 实例迁移选项。当前仅支持MigrationOptions（使用迁移计划迁移）。
@@ -86094,22 +74337,8 @@ pub struct MigrationOptions {
     pub migration_option: Vec<String>,
 }
 
-impl crate::FlatSerialize for MigrationOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.migration_option,
-            &format!("{}.MigrationOption", name),
-            params,
-        );
-    }
-}
-
 /// 事件扩展属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventTypeItemExtendedAttribute {
     /// 本地盘设备名。
@@ -86181,77 +74410,8 @@ pub struct InstanceSystemEventTypeItemExtendedAttribute {
     pub metric_name: String,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventTypeItemExtendedAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.device, &format!("{}.Device", name), params);
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.inactive_disks,
-            &format!("{}.InactiveDisks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.host_type,
-            &format!("{}.HostType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.host_id, &format!("{}.HostId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.migration_options,
-            &format!("{}.MigrationOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.online_repair_policy,
-            &format!("{}.OnlineRepairPolicy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rack, &format!("{}.Rack", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.punish_type,
-            &format!("{}.PunishType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.punish_domain,
-            &format!("{}.PunishDomain", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.punish_url,
-            &format!("{}.PunishUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.can_accept,
-            &format!("{}.CanAccept", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.response_result,
-            &format!("{}.ResponseResult", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_value,
-            &format!("{}.MetricValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_name,
-            &format!("{}.MetricName", name),
-            params,
-        );
-    }
-}
-
 /// 实例历史系统事件。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventType {
     /// 系统事件ID。
@@ -86308,68 +74468,7 @@ pub struct InstanceSystemEventType {
     pub reason_code: String,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.event_id, &format!("{}.EventId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.event_publish_time,
-            &format!("{}.EventPublishTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_finish_time,
-            &format!("{}.EventFinishTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.impact_level,
-            &format!("{}.ImpactLevel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.not_before,
-            &format!("{}.NotBefore", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.Reason", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.event_type,
-            &format!("{}.EventType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_cycle_status,
-            &format!("{}.EventCycleStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.extended_attribute,
-            &format!("{}.ExtendedAttribute", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reason_code,
-            &format!("{}.ReasonCode", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceSystemEventSet {
     /// 实例历史系统事件数组。
@@ -86378,21 +74477,7 @@ pub struct InstanceSystemEventSet {
     pub instance_system_event_type: Vec<InstanceSystemEventType>,
 }
 
-impl crate::FlatSerialize for InstanceSystemEventSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_system_event_type,
-            &format!("{}.InstanceSystemEventType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EventIdSet {
     /// 模拟事件ID（EventId）列表。
@@ -86401,18 +74486,8 @@ pub struct EventIdSet {
     pub event_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for EventIdSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.event_id, &format!("{}.EventId", name), params);
-    }
-}
-
 /// 诊断指标。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseMetric {
     /// 诊断指标ID。
@@ -86449,51 +74524,7 @@ pub struct ResponseMetric {
     pub supported_operating_system: String,
 }
 
-impl crate::FlatSerialize for ResponseMetric {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_id,
-            &format!("{}.MetricId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_name,
-            &format!("{}.MetricName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_category,
-            &format!("{}.MetricCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.guest_metric,
-            &format!("{}.GuestMetric", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_operating_system,
-            &format!("{}.SupportedOperatingSystem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricSet {
     /// 诊断指标集合ID。
@@ -86525,42 +74556,7 @@ pub struct MetricSet {
     pub metric_ids: Vec<String>,
 }
 
-impl crate::FlatSerialize for MetricSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_set_id,
-            &format!("{}.MetricSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_set_name,
-            &format!("{}.MetricSetName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_ids,
-            &format!("{}.MetricIds", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportItemIssuesIssue {
     /// 诊断指标ID。
@@ -86585,28 +74581,7 @@ pub struct ReportItemIssuesIssue {
     pub severity: String,
 }
 
-impl crate::FlatSerialize for ReportItemIssuesIssue {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_id,
-            &format!("{}.MetricId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_category,
-            &format!("{}.MetricCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.issue_id, &format!("{}.IssueId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.severity, &format!("{}.Severity", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportItemIssues {
     /// 诊断问题列表。
@@ -86615,17 +74590,7 @@ pub struct ReportItemIssues {
     pub issue: Vec<ReportItemIssuesIssue>,
 }
 
-impl crate::FlatSerialize for ReportItemIssues {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.issue, &format!("{}.Issue", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ReportsReport {
     /// 资源ID。
@@ -86679,55 +74644,7 @@ pub struct ReportsReport {
     pub issues: ReportItemIssues,
 }
 
-impl crate::FlatSerialize for ReportsReport {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_set_id,
-            &format!("{}.MetricSetId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.report_id,
-            &format!("{}.ReportId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.finished_time,
-            &format!("{}.FinishedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.severity, &format!("{}.Severity", name), params);
-        crate::FlatSerialize::flat_serialize(&self.issues, &format!("{}.Issues", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseReports {
     /// 诊断报告列表。
@@ -86736,18 +74653,8 @@ pub struct ResponseReports {
     pub report: Vec<ReportsReport>,
 }
 
-impl crate::FlatSerialize for ResponseReports {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.report, &format!("{}.Report", name), params);
-    }
-}
-
 /// 诊断问题列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemIssuesIssue {
     /// 诊断问题的唯一识别码。
@@ -86772,28 +74679,7 @@ pub struct ResultItemIssuesIssue {
     pub occurrence_time: String,
 }
 
-impl crate::FlatSerialize for ResultItemIssuesIssue {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.issue_id, &format!("{}.IssueId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.severity, &format!("{}.Severity", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.additional,
-            &format!("{}.Additional", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.occurrence_time,
-            &format!("{}.OccurrenceTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResultItemIssues {
     /// 诊断问题列表。
@@ -86802,17 +74688,7 @@ pub struct ResultItemIssues {
     pub issue: Vec<ResultItemIssuesIssue>,
 }
 
-impl crate::FlatSerialize for ResultItemIssues {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.issue, &format!("{}.Issue", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricResult {
     /// 诊断指标ID。
@@ -86847,29 +74723,7 @@ pub struct MetricResult {
     pub issues: ResultItemIssues,
 }
 
-impl crate::FlatSerialize for MetricResult {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_id,
-            &format!("{}.MetricId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_category,
-            &format!("{}.MetricCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.severity, &format!("{}.Severity", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.issues, &format!("{}.Issues", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetricResults {
     /// 诊断集合中所有指标的诊断结果。
@@ -86878,22 +74732,8 @@ pub struct MetricResults {
     pub metric_result: Vec<MetricResult>,
 }
 
-impl crate::FlatSerialize for MetricResults {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.metric_result,
-            &format!("{}.MetricResult", name),
-            params,
-        );
-    }
-}
-
 /// 云盘的监控数据集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskMonitorData {
     /// 云盘读带宽，单位：Byte/s。
@@ -86938,58 +74778,7 @@ pub struct DiskMonitorData {
     pub bps_write: i32,
 }
 
-impl crate::FlatSerialize for DiskMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bps_read, &format!("{}.BPSRead", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_read,
-            &format!("{}.IOPSRead", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.latency_read,
-            &format!("{}.LatencyRead", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bps_total,
-            &format!("{}.BPSTotal", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_total,
-            &format!("{}.IOPSTotal", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.latency_write,
-            &format!("{}.LatencyWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_write,
-            &format!("{}.IOPSWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disk_id, &format!("{}.DiskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.bps_write,
-            &format!("{}.BPSWrite", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DiskMonitorDataResponseMonitorData {
     /// 云盘的监控数据集合。
@@ -86998,21 +74787,7 @@ pub struct DiskMonitorDataResponseMonitorData {
     pub disk_monitor_data: Vec<DiskMonitorData>,
 }
 
-impl crate::FlatSerialize for DiskMonitorDataResponseMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_monitor_data,
-            &format!("{}.DiskMonitorData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceMonitorData {
     /// 突发性能实例积分总数。
@@ -87085,93 +74860,7 @@ pub struct InstanceMonitorData {
     pub intranet_bandwidth: i32,
 }
 
-impl crate::FlatSerialize for InstanceMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_credit_balance,
-            &format!("{}.CPUCreditBalance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.bps_read, &format!("{}.BPSRead", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_tx,
-            &format!("{}.InternetTX", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cpu, &format!("{}.CPU", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_credit_usage,
-            &format!("{}.CPUCreditUsage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_write,
-            &format!("{}.IOPSWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_tx,
-            &format!("{}.IntranetTX", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bps_write,
-            &format!("{}.BPSWrite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_notpaid_surplus_credit_usage,
-            &format!("{}.CPUNotpaidSurplusCreditUsage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_advance_credit_balance,
-            &format!("{}.CPUAdvanceCreditBalance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.iops_read,
-            &format!("{}.IOPSRead", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_bandwidth,
-            &format!("{}.InternetBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_rx,
-            &format!("{}.InternetRX", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_rx,
-            &format!("{}.IntranetRX", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_bandwidth,
-            &format!("{}.IntranetBandwidth", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceMonitorDataResponseMonitorData {
     /// 实例的监控数据集合。
@@ -87180,21 +74869,7 @@ pub struct InstanceMonitorDataResponseMonitorData {
     pub instance_monitor_data: Vec<InstanceMonitorData>,
 }
 
-impl crate::FlatSerialize for InstanceMonitorDataResponseMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_monitor_data,
-            &format!("{}.InstanceMonitorData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EniMonitorData {
     /// 辅助网卡接收的内网数据包，单位：packets。
@@ -87231,52 +74906,7 @@ pub struct EniMonitorData {
     pub intranet_rx: String,
 }
 
-impl crate::FlatSerialize for EniMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.packet_rx,
-            &format!("{}.PacketRx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.drop_packet_rx,
-            &format!("{}.DropPacketRx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.eni_id, &format!("{}.EniId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.drop_packet_tx,
-            &format!("{}.DropPacketTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.packet_tx,
-            &format!("{}.PacketTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_tx,
-            &format!("{}.IntranetTx", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.intranet_rx,
-            &format!("{}.IntranetRx", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct EniMonitorDataResponseMonitorData {
     /// 辅助网卡流量的监控数据EniMonitorDataType组成的集合。
@@ -87285,21 +74915,7 @@ pub struct EniMonitorDataResponseMonitorData {
     pub eni_monitor_data: Vec<EniMonitorData>,
 }
 
-impl crate::FlatSerialize for EniMonitorDataResponseMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.eni_monitor_data,
-            &format!("{}.EniMonitorData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataPoint {
     /// 快照总容量，单位：字节（Byte）。
@@ -87312,22 +74928,7 @@ pub struct DataPoint {
     pub time_stamp: String,
 }
 
-impl crate::FlatSerialize for DataPoint {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.Size", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SnapshotMonitorDataResponseMonitorData {
     /// 快照容量变化数据的集合。
@@ -87336,21 +74937,7 @@ pub struct SnapshotMonitorDataResponseMonitorData {
     pub data_point: Vec<DataPoint>,
 }
 
-impl crate::FlatSerialize for SnapshotMonitorDataResponseMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.data_point,
-            &format!("{}.DataPoint", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct WindowsMaintenanceWindow {
     /// 维护时间窗口结束时间。
@@ -87363,22 +74950,7 @@ pub struct WindowsMaintenanceWindow {
     pub start_time: String,
 }
 
-impl crate::FlatSerialize for WindowsMaintenanceWindow {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.StartTime", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceWindows {
     /// 运维窗口实例的列表。
@@ -87387,21 +74959,7 @@ pub struct MaintenanceWindows {
     pub maintenance_window: Vec<WindowsMaintenanceWindow>,
 }
 
-impl crate::FlatSerialize for MaintenanceWindows {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.maintenance_window,
-            &format!("{}.MaintenanceWindow", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SupportedValues {
     /// 由维护动作组成的数组格式，返回支持的运维动作值列表。
@@ -87410,22 +74968,8 @@ pub struct SupportedValues {
     pub supported_value: Vec<String>,
 }
 
-impl crate::FlatSerialize for SupportedValues {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_value,
-            &format!("{}.SupportedValue", name),
-            params,
-        );
-    }
-}
-
 /// 实例的运维动作属性。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OnMaintenance {
     /// 维护动作，默认的值。
@@ -87445,27 +74989,7 @@ pub struct OnMaintenance {
     pub supported_values: SupportedValues,
 }
 
-impl crate::FlatSerialize for OnMaintenance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.default_value,
-            &format!("{}.DefaultValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_values,
-            &format!("{}.SupportedValues", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceAttribute {
     /// 实例宕机运维前是否发送事件通知。
@@ -87485,36 +75009,7 @@ pub struct MaintenanceAttribute {
     pub action_on_maintenance: OnMaintenance,
 }
 
-impl crate::FlatSerialize for MaintenanceAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.notify_on_maintenance,
-            &format!("{}.NotifyOnMaintenance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.maintenance_windows,
-            &format!("{}.MaintenanceWindows", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.action_on_maintenance,
-            &format!("{}.ActionOnMaintenance", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MaintenanceAttributes {
     /// 运维属性的集合。
@@ -87523,23 +75018,9 @@ pub struct MaintenanceAttributes {
     pub maintenance_attribute: Vec<MaintenanceAttribute>,
 }
 
-impl crate::FlatSerialize for MaintenanceAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.maintenance_attribute,
-            &format!("{}.MaintenanceAttribute", name),
-            params,
-        );
-    }
-}
-
 /// 维护时间窗口列表。
 ///
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AttributesMaintenanceWindow {
     /// 维护时间窗口结束时间。必须为整小时，不允许设置分、秒。开始时间和结束时间必须同时设置，并且结束时间与开始时间需要间隔1~23个整小时。采用UTC +8时区，格式为`HH:mm:ss`。N的取值为1，只支持设置1个时间窗口。
@@ -87549,7 +75030,6 @@ pub struct AttributesMaintenanceWindow {
     #[serde(rename = "StartTime")]
     pub start_time: Option<String>,
 }
-
 impl crate::FlatSerialize for AttributesMaintenanceWindow {
     fn flat_serialize<'a>(
         &'a self,
@@ -87566,7 +75046,7 @@ impl crate::FlatSerialize for AttributesMaintenanceWindow {
 }
 
 /// 标签对象。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TagResourcesTag {
     /// 标签键，不允许为空和空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
@@ -87576,7 +75056,6 @@ pub struct TagResourcesTag {
     #[serde(rename = "Value")]
     pub value: String,
 }
-
 impl crate::FlatSerialize for TagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -87589,7 +75068,7 @@ impl crate::FlatSerialize for TagResourcesTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ListTagResourcesTag {
     /// 精确查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~20。
@@ -87619,7 +75098,6 @@ pub struct ListTagResourcesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ListTagResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -87632,12 +75110,11 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 }
 
 /// Tag过滤规则。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TagFilter {
     /// 模糊查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~5。具体的参数说明请参见`TagFilter.N.TagKey`参数描述。
     #[serde(rename = "TagValues")]
-    #[serde(default)]
     pub tag_values: Vec<String>,
     /// 模糊查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~5。
     ///
@@ -87655,7 +75132,6 @@ pub struct TagFilter {
     #[serde(rename = "TagKey")]
     pub tag_key: Option<String>,
 }
-
 impl crate::FlatSerialize for TagFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -87671,7 +75147,7 @@ impl crate::FlatSerialize for TagFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResource {
     /// 标签值。
@@ -87712,32 +75188,7 @@ pub struct TagResource {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for TagResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseTagResources {
     /// 由资源及其标签组成的集合，包含了资源ID、资源类型和标签键值等信息。
@@ -87746,22 +75197,8 @@ pub struct ResponseTagResources {
     pub tag_resource: Vec<TagResource>,
 }
 
-impl crate::FlatSerialize for ResponseTagResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_resource,
-            &format!("{}.TagResource", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AllocateDedicatedHostsTag {
     /// 专有宿主机的标签键。N的取值范围：1~20。
@@ -87775,7 +75212,6 @@ pub struct AllocateDedicatedHostsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for AllocateDedicatedHostsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -87787,7 +75223,7 @@ impl crate::FlatSerialize for AllocateDedicatedHostsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostIdSets {
     /// 专有宿主机ID（DedicatedHostId）组成的列表。
@@ -87796,21 +75232,7 @@ pub struct HostIdSets {
     pub dedicated_host_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for HostIdSets {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DescribeDedicatedHostsTag {
     /// 专有宿主机的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。
@@ -87820,7 +75242,6 @@ pub struct DescribeDedicatedHostsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for DescribeDedicatedHostsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -87832,7 +75253,7 @@ impl crate::FlatSerialize for DescribeDedicatedHostsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstancesInstance {
     /// 专有宿主机上创建的ECS实例规格信息。
@@ -87853,36 +75274,7 @@ pub struct ItemInstancesInstance {
     pub instance_owner_id: i64,
 }
 
-impl crate::FlatSerialize for ItemInstancesInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.socket_id,
-            &format!("{}.SocketId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_owner_id,
-            &format!("{}.InstanceOwnerId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemInstances {
     /// 专有宿主机上创建的ECS实例。
@@ -87891,17 +75283,7 @@ pub struct ItemInstances {
     pub instance: Vec<ItemInstancesInstance>,
 }
 
-impl crate::FlatSerialize for ItemInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.instance, &format!("{}.Instance", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemOperationLocksOperationLock {
     /// 专有宿主机被锁定的原因。可能值：
@@ -87912,21 +75294,7 @@ pub struct HostItemOperationLocksOperationLock {
     pub lock_reason: String,
 }
 
-impl crate::FlatSerialize for HostItemOperationLocksOperationLock {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemOperationLocks {
     /// 专有宿主机资源被锁定原因。
@@ -87935,21 +75303,7 @@ pub struct HostItemOperationLocks {
     pub operation_lock: Vec<HostItemOperationLocksOperationLock>,
 }
 
-impl crate::FlatSerialize for HostItemOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_lock,
-            &format!("{}.OperationLock", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemTagsTag {
     /// 专有宿主机的标签值。
@@ -87962,22 +75316,7 @@ pub struct HostItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for HostItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemTags {
     /// 专有宿主机的标签。
@@ -87986,17 +75325,7 @@ pub struct HostItemTags {
     pub tag: Vec<HostItemTagsTag>,
 }
 
-impl crate::FlatSerialize for HostItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemSupportedInstanceTypeFamilies {
     /// 专有宿主机支持的ECS实例规格族。
@@ -88005,21 +75334,7 @@ pub struct HostItemSupportedInstanceTypeFamilies {
     pub supported_instance_type_family: Vec<String>,
 }
 
-impl crate::FlatSerialize for HostItemSupportedInstanceTypeFamilies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type_family,
-            &format!("{}.SupportedInstanceTypeFamily", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomInstanceTypeFamilies {
     /// 专有宿主机支持的自定义实例规格族。
@@ -88028,21 +75343,7 @@ pub struct CustomInstanceTypeFamilies {
     pub supported_custom_instance_type_family: Vec<String>,
 }
 
-impl crate::FlatSerialize for CustomInstanceTypeFamilies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_custom_instance_type_family,
-            &format!("{}.SupportedCustomInstanceTypeFamily", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostItemSupportedInstanceTypesList {
     /// 专有宿主机支持的ECS实例规格。
@@ -88051,21 +75352,7 @@ pub struct HostItemSupportedInstanceTypesList {
     pub supported_instance_types_list: Vec<String>,
 }
 
-impl crate::FlatSerialize for HostItemSupportedInstanceTypesList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_types_list,
-            &format!("{}.SupportedInstanceTypesList", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SocketCapacity {
     /// Socket序号。
@@ -88090,41 +75377,7 @@ pub struct SocketCapacity {
     pub total_vcpu: i32,
 }
 
-impl crate::FlatSerialize for SocketCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.socket_id,
-            &format!("{}.SocketId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_memory,
-            &format!("{}.AvailableMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_memory,
-            &format!("{}.TotalMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_vcpu,
-            &format!("{}.AvailableVcpu", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vcpu,
-            &format!("{}.TotalVcpu", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SocketCapacities {
     /// Socket维度容量信息。
@@ -88133,21 +75386,7 @@ pub struct SocketCapacities {
     pub socket_capacity: Vec<SocketCapacity>,
 }
 
-impl crate::FlatSerialize for SocketCapacities {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.socket_capacity,
-            &format!("{}.SocketCapacity", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacityAvailableInstanceTypesAvailableInstanceType {
     #[serde(rename = "AvailableInstanceCapacity")]
@@ -88158,26 +75397,7 @@ pub struct ItemCapacityAvailableInstanceTypesAvailableInstanceType {
     pub instance_type: String,
 }
 
-impl crate::FlatSerialize for ItemCapacityAvailableInstanceTypesAvailableInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_capacity,
-            &format!("{}.AvailableInstanceCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacityAvailableInstanceTypes {
     #[serde(rename = "AvailableInstanceType")]
@@ -88185,22 +75405,8 @@ pub struct ItemCapacityAvailableInstanceTypes {
     pub available_instance_type: Vec<ItemCapacityAvailableInstanceTypesAvailableInstanceType>,
 }
 
-impl crate::FlatSerialize for ItemCapacityAvailableInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_type,
-            &format!("{}.AvailableInstanceType", name),
-            params,
-        );
-    }
-}
-
 /// 专有宿主机性能指标集合。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemCapacity {
     /// 剩余的内存容量，单位：GiB。
@@ -88247,72 +75453,8 @@ pub struct ItemCapacity {
     pub available_instance_types: ItemCapacityAvailableInstanceTypes,
 }
 
-impl crate::FlatSerialize for ItemCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_memory,
-            &format!("{}.AvailableMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_category,
-            &format!("{}.LocalStorageCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_memory,
-            &format!("{}.TotalMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_local_storage,
-            &format!("{}.TotalLocalStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vcpus,
-            &format!("{}.TotalVcpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vgpus,
-            &format!("{}.TotalVgpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_local_storage,
-            &format!("{}.AvailableLocalStorage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_vcpus,
-            &format!("{}.AvailableVcpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_vgpus,
-            &format!("{}.AvailableVgpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.socket_capacities,
-            &format!("{}.SocketCapacities", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_types,
-            &format!("{}.AvailableInstanceTypes", name),
-            params,
-        );
-    }
-}
-
 /// 专有宿主机的网络属性值。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NetworkAttributes {
     /// UDP超时时间。单位：S。当前仅支持60S。
@@ -88325,27 +75467,8 @@ pub struct NetworkAttributes {
     pub slb_udp_timeout: i32,
 }
 
-impl crate::FlatSerialize for NetworkAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.udp_timeout,
-            &format!("{}.UdpTimeout", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.slb_udp_timeout,
-            &format!("{}.SlbUdpTimeout", name),
-            params,
-        );
-    }
-}
-
 /// 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostDetailInfo {
     /// 该参数即将被弃用，为提高兼容性，建议您尽量使用其他参数。
@@ -88354,22 +75477,8 @@ pub struct HostDetailInfo {
     pub serial_number: String,
 }
 
-impl crate::FlatSerialize for HostDetailInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.serial_number,
-            &format!("{}.SerialNumber", name),
-            params,
-        );
-    }
-}
-
 /// 专有宿主机所属托管资源池（Managed Private Space）ID。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DedicatedHost {
     /// 专有宿主机的创建时间。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC+0时间，格式为`yyyy-MM-ddTHH:mmZ`。
@@ -88520,153 +75629,7 @@ pub struct DedicatedHost {
     pub dedicated_host_owner_id: i64,
 }
 
-impl crate::FlatSerialize for DedicatedHost {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduler_options_managed_private_space_id,
-            &format!("{}.SchedulerOptions.ManagedPrivateSpaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.cores, &format!("{}.Cores", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_placement,
-            &format!("{}.AutoPlacement", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.gpu_spec, &format!("{}.GPUSpec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_release_time,
-            &format!("{}.AutoReleaseTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.charge_type,
-            &format!("{}.ChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_over_commit_ratio,
-            &format!("{}.CpuOverCommitRatio", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.action_on_maintenance,
-            &format!("{}.ActionOnMaintenance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sale_cycle,
-            &format!("{}.SaleCycle", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_gpus,
-            &format!("{}.PhysicalGpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_name,
-            &format!("{}.DedicatedHostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster_id,
-            &format!("{}.DedicatedHostClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_type,
-            &format!("{}.DedicatedHostType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.sockets, &format!("{}.Sockets", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.machine_id,
-            &format!("{}.MachineId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instances,
-            &format!("{}.Instances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_locks,
-            &format!("{}.OperationLocks", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type_families,
-            &format!("{}.SupportedInstanceTypeFamilies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_custom_instance_type_families,
-            &format!("{}.SupportedCustomInstanceTypeFamilies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_types_list,
-            &format!("{}.SupportedInstanceTypesList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.capacity, &format!("{}.Capacity", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.network_attributes,
-            &format!("{}.NetworkAttributes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.host_detail_info,
-            &format!("{}.HostDetailInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_owner_id,
-            &format!("{}.DedicatedHostOwnerId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DedicatedHosts {
     /// 专有宿主机的详细信息集合。
@@ -88675,21 +75638,7 @@ pub struct DedicatedHosts {
     pub dedicated_host: Vec<DedicatedHost>,
 }
 
-impl crate::FlatSerialize for DedicatedHosts {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host,
-            &format!("{}.DedicatedHost", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemSupportedInstanceTypeFamilies {
     /// 专有宿主机支持的ECS实例规格族列表。
@@ -88698,21 +75647,7 @@ pub struct TypeItemSupportedInstanceTypeFamilies {
     pub supported_instance_type_family: Vec<String>,
 }
 
-impl crate::FlatSerialize for TypeItemSupportedInstanceTypeFamilies {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type_family,
-            &format!("{}.SupportedInstanceTypeFamily", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeItemSupportedInstanceTypesList {
     /// 专有宿主机支持的ECS实例规格列表。
@@ -88721,21 +75656,7 @@ pub struct TypeItemSupportedInstanceTypesList {
     pub supported_instance_types_list: Vec<String>,
 }
 
-impl crate::FlatSerialize for TypeItemSupportedInstanceTypesList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_types_list,
-            &format!("{}.SupportedInstanceTypesList", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostType {
     /// 单个物理CPU的数量。
@@ -88798,79 +75719,7 @@ pub struct HostType {
     pub supported_instance_types_list: TypeItemSupportedInstanceTypesList,
 }
 
-impl crate::FlatSerialize for HostType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cores, &format!("{}.Cores", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_category,
-            &format!("{}.LocalStorageCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.gpu_spec, &format!("{}.GPUSpec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vcpus,
-            &format!("{}.TotalVcpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cpu_over_commit_ratio_range,
-            &format!("{}.CpuOverCommitRatioRange", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_gpus,
-            &format!("{}.PhysicalGpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_size,
-            &format!("{}.MemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.support_cpu_over_commit_ratio,
-            &format!("{}.SupportCpuOverCommitRatio", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_capacity,
-            &format!("{}.LocalStorageCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_type,
-            &format!("{}.DedicatedHostType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_amount,
-            &format!("{}.LocalStorageAmount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vgpus,
-            &format!("{}.TotalVgpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.sockets, &format!("{}.Sockets", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_type_families,
-            &format!("{}.SupportedInstanceTypeFamilies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.supported_instance_types_list,
-            &format!("{}.SupportedInstanceTypesList", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseDedicatedHostTypes {
     /// 返回专有宿主机规格的信息。
@@ -88879,21 +75728,7 @@ pub struct ResponseDedicatedHostTypes {
     pub dedicated_host_type: Vec<HostType>,
 }
 
-impl crate::FlatSerialize for ResponseDedicatedHostTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_type,
-            &format!("{}.DedicatedHostType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostsChargeTypeResponseFeeOfInstancesFeeOfInstance {
     /// 专有宿主机ID。
@@ -88914,23 +75749,7 @@ pub struct HostsChargeTypeResponseFeeOfInstancesFeeOfInstance {
     pub fee: String,
 }
 
-impl crate::FlatSerialize for HostsChargeTypeResponseFeeOfInstancesFeeOfInstance {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.currency, &format!("{}.Currency", name), params);
-        crate::FlatSerialize::flat_serialize(&self.fee, &format!("{}.Fee", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostsChargeTypeResponseFeeOfInstances {
     /// 订单费用详情。
@@ -88939,21 +75758,7 @@ pub struct HostsChargeTypeResponseFeeOfInstances {
     pub fee_of_instance: Vec<HostsChargeTypeResponseFeeOfInstancesFeeOfInstance>,
 }
 
-impl crate::FlatSerialize for HostsChargeTypeResponseFeeOfInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.fee_of_instance,
-            &format!("{}.FeeOfInstance", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostRenewAttribute {
     /// 续费单位。可能值：
@@ -88994,42 +75799,7 @@ pub struct HostRenewAttribute {
     pub auto_renew_with_ecs: String,
 }
 
-impl crate::FlatSerialize for HostRenewAttribute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.period_unit,
-            &format!("{}.PeriodUnit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.duration, &format!("{}.Duration", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.renewal_status,
-            &format!("{}.RenewalStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_renew_enabled,
-            &format!("{}.AutoRenewEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_renew_with_ecs,
-            &format!("{}.AutoRenewWithEcs", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostRenewAttributes {
     /// 专有宿主机自动续费属性组成的数组。
@@ -89038,22 +75808,8 @@ pub struct HostRenewAttributes {
     pub dedicated_host_renew_attribute: Vec<HostRenewAttribute>,
 }
 
-impl crate::FlatSerialize for HostRenewAttributes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_renew_attribute,
-            &format!("{}.DedicatedHostRenewAttribute", name),
-            params,
-        );
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ClusterTag {
     /// 专有宿主机组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
@@ -89063,7 +75819,6 @@ pub struct ClusterTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ClusterTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -89076,7 +75831,7 @@ impl crate::FlatSerialize for ClusterTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ClustersTag {
     /// 专有宿主机组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。
@@ -89088,7 +75843,6 @@ pub struct ClustersTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ClustersTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -89100,7 +75854,7 @@ impl crate::FlatSerialize for ClustersTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterItemTagsTag {
     /// 专有宿主机组的标签值。
@@ -89113,22 +75867,7 @@ pub struct ClusterItemTagsTag {
     pub tag_key: String,
 }
 
-impl crate::FlatSerialize for ClusterItemTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterItemTags {
     /// 专有宿主机组的标签。
@@ -89137,17 +75876,7 @@ pub struct ClusterItemTags {
     pub tag: Vec<ClusterItemTagsTag>,
 }
 
-impl crate::FlatSerialize for ClusterItemTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostIds {
     /// 专有宿主机组下的专有宿主机ID列表。
@@ -89156,21 +75885,7 @@ pub struct HostIds {
     pub dedicated_host_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for HostIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_id,
-            &format!("{}.DedicatedHostId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StorageCapacity {
     /// 数据盘类型。可能值：
@@ -89192,31 +75907,7 @@ pub struct StorageCapacity {
     pub total_disk: i32,
 }
 
-impl crate::FlatSerialize for StorageCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.data_disk_category,
-            &format!("{}.DataDiskCategory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_disk,
-            &format!("{}.AvailableDisk", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_disk,
-            &format!("{}.TotalDisk", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct StorageCapacities {
     /// 本地存储容量。
@@ -89225,21 +75916,7 @@ pub struct StorageCapacities {
     pub local_storage_capacity: Vec<StorageCapacity>,
 }
 
-impl crate::FlatSerialize for StorageCapacities {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_capacity,
-            &format!("{}.LocalStorageCapacity", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacityAvailableInstanceTypesAvailableInstanceType {
     /// 实例规格。
@@ -89252,26 +75929,7 @@ pub struct ClusterCapacityAvailableInstanceTypesAvailableInstanceType {
     pub available_instance_capacity: i32,
 }
 
-impl crate::FlatSerialize for ClusterCapacityAvailableInstanceTypesAvailableInstanceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_capacity,
-            &format!("{}.AvailableInstanceCapacity", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacityAvailableInstanceTypes {
     /// 专有宿主机组内ECS实例规格的可用容量。
@@ -89280,22 +75938,8 @@ pub struct ClusterCapacityAvailableInstanceTypes {
     pub available_instance_type: Vec<ClusterCapacityAvailableInstanceTypesAvailableInstanceType>,
 }
 
-impl crate::FlatSerialize for ClusterCapacityAvailableInstanceTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_type,
-            &format!("{}.AvailableInstanceType", name),
-            params,
-        );
-    }
-}
-
 /// 专有宿主机组容量。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClusterCapacity {
     /// 当前可用vCPU数。
@@ -89322,46 +75966,7 @@ pub struct ClusterCapacity {
     pub available_instance_types: ClusterCapacityAvailableInstanceTypes,
 }
 
-impl crate::FlatSerialize for ClusterCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.available_vcpus,
-            &format!("{}.AvailableVcpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_memory,
-            &format!("{}.AvailableMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_memory,
-            &format!("{}.TotalMemory", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_vcpus,
-            &format!("{}.TotalVcpus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_storage_capacities,
-            &format!("{}.LocalStorageCapacities", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_instance_types,
-            &format!("{}.AvailableInstanceTypes", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostCluster {
     /// 专有宿主机组描述。
@@ -89400,53 +76005,7 @@ pub struct HostCluster {
     pub dedicated_host_cluster_capacity: ClusterCapacity,
 }
 
-impl crate::FlatSerialize for HostCluster {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster_id,
-            &format!("{}.DedicatedHostClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster_name,
-            &format!("{}.DedicatedHostClusterName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.Tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_ids,
-            &format!("{}.DedicatedHostIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster_capacity,
-            &format!("{}.DedicatedHostClusterCapacity", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HostClusters {
     /// 由一个或多个专有宿主机组信息组成的数组。
@@ -89455,21 +76014,7 @@ pub struct HostClusters {
     pub dedicated_host_cluster: Vec<HostCluster>,
 }
 
-impl crate::FlatSerialize for HostClusters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.dedicated_host_cluster,
-            &format!("{}.DedicatedHostCluster", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HpcCluster {
     /// HPC集群ID。
@@ -89486,27 +76031,7 @@ pub struct HpcCluster {
     pub description: String,
 }
 
-impl crate::FlatSerialize for HpcCluster {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.hpc_cluster_id,
-            &format!("{}.HpcClusterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HpcClusters {
     /// 由HpcCluster组成的数组格式，返回HPC集群的信息。
@@ -89515,21 +76040,7 @@ pub struct HpcClusters {
     pub hpc_cluster: Vec<HpcCluster>,
 }
 
-impl crate::FlatSerialize for HpcClusters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.hpc_cluster,
-            &format!("{}.HpcCluster", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetTask {
     /// 创建时间。
@@ -89562,47 +76073,7 @@ pub struct SetTask {
     pub resource_id: String,
 }
 
-impl crate::FlatSerialize for SetTask {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.task_status,
-            &format!("{}.TaskStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.finished_time,
-            &format!("{}.FinishedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.support_cancel,
-            &format!("{}.SupportCancel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.TaskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.task_action,
-            &format!("{}.TaskAction", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TaskSet {
     /// 任务集合。
@@ -89611,17 +76082,7 @@ pub struct TaskSet {
     pub task: Vec<SetTask>,
 }
 
-impl crate::FlatSerialize for TaskSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.task, &format!("{}.Task", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem {
     /// 相关项名称。
@@ -89634,20 +76095,7 @@ pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItem
     pub value: String,
 }
 
-impl crate::FlatSerialize
-    for AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSet {
     /// 资源信息类型。
@@ -89657,23 +76105,7 @@ pub struct AttributeResponseOperationProgressSetOperationProgressItemRelatedItem
         Vec<AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSetRelatedItem>,
 }
 
-impl crate::FlatSerialize
-    for AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSet
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item,
-            &format!("{}.RelatedItem", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSetOperationProgress {
     /// 错误信息。
@@ -89693,36 +76125,7 @@ pub struct AttributeResponseOperationProgressSetOperationProgress {
     pub related_item_set: AttributeResponseOperationProgressSetOperationProgressItemRelatedItemSet,
 }
 
-impl crate::FlatSerialize for AttributeResponseOperationProgressSetOperationProgress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.error_msg,
-            &format!("{}.ErrorMsg", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_code,
-            &format!("{}.ErrorCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_status,
-            &format!("{}.OperationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.related_item_set,
-            &format!("{}.RelatedItemSet", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AttributeResponseOperationProgressSet {
     /// 返回任务包含的信息，其中包括每一个子任务的状态和相关信息。
@@ -89731,21 +76134,7 @@ pub struct AttributeResponseOperationProgressSet {
     pub operation_progress: Vec<AttributeResponseOperationProgressSetOperationProgress>,
 }
 
-impl crate::FlatSerialize for AttributeResponseOperationProgressSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_progress,
-            &format!("{}.OperationProgress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ClustersCluster {
     #[serde(rename = "ClusterId")]
@@ -89753,21 +76142,7 @@ pub struct ClustersCluster {
     pub cluster_id: String,
 }
 
-impl crate::FlatSerialize for ClustersCluster {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cluster_id,
-            &format!("{}.ClusterId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseClusters {
     #[serde(rename = "Cluster")]
@@ -89775,17 +76150,7 @@ pub struct ResponseClusters {
     pub cluster: Vec<ClustersCluster>,
 }
 
-impl crate::FlatSerialize for ResponseClusters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cluster, &format!("{}.Cluster", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct IpAddresse {
     #[serde(rename = "IpAddress")]
@@ -89796,26 +76161,7 @@ pub struct IpAddresse {
     pub allocation_id: String,
 }
 
-impl crate::FlatSerialize for IpAddresse {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct IpAddresses {
     #[serde(rename = "PublicIpAddresse")]
@@ -89823,21 +76169,7 @@ pub struct IpAddresses {
     pub public_ip_addresse: Vec<IpAddresse>,
 }
 
-impl crate::FlatSerialize for IpAddresses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_addresse,
-            &format!("{}.PublicIpAddresse", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PackagesBandwidthPackage {
     #[serde(rename = "Status")]
@@ -89887,71 +76219,7 @@ pub struct PackagesBandwidthPackage {
     pub public_ip_addresses: IpAddresses,
 }
 
-impl crate::FlatSerialize for PackagesBandwidthPackage {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.ip_count, &format!("{}.IpCount", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_package_id,
-            &format!("{}.BandwidthPackageId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nat_gateway_id,
-            &format!("{}.NatGatewayId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_status,
-            &format!("{}.BusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(&self.isp, &format!("{}.ISP", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.public_ip_addresses,
-            &format!("{}.PublicIpAddresses", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BandwidthPackages {
     #[serde(rename = "BandwidthPackage")]
@@ -89959,21 +76227,7 @@ pub struct BandwidthPackages {
     pub bandwidth_package: Vec<PackagesBandwidthPackage>,
 }
 
-impl crate::FlatSerialize for BandwidthPackages {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_package,
-            &format!("{}.BandwidthPackage", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VSwitch {
     #[serde(rename = "CreationTime")]
@@ -90011,59 +76265,7 @@ pub struct VSwitch {
     pub v_switch_name: String,
 }
 
-impl crate::FlatSerialize for VSwitch {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_default,
-            &format!("{}.IsDefault", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cidr_block,
-            &format!("{}.CidrBlock", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.available_ip_address_count,
-            &format!("{}.AvailableIpAddressCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.zone_id, &format!("{}.ZoneId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_name,
-            &format!("{}.VSwitchName", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VSwitches {
     #[serde(rename = "VSwitch")]
@@ -90071,26 +76273,14 @@ pub struct VSwitches {
     pub v_switch: Vec<VSwitch>,
 }
 
-impl crate::FlatSerialize for VSwitches {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.v_switch, &format!("{}.VSwitch", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConnectionsFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for ConnectionsFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -90102,7 +76292,7 @@ impl crate::FlatSerialize for ConnectionsFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SetPhysicalConnectionType {
     #[serde(rename = "AdLocation")]
@@ -90161,90 +76351,7 @@ pub struct SetPhysicalConnectionType {
     pub physical_connection_id: String,
 }
 
-impl crate::FlatSerialize for SetPhysicalConnectionType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.ad_location,
-            &format!("{}.AdLocation", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.port_number,
-            &format!("{}.PortNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.circuit_code,
-            &format!("{}.CircuitCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.spec, &format!("{}.Spec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.port_type,
-            &format!("{}.PortType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enabled_time,
-            &format!("{}.EnabledTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_status,
-            &format!("{}.BusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.line_operator,
-            &format!("{}.LineOperator", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.redundant_physical_connection_id,
-            &format!("{}.RedundantPhysicalConnectionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.peer_location,
-            &format!("{}.PeerLocation", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_id,
-            &format!("{}.AccessPointId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_id,
-            &format!("{}.PhysicalConnectionId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponsePhysicalConnectionSet {
     #[serde(rename = "PhysicalConnectionType")]
@@ -90252,21 +76359,7 @@ pub struct ResponsePhysicalConnectionSet {
     pub physical_connection_type: Vec<SetPhysicalConnectionType>,
 }
 
-impl crate::FlatSerialize for ResponsePhysicalConnectionSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_type,
-            &format!("{}.PhysicalConnectionType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct SwitchIds {
     #[serde(rename = "VSwitchId")]
@@ -90274,21 +76367,7 @@ pub struct SwitchIds {
     pub v_switch_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for SwitchIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct UserCidrs {
     #[serde(rename = "UserCidr")]
@@ -90296,21 +76375,7 @@ pub struct UserCidrs {
     pub user_cidr: Vec<String>,
 }
 
-impl crate::FlatSerialize for UserCidrs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.user_cidr,
-            &format!("{}.UserCidr", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VpcsVpc {
     #[serde(rename = "CreationTime")]
@@ -90348,59 +76413,7 @@ pub struct VpcsVpc {
     pub user_cidrs: UserCidrs,
 }
 
-impl crate::FlatSerialize for VpcsVpc {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_name, &format!("{}.VpcName", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_router_id,
-            &format!("{}.VRouterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_default,
-            &format!("{}.IsDefault", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cidr_block,
-            &format!("{}.CidrBlock", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_ids,
-            &format!("{}.VSwitchIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.user_cidrs,
-            &format!("{}.UserCidrs", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseVpcs {
     #[serde(rename = "Vpc")]
@@ -90408,26 +76421,14 @@ pub struct ResponseVpcs {
     pub vpc: Vec<VpcsVpc>,
 }
 
-impl crate::FlatSerialize for ResponseVpcs {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc, &format!("{}.Vpc", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct VipsFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for VipsFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -90439,7 +76440,7 @@ impl crate::FlatSerialize for VipsFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssociatedEipAddresses {
     #[serde(rename = "associatedEipAddresse")]
@@ -90447,21 +76448,7 @@ pub struct AssociatedEipAddresses {
     pub associated_eip_addresse: Vec<String>,
 }
 
-impl crate::FlatSerialize for AssociatedEipAddresses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_eip_addresse,
-            &format!("{}.associatedEipAddresse", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AssociatedInstances {
     #[serde(rename = "associatedInstance")]
@@ -90469,21 +76456,7 @@ pub struct AssociatedInstances {
     pub associated_instance: Vec<String>,
 }
 
-impl crate::FlatSerialize for AssociatedInstances {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_instance,
-            &format!("{}.associatedInstance", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HaVip {
     #[serde(rename = "Status")]
@@ -90521,59 +76494,7 @@ pub struct HaVip {
     pub associated_instances: AssociatedInstances,
 }
 
-impl crate::FlatSerialize for HaVip {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_id,
-            &format!("{}.VSwitchId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.ha_vip_id, &format!("{}.HaVipId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.CreateTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.master_instance_id,
-            &format!("{}.MasterInstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_eip_addresses,
-            &format!("{}.AssociatedEipAddresses", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.associated_instances,
-            &format!("{}.AssociatedInstances", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HaVips {
     #[serde(rename = "HaVip")]
@@ -90581,26 +76502,14 @@ pub struct HaVips {
     pub ha_vip: Vec<HaVip>,
 }
 
-impl crate::FlatSerialize for HaVips {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.ha_vip, &format!("{}.HaVip", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RoutersFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for RoutersFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -90612,7 +76521,7 @@ impl crate::FlatSerialize for RoutersFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouterType {
     #[serde(rename = "VlanInterfaceId")]
@@ -90677,100 +76586,7 @@ pub struct RouterType {
     pub vlan_id: i32,
 }
 
-impl crate::FlatSerialize for RouterType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.vlan_interface_id,
-            &format!("{}.VlanInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.circuit_code,
-            &format!("{}.CircuitCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_owner_uid,
-            &format!("{}.PhysicalConnectionOwnerUid", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_gateway_ip,
-            &format!("{}.LocalGatewayIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_time,
-            &format!("{}.ActivationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_business_status,
-            &format!("{}.PhysicalConnectionBusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.peering_subnet_mask,
-            &format!("{}.PeeringSubnetMask", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_id,
-            &format!("{}.RouteTableId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_status,
-            &format!("{}.PhysicalConnectionStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.recovery_time,
-            &format!("{}.RecoveryTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.termination_time,
-            &format!("{}.TerminationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.peer_gateway_ip,
-            &format!("{}.PeerGatewayIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_id,
-            &format!("{}.AccessPointId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vbr_id, &format!("{}.VbrId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.physical_connection_id,
-            &format!("{}.PhysicalConnectionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vlan_id, &format!("{}.VlanId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouterSet {
     #[serde(rename = "VirtualBorderRouterType")]
@@ -90778,30 +76594,14 @@ pub struct RouterSet {
     pub virtual_border_router_type: Vec<RouterType>,
 }
 
-impl crate::FlatSerialize for RouterSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.virtual_border_router_type,
-            &format!("{}.VirtualBorderRouterType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ConnectionFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for ConnectionFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -90813,7 +76613,7 @@ impl crate::FlatSerialize for ConnectionFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ForPhysicalConnectionType {
     #[serde(rename = "CreationTime")]
@@ -90842,48 +76642,7 @@ pub struct ForPhysicalConnectionType {
     pub vlan_id: i32,
 }
 
-impl crate::FlatSerialize for ForPhysicalConnectionType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.circuit_code,
-            &format!("{}.CircuitCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.recovery_time,
-            &format!("{}.RecoveryTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.termination_time,
-            &format!("{}.TerminationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.activation_time,
-            &format!("{}.ActivationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vbr_owner_uid,
-            &format!("{}.VbrOwnerUid", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vbr_id, &format!("{}.VbrId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.vlan_id, &format!("{}.VlanId", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ForPhysicalConnectionSet {
     #[serde(rename = "VirtualBorderRouterForPhysicalConnectionType")]
@@ -90891,30 +76650,14 @@ pub struct ForPhysicalConnectionSet {
     pub virtual_border_router_for_physical_connection_type: Vec<ForPhysicalConnectionType>,
 }
 
-impl crate::FlatSerialize for ForPhysicalConnectionSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.virtual_border_router_for_physical_connection_type,
-            &format!("{}.VirtualBorderRouterForPhysicalConnectionType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct InterfacesFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for InterfacesFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -90926,7 +76669,7 @@ impl crate::FlatSerialize for InterfacesFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InterfaceType {
     #[serde(rename = "HealthCheckTargetIp")]
@@ -91006,121 +76749,7 @@ pub struct InterfaceType {
     pub access_point_id: String,
 }
 
-impl crate::FlatSerialize for InterfaceType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.health_check_target_ip,
-            &format!("{}.HealthCheckTargetIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.spec, &format!("{}.Spec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_interface_id,
-            &format!("{}.OppositeInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.router_interface_id,
-            &format!("{}.RouterInterfaceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.charge_type,
-            &format!("{}.ChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_router_type,
-            &format!("{}.OppositeRouterType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_interface_owner_id,
-            &format!("{}.OppositeInterfaceOwnerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_router_id,
-            &format!("{}.OppositeRouterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_interface_spec,
-            &format!("{}.OppositeInterfaceSpec", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.router_id,
-            &format!("{}.RouterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_interface_business_status,
-            &format!("{}.OppositeInterfaceBusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.connected_time,
-            &format!("{}.ConnectedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_interface_status,
-            &format!("{}.OppositeInterfaceStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.health_check_source_ip,
-            &format!("{}.HealthCheckSourceIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.EndTime", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_region_id,
-            &format!("{}.OppositeRegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.opposite_access_point_id,
-            &format!("{}.OppositeAccessPointId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_status,
-            &format!("{}.BusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.role, &format!("{}.Role", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.router_type,
-            &format!("{}.RouterType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_id,
-            &format!("{}.AccessPointId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouterInterfaceSet {
     #[serde(rename = "RouterInterfaceType")]
@@ -91128,21 +76757,7 @@ pub struct RouterInterfaceSet {
     pub router_interface_type: Vec<InterfaceType>,
 }
 
-impl crate::FlatSerialize for RouterInterfaceSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.router_interface_type,
-            &format!("{}.RouterInterfaceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressItemOperationLocksLockReason {
     #[serde(rename = "LockReason")]
@@ -91150,21 +76765,7 @@ pub struct AddressItemOperationLocksLockReason {
     pub lock_reason: String,
 }
 
-impl crate::FlatSerialize for AddressItemOperationLocksLockReason {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressItemOperationLocks {
     #[serde(rename = "LockReason")]
@@ -91172,21 +76773,7 @@ pub struct AddressItemOperationLocks {
     pub lock_reason: Vec<AddressItemOperationLocksLockReason>,
 }
 
-impl crate::FlatSerialize for AddressItemOperationLocks {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.lock_reason,
-            &format!("{}.LockReason", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AddressesEipAddress {
     #[serde(rename = "Status")]
@@ -91230,77 +76817,7 @@ pub struct AddressesEipAddress {
     pub operation_locks: AddressItemOperationLocks,
 }
 
-impl crate::FlatSerialize for AddressesEipAddress {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_time,
-            &format!("{}.AllocationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.charge_type,
-            &format!("{}.ChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_address,
-            &format!("{}.IpAddress", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth,
-            &format!("{}.Bandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_time,
-            &format!("{}.ExpiredTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_id,
-            &format!("{}.AllocationId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_charge_type,
-            &format!("{}.InternetChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_bandwidth,
-            &format!("{}.EipBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.operation_locks,
-            &format!("{}.OperationLocks", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseEipAddresses {
     #[serde(rename = "EipAddress")]
@@ -91308,21 +76825,7 @@ pub struct ResponseEipAddresses {
     pub eip_address: Vec<AddressesEipAddress>,
 }
 
-impl crate::FlatSerialize for ResponseEipAddresses {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_address,
-            &format!("{}.EipAddress", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData {
     #[serde(rename = "EipTX")]
@@ -91345,34 +76848,7 @@ pub struct DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData {
     pub eip_rx: i32,
 }
 
-impl crate::FlatSerialize for DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.eip_tx, &format!("{}.EipTX", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_packets,
-            &format!("{}.EipPackets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_bandwidth,
-            &format!("{}.EipBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.eip_flow, &format!("{}.EipFlow", name), params);
-        crate::FlatSerialize::flat_serialize(&self.eip_rx, &format!("{}.EipRX", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeEipMonitorDataResponseEipMonitorDatas {
     #[serde(rename = "EipMonitorData")]
@@ -91380,21 +76856,7 @@ pub struct DescribeEipMonitorDataResponseEipMonitorDatas {
     pub eip_monitor_data: Vec<DescribeEipMonitorDataResponseEipMonitorDatasEipMonitorData>,
 }
 
-impl crate::FlatSerialize for DescribeEipMonitorDataResponseEipMonitorDatas {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_monitor_data,
-            &format!("{}.EipMonitorData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct GatewayBandwidthPackage {
     #[serde(rename = "Bandwidth")]
@@ -91404,7 +76866,6 @@ pub struct GatewayBandwidthPackage {
     #[serde(rename = "IpCount")]
     pub ip_count: Option<i32>,
 }
-
 impl crate::FlatSerialize for GatewayBandwidthPackage {
     fn flat_serialize<'a>(
         &'a self,
@@ -91421,7 +76882,7 @@ impl crate::FlatSerialize for GatewayBandwidthPackage {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseForwardTableIds {
     #[serde(rename = "ForwardTableId")]
@@ -91429,21 +76890,7 @@ pub struct ResponseForwardTableIds {
     pub forward_table_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseForwardTableIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_table_id,
-            &format!("{}.ForwardTableId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseBandwidthPackageIds {
     #[serde(rename = "BandwidthPackageId")]
@@ -91451,21 +76898,7 @@ pub struct ResponseBandwidthPackageIds {
     pub bandwidth_package_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ResponseBandwidthPackageIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_package_id,
-            &format!("{}.BandwidthPackageId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemForwardTableIds {
     #[serde(rename = "ForwardTableId")]
@@ -91473,21 +76906,7 @@ pub struct ItemForwardTableIds {
     pub forward_table_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemForwardTableIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_table_id,
-            &format!("{}.ForwardTableId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ItemBandwidthPackageIds {
     #[serde(rename = "BandwidthPackageId")]
@@ -91495,21 +76914,7 @@ pub struct ItemBandwidthPackageIds {
     pub bandwidth_package_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for ItemBandwidthPackageIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_package_id,
-            &format!("{}.BandwidthPackageId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NatGateway {
     #[serde(rename = "Status")]
@@ -91550,60 +76955,7 @@ pub struct NatGateway {
     pub bandwidth_package_ids: ItemBandwidthPackageIds,
 }
 
-impl crate::FlatSerialize for NatGateway {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.spec, &format!("{}.Spec", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nat_gateway_id,
-            &format!("{}.NatGatewayId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.business_status,
-            &format!("{}.BusinessStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_charge_type,
-            &format!("{}.InstanceChargeType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_table_ids,
-            &format!("{}.ForwardTableIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bandwidth_package_ids,
-            &format!("{}.BandwidthPackageIds", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NatGateways {
     #[serde(rename = "NatGateway")]
@@ -91611,21 +76963,7 @@ pub struct NatGateways {
     pub nat_gateway: Vec<NatGateway>,
 }
 
-impl crate::FlatSerialize for NatGateways {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.nat_gateway,
-            &format!("{}.NatGateway", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData {
     #[serde(rename = "EipTX")]
@@ -91648,34 +76986,7 @@ pub struct ProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData {
     pub eip_rx: i32,
 }
 
-impl crate::FlatSerialize for ProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.eip_tx, &format!("{}.EipTX", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_packets,
-            &format!("{}.EipPackets", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_bandwidth,
-            &format!("{}.EipBandwidth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_stamp,
-            &format!("{}.TimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.eip_flow, &format!("{}.EipFlow", name), params);
-        crate::FlatSerialize::flat_serialize(&self.eip_rx, &format!("{}.EipRX", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProjectEipMonitorDataResponseEipMonitorDatas {
     #[serde(rename = "EipMonitorData")]
@@ -91683,21 +76994,7 @@ pub struct ProjectEipMonitorDataResponseEipMonitorDatas {
     pub eip_monitor_data: Vec<ProjectEipMonitorDataResponseEipMonitorDatasEipMonitorData>,
 }
 
-impl crate::FlatSerialize for ProjectEipMonitorDataResponseEipMonitorDatas {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.eip_monitor_data,
-            &format!("{}.EipMonitorData", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DeleteRouteEntryNextHopList {
     #[serde(rename = "NextHopId")]
@@ -91705,7 +77002,6 @@ pub struct DeleteRouteEntryNextHopList {
     #[serde(rename = "NextHopType")]
     pub next_hop_type: Option<String>,
 }
-
 impl crate::FlatSerialize for DeleteRouteEntryNextHopList {
     fn flat_serialize<'a>(
         &'a self,
@@ -91725,7 +77021,7 @@ impl crate::FlatSerialize for DeleteRouteEntryNextHopList {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteTableIds {
     #[serde(rename = "RouteTableId")]
@@ -91733,21 +77029,7 @@ pub struct RouteTableIds {
     pub route_table_id: Vec<String>,
 }
 
-impl crate::FlatSerialize for RouteTableIds {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_id,
-            &format!("{}.RouteTableId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VRouter {
     #[serde(rename = "VpcId")]
@@ -91773,47 +77055,7 @@ pub struct VRouter {
     pub route_table_ids: RouteTableIds,
 }
 
-impl crate::FlatSerialize for VRouter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_router_id,
-            &format!("{}.VRouterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_router_name,
-            &format!("{}.VRouterName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_ids,
-            &format!("{}.RouteTableIds", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct VRouters {
     #[serde(rename = "VRouter")]
@@ -91821,17 +77063,7 @@ pub struct VRouters {
     pub v_router: Vec<VRouter>,
 }
 
-impl crate::FlatSerialize for VRouters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.v_router, &format!("{}.VRouter", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateRouteEntryNextHopList {
     #[serde(rename = "NextHopId")]
@@ -91839,7 +77071,6 @@ pub struct CreateRouteEntryNextHopList {
     #[serde(rename = "NextHopType")]
     pub next_hop_type: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateRouteEntryNextHopList {
     fn flat_serialize<'a>(
         &'a self,
@@ -91859,7 +77090,7 @@ impl crate::FlatSerialize for CreateRouteEntryNextHopList {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TableEntry {
     #[serde(rename = "Status")]
@@ -91888,52 +77119,7 @@ pub struct TableEntry {
     pub external_ip: String,
 }
 
-impl crate::FlatSerialize for TableEntry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_entry_id,
-            &format!("{}.ForwardEntryId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internal_ip,
-            &format!("{}.InternalIp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internal_port,
-            &format!("{}.InternalPort", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_table_id,
-            &format!("{}.ForwardTableId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.external_port,
-            &format!("{}.ExternalPort", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ip_protocol,
-            &format!("{}.IpProtocol", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.external_ip,
-            &format!("{}.ExternalIp", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TableEntries {
     #[serde(rename = "ForwardTableEntry")]
@@ -91941,30 +77127,14 @@ pub struct TableEntries {
     pub forward_table_entry: Vec<TableEntry>,
 }
 
-impl crate::FlatSerialize for TableEntries {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.forward_table_entry,
-            &format!("{}.ForwardTableEntry", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PointsFilter {
     #[serde(rename = "Key")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(default)]
     pub value: Vec<String>,
 }
-
 impl crate::FlatSerialize for PointsFilter {
     fn flat_serialize<'a>(
         &'a self,
@@ -91976,7 +77146,7 @@ impl crate::FlatSerialize for PointsFilter {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PointType {
     #[serde(rename = "Status")]
@@ -92005,40 +77175,7 @@ pub struct PointType {
     pub location: String,
 }
 
-impl crate::FlatSerialize for PointType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.host_operator,
-            &format!("{}.HostOperator", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.attached_region_no,
-            &format!("{}.AttachedRegionNo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.Name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_id,
-            &format!("{}.AccessPointId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct PointSet {
     #[serde(rename = "AccessPointType")]
@@ -92046,21 +77183,7 @@ pub struct PointSet {
     pub access_point_type: Vec<PointType>,
 }
 
-impl crate::FlatSerialize for PointSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_type,
-            &format!("{}.AccessPointType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NextHop {
     #[serde(rename = "Weight")]
@@ -92077,28 +77200,7 @@ pub struct NextHop {
     pub enabled: i32,
 }
 
-impl crate::FlatSerialize for NextHop {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.weight, &format!("{}.Weight", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_hop_id,
-            &format!("{}.NextHopId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_hop_type,
-            &format!("{}.NextHopType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct NextHops {
     #[serde(rename = "NextHop")]
@@ -92106,17 +77208,7 @@ pub struct NextHops {
     pub next_hop: Vec<NextHop>,
 }
 
-impl crate::FlatSerialize for NextHops {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.next_hop, &format!("{}.NextHop", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteEntry {
     #[serde(rename = "Type")]
@@ -92142,43 +77234,7 @@ pub struct RouteEntry {
     pub next_hops: NextHops,
 }
 
-impl crate::FlatSerialize for RouteEntry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_hop_type,
-            &format!("{}.NextHopType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.destination_cidr_block,
-            &format!("{}.DestinationCidrBlock", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_id,
-            &format!("{}.RouteTableId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_hops,
-            &format!("{}.NextHops", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteEntrys {
     #[serde(rename = "RouteEntry")]
@@ -92186,21 +77242,7 @@ pub struct RouteEntrys {
     pub route_entry: Vec<RouteEntry>,
 }
 
-impl crate::FlatSerialize for RouteEntrys {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.route_entry,
-            &format!("{}.RouteEntry", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteTable {
     #[serde(rename = "CreationTime")]
@@ -92223,46 +77265,7 @@ pub struct RouteTable {
     pub route_entrys: RouteEntrys,
 }
 
-impl crate::FlatSerialize for RouteTable {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.creation_time,
-            &format!("{}.CreationTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.v_router_id,
-            &format!("{}.VRouterId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_id,
-            &format!("{}.RouteTableId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table_type,
-            &format!("{}.RouteTableType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.route_entrys,
-            &format!("{}.RouteEntrys", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RouteTables {
     #[serde(rename = "RouteTable")]
@@ -92270,21 +77273,7 @@ pub struct RouteTables {
     pub route_table: Vec<RouteTable>,
 }
 
-impl crate::FlatSerialize for RouteTables {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.route_table,
-            &format!("{}.RouteTable", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct AddTagsTag {
     /// 资源的标签键。
@@ -92296,7 +77285,6 @@ pub struct AddTagsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for AddTagsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -92309,7 +77297,7 @@ impl crate::FlatSerialize for AddTagsTag {
 }
 
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ByTagsTag {
     /// 资源的标签键。
@@ -92321,7 +77309,6 @@ pub struct ByTagsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ByTagsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -92333,7 +77320,7 @@ impl crate::FlatSerialize for ByTagsTag {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResourcesResource {
     /// 资源类型。
@@ -92350,31 +77337,7 @@ pub struct ResourcesResource {
     pub region_id: String,
 }
 
-impl crate::FlatSerialize for ResourcesResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResponseResources {
     /// 绑定标签的资源信息集合。
@@ -92383,18 +77346,8 @@ pub struct ResponseResources {
     pub resource: Vec<ResourcesResource>,
 }
 
-impl crate::FlatSerialize for ResponseResources {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.resource, &format!("{}.Resource", name), params);
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct DescribeTagsTag {
     /// 资源的标签键。
@@ -92406,7 +77359,6 @@ pub struct DescribeTagsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for DescribeTagsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -92419,7 +77371,7 @@ impl crate::FlatSerialize for DescribeTagsTag {
 }
 
 /// 资源类型计数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TypeCount {
     /// 该标签标记了多少实例。
@@ -92472,45 +77424,8 @@ pub struct TypeCount {
     pub volume: i32,
 }
 
-impl crate::FlatSerialize for TypeCount {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.instance, &format!("{}.Instance", name), params);
-        crate::FlatSerialize::flat_serialize(&self.image, &format!("{}.Image", name), params);
-        crate::FlatSerialize::flat_serialize(&self.ddh, &format!("{}.Ddh", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.snapshot_policy,
-            &format!("{}.SnapshotPolicy", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.securitygroup,
-            &format!("{}.Securitygroup", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.snapshot, &format!("{}.Snapshot", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_instance,
-            &format!("{}.ReservedInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.launch_template,
-            &format!("{}.LaunchTemplate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.eni, &format!("{}.Eni", name), params);
-        crate::FlatSerialize::flat_serialize(&self.disk, &format!("{}.Disk", name), params);
-        crate::FlatSerialize::flat_serialize(&self.key_pair, &format!("{}.KeyPair", name), params);
-        crate::FlatSerialize::flat_serialize(&self.volume, &format!("{}.Volume", name), params);
-    }
-}
-
 /// 满足所有筛选条件的标签。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsResponseTagsTag {
     /// 标签值。
@@ -92527,27 +77442,7 @@ pub struct TagsResponseTagsTag {
     pub resource_type_count: TypeCount,
 }
 
-impl crate::FlatSerialize for TagsResponseTagsTag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type_count,
-            &format!("{}.ResourceTypeCount", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagsResponseTags {
     /// 满足所有筛选条件的标签。
@@ -92556,18 +77451,8 @@ pub struct TagsResponseTags {
     pub tag: Vec<TagsResponseTagsTag>,
 }
 
-impl crate::FlatSerialize for TagsResponseTags {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
-
 /// 标签列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct RemoveTagsTag {
     /// 资源的标签键。
@@ -92579,7 +77464,6 @@ pub struct RemoveTagsTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for RemoveTagsTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -92592,7 +77476,7 @@ impl crate::FlatSerialize for RemoveTagsTag {
 }
 
 /// QoS 限速设置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct SQoS {
     /// 最大内网出方向带宽限制。
@@ -92621,7 +77505,6 @@ pub struct SQoS {
     #[serde(rename = "ConcurrentConnections")]
     pub concurrent_connections: Option<i64>,
 }
-
 impl crate::FlatSerialize for SQoS {
     fn flat_serialize<'a>(
         &'a self,
@@ -92710,7 +77593,7 @@ pub enum DescribeInstanceTypesInstanceCategory {
     #[serde(rename = "Big data")]
     BigData,
     #[serde(rename = "Local SSDs")]
-    LocalSSDs,
+    LocalSsDs,
     #[serde(rename = "High Clock Speed")]
     HighClockSpeed,
     #[serde(rename = "Enhanced")]
@@ -92718,17 +77601,17 @@ pub enum DescribeInstanceTypesInstanceCategory {
     #[serde(rename = "Shared")]
     Shared,
     #[serde(rename = "Compute-optimized with GPU")]
-    ComputeOptimizedWithGPU,
+    ComputeOptimizedWithGpu,
     #[serde(rename = "Visual Compute-optimized")]
     VisualComputeOptimized,
     #[serde(rename = "Heterogeneous Service")]
     HeterogeneousService,
     #[serde(rename = "Compute-optimized with FPGA")]
-    ComputeOptimizedWithFPGA,
+    ComputeOptimizedWithFpga,
     #[serde(rename = "Compute-optimized with NPU")]
-    ComputeOptimizedWithNPU,
+    ComputeOptimizedWithNpu,
     #[serde(rename = "ECS Bare Metal")]
-    ECSBareMetal,
+    EcsBareMetal,
     #[serde(rename = "Super Computing Cluster")]
     SuperComputingCluster,
     #[serde(rename = "High Performance Compute")]
@@ -92749,16 +77632,16 @@ impl DescribeInstanceTypesInstanceCategory {
             Self::ComputeOptimized => "Compute-optimized",
             Self::MemoryOptimized => "Memory-optimized",
             Self::BigData => "Big data",
-            Self::LocalSSDs => "Local SSDs",
+            Self::LocalSsDs => "Local SSDs",
             Self::HighClockSpeed => "High Clock Speed",
             Self::Enhanced => "Enhanced",
             Self::Shared => "Shared",
-            Self::ComputeOptimizedWithGPU => "Compute-optimized with GPU",
+            Self::ComputeOptimizedWithGpu => "Compute-optimized with GPU",
             Self::VisualComputeOptimized => "Visual Compute-optimized",
             Self::HeterogeneousService => "Heterogeneous Service",
-            Self::ComputeOptimizedWithFPGA => "Compute-optimized with FPGA",
-            Self::ComputeOptimizedWithNPU => "Compute-optimized with NPU",
-            Self::ECSBareMetal => "ECS Bare Metal",
+            Self::ComputeOptimizedWithFpga => "Compute-optimized with FPGA",
+            Self::ComputeOptimizedWithNpu => "Compute-optimized with NPU",
+            Self::EcsBareMetal => "ECS Bare Metal",
             Self::SuperComputingCluster => "Super Computing Cluster",
             Self::HighPerformanceCompute => "High Performance Compute",
         }
@@ -92793,7 +77676,7 @@ pub enum DescribeInstanceTypesCpuArchitecture {
     #[serde(rename = "X86")]
     X86,
     #[serde(rename = "ARM")]
-    ARM,
+    Arm,
 }
 
 impl Default for DescribeInstanceTypesCpuArchitecture {
@@ -92807,7 +77690,7 @@ impl DescribeInstanceTypesCpuArchitecture {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::X86 => "X86",
-            Self::ARM => "ARM",
+            Self::Arm => "ARM",
         }
     }
 }
@@ -92990,7 +77873,7 @@ pub enum DescribeInstanceTypesInstanceCategoriesItem {
     #[serde(rename = "Big data")]
     BigData,
     #[serde(rename = "Local SSDs")]
-    LocalSSDs,
+    LocalSsDs,
     #[serde(rename = "High Clock Speed")]
     HighClockSpeed,
     #[serde(rename = "Enhanced")]
@@ -92998,17 +77881,17 @@ pub enum DescribeInstanceTypesInstanceCategoriesItem {
     #[serde(rename = "Shared")]
     Shared,
     #[serde(rename = "Compute-optimized with GPU")]
-    ComputeOptimizedWithGPU,
+    ComputeOptimizedWithGpu,
     #[serde(rename = "Visual Compute-optimized")]
     VisualComputeOptimized,
     #[serde(rename = "Heterogeneous Service")]
     HeterogeneousService,
     #[serde(rename = "Compute-optimized with FPGA")]
-    ComputeOptimizedWithFPGA,
+    ComputeOptimizedWithFpga,
     #[serde(rename = "Compute-optimized with NPU")]
-    ComputeOptimizedWithNPU,
+    ComputeOptimizedWithNpu,
     #[serde(rename = "ECS Bare Metal")]
-    ECSBareMetal,
+    EcsBareMetal,
     #[serde(rename = "Super Computing Cluster")]
     SuperComputingCluster,
     #[serde(rename = "High Performance Compute")]
@@ -93029,16 +77912,16 @@ impl DescribeInstanceTypesInstanceCategoriesItem {
             Self::ComputeOptimized => "Compute-optimized",
             Self::MemoryOptimized => "Memory-optimized",
             Self::BigData => "Big data",
-            Self::LocalSSDs => "Local SSDs",
+            Self::LocalSsDs => "Local SSDs",
             Self::HighClockSpeed => "High Clock Speed",
             Self::Enhanced => "Enhanced",
             Self::Shared => "Shared",
-            Self::ComputeOptimizedWithGPU => "Compute-optimized with GPU",
+            Self::ComputeOptimizedWithGpu => "Compute-optimized with GPU",
             Self::VisualComputeOptimized => "Visual Compute-optimized",
             Self::HeterogeneousService => "Heterogeneous Service",
-            Self::ComputeOptimizedWithFPGA => "Compute-optimized with FPGA",
-            Self::ComputeOptimizedWithNPU => "Compute-optimized with NPU",
-            Self::ECSBareMetal => "ECS Bare Metal",
+            Self::ComputeOptimizedWithFpga => "Compute-optimized with FPGA",
+            Self::ComputeOptimizedWithNpu => "Compute-optimized with NPU",
+            Self::EcsBareMetal => "ECS Bare Metal",
             Self::SuperComputingCluster => "Super Computing Cluster",
             Self::HighPerformanceCompute => "High Performance Compute",
         }
@@ -93073,7 +77956,7 @@ pub enum DescribeInstanceTypesCpuArchitecturesItem {
     #[serde(rename = "X86")]
     X86,
     #[serde(rename = "ARM")]
-    ARM,
+    Arm,
 }
 
 impl Default for DescribeInstanceTypesCpuArchitecturesItem {
@@ -93087,7 +77970,7 @@ impl DescribeInstanceTypesCpuArchitecturesItem {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::X86 => "X86",
-            Self::ARM => "ARM",
+            Self::Arm => "ARM",
         }
     }
 }

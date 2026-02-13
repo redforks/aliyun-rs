@@ -1,5 +1,3 @@
-use anyhow::Context as _;
-
 #[derive(Clone, Copy, Debug, strum::EnumString)]
 pub enum Endpoint {
     CnQingdao,
@@ -5527,7 +5525,6 @@ pub struct AccelerationInfo {
     #[serde(rename = "status")]
     pub status: Option<String>,
 }
-
 impl crate::FlatSerialize for AccelerationInfo {
     fn flat_serialize<'a>(
         &'a self,
@@ -5539,12 +5536,11 @@ impl crate::FlatSerialize for AccelerationInfo {
 }
 
 /// 别名信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Alias {
     /// 灰度版本权重。
     #[serde(rename = "additionalVersionWeight")]
-    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称。
     #[serde(rename = "aliasName")]
@@ -5563,45 +5559,6 @@ pub struct Alias {
     pub version_id: Option<String>,
 }
 
-impl crate::FlatSerialize for Alias {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.additional_version_weight,
-            &format!("{}.additionalVersionWeight", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.alias_name,
-            &format!("{}.aliasName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_id,
-            &format!("{}.versionId", name),
-            params,
-        );
-    }
-}
-
 /// 异步调用目标结构体
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -5610,7 +5567,6 @@ pub struct Destination {
     #[serde(rename = "destination")]
     pub destination: Option<String>,
 }
-
 impl crate::FlatSerialize for Destination {
     fn flat_serialize<'a>(
         &'a self,
@@ -5636,7 +5592,6 @@ pub struct DestinationConfig {
     #[serde(rename = "onSuccess")]
     pub on_success: Option<Destination>,
 }
-
 impl crate::FlatSerialize for DestinationConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -5657,7 +5612,7 @@ impl crate::FlatSerialize for DestinationConfig {
 }
 
 /// 异步调用配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncConfig {
     /// 是否开启异步任务
@@ -5683,52 +5638,8 @@ pub struct AsyncConfig {
     pub max_async_retry_attempts: Option<i64>,
 }
 
-impl crate::FlatSerialize for AsyncConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.async_task,
-            &format!("{}.asyncTask", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.destination_config,
-            &format!("{}.destinationConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_async_event_age_in_seconds,
-            &format!("{}.maxAsyncEventAgeInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_async_retry_attempts,
-            &format!("{}.maxAsyncRetryAttempts", name),
-            params,
-        );
-    }
-}
-
 /// 任务事件内容
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncTaskEvent {
     /// 事件负载内容
@@ -5763,29 +5674,8 @@ pub struct AsyncTaskEvent {
     pub timestamp: Option<i64>,
 }
 
-impl crate::FlatSerialize for AsyncTaskEvent {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.event_detail,
-            &format!("{}.eventDetail", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.event_id, &format!("{}.eventId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.timestamp,
-            &format!("{}.timestamp", name),
-            params,
-        );
-    }
-}
-
 /// 异步任务信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct AsyncTask {
     /// 异步任务失败后的已重试次数
@@ -5802,7 +5692,6 @@ pub struct AsyncTask {
     pub end_time: Option<i64>,
     /// 异步任务事件列表
     #[serde(rename = "events")]
-    #[serde(default)]
     pub events: Vec<AsyncTaskEvent>,
     /// 函数资源标识
     #[serde(rename = "functionArn")]
@@ -5855,74 +5744,6 @@ pub struct AsyncTask {
     pub task_payload: Option<String>,
 }
 
-impl crate::FlatSerialize for AsyncTask {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.already_retried_times,
-            &format!("{}.alreadyRetriedTimes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.destination_status,
-            &format!("{}.destinationStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.duration_ms,
-            &format!("{}.durationMs", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.end_time, &format!("{}.endTime", name), params);
-        crate::FlatSerialize::flat_serialize(&self.events, &format!("{}.events", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.instanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualifier,
-            &format!("{}.qualifier", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.request_id,
-            &format!("{}.requestId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.return_payload,
-            &format!("{}.returnPayload", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.started_time,
-            &format!("{}.startedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.task_error_message,
-            &format!("{}.taskErrorMessage", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.taskId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.task_payload,
-            &format!("{}.taskPayload", name),
-            params,
-        );
-    }
-}
-
 /// 权限认证配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -5934,7 +5755,6 @@ pub struct AuthConfig {
     #[serde(rename = "authType")]
     pub auth_type: Option<String>,
 }
-
 impl crate::FlatSerialize for AuthConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -5955,7 +5775,7 @@ impl crate::FlatSerialize for AuthConfig {
 }
 
 /// EventBridge 触发器的批处理窗口配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct BatchWindow {
     /// 窗口中最大可容纳的事件数量。当达到此阈值，会触发窗口内的数据往下游推送。当存在多个窗口时，有一个窗口满足即触发。
@@ -5964,25 +5784,6 @@ pub struct BatchWindow {
     /// 窗口中最大可容纳的时间范围内的事件（单位秒）。当达到此阈值，会触发窗口内的数据往下游推送。当存在多个窗口时，有一个窗口满足即触发。
     #[serde(rename = "TimeBasedWindow")]
     pub time_based_window: Option<i32>,
-}
-
-impl crate::FlatSerialize for BatchWindow {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.count_based_window,
-            &format!("{}.CountBasedWindow", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.time_based_window,
-            &format!("{}.TimeBasedWindow", name),
-            params,
-        );
-    }
 }
 
 /// 证书配置
@@ -5999,7 +5800,6 @@ pub struct CertConfig {
     #[serde(rename = "privateKey")]
     pub private_key: String,
 }
-
 impl crate::FlatSerialize for CertConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6024,7 +5824,7 @@ impl crate::FlatSerialize for CertConfig {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ChangeResourceGroupInput {
     #[serde(rename = "ResourceId")]
@@ -6034,7 +5834,6 @@ pub struct ChangeResourceGroupInput {
     #[serde(rename = "ResourceType")]
     pub resource_type: Option<String>,
 }
-
 impl crate::FlatSerialize for ChangeResourceGroupInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -6059,43 +5858,22 @@ impl crate::FlatSerialize for ChangeResourceGroupInput {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ChangeResourceGroupOutput {
     #[serde(rename = "ResourceId")]
-    pub resource_id: Option<String>,
+    #[serde(default)]
+    pub resource_id: String,
     #[serde(rename = "NewResourceGroupId")]
-    pub new_resource_group_id: Option<String>,
+    #[serde(default)]
+    pub new_resource_group_id: String,
     #[serde(rename = "OldResourceGroupId")]
-    pub old_resource_group_id: Option<String>,
-}
-
-impl crate::FlatSerialize for ChangeResourceGroupOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.new_resource_group_id,
-            &format!("{}.NewResourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.old_resource_group_id,
-            &format!("{}.OldResourceGroupId", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub old_resource_group_id: String,
 }
 
 /// 函数并发配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ConcurrencyConfig {
     /// 阿里云资源的标识
@@ -6106,79 +5884,12 @@ pub struct ConcurrencyConfig {
     pub reserved_concurrency: Option<i64>,
 }
 
-impl crate::FlatSerialize for ConcurrencyConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.reserved_concurrency,
-            &format!("{}.reservedConcurrency", name),
-            params,
-        );
-    }
-}
-
-/// 将携带相同 Cookie 信息的请求路由到同一个实例。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct CookieSessionAffinityConfig {
-    /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
-    #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: Option<i64>,
-    /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
-    #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: Option<i64>,
-    /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
-    #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: Option<i64>,
-    /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
-    #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: Option<bool>,
-}
-
-impl crate::FlatSerialize for CookieSessionAffinityConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.session_idle_timeout_in_seconds,
-            &format!("{}.sessionIdleTimeoutInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_ttl_in_seconds,
-            &format!("{}.sessionTTLInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_concurrency_per_instance,
-            &format!("{}.sessionConcurrencyPerInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_session_id_reuse,
-            &format!("{}.disableSessionIdReuse", name),
-            params,
-        );
-    }
-}
-
 /// 创建别名的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称
     #[serde(rename = "aliasName")]
@@ -6190,7 +5901,6 @@ pub struct CreateAliasInput {
     #[serde(rename = "versionId")]
     pub version_id: String,
 }
-
 impl crate::FlatSerialize for CreateAliasInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -6231,7 +5941,6 @@ pub struct EqualRule {
     #[serde(rename = "replacement")]
     pub replacement: String,
 }
-
 impl crate::FlatSerialize for EqualRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -6258,7 +5967,6 @@ pub struct RegexRule {
     #[serde(rename = "replacement")]
     pub replacement: String,
 }
-
 impl crate::FlatSerialize for RegexRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -6285,7 +5993,6 @@ pub struct WildcardRule {
     #[serde(rename = "replacement")]
     pub replacement: String,
 }
-
 impl crate::FlatSerialize for WildcardRule {
     fn flat_serialize<'a>(
         &'a self,
@@ -6318,7 +6025,6 @@ pub struct RewriteConfig {
     #[serde(default)]
     pub wildcard_rules: Vec<WildcardRule>,
 }
-
 impl crate::FlatSerialize for RewriteConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6364,7 +6070,6 @@ pub struct PathConfig {
     #[serde(rename = "rewriteConfig")]
     pub rewrite_config: Option<RewriteConfig>,
 }
-
 impl crate::FlatSerialize for PathConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6400,7 +6105,6 @@ pub struct RouteConfig {
     #[serde(default)]
     pub routes: Vec<PathConfig>,
 }
-
 impl crate::FlatSerialize for RouteConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6425,7 +6129,6 @@ pub struct TLSConfig {
     #[serde(rename = "minVersion")]
     pub min_version: String,
 }
-
 impl crate::FlatSerialize for TLSConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6458,7 +6161,6 @@ pub struct WAFConfig {
     #[serde(rename = "enableWAF")]
     pub enable_waf: Option<bool>,
 }
-
 impl crate::FlatSerialize for WAFConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6474,7 +6176,7 @@ impl crate::FlatSerialize for WAFConfig {
 }
 
 /// 创建自定义域名的请求信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateCustomDomainInput {
     /// 权限认证配置。
@@ -6499,7 +6201,6 @@ pub struct CreateCustomDomainInput {
     #[serde(rename = "wafConfig")]
     pub waf_config: Option<WAFConfig>,
 }
-
 impl crate::FlatSerialize for CreateCustomDomainInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -6559,7 +6260,6 @@ pub struct InputCodeLocation {
     #[serde(rename = "zipFile")]
     pub zip_file: Option<String>,
 }
-
 impl crate::FlatSerialize for InputCodeLocation {
     fn flat_serialize<'a>(
         &'a self,
@@ -6604,7 +6304,6 @@ pub struct CustomHealthCheckConfig {
     #[serde(rename = "timeoutSeconds")]
     pub timeout_seconds: Option<i32>,
 }
-
 impl crate::FlatSerialize for CustomHealthCheckConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6655,7 +6354,6 @@ pub struct RegistryAuthConfig {
     #[serde(rename = "userName")]
     pub user_name: Option<String>,
 }
-
 impl crate::FlatSerialize for RegistryAuthConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6682,7 +6380,6 @@ pub struct RegistryCertConfig {
     #[serde(rename = "rootCaCertBase64")]
     pub root_ca_cert_base64: Option<String>,
 }
-
 impl crate::FlatSerialize for RegistryCertConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6712,7 +6409,6 @@ pub struct RegistryNetworkConfig {
     #[serde(rename = "vpcId")]
     pub vpc_id: Option<String>,
 }
-
 impl crate::FlatSerialize for RegistryNetworkConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6747,7 +6443,6 @@ pub struct RegistryConfig {
     #[serde(rename = "networkConfig")]
     pub network_config: Option<RegistryNetworkConfig>,
 }
-
 impl crate::FlatSerialize for RegistryConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6809,7 +6504,6 @@ pub struct CustomContainerConfig {
     #[serde(rename = "resolvedImageUri")]
     pub resolved_image_uri: Option<String>,
 }
-
 impl crate::FlatSerialize for CustomContainerConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6868,7 +6562,6 @@ pub struct DNSOption {
     #[serde(rename = "value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for DNSOption {
     fn flat_serialize<'a>(
         &'a self,
@@ -6897,7 +6590,6 @@ pub struct CustomDNS {
     #[serde(default)]
     pub searches: Vec<String>,
 }
-
 impl crate::FlatSerialize for CustomDNS {
     fn flat_serialize<'a>(
         &'a self,
@@ -6937,7 +6629,6 @@ pub struct CustomRuntimeConfig {
     #[serde(rename = "port")]
     pub port: Option<i32>,
 }
-
 impl crate::FlatSerialize for CustomRuntimeConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -6972,7 +6663,6 @@ pub struct GPUConfig {
     #[serde(rename = "gpuType")]
     pub gpu_type: Option<String>,
 }
-
 impl crate::FlatSerialize for GPUConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7003,7 +6693,6 @@ pub struct LifecycleHook {
     #[serde(default)]
     pub command: Vec<String>,
 }
-
 impl crate::FlatSerialize for LifecycleHook {
     fn flat_serialize<'a>(
         &'a self,
@@ -7027,7 +6716,6 @@ pub struct InstanceLifecycleConfig {
     #[serde(rename = "preStop")]
     pub pre_stop: Option<LifecycleHook>,
 }
-
 impl crate::FlatSerialize for InstanceLifecycleConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7063,7 +6751,6 @@ pub struct LogConfig {
     #[serde(rename = "project")]
     pub project: Option<String>,
 }
-
 impl crate::FlatSerialize for LogConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7104,7 +6791,6 @@ pub struct NASMountConfig {
     #[serde(rename = "serverAddr")]
     pub server_addr: Option<String>,
 }
-
 impl crate::FlatSerialize for NASMountConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7144,7 +6830,6 @@ pub struct NASConfig {
     #[serde(rename = "userId")]
     pub user_id: Option<i32>,
 }
-
 impl crate::FlatSerialize for NASConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7181,7 +6866,6 @@ pub struct OSSMountPoint {
     #[serde(rename = "readOnly")]
     pub read_only: Option<bool>,
 }
-
 impl crate::FlatSerialize for OSSMountPoint {
     fn flat_serialize<'a>(
         &'a self,
@@ -7221,7 +6905,6 @@ pub struct OSSMountConfig {
     #[serde(default)]
     pub mount_points: Vec<OSSMountPoint>,
 }
-
 impl crate::FlatSerialize for OSSMountConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7248,7 +6931,6 @@ pub struct TracingConfig {
     #[serde(rename = "type")]
     pub r#type: Option<String>,
 }
-
 impl crate::FlatSerialize for TracingConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7276,9 +6958,9 @@ pub struct VPCConfig {
     pub vpc_id: Option<String>,
     /// 授予函数计算访问用户VPC所需权限的RAM角色
     #[serde(rename = "role")]
-    pub role: Option<String>,
+    #[serde(default)]
+    pub role: String,
 }
-
 impl crate::FlatSerialize for VPCConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7311,7 +6993,6 @@ pub struct Tag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for Tag {
     fn flat_serialize<'a>(
         &'a self,
@@ -7327,13 +7008,15 @@ impl crate::FlatSerialize for Tag {
 #[serde(default)]
 pub struct PolarFsMountConfig {
     #[serde(rename = "instanceId")]
-    pub instance_id: Option<String>,
+    #[serde(default)]
+    pub instance_id: String,
     #[serde(rename = "mountDir")]
-    pub mount_dir: Option<String>,
+    #[serde(default)]
+    pub mount_dir: String,
     #[serde(rename = "remoteDir")]
-    pub remote_dir: Option<String>,
+    #[serde(default)]
+    pub remote_dir: String,
 }
-
 impl crate::FlatSerialize for PolarFsMountConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7363,16 +7046,17 @@ impl crate::FlatSerialize for PolarFsMountConfig {
 pub struct PolarFsConfig {
     /// 群组ID。
     #[serde(rename = "groupId")]
-    pub group_id: Option<i32>,
+    #[serde(default)]
+    pub group_id: i32,
     /// 账号ID。
     #[serde(rename = "userId")]
-    pub user_id: Option<i32>,
+    #[serde(default)]
+    pub user_id: i32,
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
     #[serde(default)]
     pub mount_points: Vec<PolarFsMountConfig>,
 }
-
 impl crate::FlatSerialize for PolarFsConfig {
     fn flat_serialize<'a>(
         &'a self,
@@ -7390,7 +7074,7 @@ impl crate::FlatSerialize for PolarFsConfig {
 }
 
 /// 函数创建请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
@@ -7416,7 +7100,6 @@ pub struct CreateFunctionInput {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数的名称。只能包含字母、数字、下划线（_）和短划线（-），不能以数字、短划线（-）开头，长度范围为1~64个字符。
     #[serde(rename = "functionName")]
@@ -7438,7 +7121,6 @@ pub struct CreateFunctionInput {
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    #[serde(default)]
     pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
@@ -7469,7 +7151,6 @@ pub struct CreateFunctionInput {
     pub vpc_config: Option<VPCConfig>,
     /// 标签列表
     #[serde(rename = "tags")]
-    #[serde(default)]
     pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
@@ -7502,7 +7183,6 @@ pub struct CreateFunctionInput {
     #[serde(rename = "polarFsConfig")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
-
 impl crate::FlatSerialize for CreateFunctionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -7651,7 +7331,7 @@ impl crate::FlatSerialize for CreateFunctionInput {
 }
 
 /// 创建层版本的请求参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateLayerVersionInput {
     /// 层的代码信息。
@@ -7659,7 +7339,6 @@ pub struct CreateLayerVersionInput {
     pub code: Option<InputCodeLocation>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
-    #[serde(default)]
     pub compatible_runtime: Vec<String>,
     /// 层版本的描述信息。
     #[serde(rename = "description")]
@@ -7668,7 +7347,6 @@ pub struct CreateLayerVersionInput {
     #[serde(rename = "license")]
     pub license: Option<String>,
 }
-
 impl crate::FlatSerialize for CreateLayerVersionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -7691,7 +7369,7 @@ impl crate::FlatSerialize for CreateLayerVersionInput {
 }
 
 /// 创建会话的参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateSessionInput {
     /// Session生命周期
@@ -7715,7 +7393,6 @@ pub struct CreateSessionInput {
     #[serde(rename = "polarFsConfig")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
-
 impl crate::FlatSerialize for CreateSessionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -7761,7 +7438,7 @@ impl crate::FlatSerialize for CreateSessionInput {
 }
 
 /// 创建触发器的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateTriggerInput {
     /// 触发器的描述。
@@ -7803,7 +7480,6 @@ pub struct CreateTriggerInput {
     #[serde(rename = "triggerType")]
     pub trigger_type: String,
 }
-
 impl crate::FlatSerialize for CreateTriggerInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -7849,14 +7525,13 @@ impl crate::FlatSerialize for CreateTriggerInput {
 }
 
 /// 创建VPC绑定请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct CreateVpcBindingInput {
     /// VPC实例ID
     #[serde(rename = "vpcId")]
     pub vpc_id: String,
 }
-
 impl crate::FlatSerialize for CreateVpcBindingInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -7868,7 +7543,7 @@ impl crate::FlatSerialize for CreateVpcBindingInput {
 }
 
 /// 自定义域名信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct CustomDomain {
     /// 您的阿里云账号（主账号）ID。
@@ -7909,73 +7584,8 @@ pub struct CustomDomain {
     pub waf_config: Option<WAFConfig>,
 }
 
-impl crate::FlatSerialize for CustomDomain {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.accountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.api_version,
-            &format!("{}.apiVersion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auth_config,
-            &format!("{}.authConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.cert_config,
-            &format!("{}.certConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.domain_name,
-            &format!("{}.domainName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.protocol, &format!("{}.protocol", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.route_config,
-            &format!("{}.routeConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.subdomain_count,
-            &format!("{}.subdomainCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tls_config,
-            &format!("{}.tlsConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.waf_config,
-            &format!("{}.wafConfig", name),
-            params,
-        );
-    }
-}
-
 /// EventBridge 触发器的死信队列配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeadLetterQueue {
     /// 死信队列的 ARN
@@ -7983,18 +7593,8 @@ pub struct DeadLetterQueue {
     pub arn: Option<String>,
 }
 
-impl crate::FlatSerialize for DeadLetterQueue {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.arn, &format!("{}.Arn", name), params);
-    }
-}
-
 /// EventBridge 触发器的事件推送配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DeliveryOption {
     /// 上游事件源投递事件到函数计算的并发最大值，目前仅针对在 Kafka 作为事件源时有效。
@@ -8005,58 +7605,22 @@ pub struct DeliveryOption {
     pub event_schema: Option<String>,
 }
 
-impl crate::FlatSerialize for DeliveryOption {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.concurrency,
-            &format!("{}.concurrency", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_schema,
-            &format!("{}.eventSchema", name),
-            params,
-        );
-    }
-}
-
 /// 地域对象
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutputRegionsRegionItem {
     /// 地域ID
     #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
+    #[serde(default)]
+    pub region_id: String,
     /// 地域名称
     #[serde(rename = "LocalName")]
-    pub local_name: Option<String>,
-}
-
-impl crate::FlatSerialize for DescribeRegionsOutputRegionsRegionItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.local_name,
-            &format!("{}.LocalName", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub local_name: String,
 }
 
 /// 地域信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutputRegions {
     /// 地域信息集合
@@ -8065,52 +7629,38 @@ pub struct DescribeRegionsOutputRegions {
     pub region: Vec<DescribeRegionsOutputRegionsRegionItem>,
 }
 
-impl crate::FlatSerialize for DescribeRegionsOutputRegions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.region, &format!("{}.Region", name), params);
-    }
-}
-
 /// 响应
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DescribeRegionsOutput {
     /// 地域信息
     #[serde(rename = "Regions")]
-    pub regions: Option<DescribeRegionsOutputRegions>,
-}
-
-impl crate::FlatSerialize for DescribeRegionsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.regions, &format!("{}.Regions", name), params);
-    }
+    #[serde(default)]
+    pub regions: DescribeRegionsOutputRegions,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledPolicy {
     #[serde(rename = "name")]
-    pub name: Option<String>,
+    #[serde(default)]
+    pub name: String,
     #[serde(rename = "startTime")]
-    pub start_time: Option<String>,
+    #[serde(default)]
+    pub start_time: String,
     #[serde(rename = "endTime")]
-    pub end_time: Option<String>,
+    #[serde(default)]
+    pub end_time: String,
     #[serde(rename = "target")]
-    pub target: Option<i64>,
+    #[serde(default)]
+    pub target: i64,
     #[serde(rename = "scheduleExpression")]
-    pub schedule_expression: Option<String>,
+    #[serde(default)]
+    pub schedule_expression: String,
     #[serde(rename = "timeZone")]
-    pub time_zone: Option<String>,
+    #[serde(default)]
+    pub time_zone: String,
 }
-
 impl crate::FlatSerialize for ScheduledPolicy {
     fn flat_serialize<'a>(
         &'a self,
@@ -8142,23 +7692,30 @@ impl crate::FlatSerialize for ScheduledPolicy {
 #[serde(default)]
 pub struct ScalingPolicy {
     #[serde(rename = "name")]
-    pub name: Option<String>,
+    #[serde(default)]
+    pub name: String,
     #[serde(rename = "startTime")]
-    pub start_time: Option<String>,
+    #[serde(default)]
+    pub start_time: String,
     #[serde(rename = "endTime")]
-    pub end_time: Option<String>,
+    #[serde(default)]
+    pub end_time: String,
     #[serde(rename = "metricType")]
-    pub metric_type: Option<String>,
+    #[serde(default)]
+    pub metric_type: String,
     #[serde(rename = "metricTarget")]
-    pub metric_target: Option<f32>,
+    #[serde(default)]
+    pub metric_target: f32,
     #[serde(rename = "minInstances")]
-    pub min_instances: Option<i64>,
+    #[serde(default)]
+    pub min_instances: i64,
     #[serde(rename = "maxInstances")]
-    pub max_instances: Option<i64>,
+    #[serde(default)]
+    pub max_instances: i64,
     #[serde(rename = "timeZone")]
-    pub time_zone: Option<String>,
+    #[serde(default)]
+    pub time_zone: String,
 }
-
 impl crate::FlatSerialize for ScalingPolicy {
     fn flat_serialize<'a>(
         &'a self,
@@ -8200,19 +7757,24 @@ impl crate::FlatSerialize for ScalingPolicy {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ElasticConfigStatus {
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: Option<String>,
+    #[serde(default)]
+    pub resident_pool_id: String,
     #[serde(rename = "functionArn")]
-    pub function_arn: Option<String>,
+    #[serde(default)]
+    pub function_arn: String,
     #[serde(rename = "currentInstances")]
-    pub current_instances: Option<i64>,
+    #[serde(default)]
+    pub current_instances: i64,
     #[serde(rename = "currentError")]
-    pub current_error: Option<String>,
+    #[serde(default)]
+    pub current_error: String,
     #[serde(rename = "minInstances")]
-    pub min_instances: Option<i64>,
+    #[serde(default)]
+    pub min_instances: i64,
     #[serde(rename = "scheduledPolicies")]
     #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
@@ -8220,618 +7782,12 @@ pub struct ElasticConfigStatus {
     #[serde(default)]
     pub scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "targetInstances")]
-    pub target_instances: Option<i64>,
-}
-
-impl crate::FlatSerialize for ElasticConfigStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_pool_id,
-            &format!("{}.residentPoolId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_instances,
-            &format!("{}.currentInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_error,
-            &format!("{}.currentError", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.min_instances,
-            &format!("{}.minInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_policies,
-            &format!("{}.scheduledPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scaling_policies,
-            &format!("{}.scalingPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_instances,
-            &format!("{}.targetInstances", name),
-            params,
-        );
-    }
-}
-
-/// 错误信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct Error {
-    /// 错误码
-    #[serde(rename = "Code")]
-    pub code: Option<String>,
-    /// 错误信息
-    #[serde(rename = "Message")]
-    pub message: Option<String>,
-    /// 请求ID
-    #[serde(rename = "RequestId")]
-    pub request_id: Option<String>,
-}
-
-impl crate::FlatSerialize for Error {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.Code", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.Message", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.request_id,
-            &format!("{}.RequestId", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 触发器的 sink 端配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct EventSinkConfig {
-    /// 事件推送配置
-    #[serde(rename = "deliveryOption")]
-    pub delivery_option: Option<DeliveryOption>,
-}
-
-impl crate::FlatSerialize for EventSinkConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.delivery_option,
-            &format!("{}.deliveryOption", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 数据传输服务DTS版的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceDTSParameters {
-    /// 数据订阅通道的网络地址及端口号信息。
-    #[serde(rename = "BrokerUrl")]
-    pub broker_url: Option<String>,
-    /// 消费位点，即SDK客户端消费第一条数据的时间戳，格式为Unix时间戳。
-    #[serde(rename = "InitCheckPoint")]
-    pub init_check_point: Option<i32>,
-    /// 消费组的账号密码。
-    #[serde(rename = "Password")]
-    pub password: Option<String>,
-    /// 数据传输服务DTS版的实例所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-    /// 消费组ID。
-    #[serde(rename = "Sid")]
-    pub sid: Option<String>,
-    /// 任务 ID。
-    #[serde(rename = "TaskId")]
-    pub task_id: Option<String>,
-    /// 数据订阅通道的订阅Topic。
-    #[serde(rename = "Topic")]
-    pub topic: Option<String>,
-    /// 消费组的账号。
-    #[serde(rename = "Username")]
-    pub username: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceDTSParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.broker_url,
-            &format!("{}.BrokerUrl", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.init_check_point,
-            &format!("{}.InitCheckPoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.password, &format!("{}.Password", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.sid, &format!("{}.Sid", name), params);
-        crate::FlatSerialize::flat_serialize(&self.task_id, &format!("{}.TaskId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.topic, &format!("{}.Topic", name), params);
-        crate::FlatSerialize::flat_serialize(&self.username, &format!("{}.Username", name), params);
-    }
-}
-
-/// EventBridge 消息队列Kafka版的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceKafkaParameters {
-    /// 订阅该Topic的消费者所对应的Group ID。
-    #[serde(rename = "ConsumerGroup")]
-    pub consumer_group: Option<String>,
-    /// 消息队列Kafka版的实例的ID。
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
-    /// 网络配置 ：默认值Default，VPC网络是PublicNetwork。
-    #[serde(rename = "Network")]
-    pub network: Option<String>,
-    /// 偏移量。earliest：最早消费位点。latest：最新消费位点。
-    #[serde(rename = "OffsetReset")]
-    pub offset_reset: Option<String>,
-    /// 消息队列Kafka版的实例所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-    /// 安全组 ID
-    #[serde(rename = "SecurityGroupId")]
-    pub security_group_id: Option<String>,
-    /// 消息队列 Kafka 版实例下的 Topic 名称
-    #[serde(rename = "Topic")]
-    pub topic: Option<String>,
-    /// 交换机 ID
-    #[serde(rename = "VSwitchIds")]
-    pub v_switch_ids: Option<String>,
-    /// VPC 网络的 ID
-    #[serde(rename = "VpcId")]
-    pub vpc_id: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceKafkaParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.consumer_group,
-            &format!("{}.ConsumerGroup", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.network, &format!("{}.Network", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.offset_reset,
-            &format!("{}.OffsetReset", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.security_group_id,
-            &format!("{}.SecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.topic, &format!("{}.Topic", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.v_switch_ids,
-            &format!("{}.VSwitchIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-    }
-}
-
-/// EventBridge 轻量消息队列（原 MNS）版的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceMNSParameters {
-    /// 是否开启Base64编码。true：开启 Base64 编码，默认值。false：不开启 Base64 编码。
-    #[serde(rename = "IsBase64Decode")]
-    pub is_base64_decode: Option<bool>,
-    /// 轻量消息队列（原 MNS）的Queue的名称。
-    #[serde(rename = "QueueName")]
-    pub queue_name: Option<String>,
-    /// 轻量消息队列（原 MNS）Queue所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceMNSParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_base64_decode,
-            &format!("{}.IsBase64Decode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_name,
-            &format!("{}.QueueName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 消息队列MQTT版的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceMQTTParameters {
-    /// 消息队列MQTT版的实例的ID。
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
-    /// 消息队列MQTT版的实例所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-    /// 消息队列MQTT版实例的Topic的名称。
-    #[serde(rename = "Topic")]
-    pub topic: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceMQTTParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.topic, &format!("{}.Topic", name), params);
-    }
-}
-
-/// EventBridge 消息队列RabbitMQ版的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceRabbitMQParameters {
-    /// 消息队列RabbitMQ版的实例的ID。
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
-    /// 消息队列RabbitMQ版实例的Queue的名称。
-    #[serde(rename = "QueueName")]
-    pub queue_name: Option<String>,
-    /// 消息队列RabbitMQ版的实例所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-    /// 消息队列RabbitMQ版实例的Vhost的名称。
-    #[serde(rename = "VirtualHostName")]
-    pub virtual_host_name: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceRabbitMQParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.queue_name,
-            &format!("{}.QueueName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.virtual_host_name,
-            &format!("{}.VirtualHostName", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 消息队列RocketMQ版的自定义事件源参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceRocketMQParameters {
-    /// 认证类型。取值为 ACL 或为空。取值为 ACL 表示开启鉴权，需填写 InstanceUsername 和 InstancePassword。
-    #[serde(rename = "AuthType")]
-    pub auth_type: Option<String>,
-    /// 消息过滤类型。
-    #[serde(rename = "FilterType")]
-    pub filter_type: Option<String>,
-    /// 消息队列 RocketMQ 版的 Group ID。
-    #[serde(rename = "GroupID")]
-    pub group_id: Option<String>,
-    /// 消息队列 RocketMQ 版的实例接入点信息。
-    #[serde(rename = "InstanceEndpoint")]
-    pub instance_endpoint: Option<String>,
-    /// 消息队列 RocketMQ 版的实例 ID。
-    #[serde(rename = "InstanceId")]
-    pub instance_id: Option<String>,
-    /// 网络类型。
-    #[serde(rename = "InstanceNetwork")]
-    pub instance_network: Option<String>,
-    /// 消息队列 RocketMQ 版的实例的密码。
-    #[serde(rename = "InstancePassword")]
-    pub instance_password: Option<String>,
-    /// 安全组 ID。
-    #[serde(rename = "InstanceSecurityGroupId")]
-    pub instance_security_group_id: Option<String>,
-    /// 消息队列 RocketMQ 版的实例类型。
-    #[serde(rename = "InstanceType")]
-    pub instance_type: Option<String>,
-    /// 消息队列 RocketMQ 版的实例的用户名。使用公网访问时，SDK 代码中需要配置实例的用户名和密码，进行身份验证。
-    #[serde(rename = "InstanceUsername")]
-    pub instance_username: Option<String>,
-    /// 实例所关联的交换机 ID。
-    #[serde(rename = "InstanceVSwitchIds")]
-    pub instance_v_switch_ids: Option<String>,
-    /// 实例所关联的专有网络的 ID。
-    #[serde(rename = "InstanceVpcId")]
-    pub instance_vpc_id: Option<String>,
-    /// 消息的消费位点。
-    ///
-    /// - CONSUME_FROM_LAST_OFFSET：从最新位点开始消费，默认值。
-    /// - CONSUME_FROM_FIRST_OFFSET：从最早位点开始消费。
-    /// - CONSUME_FROM_TIMESTAMP：从指定时间点的位点开始消费。
-    #[serde(rename = "Offset")]
-    pub offset: Option<String>,
-    /// 消息队列RocketMQ版Queue所属地域。
-    #[serde(rename = "RegionId")]
-    pub region_id: Option<String>,
-    /// 消息的过滤标签。
-    #[serde(rename = "Tag")]
-    pub tag: Option<String>,
-    /// 时间戳。仅当参数 Offset 取值为 CONSUME_FROM_TIMESTAMP 时，该参数有效。
-    #[serde(rename = "Timestamp")]
-    pub timestamp: Option<i32>,
-    /// 消息队列 RocketMQ 版实例的 Topic 名称。
-    #[serde(rename = "Topic")]
-    pub topic: Option<String>,
-}
-
-impl crate::FlatSerialize for SourceRocketMQParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auth_type,
-            &format!("{}.AuthType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.filter_type,
-            &format!("{}.FilterType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.group_id, &format!("{}.GroupID", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_endpoint,
-            &format!("{}.InstanceEndpoint", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.InstanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_network,
-            &format!("{}.InstanceNetwork", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_password,
-            &format!("{}.InstancePassword", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_security_group_id,
-            &format!("{}.InstanceSecurityGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.InstanceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_username,
-            &format!("{}.InstanceUsername", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_v_switch_ids,
-            &format!("{}.InstanceVSwitchIds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_vpc_id,
-            &format!("{}.InstanceVpcId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.offset, &format!("{}.Offset", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.region_id,
-            &format!("{}.RegionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.timestamp,
-            &format!("{}.Timestamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.topic, &format!("{}.Topic", name), params);
-    }
-}
-
-/// EventBridge 触发器的自定义事件源参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct EventSourceParameters {
-    /// 事件源为数据传输服务DTS时的自定义参数配置
-    #[serde(rename = "sourceDTSParameters")]
-    pub source_dts_parameters: Option<SourceDTSParameters>,
-    /// 事件源为消息队列Kafka版时的自定义参数配置
-    #[serde(rename = "sourceKafkaParameters")]
-    pub source_kafka_parameters: Option<SourceKafkaParameters>,
-    /// 事件源为轻量消息队列（原 MNS）时的自定义参数配置
-    #[serde(rename = "sourceMNSParameters")]
-    pub source_mns_parameters: Option<SourceMNSParameters>,
-    /// 事件源为云消息队列MQTT版时的自定义参数配置
-    #[serde(rename = "sourceMQTTParameters")]
-    pub source_mqtt_parameters: Option<SourceMQTTParameters>,
-    /// 事件源为消息队列RabbitMQ版时的自定义参数配置
-    #[serde(rename = "sourceRabbitMQParameters")]
-    pub source_rabbit_mq_parameters: Option<SourceRabbitMQParameters>,
-    /// 事件源为消息队列RockerMQ版时的自定义参数配置
-    #[serde(rename = "sourceRocketMQParameters")]
-    pub source_rocket_mq_parameters: Option<SourceRocketMQParameters>,
-}
-
-impl crate::FlatSerialize for EventSourceParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.source_dts_parameters,
-            &format!("{}.sourceDTSParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_kafka_parameters,
-            &format!("{}.sourceKafkaParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_mns_parameters,
-            &format!("{}.sourceMNSParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_mqtt_parameters,
-            &format!("{}.sourceMQTTParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_rabbit_mq_parameters,
-            &format!("{}.sourceRabbitMQParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_rocket_mq_parameters,
-            &format!("{}.sourceRocketMQParameters", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 触发器的事件源配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct EventSourceConfig {
-    /// 自定义事件源参数，自定义事件源包括：MNS、RocketMQ、RabbitMQ、Kafka、MQTT、DTS。
-    #[serde(rename = "eventSourceParameters")]
-    pub event_source_parameters: Option<EventSourceParameters>,
-    /// 触发器事件源类型，包含如下几种类型：
-    ///
-    /// - **Default**：表示EventBridge 官方触发源。
-    ///
-    /// - **MNS**：消息队列 MNS 队列作为触发源。
-    ///
-    /// - **RocketMQ**：消息队列 RocketMQ 版作为触发源。
-    ///
-    /// - **RabbitMQ**：消息队列 RabbitMQ 版作为触发源。
-    ///
-    /// - **Kafka**：云消息队列 Kafka 版作为触发源。
-    ///
-    /// - **MQTT**：云消息队列 MQTT 版作为触发源。
-    ///
-    /// - **DTS**：数据传输服务 DTS 作为触发源。
-    ///
-    /// > 注意，该字段不可更新，更新时传入该字段将被忽略。
-    #[serde(rename = "eventSourceType")]
-    pub event_source_type: Option<String>,
-}
-
-impl crate::FlatSerialize for EventSourceConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.event_source_parameters,
-            &format!("{}.eventSourceParameters", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_source_type,
-            &format!("{}.eventSourceType", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub target_instances: i64,
 }
 
 /// 事件推送失败时的重试策略。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct RetryStrategy {
     /// 重试策略，包含如下两种策略：
@@ -8843,158 +7799,8 @@ pub struct RetryStrategy {
     pub push_retry_strategy: Option<String>,
 }
 
-impl crate::FlatSerialize for RetryStrategy {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.push_retry_strategy,
-            &format!("{}.PushRetryStrategy", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 触发器运行环境参数配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct RunOptions {
-    /// 攒批窗口配置。
-    #[serde(rename = "batchWindow")]
-    pub batch_window: Option<BatchWindow>,
-    /// 是否启用死信队列。配置该参数即为启用死信队列，默认不启用死信队列，超过重试策略后的消息将被丢弃。支持配置轻量消息队列（原 MNS）、云消息队列 RocketMQ 版、消息队列 Kafka 版以及事件总线 EventBridge。
-    #[serde(rename = "deadLetterQueue")]
-    pub dead_letter_queue: Option<DeadLetterQueue>,
-    /// 异常容忍策略，包含如下两种策略：
-    ///
-    /// - **NONE**：不容忍异常，默认值。
-    ///
-    /// - **ALL**：容忍所有异常。
-    ///
-    /// > 默认策略为**NONE**
-    #[serde(rename = "errorsTolerance")]
-    pub errors_tolerance: Option<String>,
-    /// 消息数据推送到函数计算时的底层应用模式，包含如下两种模式：
-    ///
-    /// - **event-streaming**：事件流模式，按照数组格式推送事件，会根据用户推送配置将一个或多个消息事件以批的形式推送到函数中进行处理，适合端到端的流式数据处理场景，该模式下支持的事件源类型有轻量消息队列（原 MNS）、RocketMQ、RabbitMQ、Kafka、MQTT 以及 DTS。
-    ///
-    /// - **event-driven**：事件模式，每次会将单个消息作为事件参数传入函数中，事件遵循CloudEvents规范，该模式下支持的事件源有 Default、轻量消息队列（原 MNS）、RocketMQ 以及 RabbitMQ，注意，该模式下，不支持攒批配置。
-    #[serde(rename = "mode")]
-    pub mode: Option<String>,
-    /// 事件推送失败时的重试策略。
-    #[serde(rename = "retryStrategy")]
-    pub retry_strategy: Option<RetryStrategy>,
-}
-
-impl crate::FlatSerialize for RunOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.batch_window,
-            &format!("{}.batchWindow", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dead_letter_queue,
-            &format!("{}.deadLetterQueue", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.errors_tolerance,
-            &format!("{}.errorsTolerance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.mode, &format!("{}.mode", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.retry_strategy,
-            &format!("{}.retryStrategy", name),
-            params,
-        );
-    }
-}
-
-/// EventBridge 触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct EventBridgeTriggerConfig {
-    /// 触发器调用函数的方式，取值如下：
-    ///
-    /// - **true**：同步调用。
-    ///
-    /// - **false**：异步调用。
-    ///
-    /// > 默认取值为**false**
-    #[serde(rename = "asyncInvocationType")]
-    pub async_invocation_type: Option<bool>,
-    /// 事件模式。JSON格式，详细规则请参考[事件模式](~~181432~~)。
-    #[serde(rename = "eventRuleFilterPattern")]
-    pub event_rule_filter_pattern: Option<String>,
-    /// 事件目标配置
-    #[serde(rename = "eventSinkConfig")]
-    pub event_sink_config: Option<EventSinkConfig>,
-    /// 事件源配置。
-    #[serde(rename = "eventSourceConfig")]
-    pub event_source_config: Option<EventSourceConfig>,
-    /// 运行环境参数配置
-    #[serde(rename = "runOptions")]
-    pub run_options: Option<RunOptions>,
-    /// 是否启用触发器，取值如下：
-    ///
-    /// - **true**：启用触发器。
-    ///
-    /// - **false**：禁用触发器。
-    ///
-    /// > 默认取值为**true**
-    #[serde(rename = "triggerEnable")]
-    pub trigger_enable: Option<bool>,
-}
-
-impl crate::FlatSerialize for EventBridgeTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.async_invocation_type,
-            &format!("{}.asyncInvocationType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_rule_filter_pattern,
-            &format!("{}.eventRuleFilterPattern", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_sink_config,
-            &format!("{}.eventSinkConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.event_source_config,
-            &format!("{}.eventSourceConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.run_options,
-            &format!("{}.runOptions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_enable,
-            &format!("{}.triggerEnable", name),
-            params,
-        );
-    }
-}
-
 /// OSS 触发器过滤规则描述
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Key {
     /// 限定事件相关的资源名称，只关注以Prefix作为前缀的资源相关的事件，例如Prefix是“serverless_"，则只有以"serverless_"开始的资源相关的事件才能触发当前函数。
@@ -9005,19 +7811,8 @@ pub struct Key {
     pub suffix: Option<String>,
 }
 
-impl crate::FlatSerialize for Key {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.suffix, &format!("{}.suffix", name), params);
-    }
-}
-
 /// OSS 触发器配置过滤器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Filter {
     /// 事件过滤规则描述。
@@ -9025,18 +7820,8 @@ pub struct Filter {
     pub key: Option<Key>,
 }
 
-impl crate::FlatSerialize for Filter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.key", name), params);
-    }
-}
-
 /// 函数配置的层信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionLayer {
     /// 层版本的资源标识。
@@ -9047,46 +7832,22 @@ pub struct FunctionLayer {
     pub size: Option<i64>,
 }
 
-impl crate::FlatSerialize for FunctionLayer {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.arn, &format!("{}.arn", name), params);
-        crate::FlatSerialize::flat_serialize(&self.size, &format!("{}.size", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct FunctionRestriction {
     #[serde(rename = "reason")]
-    pub reason: Option<String>,
+    #[serde(default)]
+    pub reason: String,
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: Option<String>,
+    #[serde(default)]
+    pub last_modified_time: String,
     #[serde(rename = "disable")]
-    pub disable: Option<bool>,
-}
-
-impl crate::FlatSerialize for FunctionRestriction {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.reason, &format!("{}.reason", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.disable, &format!("{}.disable", name), params);
-    }
+    #[serde(default)]
+    pub disable: bool,
 }
 
 /// 函数配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Function {
     /// 函数代码包的CRC-64值。
@@ -9118,7 +7879,6 @@ pub struct Function {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数资源标识。
     #[serde(rename = "functionArn")]
@@ -9158,7 +7918,6 @@ pub struct Function {
     pub last_update_status_reason_code: Option<String>,
     /// 层的列表。
     #[serde(rename = "layers")]
-    #[serde(default)]
     pub layers: Vec<FunctionLayer>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
@@ -9202,339 +7961,50 @@ pub struct Function {
     pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
-    pub disable_ondemand: Option<bool>,
+    #[serde(default)]
+    pub disable_ondemand: bool,
     #[serde(rename = "invocationRestriction")]
-    pub invocation_restriction: Option<FunctionRestriction>,
+    #[serde(default)]
+    pub invocation_restriction: FunctionRestriction,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
     pub session_affinity: Option<String>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "enableLongLiving")]
-    pub enable_long_living: Option<bool>,
+    #[serde(default)]
+    pub enable_long_living: bool,
     /// 资源组 ID
     #[serde(rename = "resourceGroupId")]
-    pub resource_group_id: Option<String>,
+    #[serde(default)]
+    pub resource_group_id: String,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
-    pub instance_isolation_mode: Option<FunctionInstanceIsolationMode>,
+    #[serde(default)]
+    pub instance_isolation_mode: FunctionInstanceIsolationMode,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
-    pub session_affinity_config: Option<String>,
+    #[serde(default)]
+    pub session_affinity_config: String,
     /// 实例延迟释放时间
     #[serde(rename = "idleTimeout")]
-    pub idle_timeout: Option<i32>,
+    #[serde(default)]
+    pub idle_timeout: i32,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
     /// Env: 环境变量不注入
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
-    pub disable_inject_credentials: Option<FunctionDisableInjectCredentials>,
+    #[serde(default)]
+    pub disable_inject_credentials: FunctionDisableInjectCredentials,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: Option<PolarFsConfig>,
-}
-
-impl crate::FlatSerialize for Function {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.code_checksum,
-            &format!("{}.codeChecksum", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.code_size,
-            &format!("{}.codeSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.cpu, &format!("{}.cpu", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_container_config,
-            &format!("{}.customContainerConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_dns,
-            &format!("{}.customDNS", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_runtime_config,
-            &format!("{}.customRuntimeConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disk_size,
-            &format!("{}.diskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.environment_variables,
-            &format!("{}.environmentVariables", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_id,
-            &format!("{}.functionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_name,
-            &format!("{}.functionName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.gpu_config,
-            &format!("{}.gpuConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.handler, &format!("{}.handler", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_concurrency,
-            &format!("{}.instanceConcurrency", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_lifecycle_config,
-            &format!("{}.instanceLifecycleConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.internet_access,
-            &format!("{}.internetAccess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_update_status,
-            &format!("{}.lastUpdateStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_update_status_reason,
-            &format!("{}.lastUpdateStatusReason", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_update_status_reason_code,
-            &format!("{}.lastUpdateStatusReasonCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.layers, &format!("{}.layers", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.log_config,
-            &format!("{}.logConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.memory_size,
-            &format!("{}.memorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nas_config,
-            &format!("{}.nasConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_mount_config,
-            &format!("{}.ossMountConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.role, &format!("{}.role", name), params);
-        crate::FlatSerialize::flat_serialize(&self.runtime, &format!("{}.runtime", name), params);
-        crate::FlatSerialize::flat_serialize(&self.state, &format!("{}.state", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.state_reason,
-            &format!("{}.stateReason", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.state_reason_code,
-            &format!("{}.stateReasonCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.timeout, &format!("{}.timeout", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tracing_config,
-            &format!("{}.tracingConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_config,
-            &format!("{}.vpcConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.tags", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_ondemand,
-            &format!("{}.disableOndemand", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_restriction,
-            &format!("{}.invocationRestriction", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_affinity,
-            &format!("{}.sessionAffinity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_long_living,
-            &format!("{}.enableLongLiving", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.resourceGroupId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_isolation_mode,
-            &format!("{}.instanceIsolationMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_affinity_config,
-            &format!("{}.sessionAffinityConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.idle_timeout,
-            &format!("{}.idleTimeout", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_inject_credentials,
-            &format!("{}.disableInjectCredentials", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.polar_fs_config,
-            &format!("{}.polarFsConfig", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct InstanceEventItem {
-    #[serde(rename = "level")]
-    pub level: Option<String>,
-    #[serde(rename = "children")]
     #[serde(default)]
-    pub children: Vec<String>,
-    #[serde(rename = "time")]
-    pub time: Option<String>,
-    #[serde(rename = "message")]
-    pub message: Option<String>,
-    #[serde(rename = "type")]
-    pub r#type: Option<String>,
-}
-
-impl crate::FlatSerialize for InstanceEventItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.level, &format!("{}.level", name), params);
-        crate::FlatSerialize::flat_serialize(&self.children, &format!("{}.children", name), params);
-        crate::FlatSerialize::flat_serialize(&self.time, &format!("{}.time", name), params);
-        crate::FlatSerialize::flat_serialize(&self.message, &format!("{}.message", name), params);
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.type", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetInstanceLifecycleEventsOutput {
-    #[serde(rename = "requestId")]
-    pub request_id: Option<String>,
-    #[serde(rename = "events")]
-    #[serde(default)]
-    pub events: Vec<InstanceEventItem>,
-}
-
-impl crate::FlatSerialize for GetInstanceLifecycleEventsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.request_id,
-            &format!("{}.requestId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.events, &format!("{}.events", name), params);
-    }
-}
-
-/// 查询标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct GetResourceTagsOutput {
-    /// 资源类型名称。函数计算3.0中的函数：ALIYUN::FC::FUNCTION,函数计算旧版本中的服务：ALIYUN::FC::SERVICE。
-    #[serde(rename = "resouceType")]
-    pub resouce_type: Option<String>,
-    /// 阿里云资源描述符。
-    #[serde(rename = "resourceArn")]
-    pub resource_arn: Option<String>,
-    /// 标签字典。
-    #[serde(rename = "tags")]
-    #[serde(default)]
-    pub tags: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for GetResourceTagsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resouce_type,
-            &format!("{}.resouceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_arn,
-            &format!("{}.resourceArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.tags", name), params);
-    }
+    pub polar_fs_config: PolarFsConfig,
 }
 
 /// HTTP 触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct HTTPTrigger {
     /// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
@@ -9545,132 +8015,8 @@ pub struct HTTPTrigger {
     pub url_intranet: Option<String>,
 }
 
-impl crate::FlatSerialize for HTTPTrigger {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.url_internet,
-            &format!("{}.urlInternet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.url_intranet,
-            &format!("{}.urlIntranet", name),
-            params,
-        );
-    }
-}
-
-/// HTTP 触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct HTTPTriggerConfig {
-    /// 鉴权配置
-    #[serde(rename = "authConfig")]
-    pub auth_config: Option<String>,
-    /// 认证类型，包含如下两种类型：
-    ///
-    /// - **function**：表示需要认证。
-    ///
-    /// - **anonymous**：表示不需要认证。
-    ///
-    /// > 默认类型为 **function**
-    #[serde(rename = "authType")]
-    pub auth_type: Option<String>,
-    /// 禁用默认公网域名访问的开关。设置为true时，访问函数默认提供的公网URL地址会返回403错误。设置为false时，不会有任何影响。
-    #[serde(rename = "disableURLInternet")]
-    pub disable_url_internet: Option<bool>,
-    /// 请求方法列表。允许同时支持多种方法。
-    #[serde(rename = "methods")]
-    #[serde(default)]
-    pub methods: Vec<String>,
-}
-
-impl crate::FlatSerialize for HTTPTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auth_config,
-            &format!("{}.authConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auth_type,
-            &format!("{}.authType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_url_internet,
-            &format!("{}.disableURLInternet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.methods, &format!("{}.methods", name), params);
-    }
-}
-
-/// 通过 HTTP 请求头传递客户端会话标识，函数计算基于该标识进行哈希计算，确保相同标识的请求被路由到同一个实例。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct HeaderFieldSessionAffinityConfig {
-    /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
-    #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: Option<i64>,
-    /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
-    #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: Option<i64>,
-    /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
-    #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: Option<i64>,
-    /// 通过 HTTP 请求头传递客户端会话标识，不能以 x-fc- 前缀开头，以字母开头，非首字符可包含数字、中划线、下划线、字母，长度大于等于5个字符并且不超过40个字符。
-    #[serde(rename = "affinityHeaderFieldName")]
-    pub affinity_header_field_name: Option<String>,
-    /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
-    #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: Option<bool>,
-}
-
-impl crate::FlatSerialize for HeaderFieldSessionAffinityConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.session_idle_timeout_in_seconds,
-            &format!("{}.sessionIdleTimeoutInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_ttl_in_seconds,
-            &format!("{}.sessionTTLInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_concurrency_per_instance,
-            &format!("{}.sessionConcurrencyPerInstance", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.affinity_header_field_name,
-            &format!("{}.affinityHeaderFieldName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_session_id_reuse,
-            &format!("{}.disableSessionIdReuse", name),
-            params,
-        );
-    }
-}
-
 /// 函数实例信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct InstanceInfo {
     /// 实例ID。
@@ -9678,61 +8024,27 @@ pub struct InstanceInfo {
     pub instance_id: Option<String>,
     /// 实例所属函数的版本。如果是LATEST别名下的函数实例，则返回版本号为0。
     #[serde(rename = "versionId")]
-    pub version_id: Option<String>,
+    #[serde(default)]
+    pub version_id: String,
     #[serde(rename = "qualifier")]
-    pub qualifier: Option<String>,
+    #[serde(default)]
+    pub qualifier: String,
     #[serde(rename = "status")]
-    pub status: Option<String>,
+    #[serde(default)]
+    pub status: String,
     #[serde(rename = "createdTimeMs")]
-    pub created_time_ms: Option<i64>,
+    #[serde(default)]
+    pub created_time_ms: i64,
     #[serde(rename = "destroyedTimeMs")]
-    pub destroyed_time_ms: Option<i64>,
+    #[serde(default)]
+    pub destroyed_time_ms: i64,
     #[serde(rename = "resourceType")]
-    pub resource_type: Option<String>,
-}
-
-impl crate::FlatSerialize for InstanceInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_id,
-            &format!("{}.instanceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_id,
-            &format!("{}.versionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualifier,
-            &format!("{}.qualifier", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time_ms,
-            &format!("{}.createdTimeMs", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.destroyed_time_ms,
-            &format!("{}.destroyedTimeMs", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.resourceType", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub resource_type: String,
 }
 
 /// SLS 触发器任务配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct JobConfig {
     /// 最大重试次数。取值范围为0～100。日志服务根据触发间隔每次触发函数执行时，如果遇到错误（例如权限不足、网络失败、函数执行异常返回等），该参数定义本次触发所允许的最大重试次数。对于本次触发，如果超过最大重试次数仍无法成功的，需要等到下一次触发间隔到来时，由日志服务再次触发函数执行。
@@ -9743,27 +8055,8 @@ pub struct JobConfig {
     pub trigger_interval: Option<i32>,
 }
 
-impl crate::FlatSerialize for JobConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.max_retry_time,
-            &format!("{}.maxRetryTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_interval,
-            &format!("{}.triggerInterval", name),
-            params,
-        );
-    }
-}
-
 /// 代码包配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OutputCodeLocation {
     /// 代码包的地址。
@@ -9774,23 +8067,8 @@ pub struct OutputCodeLocation {
     pub repository_type: Option<String>,
 }
 
-impl crate::FlatSerialize for OutputCodeLocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.location", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.repository_type,
-            &format!("{}.repositoryType", name),
-            params,
-        );
-    }
-}
-
 /// 层的详细信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Layer {
     /// 层的权限。取值0代表私有，取值1代表公有。官方公共层默认为公有，自定义层可以设置为私有或者公有。
@@ -9807,7 +8085,6 @@ pub struct Layer {
     pub code_size: Option<i64>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
-    #[serde(default)]
     pub compatible_runtime: Vec<String>,
     /// 层版本的创建时间。
     #[serde(rename = "createTime")]
@@ -9829,112 +8106,32 @@ pub struct Layer {
     pub version: Option<i32>,
 }
 
-impl crate::FlatSerialize for Layer {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.acl, &format!("{}.acl", name), params);
-        crate::FlatSerialize::flat_serialize(&self.code, &format!("{}.code", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.code_checksum,
-            &format!("{}.codeChecksum", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.code_size,
-            &format!("{}.codeSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.compatible_runtime,
-            &format!("{}.compatibleRuntime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.create_time,
-            &format!("{}.createTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.layer_name,
-            &format!("{}.layerName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.layer_version_arn,
-            &format!("{}.layerVersionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.license, &format!("{}.license", name), params);
-        crate::FlatSerialize::flat_serialize(&self.version, &format!("{}.version", name), params);
-    }
-}
-
 /// 函数别名列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAliasesOutput {
     /// 别名列表
     #[serde(rename = "aliases")]
-    #[serde(default)]
     pub aliases: Vec<Alias>,
     /// 下一个版本名
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
 }
 
-impl crate::FlatSerialize for ListAliasesOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.aliases, &format!("{}.aliases", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
-}
-
 /// 获取函数异步配置列表的响应信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAsyncInvokeConfigOutput {
     /// 异步调用配置列表。
     #[serde(rename = "configs")]
-    #[serde(default)]
     pub configs: Vec<AsyncConfig>,
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
 }
 
-impl crate::FlatSerialize for ListAsyncInvokeConfigOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.configs, &format!("{}.configs", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
-}
-
 /// 列举异步任务信息响应内容。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListAsyncTaskOutput {
     /// 分页标记，用来返回更多结果。如果这个值没有返回，则说明没有更多结果。
@@ -9942,231 +8139,79 @@ pub struct ListAsyncTaskOutput {
     pub next_token: Option<String>,
     /// 异步任务信息列表。
     #[serde(rename = "tasks")]
-    #[serde(default)]
     pub tasks: Vec<AsyncTask>,
 }
 
-impl crate::FlatSerialize for ListAsyncTaskOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tasks, &format!("{}.tasks", name), params);
-    }
-}
-
 /// 获取函数的并发配置列表信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListConcurrencyConfigsOutput {
     /// 并发配置列表。
     #[serde(rename = "configs")]
-    #[serde(default)]
     pub configs: Vec<ConcurrencyConfig>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
 }
 
-impl crate::FlatSerialize for ListConcurrencyConfigsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.configs, &format!("{}.configs", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
-}
-
 /// 获取自定义域名列表的响应信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListCustomDomainOutput {
     /// 自定义域名列表
     #[serde(rename = "customDomains")]
-    #[serde(default)]
     pub custom_domains: Vec<CustomDomain>,
     /// 当符合查询条件的数据未读取完时，服务端会返回nextToken，此时可以使用nextToken继续读取后面的数据。第一次查询不需要提供这个参数。
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
 }
 
-impl crate::FlatSerialize for ListCustomDomainOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_domains,
-            &format!("{}.customDomains", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListElasticConfigsOutput {
-    #[serde(rename = "nextToken")]
-    pub next_token: Option<String>,
-    #[serde(rename = "elasticConfigs")]
-    #[serde(default)]
-    pub elastic_configs: Vec<ElasticConfigStatus>,
-}
-
-impl crate::FlatSerialize for ListElasticConfigsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.elastic_configs,
-            &format!("{}.elasticConfigs", name),
-            params,
-        );
-    }
-}
-
 /// 获取函数列表响应信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListFunctionsOutput {
     /// 函数信息列表
     #[serde(rename = "functions")]
-    #[serde(default)]
     pub functions: Vec<Function>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
 }
 
-impl crate::FlatSerialize for ListFunctionsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.functions,
-            &format!("{}.functions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
-}
-
 /// 查询返回的实例信息列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListInstancesOutput {
     /// 实例列表信息
     #[serde(rename = "instances")]
-    #[serde(default)]
     pub instances: Vec<InstanceInfo>,
     #[serde(rename = "requestId")]
-    pub request_id: Option<String>,
-}
-
-impl crate::FlatSerialize for ListInstancesOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.instances,
-            &format!("{}.instances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.request_id,
-            &format!("{}.requestId", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub request_id: String,
 }
 
 /// 获取指定层的版本列表。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListLayerVersionOutput {
     /// 层版本的列表。
     #[serde(rename = "layers")]
-    #[serde(default)]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始版本名，用来返回更多结果。
     #[serde(rename = "nextVersion")]
     pub next_version: Option<i32>,
 }
 
-impl crate::FlatSerialize for ListLayerVersionOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.layers, &format!("{}.layers", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_version,
-            &format!("{}.nextVersion", name),
-            params,
-        );
-    }
-}
-
 /// 获取层列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListLayersOutput {
     /// 层的列表。
     #[serde(rename = "layers")]
-    #[serde(default)]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始层名，用来返回更多结果。
     #[serde(rename = "nextToken")]
     pub next_token: Option<String>,
-}
-
-impl crate::FlatSerialize for ListLayersOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.layers, &format!("{}.layers", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-    }
 }
 
 /// 定时策略配置
@@ -10190,9 +8235,9 @@ pub struct ScheduledAction {
     pub target: i64,
     /// 时区。时区参数为空时，startTime、endTime和scheduleExpression的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    pub time_zone: Option<String>,
+    #[serde(default)]
+    pub time_zone: String,
 }
-
 impl crate::FlatSerialize for ScheduledAction {
     fn flat_serialize<'a>(
         &'a self,
@@ -10247,9 +8292,9 @@ pub struct TargetTrackingPolicy {
     pub start_time: Option<String>,
     /// 时区。时区参数为空时，startTime和endTime的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    pub time_zone: Option<String>,
+    #[serde(default)]
+    pub time_zone: String,
 }
-
 impl crate::FlatSerialize for TargetTrackingPolicy {
     fn flat_serialize<'a>(
         &'a self,
@@ -10292,19 +8337,19 @@ impl crate::FlatSerialize for TargetTrackingPolicy {
 }
 
 /// 函数预留配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ProvisionConfig {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
-    #[serde(default)]
     pub scheduled_actions: Vec<ScheduledAction>,
     /// 预留实例创建失败时的错误信息。
     #[serde(rename = "currentError")]
     pub current_error: Option<String>,
     /// 所有指标追踪伸缩策略和定时策略失效时的默认资源个数。
     #[serde(rename = "defaultTarget")]
-    pub default_target: Option<i64>,
+    #[serde(default)]
+    pub default_target: i64,
     /// 实际资源个数。
     #[serde(rename = "current")]
     pub current: Option<i64>,
@@ -10316,7 +8361,6 @@ pub struct ProvisionConfig {
     pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
-    #[serde(default)]
     pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// 函数的资源描述
     #[serde(rename = "functionArn")]
@@ -10332,54 +8376,8 @@ pub struct ProvisionConfig {
     pub target: Option<i64>,
 }
 
-impl crate::FlatSerialize for ProvisionConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_actions,
-            &format!("{}.scheduledActions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_error,
-            &format!("{}.currentError", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.default_target,
-            &format!("{}.defaultTarget", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.current, &format!("{}.current", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.always_allocate_cpu,
-            &format!("{}.alwaysAllocateCPU", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.always_allocate_gpu,
-            &format!("{}.alwaysAllocateGPU", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_tracking_policies,
-            &format!("{}.targetTrackingPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.target, &format!("{}.target", name), params);
-    }
-}
-
 /// 获取函数预留配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListProvisionConfigsOutput {
     /// 下次查询的起始Token。如果这个值没有返回，则说明没有更多结果。
@@ -10387,315 +8385,109 @@ pub struct ListProvisionConfigsOutput {
     pub next_token: Option<String>,
     /// 函数预留配置列表。
     #[serde(rename = "provisionConfigs")]
-    #[serde(default)]
     pub provision_configs: Vec<ProvisionConfig>,
 }
 
-impl crate::FlatSerialize for ListProvisionConfigsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.provision_configs,
-            &format!("{}.provisionConfigs", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResidentResourceCapacity {
     /// GPU总卡数
     #[serde(rename = "totalGpuCards")]
-    pub total_gpu_cards: Option<i64>,
+    #[serde(default)]
+    pub total_gpu_cards: i64,
     /// 总内存大小，单位 GB
     #[serde(rename = "totalMemorySize")]
-    pub total_memory_size: Option<i64>,
+    #[serde(default)]
+    pub total_memory_size: i64,
     /// 总磁盘大小，单位 GB
     #[serde(rename = "totalDiskSize")]
-    pub total_disk_size: Option<i64>,
+    #[serde(default)]
+    pub total_disk_size: i64,
     /// 总显存大小，单位 GB
     #[serde(rename = "totalGpuMemorySize")]
-    pub total_gpu_memory_size: Option<i64>,
+    #[serde(default)]
+    pub total_gpu_memory_size: i64,
     /// CPU 总核数
     #[serde(rename = "totalCpuCores")]
-    pub total_cpu_cores: Option<i64>,
+    #[serde(default)]
+    pub total_cpu_cores: i64,
     /// GPU 卡型
     #[serde(rename = "gpuType")]
-    pub gpu_type: Option<String>,
+    #[serde(default)]
+    pub gpu_type: String,
 }
 
-impl crate::FlatSerialize for ResidentResourceCapacity {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.total_gpu_cards,
-            &format!("{}.totalGpuCards", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_memory_size,
-            &format!("{}.totalMemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_disk_size,
-            &format!("{}.totalDiskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_gpu_memory_size,
-            &format!("{}.totalGpuMemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_cpu_cores,
-            &format!("{}.totalCpuCores", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.gpu_type, &format!("{}.gpuType", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResidentResourceAllocation {
     /// 使用该资源池的函数名
     #[serde(rename = "functionName")]
-    pub function_name: Option<String>,
+    #[serde(default)]
+    pub function_name: String,
     /// 函数的别名
     #[serde(rename = "qualifier")]
-    pub qualifier: Option<String>,
+    #[serde(default)]
+    pub qualifier: String,
     /// 实例数
     #[serde(rename = "instanceCount")]
-    pub instance_count: Option<i32>,
+    #[serde(default)]
+    pub instance_count: i32,
     /// CPU 占用总核数
     #[serde(rename = "totalCpuCores")]
-    pub total_cpu_cores: Option<f64>,
+    #[serde(default)]
+    pub total_cpu_cores: f64,
     /// 内存占用大小，单位 GB
     #[serde(rename = "totalMemorySize")]
-    pub total_memory_size: Option<f64>,
+    #[serde(default)]
+    pub total_memory_size: f64,
     /// 占用显存大小，单位 GB
     #[serde(rename = "totalGpuMemorySize")]
-    pub total_gpu_memory_size: Option<f64>,
+    #[serde(default)]
+    pub total_gpu_memory_size: f64,
     /// 占用磁盘大小，单位 GB
     #[serde(rename = "totalDiskSize")]
-    pub total_disk_size: Option<f64>,
+    #[serde(default)]
+    pub total_disk_size: f64,
     #[serde(rename = "instanceType")]
-    pub instance_type: Option<String>,
+    #[serde(default)]
+    pub instance_type: String,
 }
 
-impl crate::FlatSerialize for ResidentResourceAllocation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.function_name,
-            &format!("{}.functionName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualifier,
-            &format!("{}.qualifier", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_count,
-            &format!("{}.instanceCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_cpu_cores,
-            &format!("{}.totalCpuCores", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_memory_size,
-            &format!("{}.totalMemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_gpu_memory_size,
-            &format!("{}.totalGpuMemorySize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.total_disk_size,
-            &format!("{}.totalDiskSize", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.instance_type,
-            &format!("{}.instanceType", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ResidentResourceAllocationStatus {
     #[serde(rename = "lastAllocatedTime")]
-    pub last_allocated_time: Option<String>,
+    #[serde(default)]
+    pub last_allocated_time: String,
     #[serde(rename = "lastAllocation")]
     #[serde(default)]
     pub last_allocation: Vec<ResidentResourceAllocation>,
 }
 
-impl crate::FlatSerialize for ResidentResourceAllocationStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.last_allocated_time,
-            &format!("{}.lastAllocatedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_allocation,
-            &format!("{}.lastAllocation", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResidentResourcePool {
-    /// 代表资源名称的资源属性字段
-    #[serde(rename = "residentResourcePoolName")]
-    pub resident_resource_pool_name: Option<String>,
-    /// 上次修改时间，包含扩容、续费、更名等操作
-    #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: Option<String>,
-    /// 资源池过期时间
-    #[serde(rename = "expireTime")]
-    pub expire_time: Option<String>,
-    #[serde(rename = "resourcePoolConfig")]
-    pub resource_pool_config: Option<ResidentResourceCapacity>,
-    #[serde(rename = "residentResourcePoolId")]
-    pub resident_resource_pool_id: Option<String>,
-    /// 资源池总体规格
-    #[serde(rename = "resourcePoolCapacity")]
-    pub resource_pool_capacity: Option<ResidentResourceCapacity>,
-    /// 代表创建时间的资源属性字段
-    #[serde(rename = "createdTime")]
-    pub created_time: Option<String>,
-    /// 资源池实时分配情况，包含每个函数的具体分配情况
-    #[serde(rename = "allocationStatus")]
-    pub allocation_status: Option<ResidentResourceAllocationStatus>,
-}
-
-impl crate::FlatSerialize for ResidentResourcePool {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_resource_pool_name,
-            &format!("{}.residentResourcePoolName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expire_time,
-            &format!("{}.expireTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_pool_config,
-            &format!("{}.resourcePoolConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_resource_pool_id,
-            &format!("{}.residentResourcePoolId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_pool_capacity,
-            &format!("{}.resourcePoolCapacity", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allocation_status,
-            &format!("{}.allocationStatus", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListResidentResourcePoolsOutput {
-    #[serde(rename = "nextToken")]
-    pub next_token: Option<String>,
-    #[serde(rename = "residentResourcePools")]
-    #[serde(default)]
-    pub resident_resource_pools: Vec<ResidentResourcePool>,
-}
-
-impl crate::FlatSerialize for ListResidentResourcePoolsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_resource_pools,
-            &format!("{}.residentResourcePools", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ScalingConfigStatus {
     #[serde(rename = "functionArn")]
-    pub function_arn: Option<String>,
+    #[serde(default)]
+    pub function_arn: String,
     #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: Option<String>,
+    #[serde(default)]
+    pub resident_pool_id: String,
     #[serde(rename = "minInstances")]
-    pub min_instances: Option<i64>,
+    #[serde(default)]
+    pub min_instances: i64,
     #[serde(rename = "currentInstances")]
-    pub current_instances: Option<i64>,
+    #[serde(default)]
+    pub current_instances: i64,
     #[serde(rename = "currentError")]
-    pub current_error: Option<String>,
+    #[serde(default)]
+    pub current_error: String,
     #[serde(rename = "targetInstances")]
-    pub target_instances: Option<i64>,
+    #[serde(default)]
+    pub target_instances: i64,
     #[serde(rename = "enableOnDemandScaling")]
-    pub enable_on_demand_scaling: Option<bool>,
+    #[serde(default)]
+    pub enable_on_demand_scaling: bool,
     #[serde(rename = "scheduledPolicies")]
     #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
@@ -10703,259 +8495,100 @@ pub struct ScalingConfigStatus {
     #[serde(default)]
     pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
-    pub enable_mix_mode: Option<bool>,
+    #[serde(default)]
+    pub enable_mix_mode: bool,
     #[serde(rename = "requestDispatchPolicy")]
-    pub request_dispatch_policy: Option<String>,
+    #[serde(default)]
+    pub request_dispatch_policy: String,
 }
 
-impl crate::FlatSerialize for ScalingConfigStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.function_arn,
-            &format!("{}.functionArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_pool_id,
-            &format!("{}.residentPoolId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.min_instances,
-            &format!("{}.minInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_instances,
-            &format!("{}.currentInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.current_error,
-            &format!("{}.currentError", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_instances,
-            &format!("{}.targetInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_on_demand_scaling,
-            &format!("{}.enableOnDemandScaling", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_policies,
-            &format!("{}.scheduledPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.horizontal_scaling_policies,
-            &format!("{}.horizontalScalingPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_mix_mode,
-            &format!("{}.enableMixMode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.request_dispatch_policy,
-            &format!("{}.requestDispatchPolicy", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListScalingConfigsOutput {
     #[serde(rename = "nextToken")]
-    pub next_token: Option<String>,
+    #[serde(default)]
+    pub next_token: String,
     #[serde(rename = "scalingConfigs")]
     #[serde(default)]
     pub scaling_configs: Vec<ScalingConfigStatus>,
 }
 
-impl crate::FlatSerialize for ListScalingConfigsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scaling_configs,
-            &format!("{}.scalingConfigs", name),
-            params,
-        );
-    }
-}
-
 /// 会话信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Session {
     /// 函数会话唯一标识
     #[serde(rename = "sessionId")]
-    pub session_id: Option<String>,
+    #[serde(default)]
+    pub session_id: String,
     /// Session所属函数名称
     #[serde(rename = "functionName")]
-    pub function_name: Option<String>,
+    #[serde(default)]
+    pub function_name: String,
     /// 会话亲和类型
     #[serde(rename = "sessionAffinityType")]
-    pub session_affinity_type: Option<String>,
+    #[serde(default)]
+    pub session_affinity_type: String,
     /// Session 生命周期最大值
     #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: Option<i64>,
+    #[serde(default)]
+    pub session_ttl_in_seconds: i64,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: Option<i64>,
+    #[serde(default)]
+    pub session_idle_timeout_in_seconds: i64,
     /// Session 的创建时间
     #[serde(rename = "createdTime")]
-    pub created_time: Option<String>,
+    #[serde(default)]
+    pub created_time: String,
     /// Session上一次被更新的时间。
     #[serde(rename = "lastModifiedTime")]
-    pub last_modified_time: Option<String>,
+    #[serde(default)]
+    pub last_modified_time: String,
     /// Session 状态：Active 代表 Session 有效，Expired代表 Session已过期
     #[serde(rename = "sessionStatus")]
-    pub session_status: Option<String>,
+    #[serde(default)]
+    pub session_status: String,
     /// Session关联的函数实例ID
     #[serde(rename = "containerId")]
-    pub container_id: Option<String>,
+    #[serde(default)]
+    pub container_id: String,
     /// 客户创建 Session 时传入的 Qualifier，如未传则为默认值 LATEST
     #[serde(rename = "qualifier")]
-    pub qualifier: Option<String>,
+    #[serde(default)]
+    pub qualifier: String,
     /// NAS配置，配置后Session关联的实例可以访问指定NAS资源。
     #[serde(rename = "nasConfig")]
-    pub nas_config: Option<NASConfig>,
+    #[serde(default)]
+    pub nas_config: NASConfig,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    pub disable_session_id_reuse: Option<bool>,
+    #[serde(default)]
+    pub disable_session_id_reuse: bool,
     #[serde(rename = "ossMountConfig")]
-    pub oss_mount_config: Option<OSSMountConfig>,
+    #[serde(default)]
+    pub oss_mount_config: OSSMountConfig,
     #[serde(rename = "polarFsConfig")]
-    pub polar_fs_config: Option<PolarFsConfig>,
-}
-
-impl crate::FlatSerialize for Session {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.session_id,
-            &format!("{}.sessionId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.function_name,
-            &format!("{}.functionName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_affinity_type,
-            &format!("{}.sessionAffinityType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_ttl_in_seconds,
-            &format!("{}.sessionTTLInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_idle_timeout_in_seconds,
-            &format!("{}.sessionIdleTimeoutInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_status,
-            &format!("{}.sessionStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.container_id,
-            &format!("{}.containerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualifier,
-            &format!("{}.qualifier", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.nas_config,
-            &format!("{}.nasConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.disable_session_id_reuse,
-            &format!("{}.disableSessionIdReuse", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_mount_config,
-            &format!("{}.ossMountConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.polar_fs_config,
-            &format!("{}.polarFsConfig", name),
-            params,
-        );
-    }
+    #[serde(default)]
+    pub polar_fs_config: PolarFsConfig,
 }
 
 /// 函数会话列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListSessionsOutput {
     /// 下一次查询会话列表的起始位置。
     #[serde(rename = "nextToken")]
-    pub next_token: Option<String>,
+    #[serde(default)]
+    pub next_token: String,
     /// 会话列表信息
     #[serde(rename = "sessions")]
     #[serde(default)]
     pub sessions: Vec<Session>,
 }
 
-impl crate::FlatSerialize for ListSessionsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.sessions, &format!("{}.sessions", name), params);
-    }
-}
-
 /// 资源标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct TagResource {
     /// 阿里云资源描述符。
@@ -10974,33 +8607,8 @@ pub struct TagResource {
     pub tag_value: Option<String>,
 }
 
-impl crate::FlatSerialize for TagResource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_id,
-            &format!("{}.ResourceId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_type,
-            &format!("{}.ResourceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag_key, &format!("{}.TagKey", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_value,
-            &format!("{}.TagValue", name),
-            params,
-        );
-    }
-}
-
 /// 查询绑定指定标签的资源信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTagResourcesOutput {
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
@@ -11011,104 +8619,11 @@ pub struct ListTagResourcesOutput {
     pub request_id: Option<String>,
     /// 查询到的资源和标签的信息。
     #[serde(rename = "TagResources")]
-    #[serde(default)]
     pub tag_resources: Vec<TagResource>,
 }
 
-impl crate::FlatSerialize for ListTagResourcesOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.NextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.request_id,
-            &format!("{}.RequestId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tag_resources,
-            &format!("{}.TagResources", name),
-            params,
-        );
-    }
-}
-
-/// 资源标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct Resource {
-    /// 资源类型名称。函数计算3.0中的函数：ALIYUN::FC::FUNCTION,函数计算旧版本中的服务：ALIYUN::FC::SERVICE。
-    #[serde(rename = "resouceType")]
-    pub resouce_type: Option<String>,
-    /// 阿里云资源描述符。
-    #[serde(rename = "resourceArn")]
-    pub resource_arn: Option<String>,
-    /// 标签字典。
-    #[serde(rename = "tags")]
-    #[serde(default)]
-    pub tags: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for Resource {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resouce_type,
-            &format!("{}.resouceType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_arn,
-            &format!("{}.resourceArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.tags", name), params);
-    }
-}
-
-/// 具有指定标签的资源列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ListTaggedResourcesOutput {
-    /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
-    #[serde(rename = "nextToken")]
-    pub next_token: Option<String>,
-    /// 被打标签的资源列表。
-    #[serde(rename = "resources")]
-    #[serde(default)]
-    pub resources: Vec<Resource>,
-}
-
-impl crate::FlatSerialize for ListTaggedResourcesOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resources,
-            &format!("{}.resources", name),
-            params,
-        );
-    }
-}
-
 /// 触发器的配置信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Trigger {
     /// 触发器的创建时间。
@@ -11152,78 +8667,8 @@ pub struct Trigger {
     pub trigger_type: Option<String>,
 }
 
-impl crate::FlatSerialize for Trigger {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_trigger,
-            &format!("{}.httpTrigger", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.invocation_role,
-            &format!("{}.invocationRole", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.qualifier,
-            &format!("{}.qualifier", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_arn,
-            &format!("{}.sourceArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.target_arn,
-            &format!("{}.targetArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_config,
-            &format!("{}.triggerConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_id,
-            &format!("{}.triggerId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_name,
-            &format!("{}.triggerName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.trigger_type,
-            &format!("{}.triggerType", name),
-            params,
-        );
-    }
-}
-
 /// 获取触发器列表的响应结构体。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListTriggersOutput {
     /// 下一个触发器的名称。用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
@@ -11231,27 +8676,11 @@ pub struct ListTriggersOutput {
     pub next_token: Option<String>,
     /// 触发器列表。
     #[serde(rename = "triggers")]
-    #[serde(default)]
     pub triggers: Vec<Trigger>,
 }
 
-impl crate::FlatSerialize for ListTriggersOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.triggers, &format!("{}.triggers", name), params);
-    }
-}
-
 /// 版本信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct Version {
     /// 创建时间
@@ -11268,37 +8697,8 @@ pub struct Version {
     pub version_id: Option<String>,
 }
 
-impl crate::FlatSerialize for Version {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.created_time,
-            &format!("{}.createdTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modified_time,
-            &format!("{}.lastModifiedTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.version_id,
-            &format!("{}.versionId", name),
-            params,
-        );
-    }
-}
-
 /// 列出版本的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListVersionsOutput {
     /// 版本排序方式
@@ -11309,195 +8709,20 @@ pub struct ListVersionsOutput {
     pub next_token: Option<String>,
     /// 版本ID列表
     #[serde(rename = "versions")]
-    #[serde(default)]
     pub versions: Vec<Version>,
 }
 
-impl crate::FlatSerialize for ListVersionsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.direction,
-            &format!("{}.direction", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.nextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.versions, &format!("{}.versions", name), params);
-    }
-}
-
 /// 列出服务/函数下的全部VPC绑定的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListVpcBindingsOutput {
     /// VPC实例ID列表
     #[serde(rename = "vpcIds")]
-    #[serde(default)]
     pub vpc_ids: Vec<String>,
 }
 
-impl crate::FlatSerialize for ListVpcBindingsOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc_ids, &format!("{}.vpcIds", name), params);
-    }
-}
-
-/// 基于 MCP SSE 协议规范，函数计算确保客户端携带相同 Session ID 的请求始终路由到同一个实例。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MCPSSESessionAffinityConfig {
-    /// SSE 路径
-    #[serde(rename = "sseEndpointPath")]
-    pub sse_endpoint_path: Option<String>,
-    /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
-    #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: Option<i64>,
-}
-
-impl crate::FlatSerialize for MCPSSESessionAffinityConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sse_endpoint_path,
-            &format!("{}.sseEndpointPath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_concurrency_per_instance,
-            &format!("{}.sessionConcurrencyPerInstance", name),
-            params,
-        );
-    }
-}
-
-/// MCP Streamable 亲和性配置结构
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MCPStreamableSessionAffinityConfig {
-    /// 指从 Session 创建、使用到最终销毁的全过程。 超过生命周期，函数计算将会自动销毁Session， 不再保证亲和性，取值范围为[1, 21600]。
-    #[serde(rename = "sessionTTLInSeconds")]
-    pub session_ttl_in_seconds: Option<i64>,
-    /// 用户在一段时间内没有进行任何操作，导致会话进入空闲状态，最大时长为单个 Session 生命周期上限，取值范围为[0, 21600]。
-    #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    pub session_idle_timeout_in_seconds: Option<i64>,
-    /// 单实例在同一个时间内能同时处理的最大 Session 数，取值范围为[1, 200]。
-    #[serde(rename = "sessionConcurrencyPerInstance")]
-    pub session_concurrency_per_instance: Option<i64>,
-}
-
-impl crate::FlatSerialize for MCPStreamableSessionAffinityConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.session_ttl_in_seconds,
-            &format!("{}.sessionTTLInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_idle_timeout_in_seconds,
-            &format!("{}.sessionIdleTimeoutInSeconds", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.session_concurrency_per_instance,
-            &format!("{}.sessionConcurrencyPerInstance", name),
-            params,
-        );
-    }
-}
-
-/// 轻量消息队列（原 MNS） 主题触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct MNSTopicTriggerConfig {
-    /// 过滤标签。只有收到包含了此处设置的过滤标签字符串的消息时，才会触发函数执行。
-    #[serde(rename = "filterTag")]
-    pub filter_tag: Option<String>,
-    /// 触发事件的内容格式，目前支持如下两种格式：
-    ///
-    /// - **JSON**
-    ///
-    /// - **STREAM**
-    ///
-    /// > 默认格式为 STREAM。
-    #[serde(rename = "notifyContentFormat")]
-    pub notify_content_format: Option<String>,
-    /// 重试策略。
-    ///
-    /// - **BACKOFF_RETRY**：表示退避重试；重试3次，每次重试的间隔时间是10秒到20秒之间的随机值，默认值。
-    ///
-    /// - **EXPONENTIAL_DECAY_RETRY**：表示指数衰减重试；重试176次，每次重试的间隔时间指数递增至512秒，总计重试时间为1天。每次重试的具体间隔为：1，2，4，8，16，32，64，128，256，512，512...512（共167个512）。
-    #[serde(rename = "notifyStrategy")]
-    pub notify_strategy: Option<String>,
-}
-
-impl crate::FlatSerialize for MNSTopicTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.filter_tag,
-            &format!("{}.filterTag", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.notify_content_format,
-            &format!("{}.notifyContentFormat", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.notify_strategy,
-            &format!("{}.notifyStrategy", name),
-            params,
-        );
-    }
-}
-
-/// OSS 触发器配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct OSSTriggerConfig {
-    /// 事件列表，请填写OSS对象存储相关的事件。事件类型请参见[OSS 触发事件列表](~~2513613~~)。
-    #[serde(rename = "events")]
-    #[serde(default)]
-    pub events: Vec<String>,
-    /// 事件过滤规则。
-    #[serde(rename = "filter")]
-    pub filter: Option<Filter>,
-}
-
-impl crate::FlatSerialize for OSSTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.events, &format!("{}.events", name), params);
-        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.filter", name), params);
-    }
-}
-
 /// 函数代码包信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct OutputFuncCode {
     /// 函数代码包的CRC64值。
@@ -11508,26 +8733,14 @@ pub struct OutputFuncCode {
     pub url: Option<String>,
 }
 
-impl crate::FlatSerialize for OutputFuncCode {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.checksum, &format!("{}.checksum", name), params);
-        crate::FlatSerialize::flat_serialize(&self.url, &format!("{}.url", name), params);
-    }
-}
-
 /// 发布版本的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PublishVersionInput {
     /// 版本描述信息
     #[serde(rename = "description")]
     pub description: Option<String>,
 }
-
 impl crate::FlatSerialize for PublishVersionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11543,7 +8756,7 @@ impl crate::FlatSerialize for PublishVersionInput {
 }
 
 /// 函数异步配置信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PutAsyncInvokeConfigInput {
     /// 是否开启异步任务（非必填）
@@ -11559,7 +8772,6 @@ pub struct PutAsyncInvokeConfigInput {
     #[serde(rename = "maxAsyncRetryAttempts")]
     pub max_async_retry_attempts: Option<i64>,
 }
-
 impl crate::FlatSerialize for PutAsyncInvokeConfigInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11590,14 +8802,13 @@ impl crate::FlatSerialize for PutAsyncInvokeConfigInput {
 }
 
 /// 设置函数的并发配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PutConcurrencyInput {
     /// 预留并发，函数预留账号并发的一部份，其他函数不可以使用这部份并发。预留并发包括预留实例和按量实例的总并发。
     #[serde(rename = "reservedConcurrency")]
     pub reserved_concurrency: i64,
 }
-
 impl crate::FlatSerialize for PutConcurrencyInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11612,57 +8823,12 @@ impl crate::FlatSerialize for PutConcurrencyInput {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct PutElasticConfigInput {
-    #[serde(rename = "minInstances")]
-    pub min_instances: Option<i64>,
-    #[serde(rename = "residentPoolId")]
-    pub resident_pool_id: Option<String>,
-    #[serde(rename = "scheduledPolicies")]
-    #[serde(default)]
-    pub scheduled_policies: Vec<ScheduledPolicy>,
-    #[serde(rename = "scalingPolicies")]
-    #[serde(default)]
-    pub scaling_policies: Vec<ScalingPolicy>,
-}
-
-impl crate::FlatSerialize for PutElasticConfigInput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.min_instances,
-            &format!("{}.minInstances", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resident_pool_id,
-            &format!("{}.residentPoolId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scheduled_policies,
-            &format!("{}.scheduledPolicies", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.scaling_policies,
-            &format!("{}.scalingPolicies", name),
-            params,
-        );
-    }
-}
-
 /// 申请或更新预留资源的配置。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PutProvisionConfigInput {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
-    #[serde(default)]
     pub scheduled_actions: Vec<ScheduledAction>,
     /// 默认最小实例数，取值范围为[0,10000]。
     /// > - 未配置指标追踪弹性策略或定时弹性策略时，当前最小实例数等于您配置最小实例数。
@@ -11677,14 +8843,12 @@ pub struct PutProvisionConfigInput {
     pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
-    #[serde(default)]
     pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// ><notice>建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
     /// 预留的目标资源个数。取值范围为[0,10000]。
     #[serde(rename = "target")]
     pub target: i64,
 }
-
 impl crate::FlatSerialize for PutProvisionConfigInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11720,7 +8884,7 @@ impl crate::FlatSerialize for PutProvisionConfigInput {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct PutScalingConfigInput {
     #[serde(rename = "residentPoolId")]
@@ -11730,17 +8894,14 @@ pub struct PutScalingConfigInput {
     #[serde(rename = "enableOnDemandScaling")]
     pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
-    #[serde(default)]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "horizontalScalingPolicies")]
-    #[serde(default)]
     pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
     pub enable_mix_mode: Option<bool>,
     #[serde(rename = "requestDispatchPolicy")]
     pub request_dispatch_policy: Option<String>,
 }
-
 impl crate::FlatSerialize for PutScalingConfigInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11785,185 +8946,8 @@ impl crate::FlatSerialize for PutScalingConfigInput {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ResidentConfig {
-    #[serde(rename = "poolId")]
-    pub pool_id: Option<String>,
-    #[serde(rename = "count")]
-    pub count: Option<i64>,
-}
-
-impl crate::FlatSerialize for ResidentConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.pool_id, &format!("{}.poolId", name), params);
-        crate::FlatSerialize::flat_serialize(&self.count, &format!("{}.count", name), params);
-    }
-}
-
-/// SLS 触发器日志配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SLSTriggerLogConfig {
-    /// Logstore名称。触发函数的过程中发生的异常和函数执行统计信息会记录到该Logstore。
-    #[serde(rename = "logstore")]
-    pub logstore: Option<String>,
-    /// Project名称。触发函数的过程中发生的异常和函数执行统计信息会记录到该Project下的Logstore中。
-    #[serde(rename = "project")]
-    pub project: Option<String>,
-}
-
-impl crate::FlatSerialize for SLSTriggerLogConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.logstore, &format!("{}.logstore", name), params);
-        crate::FlatSerialize::flat_serialize(&self.project, &format!("{}.project", name), params);
-    }
-}
-
-/// SLS 触发器配置事件源配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SourceConfig {
-    /// Logstore名称。当前触发器会定时从此Logstore中订阅数据，然后触发函数。
-    #[serde(rename = "logstore")]
-    pub logstore: Option<String>,
-    /// 消费起始时间，单位为秒，若不指定，则会从最新数据开始消费。若指定，则会对指定时间之后写入的数据产生触发事件，针对存量数据消费，在追上实时触发进度以前会忽略触发间隔来追赶消费延迟，当追赶完成后，此时触发没有延迟，开始按照设置的触发事件间隔来触发函数调用。
-    #[serde(rename = "startTime")]
-    pub start_time: Option<i64>,
-}
-
-impl crate::FlatSerialize for SourceConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.logstore, &format!("{}.logstore", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.start_time,
-            &format!("{}.startTime", name),
-            params,
-        );
-    }
-}
-
-/// SLS 触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct SLSTriggerConfig {
-    /// 是否启用触发器
-    #[serde(rename = "enable")]
-    pub enable: Option<bool>,
-    /// 调用参数。日志服务将该配置内容作为event的一部分传入函数，该配置内容必须是JSON格式的字符串。
-    #[serde(rename = "functionParameter")]
-    #[serde(default)]
-    pub function_parameter: std::collections::HashMap<String, String>,
-    /// 触发器读取日志间隔及错误重试配置。
-    #[serde(rename = "jobConfig")]
-    pub job_config: Option<JobConfig>,
-    /// 触发操作自身的日志配置。
-    #[serde(rename = "logConfig")]
-    pub log_config: Option<SLSTriggerLogConfig>,
-    /// 触发源配置。
-    #[serde(rename = "sourceConfig")]
-    pub source_config: Option<SourceConfig>,
-}
-
-impl crate::FlatSerialize for SLSTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enable, &format!("{}.enable", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.function_parameter,
-            &format!("{}.functionParameter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.job_config,
-            &format!("{}.jobConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.log_config,
-            &format!("{}.logConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_config,
-            &format!("{}.sourceConfig", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct ScalingStatus {
-    #[serde(rename = "currentError")]
-    pub current_error: Option<String>,
-    #[serde(rename = "resourceCount")]
-    pub resource_count: Option<i64>,
-}
-
-impl crate::FlatSerialize for ScalingStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.current_error,
-            &format!("{}.currentError", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_count,
-            &format!("{}.resourceCount", name),
-            params,
-        );
-    }
-}
-
 /// 给指定资源打标签
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TagResourceInput {
-    /// 资源描述符。
-    #[serde(rename = "resourceArn")]
-    pub resource_arn: String,
-    /// 标签字典。
-    #[serde(rename = "tags")]
-    pub tags: std::collections::HashMap<String, String>,
-}
-
-impl crate::FlatSerialize for TagResourceInput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_arn,
-            &format!("{}.resourceArn", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tags, &format!("{}.tags", name), params);
-    }
-}
-
-/// 给指定资源打标签
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct TagResourcesInput {
     /// 资源ID列表
@@ -11976,7 +8960,6 @@ pub struct TagResourcesInput {
     #[serde(rename = "Tag")]
     pub tag: Vec<Tag>,
 }
-
 impl crate::FlatSerialize for TagResourcesInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -11997,44 +8980,12 @@ impl crate::FlatSerialize for TagResourcesInput {
     }
 }
 
-/// 定时触发器配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct TimerTriggerConfig {
-    /// 触发周期表达式。按照时间间隔触发：以每间隔4分钟为例，表达式为 “@every 4m”。按照CRON表达式触发：常见格式类似 “0 0 4 * * *”
-    #[serde(rename = "cronExpression")]
-    pub cron_expression: Option<String>,
-    /// 是否启用触发器
-    #[serde(rename = "enable")]
-    pub enable: Option<bool>,
-    /// 输入自定义的参数，该触发消息将会作为event中payload的值。
-    #[serde(rename = "payload")]
-    pub payload: Option<String>,
-}
-
-impl crate::FlatSerialize for TimerTriggerConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cron_expression,
-            &format!("{}.cronExpression", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.enable, &format!("{}.enable", name), params);
-        crate::FlatSerialize::flat_serialize(&self.payload, &format!("{}.payload", name), params);
-    }
-}
-
 /// 更新别名的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    #[serde(default)]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名的描述信息
     #[serde(rename = "description")]
@@ -12043,7 +8994,6 @@ pub struct UpdateAliasInput {
     #[serde(rename = "versionId")]
     pub version_id: Option<String>,
 }
-
 impl crate::FlatSerialize for UpdateAliasInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -12069,7 +9019,7 @@ impl crate::FlatSerialize for UpdateAliasInput {
 }
 
 /// 更新自定义域名的请求信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateCustomDomainInput {
     /// 权限认证配置
@@ -12091,7 +9041,6 @@ pub struct UpdateCustomDomainInput {
     #[serde(rename = "wafConfig")]
     pub waf_config: Option<WAFConfig>,
 }
-
 impl crate::FlatSerialize for UpdateCustomDomainInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -12128,7 +9077,7 @@ impl crate::FlatSerialize for UpdateCustomDomainInput {
 }
 
 /// 函数更新请求参数。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
@@ -12154,7 +9103,6 @@ pub struct UpdateFunctionInput {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    #[serde(default)]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
@@ -12173,7 +9121,6 @@ pub struct UpdateFunctionInput {
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    #[serde(default)]
     pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
@@ -12231,7 +9178,6 @@ pub struct UpdateFunctionInput {
     #[serde(rename = "polarFsConfig")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
-
 impl crate::FlatSerialize for UpdateFunctionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -12368,32 +9314,8 @@ impl crate::FlatSerialize for UpdateFunctionInput {
     }
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
-pub struct UpdateResidentResourcePoolInput {
-    #[serde(rename = "name")]
-    pub name: Option<String>,
-    #[serde(rename = "useScaling")]
-    pub use_scaling: Option<bool>,
-}
-
-impl crate::FlatSerialize for UpdateResidentResourcePoolInput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.name, &format!("{}.name", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.use_scaling,
-            &format!("{}.useScaling", name),
-            params,
-        );
-    }
-}
-
 /// 更新会话的参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateSessionInput {
     /// Session生命周期
@@ -12406,7 +9328,6 @@ pub struct UpdateSessionInput {
     #[serde(rename = "disableSessionIdReuse")]
     pub disable_session_id_reuse: Option<bool>,
 }
-
 impl crate::FlatSerialize for UpdateSessionInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -12432,7 +9353,7 @@ impl crate::FlatSerialize for UpdateSessionInput {
 }
 
 /// 更新触发器的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct UpdateTriggerInput {
     /// 触发器的描述。
@@ -12448,7 +9369,6 @@ pub struct UpdateTriggerInput {
     #[serde(rename = "triggerConfig")]
     pub trigger_config: Option<String>,
 }
-
 impl crate::FlatSerialize for UpdateTriggerInput {
     fn flat_serialize<'a>(
         &'a self,
@@ -12479,7 +9399,7 @@ impl crate::FlatSerialize for UpdateTriggerInput {
 }
 
 /// 禁止调用的请求参数
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct FunctionInvocationbody {
     /// 禁止函数调用的原因
@@ -12489,7 +9409,6 @@ pub struct FunctionInvocationbody {
     #[serde(rename = "abortOngoingRequest")]
     pub abort_ongoing_request: Option<bool>,
 }
-
 impl crate::FlatSerialize for FunctionInvocationbody {
     fn flat_serialize<'a>(
         &'a self,
@@ -12506,7 +9425,7 @@ impl crate::FlatSerialize for FunctionInvocationbody {
 }
 
 /// 标签信息。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 #[serde(default)]
 pub struct ResourcesTag {
     /// 标签键。
@@ -12520,7 +9439,6 @@ pub struct ResourcesTag {
     #[serde(rename = "Value")]
     pub value: Option<String>,
 }
-
 impl crate::FlatSerialize for ResourcesTag {
     fn flat_serialize<'a>(
         &'a self,
@@ -12536,16 +9454,16 @@ impl crate::FlatSerialize for ResourcesTag {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum CreateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
-    SHARE,
+    Share,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
 }
 
 impl Default for CreateFunctionInputInstanceIsolationMode {
     fn default() -> Self {
-        Self::SHARE
+        Self::Share
     }
 }
 
@@ -12553,9 +9471,9 @@ impl CreateFunctionInputInstanceIsolationMode {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::SHARE => "SHARE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
+            Self::Share => "SHARE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
         }
     }
 }
@@ -12639,16 +9557,16 @@ impl crate::FlatSerialize for CreateFunctionInputDisableInjectCredentials {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum FunctionInstanceIsolationMode {
     #[serde(rename = "SHARE")]
-    SHARE,
+    Share,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
 }
 
 impl Default for FunctionInstanceIsolationMode {
     fn default() -> Self {
-        Self::SHARE
+        Self::Share
     }
 }
 
@@ -12656,9 +9574,9 @@ impl FunctionInstanceIsolationMode {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::SHARE => "SHARE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
+            Self::Share => "SHARE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
         }
     }
 }
@@ -12742,16 +9660,16 @@ impl crate::FlatSerialize for FunctionDisableInjectCredentials {
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum UpdateFunctionInputInstanceIsolationMode {
     #[serde(rename = "SHARE")]
-    SHARE,
+    Share,
     #[serde(rename = "REQUEST_EXCLUSIVE")]
-    REQUEST_EXCLUSIVE,
+    RequestExclusive,
     #[serde(rename = "SESSION_EXCLUSIVE")]
-    SESSION_EXCLUSIVE,
+    SessionExclusive,
 }
 
 impl Default for UpdateFunctionInputInstanceIsolationMode {
     fn default() -> Self {
-        Self::SHARE
+        Self::Share
     }
 }
 
@@ -12759,9 +9677,9 @@ impl UpdateFunctionInputInstanceIsolationMode {
     /// Returns the string value of this enum variant as used in the API.
     pub fn as_str(&self) -> &'static str {
         match self {
-            Self::SHARE => "SHARE",
-            Self::REQUEST_EXCLUSIVE => "REQUEST_EXCLUSIVE",
-            Self::SESSION_EXCLUSIVE => "SESSION_EXCLUSIVE",
+            Self::Share => "SHARE",
+            Self::RequestExclusive => "REQUEST_EXCLUSIVE",
+            Self::SessionExclusive => "SESSION_EXCLUSIVE",
         }
     }
 }
