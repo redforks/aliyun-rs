@@ -15764,29 +15764,6 @@ impl crate::Request for ListDataLakeStorageTransferJob {
     fn to_body(self) -> Self::Body {}
 }
 
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct AcceleratePathsPathItem {
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    #[serde(rename = "CachePolicy")]
-    #[serde(default)]
-    pub cache_policy: String,
-}
-
-/// 加速器加速路径集合
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct AcceleratePaths {
-    #[serde(rename = "DefaultCachePolicy")]
-    #[serde(default)]
-    pub default_cache_policy: String,
-    #[serde(rename = "Path")]
-    #[serde(default)]
-    pub path: Vec<AcceleratePathsPathItem>,
-}
-
 /// 存储ACL信息的容器。
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
@@ -15820,15 +15797,6 @@ pub struct AccessMonitorConfiguration {
     #[serde(default)]
     pub status: AccessMonitorStatus,
 }
-impl crate::FlatSerialize for AccessMonitorConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
 
 /// 保存VPC网络来源信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -15838,15 +15806,6 @@ pub struct AccessPointVpcConfiguration {
     #[serde(rename = "VpcId")]
     #[serde(default)]
     pub vpc_id: String,
-}
-impl crate::FlatSerialize for AccessPointVpcConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.vpc_id, &format!("{}.VpcId", name), params);
-    }
 }
 
 /// 保存单个接入点信息的容器。
@@ -15904,29 +15863,6 @@ pub struct ApplyServerSideEncryptionByDefault {
     #[serde(default)]
     pub kms_data_encryption: String,
 }
-impl crate::FlatSerialize for ApplyServerSideEncryptionByDefault {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sse_algorithm,
-            &format!("{}.SSEAlgorithm", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_master_key_id,
-            &format!("{}.KMSMasterKeyID", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.kms_data_encryption,
-            &format!("{}.KMSDataEncryption", name),
-            params,
-        );
-    }
-}
 
 /// 保存归档直读状态的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -15938,42 +15874,6 @@ pub struct ArchiveDirectReadConfiguration {
     #[serde(rename = "Enabled")]
     #[serde(default)]
     pub enabled: bool,
-}
-impl crate::FlatSerialize for ArchiveDirectReadConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-    }
-}
-
-/// 异步 Fetch 任务配置
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct AsyncFetchTaskConfiguration {
-    #[serde(rename = "Url")]
-    #[serde(default)]
-    pub url: String,
-    #[serde(rename = "Object")]
-    #[serde(default)]
-    pub object: String,
-    #[serde(rename = "Host")]
-    #[serde(default)]
-    pub host: String,
-    #[serde(rename = "ContentMD5")]
-    #[serde(default)]
-    pub content_md5: String,
-    #[serde(rename = "Callback")]
-    #[serde(default)]
-    pub callback: String,
-    #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: String,
-    #[serde(rename = "IgnoreSameKey")]
-    #[serde(default)]
-    pub ignore_same_key: bool,
 }
 
 /// 保存Bucket信息的容器。
@@ -16011,40 +15911,19 @@ pub struct Bucket {
 }
 
 /// 保存域名信息列表的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct BucketAntiDDOSConfigurationCnames {
     /// 待防护自定义域名。
     #[serde(rename = "Domain")]
-    #[serde(default)]
     pub domain: Vec<String>,
-}
-impl crate::FlatSerialize for BucketAntiDDOSConfigurationCnames {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-    }
 }
 
 /// 保存高防实例配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct BucketAntiDDOSConfiguration {
     /// 保存域名信息列表的容器。
     #[serde(rename = "Cnames")]
     pub cnames: Option<BucketAntiDDOSConfigurationCnames>,
-}
-impl crate::FlatSerialize for BucketAntiDDOSConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cnames, &format!("{}.Cnames", name), params);
-    }
 }
 
 /// 保存自定义域名的容器。
@@ -16105,206 +15984,81 @@ pub struct BucketAntiDDOSInfo {
     pub cnames: BucketAntiDDOSInfoCnames,
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct BucketChannelConfigRuleListRuleItem {
     /// 规则名称
     #[serde(rename = "RuleName")]
-    #[serde(default)]
-    pub rule_name: String,
+    pub rule_name: Option<String>,
     /// 规则匹配正则
     #[serde(rename = "RuleRegex")]
-    #[serde(default)]
-    pub rule_regex: String,
+    pub rule_regex: Option<String>,
     /// 规则内容
     #[serde(rename = "FrontContent")]
-    #[serde(default)]
-    pub front_content: String,
-}
-impl crate::FlatSerialize for BucketChannelConfigRuleListRuleItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.rule_name,
-            &format!("{}.RuleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.rule_regex,
-            &format!("{}.RuleRegex", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.front_content,
-            &format!("{}.FrontContent", name),
-            params,
-        );
-    }
+    pub front_content: Option<String>,
 }
 
 /// 规则列表
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct BucketChannelConfigRuleList {
     /// 保存规则的容器
     #[serde(rename = "Rule")]
-    #[serde(default)]
     pub rule: Vec<BucketChannelConfigRuleListRuleItem>,
-}
-impl crate::FlatSerialize for BucketChannelConfigRuleList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
 }
 
 /// Bucket图片处理通道配置
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct BucketChannelConfig {
     /// 版本
     #[serde(rename = "version")]
-    #[serde(default)]
-    pub version: i32,
+    pub version: Option<i32>,
     /// 调试信息
     #[serde(rename = "DebugInfo")]
-    #[serde(default)]
-    pub debug_info: String,
+    pub debug_info: Option<String>,
     /// 规则列表
     #[serde(rename = "RuleList")]
-    #[serde(default)]
-    pub rule_list: BucketChannelConfigRuleList,
-}
-impl crate::FlatSerialize for BucketChannelConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.version, &format!("{}.version", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.debug_info,
-            &format!("{}.DebugInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.rule_list,
-            &format!("{}.RuleList", name),
-            params,
-        );
-    }
+    pub rule_list: Option<BucketChannelConfigRuleList>,
 }
 
 /// 保存Cname的证书配置信息的容器
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CertificateConfiguration {
     /// 证书ID。
     #[serde(rename = "CertId")]
-    #[serde(default)]
-    pub cert_id: String,
+    pub cert_id: Option<String>,
     /// 证书公钥。
     #[serde(rename = "Certificate")]
-    #[serde(default)]
-    pub certificate: String,
+    pub certificate: Option<String>,
     /// 证书私钥。
     #[serde(rename = "PrivateKey")]
-    #[serde(default)]
-    pub private_key: String,
+    pub private_key: Option<String>,
     /// 当前证书ID。如果Force值不为true，OSS Server会检查该值与当前证书ID是否匹配，不匹配则报错。
     #[serde(rename = "PreviousCertId")]
-    #[serde(default)]
-    pub previous_cert_id: String,
+    pub previous_cert_id: Option<String>,
     /// 是否强制覆盖证书。
     #[serde(rename = "Force")]
-    #[serde(default)]
-    pub force: bool,
+    pub force: Option<bool>,
     /// 是否删除证书。
     #[serde(rename = "DeleteCertificate")]
-    #[serde(default)]
-    pub delete_certificate: bool,
-}
-impl crate::FlatSerialize for CertificateConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cert_id, &format!("{}.CertId", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.certificate,
-            &format!("{}.Certificate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.private_key,
-            &format!("{}.PrivateKey", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.previous_cert_id,
-            &format!("{}.PreviousCertId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.force, &format!("{}.Force", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.delete_certificate,
-            &format!("{}.DeleteCertificate", name),
-            params,
-        );
-    }
+    pub delete_certificate: Option<bool>,
 }
 
 /// Cname信息的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct BucketCnameConfigurationCname {
     /// 自定义域名。
     #[serde(rename = "Domain")]
-    #[serde(default)]
-    pub domain: String,
+    pub domain: Option<String>,
     /// 保存证书配置信息的容器
     #[serde(rename = "CertificateConfiguration")]
-    #[serde(default)]
-    pub certificate_configuration: CertificateConfiguration,
-}
-impl crate::FlatSerialize for BucketCnameConfigurationCname {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.certificate_configuration,
-            &format!("{}.CertificateConfiguration", name),
-            params,
-        );
-    }
+    pub certificate_configuration: Option<CertificateConfiguration>,
 }
 
 /// Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct BucketCnameConfiguration {
     /// Cname信息的容器。
     #[serde(rename = "Cname")]
     pub cname: Option<BucketCnameConfigurationCname>,
-}
-impl crate::FlatSerialize for BucketCnameConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
-    }
 }
 
 /// Bucket存储冗余转换任务详情
@@ -16489,29 +16243,6 @@ pub struct LoggingEnabled {
     #[serde(default)]
     pub logging_role: String,
 }
-impl crate::FlatSerialize for LoggingEnabled {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.target_bucket,
-            &format!("{}.TargetBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.target_prefix,
-            &format!("{}.TargetPrefix", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.logging_role,
-            &format!("{}.LoggingRole", name),
-            params,
-        );
-    }
-}
 
 /// 存储访问日志状态信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -16521,23 +16252,9 @@ pub struct BucketLoggingStatus {
     #[serde(rename = "LoggingEnabled")]
     pub logging_enabled: LoggingEnabled,
 }
-impl crate::FlatSerialize for BucketLoggingStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.logging_enabled,
-            &format!("{}.LoggingEnabled", name),
-            params,
-        );
-    }
-}
 
 /// Bucket图片处理配置
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct BucketProcessConfiguration {
     /// 域名
     #[serde(rename = "CompliedHost")]
@@ -16558,65 +16275,13 @@ pub struct BucketProcessConfiguration {
     #[serde(rename = "StyleDelimiters")]
     pub style_delimiters: Option<String>,
 }
-impl crate::FlatSerialize for BucketProcessConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.complied_host,
-            &format!("{}.CompliedHost", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_domain_support_at_process,
-            &format!("{}.OssDomainSupportAtProcess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_file_protect,
-            &format!("{}.SourceFileProtect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_file_protect_suffix,
-            &format!("{}.SourceFileProtectSuffix", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.bucket_channel_config,
-            &format!("{}.BucketChannelConfig", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.style_delimiters,
-            &format!("{}.StyleDelimiters", name),
-            params,
-        );
-    }
-}
 
 /// Bucket资源组配置
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct BucketResourceGroupConfiguration {
     /// 所属资源组ID
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: Option<String>,
-}
-impl crate::FlatSerialize for BucketResourceGroupConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.resource_group_id,
-            &format!("{}.ResourceGroupId", name),
-            params,
-        );
-    }
 }
 
 /// BucketStat结构的容器。
@@ -16786,43 +16451,9 @@ pub struct CORSRule {
     #[serde(default)]
     pub max_age_seconds: i64,
 }
-impl crate::FlatSerialize for CORSRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_origin,
-            &format!("{}.AllowedOrigin", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_method,
-            &format!("{}.AllowedMethod", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_header,
-            &format!("{}.AllowedHeader", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.expose_header,
-            &format!("{}.ExposeHeader", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_age_seconds,
-            &format!("{}.MaxAgeSeconds", name),
-            params,
-        );
-    }
-}
 
 /// Bucket的CORS规则容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CORSConfiguration {
     /// CORS规则的容器。
     ///
@@ -16838,28 +16469,9 @@ pub struct CORSConfiguration {
     #[serde(rename = "ResponseVary")]
     pub response_vary: Option<bool>,
 }
-impl crate::FlatSerialize for CORSConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.cors_rule,
-            &format!("{}.CORSRule", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.response_vary,
-            &format!("{}.ResponseVary", name),
-            params,
-        );
-    }
-}
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CSVInput {
     /// 指定CSV文件头信息。
     ///
@@ -16869,24 +16481,19 @@ pub struct CSVInput {
     ///
     /// - None：该文件没有头信息，为默认值。
     #[serde(rename = "FileHeaderInfo")]
-    #[serde(default)]
-    pub file_header_info: FileHeaderInfo,
+    pub file_header_info: Option<FileHeaderInfo>,
     /// 指定换行符，以Base64编码。默认值为\n（可选）。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用\n表示换行。
     #[serde(rename = "RecordDelimiter")]
-    #[serde(default)]
-    pub record_delimiter: String,
+    pub record_delimiter: Option<String>,
     /// 指定CSV列分隔符，以Base64编码。默认值为`,`（可选）。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`,`表示逗号。
     #[serde(rename = "FieldDelimiter")]
-    #[serde(default)]
-    pub field_delimiter: String,
+    pub field_delimiter: Option<String>,
     /// 指定CSV的引号字符，以Base64编码。默认值为`\”`（可选）。在CSV中引号内的换行符，列分隔符将被视作普通字符。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`\”`表示引号。
     #[serde(rename = "QuoteCharacter")]
-    #[serde(default)]
-    pub quote_character: String,
+    pub quote_character: Option<String>,
     /// 指定CSV的注释符，以Base64编码。默认值为空（即没有注释符）。
     #[serde(rename = "CommentCharacter")]
-    #[serde(default)]
-    pub comment_character: String,
+    pub comment_character: Option<String>,
     /// 指定查询文件的范围（可选）。支持两种格式：
     ///
     /// > 使用Range参数查询的文件需要有select meta。关于select meta的更多信息，请参见[CreateSelectObjectMeta](~~74054~~)。
@@ -16898,191 +16505,28 @@ pub struct CSVInput {
     /// <br>其中start和end均为inclusive。其格式和range get中的range参数一致。
     /// <br>仅在文档是CSV或者JSON Type为LINES时使用。
     #[serde(rename = "Range")]
-    #[serde(default)]
-    pub range: String,
+    pub range: Option<String>,
     /// 指定CSV内容是否含有在引号中的换行符。
     /// <br>例如某一列值为`"abc\ndef" `（此处`\n`为换行）， 则该值需设置为true。当该值为false时，select支持header range的语义，可以更高效的进行分片查询。
     #[serde(rename = "AllowQuotedRecordDelimiter")]
-    #[serde(default)]
-    pub allow_quoted_record_delimiter: bool,
-}
-impl crate::FlatSerialize for CSVInput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.file_header_info,
-            &format!("{}.FileHeaderInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.record_delimiter,
-            &format!("{}.RecordDelimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.field_delimiter,
-            &format!("{}.FieldDelimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.quote_character,
-            &format!("{}.QuoteCharacter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.comment_character,
-            &format!("{}.CommentCharacter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.range, &format!("{}.Range", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_quoted_record_delimiter,
-            &format!("{}.AllowQuotedRecordDelimiter", name),
-            params,
-        );
-    }
+    pub allow_quoted_record_delimiter: Option<bool>,
 }
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CSVOutput {
     /// 指定换行符，以Base64编码。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用`\n`表示换行。
     /// <br>默认值：`\n`
     #[serde(rename = "RecordDelimiter")]
-    #[serde(default)]
-    pub record_delimiter: String,
+    pub record_delimiter: Option<String>,
     /// 指定CSV列分隔符，以Base64编码。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`,`表示逗号。
     /// <br>默认值：`,`
     #[serde(rename = "FieldDelimiter")]
-    #[serde(default)]
-    pub field_delimiter: String,
-}
-impl crate::FlatSerialize for CSVOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.record_delimiter,
-            &format!("{}.RecordDelimiter", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.field_delimiter,
-            &format!("{}.FieldDelimiter", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheQuotaConfigurationQuotaDesc {
-    #[serde(rename = "Quota")]
-    #[serde(default)]
-    pub quota: i64,
-}
-
-/// 加速器容量配置
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheQuotaConfiguration {
-    #[serde(rename = "QuotaDesc")]
-    #[serde(default)]
-    pub quota_desc: CacheQuotaConfigurationQuotaDesc,
-}
-
-/// 加速器基本信息
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheBaseInfo {
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    #[serde(rename = "AvailableZone")]
-    #[serde(default)]
-    pub available_zone: String,
-    #[serde(rename = "QuotaConfiguration")]
-    #[serde(default)]
-    pub quota_configuration: CacheQuotaConfiguration,
-    #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
-}
-
-/// 加速器关联存储空间信息
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheBucketInfo {
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    #[serde(rename = "CachePolicy")]
-    #[serde(default)]
-    pub cache_policy: String,
-    #[serde(rename = "AcceleratePaths")]
-    #[serde(default)]
-    pub accelerate_paths: AcceleratePaths,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheConfigurationCachesCache {
-    #[serde(rename = "AvailableZone")]
-    #[serde(default)]
-    pub available_zone: String,
-    #[serde(rename = "CacheName")]
-    #[serde(default)]
-    pub cache_name: String,
-    #[serde(rename = "CachePolicy")]
-    #[serde(default)]
-    pub cache_policy: String,
-    #[serde(rename = "AcceleratePaths")]
-    #[serde(default)]
-    pub accelerate_paths: AcceleratePaths,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheConfigurationCaches {
-    #[serde(rename = "Cache")]
-    #[serde(default)]
-    pub cache: CacheConfigurationCachesCache,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CacheDetailInfoBuckets {
-    #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: Vec<CacheBucketInfo>,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CallbackPolicyPolicyItemItem {
-    /// 回调参数配置条目名称
-    #[serde(rename = "PolicyName")]
-    #[serde(default)]
-    pub policy_name: String,
-    /// 回调地址
-    #[serde(rename = "Callback")]
-    #[serde(default)]
-    pub callback: String,
-    /// 回调参数
-    #[serde(rename = "CallbackVar")]
-    #[serde(default)]
-    pub callback_var: String,
+    pub field_delimiter: Option<String>,
 }
 
 /// xxx
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct Channel {
     /// 图片处理频道的状态
     #[serde(rename = "Status")]
@@ -17108,50 +16552,6 @@ pub struct Channel {
     /// 样式分隔符
     #[serde(rename = "StyleDelimiters")]
     pub style_delimiters: Option<String>,
-}
-impl crate::FlatSerialize for Channel {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.orig_pic_forbidden,
-            &format!("{}.OrigPicForbidden", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.use_style_only,
-            &format!("{}.UseStyleOnly", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.auto_set_content_type,
-            &format!("{}.AutoSetContentType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.use_src_format,
-            &format!("{}.UseSrcFormat", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.set_attach_name,
-            &format!("{}.SetAttachName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.default404_pic,
-            &format!("{}.Default404Pic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.style_delimiters,
-            &format!("{}.StyleDelimiters", name),
-            params,
-        );
-    }
 }
 
 /// 证书信息
@@ -17237,45 +16637,22 @@ pub struct CnameToken {
 }
 
 /// 存放用户自定义HTTP Header的容器
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CommonHeadersHeaderItem {
     /// HTTP Header的Key
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// HTTP Header的Value
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
-}
-impl crate::FlatSerialize for CommonHeadersHeaderItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
+    pub value: Option<String>,
 }
 
 /// 存放用户自定义HTTP Header配置的容器
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CommonHeaders {
     /// 存放用户自定义HTTP Header列表的容器
     #[serde(rename = "Header")]
     pub header: Vec<CommonHeadersHeaderItem>,
-}
-impl crate::FlatSerialize for CommonHeaders {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.Header", name), params);
-    }
 }
 
 /// 如果请求中指定了delimiter参数，则OSS返回的响应中包含CommonPrefixes元素。该元素标明以delimiter结尾，并有共同前缀的Object名称的集合。
@@ -17289,58 +16666,30 @@ pub struct CommonPrefix {
 }
 
 /// 保存已上传Part信息的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CompleteMultipartUploadPartItem {
     /// Part数目。
     #[serde(rename = "PartNumber")]
-    #[serde(default)]
-    pub part_number: i64,
+    pub part_number: Option<i64>,
     /// Object生成时会创建相应的ETag ，ETag用于标识一个Object的内容。
     ///
     /// 通过CompleteMultipartUpload请求创建的Object，ETag值是基于一定计算规则生成的唯一值，但不是其内容的MD5值。
     ///
     /// > ETag值可以用于检查Object内容是否发生变化。不建议使用ETag作为Object内容的MD5来校验数据完整性。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
-}
-impl crate::FlatSerialize for CompleteMultipartUploadPartItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.part_number,
-            &format!("{}.PartNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.e_tag, &format!("{}.ETag", name), params);
-    }
+    pub e_tag: Option<String>,
 }
 
 /// 保存CompleteMultipartUpload请求内容的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CompleteMultipartUploadSchema {
     /// 保存已上传Part信息的容器。
     #[serde(rename = "Part")]
     pub part: Vec<CompleteMultipartUploadPartItem>,
 }
-impl crate::FlatSerialize for CompleteMultipartUploadSchema {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.part, &format!("{}.Part", name), params);
-    }
-}
 
 /// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CreateAccessPointConfiguration {
     /// 接入点名称。接入点命名规范如下：
     ///
@@ -17360,29 +16709,6 @@ pub struct CreateAccessPointConfiguration {
     #[serde(rename = "VpcConfiguration")]
     pub vpc_configuration: Option<AccessPointVpcConfiguration>,
 }
-impl crate::FlatSerialize for CreateAccessPointConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_name,
-            &format!("{}.AccessPointName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.network_origin,
-            &format!("{}.NetworkOrigin", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.vpc_configuration,
-            &format!("{}.VpcConfiguration", name),
-            params,
-        );
-    }
-}
 
 /// 保存接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -17400,7 +16726,6 @@ pub struct CreateAccessPointResult {
 
 /// Bucket存储类型和数据容灾类型的配置信息。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CreateBucketConfiguration {
     /// Bucket的存储类型。 取值范围如下：
     ///
@@ -17421,28 +16746,9 @@ pub struct CreateBucketConfiguration {
     #[serde(rename = "DataRedundancyType")]
     pub data_redundancy_type: Option<DataRedundancyType>,
 }
-impl crate::FlatSerialize for CreateBucketConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_class,
-            &format!("{}.StorageClass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.data_redundancy_type,
-            &format!("{}.DataRedundancyType", name),
-            params,
-        );
-    }
-}
 
 /// oss cache异步预热规则
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CreateDataLakeCachePrefetchJob {
     #[serde(rename = "Includes")]
     pub includes: Vec<String>,
@@ -17450,105 +16756,6 @@ pub struct CreateDataLakeCachePrefetchJob {
     pub tag: Option<String>,
     #[serde(rename = "Excludes")]
     pub excludes: Vec<String>,
-}
-impl crate::FlatSerialize for CreateDataLakeCachePrefetchJob {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.includes, &format!("{}.Includes", name), params);
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-        crate::FlatSerialize::flat_serialize(&self.excludes, &format!("{}.Excludes", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct CreateFileGroupPartItem {
-    #[serde(rename = "PartNumber")]
-    #[serde(default)]
-    pub part_number: i64,
-    #[serde(rename = "PartName")]
-    #[serde(default)]
-    pub part_name: String,
-    #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataAcceleratorBasicInfomation {
-    #[serde(rename = "AcceleratePaths")]
-    #[serde(default)]
-    pub accelerate_paths: AcceleratePaths,
-    #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: i64,
-    #[serde(rename = "Quota")]
-    #[serde(default)]
-    pub quota: String,
-    #[serde(rename = "AvailableZone")]
-    #[serde(default)]
-    pub available_zone: String,
-    #[serde(rename = "QuotaFrozenUtil")]
-    #[serde(default)]
-    pub quota_frozen_util: i64,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeCachePrefetchJobRulePrefixFilterIncludes {
-    #[serde(rename = "Include")]
-    #[serde(default)]
-    pub include: Vec<String>,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeCachePrefetchJobRulePrefixFilterExcludes {
-    #[serde(rename = "Exclude")]
-    #[serde(default)]
-    pub exclude: Vec<String>,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeCachePrefetchJobRulePrefixFilter {
-    #[serde(rename = "Includes")]
-    #[serde(default)]
-    pub includes: DataLakeCachePrefetchJobRulePrefixFilterIncludes,
-    #[serde(rename = "Excludes")]
-    #[serde(default)]
-    pub excludes: DataLakeCachePrefetchJobRulePrefixFilterExcludes,
-}
-
-/// oss加速器异步预热任务执行记录
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeCachePrefetchJobHistory {
-    #[serde(rename = "JobId")]
-    #[serde(default)]
-    pub job_id: String,
-    #[serde(rename = "Id")]
-    #[serde(default)]
-    pub id: String,
-    #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
-    #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: i64,
-    #[serde(rename = "EndTime")]
-    #[serde(default)]
-    pub end_time: i64,
-    #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
-    #[serde(rename = "SucceedCount")]
-    #[serde(default)]
-    pub succeed_count: i64,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -17629,71 +16836,6 @@ pub struct DataLakeStorageTransferJob {
     pub progress_info: DataLakeStorageTransferJobProgressInfo,
 }
 
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobHistoryDetailInfo {
-    #[serde(rename = "HDFSTransferJobId")]
-    #[serde(default)]
-    pub hdfs_transfer_job_id: String,
-    #[serde(rename = "HDFSTransferDataDir")]
-    #[serde(default)]
-    pub hdfs_transfer_data_dir: String,
-    #[serde(rename = "HDFSTransferImportMetaDir")]
-    #[serde(default)]
-    pub hdfs_transfer_import_meta_dir: String,
-    #[serde(rename = "HDFSTransferErrInfoDir")]
-    #[serde(default)]
-    pub hdfs_transfer_err_info_dir: String,
-    #[serde(rename = "LogBaseDir")]
-    #[serde(default)]
-    pub log_base_dir: String,
-    #[serde(rename = "HDFSFailedCount")]
-    #[serde(default)]
-    pub hdfs_failed_count: i64,
-    #[serde(rename = "ErrorMsg")]
-    #[serde(default)]
-    pub error_msg: String,
-    #[serde(rename = "VerifyTotalCount")]
-    #[serde(default)]
-    pub verify_total_count: i64,
-    #[serde(rename = "VerifyStatus")]
-    #[serde(default)]
-    pub verify_status: String,
-    #[serde(rename = "VerifyErrInfoDir")]
-    #[serde(default)]
-    pub verify_err_info_dir: String,
-}
-
-/// 数据湖元数据转换历史任务
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct DataLakeStorageTransferJobHistory {
-    #[serde(rename = "JobId")]
-    #[serde(default)]
-    pub job_id: String,
-    #[serde(rename = "Id")]
-    #[serde(default)]
-    pub id: String,
-    #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
-    #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: i64,
-    #[serde(rename = "EndTime")]
-    #[serde(default)]
-    pub end_time: i64,
-    #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
-    #[serde(rename = "SucceedCount")]
-    #[serde(default)]
-    pub succeed_count: i64,
-    #[serde(rename = "DetailInfo")]
-    #[serde(default)]
-    pub detail_info: DataLakeStorageTransferJobHistoryDetailInfo,
-}
-
 /// 数据湖元数据转换任务列表
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
@@ -17756,20 +16898,6 @@ pub struct ErrorDocument {
     #[serde(rename = "HttpStatus")]
     #[serde(default)]
     pub http_status: i64,
-}
-impl crate::FlatSerialize for ErrorDocument {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.http_status,
-            &format!("{}.HttpStatus", name),
-            params,
-        );
-    }
 }
 
 /// Object过滤配置键
@@ -17844,50 +16972,10 @@ pub struct EventNotificationConfiguration {
 
 /// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct ExtendWormConfiguration {
     /// 指定Object的保留天数。
     #[serde(rename = "RetentionPeriodInDays")]
     pub retention_period_in_days: Option<i32>,
-}
-impl crate::FlatSerialize for ExtendWormConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_period_in_days,
-            &format!("{}.RetentionPeriodInDays", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct FileGroupInfoFilePartPartItem {
-    #[serde(rename = "PartNumber")]
-    #[serde(default)]
-    pub part_number: i64,
-    #[serde(rename = "PartName")]
-    #[serde(default)]
-    pub part_name: String,
-    #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
-    #[serde(rename = "PartSize")]
-    #[serde(default)]
-    pub part_size: i64,
-}
-
-/// FileGroup类型文件的信息
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct FileGroupInfoFilePart {
-    #[serde(rename = "Part")]
-    #[serde(default)]
-    pub part: Vec<FileGroupInfoFilePartPartItem>,
 }
 
 /// 保存接入点网络来源信息的容器。
@@ -17914,19 +17002,6 @@ pub struct PublicAccessBlockConfiguration {
     #[serde(rename = "BlockPublicAccess")]
     #[serde(default)]
     pub block_public_access: bool,
-}
-impl crate::FlatSerialize for PublicAccessBlockConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.block_public_access,
-            &format!("{}.BlockPublicAccess", name),
-            params,
-        );
-    }
 }
 
 /// 保存接入点信息的容器。
@@ -17979,48 +17054,6 @@ pub struct GetAccessPointResult {
     pub creation_date: String,
 }
 
-/// 流控配额信息
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct QoSConfiguration {
-    /// 总上行带宽，单位Gbps
-    #[serde(rename = "TotalUploadBandwidth")]
-    #[serde(default)]
-    pub total_upload_bandwidth: i64,
-    /// 内网上行带宽，单位Gbps
-    #[serde(rename = "IntranetUploadBandwidth")]
-    #[serde(default)]
-    pub intranet_upload_bandwidth: i64,
-    /// 公网上行带宽，单位Gbps
-    #[serde(rename = "ExtranetUploadBandwidth")]
-    #[serde(default)]
-    pub extranet_upload_bandwidth: i64,
-    /// 总下行带宽，单位Gbps
-    #[serde(rename = "TotalDownloadBandwidth")]
-    #[serde(default)]
-    pub total_download_bandwidth: i64,
-    /// 内网下行带宽，单位Gbps
-    #[serde(rename = "IntranetDownloadBandwidth")]
-    #[serde(default)]
-    pub intranet_download_bandwidth: i64,
-    /// 公网下行带宽，单位Gbps
-    #[serde(rename = "ExtranetDownloadBandwidth")]
-    #[serde(default)]
-    pub extranet_download_bandwidth: i64,
-    /// 总QPS
-    #[serde(rename = "TotalQps")]
-    #[serde(default)]
-    pub total_qps: i64,
-    /// 内网QPS
-    #[serde(rename = "IntranetQps")]
-    #[serde(default)]
-    pub intranet_qps: i64,
-    /// 公网QPS
-    #[serde(rename = "ExtranetQps")]
-    #[serde(default)]
-    pub extranet_qps: i64,
-}
-
 /// 存储空间TLS版本配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -18032,20 +17065,6 @@ pub struct HttpsConfigurationTls {
     #[serde(rename = "TLSVersion")]
     #[serde(default)]
     pub tls_version: Vec<String>,
-}
-impl crate::FlatSerialize for HttpsConfigurationTls {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enable, &format!("{}.Enable", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.tls_version,
-            &format!("{}.TLSVersion", name),
-            params,
-        );
-    }
 }
 
 /// 存储空间加密套件配置
@@ -18069,30 +17088,6 @@ pub struct HttpsConfigurationCipherSuite {
     #[serde(default)]
     pub tls13_custom_cipher_suite: Vec<String>,
 }
-impl crate::FlatSerialize for HttpsConfigurationCipherSuite {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enable, &format!("{}.Enable", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.strong_cipher_suite,
-            &format!("{}.StrongCipherSuite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.custom_cipher_suite,
-            &format!("{}.CustomCipherSuite", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.tls13_custom_cipher_suite,
-            &format!("{}.TLS13CustomCipherSuite", name),
-            params,
-        );
-    }
-}
 
 /// 存储空间TLS版本配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18107,20 +17102,6 @@ pub struct HttpsConfiguration {
     #[serde(default)]
     pub cipher_suite: HttpsConfigurationCipherSuite,
 }
-impl crate::FlatSerialize for HttpsConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tls, &format!("{}.TLS", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.cipher_suite,
-            &format!("{}.CipherSuite", name),
-            params,
-        );
-    }
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -18129,19 +17110,6 @@ pub struct IncrementInventorySchedule {
     #[serde(default)]
     pub frequency: i64,
 }
-impl crate::FlatSerialize for IncrementInventorySchedule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.frequency,
-            &format!("{}.Frequency", name),
-            params,
-        );
-    }
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -18149,15 +17117,6 @@ pub struct IncrementalInventoryOptionalFields {
     #[serde(rename = "Field")]
     #[serde(default)]
     pub field: Vec<String>,
-}
-impl crate::FlatSerialize for IncrementalInventoryOptionalFields {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
-    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18172,25 +17131,6 @@ pub struct IncrementalInventory {
     #[serde(rename = "OptionalFields")]
     #[serde(default)]
     pub optional_fields: IncrementalInventoryOptionalFields,
-}
-impl crate::FlatSerialize for IncrementalInventory {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_enabled,
-            &format!("{}.IsEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.schedule, &format!("{}.Schedule", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.optional_fields,
-            &format!("{}.OptionalFields", name),
-            params,
-        );
-    }
 }
 
 /// 默认主页的容器。
@@ -18220,52 +17160,21 @@ pub struct IndexDocument {
     #[serde(default)]
     pub r#type: i64,
 }
-impl crate::FlatSerialize for IndexDocument {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.suffix, &format!("{}.Suffix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.support_sub_dir,
-            &format!("{}.SupportSubDir", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-    }
-}
 
 /// 根节点。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct InitiateWormConfiguration {
     /// 指定Object保留天数。
     #[serde(rename = "RetentionPeriodInDays")]
     pub retention_period_in_days: i32,
 }
-impl crate::FlatSerialize for InitiateWormConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.retention_period_in_days,
-            &format!("{}.RetentionPeriodInDays", name),
-            params,
-        );
-    }
-}
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct JSONInput {
     /// 指定输入JSON的类型。
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: JSONType,
+    pub r#type: Option<JSONType>,
     /// 指定查询文件的范围（可选）。支持两种格式：
     /// > 使用Range参数查询的文件需要有select meta。关于select meta的更多信息，请参见[CreateSelectObjectMeta](~~74054~~)。
     ///
@@ -18276,61 +17185,25 @@ pub struct JSONInput {
     /// <br>其中start和end均为inclusive。其格式和range get中的range参数一致。
     /// <br>仅在文档是CSV或者JSON Type为LINES时使用。
     #[serde(rename = "Range")]
-    #[serde(default)]
-    pub range: String,
+    pub range: Option<String>,
     /// 将JSON中的数字（整数和浮点数）解析成字符串。目前JSON中的浮点数解析时会损失精度，如果要完整保留原始数据，则推荐用该选项。如果需要进行数值计算，则可以在SQL中cast成需要的格式，例如int、double、decimal。
     /// <br>默认值： false
     #[serde(rename = "ParseJsonNumberAsString")]
-    #[serde(default)]
-    pub parse_json_number_as_string: bool,
-}
-impl crate::FlatSerialize for JSONInput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(&self.range, &format!("{}.Range", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.parse_json_number_as_string,
-            &format!("{}.ParseJsonNumberAsString", name),
-            params,
-        );
-    }
+    pub parse_json_number_as_string: Option<bool>,
 }
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct InputSerialization {
     /// 指定文件压缩类型（可选）。目前不支持任何压缩，即取值只能是None。
     #[serde(rename = "CompressionType")]
-    #[serde(default)]
-    pub compression_type: CompressionType,
+    pub compression_type: Option<CompressionType>,
     /// 指定CSV输入格式。
     #[serde(rename = "CSV")]
-    #[serde(default)]
-    pub csv: CSVInput,
+    pub csv: Option<CSVInput>,
     /// 指定JSON输入格式。
     #[serde(rename = "JSON")]
-    #[serde(default)]
-    pub json: JSONInput,
-}
-impl crate::FlatSerialize for InputSerialization {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.compression_type,
-            &format!("{}.CompressionType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.csv, &format!("{}.CSV", name), params);
-        crate::FlatSerialize::flat_serialize(&self.json, &format!("{}.JSON", name), params);
-    }
+    pub json: Option<JSONInput>,
 }
 
 /// 保存SSE-KMS加密密钥的容器。
@@ -18342,15 +17215,6 @@ pub struct SSEKMS {
     #[serde(rename = "KeyId")]
     #[serde(default)]
     pub key_id: String,
-}
-impl crate::FlatSerialize for SSEKMS {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key_id, &format!("{}.KeyId", name), params);
-    }
 }
 
 /// 清单文件的加密方式。
@@ -18365,16 +17229,6 @@ pub struct InventoryEncryption {
     #[serde(rename = "SSE-KMS")]
     #[serde(default)]
     pub ssekms: SSEKMS,
-}
-impl crate::FlatSerialize for InventoryEncryption {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.sseoss, &format!("{}.SSE-OSS", name), params);
-        crate::FlatSerialize::flat_serialize(&self.ssekms, &format!("{}.SSE-KMS", name), params);
-    }
 }
 
 /// 清单结果导出后存放的Bucket信息。
@@ -18406,28 +17260,6 @@ pub struct InventoryOSSBucketDestination {
     #[serde(default)]
     pub encryption: InventoryEncryption,
 }
-impl crate::FlatSerialize for InventoryOSSBucketDestination {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.format, &format!("{}.Format", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.account_id,
-            &format!("{}.AccountId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.role_arn, &format!("{}.RoleArn", name), params);
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.encryption,
-            &format!("{}.Encryption", name),
-            params,
-        );
-    }
-}
 
 /// 存放清单结果的信息。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18437,19 +17269,6 @@ pub struct InventoryDestination {
     #[serde(rename = "OSSBucketDestination")]
     #[serde(default)]
     pub oss_bucket_destination: InventoryOSSBucketDestination,
-}
-impl crate::FlatSerialize for InventoryDestination {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.oss_bucket_destination,
-            &format!("{}.OSSBucketDestination", name),
-            params,
-        );
-    }
 }
 
 /// Contains the frequency that inventory lists are exported
@@ -18466,19 +17285,6 @@ pub struct InventorySchedule {
     #[serde(rename = "Frequency")]
     #[serde(default)]
     pub frequency: InventoryFrequency,
-}
-impl crate::FlatSerialize for InventorySchedule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.frequency,
-            &format!("{}.Frequency", name),
-            params,
-        );
-    }
 }
 
 /// 清单筛选的前缀。指定前缀后，清单将筛选出符合前缀设置的对象。
@@ -18510,40 +17316,6 @@ pub struct InventoryFilter {
     #[serde(default)]
     pub storage_class: String,
 }
-impl crate::FlatSerialize for InventoryFilter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modify_begin_time_stamp,
-            &format!("{}.LastModifyBeginTimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.last_modify_end_time_stamp,
-            &format!("{}.LastModifyEndTimeStamp", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.lower_size_bound,
-            &format!("{}.LowerSizeBound", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.upper_size_bound,
-            &format!("{}.UpperSizeBound", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_class,
-            &format!("{}.StorageClass", name),
-            params,
-        );
-    }
-}
 
 /// 清单结果中包含的配置项列表。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18562,15 +17334,6 @@ pub struct InventoryConfigurationOptionalFields {
     #[serde(rename = "Field")]
     #[serde(default)]
     pub field: Vec<InventoryOptionalField>,
-}
-impl crate::FlatSerialize for InventoryConfigurationOptionalFields {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
-    }
 }
 
 /// 存储清单配置信息的容器。
@@ -18618,65 +17381,14 @@ pub struct InventoryConfiguration {
     #[serde(default)]
     pub incremental_inventory: IncrementalInventory,
 }
-impl crate::FlatSerialize for InventoryConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.Id", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.is_enabled,
-            &format!("{}.IsEnabled", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.destination,
-            &format!("{}.Destination", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.schedule, &format!("{}.Schedule", name), params);
-        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.Filter", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.included_object_versions,
-            &format!("{}.IncludedObjectVersions", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.optional_fields,
-            &format!("{}.OptionalFields", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.incremental_inventory,
-            &format!("{}.IncrementalInventory", name),
-            params,
-        );
-    }
-}
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct JSONOutput {
     /// 指定换行符，以Base64编码。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用`\n`表示换行。
     /// <br>默认值：`\n`
     #[serde(rename = "RecordDelimiter")]
-    #[serde(default)]
-    pub record_delimiter: String,
-}
-impl crate::FlatSerialize for JSONOutput {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.record_delimiter,
-            &format!("{}.RecordDelimiter", name),
-            params,
-        );
-    }
+    pub record_delimiter: Option<String>,
 }
 
 /// 指定Object生命周期规则的过期属性。 对于受版本控制的Bucket，指定的过期属性只对Object的当前版本生效。
@@ -18701,25 +17413,6 @@ pub struct LifecycleRuleExpiration {
     #[serde(rename = "ExpiredObjectDeleteMarker")]
     #[serde(default)]
     pub expired_object_delete_marker: bool,
-}
-impl crate::FlatSerialize for LifecycleRuleExpiration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.created_before_date,
-            &format!("{}.CreatedBeforeDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.days, &format!("{}.Days", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expired_object_delete_marker,
-            &format!("{}.ExpiredObjectDeleteMarker", name),
-            params,
-        );
-    }
 }
 
 /// 指定Object在有效生命周期中，OSS何时将Object转储为IA、Archive和ColdArchive存储类型 。
@@ -18774,40 +17467,6 @@ pub struct LifecycleRuleTransitionItem {
     #[serde(default)]
     pub allow_small_file: bool,
 }
-impl crate::FlatSerialize for LifecycleRuleTransitionItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.created_before_date,
-            &format!("{}.CreatedBeforeDate", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.days, &format!("{}.Days", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_class,
-            &format!("{}.StorageClass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_access_time,
-            &format!("{}.IsAccessTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.return_to_std_when_visit,
-            &format!("{}.ReturnToStdWhenVisit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_small_file,
-            &format!("{}.AllowSmallFile", name),
-            params,
-        );
-    }
-}
 
 /// 指定未完成分片上传的过期属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18821,20 +17480,6 @@ pub struct LifecycleRuleAbortMultipartUpload {
     #[serde(rename = "CreatedBeforeDate")]
     #[serde(default)]
     pub created_before_date: String,
-}
-impl crate::FlatSerialize for LifecycleRuleAbortMultipartUpload {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.days, &format!("{}.Days", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.created_before_date,
-            &format!("{}.CreatedBeforeDate", name),
-            params,
-        );
-    }
 }
 
 /// 设置Bucket Tag的容器。
@@ -18857,16 +17502,6 @@ pub struct Tag {
     #[serde(default)]
     pub value: String,
 }
-impl crate::FlatSerialize for Tag {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
 
 /// 指定Object非当前版本生命周期规则的过期属性。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -18876,19 +17511,6 @@ pub struct LifecycleRuleNoncurrentVersionExpiration {
     #[serde(rename = "NoncurrentDays")]
     #[serde(default)]
     pub noncurrent_days: i32,
-}
-impl crate::FlatSerialize for LifecycleRuleNoncurrentVersionExpiration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.noncurrent_days,
-            &format!("{}.NoncurrentDays", name),
-            params,
-        );
-    }
 }
 
 /// 在有效的生命周期规则中，OSS何时将指定Object的非当前版本转储为IA或者Archive存储类型 。
@@ -18935,39 +17557,6 @@ pub struct LifecycleRuleNoncurrentVersionTransitionItem {
     #[serde(default)]
     pub allow_small_file: bool,
 }
-impl crate::FlatSerialize for LifecycleRuleNoncurrentVersionTransitionItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.noncurrent_days,
-            &format!("{}.NoncurrentDays", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.storage_class,
-            &format!("{}.StorageClass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_access_time,
-            &format!("{}.IsAccessTime", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.return_to_std_when_visit,
-            &format!("{}.ReturnToStdWhenVisit", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_small_file,
-            &format!("{}.AllowSmallFile", name),
-            params,
-        );
-    }
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -18980,16 +17569,6 @@ pub struct LifecycleRuleFilterNotItem {
     #[serde(rename = "Tag")]
     #[serde(default)]
     pub tag: Tag,
-}
-impl crate::FlatSerialize for LifecycleRuleFilterNotItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
 }
 
 /// 本条规则的排除条件。
@@ -19008,25 +17587,6 @@ pub struct LifecycleRuleFilter {
     #[serde(rename = "ObjectSizeLessThan")]
     #[serde(default)]
     pub object_size_less_than: i64,
-}
-impl crate::FlatSerialize for LifecycleRuleFilter {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.not, &format!("{}.Not", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.object_size_greater_than,
-            &format!("{}.ObjectSizeGreaterThan", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.object_size_less_than,
-            &format!("{}.ObjectSizeLessThan", name),
-            params,
-        );
-    }
 }
 
 /// 生命周期规则的容器。
@@ -19089,49 +17649,6 @@ pub struct LifecycleRule {
     #[serde(default)]
     pub atime_base: i64,
 }
-impl crate::FlatSerialize for LifecycleRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.expiration,
-            &format!("{}.Expiration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.transition,
-            &format!("{}.Transition", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.abort_multipart_upload,
-            &format!("{}.AbortMultipartUpload", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.noncurrent_version_expiration,
-            &format!("{}.NoncurrentVersionExpiration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.noncurrent_version_transition,
-            &format!("{}.NoncurrentVersionTransition", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.Filter", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.atime_base,
-            &format!("{}.AtimeBase", name),
-            params,
-        );
-    }
-}
 
 /// Lifecycle配置的容器，最多可容纳1000条规则。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -19141,15 +17658,6 @@ pub struct LifecycleConfiguration {
     #[serde(rename = "Rule")]
     #[serde(default)]
     pub rule: Vec<LifecycleRule>,
-}
-impl crate::FlatSerialize for LifecycleConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
 }
 
 /// 保存所有接入点信息的容器。
@@ -19186,33 +17694,6 @@ pub struct ListAccessPointsResult {
     #[serde(rename = "MaxKeys")]
     #[serde(default)]
     pub max_keys: i32,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ListAllMyCacheResultCaches {
-    #[serde(rename = "Cache")]
-    #[serde(default)]
-    pub cache: Vec<CacheBaseInfo>,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ListUserRegionsResultRegions {
-    #[serde(rename = "Region")]
-    #[serde(default)]
-    pub region: Vec<String>,
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct VirtualBucketRealBucketItem {
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
 }
 
 /// 保存推流地址的容器。
@@ -19333,34 +17814,9 @@ pub struct LiveChannelTarget {
     #[serde(default)]
     pub playlist_name: String,
 }
-impl crate::FlatSerialize for LiveChannelTarget {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.r#type, &format!("{}.Type", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.frag_duration,
-            &format!("{}.FragDuration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.frag_count,
-            &format!("{}.FragCount", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.playlist_name,
-            &format!("{}.PlaylistName", name),
-            params,
-        );
-    }
-}
 
 /// 保存高频截图操作Snapshot 选项的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct LiveChannelSnapshot {
     /// 用于高频截图操作的角色名称，要求有DestBucket的写权限和向NotifyTopic发消息的权限。
     #[serde(rename = "RoleName")]
@@ -19377,34 +17833,9 @@ pub struct LiveChannelSnapshot {
     #[serde(rename = "Interval")]
     pub interval: Option<i64>,
 }
-impl crate::FlatSerialize for LiveChannelSnapshot {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.role_name,
-            &format!("{}.RoleName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.dest_bucket,
-            &format!("{}.DestBucket", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.notify_topic,
-            &format!("{}.NotifyTopic", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.interval, &format!("{}.Interval", name), params);
-    }
-}
 
 /// 保存LiveChannel配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct LiveChannelConfiguration {
     /// LiveChannel的描述信息，最长128字节。
     #[serde(rename = "Description")]
@@ -19421,22 +17852,6 @@ pub struct LiveChannelConfiguration {
     /// 保存高频截图操作Snapshot选项的容器。
     #[serde(rename = "Snapshot")]
     pub snapshot: Option<LiveChannelSnapshot>,
-}
-impl crate::FlatSerialize for LiveChannelConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.description,
-            &format!("{}.Description", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(&self.target, &format!("{}.Target", name), params);
-        crate::FlatSerialize::flat_serialize(&self.snapshot, &format!("{}.Snapshot", name), params);
-    }
 }
 
 /// 当Status为Live时，保存视频流信息的容器。
@@ -19516,13 +17931,11 @@ pub struct LocationTransferType {
 }
 
 /// 聚合操作信息
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryAggregation {
     /// 字段名称
     #[serde(rename = "Field")]
-    #[serde(default)]
-    pub field: String,
+    pub field: Option<String>,
     /// 聚合操作中的操作符。
     ///
     /// - min：最小值
@@ -19533,73 +17946,27 @@ pub struct MetaQueryAggregation {
     /// - distinct：去重统计
     /// - group：分组计数
     #[serde(rename = "Operation")]
-    #[serde(default)]
-    pub operation: String,
-}
-impl crate::FlatSerialize for MetaQueryAggregation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.field, &format!("{}.Field", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.operation,
-            &format!("{}.Operation", name),
-            params,
-        );
-    }
+    pub operation: Option<String>,
 }
 
 /// 聚合操作信息的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryAggregations {
     /// 单个聚合操作信息的容器。
     #[serde(rename = "Aggregation")]
-    #[serde(default)]
     pub aggregation: Vec<MetaQueryAggregation>,
-}
-impl crate::FlatSerialize for MetaQueryAggregations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.aggregation,
-            &format!("{}.Aggregation", name),
-            params,
-        );
-    }
 }
 
 /// 多媒体元数据检索条件。仅用于向量检索
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryMediaTypes {
     /// 选择检索的多媒体类型。
     #[serde(rename = "MediaType")]
-    #[serde(default)]
     pub media_type: Vec<String>,
-}
-impl crate::FlatSerialize for MetaQueryMediaTypes {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.media_type,
-            &format!("{}.MediaType", name),
-            params,
-        );
-    }
 }
 
 /// 查询条件的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct MetaQuery {
     /// 翻页的Token。从NextToken开始按字典序返回Object信息列表。
     #[serde(rename = "NextToken")]
@@ -19634,42 +18001,6 @@ pub struct MetaQuery {
     /// 查询条件，仅用于向量查询。
     #[serde(rename = "SimpleQuery")]
     pub simple_query: Option<String>,
-}
-impl crate::FlatSerialize for MetaQuery {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.next_token,
-            &format!("{}.NextToken", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_results,
-            &format!("{}.MaxResults", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.query, &format!("{}.Query", name), params);
-        crate::FlatSerialize::flat_serialize(&self.sort, &format!("{}.Sort", name), params);
-        crate::FlatSerialize::flat_serialize(&self.order, &format!("{}.Order", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.aggregations,
-            &format!("{}.Aggregations", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.media_types,
-            &format!("{}.MediaTypes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.simple_query,
-            &format!("{}.SimpleQuery", name),
-            params,
-        );
-    }
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -20160,38 +18491,17 @@ pub struct MetaQueryFile {
     pub insights: MetaQueryRespFileInsights,
 }
 
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequestFilters {
     #[serde(rename = "Filter")]
-    #[serde(default)]
     pub filter: Vec<String>,
-}
-impl crate::FlatSerialize for MetaQueryOpenRequestFilters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.filter, &format!("{}.Filter", name), params);
-    }
 }
 
 /// 为开启元数据管理功能的请求体
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct MetaQueryOpenRequest {
     #[serde(rename = "Filters")]
     pub filters: Option<MetaQueryOpenRequestFilters>,
-}
-impl crate::FlatSerialize for MetaQueryOpenRequest {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.filters, &format!("{}.Filters", name), params);
-    }
 }
 
 /// Object信息的容器。
@@ -20232,17 +18542,8 @@ pub struct MetaQueryResp {
     pub aggregations: MetaQueryRespAggregations,
 }
 
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct NotificationConfigurationTopicConfigurationItem {
-    #[serde(rename = "Id")]
-    #[serde(default)]
-    pub id: String,
-}
-
 /// Object哈希算法配置
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct ObjectHashConfiguration {
     /// 对象哈希算法
     #[serde(rename = "ObjectHashFunction")]
@@ -20250,35 +18551,6 @@ pub struct ObjectHashConfiguration {
     /// 访问对象时或是否在响应头显示对象哈希值
     #[serde(rename = "DisplayObjectHash")]
     pub display_object_hash: Option<bool>,
-}
-impl crate::FlatSerialize for ObjectHashConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.object_hash_function,
-            &format!("{}.ObjectHashFunction", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.display_object_hash,
-            &format!("{}.DisplayObjectHash", name),
-            params,
-        );
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ObjectLinkInfoPartItem {
-    #[serde(rename = "PartNumber")]
-    #[serde(default)]
-    pub part_number: i64,
-    #[serde(rename = "PartName")]
-    #[serde(default)]
-    pub part_name: String,
 }
 
 /// 返回的文件元信息。
@@ -20344,19 +18616,6 @@ pub struct ObjectProcessConfigurationAllowedFeatures {
     #[serde(default)]
     pub allowed_feature: Vec<String>,
 }
-impl crate::FlatSerialize for ObjectProcessConfigurationAllowedFeatures {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_feature,
-            &format!("{}.AllowedFeature", name),
-            params,
-        );
-    }
-}
 
 /// 保存操作信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20367,17 +18626,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(rename = "Action")]
     #[serde(default)]
     pub action: Vec<String>,
-}
-impl crate::FlatSerialize
-    for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemActions
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.action, &format!("{}.Action", name), params);
-    }
 }
 
 /// 保存函数计算信息的容器
@@ -20394,16 +18642,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(default)]
     pub function_arn: String,
 }
-impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationFunctionCompute {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.function_assume_role_arn, &format!("{}.FunctionAssumeRoleArn", name), params);
-        crate::FlatSerialize::flat_serialize(&self.function_arn, &format!("{}.FunctionArn", name), params);
-    }
-}
 
 /// 保存自定义转发请求头列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20415,15 +18653,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(default)]
     pub custom_forward_header: Vec<String>,
 }
-impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeaturesCustomForwardHeaders {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.custom_forward_header, &format!("{}.CustomForwardHeader", name), params);
-    }
-}
 
 /// 保存额外特性配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20433,15 +18662,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(rename = "CustomForwardHeaders")]
     #[serde(default)]
     pub custom_forward_headers: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeaturesCustomForwardHeaders,
-}
-impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.custom_forward_headers, &format!("{}.CustomForwardHeaders", name), params);
-    }
 }
 
 /// 保存转换信息的容器
@@ -20457,16 +18677,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(default)]
     pub additional_features: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures,
 }
-impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.function_compute, &format!("{}.FunctionCompute", name), params);
-        crate::FlatSerialize::flat_serialize(&self.additional_features, &format!("{}.AdditionalFeatures", name), params);
-    }
-}
 
 /// 保存转换配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20481,22 +18691,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     #[serde(default)]
     pub content_transformation: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation,
 }
-impl crate::FlatSerialize
-    for ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItem
-{
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.actions, &format!("{}.Actions", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.content_transformation,
-            &format!("{}.ContentTransformation", name),
-            params,
-        );
-    }
-}
 
 /// 保存转换配置信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20507,19 +18701,6 @@ pub struct ObjectProcessConfigurationTransformationConfigurations {
     #[serde(default)]
     pub transformation_configuration:
         Vec<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItem>,
-}
-impl crate::FlatSerialize for ObjectProcessConfigurationTransformationConfigurations {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.transformation_configuration,
-            &format!("{}.TransformationConfiguration", name),
-            params,
-        );
-    }
 }
 
 /// 对象FC接入点的配置
@@ -20534,24 +18715,6 @@ pub struct ObjectProcessConfiguration {
     #[serde(rename = "TransformationConfigurations")]
     #[serde(default)]
     pub transformation_configurations: ObjectProcessConfigurationTransformationConfigurations,
-}
-impl crate::FlatSerialize for ObjectProcessConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allowed_features,
-            &format!("{}.AllowedFeatures", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.transformation_configurations,
-            &format!("{}.TransformationConfigurations", name),
-            params,
-        );
-    }
 }
 
 /// 保存除删除标记以外的Object版本的容器。
@@ -20610,17 +18773,14 @@ pub struct ObjectVersion {
 }
 
 /// 保存Select请求的容器。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct OutputSerialization {
     /// 输出CSV的格式参数。
     #[serde(rename = "CSV")]
-    #[serde(default)]
-    pub csv: CSVOutput,
+    pub csv: Option<CSVOutput>,
     /// 输出JSON的格式参数。
     #[serde(rename = "JSON")]
-    #[serde(default)]
-    pub json: JSONOutput,
+    pub json: Option<JSONOutput>,
     /// 指定返回结果中包含CSV所有列的位置（可选）。<br>默认值：false
     ///  <br>仅在select语句里出现的列会有值，不出现的列则为空，返回结果中每一行的数据按照CSV列的顺序从低到高排列。
     /// 例如以下语句：<br>
@@ -20628,13 +18788,11 @@ pub struct OutputSerialization {
     /// <br>如果KeepAllColumns = true，假设一共有6列数据，则返回以下数据：
     /// <br> `Value of 1st column,,,,Value of 5th column,\n`
     #[serde(rename = "KeepAllColumns")]
-    #[serde(default)]
-    pub keep_all_columns: bool,
+    pub keep_all_columns: Option<bool>,
     /// 在返回结果开头输出CSV头信息。
     /// <br>默认值：false
     #[serde(rename = "OutputHeader")]
-    #[serde(default)]
-    pub output_header: bool,
+    pub output_header: Option<bool>,
     /// 指定输出数据为纯数据。
     ///
     /// - 您在请求中指定OutputRawData值时，OSS服务端会按照请求中的要求返回数据。
@@ -20643,42 +18801,10 @@ pub struct OutputSerialization {
     ///
     /// - 当您显式地指定OutputRawData为True时，如果该SQL长时间内没有返回数据，则HTTP请求可能因没有数据返回而超时。
     #[serde(rename = "OutputRawData")]
-    #[serde(default)]
-    pub output_raw_data: bool,
+    pub output_raw_data: Option<bool>,
     /// 在每个Frame中会有一个32位的CRC32校验值。客户端可以计算相应payload的CRC32值进行数据完整性校验。
     #[serde(rename = "EnablePayloadCrc")]
-    #[serde(default)]
-    pub enable_payload_crc: bool,
-}
-impl crate::FlatSerialize for OutputSerialization {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.csv, &format!("{}.CSV", name), params);
-        crate::FlatSerialize::flat_serialize(&self.json, &format!("{}.JSON", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.keep_all_columns,
-            &format!("{}.KeepAllColumns", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_header,
-            &format!("{}.OutputHeader", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_raw_data,
-            &format!("{}.OutputRawData", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_payload_crc,
-            &format!("{}.EnablePayloadCrc", name),
-            params,
-        );
-    }
+    pub enable_payload_crc: Option<bool>,
 }
 
 /// 保存规则生效的账号与角色列表的容器
@@ -20689,19 +18815,6 @@ pub struct OverwriteConfigurationRuleItemPrincipals {
     #[serde(rename = "Principal")]
     #[serde(default)]
     pub principal: Vec<String>,
-}
-impl crate::FlatSerialize for OverwriteConfigurationRuleItemPrincipals {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.principal,
-            &format!("{}.Principal", name),
-            params,
-        );
-    }
 }
 
 /// 单个Bucket最多支持配置100条规则。
@@ -20729,23 +18842,6 @@ pub struct OverwriteConfigurationRuleItem {
     #[serde(default)]
     pub principals: OverwriteConfigurationRuleItemPrincipals,
 }
-impl crate::FlatSerialize for OverwriteConfigurationRuleItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-        crate::FlatSerialize::flat_serialize(&self.action, &format!("{}.Action", name), params);
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-        crate::FlatSerialize::flat_serialize(&self.suffix, &format!("{}.Suffix", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.principals,
-            &format!("{}.Principals", name),
-            params,
-        );
-    }
-}
 
 /// 禁止覆盖写的配置
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20755,15 +18851,6 @@ pub struct OverwriteConfiguration {
     #[serde(rename = "Rule")]
     #[serde(default)]
     pub rule: Vec<OverwriteConfigurationRuleItem>,
-}
-impl crate::FlatSerialize for OverwriteConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
 }
 
 /// 保存已上传Part信息的容器。
@@ -20788,17 +18875,6 @@ pub struct Part {
     pub last_modified: String,
 }
 
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PromoteDataLakeCacheReqObject {
-    #[serde(rename = "ObjectName")]
-    #[serde(default)]
-    pub object_name: String,
-    #[serde(rename = "Range")]
-    #[serde(default)]
-    pub range: String,
-}
-
 /// 保存Prefix的容器，每个复制规则中，最多能指定10个Prefix。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -20810,15 +18886,6 @@ pub struct ReplicationPrefixSet {
     #[serde(rename = "Prefix")]
     #[serde(default)]
     pub prefix: Vec<String>,
-}
-impl crate::FlatSerialize for ReplicationPrefixSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.prefix, &format!("{}.Prefix", name), params);
-    }
 }
 
 /// 保存目标Bucket信息的容器。
@@ -20841,21 +18908,6 @@ pub struct ReplicationDestination {
     #[serde(default)]
     pub transfer_type: ReplicationDestinationTransferType,
 }
-impl crate::FlatSerialize for ReplicationDestination {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.bucket, &format!("{}.Bucket", name), params);
-        crate::FlatSerialize::flat_serialize(&self.location, &format!("{}.Location", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.transfer_type,
-            &format!("{}.TransferType", name),
-            params,
-        );
-    }
-}
 
 /// 用于筛选使用SSE-KMS加密对象的容器。如果在数据复制规则中指定了SourceSelectionCriteria，则必须指定该元素。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20868,15 +18920,6 @@ pub struct ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
     #[serde(default)]
     pub status: ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus,
 }
-impl crate::FlatSerialize for ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
 
 /// 用于标识要复制的源对象的其他筛选条件的容器。当前OSS仅支持针对SSE-KMS加密的源对象指定筛选条件。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20886,19 +18929,6 @@ pub struct ReplicationSourceSelectionCriteria {
     #[serde(rename = "SseKmsEncryptedObjects")]
     #[serde(default)]
     pub sse_kms_encrypted_objects: ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects,
-}
-impl crate::FlatSerialize for ReplicationSourceSelectionCriteria {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.sse_kms_encrypted_objects,
-            &format!("{}.SseKmsEncryptedObjects", name),
-            params,
-        );
-    }
 }
 
 /// 目标对象加密配置。
@@ -20910,19 +18940,6 @@ pub struct ReplicationEncryptionConfiguration {
     #[serde(default)]
     pub replica_kms_key_id: String,
 }
-impl crate::FlatSerialize for ReplicationEncryptionConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.replica_kms_key_id,
-            &format!("{}.ReplicaKmsKeyID", name),
-            params,
-        );
-    }
-}
 
 /// 数据复制时间控制功能的状态
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -20932,103 +18949,6 @@ pub struct RTC {
     #[serde(rename = "Status")]
     #[serde(default)]
     pub status: String,
-}
-impl crate::FlatSerialize for RTC {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
-
-/// 数据复制规则
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct PutReplicationRule {
-    /// 数据复制规则的唯一标识
-    #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
-    /// 要复制的目标Object名称前缀配置容器
-    #[serde(rename = "PrefixSet")]
-    #[serde(default)]
-    pub prefix_set: ReplicationPrefixSet,
-    /// 指定可以被复制到目标Bucket的操作。如果配置了Action，则新写入的数据和历史数据的同步都会遵循Action指定的复制操作。  Action允许以下操作类型，您可以指定一项或多项。  取值：  ALL（默认值）：表示PUT、DELETE、ABORT操作均会被同步到目标Bucket。  PUT：表示被同步到目标Bucket的写入操作，包括PutObject、PostObject、AppendObject、CopyObject、PutObjectACL、InitiateMultipartUpload、UploadPart、UploadPartCopy、CompleteMultipartUpload。
-    #[serde(rename = "Action")]
-    #[serde(default)]
-    pub action: String,
-    /// 保存目的Bucket信息的容器
-    #[serde(rename = "Destination")]
-    #[serde(default)]
-    pub destination: ReplicationDestination,
-    /// 是否复制历史数据
-    #[serde(rename = "HistoricalObjectReplication")]
-    #[serde(default)]
-    pub historical_object_replication: PutReplicationRuleHistoricalObjectReplication,
-    /// 授权OSS使用哪个角色来进行数据复制。
-    #[serde(rename = "SyncRole")]
-    #[serde(default)]
-    pub sync_role: String,
-    /// 用于标识要复制的源对象的其他筛选条件的容器。
-    #[serde(rename = "SourceSelectionCriteria")]
-    #[serde(default)]
-    pub source_selection_criteria: ReplicationSourceSelectionCriteria,
-    /// 目标对象加密配置。
-    #[serde(rename = "EncryptionConfiguration")]
-    #[serde(default)]
-    pub encryption_configuration: ReplicationEncryptionConfiguration,
-    /// 保存RTC配置规则的容器。
-    #[serde(rename = "RTC")]
-    #[serde(default)]
-    pub rtc: RTC,
-}
-
-/// 带有备注信息的QoS配置
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct QoSConfigurationWithRemark {
-    /// 总上行带宽，单位Gbps
-    #[serde(rename = "TotalUploadBandwidth")]
-    #[serde(default)]
-    pub total_upload_bandwidth: i64,
-    /// 内网上行带宽，单位Gbps
-    #[serde(rename = "IntranetUploadBandwidth")]
-    #[serde(default)]
-    pub intranet_upload_bandwidth: i64,
-    /// 公网上行带宽，单位Gbps
-    #[serde(rename = "ExtranetUploadBandwidth")]
-    #[serde(default)]
-    pub extranet_upload_bandwidth: i64,
-    /// 总下行带宽，单位Gbps
-    #[serde(rename = "TotalDownloadBandwidth")]
-    #[serde(default)]
-    pub total_download_bandwidth: i64,
-    /// 内网下行带宽，单位Gbps
-    #[serde(rename = "IntranetDownloadBandwidth")]
-    #[serde(default)]
-    pub intranet_download_bandwidth: i64,
-    /// 公网下行带宽，单位Gbps
-    #[serde(rename = "ExtranetDownloadBandwidth")]
-    #[serde(default)]
-    pub extranet_download_bandwidth: i64,
-    /// 总QPS
-    #[serde(rename = "TotalQps")]
-    #[serde(default)]
-    pub total_qps: i64,
-    /// 内网QPS
-    #[serde(rename = "IntranetQps")]
-    #[serde(default)]
-    pub intranet_qps: i64,
-    /// 公网QPS
-    #[serde(rename = "ExtranetQps")]
-    #[serde(default)]
-    pub extranet_qps: i64,
-    /// 备注
-    #[serde(rename = "Remark")]
-    #[serde(default)]
-    pub remark: i64,
 }
 
 /// 保存Referer访问白名单的容器。
@@ -21041,15 +18961,6 @@ pub struct RefererConfigurationRefererList {
     #[serde(default)]
     pub referer: Vec<String>,
 }
-impl crate::FlatSerialize for RefererConfigurationRefererList {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.referer, &format!("{}.Referer", name), params);
-    }
-}
 
 /// 保存Referer访问黑名单
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21059,15 +18970,6 @@ pub struct RefererConfigurationRefererBlacklist {
     #[serde(rename = "Referer")]
     #[serde(default)]
     pub referer: Vec<String>,
-}
-impl crate::FlatSerialize for RefererConfigurationRefererBlacklist {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.referer, &format!("{}.Referer", name), params);
-    }
 }
 
 /// 保存Referer配置内容的容器。
@@ -21104,39 +19006,6 @@ pub struct RefererConfiguration {
     #[serde(rename = "RefererBlacklist")]
     #[serde(default)]
     pub referer_blacklist: RefererConfigurationRefererBlacklist,
-}
-impl crate::FlatSerialize for RefererConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_empty_referer,
-            &format!("{}.AllowEmptyReferer", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_truncate_query_string,
-            &format!("{}.AllowTruncateQueryString", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.truncate_path,
-            &format!("{}.TruncatePath", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.referer_list,
-            &format!("{}.RefererList", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.referer_blacklist,
-            &format!("{}.RefererBlacklist", name),
-            params,
-        );
-    }
 }
 
 /// 地域信息。
@@ -21281,52 +19150,9 @@ pub struct ReplicationRule {
     #[serde(default)]
     pub rtc: RTC,
 }
-impl crate::FlatSerialize for ReplicationRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.prefix_set,
-            &format!("{}.PrefixSet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.action, &format!("{}.Action", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.destination,
-            &format!("{}.Destination", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.historical_object_replication,
-            &format!("{}.HistoricalObjectReplication", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.sync_role,
-            &format!("{}.SyncRole", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.source_selection_criteria,
-            &format!("{}.SourceSelectionCriteria", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.encryption_configuration,
-            &format!("{}.EncryptionConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.rtc, &format!("{}.RTC", name), params);
-    }
-}
 
 /// 请求付费配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct RequestPaymentConfiguration {
     /// 指定Bucket付费类型。
     /// 取值：
@@ -21337,131 +19163,21 @@ pub struct RequestPaymentConfiguration {
     #[serde(rename = "Payer")]
     pub payer: Option<String>,
 }
-impl crate::FlatSerialize for RequestPaymentConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.payer, &format!("{}.Payer", name), params);
-    }
-}
-
-/// 创建预留空间的信息
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ReservedCapacityRecord {
-    #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
-    #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    #[serde(rename = "Region")]
-    #[serde(default)]
-    pub region: String,
-    #[serde(rename = "Version")]
-    #[serde(default)]
-    pub version: i64,
-    #[serde(rename = "Capacity")]
-    #[serde(default)]
-    pub capacity: i64,
-    #[serde(rename = "CreateTime")]
-    #[serde(default)]
-    pub create_time: i64,
-    #[serde(rename = "LastModifyTime")]
-    #[serde(default)]
-    pub last_modify_time: i64,
-    #[serde(rename = "LastExpansionCapacity")]
-    #[serde(default)]
-    pub last_expansion_capacity: i64,
-    #[serde(rename = "ExpansionTime")]
-    #[serde(default)]
-    pub expansion_time: i64,
-    #[serde(rename = "DueTime")]
-    #[serde(default)]
-    pub due_time: i64,
-    #[serde(rename = "Years")]
-    #[serde(default)]
-    pub years: i64,
-    #[serde(rename = "FirstTimeEnabled")]
-    #[serde(default)]
-    pub first_time_enabled: i64,
-    #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
-    #[serde(rename = "DataRedundancyType")]
-    #[serde(default)]
-    pub data_redundancy_type: String,
-}
-
-/// 指定规则适应的操作的容器
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseHeaderConfigurationRuleItemFilters {
-    /// 适用操作列表
-    #[serde(rename = "Operation")]
-    #[serde(default)]
-    pub operation: Vec<String>,
-}
-
-/// 指定隐藏哪些响应头的容器
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseHeaderConfigurationRuleItemHideHeaders {
-    /// 隐藏的响应头列表
-    #[serde(rename = "Header")]
-    #[serde(default)]
-    pub header: Vec<String>,
-}
-
-/// 保存响应头规则的容器
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct ResponseHeaderConfigurationRuleItem {
-    /// 规则名称
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
-    /// 指定规则适应的操作的容器
-    #[serde(rename = "Filters")]
-    #[serde(default)]
-    pub filters: ResponseHeaderConfigurationRuleItemFilters,
-    /// 指定隐藏哪些响应头的容器
-    #[serde(rename = "HideHeaders")]
-    #[serde(default)]
-    pub hide_headers: ResponseHeaderConfigurationRuleItemHideHeaders,
-}
 
 /// 解冻优先级的容器。只有解冻冷归档类型的Object时才生效。
 /// 如果不传入JobParameters节点，则解冻优先级默认为Standard。
-#[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
-#[serde(default)]
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct RestoreRequestJobParameters {
     /// 解冻优先级。取值范围如下：
     ///   - 高优先级（Expedited）：表示1小时内完成解冻。
     ///   - 标准（Standard）：表示2~5小时内完成解冻。
     ///   - 批量（Bulk）：表示5~12小时内完成解冻。
     #[serde(rename = "Tier")]
-    #[serde(default)]
-    pub tier: String,
-}
-impl crate::FlatSerialize for RestoreRequestJobParameters {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tier, &format!("{}.Tier", name), params);
-    }
+    pub tier: Option<String>,
 }
 
 /// 解冻请求信息。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct RestoreRequest {
     /// 解冻的天数。取值范围为1~7天。
     #[serde(rename = "Days")]
@@ -21470,20 +19186,6 @@ pub struct RestoreRequest {
     /// 如果不传入JobParameters节点，则解冻优先级默认为Standard。
     #[serde(rename = "JobParameters")]
     pub job_parameters: Option<RestoreRequestJobParameters>,
-}
-impl crate::FlatSerialize for RestoreRequest {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.days, &format!("{}.Days", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.job_parameters,
-            &format!("{}.JobParameters", name),
-            params,
-        );
-    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21505,26 +19207,6 @@ pub struct RoutingRuleConditionIncludeHeaderItem {
     #[serde(rename = "EndsWith")]
     #[serde(default)]
     pub ends_with: String,
-}
-impl crate::FlatSerialize for RoutingRuleConditionIncludeHeaderItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.equals, &format!("{}.Equals", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.starts_with,
-            &format!("{}.StartsWith", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.ends_with,
-            &format!("{}.EndsWith", name),
-            params,
-        );
-    }
 }
 
 /// 匹配的条件。
@@ -21550,34 +19232,6 @@ pub struct RoutingRuleCondition {
     #[serde(default)]
     pub include_header: Vec<RoutingRuleConditionIncludeHeaderItem>,
 }
-impl crate::FlatSerialize for RoutingRuleCondition {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.key_prefix_equals,
-            &format!("{}.KeyPrefixEquals", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.key_suffix_equals,
-            &format!("{}.KeySuffixEquals", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_error_code_returned_equals,
-            &format!("{}.HttpErrorCodeReturnedEquals", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.include_header,
-            &format!("{}.IncludeHeader", name),
-            params,
-        );
-    }
-}
 
 /// 设置一个Header传到源站，不管请求中是否携带这些指定的Header，回源时都会设置这些Header。只有设置RedirectType为Mirror时才生效。
 /// 此容器最多可指定10组。
@@ -21594,16 +19248,6 @@ pub struct RoutingRuleRedirectMirrorHeadersSetItem {
     #[serde(rename = "Value")]
     #[serde(default)]
     pub value: String,
-}
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorHeadersSetItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
 }
 
 /// 指定镜像回源时携带的Header。只有设置RedirectType为Mirror时才生效。
@@ -21636,18 +19280,6 @@ pub struct RoutingRuleRedirectMirrorHeaders {
     #[serde(default)]
     pub set: Vec<RoutingRuleRedirectMirrorHeadersSetItem>,
 }
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorHeaders {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.pass_all, &format!("{}.PassAll", name), params);
-        crate::FlatSerialize::flat_serialize(&self.pass, &format!("{}.Pass", name), params);
-        crate::FlatSerialize::flat_serialize(&self.remove, &format!("{}.Remove", name), params);
-        crate::FlatSerialize::flat_serialize(&self.set, &format!("{}.Set", name), params);
-    }
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -21661,16 +19293,6 @@ pub struct RoutingRuleRedirectMirrorTaggingsTaggingsItem {
     #[serde(default)]
     pub value: String,
 }
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorTaggingsTaggingsItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
 
 /// 镜像回源保存文件时根据参数保存标签
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21680,15 +19302,6 @@ pub struct RoutingRuleRedirectMirrorTaggings {
     #[serde(rename = "Taggings")]
     #[serde(default)]
     pub taggings: Vec<RoutingRuleRedirectMirrorTaggingsTaggingsItem>,
-}
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorTaggings {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.taggings, &format!("{}.Taggings", name), params);
-    }
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21703,16 +19316,6 @@ pub struct RoutingRuleRedirectMirrorReturnHeadersReturnHeaderItem {
     #[serde(default)]
     pub value: String,
 }
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorReturnHeadersReturnHeaderItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.key, &format!("{}.Key", name), params);
-        crate::FlatSerialize::flat_serialize(&self.value, &format!("{}.Value", name), params);
-    }
-}
 
 /// 保存镜像回源返回响应头规则的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21722,19 +19325,6 @@ pub struct RoutingRuleRedirectMirrorReturnHeaders {
     #[serde(rename = "ReturnHeader")]
     #[serde(default)]
     pub return_header: Vec<RoutingRuleRedirectMirrorReturnHeadersReturnHeaderItem>,
-}
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorReturnHeaders {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.return_header,
-            &format!("{}.ReturnHeader", name),
-            params,
-        );
-    }
 }
 
 /// 镜像回源源站认证信息
@@ -21758,30 +19348,6 @@ pub struct RoutingRuleRedirectMirrorAuth {
     #[serde(default)]
     pub access_key_secret: String,
 }
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorAuth {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.auth_type,
-            &format!("{}.AuthType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.region, &format!("{}.Region", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_id,
-            &format!("{}.AccessKeyId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.access_key_secret,
-            &format!("{}.AccessKeySecret", name),
-            params,
-        );
-    }
-}
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
@@ -21803,34 +19369,6 @@ pub struct RoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateItem {
     #[serde(default)]
     pub mirror_multi_alternate_dst_region: String,
 }
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateItem {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternate_number,
-            &format!("{}.MirrorMultiAlternateNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternate_url,
-            &format!("{}.MirrorMultiAlternateURL", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternate_vpc_id,
-            &format!("{}.MirrorMultiAlternateVpcId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternate_dst_region,
-            &format!("{}.MirrorMultiAlternateDstRegion", name),
-            params,
-        );
-    }
-}
 
 /// 镜像回源多源站配置列表
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -21841,19 +19379,6 @@ pub struct RoutingRuleRedirectMirrorMultiAlternates {
     #[serde(default)]
     pub mirror_multi_alternate:
         Vec<RoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateItem>,
-}
-impl crate::FlatSerialize for RoutingRuleRedirectMirrorMultiAlternates {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternate,
-            &format!("{}.MirrorMultiAlternate", name),
-            params,
-        );
-    }
 }
 
 /// 指定匹配此规则后执行的动作。
@@ -22041,195 +19566,6 @@ pub struct RoutingRuleRedirect {
     #[serde(default)]
     pub mirror_multi_alternates: RoutingRuleRedirectMirrorMultiAlternates,
 }
-impl crate::FlatSerialize for RoutingRuleRedirect {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.redirect_type,
-            &format!("{}.RedirectType", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.pass_query_string,
-            &format!("{}.PassQueryString", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_url,
-            &format!("{}.MirrorURL", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_sni,
-            &format!("{}.MirrorSNI", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_pass_query_string,
-            &format!("{}.MirrorPassQueryString", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_follow_redirect,
-            &format!("{}.MirrorFollowRedirect", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_check_md5,
-            &format!("{}.MirrorCheckMd5", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_headers,
-            &format!("{}.MirrorHeaders", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.protocol, &format!("{}.Protocol", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.host_name,
-            &format!("{}.HostName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.replace_key_prefix_with,
-            &format!("{}.ReplaceKeyPrefixWith", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.enable_replace_prefix,
-            &format!("{}.EnableReplacePrefix", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.replace_key_with,
-            &format!("{}.ReplaceKeyWith", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.http_redirect_code,
-            &format!("{}.HttpRedirectCode", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_pass_original_slashes,
-            &format!("{}.MirrorPassOriginalSlashes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_url_slave,
-            &format!("{}.MirrorURLSlave", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_url_probe,
-            &format!("{}.MirrorURLProbe", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_save_oss_meta,
-            &format!("{}.MirrorSaveOssMeta", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_proxy_pass,
-            &format!("{}.MirrorProxyPass", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_allow_get_image_info,
-            &format!("{}.MirrorAllowGetImageInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_allow_video_snapshot,
-            &format!("{}.MirrorAllowVideoSnapshot", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_is_express_tunnel,
-            &format!("{}.MirrorIsExpressTunnel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_dst_region,
-            &format!("{}.MirrorDstRegion", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_dst_vpc_id,
-            &format!("{}.MirrorDstVpcId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_dst_slave_vpc_id,
-            &format!("{}.MirrorDstSlaveVpcId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_user_last_modified,
-            &format!("{}.MirrorUserLastModified", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_switch_all_errors,
-            &format!("{}.MirrorSwitchAllErrors", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_tunnel_id,
-            &format!("{}.MirrorTunnelId", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_using_role,
-            &format!("{}.MirrorUsingRole", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_role,
-            &format!("{}.MirrorRole", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_allow_head_object,
-            &format!("{}.MirrorAllowHeadObject", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.transparent_mirror_response_codes,
-            &format!("{}.TransparentMirrorResponseCodes", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_async_status,
-            &format!("{}.MirrorAsyncStatus", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_taggings,
-            &format!("{}.MirrorTaggings", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_return_headers,
-            &format!("{}.MirrorReturnHeaders", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_auth,
-            &format!("{}.MirrorAuth", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.mirror_multi_alternates,
-            &format!("{}.MirrorMultiAlternates", name),
-            params,
-        );
-    }
-}
 
 /// 需要执行的Lua脚本配置。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -22239,15 +19575,6 @@ pub struct RoutingRuleLuaConfig {
     #[serde(rename = "Script")]
     #[serde(default)]
     pub script: String,
-}
-impl crate::FlatSerialize for RoutingRuleLuaConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.script, &format!("{}.Script", name), params);
-    }
 }
 
 /// 指定跳转规则或者镜像回源规则，最多指定20个RoutingRule。
@@ -22276,34 +19603,9 @@ pub struct RoutingRule {
     #[serde(default)]
     pub lua_config: RoutingRuleLuaConfig,
 }
-impl crate::FlatSerialize for RoutingRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.rule_number,
-            &format!("{}.RuleNumber", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.condition,
-            &format!("{}.Condition", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.redirect, &format!("{}.Redirect", name), params);
-        crate::FlatSerialize::flat_serialize(
-            &self.lua_config,
-            &format!("{}.LuaConfig", name),
-            params,
-        );
-    }
-}
 
 /// 数据复制时间控制配置容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct RtcConfiguration {
     /// 保存RTC状态规则的容器。
     #[serde(rename = "RTC")]
@@ -22312,20 +19614,9 @@ pub struct RtcConfiguration {
     #[serde(rename = "ID")]
     pub id: Option<String>,
 }
-impl crate::FlatSerialize for RtcConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rtc, &format!("{}.RTC", name), params);
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-    }
-}
 
 /// 保存SelectMetaRequest信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct SelectMetaRequest {
     /// 输入序列化参数（可选）。
     #[serde(rename = "InputSerialization")]
@@ -22334,24 +19625,6 @@ pub struct SelectMetaRequest {
     /// <br>默认值：false（即如果Select Meta已存在则直接返回）。
     #[serde(rename = "OverwriteIfExists")]
     pub overwrite_if_exists: Option<bool>,
-}
-impl crate::FlatSerialize for SelectMetaRequest {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.input_serialization,
-            &format!("{}.InputSerialization", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.overwrite_if_exists,
-            &format!("{}.OverwriteIfExists", name),
-            params,
-        );
-    }
 }
 
 /// 保存CreateSelectObjectMeta信息的容器。
@@ -22390,7 +19663,6 @@ pub struct SelectMetaStatus {
 
 /// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct SelectRequestOptions {
     /// 忽略缺失数据的行。
     ///
@@ -22406,28 +19678,9 @@ pub struct SelectRequestOptions {
     #[serde(rename = "MaxSkippedRecordsAllowed")]
     pub max_skipped_records_allowed: Option<i64>,
 }
-impl crate::FlatSerialize for SelectRequestOptions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.skip_partial_data_record,
-            &format!("{}.SkipPartialDataRecord", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.max_skipped_records_allowed,
-            &format!("{}.MaxSkippedRecordsAllowed", name),
-            params,
-        );
-    }
-}
 
 /// 保存Select请求的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct SelectRequest {
     /// 以Base64 编码的SQL语句。
     #[serde(rename = "Expression")]
@@ -22442,56 +19695,17 @@ pub struct SelectRequest {
     #[serde(rename = "Options")]
     pub options: Option<SelectRequestOptions>,
 }
-impl crate::FlatSerialize for SelectRequest {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.expression,
-            &format!("{}.Expression", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.input_serialization,
-            &format!("{}.InputSerialization", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_serialization,
-            &format!("{}.OutputSerialization", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.options, &format!("{}.Options", name), params);
-    }
-}
 
 /// 服务器端加密规则的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct ServerSideEncryptionRule {
     /// 服务器端默认加密方式的容器。
     #[serde(rename = "ApplyServerSideEncryptionByDefault")]
     pub apply_server_side_encryption_by_default: Option<ApplyServerSideEncryptionByDefault>,
 }
-impl crate::FlatSerialize for ServerSideEncryptionRule {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.apply_server_side_encryption_by_default,
-            &format!("{}.ApplyServerSideEncryptionByDefault", name),
-            params,
-        );
-    }
-}
 
 /// 保存Content信息列表的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct Style {
     /// 图片样式内容，图片样式可以包含一个或多个图片处理操作。
     ///
@@ -22500,15 +19714,6 @@ pub struct Style {
     /// - 包含多个图片处理操作的图片样式，例如image/resize,p_63/quality,q_90，表示先将图片缩放到原图的63%，再设置图片相对质量为90%。
     #[serde(rename = "Content")]
     pub content: Option<String>,
-}
-impl crate::FlatSerialize for Style {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.content, &format!("{}.Content", name), params);
-    }
 }
 
 /// 包含存储空间图片处理样式信息的结构体
@@ -22546,37 +19751,17 @@ pub struct TagSet {
     #[serde(default)]
     pub tag: Vec<Tag>,
 }
-impl crate::FlatSerialize for TagSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag, &format!("{}.Tag", name), params);
-    }
-}
 
 /// 设置Bucket TagSet的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct Tagging {
     /// 包含一系列Bucket Tag的容器。
     #[serde(rename = "TagSet")]
     pub tag_set: Option<TagSet>,
 }
-impl crate::FlatSerialize for Tagging {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.tag_set, &format!("{}.TagSet", name), params);
-    }
-}
 
 /// 传输加速配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct TransferAccelerationConfiguration {
     /// 目标Bucket是否开启传输加速。取值如下：
     ///   - **true**：开启传输加速。
@@ -22585,15 +19770,6 @@ pub struct TransferAccelerationConfiguration {
     /// > 传输加速开启及关闭操作在30分钟内生效。
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
-}
-impl crate::FlatSerialize for TransferAccelerationConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.enabled, &format!("{}.Enabled", name), params);
-    }
 }
 
 /// 保存Multipart Upload事件信息的容器。
@@ -22663,15 +19839,6 @@ pub struct UserDefinedLogFieldsConfigurationHeaderSet {
     #[serde(default)]
     pub header: Vec<String>,
 }
-impl crate::FlatSerialize for UserDefinedLogFieldsConfigurationHeaderSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.header, &format!("{}.header", name), params);
-    }
-}
 
 /// 自定义查询参数配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -22681,19 +19848,6 @@ pub struct UserDefinedLogFieldsConfigurationParamSet {
     #[serde(rename = "parameter")]
     #[serde(default)]
     pub parameter: Vec<String>,
-}
-impl crate::FlatSerialize for UserDefinedLogFieldsConfigurationParamSet {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.parameter,
-            &format!("{}.parameter", name),
-            params,
-        );
-    }
 }
 
 /// 存储空间实时日志中用户自定义字段配置。
@@ -22709,28 +19863,9 @@ pub struct UserDefinedLogFieldsConfiguration {
     #[serde(default)]
     pub param_set: UserDefinedLogFieldsConfigurationParamSet,
 }
-impl crate::FlatSerialize for UserDefinedLogFieldsConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.header_set,
-            &format!("{}.HeaderSet", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.param_set,
-            &format!("{}.ParamSet", name),
-            params,
-        );
-    }
-}
 
 /// 保存版本控制状态的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct VersioningConfiguration {
     /// 版本控制状态。取值如下：
     ///
@@ -22739,23 +19874,6 @@ pub struct VersioningConfiguration {
     /// - Suspended：暂停版本控制状态。
     #[serde(rename = "Status")]
     pub status: Option<BucketVersioningStatus>,
-}
-impl crate::FlatSerialize for VersioningConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.status, &format!("{}.Status", name), params);
-    }
-}
-
-#[derive(Debug, Clone, Default, serde::Deserialize)]
-#[serde(default)]
-pub struct VirtualBucketConfigurationRealBucketItem {
-    #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
 }
 
 /// RoutingRule的容器。
@@ -22768,19 +19886,6 @@ pub struct WebsiteConfigurationRoutingRules {
     #[serde(rename = "RoutingRule")]
     #[serde(default)]
     pub routing_rule: Vec<RoutingRule>,
-}
-impl crate::FlatSerialize for WebsiteConfigurationRoutingRules {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.routing_rule,
-            &format!("{}.RoutingRule", name),
-            params,
-        );
-    }
 }
 
 /// 根节点。
@@ -22806,29 +19911,6 @@ pub struct WebsiteConfiguration {
     #[serde(default)]
     pub routing_rules: WebsiteConfigurationRoutingRules,
 }
-impl crate::FlatSerialize for WebsiteConfiguration {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.index_document,
-            &format!("{}.IndexDocument", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.error_document,
-            &format!("{}.ErrorDocument", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.routing_rules,
-            &format!("{}.RoutingRules", name),
-            params,
-        );
-    }
-}
 
 /// 保存Bucket信息列表的容器。
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -22852,19 +19934,9 @@ pub struct BucketAclResponseAccessControlList {
 
 /// 保存数据复制配置信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct PutBucketReplicationbody {
     #[serde(rename = "Rule")]
     pub rule: Option<ReplicationRule>,
-}
-impl crate::FlatSerialize for PutBucketReplicationbody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.rule, &format!("{}.Rule", name), params);
-    }
 }
 
 /// 包含TransferType约束的Location信息容器。
@@ -22889,97 +19961,46 @@ pub struct CConstraint {
 
 /// 保存需要删除的数据复制规则的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct DeleteBucketReplicationbody {
     /// 需要删除的数据复制规则的名称。
     #[serde(rename = "ID")]
     pub id: Option<String>,
 }
-impl crate::FlatSerialize for DeleteBucketReplicationbody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.id, &format!("{}.ID", name), params);
-    }
-}
 
 /// 保存目标Cname域名的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CnamebodyCname {
     /// 要删除的Cname。
     #[serde(rename = "Domain")]
     pub domain: Option<String>,
 }
-impl crate::FlatSerialize for CnamebodyCname {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-    }
-}
 
 /// 保存Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct DeleteCnamebody {
     /// 保存目标Cname域名的容器。
     #[serde(rename = "Cname")]
     pub cname: Option<CnamebodyCname>,
 }
-impl crate::FlatSerialize for DeleteCnamebody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
-    }
-}
 
 /// 保存要生成Token的Cname域名。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct TokenbodyCname {
     /// 目标Cname域名。
     #[serde(rename = "Domain")]
     pub domain: Option<String>,
 }
-impl crate::FlatSerialize for TokenbodyCname {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.domain, &format!("{}.Domain", name), params);
-    }
-}
 
 /// 保存Cname配置的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct CnameTokenbody {
     /// 保存要生成Token的Cname域名。
     #[serde(rename = "Cname")]
     pub cname: Option<TokenbodyCname>,
 }
-impl crate::FlatSerialize for CnameTokenbody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.cname, &format!("{}.Cname", name), params);
-    }
-}
 
 /// 保存对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct PointForObjectProcessbody {
     /// OSS接入点名称。更多信息，请参见[创建接入点](~~2365063~~)。
     #[serde(rename = "AccessPointName")]
@@ -22992,29 +20013,6 @@ pub struct PointForObjectProcessbody {
     /// > 开启该选项之后将会允许匿名账号通过ObjectFC接入点访问您的Bucket，会产生相关费用。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
     pub allow_anonymous_access_for_object_process: Option<String>,
-}
-impl crate::FlatSerialize for PointForObjectProcessbody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.access_point_name,
-            &format!("{}.AccessPointName", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.object_process_configuration,
-            &format!("{}.ObjectProcessConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_anonymous_access_for_object_process,
-            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
-            params,
-        );
-    }
 }
 
 /// 保存对象FC接入点访问域名信息的容器。
@@ -23076,7 +20074,6 @@ pub struct AccessPointsForObjectProcess {
 
 /// 保存对象FC接入点信息的容器。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct ConfigForObjectProcessbody {
     /// 保存对象处理信息的容器。
     #[serde(rename = "ObjectProcessConfiguration")]
@@ -23089,29 +20086,6 @@ pub struct ConfigForObjectProcessbody {
     /// 保存阻止公共访问信息的容器。
     #[serde(rename = "PublicAccessBlockConfiguration")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
-}
-impl crate::FlatSerialize for ConfigForObjectProcessbody {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.object_process_configuration,
-            &format!("{}.ObjectProcessConfiguration", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.allow_anonymous_access_for_object_process,
-            &format!("{}.AllowAnonymousAccessForObjectProcess", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.public_access_block_configuration,
-            &format!("{}.PublicAccessBlockConfiguration", name),
-            params,
-        );
-    }
 }
 
 /// 存储ACL信息的容器。
@@ -23167,16 +20141,6 @@ impl<'a> From<&'a ObjectACL> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for ObjectACL {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum AccessMonitorStatus {
@@ -23211,16 +20175,6 @@ impl std::fmt::Display for AccessMonitorStatus {
 impl<'a> From<&'a AccessMonitorStatus> for crate::QueryValue<'a> {
     fn from(value: &'a AccessMonitorStatus) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for AccessMonitorStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23274,16 +20228,6 @@ impl<'a> From<&'a StorageClass> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for StorageClass {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum BucketACL {
@@ -23324,16 +20268,6 @@ impl<'a> From<&'a BucketACL> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for BucketACL {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum DataRedundancyType {
@@ -23368,16 +20302,6 @@ impl std::fmt::Display for DataRedundancyType {
 impl<'a> From<&'a DataRedundancyType> for crate::QueryValue<'a> {
     fn from(value: &'a DataRedundancyType) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for DataRedundancyType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23418,16 +20342,6 @@ impl<'a> From<&'a BucketVersioningStatus> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for BucketVersioningStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum BucketWormState {
@@ -23462,16 +20376,6 @@ impl std::fmt::Display for BucketWormState {
 impl<'a> From<&'a BucketWormState> for crate::QueryValue<'a> {
     fn from(value: &'a BucketWormState) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for BucketWormState {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23515,16 +20419,6 @@ impl<'a> From<&'a FileHeaderInfo> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for FileHeaderInfo {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum CompressionType {
@@ -23562,16 +20456,6 @@ impl<'a> From<&'a CompressionType> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for CompressionType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum EncodeType {
@@ -23603,16 +20487,6 @@ impl std::fmt::Display for EncodeType {
 impl<'a> From<&'a EncodeType> for crate::QueryValue<'a> {
     fn from(value: &'a EncodeType) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for EncodeType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23655,16 +20529,6 @@ impl<'a> From<&'a JSONType> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for JSONType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum InventoryFormat {
@@ -23696,16 +20560,6 @@ impl std::fmt::Display for InventoryFormat {
 impl<'a> From<&'a InventoryFormat> for crate::QueryValue<'a> {
     fn from(value: &'a InventoryFormat) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for InventoryFormat {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23745,16 +20599,6 @@ impl std::fmt::Display for InventoryFrequency {
 impl<'a> From<&'a InventoryFrequency> for crate::QueryValue<'a> {
     fn from(value: &'a InventoryFrequency) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for InventoryFrequency {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23807,16 +20651,6 @@ impl<'a> From<&'a InventoryOptionalField> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for InventoryOptionalField {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum InventoryIncludedObjectVersions {
@@ -23853,16 +20687,6 @@ impl std::fmt::Display for InventoryIncludedObjectVersions {
 impl<'a> From<&'a InventoryIncludedObjectVersions> for crate::QueryValue<'a> {
     fn from(value: &'a InventoryIncludedObjectVersions) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for InventoryIncludedObjectVersions {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -23903,16 +20727,6 @@ impl<'a> From<&'a MetaQueryOrder> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for MetaQueryOrder {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationDestinationTransferType {
@@ -23950,16 +20764,6 @@ impl<'a> From<&'a ReplicationDestinationTransferType> for crate::QueryValue<'a> 
     }
 }
 
-impl crate::FlatSerialize for ReplicationDestinationTransferType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum PutReplicationRuleHistoricalObjectReplication {
@@ -23994,16 +20798,6 @@ impl std::fmt::Display for PutReplicationRuleHistoricalObjectReplication {
 impl<'a> From<&'a PutReplicationRuleHistoricalObjectReplication> for crate::QueryValue<'a> {
     fn from(value: &'a PutReplicationRuleHistoricalObjectReplication) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for PutReplicationRuleHistoricalObjectReplication {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -24046,16 +20840,6 @@ impl<'a> From<&'a ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus
     }
 }
 
-impl crate::FlatSerialize for ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum ReplicationRuleHistoricalObjectReplication {
@@ -24093,21 +20877,10 @@ impl<'a> From<&'a ReplicationRuleHistoricalObjectReplication> for crate::QueryVa
     }
 }
 
-impl crate::FlatSerialize for ReplicationRuleHistoricalObjectReplication {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// - 您也可以通过设置prefix、marker或者max-keys参数列举满足指定条件的存储空间。
 /// - 要列举存储空间，您必须有oss:GetService (ListBuckets)权限。具体操作，请参见[为RAM用户授权自定义的权限策略](https://help.aliyun.com/document_detail/199058.htm?spm=a2c4g.11186623.0.0.48be7590hCA8LI#section-ucu-jv0-zip)。
 /// - 调用接口时，如果所有Bucket已返回，则返回参数的XML中不包含Prefix、Marker、MaxKeys、IsTruncated和NextMarker响应元素。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListBucketsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24144,7 +20917,6 @@ pub struct ListBucketsResponse {
 }
 /// 只支持在二级域名（例如oss-cn-hangzhou.aliyuncs.com）上调用DescribeRegions接口。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct DescribeRegionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24157,7 +20929,6 @@ pub struct DescribeRegionsResponse {
 ///
 /// - 执行GetBucket (ListObjects)请求时不会返回Object中自定义的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListObjectsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24210,7 +20981,6 @@ pub struct ListObjectsResponse {
 }
 /// 执行GetBucketV2 (ListObjectsV2)请求时不会返回Object中自定义的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListObjectsV2Response {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24270,13 +21040,11 @@ pub struct ListObjectsV2Response {
     pub common_prefixes: Vec<CommonPrefix>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24287,7 +21055,6 @@ pub struct GetAccessPointPolicyResponse {
 ///
 /// - 同一个Bucket中，版本控制和合规保留策略无法同时配置。如果Bucket已开启版本控制功能，则无法再配置保留策略。关于版本控制功能更多信息，请参见[版本控制介绍](~~109685~~)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct InitiateBucketWormResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24301,7 +21068,6 @@ pub struct InitiateBucketWormResponse {
 ///
 /// > 若指定用来获取Bucket的合规保留策略信息对应的WORM ID不存在，则返回404。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketWormResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24331,7 +21097,6 @@ pub struct GetBucketWormResponse {
     pub expiration_date: String,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24350,7 +21115,6 @@ pub struct GetBucketAclResponse {
 ///
 /// 有关传输加速的更多信息，请参见开发指南的[传输加速](~~131312~~)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketTransferAccelerationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24360,7 +21124,6 @@ pub struct GetBucketTransferAccelerationResponse {
     pub enabled: bool,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketVersioningResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24374,7 +21137,6 @@ pub struct GetBucketVersioningResponse {
 ///
 /// 不同Object之间按字母排序返回，同一个Object的不同版本则按从新到旧排序，与版本ID的字母序无关。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListObjectVersionsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24445,14 +21207,12 @@ pub struct ListObjectVersionsResponse {
 ///
 /// 有关Bucket Policy的配置详情及场景案例，请参见[使用Bucket Policy授权其他用户访问OSS资源](~~85111~~)。有关Policy语法，请参见[权限策略语法和结构](~~93739~~)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 /// 阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进行查看，您必须拥有`oss:GetBucketPolicyStatus`权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketPolicyStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24473,7 +21233,6 @@ pub struct GetBucketPolicyStatusResponse {
 ///
 /// 关于数据复制的更多信息，请分别参见[跨区域复制介绍](https://help.aliyun.com/document_detail/31864.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-zjp-31z-5db)和[同区域复制介绍](https://help.aliyun.com/document_detail/254865.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-2067125)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutBucketReplicationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24482,7 +21241,6 @@ pub struct PutBucketReplicationResponse {
     pub x_oss_replication_rule_id: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketReplicationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24492,7 +21250,6 @@ pub struct GetBucketReplicationResponse {
     pub rule: Vec<ReplicationRule>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketReplicationLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24512,7 +21269,6 @@ pub struct GetBucketReplicationLocationResponse {
     pub location_rtc_constraint: CConstraint,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketReplicationProgressResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24525,7 +21281,6 @@ pub struct GetBucketReplicationProgressResponse {
 ///
 /// - 调用该请求时，请确保您有足够的权限对存储空间的清单任务进行操作。存储空间所有者默认拥有该权限，若您无该项权限，请先向存储空间所有者申请该项操作的权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListBucketInventoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24549,7 +21304,6 @@ pub struct ListBucketInventoryResponse {
     pub next_continuation_token: String,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketTagsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24559,7 +21313,6 @@ pub struct GetBucketTagsResponse {
     pub tag_set: TagSet,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListUserDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24583,7 +21336,6 @@ pub struct ListUserDataRedundancyTransitionResponse {
 /// - 要列举Bucket下所有的存储冗余转换任务，您必须具有`oss:ListBucketDataRedundancyTransition`权限。具体操作，请参见[为RAM用户授权自定义的权限策略](~~199058~~)。
 /// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24598,7 +21350,6 @@ pub struct ListBucketDataRedundancyTransitionResponse {
 /// - 要创建存储冗余转换任务，您必须具有oss:CreateBucketDataRedundancyTransition权限。具体操作，请参见为[RAM用户授权自定义的权限策略](~~199058~~)。
 /// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CreateBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24609,7 +21360,6 @@ pub struct CreateBucketDataRedundancyTransitionResponse {
 }
 /// 只有Bucket的拥有者及授权的RAM用户才能获取Bucket的加密规则，否则返回403错误。有关Bucket加密的更多信息，请参见**[服务器端加密](~~31871~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketEncryptionResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24619,7 +21369,6 @@ pub struct GetBucketEncryptionResponse {
     pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketRequestPaymentResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24632,7 +21381,6 @@ pub struct GetBucketRequestPaymentResponse {
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketCorsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24651,7 +21399,6 @@ pub struct GetBucketCorsResponse {
 }
 /// Options请求是由浏览器自动根据是否跨域来决定是否发送。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct OptionObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24672,7 +21419,6 @@ pub struct OptionObjectResponse {
     pub access_control_max_age: Option<i64>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetMetaQueryStatusResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24712,7 +21458,6 @@ pub struct GetMetaQueryStatusResponse {
     pub update_time: String,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListBucketAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24734,7 +21479,6 @@ pub struct ListBucketAntiDDosInfoResponse {
     pub anti_ddos_configuration: Vec<BucketAntiDDOSInfo>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct InitUserAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24743,7 +21487,6 @@ pub struct InitUserAntiDDosInfoResponse {
     pub x_oss_defender_instance: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetUserAntiDDosInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24753,7 +21496,6 @@ pub struct GetUserAntiDDosInfoResponse {
     pub anti_ddos_configuration: Vec<UserAntiDDOSInfo>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetBucketResourceGroupResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24763,7 +21505,6 @@ pub struct GetBucketResourceGroupResponse {
     pub resource_group_id: String,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListCnameResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24781,7 +21522,6 @@ pub struct ListCnameResponse {
     pub cname: Vec<CnameInfo>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListStyleResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24794,7 +21534,6 @@ pub struct ListStyleResponse {
 /// - 单个阿里云账号支持创建1000个对象FC接入点。
 /// - 单个Bucket支持创建100个对象FC接入点。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CreateAccessPointForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24809,7 +21548,6 @@ pub struct CreateAccessPointForObjectProcessResponse {
 }
 /// 阿里云账号默认拥有获取对象FC接入点基础信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点基础信息，您必须拥有`oss:GetAccessPointForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24862,7 +21600,6 @@ pub struct GetAccessPointForObjectProcessResponse {
 }
 /// 阿里云账号默认拥有获取对象FC接入点信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点信息，您必须拥有`oss:ListAccessPointsForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListAccessPointsForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24888,7 +21625,6 @@ pub struct ListAccessPointsForObjectProcessResponse {
 }
 /// 阿里云账号默认拥有获取对象FC接入点配置信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点配置信息，您必须拥有`oss:GetAccessPointConfigForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointConfigForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24907,13 +21643,11 @@ pub struct GetAccessPointConfigForObjectProcessResponse {
 }
 /// 阿里云账号默认拥有获取对象FC接入点权限策略配置的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点的权限策略配置，您必须拥有`oss:GetAccessPointPolicyForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetAccessPointPolicyForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutAccessPointPublicAccessBlockResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24931,7 +21665,6 @@ pub struct PutAccessPointPublicAccessBlockResponse {
 /// - 在已开启版本控制的Bucket中，OSS会为新添加的Object自动生成唯一的版本ID，并在响应Header中通过x-oss-version-id形式返回。
 /// - 在暂停了版本控制的Bucket中，新添加的Object的版本ID为null。OSS会保证同一个Object仅有一个null的版本ID。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutObjectResponse {
     /// Header field from response: x-oss-hash-crc64ecma
     #[serde(skip)]
@@ -24966,7 +21699,6 @@ pub struct PutObjectResponse {
 /// - 调用CopyObject接口会对目标Object所在的Bucket增加相应的存储量。
 /// - 调用CopyObject接口更改Object存储类型会涉及数据覆盖。例如低频访问IA创建后10天内被覆盖为标准存储Standard，则会产生20天的低频访问不足规定时长容量费用。关于存储费用的更多信息，请参见**[存储费用](~~173534~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CopyObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -24996,7 +21728,6 @@ pub struct CopyObjectResponse {
 /// 默认情况下，调用GetObject接口仅返回Object的当前版本。
 /// 如果在查询参数中指定Object的versionId，则返回指定的Object版本。当versionId指定为null时，则返回versionId为null的Object版本。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectResponse {
     pub body: Vec<u8>,
     /// Header field from response: x-oss-server-side-encryption
@@ -25073,7 +21804,6 @@ impl crate::BinaryWithMeta for GetObjectResponse {
 /// - 处于[合规保留策略](~~90564~~)保护期的Object不支持AppendObject操作。
 /// - AppendableObject不支持指定CMK ID进行服务端KMS加密。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct AppendObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25085,7 +21815,6 @@ pub struct AppendObjectResponse {
     pub x_oss_hash_crc64ecma: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct SealAppendObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25110,7 +21839,6 @@ pub struct SealAppendObjectResponse {
 /// - 指定versionId（永久删除）：
 /// 如果在指定versionId的情况下执行删除操作时，OSS会根据`params`中指定的`versionId`参数永久删除该版本。如果要删除ID为“null”的版本，请在`params`参数中添加`params['versionId'] = “null”`，OSS将“null”字符串当成“null”的versionId，从而删除versionId为“null”的Object。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct DeleteObjectResponse {
     /// Header field from response: x-oss-delete-marker
     #[serde(skip)]
@@ -25123,7 +21851,6 @@ pub struct DeleteObjectResponse {
 ///
 /// - HeadObject操作默认获取Object当前版本的元信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元信息。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct HeadObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25191,7 +21918,6 @@ pub struct HeadObjectResponse {
 /// GetObjectMeta操作默认获取Object当前版本的元数据信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元数据信息。
 ///
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectMetaResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25249,7 +21975,6 @@ pub struct GetObjectMetaResponse {
 /// - 解冻状态最多延长7天。在此期间不再重复收取数据取回费用。
 /// - 解冻状态结束后，Object又回到冷冻状态，再次执行解冻操作会收取数据取回费用。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RestoreObjectResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25266,7 +21991,6 @@ pub struct RestoreObjectResponse {
 ///
 /// - 该操作计算认证签名时，需要添加`?uploads`到`CanonicalizedResource`中。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct InitiateMultipartUploadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25306,7 +22030,6 @@ pub struct InitiateMultipartUploadResponse {
 ///
 /// 在开启版本控制的情况下，调用CompleteMultipartUpload接口来完成整个文件的MultipartUpload，OSS会为整个文件生成唯一的版本ID，并在响应header中以x-oss-version-id的形式返回。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct CompleteMultipartUploadResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25362,7 +22085,6 @@ pub struct CompleteMultipartUploadResponse {
 /// 如果未指定versionId且拷贝Object的当前版本为删除标记（Delete Marker），OSS将返回404 Not Found。通过指定versionId来拷贝删除标记时，OSS将返回400 Bad Request。
 ///
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct UploadPartCopyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25380,7 +22102,6 @@ pub struct UploadPartCopyResponse {
 }
 /// 调用ListMultipartUploads接口列举所有执行中的Multipart Upload事件，即已经初始化但还未完成（Complete）或者还未中止（Abort）的Multipart Upload事件。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListMultipartUploadsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25441,7 +22162,6 @@ pub struct ListMultipartUploadsResponse {
 ///
 /// - 由于网络传输可能出错，所以不推荐使用ListParts返回结果中的Part Number和ETag值来生成已经上传成功的Part列表。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListPartsResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25501,7 +22221,6 @@ pub struct ListPartsResponse {
 /// - 您还可以在进行Object的写操作时，在请求头中带上x-oss-object-acl来设置Object
 ///  ACL，效果与PutObjectACL等同。例如PutObject时在请求头中带上x-oss-object-acl可以在上传一个Object的同时设置此Object的ACL。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutObjectAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25515,7 +22234,6 @@ pub struct PutObjectAclResponse {
 ///
 /// >如果一个Object从未设置过ACL，则调用GetObjectACL时，返回的ObjectACL为default，表示该Object的ACL遵循Bucket ACL。即如果Bucket的访问权限是private，则该Object的访问权限也是private。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectAclResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25541,7 +22259,6 @@ pub struct GetObjectAclResponse {
 /// 软链接本身也可以有多个版本，每个不同的版本可以指向不同的TargetObject，版本ID由OSS自动生成，在响应Header中返回x-oss-version-id。
 ///
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutSymlinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25554,7 +22271,6 @@ pub struct PutSymlinkResponse {
 /// GetSymlink接口默认获取软链接的当前版本。允许通过指定versionId来获取指定版本。如果软链接的当前版本为删除标记，OSS会返回404 Not Found，在响应header中返回x-oss-delete-marker = true以及版本ID : x-oss-version-id。删除标记没有关联数据，因此也没有软链接指向的TargetObject。
 ///
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetSymlinkResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25582,7 +22298,6 @@ pub struct GetSymlinkResponse {
 ///
 /// 调用PutObjectTagging接口时，默认设置Object当前版本的标签信息。您可以通过指定versionId参数来设置指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutObjectTaggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25595,7 +22310,6 @@ pub struct PutObjectTaggingResponse {
 /// 调用GetObjectTagging接口时，默认只能获取Object当前版本的标签信息。您可以通过指定versionId参数来获取指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
 ///
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetObjectTaggingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25607,7 +22321,6 @@ pub struct GetObjectTaggingResponse {
 /// 通过RTMP协议上传音视频数据前，必须先调用该接口创建一个LiveChannel。调用该接口会返回RTMP推流地址，以及对应的播放地址。
 /// <br>您可以使用返回的地址进行推流、播放，您还可以根据该LiveChannel的名称来发起相关的操作，如查询推流状态、查询推流记录、禁止推流等。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutLiveChannelResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25621,7 +22334,6 @@ pub struct PutLiveChannelResponse {
     pub play_urls: LiveChannelPlayUrls,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct ListLiveChannelResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25655,7 +22367,6 @@ pub struct ListLiveChannelResponse {
     pub live_channel: Vec<LiveChannel>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetLiveChannelInfoResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25678,7 +22389,6 @@ pub struct GetLiveChannelInfoResponse {
 }
 /// 使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetLiveChannelHistoryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25688,7 +22398,6 @@ pub struct GetLiveChannelHistoryResponse {
     pub live_record: Vec<LiveRecord>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct GetLiveChannelStatResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -25718,7 +22427,6 @@ pub struct GetLiveChannelStatResponse {
     pub audio: LiveChannelAudio,
 }
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct PutDataLakeCachePrefetchJobResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,

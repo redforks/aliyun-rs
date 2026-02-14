@@ -7811,7 +7811,6 @@ impl crate::Request for VerifyVATInvoice {
 
 /// * 当图片类型为通用文字识别高精版时（**Type=Advanced**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct AdvancedConfig {
     /// - 是否需要成行返回功能。开启后会返回**RowInfo**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
@@ -7861,58 +7860,9 @@ pub struct AdvancedConfig {
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: Option<bool>,
 }
-impl crate::FlatSerialize for AdvancedConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.output_row,
-            &format!("{}.OutputRow", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_paragraph,
-            &format!("{}.OutputParagraph", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table,
-            &format!("{}.OutputTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_char_info,
-            &format!("{}.OutputCharInfo", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_line_less_table,
-            &format!("{}.IsLineLessTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_hand_writing_table,
-            &format!("{}.IsHandWritingTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_excel,
-            &format!("{}.OutputTableExcel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_html,
-            &format!("{}.OutputTableHtml", name),
-            params,
-        );
-    }
-}
 
 /// * 当图片类型为身份证时（**Type=IdCard**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct TextIdCardConfig {
     /// - 是否需要身份证质量检测功能。
     /// - 身份证质量检测功能包含：是否翻拍，是否是复印件，完整度评分，整体质量分数。
@@ -7924,24 +7874,9 @@ pub struct TextIdCardConfig {
     #[serde(rename = "Llm_rec")]
     pub llm_rec: Option<bool>,
 }
-impl crate::FlatSerialize for TextIdCardConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.output_id_card_quality,
-            &format!("{}.OutputIdCardQuality", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(&self.llm_rec, &format!("{}.Llm_rec", name), params);
-    }
-}
 
 /// * 当图片类型为国际身份证时（Type=**InternationalIdCard**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct InternationalIdCardConfig {
     /// - 国家名称。
     /// - 支持的国家类型：India，Vietnam，Korea，Bangladesh。
@@ -7950,19 +7885,9 @@ pub struct InternationalIdCardConfig {
     #[serde(rename = "Country")]
     pub country: Option<ConfigCountry>,
 }
-impl crate::FlatSerialize for InternationalIdCardConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
-    }
-}
 
 /// * 当图片类型为国际企业执照时（Type=**InternationalBusinessLicense**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct LicenseConfig {
     /// * 国家名称。
     /// * 支持的国家类型：India，Korea。
@@ -7971,19 +7896,9 @@ pub struct LicenseConfig {
     #[serde(rename = "Country")]
     pub country: Option<String>,
 }
-impl crate::FlatSerialize for LicenseConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(&self.country, &format!("{}.Country", name), params);
-    }
-}
 
 /// * 当图片类型为通用多语言文字时（Type=**MultiLang**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct LanConfig {
     /// - 支持的语言列表。
     /// - chn：中文，eng：英文，ja：日文，lading：拉丁，kor：韩文，sx：手写，tai：泰文，rus：俄文，mys：马来文，idn：印尼文，viet：越南文，ukr：乌克兰。
@@ -7991,23 +7906,9 @@ pub struct LanConfig {
     #[serde(rename = "Languages")]
     pub languages: Option<String>,
 }
-impl crate::FlatSerialize for LanConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.languages,
-            &format!("{}.Languages", name),
-            params,
-        );
-    }
-}
 
 /// * 当图片类型为表格时（Type=**Table**），可通过本字段设置可选功能。
 #[derive(Debug, Clone, Default, serde::Serialize)]
-#[serde(default)]
 pub struct TableConfig {
     /// * 是否是手写表格。
     /// * true：是手写表格；false：不是手写表格。
@@ -8033,34 +7934,6 @@ pub struct TableConfig {
     /// * **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableHtml")]
     pub output_table_html: Option<bool>,
-}
-impl crate::FlatSerialize for TableConfig {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        crate::FlatSerialize::flat_serialize(
-            &self.is_hand_writing_table,
-            &format!("{}.IsHandWritingTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.is_line_less_table,
-            &format!("{}.IsLineLessTable", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_excel,
-            &format!("{}.OutputTableExcel", name),
-            params,
-        );
-        crate::FlatSerialize::flat_serialize(
-            &self.output_table_html,
-            &format!("{}.OutputTableHtml", name),
-            params,
-        );
-    }
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -9220,16 +9093,6 @@ impl<'a> From<&'a TextType> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for TextType {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum ConfigCountry {
@@ -9273,16 +9136,6 @@ impl<'a> From<&'a ConfigCountry> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for ConfigCountry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum HandWriting {
@@ -9317,16 +9170,6 @@ impl std::fmt::Display for HandWriting {
 impl<'a> From<&'a HandWriting> for crate::QueryValue<'a> {
     fn from(value: &'a HandWriting) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for HandWriting {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -9377,16 +9220,6 @@ impl<'a> From<&'a IdcardCountry> for crate::QueryValue<'a> {
     }
 }
 
-impl crate::FlatSerialize for IdcardCountry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
-    }
-}
-
 /// Enum type marshalled as String
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum LicenseCountry {
@@ -9421,16 +9254,6 @@ impl std::fmt::Display for LicenseCountry {
 impl<'a> From<&'a LicenseCountry> for crate::QueryValue<'a> {
     fn from(value: &'a LicenseCountry) -> Self {
         crate::QueryValue::from(value.as_str())
-    }
-}
-
-impl crate::FlatSerialize for LicenseCountry {
-    fn flat_serialize<'a>(
-        &'a self,
-        name: &str,
-        params: &mut Vec<(std::borrow::Cow<'static, str>, crate::QueryValue<'a>)>,
-    ) {
-        params.push((name.to_string().into(), self.into()));
     }
 }
 
@@ -9488,7 +9311,6 @@ impl crate::FlatSerialize for LicenseCountry {
 /// |WayBill| 电子面单 | <ul> <li> recipientName：收件人姓名 </li> <li> senderAddress：寄件人姓名 </li> <li> senderPhoneNumber：寄件人电话 </li> <li> senderAddress：寄件人地址 </li> <li> recipientPhoneNumber：收件人电话 </li> <li> recipientAddress：收件人地址 </li> </ul> |
 /// |BankAccountPermit| 银行开户许可证 | <ul> <li> bankAccount：账号 </li> <li> legalRepresentative：法定代表人 </li> <li> depositaryBank：开户银行 </li> <li> approvalNumber：核准号 </li> <li> customerName：名称 </li> <li> permitNumber：编号 </li> <li> title：标题 </li> </ul> |
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeAllTextResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9518,7 +9340,6 @@ pub struct RecognizeAllTextResponse {
 /// | 其他提示 | <ul> <li>请保证整张图片内容及其边缘包含在图像内。 </li> <li> 本能力会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li><li> PDF类型文件仅识别第一页。 </li> </ul> |
 /// ---
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeGeneralStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9613,7 +9434,6 @@ pub struct RecognizeGeneralStructureResponse {
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeAdvancedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9689,7 +9509,6 @@ pub struct RecognizeAdvancedResponse {
 /// |paragraphId|int|段落id，和prism_wordsInfo信息中的paragraphId对应。|
 /// |word|string|段落文字。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeHandwritingResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9725,7 +9544,6 @@ pub struct RecognizeHandwritingResponse {
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。如果最外层的 angle 不为 0，需要按照 angle 矫正图片后，坐标才准确。|
 /// |word|string|文字块的文字内容。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBasicResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9760,7 +9578,6 @@ pub struct RecognizeBasicResponse {
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
 /// |word|string|文字块的文字内容。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeGeneralResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9828,7 +9645,6 @@ pub struct RecognizeGeneralResponse {
 /// |tableId|int|表格ID（和**prism_tablesInfo**中的**tableId**对应）。|
 /// |tail|list|表尾信息。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTableOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9875,7 +9691,6 @@ pub struct RecognizeTableOcrResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeHealthCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -9956,7 +9771,6 @@ pub struct RecognizeHealthCodeResponse {
 /// cells    单元格信息
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeDocumentStructureResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10032,7 +9846,6 @@ pub struct RecognizeDocumentStructureResponse {
 /// |qualityScore|float|整体质量分数。|
 /// |tamperScore|float|篡改指数（数值越大表示篡改可能性越大，推荐阈值：60）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10096,7 +9909,6 @@ pub struct RecognizeIdcardResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10172,7 +9984,6 @@ pub struct RecognizePassportResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeHouseholdResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10227,7 +10038,6 @@ pub struct RecognizeHouseholdResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEstateCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10272,7 +10082,6 @@ pub struct RecognizeEstateCertificationResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBankCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10337,7 +10146,6 @@ pub struct RecognizeBankCardResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBirthCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10376,7 +10184,6 @@ pub struct RecognizeBirthCertificationResponse {
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeChinesePassportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10427,7 +10234,6 @@ pub struct RecognizeChinesePassportResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeExitEntryPermitToMainlandResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10462,7 +10268,6 @@ pub struct RecognizeExitEntryPermitToMainlandResponse {
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeExitEntryPermitToHKResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10525,7 +10330,6 @@ pub struct RecognizeExitEntryPermitToHKResponse {
 /// |box|object|人像图案坐标信息：人像图案中心横纵坐标，长宽，图案顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|人像图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeHKIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10574,7 +10378,6 @@ pub struct RecognizeHKIdcardResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10684,7 +10487,6 @@ pub struct RecognizeSocialSecurityCardVersionIIResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeInternationalIdcardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10761,7 +10563,6 @@ pub struct RecognizeInternationalIdcardResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeMixedInvoicesResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10852,7 +10653,6 @@ pub struct RecognizeMixedInvoicesResponse {
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10929,7 +10729,6 @@ pub struct RecognizeInvoiceResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -10953,7 +10752,6 @@ pub struct RecognizeCarInvoiceResponse {
 /// formType    联次
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeQuotaInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11028,7 +10826,6 @@ pub struct RecognizeQuotaInvoiceResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeAirItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11090,7 +10887,6 @@ pub struct RecognizeAirItineraryResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTrainInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11139,7 +10935,6 @@ pub struct RecognizeTrainInvoiceResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTaxiInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11176,7 +10971,6 @@ pub struct RecognizeTaxiInvoiceResponse {
 /// amount            金额
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeRollTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11238,7 +11032,6 @@ pub struct RecognizeRollTicketResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBankAcceptanceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11281,7 +11074,6 @@ pub struct RecognizeBankAcceptanceResponse {
 /// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBusShipTicketResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11346,7 +11138,6 @@ pub struct RecognizeBusShipTicketResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeNonTaxInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11386,7 +11177,6 @@ pub struct RecognizeNonTaxInvoiceResponse {
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11423,7 +11213,6 @@ pub struct RecognizeCommonPrintedInvoiceResponse {
 /// payment  付款
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeHotelConsumeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11469,7 +11258,6 @@ pub struct RecognizeHotelConsumeResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizePaymentRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11499,7 +11287,6 @@ pub struct RecognizePaymentRecordResponse {
 /// quantity  商品数量
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizePurchaseRecordResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11540,7 +11327,6 @@ pub struct RecognizePurchaseRecordResponse {
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeRideHailingItineraryResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11585,7 +11371,6 @@ pub struct RecognizeRideHailingItineraryResponse {
 /// unitPrice   单价
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeShoppingReceiptResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11612,7 +11397,6 @@ pub struct RecognizeShoppingReceiptResponse {
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeSocialSecurityCardResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11641,7 +11425,6 @@ pub struct RecognizeSocialSecurityCardResponse {
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTollInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11703,7 +11486,6 @@ pub struct RecognizeTollInvoiceResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTaxClearanceCertificateResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11760,7 +11542,6 @@ pub struct RecognizeTaxClearanceCertificateResponse {
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11827,7 +11608,6 @@ pub struct RecognizeUsedCarInvoiceResponse {
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11873,7 +11653,6 @@ pub struct RecognizeBusinessLicenseResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeBankAccountLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11898,7 +11677,6 @@ pub struct RecognizeBankAccountLicenseResponse {
 /// certificateNumber编码
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeTradeMarkCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -11961,7 +11739,6 @@ pub struct RecognizeTradeMarkCertificationResponse {
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeFoodProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12027,7 +11804,6 @@ pub struct RecognizeFoodProduceLicenseResponse {
 /// |type|string|图案类型。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeFoodManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12060,7 +11836,6 @@ pub struct RecognizeFoodManageLicenseResponse {
 /// validToDate有效期限/许可期限
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12089,7 +11864,6 @@ pub struct RecognizeMedicalDeviceManageLicenseResponse {
 /// productionScope生产范围
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12152,7 +11926,6 @@ pub struct RecognizeMedicalDeviceProduceLicenseResponse {
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12188,7 +11961,6 @@ pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
 /// ftype 是否是复印件
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCosmeticProduceLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12259,7 +12031,6 @@ pub struct RecognizeCosmeticProduceLicenseResponse {
 /// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeInternationalBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12328,7 +12099,6 @@ pub struct RecognizeInternationalBusinessLicenseResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeVehicleLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12391,7 +12161,6 @@ pub struct RecognizeVehicleLicenseResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeDrivingLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12436,7 +12205,6 @@ pub struct RecognizeDrivingLicenseResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeWaybillResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12488,7 +12256,6 @@ pub struct RecognizeWaybillResponse {
 /// |value_prob|float|字段名称对应值的置信度。|
 /// |value_pos|list|车牌在原图中的四个点坐标（左上角横坐标、左上角纵坐标、右上角横坐标、右上角纵坐标、右下角横坐标、右下角纵坐标、左下角横坐标、左下角纵坐标）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCarNumberResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12531,7 +12298,6 @@ pub struct RecognizeCarNumberResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCarVinCodeResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12617,7 +12383,6 @@ pub struct RecognizeCarVinCodeResponse {
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeVehicleRegistrationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12698,7 +12463,6 @@ pub struct RecognizeVehicleRegistrationResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeVehicleCertificationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12722,7 +12486,6 @@ pub struct RecognizeVehicleCertificationResponse {
 /// |orgHeight|int|原图的高度。|
 /// |orgWidth|int|原图的宽度。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduFormulaResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12755,7 +12518,6 @@ pub struct RecognizeEduFormulaResponse {
 /// |result|string|口算判题结果，right：正确，wrong：错误，unknown：未知。|
 /// |title|string|口算题目内容。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduOralCalculationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12815,7 +12577,6 @@ pub struct RecognizeEduOralCalculationResponse {
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduPaperOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12868,7 +12629,6 @@ pub struct RecognizeEduPaperOcrResponse {
 /// |doc_index|int|输入的文档index,默认从1开始。|
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduPaperCutResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -12927,7 +12687,6 @@ pub struct RecognizeEduPaperCutResponse {
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduQuestionOcrResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13019,7 +12778,6 @@ pub struct RecognizeEduQuestionOcrResponse {
 /// |string|string|整题文本信息，可能包含latex公式，需要自行解析还原。|
 /// |pos|list|外层大矩形的四个点的坐标数组。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEduPaperStructedResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13088,7 +12846,6 @@ pub struct RecognizeEduPaperStructedResponse {
 /// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
 /// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeMultiLanguageResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13146,7 +12903,6 @@ pub struct RecognizeMultiLanguageResponse {
 /// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
 /// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeEnglishResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13201,7 +12957,6 @@ pub struct RecognizeEnglishResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeThaiResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13256,7 +13011,6 @@ pub struct RecognizeThaiResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeJanpaneseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13311,7 +13065,6 @@ pub struct RecognizeJanpaneseResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeKoreanResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13366,7 +13119,6 @@ pub struct RecognizeKoreanResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeLatinResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13421,7 +13173,6 @@ pub struct RecognizeLatinResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeRussianResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13469,7 +13220,6 @@ pub struct RecognizeRussianResponse {
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct RecognizeCovidTestReportResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13500,7 +13250,6 @@ pub struct RecognizeCovidTestReportResponse {
 /// |20002|false|输入的法人名字和公司法人名字不一致！|
 /// |20003|false|传入的注册号与工商注册号和统一社会信用代码都不一致！|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct VerifyBusinessLicenseResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
@@ -13725,7 +13474,6 @@ pub struct VerifyBusinessLicenseResponse {
 /// |152000|超过用户QPS调用阈值|否|
 /// |171000|数据源业务异常|否|
 #[derive(Debug, Default, serde::Deserialize)]
-#[serde(default)]
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
