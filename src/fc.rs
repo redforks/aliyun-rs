@@ -5523,6 +5523,7 @@ impl crate::Request for ListScalingConfigs {
 pub struct AccelerationInfo {
     /// 镜像加速状态
     #[serde(rename = "status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
 }
 
@@ -5556,6 +5557,7 @@ pub struct Alias {
 pub struct Destination {
     /// 异步调用目标资源描述符
     #[serde(rename = "destination")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination: Option<String>,
 }
 
@@ -5565,9 +5567,11 @@ pub struct Destination {
 pub struct DestinationConfig {
     /// 失败的回调目标结构体。
     #[serde(rename = "onFailure")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_failure: Option<Destination>,
     /// 成功的回调目标结构体。
     #[serde(rename = "onSuccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub on_success: Option<Destination>,
 }
 
@@ -5710,9 +5714,11 @@ pub struct AsyncTask {
 pub struct AuthConfig {
     /// 认证信息
     #[serde(rename = "authInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_info: Option<String>,
     /// 认证类型。anonymous, function或者jwt。
     #[serde(rename = "authType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_type: Option<String>,
 }
 
@@ -5734,10 +5740,13 @@ pub struct CertConfig {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct ChangeResourceGroupInput {
     #[serde(rename = "ResourceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_id: Option<String>,
     #[serde(rename = "NewResourceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub new_resource_group_id: Option<String>,
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<String>,
 }
 
@@ -5772,12 +5781,14 @@ pub struct ConcurrencyConfig {
 pub struct CreateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: std::collections::HashMap<String, f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub additional_version_weight: Option<std::collections::HashMap<String, f64>>,
     /// 别名名称
     #[serde(rename = "aliasName")]
     pub alias_name: String,
     /// 别名描述信息
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 别名指向的版本
     #[serde(rename = "versionId")]
@@ -5854,9 +5865,11 @@ pub struct PathConfig {
     pub path: String,
     /// 版本或者别名
     #[serde(rename = "qualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qualifier: Option<String>,
     /// 重写配置
     #[serde(rename = "rewriteConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rewrite_config: Option<RewriteConfig>,
 }
 
@@ -5879,6 +5892,7 @@ pub struct TLSConfig {
     pub cipher_suites: Vec<String>,
     /// TLS最大版本号。枚举值：TLSv1.3, TLSv1.2
     #[serde(rename = "maxVersion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_version: Option<String>,
     /// TLS最小版本号。枚举值：TLSv1.3, TLSv1.2
     #[serde(rename = "minVersion")]
@@ -5891,6 +5905,7 @@ pub struct TLSConfig {
 pub struct WAFConfig {
     /// 是否开启WAF防护
     #[serde(rename = "enableWAF")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_waf: Option<bool>,
 }
 
@@ -5899,24 +5914,30 @@ pub struct WAFConfig {
 pub struct CreateCustomDomainInput {
     /// 权限认证配置。
     #[serde(rename = "authConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_config: Option<AuthConfig>,
     /// HTTPS证书的信息。
     #[serde(rename = "certConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cert_config: Option<CertConfig>,
     /// 域名。填写已在阿里云备案或接入备案的自定义域名名称。
     #[serde(rename = "domainName")]
     pub domain_name: String,
     /// 域名支持的协议类型。HTTP：仅支持HTTP协议。HTTPS：仅支持HTTPS协议。HTTP,HTTPS：支持HTTP及HTTPS协议。
     #[serde(rename = "protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
     /// 路由表：自定义域名访问时的PATH到Function的映射。
     #[serde(rename = "routeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_config: Option<RouteConfig>,
     /// TLS配置信息。
     #[serde(rename = "tlsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_config: Option<TLSConfig>,
     /// Web应用防火墙配置信息。
     #[serde(rename = "wafConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub waf_config: Option<WAFConfig>,
 }
 
@@ -5927,15 +5948,19 @@ pub struct CreateCustomDomainInput {
 pub struct InputCodeLocation {
     /// 函数代码包的CRC-64值。如果提供了checksum，则函数计算会校验代码包的checksum是否和提供的一致。
     #[serde(rename = "checksum")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub checksum: Option<String>,
     /// 用户存放函数代码ZIP包的OSS Bucket名称。
     #[serde(rename = "ossBucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_bucket_name: Option<String>,
     /// 用户存放函数代码ZIP包的OSS Object名称。
     #[serde(rename = "ossObjectName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_object_name: Option<String>,
     /// 函数代码ZIP包的Base 64编码。
     #[serde(rename = "zipFile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zip_file: Option<String>,
 }
 
@@ -5945,21 +5970,27 @@ pub struct InputCodeLocation {
 pub struct CustomHealthCheckConfig {
     /// 健康检查失败次数阈值，达到该值后系统认为检查失败。取值范围1~120。默认值为3。
     #[serde(rename = "failureThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub failure_threshold: Option<i32>,
     /// 容器自定义健康检查URL地址。长度不超过2048个字符。
     #[serde(rename = "httpGetUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub http_get_url: Option<String>,
     /// 容器启动到发起健康检查的延迟。取值范围0~120。默认值为0。
     #[serde(rename = "initialDelaySeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_delay_seconds: Option<i32>,
     /// 健康检查周期。取值范围1~120。默认值为3。
     #[serde(rename = "periodSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_seconds: Option<i32>,
     /// 健康检查成功次数阈值，达到该值后系统认为检查成功。取值范围1~120。默认值为1。
     #[serde(rename = "successThreshold")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub success_threshold: Option<i32>,
     /// 健康检查超时时间。取值范围1~3。默认值为1。
     #[serde(rename = "timeoutSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout_seconds: Option<i32>,
 }
 
@@ -5969,9 +6000,11 @@ pub struct CustomHealthCheckConfig {
 pub struct RegistryAuthConfig {
     /// 镜像仓库密码
     #[serde(rename = "password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
     /// 镜像仓库用户名
     #[serde(rename = "userName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_name: Option<String>,
 }
 
@@ -5981,9 +6014,11 @@ pub struct RegistryAuthConfig {
 pub struct RegistryCertConfig {
     /// 是否跳过证书验证
     #[serde(rename = "insecure")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub insecure: Option<bool>,
     /// 镜像仓库CA证书
     #[serde(rename = "rootCaCertBase64")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub root_ca_cert_base64: Option<String>,
 }
 
@@ -5993,12 +6028,15 @@ pub struct RegistryCertConfig {
 pub struct RegistryNetworkConfig {
     /// 可以连通镜像仓库的SecurityGroup ID
     #[serde(rename = "securityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
     /// 可以连通镜像仓库的VSwitch ID
     #[serde(rename = "vSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 可以连通镜像仓库的VPC ID
     #[serde(rename = "vpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
 }
 
@@ -6008,12 +6046,15 @@ pub struct RegistryNetworkConfig {
 pub struct RegistryConfig {
     /// 权限认证配置
     #[serde(rename = "authConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_config: Option<RegistryAuthConfig>,
     /// 证书配置
     #[serde(rename = "certConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cert_config: Option<RegistryCertConfig>,
     /// 网络配置。
     #[serde(rename = "networkConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_config: Option<RegistryNetworkConfig>,
 }
 
@@ -6023,12 +6064,15 @@ pub struct RegistryConfig {
 pub struct CustomContainerConfig {
     /// 镜像加速信息。
     #[serde(rename = "accelerationInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceleration_info: Option<AccelerationInfo>,
     /// 是否开启镜像加速。Default表示开启镜像加速，None表示关闭镜像加速。
     #[serde(rename = "accelerationType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acceleration_type: Option<String>,
     /// ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入。
     #[serde(rename = "acrInstanceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acr_instance_id: Option<String>,
     /// 容器启动参数。
     #[serde(rename = "command")]
@@ -6040,18 +6084,23 @@ pub struct CustomContainerConfig {
     pub entrypoint: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_config: Option<CustomHealthCheckConfig>,
     /// 容器镜像地址。
     #[serde(rename = "image")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image: Option<String>,
     /// 自定义容器运行时HTTP Server的监听端口。
     #[serde(rename = "port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i32>,
     /// registry related
     #[serde(rename = "registryConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub registry_config: Option<RegistryConfig>,
     /// 所部署的镜像的实际digest版本，函数启动时实际使用此digest指定的代码版本。由GetFunction时返回，作为参数时无需提供。
     #[serde(rename = "resolvedImageUri")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resolved_image_uri: Option<String>,
 }
 
@@ -6061,9 +6110,11 @@ pub struct CustomContainerConfig {
 pub struct DNSOption {
     /// 配置项名称
     #[serde(rename = "name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     /// 配置项值
     #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -6099,9 +6150,11 @@ pub struct CustomRuntimeConfig {
     pub command: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub health_check_config: Option<CustomHealthCheckConfig>,
     /// HTTP Server的监听端口。
     #[serde(rename = "port")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port: Option<i32>,
 }
 
@@ -6111,6 +6164,7 @@ pub struct CustomRuntimeConfig {
 pub struct GPUConfig {
     /// GPU显存规格，单位为MB，为1024MB的倍数
     #[serde(rename = "gpuMemorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gpu_memory_size: Option<i32>,
     /// GPU实例类型。
     ///
@@ -6120,6 +6174,7 @@ pub struct GPUConfig {
     ///
     ///  - fc.gpu.ada.1 表示 GPU Ada 系列实例类型。
     #[serde(rename = "gpuType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gpu_type: Option<String>,
 }
 
@@ -6129,9 +6184,11 @@ pub struct GPUConfig {
 pub struct LifecycleHook {
     /// 回调方法的执行入口，含义与请求处理程序类似。
     #[serde(rename = "handler")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub handler: Option<String>,
     /// 回调方法的超时时间，单位为秒。
     #[serde(rename = "timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i32>,
     /// 函数生命周期初始化阶段回调指令，生命周期回调方法的执行入口 handler 和 command 不允许同时配置，只能有一个生效，同时配置会产生错误提示
     #[serde(rename = "command")]
@@ -6145,9 +6202,11 @@ pub struct LifecycleHook {
 pub struct InstanceLifecycleConfig {
     /// Initializer回调方法配置
     #[serde(rename = "initializer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub initializer: Option<LifecycleHook>,
     /// PreStop回调方法配置
     #[serde(rename = "preStop")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pre_stop: Option<LifecycleHook>,
 }
 
@@ -6157,18 +6216,23 @@ pub struct InstanceLifecycleConfig {
 pub struct LogConfig {
     /// 是否开启实例级别指标。开启该功能后，您可以查看实例级别的CPU使用情况、内存使用情况、实例网络情况和实例内请求数等核心指标信息。false：默认值，表示关闭实例级别指标。true：表示开启实例级别指标。
     #[serde(rename = "enableInstanceMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_instance_metrics: Option<bool>,
     /// 是否开启请求级别指标。开启该功能后，您可以查看该服务下所有函数的某次调用所消耗的时间及内存。false：表示关闭请求级别指标。true：默认值，表示开启请求级别指标。
     #[serde(rename = "enableRequestMetrics")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_request_metrics: Option<bool>,
     /// 日志行首匹配规则
     #[serde(rename = "logBeginRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_begin_rule: Option<String>,
     /// 日志服务的Logstore名称。
     #[serde(rename = "logstore")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logstore: Option<String>,
     /// 日志服务的Project名称
     #[serde(rename = "project")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project: Option<String>,
 }
 
@@ -6178,12 +6242,15 @@ pub struct LogConfig {
 pub struct NASMountConfig {
     /// 使用传输加密方式挂载。 说明：仅通用型NAS支持传输加密
     #[serde(rename = "enableTLS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_tls: Option<bool>,
     /// 本地挂载目录。
     #[serde(rename = "mountDir")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_dir: Option<String>,
     /// NAS服务器地址。
     #[serde(rename = "serverAddr")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub server_addr: Option<String>,
 }
 
@@ -6193,6 +6260,7 @@ pub struct NASMountConfig {
 pub struct NASConfig {
     /// 群组ID。
     #[serde(rename = "groupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub group_id: Option<i32>,
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
@@ -6200,6 +6268,7 @@ pub struct NASConfig {
     pub mount_points: Vec<NASMountConfig>,
     /// 账号ID。
     #[serde(rename = "userId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user_id: Option<i32>,
 }
 
@@ -6209,18 +6278,23 @@ pub struct NASConfig {
 pub struct OSSMountPoint {
     /// 挂载的OSS Bucket。
     #[serde(rename = "bucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
     /// 挂载的OSS Bucket路径。
     #[serde(rename = "bucketPath")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_path: Option<String>,
     /// OSS访问地址。
     #[serde(rename = "endpoint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub endpoint: Option<String>,
     /// 挂载目录。
     #[serde(rename = "mountDir")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mount_dir: Option<String>,
     /// 是否只读。
     #[serde(rename = "readOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub read_only: Option<bool>,
 }
 
@@ -6244,6 +6318,7 @@ pub struct TracingConfig {
     pub params: std::collections::HashMap<String, String>,
     /// 链路追踪协议类型，目前只支持Jaeger。
     #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
 }
 
@@ -6253,6 +6328,7 @@ pub struct TracingConfig {
 pub struct VPCConfig {
     /// 安全组ID。
     #[serde(rename = "securityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
     /// 交换机列表。
     #[serde(rename = "vSwitchIds")]
@@ -6260,6 +6336,7 @@ pub struct VPCConfig {
     pub v_switch_ids: Vec<String>,
     /// VPC网络ID。
     #[serde(rename = "vpcId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_id: Option<String>,
     /// 授予函数计算访问用户VPC所需权限的RAM角色
     #[serde(rename = "role")]
@@ -6273,9 +6350,11 @@ pub struct VPCConfig {
 pub struct Tag {
     /// 标签名
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -6315,98 +6394,127 @@ pub struct PolarFsConfig {
 pub struct CreateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
     #[serde(rename = "code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<InputCodeLocation>,
     /// 函数的CPU规格，单位为vCPU，为0.05 vCPU的倍数。最小值为0.05，最大值为16。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<f32>,
     /// 自定义容器运行时的相关配置，成功配置后函数可以使用自定义容器镜像执行函数。code和customContainerConfig二选一。
     #[serde(rename = "customContainerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_container_config: Option<CustomContainerConfig>,
     /// 自定义DNS配置。
     #[serde(rename = "customDNS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_dns: Option<CustomDNS>,
     /// 自定义运行时配置。
     #[serde(rename = "customRuntimeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_runtime_config: Option<CustomRuntimeConfig>,
     /// 函数的描述。
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 函数的磁盘规格，单位为MB，可选值为512 MB或10240 MB。
     #[serde(rename = "diskSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: std::collections::HashMap<String, String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub environment_variables: Option<std::collections::HashMap<String, String>>,
     /// 函数的名称。只能包含字母、数字、下划线（_）和短划线（-），不能以数字、短划线（-）开头，长度范围为1~64个字符。
     #[serde(rename = "functionName")]
     pub function_name: String,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gpu_config: Option<GPUConfig>,
     /// 函数执行的入口，具体格式和运行时相关。
     #[serde(rename = "handler")]
     pub handler: String,
     /// 实例最大并发度。
     #[serde(rename = "instanceConcurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_concurrency: Option<i32>,
     /// 实例生命周期回调方法配置。
     #[serde(rename = "instanceLifecycleConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_lifecycle_config: Option<InstanceLifecycleConfig>,
     /// 是否允许函数访问公网。默认值为true。
     #[serde(rename = "internetAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    pub layers: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub layers: Option<Vec<String>>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_config: Option<LogConfig>,
     /// 函数的内存规格，单位为MB，内存大小为64 MB的倍数。最小值为128MB，最大值为32GB。同时cpu和memorySize（按GB算）比例要在1:1和1:4之间。
     #[serde(rename = "memorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_size: Option<i32>,
     /// NAS配置。配置此参数后，函数可以访问指定的NAS资源。
     #[serde(rename = "nasConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nas_config: Option<NASConfig>,
     /// OSS挂载配置。
     #[serde(rename = "ossMountConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_mount_config: Option<OSSMountConfig>,
     /// 用户授权给函数计算的RAM角色，设置后函数计算将扮演该角色生成临时访问凭证。在函数中可以使用该角色的临时访问凭证来访问指定的阿里云服务，例如OSS和OTS。
     #[serde(rename = "role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
     /// 函数的运行时环境。目前支持的运行环境有：nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, python3.12, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, custom.debian11, custom.debian12, custom-container。
     #[serde(rename = "runtime")]
     pub runtime: String,
     /// 函数运行的超时时间，单位为秒，最小1秒，最大值为86400秒，默认值是3秒。函数超过这个时间后会被终止执行。
     #[serde(rename = "timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i32>,
     /// 链路追踪配置。当函数计算与链路追踪集成后，您可以记录请求在函数计算的耗时时间、查看函数的冷启动时间、记录函数内部时间的消耗等。
     #[serde(rename = "tracingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_config: Option<TracingConfig>,
     /// VPC配置。配置此参数后，函数可以访问指定的VPC资源。
     #[serde(rename = "vpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VPCConfig>,
     /// 标签列表
     #[serde(rename = "tags")]
-    pub tags: Vec<Tag>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Vec<Tag>>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_ondemand: Option<bool>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_affinity: Option<String>,
     /// 是否允许 GPU 函数的预留实例常驻，启用该功能时，创建的函数实例不会被注入 STS token。
     #[serde(rename = "enableLongLiving")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_long_living: Option<bool>,
     #[serde(rename = "resourceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_group_id: Option<String>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_isolation_mode: Option<CreateFunctionInputInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间。
     #[serde(rename = "idleTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
@@ -6414,9 +6522,11 @@ pub struct CreateFunctionInput {
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_inject_credentials: Option<CreateFunctionInputDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
 
@@ -6425,15 +6535,19 @@ pub struct CreateFunctionInput {
 pub struct CreateLayerVersionInput {
     /// 层的代码信息。
     #[serde(rename = "code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<InputCodeLocation>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
-    pub compatible_runtime: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub compatible_runtime: Option<Vec<String>>,
     /// 层版本的描述信息。
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 层的许可协议。
     #[serde(rename = "license")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license: Option<String>,
 }
 
@@ -6442,23 +6556,30 @@ pub struct CreateLayerVersionInput {
 pub struct CreateSessionInput {
     /// Session生命周期
     #[serde(rename = "sessionTTLInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_idle_timeout_in_seconds: Option<i64>,
     /// NAS配置，配置后Session关联的实例可以访问指定NAS资源。
     #[serde(rename = "nasConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nas_config: Option<NASConfig>,
     /// 可自定义会话ID。不配置时由服务端生成。若配置则将此配置作为会话ID。仅适用于HEADER_FIELD亲和模式，
     /// 格式规范：长度限制[0,64]，仅以 **a-zA-Z0-9_** 字符做首字符，非首字符可为 **a-zA-Z0-9_-**。
     #[serde(rename = "sessionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_id: Option<String>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_session_id_reuse: Option<bool>,
     #[serde(rename = "ossMountConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_mount_config: Option<OSSMountConfig>,
     #[serde(rename = "polarFsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
 
@@ -6467,15 +6588,19 @@ pub struct CreateSessionInput {
 pub struct CreateTriggerInput {
     /// 触发器的描述。
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 事件源（如OSS）调用函数所需的角色。
     #[serde(rename = "invocationRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_role: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qualifier: Option<String>,
     /// 触发器事件源的Aliyun Resource Name。
     #[serde(rename = "sourceArn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_arn: Option<String>,
     /// 触发器配置，针对不同类型的触发器，配置有所不同。具体格式请参见如下对应的数据结构：
     ///   - OSS触发器：请参见[OSSTriggerConfig](~~2766465~~)。
@@ -7029,6 +7154,7 @@ pub struct ListLayersOutput {
 pub struct ScheduledAction {
     /// 策略失效时间。
     #[serde(rename = "endTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
     /// 策略名称。
     #[serde(rename = "name")]
@@ -7038,6 +7164,7 @@ pub struct ScheduledAction {
     pub schedule_expression: String,
     /// 策略生效时间。
     #[serde(rename = "startTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
     /// 预留的目标资源个数。
     #[serde(rename = "target")]
@@ -7054,6 +7181,7 @@ pub struct ScheduledAction {
 pub struct TargetTrackingPolicy {
     /// 策略结束时间（UTC）。
     #[serde(rename = "endTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
     /// 扩容的最大值。
     #[serde(rename = "maxCapacity")]
@@ -7072,6 +7200,7 @@ pub struct TargetTrackingPolicy {
     pub name: String,
     /// 策略开始生效时间（UTC）。
     #[serde(rename = "startTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
     /// 时区。时区参数为空时，startTime和endTime的时间需为UTC格式。
     #[serde(rename = "timeZone")]
@@ -7405,6 +7534,7 @@ pub struct OutputFuncCode {
 pub struct PublishVersionInput {
     /// 版本描述信息
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 }
 
@@ -7413,15 +7543,19 @@ pub struct PublishVersionInput {
 pub struct PutAsyncInvokeConfigInput {
     /// 是否开启异步任务（非必填）
     #[serde(rename = "asyncTask")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub async_task: Option<bool>,
     /// 异步调用目标的配置结构体（非必填）。
     #[serde(rename = "destinationConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub destination_config: Option<DestinationConfig>,
     /// 消息最大存活时长（非必填），取值范围[1,604800]，默认为86400，单位为秒。
     #[serde(rename = "maxAsyncEventAgeInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_async_event_age_in_seconds: Option<i64>,
     /// 异步调用失败后的最大重试次数，非必填。取值范围[0,8]。当您未进行配置时，系统内部默认重试次数为3。
     #[serde(rename = "maxAsyncRetryAttempts")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_async_retry_attempts: Option<i64>,
 }
 
@@ -7438,21 +7572,26 @@ pub struct PutConcurrencyInput {
 pub struct PutProvisionConfigInput {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
-    pub scheduled_actions: Vec<ScheduledAction>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scheduled_actions: Option<Vec<ScheduledAction>>,
     /// 默认最小实例数，取值范围为[0,10000]。
     /// > - 未配置指标追踪弹性策略或定时弹性策略时，当前最小实例数等于您配置最小实例数。
     /// > - 如果您配置了多条最小实例数弹性策略，系统会计算每条策略触发时的最小实例数，并取当前时间有效的弹性策略中最小实例数的最大值作为当前最小实例数。
     #[serde(rename = "defaultTarget")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default_target: Option<i64>,
     /// 是否始终分配CPU，默认为true。
     #[serde(rename = "alwaysAllocateCPU")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub always_allocate_cpu: Option<bool>,
     /// 是否始终分配GPU，默认为true。
     #[serde(rename = "alwaysAllocateGPU")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
-    pub target_tracking_policies: Vec<TargetTrackingPolicy>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub target_tracking_policies: Option<Vec<TargetTrackingPolicy>>,
     /// ><notice>建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
     /// 预留的目标资源个数。取值范围为[0,10000]。
     #[serde(rename = "target")]
@@ -7462,18 +7601,25 @@ pub struct PutProvisionConfigInput {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct PutScalingConfigInput {
     #[serde(rename = "residentPoolId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resident_pool_id: Option<String>,
     #[serde(rename = "minInstances")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_instances: Option<i64>,
     #[serde(rename = "enableOnDemandScaling")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
-    pub scheduled_policies: Vec<ScheduledPolicy>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scheduled_policies: Option<Vec<ScheduledPolicy>>,
     #[serde(rename = "horizontalScalingPolicies")]
-    pub horizontal_scaling_policies: Vec<ScalingPolicy>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub horizontal_scaling_policies: Option<Vec<ScalingPolicy>>,
     #[serde(rename = "enableMixMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_mix_mode: Option<bool>,
     #[serde(rename = "requestDispatchPolicy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_dispatch_policy: Option<String>,
 }
 
@@ -7485,6 +7631,7 @@ pub struct TagResourcesInput {
     pub resource_id: Vec<String>,
     /// 资源类型
     #[serde(rename = "ResourceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_type: Option<String>,
     /// 标签列表
     #[serde(rename = "Tag")]
@@ -7496,12 +7643,15 @@ pub struct TagResourcesInput {
 pub struct UpdateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    pub additional_version_weight: std::collections::HashMap<String, f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub additional_version_weight: Option<std::collections::HashMap<String, f64>>,
     /// 别名的描述信息
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 别名指向的版本
     #[serde(rename = "versionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version_id: Option<String>,
 }
 
@@ -7510,21 +7660,27 @@ pub struct UpdateAliasInput {
 pub struct UpdateCustomDomainInput {
     /// 权限认证配置
     #[serde(rename = "authConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auth_config: Option<AuthConfig>,
     /// HTTPS证书的信息。
     #[serde(rename = "certConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cert_config: Option<CertConfig>,
     /// 域名支持的协议类型。HTTP：仅支持HTTP协议。HTTPS：仅支持HTTPS协议。HTTP,HTTPS：支持HTTP及HTTPS协议。
     #[serde(rename = "protocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<String>,
     /// 路由表：自定义域名访问时的PATH到Function的映射。
     #[serde(rename = "routeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub route_config: Option<RouteConfig>,
     /// TLS配置信息。
     #[serde(rename = "tlsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tls_config: Option<TLSConfig>,
     /// Web应用防火墙配置信息。
     #[serde(rename = "wafConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub waf_config: Option<WAFConfig>,
 }
 
@@ -7533,90 +7689,119 @@ pub struct UpdateCustomDomainInput {
 pub struct UpdateFunctionInput {
     /// 函数代码ZIP包。code和customContainerConfig二选一。
     #[serde(rename = "code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<InputCodeLocation>,
     /// 函数的CPU规格，单位为vCPU，取值需要为0.05 vCPU的倍数。
     #[serde(rename = "cpu")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu: Option<f32>,
     /// 自定义容器运行时的相关配置，成功配置后函数可以使用自定义容器镜像执行函数。code和customContainerConfig二选一。
     #[serde(rename = "customContainerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_container_config: Option<CustomContainerConfig>,
     /// 自定义DNS配置。
     #[serde(rename = "customDNS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_dns: Option<CustomDNS>,
     /// 自定义运行时配置。
     #[serde(rename = "customRuntimeConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_runtime_config: Option<CustomRuntimeConfig>,
     /// 函数的描述。
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 函数的磁盘规格，单位为MB，可选值为512 MB或10240 MB。
     #[serde(rename = "diskSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    pub environment_variables: std::collections::HashMap<String, String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub environment_variables: Option<std::collections::HashMap<String, String>>,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub gpu_config: Option<GPUConfig>,
     /// 函数执行的入口，具体格式和运行时相关。
     #[serde(rename = "handler")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub handler: Option<String>,
     /// 实例最大并发度。
     #[serde(rename = "instanceConcurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_concurrency: Option<i32>,
     /// 实例生命周期回调方法配置。
     #[serde(rename = "instanceLifecycleConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_lifecycle_config: Option<InstanceLifecycleConfig>,
     /// 是否允许访问公网。
     #[serde(rename = "internetAccess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    pub layers: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub layers: Option<Vec<String>>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub log_config: Option<LogConfig>,
     /// 函数的内存规格，单位为MB，内存大小为64 MB的倍数。不同的函数实例类型，内存规格存在差异。
     #[serde(rename = "memorySize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub memory_size: Option<i32>,
     /// NAS配置。配置此参数后，函数可以访问指定的NAS资源。
     #[serde(rename = "nasConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nas_config: Option<NASConfig>,
     /// OSS挂载配置。
     #[serde(rename = "ossMountConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_mount_config: Option<OSSMountConfig>,
     /// 授予函数计算所需权限的RAM角色，使用场景包含：1. 把函数产生的日志发送到您的日志库中。2. 为函数在执行过程中访问其他云资源生成的临时访问令牌。
     #[serde(rename = "role")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
     /// 函数的运行时环境。
     #[serde(rename = "runtime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub runtime: Option<String>,
     /// 函数运行的超时时间，单位为秒，最小1秒，默认3秒。函数超过这个时间后会被终止执行。
     #[serde(rename = "timeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub timeout: Option<i32>,
     /// 链路追踪配置。当函数计算与链路追踪集成后，您可以记录请求在函数计算的耗时时间、查看函数的冷启动时间、记录函数内部时间的消耗等。
     #[serde(rename = "tracingConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tracing_config: Option<TracingConfig>,
     /// VPC配置。配置此参数后，函数可以访问指定的VPC资源。
     #[serde(rename = "vpcConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_config: Option<VPCConfig>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_ondemand: Option<bool>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_affinity: Option<String>,
     /// 是否允许 GPU 函数的预留实例常驻，启用该功能时，创建的函数实例不会被注入 STS token。
     #[serde(rename = "enableLongLiving")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_long_living: Option<bool>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_isolation_mode: Option<UpdateFunctionInputInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间
     #[serde(rename = "idleTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
@@ -7624,9 +7809,11 @@ pub struct UpdateFunctionInput {
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_inject_credentials: Option<UpdateFunctionInputDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub polar_fs_config: Option<PolarFsConfig>,
 }
 
@@ -7635,12 +7822,15 @@ pub struct UpdateFunctionInput {
 pub struct UpdateSessionInput {
     /// Session生命周期
     #[serde(rename = "sessionTTLInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_idle_timeout_in_seconds: Option<i64>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disable_session_id_reuse: Option<bool>,
 }
 
@@ -7649,15 +7839,19 @@ pub struct UpdateSessionInput {
 pub struct UpdateTriggerInput {
     /// 触发器的描述。
     #[serde(rename = "description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 事件源（如OSS）调用函数所需的角色。
     #[serde(rename = "invocationRole")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub invocation_role: Option<String>,
     /// 函数的版本或别名。
     #[serde(rename = "qualifier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub qualifier: Option<String>,
     /// 触发器配置，针对不同类型的触发器，配置有所不同。
     #[serde(rename = "triggerConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trigger_config: Option<String>,
 }
 
@@ -7666,9 +7860,11 @@ pub struct UpdateTriggerInput {
 pub struct FunctionInvocationbody {
     /// 禁止函数调用的原因
     #[serde(rename = "reason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reason: Option<String>,
     /// 是否立即终止正在处理的所有请求
     #[serde(rename = "abortOngoingRequest")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub abort_ongoing_request: Option<bool>,
 }
 
@@ -7679,11 +7875,13 @@ pub struct ResourcesTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。
     ///
     /// 标签值最多支持128个字符，可以为空字符串。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 

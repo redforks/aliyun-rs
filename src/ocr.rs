@@ -7816,34 +7816,40 @@ pub struct AdvancedConfig {
     /// - true：需要；false：不需要。
     /// - 默认值：false。
     #[serde(rename = "OutputRow")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_row: Option<bool>,
     /// - 是否需要分段功能。开启后会返回**ParagraphInfo**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
     /// - 默认值：false。
     #[serde(rename = "OutputParagraph")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_paragraph: Option<bool>,
     /// - 是否需要输出表格识别结果，包含单元格信息。开启后会返回**TableInfo**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
     /// - 默认值：false。
     /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要识别表格时开启此参数。
     #[serde(rename = "OutputTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_table: Option<bool>,
     /// - 是否需要输出单字识别结果。开启后，**BlockInfo**字段中会返回**CharInfos**字段（详见返回参数说明）。
     /// - true：需要；false：不需要。
     /// - 默认值：false。
     #[serde(rename = "OutputCharInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_char_info: Option<bool>,
     /// - 是否为无线表格或表格只有横线没有竖线。
     /// - true：无线表格；false：有线表格。
     /// - 默认值：false。
     /// - **请注意**：仅当**OutputTable=true**时，设置此参数才生效。
     #[serde(rename = "IsLineLessTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_line_less_table: Option<bool>,
     /// - 是否是手写表格。
     /// - true：是手写表格；false：不是手写表格。
     /// - 默认值：false。
     /// - **请注意**：仅当**OutputTable=true**时，设置此参数才生效。
     #[serde(rename = "IsHandWritingTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_hand_writing_table: Option<bool>,
     /// - 是否将识别的表格结果导出成 Excel，并以文件链接形式返回。
     /// - true：需要；false：不需要。
@@ -7851,6 +7857,7 @@ pub struct AdvancedConfig {
     /// - 文件链接有效期为一小时。
     /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableExcel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_table_excel: Option<bool>,
     /// - 是否将识别的表格结果导出成 Html 格式结果，并以文件链接形式返回。
     /// - true：需要；false：不需要。
@@ -7858,6 +7865,7 @@ pub struct AdvancedConfig {
     /// - 文件链接有效期为一小时。
     /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableHtml")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_table_html: Option<bool>,
 }
 
@@ -7870,8 +7878,10 @@ pub struct TextIdCardConfig {
     /// - 默认值：false。
     /// - **请注意**：开启此参数后，会增加接口的响应时间，请在需要身份证质量检测功能时开启此参数。
     #[serde(rename = "OutputIdCardQuality")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_id_card_quality: Option<bool>,
     #[serde(rename = "Llm_rec")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub llm_rec: Option<bool>,
 }
 
@@ -7883,6 +7893,7 @@ pub struct InternationalIdCardConfig {
     /// - 默认不需要传此参数，算法自动判断。
     /// - **请注意**：如果指定国家名称，接口响应时间更短。
     #[serde(rename = "Country")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country: Option<ConfigCountry>,
 }
 
@@ -7894,6 +7905,7 @@ pub struct LicenseConfig {
     /// * 默认不需要传此参数，算法自动判断。
     /// * 请注意：如果指定国家名称，接口响应时间更短。
     #[serde(rename = "Country")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub country: Option<String>,
 }
 
@@ -7904,6 +7916,7 @@ pub struct LanConfig {
     /// - chn：中文，eng：英文，ja：日文，lading：拉丁，kor：韩文，sx：手写，tai：泰文，rus：俄文，mys：马来文，idn：印尼文，viet：越南文，ukr：乌克兰。
     /// - **请注意**：可以同时传多个语言参数，用逗号分隔。例如：Languages="eng,chn,lading"。但如果您确认图片的语言类型，建议传一种语言参数，算法识别效果更好。
     #[serde(rename = "Languages")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub languages: Option<String>,
 }
 
@@ -7914,11 +7927,13 @@ pub struct TableConfig {
     /// * true：是手写表格；false：不是手写表格。
     /// * 默认值：false。
     #[serde(rename = "IsHandWritingTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_hand_writing_table: Option<bool>,
     /// * 是否为无线表格或表格只有横线没有竖线。
     /// * true：无线表格；false：有线表格。
     /// * 默认值：false。
     #[serde(rename = "IsLineLessTable")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_line_less_table: Option<bool>,
     /// * 是否将识别的表格结果导出成 Excel，并以文件链接形式返回。
     /// * true：需要；false：不需要。
@@ -7926,6 +7941,7 @@ pub struct TableConfig {
     /// * 文件链接有效期为一小时。
     /// * **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableExcel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_table_excel: Option<bool>,
     /// * 是否将识别的表格结果导出成 Html 格式结果，并以文件链接形式返回。
     /// * true：需要；false：不需要。
@@ -7933,6 +7949,7 @@ pub struct TableConfig {
     /// * 文件链接有效期为一小时。
     /// * **请注意**：开启此参数后，会增加接口的响应时间，请在需要时开启此参数。
     #[serde(rename = "OutputTableHtml")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_table_html: Option<bool>,
 }
 

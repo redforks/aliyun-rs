@@ -15915,7 +15915,8 @@ pub struct Bucket {
 pub struct BucketAntiDDOSConfigurationCnames {
     /// 待防护自定义域名。
     #[serde(rename = "Domain")]
-    pub domain: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub domain: Option<Vec<String>>,
 }
 
 /// 保存高防实例配置信息的容器。
@@ -15923,6 +15924,7 @@ pub struct BucketAntiDDOSConfigurationCnames {
 pub struct BucketAntiDDOSConfiguration {
     /// 保存域名信息列表的容器。
     #[serde(rename = "Cnames")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cnames: Option<BucketAntiDDOSConfigurationCnames>,
 }
 
@@ -15988,12 +15990,15 @@ pub struct BucketAntiDDOSInfo {
 pub struct BucketChannelConfigRuleListRuleItem {
     /// 规则名称
     #[serde(rename = "RuleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_name: Option<String>,
     /// 规则匹配正则
     #[serde(rename = "RuleRegex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_regex: Option<String>,
     /// 规则内容
     #[serde(rename = "FrontContent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub front_content: Option<String>,
 }
 
@@ -16002,7 +16007,8 @@ pub struct BucketChannelConfigRuleListRuleItem {
 pub struct BucketChannelConfigRuleList {
     /// 保存规则的容器
     #[serde(rename = "Rule")]
-    pub rule: Vec<BucketChannelConfigRuleListRuleItem>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rule: Option<Vec<BucketChannelConfigRuleListRuleItem>>,
 }
 
 /// Bucket图片处理通道配置
@@ -16010,12 +16016,15 @@ pub struct BucketChannelConfigRuleList {
 pub struct BucketChannelConfig {
     /// 版本
     #[serde(rename = "version")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub version: Option<i32>,
     /// 调试信息
     #[serde(rename = "DebugInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub debug_info: Option<String>,
     /// 规则列表
     #[serde(rename = "RuleList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule_list: Option<BucketChannelConfigRuleList>,
 }
 
@@ -16024,21 +16033,27 @@ pub struct BucketChannelConfig {
 pub struct CertificateConfiguration {
     /// 证书ID。
     #[serde(rename = "CertId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cert_id: Option<String>,
     /// 证书公钥。
     #[serde(rename = "Certificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate: Option<String>,
     /// 证书私钥。
     #[serde(rename = "PrivateKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub private_key: Option<String>,
     /// 当前证书ID。如果Force值不为true，OSS Server会检查该值与当前证书ID是否匹配，不匹配则报错。
     #[serde(rename = "PreviousCertId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub previous_cert_id: Option<String>,
     /// 是否强制覆盖证书。
     #[serde(rename = "Force")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub force: Option<bool>,
     /// 是否删除证书。
     #[serde(rename = "DeleteCertificate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_certificate: Option<bool>,
 }
 
@@ -16047,9 +16062,11 @@ pub struct CertificateConfiguration {
 pub struct BucketCnameConfigurationCname {
     /// 自定义域名。
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
     /// 保存证书配置信息的容器
     #[serde(rename = "CertificateConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub certificate_configuration: Option<CertificateConfiguration>,
 }
 
@@ -16058,6 +16075,7 @@ pub struct BucketCnameConfigurationCname {
 pub struct BucketCnameConfiguration {
     /// Cname信息的容器。
     #[serde(rename = "Cname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cname: Option<BucketCnameConfigurationCname>,
 }
 
@@ -16258,21 +16276,27 @@ pub struct BucketLoggingStatus {
 pub struct BucketProcessConfiguration {
     /// 域名
     #[serde(rename = "CompliedHost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub complied_host: Option<String>,
     /// 是否支持OSS域名
     #[serde(rename = "OssDomainSupportAtProcess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_domain_support_at_process: Option<String>,
     /// 原图保护
     #[serde(rename = "SourceFileProtect")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_file_protect: Option<String>,
     /// 原图保护后缀
     #[serde(rename = "SourceFileProtectSuffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_file_protect_suffix: Option<String>,
     /// 图片处理频道配置
     #[serde(rename = "BucketChannelConfig")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_channel_config: Option<BucketChannelConfig>,
     /// 样式分隔符
     #[serde(rename = "StyleDelimiters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_delimiters: Option<String>,
 }
 
@@ -16281,6 +16305,7 @@ pub struct BucketProcessConfiguration {
 pub struct BucketResourceGroupConfiguration {
     /// 所属资源组ID
     #[serde(rename = "ResourceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub resource_group_id: Option<String>,
 }
 
@@ -16459,7 +16484,8 @@ pub struct CORSConfiguration {
     ///
     /// 每个Bucket最多允许10条CORS规则。上传的XML文档最大允许16 KB。
     #[serde(rename = "CORSRule")]
-    pub cors_rule: Vec<CORSRule>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cors_rule: Option<Vec<CORSRule>>,
     /// 是否返回Vary: Origin头。取值范围如下：
     ///
     /// - true：不管发送的是否是跨域请求或跨域请求是否成功，均会返回Vary: Origin头。
@@ -16467,6 +16493,7 @@ pub struct CORSConfiguration {
     ///
     /// > 此字段不能单独配置，必须至少配置一项跨域规则才能生效。
     #[serde(rename = "ResponseVary")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub response_vary: Option<bool>,
 }
 
@@ -16481,18 +16508,23 @@ pub struct CSVInput {
     ///
     /// - None：该文件没有头信息，为默认值。
     #[serde(rename = "FileHeaderInfo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub file_header_info: Option<FileHeaderInfo>,
     /// 指定换行符，以Base64编码。默认值为\n（可选）。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用\n表示换行。
     #[serde(rename = "RecordDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_delimiter: Option<String>,
     /// 指定CSV列分隔符，以Base64编码。默认值为`,`（可选）。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`,`表示逗号。
     #[serde(rename = "FieldDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_delimiter: Option<String>,
     /// 指定CSV的引号字符，以Base64编码。默认值为`\”`（可选）。在CSV中引号内的换行符，列分隔符将被视作普通字符。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`\”`表示引号。
     #[serde(rename = "QuoteCharacter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub quote_character: Option<String>,
     /// 指定CSV的注释符，以Base64编码。默认值为空（即没有注释符）。
     #[serde(rename = "CommentCharacter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comment_character: Option<String>,
     /// 指定查询文件的范围（可选）。支持两种格式：
     ///
@@ -16505,10 +16537,12 @@ pub struct CSVInput {
     /// <br>其中start和end均为inclusive。其格式和range get中的range参数一致。
     /// <br>仅在文档是CSV或者JSON Type为LINES时使用。
     #[serde(rename = "Range")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<String>,
     /// 指定CSV内容是否含有在引号中的换行符。
     /// <br>例如某一列值为`"abc\ndef" `（此处`\n`为换行）， 则该值需设置为true。当该值为false时，select支持header range的语义，可以更高效的进行分片查询。
     #[serde(rename = "AllowQuotedRecordDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_quoted_record_delimiter: Option<bool>,
 }
 
@@ -16518,10 +16552,12 @@ pub struct CSVOutput {
     /// 指定换行符，以Base64编码。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用`\n`表示换行。
     /// <br>默认值：`\n`
     #[serde(rename = "RecordDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_delimiter: Option<String>,
     /// 指定CSV列分隔符，以Base64编码。未编码前的值必须为一个字符，以字符的ANSI值表示，例如在Java中使用`,`表示逗号。
     /// <br>默认值：`,`
     #[serde(rename = "FieldDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field_delimiter: Option<String>,
 }
 
@@ -16530,27 +16566,35 @@ pub struct CSVOutput {
 pub struct Channel {
     /// 图片处理频道的状态
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     /// 是否禁止原图访问
     #[serde(rename = "OrigPicForbidden")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub orig_pic_forbidden: Option<bool>,
     /// 是否仅允许使用样式进行图片处理
     #[serde(rename = "UseStyleOnly")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_style_only: Option<bool>,
     /// 是否自动设置Content-Type
     #[serde(rename = "AutoSetContentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_set_content_type: Option<bool>,
     /// 是否使用源格式
     #[serde(rename = "UseSrcFormat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub use_src_format: Option<bool>,
     /// 是否设置Content-Disposition: attachment响应头
     #[serde(rename = "SetAttachName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub set_attach_name: Option<bool>,
     /// 默认404图片
     #[serde(rename = "Default404Pic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub default404_pic: Option<String>,
     /// 样式分隔符
     #[serde(rename = "StyleDelimiters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub style_delimiters: Option<String>,
 }
 
@@ -16641,9 +16685,11 @@ pub struct CnameToken {
 pub struct CommonHeadersHeaderItem {
     /// HTTP Header的Key
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// HTTP Header的Value
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 
@@ -16652,7 +16698,8 @@ pub struct CommonHeadersHeaderItem {
 pub struct CommonHeaders {
     /// 存放用户自定义HTTP Header列表的容器
     #[serde(rename = "Header")]
-    pub header: Vec<CommonHeadersHeaderItem>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub header: Option<Vec<CommonHeadersHeaderItem>>,
 }
 
 /// 如果请求中指定了delimiter参数，则OSS返回的响应中包含CommonPrefixes元素。该元素标明以delimiter结尾，并有共同前缀的Object名称的集合。
@@ -16670,6 +16717,7 @@ pub struct CommonPrefix {
 pub struct CompleteMultipartUploadPartItem {
     /// Part数目。
     #[serde(rename = "PartNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub part_number: Option<i64>,
     /// Object生成时会创建相应的ETag ，ETag用于标识一个Object的内容。
     ///
@@ -16677,6 +16725,7 @@ pub struct CompleteMultipartUploadPartItem {
     ///
     /// > ETag值可以用于检查Object内容是否发生变化。不建议使用ETag作为Object内容的MD5来校验数据完整性。
     #[serde(rename = "ETag")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub e_tag: Option<String>,
 }
 
@@ -16685,7 +16734,8 @@ pub struct CompleteMultipartUploadPartItem {
 pub struct CompleteMultipartUploadSchema {
     /// 保存已上传Part信息的容器。
     #[serde(rename = "Part")]
-    pub part: Vec<CompleteMultipartUploadPartItem>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub part: Option<Vec<CompleteMultipartUploadPartItem>>,
 }
 
 /// 保存接入点信息的容器。
@@ -16701,12 +16751,15 @@ pub struct CreateAccessPointConfiguration {
     ///
     /// - 命名长度为3~19个字符。
     #[serde(rename = "AccessPointName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_point_name: Option<String>,
     /// 接入点网络来源。
     #[serde(rename = "NetworkOrigin")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_origin: Option<String>,
     /// 保存VPC网络来源信息的容器。
     #[serde(rename = "VpcConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub vpc_configuration: Option<AccessPointVpcConfiguration>,
 }
 
@@ -16734,6 +16787,7 @@ pub struct CreateBucketConfiguration {
     /// - Archive：归档存储
     /// - ColdArchive：冷归档存储
     #[serde(rename = "StorageClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_class: Option<StorageClass>,
     /// 指定Bucket的数据容灾类型。
     ///
@@ -16744,6 +16798,7 @@ pub struct CreateBucketConfiguration {
     /// <br>同城冗余ZRS采用多可用区（AZ）机制，将您的数据冗余存储在同一地域（Region）的3个可用区。可支持单个可用区（机房）整体故障时（例如断电、火灾等），仍然能够保障数据的正常访问。
     /// > 归档类型的Bucket不支持设置同城冗余。</props>
     #[serde(rename = "DataRedundancyType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub data_redundancy_type: Option<DataRedundancyType>,
 }
 
@@ -16751,11 +16806,14 @@ pub struct CreateBucketConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CreateDataLakeCachePrefetchJob {
     #[serde(rename = "Includes")]
-    pub includes: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub includes: Option<Vec<String>>,
     #[serde(rename = "Tag")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
     #[serde(rename = "Excludes")]
-    pub excludes: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub excludes: Option<Vec<String>>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -16975,6 +17033,7 @@ pub struct EventNotificationConfiguration {
 pub struct ExtendWormConfiguration {
     /// 指定Object的保留天数。
     #[serde(rename = "RetentionPeriodInDays")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_period_in_days: Option<i32>,
 }
 
@@ -17174,6 +17233,7 @@ pub struct InitiateWormConfiguration {
 pub struct JSONInput {
     /// 指定输入JSON的类型。
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<JSONType>,
     /// 指定查询文件的范围（可选）。支持两种格式：
     /// > 使用Range参数查询的文件需要有select meta。关于select meta的更多信息，请参见[CreateSelectObjectMeta](~~74054~~)。
@@ -17185,10 +17245,12 @@ pub struct JSONInput {
     /// <br>其中start和end均为inclusive。其格式和range get中的range参数一致。
     /// <br>仅在文档是CSV或者JSON Type为LINES时使用。
     #[serde(rename = "Range")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub range: Option<String>,
     /// 将JSON中的数字（整数和浮点数）解析成字符串。目前JSON中的浮点数解析时会损失精度，如果要完整保留原始数据，则推荐用该选项。如果需要进行数值计算，则可以在SQL中cast成需要的格式，例如int、double、decimal。
     /// <br>默认值： false
     #[serde(rename = "ParseJsonNumberAsString")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub parse_json_number_as_string: Option<bool>,
 }
 
@@ -17197,12 +17259,15 @@ pub struct JSONInput {
 pub struct InputSerialization {
     /// 指定文件压缩类型（可选）。目前不支持任何压缩，即取值只能是None。
     #[serde(rename = "CompressionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub compression_type: Option<CompressionType>,
     /// 指定CSV输入格式。
     #[serde(rename = "CSV")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<CSVInput>,
     /// 指定JSON输入格式。
     #[serde(rename = "JSON")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<JSONInput>,
 }
 
@@ -17388,6 +17453,7 @@ pub struct JSONOutput {
     /// 指定换行符，以Base64编码。未编码前的值最多为两个字符，以字符的ANSI值表示，例如在Java中使用`\n`表示换行。
     /// <br>默认值：`\n`
     #[serde(rename = "RecordDelimiter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub record_delimiter: Option<String>,
 }
 
@@ -17603,6 +17669,7 @@ pub struct LifecycleRule {
     ///   - 若指定了Prefix，则表示此规则仅适用于Bucket中与Prefix匹配的Object。
     ///   - 若Prefix置空，则表示此规则适用于Bucket中的所有Object。
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
     /// 是否启用规则。取值范围如下：
     /// - Enabled：表示启用规则，OSS会定期执行该规则。
@@ -17820,17 +17887,21 @@ pub struct LiveChannelTarget {
 pub struct LiveChannelSnapshot {
     /// 用于高频截图操作的角色名称，要求有DestBucket的写权限和向NotifyTopic发消息的权限。
     #[serde(rename = "RoleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
     /// 保存高频截图目标Bucket，要求与当前Bucket是同一个Owner。
     #[serde(rename = "DestBucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_bucket: Option<String>,
     /// 用于通知用户高频截图操作结果的MNS的Topic。
     #[serde(rename = "NotifyTopic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub notify_topic: Option<String>,
     /// 高频截图的间隔长度。如果该段间隔时间内没有关键帧（I 帧），那么该间隔时间不截图。
     /// 单位：秒
     /// 取值范围：[1, 100]
     #[serde(rename = "Interval")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<i64>,
 }
 
@@ -17839,18 +17910,22 @@ pub struct LiveChannelSnapshot {
 pub struct LiveChannelConfiguration {
     /// LiveChannel的描述信息，最长128字节。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     ///  指定LiveChannel的状态。
     ///
     /// 有效值：**enabled**、**disabled**
     /// 默认值：**enabled**
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<String>,
     /// 保存转储配置的容器。
     #[serde(rename = "Target")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub target: Option<LiveChannelTarget>,
     /// 保存高频截图操作Snapshot选项的容器。
     #[serde(rename = "Snapshot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot: Option<LiveChannelSnapshot>,
 }
 
@@ -17935,6 +18010,7 @@ pub struct LocationTransferType {
 pub struct MetaQueryAggregation {
     /// 字段名称
     #[serde(rename = "Field")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub field: Option<String>,
     /// 聚合操作中的操作符。
     ///
@@ -17946,6 +18022,7 @@ pub struct MetaQueryAggregation {
     /// - distinct：去重统计
     /// - group：分组计数
     #[serde(rename = "Operation")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub operation: Option<String>,
 }
 
@@ -17954,7 +18031,8 @@ pub struct MetaQueryAggregation {
 pub struct MetaQueryAggregations {
     /// 单个聚合操作信息的容器。
     #[serde(rename = "Aggregation")]
-    pub aggregation: Vec<MetaQueryAggregation>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub aggregation: Option<Vec<MetaQueryAggregation>>,
 }
 
 /// 多媒体元数据检索条件。仅用于向量检索
@@ -17962,7 +18040,8 @@ pub struct MetaQueryAggregations {
 pub struct MetaQueryMediaTypes {
     /// 选择检索的多媒体类型。
     #[serde(rename = "MediaType")]
-    pub media_type: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub media_type: Option<Vec<String>>,
 }
 
 /// 查询条件的容器。
@@ -17970,10 +18049,12 @@ pub struct MetaQueryMediaTypes {
 pub struct MetaQuery {
     /// 翻页的Token。从NextToken开始按字典序返回Object信息列表。
     #[serde(rename = "NextToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_token: Option<String>,
     /// 返回对象的最大个数，取值范围为0~100。
     /// 不设置此参数或者设置为0时，则默认值为100。
     #[serde(rename = "MaxResults")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_results: Option<i64>,
     /// 查询条件。包括如下选项：
     ///
@@ -17985,21 +18066,27 @@ pub struct MetaQuery {
     ///
     /// - SubQueries：子查询条件，包括的选项与简单查询条件相同。只有当Operations为逻辑运算符（and、or和not）时，才需要设置子查询条件。
     #[serde(rename = "Query")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query: Option<String>,
     /// 对指定字段排序。
     #[serde(rename = "Sort")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sort: Option<String>,
     /// 排序方式。
     #[serde(rename = "Order")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub order: Option<MetaQueryOrder>,
     /// 聚合操作信息的容器。
     #[serde(rename = "Aggregations")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregations: Option<MetaQueryAggregations>,
     /// 多媒体元数据检索条件。仅用于向量检索
     #[serde(rename = "MediaTypes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub media_types: Option<MetaQueryMediaTypes>,
     /// 查询条件，仅用于向量查询。
     #[serde(rename = "SimpleQuery")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub simple_query: Option<String>,
 }
 
@@ -18494,13 +18581,15 @@ pub struct MetaQueryFile {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequestFilters {
     #[serde(rename = "Filter")]
-    pub filter: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filter: Option<Vec<String>>,
 }
 
 /// 为开启元数据管理功能的请求体
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequest {
     #[serde(rename = "Filters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<MetaQueryOpenRequestFilters>,
 }
 
@@ -18547,9 +18636,11 @@ pub struct MetaQueryResp {
 pub struct ObjectHashConfiguration {
     /// 对象哈希算法
     #[serde(rename = "ObjectHashFunction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_hash_function: Option<String>,
     /// 访问对象时或是否在响应头显示对象哈希值
     #[serde(rename = "DisplayObjectHash")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub display_object_hash: Option<bool>,
 }
 
@@ -18777,9 +18868,11 @@ pub struct ObjectVersion {
 pub struct OutputSerialization {
     /// 输出CSV的格式参数。
     #[serde(rename = "CSV")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub csv: Option<CSVOutput>,
     /// 输出JSON的格式参数。
     #[serde(rename = "JSON")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub json: Option<JSONOutput>,
     /// 指定返回结果中包含CSV所有列的位置（可选）。<br>默认值：false
     ///  <br>仅在select语句里出现的列会有值，不出现的列则为空，返回结果中每一行的数据按照CSV列的顺序从低到高排列。
@@ -18788,10 +18881,12 @@ pub struct OutputSerialization {
     /// <br>如果KeepAllColumns = true，假设一共有6列数据，则返回以下数据：
     /// <br> `Value of 1st column,,,,Value of 5th column,\n`
     #[serde(rename = "KeepAllColumns")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub keep_all_columns: Option<bool>,
     /// 在返回结果开头输出CSV头信息。
     /// <br>默认值：false
     #[serde(rename = "OutputHeader")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_header: Option<bool>,
     /// 指定输出数据为纯数据。
     ///
@@ -18801,9 +18896,11 @@ pub struct OutputSerialization {
     ///
     /// - 当您显式地指定OutputRawData为True时，如果该SQL长时间内没有返回数据，则HTTP请求可能因没有数据返回而超时。
     #[serde(rename = "OutputRawData")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_raw_data: Option<bool>,
     /// 在每个Frame中会有一个32位的CRC32校验值。客户端可以计算相应payload的CRC32值进行数据完整性校验。
     #[serde(rename = "EnablePayloadCrc")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_payload_crc: Option<bool>,
 }
 
@@ -19161,6 +19258,7 @@ pub struct RequestPaymentConfiguration {
     ///
     /// - Requester：由请求者付费。
     #[serde(rename = "Payer")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub payer: Option<String>,
 }
 
@@ -19173,6 +19271,7 @@ pub struct RestoreRequestJobParameters {
     ///   - 标准（Standard）：表示2~5小时内完成解冻。
     ///   - 批量（Bulk）：表示5~12小时内完成解冻。
     #[serde(rename = "Tier")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tier: Option<String>,
 }
 
@@ -19181,10 +19280,12 @@ pub struct RestoreRequestJobParameters {
 pub struct RestoreRequest {
     /// 解冻的天数。取值范围为1~7天。
     #[serde(rename = "Days")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub days: Option<i64>,
     /// 解冻优先级的容器。只有解冻冷归档类型的Object时才生效。
     /// 如果不传入JobParameters节点，则解冻优先级默认为Standard。
     #[serde(rename = "JobParameters")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub job_parameters: Option<RestoreRequestJobParameters>,
 }
 
@@ -19609,9 +19710,11 @@ pub struct RoutingRule {
 pub struct RtcConfiguration {
     /// 保存RTC状态规则的容器。
     #[serde(rename = "RTC")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rtc: Option<RTC>,
     /// 需要设置RTC状态的复制规则ID。
     #[serde(rename = "ID")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 
@@ -19620,10 +19723,12 @@ pub struct RtcConfiguration {
 pub struct SelectMetaRequest {
     /// 输入序列化参数（可选）。
     #[serde(rename = "InputSerialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_serialization: Option<InputSerialization>,
     /// 重新计算SelectMeta，覆盖已有数据。
     /// <br>默认值：false（即如果Select Meta已存在则直接返回）。
     #[serde(rename = "OverwriteIfExists")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub overwrite_if_exists: Option<bool>,
 }
 
@@ -19670,12 +19775,14 @@ pub struct SelectRequestOptions {
     ///
     /// - 当该参数为true时，该行数据因为不完整而被整体跳过。当跳过的行数超过指定的最大跳过行数时OSS会报错并停止处理。
     #[serde(rename = "SkipPartialDataRecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub skip_partial_data_record: Option<bool>,
     /// 指定最大能容忍的跳过的行数。当某一行数据因为不匹配SQL中期望的类型、或者某一列或者多列数据缺失且SkipPartialDataRecord为True时，该行数据会被跳过。如果跳过的行数超过该参数的值，OSS会停止处理并报错。
     /// <br>默认值：0
     ///
     /// > 如果某一行是非法CSV行，例如在一列中间连续含有奇数个quote字符，则OSS会马上停止处理并报错，因为该错误很可能会影响对整个CSV文件的解析。即该参数用来调整对非整齐数据的容忍度，但不应用于非法的CSV文件。
     #[serde(rename = "MaxSkippedRecordsAllowed")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_skipped_records_allowed: Option<i64>,
 }
 
@@ -19684,15 +19791,19 @@ pub struct SelectRequestOptions {
 pub struct SelectRequest {
     /// 以Base64 编码的SQL语句。
     #[serde(rename = "Expression")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub expression: Option<String>,
     /// 输入序列化参数。
     #[serde(rename = "InputSerialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub input_serialization: Option<InputSerialization>,
     /// 输出序列化参数。
     #[serde(rename = "OutputSerialization")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub output_serialization: Option<OutputSerialization>,
     /// 其他可选参数。
     #[serde(rename = "Options")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<SelectRequestOptions>,
 }
 
@@ -19701,6 +19812,7 @@ pub struct SelectRequest {
 pub struct ServerSideEncryptionRule {
     /// 服务器端默认加密方式的容器。
     #[serde(rename = "ApplyServerSideEncryptionByDefault")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub apply_server_side_encryption_by_default: Option<ApplyServerSideEncryptionByDefault>,
 }
 
@@ -19713,6 +19825,7 @@ pub struct Style {
     ///
     /// - 包含多个图片处理操作的图片样式，例如image/resize,p_63/quality,q_90，表示先将图片缩放到原图的63%，再设置图片相对质量为90%。
     #[serde(rename = "Content")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub content: Option<String>,
 }
 
@@ -19757,6 +19870,7 @@ pub struct TagSet {
 pub struct Tagging {
     /// 包含一系列Bucket Tag的容器。
     #[serde(rename = "TagSet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_set: Option<TagSet>,
 }
 
@@ -19769,6 +19883,7 @@ pub struct TransferAccelerationConfiguration {
     ///
     /// > 传输加速开启及关闭操作在30分钟内生效。
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
 }
 
@@ -19873,6 +19988,7 @@ pub struct VersioningConfiguration {
     ///
     /// - Suspended：暂停版本控制状态。
     #[serde(rename = "Status")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<BucketVersioningStatus>,
 }
 
@@ -19936,6 +20052,7 @@ pub struct BucketAclResponseAccessControlList {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct PutBucketReplicationbody {
     #[serde(rename = "Rule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rule: Option<ReplicationRule>,
 }
 
@@ -19964,6 +20081,7 @@ pub struct CConstraint {
 pub struct DeleteBucketReplicationbody {
     /// 需要删除的数据复制规则的名称。
     #[serde(rename = "ID")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
 }
 
@@ -19972,6 +20090,7 @@ pub struct DeleteBucketReplicationbody {
 pub struct CnamebodyCname {
     /// 要删除的Cname。
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 }
 
@@ -19980,6 +20099,7 @@ pub struct CnamebodyCname {
 pub struct DeleteCnamebody {
     /// 保存目标Cname域名的容器。
     #[serde(rename = "Cname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cname: Option<CnamebodyCname>,
 }
 
@@ -19988,6 +20108,7 @@ pub struct DeleteCnamebody {
 pub struct TokenbodyCname {
     /// 目标Cname域名。
     #[serde(rename = "Domain")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub domain: Option<String>,
 }
 
@@ -19996,6 +20117,7 @@ pub struct TokenbodyCname {
 pub struct CnameTokenbody {
     /// 保存要生成Token的Cname域名。
     #[serde(rename = "Cname")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cname: Option<TokenbodyCname>,
 }
 
@@ -20004,14 +20126,17 @@ pub struct CnameTokenbody {
 pub struct PointForObjectProcessbody {
     /// OSS接入点名称。更多信息，请参见[创建接入点](~~2365063~~)。
     #[serde(rename = "AccessPointName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub access_point_name: Option<String>,
     /// 保存对象处理信息的容器。
     #[serde(rename = "ObjectProcessConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_process_configuration: Option<ObjectProcessConfiguration>,
     /// 是否允许匿名访问。
     ///
     /// > 开启该选项之后将会允许匿名账号通过ObjectFC接入点访问您的Bucket，会产生相关费用。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_anonymous_access_for_object_process: Option<String>,
 }
 
@@ -20077,14 +20202,17 @@ pub struct AccessPointsForObjectProcess {
 pub struct ConfigForObjectProcessbody {
     /// 保存对象处理信息的容器。
     #[serde(rename = "ObjectProcessConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub object_process_configuration: Option<ObjectProcessConfiguration>,
     /// 是否允许匿名访问。
     ///
     /// > 开启该选项之后将会允许匿名账号通过ObjectFC接入点访问您的Bucket，会产生相关费用。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allow_anonymous_access_for_object_process: Option<String>,
     /// 保存阻止公共访问信息的容器。
     #[serde(rename = "PublicAccessBlockConfiguration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 }
 

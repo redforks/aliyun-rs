@@ -56751,6 +56751,7 @@ pub struct DescribePriceDataDisk {
     ///
     /// N的取值范围：1~16。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// 第N块数据盘的容量大小，内存单位为GiB。取值范围：
     ///
@@ -56770,6 +56771,7 @@ pub struct DescribePriceDataDisk {
     ///
     /// N的取值范围：1~16。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
     /// 第N块数据盘类型为ESSD云盘时，区分性能等级。仅当`DataDisk.N.Category=cloud_essd`时该参数有效。取值范围：
     ///
@@ -56780,6 +56782,7 @@ pub struct DescribePriceDataDisk {
     ///
     /// N的取值范围：1~16。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
     ///
@@ -56787,6 +56790,7 @@ pub struct DescribePriceDataDisk {
     ///
     /// >当`DiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
 }
 impl crate::FlatSerialize for DescribePriceDataDisk {
@@ -56821,6 +56825,7 @@ pub struct PriceRecurrenceRule {
     ///
     /// > 同时指定StartHour和EndHour，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_hour: Option<i32>,
     /// 重复规则的策略类型。取值范围：
     /// -  Daily：按天重复。
@@ -56829,9 +56834,11 @@ pub struct PriceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_type: Option<String>,
     /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_hour: Option<i32>,
     /// 重复规则执行数值。
     ///
@@ -56841,6 +56848,7 @@ pub struct PriceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_value: Option<String>,
 }
 impl crate::FlatSerialize for PriceRecurrenceRule {
@@ -57172,6 +57180,7 @@ pub struct ModificationPriceDataDisk {
     ///
     /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘的容量大小。N的取值范围：1~16，内存单位为GiB。取值范围：
     ///
@@ -57186,6 +57195,7 @@ pub struct ModificationPriceDataDisk {
     ///
     /// 默认值：指定数据盘类型相应的容量大小的最小值。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘类型。当您需要查询ECS实例挂载的新包年包月数据盘的价格时，可以传入该参数值。N的取值范围：1~16。取值范围：
     ///
@@ -57199,6 +57209,7 @@ pub struct ModificationPriceDataDisk {
     /// > 查询时，实例规格参数（`InstanceType`）和数据盘参数（`DataDisk.N.*`）不得同时为空，必须至少指定一个。
     ///
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
 }
 impl crate::FlatSerialize for ModificationPriceDataDisk {
@@ -57358,9 +57369,11 @@ pub struct InstancesDataDisk {
     ///
     /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_policy_id: Option<String>,
     /// 数据盘N是否加密。取值范围：
     /// - true：加密。
@@ -57371,14 +57384,17 @@ pub struct InstancesDataDisk {
     ///
     /// ><notice>当使用共享加密镜像，创建基于加密快照的云盘时，必须指定该云盘的请求参数Encrypted=true，以确保创建出的云盘使用的是被共享方自己的密钥。></notice>
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<String>,
     /// 数据盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 创建数据盘N使用的快照。N的取值范围为1~16。
     ///
     /// 指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
     ///
@@ -57389,6 +57405,7 @@ pub struct InstancesDataDisk {
     /// > - 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     /// > - 使用全境像创建实例时，全镜像中的数据盘会作为ECS实例的前1-n个数据盘被创建出来。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 第n个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
     ///
@@ -57405,9 +57422,11 @@ pub struct InstancesDataDisk {
     ///
     /// >该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
     #[serde(rename = "DiskName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_name: Option<String>,
     /// 数据盘N的云盘种类。取值范围：
     ///
@@ -57424,9 +57443,11 @@ pub struct InstancesDataDisk {
     ///
     /// 对于I/O优化实例，默认值为cloud_efficiency。对于非I/O优化实例，默认值为cloud。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypt_algorithm: Option<String>,
     /// 表示数据盘是否随实例释放。取值范围：
     /// - true：数据盘随实例释放。
@@ -57434,12 +57455,15 @@ pub struct InstancesDataDisk {
     ///
     /// 默认值为true。
     #[serde(rename = "DeleteWithInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_with_instance: Option<bool>,
     /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为数据盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_cluster_id: Option<String>,
     /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
     ///
@@ -57447,6 +57471,7 @@ pub struct InstancesDataDisk {
     ///
     /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
@@ -57455,6 +57480,7 @@ pub struct InstancesDataDisk {
     ///
     /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
 }
 impl crate::FlatSerialize for InstancesDataDisk {
@@ -57534,12 +57560,15 @@ impl crate::FlatSerialize for InstancesDataDisk {
 pub struct InstancesArn {
     /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for InstancesArn {
@@ -57574,6 +57603,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的虚拟交换机。
     #[serde(rename = "VSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 弹性网卡名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
     ///
@@ -57583,6 +57613,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "NetworkInterfaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_name: Option<String>,
     /// 弹性网卡的描述。
     ///
@@ -57592,6 +57623,7 @@ pub struct InstancesNetworkInterface {
     /// - 长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 弹性网卡所属的安全组ID。
     ///
@@ -57603,6 +57635,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
     /// 添加一张弹性网卡并设置主IP地址。
     ///
@@ -57619,6 +57652,7 @@ pub struct InstancesNetworkInterface {
     /// >- 每个交换机的第1个和最后3个IP地址为系统保留地址，不支持指定。
     /// 例如，交换机的网段为192.168.1.0/24，则192.168.1.0、192.168.1.253、192.168.1.254和192.168.1.255这4个地址是系统保留地址。
     #[serde(rename = "PrimaryIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_ip_address: Option<String>,
     /// 弹性网卡队列数。
     ///
@@ -57632,6 +57666,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，且设置了该参数取值，则不能再设置`NetworkInterfaceQueueNumber`参数。
     #[serde(rename = "QueueNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_number: Option<i32>,
     /// 弹性网卡所属的一个或多个安全组ID。
     ///
@@ -57644,7 +57679,8 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub security_group_ids: Option<Vec<String>>,
     /// 网卡的通讯模式。参数取值范围：
     ///
     /// - Standard：使用TCP通讯模式。
@@ -57654,6 +57690,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// >RDMA模式的弹性网卡数量不能超过该实例规格族的限制。更多信息，请参见[实例规格族](~~25378~~)。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_traffic_mode: Option<String>,
     /// RDMA网卡队列数。
     ///
@@ -57661,6 +57698,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// ><notice>如果RDMA网卡未指定QueuePairNumber，则默认使用该实例规格支持的所有RDMA网卡的QueuePairNumber上限值。因此，一旦附加了一张未设置QueuePairNumber的RDMA网卡，就不能再添加更多RDMA网卡了（普通网卡不受此限制）。</notice>
     #[serde(rename = "QueuePairNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_pair_number: Option<i64>,
     /// 弹性网卡类型。N的取值范围不超过实例规格支持网卡数。请参见[实例规格族](~~25378~~)或调用[DescribeInstanceTypes](~~2679699~~) 查看目标实例规格支持的网卡数。
     ///
@@ -57671,6 +57709,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
     /// 为主网卡指定随机生成的IPv6地址数量。取值范围：1~10
     ///
@@ -57680,6 +57719,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 设置该参数后，您不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6Address.N`。
     #[serde(rename = "Ipv6AddressCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_address_count: Option<i64>,
     /// 为主网卡指定一个或多个IPv6地址。支持设置最多10个IPv6地址，即第二个N的取值范围：1~10。
     ///
@@ -57691,7 +57731,8 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 设置该参数后，`Amount`取值只能为1，且不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6AddressCount`。
     #[serde(rename = "Ipv6Address")]
-    pub ipv6_address: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ipv6_address: Option<Vec<String>>,
     /// 网卡指定的物理网卡索引。
     ///
     /// 您需要注意：
@@ -57699,6 +57740,7 @@ pub struct InstancesNetworkInterface {
     /// - NetworkInterface.N.InstanceType取值为Primary时，对于支持物理网卡的实例规格，如果设置此参数，只能设置为0。
     /// - NetworkInterface.N.InstanceType取值为Secondary或者空值，对于支持物理网卡的实例规格，此参数可以依据实例规格设置。更多信息，请参见[实例规格族](~~25378~~)。
     #[serde(rename = "NetworkCardIndex")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_card_index: Option<i32>,
     /// 释放实例时是否保留网卡。取值范围：
     ///
@@ -57710,6 +57752,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_release: Option<bool>,
     /// 随实例附加的弹性网卡ID。
     ///
@@ -57717,6 +57760,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// >该参数只对辅助弹性网卡生效。指定一个现有辅助弹性网卡后，您将无法配置其它网卡创建参数。
     #[serde(rename = "NetworkInterfaceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_id: Option<String>,
     /// 弹性网卡入方向队列深度。
     ///
@@ -57744,6 +57788,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rx_queue_size: Option<i32>,
     /// 弹性网卡出方向队列深度。
     ///
@@ -57771,6 +57816,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tx_queue_size: Option<i32>,
     /// 是否开启源/目的检查功能。建议您打开该功能，以提高网络安全。可能值：
     ///
@@ -57782,6 +57828,7 @@ pub struct InstancesNetworkInterface {
     ///
     /// > 仅部分地域支持该功能。使用前，请认真阅读[源/目的检查](~~2863210~~)。
     #[serde(rename = "SourceDestCheck")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_dest_check: Option<bool>,
 }
 impl crate::FlatSerialize for InstancesNetworkInterface {
@@ -57888,9 +57935,11 @@ impl crate::FlatSerialize for InstancesNetworkInterface {
 pub struct RunInstancesTag {
     /// 实例、云盘和主网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或 https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 实例、云盘和主网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for RunInstancesTag {
@@ -57909,6 +57958,7 @@ impl crate::FlatSerialize for RunInstancesTag {
 pub struct InstancesSystemDisk {
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_cluster_id: Option<String>,
     /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
     ///
@@ -57916,6 +57966,7 @@ pub struct InstancesSystemDisk {
     ///
     /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
@@ -57924,6 +57975,7 @@ pub struct InstancesSystemDisk {
     ///
     /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
     /// 系统盘是否加密。取值范围：
     ///
@@ -57937,12 +57989,15 @@ pub struct InstancesSystemDisk {
     ///
     /// ><notice>当使用共享加密镜像，创建基于加密快照的云盘时，必须指定该云盘的请求参数Encrypted=true，以确保创建出的云盘使用的是被共享方自己的密钥。></notice>
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<String>,
     /// 系统盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypt_algorithm: Option<String>,
 }
 impl crate::FlatSerialize for InstancesSystemDisk {
@@ -57993,6 +58048,7 @@ pub struct InstancesImageOptions {
     ///
     /// - false：否
     #[serde(rename = "LoginAsNonRoot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_as_non_root: Option<bool>,
 }
 impl crate::FlatSerialize for InstancesImageOptions {
@@ -58022,12 +58078,15 @@ pub struct InstancesNetworkOptions {
     ///
     /// >只有八代以上部分实例规格支持开启Jumbo frame特性。更多信息请参见[ECS实例MTU](~~200512~~)。
     #[serde(rename = "EnableJumboFrame")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_jumbo_frame: Option<bool>,
     /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "EnableNetworkEncryption")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_network_encryption: Option<bool>,
     /// 实例的带宽权重值。不同实例规格支持的取值范围不一致。具体实例规格支持的取值可以根据实例规格查询DescribeInstanceTypes，接口返回的BandwidthWeighting即为该规格支持的带宽权重档位。字典值可以取返回值中的name字段，如Vpc-L1，Ebs-L1等。
     #[serde(rename = "BandwidthWeighting")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth_weighting: Option<String>,
 }
 impl crate::FlatSerialize for InstancesNetworkOptions {
@@ -58069,6 +58128,7 @@ pub struct InstancesPrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_instance_id_dns_a_record: Option<bool>,
     /// 开启/关闭实例 ID 类型的域名到 IPv6 的解析。取值范围：
     ///
@@ -58078,6 +58138,7 @@ pub struct InstancesPrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsAAAARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_instance_id_dns_aaaa_record: Option<bool>,
     /// 开启/关闭IP类型的域名到IPv4 的解析。取值范围：
     ///
@@ -58086,6 +58147,7 @@ pub struct InstancesPrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableIpDnsARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ip_dns_a_record: Option<bool>,
     /// 开启/关闭IPv4到IP类型的域名解析。取值范围：
     ///
@@ -58094,6 +58156,7 @@ pub struct InstancesPrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableIpDnsPtrRecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ip_dns_ptr_record: Option<bool>,
     /// 主机名类型，取值范围：
     ///
@@ -58103,6 +58166,7 @@ pub struct InstancesPrivateDnsNameOptions {
     ///
     /// 默认值：Custom。
     #[serde(rename = "HostnameType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname_type: Option<String>,
 }
 impl crate::FlatSerialize for InstancesPrivateDnsNameOptions {
@@ -58150,6 +58214,7 @@ pub struct InstancesClockOptions {
     ///
     /// 默认值：disabled。
     #[serde(rename = "PtpStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ptp_status: Option<String>,
 }
 impl crate::FlatSerialize for InstancesClockOptions {
@@ -58186,9 +58251,11 @@ pub struct InstanceDataDisk {
     ///
     /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 创建数据盘N使用的快照。N的取值范围为1~16。
     ///
@@ -58196,6 +58263,7 @@ pub struct InstanceDataDisk {
     ///
     /// - 不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 第n个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
     ///
@@ -58210,14 +58278,17 @@ pub struct InstanceDataDisk {
     ///
     /// >该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘的挂载点。
     ///
     /// >该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 数据盘名称。长度为2~128个字符，支持Unicode中letter分类下的字符（其中包括英文、中文和数字等）。可以包含半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）。
     #[serde(rename = "DiskName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_name: Option<String>,
     /// 数据盘N的云盘种类。取值范围：
     ///
@@ -58233,6 +58304,7 @@ pub struct InstanceDataDisk {
     ///
     /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// 数据盘是否随实例释放。
     ///
@@ -58241,12 +58313,15 @@ pub struct InstanceDataDisk {
     ///
     /// 默认值为true。
     #[serde(rename = "DeleteWithInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_with_instance: Option<bool>,
     /// 云盘使用的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypt_algorithm: Option<String>,
     /// 数据盘N是否加密。
     ///
@@ -58256,9 +58331,11 @@ pub struct InstanceDataDisk {
     ///
     /// 默认值为false。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为数据盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_cluster_id: Option<String>,
 }
 impl crate::FlatSerialize for InstanceDataDisk {
@@ -58322,12 +58399,15 @@ impl crate::FlatSerialize for InstanceDataDisk {
 pub struct InstanceArn {
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for InstanceArn {
@@ -58357,9 +58437,11 @@ pub struct CreateInstanceTag {
     ///
     /// > 为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 实例、云盘和主网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CreateInstanceTag {
@@ -58378,6 +58460,7 @@ impl crate::FlatSerialize for CreateInstanceTag {
 pub struct InstanceSystemDisk {
     /// 专属块存储集群ID。如果您在创建ECS实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
     #[serde(rename = "StorageClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub storage_cluster_id: Option<String>,
 }
 impl crate::FlatSerialize for InstanceSystemDisk {
@@ -58533,11 +58616,13 @@ pub struct InstanceStatuses {
 pub struct DescribeInstancesTag {
     /// 实例的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 标签键。
     ///
     /// > 为提高兼容性，建议您使用另一个`Tag.N.Key`参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for DescribeInstancesTag {
@@ -59975,9 +60060,11 @@ pub struct ResponseNetworkOptions {
 pub struct ConnectionOptions {
     /// >该参数正在邀测中，暂不开放使用。
     #[serde(rename = "Password")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub password: Option<String>,
     /// >该参数正在邀测中，暂不开放使用。
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
 }
 impl crate::FlatSerialize for ConnectionOptions {
@@ -60005,6 +60092,7 @@ pub struct AttributePrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_instance_id_dns_a_record: Option<bool>,
     /// 开启/关闭实例 ID 类型的域名到 IPv6 的解析。可能值：
     ///  
@@ -60013,6 +60101,7 @@ pub struct AttributePrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableInstanceIdDnsAAAARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_instance_id_dns_aaaa_record: Option<bool>,
     /// 开启/关闭IP类型的域名到IPv4 的解析。可能值：
     /// - true：开启。
@@ -60020,6 +60109,7 @@ pub struct AttributePrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableIpDnsARecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ip_dns_a_record: Option<bool>,
     /// 开启/关闭IPv4到IP类型的域名解析。可能值：
     /// - true：开启。
@@ -60027,6 +60117,7 @@ pub struct AttributePrivateDnsNameOptions {
     ///
     /// 默认值：false。
     #[serde(rename = "EnableIpDnsPtrRecord")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_ip_dns_ptr_record: Option<bool>,
     /// 主机名类型，可能值：
     ///
@@ -60036,6 +60127,7 @@ pub struct AttributePrivateDnsNameOptions {
     ///
     /// 默认值：Custom。
     #[serde(rename = "HostnameType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub hostname_type: Option<String>,
 }
 impl crate::FlatSerialize for AttributePrivateDnsNameOptions {
@@ -60107,12 +60199,15 @@ pub struct InstanceChargeTypeResponseFeeOfInstances {
 pub struct ModifyInstanceSpecDisk {
     /// >该参数暂未开放使用。
     #[serde(rename = "DiskId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_id: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
 }
 impl crate::FlatSerialize for ModifyInstanceSpecDisk {
@@ -60136,12 +60231,15 @@ impl crate::FlatSerialize for ModifyInstanceSpecDisk {
 pub struct PrepayInstanceSpecDisk {
     /// >该参数暂未开放使用。
     #[serde(rename = "DiskId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_id: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
 }
 impl crate::FlatSerialize for PrepayInstanceSpecDisk {
@@ -60415,6 +60513,7 @@ pub struct SpotZones {
 pub struct CreateImageDiskDeviceMapping {
     /// 快照ID。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 云盘的大小，单位为GiB。DiskDeviceMapping.N.Size的取值和默认值和DiskDeviceMapping.N.SnapshotId有关：
     ///
@@ -60423,6 +60522,7 @@ pub struct CreateImageDiskDeviceMapping {
     ///     - 其他云盘：20~32768GiB，默认为20。
     /// - 如果指定了SnapshotId，Size取值必须大于等于SnapshotId的大小，默认为SnapshotId的大小。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 指定在自定义镜像中的设备名称。取值范围：
     ///
@@ -60430,12 +60530,14 @@ pub struct CreateImageDiskDeviceMapping {
     ///
     /// - 数据盘设备名从/dev/xvdb 依次排序到/dev/xvdz，不能重复。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 指定在新镜像中的云盘类型。您可以通过该参数使用数据盘快照作为镜像的系统盘，如果不指定，默认为快照对应的云盘类型。取值范围：
     ///
     /// - system：系统盘。只能指定 1 块系统盘快照。
     /// - data：数据盘。最多可以指定 16 块数据盘快照。
     #[serde(rename = "DiskType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_type: Option<String>,
 }
 impl crate::FlatSerialize for CreateImageDiskDeviceMapping {
@@ -60466,9 +60568,11 @@ pub struct CreateImageTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 镜像的标签值。N的取值范围为1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CreateImageTag {
@@ -60491,6 +60595,7 @@ pub struct CreateImageFeatures {
     ///
     /// 默认值：当使用快照创建镜像时，默认为v1。当使用实例创建镜像时，默认取实例创建时镜像的ImdsSupport属性值。
     #[serde(rename = "ImdsSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imds_support: Option<String>,
 }
 impl crate::FlatSerialize for CreateImageFeatures {
@@ -60514,9 +60619,11 @@ pub struct ImagesTag {
     ///
     /// >该参数即将被弃用，为提高兼容性，建议您使用另一个`Tag.N.Key`参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 镜像的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ImagesTag {
@@ -60542,6 +60649,7 @@ pub struct ImagesFilter {
     ///
     /// 默认值：null。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 查询资源时的筛选值。
     /// - 当（`Filter.N.Key`）为`CreationStartTime`或`CreationEndTime`时，格式为：`yyyy-MM-ddTHH:mmZ`，采用 UTC+0 时区。
@@ -60551,6 +60659,7 @@ pub struct ImagesFilter {
     ///
     /// 默认值：null。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ImagesFilter {
@@ -60937,6 +61046,7 @@ pub struct AttributeFeatures {
     /// - supported：支持。表示以该镜像创建的实例支持NVMe协议。
     /// - unsupported：不支持。表示以该镜像创建的实例不支持NVMe协议。
     #[serde(rename = "NvmeSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nvme_support: Option<String>,
     /// 镜像的元数据访问模式，可能值：
     /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
@@ -60947,6 +61057,7 @@ pub struct AttributeFeatures {
     ///
     /// </notice>
     #[serde(rename = "ImdsSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imds_support: Option<String>,
 }
 impl crate::FlatSerialize for AttributeFeatures {
@@ -61150,9 +61261,11 @@ pub struct TypesFilter {
     /// -  imageId：过滤条件为镜像ID。
     /// -  filter：过滤条件为镜像ID。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 指定过滤条件Value。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for TypesFilter {
@@ -61253,16 +61366,19 @@ pub struct ImportImageDiskDeviceMapping {
     ///
     /// >该参数即将被弃用，为提高兼容性，请尽量使用`DiskDeviceMapping.N.DiskImageSize`参数。
     #[serde(rename = "DiskImSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_im_size: Option<i32>,
     /// 指定DiskDeviceMapping.N.Device在自定义镜像中的设备名。
     ///
     /// > 该参数即将停止使用，为提高代码兼容性，建议您尽量不要使用该参数。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 镜像文件所在的OSS Bucket。
     ///
     /// > 首次导入镜像到该OSS Bucket前，请参见本文档的**接口说明**添加RAM授权策略，否则会报错`NoSetRoletoECSServiceAccount`。
     #[serde(rename = "OSSBucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_bucket: Option<String>,
     /// 镜像格式。取值范围：
     ///
@@ -61273,9 +61389,11 @@ pub struct ImportImageDiskDeviceMapping {
     ///
     /// 默认值：无，表示阿里云自动检测镜像格式，以检测格式为准。
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<String>,
     /// 镜像上传至OSS Bucket后，保存在Bucket中的镜像文件的文件名（key）。
     #[serde(rename = "OSSObject")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_object: Option<String>,
     /// 导入镜像后，自定义镜像的空间大小。
     ///
@@ -61286,6 +61404,7 @@ pub struct ImportImageDiskDeviceMapping {
     ///
     /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
     #[serde(rename = "DiskImageSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_image_size: Option<i32>,
 }
 impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
@@ -61324,9 +61443,11 @@ impl crate::FlatSerialize for ImportImageDiskDeviceMapping {
 pub struct ImportImageTag {
     /// 镜像的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或者`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 镜像的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ImportImageTag {
@@ -61348,6 +61469,7 @@ pub struct ImportImageFeatures {
     ///  - supported：支持。表示以该镜像创建的实例支持NVMe协议。
     ///  - unsupported：不支持。表示以该镜像创建的实例不支持NVMe协议。
     #[serde(rename = "NvmeSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nvme_support: Option<String>,
     /// 镜像的元数据访问模式，可能值：
     /// - v1：通过该镜像创建ECS实例时，不支持将元数据访问模式设置为“仅加固模式”。
@@ -61355,6 +61477,7 @@ pub struct ImportImageFeatures {
     ///
     /// 默认值：v1。
     #[serde(rename = "ImdsSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imds_support: Option<String>,
 }
 impl crate::FlatSerialize for ImportImageFeatures {
@@ -61381,9 +61504,11 @@ impl crate::FlatSerialize for ImportImageFeatures {
 pub struct CopyImageTag {
     /// 复制后的镜像的标签值。N的取值范围为1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 复制后的镜像的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for CopyImageTag {
@@ -61401,9 +61526,11 @@ impl crate::FlatSerialize for CopyImageTag {
 pub struct ComponentTag {
     /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ComponentTag {
@@ -61421,9 +61548,11 @@ impl crate::FlatSerialize for ComponentTag {
 pub struct ComponentsTag {
     /// 标签键。N的取值范围：1~20
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N的取值范围：1~20
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ComponentsTag {
@@ -61558,9 +61687,11 @@ pub struct ImageComponent {
 pub struct PipelineTag {
     /// 标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PipelineTag {
@@ -61578,9 +61709,11 @@ impl crate::FlatSerialize for PipelineTag {
 pub struct OptionsDiskDeviceMapping {
     /// 镜像文件所在的OSS Bucket。
     #[serde(rename = "OSSBucket")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_bucket: Option<String>,
     /// 镜像上传至OSS Bucket后，保存在Bucket中的镜像文件的文件名（key）。
     #[serde(rename = "OSSObject")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub oss_object: Option<String>,
     /// 镜像格式。取值范围：
     ///
@@ -61590,6 +61723,7 @@ pub struct OptionsDiskDeviceMapping {
     ///
     /// 默认值：无，表示阿里云自动检测镜像格式，以检测格式为准。
     #[serde(rename = "Format")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<String>,
     /// 导入镜像后，自定义镜像的空间大小。
     ///
@@ -61600,6 +61734,7 @@ pub struct OptionsDiskDeviceMapping {
     ///
     /// 当您将源镜像文件上传至OSS后，可以在OSS Bucket中查看镜像文件的大小。
     #[serde(rename = "DiskImageSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_image_size: Option<i32>,
 }
 impl crate::FlatSerialize for OptionsDiskDeviceMapping {
@@ -61636,8 +61771,10 @@ pub struct PipelineImportImageOptionsFeatures {
     ///
     /// 默认值：unsupported。
     #[serde(rename = "NvmeSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nvme_support: Option<String>,
     #[serde(rename = "ImdsSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub imds_support: Option<String>,
 }
 impl crate::FlatSerialize for PipelineImportImageOptionsFeatures {
@@ -61662,8 +61799,10 @@ impl crate::FlatSerialize for PipelineImportImageOptionsFeatures {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct OptionsImportImageTag {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for OptionsImportImageTag {
@@ -61687,6 +61826,7 @@ pub struct PipelineImportImageOptions {
     ///
     /// 默认值为x86_64。
     #[serde(rename = "Architecture")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub architecture: Option<String>,
     /// 操作系统类型。可能值：
     ///
@@ -61695,6 +61835,7 @@ pub struct PipelineImportImageOptions {
     ///
     /// 默认值：linux。
     #[serde(rename = "OSType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub os_type: Option<String>,
     /// 操作系统版本。取值范围：
     /// - Aliyun
@@ -61727,6 +61868,7 @@ pub struct PipelineImportImageOptions {
     ///
     /// 默认值：当操作系统类型为Linux时为Others Linux，否则为Other Windows。
     #[serde(rename = "Platform")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub platform: Option<String>,
     /// 修改镜像的启动模式。取值范围：
     ///
@@ -61741,6 +61883,7 @@ pub struct PipelineImportImageOptions {
     ///
     /// </notice>
     #[serde(rename = "BootMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub boot_mode: Option<String>,
     /// 导入镜像后，激活操作系统采用的许可证类型。取值范围：
     ///
@@ -61751,28 +61894,37 @@ pub struct PipelineImportImageOptions {
     /// 默认值：Auto。
     ///
     #[serde(rename = "LicenseType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_type: Option<String>,
     /// 创建的自定义镜像信息列表。
     /// - N=1 时，表示系统盘.
     /// - N=2~17 时，表示数据盘。
     #[serde(rename = "DiskDeviceMappings")]
-    pub disk_device_mappings: Vec<OptionsDiskDeviceMapping>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub disk_device_mappings: Option<Vec<OptionsDiskDeviceMapping>>,
     /// 镜像特性相关属性。
     #[serde(rename = "Features")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub features: Option<PipelineImportImageOptionsFeatures>,
     /// > 该参数正在邀测中。
     #[serde(rename = "RetainImportedImage")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_imported_image: Option<bool>,
     #[serde(rename = "RetentionStrategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retention_strategy: Option<String>,
     #[serde(rename = "ImageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_name: Option<String>,
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(rename = "RoleName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
     #[serde(rename = "ImportImageTags")]
-    pub import_image_tags: Vec<OptionsImportImageTag>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub import_image_tags: Option<Vec<OptionsImportImageTag>>,
 }
 impl crate::FlatSerialize for PipelineImportImageOptions {
     fn flat_serialize<'a>(
@@ -61846,10 +61998,12 @@ pub struct PipelineAdvancedOptions {
     /// 默认值：false。
     /// >该设置不会对您镜像中自带的云助手产生任何影响。
     #[serde(rename = "RetainCloudAssistant")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub retain_cloud_assistant: Option<bool>,
     /// 是否禁用目标镜像名称自动增加后缀。可能值：
     /// - disable：禁用。
     #[serde(rename = "ImageNameSuffix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_name_suffix: Option<String>,
 }
 impl crate::FlatSerialize for PipelineAdvancedOptions {
@@ -61879,6 +62033,7 @@ pub struct PipelineImageOptionsImageFeatures {
     /// - unsupported：不支持。表示以该镜像创建的实例不支持 NVMe 协议。
     /// - auto：自动检测。由系统自动检测您的镜像是否安装NVMe驱动，该行为发生在构建阶段前，若您在构建时安装或者卸载了NVMe驱动，可能会出现结果偏差，建议您根据构建内容设置为supported或unsupported。
     #[serde(rename = "NvmeSupport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nvme_support: Option<String>,
 }
 impl crate::FlatSerialize for PipelineImageOptionsImageFeatures {
@@ -61899,9 +62054,11 @@ impl crate::FlatSerialize for PipelineImageOptionsImageFeatures {
 pub struct OptionsImageTag {
     /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for OptionsImageTag {
@@ -61923,19 +62080,24 @@ pub struct PipelineImageOptions {
     /// 最终完整的镜像名称由系统自动拼接名称前缀与构建任务ID（`ExecutionId`），格式为`{ImageName}_{ExecutionId}`。
     ///
     #[serde(rename = "ImageName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_name: Option<String>,
     /// 目标镜像族系。长度为 2~128 个英文或中文字符。必须以大小写字母或中文开头，不能以 aliyun 和 acs:开头，不能包含 http://或者 https://。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "ImageFamily")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_family: Option<String>,
     /// 描述信息。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 目标镜像特性相关属性。
     #[serde(rename = "ImageFeatures")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_features: Option<PipelineImageOptionsImageFeatures>,
     /// 目标镜像标签。
     #[serde(rename = "ImageTags")]
-    pub image_tags: Vec<OptionsImageTag>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub image_tags: Option<Vec<OptionsImageTag>>,
 }
 impl crate::FlatSerialize for PipelineImageOptions {
     fn flat_serialize<'a>(
@@ -61976,9 +62138,11 @@ impl crate::FlatSerialize for PipelineImageOptions {
 pub struct PipelinesTag {
     /// 标签键。N的取值范围：1~20。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PipelinesTag {
@@ -62404,9 +62568,11 @@ pub struct ImagePipeline {
 pub struct StartImagePipelineExecutionTemplateTag {
     /// >该参数已废弃。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// >该参数已废弃。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
@@ -62425,9 +62591,11 @@ impl crate::FlatSerialize for StartImagePipelineExecutionTemplateTag {
 pub struct ExecutionTag {
     /// 标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ExecutionTag {
@@ -62446,9 +62614,11 @@ impl crate::FlatSerialize for ExecutionTag {
 pub struct ExecutionsTag {
     /// 标签键。N 的取值范围：1~20。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N 的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ExecutionsTag {
@@ -62553,9 +62723,11 @@ pub struct PipelineExecution {
 pub struct CancelImagePipelineExecutionTemplateTag {
     /// >该参数暂未开放使用。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CancelImagePipelineExecutionTemplateTag {
@@ -62576,9 +62748,11 @@ pub struct DiskTag {
     ///
     /// >为提高代码兼容性，请尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 磁盘的标签值。N的取值范围：1~20。一旦传入Tag.N.Value值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for DiskTag {
@@ -62597,12 +62771,15 @@ impl crate::FlatSerialize for DiskTag {
 pub struct CreateDiskArn {
     /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for CreateDiskArn {
@@ -62632,9 +62809,11 @@ pub struct DisksTag {
     ///
     /// >为提高代码兼容性，请尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 磁盘的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for DisksTag {
@@ -63044,6 +63223,7 @@ pub struct ControlOptions {
     ///
     /// 更多信息，请参见[云盘性能](~~25382~~)。
     #[serde(rename = "IOPS")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iops: Option<i32>,
     /// 目标云盘吞吐量，仅支持修改专属存储集群云盘吞吐量，单位MB/s。
     ///
@@ -63051,6 +63231,7 @@ pub struct ControlOptions {
     ///
     /// 更多信息，请参见[云盘性能](~~25382~~)。
     #[serde(rename = "Throughput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub throughput: Option<i32>,
     /// 重置云盘性能，仅支持专属存储集群云盘。
     ///
@@ -63059,6 +63240,7 @@ pub struct ControlOptions {
     ///
     /// 目前仅支持设置为All（重置云盘IOPS和吞吐量到初始值）。
     #[serde(rename = "Recover")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recover: Option<OptionsRecover>,
 }
 impl crate::FlatSerialize for ControlOptions {
@@ -63081,12 +63263,15 @@ impl crate::FlatSerialize for ControlOptions {
 pub struct SystemDiskArn {
     /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for SystemDiskArn {
@@ -63113,9 +63298,11 @@ impl crate::FlatSerialize for SystemDiskArn {
 pub struct ResetDisksDisk {
     /// 实例快照中，指定云盘对应的快照ID。N的取值范围为1~10。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 指定待回滚的云盘ID。N的取值范围为1~10。
     #[serde(rename = "DiskId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_id: Option<String>,
 }
 impl crate::FlatSerialize for ResetDisksDisk {
@@ -63202,9 +63389,11 @@ pub struct CreateSnapshotTag {
     ///
     /// >  为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 快照的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CreateSnapshotTag {
@@ -63224,9 +63413,11 @@ pub struct SnapshotsTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 快照的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for SnapshotsTag {
@@ -63432,9 +63623,11 @@ pub struct ResponseSnapshots {
 pub struct CopySnapshotTag {
     /// 新快照的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 新快照的标签值。一旦传入该值，允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CopySnapshotTag {
@@ -63452,12 +63645,15 @@ impl crate::FlatSerialize for CopySnapshotTag {
 pub struct SnapshotArn {
     /// >该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for SnapshotArn {
@@ -63558,9 +63754,11 @@ pub struct SnapshotLinks {
 pub struct SnapshotGroupTag {
     /// 快照一致性组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 快照一致性组的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for SnapshotGroupTag {
@@ -63579,9 +63777,11 @@ impl crate::FlatSerialize for SnapshotGroupTag {
 pub struct SnapshotGroupsTag {
     /// 快照一致性组的标签键。N的取值范围为1~20。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 快照一致性组的标签值。N的取值范围为1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for SnapshotGroupsTag {
@@ -63819,9 +64019,11 @@ pub struct GroupResponseOperationProgressSet {
 pub struct PolicyTag {
     /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 自动快照策略的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PolicyTag {
@@ -63839,12 +64041,15 @@ impl crate::FlatSerialize for PolicyTag {
 pub struct PolicyCopyEncryptionConfigurationArn {
     /// > 该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for PolicyCopyEncryptionConfigurationArn {
@@ -63877,13 +64082,16 @@ pub struct PolicyCopyEncryptionConfiguration {
     ///
     /// 默认值：false。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
     /// 快照异地加密备份使用的 KMS 密钥 ID
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    pub arn: Vec<PolicyCopyEncryptionConfigurationArn>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub arn: Option<Vec<PolicyCopyEncryptionConfigurationArn>>,
 }
 impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
@@ -63910,9 +64118,11 @@ impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
 pub struct ExTag {
     /// 自动快照策略的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 自动快照策略的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ExTag {
@@ -64090,12 +64300,15 @@ pub struct PolicyAssociations {
 pub struct ExCopyEncryptionConfigurationArn {
     /// 该参数暂未开放使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// 该参数暂未开放使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// 该参数暂未开放使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for ExCopyEncryptionConfigurationArn {
@@ -64128,13 +64341,16 @@ pub struct ExCopyEncryptionConfiguration {
     ///
     /// 默认值：false。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
     /// 快照跨地域加密复制使用的 KMS 密钥 ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    pub arn: Vec<ExCopyEncryptionConfigurationArn>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub arn: Option<Vec<ExCopyEncryptionConfigurationArn>>,
 }
 impl crate::FlatSerialize for ExCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
@@ -64247,9 +64463,11 @@ pub struct ResponseLinks {
 pub struct InterfaceTag {
     /// 弹性网卡的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 弹性网卡的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for InterfaceTag {
@@ -64268,12 +64486,15 @@ impl crate::FlatSerialize for InterfaceTag {
 pub struct InterfaceNetworkInterfaceTrafficConfig {
     /// 弹性网卡队列数。
     #[serde(rename = "QueueNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_number: Option<i32>,
     /// 弹性网卡的通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_traffic_mode: Option<String>,
     /// RDMA 网卡队列数。
     #[serde(rename = "QueuePairNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_pair_number: Option<i32>,
     /// 弹性网卡出方向队列深度。
     ///
@@ -64301,6 +64522,7 @@ pub struct InterfaceNetworkInterfaceTrafficConfig {
     ///
     /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tx_queue_size: Option<i32>,
     /// 弹性网卡入方向队列深度。
     ///
@@ -64328,6 +64550,7 @@ pub struct InterfaceNetworkInterfaceTrafficConfig {
     ///
     /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rx_queue_size: Option<i32>,
 }
 impl crate::FlatSerialize for InterfaceNetworkInterfaceTrafficConfig {
@@ -64373,6 +64596,7 @@ pub struct InterfaceConnectionTrackingConfiguration {
     ///
     /// 默认值：910。
     #[serde(rename = "TcpEstablishedTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_established_timeout: Option<i32>,
     /// TCP等待与关闭超时时间，单位：s（秒）。取值范围：3~15内的整数。
     ///
@@ -64380,6 +64604,7 @@ pub struct InterfaceConnectionTrackingConfiguration {
     ///
     /// > 如果您的ECS实例配合NLB/CLB使用，`TIME_WAIT`状态的连接超时时间默认值为15秒。
     #[serde(rename = "TcpClosedAndTimeWaitTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_closed_and_time_wait_timeout: Option<i32>,
     /// UDP流超时时间。单位：s（秒）。取值范围：[10, 20, 30, 60, 80, 100]。
     ///
@@ -64387,6 +64612,7 @@ pub struct InterfaceConnectionTrackingConfiguration {
     ///
     /// > 如果您的ECS实例配合NLB/CLB使用，默认值为100秒。
     #[serde(rename = "UdpTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub udp_timeout: Option<i32>,
 }
 impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
@@ -64418,13 +64644,17 @@ impl crate::FlatSerialize for InterfaceConnectionTrackingConfiguration {
 pub struct InterfaceEnhancedNetwork {
     /// >该参数暂未开放使用。
     #[serde(rename = "EnableSriov")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_sriov: Option<bool>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "EnableRss")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_rss: Option<bool>,
     #[serde(rename = "VirtualFunctionTotalQueueNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_function_total_queue_number: Option<i32>,
     #[serde(rename = "VirtualFunctionQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_function_quantity: Option<i32>,
 }
 impl crate::FlatSerialize for InterfaceEnhancedNetwork {
@@ -64568,11 +64798,13 @@ pub struct InterfaceResponseIpv6PrefixSets {
 pub struct InterfacesTag {
     /// 弹性网卡的标签键。N的取值范围：1~20
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 弹性网卡的标签值。N的取值范围：1~20
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for InterfacesTag {
@@ -64919,9 +65151,11 @@ pub struct InterfaceSets {
 pub struct AttributeTag {
     /// > 该参数暂未开放使用。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for AttributeTag {
@@ -65295,6 +65529,7 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     ///
     /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_traffic_mode: Option<String>,
     /// 弹性网卡队列数。
     /// 当弹性网卡处于挂载态时，您需要注意：
@@ -65303,6 +65538,7 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     ///
     /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueueNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_number: Option<i32>,
     /// RDMA 网卡队列数。
     /// 当弹性网卡处于挂载态时，您需要注意：
@@ -65310,6 +65546,7 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     ///
     /// > 该参数正在邀测中，暂未开放使用。
     #[serde(rename = "QueuePairNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub queue_pair_number: Option<i32>,
     /// 弹性网卡入方向队列深度。
     ///
@@ -65321,6 +65558,7 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     /// - 目前仅适用于Linux镜像。
     /// - 较大的入方向队列深度可以提升入方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "RxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rx_queue_size: Option<i32>,
     /// 弹性网卡出方向队列深度。
     ///
@@ -65332,6 +65570,7 @@ pub struct AttributeNetworkInterfaceTrafficConfig {
     /// - 目前仅适用于Linux镜像。
     /// - 较大的出方向队列深度可以提升出方向的吞吐量，降低丢包概率，但会占用更多的内存。
     #[serde(rename = "TxQueueSize")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tx_queue_size: Option<i32>,
 }
 impl crate::FlatSerialize for AttributeNetworkInterfaceTrafficConfig {
@@ -65377,6 +65616,7 @@ pub struct AttributeConnectionTrackingConfiguration {
     ///
     /// 默认值：910。
     #[serde(rename = "TcpEstablishedTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_established_timeout: Option<i32>,
     /// TCP等待与关闭超时时间，单位：s（秒）。取值范围：3~15内的整数。
     ///
@@ -65384,6 +65624,7 @@ pub struct AttributeConnectionTrackingConfiguration {
     ///
     /// > 如果您的ECS实例配合NLB/CLB使用，`TIME_WAIT`状态的连接超时时间默认值为15秒。
     #[serde(rename = "TcpClosedAndTimeWaitTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tcp_closed_and_time_wait_timeout: Option<i32>,
     /// UDP流超时时间。单位：s（秒）。取值范围：[10, 20, 30, 60, 80, 100]。
     ///
@@ -65391,6 +65632,7 @@ pub struct AttributeConnectionTrackingConfiguration {
     ///
     /// > 如果您的ECS实例配合NLB/CLB使用，默认值为100秒。
     #[serde(rename = "UdpTimeout")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub udp_timeout: Option<i32>,
 }
 impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
@@ -65422,13 +65664,17 @@ impl crate::FlatSerialize for AttributeConnectionTrackingConfiguration {
 pub struct AttributeEnhancedNetwork {
     /// 该参数暂未开放使用。
     #[serde(rename = "EnableSriov")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_sriov: Option<bool>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "EnableRss")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_rss: Option<bool>,
     #[serde(rename = "VirtualFunctionTotalQueueNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_function_total_queue_number: Option<i32>,
     #[serde(rename = "VirtualFunctionQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub virtual_function_quantity: Option<i32>,
 }
 impl crate::FlatSerialize for AttributeEnhancedNetwork {
@@ -65594,6 +65840,7 @@ pub struct InterfacePermissions {
 pub struct PrefixListEntry {
     /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 前缀列表条目的CIDR地址块信息。N的取值范围：0~200。注意事项：
     ///
@@ -65629,11 +65876,13 @@ impl crate::FlatSerialize for PrefixListEntry {
 pub struct PrefixListTag {
     /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 前缀列表的标签值。N的取值范围：1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://或https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PrefixListTag {
@@ -65652,11 +65901,13 @@ impl crate::FlatSerialize for PrefixListTag {
 pub struct PrefixListsTag {
     /// 前缀列表的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含`http://或者https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 前缀列表的标签值。N的取值范围：1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://或https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PrefixListsTag {
@@ -65796,6 +66047,7 @@ pub struct ListAssociations {
 pub struct PrefixListAddEntry {
     /// 前缀列表条目的描述信息。长度为2~32个英文或中文字符，不能以`http://`和`https://`开头。N的取值范围：0~200。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 添加的前缀列表条目的CIDR地址块信息。N的取值范围：0~200。
     ///
@@ -65851,9 +66103,11 @@ pub struct RangeListEntry {
     ///
     /// - 多个条目中的`PortRange`不能重复。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 端口范围的描述信息。长度为 2~32 个英文或中文字符，不能以http://和https://开头。N 的取值范围：0~200。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 }
 impl crate::FlatSerialize for RangeListEntry {
@@ -65882,11 +66136,13 @@ pub struct RangeListTag {
     ///
     /// 使用该参数时，不允许为空或空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 端口列表的标签值。
     ///
     /// 使用该参数时，不允许为空，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for RangeListTag {
@@ -65907,9 +66163,11 @@ pub struct RangeListsTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for RangeListsTag {
@@ -66014,9 +66272,11 @@ pub struct RangeListAddEntry {
     ///
     /// - 不允许与`RemoveEntry.N.PortRange` 参数值重复。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 端口范围的描述信息。长度为 2~32 个英文或中文字符，不能以http://和https://开头。N 的取值范围：0~200。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 }
 impl crate::FlatSerialize for RangeListAddEntry {
@@ -66047,6 +66307,7 @@ pub struct RangeListRemoveEntry {
     ///
     /// - 不允许与`AddEntry.N.PortRange` 参数值重复。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
 }
 impl crate::FlatSerialize for RangeListRemoveEntry {
@@ -66070,11 +66331,13 @@ pub struct SecurityGroupTag {
     ///
     /// > 为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 安全组的标签值。
     ///
     /// 一旦传入该值，允许为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for SecurityGroupTag {
@@ -66095,9 +66358,11 @@ pub struct SecurityGroupsTag {
     ///
     /// > 为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 安全组的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for SecurityGroupsTag {
@@ -66353,11 +66618,13 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// 默认值：accept。
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<String>,
     /// 安全组规则优先级，数字越小，代表优先级越高。取值范围：1~100。
     ///
     /// 默认值：1。
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<String>,
     /// 网络层/传输层协议。支持两类赋值：
     /// 1. 不区分大小写的协议名。取值范围：
@@ -66375,14 +66642,17 @@ pub struct AuthorizeSecurityGroupPermission {
     /// - 美西
     /// - 新加坡
     #[serde(rename = "IpProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_protocol: Option<String>,
     /// 需要设置访问权限的源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_cidr_ip: Option<String>,
     /// 需要设置访问权限的源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`SourceCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_source_cidr_ip: Option<String>,
     /// 需要设置访问权限的源端安全组ID。
     ///
@@ -66392,6 +66662,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// - 如果同时指定了`SourceGroupId`和`SourceCidrIp`，则默认以`SourceCidrIp`为准。
     #[serde(rename = "SourceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_id: Option<String>,
     /// 需要设置访问权限的源端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
     ///
@@ -66401,6 +66672,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// - 当您指定了`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourceGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "SourcePrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_prefix_list_id: Option<String>,
     /// 安全组开放的各协议相关的目的端口范围。取值范围：
     ///
@@ -66411,11 +66683,13 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// 了解端口的应用场景，请参见[典型应用的常用端口](~~40724~~)。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 目的端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_cidr_ip: Option<String>,
     /// 目的端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
     ///
@@ -66423,6 +66697,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_dest_cidr_ip: Option<String>,
     /// 安全组开放的各协议相关的源端端口范围。取值范围：
     ///
@@ -66433,6 +66708,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_range: Option<String>,
     /// 跨账户设置安全组规则时，源端安全组所属的阿里云账户。
     ///
@@ -66440,6 +66716,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_owner_account: Option<String>,
     /// 跨账户设置安全组规则时，源端安全组所属的阿里云账户ID。
     ///
@@ -66447,6 +66724,7 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_owner_id: Option<i64>,
     /// 经典网络类型安全组规则的网卡类型。取值范围：
     ///
@@ -66460,15 +66738,18 @@ pub struct AuthorizeSecurityGroupPermission {
     ///
     /// 默认值：internet。
     #[serde(rename = "NicType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nic_type: Option<String>,
     /// 安全组规则的描述信息。长度为1~512个字符。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 端口列表 ID。
     /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
     /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
     /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range_list_id: Option<String>,
 }
 impl crate::FlatSerialize for AuthorizeSecurityGroupPermission {
@@ -66558,11 +66839,13 @@ pub struct RevokeSecurityGroupPermission {
     ///
     /// 默认值：accept。
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<String>,
     /// 安全组规则优先级，数字越小，代表优先级越高。取值范围：1~100。
     ///
     /// 默认值：1。
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<String>,
     /// 协议类型。取值不区分大小写。取值范围：
     ///          
@@ -66573,15 +66856,18 @@ pub struct RevokeSecurityGroupPermission {
     /// - GRE。
     /// - ALL：支持所有协议。
     #[serde(rename = "IpProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_protocol: Option<String>,
     /// 需要撤销访问权限的源端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_cidr_ip: Option<String>,
     /// 需要撤销访问权限的源端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
     ///
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`SourceCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_source_cidr_ip: Option<String>,
     /// 需要撤销访问权限的源端安全组ID。
     ///
@@ -66597,6 +66883,7 @@ pub struct RevokeSecurityGroupPermission {
     ///
     /// - 普通安全组支持授权的安全组数量最多为20个。
     #[serde(rename = "SourceGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_id: Option<String>,
     /// 需要撤销访问权限的源端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
     ///
@@ -66605,6 +66892,7 @@ pub struct RevokeSecurityGroupPermission {
     /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     /// - 当您指定了`SourceCidrIp`、`Ipv6SourceCidrIp`或`SourceGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "SourcePrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_prefix_list_id: Option<String>,
     /// 安全组开放的各协议相关的目的端口范围。取值范围：
     ///          
@@ -66613,11 +66901,13 @@ pub struct RevokeSecurityGroupPermission {
     /// - GRE协议：-1/-1。
     /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 目的端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_cidr_ip: Option<String>,
     /// 目的端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
     ///
@@ -66626,6 +66916,7 @@ pub struct RevokeSecurityGroupPermission {
     ///          
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_dest_cidr_ip: Option<String>,
     /// 安全组开放的各协议相关的源端端口范围。取值范围：
     ///          
@@ -66636,18 +66927,21 @@ pub struct RevokeSecurityGroupPermission {
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_range: Option<String>,
     /// 撤销跨账户授权的安全组规则时，源端安全组所属的阿里云账户。
     ///
     /// - 如果`SourceGroupOwnerAccount`及`SourceGroupOwnerId`均未设置，则认为是撤销您其他安全组的访问权限。
     /// - 如果已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerAccount`无效。
     #[serde(rename = "SourceGroupOwnerAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_owner_account: Option<String>,
     /// 撤销跨账户授权的安全组规则时，源端安全组所属的阿里云账户ID。
     ///
     /// - 如果`SourceGroupOwnerId`及`SourceGroupOwnerAccount`均未设置，则认为是撤销您其他安全组的访问权限。
     /// - 如果您已经设置参数`SourceCidrIp`，则参数`SourceGroupOwnerId`无效。
     #[serde(rename = "SourceGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_group_owner_id: Option<i64>,
     /// 经典网络类型安全组规则的网卡类型。取值范围：
     ///
@@ -66660,15 +66954,18 @@ pub struct RevokeSecurityGroupPermission {
     ///
     /// 默认值：internet。
     #[serde(rename = "NicType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nic_type: Option<String>,
     /// 安全组规则描述。长度为1~512个字符。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 端口列表 ID。
     /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
     /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
     /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range_list_id: Option<String>,
 }
 impl crate::FlatSerialize for RevokeSecurityGroupPermission {
@@ -66758,11 +67055,13 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// 默认值：accept。
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<String>,
     /// 安全组规则优先级。数字越小，代表优先级越高。取值范围：1~100。
     ///
     /// 默认值：1。
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<String>,
     /// 网络层/传输层协议。支持两类赋值：
     /// 1. 不区分大小写的协议名。取值范围：
@@ -66780,14 +67079,17 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     /// - 美西
     /// - 新加坡
     #[serde(rename = "IpProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_protocol: Option<String>,
     /// 需要设置访问权限的目的端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_cidr_ip: Option<String>,
     /// 需要设置访问权限的目的端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_dest_cidr_ip: Option<String>,
     /// 需要设置访问权限的目的端安全组ID。
     ///
@@ -66797,6 +67099,7 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// - 如果同时指定了`DestGroupId`和`DestCidrIp`，则默认以`DestCidrIp`为准。
     #[serde(rename = "DestGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_id: Option<String>,
     /// 需要设置访问权限的目的端前缀列表ID。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
     ///
@@ -66806,6 +67109,7 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// - 当您指定了`DestCidrIp`、`Ipv6DestCidrIp`或`DestGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "DestPrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_prefix_list_id: Option<String>,
     /// 安全组开放的各协议相关的目的端口范围。取值范围：
     ///          
@@ -66814,11 +67118,13 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     /// - GRE：-1/-1。
     /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_cidr_ip: Option<String>,
     /// 源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
     ///
@@ -66826,6 +67132,7 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// >仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_source_cidr_ip: Option<String>,
     /// 安全组开放的各协议相关的源端端口范围。取值范围：
     ///          
@@ -66836,18 +67143,21 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_range: Option<String>,
     /// 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。
     ///          
     /// - 如果`DestGroupOwnerAccount`及`DestGroupOwnerId`均未设置，则认为是设置您其他安全组的访问权限。
     /// - 如果已经设置参数`DestCidrIp`，则参数`DestGroupOwnerAccount`无效。
     #[serde(rename = "DestGroupOwnerAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_owner_account: Option<String>,
     /// 跨账户设置安全组规则时，目的端安全组所属的阿里云账户ID。
     ///          
     /// - 如果`DestGroupOwnerId`及`DestGroupOwnerAccount`均未设置，则认为是设置您其他安全组的访问权限。
     /// - 如果您已经设置参数`DestCidrIp`，则参数`DestGroupOwnerId`无效。
     #[serde(rename = "DestGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_owner_id: Option<i64>,
     /// 经典网络类型安全组规则的网卡类型。取值范围：
     ///          
@@ -66858,15 +67168,18 @@ pub struct AuthorizeSecurityGroupEgressPermission {
     ///
     /// 默认值：internet。
     #[serde(rename = "NicType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nic_type: Option<String>,
     /// 安全组规则的描述信息。长度为1~512个字符。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 端口列表 ID。
     /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
     /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
     /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range_list_id: Option<String>,
 }
 impl crate::FlatSerialize for AuthorizeSecurityGroupEgressPermission {
@@ -66956,11 +67269,13 @@ pub struct RevokeSecurityGroupEgressPermission {
     ///
     /// 默认值：accept。
     #[serde(rename = "Policy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub policy: Option<String>,
     /// 安全组规则优先级。数字越小，代表优先级越高。取值范围：1~100。
     ///
     /// 默认值：1。
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<String>,
     /// 协议类型。取值不区分大小写。取值范围：
     ///          
@@ -66971,14 +67286,17 @@ pub struct RevokeSecurityGroupEgressPermission {
     /// - GRE。
     /// - ALL：支持所有协议。
     #[serde(rename = "IpProtocol")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_protocol: Option<String>,
     /// 需要撤销访问权限的目的端IPv4 CIDR地址块。支持CIDR格式和IPv4格式的IP地址范围。
     #[serde(rename = "DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_cidr_ip: Option<String>,
     /// 需要撤销访问权限的目的端IPv6 CIDR地址块。支持CIDR格式和IPv6格式的IP地址范围。
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6DestCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_dest_cidr_ip: Option<String>,
     /// 需要撤销访问权限的目的端安全组ID。
     ///
@@ -66991,6 +67309,7 @@ pub struct RevokeSecurityGroupEgressPermission {
     /// - 企业安全组不支持授权安全组访问。
     /// - 普通安全组支持授权的安全组数量最多为20个。
     #[serde(rename = "DestGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_id: Option<String>,
     /// 需要撤销访问权限的目的端前缀列表。您可以调用[DescribePrefixLists](~~205046~~)查询可以使用的前缀列表ID。
     ///
@@ -66999,6 +67318,7 @@ pub struct RevokeSecurityGroupEgressPermission {
     /// - 安全组的网络类型为经典网络时，不支持设置前缀列表。关于安全组以及前缀列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     /// - 当您指定了`DestCidrIp`、`Ipv6DestCidrIp`、`DestGroupId`参数中的一个时，将忽略该参数。
     #[serde(rename = "DestPrefixListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_prefix_list_id: Option<String>,
     /// 安全组开放的各协议相关的目的端口范围。取值范围：
     ///          
@@ -67007,11 +67327,13 @@ pub struct RevokeSecurityGroupEgressPermission {
     /// - GRE协议：-1/-1。
     /// - ALL：-1/-1。
     #[serde(rename = "PortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range: Option<String>,
     /// 源端IPv4 CIDR地址段。支持CIDR格式和IPv4格式的IP地址范围。
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_cidr_ip: Option<String>,
     /// 源端IPv6 CIDR地址段。支持CIDR格式和IPv6格式的IP地址范围。
     ///
@@ -67020,6 +67342,7 @@ pub struct RevokeSecurityGroupEgressPermission {
     ///
     /// > 仅在支持IPv6的VPC类型ECS实例上有效，且该参数与`DestCidrIp`参数不可同时设置。
     #[serde(rename = "Ipv6SourceCidrIp")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ipv6_source_cidr_ip: Option<String>,
     /// 安全组开放的各协议相关的源端端口范围。取值范围：
     ///          
@@ -67030,18 +67353,21 @@ pub struct RevokeSecurityGroupEgressPermission {
     ///
     /// 用于支持五元组规则，请参见[安全组五元组规则](~~97439~~)。
     #[serde(rename = "SourcePortRange")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub source_port_range: Option<String>,
     /// 撤销跨账户授权的安全组规则时，目的端安全组所属的阿里云账户。
     ///
     /// - 如果`DestGroupOwnerAccount`及`DestGroupOwnerId`均未设置，则认为是撤销您其他安全组的访问权限。
     /// - 如果已经设置参数`DestCidrIp`，则参数`DestGroupOwnerAccount`无效。
     #[serde(rename = "DestGroupOwnerAccount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_owner_account: Option<String>,
     /// 撤销跨账户授权的安全组规则时，目的端安全组所属的阿里云账户。
     ///
     /// - 如果`DestGroupOwnerId`及`DestGroupOwnerAccount`均未设置，则认为是撤销您其他安全组的访问权限。  
     /// - 如果您已经设置参数`DestCidrIp`，则参数`DestGroupOwnerId`无效。
     #[serde(rename = "DestGroupOwnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dest_group_owner_id: Option<String>,
     /// 经典网络类型安全组规则的网卡类型。取值范围：
     ///
@@ -67054,15 +67380,18 @@ pub struct RevokeSecurityGroupEgressPermission {
     ///
     /// 默认值：internet。
     #[serde(rename = "NicType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub nic_type: Option<String>,
     /// 安全组规则的描述。长度为1~512个字符。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 端口列表 ID。
     /// 您可以调用`DescribePortRangeLists`查询可以使用的端口列表 ID。
     /// - 当您指定了`Permissions.N.PortRange`参数时，将忽略该参数。
     /// - 安全组的网络类型为经典网络时，不支持设置端口列表。关于安全组以及端口列表使用限制的更多信息，请参见[安全组使用限制](~~25412#SecurityGroupQuota1~~)。
     #[serde(rename = "PortRangeListId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub port_range_list_id: Option<String>,
 }
 impl crate::FlatSerialize for RevokeSecurityGroupEgressPermission {
@@ -67192,9 +67521,11 @@ pub struct GroupReferences {
 pub struct CreateKeyPairTag {
     /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 密钥对的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CreateKeyPairTag {
@@ -67213,9 +67544,11 @@ impl crate::FlatSerialize for CreateKeyPairTag {
 pub struct ImportKeyPairTag {
     /// 密钥对的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 密钥对的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ImportKeyPairTag {
@@ -67235,9 +67568,11 @@ pub struct PairsTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 密钥对的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for PairsTag {
@@ -67375,9 +67710,11 @@ pub struct DetachKeyPairResponseResults {
 pub struct TemplateTemplateTag {
     /// 启动模板的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 启动模板的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for TemplateTemplateTag {
@@ -67403,14 +67740,17 @@ pub struct TemplateDataDisk {
     ///
     /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 创建数据盘N使用的快照。N的取值范围为1~16。指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。
     ///
     /// >不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 第N个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
     ///
@@ -67427,6 +67767,7 @@ pub struct TemplateDataDisk {
     ///
     /// 该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
     /// - 1~25块数据盘：/dev/xvd`[b-z]`
@@ -67435,9 +67776,11 @@ pub struct TemplateDataDisk {
     ///
     /// > 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`或`https://`开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "DiskName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_name: Option<String>,
     /// 数据盘n的云盘种类。取值范围：
     ///
@@ -67450,6 +67793,7 @@ pub struct TemplateDataDisk {
     ///
     /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// 表示数据盘是否随实例释放。取值范围：
     ///
@@ -67458,12 +67802,15 @@ pub struct TemplateDataDisk {
     ///
     /// 默认值：true。
     #[serde(rename = "DeleteWithInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_with_instance: Option<bool>,
     /// 数据盘是否加密。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<String>,
     /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_policy_id: Option<String>,
     /// ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
     ///
@@ -67471,15 +67818,18 @@ pub struct TemplateDataDisk {
     ///
     /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
     /// - true：是。
     /// - false：否。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
     /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 }
 impl crate::FlatSerialize for TemplateDataDisk {
@@ -67557,6 +67907,7 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的虚拟交换机。
     #[serde(rename = "VSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 弹性网卡名称。
     ///
@@ -67566,9 +67917,11 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Primary`，则无需设置该参数。
     #[serde(rename = "NetworkInterfaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_name: Option<String>,
     /// 辅助弹性网卡描述信息。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 弹性网卡所属的安全组ID。
     ///
@@ -67580,6 +67933,7 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
     /// 添加一张弹性网卡并设置主IP地址。
     ///
@@ -67595,6 +67949,7 @@ pub struct TemplateNetworkInterface {
     ///
     /// > 创建ECS实例时，您最多能添加一张辅助网卡。实例创建成功后，您可以调用[CreateNetworkInterface](~~58504~~)和[AttachNetworkInterface](~~58515~~)添加更多的辅助网卡。
     #[serde(rename = "PrimaryIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_ip_address: Option<String>,
     /// 弹性网卡所属的一个或多个安全组ID。
     ///
@@ -67607,7 +67962,8 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub security_group_ids: Option<Vec<String>>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
     /// 参数取值范围：
@@ -67617,12 +67973,14 @@ pub struct TemplateNetworkInterface {
     ///
     /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
     /// 主网卡的通讯模式。参数取值范围：
     ///
     /// - Standard：使用TCP通讯模式。
     /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_traffic_mode: Option<String>,
     /// 释放实例时是否保留网卡。取值范围：
     ///
@@ -67634,6 +67992,7 @@ pub struct TemplateNetworkInterface {
     ///
     /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_release: Option<bool>,
 }
 impl crate::FlatSerialize for TemplateNetworkInterface {
@@ -67695,9 +68054,11 @@ impl crate::FlatSerialize for TemplateNetworkInterface {
 pub struct LaunchTemplateTag {
     /// 通过该模板的版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 通过该模板的版本创建的实例、云盘和主网卡的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含 http://或者 https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for LaunchTemplateTag {
@@ -67719,6 +68080,7 @@ pub struct TemplateImageOptions {
     /// - true：是。
     /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_as_non_root: Option<bool>,
 }
 impl crate::FlatSerialize for TemplateImageOptions {
@@ -67753,6 +68115,7 @@ pub struct TemplateSecurityOptions {
     ///
     /// 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
     #[serde(rename = "TrustedSystemMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_system_mode: Option<String>,
 }
 impl crate::FlatSerialize for TemplateSecurityOptions {
@@ -67776,9 +68139,11 @@ pub struct TemplatesTemplateTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 启动模板的标签值。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for TemplatesTemplateTag {
@@ -67893,14 +68258,17 @@ pub struct VersionDataDisk {
     ///
     /// 有关如何选择ESSD性能等级，请参见[ESSD云盘](~~122389~~)。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘描述。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 创建数据盘N使用的快照。N的取值范围为1~16。指定参数`DataDisk.N.SnapshotId`后，参数`DataDisk.N.Size`会被忽略，实际创建的云盘大小为指定的快照的大小。
     ///
     /// 不能使用早于2013年7月15日（含）创建的快照，请求会报错被拒绝。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 第N个数据盘的容量大小，N的取值范围为1~16，内存单位为GiB。取值范围：
     ///
@@ -67917,6 +68285,7 @@ pub struct VersionDataDisk {
     ///
     /// 该参数的取值必须大于等于参数`SnapshotId`指定的快照的大小。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘的挂载点。挂载的数据盘数量不同，挂载点的命名不同：
     /// - 1~25块数据盘：/dev/xvd`[b-z]`
@@ -67925,9 +68294,11 @@ pub struct VersionDataDisk {
     ///
     /// > 该参数仅用于全镜像（整机镜像）场景。您可以通过将此参数设置为全镜像中数据盘对应的挂载点，并修改对应的`DataDisk.N.Size`和`DataDisk.N.Category`参数，达到修改全镜像中数据盘磁盘种类和大小的目的。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`或`https://`开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "DiskName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_name: Option<String>,
     /// 数据盘N的云盘种类。取值范围：
     ///
@@ -67940,6 +68311,7 @@ pub struct VersionDataDisk {
     ///
     /// I/O优化实例的默认值为cloud_efficiency，非I/O优化实例的默认值为cloud。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// 表示数据盘是否随实例释放。取值范围：
     ///
@@ -67948,9 +68320,11 @@ pub struct VersionDataDisk {
     ///
     /// 默认值：true。
     #[serde(rename = "DeleteWithInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_with_instance: Option<bool>,
     /// 数据盘是否加密。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<String>,
     /// 是否修改ESSD AutoPL云盘预配置读写IOPS。取值范围：0~min{50000, 1000*容量-基准性能}。
     ///
@@ -67959,18 +68333,22 @@ pub struct VersionDataDisk {
     /// > 当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)和[修改ESSD AutoPL云盘预配置信息](~~413275~~)。
     ///
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
     /// - true：是。
     /// - false：否。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
     /// 数据盘采用的自动快照策略ID。
     #[serde(rename = "AutoSnapshotPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_policy_id: Option<String>,
     /// 数据盘对应的KMS密钥ID。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
 }
 impl crate::FlatSerialize for VersionDataDisk {
@@ -68040,26 +68418,32 @@ impl crate::FlatSerialize for VersionDataDisk {
 pub struct VersionNetworkInterface {
     /// 辅助弹性网卡所属的虚拟交换机ID。实例与辅助弹性网卡必须在同一VPC的同一可用区中，可以分属于不同交换机。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "VSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 辅助弹性网卡名称。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "NetworkInterfaceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_name: Option<String>,
     /// 辅助弹性网卡描述信息。长度为2~256个英文或中文字符，不能以`http://`或`https://`开头。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 辅助弹性网卡所属安全组的ID。辅助弹性网卡的安全组和实例的安全组必须在同一个VPC下。`NetworkInterface.N`的N取值不能大于1。
     ///
     /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_group_id: Option<String>,
     /// 辅助弹性网卡的主私有IP地址。`NetworkInterface.N`的N取值不能大于1。
     #[serde(rename = "PrimaryIpAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub primary_ip_address: Option<String>,
     /// 辅助弹性网卡加入的一个或多个安全组。安全组和辅助弹性网卡必须在同一个专有网络VPC中。`SecurityGroupIds.N`的N取值范围与辅助弹性网卡能够加入安全组配额有关。更多信息，请参见[使用限制](~~25412~~)。`NetworkInterface.N`的N取值不能大于1。
     ///
     /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupIds")]
-    pub security_group_ids: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub security_group_ids: Option<Vec<String>>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
     /// 参数取值范围：
@@ -68069,12 +68453,14 @@ pub struct VersionNetworkInterface {
     ///
     /// 默认值：Secondary。
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
     /// 主网卡的通讯模式。取值范围：
     ///
     /// - Standard：使用TCP通讯模式。
     /// - HighPerformance：开启ERI（Elastic RDMA Interface）接口，使用RDMA通讯模式。
     #[serde(rename = "NetworkInterfaceTrafficMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub network_interface_traffic_mode: Option<String>,
     /// 释放实例时是否保留网卡。取值范围：
     ///
@@ -68086,6 +68472,7 @@ pub struct VersionNetworkInterface {
     ///
     /// >该参数只对辅助网卡生效。
     #[serde(rename = "DeleteOnRelease")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_on_release: Option<bool>,
 }
 impl crate::FlatSerialize for VersionNetworkInterface {
@@ -68147,9 +68534,11 @@ impl crate::FlatSerialize for VersionNetworkInterface {
 pub struct VersionTag {
     /// 通过该版本创建的实例、云盘和主网卡的标签键。N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以 aliyun 和 acs:开头，不能包含 http://或 https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 通过该版本创建的实例、云盘和主网卡的标签值。N 的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含 http://或者 https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for VersionTag {
@@ -68171,6 +68560,7 @@ pub struct VersionImageOptions {
     /// - true：是。
     /// - false：否。
     #[serde(rename = "LoginAsNonRoot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_as_non_root: Option<bool>,
 }
 impl crate::FlatSerialize for VersionImageOptions {
@@ -68205,6 +68595,7 @@ pub struct VersionSecurityOptions {
     ///
     /// 关于可信系统的更多信息，请参见[安全增强型实例可信功能概述](~~201394~~)。
     #[serde(rename = "TrustedSystemMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_system_mode: Option<String>,
 }
 impl crate::FlatSerialize for VersionSecurityOptions {
@@ -68858,18 +69249,22 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     ///
     /// > 设置了`LaunchTemplateConfig`后，`LaunchTemplateConfig.N.VSwitchId`为必选参数。
     #[serde(rename = "VSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 扩展启动模板中，抢占式实例的价格上限。
     ///
     /// > 设置了`LaunchTemplateConfig`后，`LaunchTemplateConfig.N.MaxPrice`为必选参数。
     #[serde(rename = "MaxPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_price: Option<f64>,
     /// 扩展启动模板的优先级，取值为0时优先级最高。取值范围：0 ~ +∞。
     ///
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i32>,
     /// 扩展启动模板对应的实例规格，N的取值范围：1~20。取值范围：请参见[实例规格族](~~25378~~)。
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
     /// 扩展启动模板中，实例规格的权重。取值越高，单台实例满足计算力需求的能力越大，所需的实例数量越小。取值范围：大于0。
     ///
@@ -68878,16 +69273,20 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     /// - 8 vCPU、60 GiB的实例规格权重可以设置为1。
     /// - 16 vCPU、120 GiB的实例规格权重可以设置为2。
     #[serde(rename = "WeightedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<f64>,
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "MaxQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_quantity: Option<i32>,
     /// 实例规格的vCPU内核数目列表。
     #[serde(rename = "Cores")]
-    pub cores: Vec<i32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cores: Option<Vec<i32>>,
     /// 实例规格的内存大小列表。
     #[serde(rename = "Memories")]
-    pub memories: Vec<f32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub memories: Option<Vec<f32>>,
     /// 实例规格族级别，用于筛选符合要求的实例规格范围。取值范围：
     ///
     /// - EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见[共享型](~~108489~~)。
@@ -68896,13 +69295,16 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     ///
     /// N的取值范围：1~10。
     #[serde(rename = "InstanceFamilyLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_family_level: Option<String>,
     /// 需要排除的实例规格列表。
     #[serde(rename = "ExcludedInstanceTypes")]
-    pub excluded_instance_types: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub excluded_instance_types: Option<Vec<String>>,
     /// 实例规格所属的架构类型列表。
     #[serde(rename = "Architectures")]
-    pub architectures: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub architectures: Option<Vec<String>>,
     /// 是否为性能突发实例规格。取值范围：
     ///
     /// - Exclude：不包含性能突发实例规格。
@@ -68911,10 +69313,12 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     ///
     /// 默认值：Include。
     #[serde(rename = "BurstablePerformance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub burstable_performance: Option<String>,
     /// 镜像ID，您可以通过该参数设置当前资源池使用的镜像，如果没有设置则默认使用 `LaunchConfiguration.ImageId`或者启动模板里配置的镜像信息。您可以通过[DescribeImages](~~25534~~)查询可用的镜像资源。
     /// 注：仅当`AutoProvisioningGroupType = instant` 时支持该参数。
     #[serde(rename = "ImageId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_id: Option<String>,
 }
 impl crate::FlatSerialize for CreateAutoProvisioningGroupLaunchTemplateConfig {
@@ -68989,12 +69393,15 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "PerformanceLevel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub performance_level: Option<String>,
     /// 数据盘对应的KMS密钥ID。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "KmsKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// 数据盘的描述。长度为2~256个英文或中文字符，不能以`http://`和`https://`开头。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Description")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// 创建数据盘N使用的快照。N的取值范围为1~16。
     ///
@@ -69002,6 +69409,7 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "SnapshotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub snapshot_id: Option<String>,
     /// 第N个数据盘的容量大小，N的取值范围为1~16，单位为GiB。取值范围：
     ///
@@ -69018,9 +69426,11 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Size")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<i32>,
     /// 数据盘的挂载点。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Device")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
     /// 数据盘名称。长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以`http://`和`https://`开头。可以包含数字、半角句号（.）、半角冒号（:）、下划线（_）或者短划线（-）。
     ///
@@ -69028,6 +69438,7 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "DiskName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_name: Option<String>,
     /// 数据盘N的云盘类型。N的取值范围为1~16。取值范围：
     ///
@@ -69040,6 +69451,7 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Category")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
     /// 数据盘是否随实例释放。取值范围：
     /// - true：数据盘随实例释放。
@@ -69049,6 +69461,7 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "DeleteWithInstance")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub delete_with_instance: Option<bool>,
     /// 数据盘N是否加密。取值范围：
     ///
@@ -69059,9 +69472,11 @@ pub struct ConfigurationDataDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<bool>,
     /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypt_algorithm: Option<String>,
     /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
     ///
@@ -69070,6 +69485,7 @@ pub struct ConfigurationDataDisk {
     ///
     /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
@@ -69078,12 +69494,14 @@ pub struct ConfigurationDataDisk {
     ///
     /// >当DiskCategory取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
     /// 数据盘采用的自动快照策略 ID。
     ///
     /// 当您设置该参数后，需要注意：
     /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "AutoSnapshotPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_policy_id: Option<String>,
 }
 impl crate::FlatSerialize for ConfigurationDataDisk {
@@ -69158,9 +69576,11 @@ impl crate::FlatSerialize for ConfigurationDataDisk {
 pub struct ConfigurationTag {
     /// 实例的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含`http://`或`https://`。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 实例的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含`http://`或者`https://`。同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ConfigurationTag {
@@ -69184,6 +69604,7 @@ pub struct SystemDiskConfig {
     /// -   cloud_essd：ESSD云盘。
     /// -   cloud：普通云盘。
     #[serde(rename = "DiskCategory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_category: Option<String>,
 }
 impl crate::FlatSerialize for SystemDiskConfig {
@@ -69210,6 +69631,7 @@ pub struct DataDiskConfig {
     /// -   cloud_essd：ESSD云盘。
     /// -   cloud：普通云盘。
     #[serde(rename = "DiskCategory")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub disk_category: Option<String>,
 }
 impl crate::FlatSerialize for DataDiskConfig {
@@ -69239,11 +69661,13 @@ pub struct ConfigurationSystemDisk {
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "Encrypted")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted: Option<String>,
     /// 系统盘对应的KMS密钥ID。
     ///
     /// 同时指定启动模板与启动配置信息时，优先使用启动模板。
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     /// 系统盘加密算法。取值范围：
     ///
@@ -69257,12 +69681,14 @@ pub struct ConfigurationSystemDisk {
     ///
     /// >该参数暂未开放使用。
     #[serde(rename = "EncryptAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypt_algorithm: Option<String>,
     /// ESSD AutoPL云盘预配置的读写IOPS。可能值：0~min{50,000, 1000*容量-基准性能}。
     ///
     /// 基准性能=min{1,800+50*容量, 50,000}。
     /// > 当SystemDisk.Category取值为cloud_auto时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "ProvisionedIops")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub provisioned_iops: Option<i64>,
     /// 是否开启Burst（性能突发）。取值范围：
     ///
@@ -69271,12 +69697,14 @@ pub struct ConfigurationSystemDisk {
     ///
     /// >当`SystemDisk.Category`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
     #[serde(rename = "BurstingEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bursting_enabled: Option<bool>,
     /// 系统盘采用的自动快照策略 ID。
     ///
     /// 当您设置该参数后，需要注意：
     /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "AutoSnapshotPolicyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_snapshot_policy_id: Option<String>,
 }
 impl crate::FlatSerialize for ConfigurationSystemDisk {
@@ -69323,12 +69751,15 @@ impl crate::FlatSerialize for ConfigurationSystemDisk {
 pub struct LaunchConfigurationArn {
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "Rolearn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rolearn: Option<String>,
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "RoleType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub role_type: Option<String>,
     /// >该参数正在邀测中，暂不支持使用。
     #[serde(rename = "AssumeRoleFor")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub assume_role_for: Option<i64>,
 }
 impl crate::FlatSerialize for LaunchConfigurationArn {
@@ -69358,11 +69789,13 @@ pub struct ProvisioningGroupTag {
     ///
     /// N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 弹性供应组的标签值。
     ///
     /// N 的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ProvisioningGroupTag {
@@ -69392,10 +69825,12 @@ pub struct PoolOptions {
     ///
     /// 默认值：PublicPoolOnly。
     #[serde(rename = "Strategy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub strategy: Option<String>,
     /// 私有池 ID。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入Target模式私有池 ID。
     #[serde(rename = "PrivatePoolIds")]
-    pub private_pool_ids: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub private_pool_ids: Option<Vec<String>>,
 }
 
 /// 镜像相关属性信息。
@@ -69408,6 +69843,7 @@ pub struct ConfigurationImageOptions {
     /// - true：是
     /// - false：否
     #[serde(rename = "LoginAsNonRoot")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_as_non_root: Option<bool>,
 }
 impl crate::FlatSerialize for ConfigurationImageOptions {
@@ -69427,8 +69863,10 @@ impl crate::FlatSerialize for ConfigurationImageOptions {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct SchedulerOptions {
     #[serde(rename = "DedicatedHostId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedicated_host_id: Option<String>,
     #[serde(rename = "DedicatedHostClusterId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dedicated_host_cluster_id: Option<String>,
 }
 impl crate::FlatSerialize for SchedulerOptions {
@@ -69453,6 +69891,7 @@ impl crate::FlatSerialize for SchedulerOptions {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct ConfigurationSecurityOptions {
     #[serde(rename = "TrustedSystemMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub trusted_system_mode: Option<String>,
 }
 impl crate::FlatSerialize for ConfigurationSecurityOptions {
@@ -69476,6 +69915,7 @@ pub struct ConfigurationCpuOptions {
     ///
     /// 默认值：请参见[自定义 CPU 选项](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769asTEobd)。
     #[serde(rename = "Core")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub core: Option<i32>,
     /// CPU 线程数。ECS 实例的 vCPU 数=CpuOptions.Core取值*CpuOptions.ThreadsPerCore取值。
     ///
@@ -69485,6 +69925,7 @@ pub struct ConfigurationCpuOptions {
     ///
     /// 取值范围和默认值：请参见[自定义 CPU 选项](https://help.aliyun.com/zh/ecs/user-guide/specify-and-view-cpu-options?spm=a2c4g.11186623.0.0.734f769aeIFsoj)。
     #[serde(rename = "ThreadsPerCore")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub threads_per_core: Option<i32>,
 }
 impl crate::FlatSerialize for ConfigurationCpuOptions {
@@ -69517,6 +69958,7 @@ pub struct LaunchConfiguration {
     ///
     /// <props="partner">PeriodUnit=Month时，Period取值：1、2、3、6、12。</props>
     #[serde(rename = "Period")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period: Option<i32>,
     /// 包年包月计费方式的时长单位。取值范围：
     ///
@@ -69528,12 +69970,14 @@ pub struct LaunchConfiguration {
     ///
     /// <props="intl">Month（默认）。</props>
     #[serde(rename = "PeriodUnit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub period_unit: Option<String>,
     /// 是否要自动续费。创建包年包月实例时生效。取值范围：
     ///
     /// - true：自动续费。
     /// - false（默认）：不自动续费。
     #[serde(rename = "AutoRenew")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_renew: Option<bool>,
     /// 单次自动续费的续费时长。取值范围：
     ///          
@@ -69547,6 +69991,7 @@ pub struct LaunchConfiguration {
     ///
     /// 默认值：1。
     #[serde(rename = "AutoRenewPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_renew_period: Option<i32>,
     /// 抢占式实例的保留时长，单位为小时。 默认值：1。取值范围：
     /// - 1：创建后阿里云会保证实例运行1 小时不会被自动释放；超过 1 小时后，系统会自动比较出价与市场价格、检查资源库存，来决定实例的持有和回收。
@@ -69557,6 +70002,7 @@ pub struct LaunchConfiguration {
     /// 当您设置该参数后，需要注意：
     /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "SpotDuration")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_duration: Option<i32>,
     /// 抢占实例中断模式。取值范围：
     ///
@@ -69571,19 +70017,24 @@ pub struct LaunchConfiguration {
     /// 当您设置该参数后，需要注意：
     /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "SpotInterruptionBehavior")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub spot_interruption_behavior: Option<String>,
     /// 镜像相关属性信息。
     ///
     /// 当您设置该参数后，需要注意：
     /// - 仅创建一次性同步交付类型的弹性供应组（AutoProvisioningGroupType=instant）时，该参数生效。
     #[serde(rename = "ImageOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub image_options: Option<ConfigurationImageOptions>,
     #[serde(rename = "SchedulerOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub scheduler_options: Option<SchedulerOptions>,
     #[serde(rename = "SecurityOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub security_options: Option<ConfigurationSecurityOptions>,
     /// CPU相关配置。
     #[serde(rename = "CpuOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cpu_options: Option<ConfigurationCpuOptions>,
 }
 impl crate::FlatSerialize for LaunchConfiguration {
@@ -69646,11 +70097,13 @@ impl crate::FlatSerialize for LaunchConfiguration {
 pub struct CapacityDistribution {
     /// 实例规格集合。不允许重复，且规格在LaunchTemplateConfig.InstanceType范围内。
     #[serde(rename = "InstanceTypes")]
-    pub instance_types: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub instance_types: Option<Vec<String>>,
     /// 在`InstanceTypes`范围内需要交付的最小实例数量。
     ///
     /// > `sum(MinTargetCapacity)<= TotalTargetCapacity`，即所有实例规格集合的MinTargetCapacity总和不能超过TotalTargetCapacity，且当任一个实例规格集合由于库存等原因无法满足MinTargetCapacity的要求时，整个请求都会创建失败。
     #[serde(rename = "MinTargetCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub min_target_capacity: Option<i32>,
 }
 impl crate::FlatSerialize for CapacityDistribution {
@@ -69677,7 +70130,8 @@ impl crate::FlatSerialize for CapacityDistribution {
 pub struct PaidOptions {
     /// 不同实例规格的最小容量集合。仅当`AutoProvisioningGroupType = request` 时支持该参数。
     #[serde(rename = "SpecifyCapacityDistribution")]
-    pub specify_capacity_distribution: Vec<CapacityDistribution>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub specify_capacity_distribution: Option<Vec<CapacityDistribution>>,
 }
 impl crate::FlatSerialize for PaidOptions {
     fn flat_serialize<'a>(
@@ -69754,11 +70208,13 @@ pub struct ProvisioningGroupsTag {
     ///
     /// N 的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持 128 个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 弹性供应组的标签值。
     ///
     /// N 的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持 128 个字符，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ProvisioningGroupsTag {
@@ -70103,15 +70559,19 @@ pub struct GroupInstancesResponseInstances {
 pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
     /// 扩展启动模板中，ECS实例加入的虚拟交换机的ID。扩展模板中启动的ECS实例的可用区由虚拟交换机决定。
     #[serde(rename = "VSwitchId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub v_switch_id: Option<String>,
     /// 扩展启动模板中，抢占式实例的价格上限。
     #[serde(rename = "MaxPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_price: Option<f64>,
     /// 扩展启动模板的优先级，取值为0时优先级最高。取值范围：大于0。
     #[serde(rename = "Priority")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i32>,
     /// 扩展启动模板对应的实例规格，N的取值范围：1~20。取值范围：请参见[实例规格族](~~25378~~)。
     #[serde(rename = "InstanceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
     /// 扩展启动模板中，实例规格的权重。取值越高，单台实例满足计算力需求的能力越大，所需的实例数量越小。取值范围：大于0。
     ///
@@ -70120,6 +70580,7 @@ pub struct ModifyAutoProvisioningGroupLaunchTemplateConfig {
     /// - 8 vCPU、60 GiB的实例规格权重可以设置为1。
     /// - 16 vCPU、120 GiB的实例规格权重可以设置为2。
     #[serde(rename = "WeightedCapacity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub weighted_capacity: Option<f64>,
 }
 impl crate::FlatSerialize for ModifyAutoProvisioningGroupLaunchTemplateConfig {
@@ -70321,9 +70782,11 @@ pub struct DeploymentSets {
 pub struct AssuranceTag {
     /// 弹性保障服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 弹性保障服务的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for AssuranceTag {
@@ -70344,6 +70807,7 @@ pub struct CreateElasticityAssuranceRecurrenceRule {
     ///
     /// > 同时指定`StartHour`和`EndHour`，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_hour: Option<i32>,
     /// 重复规则的策略类型。取值范围：
     /// -  Daily：按天重复。
@@ -70352,9 +70816,11 @@ pub struct CreateElasticityAssuranceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_type: Option<String>,
     /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_hour: Option<i32>,
     /// 重复规则执行数值。
     ///
@@ -70364,6 +70830,7 @@ pub struct CreateElasticityAssuranceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_value: Option<String>,
 }
 impl crate::FlatSerialize for CreateElasticityAssuranceRecurrenceRule {
@@ -70398,9 +70865,11 @@ pub struct AssurancesTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N表示可以设置多个标签键进行过滤，N的取值范围为1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for AssurancesTag {
@@ -70675,6 +71144,7 @@ pub struct ModifyElasticityAssuranceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_type: Option<String>,
     /// 重复规则执行数值。
     ///
@@ -70684,14 +71154,17 @@ pub struct ModifyElasticityAssuranceRecurrenceRule {
     ///
     /// > 必须同时指定`RecurrenceType`和`RecurrenceValue`。
     #[serde(rename = "RecurrenceValue")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub recurrence_value: Option<String>,
     /// 分时保障生效时间，取值必须为整点。
     ///
     /// > 同时指定`StartHour`和`EndHour`，且两者至少需要相差4小时。
     #[serde(rename = "StartHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_hour: Option<i32>,
     /// 分时保障结束时间，取值必须为整点。
     #[serde(rename = "EndHour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_hour: Option<i32>,
 }
 impl crate::FlatSerialize for ModifyElasticityAssuranceRecurrenceRule {
@@ -70774,9 +71247,11 @@ pub struct AssuranceRenewAttributes {
 pub struct ReservationTag {
     /// 容量预定服务的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 容量预定服务的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for ReservationTag {
@@ -70797,9 +71272,11 @@ pub struct ReservationsTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。N表示可以设置多个标签值进行过滤，N的取值范围为1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ReservationsTag {
@@ -71064,9 +71541,11 @@ pub struct AttributesResponseInstances {
 pub struct OfferingTag {
     /// 预留实例券的标签键。不允许为空字符串，最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http:/`/或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 预留实例券的标签值。则不允许为空字符串，最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http:/`/或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for OfferingTag {
@@ -71096,9 +71575,11 @@ pub struct ReservedInstancesTag {
     ///
     /// > 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个；如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 预留实例券的标签值。不允许为空字符串,最多支持128个字符，不能以`acs:`开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ReservedInstancesTag {
@@ -71253,6 +71734,7 @@ pub struct InstancesConfiguration {
     ///
     /// 长度为2~128个英文或中文字符。必须以大小写字母或中文开头，不能以http://和https://开头。可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。
     #[serde(rename = "ReservedInstanceName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub reserved_instance_name: Option<String>,
     /// 预留实例券所属的可用区编号。
     ///
@@ -71260,6 +71742,7 @@ pub struct InstancesConfiguration {
     ///
     /// 您可以调用[DescribeZones](~~25609~~)获取可用区列表。
     #[serde(rename = "ZoneId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zone_id: Option<String>,
     /// 预留实例券的范围。取值范围：
     ///
@@ -71366,9 +71849,11 @@ pub struct ReservedInstanceRenewAttributes {
 pub struct UnitTag {
     /// SCU的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// SCU的标签值。一旦传入该值，可以为空字符串。最多支持128个字符，不能以`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for UnitTag {
@@ -71395,9 +71880,11 @@ pub struct UnitIds {
 pub struct UnitsTag {
     /// SCU的标签键。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// SCU的标签值。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for UnitsTag {
@@ -71503,6 +71990,7 @@ pub struct RunCommandTag {
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 命令执行的标签键。一旦传入该值，则不允许为空字符串。
     ///
@@ -71510,6 +71998,7 @@ pub struct RunCommandTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for RunCommandTag {
@@ -71532,6 +72021,7 @@ pub struct RunCommandResourceTag {
     /// - 该值可以为空字符串。
     /// - 最多支持128个字符，不能包含http://或https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 用于筛选实例的标签键。
     ///
@@ -71545,6 +72035,7 @@ pub struct RunCommandResourceTag {
     ///
     /// - 最多支持64个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for RunCommandResourceTag {
@@ -71568,11 +72059,13 @@ pub struct CreateCommandTag {
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     ///
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 命令的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for CreateCommandTag {
@@ -71593,6 +72086,7 @@ pub struct InvokeCommandTag {
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
     ///
@@ -71601,6 +72095,7 @@ pub struct InvokeCommandTag {
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     ///
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for InvokeCommandTag {
@@ -71625,6 +72120,7 @@ pub struct InvokeCommandResourceTag {
     /// - 该值可以为空字符串。
     /// - 最多支持128个字符，不能包含http://或https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 用于筛选实例的标签键。
     ///
@@ -71638,6 +72134,7 @@ pub struct InvokeCommandResourceTag {
     ///
     /// - 最多支持64个字符，不能以aliyun或acs:开头，不能包含http://或https://。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for InvokeCommandResourceTag {
@@ -71657,6 +72154,7 @@ pub struct InvocationsTag {
     /// 命令执行的标签值。N的取值范围为1~20。该值可以为空字符串。
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
     ///
@@ -71665,6 +72163,7 @@ pub struct InvocationsTag {
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     ///
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for InvocationsTag {
@@ -72001,6 +72500,7 @@ pub struct InvocationResultsTag {
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 命令执行的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
     ///
@@ -72008,6 +72508,7 @@ pub struct InvocationResultsTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for InvocationResultsTag {
@@ -72267,6 +72768,7 @@ pub struct CommandsTag {
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// 命令的标签键。N的取值范围为1~20。一旦传入该值，则不允许为空字符串。
     ///
@@ -72274,6 +72776,7 @@ pub struct CommandsTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
 }
 impl crate::FlatSerialize for CommandsTag {
@@ -72473,11 +72976,13 @@ pub struct FileTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 文件下发的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for FileTag {
@@ -72500,11 +73005,13 @@ pub struct FileResultsTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 文件下发的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for FileResultsTag {
@@ -72784,10 +73291,13 @@ pub struct AssistantStatusSet {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct EncryptionOptions {
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
     #[serde(rename = "KMSKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub kms_key_id: Option<String>,
     #[serde(rename = "Mode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<String>,
 }
 
@@ -72921,9 +73431,11 @@ pub struct ResponseSessions {
 pub struct SettingsOssDeliveryConfig {
     /// 是否开启投递到OSS功能。默认值：false。
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
     /// OSS存储空间名称。
     #[serde(rename = "BucketName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bucket_name: Option<String>,
     /// OSS存储空间目录前缀。约束如下：
     /// - 长度不得超过 254 个字符。
@@ -72931,20 +73443,24 @@ pub struct SettingsOssDeliveryConfig {
     ///
     /// 注：传入""表示不需要目录前缀；若之前设置过，而当前不再需要目录前缀可传入""清空。
     #[serde(rename = "Prefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub prefix: Option<String>,
     /// OSS加密方式，可选值：
     /// - Inherit：继承 Bucket；
     /// - OssManaged：OSS 完全托管；
     /// - KMS：KMS加密。
     #[serde(rename = "EncryptionType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_type: Option<String>,
     /// OSS加密算法，可选值：
     /// - AES256
     /// - SM4
     #[serde(rename = "EncryptionAlgorithm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_algorithm: Option<String>,
     /// 加密方式为KMS时，用户的主密钥CMK ID。
     #[serde(rename = "EncryptionKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_key_id: Option<String>,
 }
 
@@ -72954,12 +73470,15 @@ pub struct SettingsSlsDeliveryConfig {
     /// 是否开启投递到SLS功能。
     /// 默认值：false
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
     /// SLS项目名称。
     #[serde(rename = "ProjectName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub project_name: Option<String>,
     /// SLS日志库名称。
     #[serde(rename = "LogstoreName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub logstore_name: Option<String>,
 }
 
@@ -72970,6 +73489,7 @@ pub struct SettingsAgentUpgradeConfig {
     ///
     /// 默认值：false。
     #[serde(rename = "Enabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
     /// 允许升级的时间段列表，可精确到分，默认为 UTC 时区。
     ///
@@ -72983,12 +73503,14 @@ pub struct SettingsAgentUpgradeConfig {
     /// ]
     /// 代表在 UTC 时区的每天2点-3点、5点-6点允许升级。
     #[serde(rename = "AllowedUpgradeWindow")]
-    pub allowed_upgrade_window: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allowed_upgrade_window: Option<Vec<String>>,
     /// 允许升级时间段的时区。默认为 UTC 时区。
     /// 时区支持以下两种形式：
     /// - 时区全称： 如Asia/Shanghai（中国/上海时间）、America/Los_Angeles（美国/洛杉矶时间）等。
     /// - 时区相对于格林威治时间的偏移量： 如GMT+8:00（东八区）、GMT-7:00（西七区）等。小时位不支持添加前导零。
     #[serde(rename = "TimeZone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<String>,
 }
 
@@ -73002,6 +73524,7 @@ pub struct SettingsSessionManagerConfig {
     /// 注意事项：
     /// * 会话功能开启/关闭对全部地域生效。
     #[serde(rename = "SessionManagerEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub session_manager_enabled: Option<bool>,
 }
 
@@ -73138,11 +73661,13 @@ pub struct ActivationTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 托管实例激活码的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ActivationTag {
@@ -73165,11 +73690,13 @@ pub struct ActivationsTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 托管实例激活码的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ActivationsTag {
@@ -73347,11 +73874,13 @@ pub struct ManagedInstancesTag {
     ///
     /// 最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 托管实例的标签值。N的取值范围为1~20。该值可以为空字符串。
     ///
     /// 最多支持128个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ManagedInstancesTag {
@@ -73832,9 +74361,11 @@ pub struct StatusTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 块存储资源绑定的标签值。N表示可以设置一个或多个标签值，且N的数值和`Tag.N.Key`参数中的N对应，构成键值对。N的取值范围：1~20。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for StatusTag {
@@ -73974,9 +74505,11 @@ pub struct DiskFullStatusSet {
 pub struct EventsTag {
     /// 资源的标签键。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for EventsTag {
@@ -74759,9 +75292,11 @@ pub struct MaintenanceAttributes {
 pub struct AttributesMaintenanceWindow {
     /// 维护时间窗口结束时间。必须为整小时，不允许设置分、秒。开始时间和结束时间必须同时设置，并且结束时间与开始时间需要间隔1~23个整小时。采用UTC +8时区，格式为`HH:mm:ss`。N的取值为1，只支持设置1个时间窗口。
     #[serde(rename = "EndTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub end_time: Option<String>,
     /// 维护时间窗口开始时间。必须为整小时，不允许设置分、秒。开始时间和结束时间必须同时设置，并且结束时间与开始时间需要间隔1~23个整小时。采用UTC +8时区，格式为`HH:mm:ss`。N的取值为1，只支持设置1个时间窗口。
     #[serde(rename = "StartTime")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_time: Option<String>,
 }
 impl crate::FlatSerialize for AttributesMaintenanceWindow {
@@ -74823,11 +75358,13 @@ pub struct ListTagResourcesTag {
     ///
     ///  
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 精确查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~20。
     ///
     /// > 当`Key=acs:rm:rgId`时，该参数只能传入资源组ID，且资源组ID不能为默认资源组。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ListTagResourcesTag {
@@ -74846,7 +75383,8 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 pub struct TagFilter {
     /// 模糊查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~5。具体的参数说明请参见`TagFilter.N.TagKey`参数描述。
     #[serde(rename = "TagValues")]
-    pub tag_values: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tag_values: Option<Vec<String>>,
     /// 模糊查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~5。
     ///
     ///  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
@@ -74861,6 +75399,7 @@ pub struct TagFilter {
     ///
     /// > `TagFilter.N`与`Tag.N`参数不能同时使用，否则会返回错误信息。
     #[serde(rename = "TagKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag_key: Option<String>,
 }
 impl crate::FlatSerialize for TagFilter {
@@ -74935,11 +75474,13 @@ pub struct AllocateDedicatedHostsTag {
     ///
     /// 一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以aliyun或者acs:开头，不能包含`http://`或者`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 专有宿主机的标签值。N的取值范围：1~20。
     ///
     /// 一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for AllocateDedicatedHostsTag {
@@ -74966,9 +75507,11 @@ pub struct HostIdSets {
 pub struct DescribeDedicatedHostsTag {
     /// 专有宿主机的标签键。一旦传入该值，则不允许为空字符串。最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 专有宿主机的标签值。一旦传入该值，可以为空字符串。最多支持128个字符，不能包含`http://`或者`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for DescribeDedicatedHostsTag {
@@ -75542,9 +76085,11 @@ pub struct HostRenewAttributes {
 pub struct ClusterTag {
     /// 专有宿主机组的标签键。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 专有宿主机组的标签值。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ClusterTag {
@@ -75565,9 +76110,11 @@ pub struct ClustersTag {
     ///
     /// 使用一个标签过滤资源，查询到该标签下的资源数量不能超过1000个；使用多个标签过滤资源，查询到同时绑定了多个标签的资源数量不能超过1000个。如果资源数量超过1000个，请使用[ListTagResources](~~110425~~)接口进行查询。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 专有宿主机组的标签值。N的取值范围：1~20。一旦传入该值，则不允许为空字符串。最多支持64个字符，不能包含`http://`或`https://`。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ClustersTag {
@@ -76003,9 +76550,11 @@ pub struct VSwitches {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct ConnectionsFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for ConnectionsFilter {
     fn flat_serialize<'a>(
@@ -76150,9 +76699,11 @@ pub struct ResponseVpcs {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct VipsFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for VipsFilter {
     fn flat_serialize<'a>(
@@ -76230,9 +76781,11 @@ pub struct HaVips {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct RoutersFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for RoutersFilter {
     fn flat_serialize<'a>(
@@ -76321,9 +76874,11 @@ pub struct RouterSet {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct ConnectionFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for ConnectionFilter {
     fn flat_serialize<'a>(
@@ -76376,9 +76931,11 @@ pub struct ForPhysicalConnectionSet {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct InterfacesFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for InterfacesFilter {
     fn flat_serialize<'a>(
@@ -76581,10 +77138,13 @@ pub struct DescribeEipMonitorDataResponseEipMonitorDatas {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct GatewayBandwidthPackage {
     #[serde(rename = "Bandwidth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth: Option<i32>,
     #[serde(rename = "Zone")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub zone: Option<String>,
     #[serde(rename = "IpCount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_count: Option<i32>,
 }
 impl crate::FlatSerialize for GatewayBandwidthPackage {
@@ -76718,8 +77278,10 @@ pub struct ProjectEipMonitorDataResponseEipMonitorDatas {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct DeleteRouteEntryNextHopList {
     #[serde(rename = "NextHopId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_hop_id: Option<String>,
     #[serde(rename = "NextHopType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_hop_type: Option<String>,
 }
 impl crate::FlatSerialize for DeleteRouteEntryNextHopList {
@@ -76786,8 +77348,10 @@ pub struct VRouters {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CreateRouteEntryNextHopList {
     #[serde(rename = "NextHopId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_hop_id: Option<String>,
     #[serde(rename = "NextHopType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub next_hop_type: Option<String>,
 }
 impl crate::FlatSerialize for CreateRouteEntryNextHopList {
@@ -76849,9 +77413,11 @@ pub struct TableEntries {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct PointsFilter {
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    pub value: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Vec<String>>,
 }
 impl crate::FlatSerialize for PointsFilter {
     fn flat_serialize<'a>(
@@ -76997,9 +77563,11 @@ pub struct AddTagsTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https:// 。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for AddTagsTag {
@@ -77020,9 +77588,11 @@ pub struct ByTagsTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N的取值范围：1~20。一旦传入该值，允许为空字符串。最多支持128个字符。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ByTagsTag {
@@ -77069,9 +77639,11 @@ pub struct DescribeTagsTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for DescribeTagsTag {
@@ -77173,9 +77745,11 @@ pub struct RemoveTagsTag {
     ///
     /// >为提高兼容性，建议您尽量使用Tag.N.Key参数。
     #[serde(rename = "key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 资源的标签值。N的取值范围：1~20。一旦传入该值，可以为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或者https://。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for RemoveTagsTag {
@@ -77196,26 +77770,31 @@ pub struct SQoS {
     ///
     /// 单位：kbit/s，步长：1000（1Mbps），取值范围：[50000, +♾️)
     #[serde(rename = "BandwidthTx")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth_tx: Option<i64>,
     /// 最大内网入方向带宽限制。
     ///
     /// 单位：kbit/s，步长：1000（1Mbps），取值范围：[50000, +♾️)
     #[serde(rename = "BandwidthRx")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub bandwidth_rx: Option<i64>,
     /// 内网出方向网络收发包能力
     ///
     /// 单位：pps，步长：10000，取值范围：[50000, +♾️)
     #[serde(rename = "PpsTx")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pps_tx: Option<i64>,
     /// 内网入方向网络收发包能力
     ///
     /// 单位：pps，步长：10000，取值范围：[50000, +♾️)
     #[serde(rename = "PpsRx")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pps_rx: Option<i64>,
     /// 会话数量的最大值
     ///
     /// 步长：10000
     #[serde(rename = "ConcurrentConnections")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub concurrent_connections: Option<i64>,
 }
 impl crate::FlatSerialize for SQoS {

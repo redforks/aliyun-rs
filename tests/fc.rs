@@ -37,6 +37,7 @@ async fn test_describe_regions() {
 }
 
 #[tokio::test]
+#[test_log::test]
 #[ignore] // Run with: cargo test --ignored
 async fn test_create_invoke_delete_function() {
     let conn = test_connection();
@@ -47,7 +48,7 @@ async fn test_create_invoke_delete_function() {
     println!("Creating function: {}", function_name);
 
     // Read the code.zip file and base64-encode it
-    let code_bytes = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/src/tests/code.zip"))
+    let code_bytes = std::fs::read(concat!(env!("CARGO_MANIFEST_DIR"), "/tests/code.zip"))
         .expect("Failed to read src/tests/code.zip");
     use base64::Engine;
     let zip_file_base64 = base64::engine::general_purpose::STANDARD.encode(&code_bytes);
@@ -66,9 +67,11 @@ async fn test_create_invoke_delete_function() {
         }),
         custom_runtime_config: Some(ali_acs::fc::CustomRuntimeConfig {
             command: vec!["/code/hello-fc".to_string()],
+            args: vec!["foo".to_string()],
             port: Some(3000),
             ..Default::default()
         }),
+        instance_concurrency: Some(1),
         timeout: Some(60),
         ..Default::default()
     };

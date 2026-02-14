@@ -6524,6 +6524,7 @@ pub struct SubmitSmsQualificationBusinessLicensePic {
     ///
     /// 选择一种上传即可，证件上需含有：企业名称、统一社会信用代码、证件有效期。
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
     /// 营业证件图片，仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
@@ -6533,6 +6534,7 @@ pub struct SubmitSmsQualificationBusinessLicensePic {
     /// 证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
     /// ></notice>
     #[serde(rename = "LicensePic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_pic: Option<String>,
 }
 
@@ -6540,6 +6542,7 @@ pub struct SubmitSmsQualificationBusinessLicensePic {
 pub struct SubmitSmsQualificationOtherFile {
     /// 更多资料文件，仅支持png、jpg、jpeg、doc、docx、pdf格式，文件不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     #[serde(rename = "LicensePic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_pic: Option<String>,
 }
 
@@ -6803,6 +6806,7 @@ pub struct UpdateSmsQualificationBusinessLicensePic {
     ///
     /// 选择一种上传即可，证件上需含有：企业名称、统一社会信用代码、证件有效期。
     #[serde(rename = "Type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
     /// 营业证件图片，仅支持jpg、png、gif、jpeg格式的图片，图片不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     ///
@@ -6810,6 +6814,7 @@ pub struct UpdateSmsQualificationBusinessLicensePic {
     /// 证件的彩色原件无需盖章，若上传复印件/黑白照片，需要在复印件上加盖企业红章并拍照上传。
     /// ></notice>
     #[serde(rename = "LicensePic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_pic: Option<String>,
 }
 
@@ -6817,6 +6822,7 @@ pub struct UpdateSmsQualificationBusinessLicensePic {
 pub struct UpdateSmsQualificationOtherFile {
     /// 更多资料文件，仅支持png、jpg、jpeg、doc、docx、pdf格式，文件不大于5MB。请填写上传到OSS的文件路径参数，待上传的文件命名不可包含中文和特殊字符，上传操作请参见通过[OSS上传文件](~~2833114~~)。
     #[serde(rename = "LicensePic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub license_pic: Option<String>,
 }
 
@@ -7698,12 +7704,15 @@ pub struct ReportResponseData {
 pub struct CardObject {
     /// 渲染失败后跳转链接。
     #[serde(rename = "customUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_url: Option<String>,
     /// 动态参数。动参变量不需要${}
     #[serde(rename = "dyncParams")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dync_params: Option<String>,
     /// 接收卡片短信的手机号码。
     #[serde(rename = "mobile")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mobile: Option<String>,
 }
 impl crate::FlatSerialize for CardObject {
@@ -7955,9 +7964,11 @@ pub struct QueryShortUrlResponseData {
 pub struct ListTagResourcesTag {
     /// 标签键。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for ListTagResourcesTag {
@@ -8007,9 +8018,11 @@ pub struct ResponseTagResources {
 pub struct TagResourcesTag {
     /// 标签键。
     #[serde(rename = "Key")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     /// 标签值。
     #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
 }
 impl crate::FlatSerialize for TagResourcesTag {
