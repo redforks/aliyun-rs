@@ -1,4 +1,5 @@
 use crate::{IntoResponse, Request, Result, auth::AliyunAuth, v3::call};
+use serde::{Deserialize, Deserializer};
 use std::{future::Future, sync::Arc};
 
 struct _Connection<A: AliyunAuth> {
@@ -12,11 +13,7 @@ struct _Connection<A: AliyunAuth> {
 pub struct Connection<A: AliyunAuth>(Arc<_Connection<A>>);
 
 impl<A: AliyunAuth> Connection<A> {
-    pub fn new(
-        auth: A,
-        version: &'static str,
-        end_point: &'static str,
-    ) -> Self {
+    pub fn new(auth: A, version: &'static str, end_point: &'static str) -> Self {
         Self(Arc::new(_Connection {
             auth,
             version,
@@ -51,4 +48,13 @@ impl<A: AliyunAuth> Connection<A> {
             req,
         )
     }
+}
+
+/// Deserialize function that returns the default value if the JSON value is null
+pub fn deserialize_default_on_null<'de, T, D>(deserializer: D) -> Result<T, D::Error>
+where
+    T: Default + Deserialize<'de>,
+    D: Deserializer<'de>,
+{
+    Ok(Option::<T>::deserialize(deserializer)?.unwrap_or_default())
 }
