@@ -106,11 +106,7 @@ pub trait AliyunAuth: Send + Sync {
     ///
     /// # Returns
     /// A HeaderMap containing the authentication headers.
-    fn create_headers(
-        &self,
-        action: &str,
-        version: &str,
-    ) -> Result<HeaderMap>;
+    fn create_headers(&self, action: &str, version: &str) -> Result<HeaderMap>;
 }
 
 /// Compute HMAC-SHA256 with raw key bytes, returning raw bytes.

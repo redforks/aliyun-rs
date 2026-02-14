@@ -1,7 +1,7 @@
 //! Trait for types that can be flattened into query parameters.
 
-use crate::query_value::QueryValue;
 use crate::Value;
+use crate::query_value::QueryValue;
 use std::borrow::Cow;
 use std::collections::HashMap;
 

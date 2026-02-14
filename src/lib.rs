@@ -27,6 +27,9 @@ use query_value::QueryValue;
 use serializes::{FlatSerialize, SimpleSerialize};
 pub use v3::AccessKeySecret;
 
+// Re-export from common module for use in generated code
+pub use common::deserialize_default_on_null;
+
 #[cfg(feature = "ocr")]
 pub mod ocr;
 

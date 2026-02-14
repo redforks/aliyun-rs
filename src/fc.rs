@@ -5533,6 +5533,8 @@ pub struct AccelerationInfo {
 pub struct Alias {
     /// 灰度版本权重。
     #[serde(rename = "additionalVersionWeight")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称。
     #[serde(rename = "aliasName")]
@@ -5656,6 +5658,8 @@ pub struct AsyncTask {
     pub end_time: Option<i64>,
     /// 异步任务事件列表
     #[serde(rename = "events")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub events: Vec<AsyncTaskEvent>,
     /// 函数资源标识
     #[serde(rename = "functionArn")]
@@ -5781,8 +5785,8 @@ pub struct ConcurrencyConfig {
 pub struct CreateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_version_weight: Option<std::collections::HashMap<String, f64>>,
+    #[serde(skip_serializing_if = "std::collections::HashMap::is_empty")]
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名名称
     #[serde(rename = "aliasName")]
     pub alias_name: String,
@@ -6422,8 +6426,8 @@ pub struct CreateFunctionInput {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_variables: Option<std::collections::HashMap<String, String>>,
+    #[serde(skip_serializing_if = "std::collections::HashMap::is_empty")]
+    pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数的名称。只能包含字母、数字、下划线（_）和短划线（-），不能以数字、短划线（-）开头，长度范围为1~64个字符。
     #[serde(rename = "functionName")]
     pub function_name: String,
@@ -6448,8 +6452,8 @@ pub struct CreateFunctionInput {
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub layers: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -6539,8 +6543,8 @@ pub struct CreateLayerVersionInput {
     pub code: Option<InputCodeLocation>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub compatible_runtime: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub compatible_runtime: Vec<String>,
     /// 层版本的描述信息。
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -6825,6 +6829,8 @@ pub struct Function {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数资源标识。
     #[serde(rename = "functionArn")]
@@ -6864,6 +6870,8 @@ pub struct Function {
     pub last_update_status_reason_code: Option<String>,
     /// 层的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub layers: Vec<FunctionLayer>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
@@ -7019,6 +7027,8 @@ pub struct Layer {
     pub code_size: Option<i64>,
     /// 层支持的运行时环境列表。
     #[serde(rename = "compatibleRuntime")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub compatible_runtime: Vec<String>,
     /// 层版本的创建时间。
     #[serde(rename = "createTime")]
@@ -7046,6 +7056,8 @@ pub struct Layer {
 pub struct ListAliasesOutput {
     /// 别名列表
     #[serde(rename = "aliases")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub aliases: Vec<Alias>,
     /// 下一个版本名
     #[serde(rename = "nextToken")]
@@ -7058,6 +7070,8 @@ pub struct ListAliasesOutput {
 pub struct ListAsyncInvokeConfigOutput {
     /// 异步调用配置列表。
     #[serde(rename = "configs")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub configs: Vec<AsyncConfig>,
     /// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
     #[serde(rename = "nextToken")]
@@ -7073,6 +7087,8 @@ pub struct ListAsyncTaskOutput {
     pub next_token: Option<String>,
     /// 异步任务信息列表。
     #[serde(rename = "tasks")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tasks: Vec<AsyncTask>,
 }
 
@@ -7082,6 +7098,8 @@ pub struct ListAsyncTaskOutput {
 pub struct ListConcurrencyConfigsOutput {
     /// 并发配置列表。
     #[serde(rename = "configs")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub configs: Vec<ConcurrencyConfig>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
@@ -7094,6 +7112,8 @@ pub struct ListConcurrencyConfigsOutput {
 pub struct ListCustomDomainOutput {
     /// 自定义域名列表
     #[serde(rename = "customDomains")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub custom_domains: Vec<CustomDomain>,
     /// 当符合查询条件的数据未读取完时，服务端会返回nextToken，此时可以使用nextToken继续读取后面的数据。第一次查询不需要提供这个参数。
     #[serde(rename = "nextToken")]
@@ -7106,6 +7126,8 @@ pub struct ListCustomDomainOutput {
 pub struct ListFunctionsOutput {
     /// 函数信息列表
     #[serde(rename = "functions")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub functions: Vec<Function>,
     /// 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
     #[serde(rename = "nextToken")]
@@ -7118,6 +7140,8 @@ pub struct ListFunctionsOutput {
 pub struct ListInstancesOutput {
     /// 实例列表信息
     #[serde(rename = "instances")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub instances: Vec<InstanceInfo>,
     #[serde(rename = "requestId")]
     #[serde(default)]
@@ -7130,6 +7154,8 @@ pub struct ListInstancesOutput {
 pub struct ListLayerVersionOutput {
     /// 层版本的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始版本名，用来返回更多结果。
     #[serde(rename = "nextVersion")]
@@ -7142,6 +7168,8 @@ pub struct ListLayerVersionOutput {
 pub struct ListLayersOutput {
     /// 层的列表。
     #[serde(rename = "layers")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub layers: Vec<Layer>,
     /// 剩余列表的起始层名，用来返回更多结果。
     #[serde(rename = "nextToken")]
@@ -7214,6 +7242,8 @@ pub struct TargetTrackingPolicy {
 pub struct ProvisionConfig {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub scheduled_actions: Vec<ScheduledAction>,
     /// 预留实例创建失败时的错误信息。
     #[serde(rename = "currentError")]
@@ -7233,6 +7263,8 @@ pub struct ProvisionConfig {
     pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// 函数的资源描述
     #[serde(rename = "functionArn")]
@@ -7257,6 +7289,8 @@ pub struct ListProvisionConfigsOutput {
     pub next_token: Option<String>,
     /// 函数预留配置列表。
     #[serde(rename = "provisionConfigs")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub provision_configs: Vec<ProvisionConfig>,
 }
 
@@ -7415,6 +7449,8 @@ pub struct ListTagResourcesOutput {
     pub request_id: Option<String>,
     /// 查询到的资源和标签的信息。
     #[serde(rename = "TagResources")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tag_resources: Vec<TagResource>,
 }
 
@@ -7472,6 +7508,8 @@ pub struct ListTriggersOutput {
     pub next_token: Option<String>,
     /// 触发器列表。
     #[serde(rename = "triggers")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub triggers: Vec<Trigger>,
 }
 
@@ -7505,6 +7543,8 @@ pub struct ListVersionsOutput {
     pub next_token: Option<String>,
     /// 版本ID列表
     #[serde(rename = "versions")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub versions: Vec<Version>,
 }
 
@@ -7514,6 +7554,8 @@ pub struct ListVersionsOutput {
 pub struct ListVpcBindingsOutput {
     /// VPC实例ID列表
     #[serde(rename = "vpcIds")]
+    #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub vpc_ids: Vec<String>,
 }
 
@@ -7572,8 +7614,8 @@ pub struct PutConcurrencyInput {
 pub struct PutProvisionConfigInput {
     /// 定时策略配置。
     #[serde(rename = "scheduledActions")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduled_actions: Option<Vec<ScheduledAction>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub scheduled_actions: Vec<ScheduledAction>,
     /// 默认最小实例数，取值范围为[0,10000]。
     /// > - 未配置指标追踪弹性策略或定时弹性策略时，当前最小实例数等于您配置最小实例数。
     /// > - 如果您配置了多条最小实例数弹性策略，系统会计算每条策略触发时的最小实例数，并取当前时间有效的弹性策略中最小实例数的最大值作为当前最小实例数。
@@ -7590,8 +7632,8 @@ pub struct PutProvisionConfigInput {
     pub always_allocate_gpu: Option<bool>,
     /// 指标追踪伸缩策略配置。
     #[serde(rename = "targetTrackingPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_tracking_policies: Option<Vec<TargetTrackingPolicy>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub target_tracking_policies: Vec<TargetTrackingPolicy>,
     /// ><notice>建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
     /// 预留的目标资源个数。取值范围为[0,10000]。
     #[serde(rename = "target")]
@@ -7643,8 +7685,8 @@ pub struct TagResourcesInput {
 pub struct UpdateAliasInput {
     /// 灰度版本权重
     #[serde(rename = "additionalVersionWeight")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub additional_version_weight: Option<std::collections::HashMap<String, f64>>,
+    #[serde(skip_serializing_if = "std::collections::HashMap::is_empty")]
+    pub additional_version_weight: std::collections::HashMap<String, f64>,
     /// 别名的描述信息
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -7717,8 +7759,8 @@ pub struct UpdateFunctionInput {
     pub disk_size: Option<i32>,
     /// 函数的环境变量，可以在运行环境中访问设置的环境变量。
     #[serde(rename = "environmentVariables")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub environment_variables: Option<std::collections::HashMap<String, String>>,
+    #[serde(skip_serializing_if = "std::collections::HashMap::is_empty")]
+    pub environment_variables: std::collections::HashMap<String, String>,
     /// 函数GPU配置。
     #[serde(rename = "gpuConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -7741,8 +7783,8 @@ pub struct UpdateFunctionInput {
     pub internet_access: Option<bool>,
     /// 层的列表。多个层会按照数组下标从大到小的顺序进行合并，下标小的层的内容会覆盖下标大的层的同名文件。
     #[serde(rename = "layers")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub layers: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub layers: Vec<String>,
     /// 日志配置。函数产生的日志会被写入到配置的日志库中。
     #[serde(rename = "logConfig")]
     #[serde(skip_serializing_if = "Option::is_none")]

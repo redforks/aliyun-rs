@@ -57679,8 +57679,8 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub security_group_ids: Vec<String>,
     /// 网卡的通讯模式。参数取值范围：
     ///
     /// - Standard：使用TCP通讯模式。
@@ -57731,8 +57731,8 @@ pub struct InstancesNetworkInterface {
     ///
     /// - 设置该参数后，`Amount`取值只能为1，且不能再设置`Ipv6AddressCount`、`Ipv6Address.N`或`NetworkInterface.N.Ipv6AddressCount`。
     #[serde(rename = "Ipv6Address")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub ipv6_address: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub ipv6_address: Vec<String>,
     /// 网卡指定的物理网卡索引。
     ///
     /// 您需要注意：
@@ -61900,8 +61900,8 @@ pub struct PipelineImportImageOptions {
     /// - N=1 时，表示系统盘.
     /// - N=2~17 时，表示数据盘。
     #[serde(rename = "DiskDeviceMappings")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub disk_device_mappings: Option<Vec<OptionsDiskDeviceMapping>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub disk_device_mappings: Vec<OptionsDiskDeviceMapping>,
     /// 镜像特性相关属性。
     #[serde(rename = "Features")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -61923,8 +61923,8 @@ pub struct PipelineImportImageOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
     #[serde(rename = "ImportImageTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub import_image_tags: Option<Vec<OptionsImportImageTag>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub import_image_tags: Vec<OptionsImportImageTag>,
 }
 impl crate::FlatSerialize for PipelineImportImageOptions {
     fn flat_serialize<'a>(
@@ -62096,8 +62096,8 @@ pub struct PipelineImageOptions {
     pub image_features: Option<PipelineImageOptionsImageFeatures>,
     /// 目标镜像标签。
     #[serde(rename = "ImageTags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_tags: Option<Vec<OptionsImageTag>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub image_tags: Vec<OptionsImageTag>,
 }
 impl crate::FlatSerialize for PipelineImageOptions {
     fn flat_serialize<'a>(
@@ -64090,8 +64090,8 @@ pub struct PolicyCopyEncryptionConfiguration {
     pub kms_key_id: Option<String>,
     /// > 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<Vec<PolicyCopyEncryptionConfigurationArn>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub arn: Vec<PolicyCopyEncryptionConfigurationArn>,
 }
 impl crate::FlatSerialize for PolicyCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
@@ -64349,8 +64349,8 @@ pub struct ExCopyEncryptionConfiguration {
     pub kms_key_id: Option<String>,
     /// 该参数暂未开放使用。
     #[serde(rename = "Arn")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub arn: Option<Vec<ExCopyEncryptionConfigurationArn>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub arn: Vec<ExCopyEncryptionConfigurationArn>,
 }
 impl crate::FlatSerialize for ExCopyEncryptionConfiguration {
     fn flat_serialize<'a>(
@@ -67962,8 +67962,8 @@ pub struct TemplateNetworkInterface {
     ///
     /// - 如果`NetworkInterface.N.InstanceType`取值为`Secondary`或空值，则该参数为非必填参数。默认值为ECS实例所属的安全组。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub security_group_ids: Vec<String>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
     /// 参数取值范围：
@@ -68442,8 +68442,8 @@ pub struct VersionNetworkInterface {
     ///
     /// > 不支持同时指定`NetworkInterface.N.SecurityGroupId`和`NetworkInterface.N.SecurityGroupIds.N`。
     #[serde(rename = "SecurityGroupIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub security_group_ids: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub security_group_ids: Vec<String>,
     /// 弹性网卡类型。N的取值范围为1~2，设置1个弹性网卡时，支持设置1个主网卡或1个辅助网卡；设置2个弹性网卡时，仅支持同时设置1个主网卡和1个辅助网卡。
     ///
     /// 参数取值范围：
@@ -69281,12 +69281,12 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     pub max_quantity: Option<i32>,
     /// 实例规格的vCPU内核数目列表。
     #[serde(rename = "Cores")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub cores: Option<Vec<i32>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub cores: Vec<i32>,
     /// 实例规格的内存大小列表。
     #[serde(rename = "Memories")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub memories: Option<Vec<f32>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub memories: Vec<f32>,
     /// 实例规格族级别，用于筛选符合要求的实例规格范围。取值范围：
     ///
     /// - EntryLevel：入门级，即共享型实例规格。成本更低，但是无法保证实例计算性能的稳定。适用于平时CPU使用率低的业务场景。更多信息，请参见[共享型](~~108489~~)。
@@ -69299,12 +69299,12 @@ pub struct CreateAutoProvisioningGroupLaunchTemplateConfig {
     pub instance_family_level: Option<String>,
     /// 需要排除的实例规格列表。
     #[serde(rename = "ExcludedInstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub excluded_instance_types: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub excluded_instance_types: Vec<String>,
     /// 实例规格所属的架构类型列表。
     #[serde(rename = "Architectures")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub architectures: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub architectures: Vec<String>,
     /// 是否为性能突发实例规格。取值范围：
     ///
     /// - Exclude：不包含性能突发实例规格。
@@ -69829,8 +69829,8 @@ pub struct PoolOptions {
     pub strategy: Option<String>,
     /// 私有池 ID。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入Target模式私有池 ID。
     #[serde(rename = "PrivatePoolIds")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub private_pool_ids: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub private_pool_ids: Vec<String>,
 }
 
 /// 镜像相关属性信息。
@@ -70097,8 +70097,8 @@ impl crate::FlatSerialize for LaunchConfiguration {
 pub struct CapacityDistribution {
     /// 实例规格集合。不允许重复，且规格在LaunchTemplateConfig.InstanceType范围内。
     #[serde(rename = "InstanceTypes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub instance_types: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub instance_types: Vec<String>,
     /// 在`InstanceTypes`范围内需要交付的最小实例数量。
     ///
     /// > `sum(MinTargetCapacity)<= TotalTargetCapacity`，即所有实例规格集合的MinTargetCapacity总和不能超过TotalTargetCapacity，且当任一个实例规格集合由于库存等原因无法满足MinTargetCapacity的要求时，整个请求都会创建失败。
@@ -70130,8 +70130,8 @@ impl crate::FlatSerialize for CapacityDistribution {
 pub struct PaidOptions {
     /// 不同实例规格的最小容量集合。仅当`AutoProvisioningGroupType = request` 时支持该参数。
     #[serde(rename = "SpecifyCapacityDistribution")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub specify_capacity_distribution: Option<Vec<CapacityDistribution>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub specify_capacity_distribution: Vec<CapacityDistribution>,
 }
 impl crate::FlatSerialize for PaidOptions {
     fn flat_serialize<'a>(
@@ -73503,8 +73503,8 @@ pub struct SettingsAgentUpgradeConfig {
     /// ]
     /// 代表在 UTC 时区的每天2点-3点、5点-6点允许升级。
     #[serde(rename = "AllowedUpgradeWindow")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub allowed_upgrade_window: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub allowed_upgrade_window: Vec<String>,
     /// 允许升级时间段的时区。默认为 UTC 时区。
     /// 时区支持以下两种形式：
     /// - 时区全称： 如Asia/Shanghai（中国/上海时间）、America/Los_Angeles（美国/洛杉矶时间）等。
@@ -75383,8 +75383,8 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 pub struct TagFilter {
     /// 模糊查找ECS资源时使用的标签值。标签值长度的取值范围为1~128。N的取值范围为1~5。具体的参数说明请参见`TagFilter.N.TagKey`参数描述。
     #[serde(rename = "TagValues")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_values: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub tag_values: Vec<String>,
     /// 模糊查找ECS资源时使用的标签键。标签键长度的取值范围为1~128。N的取值范围为1~5。
     ///
     ///  `TagFilter.N`用于模糊查找绑定了指定标签的ECS资源，由一个键和一个或多个值组成。模糊查询可能会有2秒延时，仅支持模糊过滤后资源数小于等于5000的情况。
@@ -76553,8 +76553,8 @@ pub struct ConnectionsFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for ConnectionsFilter {
     fn flat_serialize<'a>(
@@ -76702,8 +76702,8 @@ pub struct VipsFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for VipsFilter {
     fn flat_serialize<'a>(
@@ -76784,8 +76784,8 @@ pub struct RoutersFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for RoutersFilter {
     fn flat_serialize<'a>(
@@ -76877,8 +76877,8 @@ pub struct ConnectionFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for ConnectionFilter {
     fn flat_serialize<'a>(
@@ -76934,8 +76934,8 @@ pub struct InterfacesFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for InterfacesFilter {
     fn flat_serialize<'a>(
@@ -77416,8 +77416,8 @@ pub struct PointsFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
     #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub value: Vec<String>,
 }
 impl crate::FlatSerialize for PointsFilter {
     fn flat_serialize<'a>(
