@@ -29,10 +29,14 @@ async fn test_describe_regions() {
 
     println!(
         "Describe regions response: {} region(s) found",
-        result.regions.region.len()
+        result.regions.as_ref().unwrap().region.len()
     );
-    for region in &result.regions.region {
-        println!("  - {}: {}", region.region_id, region.local_name);
+    for region in &result.regions.unwrap().region {
+        println!(
+            "  - {}: {}",
+            region.region_id.as_ref().unwrap(),
+            region.local_name.as_ref().unwrap()
+        );
     }
 }
 

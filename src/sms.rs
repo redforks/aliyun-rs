@@ -6552,20 +6552,16 @@ pub struct SubmitSmsQualificationOtherFile {
 pub struct DataList {
     /// 法人姓名。
     #[serde(rename = "LegalPersonName")]
-    #[serde(default)]
-    pub legal_person_name: String,
+    pub legal_person_name: Option<String>,
     /// 审核备注。
     #[serde(rename = "AuditRemark")]
-    #[serde(default)]
-    pub audit_remark: String,
+    pub audit_remark: Option<String>,
     /// 企业名称。
     #[serde(rename = "CompanyName")]
-    #[serde(default)]
-    pub company_name: String,
+    pub company_name: Option<String>,
     /// 审核工单ID。
     #[serde(rename = "WorkOrderId")]
-    #[serde(default)]
-    pub work_order_id: i64,
+    pub work_order_id: Option<i64>,
     /// 审核状态。取值：
     ///
     /// - INIT：审核中。
@@ -6574,31 +6570,25 @@ pub struct DataList {
     /// - NOT_FINISH：资料待补充。
     /// - CANCEL：已撤回。
     #[serde(rename = "StateName")]
-    #[serde(default)]
-    pub state_name: String,
+    pub state_name: Option<String>,
     /// 审核时间。
     #[serde(rename = "AuditTime")]
-    #[serde(default)]
-    pub audit_time: String,
+    pub audit_time: Option<String>,
     /// 资质创建时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 资质名称。
     #[serde(rename = "QualificationGroupName")]
-    #[serde(default)]
-    pub qualification_group_name: String,
+    pub qualification_group_name: Option<String>,
     /// 资质ID。
     #[serde(rename = "GroupId")]
-    #[serde(default)]
-    pub group_id: i64,
+    pub group_id: Option<i64>,
     /// 资质申请用途，取值：
     ///
     /// - **true**：自用。
     /// - **false**：他用。
     #[serde(rename = "UseBySelf")]
-    #[serde(default)]
-    pub use_by_self: String,
+    pub use_by_self: Option<String>,
 }
 
 /// 资质审核列表
@@ -6607,19 +6597,17 @@ pub struct DataList {
 pub struct QualificationRecordResponseData {
     /// 每页数据条数。
     #[serde(rename = "PageSize")]
-    #[serde(default)]
-    pub page_size: i64,
+    pub page_size: Option<i64>,
     /// 总条数。
     #[serde(rename = "Total")]
-    #[serde(default)]
-    pub total: i64,
+    pub total: Option<i64>,
     /// 当前页码。
     #[serde(rename = "PageNo")]
-    #[serde(default)]
-    pub page_no: i64,
+    pub page_no: Option<i64>,
     /// 满足过滤条件的数据列表。
     #[serde(rename = "List")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub list: Vec<DataList>,
 }
 
@@ -6633,16 +6621,13 @@ pub struct DataBusinessLicensePic {
     /// - signLegalLicense：事业单位法人证书。
     /// - otherLicense：其他类型执照证书。
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: String,
+    pub r#type: Option<String>,
     /// 营业证件文件路径参数。
     #[serde(rename = "LicensePic")]
-    #[serde(default)]
-    pub license_pic: String,
+    pub license_pic: Option<String>,
     /// 营业证件文件完整路径URL。
     #[serde(rename = "PicUrl")]
-    #[serde(default)]
-    pub pic_url: String,
+    pub pic_url: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -6650,12 +6635,10 @@ pub struct DataBusinessLicensePic {
 pub struct DataOtherFile {
     /// 更多资料文件路径参数。
     #[serde(rename = "LicensePic")]
-    #[serde(default)]
-    pub license_pic: String,
+    pub license_pic: Option<String>,
     /// 更多资料文件完整路径URL。
     #[serde(rename = "PicUrl")]
-    #[serde(default)]
-    pub pic_url: String,
+    pub pic_url: Option<String>,
 }
 
 /// 单个资质详情。
@@ -6664,67 +6647,54 @@ pub struct DataOtherFile {
 pub struct SmsQualificationResponseData {
     /// 管理员证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     #[serde(rename = "AdminIDCardExpDate")]
-    #[serde(default)]
-    pub admin_id_card_exp_date: String,
+    pub admin_id_card_exp_date: Option<String>,
     /// 行业类型。
     #[serde(rename = "BusinessType")]
-    #[serde(default)]
-    pub business_type: String,
+    pub business_type: Option<String>,
     /// 管理员证件正面（身份证国徽面）照片完整路径URL。
     #[serde(rename = "AdminIDCardFrontFace")]
-    #[serde(default)]
-    pub admin_id_card_front_face: String,
+    pub admin_id_card_front_face: Option<String>,
     /// 备注。
     #[serde(rename = "Remark")]
-    #[serde(default)]
-    pub remark: String,
+    pub remark: Option<String>,
     /// 法人姓名。
     #[serde(rename = "LegalPersonName")]
-    #[serde(default)]
-    pub legal_person_name: String,
+    pub legal_person_name: Option<String>,
     /// 企业名称。
     #[serde(rename = "CompanyName")]
-    #[serde(default)]
-    pub company_name: String,
+    pub company_name: Option<String>,
     /// 法人证件号码。
     #[serde(rename = "LegalPersonIDCardNo")]
-    #[serde(default)]
-    pub legal_person_id_card_no: String,
+    pub legal_person_id_card_no: Option<String>,
     /// 企业营业证件信息。
     #[serde(rename = "BusinessLicensePics")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub business_license_pics: Vec<DataBusinessLicensePic>,
     /// 管理员证件号码。
     #[serde(rename = "AdminIDCardNo")]
-    #[serde(default)]
-    pub admin_id_card_no: String,
+    pub admin_id_card_no: Option<String>,
     /// 社会统一信用代码。
     #[serde(rename = "OrganizationCode")]
-    #[serde(default)]
-    pub organization_code: String,
+    pub organization_code: Option<String>,
     /// 法人证件有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     #[serde(rename = "LegalPersonIdCardEffTime")]
-    #[serde(default)]
-    pub legal_person_id_card_eff_time: String,
+    pub legal_person_id_card_eff_time: Option<String>,
     /// 管理员手机号码。
     #[serde(rename = "AdminPhoneNo")]
-    #[serde(default)]
-    pub admin_phone_no: String,
+    pub admin_phone_no: Option<String>,
     /// 资质名称。
     #[serde(rename = "QualificationName")]
-    #[serde(default)]
-    pub qualification_name: String,
+    pub qualification_name: Option<String>,
     /// 管理员姓名。
     #[serde(rename = "AdminName")]
-    #[serde(default)]
-    pub admin_name: String,
+    pub admin_name: Option<String>,
     /// 企业类型，取值：
     ///
     /// - COMPANY：企业。
     /// - NON_PROFIT_ORGANIZATION：政府机关或事业单位。
     #[serde(rename = "CompanyType")]
-    #[serde(default)]
-    pub company_type: String,
+    pub company_type: Option<String>,
     /// 管理员证件类型。取值：
     ///
     /// - identityCard：身份证。
@@ -6734,34 +6704,28 @@ pub struct SmsQualificationResponseData {
     /// - residencePermit：港澳台居民居住证。
     /// - other：其他。
     #[serde(rename = "AdminIDCardType")]
-    #[serde(default)]
-    pub admin_id_card_type: String,
+    pub admin_id_card_type: Option<String>,
     /// 资质申请用途，取值：
     ///
     /// - **true**：自用。
     /// - **false**：他用。
     #[serde(rename = "UseBySelf")]
-    #[serde(default)]
-    pub use_by_self: bool,
+    pub use_by_self: Option<bool>,
     /// 营业证照有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     #[serde(rename = "EffTimeStr")]
-    #[serde(default)]
-    pub eff_time_str: String,
+    pub eff_time_str: Option<String>,
     /// 资质ID。
     #[serde(rename = "QualificationGroupId")]
-    #[serde(default)]
-    pub qualification_group_id: i64,
+    pub qualification_group_id: Option<i64>,
     /// 资质授权，是否同意与其他云通信产品（如国内语音、国内号码隐私保护）的资质共享。仅当您申请**自用资质**，且资质信息**与当前阿里云账号认证企业信息一致**时可被共享、复用；其他情况无效。取值：
     ///
     /// - true：同意，您的资质信息可在其他云通信产品的“资质认证环节”调用，免除重复认证环节。
     /// - false：不同意。
     #[serde(rename = "WhetherShare")]
-    #[serde(default)]
-    pub whether_share: bool,
+    pub whether_share: Option<bool>,
     /// 审核工单ID。
     #[serde(rename = "WorkOrderId")]
-    #[serde(default)]
-    pub work_order_id: i64,
+    pub work_order_id: Option<i64>,
     /// 审核状态。取值：
     ///
     /// - INT：审核中。
@@ -6772,11 +6736,11 @@ pub struct SmsQualificationResponseData {
     ///
     /// > 本接口不会返回审核备注，如需要查询审核备注（`AuditRemark`）请使用[查询资质列表](~~QuerySmsQualificationRecord~~)。
     #[serde(rename = "State")]
-    #[serde(default)]
-    pub state: String,
+    pub state: Option<String>,
     /// 更多资料。
     #[serde(rename = "OtherFiles")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub other_files: Vec<DataOtherFile>,
     /// 法人证件类型。取值：
     ///
@@ -6787,12 +6751,10 @@ pub struct SmsQualificationResponseData {
     /// - residencePermit：港澳台居民居住证。
     /// - other：其他。
     #[serde(rename = "LegalPersonIDCardType")]
-    #[serde(default)]
-    pub legal_person_id_card_type: String,
+    pub legal_person_id_card_type: Option<String>,
     /// 管理员证件反面（身份证人像面）图片完整路径URL。
     #[serde(rename = "AdminIDCardPic")]
-    #[serde(default)]
-    pub admin_id_card_pic: String,
+    pub admin_id_card_pic: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
@@ -6831,49 +6793,39 @@ pub struct UpdateSmsQualificationOtherFile {
 pub struct LetterResponseData {
     /// 委托授权方。
     #[serde(rename = "Authorization")]
-    #[serde(default)]
-    pub authorization: String,
+    pub authorization: Option<String>,
     /// 委托授权书可用状态，与授权书有效期相关，取值：
     ///
     /// - **VALID**：可用，授权书处于有效期内。
     /// - **INVALID**：不可用，授权书已过期。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 委托授权签名范围。若有多个签名，签名之间使用顿号`、`分隔。
     #[serde(rename = "SignScope")]
-    #[serde(default)]
-    pub sign_scope: String,
+    pub sign_scope: Option<String>,
     /// 委托授权书状态，与签名审核状态相关，取值：
     /// - **INT**：待审核。委托授权书已创建，当您提交签名申请后进入审核流程。
     /// - **PASSED**：审核通过。当您的委托授权签名范围中有签名审核通过时，委托授权书状态变为PASSED。
     #[serde(rename = "State")]
-    #[serde(default)]
-    pub state: String,
+    pub state: Option<String>,
     /// 委托授权书有效期。有效期格式：YYYY-MM-DD~YYYY-MM-DD。
     #[serde(rename = "AuthorizationLetterExpDate")]
-    #[serde(default)]
-    pub authorization_letter_exp_date: String,
+    pub authorization_letter_exp_date: Option<String>,
     /// 委托授权书文件地址。
     #[serde(rename = "AuthorizationLetterPic")]
-    #[serde(default)]
-    pub authorization_letter_pic: String,
+    pub authorization_letter_pic: Option<String>,
     /// 委托授权方社会统一信用代码。
     #[serde(rename = "OrganizationCode")]
-    #[serde(default)]
-    pub organization_code: String,
+    pub organization_code: Option<String>,
     /// 被委托授权方。
     #[serde(rename = "ProxyAuthorization")]
-    #[serde(default)]
-    pub proxy_authorization: String,
+    pub proxy_authorization: Option<String>,
     /// 委托授权书ID。
     #[serde(rename = "AuthorizationLetterId")]
-    #[serde(default)]
-    pub authorization_letter_id: i64,
+    pub authorization_letter_id: Option<i64>,
     /// 委托授权书命名。
     #[serde(rename = "AuthorizationLetterName")]
-    #[serde(default)]
-    pub authorization_letter_name: String,
+    pub authorization_letter_name: Option<String>,
 }
 
 /// 审核信息。
@@ -6882,12 +6834,10 @@ pub struct LetterResponseData {
 pub struct SignResponseAuditInfo {
     /// 审批未通过的原因。
     #[serde(rename = "RejectInfo")]
-    #[serde(default)]
-    pub reject_info: String,
+    pub reject_info: Option<String>,
     /// 审核时间。
     #[serde(rename = "AuditDate")]
-    #[serde(default)]
-    pub audit_date: String,
+    pub audit_date: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -6910,11 +6860,11 @@ pub struct StatusReason {
     /// - **EXT_CODE_RECYCLE**：扩展码收回。
     /// - **SUBPORT_RECYCLE**：子端口被运营商治理。
     #[serde(rename = "ReasonCode")]
-    #[serde(default)]
-    pub reason_code: String,
+    pub reason_code: Option<String>,
     /// 原因说明列表。可能返回0个或者多个原因说明，返回原因码不一定会返回原因说明。
     #[serde(rename = "ReasonDescList")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub reason_desc_list: Vec<String>,
 }
 
@@ -6932,22 +6882,20 @@ pub struct DetailList {
     ///
     /// 建议您单击查看[更多签名实名制报备内容及建议操作](~~2873145~~)。
     #[serde(rename = "RegisterStatus")]
-    #[serde(default)]
-    pub register_status: i32,
+    pub register_status: Option<i32>,
     /// 运营商类型。取值：
     /// - **mobile**：中国移动；
     /// - **unicom**：中国联通；
     /// - **telecom**：中国电信。
     #[serde(rename = "OperatorCode")]
-    #[serde(default)]
-    pub operator_code: String,
+    pub operator_code: Option<String>,
     /// 运营商反馈时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "OperatorCompleteTime")]
-    #[serde(default)]
-    pub operator_complete_time: String,
+    pub operator_complete_time: Option<String>,
     /// 报备状态原因列表。
     #[serde(rename = "RegisterStatusReasons")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub register_status_reasons: Vec<StatusReason>,
 }
 
@@ -6961,16 +6909,13 @@ pub struct DetailList {
 pub struct SignListItemReason {
     /// 审批未通过的备注信息。
     #[serde(rename = "RejectSubInfo")]
-    #[serde(default)]
-    pub reject_sub_info: String,
+    pub reject_sub_info: Option<String>,
     /// 审批未通过的时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "RejectDate")]
-    #[serde(default)]
-    pub reject_date: String,
+    pub reject_date: Option<String>,
     /// 审批未通过的原因。
     #[serde(rename = "RejectInfo")]
-    #[serde(default)]
-    pub reject_info: String,
+    pub reject_info: Option<String>,
 }
 
 /// 结果列表。
@@ -6979,8 +6924,7 @@ pub struct SignListItemReason {
 pub struct SignList {
     /// 签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
     /// 签名审批状态。取值：
     ///
     /// - **AUDIT_STATE_INIT**：审核中。
@@ -6991,52 +6935,43 @@ pub struct SignList {
     ///
     /// - **AUDIT_STATE_CANCEL**：取消审核。
     #[serde(rename = "AuditStatus")]
-    #[serde(default)]
-    pub audit_status: String,
+    pub audit_status: Option<String>,
     /// 短信签名的创建日期和时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 审核备注。
     ///
     /// - 如果审核状态为**审核通过**或**审核中**，参数Reason显示为“无审核备注”。
     ///
     /// - 如果审核状态为**审核未通过**，参数Reason显示审核的具体原因。
     #[serde(rename = "Reason")]
-    #[serde(default)]
-    pub reason: SignListItemReason,
+    pub reason: Option<SignListItemReason>,
     /// 签名场景类型。取值：
     ///
     /// - 验证码类型。
     ///
     /// - 通用类型。
     #[serde(rename = "BusinessType")]
-    #[serde(default)]
-    pub business_type: String,
+    pub business_type: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
     /// 委托授权书ID。
     #[serde(rename = "AuthorizationLetterId")]
-    #[serde(default)]
-    pub authorization_letter_id: i64,
+    pub authorization_letter_id: Option<i64>,
     /// 委托授权书审核状态。取值：
     /// - true：审核通过。
     /// - false：审核未通过（包含审核通过外的其他所有状态）。
     #[serde(rename = "authorizationLetterAuditPass")]
-    #[serde(default)]
-    pub authorization_letter_audit_pass: bool,
+    pub authorization_letter_audit_pass: Option<bool>,
     /// 商标实体id。
     #[serde(rename = "TrademarkId")]
-    #[serde(default)]
-    pub trademark_id: i64,
+    pub trademark_id: Option<i64>,
     /// APP-ICP备案实体id。
     #[serde(rename = "AppIcpRecordId")]
-    #[serde(default)]
-    pub app_icp_record_id: i64,
+    pub app_icp_record_id: Option<i64>,
 }
 
 /// 返回数据结构。
@@ -7045,20 +6980,16 @@ pub struct SignList {
 pub struct SignatureQualificationResponseData {
     /// 本数据无返回，可忽略。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: crate::OpenObject,
+    pub data: Option<crate::OpenObject>,
     /// 状态码的描述。
     #[serde(rename = "ErrMessage")]
-    #[serde(default)]
-    pub err_message: String,
+    pub err_message: Option<String>,
     /// 调用接口是否成功。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 请求状态码。
     #[serde(rename = "ErrCode")]
-    #[serde(default)]
-    pub err_code: String,
+    pub err_code: Option<String>,
 }
 
 /// 签名数据。
@@ -7134,32 +7065,25 @@ impl crate::FlatSerialize for ModifySmsSignSignFileList {
 pub struct TrademarkResponseData {
     /// 商标截图url地址
     #[serde(rename = "TrademarkPicUrl")]
-    #[serde(default)]
-    pub trademark_pic_url: String,
+    pub trademark_pic_url: Option<String>,
     /// 商标注册号
     #[serde(rename = "TrademarkRegistrationNumber")]
-    #[serde(default)]
-    pub trademark_registration_number: String,
+    pub trademark_registration_number: Option<String>,
     /// 商标名称
     #[serde(rename = "TrademarkName")]
-    #[serde(default)]
-    pub trademark_name: String,
+    pub trademark_name: Option<String>,
     /// 商标截图oss返回的图片fileKey
     #[serde(rename = "TrademarkPic")]
-    #[serde(default)]
-    pub trademark_pic: String,
+    pub trademark_pic: Option<String>,
     /// 专用权生失效日期
     #[serde(rename = "TrademarkEffExpDate")]
-    #[serde(default)]
-    pub trademark_eff_exp_date: String,
+    pub trademark_eff_exp_date: Option<String>,
     /// 商标材料id
     #[serde(rename = "TrademarkId")]
-    #[serde(default)]
-    pub trademark_id: i64,
+    pub trademark_id: Option<i64>,
     /// 申请人名称
     #[serde(rename = "TrademarkApplicantName")]
-    #[serde(default)]
-    pub trademark_applicant_name: String,
+    pub trademark_applicant_name: Option<String>,
 }
 
 /// APP-ICP备案实体详情。
@@ -7168,36 +7092,28 @@ pub struct TrademarkResponseData {
 pub struct IcpRecordResponseData {
     /// APP-ICP备案材料id
     #[serde(rename = "AppIcpRecordId")]
-    #[serde(default)]
-    pub app_icp_record_id: i64,
+    pub app_icp_record_id: Option<i64>,
     /// APP-ICP备案截图oss返回的图片fileKey
     #[serde(rename = "AppIcpRecordPic")]
-    #[serde(default)]
-    pub app_icp_record_pic: String,
+    pub app_icp_record_pic: Option<String>,
     /// APP-ICP备案截图url地址
     #[serde(rename = "AppIcpRecordPicUrl")]
-    #[serde(default)]
-    pub app_icp_record_pic_url: String,
+    pub app_icp_record_pic_url: Option<String>,
     /// 主办单位名称
     #[serde(rename = "AppPrincipalUnitName")]
-    #[serde(default)]
-    pub app_principal_unit_name: String,
+    pub app_principal_unit_name: Option<String>,
     /// ICP备案/许可证号
     #[serde(rename = "AppIcpLicenseNumber")]
-    #[serde(default)]
-    pub app_icp_license_number: String,
+    pub app_icp_license_number: Option<String>,
     /// APP应用商店链接
     #[serde(rename = "Domain")]
-    #[serde(default)]
-    pub domain: String,
+    pub domain: Option<String>,
     /// 审核通过日期
     #[serde(rename = "AppApprovalDate")]
-    #[serde(default)]
-    pub app_approval_date: String,
+    pub app_approval_date: Option<String>,
     /// APP服务名称
     #[serde(rename = "AppServiceName")]
-    #[serde(default)]
-    pub app_service_name: String,
+    pub app_service_name: Option<String>,
 }
 
 /// 审核信息。
@@ -7206,12 +7122,10 @@ pub struct IcpRecordResponseData {
 pub struct TemplateResponseAuditInfo {
     /// 审核未通过的原因。
     #[serde(rename = "RejectInfo")]
-    #[serde(default)]
-    pub reject_info: String,
+    pub reject_info: Option<String>,
     /// 审核时间。
     #[serde(rename = "AuditDate")]
-    #[serde(default)]
-    pub audit_date: String,
+    pub audit_date: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -7220,6 +7134,7 @@ pub struct ResponseFileUrlList {
     /// 文件资料信息。兼容旧接口创建的信息。
     #[serde(rename = "FileUrl")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub file_url: Vec<String>,
 }
 
@@ -7229,6 +7144,7 @@ pub struct DataFileUrlList {
     /// 更多资料信息，补充上传业务证明文件或业务截图文件列表。
     #[serde(rename = "MoreDataFileUrl")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub more_data_file_url: Vec<String>,
 }
 
@@ -7238,16 +7154,13 @@ pub struct DataFileUrlList {
 pub struct TemplateListItemReason {
     /// 审核未通过的时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "RejectDate")]
-    #[serde(default)]
-    pub reject_date: String,
+    pub reject_date: Option<String>,
     /// 审核未通过的原因。
     #[serde(rename = "RejectInfo")]
-    #[serde(default)]
-    pub reject_info: String,
+    pub reject_info: Option<String>,
     /// 审核未通过的详细说明。
     #[serde(rename = "RejectSubInfo")]
-    #[serde(default)]
-    pub reject_sub_info: String,
+    pub reject_sub_info: Option<String>,
 }
 
 /// 单个模板详情。
@@ -7256,12 +7169,10 @@ pub struct TemplateListItemReason {
 pub struct TemplateList {
     /// 短信模板Code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 短信模板名称。
     #[serde(rename = "TemplateName")]
-    #[serde(default)]
-    pub template_name: String,
+    pub template_name: Option<String>,
     /// 模板类型（对外使用）。返回值：
     ///
     /// - **0**：验证码短信。
@@ -7269,8 +7180,7 @@ pub struct TemplateList {
     /// - **2**：推广短信。
     /// - **3**：国际/港澳台短信。
     #[serde(rename = "OuterTemplateType")]
-    #[serde(default)]
-    pub outer_template_type: i32,
+    pub outer_template_type: Option<i32>,
     /// 模板审核状态。返回值：
     ///
     /// - **AUDIT_STATE_INIT**：审核中。
@@ -7278,26 +7188,21 @@ pub struct TemplateList {
     /// - **AUDIT_STATE_NOT_PASS**：未通过审核，请在返回参数Reason中查看审核未通过原因。
     /// - **AUDIT_SATE_CANCEL**：取消审核。
     #[serde(rename = "AuditStatus")]
-    #[serde(default)]
-    pub audit_status: String,
+    pub audit_status: Option<String>,
     /// 模板内容。
     #[serde(rename = "TemplateContent")]
-    #[serde(default)]
-    pub template_content: String,
+    pub template_content: Option<String>,
     /// 创建模板的时间，格式为yyyy-MM-dd HH:mm:ss。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 审核返回值。
     #[serde(rename = "Reason")]
-    #[serde(default)]
-    pub reason: TemplateListItemReason,
+    pub reason: Option<TemplateListItemReason>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
     /// 模板类型。返回值：
     ///
     /// - **0**：短信通知。
@@ -7305,12 +7210,10 @@ pub struct TemplateList {
     /// - **2**：验证码短信。
     /// - **6**：国际/港澳台短信。
     #[serde(rename = "TemplateType")]
-    #[serde(default)]
-    pub template_type: i32,
+    pub template_type: Option<i32>,
     /// 关联签名名称。
     #[serde(rename = "SignatureName")]
-    #[serde(default)]
-    pub signature_name: String,
+    pub signature_name: Option<String>,
     /// 引流信息列表JSON字符串。
     /// ><notice>JSON格式，传入前请转为字符串。></notice>
     ///
@@ -7348,8 +7251,7 @@ pub struct TemplateList {
     /// - 1_PHONE：1开头，3~5位电话。
     /// - OTHER_PHONE：其他号码。
     #[serde(rename = "TrafficDriving")]
-    #[serde(default)]
-    pub traffic_driving: String,
+    pub traffic_driving: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -7360,44 +7262,36 @@ pub struct DetailDto {
     /// -  短信发送成功：DELIVERED。
     /// -  短信发送失败：失败错误码请参见[错误码](~~101347~~)。
     #[serde(rename = "ErrCode")]
-    #[serde(default)]
-    pub err_code: String,
+    pub err_code: Option<String>,
     /// 短信模板Code。
     ///
     /// > 若选择`[测试专用]阿里云通信`和`[测试专用]阿里云通信测试模板`发送的测试短信，本接口将不会返回TemplateCode字段。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 外部流水扩展字段。
     ///
     /// > 若发送短信时未传入OutId，本接口将不会返回OutId字段。
     #[serde(rename = "OutId")]
-    #[serde(default)]
-    pub out_id: String,
+    pub out_id: Option<String>,
     /// 短信接收日期和时间。
     #[serde(rename = "ReceiveDate")]
-    #[serde(default)]
-    pub receive_date: String,
+    pub receive_date: Option<String>,
     /// 短信发送日期和时间。
     #[serde(rename = "SendDate")]
-    #[serde(default)]
-    pub send_date: String,
+    pub send_date: Option<String>,
     /// 接收短信的手机号码。
     #[serde(rename = "PhoneNum")]
-    #[serde(default)]
-    pub phone_num: String,
+    pub phone_num: Option<String>,
     /// 短信内容。
     #[serde(rename = "Content")]
-    #[serde(default)]
-    pub content: String,
+    pub content: Option<String>,
     /// 短信发送状态，包括：
     ///
     /// - **1**：等待回执。
     /// - **2**：发送失败。
     /// - **3**：发送成功。
     #[serde(rename = "SendStatus")]
-    #[serde(default)]
-    pub send_status: i64,
+    pub send_status: Option<i64>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -7406,6 +7300,7 @@ pub struct DetailDTOs {
     /// 短信发送明细。
     #[serde(rename = "SmsSendDetailDTO")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub sms_send_detail_dto: Vec<DetailDto>,
 }
 
@@ -7414,24 +7309,19 @@ pub struct DetailDTOs {
 pub struct TargetList {
     /// 发送成功的短信条数。
     #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     /// 接收到回执成功的短信条数。
     #[serde(rename = "RespondedSuccessCount")]
-    #[serde(default)]
-    pub responded_success_count: i64,
+    pub responded_success_count: Option<i64>,
     /// 接收到回执失败的短信条数。
     #[serde(rename = "RespondedFailCount")]
-    #[serde(default)]
-    pub responded_fail_count: i64,
+    pub responded_fail_count: Option<i64>,
     /// 未收到回执的短信条数。
     #[serde(rename = "NoRespondedCount")]
-    #[serde(default)]
-    pub no_responded_count: i64,
+    pub no_responded_count: Option<i64>,
     /// 短信发送日期，格式为yyyyMMdd。
     #[serde(rename = "SendDate")]
-    #[serde(default)]
-    pub send_date: String,
+    pub send_date: Option<String>,
 }
 
 /// 返回数据。
@@ -7440,11 +7330,11 @@ pub struct TargetList {
 pub struct StatisticsResponseData {
     /// 返回数据的总条数。
     #[serde(rename = "TotalSize")]
-    #[serde(default)]
-    pub total_size: i64,
+    pub total_size: Option<i64>,
     /// 返回数据列表。
     #[serde(rename = "TargetList")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub target_list: Vec<TargetList>,
 }
 
@@ -7454,36 +7344,28 @@ pub struct StatisticsResponseData {
 pub struct ResponseData {
     /// 短信签名。
     #[serde(rename = "Signature")]
-    #[serde(default)]
-    pub signature: String,
+    pub signature: Option<String>,
     /// 访问地址。
     #[serde(rename = "Host")]
-    #[serde(default)]
-    pub host: String,
+    pub host: Option<String>,
     /// 签名策略。
     #[serde(rename = "Policy")]
-    #[serde(default)]
-    pub policy: String,
+    pub policy: Option<String>,
     /// 超时时间戳。单位：秒。
     #[serde(rename = "ExpireTime")]
-    #[serde(default)]
-    pub expire_time: String,
+    pub expire_time: Option<String>,
     /// 阿里云账号ID。
     #[serde(rename = "AliUid")]
-    #[serde(default)]
-    pub ali_uid: String,
+    pub ali_uid: Option<String>,
     /// 签名使用的AccessKey ID。
     #[serde(rename = "AccessKeyId")]
-    #[serde(default)]
-    pub access_key_id: String,
+    pub access_key_id: Option<String>,
     /// 策略路径。
     #[serde(rename = "StartPath")]
-    #[serde(default)]
-    pub start_path: String,
+    pub start_path: Option<String>,
     /// OSS文件保存桶名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
 }
 
 /// 返回数据。
@@ -7492,12 +7374,10 @@ pub struct ResponseData {
 pub struct IdResponseData {
     /// 资源ID。
     #[serde(rename = "ResourceId")]
-    #[serde(default)]
-    pub resource_id: i64,
+    pub resource_id: Option<i64>,
     /// 资源下载地址。
     #[serde(rename = "ResUrlDownload")]
-    #[serde(default)]
-    pub res_url_download: String,
+    pub res_url_download: Option<String>,
 }
 
 /// 返回对象。
@@ -7508,8 +7388,7 @@ pub struct CreateCardSmsTemplateResponseData {
     ///
     /// >必须是已添加、并通过审核的卡片短信模板。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
 }
 
 /// 返回数据。
@@ -7519,6 +7398,7 @@ pub struct QueryCardSmsTemplateResponseData {
     /// 返回模板列表。
     #[serde(rename = "Templates")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub templates: Vec<crate::OpenObject>,
 }
 
@@ -7528,16 +7408,14 @@ pub struct QueryCardSmsTemplateResponseData {
 pub struct CheckMobilesCardSupportResponseDataQueryResult {
     /// 手机号码。
     #[serde(rename = "mobile")]
-    #[serde(default)]
-    pub mobile: String,
+    pub mobile: Option<String>,
     /// 是否支持卡片短信能力。取值：
     ///
     /// - **true**：支持卡片短信。
     ///
     /// - **false**：不支持卡片短信。
     #[serde(rename = "support")]
-    #[serde(default)]
-    pub support: bool,
+    pub support: Option<bool>,
 }
 
 /// 返回数据。
@@ -7547,6 +7425,7 @@ pub struct CheckMobilesCardSupportResponseData {
     /// 查询结果列表。
     #[serde(rename = "queryResult")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub query_result: Vec<CheckMobilesCardSupportResponseDataQueryResult>,
 }
 
@@ -7556,15 +7435,13 @@ pub struct CheckMobilesCardSupportResponseData {
 pub struct QueryMobilesCardSupportResponseDataQueryResult {
     /// 查询的手机号码。
     #[serde(rename = "Mobile")]
-    #[serde(default)]
-    pub mobile: String,
+    pub mobile: Option<String>,
     /// 是否支持卡片短信。取值：
     ///
     /// - **true**：支持。
     /// - **false**：不支持。
     #[serde(rename = "Support")]
-    #[serde(default)]
-    pub support: bool,
+    pub support: Option<bool>,
 }
 
 /// 返回数据。
@@ -7574,6 +7451,7 @@ pub struct QueryMobilesCardSupportResponseData {
     /// 查询值。
     #[serde(rename = "QueryResult")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub query_result: Vec<QueryMobilesCardSupportResponseDataQueryResult>,
 }
 
@@ -7588,24 +7466,19 @@ pub struct LinkResponseData {
     ///
     /// > 未审核通过的短信走回落流程。
     #[serde(rename = "CardTmpState")]
-    #[serde(default)]
-    pub card_tmp_state: i32,
+    pub card_tmp_state: Option<i32>,
     /// 不支持卡片短信的手机号。
     #[serde(rename = "NotMediaMobiles")]
-    #[serde(default)]
-    pub not_media_mobiles: String,
+    pub not_media_mobiles: Option<String>,
     /// 支持卡片短信的手机号码。
     #[serde(rename = "CardPhoneNumbers")]
-    #[serde(default)]
-    pub card_phone_numbers: String,
+    pub card_phone_numbers: Option<String>,
     /// 卡片短信短链。
     #[serde(rename = "CardSmsLinks")]
-    #[serde(default)]
-    pub card_sms_links: String,
+    pub card_sms_links: Option<String>,
     /// 用于申请卡片短信短链的短信签名，在发送时签名、接收号码、卡片短信短链要一一对应。
     #[serde(rename = "CardSignNames")]
-    #[serde(default)]
-    pub card_sign_names: String,
+    pub card_sign_names: Option<String>,
 }
 
 /// 卡片短信发送记录。
@@ -7614,28 +7487,23 @@ pub struct LinkResponseData {
 pub struct DTORecord {
     /// 模板code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 渲染时间。
     #[serde(rename = "RenderDate")]
-    #[serde(default)]
-    pub render_date: String,
+    pub render_date: Option<String>,
     /// 接收时间。
     #[serde(rename = "ReceiveDate")]
-    #[serde(default)]
-    pub receive_date: String,
+    pub receive_date: Option<String>,
     /// 解析状态。取值：
     ///
     /// - 0：未解析；
     /// - 1：解析成功；
     /// - 3：未解析。
     #[serde(rename = "RenderStatus")]
-    #[serde(default)]
-    pub render_status: i64,
+    pub render_status: Option<i64>,
     /// 接收短信类型。
     #[serde(rename = "ReceiveType")]
-    #[serde(default)]
-    pub receive_type: String,
+    pub receive_type: Option<String>,
     /// 发送状态。取值：
     ///
     /// - 1：发送中；
@@ -7643,28 +7511,22 @@ pub struct DTORecord {
     /// - 3：发送成功；
     /// - 4：寻址失败
     #[serde(rename = "SendStatus")]
-    #[serde(default)]
-    pub send_status: i64,
+    pub send_status: Option<i64>,
     /// 客户传输outId。
     #[serde(rename = "OutId")]
-    #[serde(default)]
-    pub out_id: String,
+    pub out_id: Option<String>,
     /// 接收短信手机号。
     #[serde(rename = "PhoneNumber")]
-    #[serde(default)]
-    pub phone_number: String,
+    pub phone_number: Option<String>,
     /// 短信内容。只有文本短信有值。
     #[serde(rename = "SmsContent")]
-    #[serde(default)]
-    pub sms_content: String,
+    pub sms_content: Option<String>,
     /// 短信发送时间。
     #[serde(rename = "SendDate")]
-    #[serde(default)]
-    pub send_date: String,
+    pub send_date: Option<String>,
     /// 发送错误码。
     #[serde(rename = "ErrCode")]
-    #[serde(default)]
-    pub err_code: String,
+    pub err_code: Option<String>,
 }
 
 /// 卡片短信发送结果。
@@ -7673,19 +7535,17 @@ pub struct DTORecord {
 pub struct DetailDTO {
     /// 总量。
     #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     /// 页数。
     #[serde(rename = "PageSize")]
-    #[serde(default)]
-    pub page_size: i64,
+    pub page_size: Option<i64>,
     /// 页码。
     #[serde(rename = "CurrentPage")]
-    #[serde(default)]
-    pub current_page: i64,
+    pub current_page: Option<i64>,
     /// 卡片短信发送记录列表。
     #[serde(rename = "Records")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub records: Vec<DTORecord>,
 }
 
@@ -7696,6 +7556,7 @@ pub struct ReportResponseData {
     /// 返回数据列表。
     #[serde(rename = "model")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub model: Vec<crate::OpenObject>,
 }
 
@@ -7741,32 +7602,26 @@ impl crate::FlatSerialize for CardObject {
 pub struct SendCardSmsResponseData {
     /// 接收卡片短信的手机号。
     #[serde(rename = "MediaMobiles")]
-    #[serde(default)]
-    pub media_mobiles: String,
+    pub media_mobiles: Option<String>,
     /// 卡片短信发送ID。
     #[serde(rename = "BizCardId")]
-    #[serde(default)]
-    pub biz_card_id: String,
+    pub biz_card_id: Option<String>,
     /// 数字短信发送ID。
     #[serde(rename = "BizDigitalId")]
-    #[serde(default)]
-    pub biz_digital_id: String,
+    pub biz_digital_id: Option<String>,
     /// 卡片短信模板审核状态。取值：
     /// - **0**：审核中。
     /// - **1**：审核通过。
     /// - **2**：审核不通过。
     /// >  审核不通过的短信可通过**FallbackType**字段设置回落流程。
     #[serde(rename = "CardTmpState")]
-    #[serde(default)]
-    pub card_tmp_state: i32,
+    pub card_tmp_state: Option<i32>,
     /// 回落的手机号。
     #[serde(rename = "NotMediaMobiles")]
-    #[serde(default)]
-    pub not_media_mobiles: String,
+    pub not_media_mobiles: Option<String>,
     /// 文本短信发送ID。
     #[serde(rename = "BizSmsId")]
-    #[serde(default)]
-    pub biz_sms_id: String,
+    pub biz_sms_id: Option<String>,
 }
 
 /// 返回数据。
@@ -7775,32 +7630,26 @@ pub struct SendCardSmsResponseData {
 pub struct BatchCardSmsResponseData {
     /// 接收卡片短信的手机号。
     #[serde(rename = "MediaMobiles")]
-    #[serde(default)]
-    pub media_mobiles: String,
+    pub media_mobiles: Option<String>,
     /// 卡片短信发送ID。
     #[serde(rename = "BizCardId")]
-    #[serde(default)]
-    pub biz_card_id: String,
+    pub biz_card_id: Option<String>,
     /// 数字短信发送ID。
     #[serde(rename = "BizDigitalId")]
-    #[serde(default)]
-    pub biz_digital_id: String,
+    pub biz_digital_id: Option<String>,
     /// 卡片短信模板审核状态。取值：
     /// - **0**：审核中。
     /// - **1**：审核通过。
     /// - **2**：审核不通过。
     /// > 审核不通过的短信可通过**FallbackType**字段设置回落流程。
     #[serde(rename = "CardTmpState")]
-    #[serde(default)]
-    pub card_tmp_state: i32,
+    pub card_tmp_state: Option<i32>,
     /// 回落的手机号。
     #[serde(rename = "NotMediaMobiles")]
-    #[serde(default)]
-    pub not_media_mobiles: String,
+    pub not_media_mobiles: Option<String>,
     /// 文本短信发送ID。
     #[serde(rename = "BizSmsId")]
-    #[serde(default)]
-    pub biz_sms_id: String,
+    pub biz_sms_id: Option<String>,
 }
 
 /// OSS配置信息。
@@ -7809,28 +7658,22 @@ pub struct BatchCardSmsResponseData {
 pub struct InfoResponseData {
     /// 签名策略。
     #[serde(rename = "Policy")]
-    #[serde(default)]
-    pub policy: String,
+    pub policy: Option<String>,
     /// 过期时间戳，单位：秒。
     #[serde(rename = "Expire")]
-    #[serde(default)]
-    pub expire: i64,
+    pub expire: Option<i64>,
     /// 策略路径。
     #[serde(rename = "StartPath")]
-    #[serde(default)]
-    pub start_path: String,
+    pub start_path: Option<String>,
     /// 签名使用的 AccessKey ID。
     #[serde(rename = "AccessKeyId")]
-    #[serde(default)]
-    pub access_key_id: String,
+    pub access_key_id: Option<String>,
     /// 根据AccessKey Secret和Policy计算出的签名信息。调用OSS API时，OSS验证该签名信息，从而确认请求的合法性。
     #[serde(rename = "Signature")]
-    #[serde(default)]
-    pub signature: String,
+    pub signature: Option<String>,
     /// Host 地址。
     #[serde(rename = "Host")]
-    #[serde(default)]
-    pub host: String,
+    pub host: Option<String>,
 }
 
 /// 返回结果。
@@ -7839,28 +7682,22 @@ pub struct InfoResponseData {
 pub struct ResponseModel {
     /// 签名策略。
     #[serde(rename = "Policy")]
-    #[serde(default)]
-    pub policy: String,
+    pub policy: Option<String>,
     /// 策略路径。
     #[serde(rename = "StartPath")]
-    #[serde(default)]
-    pub start_path: String,
+    pub start_path: Option<String>,
     /// 签名使用的AccessKey ID。
     #[serde(rename = "AccessKeyId")]
-    #[serde(default)]
-    pub access_key_id: String,
+    pub access_key_id: Option<String>,
     /// 根据**AccessKey Secret**和**Policy**计算出的签名信息。调用OSS API时，OSS验证该签名信息，从而确认Post请求的合法性。
     #[serde(rename = "Signature")]
-    #[serde(default)]
-    pub signature: String,
+    pub signature: Option<String>,
     /// Host地址。
     #[serde(rename = "Host")]
-    #[serde(default)]
-    pub host: String,
+    pub host: Option<String>,
     /// 到期时间。
     #[serde(rename = "ExpireTime")]
-    #[serde(default)]
-    pub expire_time: String,
+    pub expire_time: Option<String>,
 }
 
 /// OSS配置信息。
@@ -7869,32 +7706,25 @@ pub struct ResponseModel {
 pub struct InfoResponseModel {
     /// 签名策略。
     #[serde(rename = "Policy")]
-    #[serde(default)]
-    pub policy: String,
+    pub policy: Option<String>,
     /// 策略路径。
     #[serde(rename = "StartPath")]
-    #[serde(default)]
-    pub start_path: String,
+    pub start_path: Option<String>,
     /// bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 签名使用的 AccessKey ID。
     #[serde(rename = "AccessKeyId")]
-    #[serde(default)]
-    pub access_key_id: String,
+    pub access_key_id: Option<String>,
     /// 根据 AccessKey Secret 和 Policy 计算出的签名信息。调用 OSS API 时，OSS 验证该签名信息，从而确认请求的合法性。
     #[serde(rename = "Signature")]
-    #[serde(default)]
-    pub signature: String,
+    pub signature: Option<String>,
     /// Host 地址。
     #[serde(rename = "Host")]
-    #[serde(default)]
-    pub host: String,
+    pub host: Option<String>,
     /// 过期时间戳，单位：秒。
     #[serde(rename = "ExpireTime")]
-    #[serde(default)]
-    pub expire_time: String,
+    pub expire_time: Option<String>,
 }
 
 /// 短链详情。
@@ -7903,18 +7733,15 @@ pub struct InfoResponseModel {
 pub struct AddShortUrlResponseData {
     /// 原始链接地址。
     #[serde(rename = "SourceUrl")]
-    #[serde(default)]
-    pub source_url: String,
+    pub source_url: Option<String>,
     /// 短链服务使用失效时间。
     ///
     /// > **ExpireDate**值为整点时间。
     #[serde(rename = "ExpireDate")]
-    #[serde(default)]
-    pub expire_date: String,
+    pub expire_date: Option<String>,
     /// 生成的短链服务地址。
     #[serde(rename = "ShortUrl")]
-    #[serde(default)]
-    pub short_url: String,
+    pub short_url: Option<String>,
 }
 
 /// 短链详情。
@@ -7923,12 +7750,10 @@ pub struct AddShortUrlResponseData {
 pub struct QueryShortUrlResponseData {
     /// 短链使用的UV数据。
     #[serde(rename = "UniqueVisitorCount")]
-    #[serde(default)]
-    pub unique_visitor_count: String,
+    pub unique_visitor_count: Option<String>,
     /// 原始链接地址。
     #[serde(rename = "SourceUrl")]
-    #[serde(default)]
-    pub source_url: String,
+    pub source_url: Option<String>,
     /// 短链状态。取值：
     ///
     /// - **expired**：失效。
@@ -7936,28 +7761,22 @@ pub struct QueryShortUrlResponseData {
     /// - **audit**：审核中。
     /// - **reject**：审核拒绝。
     #[serde(rename = "ShortUrlStatus")]
-    #[serde(default)]
-    pub short_url_status: String,
+    pub short_url_status: Option<String>,
     /// 短链使用的PV数据。
     #[serde(rename = "PageViewCount")]
-    #[serde(default)]
-    pub page_view_count: String,
+    pub page_view_count: Option<String>,
     /// 短链失效时间。
     #[serde(rename = "ExpireDate")]
-    #[serde(default)]
-    pub expire_date: String,
+    pub expire_date: Option<String>,
     /// 短链服务名称。
     #[serde(rename = "ShortUrlName")]
-    #[serde(default)]
-    pub short_url_name: String,
+    pub short_url_name: Option<String>,
     /// 短链创建时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 生成的短链服务地址。
     #[serde(rename = "ShortUrl")]
-    #[serde(default)]
-    pub short_url: String,
+    pub short_url: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
@@ -7988,20 +7807,16 @@ impl crate::FlatSerialize for ListTagResourcesTag {
 pub struct TagResource {
     /// 资源类型。
     #[serde(rename = "ResourceType")]
-    #[serde(default)]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
     /// 标签值。
     #[serde(rename = "TagValue")]
-    #[serde(default)]
-    pub tag_value: String,
+    pub tag_value: Option<String>,
     /// 短信模板Code。
     #[serde(rename = "ResourceId")]
-    #[serde(default)]
-    pub resource_id: String,
+    pub resource_id: Option<String>,
     /// 标签键。
     #[serde(rename = "TagKey")]
-    #[serde(default)]
-    pub tag_key: String,
+    pub tag_key: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -8010,6 +7825,7 @@ pub struct ResponseTagResources {
     /// 标签资源。
     #[serde(rename = "TagResource")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tag_resource: Vec<TagResource>,
 }
 
@@ -8082,23 +7898,19 @@ pub struct SubmitSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 资质ID。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 支持全量查询或条件查询：
 ///   - **全量查询**：查询您当前帐户下所有短信资质，无需传参。默认全量查询。
@@ -8114,23 +7926,19 @@ pub struct QuerySmsQualificationRecordResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 资质审核列表
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: QualificationRecordResponseData,
+    pub data: Option<QualificationRecordResponseData>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 本接口查询单个资质的详情（企业信息、法人信息、管理员信息）。
 /// - 如果需要查询您当前账号下所有资质信息，或需要查询审核详情，请调用[查询资质列表](~~QuerySmsQualificationRecord~~)。
@@ -8141,23 +7949,19 @@ pub struct QuerySingleSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 单个资质详情。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: SmsQualificationResponseData,
+    pub data: Option<SmsQualificationResponseData>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 审核中的资质不支持修改，请等待审核流程结束或在短信服务控制台[撤回申请](https://dysms.console.aliyun.com/domestic/text/qualification)后再修改。
 /// - 修改后的短信资质**需要重新审核**（包括已审核通过的资质），请根据[资质材料说明](~~2384377~~)上传符合规范的材料。
@@ -8169,24 +7973,20 @@ pub struct UpdateSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 资质ID。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// ><warning>资质删除后不能恢复，也无法在后续申请签名时选用，请谨慎操作。></warning>
 /// - 审核中的资质不支持修改或删除，您可以在短信服务[控制台](https://dysms.console.aliyun.com/domestic/text/qualification)撤回申请后操作。
@@ -8198,26 +7998,22 @@ pub struct DeleteSmsQualificationResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 是否删除成功。取值：
     ///
     /// - **true**：成功。
     /// - **false**：失败。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: bool,
+    pub data: Option<bool>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 接收到手机验证码后，请传入[申请短信资质](~~SubmitSmsQualification~~)/[修改短信资质](~~UpdateSmsQualification~~)接口的`CertifyCode`参数中。
 /// - 您可以通过[ValidPhoneCode](~~ValidPhoneCode~~)接口校验短信验证码是否准确。
@@ -8228,24 +8024,20 @@ pub struct RequiredPhoneCodeResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 本数据无返回，可忽略。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 请先调用[获取手机验证码](~~RequiredPhoneCode~~)接口，阿里云将发送短信验证码至您填写的手机号码。
 /// - 本接口不影响短信资质申请流程，仅供验证短信验证码使用。实际申请时，请在[申请短信资质](~~SubmitSmsQualification~~)接口中的`CertifyCode`参数传入验证码。
@@ -8255,26 +8047,22 @@ pub struct ValidPhoneCodeResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 是否验证成功。取值：
     ///
     /// - **true**：验证成功。
     /// - **false**：验证失败。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: bool,
+    pub data: Option<bool>,
     /// 调用接口是否成功。取值：
     ///
     /// - true：调用成功。
     /// - false：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 请您在使用前阅读[授权书规范](~~56741~~)，下载[授权委托书模板](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250414/bvpcmo/%E6%8E%88%E6%9D%83%E5%A7%94%E6%89%98%E4%B9%A6%E6%A8%A1%E7%89%88.doc)后，根据规范完成填写并盖章后上传。
 /// - 您创建的授权委托书可在后续申请短信资质/申请短信签名时使用，如果您的资质/签名涉及他用，则必须创建授权委托书并提交。
@@ -8285,23 +8073,19 @@ pub struct CreateSmsAuthorizationLetterResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 委托授权书ID。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 支持全量查询或条件查询：
 ///   - **全量查询**：查询您当前帐户下所有授权委托书信息，无需传参。默认全量查询。
@@ -8314,12 +8098,10 @@ pub struct QuerySmsAuthorizationLetterResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 委托授权书信息。
     #[serde(rename = "Data")]
     #[serde(default)]
@@ -8329,8 +8111,7 @@ pub struct QuerySmsAuthorizationLetterResponse {
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 ///
@@ -8346,18 +8127,15 @@ pub struct CreateSmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
 }
 /// - 仅可查询**首次创建**的签名资料或者**最新审核通过**的资料。
 ///
@@ -8376,12 +8154,10 @@ pub struct GetSmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
     /// 签名审核状态。取值：
     ///
     /// - **0**：审核中。
@@ -8389,38 +8165,31 @@ pub struct GetSmsSignResponse {
     /// - **2**：审核失败，请在返回参数`AuditInfo.RejectInfo`中查看审核失败原因。
     /// - **10**：取消审核。
     #[serde(rename = "SignStatus")]
-    #[serde(default)]
-    pub sign_status: i64,
+    pub sign_status: Option<i64>,
     /// 短信签名的创建日期和时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
     /// 资质ID。申请签名时关联的资质ID。
     #[serde(rename = "QualificationId")]
-    #[serde(default)]
-    pub qualification_id: i64,
+    pub qualification_id: Option<i64>,
     /// 短信签名场景说明，长度不超过200个字符。
     #[serde(rename = "Remark")]
-    #[serde(default)]
-    pub remark: String,
+    pub remark: Option<String>,
     /// 审核信息。
     #[serde(rename = "AuditInfo")]
-    #[serde(default)]
-    pub audit_info: SignResponseAuditInfo,
+    pub audit_info: Option<SignResponseAuditInfo>,
     /// 更多资料信息，补充上传业务证明文件或业务截图文件列表。
     #[serde(rename = "FileUrlList")]
     #[serde(default)]
     pub file_url_list: Vec<String>,
     /// 短信签名Code。
     #[serde(rename = "SignCode")]
-    #[serde(default)]
-    pub sign_code: String,
+    pub sign_code: Option<String>,
     /// 签名标识。取值：
     ///
     /// - 2：用户自定义创建签名。
@@ -8428,24 +8197,20 @@ pub struct GetSmsSignResponse {
     /// - 4：测试签名。
     /// - 5：试用签名。
     #[serde(rename = "SignTag")]
-    #[serde(default)]
-    pub sign_tag: String,
+    pub sign_tag: Option<String>,
     /// 应用场景内容。
     #[serde(rename = "ApplyScene")]
-    #[serde(default)]
-    pub apply_scene: String,
+    pub apply_scene: Option<String>,
     /// 签名为自用或他用。
     ///
     /// - false：自用（默认值）。
     ///
     /// - true：他用。
     #[serde(rename = "ThirdParty")]
-    #[serde(default)]
-    pub third_party: bool,
+    pub third_party: Option<bool>,
     /// 签名使用场景。
     #[serde(rename = "SignUsage")]
-    #[serde(default)]
-    pub sign_usage: String,
+    pub sign_usage: Option<String>,
     /// **已废弃，请使用`SignIspRegisterDetailList`查看各运营商实名报备结果。**
     ///
     /// 签名实名制报备结果。取值：
@@ -8456,30 +8221,25 @@ pub struct GetSmsSignResponse {
     ///
     /// 建议您单击查看[更多签名实名制报备内容及建议操作](~~2873145~~)。
     #[serde(rename = "RegisterResult")]
-    #[serde(default)]
-    pub register_result: i32,
+    pub register_result: Option<i32>,
     /// 委托授权书ID。
     #[serde(rename = "AuthorizationLetterId")]
-    #[serde(default)]
-    pub authorization_letter_id: i64,
+    pub authorization_letter_id: Option<i64>,
     /// 委托授权书审核状态。取值：
     /// - true：审核通过。
     /// - false：审核未通过（包含审核通过外的其他所有状态）。
     #[serde(rename = "AuthorizationLetterAuditPass")]
-    #[serde(default)]
-    pub authorization_letter_audit_pass: bool,
+    pub authorization_letter_audit_pass: Option<bool>,
     /// 运营商报备状态列表。获取此参数返回数据需要[更新SDK](https://api.aliyun.com/api-tools/sdk/Dysmsapi?version=2017-05-25&language=java-tea&tab=primer-doc)至4.1.2版本或以上。
     #[serde(rename = "SignIspRegisterDetailList")]
     #[serde(default)]
     pub sign_isp_register_detail_list: Vec<DetailList>,
     /// 商标实体id。
     #[serde(rename = "TrademarkId")]
-    #[serde(default)]
-    pub trademark_id: i64,
+    pub trademark_id: Option<i64>,
     /// APP-ICP备案实体id。
     #[serde(rename = "AppIcpRecordId")]
-    #[serde(default)]
-    pub app_icp_record_id: i64,
+    pub app_icp_record_id: Option<i64>,
 }
 /// 本接口可以查询您当前账号下**首次创建**的签名资料或者**最新审核通过**的签名详情。如果您需要查询应用场景内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsSign](~~GetSmsSign~~)接口通过签名名称查询单个签名审核详情。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8488,24 +8248,20 @@ pub struct QuerySmsSignListResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 结果列表。
     #[serde(rename = "SmsSignList")]
     #[serde(default)]
     pub sms_sign_list: Vec<SignList>,
     /// 签名总数。
     #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     /// 当前页码。默认取值为**1**。
     #[serde(rename = "CurrentPage")]
-    #[serde(default)]
-    pub current_page: i32,
+    pub current_page: Option<i32>,
     /// 每页显示的签名个数。默认取值为**10**，取值范围：**1~50**。
     #[serde(rename = "PageSize")]
-    #[serde(default)]
-    pub page_size: i32,
+    pub page_size: Option<i32>,
 }
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 支持修改**未通过审核**和**已经审核通过**的签名，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后重新提交审核。
@@ -8517,18 +8273,15 @@ pub struct UpdateSmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 已修改的签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8537,12 +8290,10 @@ pub struct DeleteSmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 已删除的签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ChangeSignatureQualificationResponse {
@@ -8550,23 +8301,19 @@ pub struct ChangeSignatureQualificationResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 返回数据结构。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: SignatureQualificationResponseData,
+    pub data: Option<SignatureQualificationResponseData>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8575,12 +8322,10 @@ pub struct AddSmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8589,12 +8334,10 @@ pub struct ModifySmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 签名名称。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8603,8 +8346,7 @@ pub struct QuerySmsSignResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 签名审核状态。取值：
     ///
     /// - **0**：审核中。
@@ -8612,23 +8354,19 @@ pub struct QuerySmsSignResponse {
     /// - **2**：审核失败，请在返回参数Reason中查看审核失败原因。
     /// - **10**：取消审核。
     #[serde(rename = "SignStatus")]
-    #[serde(default)]
-    pub sign_status: i32,
+    pub sign_status: Option<i32>,
     /// 短信签名的创建日期和时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 审核备注。
     ///
     /// - 如果审核状态为**审核通过**或**审核中**，参数Reason显示为“无审核备注”。
     /// - 如果审核状态为**审核未通过**，参数Reason显示审核的具体原因。
     #[serde(rename = "Reason")]
-    #[serde(default)]
-    pub reason: String,
+    pub reason: Option<String>,
     /// 短信签名。
     #[serde(rename = "SignName")]
-    #[serde(default)]
-    pub sign_name: String,
+    pub sign_name: Option<String>,
 }
 /// 商标应在国家知识产权局商标局-中国商标网中可查，且商标所有方与企业名称一致。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8637,24 +8375,20 @@ pub struct CreateSmsTrademarkResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 商标id
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 接口调用是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// 传入商标id列表，返回商标详情。
 ///
@@ -8665,12 +8399,10 @@ pub struct QuerySmsTrademarkResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 商标详情列表。
     #[serde(rename = "Data")]
     #[serde(default)]
@@ -8680,8 +8412,7 @@ pub struct QuerySmsTrademarkResponse {
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// 签名来源选择已上线APP，则需要上传ICP备案截图。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8690,24 +8421,20 @@ pub struct CreateSmsAppIcpRecordResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// APP-ICP备案实体ID。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**
     ///
     /// - **false**
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// 传入ICP备案id列表，返回ICP备案详情。
 ///
@@ -8718,12 +8445,10 @@ pub struct QuerySmsAppIcpRecordResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// APP-ICP备案实体详情列表。
     #[serde(rename = "Data")]
     #[serde(default)]
@@ -8734,8 +8459,7 @@ pub struct QuerySmsAppIcpRecordResponse {
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 ///
@@ -8754,24 +8478,20 @@ pub struct CreateSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID。是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信模板名称。
     #[serde(rename = "TemplateName")]
-    #[serde(default)]
-    pub template_name: String,
+    pub template_name: Option<String>,
     /// 短信模板Code。
     ///
     /// 提交模板申请后，您可以使用短信模板Code，通过[GetSmsTemplate](~~2807433~~)接口查询模板审核详情。也可以[配置回执消息](~~101508~~)，通过[TemplateSmsReport](~~120999~~)获取模板的审核状态消息。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
 }
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 审核时间：一般情况下，模板提交后，阿里云预计在2个小时内审核完成（审核工作时间：周一至周日9:00~21:00，法定节假日顺延）。
@@ -8785,20 +8505,16 @@ pub struct GetSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信模板名称。
     #[serde(rename = "TemplateName")]
-    #[serde(default)]
-    pub template_name: String,
+    pub template_name: Option<String>,
     /// 短信模板Code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 短信模板内容。
     #[serde(rename = "TemplateContent")]
-    #[serde(default)]
-    pub template_content: String,
+    pub template_content: Option<String>,
     /// 短信类型。取值：
     ///
     /// - **0**：验证码。
@@ -8808,8 +8524,7 @@ pub struct GetSmsTemplateResponse {
     ///
     /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
     #[serde(rename = "TemplateType")]
-    #[serde(default)]
-    pub template_type: String,
+    pub template_type: Option<String>,
     /// 模板审核状态。返回值：
     ///
     /// - **0**：审核中。
@@ -8817,12 +8532,10 @@ pub struct GetSmsTemplateResponse {
     /// - **2**：未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ)，调用[UpdateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmstemplate?spm)接口或在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面修改短信模板。
     /// - **10**：取消审核。
     #[serde(rename = "TemplateStatus")]
-    #[serde(default)]
-    pub template_status: String,
+    pub template_status: Option<String>,
     /// 申请模板时，关联的短信签名。
     #[serde(rename = "RelatedSignName")]
-    #[serde(default)]
-    pub related_sign_name: String,
+    pub related_sign_name: Option<String>,
     /// 模板标识。取值：
     ///
     /// - 2：用户自定义创建模板。
@@ -8831,49 +8544,39 @@ pub struct GetSmsTemplateResponse {
     ///
     /// - 4：测试模板。
     #[serde(rename = "TemplateTag")]
-    #[serde(default)]
-    pub template_tag: i32,
+    pub template_tag: Option<i32>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
     /// 模板变量规则。
     ///
     /// 模板变量规则详情，请参见[示例文档](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example)。
     #[serde(rename = "VariableAttribute")]
-    #[serde(default)]
-    pub variable_attribute: String,
+    pub variable_attribute: Option<String>,
     /// 短信模板申请说明，是模板审核的参考信息之一。
     #[serde(rename = "Remark")]
-    #[serde(default)]
-    pub remark: String,
+    pub remark: Option<String>,
     /// 创建短信模板的时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 审核信息。
     #[serde(rename = "AuditInfo")]
-    #[serde(default)]
-    pub audit_info: TemplateResponseAuditInfo,
+    pub audit_info: Option<TemplateResponseAuditInfo>,
     #[serde(rename = "FileUrlList")]
-    #[serde(default)]
-    pub file_url_list: ResponseFileUrlList,
+    pub file_url_list: Option<ResponseFileUrlList>,
     #[serde(rename = "MoreDataFileUrlList")]
-    #[serde(default)]
-    pub more_data_file_url_list: DataFileUrlList,
+    pub more_data_file_url_list: Option<DataFileUrlList>,
     /// 国际/港澳台模板类型。当**TemplateType**参数返回值为**3**时，此参数取值：
     /// - **0**：短信通知。
     /// - **1**：推广短信。
     /// - **2**：验证码。
     #[serde(rename = "IntlType")]
-    #[serde(default)]
-    pub intl_type: i32,
+    pub intl_type: Option<i32>,
     /// 应用场景内容。
     #[serde(rename = "ApplyScene")]
-    #[serde(default)]
-    pub apply_scene: String,
+    pub apply_scene: Option<String>,
     /// 各运营商审核状态，仅数字短信会返回该参数。
     ///
     ///
@@ -8895,8 +8598,7 @@ pub struct GetSmsTemplateResponse {
     ///
     ///  - 15：已失效。
     #[serde(rename = "VendorAuditStatus")]
-    #[serde(default)]
-    pub vendor_audit_status: crate::OpenObject,
+    pub vendor_audit_status: Option<crate::OpenObject>,
 }
 /// - 本接口用于查询您当前账号下所有模板的模板详情。如果您需要查询模板变量内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsTemplate](~~GetSmsTemplate~~)接口通过模板Code查询单个模板审核详情。
 /// - 您也可登录短信服务控制台[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页查看您当前账号下所有模板的模板详情。
@@ -8906,24 +8608,20 @@ pub struct QuerySmsTemplateListResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 结果列表。
     #[serde(rename = "SmsTemplateList")]
     #[serde(default)]
     pub sms_template_list: Vec<TemplateList>,
     /// 本次查询到的模板总数。
     #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     /// 当前页码。默认取值为**1**。
     #[serde(rename = "CurrentPage")]
-    #[serde(default)]
-    pub current_page: i32,
+    pub current_page: Option<i32>,
     /// 每页显示的模板个数。取值范围：**1~50**。
     #[serde(rename = "PageSize")]
-    #[serde(default)]
-    pub page_size: i32,
+    pub page_size: Option<i32>,
 }
 /// - 新接口和原接口变更的公告详情请参见[关于短信服务更新签名&模板接口的公告](~~2806975~~)。
 /// - 仅支持修改未通过审核的模板，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后重新提交审核。
@@ -8938,24 +8636,20 @@ pub struct UpdateSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信模板名称。
     #[serde(rename = "TemplateName")]
-    #[serde(default)]
-    pub template_name: String,
+    pub template_name: Option<String>,
     /// 短信模板Code。
     ///
     /// 提交模板修改后，您可以使用短信模板Code，通过[GetSmsTemplate](~~GetSmsTemplate~~)接口查询模板审核详情。也可以[配置回执消息](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1)，通过[TemplateSmsReport](~~120999~~)获取模板的审核状态消息。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 工单号。
     ///
     /// 审核人员查询审核时会用到此参数。您需要审核加急时需要提供此工单号。
     #[serde(rename = "OrderId")]
-    #[serde(default)]
-    pub order_id: String,
+    pub order_id: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8964,12 +8658,10 @@ pub struct DeleteSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 已删除的模板Code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8978,14 +8670,12 @@ pub struct AddSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信模板Code。
     ///
     /// 提交模板申请后，您可以使用短信模板Code，通过[QuerySmsTemplate](~~419289~~)接口查询模板审核详情。也可以[配置回执消息](~~101508~~)，通过[TemplateSmsReport](~~120999~~)获取模板的审核状态消息。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8994,12 +8684,10 @@ pub struct ModifySmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 已修改的模板Code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
 }
 /// - 根据工信部规定与运营商[相关要求](~~2806975~~)，阿里云进行了模板相关API的功能改造。请您使用新接口[GetSmsTemplate-查询模板审核详情](~~2807433~~)，新接口查询结果返回参数中将比原有接口返回更多的模板详情信息。
 ///
@@ -9014,16 +8702,13 @@ pub struct QuerySmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 短信模板内容。
     #[serde(rename = "TemplateContent")]
-    #[serde(default)]
-    pub template_content: String,
+    pub template_content: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信模板Code。
     #[serde(rename = "TemplateCode")]
-    #[serde(default)]
-    pub template_code: String,
+    pub template_code: Option<String>,
     /// 模板审核状态。返回值：
     ///
     /// - **0**：审核中。
@@ -9031,8 +8716,7 @@ pub struct QuerySmsTemplateResponse {
     /// - **2**：未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](~~65990~~)，调用[ModifySmsTemplate](~~419287~~)接口或在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面修改短信模板。
     /// - **10**：取消审核。
     #[serde(rename = "TemplateStatus")]
-    #[serde(default)]
-    pub template_status: i32,
+    pub template_status: Option<i32>,
     /// 短信类型。返回值：
     ///
     /// - **0**：验证码。
@@ -9040,23 +8724,19 @@ pub struct QuerySmsTemplateResponse {
     /// - **2**：推广短信。
     /// - **3**：国际/港澳台消息。
     #[serde(rename = "TemplateType")]
-    #[serde(default)]
-    pub template_type: i32,
+    pub template_type: Option<i32>,
     /// 短信模板名称。
     #[serde(rename = "TemplateName")]
-    #[serde(default)]
-    pub template_name: String,
+    pub template_name: Option<String>,
     /// 创建短信模板的时间。
     #[serde(rename = "CreateDate")]
-    #[serde(default)]
-    pub create_date: String,
+    pub create_date: Option<String>,
     /// 模板审核备注。
     ///
     /// - 如果审核状态为**通过审核**或**审核中**，Reason返回“无审批备注”。
     /// - 如果审核状态为**未通过审核**，Reason返回未审核通过的具体原因。
     #[serde(rename = "Reason")]
-    #[serde(default)]
-    pub reason: String,
+    pub reason: Option<String>,
 }
 /// 本接口主要用于向单个手机号发送短信，也支持向多个手机号（单次最多支持 1000 个手机号）发送相同签名、相同模板变量的短信，群发存在一定延迟。如果您需要向多个手机号发送不同签名、不同模板变量的短信，请使用[SendBatchSms](~~419274~~)接口（单次最多支持100个手机号）。
 ///
@@ -9075,12 +8755,10 @@ pub struct SendSmsResponse {
     ///
     /// 可根据发送回执ID在接口[QuerySendDetails](~~QuerySendDetails~~)中查询具体的发送状态。
     #[serde(rename = "BizId")]
-    #[serde(default)]
-    pub biz_id: String,
+    pub biz_id: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 /// ### 基本信息
 /// - 本接口主要用于向多个手机号发送短信，支持发送不同签名、同一模板、不同模板变量的短信，单次调用最多支持 100 个手机号。
@@ -9104,12 +8782,10 @@ pub struct SendBatchSmsResponse {
     /// - 根据该ID在接口[QuerySendDetails](~~102352~~)中查询具体的发送状态。
     /// - 登录[短信服务控制台](https://dysms.console.aliyun.com/dysms.htm#/overview)，在**业务统计**-**发送记录查询**页面查看发送详情。
     #[serde(rename = "BizId")]
-    #[serde(default)]
-    pub biz_id: String,
+    pub biz_id: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 /// - 本接口主要用于查询指定日期下，向某个手机号码发送短信的记录详情。您也可以传入发送流水号（BizId），查询该号码的指定发送记录。
 ///
@@ -9123,15 +8799,12 @@ pub struct QuerySendDetailsResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短信发送总条数。
     #[serde(rename = "TotalCount")]
-    #[serde(default)]
-    pub total_count: i64,
+    pub total_count: Option<i64>,
     #[serde(rename = "SmsSendDetailDTOs")]
-    #[serde(default)]
-    pub sms_send_detail_dtos: DetailDTOs,
+    pub sms_send_detail_dtos: Option<DetailDTOs>,
 }
 /// - 如果选择的时间范围较长的话，可以分页查看。指定每页显示的短信详情数量和查看的页数，即可分页查看发送记录。
 ///
@@ -9142,12 +8815,10 @@ pub struct QuerySendStatisticsResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: StatisticsResponseData,
+    pub data: Option<StatisticsResponseData>,
 }
 /// - 您在调用卡片短信相关API接口前，首先需要开通卡片短信功能，目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
 ///
@@ -9161,20 +8832,17 @@ pub struct GetOSSInfoForCardTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: ResponseData,
+    pub data: Option<ResponseData>,
 }
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
@@ -9184,20 +8852,17 @@ pub struct GetMediaResourceIdResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: IdResponseData,
+    pub data: Option<IdResponseData>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9206,19 +8871,16 @@ pub struct CreateCardSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回对象。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: CreateCardSmsTemplateResponseData,
+    pub data: Option<CreateCardSmsTemplateResponseData>,
 }
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
@@ -9231,20 +8893,17 @@ pub struct QueryCardSmsTemplateResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 接口调用是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: QueryCardSmsTemplateResponseData,
+    pub data: Option<QueryCardSmsTemplateResponseData>,
 }
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
@@ -9257,19 +8916,16 @@ pub struct CheckMobilesCardSupportResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 接口调用是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: CheckMobilesCardSupportResponseData,
+    pub data: Option<CheckMobilesCardSupportResponseData>,
 }
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
@@ -9279,20 +8935,17 @@ pub struct QueryMobilesCardSupportResponse {
     pub code_message: crate::CodeMessage,
     /// 阿里云为该请求生成的唯一标识符。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: QueryMobilesCardSupportResponseData,
+    pub data: Option<QueryMobilesCardSupportResponseData>,
 }
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213273d4Xe6UEu#section-81n-72q-ybm)。
 ///
@@ -9304,19 +8957,16 @@ pub struct GetCardSmsLinkResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 接口调用是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: LinkResponseData,
+    pub data: Option<LinkResponseData>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetCardSmsDetailsResponse {
@@ -9324,20 +8974,17 @@ pub struct GetCardSmsDetailsResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息；只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 卡片短信发送结果。
     #[serde(rename = "CardSendDetailDTO")]
-    #[serde(default)]
-    pub card_send_detail_dto: DetailDTO,
+    pub card_send_detail_dto: Option<DetailDTO>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
@@ -9347,20 +8994,17 @@ pub struct QueryCardSmsTemplateReportResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: ReportResponseData,
+    pub data: Option<ReportResponseData>,
 }
 /// - 发送卡片短信为计费接口，卡片短信发送失败或渲染失败时不计费，详情请参见[多媒体短信定价](~~437951~~)。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213219fcSn2Ykj#section-81n-72q-ybm)。
@@ -9376,20 +9020,17 @@ pub struct SendCardSmsResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: SendCardSmsResponseData,
+    pub data: Option<SendCardSmsResponseData>,
 }
 /// - 发送卡片短信为计费接口，卡片短信发送失败或渲染失败时不计费，详情请参见[多媒体短信定价](~~437951~~)。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或联系[阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html?spm=a2c4g.11186623.0.0.213219fcSn2Ykj#section-81n-72q-ybm)。
@@ -9406,20 +9047,17 @@ pub struct SendBatchCardSmsResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
     /// 返回数据。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: BatchCardSmsResponseData,
+    pub data: Option<BatchCardSmsResponseData>,
 }
 /// - 您在申请资质/签名时，若用途为他用或涉及第三方，需要提供[授权委托书](~~56741~~)。
 /// - 请使用本接口获取OSS资源配置信息后，通过OSS上传相关资质材料。具体操作，可参见[通过OSS上传文件](~~2833114~~)。
@@ -9430,24 +9068,20 @@ pub struct GetQualificationOssInfoResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有RAM校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// OSS配置信息。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: InfoResponseData,
+    pub data: Option<InfoResponseData>,
     /// 调用接口是否成功。取值：
     ///
     /// - **true**：调用成功。
     ///
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// - 您在创建签名或模板时，可上传带有链接的登录页面、后台页面截图、软著、协议补充等资料。有助于审核人员了解您的业务详情。如果是多个资料，可拼成一个文件，支持png、jpg、jpeg、doc、docx、pdf格式。
 ///
@@ -9458,19 +9092,16 @@ pub struct GetOSSInfoForUploadFileResponse {
     pub code_message: crate::CodeMessage,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 返回结果。
     #[serde(rename = "Model")]
-    #[serde(default)]
-    pub model: ResponseModel,
+    pub model: Option<ResponseModel>,
     /// 接口调用是否成功。取值：
     ///
     /// - **true**：调用成功。
     /// - **false**：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetSmsOcrOssInfoResponse {
@@ -9478,24 +9109,20 @@ pub struct GetSmsOcrOssInfoResponse {
     pub code_message: crate::CodeMessage,
     /// 访问被拒绝详细信息，只有 RAM 校验失败才会返回此字段。
     #[serde(rename = "AccessDeniedDetail")]
-    #[serde(default)]
-    pub access_denied_detail: String,
+    pub access_denied_detail: Option<String>,
     /// 本次调用请求的 ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// OSS配置信息。
     #[serde(rename = "Model")]
-    #[serde(default)]
-    pub model: InfoResponseModel,
+    pub model: Option<InfoResponseModel>,
     /// 调用接口是否成功。取值：
     ///
     /// - true：调用成功。
     ///
     /// - false：调用失败。
     #[serde(rename = "Success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// 指标说明：
 ///
@@ -9512,8 +9139,7 @@ pub struct SmsConversionIntlResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 /// 指标说明：转化率=OTP 转化量/OTP 发送量。
 /// - OTP发送量：验证码发送量。
@@ -9527,8 +9153,7 @@ pub struct ConversionDataIntlResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9537,12 +9162,10 @@ pub struct AddShortUrlResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短链详情。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: AddShortUrlResponseData,
+    pub data: Option<AddShortUrlResponseData>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9551,8 +9174,7 @@ pub struct DeleteShortUrlResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9561,12 +9183,10 @@ pub struct QueryShortUrlResponse {
     pub code_message: crate::CodeMessage,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     /// 短链详情。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: QueryShortUrlResponseData,
+    pub data: Option<QueryShortUrlResponseData>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9575,15 +9195,12 @@ pub struct ListTagResourcesResponse {
     pub code_message: crate::CodeMessage,
     /// 查询下一页标签的Token。
     #[serde(rename = "NextToken")]
-    #[serde(default)]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
     #[serde(rename = "TagResources")]
-    #[serde(default)]
-    pub tag_resources: ResponseTagResources,
+    pub tag_resources: Option<ResponseTagResources>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9595,12 +9212,10 @@ pub struct TagResourcesResponse {
     /// - **true**：成功。
     /// - **false**：失败。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -9613,12 +9228,10 @@ pub struct UntagResourcesResponse {
     ///
     /// - **false**：失败。
     #[serde(rename = "Data")]
-    #[serde(default)]
-    pub data: String,
+    pub data: Option<String>,
     /// 请求ID。
     #[serde(rename = "RequestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 
 crate::impl_to_code_message!(

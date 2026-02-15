@@ -5758,14 +5758,11 @@ pub struct ChangeResourceGroupInput {
 #[serde(default)]
 pub struct ChangeResourceGroupOutput {
     #[serde(rename = "ResourceId")]
-    #[serde(default)]
-    pub resource_id: String,
+    pub resource_id: Option<String>,
     #[serde(rename = "NewResourceGroupId")]
-    #[serde(default)]
-    pub new_resource_group_id: String,
+    pub new_resource_group_id: Option<String>,
     #[serde(rename = "OldResourceGroupId")]
-    #[serde(default)]
-    pub old_resource_group_id: String,
+    pub old_resource_group_id: Option<String>,
 }
 
 /// 函数并发配置
@@ -6344,8 +6341,8 @@ pub struct VPCConfig {
     pub vpc_id: Option<String>,
     /// 授予函数计算访问用户VPC所需权限的RAM角色
     #[serde(rename = "role")]
-    #[serde(default)]
-    pub role: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub role: Option<String>,
 }
 
 /// 标签
@@ -6366,14 +6363,14 @@ pub struct Tag {
 #[serde(default)]
 pub struct PolarFsMountConfig {
     #[serde(rename = "instanceId")]
-    #[serde(default)]
-    pub instance_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub instance_id: Option<String>,
     #[serde(rename = "mountDir")]
-    #[serde(default)]
-    pub mount_dir: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mount_dir: Option<String>,
     #[serde(rename = "remoteDir")]
-    #[serde(default)]
-    pub remote_dir: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub remote_dir: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -6381,12 +6378,12 @@ pub struct PolarFsMountConfig {
 pub struct PolarFsConfig {
     /// 群组ID。
     #[serde(rename = "groupId")]
-    #[serde(default)]
-    pub group_id: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub group_id: Option<i32>,
     /// 账号ID。
     #[serde(rename = "userId")]
-    #[serde(default)]
-    pub user_id: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<i32>,
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
     #[serde(default)]
@@ -6491,8 +6488,8 @@ pub struct CreateFunctionInput {
     pub vpc_config: Option<VPCConfig>,
     /// 标签列表
     #[serde(rename = "tags")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<Tag>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -6690,12 +6687,10 @@ pub struct CustomDomain {
 pub struct DescribeRegionsOutputRegionsRegionItem {
     /// 地域ID
     #[serde(rename = "RegionId")]
-    #[serde(default)]
-    pub region_id: String,
+    pub region_id: Option<String>,
     /// 地域名称
     #[serde(rename = "LocalName")]
-    #[serde(default)]
-    pub local_name: String,
+    pub local_name: Option<String>,
 }
 
 /// 地域信息
@@ -6705,6 +6700,7 @@ pub struct DescribeRegionsOutputRegions {
     /// 地域信息集合
     #[serde(rename = "Region")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub region: Vec<DescribeRegionsOutputRegionsRegionItem>,
 }
 
@@ -6714,60 +6710,59 @@ pub struct DescribeRegionsOutputRegions {
 pub struct DescribeRegionsOutput {
     /// 地域信息
     #[serde(rename = "Regions")]
-    #[serde(default)]
-    pub regions: DescribeRegionsOutputRegions,
+    pub regions: Option<DescribeRegionsOutputRegions>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScheduledPolicy {
     #[serde(rename = "name")]
-    #[serde(default)]
-    pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
     #[serde(rename = "startTime")]
-    #[serde(default)]
-    pub start_time: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start_time: Option<String>,
     #[serde(rename = "endTime")]
-    #[serde(default)]
-    pub end_time: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end_time: Option<String>,
     #[serde(rename = "target")]
-    #[serde(default)]
-    pub target: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub target: Option<i64>,
     #[serde(rename = "scheduleExpression")]
-    #[serde(default)]
-    pub schedule_expression: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub schedule_expression: Option<String>,
     #[serde(rename = "timeZone")]
-    #[serde(default)]
-    pub time_zone: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub time_zone: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct ScalingPolicy {
     #[serde(rename = "name")]
-    #[serde(default)]
-    pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
     #[serde(rename = "startTime")]
-    #[serde(default)]
-    pub start_time: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub start_time: Option<String>,
     #[serde(rename = "endTime")]
-    #[serde(default)]
-    pub end_time: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub end_time: Option<String>,
     #[serde(rename = "metricType")]
-    #[serde(default)]
-    pub metric_type: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub metric_type: Option<String>,
     #[serde(rename = "metricTarget")]
-    #[serde(default)]
-    pub metric_target: f32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub metric_target: Option<f32>,
     #[serde(rename = "minInstances")]
-    #[serde(default)]
-    pub min_instances: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min_instances: Option<i64>,
     #[serde(rename = "maxInstances")]
-    #[serde(default)]
-    pub max_instances: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_instances: Option<i64>,
     #[serde(rename = "timeZone")]
-    #[serde(default)]
-    pub time_zone: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub time_zone: Option<String>,
 }
 
 /// 函数配置的层信息
@@ -6786,14 +6781,11 @@ pub struct FunctionLayer {
 #[serde(default)]
 pub struct FunctionRestriction {
     #[serde(rename = "reason")]
-    #[serde(default)]
-    pub reason: String,
+    pub reason: Option<String>,
     #[serde(rename = "lastModifiedTime")]
-    #[serde(default)]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     #[serde(rename = "disable")]
-    #[serde(default)]
-    pub disable: bool,
+    pub disable: Option<bool>,
 }
 
 /// 函数配置信息。
@@ -6912,49 +6904,41 @@ pub struct Function {
     /// 标签列表
     #[serde(rename = "tags")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tags: Vec<Tag>,
     /// 是否禁止创建按量实例，功能开启后，不会创建按量实例，只能使用预留实例
     #[serde(rename = "disableOndemand")]
-    #[serde(default)]
-    pub disable_ondemand: bool,
+    pub disable_ondemand: Option<bool>,
     #[serde(rename = "invocationRestriction")]
-    #[serde(default)]
-    pub invocation_restriction: FunctionRestriction,
+    pub invocation_restriction: Option<FunctionRestriction>,
     /// 函数计算调用请求的亲和策略，如需实现 MCP SSE协议的请求亲和，可设置为 MCP_SSE。如使用Cookie亲和，可设置为 GENERATED_COOKIE。如使用 Header亲和，可设置为 HEADER_FIELD。如不设置或设置为 NONE，则无亲和效果，按函数计算系统默认调度策略路由请求。
     #[serde(rename = "sessionAffinity")]
     pub session_affinity: Option<String>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "enableLongLiving")]
-    #[serde(default)]
-    pub enable_long_living: bool,
+    pub enable_long_living: Option<bool>,
     /// 资源组 ID
     #[serde(rename = "resourceGroupId")]
-    #[serde(default)]
-    pub resource_group_id: String,
+    pub resource_group_id: Option<String>,
     /// 实例隔离模式
     #[serde(rename = "instanceIsolationMode")]
-    #[serde(default)]
-    pub instance_isolation_mode: FunctionInstanceIsolationMode,
+    pub instance_isolation_mode: Option<FunctionInstanceIsolationMode>,
     /// 当设置sessionAffinity亲和类型时，需设置相关的亲和配置。如MCP_SSE亲和需填充 MCPSSESessionAffinityConfig 配置。Cookie亲和需填充CookieSessionAffinityConfig配置，Header Field 亲和需填充HeaderFieldSessionAffinityConfig配置。
     #[serde(rename = "sessionAffinityConfig")]
-    #[serde(default)]
-    pub session_affinity_config: String,
+    pub session_affinity_config: Option<String>,
     /// 实例延迟释放时间
     #[serde(rename = "idleTimeout")]
-    #[serde(default)]
-    pub idle_timeout: i32,
+    pub idle_timeout: Option<i32>,
     /// 是否不注入 STS token，取值None/Env/Request/All
     /// None: 都注入
     /// Env: 环境变量不注入
     /// Request: 请求中不注入包括context/header
     /// All: 都不注入
     #[serde(rename = "disableInjectCredentials")]
-    #[serde(default)]
-    pub disable_inject_credentials: FunctionDisableInjectCredentials,
+    pub disable_inject_credentials: Option<FunctionDisableInjectCredentials>,
     /// PolarFs配置。配置此参数后，函数可以访问指定的PolarFs资源。
     #[serde(rename = "polarFsConfig")]
-    #[serde(default)]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 /// HTTP 触发器配置
@@ -6978,23 +6962,17 @@ pub struct InstanceInfo {
     pub instance_id: Option<String>,
     /// 实例所属函数的版本。如果是LATEST别名下的函数实例，则返回版本号为0。
     #[serde(rename = "versionId")]
-    #[serde(default)]
-    pub version_id: String,
+    pub version_id: Option<String>,
     #[serde(rename = "qualifier")]
-    #[serde(default)]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     #[serde(rename = "status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     #[serde(rename = "createdTimeMs")]
-    #[serde(default)]
-    pub created_time_ms: i64,
+    pub created_time_ms: Option<i64>,
     #[serde(rename = "destroyedTimeMs")]
-    #[serde(default)]
-    pub destroyed_time_ms: i64,
+    pub destroyed_time_ms: Option<i64>,
     #[serde(rename = "resourceType")]
-    #[serde(default)]
-    pub resource_type: String,
+    pub resource_type: Option<String>,
 }
 
 /// 代码包配置
@@ -7144,8 +7122,7 @@ pub struct ListInstancesOutput {
     #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub instances: Vec<InstanceInfo>,
     #[serde(rename = "requestId")]
-    #[serde(default)]
-    pub request_id: String,
+    pub request_id: Option<String>,
 }
 
 /// 获取指定层的版本列表。
@@ -7199,8 +7176,8 @@ pub struct ScheduledAction {
     pub target: i64,
     /// 时区。时区参数为空时，startTime、endTime和scheduleExpression的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    #[serde(default)]
-    pub time_zone: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub time_zone: Option<String>,
 }
 
 /// 指标追踪伸缩策略配置
@@ -7232,8 +7209,8 @@ pub struct TargetTrackingPolicy {
     pub start_time: Option<String>,
     /// 时区。时区参数为空时，startTime和endTime的时间需为UTC格式。
     #[serde(rename = "timeZone")]
-    #[serde(default)]
-    pub time_zone: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub time_zone: Option<String>,
 }
 
 /// 函数预留配置
@@ -7250,8 +7227,7 @@ pub struct ProvisionConfig {
     pub current_error: Option<String>,
     /// 所有指标追踪伸缩策略和定时策略失效时的默认资源个数。
     #[serde(rename = "defaultTarget")]
-    #[serde(default)]
-    pub default_target: i64,
+    pub default_target: Option<i64>,
     /// 实际资源个数。
     #[serde(rename = "current")]
     pub current: Option<i64>,
@@ -7298,48 +7274,41 @@ pub struct ListProvisionConfigsOutput {
 #[serde(default)]
 pub struct ScalingConfigStatus {
     #[serde(rename = "functionArn")]
-    #[serde(default)]
-    pub function_arn: String,
+    pub function_arn: Option<String>,
     #[serde(rename = "residentPoolId")]
-    #[serde(default)]
-    pub resident_pool_id: String,
+    pub resident_pool_id: Option<String>,
     #[serde(rename = "minInstances")]
-    #[serde(default)]
-    pub min_instances: i64,
+    pub min_instances: Option<i64>,
     #[serde(rename = "currentInstances")]
-    #[serde(default)]
-    pub current_instances: i64,
+    pub current_instances: Option<i64>,
     #[serde(rename = "currentError")]
-    #[serde(default)]
-    pub current_error: String,
+    pub current_error: Option<String>,
     #[serde(rename = "targetInstances")]
-    #[serde(default)]
-    pub target_instances: i64,
+    pub target_instances: Option<i64>,
     #[serde(rename = "enableOnDemandScaling")]
-    #[serde(default)]
-    pub enable_on_demand_scaling: bool,
+    pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "horizontalScalingPolicies")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
-    #[serde(default)]
-    pub enable_mix_mode: bool,
+    pub enable_mix_mode: Option<bool>,
     #[serde(rename = "requestDispatchPolicy")]
-    #[serde(default)]
-    pub request_dispatch_policy: String,
+    pub request_dispatch_policy: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct ListScalingConfigsOutput {
     #[serde(rename = "nextToken")]
-    #[serde(default)]
-    pub next_token: String,
+    pub next_token: Option<String>,
     #[serde(rename = "scalingConfigs")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub scaling_configs: Vec<ScalingConfigStatus>,
 }
 
@@ -7349,58 +7318,44 @@ pub struct ListScalingConfigsOutput {
 pub struct Session {
     /// 函数会话唯一标识
     #[serde(rename = "sessionId")]
-    #[serde(default)]
-    pub session_id: String,
+    pub session_id: Option<String>,
     /// Session所属函数名称
     #[serde(rename = "functionName")]
-    #[serde(default)]
-    pub function_name: String,
+    pub function_name: Option<String>,
     /// 会话亲和类型
     #[serde(rename = "sessionAffinityType")]
-    #[serde(default)]
-    pub session_affinity_type: String,
+    pub session_affinity_type: Option<String>,
     /// Session 生命周期最大值
     #[serde(rename = "sessionTTLInSeconds")]
-    #[serde(default)]
-    pub session_ttl_in_seconds: i64,
+    pub session_ttl_in_seconds: Option<i64>,
     /// Session 闲置过期时间
     #[serde(rename = "sessionIdleTimeoutInSeconds")]
-    #[serde(default)]
-    pub session_idle_timeout_in_seconds: i64,
+    pub session_idle_timeout_in_seconds: Option<i64>,
     /// Session 的创建时间
     #[serde(rename = "createdTime")]
-    #[serde(default)]
-    pub created_time: String,
+    pub created_time: Option<String>,
     /// Session上一次被更新的时间。
     #[serde(rename = "lastModifiedTime")]
-    #[serde(default)]
-    pub last_modified_time: String,
+    pub last_modified_time: Option<String>,
     /// Session 状态：Active 代表 Session 有效，Expired代表 Session已过期
     #[serde(rename = "sessionStatus")]
-    #[serde(default)]
-    pub session_status: String,
+    pub session_status: Option<String>,
     /// Session关联的函数实例ID
     #[serde(rename = "containerId")]
-    #[serde(default)]
-    pub container_id: String,
+    pub container_id: Option<String>,
     /// 客户创建 Session 时传入的 Qualifier，如未传则为默认值 LATEST
     #[serde(rename = "qualifier")]
-    #[serde(default)]
-    pub qualifier: String,
+    pub qualifier: Option<String>,
     /// NAS配置，配置后Session关联的实例可以访问指定NAS资源。
     #[serde(rename = "nasConfig")]
-    #[serde(default)]
-    pub nas_config: NASConfig,
+    pub nas_config: Option<NASConfig>,
     /// 默认值 False，表示在 SessionID 会话过期后，可携带相同SessionID继续发起请求，系统将视为新会话绑定新实例。当配置为 True，表示在 SessionID 会话过期后，不可复用 SessionID。
     #[serde(rename = "disableSessionIdReuse")]
-    #[serde(default)]
-    pub disable_session_id_reuse: bool,
+    pub disable_session_id_reuse: Option<bool>,
     #[serde(rename = "ossMountConfig")]
-    #[serde(default)]
-    pub oss_mount_config: OSSMountConfig,
+    pub oss_mount_config: Option<OSSMountConfig>,
     #[serde(rename = "polarFsConfig")]
-    #[serde(default)]
-    pub polar_fs_config: PolarFsConfig,
+    pub polar_fs_config: Option<PolarFsConfig>,
 }
 
 /// 函数会话列表
@@ -7409,11 +7364,11 @@ pub struct Session {
 pub struct ListSessionsOutput {
     /// 下一次查询会话列表的起始位置。
     #[serde(rename = "nextToken")]
-    #[serde(default)]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// 会话列表信息
     #[serde(rename = "sessions")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub sessions: Vec<Session>,
 }
 
@@ -7652,11 +7607,11 @@ pub struct PutScalingConfigInput {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_on_demand_scaling: Option<bool>,
     #[serde(rename = "scheduledPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub scheduled_policies: Option<Vec<ScheduledPolicy>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub scheduled_policies: Vec<ScheduledPolicy>,
     #[serde(rename = "horizontalScalingPolicies")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub horizontal_scaling_policies: Option<Vec<ScalingPolicy>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub horizontal_scaling_policies: Vec<ScalingPolicy>,
     #[serde(rename = "enableMixMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enable_mix_mode: Option<bool>,
@@ -8299,8 +8254,7 @@ pub struct EnableFunctionInvocationResponse {
     pub code_message: crate::CodeMessage,
     /// 是否成功允许调用
     #[serde(rename = "success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 /// 请谨慎对生产环境的函数调用该接口，避免由于函数被禁止调用导致业务受损。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -8309,8 +8263,7 @@ pub struct DisableFunctionInvocationResponse {
     pub code_message: crate::CodeMessage,
     /// 是否成功禁止调用
     #[serde(rename = "success")]
-    #[serde(default)]
-    pub success: bool,
+    pub success: Option<bool>,
 }
 
 crate::impl_to_code_message!(

@@ -35,13 +35,15 @@ async fn test_list_buckets() {
     let result = conn.list_buckets(ListBuckets::new()).await.unwrap();
 
     println!("List buckets response:");
-    let buckets = &result.buckets.bucket;
+    let buckets = &result.buckets.unwrap().bucket;
     assert!(!buckets.is_empty());
     println!("Found {} bucket(s)", buckets.len());
     for bucket in buckets {
         println!(
             "  - {} (region: {}, created: {})",
-            bucket.name, bucket.region, bucket.creation_date
+            bucket.name.as_ref().unwrap(),
+            bucket.region.as_ref().unwrap(),
+            bucket.creation_date.as_ref().unwrap()
         );
     }
 }
@@ -66,7 +68,9 @@ async fn test_describe_regions() {
     for region in regions.iter().take(5) {
         println!(
             "  - {} (internet: {}, internal: {})",
-            region.region, region.internet_endpoint, region.internal_endpoint
+            region.region.as_ref().unwrap(),
+            region.internet_endpoint.as_ref().unwrap(),
+            region.internal_endpoint.as_ref().unwrap()
         );
     }
     if regions.len() > 5 {
@@ -109,9 +113,11 @@ async fn test_bucket_and_object_lifecycle() {
         .unwrap();
     let bucket_found = list_result
         .buckets
+        .as_ref()
+        .unwrap()
         .bucket
         .iter()
-        .any(|b| b.name == bucket_name);
+        .any(|b| b.name.as_ref().unwrap() == &bucket_name);
     assert!(bucket_found, "Created bucket not found in bucket list");
     println!("Bucket found in list");
 
@@ -151,7 +157,10 @@ async fn test_bucket_and_object_lifecycle() {
         .list_objects(ListObjects::new(&bucket_name))
         .await
         .expect("Failed to list objects");
-    let file_found = objects_result.contents.iter().any(|o| o.key == object_key);
+    let file_found = objects_result
+        .contents
+        .iter()
+        .any(|o| o.key.as_ref().unwrap() == object_key);
     assert!(file_found, "Uploaded file not found in object list");
     println!("File found in bucket");
 
@@ -171,7 +180,7 @@ async fn test_bucket_and_object_lifecycle() {
     let file_still_exists = objects_result_after_delete
         .contents
         .iter()
-        .any(|o| o.key == object_key);
+        .any(|o| o.key.as_ref().unwrap() == object_key);
     assert!(!file_still_exists, "File still exists after deletion");
     println!("File verified as deleted");
 
@@ -190,9 +199,10 @@ async fn test_bucket_and_object_lifecycle() {
         .unwrap();
     let bucket_still_exists = list_result_after_delete
         .buckets
+        .unwrap()
         .bucket
         .iter()
-        .any(|b| b.name == bucket_name);
+        .any(|b| b.name.as_ref().unwrap() == &bucket_name);
     assert!(!bucket_still_exists, "Bucket still exists after deletion");
     println!("Bucket verified as deleted");
 
@@ -218,10 +228,12 @@ async fn clean_test_buckets() {
     // 2. Filter buckets that start with "ali-acs-test-"
     let test_buckets: Vec<_> = list_result
         .buckets
+        .as_ref()
+        .unwrap()
         .bucket
         .iter()
-        .filter(|b| b.name.starts_with("ali-acs-test-"))
-        .map(|b| b.name.clone())
+        .filter(|b| b.name.as_ref().unwrap().starts_with("ali-acs-test-"))
+        .map(|b| b.name.as_ref().unwrap())
         .collect();
 
     if test_buckets.is_empty() {
@@ -241,7 +253,7 @@ async fn clean_test_buckets() {
         // List all objects in the bucket
         println!("  Listing objects...");
         let objects_result = conn
-            .list_objects(ListObjects::new(&bucket_name))
+            .list_objects(ListObjects::new(bucket_name))
             .await
             .unwrap();
 
@@ -253,8 +265,8 @@ async fn clean_test_buckets() {
 
             // Delete all objects
             for object in &objects_result.contents {
-                println!("    Deleting object: {}", object.key);
-                conn.delete_object(DeleteObject::new(&bucket_name, &object.key))
+                println!("    Deleting object: {}", object.key.as_ref().unwrap());
+                conn.delete_object(DeleteObject::new(bucket_name, object.key.as_ref().unwrap()))
                     .await
                     .expect("Failed to delete object");
             }
@@ -265,7 +277,7 @@ async fn clean_test_buckets() {
 
         // Delete the bucket
         println!("  Deleting bucket...");
-        conn.delete_bucket(DeleteBucket::new(&bucket_name))
+        conn.delete_bucket(DeleteBucket::new(bucket_name))
             .await
             .expect("Failed to delete bucket");
         println!("  Bucket deleted successfully.");

@@ -23,11 +23,16 @@ async fn test_describe_regions_english() {
 
     let response = conn.describe_regions(req).await.unwrap();
     println!("DescribeRegions (English) succeeded:");
-    println!("  Number of regions: {}", response.regions.region.len());
+    println!(
+        "  Number of regions: {}",
+        response.regions.as_ref().unwrap().region.len()
+    );
     println!(
         "{:?}",
         response
             .regions
+            .as_ref()
+            .unwrap()
             .region
             .iter()
             .map(|r| &r.region_id)

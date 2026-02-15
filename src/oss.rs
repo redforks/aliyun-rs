@@ -15770,8 +15770,7 @@ impl crate::Request for ListDataLakeStorageTransferJob {
 pub struct AccessControlList {
     /// Bucket的读写权限ACL。
     #[serde(rename = "Grant")]
-    #[serde(default)]
-    pub grant: ObjectACL,
+    pub grant: Option<ObjectACL>,
 }
 
 /// 保存Bucket拥有者信息的容器。
@@ -15780,12 +15779,10 @@ pub struct AccessControlList {
 pub struct Owner {
     /// Bucket拥有者的用户ID。
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    pub id: Option<String>,
     /// Bucket拥有者的名称 （目前和ID一致）。
     #[serde(rename = "DisplayName")]
-    #[serde(default)]
-    pub display_name: String,
+    pub display_name: Option<String>,
 }
 
 /// Bucket的访问跟踪状态配置信息。
@@ -15794,8 +15791,8 @@ pub struct Owner {
 pub struct AccessMonitorConfiguration {
     /// Bucket的访问跟踪状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: AccessMonitorStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub status: Option<AccessMonitorStatus>,
 }
 
 /// 保存VPC网络来源信息的容器。
@@ -15804,8 +15801,8 @@ pub struct AccessMonitorConfiguration {
 pub struct AccessPointVpcConfiguration {
     /// 仅当NetworkOrigin取值为vpc时，需要指定VPC ID。
     #[serde(rename = "VpcId")]
-    #[serde(default)]
-    pub vpc_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vpc_id: Option<String>,
 }
 
 /// 保存单个接入点信息的容器。
@@ -15814,28 +15811,22 @@ pub struct AccessPointVpcConfiguration {
 pub struct AccessPoint {
     /// 配置接入点的Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 接入点名称。
     #[serde(rename = "AccessPointName")]
-    #[serde(default)]
-    pub access_point_name: String,
+    pub access_point_name: Option<String>,
     /// 接入点别名。
     #[serde(rename = "Alias")]
-    #[serde(default)]
-    pub alias: String,
+    pub alias: Option<String>,
     /// 接入点网络来源。
     #[serde(rename = "NetworkOrigin")]
-    #[serde(default)]
-    pub network_origin: String,
+    pub network_origin: Option<String>,
     /// 保存VPC网络来源信息的容器。
     #[serde(rename = "VpcConfiguration")]
-    #[serde(default)]
-    pub vpc_configuration: AccessPointVpcConfiguration,
+    pub vpc_configuration: Option<AccessPointVpcConfiguration>,
     /// 接入点所处状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
 }
 
 /// 服务器端默认加密方式的容器。
@@ -15851,17 +15842,17 @@ pub struct ApplyServerSideEncryptionByDefault {
     ///
     /// 更多信息，请参见**[跨区域复制结合服务器端加密](~~177216~~)**。
     #[serde(rename = "SSEAlgorithm")]
-    #[serde(default)]
-    pub sse_algorithm: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sse_algorithm: Option<String>,
     /// 当SSEAlgorithm值为KMS，且使用指定的密钥加密时，需输入KMSMasterKeyID。其他情况下，必须为空。
     #[serde(rename = "KMSMasterKeyID")]
-    #[serde(default)]
-    pub kms_master_key_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub kms_master_key_id: Option<String>,
     /// 指定Object的加密算法。若未指定此选项，表明Object使用AES256加密算法。此选项仅当SSEAlgorithm取值为KMS有效。
     /// 取值：SM4
     #[serde(rename = "KMSDataEncryption")]
-    #[serde(default)]
-    pub kms_data_encryption: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub kms_data_encryption: Option<String>,
 }
 
 /// 保存归档直读状态的容器。
@@ -15872,8 +15863,8 @@ pub struct ArchiveDirectReadConfiguration {
     /// - true：开启归档直读。
     /// - false：关闭归档直读。
     #[serde(rename = "Enabled")]
-    #[serde(default)]
-    pub enabled: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub enabled: Option<bool>,
 }
 
 /// 保存Bucket信息的容器。
@@ -15882,32 +15873,25 @@ pub struct ArchiveDirectReadConfiguration {
 pub struct Bucket {
     /// Bucket创建时间。格式为`yyyy-mm-ddThh:mm:ss.timezone`。
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
     /// Bucket访问的外网域名。
     #[serde(rename = "ExtranetEndpoint")]
-    #[serde(default)]
-    pub extranet_endpoint: String,
+    pub extranet_endpoint: Option<String>,
     /// 同地域ECS访问Bucket的内网域名。
     #[serde(rename = "IntranetEndpoint")]
-    #[serde(default)]
-    pub intranet_endpoint: String,
+    pub intranet_endpoint: Option<String>,
     /// Bucket所在的数据中心。
     #[serde(rename = "Location")]
-    #[serde(default)]
-    pub location: String,
+    pub location: Option<String>,
     /// Bucket名称。
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// Bucket存储类型，支持Standard、IA、Archive和ColdArchive四种存储类型。
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    pub storage_class: Option<StorageClass>,
     /// Bucket所在地域。
     #[serde(rename = "Region")]
-    #[serde(default)]
-    pub region: String,
+    pub region: Option<String>,
 }
 
 /// 保存域名信息列表的容器。
@@ -15915,8 +15899,8 @@ pub struct Bucket {
 pub struct BucketAntiDDOSConfigurationCnames {
     /// 待防护自定义域名。
     #[serde(rename = "Domain")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub domain: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub domain: Vec<String>,
 }
 
 /// 保存高防实例配置信息的容器。
@@ -15935,6 +15919,7 @@ pub struct BucketAntiDDOSInfoCnames {
     /// 自定义域名。
     #[serde(rename = "Domain")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub domain: Vec<String>,
 }
 
@@ -15944,28 +15929,22 @@ pub struct BucketAntiDDOSInfoCnames {
 pub struct BucketAntiDDOSInfo {
     /// 高防实例ID。
     #[serde(rename = "InstanceId")]
-    #[serde(default)]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// Bucket拥有者的UID。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: String,
+    pub owner: Option<String>,
     /// 防护的Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 高防实例创建时间，格式为时间戳。
     #[serde(rename = "Ctime")]
-    #[serde(default)]
-    pub ctime: i64,
+    pub ctime: Option<i64>,
     /// 高防实例更新时间，格式为时间戳。
     #[serde(rename = "Mtime")]
-    #[serde(default)]
-    pub mtime: i64,
+    pub mtime: Option<i64>,
     /// 高防实例激活时间，格式为时间戳。
     #[serde(rename = "ActiveTime")]
-    #[serde(default)]
-    pub active_time: i64,
+    pub active_time: Option<i64>,
     /// 高防实例所处状态。
     ///
     /// - Init：初始化防护状态。
@@ -15974,16 +15953,13 @@ pub struct BucketAntiDDOSInfo {
     ///
     /// - HaltDefending：解除防护状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 高防实例类型。固定值为AntiDDosPremimum。
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: String,
+    pub r#type: Option<String>,
     /// 保存自定义域名的容器。
     #[serde(rename = "Cnames")]
-    #[serde(default)]
-    pub cnames: BucketAntiDDOSInfoCnames,
+    pub cnames: Option<BucketAntiDDOSInfoCnames>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
@@ -16007,8 +15983,8 @@ pub struct BucketChannelConfigRuleListRuleItem {
 pub struct BucketChannelConfigRuleList {
     /// 保存规则的容器
     #[serde(rename = "Rule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub rule: Option<Vec<BucketChannelConfigRuleListRuleItem>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub rule: Vec<BucketChannelConfigRuleListRuleItem>,
 }
 
 /// Bucket图片处理通道配置
@@ -16085,40 +16061,32 @@ pub struct BucketCnameConfiguration {
 pub struct BucketDataRedundancyTransition {
     /// Bucket名称
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 存储冗余转换任务的ID
     #[serde(rename = "TaskId")]
-    #[serde(default)]
-    pub task_id: String,
+    pub task_id: Option<String>,
     /// 存储冗余转换任务的状态，取值如下：
     ///
     /// - Queueing：队列中。
     /// - Processing：进行中。
     /// - Finished：完成。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 存储冗余转换任务的创建时间
     #[serde(rename = "CreateTime")]
-    #[serde(default)]
-    pub create_time: String,
+    pub create_time: Option<String>,
     /// 存储冗余转换任务的开始时间
     #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: String,
+    pub start_time: Option<String>,
     /// 存储冗余转换任务的完成时间
     #[serde(rename = "EndTime")]
-    #[serde(default)]
-    pub end_time: String,
+    pub end_time: Option<String>,
     /// 存储冗余转换任务的进度百分比。取值范围：0-100
     #[serde(rename = "ProcessPercentage")]
-    #[serde(default)]
-    pub process_percentage: i32,
+    pub process_percentage: Option<i32>,
     /// 存储冗余转换任务的预计剩余耗时。单位为小时。
     #[serde(rename = "EstimatedRemainingTime")]
-    #[serde(default)]
-    pub estimated_remaining_time: String,
+    pub estimated_remaining_time: Option<String>,
 }
 
 /// Bucket服务端加密配置
@@ -16129,18 +16097,15 @@ pub struct BucketInfoBucketServerSideEncryptionRule {
     ///
     /// 取值：KMS、AES256、SM4。
     #[serde(rename = "SSEAlgorithm")]
-    #[serde(default)]
-    pub sse_algorithm: String,
+    pub sse_algorithm: Option<String>,
     /// 服务端加密KMS密钥
     #[serde(rename = "KMSMasterKeyID")]
-    #[serde(default)]
-    pub kms_master_key_id: String,
+    pub kms_master_key_id: Option<String>,
     /// 指定Object的加密算法。如果未指定此选项，表明Object使用AES256加密算法。此选项仅当SSEAlgorithm取值为KMS有效。
     ///
     /// 取值：SM4
     #[serde(rename = "KMSDataEncryption")]
-    #[serde(default)]
-    pub kms_data_encryption: String,
+    pub kms_data_encryption: Option<String>,
 }
 
 /// Bucket日志配置
@@ -16149,12 +16114,10 @@ pub struct BucketInfoBucketServerSideEncryptionRule {
 pub struct BucketInfoBucketBucketPolicy {
     /// 存储日志记录的Bucket名称。
     #[serde(rename = "LogBucket")]
-    #[serde(default)]
-    pub log_bucket: String,
+    pub log_bucket: Option<String>,
     /// 存储日志文件的目录。
     #[serde(rename = "LogPrefix")]
-    #[serde(default)]
-    pub log_prefix: String,
+    pub log_prefix: Option<String>,
 }
 
 /// 保存Bucket信息的容器
@@ -16163,76 +16126,58 @@ pub struct BucketInfoBucketBucketPolicy {
 pub struct BucketInfoBucket {
     /// Bucket是否开启访问追踪
     #[serde(rename = "AccessMonitor")]
-    #[serde(default)]
-    pub access_monitor: String,
+    pub access_monitor: Option<String>,
     /// Bucket的创建时间
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
     /// Bucket是否开启跨区域复制
     #[serde(rename = "CrossRegionReplication")]
-    #[serde(default)]
-    pub cross_region_replication: String,
+    pub cross_region_replication: Option<String>,
     /// Bucket的数据容灾类型
     #[serde(rename = "DataRedundancyType")]
-    #[serde(default)]
-    pub data_redundancy_type: DataRedundancyType,
+    pub data_redundancy_type: Option<DataRedundancyType>,
     /// Bucket外网访问域名
     #[serde(rename = "ExtranetEndpoint")]
-    #[serde(default)]
-    pub extranet_endpoint: String,
+    pub extranet_endpoint: Option<String>,
     /// Bucket内网访问域名
     #[serde(rename = "IntranetEndpoint")]
-    #[serde(default)]
-    pub intranet_endpoint: String,
+    pub intranet_endpoint: Option<String>,
     /// Bucket所在地域
     #[serde(rename = "Location")]
-    #[serde(default)]
-    pub location: String,
+    pub location: Option<String>,
     /// Bucket名称
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// Bucket所在的资源组ID
     #[serde(rename = "ResourceGroupId")]
-    #[serde(default)]
-    pub resource_group_id: String,
+    pub resource_group_id: Option<String>,
     /// Bucket的存储类型
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    pub storage_class: Option<StorageClass>,
     /// Bucket传输
     #[serde(rename = "TransferAcceleration")]
-    #[serde(default)]
-    pub transfer_acceleration: String,
+    pub transfer_acceleration: Option<String>,
     /// Bucket多版本状态
     #[serde(rename = "Versioning")]
-    #[serde(default)]
-    pub versioning: BucketVersioningStatus,
+    pub versioning: Option<BucketVersioningStatus>,
     /// Bucket所有者
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// Bucket权限
     #[serde(rename = "AccessControlList")]
-    #[serde(default)]
-    pub access_control_list: AccessControlList,
+    pub access_control_list: Option<AccessControlList>,
     /// Bucket服务端加密配置
     #[serde(rename = "ServerSideEncryptionRule")]
-    #[serde(default)]
-    pub server_side_encryption_rule: BucketInfoBucketServerSideEncryptionRule,
+    pub server_side_encryption_rule: Option<BucketInfoBucketServerSideEncryptionRule>,
     /// Bucket日志配置
     #[serde(rename = "BucketPolicy")]
-    #[serde(default)]
-    pub bucket_policy: BucketInfoBucketBucketPolicy,
+    pub bucket_policy: Option<BucketInfoBucketBucketPolicy>,
     /// Bucket描述信息。
     #[serde(rename = "Comment")]
-    #[serde(default)]
-    pub comment: String,
+    pub comment: Option<String>,
     /// Bucket是否开启阻止公共访问
     #[serde(rename = "BlockPublicAccess")]
-    #[serde(default)]
-    pub block_public_access: bool,
+    pub block_public_access: Option<bool>,
 }
 
 /// 保存Bucket信息的容器
@@ -16241,8 +16186,7 @@ pub struct BucketInfoBucket {
 pub struct BucketInfo {
     /// 保存Bucket信息的容器
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: BucketInfoBucket,
+    pub bucket: Option<BucketInfoBucket>,
 }
 
 /// 访问日志信息的容器。
@@ -16254,12 +16198,12 @@ pub struct LoggingEnabled {
     pub target_bucket: String,
     /// 指定保存的日志文件前缀，可以为空。
     #[serde(rename = "TargetPrefix")]
-    #[serde(default)]
-    pub target_prefix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub target_prefix: Option<String>,
     /// 日志转存授权角色
     #[serde(rename = "LoggingRole")]
-    #[serde(default)]
-    pub logging_role: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub logging_role: Option<String>,
 }
 
 /// 存储访问日志状态信息的容器。
@@ -16315,132 +16259,100 @@ pub struct BucketResourceGroupConfiguration {
 pub struct BucketStat {
     /// Bucket的总存储量，单位字节。
     #[serde(rename = "Storage")]
-    #[serde(default)]
-    pub storage: i64,
+    pub storage: Option<i64>,
     /// Bucket中总的Object数量。
     #[serde(rename = "ObjectCount")]
-    #[serde(default)]
-    pub object_count: i64,
+    pub object_count: Option<i64>,
     /// Bucket中已经初始化但还未完成（Complete）或者还未中止（Abort）的Multipart Upload数量。
     #[serde(rename = "MultipartUploadCount")]
-    #[serde(default)]
-    pub multipart_upload_count: i64,
+    pub multipart_upload_count: Option<i64>,
     /// Bucket中Live Channel的数量。
     #[serde(rename = "LiveChannelCount")]
-    #[serde(default)]
-    pub live_channel_count: i64,
+    pub live_channel_count: Option<i64>,
     /// Bucket中上传的Multipart分片的数量。
     #[serde(rename = "MultipartPartCount")]
-    #[serde(default)]
-    pub multipart_part_count: i64,
+    pub multipart_part_count: Option<i64>,
     /// Bucket中删除标记的数量。
     #[serde(rename = "DeleteMarkerCount")]
-    #[serde(default)]
-    pub delete_marker_count: i64,
+    pub delete_marker_count: Option<i64>,
     /// 获取到的存储信息的时间点，格式为时间戳，单位为秒。
     #[serde(rename = "LastModifiedTime")]
-    #[serde(default)]
-    pub last_modified_time: i64,
+    pub last_modified_time: Option<i64>,
     /// 标准存储类型的存储量，单位字节。
     #[serde(rename = "StandardStorage")]
-    #[serde(default)]
-    pub standard_storage: i64,
+    pub standard_storage: Option<i64>,
     /// 标准存储类型的Object数量。
     #[serde(rename = "StandardObjectCount")]
-    #[serde(default)]
-    pub standard_object_count: i64,
+    pub standard_object_count: Option<i64>,
     /// 低频存储类型的计费存储量，单位字节。
     #[serde(rename = "InfrequentAccessStorage")]
-    #[serde(default)]
-    pub infrequent_access_storage: i64,
+    pub infrequent_access_storage: Option<i64>,
     /// 低频存储类型的实际存储量，单位字节。
     #[serde(rename = "InfrequentAccessRealStorage")]
-    #[serde(default)]
-    pub infrequent_access_real_storage: i64,
+    pub infrequent_access_real_storage: Option<i64>,
     /// 低频存储类型的Object数量。
     #[serde(rename = "InfrequentAccessObjectCount")]
-    #[serde(default)]
-    pub infrequent_access_object_count: i64,
+    pub infrequent_access_object_count: Option<i64>,
     /// 归档存储类型的计费存储量，单位字节。
     #[serde(rename = "ArchiveStorage")]
-    #[serde(default)]
-    pub archive_storage: i64,
+    pub archive_storage: Option<i64>,
     /// 归档存储类型的实际存储量，单位字节。
     #[serde(rename = "ArchiveRealStorage")]
-    #[serde(default)]
-    pub archive_real_storage: i64,
+    pub archive_real_storage: Option<i64>,
     /// 归档存储类型的Object数量。
     #[serde(rename = "ArchiveObjectCount")]
-    #[serde(default)]
-    pub archive_object_count: i64,
+    pub archive_object_count: Option<i64>,
     /// 冷归档存储类型的计费存储量，单位字节。
     #[serde(rename = "ColdArchiveStorage")]
-    #[serde(default)]
-    pub cold_archive_storage: i64,
+    pub cold_archive_storage: Option<i64>,
     /// 冷归档存储类型的实际存储量，单位字节。
     #[serde(rename = "ColdArchiveRealStorage")]
-    #[serde(default)]
-    pub cold_archive_real_storage: i64,
+    pub cold_archive_real_storage: Option<i64>,
     /// 冷归档存储类型的Object数量。
     #[serde(rename = "ColdArchiveObjectCount")]
-    #[serde(default)]
-    pub cold_archive_object_count: i64,
+    pub cold_archive_object_count: Option<i64>,
     /// 深度冷归档存储类型的计费存储量，单位字节。
     #[serde(rename = "DeepColdArchiveStorage")]
-    #[serde(default)]
-    pub deep_cold_archive_storage: i64,
+    pub deep_cold_archive_storage: Option<i64>,
     /// 深度冷归档存储类型的实际存储量，单位字节。
     #[serde(rename = "DeepColdArchiveRealStorage")]
-    #[serde(default)]
-    pub deep_cold_archive_real_storage: i64,
+    pub deep_cold_archive_real_storage: Option<i64>,
     /// 深度冷归档存储类型的Object数量。
     #[serde(rename = "DeepColdArchiveObjectCount")]
-    #[serde(default)]
-    pub deep_cold_archive_object_count: i64,
+    pub deep_cold_archive_object_count: Option<i64>,
     /// Bucket中Multipart分片的存储量
     #[serde(rename = "MultipartPartStorage")]
-    #[serde(default)]
-    pub multipart_part_storage: i64,
+    pub multipart_part_storage: Option<i64>,
     /// Bucket中标准类型的Multipart分片的数量
     #[serde(rename = "StandardMultipartPartCount")]
-    #[serde(default)]
-    pub standard_multipart_part_count: i64,
+    pub standard_multipart_part_count: Option<i64>,
     /// Bucket中标准类型的Multipart分片的存储量
     #[serde(rename = "StandardMultipartPartStorage")]
-    #[serde(default)]
-    pub standard_multipart_part_storage: i64,
+    pub standard_multipart_part_storage: Option<i64>,
     /// Bucket中低频类型的Multipart分片的数量
     #[serde(rename = "InfrequentMultipartPartCount")]
-    #[serde(default)]
-    pub infrequent_multipart_part_count: i64,
+    pub infrequent_multipart_part_count: Option<i64>,
     /// Bucket中低频类型的Multipart分片的存储量
     #[serde(rename = "InfrequentMultipartPartStorage")]
-    #[serde(default)]
-    pub infrequent_multipart_part_storage: i64,
+    pub infrequent_multipart_part_storage: Option<i64>,
     /// Bucket中归档类型的Multipart分片的数量
     #[serde(rename = "ArchiveMultipartPartCount")]
-    #[serde(default)]
-    pub archive_multipart_part_count: i64,
+    pub archive_multipart_part_count: Option<i64>,
     /// Bucket中归档类型的Multipart分片的存储量
     #[serde(rename = "ArchiveMultipartPartStorage")]
-    #[serde(default)]
-    pub archive_multipart_part_storage: i64,
+    pub archive_multipart_part_storage: Option<i64>,
     /// Bucket中冷归档类型的Multipart分片的数量
     #[serde(rename = "ColdArchiveMultipartPartCount")]
-    #[serde(default)]
-    pub cold_archive_multipart_part_count: i64,
+    pub cold_archive_multipart_part_count: Option<i64>,
     /// Bucket中冷归档类型的Multipart分片的存储量
     #[serde(rename = "ColdArchiveMultipartPartStorage")]
-    #[serde(default)]
-    pub cold_archive_multipart_part_storage: i64,
+    pub cold_archive_multipart_part_storage: Option<i64>,
     /// Bucket中深度冷归档类型的Multipart分片的数量
     #[serde(rename = "DeepColdArchiveMultipartPartCount")]
-    #[serde(default)]
-    pub deep_cold_archive_multipart_part_count: i64,
+    pub deep_cold_archive_multipart_part_count: Option<i64>,
     /// Bucket中深度冷归档类型的Multipart分片的存储量
     #[serde(rename = "DeepColdArchiveMultipartPartStorage")]
-    #[serde(default)]
-    pub deep_cold_archive_multipart_part_storage: i64,
+    pub deep_cold_archive_multipart_part_storage: Option<i64>,
 }
 
 /// CORS规则的容器。
@@ -16473,8 +16385,8 @@ pub struct CORSRule {
     ///
     /// 单条CORS规则仅允许一个MaxAgeSeconds。
     #[serde(rename = "MaxAgeSeconds")]
-    #[serde(default)]
-    pub max_age_seconds: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_age_seconds: Option<i64>,
 }
 
 /// Bucket的CORS规则容器。
@@ -16484,8 +16396,8 @@ pub struct CORSConfiguration {
     ///
     /// 每个Bucket最多允许10条CORS规则。上传的XML文档最大允许16 KB。
     #[serde(rename = "CORSRule")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub cors_rule: Option<Vec<CORSRule>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub cors_rule: Vec<CORSRule>,
     /// 是否返回Vary: Origin头。取值范围如下：
     ///
     /// - true：不管发送的是否是跨域请求或跨域请求是否成功，均会返回Vary: Origin头。
@@ -16604,32 +16516,25 @@ pub struct Channel {
 pub struct CnameCertificate {
     /// 证书来源
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: String,
+    pub r#type: Option<String>,
     /// 证书ID
     #[serde(rename = "CertId")]
-    #[serde(default)]
-    pub cert_id: String,
+    pub cert_id: Option<String>,
     /// 证书状态
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 证书绑定时间
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
     /// 证书签名
     #[serde(rename = "Fingerprint")]
-    #[serde(default)]
-    pub fingerprint: String,
+    pub fingerprint: Option<String>,
     /// 证书有效期起始时间
     #[serde(rename = "ValidStartDate")]
-    #[serde(default)]
-    pub valid_start_date: String,
+    pub valid_start_date: Option<String>,
     /// 证书有效期终止时间
     #[serde(rename = "ValidEndDate")]
-    #[serde(default)]
-    pub valid_end_date: String,
+    pub valid_end_date: Option<String>,
 }
 
 /// Cname信息概况。
@@ -16638,24 +16543,20 @@ pub struct CnameCertificate {
 pub struct CnameInfo {
     /// 自定义域名。
     #[serde(rename = "Domain")]
-    #[serde(default)]
-    pub domain: String,
+    pub domain: Option<String>,
     /// 绑定自定义域名的时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// 域名所处状态。取值为：
     ///
     /// - Enabled：：启用该域名。
     ///
     /// - Disabled：禁用该域名。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 证书信息的容器。
     #[serde(rename = "Certificate")]
-    #[serde(default)]
-    pub certificate: CnameCertificate,
+    pub certificate: Option<CnameCertificate>,
 }
 
 /// CnameToken的容器。
@@ -16664,20 +16565,16 @@ pub struct CnameInfo {
 pub struct CnameToken {
     /// 绑定Cname的Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 绑定的Cname名称。
     #[serde(rename = "Cname")]
-    #[serde(default)]
-    pub cname: String,
+    pub cname: Option<String>,
     /// OSS返回的CnameToken。
     #[serde(rename = "Token")]
-    #[serde(default)]
-    pub token: String,
+    pub token: Option<String>,
     /// CnameToken的过期时间。
     #[serde(rename = "ExpireTime")]
-    #[serde(default)]
-    pub expire_time: String,
+    pub expire_time: Option<String>,
 }
 
 /// 存放用户自定义HTTP Header的容器
@@ -16698,8 +16595,8 @@ pub struct CommonHeadersHeaderItem {
 pub struct CommonHeaders {
     /// 存放用户自定义HTTP Header列表的容器
     #[serde(rename = "Header")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub header: Option<Vec<CommonHeadersHeaderItem>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub header: Vec<CommonHeadersHeaderItem>,
 }
 
 /// 如果请求中指定了delimiter参数，则OSS返回的响应中包含CommonPrefixes元素。该元素标明以delimiter结尾，并有共同前缀的Object名称的集合。
@@ -16708,8 +16605,7 @@ pub struct CommonHeaders {
 pub struct CommonPrefix {
     /// 本次查询结果的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
 }
 
 /// 保存已上传Part信息的容器。
@@ -16734,8 +16630,8 @@ pub struct CompleteMultipartUploadPartItem {
 pub struct CompleteMultipartUploadSchema {
     /// 保存已上传Part信息的容器。
     #[serde(rename = "Part")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub part: Option<Vec<CompleteMultipartUploadPartItem>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub part: Vec<CompleteMultipartUploadPartItem>,
 }
 
 /// 保存接入点信息的容器。
@@ -16769,12 +16665,10 @@ pub struct CreateAccessPointConfiguration {
 pub struct CreateAccessPointResult {
     /// 接入点ARN。
     #[serde(rename = "AccessPointArn")]
-    #[serde(default)]
-    pub access_point_arn: String,
+    pub access_point_arn: Option<String>,
     /// 接入点别名。
     #[serde(rename = "Alias")]
-    #[serde(default)]
-    pub alias: String,
+    pub alias: Option<String>,
 }
 
 /// Bucket存储类型和数据容灾类型的配置信息。
@@ -16806,14 +16700,14 @@ pub struct CreateBucketConfiguration {
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CreateDataLakeCachePrefetchJob {
     #[serde(rename = "Includes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub includes: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub includes: Vec<String>,
     #[serde(rename = "Tag")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
     #[serde(rename = "Excludes")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub excludes: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub excludes: Vec<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
@@ -16821,6 +16715,7 @@ pub struct CreateDataLakeCachePrefetchJob {
 pub struct DataLakeStorageTransferJobRulePrefixFilterIncludes {
     #[serde(rename = "Include")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub include: Vec<String>,
 }
 
@@ -16828,8 +16723,7 @@ pub struct DataLakeStorageTransferJobRulePrefixFilterIncludes {
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRulePrefixFilter {
     #[serde(rename = "Includes")]
-    #[serde(default)]
-    pub includes: DataLakeStorageTransferJobRulePrefixFilterIncludes,
+    pub includes: Option<DataLakeStorageTransferJobRulePrefixFilterIncludes>,
 }
 
 /// 数据湖元数据转换任务规则
@@ -16837,28 +16731,22 @@ pub struct DataLakeStorageTransferJobRulePrefixFilter {
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRule {
     #[serde(rename = "PrefixFilter")]
-    #[serde(default)]
-    pub prefix_filter: DataLakeStorageTransferJobRulePrefixFilter,
+    pub prefix_filter: Option<DataLakeStorageTransferJobRulePrefixFilter>,
     #[serde(rename = "Tag")]
-    #[serde(default)]
-    pub tag: String,
+    pub tag: Option<String>,
     #[serde(rename = "ExecutorRoleId")]
-    #[serde(default)]
-    pub executor_role_id: String,
+    pub executor_role_id: Option<String>,
     #[serde(rename = "LogBaseDir")]
-    #[serde(default)]
-    pub log_base_dir: String,
+    pub log_base_dir: Option<String>,
     #[serde(rename = "NeedVerify")]
-    #[serde(default)]
-    pub need_verify: bool,
+    pub need_verify: Option<bool>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobProgressInfo {
     #[serde(rename = "Percent")]
-    #[serde(default)]
-    pub percent: i64,
+    pub percent: Option<i64>,
 }
 
 /// 数据湖元数据转换任务配置信息
@@ -16866,32 +16754,23 @@ pub struct DataLakeStorageTransferJobProgressInfo {
 #[serde(default)]
 pub struct DataLakeStorageTransferJob {
     #[serde(rename = "Id")]
-    #[serde(default)]
-    pub id: String,
+    pub id: Option<String>,
     #[serde(rename = "HistoryId")]
-    #[serde(default)]
-    pub history_id: String,
+    pub history_id: Option<String>,
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: i32,
+    pub r#type: Option<i32>,
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     #[serde(rename = "CreateTime")]
-    #[serde(default)]
-    pub create_time: i64,
+    pub create_time: Option<i64>,
     #[serde(rename = "LastModifyTime")]
-    #[serde(default)]
-    pub last_modify_time: i64,
+    pub last_modify_time: Option<i64>,
     #[serde(rename = "Rule")]
-    #[serde(default)]
-    pub rule: DataLakeStorageTransferJobRule,
+    pub rule: Option<DataLakeStorageTransferJobRule>,
     #[serde(rename = "ProgressInfo")]
-    #[serde(default)]
-    pub progress_info: DataLakeStorageTransferJobProgressInfo,
+    pub progress_info: Option<DataLakeStorageTransferJobProgressInfo>,
 }
 
 /// 数据湖元数据转换任务列表
@@ -16899,16 +16778,14 @@ pub struct DataLakeStorageTransferJob {
 #[serde(default)]
 pub struct DataLakeStorageTransferJobs {
     #[serde(rename = "Truncated")]
-    #[serde(default)]
-    pub truncated: String,
+    pub truncated: Option<String>,
     #[serde(rename = "NextMarkerBucket")]
-    #[serde(default)]
-    pub next_marker_bucket: String,
+    pub next_marker_bucket: Option<String>,
     #[serde(rename = "NextMarkerJobId")]
-    #[serde(default)]
-    pub next_marker_job_id: String,
+    pub next_marker_job_id: Option<String>,
     #[serde(rename = "DataLakeStorageTransferJob")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub data_lake_storage_transfer_job: Vec<DataLakeStorageTransferJob>,
 }
 
@@ -16919,12 +16796,10 @@ pub struct DataLakeStorageTransferJobs {
 pub struct DeleteMarkerEntry {
     /// Object的名称。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Object的版本ID。
     #[serde(rename = "VersionId")]
-    #[serde(default)]
-    pub version_id: String,
+    pub version_id: Option<String>,
     /// Object是否为当前版本。
     /// 取值：
     ///
@@ -16932,16 +16807,13 @@ pub struct DeleteMarkerEntry {
     ///
     /// - false：Object为非当前版本。
     #[serde(rename = "IsLatest")]
-    #[serde(default)]
-    pub is_latest: bool,
+    pub is_latest: Option<bool>,
     /// Object最后被修改的时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
 }
 
 /// 404页面的容器。
@@ -16950,12 +16822,12 @@ pub struct DeleteMarkerEntry {
 pub struct ErrorDocument {
     /// 错误页面。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key: Option<String>,
     /// 返回错误页面时的HTTP状态码。
     #[serde(rename = "HttpStatus")]
-    #[serde(default)]
-    pub http_status: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub http_status: Option<i64>,
 }
 
 /// Object过滤配置键
@@ -16964,12 +16836,10 @@ pub struct ErrorDocument {
 pub struct FunctionComputeConfigurationFilterKey {
     /// Object前缀
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// Object后缀
     #[serde(rename = "Suffix")]
-    #[serde(default)]
-    pub suffix: String,
+    pub suffix: Option<String>,
 }
 
 /// Object过滤配置
@@ -16978,8 +16848,7 @@ pub struct FunctionComputeConfigurationFilterKey {
 pub struct FunctionComputeConfigurationFilter {
     /// Object过滤配置键
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: FunctionComputeConfigurationFilterKey,
+    pub key: Option<FunctionComputeConfigurationFilterKey>,
 }
 
 /// 函数计算配置
@@ -16988,12 +16857,10 @@ pub struct FunctionComputeConfigurationFilter {
 pub struct FunctionComputeConfigurationFunction {
     /// 请求的函数计算服务资源
     #[serde(rename = "Arn")]
-    #[serde(default)]
-    pub arn: String,
+    pub arn: Option<String>,
     /// 向函数计算请求服务的角色
     #[serde(rename = "AssumeRole")]
-    #[serde(default)]
-    pub assume_role: String,
+    pub assume_role: Option<String>,
 }
 
 /// 函数计算服务配置项
@@ -17002,20 +16869,18 @@ pub struct FunctionComputeConfigurationFunction {
 pub struct FunctionComputeConfiguration {
     /// 配置项ID
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    pub id: Option<String>,
     /// 事件列表
     #[serde(rename = "Event")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub event: Vec<String>,
     /// Object过滤配置
     #[serde(rename = "Filter")]
-    #[serde(default)]
-    pub filter: FunctionComputeConfigurationFilter,
+    pub filter: Option<FunctionComputeConfigurationFilter>,
     /// 函数计算配置
     #[serde(rename = "Function")]
-    #[serde(default)]
-    pub function: FunctionComputeConfigurationFunction,
+    pub function: Option<FunctionComputeConfigurationFunction>,
 }
 
 /// 存储空间事件通知配置信息
@@ -17025,6 +16890,7 @@ pub struct EventNotificationConfiguration {
     /// 存储空间函数计算事件通知服务配置信息
     #[serde(rename = "FunctionComputeConfiguration")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub function_compute_configuration: Vec<FunctionComputeConfiguration>,
 }
 
@@ -17043,12 +16909,10 @@ pub struct ExtendWormConfiguration {
 pub struct GetAccessPointResultEndpoints {
     /// 接入点的外网Endpoint。
     #[serde(rename = "PublicEndpoint")]
-    #[serde(default)]
-    pub public_endpoint: String,
+    pub public_endpoint: Option<String>,
     /// 接入点的内网Endpoint。
     #[serde(rename = "InternalEndpoint")]
-    #[serde(default)]
-    pub internal_endpoint: String,
+    pub internal_endpoint: Option<String>,
 }
 
 /// 阻止公共访问的配置。
@@ -17059,8 +16923,8 @@ pub struct PublicAccessBlockConfiguration {
     /// - true：开启阻止公共访问。
     /// - false：关闭阻止公共访问。
     #[serde(rename = "BlockPublicAccess")]
-    #[serde(default)]
-    pub block_public_access: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub block_public_access: Option<bool>,
 }
 
 /// 保存接入点信息的容器。
@@ -17069,48 +16933,37 @@ pub struct PublicAccessBlockConfiguration {
 pub struct GetAccessPointResult {
     /// 接入点名称。
     #[serde(rename = "AccessPointName")]
-    #[serde(default)]
-    pub access_point_name: String,
+    pub access_point_name: Option<String>,
     /// 配置接入点的Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 配置接入点的阿里云账号UID。
     #[serde(rename = "AccountId")]
-    #[serde(default)]
-    pub account_id: String,
+    pub account_id: Option<String>,
     /// 接入点网络来源。返回值如下：  vpc：限制仅支持通过指定的VPC ID访问接入点。  internet：同时持通过外网和内网Endpoint互联网访问接入点。
     #[serde(rename = "NetworkOrigin")]
-    #[serde(default)]
-    pub network_origin: String,
+    pub network_origin: Option<String>,
     /// 保存VPC网络来源信息的容器。
     #[serde(rename = "VpcConfiguration")]
-    #[serde(default)]
-    pub vpc_configuration: AccessPointVpcConfiguration,
+    pub vpc_configuration: Option<AccessPointVpcConfiguration>,
     /// 接入点ARN。
     #[serde(rename = "AccessPointArn")]
-    #[serde(default)]
-    pub access_point_arn: String,
+    pub access_point_arn: Option<String>,
     /// 接入点别名。
     #[serde(rename = "Alias")]
-    #[serde(default)]
-    pub alias: String,
+    pub alias: Option<String>,
     /// 接入点所处状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 保存接入点网络来源信息的容器。
     #[serde(rename = "Endpoints")]
-    #[serde(default)]
-    pub endpoints: GetAccessPointResultEndpoints,
+    pub endpoints: Option<GetAccessPointResultEndpoints>,
     /// 保存接入点阻止公共访问的配置
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(default)]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+    pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
     /// 接入点创建时间。
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
 }
 
 /// 存储空间TLS版本配置
@@ -17132,12 +16985,12 @@ pub struct HttpsConfigurationTls {
 pub struct HttpsConfigurationCipherSuite {
     /// 是否启用加密套件配置
     #[serde(rename = "Enable")]
-    #[serde(default)]
-    pub enable: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub enable: Option<bool>,
     /// 是否使用强加密套件
     #[serde(rename = "StrongCipherSuite")]
-    #[serde(default)]
-    pub strong_cipher_suite: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub strong_cipher_suite: Option<bool>,
     /// 自定义加密套件
     #[serde(rename = "CustomCipherSuite")]
     #[serde(default)]
@@ -17154,20 +17007,20 @@ pub struct HttpsConfigurationCipherSuite {
 pub struct HttpsConfiguration {
     /// 存储空间TLS版本配置
     #[serde(rename = "TLS")]
-    #[serde(default)]
-    pub tls: HttpsConfigurationTls,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tls: Option<HttpsConfigurationTls>,
     /// 存储空间加密套件配置
     #[serde(rename = "CipherSuite")]
-    #[serde(default)]
-    pub cipher_suite: HttpsConfigurationCipherSuite,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cipher_suite: Option<HttpsConfigurationCipherSuite>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct IncrementInventorySchedule {
     #[serde(rename = "Frequency")]
-    #[serde(default)]
-    pub frequency: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frequency: Option<i64>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -17182,14 +17035,14 @@ pub struct IncrementalInventoryOptionalFields {
 #[serde(default)]
 pub struct IncrementalInventory {
     #[serde(rename = "IsEnabled")]
-    #[serde(default)]
-    pub is_enabled: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_enabled: Option<bool>,
     #[serde(rename = "Schedule")]
-    #[serde(default)]
-    pub schedule: IncrementInventorySchedule,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub schedule: Option<IncrementInventorySchedule>,
     #[serde(rename = "OptionalFields")]
-    #[serde(default)]
-    pub optional_fields: IncrementalInventoryOptionalFields,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub optional_fields: Option<IncrementalInventoryOptionalFields>,
 }
 
 /// 默认主页的容器。
@@ -17199,16 +17052,16 @@ pub struct IncrementalInventory {
 pub struct IndexDocument {
     /// 默认主页。
     #[serde(rename = "Suffix")]
-    #[serde(default)]
-    pub suffix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub suffix: Option<String>,
     /// 访问子目录时，是否支持转到子目录下的默认主页。取值范围如下：
     ///   - **true**：转到子目录下的默认主页。
     ///   - **false**（默认）：不转到子目录下的默认主页，而是转到根目录下的默认主页。
     ///
     /// 假设默认主页为index.html，要访问`bucket.oss-cn-hangzhou.aliyuncs.com/subdir/`，如果设置**SupportSubDir**为false，则转到`bucket.oss-cn-hangzhou.aliyuncs.com/index.html`；如果设置**SupportSubDir**为true，则转到`bucket.oss-cn-hangzhou.aliyuncs.com/subdir/index.html`。
     #[serde(rename = "SupportSubDir")]
-    #[serde(default)]
-    pub support_sub_dir: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub support_sub_dir: Option<bool>,
     /// 设置默认主页后，访问以非正斜线（/）结尾的Object，且该Object不存在时的行为。 只有设置**SupportSubDir**为true时才生效，且生效的顺序在RoutingRule之后、ErrorFile之前。
     /// 假设默认主页为index.html，要访问的文件路径为`bucket.oss-cn-hangzhou.aliyuncs.com/abc`，且abc这个Object不存在，此时**Type**的不同取值对应的行为如下：
     ///   - **0**（默认）：检查abc/index.html是否存在（即`Object + 正斜线（/）+ 主页`的形式），如果存在则返回302，Location头为`/abc/`的URL编码（即`正斜线（/） + Object + 正斜线（/）`的形式），如果不存在则返回404，继续检查ErrorFile。
@@ -17216,8 +17069,8 @@ pub struct IndexDocument {
     ///   - **2**：检查abc/index.html是否存在，如果存在则返回该Object的内容；如果不存在则返回404，继续检查ErrorFile。
     ///
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<i64>,
 }
 
 /// 根节点。
@@ -17278,8 +17131,8 @@ pub struct InputSerialization {
 pub struct SSEKMS {
     /// KMS密钥ID。
     #[serde(rename = "KeyId")]
-    #[serde(default)]
-    pub key_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key_id: Option<String>,
 }
 
 /// 清单文件的加密方式。
@@ -17288,12 +17141,12 @@ pub struct SSEKMS {
 pub struct InventoryEncryption {
     /// 保存SSE-OSS加密方式的容器。
     #[serde(rename = "SSE-OSS")]
-    #[serde(default)]
-    pub sseoss: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sseoss: Option<String>,
     /// 保存SSE-KMS加密密钥的容器。
     #[serde(rename = "SSE-KMS")]
-    #[serde(default)]
-    pub ssekms: SSEKMS,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ssekms: Option<SSEKMS>,
 }
 
 /// 清单结果导出后存放的Bucket信息。
@@ -17302,28 +17155,28 @@ pub struct InventoryEncryption {
 pub struct InventoryOSSBucketDestination {
     /// 清单文件的文件格式。 清单文件导出后的格式为使用GZIP压缩的CSV文件。
     #[serde(rename = "Format")]
-    #[serde(default)]
-    pub format: InventoryFormat,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub format: Option<InventoryFormat>,
     /// Bucket所有者授予的账户ID。
     #[serde(rename = "AccountId")]
-    #[serde(default)]
-    pub account_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub account_id: Option<String>,
     /// 具有读取源Bucket所有文件和向目标Bucket写入文件权限的角色名，格式为`acs:ram::uid:role/rolename`。
     #[serde(rename = "RoleArn")]
-    #[serde(default)]
-    pub role_arn: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub role_arn: Option<String>,
     /// 存放导出的清单文件的Bucket。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bucket: Option<String>,
     /// 清单文件的存储路径前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<String>,
     /// 清单文件的加密方式。
     #[serde(rename = "Encryption")]
-    #[serde(default)]
-    pub encryption: InventoryEncryption,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub encryption: Option<InventoryEncryption>,
 }
 
 /// 存放清单结果的信息。
@@ -17332,8 +17185,8 @@ pub struct InventoryOSSBucketDestination {
 pub struct InventoryDestination {
     /// 清单结果导出后存放的Bucket信息。
     #[serde(rename = "OSSBucketDestination")]
-    #[serde(default)]
-    pub oss_bucket_destination: InventoryOSSBucketDestination,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub oss_bucket_destination: Option<InventoryOSSBucketDestination>,
 }
 
 /// Contains the frequency that inventory lists are exported
@@ -17348,8 +17201,8 @@ pub struct InventorySchedule {
     ///
     /// Weekly：按周导出清单文件。
     #[serde(rename = "Frequency")]
-    #[serde(default)]
-    pub frequency: InventoryFrequency,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frequency: Option<InventoryFrequency>,
 }
 
 /// 清单筛选的前缀。指定前缀后，清单将筛选出符合前缀设置的对象。
@@ -17358,28 +17211,28 @@ pub struct InventorySchedule {
 pub struct InventoryFilter {
     /// 筛选规则的匹配前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<String>,
     /// 筛选文件最后修改时间的起始时间戳，单位为秒。  取值范围：[1262275200, 253402271999]
     #[serde(rename = "LastModifyBeginTimeStamp")]
-    #[serde(default)]
-    pub last_modify_begin_time_stamp: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_modify_begin_time_stamp: Option<i64>,
     /// 筛选文件最后修改时间的终止时间戳，单位为秒。  取值范围：[1262275200, 253402271999]
     #[serde(rename = "LastModifyEndTimeStamp")]
-    #[serde(default)]
-    pub last_modify_end_time_stamp: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_modify_end_time_stamp: Option<i64>,
     /// 筛选文件的最小大小，单位为B。  取值范围：大于等于0 B，小于等于48.8 TB。
     #[serde(rename = "LowerSizeBound")]
-    #[serde(default)]
-    pub lower_size_bound: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lower_size_bound: Option<i64>,
     /// 筛选文件的最大大小，单位为B。  取值范围：大于0 B，小于等于48.8 TB。
     #[serde(rename = "UpperSizeBound")]
-    #[serde(default)]
-    pub upper_size_bound: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub upper_size_bound: Option<i64>,
     /// 筛选文件的存储类型，支持指定多种存储类型。  可选值：  Standard：标准存储  IA：低频访问  Archive：归档存储  ColdArchive：冷归档存储  All（默认值）：所有存储类型
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub storage_class: Option<String>,
 }
 
 /// 清单结果中包含的配置项列表。
@@ -17408,27 +17261,27 @@ pub struct InventoryConfigurationOptionalFields {
 pub struct InventoryConfiguration {
     /// 自定义清单名称，清单名称在当前Bucket下必须唯一。
     #[serde(rename = "Id")]
-    #[serde(default)]
-    pub id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     /// 是否启用清单功能。取值范围如下：
     ///
     /// - true：启用清单功能。
     /// - false：不启用清单功能。
     #[serde(rename = "IsEnabled")]
-    #[serde(default)]
-    pub is_enabled: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_enabled: Option<bool>,
     /// 存放清单结果。
     #[serde(rename = "Destination")]
-    #[serde(default)]
-    pub destination: InventoryDestination,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub destination: Option<InventoryDestination>,
     /// 存放清单导出周期信息的容器。
     #[serde(rename = "Schedule")]
-    #[serde(default)]
-    pub schedule: InventorySchedule,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub schedule: Option<InventorySchedule>,
     /// 清单筛选的前缀。指定前缀后，清单将筛选出符合前缀设置的对象。
     #[serde(rename = "Filter")]
-    #[serde(default)]
-    pub filter: InventoryFilter,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filter: Option<InventoryFilter>,
     /// 是否在清单中包含Object版本信息。
     /// 取值范围如下：
     ///
@@ -17436,15 +17289,15 @@ pub struct InventoryConfiguration {
     ///
     /// - Current：导出Object的当前版本信息。
     #[serde(rename = "IncludedObjectVersions")]
-    #[serde(default)]
-    pub included_object_versions: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub included_object_versions: Option<String>,
     /// 清单结果中包含的配置项列表。
     #[serde(rename = "OptionalFields")]
-    #[serde(default)]
-    pub optional_fields: InventoryConfigurationOptionalFields,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub optional_fields: Option<InventoryConfigurationOptionalFields>,
     #[serde(rename = "IncrementalInventory")]
-    #[serde(default)]
-    pub incremental_inventory: IncrementalInventory,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub incremental_inventory: Option<IncrementalInventory>,
 }
 
 /// 保存Select请求的容器。
@@ -17465,20 +17318,20 @@ pub struct LifecycleRuleExpiration {
     /// 指定一个日期，OSS会对最后更新时间早于该日期的数据执行生命周期规则。日期格式为yyyy-MM-ddT00:00:00.000Z。
     /// <br>日期需要按照ISO8601标准表示并使用UTC时间，且必须为UTC的零点。
     #[serde(rename = "CreatedBeforeDate")]
-    #[serde(default)]
-    pub created_before_date: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub created_before_date: Option<String>,
     /// 指定生命周期规则在距离Object最后更新多少天后生效。
     #[serde(rename = "Days")]
-    #[serde(default)]
-    pub days: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub days: Option<i32>,
     /// 指定是否自动移除过期删除标记。
     ///
     /// - true：表示自动移除过期删除标记。取值为true时，不支持指定Days或CreatedBeforeDate。
     ///
     /// - false：表示不会自动移除过期删除标记。取值为false时，则必须指定Days或CreatedBeforeDate。
     #[serde(rename = "ExpiredObjectDeleteMarker")]
-    #[serde(default)]
-    pub expired_object_delete_marker: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expired_object_delete_marker: Option<bool>,
 }
 
 /// 指定Object在有效生命周期中，OSS何时将Object转储为IA、Archive和ColdArchive存储类型 。
@@ -17492,12 +17345,12 @@ pub struct LifecycleRuleExpiration {
 pub struct LifecycleRuleTransitionItem {
     /// 指定一个日期，OSS会对最后更新时间早于该日期的数据执行生命周期规则。日期必须服从ISO8601的格式，且要求是UTC的零点。
     #[serde(rename = "CreatedBeforeDate")]
-    #[serde(default)]
-    pub created_before_date: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub created_before_date: Option<String>,
     /// 指定生命周期规则在距离Object最后更新多少天后生效。
     #[serde(rename = "Days")]
-    #[serde(default)]
-    pub days: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub days: Option<i32>,
     /// 指定Object转储的存储类型。
     ///
     /// - IA：低频访问
@@ -17506,32 +17359,32 @@ pub struct LifecycleRuleTransitionItem {
     ///
     /// > IA Bucket中的Object可以转储为Archive或者ColdArchive存储类型，但不支持转储为Standard存储类型。
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub storage_class: Option<StorageClass>,
     /// 指定是否基于last access time匹配规则。取值如下：
     ///
     /// - true：采用Object的last access time（最后一次访问时间）匹配规则。
     ///
     /// - false（默认值）：采用Object的last modify time（最后一次修改时间）匹配规则。
     #[serde(rename = "IsAccessTime")]
-    #[serde(default)]
-    pub is_access_time: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_access_time: Option<bool>,
     /// 指定Object转为非标准存储后，再次访问时是否将Object转为标准存储。只有当IsAccessTime设置为true时才有效。取值如下：
     ///
     /// - true：Object由非标准存储转为标准存储。
     ///
     /// - false（默认值）：Object仍为非标准存储。
     #[serde(rename = "ReturnToStdWhenVisit")]
-    #[serde(default)]
-    pub return_to_std_when_visit: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub return_to_std_when_visit: Option<bool>,
     /// 基于最后一次访问时间设置生命周期规则时，指定是否将小于64 KB的Object转储为低频、归档、冷归档文件类型。取值如下：
     ///
     /// - true（默认值）：转储包含小于64 KB在内的所有Object。当Object小于64 KB时，按照64 KB计算。当Object大于或等于64 KB时，按照实际大小计算。设置为true时，可能会增加存储费用。
     ///
     /// - false：不转储小于64 KB的Object。
     #[serde(rename = "AllowSmallFile")]
-    #[serde(default)]
-    pub allow_small_file: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allow_small_file: Option<bool>,
 }
 
 /// 指定未完成分片上传的过期属性。
@@ -17540,12 +17393,12 @@ pub struct LifecycleRuleTransitionItem {
 pub struct LifecycleRuleAbortMultipartUpload {
     /// 指定生命周期规则在距离Object最后更新多少天后生效。
     #[serde(rename = "Days")]
-    #[serde(default)]
-    pub days: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub days: Option<i32>,
     /// 指定一个日期，OSS会对最后更新时间早于该日期的数据执行生命周期规则。日期必须服从ISO8601的格式，且要求是UTC的零点。
     #[serde(rename = "CreatedBeforeDate")]
-    #[serde(default)]
-    pub created_before_date: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub created_before_date: Option<String>,
 }
 
 /// 设置Bucket Tag的容器。
@@ -17565,8 +17418,8 @@ pub struct Tag {
     ///  >  - 必须为UTF-8编码。
     ///  >  - 可以为空。
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
 }
 
 /// 指定Object非当前版本生命周期规则的过期属性。
@@ -17575,8 +17428,8 @@ pub struct Tag {
 pub struct LifecycleRuleNoncurrentVersionExpiration {
     /// 指定生命周期规则在Object成为非当前版本多少天后生效。
     #[serde(rename = "NoncurrentDays")]
-    #[serde(default)]
-    pub noncurrent_days: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub noncurrent_days: Option<i32>,
 }
 
 /// 在有效的生命周期规则中，OSS何时将指定Object的非当前版本转储为IA或者Archive存储类型 。
@@ -17586,8 +17439,8 @@ pub struct LifecycleRuleNoncurrentVersionExpiration {
 pub struct LifecycleRuleNoncurrentVersionTransitionItem {
     /// 指定生命周期规则在Object成为非当前版本多少天后生效。
     #[serde(rename = "NoncurrentDays")]
-    #[serde(default)]
-    pub noncurrent_days: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub noncurrent_days: Option<i32>,
     /// 指定Object转储的存储类型。
     ///
     /// - IA：低频访问
@@ -17596,32 +17449,32 @@ pub struct LifecycleRuleNoncurrentVersionTransitionItem {
     ///
     /// > IA Bucket中的Object可以转储为Archive或者ColdArchive存储类型，但不支持转储为Standard存储类型。
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub storage_class: Option<StorageClass>,
     /// 指定是否基于last access time匹配规则。取值如下：
     ///
     /// - true：采用Object的last access time（最后一次访问时间）匹配规则。
     ///
     /// - false（默认值）：采用Object的last modify time（最后一次修改时间）匹配规则。
     #[serde(rename = "IsAccessTime")]
-    #[serde(default)]
-    pub is_access_time: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_access_time: Option<bool>,
     /// 指定Object转为非标准存储后，再次访问时是否将Object转为标准存储。只有当IsAccessTime设置为true时才有效。取值如下：
     ///
     /// - true：Object由非标准存储转为标准存储。
     ///
     /// - false（默认值）：Object仍为非标准存储。
     #[serde(rename = "ReturnToStdWhenVisit")]
-    #[serde(default)]
-    pub return_to_std_when_visit: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub return_to_std_when_visit: Option<bool>,
     /// 基于最后一次访问时间设置生命周期规则时，指定是否将小于64 KB的Object转储为低频、归档、冷归档文件类型。取值如下：
     ///
     /// - true（默认值）：转储包含小于64 KB在内的所有Object。当Object小于64 KB时，按照64 KB计算。当Object大于或等于64 KB时，按照实际大小计算。设置为true时，可能会增加存储费用。
     ///
     /// - false：不转储小于64 KB的Object。
     #[serde(rename = "AllowSmallFile")]
-    #[serde(default)]
-    pub allow_small_file: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allow_small_file: Option<bool>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -17629,12 +17482,12 @@ pub struct LifecycleRuleNoncurrentVersionTransitionItem {
 pub struct LifecycleRuleFilterNotItem {
     /// 本条排除规则所适用的Object前缀。不可为空。  如果Rule节点下配置了Prefix，则Not节点下的Prefix必须以Rule节点下的Prefix为前缀。例如，Rule节点下配置的Prefix为dir，则Not节点下的Prefix必须以dir开头，例如dir1、dir2等。  如果Not节点下未配置Tag，则Not节点下配置的Prefix不能和Rule节点下的Prefix相同。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<String>,
     /// 本条排除规则所适用的Object标签，至多一个，可置空。
     #[serde(rename = "Tag")]
-    #[serde(default)]
-    pub tag: Tag,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tag: Option<Tag>,
 }
 
 /// 本条规则的排除条件。
@@ -17647,12 +17500,12 @@ pub struct LifecycleRuleFilter {
     pub not: Vec<LifecycleRuleFilterNotItem>,
     /// 本条生命周期规则只对文件大小大于该值的文件生效
     #[serde(rename = "ObjectSizeGreaterThan")]
-    #[serde(default)]
-    pub object_size_greater_than: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub object_size_greater_than: Option<i64>,
     /// 本条生命周期规则只对文件大小小于该值的文件生效
     #[serde(rename = "ObjectSizeLessThan")]
-    #[serde(default)]
-    pub object_size_less_than: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub object_size_less_than: Option<i64>,
 }
 
 /// 生命周期规则的容器。
@@ -17679,8 +17532,8 @@ pub struct LifecycleRule {
     /// 指定Object生命周期规则的过期属性。 对于受版本控制的Bucket，指定的过期属性只对Object的当前版本生效。
     /// <br>Object的过期时间必须大于转储为IA或Archive类型的时间。
     #[serde(rename = "Expiration")]
-    #[serde(default)]
-    pub expiration: LifecycleRuleExpiration,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expiration: Option<LifecycleRuleExpiration>,
     /// 指定Object在有效生命周期中，OSS何时将Object转储为IA、Archive和ColdArchive存储类型 。
     /// Standard Bucket中的Standard Object可以转储为IA、Archive或ColdArchive存储类型，但转储Archive存储类型的时间必须比转储IA存储类型的时间长。例如Transition
     /// IA设置Days为30，Transition Archive设置Days必须大于30。
@@ -17692,16 +17545,16 @@ pub struct LifecycleRule {
     pub transition: Vec<LifecycleRuleTransitionItem>,
     /// 指定未完成分片上传的过期属性。
     #[serde(rename = "AbortMultipartUpload")]
-    #[serde(default)]
-    pub abort_multipart_upload: LifecycleRuleAbortMultipartUpload,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub abort_multipart_upload: Option<LifecycleRuleAbortMultipartUpload>,
     /// 指定规则所适用的对象标签，可设置多个。
     #[serde(rename = "Tag")]
     #[serde(default)]
     pub tag: Vec<Tag>,
     /// 指定Object非当前版本生命周期规则的过期属性。
     #[serde(rename = "NoncurrentVersionExpiration")]
-    #[serde(default)]
-    pub noncurrent_version_expiration: LifecycleRuleNoncurrentVersionExpiration,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub noncurrent_version_expiration: Option<LifecycleRuleNoncurrentVersionExpiration>,
     /// 在有效的生命周期规则中，OSS何时将指定Object的非当前版本转储为IA或者Archive存储类型 。
     /// Standard类型的Object转储为Archive类型的时间必须大于转储为IA类型的时间。
     #[serde(rename = "NoncurrentVersionTransition")]
@@ -17709,12 +17562,12 @@ pub struct LifecycleRule {
     pub noncurrent_version_transition: Vec<LifecycleRuleNoncurrentVersionTransitionItem>,
     /// 本条规则的排除条件。
     #[serde(rename = "Filter")]
-    #[serde(default)]
-    pub filter: LifecycleRuleFilter,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filter: Option<LifecycleRuleFilter>,
     /// 存储空间开启访问追踪的时间戳
     #[serde(rename = "AtimeBase")]
-    #[serde(default)]
-    pub atime_base: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub atime_base: Option<i64>,
 }
 
 /// Lifecycle配置的容器，最多可容纳1000条规则。
@@ -17734,6 +17587,7 @@ pub struct ListAccessPointsResultAccessPoints {
     /// 保存接入点信息的列表。
     #[serde(rename = "AccessPoint")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub access_point: Vec<AccessPoint>,
 }
 
@@ -17743,24 +17597,19 @@ pub struct ListAccessPointsResultAccessPoints {
 pub struct ListAccessPointsResult {
     /// 请求中返回的结果是否被截断。返回值如下：  true：表示本次未返回全部结果。  false：表示本次已返回全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: String,
+    pub is_truncated: Option<String>,
     /// 表明本次ListAccessPoints请求包含后续结果，需要将NextContinuationToken指定为continuation-token继续获取结果。
     #[serde(rename = "NextContinuationToken")]
-    #[serde(default)]
-    pub next_continuation_token: String,
+    pub next_continuation_token: Option<String>,
     /// 接入点所属的阿里云账号UID。
     #[serde(rename = "AccountId")]
-    #[serde(default)]
-    pub account_id: String,
+    pub account_id: Option<String>,
     /// 保存所有接入点信息的容器。
     #[serde(rename = "AccessPoints")]
-    #[serde(default)]
-    pub access_points: ListAccessPointsResultAccessPoints,
+    pub access_points: Option<ListAccessPointsResultAccessPoints>,
     /// 本次列举操作所设置的结果最大数量。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i32,
+    pub max_keys: Option<i32>,
 }
 
 /// 保存推流地址的容器。
@@ -17772,8 +17621,7 @@ pub struct LiveChannelPublishUrls {
     /// >   - 推流地址是未加签名的URL，如Bucket ACL非public-read-write，则需先进行签名才可访问。
     /// >   - 播放地址是未加签名的URL，如Bucket ACL为private，则需先进行签名才可访问。
     #[serde(rename = "Url")]
-    #[serde(default)]
-    pub url: String,
+    pub url: Option<String>,
 }
 
 /// 保存播放地址的容器。
@@ -17782,8 +17630,7 @@ pub struct LiveChannelPublishUrls {
 pub struct LiveChannelPlayUrls {
     /// 播放地址。
     #[serde(rename = "Url")]
-    #[serde(default)]
-    pub url: String,
+    pub url: Option<String>,
 }
 
 /// 保存返回每个LiveChannel信息的容器。
@@ -17792,32 +17639,26 @@ pub struct LiveChannelPlayUrls {
 pub struct LiveChannel {
     /// LiveChannel的名称。
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// LiveChannel的描述信息。
     #[serde(rename = "Description")]
-    #[serde(default)]
-    pub description: String,
+    pub description: Option<String>,
     /// LiveChannel的状态。
     /// 有效值：
     /// - disabled：表示禁用LiveChannel。
     /// - enabled：表示启用LiveChannel。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// LiveChannel配置的最后修改时间。
     /// 格式：ISO8601
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// 保存LiveChannel对应的推流地址的容器。
     #[serde(rename = "PublishUrls")]
-    #[serde(default)]
-    pub publish_urls: LiveChannelPublishUrls,
+    pub publish_urls: Option<LiveChannelPublishUrls>,
     /// 保存LiveChannel对应的播放地址的容器。
     #[serde(rename = "PlayUrls")]
-    #[serde(default)]
-    pub play_urls: LiveChannelPlayUrls,
+    pub play_urls: Option<LiveChannelPlayUrls>,
 }
 
 /// 当Status为Live时，保存音频流信息的容器。
@@ -17829,16 +17670,13 @@ pub struct LiveChannelAudio {
     /// > Bandwidth为音频流/视频流最近一段时间内的平均码率。LiveChannel刚切换到Live状态时，返回的Bandwidth值可能为0。
     /// 单位：B/s
     #[serde(rename = "Bandwidth")]
-    #[serde(default)]
-    pub bandwidth: i64,
+    pub bandwidth: Option<i64>,
     /// 当前音频流的采样率。
     #[serde(rename = "SampleRate")]
-    #[serde(default)]
-    pub sample_rate: i64,
+    pub sample_rate: Option<i64>,
     /// 当前音频流的编码格式。
     #[serde(rename = "Codec")]
-    #[serde(default)]
-    pub codec: String,
+    pub codec: Option<String>,
 }
 
 /// 保存转储配置的容器。
@@ -17854,8 +17692,8 @@ pub struct LiveChannelTarget {
     /// >   - 转储类型为HLS时，写入当前ts文件的音视频数据时长达到FragDuration指定的时长后，OSS会在收到下一个关键帧的时切换到下一个ts文件；如果max(2*FragDuration,
     ///                                           60s)后仍未收到下一个关键帧，OSS将强制切换文件，此时可能引起播放时卡顿。
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<String>,
     /// 当Type为HLS时，指定每个ts文件的时长。
     /// 单位：秒
     ///
@@ -17863,23 +17701,23 @@ pub struct LiveChannelTarget {
     /// 默认值：**5**
     /// > FragDuration和FragCount的默认值只有在两者都未指定时才会生效；指定了其中一个，则另一个的值也必须指定。
     #[serde(rename = "FragDuration")]
-    #[serde(default)]
-    pub frag_duration: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frag_duration: Option<i64>,
     /// 当Type为HLS时，指定m3u8文件中包含ts文件的个数。
     ///
     /// 取值范围：[1, 100]
     /// 默认值：**3**
     /// > FragDuration和FragCount的默认值只有在两者都未指定时才会生效；指定了其中一个，则另一个的值也必须指定。
     #[serde(rename = "FragCount")]
-    #[serde(default)]
-    pub frag_count: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frag_count: Option<i64>,
     /// 当Type为HLS时，指定生成的m3u8文件的名称。必须以”.m3u8”结尾，长度范围为[6, 128]。
     ///
     /// 默认值：**playlist.m3u8**
     /// 取值范围：[6, 128]
     #[serde(rename = "PlaylistName")]
-    #[serde(default)]
-    pub playlist_name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub playlist_name: Option<String>,
 }
 
 /// 保存高频截图操作Snapshot 选项的容器。
@@ -17937,26 +17775,21 @@ pub struct LiveChannelVideo {
     /// 当前视频流的画面宽度。
     /// 单位：像素
     #[serde(rename = "Width")]
-    #[serde(default)]
-    pub width: i64,
+    pub width: Option<i64>,
     /// 当前视频流的画面高度。
     /// 单位：像素
     #[serde(rename = "Height")]
-    #[serde(default)]
-    pub height: i64,
+    pub height: Option<i64>,
     /// 当前视频流的帧率。
     #[serde(rename = "FrameRate")]
-    #[serde(default)]
-    pub frame_rate: i64,
+    pub frame_rate: Option<i64>,
     /// 当前视频流的码率。
     /// 单位：B/s
     #[serde(rename = "Bandwidth")]
-    #[serde(default)]
-    pub bandwidth: i64,
+    pub bandwidth: Option<i64>,
     /// 当前视频流的编码格式。
     #[serde(rename = "Codec")]
-    #[serde(default)]
-    pub codec: String,
+    pub codec: Option<String>,
 }
 
 /// 保存一次推流记录信息的容器。
@@ -17965,16 +17798,13 @@ pub struct LiveChannelVideo {
 pub struct LiveRecord {
     /// 推流开始时间，使用ISO8601格式表示。
     #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: String,
+    pub start_time: Option<String>,
     /// 推流结束时间，使用ISO8601格式表示。
     #[serde(rename = "EndTime")]
-    #[serde(default)]
-    pub end_time: String,
+    pub end_time: Option<String>,
     /// 推流客户端的IP地址。
     #[serde(rename = "RemoteAddr")]
-    #[serde(default)]
-    pub remote_addr: String,
+    pub remote_addr: Option<String>,
 }
 
 /// 传输类型容器。
@@ -17987,6 +17817,7 @@ pub struct LocationTransferTypeTransferTypes {
     ///   - oss_acc：传输加速链路。只有创建跨区域复制规则时才能使用传输加速链路。
     #[serde(rename = "Type")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub r#type: Vec<String>,
 }
 
@@ -17997,12 +17828,10 @@ pub struct LocationTransferTypeTransferTypes {
 pub struct LocationTransferType {
     /// 可复制到的目标Bucket所在的地域。
     #[serde(rename = "Location")]
-    #[serde(default)]
-    pub location: String,
+    pub location: Option<String>,
     /// 传输类型容器。
     #[serde(rename = "TransferTypes")]
-    #[serde(default)]
-    pub transfer_types: LocationTransferTypeTransferTypes,
+    pub transfer_types: Option<LocationTransferTypeTransferTypes>,
 }
 
 /// 聚合操作信息
@@ -18031,8 +17860,8 @@ pub struct MetaQueryAggregation {
 pub struct MetaQueryAggregations {
     /// 单个聚合操作信息的容器。
     #[serde(rename = "Aggregation")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub aggregation: Option<Vec<MetaQueryAggregation>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub aggregation: Vec<MetaQueryAggregation>,
 }
 
 /// 多媒体元数据检索条件。仅用于向量检索
@@ -18040,8 +17869,8 @@ pub struct MetaQueryAggregations {
 pub struct MetaQueryMediaTypes {
     /// 选择检索的多媒体类型。
     #[serde(rename = "MediaType")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub media_type: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub media_type: Vec<String>,
 }
 
 /// 查询条件的容器。
@@ -18095,12 +17924,10 @@ pub struct MetaQuery {
 pub struct MetaQueryAggregationsResultGroupsGroupItem {
     /// 分组聚合的值
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    pub value: Option<String>,
     /// 分组聚合的总个数
     #[serde(rename = "Count")]
-    #[serde(default)]
-    pub count: i64,
+    pub count: Option<i64>,
 }
 
 /// 分组聚合的结果列表的容器
@@ -18110,6 +17937,7 @@ pub struct MetaQueryAggregationsResultGroups {
     /// 分组聚合的结果列表
     #[serde(rename = "Group")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub group: Vec<MetaQueryAggregationsResultGroupsGroupItem>,
 }
 
@@ -18119,20 +17947,16 @@ pub struct MetaQueryAggregationsResultGroups {
 pub struct MetaQueryAggregationsResult {
     /// 字段名称
     #[serde(rename = "Field")]
-    #[serde(default)]
-    pub field: String,
+    pub field: Option<String>,
     /// 聚合操作符
     #[serde(rename = "Operation")]
-    #[serde(default)]
-    pub operation: String,
+    pub operation: Option<String>,
     /// 符合操作的结果值
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: f64,
+    pub value: Option<f64>,
     /// 分组聚合的结果列表的容器
     #[serde(rename = "Groups")]
-    #[serde(default)]
-    pub groups: MetaQueryAggregationsResultGroups,
+    pub groups: Option<MetaQueryAggregationsResultGroups>,
 }
 
 /// 对象所附标签
@@ -18141,12 +17965,10 @@ pub struct MetaQueryAggregationsResult {
 pub struct MetaQueryTagging {
     /// 对象标签键
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// 对象标签值
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    pub value: Option<String>,
 }
 
 /// 对象的标签列表
@@ -18156,6 +17978,7 @@ pub struct MetaQueryFileOssTagging {
     /// 对象的标签
     #[serde(rename = "Tagging")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tagging: Vec<MetaQueryTagging>,
 }
 
@@ -18165,12 +17988,10 @@ pub struct MetaQueryFileOssTagging {
 pub struct MetaQueryUserMeta {
     /// 用户自定义元数据键
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// 用户自定义元数据值
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    pub value: Option<String>,
 }
 
 /// 对象的自定义元数据列表
@@ -18180,6 +18001,7 @@ pub struct MetaQueryFileOssUserMeta {
     /// 对象的自定义元数据
     #[serde(rename = "UserMeta")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub user_meta: Vec<MetaQueryUserMeta>,
 }
 
@@ -18189,52 +18011,40 @@ pub struct MetaQueryFileOssUserMeta {
 pub struct MetaQueryRespVideoStream {
     /// 编码器名称
     #[serde(rename = "CodecName")]
-    #[serde(default)]
-    pub codec_name: String,
+    pub codec_name: Option<String>,
     /// 视频流中使用的语言，格式为BCP 47
     #[serde(rename = "Language")]
-    #[serde(default)]
-    pub language: String,
+    pub language: Option<String>,
     /// 码率，单位为比特每秒（bit/s）
     #[serde(rename = "Bitrate")]
-    #[serde(default)]
-    pub bitrate: i64,
+    pub bitrate: Option<i64>,
     /// 视频流帧率
     #[serde(rename = "FrameRate")]
-    #[serde(default)]
-    pub frame_rate: String,
+    pub frame_rate: Option<String>,
     /// 视频流起始时间，单位为秒（s）
     #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: f64,
+    pub start_time: Option<f64>,
     /// 视频流持续时长，单位为秒（s）
     #[serde(rename = "Duration")]
-    #[serde(default)]
-    pub duration: f64,
+    pub duration: Option<f64>,
     /// 视频帧数
     #[serde(rename = "FrameCount")]
-    #[serde(default)]
-    pub frame_count: i64,
+    pub frame_count: Option<i64>,
     /// 像素位宽
     #[serde(rename = "BitDepth")]
-    #[serde(default)]
-    pub bit_depth: i64,
+    pub bit_depth: Option<i64>,
     /// 视频流像素格式
     #[serde(rename = "PixelFormat")]
-    #[serde(default)]
-    pub pixel_format: String,
+    pub pixel_format: Option<String>,
     /// 色彩空间
     #[serde(rename = "ColorSpace")]
-    #[serde(default)]
-    pub color_space: String,
+    pub color_space: Option<String>,
     /// 视频流画面高度，单位为像素（px）
     #[serde(rename = "Height")]
-    #[serde(default)]
-    pub height: i64,
+    pub height: Option<i64>,
     /// 视频流画面宽度，单位为像素（px）
     #[serde(rename = "Width")]
-    #[serde(default)]
-    pub width: i64,
+    pub width: Option<i64>,
 }
 
 /// 视频流列表
@@ -18243,8 +18053,7 @@ pub struct MetaQueryRespVideoStream {
 pub struct MetaQueryFileVideoStreams {
     /// 视频流
     #[serde(rename = "VideoStream")]
-    #[serde(default)]
-    pub video_stream: MetaQueryRespVideoStream,
+    pub video_stream: Option<MetaQueryRespVideoStream>,
 }
 
 /// 数据索引向量检索结果中的音频流信息
@@ -18253,32 +18062,25 @@ pub struct MetaQueryFileVideoStreams {
 pub struct MetaQueryRespAudioStream {
     /// 编码器名称
     #[serde(rename = "CodecName")]
-    #[serde(default)]
-    pub codec_name: String,
+    pub codec_name: Option<String>,
     /// 码率，单位为比特每秒（bit/s）
     #[serde(rename = "Bitrate")]
-    #[serde(default)]
-    pub bitrate: i64,
+    pub bitrate: Option<i64>,
     /// 采样率，单位为赫兹（Hz）
     #[serde(rename = "SampleRate")]
-    #[serde(default)]
-    pub sample_rate: i64,
+    pub sample_rate: Option<i64>,
     /// 音频流起始时间，单位为秒（s）
     #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: f64,
+    pub start_time: Option<f64>,
     /// 音频流持续时长，单位为秒（s）
     #[serde(rename = "Duration")]
-    #[serde(default)]
-    pub duration: f64,
+    pub duration: Option<f64>,
     /// 声道数量
     #[serde(rename = "Channels")]
-    #[serde(default)]
-    pub channels: i64,
+    pub channels: Option<i64>,
     /// 音频流中使用的语言，格式为BCP 47
     #[serde(rename = "Language")]
-    #[serde(default)]
-    pub language: String,
+    pub language: Option<String>,
 }
 
 /// 音频流列表
@@ -18287,8 +18089,7 @@ pub struct MetaQueryRespAudioStream {
 pub struct MetaQueryFileAudioStreams {
     /// 音频流
     #[serde(rename = "AudioStream")]
-    #[serde(default)]
-    pub audio_stream: MetaQueryRespAudioStream,
+    pub audio_stream: Option<MetaQueryRespAudioStream>,
 }
 
 /// 数据索引向量检索结果中的字幕流信息
@@ -18297,20 +18098,16 @@ pub struct MetaQueryFileAudioStreams {
 pub struct MetaQueryRespSubtitle {
     /// 编码器名称
     #[serde(rename = "CodecName")]
-    #[serde(default)]
-    pub codec_name: String,
+    pub codec_name: Option<String>,
     /// 字幕语言，格式为BCP 47
     #[serde(rename = "Language")]
-    #[serde(default)]
-    pub language: String,
+    pub language: Option<String>,
     /// 字幕流起始时间，单位为秒（s）
     #[serde(rename = "StartTime")]
-    #[serde(default)]
-    pub start_time: f64,
+    pub start_time: Option<f64>,
     /// 字幕流持续时长，单位为秒（s）。
     #[serde(rename = "Duration")]
-    #[serde(default)]
-    pub duration: f64,
+    pub duration: Option<f64>,
 }
 
 /// 字幕流列表
@@ -18319,8 +18116,7 @@ pub struct MetaQueryRespSubtitle {
 pub struct MetaQueryFileSubtitles {
     /// 字幕流
     #[serde(rename = "Subtitle")]
-    #[serde(default)]
-    pub subtitle: MetaQueryRespSubtitle,
+    pub subtitle: Option<MetaQueryRespSubtitle>,
 }
 
 /// 数据索引向量检索结果中的地址信息
@@ -18329,28 +18125,22 @@ pub struct MetaQueryFileSubtitles {
 pub struct MetaQueryRespAddress {
     /// 完整地址
     #[serde(rename = "AddressLine")]
-    #[serde(default)]
-    pub address_line: String,
+    pub address_line: Option<String>,
     /// 城市
     #[serde(rename = "City")]
-    #[serde(default)]
-    pub city: String,
+    pub city: Option<String>,
     /// 区
     #[serde(rename = "District")]
-    #[serde(default)]
-    pub district: String,
+    pub district: Option<String>,
     /// 语言，格式为BCP 47
     #[serde(rename = "Language")]
-    #[serde(default)]
-    pub language: String,
+    pub language: Option<String>,
     /// 省份
     #[serde(rename = "Province")]
-    #[serde(default)]
-    pub province: String,
+    pub province: Option<String>,
     /// 街道
     #[serde(rename = "Township")]
-    #[serde(default)]
-    pub township: String,
+    pub township: Option<String>,
 }
 
 /// 地址信息列表
@@ -18359,41 +18149,34 @@ pub struct MetaQueryRespAddress {
 pub struct MetaQueryFileAddresses {
     /// 地址信息
     #[serde(rename = "Address")]
-    #[serde(default)]
-    pub address: MetaQueryRespAddress,
+    pub address: Option<MetaQueryRespAddress>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsightsVideo {
     #[serde(rename = "Caption")]
-    #[serde(default)]
-    pub caption: String,
+    pub caption: Option<String>,
     #[serde(rename = "Description")]
-    #[serde(default)]
-    pub description: String,
+    pub description: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsightsImage {
     #[serde(rename = "Caption")]
-    #[serde(default)]
-    pub caption: String,
+    pub caption: Option<String>,
     #[serde(rename = "Description")]
-    #[serde(default)]
-    pub description: String,
+    pub description: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsights {
     #[serde(rename = "Video")]
-    #[serde(default)]
-    pub video: MetaQueryRespFileInsightsVideo,
+    pub video: Option<MetaQueryRespFileInsightsVideo>,
     #[serde(rename = "Image")]
-    #[serde(default)]
-    pub image: MetaQueryRespFileInsightsImage,
+    pub image: Option<MetaQueryRespFileInsightsImage>,
 }
 
 /// A short description of struct
@@ -18402,187 +18185,143 @@ pub struct MetaQueryRespFileInsights {
 pub struct MetaQueryFile {
     /// 对象的完整路径
     #[serde(rename = "Filename")]
-    #[serde(default)]
-    pub filename: String,
+    pub filename: Option<String>,
     /// 对象大小
     #[serde(rename = "Size")]
-    #[serde(default)]
-    pub size: i64,
+    pub size: Option<i64>,
     /// 最近一次修改时间
     #[serde(rename = "FileModifiedTime")]
-    #[serde(default)]
-    pub file_modified_time: String,
+    pub file_modified_time: Option<String>,
     /// 对象的类型
     #[serde(rename = "OSSObjectType")]
-    #[serde(default)]
-    pub oss_object_type: String,
+    pub oss_object_type: Option<String>,
     /// 对象的存储类型
     #[serde(rename = "OSSStorageClass")]
-    #[serde(default)]
-    pub oss_storage_class: String,
+    pub oss_storage_class: Option<String>,
     /// 对象的访问权限
     #[serde(rename = "ObjectACL")]
-    #[serde(default)]
-    pub object_acl: String,
+    pub object_acl: Option<String>,
     /// 对象的ETAG
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// 对象的CRC64校验值
     #[serde(rename = "OSSCRC64")]
-    #[serde(default)]
-    pub osscrc64: String,
+    pub osscrc64: Option<String>,
     /// 创建对象时的服务端加密密钥
     #[serde(rename = "ServerSideEncryption")]
-    #[serde(default)]
-    pub server_side_encryption: String,
+    pub server_side_encryption: Option<String>,
     /// 创建对象时的服务端加密算法
     #[serde(rename = "ServerSideEncryptionCustomerAlgorithm")]
-    #[serde(default)]
-    pub server_side_encryption_customer_algorithm: String,
+    pub server_side_encryption_customer_algorithm: Option<String>,
     /// 对象的标签个数
     #[serde(rename = "OSSTaggingCount")]
-    #[serde(default)]
-    pub oss_tagging_count: i64,
+    pub oss_tagging_count: Option<i64>,
     /// 对象的标签列表
     #[serde(rename = "OSSTagging")]
-    #[serde(default)]
-    pub oss_tagging: MetaQueryFileOssTagging,
+    pub oss_tagging: Option<MetaQueryFileOssTagging>,
     /// 对象的自定义元数据列表
     #[serde(rename = "OSSUserMeta")]
-    #[serde(default)]
-    pub oss_user_meta: MetaQueryFileOssUserMeta,
+    pub oss_user_meta: Option<MetaQueryFileOssUserMeta>,
     /// Object完整路径
     #[serde(rename = "URI")]
-    #[serde(default)]
-    pub uri: String,
+    pub uri: Option<String>,
     /// 设备记录的照片或视频的拍摄时间
     #[serde(rename = "ProduceTime")]
-    #[serde(default)]
-    pub produce_time: String,
+    pub produce_time: Option<String>,
     /// MIME类型
     #[serde(rename = "ContentType")]
-    #[serde(default)]
-    pub content_type: String,
+    pub content_type: Option<String>,
     /// 多媒体类型
     #[serde(rename = "MediaType")]
-    #[serde(default)]
-    pub media_type: String,
+    pub media_type: Option<String>,
     /// 经纬度信息
     #[serde(rename = "LatLong")]
-    #[serde(default)]
-    pub lat_long: String,
+    pub lat_long: Option<String>,
     /// 文件标题
     #[serde(rename = "Title")]
-    #[serde(default)]
-    pub title: String,
+    pub title: Option<String>,
     /// 文件过期时间
     #[serde(rename = "OSSExpiration")]
-    #[serde(default)]
-    pub oss_expiration: String,
+    pub oss_expiration: Option<String>,
     /// 允许的跨域请求的来源
     #[serde(rename = "AccessControlAllowOrigin")]
-    #[serde(default)]
-    pub access_control_allow_origin: String,
+    pub access_control_allow_origin: Option<String>,
     /// 跨域请求中用到的方法
     #[serde(rename = "AccessControlRequestMethod")]
-    #[serde(default)]
-    pub access_control_request_method: String,
+    pub access_control_request_method: Option<String>,
     /// Object的加密算法
     #[serde(rename = "ServerSideDataEncryption")]
-    #[serde(default)]
-    pub server_side_data_encryption: String,
+    pub server_side_data_encryption: Option<String>,
     /// KMS托管的用户主密钥
     #[serde(rename = "ServerSideEncryptionKeyId")]
-    #[serde(default)]
-    pub server_side_encryption_key_id: String,
+    pub server_side_encryption_key_id: Option<String>,
     /// Object被下载时网页的缓存行为
     #[serde(rename = "CacheControl")]
-    #[serde(default)]
-    pub cache_control: String,
+    pub cache_control: Option<String>,
     /// Object被下载时的名称
     #[serde(rename = "ContentDisposition")]
-    #[serde(default)]
-    pub content_disposition: String,
+    pub content_disposition: Option<String>,
     /// Object被下载时的内容编码格式
     #[serde(rename = "ContentEncoding")]
-    #[serde(default)]
-    pub content_encoding: String,
+    pub content_encoding: Option<String>,
     /// Object内容使用的语言
     #[serde(rename = "ContentLanguage")]
-    #[serde(default)]
-    pub content_language: String,
+    pub content_language: Option<String>,
     /// 图片高度，单位为像素（px）
     #[serde(rename = "ImageHeight")]
-    #[serde(default)]
-    pub image_height: i64,
+    pub image_height: Option<i64>,
     /// 图片宽度，单位为像素（px）
     #[serde(rename = "ImageWidth")]
-    #[serde(default)]
-    pub image_width: i64,
+    pub image_width: Option<i64>,
     /// 视频画面宽度，单位为像素（px）
     #[serde(rename = "VideoWidth")]
-    #[serde(default)]
-    pub video_width: i64,
+    pub video_width: Option<i64>,
     /// 视频画面高度，单位为像素（px）
     #[serde(rename = "VideoHeight")]
-    #[serde(default)]
-    pub video_height: i64,
+    pub video_height: Option<i64>,
     /// 码率，单位为比特每秒（bit/s）
     #[serde(rename = "Bitrate")]
-    #[serde(default)]
-    pub bitrate: i64,
+    pub bitrate: Option<i64>,
     /// 艺术家
     #[serde(rename = "Artist")]
-    #[serde(default)]
-    pub artist: String,
+    pub artist: Option<String>,
     /// 演唱者
     #[serde(rename = "AlbumArtist")]
-    #[serde(default)]
-    pub album_artist: String,
+    pub album_artist: Option<String>,
     /// 作曲家
     #[serde(rename = "Composer")]
-    #[serde(default)]
-    pub composer: String,
+    pub composer: Option<String>,
     /// 演奏者
     #[serde(rename = "Performer")]
-    #[serde(default)]
-    pub performer: String,
+    pub performer: Option<String>,
     /// 专辑
     #[serde(rename = "Album")]
-    #[serde(default)]
-    pub album: String,
+    pub album: Option<String>,
     /// 视频的总时长。单位秒
     #[serde(rename = "Duration")]
-    #[serde(default)]
-    pub duration: f64,
+    pub duration: Option<f64>,
     /// 视频流列表
     #[serde(rename = "VideoStreams")]
-    #[serde(default)]
-    pub video_streams: MetaQueryFileVideoStreams,
+    pub video_streams: Option<MetaQueryFileVideoStreams>,
     /// 音频流列表
     #[serde(rename = "AudioStreams")]
-    #[serde(default)]
-    pub audio_streams: MetaQueryFileAudioStreams,
+    pub audio_streams: Option<MetaQueryFileAudioStreams>,
     /// 字幕流列表
     #[serde(rename = "Subtitles")]
-    #[serde(default)]
-    pub subtitles: MetaQueryFileSubtitles,
+    pub subtitles: Option<MetaQueryFileSubtitles>,
     /// 地址信息列表
     #[serde(rename = "Addresses")]
-    #[serde(default)]
-    pub addresses: MetaQueryFileAddresses,
+    pub addresses: Option<MetaQueryFileAddresses>,
     /// 保存文件的描述信息
     #[serde(rename = "Insights")]
-    #[serde(default)]
-    pub insights: MetaQueryRespFileInsights,
+    pub insights: Option<MetaQueryRespFileInsights>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequestFilters {
     #[serde(rename = "Filter")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub filter: Vec<String>,
 }
 
 /// 为开启元数据管理功能的请求体
@@ -18600,6 +18339,7 @@ pub struct MetaQueryRespFiles {
     /// 保存单个Object信息的容器。
     #[serde(rename = "File")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub file: Vec<MetaQueryFile>,
 }
 
@@ -18610,6 +18350,7 @@ pub struct MetaQueryRespAggregations {
     /// 聚合操作结果列表
     #[serde(rename = "Aggregation")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub aggregation: Vec<MetaQueryAggregationsResult>,
 }
 
@@ -18619,16 +18360,13 @@ pub struct MetaQueryRespAggregations {
 pub struct MetaQueryResp {
     /// 当Object总数大于设置的MaxResults时，用于翻页的token。  下一次列出Object信息时以此值为NextToken，将未返回的结果返回。  当Object未全部返回时，此参数才有值。
     #[serde(rename = "NextToken")]
-    #[serde(default)]
-    pub next_token: String,
+    pub next_token: Option<String>,
     /// Object信息的容器。
     #[serde(rename = "Files")]
-    #[serde(default)]
-    pub files: MetaQueryRespFiles,
+    pub files: Option<MetaQueryRespFiles>,
     /// 聚合操作结果信息的容器
     #[serde(rename = "Aggregations")]
-    #[serde(default)]
-    pub aggregations: MetaQueryRespAggregations,
+    pub aggregations: Option<MetaQueryRespAggregations>,
 }
 
 /// Object哈希算法配置
@@ -18650,12 +18388,10 @@ pub struct ObjectHashConfiguration {
 pub struct ObjectSummary {
     /// Object的Key。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Object最后被修改的时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// ETag (Entity Tag) 在每个Object生成时创建，用于标识一个Object的内容。
     ///
     /// - 对于PutObject请求创建的Object，ETag值是其内容的MD5值。
@@ -18664,8 +18400,7 @@ pub struct ObjectSummary {
     ///
     /// - ETag值可以用于检查Object内容是否发生变化。不建议使用ETag值作为Object内容的MD5校验数据完整性的依据。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// Object的类型，包含以下三种：
     ///
     /// - 通过简单上传生成的Object类型为Normal。
@@ -18674,28 +18409,22 @@ pub struct ObjectSummary {
     ///
     /// - 通过追加上传生成的Object类型为Appendable，且仅支持在Appendable类型的Object后直接追加内容。
     #[serde(rename = "Type")]
-    #[serde(default)]
-    pub r#type: String,
+    pub r#type: Option<String>,
     /// 返回Object大小，单位为字节。
     #[serde(rename = "Size")]
-    #[serde(default)]
-    pub size: i64,
+    pub size: Option<i64>,
     /// Object的存储类型。
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    pub storage_class: Option<StorageClass>,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// Object的解冻状态
     #[serde(rename = "RestoreInfo")]
-    #[serde(default)]
-    pub restore_info: String,
+    pub restore_info: Option<String>,
     /// Object被生命周期转为冷归档或者深度冷归档的时间
     #[serde(rename = "TransitionTime")]
-    #[serde(default)]
-    pub transition_time: String,
+    pub transition_time: Option<String>,
 }
 
 /// 保存通过对象FC接入点发起请求信息的容器。
@@ -18726,12 +18455,12 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
 {
     /// 函数计算用于访问您在其他云产品中的资源的角色ARN
     #[serde(rename = "FunctionAssumeRoleArn")]
-    #[serde(default)]
-    pub function_assume_role_arn: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub function_assume_role_arn: Option<String>,
     /// 函数ARN
     #[serde(rename = "FunctionArn")]
-    #[serde(default)]
-    pub function_arn: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub function_arn: Option<String>,
 }
 
 /// 保存自定义转发请求头列表
@@ -18751,8 +18480,8 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures {
     /// 保存自定义转发请求头列表
     #[serde(rename = "CustomForwardHeaders")]
-    #[serde(default)]
-    pub custom_forward_headers: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeaturesCustomForwardHeaders,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub custom_forward_headers: Option<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeaturesCustomForwardHeaders>,
 }
 
 /// 保存转换信息的容器
@@ -18761,12 +18490,12 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation {
     /// 保存函数计算信息的容器
     #[serde(rename = "FunctionCompute")]
-    #[serde(default)]
-    pub function_compute: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationFunctionCompute,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub function_compute: Option<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationFunctionCompute>,
     /// 保存额外特性配置
     #[serde(rename = "AdditionalFeatures")]
-    #[serde(default)]
-    pub additional_features: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub additional_features: Option<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformationAdditionalFeatures>,
 }
 
 /// 保存转换配置信息的容器
@@ -18775,12 +18504,12 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
 pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItem {
     /// 保存操作信息的容器
     #[serde(rename = "Actions")]
-    #[serde(default)]
-    pub actions: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemActions,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub actions: Option<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemActions>,
     /// 保存转换信息的容器
     #[serde(rename = "ContentTransformation")]
-    #[serde(default)]
-    pub content_transformation: ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub content_transformation: Option<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItemContentTransformation>,
 }
 
 /// 保存转换配置信息的容器
@@ -18800,12 +18529,13 @@ pub struct ObjectProcessConfigurationTransformationConfigurations {
 pub struct ObjectProcessConfiguration {
     /// 保存通过对象FC接入点发起请求信息的容器。
     #[serde(rename = "AllowedFeatures")]
-    #[serde(default)]
-    pub allowed_features: ObjectProcessConfigurationAllowedFeatures,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allowed_features: Option<ObjectProcessConfigurationAllowedFeatures>,
     /// 保存转换配置信息的容器
     #[serde(rename = "TransformationConfigurations")]
-    #[serde(default)]
-    pub transformation_configurations: ObjectProcessConfigurationTransformationConfigurations,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transformation_configurations:
+        Option<ObjectProcessConfigurationTransformationConfigurations>,
 }
 
 /// 保存除删除标记以外的Object版本的容器。
@@ -18814,12 +18544,10 @@ pub struct ObjectProcessConfiguration {
 pub struct ObjectVersion {
     /// Object的名称。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Object的版本ID。
     #[serde(rename = "VersionId")]
-    #[serde(default)]
-    pub version_id: String,
+    pub version_id: Option<String>,
     /// Object是否为当前版本。
     /// 取值：
     ///
@@ -18827,40 +18555,32 @@ pub struct ObjectVersion {
     ///
     /// - false：Object为非当前版本。
     #[serde(rename = "IsLatest")]
-    #[serde(default)]
-    pub is_latest: bool,
+    pub is_latest: Option<bool>,
     /// Object最后被修改的时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// 每个Object生成时创建的ETag ，用于标识Object的内容。
     ///   - 对于PutObject请求创建的Object，ETag值是其内容的MD5值。
     ///   - 对于其他方式创建的Object，ETag值是基于一定计算规则生成的唯一值，但不是其内容的MD5值。
     ///
     /// > ETag值仅用于检查Object内容是否发生变化。不建议使用ETag值作为Object内容的MD5数据完整性校验的依据。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// Object的字节数。
     #[serde(rename = "Size")]
-    #[serde(default)]
-    pub size: i64,
+    pub size: Option<i64>,
     /// Object的存储类型。
     #[serde(rename = "StorageClass")]
-    #[serde(default)]
-    pub storage_class: StorageClass,
+    pub storage_class: Option<StorageClass>,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// Object版本的解冻状态
     #[serde(rename = "RestoreInfo")]
-    #[serde(default)]
-    pub restore_info: String,
+    pub restore_info: Option<String>,
     /// Object版本被生命周期转为冷归档或者深度冷归档的时间
     #[serde(rename = "TransitionTime")]
-    #[serde(default)]
-    pub transition_time: String,
+    pub transition_time: Option<String>,
 }
 
 /// 保存Select请求的容器。
@@ -18920,24 +18640,24 @@ pub struct OverwriteConfigurationRuleItemPrincipals {
 pub struct OverwriteConfigurationRuleItem {
     /// 规则的唯一标识符。如果不填写，则会随机生成一个UUID来填充；如果填写，则必须为唯一值，即不同的Rule中不能设置相同的ID。
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     /// 操作类型。当前只支持设置forbid（禁止覆盖写）。
     #[serde(rename = "Action")]
-    #[serde(default)]
-    pub action: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub action: Option<String>,
     /// Object名称的前缀，用于筛选需要处理的Object。最大长度为1023个字符。单个Rule中最多一个Prefix。前后缀不支持正则表达。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix: Option<String>,
     /// Object名称的后缀，用于筛选需要处理的Object。最大长度为1023个字符。单个Rule中最多一个Suffix。前后缀不支持正则表达。
     #[serde(rename = "Suffix")]
-    #[serde(default)]
-    pub suffix: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub suffix: Option<String>,
     /// 保存规则生效的账号与角色列表的容器
     #[serde(rename = "Principals")]
-    #[serde(default)]
-    pub principals: OverwriteConfigurationRuleItemPrincipals,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub principals: Option<OverwriteConfigurationRuleItemPrincipals>,
 }
 
 /// 禁止覆盖写的配置
@@ -18956,20 +18676,16 @@ pub struct OverwriteConfiguration {
 pub struct Part {
     /// Part成功上传后，OSS返回的ETag值。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// Part数目。
     #[serde(rename = "PartNumber")]
-    #[serde(default)]
-    pub part_number: i64,
+    pub part_number: Option<i64>,
     /// 已上传Part大小。
     #[serde(rename = "Size")]
-    #[serde(default)]
-    pub size: i64,
+    pub size: Option<i64>,
     /// Part上传的时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
 }
 
 /// 保存Prefix的容器，每个复制规则中，最多能指定10个Prefix。
@@ -18991,19 +18707,19 @@ pub struct ReplicationPrefixSet {
 pub struct ReplicationDestination {
     /// 指定数据要复制到的目标Bucket。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bucket: Option<String>,
     /// 目标Bucket所处的地域。
     #[serde(rename = "Location")]
-    #[serde(default)]
-    pub location: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub location: Option<String>,
     /// 指定数据复制时使用的数据传输链路。
     /// 取值：
     ///   - internal（默认值）：OSS默认传输链路。
     ///   - oss_acc：传输加速链路。只有创建跨区域复制规则时才能使用传输加速链路。
     #[serde(rename = "TransferType")]
-    #[serde(default)]
-    pub transfer_type: ReplicationDestinationTransferType,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transfer_type: Option<ReplicationDestinationTransferType>,
 }
 
 /// 用于筛选使用SSE-KMS加密对象的容器。如果在数据复制规则中指定了SourceSelectionCriteria，则必须指定该元素。
@@ -19014,8 +18730,8 @@ pub struct ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
     ///   - Enabled：表示复制通过SSE-KMS加密创建的对象。
     ///   - Disabled：表示不复制通过SSE-KMS加密创建的对象。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub status: Option<ReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsStatus>,
 }
 
 /// 用于标识要复制的源对象的其他筛选条件的容器。当前OSS仅支持针对SSE-KMS加密的源对象指定筛选条件。
@@ -19024,8 +18740,8 @@ pub struct ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
 pub struct ReplicationSourceSelectionCriteria {
     /// 用于筛选使用SSE-KMS加密对象的容器。如果在数据复制规则中指定了SourceSelectionCriteria，则必须指定该元素。
     #[serde(rename = "SseKmsEncryptedObjects")]
-    #[serde(default)]
-    pub sse_kms_encrypted_objects: ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sse_kms_encrypted_objects: Option<ReplicationSourceSelectionCriteriaSseKmsEncryptedObjects>,
 }
 
 /// 目标对象加密配置。
@@ -19034,8 +18750,8 @@ pub struct ReplicationSourceSelectionCriteria {
 pub struct ReplicationEncryptionConfiguration {
     /// 指定SSE-KMS密钥ID。如果指定复制通过SSE-KMS加密创建的对象，则必须指定该元素。
     #[serde(rename = "ReplicaKmsKeyID")]
-    #[serde(default)]
-    pub replica_kms_key_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replica_kms_key_id: Option<String>,
 }
 
 /// 数据复制时间控制功能的状态
@@ -19044,8 +18760,8 @@ pub struct ReplicationEncryptionConfiguration {
 pub struct RTC {
     /// 是否开启复制时间控制（RTC）功能
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub status: Option<String>,
 }
 
 /// 保存Referer访问白名单的容器。
@@ -19085,24 +18801,24 @@ pub struct RefererConfiguration {
     ///
     /// - false：不截断QueryString。
     #[serde(rename = "AllowTruncateQueryString")]
-    #[serde(default)]
-    pub allow_truncate_query_string: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allow_truncate_query_string: Option<bool>,
     /// 匹配时是否截断路径部分（即只匹配protocol://host/部分）。取值：
     ///
     /// - true：截断URL中包括Path在内的后续所有部分。
     ///
     /// - false：不截断URL中包括Path在内的后续所有部分。
     #[serde(rename = "TruncatePath")]
-    #[serde(default)]
-    pub truncate_path: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub truncate_path: Option<bool>,
     /// 保存Referer访问白名单的容器。
     /// > **说明**PutBucketReferer为覆盖语义，即RefererList中的新指定的白名单列表将覆盖已配置的白名单列表。当您上传的RefererList为空时（即不包含Referer请求元素），此操作将清空RefererList中已配置的白名单列表。
     #[serde(rename = "RefererList")]
     pub referer_list: RefererConfigurationRefererList,
     /// 保存Referer访问黑名单
     #[serde(rename = "RefererBlacklist")]
-    #[serde(default)]
-    pub referer_blacklist: RefererConfigurationRefererBlacklist,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub referer_blacklist: Option<RefererConfigurationRefererBlacklist>,
 }
 
 /// 地域信息。
@@ -19111,20 +18827,16 @@ pub struct RefererConfiguration {
 pub struct RegionInfo {
     /// 地域ID。
     #[serde(rename = "Region")]
-    #[serde(default)]
-    pub region: String,
+    pub region: Option<String>,
     /// 地域对应的外网Endpoint。
     #[serde(rename = "InternetEndpoint")]
-    #[serde(default)]
-    pub internet_endpoint: String,
+    pub internet_endpoint: Option<String>,
     /// 地域对应的内网Endpoint。
     #[serde(rename = "InternalEndpoint")]
-    #[serde(default)]
-    pub internal_endpoint: String,
+    pub internal_endpoint: Option<String>,
     /// 地域对应的传输加速Endpoint。取值固定为oss-accelerate.aliyuncs.com。
     #[serde(rename = "AccelerateEndpoint")]
-    #[serde(default)]
-    pub accelerate_endpoint: String,
+    pub accelerate_endpoint: Option<String>,
 }
 
 /// 保存复制进度的容器，仅当数据处于同步状态（doing）时才返回此元素。
@@ -19133,14 +18845,12 @@ pub struct RegionInfo {
 pub struct ReplicationProgressRuleProgress {
     /// 显示已复制历史数据的百分比。仅对开启了历史数据复制的Bucket有效。
     #[serde(rename = "HistoricalObject")]
-    #[serde(default)]
-    pub historical_object: String,
+    pub historical_object: Option<String>,
     /// 显示数据复制到目标Bucket的时间点（GMT格式）。
     ///
     /// 例如Thu, 24 Sep 2015 15:39:18 GMT，表示早于该时间点写入的数据都已复制到目标Bucket。
     #[serde(rename = "NewObject")]
-    #[serde(default)]
-    pub new_object: String,
+    pub new_object: Option<String>,
 }
 
 /// 数据复制进度信息
@@ -19149,12 +18859,10 @@ pub struct ReplicationProgressRuleProgress {
 pub struct ReplicationProgressRule {
     /// rule id
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    pub id: Option<String>,
     /// 保存Prefix 的容器，每个复制规则中，最多能指定10个Prefix。
     #[serde(rename = "PrefixSet")]
-    #[serde(default)]
-    pub prefix_set: ReplicationPrefixSet,
+    pub prefix_set: Option<ReplicationPrefixSet>,
     /// 表示被同步到目标Bucket的操作。
     ///
     /// Action允许以下操作类型，您可以指定一项或者多项。
@@ -19163,16 +18871,13 @@ pub struct ReplicationProgressRule {
     ///
     /// PUT：表示被同步到目标Bucket的写入操作，包括PutObject、PostObject、AppendObject、CopyObject、PutObjectACL、 InitiateMultipartUpload 、 UploadPart、UploadPartCopy和CompleteMultipartUpload。
     #[serde(rename = "Action")]
-    #[serde(default)]
-    pub action: String,
+    pub action: Option<String>,
     /// 保存目标Bucket信息的容器。
     #[serde(rename = "Destination")]
-    #[serde(default)]
-    pub destination: ReplicationDestination,
+    pub destination: Option<ReplicationDestination>,
     /// 复制状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 是否复制历史数据。即开启数据复制前，是否将源Bucket中的数据复制到目标Bucket。
     ///
     /// 取值：
@@ -19181,12 +18886,10 @@ pub struct ReplicationProgressRule {
     ///
     /// disabled：表示不复制历史数据，仅复制跨区域复制规则生效后新写入的数据。
     #[serde(rename = "HistoricalObjectReplication")]
-    #[serde(default)]
-    pub historical_object_replication: String,
+    pub historical_object_replication: Option<String>,
     /// 保存复制进度的容器，仅当数据处于同步状态（doing）时才返回此元素。
     #[serde(rename = "Progress")]
-    #[serde(default)]
-    pub progress: ReplicationProgressRuleProgress,
+    pub progress: Option<ReplicationProgressRuleProgress>,
 }
 
 /// 数据复制规则。
@@ -19195,12 +18898,12 @@ pub struct ReplicationProgressRule {
 pub struct ReplicationRule {
     /// 请求规则对应的ID。
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     /// 保存前缀（Prefix）的容器。每条数据复制规则中，最多可指定10条Prefix。
     #[serde(rename = "PrefixSet")]
-    #[serde(default)]
-    pub prefix_set: ReplicationPrefixSet,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub prefix_set: Option<ReplicationPrefixSet>,
     /// 指定可以被复制到目标Bucket的操作。如果配置了Action，则新写入的数据和历史数据的同步都会遵循Action指定的复制操作。
     /// Action允许以下操作类型，您可以指定一项或多项。
     /// 取值：
@@ -19208,44 +18911,44 @@ pub struct ReplicationRule {
     ///   - PUT：表示被同步到目标Bucket的写入操作，包括PutObject、PostObject、AppendObject、CopyObject、PutObjectACL、InitiateMultipartUpload、UploadPart、UploadPartCopy、CompleteMultipartUpload。
     ///
     #[serde(rename = "Action")]
-    #[serde(default)]
-    pub action: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub action: Option<String>,
     /// 保存目标Bucket信息的容器。
     #[serde(rename = "Destination")]
-    #[serde(default)]
-    pub destination: ReplicationDestination,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub destination: Option<ReplicationDestination>,
     /// 表示复制状态。
     /// 取值：
     ///   - starting：设置数据复制规则后，OSS会为Bucket准备复制任务，此时的复制状态为starting。
     ///   - doing：当数据复制规则生效后，即数据处于同步状态时，此时的复制状态为doing。
     ///   - closing：删除数据复制规则后，OSS会自动完成清理工作，此时的复制状态为closing。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub status: Option<String>,
     /// 指定是否复制历史数据。即开启数据复制前，是否将源Bucket中的数据复制到目标Bucket。
     /// 取值：
     ///   - enabled（默认值）：表示复制历史数据。
     ///   - disabled：表示不复制历史数据。即仅复制创建数据复制规则后新写入的数据。
     ///
     #[serde(rename = "HistoricalObjectReplication")]
-    #[serde(default)]
-    pub historical_object_replication: ReplicationRuleHistoricalObjectReplication,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub historical_object_replication: Option<ReplicationRuleHistoricalObjectReplication>,
     /// 授权OSS使用哪个角色来进行数据复制。如果指定使用SSE-KMS加密目标对象，则必须指定该元素。
     #[serde(rename = "SyncRole")]
-    #[serde(default)]
-    pub sync_role: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sync_role: Option<String>,
     /// 用于标识要复制的源对象的其他筛选条件的容器。当前OSS仅支持针对SSE-KMS加密的源对象指定筛选条件。
     #[serde(rename = "SourceSelectionCriteria")]
-    #[serde(default)]
-    pub source_selection_criteria: ReplicationSourceSelectionCriteria,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub source_selection_criteria: Option<ReplicationSourceSelectionCriteria>,
     /// 目标对象加密配置。如果指定Status为Enabled，则必须指定该元素。
     #[serde(rename = "EncryptionConfiguration")]
-    #[serde(default)]
-    pub encryption_configuration: ReplicationEncryptionConfiguration,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub encryption_configuration: Option<ReplicationEncryptionConfiguration>,
     /// 保存RTC配置规则的容器。
     #[serde(rename = "RTC")]
-    #[serde(default)]
-    pub rtc: RTC,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rtc: Option<RTC>,
 }
 
 /// 请求付费配置的容器。
@@ -19294,20 +18997,20 @@ pub struct RestoreRequest {
 pub struct RoutingRuleConditionIncludeHeaderItem {
     /// 只有请求中包含了此Header且值满足条件，才能匹配此规则。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key: Option<String>,
     /// 只有请求中包含了Key指定的Header且值为指定值时，才能匹配此规则。
     #[serde(rename = "Equals")]
-    #[serde(default)]
-    pub equals: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub equals: Option<String>,
     /// 只有请求中包含了Key指定的Header且值以该值为开头时，才能匹配此规则。
     #[serde(rename = "StartsWith")]
-    #[serde(default)]
-    pub starts_with: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub starts_with: Option<String>,
     /// 只有请求中包含了Key指定的Header且值以该值为结尾时，才能匹配此规则。
     #[serde(rename = "EndsWith")]
-    #[serde(default)]
-    pub ends_with: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ends_with: Option<String>,
 }
 
 /// 匹配的条件。
@@ -19318,16 +19021,16 @@ pub struct RoutingRuleConditionIncludeHeaderItem {
 pub struct RoutingRuleCondition {
     /// 只有匹配此前缀的Object才能匹配此规则。
     #[serde(rename = "KeyPrefixEquals")]
-    #[serde(default)]
-    pub key_prefix_equals: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key_prefix_equals: Option<String>,
     /// 只有匹配此后缀的Object才能匹配此规则。
     #[serde(rename = "KeySuffixEquals")]
-    #[serde(default)]
-    pub key_suffix_equals: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key_suffix_equals: Option<String>,
     /// 访问指定Object时，返回此status才能匹配此规则。当跳转规则是镜像回源类型时，此字段必须为404。
     #[serde(rename = "HttpErrorCodeReturnedEquals")]
-    #[serde(default)]
-    pub http_error_code_returned_equals: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub http_error_code_returned_equals: Option<i64>,
     /// 只有请求中包含了指定Header且值为指定值时，才能匹配此规则。该容器最多可指定10个。
     #[serde(rename = "IncludeHeader")]
     #[serde(default)]
@@ -19342,13 +19045,13 @@ pub struct RoutingRuleRedirectMirrorHeadersSetItem {
     /// 设置Header的key，最多1024个字节，字符集与Pass相同。只有设置RedirectType为Mirror时才生效。
     /// >若指定了父节点Set，则必须指定此项。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key: Option<String>,
     /// 设置Header的value，最多1024个字节，不能出现`\r\n`。只有设置RedirectType为Mirror时才生效。
     /// >若指定了父节点Set，则必须指定此项。
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
 }
 
 /// 指定镜像回源时携带的Header。只有设置RedirectType为Mirror时才生效。
@@ -19361,8 +19064,8 @@ pub struct RoutingRuleRedirectMirrorHeaders {
     ///
     /// 默认值：false
     #[serde(rename = "PassAll")]
-    #[serde(default)]
-    pub pass_all: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pass_all: Option<bool>,
     /// 透传指定的Header到源站。只有设置RedirectType为Mirror时才生效。
     /// 每个Header长度最多为1024个字节，字符集为0~9、A~Z、a~z以及短划线（-）。
     /// 此字段最多可指定10个。
@@ -19387,12 +19090,12 @@ pub struct RoutingRuleRedirectMirrorHeaders {
 pub struct RoutingRuleRedirectMirrorTaggingsTaggingsItem {
     /// 当前规则对应标签键
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key: Option<String>,
     /// 保存标签值的规则
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
 }
 
 /// 镜像回源保存文件时根据参数保存标签
@@ -19410,12 +19113,12 @@ pub struct RoutingRuleRedirectMirrorTaggings {
 pub struct RoutingRuleRedirectMirrorReturnHeadersReturnHeaderItem {
     /// 当前规则对应响应头
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub key: Option<String>,
     /// 返回响应头值的规则
     #[serde(rename = "Value")]
-    #[serde(default)]
-    pub value: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
 }
 
 /// 保存镜像回源返回响应头规则的容器
@@ -19434,20 +19137,20 @@ pub struct RoutingRuleRedirectMirrorReturnHeaders {
 pub struct RoutingRuleRedirectMirrorAuth {
     /// 镜像回源源站认证类型
     #[serde(rename = "AuthType")]
-    #[serde(default)]
-    pub auth_type: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auth_type: Option<String>,
     /// 镜像回源源站签名Region
     #[serde(rename = "Region")]
-    #[serde(default)]
-    pub region: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub region: Option<String>,
     /// 镜像回源源站回源AK
     #[serde(rename = "AccessKeyId")]
-    #[serde(default)]
-    pub access_key_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub access_key_id: Option<String>,
     /// 镜像回源源站回源SK，获取配置时会自动脱敏。
     #[serde(rename = "AccessKeySecret")]
-    #[serde(default)]
-    pub access_key_secret: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub access_key_secret: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
@@ -19455,20 +19158,20 @@ pub struct RoutingRuleRedirectMirrorAuth {
 pub struct RoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateItem {
     /// 镜像回源多源站序号
     #[serde(rename = "MirrorMultiAlternateNumber")]
-    #[serde(default)]
-    pub mirror_multi_alternate_number: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_multi_alternate_number: Option<i64>,
     /// 镜像回源多源站URL
     #[serde(rename = "MirrorMultiAlternateURL")]
-    #[serde(default)]
-    pub mirror_multi_alternate_url: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_multi_alternate_url: Option<String>,
     /// 镜像回源多源站VpcId
     #[serde(rename = "MirrorMultiAlternateVpcId")]
-    #[serde(default)]
-    pub mirror_multi_alternate_vpc_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_multi_alternate_vpc_id: Option<String>,
     /// 镜像回源多源站Region
     #[serde(rename = "MirrorMultiAlternateDstRegion")]
-    #[serde(default)]
-    pub mirror_multi_alternate_dst_region: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_multi_alternate_dst_region: Option<String>,
 }
 
 /// 镜像回源多源站配置列表
@@ -19494,30 +19197,30 @@ pub struct RoutingRuleRedirect {
     ///
     /// >如果指定了父节点Redirect，则必须指定此项。
     #[serde(rename = "RedirectType")]
-    #[serde(default)]
-    pub redirect_type: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub redirect_type: Option<String>,
     /// 执行跳转或者镜像回源规则时，是否携带请求参数。
     /// 用户请求OSS时携带了请求参数`?a=b&c=d`，并且设置**PassQueryString**为true，如果规则为302跳转，则跳转的Location头中会添加此请求参数。例如`Location:example.com?a=b&c=d`，跳转类型为镜像回源，则在发起的回源请求中也会携带此请求参数。
     /// 取值：true、false（默认）
     #[serde(rename = "PassQueryString")]
-    #[serde(default)]
-    pub pass_query_string: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pass_query_string: Option<bool>,
     /// 镜像回源的源站地址。只有设置RedirectType为Mirror时才生效。
     /// 源站地址必须以**http://**或者**https://**开头，并且以正斜线（/）结尾，OSS会在此地址后带上Object名称组成回源URL。
     /// 例如要访问的Object名称为myobject，如果指定此项为`http://example.com/`，则回源URL为`http://example.com/myobject`，如果指定此项为`http://example.com/dir1/`，则回源URL为`http://example.com/dir1/myobject`。
     /// >如果RedirectType指定为Mirror，则必须指定此项。
     #[serde(rename = "MirrorURL")]
-    #[serde(default)]
-    pub mirror_url: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_url: Option<String>,
     /// 是否透传SNI
     #[serde(rename = "MirrorSNI")]
-    #[serde(default)]
-    pub mirror_sni: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_sni: Option<bool>,
     /// 与PassQueryString作用相同，优先级高于PassQueryString。只有设置RedirectType为Mirror时才生效。
     /// 默认值：false
     #[serde(rename = "MirrorPassQueryString")]
-    #[serde(default)]
-    pub mirror_pass_query_string: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_pass_query_string: Option<bool>,
     /// 如果镜像回源获取的结果为3xx，是否继续跳转到指定的Location获取数据。 只有设置RedirectType为Mirror时才生效。
     /// 例如发起镜像回源请求时，源站返回了302，并且指定了Location。
     ///   - 如果设置此项为true，则OSS会继续请求Location对应的地址。
@@ -19526,146 +19229,146 @@ pub struct RoutingRuleRedirect {
     ///
     /// 默认值：true
     #[serde(rename = "MirrorFollowRedirect")]
-    #[serde(default)]
-    pub mirror_follow_redirect: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_follow_redirect: Option<bool>,
     /// 是否检查回源body的MD5。 只有设置RedirectType为Mirror时才生效。
     /// 当设置**MirrorCheckMd5**为true，并且源站返回的response中含有Content-Md5头时，OSS检查拉取的数据MD5是否与此Header匹配，如果不匹配，则不保存在OSS上。
     /// 默认值：false
     #[serde(rename = "MirrorCheckMd5")]
-    #[serde(default)]
-    pub mirror_check_md5: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_check_md5: Option<bool>,
     /// 指定镜像回源时携带的Header。只有设置RedirectType为Mirror时才生效。
     #[serde(rename = "MirrorHeaders")]
-    #[serde(default)]
-    pub mirror_headers: RoutingRuleRedirectMirrorHeaders,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_headers: Option<RoutingRuleRedirectMirrorHeaders>,
     /// 跳转时的协议。只有设置RedirectType为External或者AliCDN时才生效。
     /// 如果要访问的文件为test，设置跳转到`example.com`，并且设置Protocol为https，则Location头为`https://example.com/test`。
     /// 取值：**http**、**https**。
     #[serde(rename = "Protocol")]
-    #[serde(default)]
-    pub protocol: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub protocol: Option<String>,
     /// 跳转时的域名，域名需符合域名规范。
     /// 如果要访问的文件为test，设置Protocol为https，并且设置Hostname为`example.com`，则Location头为`https://example.com/test`。
     #[serde(rename = "HostName")]
-    #[serde(default)]
-    pub host_name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub host_name: Option<String>,
     /// Redirect时Object名称的前缀将替换成该值。如果前缀为空，则将这个字符串插入Object名称的前面。
     /// > 仅允许存在ReplaceKeyWith或ReplaceKeyPrefixWith节点。
     /// 假设要访问的Object为abc/test.txt，如果设置KeyPrefixEquals为abc/，ReplaceKeyPrefixWith为def/，则Location头为`http://example.com/def/test.txt`。
     #[serde(rename = "ReplaceKeyPrefixWith")]
-    #[serde(default)]
-    pub replace_key_prefix_with: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replace_key_prefix_with: Option<String>,
     /// 如果设置此字段为true，则Object的前缀将被替换为ReplaceKeyPrefixWith指定的值。如果未指定此字段或为空，则表示截断Object前缀。
     /// > 当ReplaceKeyWith字段不为空时，不能设置此字段为true。
     ///
     /// 默认值：false
     #[serde(rename = "EnableReplacePrefix")]
-    #[serde(default)]
-    pub enable_replace_prefix: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub enable_replace_prefix: Option<bool>,
     /// Redirect时Object名称将替换成ReplaceKeyWith指定的值，ReplaceKeyWith支持设置变量。目前支持的变量为${key}，表示该请求中的Object名称。
     /// 假设要访问的Object为test，如果设置ReplaceKeyWith为`prefix/${key}.suffix`，则Location头为`http://example.com/prefix/test.suffix`。
     #[serde(rename = "ReplaceKeyWith")]
-    #[serde(default)]
-    pub replace_key_with: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replace_key_with: Option<String>,
     /// 跳转时返回的状态码。只有设置RedirectType为External或者AliCDN时才生效。
     /// 取值：301（默认）、302、307。
     #[serde(rename = "HttpRedirectCode")]
-    #[serde(default)]
-    pub http_redirect_code: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub http_redirect_code: Option<i64>,
     /// 是否透传/到源站
     #[serde(rename = "MirrorPassOriginalSlashes")]
-    #[serde(default)]
-    pub mirror_pass_original_slashes: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_pass_original_slashes: Option<bool>,
     /// 镜像回源主备回源备站URL
     #[serde(rename = "MirrorURLSlave")]
-    #[serde(default)]
-    pub mirror_url_slave: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_url_slave: Option<String>,
     /// 镜像回源主备回源切换判定URL
     #[serde(rename = "MirrorURLProbe")]
-    #[serde(default)]
-    pub mirror_url_probe: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_url_probe: Option<String>,
     /// 镜像回源回源OSS是否自动保存用户元数据
     #[serde(rename = "MirrorSaveOssMeta")]
-    #[serde(default)]
-    pub mirror_save_oss_meta: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_save_oss_meta: Option<bool>,
     /// 镜像回源是否不保存数据
     #[serde(rename = "MirrorProxyPass")]
-    #[serde(default)]
-    pub mirror_proxy_pass: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_proxy_pass: Option<bool>,
     /// 镜像回源允许获取Image信息
     #[serde(rename = "MirrorAllowGetImageInfo")]
-    #[serde(default)]
-    pub mirror_allow_get_image_info: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_allow_get_image_info: Option<bool>,
     /// 镜像回源允许支持视频截帧
     #[serde(rename = "MirrorAllowVideoSnapshot")]
-    #[serde(default)]
-    pub mirror_allow_video_snapshot: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_allow_video_snapshot: Option<bool>,
     /// 是否是镜像回源高速通道
     #[serde(rename = "MirrorIsExpressTunnel")]
-    #[serde(default)]
-    pub mirror_is_express_tunnel: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_is_express_tunnel: Option<bool>,
     /// 镜像回源高速通道VpcRegion
     #[serde(rename = "MirrorDstRegion")]
-    #[serde(default)]
-    pub mirror_dst_region: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_dst_region: Option<String>,
     /// 镜像回源高速通道VpcId
     #[serde(rename = "MirrorDstVpcId")]
-    #[serde(default)]
-    pub mirror_dst_vpc_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_dst_vpc_id: Option<String>,
     /// 镜像回源高速通道备站VpcId
     #[serde(rename = "MirrorDstSlaveVpcId")]
-    #[serde(default)]
-    pub mirror_dst_slave_vpc_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_dst_slave_vpc_id: Option<String>,
     /// 镜像回源保存文件是否使用源站LastModifiedTime
     #[serde(rename = "MirrorUserLastModified")]
-    #[serde(default)]
-    pub mirror_user_last_modified: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_user_last_modified: Option<bool>,
     /// 用于主备切换的状态判断，主备切换的判断逻辑是源站返回错误，如果MirrorSwitchAllErrors为true，则除了以下状态码外都认为是失败：200,206,301,302,303,307,404；而如果为false，则只有源站返回5xx或者超时才认为是失败。
     #[serde(rename = "MirrorSwitchAllErrors")]
-    #[serde(default)]
-    pub mirror_switch_all_errors: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_switch_all_errors: Option<bool>,
     /// 镜像回源专线回源TunnelId
     #[serde(rename = "MirrorTunnelId")]
-    #[serde(default)]
-    pub mirror_tunnel_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_tunnel_id: Option<String>,
     /// 镜像回源是否使用角色
     #[serde(rename = "MirrorUsingRole")]
-    #[serde(default)]
-    pub mirror_using_role: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_using_role: Option<bool>,
     /// 镜像回源回源时使用的角色
     #[serde(rename = "MirrorRole")]
-    #[serde(default)]
-    pub mirror_role: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_role: Option<String>,
     /// 镜像回源是否允许HeadObject
     #[serde(rename = "MirrorAllowHeadObject")]
-    #[serde(default)]
-    pub mirror_allow_head_object: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_allow_head_object: Option<bool>,
     /// 指定当源站返回哪些状态码时需要透传该状态码以及body到客户端，取值为4xx、5xx等HTTP状态码，多个HTTP状态码之间用英文逗号（,）分隔，例如`400,404`。只有设置RedirectType为Mirror时才生效。
     /// 当OSS向源站请求内容时，如果源站返回了此参数中的某个状态码，则OSS将透传源站返回的该状态码以及body到客户端。
     /// > 如果在此参数中设置了404状态码，则设置的ErrorDocument会失效。
     #[serde(rename = "TransparentMirrorResponseCodes")]
-    #[serde(default)]
-    pub transparent_mirror_response_codes: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transparent_mirror_response_codes: Option<String>,
     /// 镜像回源触发异步拉取模式的状态码
     #[serde(rename = "MirrorAsyncStatus")]
-    #[serde(default)]
-    pub mirror_async_status: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_async_status: Option<i64>,
     /// 镜像回源保存文件时根据参数保存标签
     #[serde(rename = "MirrorTaggings")]
-    #[serde(default)]
-    pub mirror_taggings: RoutingRuleRedirectMirrorTaggings,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_taggings: Option<RoutingRuleRedirectMirrorTaggings>,
     /// 保存镜像回源返回响应头规则的容器
     #[serde(rename = "MirrorReturnHeaders")]
-    #[serde(default)]
-    pub mirror_return_headers: RoutingRuleRedirectMirrorReturnHeaders,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_return_headers: Option<RoutingRuleRedirectMirrorReturnHeaders>,
     /// 镜像回源源站认证信息
     #[serde(rename = "MirrorAuth")]
-    #[serde(default)]
-    pub mirror_auth: RoutingRuleRedirectMirrorAuth,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_auth: Option<RoutingRuleRedirectMirrorAuth>,
     /// 镜像回源多源站配置列表
     #[serde(rename = "MirrorMultiAlternates")]
-    #[serde(default)]
-    pub mirror_multi_alternates: RoutingRuleRedirectMirrorMultiAlternates,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub mirror_multi_alternates: Option<RoutingRuleRedirectMirrorMultiAlternates>,
 }
 
 /// 需要执行的Lua脚本配置。
@@ -19674,8 +19377,8 @@ pub struct RoutingRuleRedirect {
 pub struct RoutingRuleLuaConfig {
     /// Lua脚本名称。
     #[serde(rename = "Script")]
-    #[serde(default)]
-    pub script: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub script: Option<String>,
 }
 
 /// 指定跳转规则或者镜像回源规则，最多指定20个RoutingRule。
@@ -19686,23 +19389,23 @@ pub struct RoutingRule {
     ///
     /// >如果指定了父节点RoutingRule，则必须指定此项。
     #[serde(rename = "RuleNumber")]
-    #[serde(default)]
-    pub rule_number: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rule_number: Option<i64>,
     /// 匹配的条件。
     /// 如果指定的项都满足，则执行此规则。只有满足此容器下的各个节点的所有条件才算匹配。
     /// >如果指定了父节点RoutingRule，则必须指定此项。
     #[serde(rename = "Condition")]
-    #[serde(default)]
-    pub condition: RoutingRuleCondition,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub condition: Option<RoutingRuleCondition>,
     /// 指定匹配此规则后执行的动作。
     /// >如果指定了父节点RoutingRule，则必须指定此项。
     #[serde(rename = "Redirect")]
-    #[serde(default)]
-    pub redirect: RoutingRuleRedirect,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub redirect: Option<RoutingRuleRedirect>,
     /// 该规则需要执行的Lua脚本配置。
     #[serde(rename = "LuaConfig")]
-    #[serde(default)]
-    pub lua_config: RoutingRuleLuaConfig,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lua_config: Option<RoutingRuleLuaConfig>,
 }
 
 /// 数据复制时间控制配置容器。
@@ -19738,32 +19441,25 @@ pub struct SelectMetaRequest {
 pub struct SelectMetaStatus {
     /// 8位整数，扫描结束时的文件偏移。
     #[serde(rename = "Offset")]
-    #[serde(default)]
-    pub offset: i64,
+    pub offset: Option<i64>,
     /// 8位整数，最终扫描过的数据大小。
     #[serde(rename = "TotalScannedBytes")]
-    #[serde(default)]
-    pub total_scanned_bytes: i64,
+    pub total_scanned_bytes: Option<i64>,
     /// 4位整数，最终的status。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: i64,
+    pub status: Option<i64>,
     /// 4位整数，总split个数。
     #[serde(rename = "SplitsCount")]
-    #[serde(default)]
-    pub splits_count: i64,
+    pub splits_count: Option<i64>,
     /// 8位整数，总行数。
     #[serde(rename = "RowsCount")]
-    #[serde(default)]
-    pub rows_count: i64,
+    pub rows_count: Option<i64>,
     /// 4位整数，总列数。
     #[serde(rename = "ColsCount")]
-    #[serde(default)]
-    pub cols_count: i64,
+    pub cols_count: Option<i64>,
     /// 详细的错误信息。如果无错误，则error_message为空。
     #[serde(rename = "ErrorMessage")]
-    #[serde(default)]
-    pub error_message: String,
+    pub error_message: Option<String>,
 }
 
 /// 保存Select请求的容器。
@@ -19835,24 +19531,19 @@ pub struct Style {
 pub struct StyleInfo {
     /// 样式名称
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// 样式内容
     #[serde(rename = "Content")]
-    #[serde(default)]
-    pub content: String,
+    pub content: Option<String>,
     /// 样式创建时间
     #[serde(rename = "CreateTime")]
-    #[serde(default)]
-    pub create_time: String,
+    pub create_time: Option<String>,
     /// 样式创建时间
     #[serde(rename = "LastModifyTime")]
-    #[serde(default)]
-    pub last_modify_time: String,
+    pub last_modify_time: Option<String>,
     /// 样式分类。  取值：image、document、video。
     #[serde(rename = "Category")]
-    #[serde(default)]
-    pub category: String,
+    pub category: Option<String>,
 }
 
 /// 标签集合。
@@ -19897,16 +19588,13 @@ pub struct Upload {
     ///
     /// > OSS的返回结果按照Object名称字典序升序排列，对于同一个Object，则按照UploadId的字典序升序排列。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Multipart Upload事件的ID。
     #[serde(rename = "UploadId")]
-    #[serde(default)]
-    pub upload_id: String,
+    pub upload_id: Option<String>,
     /// Multipart Upload事件初始化的时间。
     #[serde(rename = "Initiated")]
-    #[serde(default)]
-    pub initiated: String,
+    pub initiated: Option<String>,
 }
 
 /// 高防实例信息。
@@ -19915,24 +19603,19 @@ pub struct Upload {
 pub struct UserAntiDDOSInfo {
     /// 高防实例ID。
     #[serde(rename = "InstanceId")]
-    #[serde(default)]
-    pub instance_id: String,
+    pub instance_id: Option<String>,
     /// 高防实例拥有者的UID。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: String,
+    pub owner: Option<String>,
     /// 高防实例创建时间，格式为时间戳。
     #[serde(rename = "Ctime")]
-    #[serde(default)]
-    pub ctime: i64,
+    pub ctime: Option<i64>,
     /// 高防实例更新时间，格式为时间戳。
     #[serde(rename = "Mtime")]
-    #[serde(default)]
-    pub mtime: i64,
+    pub mtime: Option<i64>,
     /// 高防实例激活时间，格式为时间戳。
     #[serde(rename = "ActiveTime")]
-    #[serde(default)]
-    pub active_time: i64,
+    pub active_time: Option<i64>,
     /// 高防实例所处状态。
     ///
     /// - Init：初始化防护状态。
@@ -19941,8 +19624,7 @@ pub struct UserAntiDDOSInfo {
     ///
     /// - HaltDefending：解除防护状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
 }
 
 /// 自定义请求头配置信息的容器。
@@ -19971,12 +19653,12 @@ pub struct UserDefinedLogFieldsConfigurationParamSet {
 pub struct UserDefinedLogFieldsConfiguration {
     /// 自定义请求头配置信息的容器。
     #[serde(rename = "HeaderSet")]
-    #[serde(default)]
-    pub header_set: UserDefinedLogFieldsConfigurationHeaderSet,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub header_set: Option<UserDefinedLogFieldsConfigurationHeaderSet>,
     /// 自定义查询参数配置信息的容器。
     #[serde(rename = "ParamSet")]
-    #[serde(default)]
-    pub param_set: UserDefinedLogFieldsConfigurationParamSet,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub param_set: Option<UserDefinedLogFieldsConfigurationParamSet>,
 }
 
 /// 保存版本控制状态的容器。
@@ -20012,20 +19694,20 @@ pub struct WebsiteConfiguration {
     ///
     /// >至少指定IndexDocument、ErrorDocument、RoutingRules三个容器中的一个。
     #[serde(rename = "IndexDocument")]
-    #[serde(default)]
-    pub index_document: IndexDocument,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub index_document: Option<IndexDocument>,
     /// 404页面的容器。
     ///
     /// >至少指定IndexDocument、ErrorDocument、RoutingRules三个容器中的一个。
     #[serde(rename = "ErrorDocument")]
-    #[serde(default)]
-    pub error_document: ErrorDocument,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub error_document: Option<ErrorDocument>,
     /// RoutingRule的容器。
     ///
     /// >至少指定IndexDocument、ErrorDocument、RoutingRules三个容器中的一个。
     #[serde(rename = "RoutingRules")]
-    #[serde(default)]
-    pub routing_rules: WebsiteConfigurationRoutingRules,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_rules: Option<WebsiteConfigurationRoutingRules>,
 }
 
 /// 保存Bucket信息列表的容器。
@@ -20035,6 +19717,7 @@ pub struct ResponseBuckets {
     /// 保存多个Bucket信息的列表。
     #[serde(rename = "Bucket")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub bucket: Vec<Bucket>,
 }
 
@@ -20044,8 +19727,7 @@ pub struct ResponseBuckets {
 pub struct BucketAclResponseAccessControlList {
     /// Bucket的ACL权限。
     #[serde(rename = "Grant")]
-    #[serde(default)]
-    pub grant: BucketACL,
+    pub grant: Option<BucketACL>,
 }
 
 /// 保存数据复制配置信息的容器。
@@ -20063,6 +19745,7 @@ pub struct TransferTypeConstraint {
     /// 包含TransferType的Location信息容器。
     #[serde(rename = "LocationTransferType")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub location_transfer_type: Vec<LocationTransferType>,
 }
 
@@ -20073,6 +19756,7 @@ pub struct CConstraint {
     /// 支持RTC的Location信息列表。
     #[serde(rename = "Location")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub location: Vec<String>,
 }
 
@@ -20146,12 +19830,10 @@ pub struct PointForObjectProcessbody {
 pub struct ResponseEndpoints {
     /// 对象FC接入点的外网Endpoint。
     #[serde(rename = "PublicEndpoint")]
-    #[serde(default)]
-    pub public_endpoint: String,
+    pub public_endpoint: Option<String>,
     /// 对象FC接入点的内网Endpoint。
     #[serde(rename = "InternalEndpoint")]
-    #[serde(default)]
-    pub internal_endpoint: String,
+    pub internal_endpoint: Option<String>,
 }
 
 /// 保存单个对象FC接入点信息的容器。
@@ -20160,16 +19842,13 @@ pub struct ResponseEndpoints {
 pub struct AccessPointForObjectProcess {
     /// 对象FC接入点名称。
     #[serde(rename = "AccessPointNameForObjectProcess")]
-    #[serde(default)]
-    pub access_point_name_for_object_process: String,
+    pub access_point_name_for_object_process: Option<String>,
     /// 对象FC接入点别名。
     #[serde(rename = "AccessPointForObjectProcessAlias")]
-    #[serde(default)]
-    pub access_point_for_object_process_alias: String,
+    pub access_point_for_object_process_alias: Option<String>,
     /// 接入点名称。
     #[serde(rename = "AccessPointName")]
-    #[serde(default)]
-    pub access_point_name: String,
+    pub access_point_name: Option<String>,
     /// 对象FC接入点所处状态。返回值如下：
     ///
     /// - enable：对象FC接入点已创建完成。
@@ -20177,14 +19856,12 @@ pub struct AccessPointForObjectProcess {
     /// - creating：对象FC接入点正在创建中。
     /// - deleting：对象FC接入点已删除。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 是否允许匿名访问。
     ///
     /// > 开启该选项之后将会允许匿名账号通过ObjectFC接入点访问您的Bucket，会产生相关费用。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
-    #[serde(default)]
-    pub allow_anonymous_access_for_object_process: String,
+    pub allow_anonymous_access_for_object_process: Option<String>,
 }
 
 /// 保存所有对象FC接入点信息的容器。
@@ -20194,6 +19871,7 @@ pub struct AccessPointsForObjectProcess {
     /// 保存单个对象FC接入点信息的容器。
     #[serde(rename = "AccessPointForObjectProcess")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub access_point_for_object_process: Vec<AccessPointForObjectProcess>,
 }
 
@@ -20222,8 +19900,7 @@ pub struct ConfigForObjectProcessbody {
 pub struct ObjectAclResponseAccessControlList {
     /// Object的ACL权限。
     #[serde(rename = "Grant")]
-    #[serde(default)]
-    pub grant: ObjectACL,
+    pub grant: Option<ObjectACL>,
 }
 
 /// Enum type marshalled as String
@@ -21014,34 +20691,27 @@ pub struct ListBucketsResponse {
     pub code_message: crate::CodeMessage,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// 本次查询结果的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 本次ListBuckets（GetSerivce）的起点。
     #[serde(rename = "Marker")]
-    #[serde(default)]
-    pub marker: String,
+    pub marker: Option<String>,
     /// 响应请求内返回结果的最大数。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i64,
+    pub max_keys: Option<i64>,
     /// 是否所有的结果都已经返回。取值范围如下：
     /// - true：表示本次没有返回全部结果。
     /// - false：表示本次已经返回了全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 用于继续查询时给marker赋值。表示下一次ListBuckets（GetService）可以以此为marker，将未返回的结果返回。
     #[serde(rename = "NextMarker")]
-    #[serde(default)]
-    pub next_marker: String,
+    pub next_marker: Option<String>,
     /// 保存Bucket信息列表的容器。
     #[serde(rename = "Buckets")]
-    #[serde(default)]
-    pub buckets: ResponseBuckets,
+    pub buckets: Option<ResponseBuckets>,
 }
 /// 只支持在二级域名（例如oss-cn-hangzhou.aliyuncs.com）上调用DescribeRegions接口。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21062,24 +20732,19 @@ pub struct ListObjectsResponse {
     pub code_message: crate::CodeMessage,
     /// Bucket名称。
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// 本次查询结果的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 标识此次GetBucket（ListObjects）的起点。
     #[serde(rename = "Marker")]
-    #[serde(default)]
-    pub marker: String,
+    pub marker: Option<String>,
     /// 响应请求内返回结果的最大数目。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i32,
+    pub max_keys: Option<i32>,
     /// 对Object名字进行分组的字符。所有名字包含指定的前缀且第一次出现Delimiter字符之间的Object作为一组元素CommonPrefixes。
     #[serde(rename = "Delimiter")]
-    #[serde(default)]
-    pub delimiter: String,
+    pub delimiter: Option<String>,
     /// 请求中返回的结果是否被截断。
     ///
     /// 返回值：true、false
@@ -21088,16 +20753,13 @@ pub struct ListObjectsResponse {
     ///
     /// false表示本次已经返回了全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 指明了返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，则会对返回结果中的Delimiter、Marker、Prefix、NextMarker和Key这些元素进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
     /// 下一次列举文件的起点。
     #[serde(rename = "NextMarker")]
-    #[serde(default)]
-    pub next_marker: String,
+    pub next_marker: Option<String>,
     /// 保存每个返回Object元数据的容器。
     #[serde(rename = "Contents")]
     #[serde(default)]
@@ -21114,24 +20776,19 @@ pub struct ListObjectsV2Response {
     pub code_message: crate::CodeMessage,
     /// Bucket名称。
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// 本次查询结果的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 如果请求中指定了StartAfter参数，则会在返回的响应中包含StartAfter元素。
     #[serde(rename = "StartAfter")]
-    #[serde(default)]
-    pub start_after: String,
+    pub start_after: Option<String>,
     /// 响应请求内返回结果的最大数目。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i32,
+    pub max_keys: Option<i32>,
     /// 对Object名字进行分组的字符。所有名字包含指定的前缀且第一次出现Delimiter字符之间的Object作为一组元素CommonPrefixes。
     #[serde(rename = "Delimiter")]
-    #[serde(default)]
-    pub delimiter: String,
+    pub delimiter: Option<String>,
     /// 请求中返回的结果是否被截断。
     ///
     /// 返回值：true、false
@@ -21140,24 +20797,19 @@ pub struct ListObjectsV2Response {
     ///
     /// false表示本次已经返回了全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 此次请求返回的Key的个数。如果指定了Delimiter，则KeyCount为Key和CommonPrefixes的元素之和。
     #[serde(rename = "KeyCount")]
-    #[serde(default)]
-    pub key_count: i32,
+    pub key_count: Option<i32>,
     /// 指明返回结果中编码使用的类型。如果请求的参数中指定了Encoding-type，则会对返回结果中的Delimiter、StartAfter、Prefix、NextContinuationToken和Key这些元素进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
     /// 如果请求中指定了ContinuationToken参数，则会在返回的响应中包含ContinuationToken元素。
     #[serde(rename = "ContinuationToken")]
-    #[serde(default)]
-    pub continuation_token: String,
+    pub continuation_token: Option<String>,
     /// 表明此次ListObjectsV2（GetBucketV2）请求包含后续结果，需要将NextContinuationToken指定为ContinuationToken继续获取结果。
     #[serde(rename = "NextContinuationToken")]
-    #[serde(default)]
-    pub next_continuation_token: String,
+    pub next_continuation_token: Option<String>,
     /// 保存每个返回Object元数据的容器。
     #[serde(rename = "Contents")]
     #[serde(default)]
@@ -21201,28 +20853,23 @@ pub struct GetBucketWormResponse {
     pub code_message: crate::CodeMessage,
     /// 合规保留策略的ID。
     #[serde(rename = "WormId")]
-    #[serde(default)]
-    pub worm_id: String,
+    pub worm_id: Option<String>,
     /// 合规保留策略所处的状态。可选值：
     ///
     /// InProgress：合规保留策略创建后，该策略默认处于“InProgress”状态，且该状态的有效期为24小时。
     ///
     /// Locked：合规保留策略处于锁定状态。
     #[serde(rename = "State")]
-    #[serde(default)]
-    pub state: BucketWormState,
+    pub state: Option<BucketWormState>,
     /// Object的指定保留天数。
     #[serde(rename = "RetentionPeriodInDays")]
-    #[serde(default)]
-    pub retention_period_in_days: i32,
+    pub retention_period_in_days: Option<i32>,
     /// 合规保留策略的创建时间。
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
     /// 合规保留策略的过期时间。
     #[serde(rename = "ExpirationDate")]
-    #[serde(default)]
-    pub expiration_date: String,
+    pub expiration_date: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketAclResponse {
@@ -21230,12 +20877,10 @@ pub struct GetBucketAclResponse {
     pub code_message: crate::CodeMessage,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// 存储ACL信息的容器类。
     #[serde(rename = "AccessControlList")]
-    #[serde(default)]
-    pub access_control_list: BucketAclResponseAccessControlList,
+    pub access_control_list: Option<BucketAclResponseAccessControlList>,
 }
 /// - 只有Bucket拥有者以及被授予oss:GetBucketTransferAcceleration权限的RAM用户才能发起获取传输加速配置的请求。
 ///
@@ -21248,8 +20893,7 @@ pub struct GetBucketTransferAccelerationResponse {
     pub code_message: crate::CodeMessage,
     /// 是否开启传出加速。
     #[serde(rename = "Enabled")]
-    #[serde(default)]
-    pub enabled: bool,
+    pub enabled: Option<bool>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketVersioningResponse {
@@ -21257,8 +20901,7 @@ pub struct GetBucketVersioningResponse {
     pub code_message: crate::CodeMessage,
     /// 版本控制状态。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: BucketVersioningStatus,
+    pub status: Option<BucketVersioningStatus>,
 }
 /// - GetBucket(ListObjects)接口仅返回Object的当前版本，且当前版本不能为删除标记。
 /// - GetBucketVersions(ListObjectVersions)接口返回Bucket中所有Object的所有版本。
@@ -21270,48 +20913,38 @@ pub struct ListObjectVersionsResponse {
     pub code_message: crate::CodeMessage,
     /// Bucket名称。
     #[serde(rename = "Name")]
-    #[serde(default)]
-    pub name: String,
+    pub name: Option<String>,
     /// 本次查询结果的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 标识此次GetBucketVersions的起点Object。
     #[serde(rename = "KeyMarker")]
-    #[serde(default)]
-    pub key_marker: String,
+    pub key_marker: Option<String>,
     /// 与KeyMarker参数一同使用，以指定ListObjectVersions（GetBucketVersions）的起点。
     #[serde(rename = "VersionIdMarker")]
-    #[serde(default)]
-    pub version_id_marker: String,
+    pub version_id_marker: Option<String>,
     /// 响应请求内返回结果的最大数目。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i64,
+    pub max_keys: Option<i64>,
     /// 用于对Object名字进行分组的字符。所有名字包含指定的前缀且第一次出现Delimiter字符之间的Object作为一组元素CommonPrefixes。
     #[serde(rename = "Delimiter")]
-    #[serde(default)]
-    pub delimiter: String,
+    pub delimiter: Option<String>,
     /// 指明是否已返回所有结果。
     ///
     /// true：表示本次没有返回全部结果。
     ///
     /// false：表示本次已返回全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，则表示对返回结果中的Delimiter、Marker、Prefix、NextMarker和Key这些元素进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextKeyMarker元素，用于标明接下来请求的key-marker。
     #[serde(rename = "NextKeyMarker")]
-    #[serde(default)]
-    pub next_key_marker: String,
+    pub next_key_marker: Option<String>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextVersionIdMarker元素，用于标明接下来请求的version-id-marker。
     #[serde(rename = "NextVersionIdMarker")]
-    #[serde(default)]
-    pub next_version_id_marker: String,
+    pub next_version_id_marker: Option<String>,
     /// 保存除删除标记以外的Object版本信息的列表。
     #[serde(rename = "Version")]
     #[serde(default)]
@@ -21348,8 +20981,7 @@ pub struct GetBucketPolicyStatusResponse {
     /// - true：包含公共访问的语义。
     /// - false：不包含公共访问的语义或者没有设置Bucket Policy。
     #[serde(rename = "IsPublic")]
-    #[serde(default)]
-    pub is_public: bool,
+    pub is_public: Option<bool>,
 }
 /// 数据复制是以异步（近实时）方式将源Bucket中的文件（Object）以及对Object的创建、更新和删除等操作自动复制到目标Bucket。使用数据复制时，有如下注意事项：
 ///
@@ -21389,12 +21021,10 @@ pub struct GetBucketReplicationLocationResponse {
     pub location: Vec<String>,
     /// 包含TransferType约束的Location信息容器。
     #[serde(rename = "LocationTransferTypeConstraint")]
-    #[serde(default)]
-    pub location_transfer_type_constraint: TransferTypeConstraint,
+    pub location_transfer_type_constraint: Option<TransferTypeConstraint>,
     /// 包含RTC约束的Location信息容器。
     #[serde(rename = "LocationRTCConstraint")]
-    #[serde(default)]
-    pub location_rtc_constraint: CConstraint,
+    pub location_rtc_constraint: Option<CConstraint>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketReplicationProgressResponse {
@@ -21424,12 +21054,10 @@ pub struct ListBucketInventoryResponse {
     ///
     /// 如果值为true，表示还未完整列出存储空间中的所有清单任务，您可以将NextContinuationToken字段的值作为下一次list请求的continuation-token参数，以获取下一页的清单配置列表。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 当响应中的IsTruncated为true且NextContinuationToken非空时，使用该字段作为下一次list请求的continuation-token参数。
     #[serde(rename = "NextContinuationToken")]
-    #[serde(default)]
-    pub next_continuation_token: String,
+    pub next_continuation_token: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketTagsResponse {
@@ -21437,8 +21065,7 @@ pub struct GetBucketTagsResponse {
     pub code_message: crate::CodeMessage,
     /// 保存标签集合的容器。
     #[serde(rename = "TagSet")]
-    #[serde(default)]
-    pub tag_set: TagSet,
+    pub tag_set: Option<TagSet>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListUserDataRedundancyTransitionResponse {
@@ -21450,12 +21077,10 @@ pub struct ListUserDataRedundancyTransitionResponse {
     ///
     /// false：表示本次已返回全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 表明本次ListUserDataRedundancyTransition请求包含后续结果，需要将NextContinuationToken指定为continuation-token继续获取结果。
     #[serde(rename = "NextContinuationToken")]
-    #[serde(default)]
-    pub next_continuation_token: String,
+    pub next_continuation_token: Option<String>,
     /// 存储冗余转换任务的容器。
     #[serde(rename = "BucketDataRedundancyTransition")]
     #[serde(default)]
@@ -21469,8 +21094,7 @@ pub struct ListBucketDataRedundancyTransitionResponse {
     pub code_message: crate::CodeMessage,
     /// 存储冗余转换任务的信息。
     #[serde(rename = "BucketDataRedundancyTransition")]
-    #[serde(default)]
-    pub bucket_data_redundancy_transition: BucketDataRedundancyTransition,
+    pub bucket_data_redundancy_transition: Option<BucketDataRedundancyTransition>,
 }
 /// - Bucket所属地域支持转换存储冗余类型。支持转换存储冗余类型的地域：华东1（杭州）、华东2（上海）、华北2（北京）、华北3（张家口）、华北6（乌兰察布）、华南1（深圳）、中国香港、日本（东京）、新加坡、印度尼西亚（雅加达）、德国（法兰克福）
 /// - Bucket的存储冗余类型必须为本地冗余存储。OSS仅支持将本地冗余存储转换为同城冗余存储。
@@ -21483,8 +21107,7 @@ pub struct CreateBucketDataRedundancyTransitionResponse {
     pub code_message: crate::CodeMessage,
     /// 存储冗余转换任务的ID。该ID可以用于后续查看、删除存储冗余转换任务。
     #[serde(rename = "TaskId")]
-    #[serde(default)]
-    pub task_id: String,
+    pub task_id: Option<String>,
 }
 /// 只有Bucket的拥有者及授权的RAM用户才能获取Bucket的加密规则，否则返回403错误。有关Bucket加密的更多信息，请参见**[服务器端加密](~~31871~~)**。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21493,8 +21116,7 @@ pub struct GetBucketEncryptionResponse {
     pub code_message: crate::CodeMessage,
     /// 服务端加密规则信息。
     #[serde(rename = "ApplyServerSideEncryptionByDefault")]
-    #[serde(default)]
-    pub apply_server_side_encryption_by_default: ApplyServerSideEncryptionByDefault,
+    pub apply_server_side_encryption_by_default: Option<ApplyServerSideEncryptionByDefault>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketRequestPaymentResponse {
@@ -21504,8 +21126,7 @@ pub struct GetBucketRequestPaymentResponse {
     ///
     /// 取值：BucketOwner、Requester
     #[serde(rename = "Payer")]
-    #[serde(default)]
-    pub payer: String,
+    pub payer: Option<String>,
 }
 ///  
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21522,8 +21143,7 @@ pub struct GetBucketCorsResponse {
     ///
     /// false：任何情况下均不返回Vary: Origin头。
     #[serde(rename = "ResponseVary")]
-    #[serde(default)]
-    pub response_vary: bool,
+    pub response_vary: Option<bool>,
 }
 /// Options请求是由浏览器自动根据是否跨域来决定是否发送。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21566,24 +21186,20 @@ pub struct GetMetaQueryStatusResponse {
     ///
     /// Deleted：已删除
     #[serde(rename = "State")]
-    #[serde(default)]
-    pub state: String,
+    pub state: Option<String>,
     /// 当前扫描类型。取值范围如下：
     ///
     /// FullScanning：全量扫描中
     ///
     /// IncrementalScanning：增量扫描中
     #[serde(rename = "Phase")]
-    #[serde(default)]
-    pub phase: String,
+    pub phase: Option<String>,
     /// 元数据索引库的创建时间，遵循RFC 3339标准格式，格式为YYYY-MM-DDTHH:mm:ss+TIMEZONE。其中YYYY-MM-DD表示年月日，T表示time元素的开头，HH:mm:ss表示时分秒，TIMEZONE表示时区。
     #[serde(rename = "CreateTime")]
-    #[serde(default)]
-    pub create_time: String,
+    pub create_time: Option<String>,
     /// 元数据索引库的创建时间，遵循RFC 3339标准格式，格式为YYYY-MM-DDTHH:mm:ss+TIMEZONE。其中YYYY-MM-DD表示年月日，T表示time元素的开头，HH:mm:ss表示时分秒，TIMEZONE表示时区。
     #[serde(rename = "UpdateTime")]
-    #[serde(default)]
-    pub update_time: String,
+    pub update_time: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListBucketAntiDDosInfoResponse {
@@ -21591,16 +21207,14 @@ pub struct ListBucketAntiDDosInfoResponse {
     pub code_message: crate::CodeMessage,
     /// 返回字母排序在指定marker之后的高防实例。
     #[serde(rename = "Marker")]
-    #[serde(default)]
-    pub marker: String,
+    pub marker: Option<String>,
     /// 是否已返回所有高防实例。
     ///
     /// true：本次请求未返回所有高防实例。
     ///
     /// false：本次请求已返回所有高防实例。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 保存高防实例信息的列表。
     #[serde(rename = "AntiDDOSConfiguration")]
     #[serde(default)]
@@ -21629,8 +21243,7 @@ pub struct GetBucketResourceGroupResponse {
     pub code_message: crate::CodeMessage,
     /// Bucket所属的资源组ID。
     #[serde(rename = "ResourceGroupId")]
-    #[serde(default)]
-    pub resource_group_id: String,
+    pub resource_group_id: Option<String>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListCnameResponse {
@@ -21638,12 +21251,10 @@ pub struct ListCnameResponse {
     pub code_message: crate::CodeMessage,
     /// 存储空间名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// Bucket拥有者的用户ID。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: String,
+    pub owner: Option<String>,
     /// 保存Cname信息的列表。
     #[serde(rename = "Cname")]
     #[serde(default)]
@@ -21667,12 +21278,10 @@ pub struct CreateAccessPointForObjectProcessResponse {
     pub code_message: crate::CodeMessage,
     /// 对象FC接入点ARN。
     #[serde(rename = "AccessPointForObjectProcessArn")]
-    #[serde(default)]
-    pub access_point_for_object_process_arn: String,
+    pub access_point_for_object_process_arn: Option<String>,
     /// 对象FC接入点别名。
     #[serde(rename = "AccessPointForObjectProcessAlias")]
-    #[serde(default)]
-    pub access_point_for_object_process_alias: String,
+    pub access_point_for_object_process_alias: Option<String>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点基础信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点基础信息，您必须拥有`oss:GetAccessPointForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21681,50 +21290,40 @@ pub struct GetAccessPointForObjectProcessResponse {
     pub code_message: crate::CodeMessage,
     /// 对象FC接入点名称。
     #[serde(rename = "AccessPointNameForObjectProcess")]
-    #[serde(default)]
-    pub access_point_name_for_object_process: String,
+    pub access_point_name_for_object_process: Option<String>,
     /// 对象FC接入点别名。
     #[serde(rename = "AccessPointForObjectProcessAlias")]
-    #[serde(default)]
-    pub access_point_for_object_process_alias: String,
+    pub access_point_for_object_process_alias: Option<String>,
     /// 接入点名称。
     #[serde(rename = "AccessPointName")]
-    #[serde(default)]
-    pub access_point_name: String,
+    pub access_point_name: Option<String>,
     /// 配置对象FC接入点的阿里云账号UID。
     #[serde(rename = "AccountId")]
-    #[serde(default)]
-    pub account_id: String,
+    pub account_id: Option<String>,
     /// 对象FC接入点ARN。
     #[serde(rename = "AccessPointForObjectProcessArn")]
-    #[serde(default)]
-    pub access_point_for_object_process_arn: String,
+    pub access_point_for_object_process_arn: Option<String>,
     /// 对象FC接入点创建时间，格式为时间戳。
     #[serde(rename = "CreationDate")]
-    #[serde(default)]
-    pub creation_date: String,
+    pub creation_date: Option<String>,
     /// 对象FC接入点所处状态。返回值如下：
     /// - enable：对象FC接入点已创建完成。
     /// - disable：对象FC接入点已禁用。
     /// - creating：对象FC接入点正在创建中。
     /// - deleting：对象FC接入点已删除。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 保存对象FC接入点访问域名信息的容器。
     #[serde(rename = "Endpoints")]
-    #[serde(default)]
-    pub endpoints: ResponseEndpoints,
+    pub endpoints: Option<ResponseEndpoints>,
     /// 是否允许匿名访问。
     ///
     /// > 开启该选项之后将会允许匿名账号通过ObjectFC接入点访问您的Bucket，会产生相关费用。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
-    #[serde(default)]
-    pub allow_anonymous_access_for_object_process: String,
+    pub allow_anonymous_access_for_object_process: Option<String>,
     /// 保存阻止公共访问信息的容器。
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(default)]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+    pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点信息，您必须拥有`oss:ListAccessPointsForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21736,20 +21335,16 @@ pub struct ListAccessPointsForObjectProcessResponse {
     /// - true：表示本次未返回全部结果。
     /// - false：表示本次已返回全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 表明本次ListAccessPointsForObjectProcess请求包含后续结果，需要将NextContinuationToken指定为continuation-token继续获取结果。
     #[serde(rename = "NextContinuationToken")]
-    #[serde(default)]
-    pub next_continuation_token: String,
+    pub next_continuation_token: Option<String>,
     /// 对象FC接入点所属的阿里云账号UID。
     #[serde(rename = "AccountId")]
-    #[serde(default)]
-    pub account_id: String,
+    pub account_id: Option<String>,
     /// 保存所有对象FC接入点信息的容器。
     #[serde(rename = "AccessPointsForObjectProcess")]
-    #[serde(default)]
-    pub access_points_for_object_process: AccessPointsForObjectProcess,
+    pub access_points_for_object_process: Option<AccessPointsForObjectProcess>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点配置信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点配置信息，您必须拥有`oss:GetAccessPointConfigForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21758,16 +21353,13 @@ pub struct GetAccessPointConfigForObjectProcessResponse {
     pub code_message: crate::CodeMessage,
     /// 保存对象处理信息的容器。
     #[serde(rename = "ObjectProcessConfiguration")]
-    #[serde(default)]
-    pub object_process_configuration: ObjectProcessConfiguration,
+    pub object_process_configuration: Option<ObjectProcessConfiguration>,
     /// 是否允许匿名访问。
     #[serde(rename = "AllowAnonymousAccessForObjectProcess")]
-    #[serde(default)]
-    pub allow_anonymous_access_for_object_process: String,
+    pub allow_anonymous_access_for_object_process: Option<String>,
     /// 保存阻止公共访问信息的容器。
     #[serde(rename = "PublicAccessBlockConfiguration")]
-    #[serde(default)]
-    pub public_access_block_configuration: PublicAccessBlockConfiguration,
+    pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点权限策略配置的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点的权限策略配置，您必须拥有`oss:GetAccessPointPolicyForObjectProcess`权限。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -21832,12 +21424,10 @@ pub struct CopyObjectResponse {
     pub code_message: crate::CodeMessage,
     /// 目标Object的ETag值。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// 目标Object最后更新时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// Header field from response: x-oss-copy-source-version-id
     #[serde(skip)]
     pub x_oss_copy_source_version_id: Option<String>,
@@ -22124,20 +21714,16 @@ pub struct InitiateMultipartUploadResponse {
     pub code_message: crate::CodeMessage,
     /// 初始化一个Multipart Upload事件的Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 初始化一个Multipart Upload事件的Object名称。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// 唯一标识此次Multipart Upload事件的ID，用于后续调用UploadPart和CompleteMultipartUpload接口。
     #[serde(rename = "UploadId")]
-    #[serde(default)]
-    pub upload_id: String,
+    pub upload_id: Option<String>,
     /// 指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，那返回的结果会对Key进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
 }
 /// **注意事项**
 ///
@@ -22163,28 +21749,23 @@ pub struct CompleteMultipartUploadResponse {
     pub code_message: crate::CodeMessage,
     /// 是否对返回的key进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
     /// 新创建Object的URL。
     #[serde(rename = "Location")]
-    #[serde(default)]
-    pub location: String,
+    pub location: Option<String>,
     /// Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 新创建Object的名字。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Object生成时会创建相应的ETag ，ETag用于标识一个Object的内容。
     ///
     /// 通过CompleteMultipartUpload请求创建的Object，ETag值是基于一定计算规则生成的唯一值，但不是其内容的MD5值。
     ///
     /// >ETag值可以用于检查Object内容是否发生变化。不建议使用ETag作为Object内容的MD5来校验数据完整性。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// Header field from response: x-oss-version-id
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
@@ -22218,12 +21799,10 @@ pub struct UploadPartCopyResponse {
     pub code_message: crate::CodeMessage,
     /// 最近一次修改时间。
     #[serde(rename = "LastModified")]
-    #[serde(default)]
-    pub last_modified: String,
+    pub last_modified: Option<String>,
     /// 被拷贝Object的ETag值。
     #[serde(rename = "ETag")]
-    #[serde(default)]
-    pub e_tag: String,
+    pub e_tag: Option<String>,
     /// Header field from response: x-oss-copy-source-version-id
     #[serde(skip)]
     pub x_oss_copy_source_version_id: Option<String>,
@@ -22235,48 +21814,38 @@ pub struct ListMultipartUploadsResponse {
     pub code_message: crate::CodeMessage,
     /// Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// 指明返回结果中编码使用的类型。如果请求参数中指定了encoding-type，那返回的结果会对Delimiter、KeyMarker、Prefix、NextKeyMarker和Key这些元素进行编码。
     #[serde(rename = "EncodingType")]
-    #[serde(default)]
-    pub encoding_type: String,
+    pub encoding_type: Option<String>,
     /// 列表的起始Object位置。
     #[serde(rename = "KeyMarker")]
-    #[serde(default)]
-    pub key_marker: String,
+    pub key_marker: Option<String>,
     /// 列表的起始UploadId位置。
     #[serde(rename = "UploadIdMarker")]
-    #[serde(default)]
-    pub upload_id_marker: String,
+    pub upload_id_marker: Option<String>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextKeyMarker元素，用于表示接下来请求的KeyMarker值。
     #[serde(rename = "NextKeyMarker")]
-    #[serde(default)]
-    pub next_key_marker: String,
+    pub next_key_marker: Option<String>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextUploadMarker元素，用于表示接下来请求的UploadMarker值。
     #[serde(rename = "NextUploadIdMarker")]
-    #[serde(default)]
-    pub next_upload_id_marker: String,
+    pub next_upload_id_marker: Option<String>,
     /// 返回的最大Upload个数。
     #[serde(rename = "MaxUploads")]
-    #[serde(default)]
-    pub max_uploads: i64,
+    pub max_uploads: Option<i64>,
     /// 表示本次返回的MultipartUpload结果列表是否被截断。取值范围如下：
     ///
     /// true：表示本次没有返回全部结果。
     ///
     /// false（默认）：表示本次已经返回了全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 本次查询所用的前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 本次查询所用的Object名称分组字符。
     #[serde(rename = "Delimiter")]
-    #[serde(default)]
-    pub delimiter: String,
+    pub delimiter: Option<String>,
     /// 保存Multipart Upload事件信息的列表。
     #[serde(rename = "Upload")]
     #[serde(default)]
@@ -22295,32 +21864,25 @@ pub struct ListPartsResponse {
     pub code_message: crate::CodeMessage,
     /// Bucket名称。
     #[serde(rename = "Bucket")]
-    #[serde(default)]
-    pub bucket: String,
+    pub bucket: Option<String>,
     /// Object名称。
     #[serde(rename = "Key")]
-    #[serde(default)]
-    pub key: String,
+    pub key: Option<String>,
     /// Upload事件ID。
     #[serde(rename = "UploadId")]
-    #[serde(default)]
-    pub upload_id: String,
+    pub upload_id: Option<String>,
     /// 本次List结果的Part Number起始位置。
     #[serde(rename = "PartNumberMarker")]
-    #[serde(default)]
-    pub part_number_marker: i64,
+    pub part_number_marker: Option<i64>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextPartNumberMarker元素，用于标明接下来请求的PartNumberMarker值。
     #[serde(rename = "NextPartNumberMarker")]
-    #[serde(default)]
-    pub next_part_number_marker: i64,
+    pub next_part_number_marker: Option<i64>,
     /// 返回请求中最大的Part数目。
     #[serde(rename = "MaxParts")]
-    #[serde(default)]
-    pub max_parts: i64,
+    pub max_parts: Option<i64>,
     /// 标明本次返回的ListParts结果列表是否被截断。“true”表示本次没有返回全部结果；“false”表示本次已经返回了全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 保存Part信息的列表。
     #[serde(rename = "Part")]
     #[serde(default)]
@@ -22367,12 +21929,10 @@ pub struct GetObjectAclResponse {
     pub code_message: crate::CodeMessage,
     /// 保存Bucket拥有者信息的容器。
     #[serde(rename = "Owner")]
-    #[serde(default)]
-    pub owner: Owner,
+    pub owner: Option<Owner>,
     /// 存储ACL信息的容器。
     #[serde(rename = "AccessControlList")]
-    #[serde(default)]
-    pub access_control_list: ObjectAclResponseAccessControlList,
+    pub access_control_list: Option<ObjectAclResponseAccessControlList>,
 }
 /// **注意事项**
 ///
@@ -22443,8 +22003,7 @@ pub struct GetObjectTaggingResponse {
     pub code_message: crate::CodeMessage,
     /// 标签集合。
     #[serde(rename = "TagSet")]
-    #[serde(default)]
-    pub tag_set: TagSet,
+    pub tag_set: Option<TagSet>,
 }
 /// 通过RTMP协议上传音视频数据前，必须先调用该接口创建一个LiveChannel。调用该接口会返回RTMP推流地址，以及对应的播放地址。
 /// <br>您可以使用返回的地址进行推流、播放，您还可以根据该LiveChannel的名称来发起相关的操作，如查询推流状态、查询推流记录、禁止推流等。
@@ -22454,12 +22013,10 @@ pub struct PutLiveChannelResponse {
     pub code_message: crate::CodeMessage,
     /// 保存推流地址的容器。
     #[serde(rename = "PublishUrls")]
-    #[serde(default)]
-    pub publish_urls: LiveChannelPublishUrls,
+    pub publish_urls: Option<LiveChannelPublishUrls>,
     /// 保存播放地址的容器。
     #[serde(rename = "PlayUrls")]
-    #[serde(default)]
-    pub play_urls: LiveChannelPlayUrls,
+    pub play_urls: Option<LiveChannelPlayUrls>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListLiveChannelResponse {
@@ -22467,28 +22024,23 @@ pub struct ListLiveChannelResponse {
     pub code_message: crate::CodeMessage,
     /// 本次查询结果的开始前缀。
     #[serde(rename = "Prefix")]
-    #[serde(default)]
-    pub prefix: String,
+    pub prefix: Option<String>,
     /// 本次ListLiveChannel的起点。
     #[serde(rename = "Marker")]
-    #[serde(default)]
-    pub marker: String,
+    pub marker: Option<String>,
     /// 响应请求内返回结果的最大数目。
     #[serde(rename = "MaxKeys")]
-    #[serde(default)]
-    pub max_keys: i64,
+    pub max_keys: Option<i64>,
     /// 是否已返回所有的结果。
     ///
     /// true：表示本次请求已返回全部结果。
     ///
     /// false：表示本次请求未返回全部结果。
     #[serde(rename = "IsTruncated")]
-    #[serde(default)]
-    pub is_truncated: bool,
+    pub is_truncated: Option<bool>,
     /// 如果本次没有返回全部结果，响应请求中将包含NextMarker元素，用于标明接下来请求的Marker值。
     #[serde(rename = "NextMarker")]
-    #[serde(default)]
-    pub next_marker: String,
+    pub next_marker: Option<String>,
     /// 保存返回的LiveChannel信息的列表。
     #[serde(rename = "LiveChannel")]
     #[serde(default)]
@@ -22500,20 +22052,17 @@ pub struct GetLiveChannelInfoResponse {
     pub code_message: crate::CodeMessage,
     /// LiveChannel的描述信息。
     #[serde(rename = "Description")]
-    #[serde(default)]
-    pub description: String,
+    pub description: Option<String>,
     /// LiveChannel的状态信息。有效值：
     ///
     /// enabled：启用状态
     ///
     /// disabled：禁用状态
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 保存LiveChannel转储配置的容器。
     #[serde(rename = "Target")]
-    #[serde(default)]
-    pub target: LiveChannelTarget,
+    pub target: Option<LiveChannelTarget>,
 }
 /// 使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
 #[derive(Debug, Default, serde::Deserialize)]
@@ -22531,36 +22080,30 @@ pub struct GetLiveChannelStatResponse {
     pub code_message: crate::CodeMessage,
     /// LiveChannel当前的推流状态描述。有效值：Disabled、Live、Idle。
     #[serde(rename = "Status")]
-    #[serde(default)]
-    pub status: String,
+    pub status: Option<String>,
     /// 当Status为Live时，表示当前客户端开始推流的时间。此元素使用ISO8601格式表示。
     #[serde(rename = "ConnectedTime")]
-    #[serde(default)]
-    pub connected_time: String,
+    pub connected_time: Option<String>,
     /// 当Status为Live时，表示当前推流客户端的IP地址。
     #[serde(rename = "RemoteAddr")]
-    #[serde(default)]
-    pub remote_addr: String,
+    pub remote_addr: Option<String>,
     /// 当Status为Live时，保存视频流信息的容器。
     ///
     /// >Video、Audio容器只有在Status为Live时才会返回，但Status为Live时不一定返回这两个容器。例如，客户端已经连接到LiveChannel，但尚未发送音视频数据，这种情况不会返回这两个容器。
     #[serde(rename = "Video")]
-    #[serde(default)]
-    pub video: LiveChannelVideo,
+    pub video: Option<LiveChannelVideo>,
     /// 当Status为Live时，保存音频流信息的容器。
     ///
     /// >Video、Audio容器只有在Status为Live时才会返回，但Status为Live时不一定返回这两个容器。例如，客户端已经连接到LiveChannel，但尚未发送音视频数据，这种情况不会返回这两个容器。
     #[serde(rename = "Audio")]
-    #[serde(default)]
-    pub audio: LiveChannelAudio,
+    pub audio: Option<LiveChannelAudio>,
 }
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutDataLakeCachePrefetchJobResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
     #[serde(rename = "ID")]
-    #[serde(default)]
-    pub id: String,
+    pub id: Option<String>,
 }
 
 crate::impl_to_code_message!(
