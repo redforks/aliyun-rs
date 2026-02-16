@@ -3,6 +3,7 @@
 use crate::{CodeMessage, Result};
 use anyhow::Context as _;
 use serde::de::DeserializeOwned;
+use tracing::debug;
 
 /// Default CodeMessage for binary responses (which don't have structured response data)
 pub static CODE_MESSAGE: CodeMessage = CodeMessage {
@@ -43,6 +44,7 @@ pub struct JsonResponseWrap<T> {
 impl<T: DeserializeOwned> FromBody for JsonResponseWrap<T> {
     fn from_body(bytes: Vec<u8>) -> Result<Self> {
         let text = String::from_utf8(bytes).context("Response body is not valid UTF-8")?;
+        debug!("Response: {}", text);
         let inner = serde_json::from_str(&text)
             .with_context(|| format!("Decode response as JSON: {}", &text))?;
         Ok(Self { inner })

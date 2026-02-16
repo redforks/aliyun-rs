@@ -16364,22 +16364,26 @@ pub struct CORSRule {
     /// 指定允许的跨域请求来源。
     #[serde(rename = "AllowedOrigin")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub allowed_origin: Vec<String>,
     /// 指定允许的跨域请求方法。
     #[serde(rename = "AllowedMethod")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub allowed_method: Vec<String>,
     /// 控制OPTIONS预取指令Access-Control-Request-Headers中指定的Header是否被允许。在Access-Control-Request-Headers中指定的每个Header都必须在AllowedHeader中有对应的项。
     ///
     /// > 仅允许使用一个星号（*）通配符。
     #[serde(rename = "AllowedHeader")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub allowed_header: Vec<String>,
     /// 指定允许用户从应用程序中访问的响应头。例如一个JavaScript的XMLHttpRequest对象。
     ///
     /// > 不允许使用星号（*）通配符。
     #[serde(rename = "ExposeHeader")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub expose_header: Vec<String>,
     /// 指定浏览器对特定资源的预取（OPTIONS）请求返回结果的缓存时间。单位为秒。
     ///
@@ -16976,6 +16980,7 @@ pub struct HttpsConfigurationTls {
     /// TLS版本列表
     #[serde(rename = "TLSVersion")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tls_version: Vec<String>,
 }
 
@@ -16994,10 +16999,12 @@ pub struct HttpsConfigurationCipherSuite {
     /// 自定义加密套件
     #[serde(rename = "CustomCipherSuite")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub custom_cipher_suite: Vec<String>,
     /// 用于TLS1.3版本的自定义加密套件
     #[serde(rename = "TLS13CustomCipherSuite")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tls13_custom_cipher_suite: Vec<String>,
 }
 
@@ -17028,6 +17035,7 @@ pub struct IncrementInventorySchedule {
 pub struct IncrementalInventoryOptionalFields {
     #[serde(rename = "Field")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub field: Vec<String>,
 }
 
@@ -17251,6 +17259,7 @@ pub struct InventoryConfigurationOptionalFields {
     ///
     #[serde(rename = "Field")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub field: Vec<InventoryOptionalField>,
 }
 
@@ -17497,6 +17506,7 @@ pub struct LifecycleRuleFilter {
     /// 满足何种规则跳过。
     #[serde(rename = "Not")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub not: Vec<LifecycleRuleFilterNotItem>,
     /// 本条生命周期规则只对文件大小大于该值的文件生效
     #[serde(rename = "ObjectSizeGreaterThan")]
@@ -17542,6 +17552,7 @@ pub struct LifecycleRule {
     ///
     #[serde(rename = "Transition")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub transition: Vec<LifecycleRuleTransitionItem>,
     /// 指定未完成分片上传的过期属性。
     #[serde(rename = "AbortMultipartUpload")]
@@ -17550,6 +17561,7 @@ pub struct LifecycleRule {
     /// 指定规则所适用的对象标签，可设置多个。
     #[serde(rename = "Tag")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tag: Vec<Tag>,
     /// 指定Object非当前版本生命周期规则的过期属性。
     #[serde(rename = "NoncurrentVersionExpiration")]
@@ -17559,6 +17571,7 @@ pub struct LifecycleRule {
     /// Standard类型的Object转储为Archive类型的时间必须大于转储为IA类型的时间。
     #[serde(rename = "NoncurrentVersionTransition")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub noncurrent_version_transition: Vec<LifecycleRuleNoncurrentVersionTransitionItem>,
     /// 本条规则的排除条件。
     #[serde(rename = "Filter")]
@@ -17577,6 +17590,7 @@ pub struct LifecycleConfiguration {
     /// 生命周期规则的容器。Object设置过期时间必须大于转储为IA或者Archive存储类型的时间。
     #[serde(rename = "Rule")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub rule: Vec<LifecycleRule>,
 }
 
@@ -18434,6 +18448,7 @@ pub struct ObjectProcessConfigurationAllowedFeatures {
     /// 函数计算支持的功能特性列表
     #[serde(rename = "AllowedFeature")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub allowed_feature: Vec<String>,
 }
 
@@ -18445,6 +18460,7 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     /// 保存操作信息的列表
     #[serde(rename = "Action")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub action: Vec<String>,
 }
 
@@ -18471,6 +18487,7 @@ pub struct ObjectProcessConfigurationTransformationConfigurationsTransformationC
     /// 自定义转发请求头
     #[serde(rename = "CustomForwardHeader")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub custom_forward_header: Vec<String>,
 }
 
@@ -18519,6 +18536,7 @@ pub struct ObjectProcessConfigurationTransformationConfigurations {
     /// 保存转换配置信息的列表
     #[serde(rename = "TransformationConfiguration")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub transformation_configuration:
         Vec<ObjectProcessConfigurationTransformationConfigurationsTransformationConfigurationItem>,
 }
@@ -18631,6 +18649,7 @@ pub struct OverwriteConfigurationRuleItemPrincipals {
     /// 规则生效的账号与角色列表。用法与Bucket Policy的Principal相仿，支持主账号、子账号或角色的输入。如果为空或不配置，则表明对于满足前后缀条件的Object，一律不允许覆盖写。
     #[serde(rename = "Principal")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub principal: Vec<String>,
 }
 
@@ -18667,6 +18686,7 @@ pub struct OverwriteConfiguration {
     /// 保存单条禁止覆盖写规则的容器
     #[serde(rename = "Rule")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub rule: Vec<OverwriteConfigurationRuleItem>,
 }
 
@@ -18698,6 +18718,7 @@ pub struct ReplicationPrefixSet {
     ///
     #[serde(rename = "Prefix")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub prefix: Vec<String>,
 }
 
@@ -18772,6 +18793,7 @@ pub struct RefererConfigurationRefererList {
     /// 指定一条Referer访问白名单。
     #[serde(rename = "Referer")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub referer: Vec<String>,
 }
 
@@ -18782,6 +18804,7 @@ pub struct RefererConfigurationRefererBlacklist {
     /// 指定一条Referer访问黑名单
     #[serde(rename = "Referer")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub referer: Vec<String>,
 }
 
@@ -19034,6 +19057,7 @@ pub struct RoutingRuleCondition {
     /// 只有请求中包含了指定Header且值为指定值时，才能匹配此规则。该容器最多可指定10个。
     #[serde(rename = "IncludeHeader")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub include_header: Vec<RoutingRuleConditionIncludeHeaderItem>,
 }
 
@@ -19071,17 +19095,20 @@ pub struct RoutingRuleRedirectMirrorHeaders {
     /// 此字段最多可指定10个。
     #[serde(rename = "Pass")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub pass: Vec<String>,
     /// 禁止透传指定的Header到源站。只有设置RedirectType为Mirror时才生效。
     /// 每个Header长度最多为1024个字节，字符集与Pass相同。
     /// 此字段最多可指定10个，通常与PassAll一起使用。
     #[serde(rename = "Remove")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub remove: Vec<String>,
     /// 设置一个Header传到源站，不管请求中是否携带这些指定的Header，回源时都会设置这些Header。只有设置RedirectType为Mirror时才生效。
     /// 此容器最多可指定10组。
     #[serde(rename = "Set")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub set: Vec<RoutingRuleRedirectMirrorHeadersSetItem>,
 }
 
@@ -19105,6 +19132,7 @@ pub struct RoutingRuleRedirectMirrorTaggings {
     /// 镜像回源保存标签规则列表
     #[serde(rename = "Taggings")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub taggings: Vec<RoutingRuleRedirectMirrorTaggingsTaggingsItem>,
 }
 
@@ -19128,6 +19156,7 @@ pub struct RoutingRuleRedirectMirrorReturnHeaders {
     /// 镜像回源返回响应头规则列表
     #[serde(rename = "ReturnHeader")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub return_header: Vec<RoutingRuleRedirectMirrorReturnHeadersReturnHeaderItem>,
 }
 
@@ -19181,6 +19210,7 @@ pub struct RoutingRuleRedirectMirrorMultiAlternates {
     /// 镜像回源多源站配置
     #[serde(rename = "MirrorMultiAlternate")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub mirror_multi_alternate:
         Vec<RoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateItem>,
 }
@@ -19553,6 +19583,7 @@ pub struct TagSet {
     /// 标签集合。
     #[serde(rename = "Tag")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub tag: Vec<Tag>,
 }
 
@@ -19634,6 +19665,7 @@ pub struct UserDefinedLogFieldsConfigurationHeaderSet {
     /// 自定义请求头列表。
     #[serde(rename = "header")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub header: Vec<String>,
 }
 
@@ -19644,6 +19676,7 @@ pub struct UserDefinedLogFieldsConfigurationParamSet {
     /// 自定义查询参数列表。
     #[serde(rename = "parameter")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub parameter: Vec<String>,
 }
 
@@ -19683,6 +19716,7 @@ pub struct WebsiteConfigurationRoutingRules {
     /// 指定跳转规则或者镜像回源规则，最多指定20个RoutingRule。
     #[serde(rename = "RoutingRule")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub routing_rule: Vec<RoutingRule>,
 }
 

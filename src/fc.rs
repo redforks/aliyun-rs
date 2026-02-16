@@ -5839,14 +5839,17 @@ pub struct RewriteConfig {
     /// 精确匹配规则列表
     #[serde(rename = "equalRules")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub equal_rules: Vec<EqualRule>,
     /// 正则匹配规则列表
     #[serde(rename = "regexRules")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub regex_rules: Vec<RegexRule>,
     /// 通配匹配规则列表
     #[serde(rename = "wildcardRules")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub wildcard_rules: Vec<WildcardRule>,
 }
 
@@ -5860,6 +5863,7 @@ pub struct PathConfig {
     /// 支持的方法
     #[serde(rename = "methods")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub methods: Vec<String>,
     /// 路由匹配规则
     #[serde(rename = "path")]
@@ -5881,6 +5885,7 @@ pub struct RouteConfig {
     /// 路由配置列表
     #[serde(rename = "routes")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub routes: Vec<PathConfig>,
 }
 
@@ -6078,10 +6083,12 @@ pub struct CustomContainerConfig {
     /// 容器启动参数。
     #[serde(rename = "command")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub command: Vec<String>,
     /// 容器启动命令。
     #[serde(rename = "entrypoint")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub entrypoint: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
@@ -6126,14 +6133,17 @@ pub struct CustomDNS {
     /// resolv.conf文件中的DNS解析配置列表。每一项对应一个键值对，格式为key:value，其中键为必填。
     #[serde(rename = "dnsOptions")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub dns_options: Vec<DNSOption>,
     /// DNS服务器的IP地址列表。
     #[serde(rename = "nameServers")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub name_servers: Vec<String>,
     /// DNS搜索域列表。
     #[serde(rename = "searches")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub searches: Vec<String>,
 }
 
@@ -6144,10 +6154,12 @@ pub struct CustomRuntimeConfig {
     /// 实例启动参数。
     #[serde(rename = "args")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub args: Vec<String>,
     /// 实例启动命令。
     #[serde(rename = "command")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub command: Vec<String>,
     /// 函数自定义健康检查配置。
     #[serde(rename = "healthCheckConfig")]
@@ -6194,6 +6206,7 @@ pub struct LifecycleHook {
     /// 函数生命周期初始化阶段回调指令，生命周期回调方法的执行入口 handler 和 command 不允许同时配置，只能有一个生效，同时配置会产生错误提示
     #[serde(rename = "command")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub command: Vec<String>,
 }
 
@@ -6266,6 +6279,7 @@ pub struct NASConfig {
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub mount_points: Vec<NASMountConfig>,
     /// 账号ID。
     #[serde(rename = "userId")]
@@ -6306,6 +6320,7 @@ pub struct OSSMountConfig {
     /// OSS挂载点列表。
     #[serde(rename = "mountPoints")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub mount_points: Vec<OSSMountPoint>,
 }
 
@@ -6316,6 +6331,7 @@ pub struct TracingConfig {
     /// 链路追踪参数。参数为map[string]string，其中key为"endpoint"，value为您的链路追踪内网接入点。 例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces 。
     #[serde(rename = "params")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub params: std::collections::HashMap<String, String>,
     /// 链路追踪协议类型，目前只支持Jaeger。
     #[serde(rename = "type")]
@@ -6334,6 +6350,7 @@ pub struct VPCConfig {
     /// 交换机列表。
     #[serde(rename = "vSwitchIds")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub v_switch_ids: Vec<String>,
     /// VPC网络ID。
     #[serde(rename = "vpcId")]
@@ -6387,6 +6404,7 @@ pub struct PolarFsConfig {
     /// 挂载点列表。
     #[serde(rename = "mountPoints")]
     #[serde(default)]
+    #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub mount_points: Vec<PolarFsMountConfig>,
 }
 
