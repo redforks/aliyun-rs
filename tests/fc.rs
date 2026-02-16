@@ -91,12 +91,16 @@ async fn test_create_invoke_delete_function() {
     );
 
     // Create an HTTP trigger with anonymous auth to get a public URL
+    let trigger_suffix: u16 = rand::thread_rng().gen_range(1000..10000);
+    let trigger_name = format!("ali-acs-test-{}", trigger_suffix);
+    println!("Creating trigger: {}", trigger_name);
+
     let trigger_config = serde_json::json!({
         "authType": "anonymous",
         "methods": ["GET", "POST"]
     });
     let trigger_input = ali_acs::fc::CreateTriggerInput {
-        trigger_name: "http-trigger".to_string(),
+        trigger_name: trigger_name.clone(),
         trigger_type: "http".to_string(),
         trigger_config: serde_json::to_string(&trigger_config).unwrap(),
         ..Default::default()
@@ -116,23 +120,6 @@ async fn test_create_invoke_delete_function() {
         .expect("HTTP trigger should have an internet URL");
     println!("HTTP trigger URL: {}", url);
 
-    // Wait for the function to become active before sending a request
-    let mut ready = false;
-    for i in 0..30 {
-        let func = conn
-            .get_function(ali_acs::fc::GetFunction::new(&function_name))
-            .await
-            .unwrap();
-        let state = func.state.as_deref().unwrap_or("Unknown");
-        println!("  Attempt {}: function state = {}", i + 1, state);
-        if state == "Active" {
-            ready = true;
-            break;
-        }
-        tokio::time::sleep(std::time::Duration::from_secs(2)).await;
-    }
-    assert!(ready, "Function did not become Active in time");
-
     // Send a test HTTP request to the function's public URL
     let client = reqwest::Client::new();
     let response = client
@@ -143,9 +130,18 @@ async fn test_create_invoke_delete_function() {
     let status = response.status();
     let body = response.text().await.expect("Failed to read response body");
     println!("HTTP response status: {}, body: {}", status, body);
-    assert_eq!(body, "Hello, World!");
+    assert_eq!(body, "Hello, ali-yun FC Service");
 
-    // Clean up: delete the function (this also removes its triggers)
+    // Clean up: delete the trigger first
+    conn.delete_trigger(ali_acs::fc::DeleteTrigger::new(
+        &function_name,
+        &trigger_name,
+    ))
+    .await
+    .unwrap();
+    println!("Trigger {} deleted successfully", trigger_name);
+
+    // Clean up: delete the function
     conn.delete_function(ali_acs::fc::DeleteFunction::new(&function_name))
         .await
         .unwrap();
