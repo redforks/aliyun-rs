@@ -147,3 +147,57 @@ async fn test_create_invoke_delete_function() {
         .unwrap();
     println!("Function {} deleted successfully", function_name);
 }
+
+#[tokio::test]
+#[test_log::test]
+#[ignore] // Run with: cargo test --ignored
+async fn test_cleanup_test_resources() {
+    let conn = test_connection();
+    let prefix = "ali-acs-test-";
+
+    // List all functions with the test prefix
+    let list_result = conn
+        .list_functions(
+            ali_acs::fc::ListFunctions::new()
+                .prefix(prefix.to_string())
+                .limit(100),
+        )
+        .await
+        .unwrap();
+
+    let functions = list_result.functions;
+    println!(
+        "Found {} function(s) with prefix '{}'",
+        functions.len(),
+        prefix
+    );
+
+    // Delete triggers and functions
+    for func in &functions {
+        let function_name = func.function_name.as_ref().unwrap();
+
+        // List triggers for this function
+        let triggers_result = conn
+            .list_triggers(ali_acs::fc::ListTriggers::new(function_name))
+            .await
+            .unwrap();
+
+        // Delete triggers with the test prefix
+        for trigger in &triggers_result.triggers {
+            if let Some(trigger_name) = &trigger.trigger_name {
+                conn.delete_trigger(ali_acs::fc::DeleteTrigger::new(function_name, trigger_name))
+                    .await
+                    .unwrap();
+                println!("Deleted trigger: {}", trigger_name);
+            }
+        }
+
+        // Delete the function
+        conn.delete_function(ali_acs::fc::DeleteFunction::new(function_name))
+            .await
+            .unwrap();
+        println!("Deleted function: {}", function_name);
+    }
+
+    println!("Cleanup complete");
+}
