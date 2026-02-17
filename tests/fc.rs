@@ -66,7 +66,7 @@ async fn test_create_invoke_delete_function() {
         memory_size: Some(128),
         disk_size: Some(512),
         code: Some(ali_acs::fc::InputCodeLocation {
-            zip_file: Some(zip_file_base64),
+            zip_file: Some(zip_file_base64.clone()),
             ..Default::default()
         }),
         custom_runtime_config: Some(ali_acs::fc::CustomRuntimeConfig {
@@ -131,6 +131,56 @@ async fn test_create_invoke_delete_function() {
     let body = response.text().await.expect("Failed to read response body");
     println!("HTTP response status: {}, body: {}", status, body);
     assert_eq!(body, "Hello, ali-yun FC Service");
+
+    // Update the function with the same settings
+    let update_input = ali_acs::fc::UpdateFunctionInput {
+        runtime: Some("custom.debian10".to_string()),
+        handler: Some("index.handler".to_string()),
+        cpu: Some(0.05),
+        memory_size: Some(128),
+        disk_size: Some(512),
+        code: Some(ali_acs::fc::InputCodeLocation {
+            zip_file: Some(zip_file_base64.clone()),
+            ..Default::default()
+        }),
+        custom_runtime_config: Some(ali_acs::fc::CustomRuntimeConfig {
+            command: vec!["/code/hello-fc".to_string()],
+            args: vec!["foo".to_string()],
+            port: Some(3000),
+            ..Default::default()
+        }),
+        instance_concurrency: Some(1),
+        timeout: Some(60),
+        ..Default::default()
+    };
+    let update_result = conn
+        .update_function(ali_acs::fc::UpdateFunction::new(
+            &function_name,
+            update_input,
+        ))
+        .await
+        .unwrap();
+    println!(
+        "Function updated: {:?}, state: {:?}",
+        update_result.function_name, update_result.state
+    );
+
+    // Verify again by sending a test HTTP request to the function's public URL
+    let response2 = client
+        .get(url)
+        .send()
+        .await
+        .expect("Failed to send HTTP request to function after update");
+    let status2 = response2.status();
+    let body2 = response2
+        .text()
+        .await
+        .expect("Failed to read response body");
+    println!(
+        "HTTP response after update - status: {}, body: {}",
+        status2, body2
+    );
+    assert_eq!(body2, "Hello, ali-yun FC Service");
 
     // Clean up: delete the trigger first
     conn.delete_trigger(ali_acs::fc::DeleteTrigger::new(
