@@ -45,6 +45,9 @@ pub mod oss;
 #[cfg(feature = "fc")]
 pub mod fc;
 
+#[cfg(feature = "rds")]
+pub mod rds;
+
 #[cfg(test)]
 mod sample;
 

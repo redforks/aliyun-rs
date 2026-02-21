@@ -28,12 +28,13 @@ uuid = { version = "1.19.0", features = ["v4"] }
 strum = { version = "0.27.2", features = ["derive"] }
 
 [features]
-default = ["ocr", "sms", "ecs", "oss", "fc"]
+default = ["ocr", "sms", "ecs", "oss", "fc", "rds"]
 ocr = []
 sms = []
 ecs = []
 oss = []
 fc = []
+rds = []
 
 [lib]
 doctest = false
