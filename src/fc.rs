@@ -1669,6 +1669,9 @@ impl Connection {
     }
 }
 
+/// 更新函数计算资源的资源组。
+///
+/// Argument of [Connection::change_resource_group()], returns [ChangeResourceGroupOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ChangeResourceGroup {
@@ -1707,6 +1710,10 @@ impl crate::Request for ChangeResourceGroup {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查询FC 3.0产品支持的地域信息。
+///
+/// Argument of [Connection::describe_regions()], returns [DescribeRegionsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRegions {
@@ -1759,6 +1766,10 @@ impl crate::Request for DescribeRegions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建自定义域名。
+///
+/// Argument of [Connection::create_custom_domain()], returns [CustomDomain].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCustomDomain {
@@ -1796,6 +1807,10 @@ impl crate::Request for CreateCustomDomain {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除自定义域名。
+///
+/// Argument of [Connection::delete_custom_domain()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteCustomDomain {
@@ -1844,6 +1859,10 @@ impl crate::Request for DeleteCustomDomain {
         crate::Form(self)
     }
 }
+
+/// 获取自定义域名配置。
+///
+/// Argument of [Connection::get_custom_domain()], returns [CustomDomain].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCustomDomain {
@@ -1885,6 +1904,10 @@ impl crate::Request for GetCustomDomain {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取自定义域名信息列表。
+///
+/// Argument of [Connection::list_custom_domains()], returns [ListCustomDomainOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListCustomDomains {
@@ -1945,6 +1968,10 @@ impl crate::Request for ListCustomDomains {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 更新自定义域名。
+///
+/// Argument of [Connection::update_custom_domain()], returns [CustomDomain].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateCustomDomain {
@@ -1991,6 +2018,10 @@ impl crate::Request for UpdateCustomDomain {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除函数版本。
+///
+/// Argument of [Connection::delete_function_version()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteFunctionVersion {
@@ -2045,6 +2076,10 @@ impl crate::Request for DeleteFunctionVersion {
         crate::Form(self)
     }
 }
+
+/// 获取函数代码包的详情。
+///
+/// Argument of [Connection::get_function_code()], returns [OutputFuncCode].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetFunctionCode {
@@ -2096,6 +2131,10 @@ impl crate::Request for GetFunctionCode {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询指定函数的版本列表。
+///
+/// Argument of [Connection::list_function_versions()], returns [ListVersionsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListFunctionVersions {
@@ -2163,6 +2202,10 @@ impl crate::Request for ListFunctionVersions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 发布函数版本。
+///
+/// Argument of [Connection::publish_function_version()], returns [Version].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PublishFunctionVersion {
@@ -2209,6 +2252,10 @@ impl crate::Request for PublishFunctionVersion {
         crate::JsonBody(self.body)
     }
 }
+
+/// 调用CreateFunction接口创建函数。
+///
+/// Argument of [Connection::create_function()], returns [Function].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateFunction {
@@ -2246,6 +2293,10 @@ impl crate::Request for CreateFunction {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除函数。
+///
+/// Argument of [Connection::delete_function()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteFunction {
@@ -2294,6 +2345,10 @@ impl crate::Request for DeleteFunction {
         crate::Form(self)
     }
 }
+
+/// 获取函数信息。
+///
+/// Argument of [Connection::get_function()], returns [Function].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetFunction {
@@ -2345,6 +2400,10 @@ impl crate::Request for GetFunction {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取函数列表。
+///
+/// Argument of [Connection::list_functions()], returns [ListFunctionsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListFunctions {
@@ -2467,6 +2526,10 @@ impl crate::Request for ListFunctions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 调用执行函数。
+///
+/// Argument of [Connection::invoke_function()], returns [Vec<u8>].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InvokeFunction {
@@ -2552,6 +2615,10 @@ impl crate::Request for InvokeFunction {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 更新函数信息。
+///
+/// Argument of [Connection::update_function()], returns [Function].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateFunction {
@@ -2598,6 +2665,10 @@ impl crate::Request for UpdateFunction {
         crate::JsonBody(self.body)
     }
 }
+
+/// 允许函数被调用，并恢复预留实例的创建。该 OpenAPI 处于内测阶段。
+///
+/// Argument of [Connection::enable_function_invocation()], returns [EnableFunctionInvocationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct EnableFunctionInvocation {
@@ -2646,6 +2717,10 @@ impl crate::Request for EnableFunctionInvocation {
         crate::Form(self)
     }
 }
+
+/// 禁止函数被调用，可选终止所有正在处理的请求。函数被禁止调用后，将无法创建新实例，同时预留实例会被销毁。该 OpenAPI 处于内测阶段。
+///
+/// Argument of [Connection::disable_function_invocation()], returns [DisableFunctionInvocationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DisableFunctionInvocation {
@@ -2693,6 +2768,10 @@ impl crate::Request for DisableFunctionInvocation {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除别名。
+///
+/// Argument of [Connection::delete_alias()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAlias {
@@ -2747,6 +2826,10 @@ impl crate::Request for DeleteAlias {
         crate::Form(self)
     }
 }
+
+/// 获取别名信息。
+///
+/// Argument of [Connection::get_alias()], returns [Alias].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAlias {
@@ -2794,6 +2877,10 @@ impl crate::Request for GetAlias {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询别名列表信息。
+///
+/// Argument of [Connection::list_aliases()], returns [ListAliasesOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListAliases {
@@ -2861,6 +2948,10 @@ impl crate::Request for ListAliases {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 更新别名。
+///
+/// Argument of [Connection::update_alias()], returns [Alias].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateAlias {
@@ -2917,6 +3008,10 @@ impl crate::Request for UpdateAlias {
         crate::JsonBody(self.body)
     }
 }
+
+/// 创建别名。
+///
+/// Argument of [Connection::create_alias()], returns [Alias].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAlias {
@@ -2963,6 +3058,10 @@ impl crate::Request for CreateAlias {
         crate::JsonBody(self.body)
     }
 }
+
+/// 创建触发器。
+///
+/// Argument of [Connection::create_trigger()], returns [Trigger].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateTrigger {
@@ -3009,6 +3108,10 @@ impl crate::Request for CreateTrigger {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除指定的触发器。
+///
+/// Argument of [Connection::delete_trigger()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteTrigger {
@@ -3063,6 +3166,10 @@ impl crate::Request for DeleteTrigger {
         crate::Form(self)
     }
 }
+
+/// 获取指定的触发器详情。
+///
+/// Argument of [Connection::get_trigger()], returns [Trigger].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetTrigger {
@@ -3110,6 +3217,10 @@ impl crate::Request for GetTrigger {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询指定函数的触发器列表。
+///
+/// Argument of [Connection::list_triggers()], returns [ListTriggersOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTriggers {
@@ -3177,6 +3288,10 @@ impl crate::Request for ListTriggers {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 更新触发器信息。
+///
+/// Argument of [Connection::update_trigger()], returns [Trigger].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateTrigger {
@@ -3233,6 +3348,10 @@ impl crate::Request for UpdateTrigger {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除异步调用配置。
+///
+/// Argument of [Connection::delete_async_invoke_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAsyncInvokeConfig {
@@ -3291,6 +3410,10 @@ impl crate::Request for DeleteAsyncInvokeConfig {
         crate::Form(self)
     }
 }
+
+/// 获取指定函数的异步调用配置。
+///
+/// Argument of [Connection::get_async_invoke_config()], returns [AsyncConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAsyncInvokeConfig {
@@ -3342,6 +3465,10 @@ impl crate::Request for GetAsyncInvokeConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询指定函数的所有异步配置信息。
+///
+/// Argument of [Connection::list_async_invoke_configs()], returns [ListAsyncInvokeConfigOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListAsyncInvokeConfigs {
@@ -3402,6 +3529,10 @@ impl crate::Request for ListAsyncInvokeConfigs {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建或更新函数的异步调用配置。
+///
+/// Argument of [Connection::put_async_invoke_config()], returns [AsyncConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAsyncInvokeConfig {
@@ -3461,6 +3592,10 @@ impl crate::Request for PutAsyncInvokeConfig {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除预留配置。
+///
+/// Argument of [Connection::delete_provision_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteProvisionConfig {
@@ -3519,6 +3654,10 @@ impl crate::Request for DeleteProvisionConfig {
         crate::Form(self)
     }
 }
+
+/// 获取预留配置。
+///
+/// Argument of [Connection::get_provision_config()], returns [ProvisionConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetProvisionConfig {
@@ -3570,6 +3709,10 @@ impl crate::Request for GetProvisionConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询预留配置列表。
+///
+/// Argument of [Connection::list_provision_configs()], returns [ListProvisionConfigsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListProvisionConfigs {
@@ -3630,6 +3773,10 @@ impl crate::Request for ListProvisionConfigs {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建预留配置。
+///
+/// Argument of [Connection::put_provision_config()], returns [ProvisionConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutProvisionConfig {
@@ -3686,6 +3833,10 @@ impl crate::Request for PutProvisionConfig {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除并发度配置。
+///
+/// Argument of [Connection::delete_concurrency_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteConcurrencyConfig {
@@ -3734,6 +3885,10 @@ impl crate::Request for DeleteConcurrencyConfig {
         crate::Form(self)
     }
 }
+
+/// 获取并发度配置。
+///
+/// Argument of [Connection::get_concurrency_config()], returns [ConcurrencyConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetConcurrencyConfig {
@@ -3775,6 +3930,10 @@ impl crate::Request for GetConcurrencyConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询并发度配置列表。
+///
+/// Argument of [Connection::list_concurrency_configs()], returns [ListConcurrencyConfigsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListConcurrencyConfigs {
@@ -3835,6 +3994,10 @@ impl crate::Request for ListConcurrencyConfigs {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 设置函数并发度。
+///
+/// Argument of [Connection::put_concurrency_config()], returns [ConcurrencyConfig].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutConcurrencyConfig {
@@ -3881,6 +4044,10 @@ impl crate::Request for PutConcurrencyConfig {
         crate::JsonBody(self.body)
     }
 }
+
+/// 发布层版本。
+///
+/// Argument of [Connection::create_layer_version()], returns [Layer].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateLayerVersion {
@@ -3927,6 +4094,10 @@ impl crate::Request for CreateLayerVersion {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除层版本。
+///
+/// Argument of [Connection::delete_layer_version()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteLayerVersion {
@@ -3981,6 +4152,10 @@ impl crate::Request for DeleteLayerVersion {
         crate::Form(self)
     }
 }
+
+/// 获取层的版本信息。
+///
+/// Argument of [Connection::get_layer_version()], returns [Layer].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLayerVersion {
@@ -4028,6 +4203,10 @@ impl crate::Request for GetLayerVersion {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 通过ARN获取层的版本信息。
+///
+/// Argument of [Connection::get_layer_version_by_arn()], returns [Layer].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLayerVersionByArn {
@@ -4067,6 +4246,10 @@ impl crate::Request for GetLayerVersionByArn {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取层的版本列表。
+///
+/// Argument of [Connection::list_layer_versions()], returns [ListLayerVersionOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListLayerVersions {
@@ -4126,6 +4309,10 @@ impl crate::Request for ListLayerVersions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取层列表。
+///
+/// Argument of [Connection::list_layers()], returns [ListLayersOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListLayers {
@@ -4202,6 +4389,10 @@ impl crate::Request for ListLayers {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改层的权限。
+///
+/// Argument of [Connection::put_layer_acl()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutLayerACL {
@@ -4268,6 +4459,10 @@ impl crate::Request for PutLayerACL {
         crate::Form(self)
     }
 }
+
+/// 查询函数实例列表。
+///
+/// Argument of [Connection::list_instances()], returns [ListInstancesOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListInstances {
@@ -4373,6 +4568,10 @@ impl crate::Request for ListInstances {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询已创建的VPC连接。
+///
+/// Argument of [Connection::list_vpc_bindings()], returns [ListVpcBindingsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListVpcBindings {
@@ -4414,6 +4613,10 @@ impl crate::Request for ListVpcBindings {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建VPC连接。
+///
+/// Argument of [Connection::create_vpc_binding()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateVpcBinding {
@@ -4460,6 +4663,10 @@ impl crate::Request for CreateVpcBinding {
         crate::JsonBody(self.body)
     }
 }
+
+/// 删除指定VPC防火墙策略组的访问控制策略。
+///
+/// Argument of [Connection::delete_vpc_binding()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteVpcBinding {
@@ -4514,6 +4721,10 @@ impl crate::Request for DeleteVpcBinding {
         crate::Form(self)
     }
 }
+
+/// 给指定资源打标签。
+///
+/// Argument of [Connection::tag_resources()], returns [crate::OpenObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
@@ -4551,6 +4762,10 @@ impl crate::Request for TagResources {
         crate::JsonBody(self.body)
     }
 }
+
+/// 列出所有被打标签的资源。
+///
+/// Argument of [Connection::list_tag_resources()], returns [ListTagResourcesOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
@@ -4629,6 +4844,10 @@ impl crate::Request for ListTagResources {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除资源的标签。
+///
+/// Argument of [Connection::untag_resources()], returns [crate::OpenObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
@@ -4701,6 +4920,10 @@ impl crate::Request for UntagResources {
         crate::Form(self)
     }
 }
+
+/// 获取指定异步任务详情。
+///
+/// Argument of [Connection::get_async_task()], returns [AsyncTask].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAsyncTask {
@@ -4758,6 +4981,10 @@ impl crate::Request for GetAsyncTask {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取异步任务详情列表。
+///
+/// Argument of [Connection::list_async_tasks()], returns [ListAsyncTaskOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListAsyncTasks {
@@ -4902,6 +5129,10 @@ impl crate::Request for ListAsyncTasks {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 停止异步任务。
+///
+/// Argument of [Connection::stop_async_task()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StopAsyncTask {
@@ -4966,6 +5197,10 @@ impl crate::Request for StopAsyncTask {
         crate::Form(self)
     }
 }
+
+/// 创建一个显式会话资源。系统自动生成唯一 SessionID，预分配函数实例并绑定会话，支持指定 TTL 和 IdleTimeout。适用于 HEADER_FIELD 或 GENERATED_COOKIE 亲和类型，实现会话预热与配置初始化，调用后即可在 InvokeFunction 请求携带，用于路由请求。
+///
+/// Argument of [Connection::create_session()], returns [Session].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSession {
@@ -5023,6 +5258,10 @@ impl crate::Request for CreateSession {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取指定会话的详细信息，包括 SessionID、关联函数、亲和类型、生命周期配置、状态及实例信息。用于查询单个会话当前元数据，支持按 functionName 和 qualifier 精确定位，便于外部系统监控与调试，仅支持查询 Active 状态的会话。
+///
+/// Argument of [Connection::get_session()], returns [Session].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSession {
@@ -5080,6 +5319,10 @@ impl crate::Request for GetSession {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 更新Active状态下的会话配置，如 SessionTTLInSeconds 和 SessionIdleTimeoutInSeconds 等生命周期配置。更新后生效，LastModifiedTime 自动刷新。可用于延长或缩短会话有效期，实现动态管理，不改变会话绑定的执行环境。
+///
+/// Argument of [Connection::update_session()], returns [Session].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSession {
@@ -5143,6 +5386,10 @@ impl crate::Request for UpdateSession {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 列举指定函数下Active/Expired 状态的会话列表，支持按 qualifier、状态、会话ID过滤，分页查询。返回会话基础属性，用于批量查看会话分布与状态，助力运维监控和外部系统集成，提升会话可见性与管理能力。
+///
+/// Argument of [Connection::list_sessions()], returns [ListSessionsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListSessions {
@@ -5226,6 +5473,10 @@ impl crate::Request for ListSessions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除指定会话，禁止新请求路由，会话元数据从数据库清除，客户携带相同 SessionID 的后续请求视为新会话。实现资源释放与会话清理。在会话隔离场景下，系统将中止运行的请求，释放会话绑定的实例。非会话隔离场景下，正在运行中的请求将继续运行，优雅终止。
+///
+/// Argument of [Connection::delete_session()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSession {
@@ -5290,6 +5541,10 @@ impl crate::Request for DeleteSession {
         crate::Form(self)
     }
 }
+
+/// 设置函数弹性配置
+///
+/// Argument of [Connection::put_scaling_config()], returns [ScalingConfigStatus].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutScalingConfig {
@@ -5347,6 +5602,10 @@ impl crate::Request for PutScalingConfig {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除函数弹性配置
+///
+/// Argument of [Connection::delete_scaling_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteScalingConfig {
@@ -5405,6 +5664,10 @@ impl crate::Request for DeleteScalingConfig {
         crate::Form(self)
     }
 }
+
+/// 获取函数弹性配置
+///
+/// Argument of [Connection::get_scaling_config()], returns [ScalingConfigStatus].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetScalingConfig {
@@ -5456,6 +5719,10 @@ impl crate::Request for GetScalingConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 列出函数弹性配置
+///
+/// Argument of [Connection::list_scaling_configs()], returns [ListScalingConfigsOutput].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListScalingConfigs {
@@ -8266,6 +8533,7 @@ impl<'a> From<&'a InstancesinstanceStatus> for crate::QueryValue<'a> {
     }
 }
 
+/// Return value of [Connection::enable_function_invocation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct EnableFunctionInvocationResponse {
     #[serde(flatten)]
@@ -8275,6 +8543,8 @@ pub struct EnableFunctionInvocationResponse {
     pub success: Option<bool>,
 }
 /// 请谨慎对生产环境的函数调用该接口，避免由于函数被禁止调用导致业务受损。
+///
+/// Return value of [Connection::disable_function_invocation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DisableFunctionInvocationResponse {
     #[serde(flatten)]

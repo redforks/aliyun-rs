@@ -2920,70 +2920,9 @@ impl Connection {
     }
 }
 
-/// * 本接口请求参数可分为三级，一级入参是**必传**的基础参数，例如图片链接、图片类型。二级参数可以控制识别内容输出，例如是否返回坐标等。
-/// 三级参数和特定的图片类型相关，用于控制是否输出特定信息，例如是否输出身份证的质量检测分数。注意，只有**Type**是必传参数，其余参数可以根据需要设置。
-/// #### 图片类型（Type）支持的请求参数补充说明
-/// | Type        | 类型描述       | 支持的参数|
-/// | ----------- | ------ | --- |
-/// | Advanced    | 通用文字识别高精版 | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false）</li> <li>AdvancedConfig（**通用识别高精版**专有参数，默认：空）</li></ul> |
-/// | General     | 通用文字识别基础版 | <ul> <li>OutputStamp（默认：false）</li> </li></ul> |
-/// | Commerce    | 电商图片文字   | <ul> <li>OutputStamp（默认：false）</li> </li></ul>|   
-/// | HandWriting | 手写文字  | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li></ul>|   
-/// | MultiLang | 多语言文字   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>MultiLanConfig（**多语言通用类型**专有参数，默认：空）</li> </ul>|   
-/// | Table | 表格   | <ul> <li>OutputFigure（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>TableConfig（**表格类型**专有参数，默认：空）</li> </ul>|   
-/// | IdCard | 身份证 | <ul> <li>OutputFigure（默认：false）</li> <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li>  <li>IdCardConfig（**身份证**专有参数，默认：空）</li> </ul>|   
-/// | BankCard | 银行卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | InternationalPassport | 国际护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|   
-/// | ChinesePassport | 中国护照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | SocialSecurityCard | 社保卡  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | PermitToHK_MO_TW | 往来港澳台通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | PermitToMainland | 来往中国大陆（内地）通行证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | HouseholdHead | 户口本首页 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | HouseholdResident | 户口本常住人口页 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | EstateCertification | 不动产权证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：true）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | BirthCertification | 出生证明 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | HKIdCard | 中国香港身份证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：**true**） </li> </ul>|   
-/// | InternationalIdCard | 国际身份证 |  <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> InternationalIdCardConfig（**国际身份证**专有参数，默认：空） </li> </ul>|   
-/// | Stamp | 公章 | <ul> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> </ul>|   
-/// | MixedInvoice | 混贴票证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | Invoice | 增值税发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | CarInvoice | 机动车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | QuotaInvoice | 定额发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | AirItinerary | 航空行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | TrainTicket | 火车票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | TollInvoice | 过路过桥费发票 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | RollTicket | 增值税发票卷票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | BankAcceptance | 银行承兑汇票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | BusShipTicket | 客运车船票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | NonTaxInvoice | 非税收入发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | CommonPrintedInvoice | 通用机打发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li>PageNo（默认：1） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | HotelConsume | 酒店流水  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | PaymentRecord | 支付详情页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | PurchaseRecord | 电商订单页  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | RideHailingItinerary | 网约车行程单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | ShoppingReceipt | 购物小票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | TaxClearanceCertificate | 税收完税证明  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | UsedCarInvoice | 二手车销售统一发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | VehicleLicense | 行驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | DrivingLicense | 驾驶证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | VehicleRegistration | 机动车登记证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | VehicleCertification | 车辆合格证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | LicensePlateNumber | 车牌 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | CarVinCode | 车辆vin码 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | BusinessLicense | 营业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | InternationalBusinessLicense | 国际企业执照  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> <li> OutputKVExcel（默认：false）</li> <li> InternationalBusinessLicenseConfig （**国际企业执照**专有参数，默认：空）</li> </ul>|   
-/// | MedicalDeviceManageLicense | 医疗器械经营许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | MedicalDeviceProduceLicense | 医疗器械生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | CosmeticProduceLicense | 化妆品生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|   
-/// | QrCode | 二维码  | |
-/// | BarCode | 条形码 | |
-/// | TaxiInvoice | 出租车发票  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | TrademarkCertificate | 商标注册证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | FoodProduceLicense | 食品生产许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | FoodManagementLicense | 食品经营许可证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：**true**）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | ClassIIMedicalDeviceManageLicense | 第二类医疗器械经营备案凭证  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | WayBill | 电子面单  | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
-/// | BankAccountPermit | 银行开户许可证 | <ul> <li>OutputFigure（默认：false）</li>  <li>OutputQrCode（默认：false）</li> <li>OutputBarCode（默认：false）</li> <li>OutputStamp（默认：false）</li> <li>OutputCoordinate（默认：空）</li> <li>OutputOricoord（默认：false） </li> <li> OutputKVExcel（默认：false）</li> </ul>|
+/// OCR统一识别接口支持识别多种图片类型，包括通用文字、个人卡证、发票等。您只需要通过Type参数指定图片类型，无须更换接口。
+///
+/// Argument of [Connection::recognize_all_text()], returns [RecognizeAllTextResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeAllText {
@@ -3197,10 +3136,9 @@ impl crate::Request for RecognizeAllText {
     }
 }
 
-/// #### 请求注意事项
-/// 1. 此接口 **30** 秒超时。
-/// 2. 如果通过OCR SDK调用接口，SDK默认的 **socketTimeout** 为 **10** 秒。请注意通过适当增加 **RuntimeOptions** 中 **socketTimeout** 参数的值。
-/// 3. 如果传入的Key数量过多，可能会返回 **LLMTimeout** 错误码。建议减少Key的数量后重试。
+/// 通用票证抽取结合读光OCR和通义千问大模型的能力，针对OCR不支持的长尾票据，提供关键KV信息抽取，例如名称、地址、开票日期等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_general_structure()], returns [RecognizeGeneralStructureResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeGeneralStructure {
@@ -3265,6 +3203,10 @@ impl crate::Request for RecognizeGeneralStructure {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持多格式版面、复杂文档背景和光照环境的精准识别，可实现印章擦除后识别，支持低置信度过滤、图案检测等高阶功能。
+///
+/// Argument of [Connection::recognize_advanced()], returns [RecognizeAdvancedResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeAdvanced {
@@ -3390,6 +3332,10 @@ impl crate::Request for RecognizeAdvanced {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持中文手写体、英文手写体、数字手写体等各种复杂场景的手写文字识别。
+///
+/// Argument of [Connection::recognize_handwriting()], returns [RecognizeHandwritingResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHandwriting {
@@ -3488,6 +3434,10 @@ impl crate::Request for RecognizeHandwriting {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 针对电商商品宣传图片、社区贴吧图片、网络UGC图片等网络场景下图片字符快速精准识别。
+///
+/// Argument of [Connection::recognize_basic()], returns [RecognizeBasicResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBasic {
@@ -3550,6 +3500,10 @@ impl crate::Request for RecognizeBasic {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 适用于非结构化文字识别，支持返回文字内容和位置坐标信息。
+///
+/// Argument of [Connection::recognize_general()], returns [RecognizeGeneralResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeGeneral {
@@ -3603,6 +3557,10 @@ impl crate::Request for RecognizeGeneral {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持对有线表格、条纹表格、无线表格进行有效识别。
+///
+/// Argument of [Connection::recognize_table_ocr()], returns [RecognizeTableOcrResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTableOcr {
@@ -3693,6 +3651,10 @@ impl crate::Request for RecognizeTableOcr {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 包括全国主要省市健康码，支持健康码图片的姓名、日期、时间、颜色、备注信息等主要字段的识别结果输出。
+///
+/// Argument of [Connection::recognize_health_code()], returns [RecognizeHealthCodeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHealthCode {
@@ -3747,9 +3709,9 @@ impl crate::Request for RecognizeHealthCode {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
-/// * PDF文件格式的文档结构化解析请点击[文档智能解析](https://docmind.console.aliyun.com/file/docAnalysis)快速了解
+/// 对文档信息进行结构化识别，并提供元素平铺和层级树两种视角的版面信息输出。能够将文档中的文字元素（单字、文字块、行等）和相应的版面格式（标题、段落、表格）抽离并按顺序输出。
+///
+/// Argument of [Connection::recognize_document_structure()], returns [RecognizeDocumentStructureResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeDocumentStructure {
@@ -3878,6 +3840,10 @@ impl crate::Request for RecognizeDocumentStructure {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持二代身份证正反面，包括姓名、性别、民族、地址、出生日期、身份证号、签发机关、有效期限等字段的结构化识别。支持身份证质量检测，是否翻拍，是否是复印件，完整度评分，整体质量分数、篡改指数及人脸位置检测。
+///
+/// Argument of [Connection::recognize_idcard()], returns [RecognizeIdcardResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeIdcard {
@@ -3958,9 +3924,9 @@ impl crate::Request for RecognizeIdcard {
     }
 }
 
-/// #### 请求注意事项
-/// 1. 此接口 **10** 秒超时。
-/// 2. 如果通过OCR SDK调用接口，SDK默认的 **socketTimeout** 为 **10** 秒。请注意适当增加 **RuntimeOptions** 中 **socketTimeout** 参数的值。
+/// 可对美国、法国、英国、日本、韩国等世界多个主要国家和地区护照提供识别服务，支持字段包括国籍、护照号码、出生日期、姓名等。
+///
+/// Argument of [Connection::recognize_passport()], returns [RecognizePassportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizePassport {
@@ -4014,6 +3980,10 @@ impl crate::Request for RecognizePassport {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可结构化识别户口常住人口登记卡页面及户主页的内容，有效识别户口本上的相关户籍证明信息。
+///
+/// Argument of [Connection::recognize_household()], returns [RecognizeHouseholdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHousehold {
@@ -4076,6 +4046,10 @@ impl crate::Request for RecognizeHousehold {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可准确识别不动产证中的各项关键信息，包括户主信息、房屋地址、面积大小、土地权利类型等，适用于全国各地的不同房产证识别。
+///
+/// Argument of [Connection::recognize_estate_certification()], returns [RecognizeEstateCertificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEstateCertification {
@@ -4129,6 +4103,10 @@ impl crate::Request for RecognizeEstateCertification {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可精准识别各类银行卡中的银行卡卡号和有效期，且支持横卡、竖卡及银行卡任意角度偏斜情况的识别与提取，支持中国内地大多数银行，以及各种位数、凸字卡面、平面卡面等的识别。
+///
+/// Argument of [Connection::recognize_bank_card()], returns [RecognizeBankCardResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBankCard {
@@ -4182,6 +4160,10 @@ impl crate::Request for RecognizeBankCard {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可准确识别出生证明中的各项关键信息，包括出生日期、出生体重、出生地点等。
+///
+/// Argument of [Connection::recognize_birth_certification()], returns [RecognizeBirthCertificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBirthCertification {
@@ -4236,8 +4218,9 @@ impl crate::Request for RecognizeBirthCertification {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持中国人民共和国护照的结构化内容检测识别功能，支持中国内地、中国香港、中国澳门和中国台湾地区的护照识别，识别内容包括出生地、出生日期、国籍、性别、护照号码、有效期至、签发国、签发地等字段。
+///
+/// Argument of [Connection::recognize_chinese_passport()], returns [RecognizeChinesePassportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeChinesePassport {
@@ -4295,6 +4278,10 @@ impl crate::Request for RecognizeChinesePassport {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可准确识别通行证中的各项关键信息，包括姓名、出生日期、证件号码等。包括港澳居民来往大陆通行证以及台湾居民来往大陆通行证。
+///
+/// Argument of [Connection::recognize_exit_entry_permit_to_mainland()], returns [RecognizeExitEntryPermitToMainlandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeExitEntryPermitToMainland {
@@ -4358,8 +4345,9 @@ impl crate::Request for RecognizeExitEntryPermitToMainland {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持通行证中的各项关键信息，姓名、出生日期、证件号码等字段的准确识别。
+///
+/// Argument of [Connection::recognize_exit_entry_permit_to_hk()], returns [RecognizeExitEntryPermitToHKResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeExitEntryPermitToHK {
@@ -4417,6 +4405,10 @@ impl crate::Request for RecognizeExitEntryPermitToHK {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持香港永久性居民身份证和香港居民身份证两种类型的证件识别，已支持全字段识别，包括中文姓名（如有）、英文姓名、中文姓名电码（如有）、出生日期、性别、符号标记、身份证号码等。
+///
+/// Argument of [Connection::recognize_hk_idcard()], returns [RecognizeHKIdcardResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHKIdcard {
@@ -4470,6 +4462,10 @@ impl crate::Request for RecognizeHKIdcard {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持全字段识别，包括标题、姓名、社会保障号码、社会保障卡号、银行账号、发卡日期等。
+///
+/// Argument of [Connection::recognize_social_security_card_version_ii()], returns [RecognizeSocialSecurityCardVersionIIResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeSocialSecurityCardVersionII {
@@ -4523,6 +4519,10 @@ impl crate::Request for RecognizeSocialSecurityCardVersionII {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可对国外身份证件进行结构化识别，目前支持越南、韩国、印度、孟加拉居民身份证，可识别字段包括姓名、出生日期、证件号码等。
+///
+/// Argument of [Connection::recognize_international_idcard()], returns [RecognizeInternationalIdcardResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInternationalIdcard {
@@ -4581,6 +4581,10 @@ impl crate::Request for RecognizeInternationalIdcard {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持各类票据的发票代码、价税合计、合计金额、购买方识别号、开票日期等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_mixed_invoices()], returns [RecognizeMixedInvoicesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMixedInvoices {
@@ -4655,6 +4659,10 @@ impl crate::Request for RecognizeMixedInvoices {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持增值税专用发票、增值税普通发票、增值税电子发票识别，支持包括发票代码、发票号码、开票日期、发票金额、发票税额、检验码、购买方税号、销售方税号、发票详情等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_invoice()], returns [RecognizeInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInvoice {
@@ -4718,6 +4726,10 @@ impl crate::Request for RecognizeInvoice {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括发票代码、开票号码、开票日期、发票金额、增值税税额、合格证号、购买方名称、购买方身份证号/代码等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_car_invoice()], returns [RecognizeCarInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCarInvoice {
@@ -4772,8 +4784,9 @@ impl crate::Request for RecognizeCarInvoice {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、PDF、OFD
+/// 支持包括发票号码、发票代码、发票金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_quota_invoice()], returns [RecognizeQuotaInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeQuotaInvoice {
@@ -4823,6 +4836,10 @@ impl crate::Request for RecognizeQuotaInvoice {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括旅客姓名、身份证号码、电子客票号码、填开日期、填开单位等字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_air_itinerary()], returns [RecognizeAirItineraryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeAirItinerary {
@@ -4876,6 +4893,11 @@ impl crate::Request for RecognizeAirItinerary {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括票号、出发站、到达站、开车时间、票价、座位类型、旅客信息、座位号、车次等字段结构化识别输出。
+/// 2024.12.31更新后，支持电子火车票，增加返回以下新字段：电子客票号、购买方名称、购买方统一信用代码、标题、开票日期、备注。
+///
+/// Argument of [Connection::recognize_train_invoice()], returns [RecognizeTrainInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTrainInvoice {
@@ -4929,6 +4951,10 @@ impl crate::Request for RecognizeTrainInvoice {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括发票代码、发票号码、日期、发票金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_taxi_invoice()], returns [RecognizeTaxiInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTaxiInvoice {
@@ -4983,8 +5009,9 @@ impl crate::Request for RecognizeTaxiInvoice {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、PDF、OFD
+/// 支持对卷票上包括发票代码、发票号码、开票日期、发票金额、校验码、大写金额、销售方税号、购买方税号等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_roll_ticket()], returns [RecognizeRollTicketResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeRollTicket {
@@ -5034,6 +5061,10 @@ impl crate::Request for RecognizeRollTicket {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括出票日期、票据号码、出票人信息、收票人信息、承兑人信息、票据金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_bank_acceptance()], returns [RecognizeBankAcceptanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBankAcceptance {
@@ -5088,8 +5119,9 @@ impl crate::Request for RecognizeBankAcceptance {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持包括标题、发票号码、出发车站、到达车站、日期、金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_bus_ship_ticket()], returns [RecognizeBusShipTicketResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBusShipTicket {
@@ -5139,6 +5171,10 @@ impl crate::Request for RecognizeBusShipTicket {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括票据代码、交款人、票据号码、合计金额、收款单位等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_non_tax_invoice()], returns [RecognizeNonTaxInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeNonTaxInvoice {
@@ -5193,8 +5229,9 @@ impl crate::Request for RecognizeNonTaxInvoice {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、OFD、PDF
+/// 支持包括发票代码、发票号码、销售方名称、销售方识别号、购买方名称、购买方识别号、合计金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_common_printed_invoice()], returns [RecognizeCommonPrintedInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCommonPrintedInvoice {
@@ -5245,8 +5282,9 @@ impl crate::Request for RecognizeCommonPrintedInvoice {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持包括房号、入住日期、离店日期、消费总计、付款总计、消费详单等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_hotel_consume()], returns [RecognizeHotelConsumeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeHotelConsume {
@@ -5296,6 +5334,10 @@ impl crate::Request for RecognizeHotelConsume {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括收款方名称、合计金额、付款方式、商品说明、支付时间等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_payment_record()], returns [RecognizePaymentRecordResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizePaymentRecord {
@@ -5350,8 +5392,9 @@ impl crate::Request for RecognizePaymentRecord {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持包括订单编号、收货信息、交易金额、店铺名称、商品详单等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_purchase_record()], returns [RecognizePurchaseRecordResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizePurchaseRecord {
@@ -5417,8 +5460,9 @@ impl crate::Request for RecognizePurchaseRecord {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持网约车行程单全部字段的识别，包括：服务商、申请日期、行程开始时间、行程结束时间、行程人手机号、总金额等字段。
+///
+/// Argument of [Connection::recognize_ride_hailing_itinerary()], returns [RecognizeRideHailingItineraryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeRideHailingItinerary {
@@ -5469,8 +5513,9 @@ impl crate::Request for RecognizeRideHailingItinerary {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持包括开票方名称、开票日期、联系电话、地址、合计（实际）金额等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_shopping_receipt()], returns [RecognizeShoppingReceiptResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeShoppingReceipt {
@@ -5521,8 +5566,9 @@ impl crate::Request for RecognizeShoppingReceipt {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持全字段识别，包括标题、姓名、社会保障号码、社会保障卡号、银行账号、发卡日期等。
+///
+/// Argument of [Connection::recognize_social_security_card()], returns [RecognizeSocialSecurityCardResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeSocialSecurityCard {
@@ -5573,8 +5619,9 @@ impl crate::Request for RecognizeSocialSecurityCard {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持包括发票代码、发票号码、金额、日期、车型、出口、入口等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_toll_invoice()], returns [RecognizeTollInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTollInvoice {
@@ -5624,6 +5671,10 @@ impl crate::Request for RecognizeTollInvoice {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持包括税务机关、纳税人识别号、纳税人名称、合计金额、填票人、完税详单等关键字段的结构化识别输出。
+///
+/// Argument of [Connection::recognize_tax_clearance_certificate()], returns [RecognizeTaxClearanceCertificateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTaxClearanceCertificate {
@@ -5678,8 +5729,9 @@ impl crate::Request for RecognizeTaxClearanceCertificate {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、PDF、OFD。
+/// 支持包括发票代码、发票号码、开票日期、发票金额、购买方名称、购买方身份证号等关键字段结构化识别输出。
+///
+/// Argument of [Connection::recognize_used_car_invoice()], returns [RecognizeUsedCarInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeUsedCarInvoice {
@@ -5729,6 +5781,10 @@ impl crate::Request for RecognizeUsedCarInvoice {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别企业营业执照中的统一社会信用代码、公司名称、地址、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等关键有效字段。支持营业执照、民办非企业登记证书、社会团体法人登记证书、事业单位法人证书。
+///
+/// Argument of [Connection::recognize_business_license()], returns [RecognizeBusinessLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBusinessLicense {
@@ -5782,6 +5838,10 @@ impl crate::Request for RecognizeBusinessLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别银行开户许可证中的账号、法定代表人、开户银行、核准号、企业名称、编号等关键信息。
+///
+/// Argument of [Connection::recognize_bank_account_license()], returns [RecognizeBankAccountLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeBankAccountLicense {
@@ -5836,8 +5896,9 @@ impl crate::Request for RecognizeBankAccountLicense {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 可快速精准的识别商标注册证中所包含的商标名称、注册人、注册人地址以及有效期限、核定服务项目等关键有效字段信息。
+///
+/// Argument of [Connection::recognize_trade_mark_certification()], returns [RecognizeTradeMarkCertificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeTradeMarkCertification {
@@ -5887,6 +5948,10 @@ impl crate::Request for RecognizeTradeMarkCertification {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别食品生产许可证所包含经营者名称、社会信用代码、法定代表人姓名、地址、经营场所、经营项目、有效期、许可证编号等关键字段信息。
+///
+/// Argument of [Connection::recognize_food_produce_license()], returns [RecognizeFoodProduceLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeFoodProduceLicense {
@@ -5940,6 +6005,10 @@ impl crate::Request for RecognizeFoodProduceLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别食品经营许可证所包含生产者名称、社会信用代码、法定代表人姓名、地址、生产场所、食品类别、有效期、许可证编号等关键字段信息。
+///
+/// Argument of [Connection::recognize_food_manage_license()], returns [RecognizeFoodManageLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeFoodManageLicense {
@@ -5994,8 +6063,9 @@ impl crate::Request for RecognizeFoodManageLicense {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 可快速精准的识别医疗器械经营许可证所包含许可证编号、企业名称、注册地址、法定代表人、企业负责人、质量管理人、仓库地址、经营范围、许可期限、发证日期等关键字段信息。
+///
+/// Argument of [Connection::recognize_medical_device_manage_license()], returns [RecognizeMedicalDeviceManageLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMedicalDeviceManageLicense {
@@ -6046,8 +6116,9 @@ impl crate::Request for RecognizeMedicalDeviceManageLicense {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 可快速精准的识别医疗器械生产许可证所包含许可证编号、法定代表人、企业名称、注册地址、生产地址、生产范围、企业负责人、有效期限等关键字段信息。
+///
+/// Argument of [Connection::recognize_medical_device_produce_license()], returns [RecognizeMedicalDeviceProduceLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMedicalDeviceProduceLicense {
@@ -6097,6 +6168,10 @@ impl crate::Request for RecognizeMedicalDeviceProduceLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别第二类医疗器械经营备案凭证所包含备案编号、企业名称、住所、经营场所、库房地址、经营方式、法定代表人、企业负责人、经营范围、许可期限、备案日期等关键字段信息。
+///
+/// Argument of [Connection::recognize_ctwo_medical_device_manage_license()], returns [RecognizeCtwoMedicalDeviceManageLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCtwoMedicalDeviceManageLicense {
@@ -6151,8 +6226,9 @@ impl crate::Request for RecognizeCtwoMedicalDeviceManageLicense {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 支持关键字段识别，包括证照名称、企业名称、社会信用代码、住址、法定代表人、许可证编号等。
+///
+/// Argument of [Connection::recognize_cosmetic_produce_license()], returns [RecognizeCosmeticProduceLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCosmeticProduceLicense {
@@ -6203,8 +6279,9 @@ impl crate::Request for RecognizeCosmeticProduceLicense {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP、OFD、PDF
+/// 支持韩国、印度营业执照类型，提供包括证件类型、公司名称、注册号、法人姓名、签发日期等关键字段的识别能力。
+///
+/// Argument of [Connection::recognize_international_business_license()], returns [RecognizeInternationalBusinessLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeInternationalBusinessLicense {
@@ -6258,6 +6335,10 @@ impl crate::Request for RecognizeInternationalBusinessLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持对行驶证正页、副页关键字段的自动定位和识别，同时也支持对正副页在同一张图片的场景进行自动分割与结构化识别。
+///
+/// Argument of [Connection::recognize_vehicle_license()], returns [RecognizeVehicleLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeVehicleLicense {
@@ -6311,6 +6392,10 @@ impl crate::Request for RecognizeVehicleLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持对驾驶证上的姓名、证号、国籍、住址、初次领证日期、准驾类型、有效期等字段进行结构化提取。
+///
+/// Argument of [Connection::recognize_driving_license()], returns [RecognizeDrivingLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeDrivingLicense {
@@ -6364,6 +6449,10 @@ impl crate::Request for RecognizeDrivingLicense {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持识别面单上所有关键字段。
+///
+/// Argument of [Connection::recognize_waybill()], returns [RecognizeWaybillResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeWaybill {
@@ -6417,6 +6506,10 @@ impl crate::Request for RecognizeWaybill {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可有效识别车辆车牌信息，支持机动车车牌、摩托车车牌以及临时车牌。
+///
+/// Argument of [Connection::recognize_car_number()], returns [RecognizeCarNumberResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCarNumber {
@@ -6470,6 +6563,10 @@ impl crate::Request for RecognizeCarNumber {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持识别车辆VIN码。
+///
+/// Argument of [Connection::recognize_car_vin_code()], returns [RecognizeCarVinCodeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCarVinCode {
@@ -6523,6 +6620,10 @@ impl crate::Request for RecognizeCarVinCode {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可快速精准的识别机动车注册证所包含证件类别、条形编码、登记机关、登记日期、机动车登记编号等关键字段信息。
+///
+/// Argument of [Connection::recognize_vehicle_registration()], returns [RecognizeVehicleRegistrationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeVehicleRegistration {
@@ -6576,6 +6677,10 @@ impl crate::Request for RecognizeVehicleRegistration {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持车辆型号、车辆识别代号、底盘型号、发动机型号等字段进行结构化提取。
+///
+/// Argument of [Connection::recognize_vehicle_certification()], returns [RecognizeVehicleCertificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeVehicleCertification {
@@ -6629,6 +6734,10 @@ impl crate::Request for RecognizeVehicleCertification {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持印刷体的数学公式识别。
+///
+/// Argument of [Connection::recognize_edu_formula()], returns [RecognizeEduFormulaResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduFormula {
@@ -6682,6 +6791,10 @@ impl crate::Request for RecognizeEduFormula {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可以识别小学数学口算题目并给出题目判断结果。可支持整数的加减乘除四则运算、整数的混合运算、大小比较、最大数最小数等。
+///
+/// Argument of [Connection::recognize_edu_oral_calculation()], returns [RecognizeEduOralCalculationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduOralCalculation {
@@ -6735,6 +6848,10 @@ impl crate::Request for RecognizeEduOralCalculation {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持K12全学科扫描场景的整页内容文字识别。接口支持印刷体文本及公式的OCR识别和坐标返回，此外，接口还可对题目中的配图位置进行检测并返回坐标位置。
+///
+/// Argument of [Connection::recognize_edu_paper_ocr()], returns [RecognizeEduPaperOcrResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperOcr {
@@ -6811,6 +6928,10 @@ impl crate::Request for RecognizeEduPaperOcr {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持各学科的教辅试卷的结构化电子录入，将试卷中的题目进行自动化切分和结构化打标，并进行对应题目、题干、选项、答案等内容的结构化输出。
+///
+/// Argument of [Connection::recognize_edu_paper_cut()], returns [RecognizeEduPaperCutResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperCut {
@@ -6892,6 +7013,10 @@ impl crate::Request for RecognizeEduPaperCut {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 可对题目进行有效识别。通过对题目的元素进行打标，提升题目的识别效果。
+///
+/// Argument of [Connection::recognize_edu_question_ocr()], returns [RecognizeEduQuestionOcrResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduQuestionOcr {
@@ -6954,6 +7079,10 @@ impl crate::Request for RecognizeEduQuestionOcr {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持多学科教辅试卷的结构化识别，将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+///
+/// Argument of [Connection::recognize_edu_paper_structed()], returns [RecognizeEduPaperStructedResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEduPaperStructed {
@@ -7035,6 +7164,10 @@ impl crate::Request for RecognizeEduPaperStructed {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持国际主流几大语系的自动语言分类判定并返回对应语言的文字信息。
+///
+/// Argument of [Connection::recognize_multi_language()], returns [RecognizeMultiLanguageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeMultiLanguage {
@@ -7128,6 +7261,10 @@ impl crate::Request for RecognizeMultiLanguage {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 针对全英文图片文档场景下英文印刷体字符高效检测和识别，具备英文专项识别和英文分词功能，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_english()], returns [RecognizeEnglishResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeEnglish {
@@ -7200,8 +7337,9 @@ impl crate::Request for RecognizeEnglish {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 针对泰语图片文档场景下泰文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_thai()], returns [RecognizeThaiResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeThai {
@@ -7276,8 +7414,9 @@ impl crate::Request for RecognizeThai {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 针对全日文图片文档场景下日文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_janpanese()], returns [RecognizeJanpaneseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeJanpanese {
@@ -7352,8 +7491,9 @@ impl crate::Request for RecognizeJanpanese {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 针对韩语图片文档场景下韩文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_korean()], returns [RecognizeKoreanResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeKorean {
@@ -7428,8 +7568,9 @@ impl crate::Request for RecognizeKorean {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 针对拉丁语系的图片文档场景下印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_latin()], returns [RecognizeLatinResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeLatin {
@@ -7504,8 +7645,9 @@ impl crate::Request for RecognizeLatin {
     }
 }
 
-/// ### 支持的图片格式
-/// * PNG、JPG、JPEG、BMP、GIF、TIFF、WebP
+/// 针对图片文档场景下俄文印刷体高效检测和识别，支持旋转、表格、文字坐标等多项基础功能。
+///
+/// Argument of [Connection::recognize_russian()], returns [RecognizeRussianResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeRussian {
@@ -7579,6 +7721,10 @@ impl crate::Request for RecognizeRussian {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 支持对全国各地区不同版式的核酸检测记录中姓名、证件号码、采样日期、采样时间、检测机构、检测结果等6个关键字段的结构化结果输出。
+///
+/// Argument of [Connection::recognize_covid_test_report()], returns [RecognizeCovidTestReportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecognizeCovidTestReport {
@@ -7641,6 +7787,10 @@ impl crate::Request for RecognizeCovidTestReport {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 营业执照三要素核验支持通过输入营业执照的统一信用社会代码（工商注册号）、企业名称、法人姓名做一致性验证。
+///
+/// Argument of [Connection::verify_business_license()], returns [VerifyBusinessLicenseResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct VerifyBusinessLicense {
@@ -7700,29 +7850,9 @@ impl crate::Request for VerifyBusinessLicense {
     }
 }
 
-/// * <span style="font-size:larger;"> <b> 发票类型代码说明 </b></span>
+/// 发票核验接口支持包括：增值税专用发票、增值税普通发票（折叠票）、增值税普通发票（卷票）、增值税电子普通发票（含收费公路通行费增值税电子普通发票）、机动车销售统一发票、二手车销售统一发票多种类型发票核验。您可以通过输入发票的关键验证字段，返回真实的票面信息，包括发票类型、发票代码、发票号码、作废标志、开票日期、购方税号及其他发票信息等。当天开具发票当日可查验（T+0）。注意：可能有几小时到十几小时的延迟。
 ///
-/// |发票类型代码|发票类型说明|
-/// |------|-------|
-/// |01| 增值税专用发票 |
-/// |02| 货运运输业增值税专用发票 |
-/// |03| 机动车销售统一发票 |
-/// |04| 增值税普通发票 |
-/// |10| 增值税普通发票（电子）|
-/// |11| 增值税普通发票（卷式） |
-/// |14| 增值税普通发票（通行费） |
-/// |15| 二手车销售统一发票 |
-/// |20| 增值税电子专用发票 |
-/// |31| 数电发票（增值税专用发票）|
-/// |32| 数电发票（增值税普通发票）|
-/// |51| 电子发票（铁路电子客票）|
-/// |61| 电子发票（航空运输电子客票行程单）|
-/// |83| 电子发票（机动车销售统一发票）|
-/// |84| 电子发票（二手车销售统一发票）|
-/// |85| 数电发票（纸质专用发票）|
-/// |86| 数电发票（纸质普通发票）|
-/// |87| 数电纸质发票（机动车销售统一发票）|
-/// |88| 数电纸质发票（二手车销售统一发票）|
+/// Argument of [Connection::verify_vat_invoice()], returns [VerifyVATInvoiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct VerifyVATInvoice {
@@ -9208,6 +9338,8 @@ impl<'a> From<&'a LicenseCountry> for crate::QueryValue<'a> {
 /// |ClassIIMedicalDeviceManageLicense| 第二类医疗器械经营备案凭证 | <ul> <li> recordNumber：备案编号 </li> <li> companyName：企业名称 </li> <li> officeAddress：住所 </li> <li> businessAddress：经营场所 </li> <li> warehouseAddress：库房地址 </li> <li> businessType：经营方式 </li> <li> legalRepresentative：法定代表人 </li> <li> responsiblePerson：企业负责人 </li> <li> businessScope：经营范围 </li> <li> recordationAuthority：备案部门 </li> <li> recordationDate：备案日期 </li> </ul> |
 /// |WayBill| 电子面单 | <ul> <li> recipientName：收件人姓名 </li> <li> senderAddress：寄件人姓名 </li> <li> senderPhoneNumber：寄件人电话 </li> <li> senderAddress：寄件人地址 </li> <li> recipientPhoneNumber：收件人电话 </li> <li> recipientAddress：收件人地址 </li> </ul> |
 /// |BankAccountPermit| 银行开户许可证 | <ul> <li> bankAccount：账号 </li> <li> legalRepresentative：法定代表人 </li> <li> depositaryBank：开户银行 </li> <li> approvalNumber：核准号 </li> <li> customerName：名称 </li> <li> permitNumber：编号 </li> <li> title：标题 </li> </ul> |
+///
+/// Return value of [Connection::recognize_all_text()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeAllTextResponse {
     #[serde(flatten)]
@@ -9235,6 +9367,8 @@ pub struct RecognizeAllTextResponse {
 /// | 图片大小 | <ul> <li> 图片二进制文件不能超过 10MB。</li> <li> 图片过大会影响接口响应速度，建议使用小于 1.5M 图片进行识别，且通过传图片 URL 的方式调用接口。</li> </ul>                |
 /// | 其他提示 | <ul> <li>请保证整张图片内容及其边缘包含在图像内。 </li> <li> 本能力会自动处理反光、扭曲等干扰信息，但会影响精度。请尽量选择清晰度高、无反光、无扭曲的图片。 </li><li> PDF类型文件仅识别第一页。 </li> </ul> |
 /// ---
+///
+/// Return value of [Connection::recognize_general_structure()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeGeneralStructureResponse {
     #[serde(flatten)]
@@ -9327,6 +9461,8 @@ pub struct RecognizeGeneralStructureResponse {
 /// |h|int|图案高度。|
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_advanced()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeAdvancedResponse {
     #[serde(flatten)]
@@ -9400,6 +9536,8 @@ pub struct RecognizeAdvancedResponse {
 /// |-----|---|--|
 /// |paragraphId|int|段落id，和prism_wordsInfo信息中的paragraphId对应。|
 /// |word|string|段落文字。|
+///
+/// Return value of [Connection::recognize_handwriting()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeHandwritingResponse {
     #[serde(flatten)]
@@ -9433,6 +9571,8 @@ pub struct RecognizeHandwritingResponse {
 /// |width|int|文字块的宽度（需考虑文字块的角度）|
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。如果最外层的 angle 不为 0，需要按照 angle 矫正图片后，坐标才准确。|
 /// |word|string|文字块的文字内容。|
+///
+/// Return value of [Connection::recognize_basic()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBasicResponse {
     #[serde(flatten)]
@@ -9465,6 +9605,8 @@ pub struct RecognizeBasicResponse {
 /// |width|int|文字块的宽度（需考虑文字块的角度）|
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
 /// |word|string|文字块的文字内容。|
+///
+/// Return value of [Connection::recognize_general()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeGeneralResponse {
     #[serde(flatten)]
@@ -9530,6 +9672,8 @@ pub struct RecognizeGeneralResponse {
 /// |head|list|表头信息。|
 /// |tableId|int|表格ID（和**prism_tablesInfo**中的**tableId**对应）。|
 /// |tail|list|表尾信息。|
+///
+/// Return value of [Connection::recognize_table_ocr()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTableOcrResponse {
     #[serde(flatten)]
@@ -9574,6 +9718,8 @@ pub struct RecognizeTableOcrResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_health_code()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeHealthCodeResponse {
     #[serde(flatten)]
@@ -9652,6 +9798,8 @@ pub struct RecognizeHealthCodeResponse {
 /// numRow    表格总行数
 /// cells    单元格信息
 /// ```
+///
+/// Return value of [Connection::recognize_document_structure()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeDocumentStructureResponse {
     #[serde(flatten)]
@@ -9725,6 +9873,8 @@ pub struct RecognizeDocumentStructureResponse {
 /// |completenessScore|float|完整度评分。|
 /// |qualityScore|float|整体质量分数。|
 /// |tamperScore|float|篡改指数（数值越大表示篡改可能性越大，推荐阈值：60）。|
+///
+/// Return value of [Connection::recognize_idcard()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeIdcardResponse {
     #[serde(flatten)]
@@ -9786,6 +9936,8 @@ pub struct RecognizeIdcardResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_passport()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizePassportResponse {
     #[serde(flatten)]
@@ -9859,6 +10011,8 @@ pub struct RecognizePassportResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_household()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeHouseholdResponse {
     #[serde(flatten)]
@@ -9911,6 +10065,8 @@ pub struct RecognizeHouseholdResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_estate_certification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEstateCertificationResponse {
     #[serde(flatten)]
@@ -9953,6 +10109,8 @@ pub struct RecognizeEstateCertificationResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_bank_card()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBankCardResponse {
     #[serde(flatten)]
@@ -10015,6 +10173,8 @@ pub struct RecognizeBankCardResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_birth_certification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBirthCertificationResponse {
     #[serde(flatten)]
@@ -10051,6 +10211,8 @@ pub struct RecognizeBirthCertificationResponse {
 /// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
+///
+/// Return value of [Connection::recognize_chinese_passport()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeChinesePassportResponse {
     #[serde(flatten)]
@@ -10099,6 +10261,8 @@ pub struct RecognizeChinesePassportResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_exit_entry_permit_to_mainland()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeExitEntryPermitToMainlandResponse {
     #[serde(flatten)]
@@ -10131,6 +10295,8 @@ pub struct RecognizeExitEntryPermitToMainlandResponse {
 /// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
+///
+/// Return value of [Connection::recognize_exit_entry_permit_to_hk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeExitEntryPermitToHKResponse {
     #[serde(flatten)]
@@ -10191,6 +10357,8 @@ pub struct RecognizeExitEntryPermitToHKResponse {
 /// |h|int|人像图案高度。|
 /// |box|object|人像图案坐标信息：人像图案中心横纵坐标，长宽，图案顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|人像图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_hk_idcard()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeHKIdcardResponse {
     #[serde(flatten)]
@@ -10237,6 +10405,8 @@ pub struct RecognizeHKIdcardResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_social_security_card_version_ii()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeSocialSecurityCardVersionIIResponse {
     #[serde(flatten)]
@@ -10344,6 +10514,8 @@ pub struct RecognizeSocialSecurityCardVersionIIResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_international_idcard()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeInternationalIdcardResponse {
     #[serde(flatten)]
@@ -10418,6 +10590,8 @@ pub struct RecognizeInternationalIdcardResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_mixed_invoices()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeMixedInvoicesResponse {
     #[serde(flatten)]
@@ -10506,6 +10680,8 @@ pub struct RecognizeMixedInvoicesResponse {
 /// |data|string|二维码地址。|
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeInvoiceResponse {
     #[serde(flatten)]
@@ -10580,6 +10756,8 @@ pub struct RecognizeInvoiceResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_car_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCarInvoiceResponse {
     #[serde(flatten)]
@@ -10601,6 +10779,8 @@ pub struct RecognizeCarInvoiceResponse {
 /// title    发票标题
 /// formType    联次
 /// ```
+///
+/// Return value of [Connection::recognize_quota_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeQuotaInvoiceResponse {
     #[serde(flatten)]
@@ -10673,6 +10853,8 @@ pub struct RecognizeQuotaInvoiceResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_air_itinerary()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeAirItineraryResponse {
     #[serde(flatten)]
@@ -10732,6 +10914,8 @@ pub struct RecognizeAirItineraryResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_train_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTrainInvoiceResponse {
     #[serde(flatten)]
@@ -10778,6 +10962,8 @@ pub struct RecognizeTrainInvoiceResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_taxi_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTaxiInvoiceResponse {
     #[serde(flatten)]
@@ -10812,6 +10998,8 @@ pub struct RecognizeTaxiInvoiceResponse {
 /// unitPrice            单价
 /// amount            金额
 /// ```
+///
+/// Return value of [Connection::recognize_roll_ticket()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeRollTicketResponse {
     #[serde(flatten)]
@@ -10871,6 +11059,8 @@ pub struct RecognizeRollTicketResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_bank_acceptance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBankAcceptanceResponse {
     #[serde(flatten)]
@@ -10911,6 +11101,8 @@ pub struct RecognizeBankAcceptanceResponse {
 /// valueProb    字段名称对应值的置信度
 /// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
 /// ```
+///
+/// Return value of [Connection::recognize_bus_ship_ticket()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBusShipTicketResponse {
     #[serde(flatten)]
@@ -10973,6 +11165,8 @@ pub struct RecognizeBusShipTicketResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_non_tax_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeNonTaxInvoiceResponse {
     #[serde(flatten)]
@@ -11010,6 +11204,8 @@ pub struct RecognizeNonTaxInvoiceResponse {
 /// amount           总值
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
+///
+/// Return value of [Connection::recognize_common_printed_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCommonPrintedInvoiceResponse {
     #[serde(flatten)]
@@ -11044,6 +11240,8 @@ pub struct RecognizeCommonPrintedInvoiceResponse {
 /// consumption  消费
 /// payment  付款
 /// ```
+///
+/// Return value of [Connection::recognize_hotel_consume()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeHotelConsumeResponse {
     #[serde(flatten)]
@@ -11087,6 +11285,8 @@ pub struct RecognizeHotelConsumeResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_payment_record()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizePaymentRecordResponse {
     #[serde(flatten)]
@@ -11114,6 +11314,8 @@ pub struct RecognizePaymentRecordResponse {
 /// price  商品单价
 /// quantity  商品数量
 /// ```
+///
+/// Return value of [Connection::recognize_purchase_record()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizePurchaseRecordResponse {
     #[serde(flatten)]
@@ -11152,6 +11354,8 @@ pub struct RecognizePurchaseRecordResponse {
 /// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
+///
+/// Return value of [Connection::recognize_ride_hailing_itinerary()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeRideHailingItineraryResponse {
     #[serde(flatten)]
@@ -11194,6 +11398,8 @@ pub struct RecognizeRideHailingItineraryResponse {
 /// quantity    数量
 /// unitPrice   单价
 /// ```
+///
+/// Return value of [Connection::recognize_shopping_receipt()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeShoppingReceiptResponse {
     #[serde(flatten)]
@@ -11218,6 +11424,8 @@ pub struct RecognizeShoppingReceiptResponse {
 /// validPeriod          有效期限
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
+///
+/// Return value of [Connection::recognize_social_security_card()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeSocialSecurityCardResponse {
     #[serde(flatten)]
@@ -11244,6 +11452,8 @@ pub struct RecognizeSocialSecurityCardResponse {
 /// totalAmount          总金额
 /// ftype           是否是复印件(1:是，0:否)
 /// ```
+///
+/// Return value of [Connection::recognize_toll_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTollInvoiceResponse {
     #[serde(flatten)]
@@ -11303,6 +11513,8 @@ pub struct RecognizeTollInvoiceResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_tax_clearance_certificate()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTaxClearanceCertificateResponse {
     #[serde(flatten)]
@@ -11357,6 +11569,8 @@ pub struct RecognizeTaxClearanceCertificateResponse {
 /// ----------------------------------------prism_keyValueInfo文字块数组内的字段说明---------------------------------------
 /// valuePos 外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下
 /// ```
+///
+/// Return value of [Connection::recognize_used_car_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeUsedCarInvoiceResponse {
     #[serde(flatten)]
@@ -11421,6 +11635,8 @@ pub struct RecognizeUsedCarInvoiceResponse {
 /// |h|int|图案高度。|
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_business_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBusinessLicenseResponse {
     #[serde(flatten)]
@@ -11464,6 +11680,8 @@ pub struct RecognizeBusinessLicenseResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_bank_account_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeBankAccountLicenseResponse {
     #[serde(flatten)]
@@ -11486,6 +11704,8 @@ pub struct RecognizeBankAccountLicenseResponse {
 /// iprNumber知识产权编号
 /// certificateNumber编码
 /// ```
+///
+/// Return value of [Connection::recognize_trade_mark_certification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeTradeMarkCertificationResponse {
     #[serde(flatten)]
@@ -11546,6 +11766,8 @@ pub struct RecognizeTradeMarkCertificationResponse {
 /// |data|string|二维码地址。|
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_food_produce_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeFoodProduceLicenseResponse {
     #[serde(flatten)]
@@ -11609,6 +11831,8 @@ pub struct RecognizeFoodProduceLicenseResponse {
 /// |data|string|图案地址。|
 /// |type|string|图案类型。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_food_manage_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeFoodManageLicenseResponse {
     #[serde(flatten)]
@@ -11639,6 +11863,8 @@ pub struct RecognizeFoodManageLicenseResponse {
 /// registeredAddress注册地址
 /// validToDate有效期限/许可期限
 /// ```
+///
+/// Return value of [Connection::recognize_medical_device_manage_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
@@ -11665,6 +11891,8 @@ pub struct RecognizeMedicalDeviceManageLicenseResponse {
 /// officeAddress住所
 /// productionScope生产范围
 /// ```
+///
+/// Return value of [Connection::recognize_medical_device_produce_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeMedicalDeviceProduceLicenseResponse {
     #[serde(flatten)]
@@ -11725,6 +11953,8 @@ pub struct RecognizeMedicalDeviceProduceLicenseResponse {
 /// |h|int|图案高度。|
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_ctwo_medical_device_manage_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
     #[serde(flatten)]
@@ -11758,6 +11988,8 @@ pub struct RecognizeCtwoMedicalDeviceManageLicenseResponse {
 /// validToDate  有效期至
 /// ftype 是否是复印件
 /// ```
+///
+/// Return value of [Connection::recognize_cosmetic_produce_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCosmeticProduceLicenseResponse {
     #[serde(flatten)]
@@ -11826,6 +12058,8 @@ pub struct RecognizeCosmeticProduceLicenseResponse {
 /// valueProb    字段名称对应值的置信度
 /// valuePos    字段在原图中的四个点坐标（左上、右上、右下、左下）
 /// ```
+///
+/// Return value of [Connection::recognize_international_business_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeInternationalBusinessLicenseResponse {
     #[serde(flatten)]
@@ -11892,6 +12126,8 @@ pub struct RecognizeInternationalBusinessLicenseResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_vehicle_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeVehicleLicenseResponse {
     #[serde(flatten)]
@@ -11952,6 +12188,8 @@ pub struct RecognizeVehicleLicenseResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_driving_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeDrivingLicenseResponse {
     #[serde(flatten)]
@@ -11994,6 +12232,8 @@ pub struct RecognizeDrivingLicenseResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_waybill()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeWaybillResponse {
     #[serde(flatten)]
@@ -12043,6 +12283,8 @@ pub struct RecognizeWaybillResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |value_prob|float|字段名称对应值的置信度。|
 /// |value_pos|list|车牌在原图中的四个点坐标（左上角横坐标、左上角纵坐标、右上角横坐标、右上角纵坐标、右下角横坐标、右下角纵坐标、左下角横坐标、左下角纵坐标）。|
+///
+/// Return value of [Connection::recognize_car_number()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCarNumberResponse {
     #[serde(flatten)]
@@ -12083,6 +12325,8 @@ pub struct RecognizeCarNumberResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_car_vin_code()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCarVinCodeResponse {
     #[serde(flatten)]
@@ -12166,6 +12410,8 @@ pub struct RecognizeCarVinCodeResponse {
 /// |data|string|二维码地址。|
 /// |type|string|二维码类型。|
 /// |points|list|二维码四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_vehicle_registration()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeVehicleRegistrationResponse {
     #[serde(flatten)]
@@ -12244,6 +12490,8 @@ pub struct RecognizeVehicleRegistrationResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_vehicle_certification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeVehicleCertificationResponse {
     #[serde(flatten)]
@@ -12265,6 +12513,8 @@ pub struct RecognizeVehicleCertificationResponse {
 /// |width|int|算法矫正图片后的宽度。|
 /// |orgHeight|int|原图的高度。|
 /// |orgWidth|int|原图的宽度。|
+///
+/// Return value of [Connection::recognize_edu_formula()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduFormulaResponse {
     #[serde(flatten)]
@@ -12295,6 +12545,8 @@ pub struct RecognizeEduFormulaResponse {
 /// |pos|list|题目外矩形四个点的坐标按顺时针排列，左上、右上、右下、左下。|
 /// |result|string|口算判题结果，right：正确，wrong：错误，unknown：未知。|
 /// |title|string|口算题目内容。|
+///
+/// Return value of [Connection::recognize_edu_oral_calculation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduOralCalculationResponse {
     #[serde(flatten)]
@@ -12352,6 +12604,8 @@ pub struct RecognizeEduOralCalculationResponse {
 /// |h|int|图案高度。|
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_edu_paper_ocr()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduPaperOcrResponse {
     #[serde(flatten)]
@@ -12402,6 +12656,8 @@ pub struct RecognizeEduPaperOcrResponse {
 /// |-----|---|--|
 /// |doc_index|int|输入的文档index,默认从1开始。|
 /// |pos|list|文字块的外矩形四个点的坐标按顺时针排列（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_edu_paper_cut()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduPaperCutResponse {
     #[serde(flatten)]
@@ -12458,6 +12714,8 @@ pub struct RecognizeEduPaperCutResponse {
 /// |h|int|图案高度。|
 /// |box|object|图案坐标信息：中心横纵坐标，长宽，顺时针旋转角度。定义同 OpenCV 中 RotatedRect，请参见 [OpenCV 文档](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html#a6bd95a46f9ab83a4f384a4d4845e6332)。|
 /// |points|list|图案四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_edu_question_ocr()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduQuestionOcrResponse {
     #[serde(flatten)]
@@ -12547,6 +12805,8 @@ pub struct RecognizeEduQuestionOcrResponse {
 /// |type|int|内容类型（0：图片；1：文本；2：公式）。|
 /// |string|string|整题文本信息，可能包含latex公式，需要自行解析还原。|
 /// |pos|list|外层大矩形的四个点的坐标数组。|
+///
+/// Return value of [Connection::recognize_edu_paper_structed()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEduPaperStructedResponse {
     #[serde(flatten)]
@@ -12613,6 +12873,8 @@ pub struct RecognizeEduPaperStructedResponse {
 /// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
 /// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
 /// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
+///
+/// Return value of [Connection::recognize_multi_language()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeMultiLanguageResponse {
     #[serde(flatten)]
@@ -12668,6 +12930,8 @@ pub struct RecognizeMultiLanguageResponse {
 /// |ysc|int|yStartCell缩写，表示纵轴方向该单元格起始在第几个单元格，第一个单元格值为0。|
 /// |yec|int|yEndCell缩写，表示纵轴方向该单元格结束在第几个单元格，第一个单元格值为0。|
 /// |pos|list|单元格位置，按照单元格四个角的坐标顺时针排列，分别为左上XY坐标、右上XY坐标、右下XY坐标、左下XY坐标。|
+///
+/// Return value of [Connection::recognize_english()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeEnglishResponse {
     #[serde(flatten)]
@@ -12720,6 +12984,8 @@ pub struct RecognizeEnglishResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
+///
+/// Return value of [Connection::recognize_thai()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeThaiResponse {
     #[serde(flatten)]
@@ -12772,6 +13038,8 @@ pub struct RecognizeThaiResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
+///
+/// Return value of [Connection::recognize_janpanese()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeJanpaneseResponse {
     #[serde(flatten)]
@@ -12824,6 +13092,8 @@ pub struct RecognizeJanpaneseResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
+///
+/// Return value of [Connection::recognize_korean()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeKoreanResponse {
     #[serde(flatten)]
@@ -12876,6 +13146,8 @@ pub struct RecognizeKoreanResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
+///
+/// Return value of [Connection::recognize_latin()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeLatinResponse {
     #[serde(flatten)]
@@ -12928,6 +13200,8 @@ pub struct RecognizeLatinResponse {
 /// --------------------------------------------------------------------------------------------------------</br>
 /// --------------------------------------------------------------------------------------------------------</br>
 /// ```
+///
+/// Return value of [Connection::recognize_russian()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeRussianResponse {
     #[serde(flatten)]
@@ -12973,6 +13247,8 @@ pub struct RecognizeRussianResponse {
 /// |value|string|识别出的字段名称对应的值。|
 /// |valueProb|int|字段名称对应值的置信度。|
 /// |valuePos|list|字段在原图中的四个点坐标（左上、右上、右下、左下）。|
+///
+/// Return value of [Connection::recognize_covid_test_report()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecognizeCovidTestReportResponse {
     #[serde(flatten)]
@@ -13001,6 +13277,8 @@ pub struct RecognizeCovidTestReportResponse {
 /// |20001|false|此公司在数据库中不存在！|
 /// |20002|false|输入的法人名字和公司法人名字不一致！|
 /// |20003|false|传入的注册号与工商注册号和统一社会信用代码都不一致！|
+///
+/// Return value of [Connection::verify_business_license()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct VerifyBusinessLicenseResponse {
     #[serde(flatten)]
@@ -13223,6 +13501,8 @@ pub struct VerifyBusinessLicenseResponse {
 /// |131005|接口调用频率过高|否|
 /// |152000|超过用户QPS调用阈值|否|
 /// |171000|数据源业务异常|否|
+///
+/// Return value of [Connection::verify_vat_invoice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct VerifyVATInvoiceResponse {
     #[serde(flatten)]

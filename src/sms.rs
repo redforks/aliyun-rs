@@ -1628,11 +1628,9 @@ impl Connection {
     }
 }
 
-/// ><notice>
+/// 根据工信部及运营商实名制发送短信的要求，国内短信需提供签名归属方的资质证件信息。请先申请短信资质，然后再申请签名和模板。
 ///
-/// 短信资质材料具体要求请参见[资质材料说明](~~2384377~~)，要求可能随工信部与运营商要求实时调整，请以审核实际结果为准。
-///
-/// ></notice>
+/// Argument of [Connection::submit_sms_qualification()], returns [SubmitSmsQualificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SubmitSmsQualification {
@@ -1885,6 +1883,10 @@ impl crate::Request for SubmitSmsQualification {
         crate::Form(self)
     }
 }
+
+/// 当您在申请短信资质后，可以通过此接口查询资质列表及其审核详情，支持条件筛选查询。
+///
+/// Argument of [Connection::query_sms_qualification_record()], returns [QuerySmsQualificationRecordResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsQualificationRecord {
@@ -2000,6 +2002,10 @@ impl crate::Request for QuerySmsQualificationRecord {
         crate::Form(self)
     }
 }
+
+/// 当您在申请短信资质后，可以通过此接口查询单个资质详情。
+///
+/// Argument of [Connection::query_single_sms_qualification()], returns [QuerySingleSmsQualificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySingleSmsQualification {
@@ -2058,11 +2064,9 @@ impl crate::Request for QuerySingleSmsQualification {
     }
 }
 
-/// ><notice>
+/// 如果您需要更新短信资质信息，可通过本接口提交修改请求，提交后将重新进入审核流程。
 ///
-/// 短信资质材料具体要求请参见[资质材料说明](~~2384377~~)，要求可能随工信部与运营商要求实时调整，请以审核实际结果为准。
-///
-/// ></notice>
+/// Argument of [Connection::update_sms_qualification()], returns [UpdateSmsQualificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsQualification {
@@ -2295,6 +2299,10 @@ impl crate::Request for UpdateSmsQualification {
         crate::Form(self)
     }
 }
+
+/// 若您不再使用某个短信资质或因其他原因需要删除时，调用此接口或在短信服务控制台删除短信资质。
+///
+/// Argument of [Connection::delete_sms_qualification()], returns [DeleteSmsQualificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsQualification {
@@ -2348,6 +2356,10 @@ impl crate::Request for DeleteSmsQualification {
         crate::Form(self)
     }
 }
+
+/// 申请短信资质时，需要验证管理员手机号，请通过本接口获取短信验证码。
+///
+/// Argument of [Connection::required_phone_code()], returns [RequiredPhoneCodeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RequiredPhoneCode {
@@ -2396,6 +2408,10 @@ impl crate::Request for RequiredPhoneCode {
         crate::Form(self)
     }
 }
+
+/// 申请短信资质时，需要验证管理员手机号，本接口可对手机号及收到的验证码进行验证。
+///
+/// Argument of [Connection::valid_phone_code()], returns [ValidPhoneCodeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ValidPhoneCode {
@@ -2446,6 +2462,10 @@ impl crate::Request for ValidPhoneCode {
         crate::Form(self)
     }
 }
+
+/// 若申请的资质用途为他用或申请的签名涉及第三方权益，则必须获取第三方授权，并在申请前提前创建授权委托书。
+///
+/// Argument of [Connection::create_sms_authorization_letter()], returns [CreateSmsAuthorizationLetterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsAuthorizationLetter {
@@ -2548,6 +2568,10 @@ impl crate::Request for CreateSmsAuthorizationLetter {
         crate::Form(self)
     }
 }
+
+/// 查询已创建的授权委托书，可查看授权书审核状态、授权签名范围。
+///
+/// Argument of [Connection::query_sms_authorization_letter()], returns [QuerySmsAuthorizationLetterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsAuthorizationLetter {
@@ -2637,6 +2661,10 @@ impl crate::Request for QuerySmsAuthorizationLetter {
         crate::Form(self)
     }
 }
+
+/// 短信签名作为短信发送方的一种标识，发送短信前，您需要先申请签名和模板，系统会将已审核通过的短信签名添加到短信内容的开头，并与短信内容一起发送给接收方
+///
+/// Argument of [Connection::create_sms_sign()], returns [CreateSmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsSign {
@@ -2798,6 +2826,10 @@ impl crate::Request for CreateSmsSign {
         crate::Form(self)
     }
 }
+
+/// 申请签名后，通过此接口查询签名审核详情
+///
+/// Argument of [Connection::get_sms_sign()], returns [GetSmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSmsSign {
@@ -2847,6 +2879,10 @@ impl crate::Request for GetSmsSign {
         crate::Form(self)
     }
 }
+
+/// 可以通过此接口可以查询您账号下的所有签名，方便您查看签名详情，包括签名审核状态、签名类型、签名名称等
+///
+/// Argument of [Connection::query_sms_sign_list()], returns [QuerySmsSignListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsSignList {
@@ -2905,6 +2941,10 @@ impl crate::Request for QuerySmsSignList {
         crate::Form(self)
     }
 }
+
+/// 修改未通过审核和已经审核通过的签名，修改完成后自动提交审核，签名进入待审核状态
+///
+/// Argument of [Connection::update_sms_sign()], returns [UpdateSmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsSign {
@@ -3059,7 +3099,9 @@ impl crate::Request for UpdateSmsSign {
     }
 }
 
-///  
+/// 如果您不再使用某个短信签名，需要删除签名时，调用此接口或在短信服务控制台删除短信签名。
+///
+/// Argument of [Connection::delete_sms_sign()], returns [DeleteSmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsSign {
@@ -3109,6 +3151,10 @@ impl crate::Request for DeleteSmsSign {
         crate::Form(self)
     }
 }
+
+/// 更换签名的资质和授权书。
+///
+/// Argument of [Connection::change_signature_qualification()], returns [ChangeSignatureQualificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ChangeSignatureQualification {
@@ -3168,7 +3214,9 @@ impl crate::Request for ChangeSignatureQualification {
     }
 }
 
-///  
+/// 该接口已下线。
+///
+/// Argument of [Connection::add_sms_sign()], returns [AddSmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsSign {
@@ -3272,7 +3320,9 @@ impl crate::Request for AddSmsSign {
     }
 }
 
-///  
+/// 该接口已下线。
+///
+/// Argument of [Connection::modify_sms_sign()], returns [ModifySmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsSign {
@@ -3368,7 +3418,9 @@ impl crate::Request for ModifySmsSign {
     }
 }
 
-///  
+/// 查询签名审核状态。
+///
+/// Argument of [Connection::query_sms_sign()], returns [QuerySmsSignResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsSign {
@@ -3415,6 +3467,10 @@ impl crate::Request for QuerySmsSign {
         crate::Form(self)
     }
 }
+
+/// 创建商标实体。使用场景是签名来源=商标时，需要上传商标信息。
+///
+/// Argument of [Connection::create_sms_trademark()], returns [CreateSmsTrademarkResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsTrademark {
@@ -3507,6 +3563,10 @@ impl crate::Request for CreateSmsTrademark {
         crate::Form(self)
     }
 }
+
+/// 查询商标实体详情信息。
+///
+/// Argument of [Connection::query_sms_trademark()], returns [QuerySmsTrademarkResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsTrademark {
@@ -3555,6 +3615,10 @@ impl crate::Request for QuerySmsTrademark {
         crate::Form(self)
     }
 }
+
+/// 创建APP-ICP备案实体。使用场景是签名来源=APP时，需要上传ICP备案信息。
+///
+/// Argument of [Connection::create_sms_app_icp_record()], returns [CreateSmsAppIcpRecordResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsAppIcpRecord {
@@ -3652,6 +3716,10 @@ impl crate::Request for CreateSmsAppIcpRecord {
         crate::Form(self)
     }
 }
+
+/// 查询ICP备案详情信息。
+///
+/// Argument of [Connection::query_sms_app_icp_record()], returns [QuerySmsAppIcpRecordResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsAppIcpRecord {
@@ -3700,6 +3768,10 @@ impl crate::Request for QuerySmsAppIcpRecord {
         crate::Form(self)
     }
 }
+
+/// 短信模板即接收方收到短信的详细内容，包括变量和模板内容。您可以根据业务需要，申请验证码、通知短信或推广短信，模板审核通过后才可以发送短信。
+///
+/// Argument of [Connection::create_sms_template()], returns [CreateSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSmsTemplate {
@@ -3874,6 +3946,10 @@ impl crate::Request for CreateSmsTemplate {
         crate::Form(self)
     }
 }
+
+/// 申请模板后，通过此接口查询模板审核详情，可查看模板审核状态。
+///
+/// Argument of [Connection::get_sms_template()], returns [GetSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSmsTemplate {
@@ -3923,6 +3999,10 @@ impl crate::Request for GetSmsTemplate {
         crate::Form(self)
     }
 }
+
+/// 可以通过此接口查询您账号下的所有模板，方便您查看模板详情，包括模板审核状态、模板类型、模板内容等。
+///
+/// Argument of [Connection::query_sms_template_list()], returns [QuerySmsTemplateListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsTemplateList {
@@ -3981,6 +4061,10 @@ impl crate::Request for QuerySmsTemplateList {
         crate::Form(self)
     }
 }
+
+/// 修改未通过审核的模板，调用本接口修改后将自动提交审核。
+///
+/// Argument of [Connection::update_sms_template()], returns [UpdateSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateSmsTemplate {
@@ -4156,7 +4240,9 @@ impl crate::Request for UpdateSmsTemplate {
     }
 }
 
-///  
+/// 如果您不再使用某个短信模板，需要删除模板时，调用此接口或在短信服务控制台删除短信模板。
+///
+/// Argument of [Connection::delete_sms_template()], returns [DeleteSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSmsTemplate {
@@ -4209,7 +4295,9 @@ impl crate::Request for DeleteSmsTemplate {
     }
 }
 
-///  
+/// 该接口已下线。
+///
+/// Argument of [Connection::add_sms_template()], returns [AddSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddSmsTemplate {
@@ -4291,7 +4379,9 @@ impl crate::Request for AddSmsTemplate {
     }
 }
 
-///  
+/// 该接口已下线。
+///
+/// Argument of [Connection::modify_sms_template()], returns [ModifySmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySmsTemplate {
@@ -4378,6 +4468,10 @@ impl crate::Request for ModifySmsTemplate {
         crate::Form(self)
     }
 }
+
+/// 该接口已下线。
+///
+/// Argument of [Connection::query_sms_template()], returns [QuerySmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySmsTemplate {
@@ -4427,42 +4521,9 @@ impl crate::Request for QuerySmsTemplate {
     }
 }
 
-/// ## 请求示例
-/// - 服务地址URL：dysmsapi.aliyuncs.com（中国站）
-/// - 请求风格：RPC
-/// - 请求方式：POST/GET （推荐使用POST）
-/// - 公共请求头：[V3版本请求体公共请求头](~~2593177#sectiondiv-726-v1i-gel~~)
-/// - 请求参数：见上方请求参数表格
+/// 向指定的手机号码发送短信。
 ///
-/// ### SDK示例
-/// 如果您需要了解如何使用SDK，请参见[首次调用API](~~2841024~~)。
-/// ```ignore
-/// // 构造请求对象
-/// SendSmsRequest sendSmsRequest = new SendSmsRequest()
-///             .setPhoneNumbers("1390000****")
-///             .setSignName("阿里云")
-///             .setTemplateCode("SMS_15305****")
-///             // TemplateParam为序列化后的JSON字符串。其中\"表示转义后的双引号。
-///             .setTemplateParam("{\"name\":\"张三\",\"number\":\"1390000****\"}");
-///
-/// // 发送API请求
-/// SendSmsResponse sendSmsResponse = client.sendSms(sendSmsRequest);
-/// ```
-/// 您可以访问[OpenAPI门户](https://api.aliyun.com/api/Dysmsapi/2017-05-25/SendSms?tab=DEMO&lang=JAVA)，查看各语言SDK请求完整示例。
-///
-/// ### 自签名请求示例
-/// 推荐您通过SDK调用API，SDK已经封装了签名等机制。
-/// ```ignore
-/// POST /?PhoneNumbers=123****4567&SignName=阿里云短信测试&TemplateCode=SMS_154950909&TemplateParam={"code":"1234"} HTTP/1.1
-/// Host: dysmsapi.aliyuncs.com
-/// Authorization: ACS3-HMAC-SHA256 Credential=YourAccessKeyId,SignedHeaders=host;x-acs-action;x-acs-content-sha256;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=06563a9e1b43f5dfe96b81********ceab24a1d853912eee15083a6f0f3283c0
-/// x-acs-action: SendSms
-/// x-acs-version: 2017-05-25
-/// x-acs-signature-nonce: d410180a5abf7f********74aca91fc0
-/// x-acs-date: 2024-12-02T06:53:09Z
-/// x-acs-content-sha256: e3b0c44298fc1c149afb********b92427ae41e4649b934ca495991b7852b855
-/// ```
-/// 自定义封装API调用签名机制，请参见[V3版本签名机制示例](~~2593177#79cbd5a0c1gif~~)。
+/// Argument of [Connection::send_sms()], returns [SendSmsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendSms {
@@ -4563,6 +4624,10 @@ impl crate::Request for SendSms {
         crate::Form(self)
     }
 }
+
+/// 调用此接口可以给不同的手机号码，发送不同签名、同一个模板（可以是不同模板变量）的短信。
+///
+/// Argument of [Connection::send_batch_sms()], returns [SendBatchSmsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendBatchSms {
@@ -4664,7 +4729,9 @@ impl crate::Request for SendBatchSms {
     }
 }
 
-/// 您可以访问[OpenAPI](https://api.aliyun.com/api/Dysmsapi/2017-05-25/QuerySendDetails?tab=DEMO&lang=JAVA)门户，查看各语言SDK请求示例。
+/// 查询单个号码的短信发送记录和发送状态等信息。
+///
+/// Argument of [Connection::query_send_details()], returns [QuerySendDetailsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySendDetails {
@@ -4747,6 +4814,10 @@ impl crate::Request for QuerySendDetails {
         crate::Form(self)
     }
 }
+
+/// 查询短信发送统计详情，包括短信发送时间、短信发送成功条数、接收回执条数等。
+///
+/// Argument of [Connection::query_send_statistics()], returns [QuerySendStatisticsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QuerySendStatistics {
@@ -4846,8 +4917,9 @@ impl crate::Request for QuerySendStatistics {
     }
 }
 
-/// ### 请求参数说明
-/// GetOSSInfoForCardTemplate接口没有入参，直接调用接口即可获取OSS上传信息。
+/// 获取卡片短信所属OSS资源配置信息，此配置信息将用于后续OSS文件上传操作。
+///
+/// Argument of [Connection::get_oss_info_for_card_template()], returns [GetOSSInfoForCardTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetOSSInfoForCardTemplate {}
@@ -4886,6 +4958,10 @@ impl crate::Request for GetOSSInfoForCardTemplate {
         crate::Form(self)
     }
 }
+
+/// 将用户上传到卡片短信OSS存储的图片、视频转换成（生成）资源数据统一管理，并返回资源ID，用户可以对返回的资源ID自行管理。
+///
+/// Argument of [Connection::get_media_resource_id()], returns [GetMediaResourceIdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetMediaResourceId {
@@ -4974,7 +5050,9 @@ impl crate::Request for GetMediaResourceId {
     }
 }
 
-///  
+/// 创建卡片短信模板。
+///
+/// Argument of [Connection::create_card_sms_template()], returns [CreateCardSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCardSmsTemplate {
@@ -5056,6 +5134,10 @@ impl crate::Request for CreateCardSmsTemplate {
         crate::Form(self)
     }
 }
+
+/// 查询卡片短信模板审核状态，返回手机厂商审核相关信息。
+///
+/// Argument of [Connection::query_card_sms_template()], returns [QueryCardSmsTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryCardSmsTemplate {
@@ -5107,21 +5189,9 @@ impl crate::Request for QueryCardSmsTemplate {
     }
 }
 
-/// 完整请求参数示例：
+/// 检查手机号码是否支持卡片短信。
 ///
-/// ```ignore
-/// {
-///   "Mobiles": [
-///     {
-///       "#6#mobile": "137******00"
-///     },
-///     {
-///       "#6#mobile": "130******00"
-///     }
-///   ],
-///   "TemplateCode": "CARD_SMS_6***9"
-/// }
-/// ```
+/// Argument of [Connection::check_mobiles_card_support()], returns [CheckMobilesCardSupportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CheckMobilesCardSupport {
@@ -5179,6 +5249,10 @@ impl crate::Request for CheckMobilesCardSupport {
         crate::Form(self)
     }
 }
+
+/// 查询手机号是否支持卡片短信。
+///
+/// Argument of [Connection::query_mobiles_card_support()], returns [QueryMobilesCardSupportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryMobilesCardSupport {
@@ -5247,6 +5321,10 @@ impl crate::Request for QueryMobilesCardSupport {
         crate::Form(self)
     }
 }
+
+/// 获取卡片短信短链。
+///
+/// Argument of [Connection::get_card_sms_link()], returns [GetCardSmsLinkResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCardSmsLink {
@@ -5371,6 +5449,10 @@ impl crate::Request for GetCardSmsLink {
         crate::Form(self)
     }
 }
+
+/// 查询单个号码的卡片短信发送记录和发送状态等信息。
+///
+/// Argument of [Connection::get_card_sms_details()], returns [GetCardSmsDetailsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCardSmsDetails {
@@ -5465,6 +5547,10 @@ impl crate::Request for GetCardSmsDetails {
         crate::Form(self)
     }
 }
+
+/// 查询卡片短信指定模板的解析数据，解析数据包括短信解析回执成功数、消息曝光次数和消息点击数等。
+///
+/// Argument of [Connection::query_card_sms_template_report()], returns [QueryCardSmsTemplateReportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryCardSmsTemplateReport {
@@ -5523,6 +5609,10 @@ impl crate::Request for QueryCardSmsTemplateReport {
         crate::Form(self)
     }
 }
+
+/// 发送卡片短信。
+///
+/// Argument of [Connection::send_card_sms()], returns [SendCardSmsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendCardSms {
@@ -5674,6 +5764,10 @@ impl crate::Request for SendCardSms {
         crate::Form(self)
     }
 }
+
+/// 批量发送卡片短信。
+///
+/// Argument of [Connection::send_batch_card_sms()], returns [SendBatchCardSmsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendBatchCardSms {
@@ -5833,6 +5927,10 @@ impl crate::Request for SendBatchCardSms {
         crate::Form(self)
     }
 }
+
+/// 获取资质材料OSS资源配置信息，此配置信息将用于后续授权委托书、企业证件等资质文件的上传操作。
+///
+/// Argument of [Connection::get_qualification_oss_info()], returns [GetQualificationOssInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetQualificationOssInfo {
@@ -5879,6 +5977,10 @@ impl crate::Request for GetQualificationOssInfo {
         crate::Form(self)
     }
 }
+
+/// 获取OSS资源配置信息，此配置信息将用于后续OSS文件上传操作。
+///
+/// Argument of [Connection::get_oss_info_for_upload_file()], returns [GetOSSInfoForUploadFileResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetOSSInfoForUploadFile {
@@ -5929,6 +6031,10 @@ impl crate::Request for GetOSSInfoForUploadFile {
         crate::Form(self)
     }
 }
+
+/// 获取 OCR 的 OSS 信息。
+///
+/// Argument of [Connection::get_sms_ocr_oss_info()], returns [GetSmsOcrOssInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSmsOcrOssInfo {
@@ -5978,6 +6084,10 @@ impl crate::Request for GetSmsOcrOssInfo {
         crate::Form(self)
     }
 }
+
+/// 将每一条消息ID(MessageId) 对应短信的接收情况反馈给阿里云国际短信平台。
+///
+/// Argument of [Connection::sms_conversion_intl()], returns [SmsConversionIntlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SmsConversionIntl {
@@ -6040,6 +6150,10 @@ impl crate::Request for SmsConversionIntl {
         crate::Form(self)
     }
 }
+
+/// 将短信转化率统计数据反馈给阿里云短信平台。
+///
+/// Argument of [Connection::conversion_data_intl()], returns [ConversionDataIntlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ConversionDataIntl {
@@ -6098,7 +6212,9 @@ impl crate::Request for ConversionDataIntl {
     }
 }
 
-///  
+/// 创建短链。
+///
+/// Argument of [Connection::add_short_url()], returns [AddShortUrlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddShortUrl {
@@ -6159,7 +6275,9 @@ impl crate::Request for AddShortUrl {
     }
 }
 
-///  
+/// 删除短链，删除后短链将无法使用，无法还原为原链。
+///
+/// Argument of [Connection::delete_short_url()], returns [DeleteShortUrlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteShortUrl {
@@ -6208,7 +6326,9 @@ impl crate::Request for DeleteShortUrl {
     }
 }
 
-///  
+/// 查询短链状态，可判断短链是否可用。
+///
+/// Argument of [Connection::query_short_url()], returns [QueryShortUrlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct QueryShortUrl {
@@ -6257,7 +6377,9 @@ impl crate::Request for QueryShortUrl {
     }
 }
 
-///  
+/// 标签是您为模板添加的标记，每个标签都由一对键值对（Key-Value）组成。您可以查询标签键值对绑定的模板Code，也可以查询某个模板已绑定的所有标签。
+///
+/// Argument of [Connection::list_tag_resources()], returns [ListTagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
@@ -6349,7 +6471,9 @@ impl crate::Request for ListTagResources {
     }
 }
 
-///  
+/// 标签可以标记资源，允许企业或个人将同类型的模板进行资源归类，便于搜索和资源聚合。调用本接口对短信模板进行标签绑定。
+///
+/// Argument of [Connection::tag_resources()], returns [TagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
@@ -6425,7 +6549,9 @@ impl crate::Request for TagResources {
     }
 }
 
-///  
+/// 标签可以标记资源，允许企业或个人将同类型的模板进行资源归类，便于搜索和资源聚合。如果模板不再适用于当前已绑定的标签，可以从模板中解绑标签。您可以删除单个标签，也可以批量删除标签。
+///
+/// Argument of [Connection::untag_resources()], returns [UntagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
@@ -7892,6 +8018,8 @@ impl<'a> From<&'a EncryptType> for crate::QueryValue<'a> {
 /// - 在发起申请前，请您阅读[资质材料说明](~~2384377~~)并准备相关资质材料。
 /// - 目前仅**企业认证**用户可使用API申请短信资质。若您当前阿里云账号为个人认证，请通过短信服务[控制台](https://dysms.console.aliyun.com/domestic/text/qualification/add)申请资质，或[升级为企业认证](~~37178~~)。[查看我的帐户认证类型](https://myaccount.console.aliyun.com/cert-info)
 /// - 不支持批量申请短信资质，建议每次申请至少间隔5秒。
+///
+/// Return value of [Connection::submit_sms_qualification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SubmitSmsQualificationResponse {
     #[serde(flatten)]
@@ -7920,6 +8048,8 @@ pub struct SubmitSmsQualificationResponse {
 ///
 /// - 受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。特殊情况可能延长审核时间，请耐心等待。
 /// - 如果资质未通过审核，审核备注`AuditRemark`会返回审核失败的原因，请参考[审核失败的处理建议](~~2384377#a96cc318b94x1~~)，调用[修改短信资质](~~UpdateSmsQualification~~)接口或在控制台[资质管理](https://dysms.console.aliyun.com/domestic/text/qualification)页面修改资质信息后，重新发起审核。
+///
+/// Return value of [Connection::query_sms_qualification_record()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsQualificationRecordResponse {
     #[serde(flatten)]
@@ -7943,6 +8073,8 @@ pub struct QuerySmsQualificationRecordResponse {
 /// - 本接口查询单个资质的详情（企业信息、法人信息、管理员信息）。
 /// - 如果需要查询您当前账号下所有资质信息，或需要查询审核详情，请调用[查询资质列表](~~QuerySmsQualificationRecord~~)。
 /// - 受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。特殊情况可能延长审核时间，请耐心等待。
+///
+/// Return value of [Connection::query_single_sms_qualification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySingleSmsQualificationResponse {
     #[serde(flatten)]
@@ -7967,6 +8099,8 @@ pub struct QuerySingleSmsQualificationResponse {
 /// - 修改后的短信资质**需要重新审核**（包括已审核通过的资质），请根据[资质材料说明](~~2384377~~)上传符合规范的材料。
 /// - **不支持修改**资质命名、申请用途、统一社会信用代码。
 /// - 不支持批量修改短信资质，建议每次修改至少间隔5秒。
+///
+/// Return value of [Connection::update_sms_qualification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UpdateSmsQualificationResponse {
     #[serde(flatten)]
@@ -7992,6 +8126,8 @@ pub struct UpdateSmsQualificationResponse {
 /// - 审核中的资质不支持修改或删除，您可以在短信服务[控制台](https://dysms.console.aliyun.com/domestic/text/qualification)撤回申请后操作。
 /// - 审核通过的资质若已被签名绑定则不支持删除。
 /// - 审核不通过的资质可通过[修改资质信息](~~UpdateSmsQualification~~)后直接重新发起审核。
+///
+/// Return value of [Connection::delete_sms_qualification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSmsQualificationResponse {
     #[serde(flatten)]
@@ -8018,6 +8154,8 @@ pub struct DeleteSmsQualificationResponse {
 /// - 接收到手机验证码后，请传入[申请短信资质](~~SubmitSmsQualification~~)/[修改短信资质](~~UpdateSmsQualification~~)接口的`CertifyCode`参数中。
 /// - 您可以通过[ValidPhoneCode](~~ValidPhoneCode~~)接口校验短信验证码是否准确。
 /// - 本接口获取短信验证码有[流控限制](~~44335#section-0wh-xn6-0t7~~)，请勿频繁操作：针对同一个号码最多支持1条/分钟，5条/小时，10条/天。
+///
+/// Return value of [Connection::required_phone_code()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RequiredPhoneCodeResponse {
     #[serde(flatten)]
@@ -8041,6 +8179,8 @@ pub struct RequiredPhoneCodeResponse {
 }
 /// - 请先调用[获取手机验证码](~~RequiredPhoneCode~~)接口，阿里云将发送短信验证码至您填写的手机号码。
 /// - 本接口不影响短信资质申请流程，仅供验证短信验证码使用。实际申请时，请在[申请短信资质](~~SubmitSmsQualification~~)接口中的`CertifyCode`参数传入验证码。
+///
+/// Return value of [Connection::valid_phone_code()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ValidPhoneCodeResponse {
     #[serde(flatten)]
@@ -8067,6 +8207,8 @@ pub struct ValidPhoneCodeResponse {
 /// - 请您在使用前阅读[授权书规范](~~56741~~)，下载[授权委托书模板](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250414/bvpcmo/%E6%8E%88%E6%9D%83%E5%A7%94%E6%89%98%E4%B9%A6%E6%A8%A1%E7%89%88.doc)后，根据规范完成填写并盖章后上传。
 /// - 您创建的授权委托书可在后续申请短信资质/申请短信签名时使用，如果您的资质/签名涉及他用，则必须创建授权委托书并提交。
 /// - 创建授权委托书后，您可以通过[QuerySmsAuthorizationLetter](~~QuerySmsAuthorizationLetter~~)查询已创建的授权书详情；通过接口创建的授权书信息会同步在短信服务控制台。
+///
+/// Return value of [Connection::create_sms_authorization_letter()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSmsAuthorizationLetterResponse {
     #[serde(flatten)]
@@ -8092,6 +8234,8 @@ pub struct CreateSmsAuthorizationLetterResponse {
 ///   - **条件查询**：支持根据授权委托书ID、签名名称、授权委托书审核状态进行查询，传入您希望筛选的参数即可。
 ///
 /// - 审核时间：受短信签名实名制报备要求影响，当前资质审核工单量增长快速，审核时间可能会延长，请耐心等待，预计2个工作日内完成。短信签名及模板预计在审核提交后的2小时内完成审核，涉及政府企业相关，一般2个工作日内审核完成。如遇升级核验、审核任务较多、非工作时间，审核时间可能会延长，请耐心等待（审核工作时间：周一至周日 9:00~21:00，法定节假日顺延）。
+///
+/// Return value of [Connection::query_sms_authorization_letter()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsAuthorizationLetterResponse {
     #[serde(flatten)]
@@ -8121,6 +8265,8 @@ pub struct QuerySmsAuthorizationLetterResponse {
 /// - 通过接口申请的签名信息会同步在短信服务控制台。控制台相关操作，请参见[短信签名](~~108073~~)。
 ///
 /// - 提交签名申请后，您可以通过[GetSmsSign](~~2807429~~)接口查询签名审核状态和详情。也可以[配置回执消息](~~101508~~)，通过[SignSmsReport](~~120998~~)获取签名的审核状态消息。
+///
+/// Return value of [Connection::create_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSmsSignResponse {
     #[serde(flatten)]
@@ -8148,6 +8294,8 @@ pub struct CreateSmsSignResponse {
 /// - [QuerySmsSignList](~~QuerySmsSignList~~)接口可以查询您账号下的所有签名，包括签名审核状态、签名类型、签名名称等。
 ///
 /// - 本接口的单用户QPS限制为150次/秒。超过限制，API调用将会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::get_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetSmsSignResponse {
     #[serde(flatten)]
@@ -8242,6 +8390,8 @@ pub struct GetSmsSignResponse {
     pub app_icp_record_id: Option<i64>,
 }
 /// 本接口可以查询您当前账号下**首次创建**的签名资料或者**最新审核通过**的签名详情。如果您需要查询应用场景内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsSign](~~GetSmsSign~~)接口通过签名名称查询单个签名审核详情。
+///
+/// Return value of [Connection::query_sms_sign_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsSignListResponse {
     #[serde(flatten)]
@@ -8267,6 +8417,8 @@ pub struct QuerySmsSignListResponse {
 /// - 支持修改**未通过审核**和**已经审核通过**的签名，请参考[短信审核失败的处理建议](~~65990~~)，调用此接口修改后重新提交审核。
 /// - **未通过审核**的签名如需编辑名称，该接口不支持，您可以访问控制台页面进行修改。[短信服务签名控制台入口](https://dysms.console.aliyun.com/domestic/text/sign)。
 /// - 通过接口申请的签名信息会同步在短信服务控制台，在控制台对签名的相关操作，请参见[短信签名](~~108073~~)。
+///
+/// Return value of [Connection::update_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UpdateSmsSignResponse {
     #[serde(flatten)]
@@ -8284,6 +8436,8 @@ pub struct UpdateSmsSignResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSmsSignResponse {
     #[serde(flatten)]
@@ -8295,6 +8449,7 @@ pub struct DeleteSmsSignResponse {
     #[serde(rename = "SignName")]
     pub sign_name: Option<String>,
 }
+/// Return value of [Connection::change_signature_qualification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ChangeSignatureQualificationResponse {
     #[serde(flatten)]
@@ -8316,6 +8471,8 @@ pub struct ChangeSignatureQualificationResponse {
     pub success: Option<bool>,
 }
 ///  
+///
+/// Return value of [Connection::add_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AddSmsSignResponse {
     #[serde(flatten)]
@@ -8328,6 +8485,8 @@ pub struct AddSmsSignResponse {
     pub sign_name: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySmsSignResponse {
     #[serde(flatten)]
@@ -8340,6 +8499,8 @@ pub struct ModifySmsSignResponse {
     pub sign_name: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::query_sms_sign()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsSignResponse {
     #[serde(flatten)]
@@ -8369,6 +8530,8 @@ pub struct QuerySmsSignResponse {
     pub sign_name: Option<String>,
 }
 /// 商标应在国家知识产权局商标局-中国商标网中可查，且商标所有方与企业名称一致。
+///
+/// Return value of [Connection::create_sms_trademark()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSmsTrademarkResponse {
     #[serde(flatten)]
@@ -8393,6 +8556,8 @@ pub struct CreateSmsTrademarkResponse {
 /// 传入商标id列表，返回商标详情。
 ///
 /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出商标id，然后使用此接口进一步查询详情。
+///
+/// Return value of [Connection::query_sms_trademark()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsTrademarkResponse {
     #[serde(flatten)]
@@ -8415,6 +8580,8 @@ pub struct QuerySmsTrademarkResponse {
     pub success: Option<bool>,
 }
 /// 签名来源选择已上线APP，则需要上传ICP备案截图。
+///
+/// Return value of [Connection::create_sms_app_icp_record()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSmsAppIcpRecordResponse {
     #[serde(flatten)]
@@ -8439,6 +8606,8 @@ pub struct CreateSmsAppIcpRecordResponse {
 /// 传入ICP备案id列表，返回ICP备案详情。
 ///
 /// 如查签名接口（QuerySmsSignList/GetSmsSign）会查出ICP备案id，然后使用此接口进一步查询详情。
+///
+/// Return value of [Connection::query_sms_app_icp_record()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsAppIcpRecordResponse {
     #[serde(flatten)]
@@ -8472,6 +8641,8 @@ pub struct QuerySmsAppIcpRecordResponse {
 /// - 国内短信模板与国际/港澳台短信模板不通用（不能混用），请根据业务使用场景申请模板。
 ///
 /// - 仅支持企业认证用户申请推广短信和国际/港澳台消息，个人用户与企业用户权益区别详情请参见[使用须知](~~55324~~)。
+///
+/// Return value of [Connection::create_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSmsTemplateResponse {
     #[serde(flatten)]
@@ -8499,6 +8670,8 @@ pub struct CreateSmsTemplateResponse {
 /// - 如果模板未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](~~65990~~)，调用[UpdateSmsTemplate](~~UpdateSmsTemplate~~)接口或在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面修改短信模板。
 ///
 /// - 当前接口是通过模板Code查询单个模板的审核详情。[QuerySmsTemplateList](~~419288~~)接口可以查询您当前账号下所有模板的模板详情。
+///
+/// Return value of [Connection::get_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetSmsTemplateResponse {
     #[serde(flatten)]
@@ -8602,6 +8775,8 @@ pub struct GetSmsTemplateResponse {
 }
 /// - 本接口用于查询您当前账号下所有模板的模板详情。如果您需要查询模板变量内容、申请时上传的文件资料信息等更多内容，可以调用[GetSmsTemplate](~~GetSmsTemplate~~)接口通过模板Code查询单个模板审核详情。
 /// - 您也可登录短信服务控制台[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页查看您当前账号下所有模板的模板详情。
+///
+/// Return value of [Connection::query_sms_template_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsTemplateListResponse {
     #[serde(flatten)]
@@ -8630,6 +8805,8 @@ pub struct QuerySmsTemplateListResponse {
 ///
 /// ### QPS限制
 /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::update_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UpdateSmsTemplateResponse {
     #[serde(flatten)]
@@ -8652,6 +8829,8 @@ pub struct UpdateSmsTemplateResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSmsTemplateResponse {
     #[serde(flatten)]
@@ -8664,6 +8843,8 @@ pub struct DeleteSmsTemplateResponse {
     pub template_code: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::add_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AddSmsTemplateResponse {
     #[serde(flatten)]
@@ -8678,6 +8859,8 @@ pub struct AddSmsTemplateResponse {
     pub template_code: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySmsTemplateResponse {
     #[serde(flatten)]
@@ -8696,6 +8879,8 @@ pub struct ModifySmsTemplateResponse {
 /// - 如果模板未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](~~65990~~)，调用[ModifySmsTemplate](~~419287~~)接口或在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面修改短信模板。
 ///
 /// - QuerySmsTemplate当前接口是通过模板Code查询单个模板的审核详情。[QuerySmsTemplateList](~~419288~~)接口可以查询您当前账号下所有模板的模板详情。
+///
+/// Return value of [Connection::query_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySmsTemplateResponse {
     #[serde(flatten)]
@@ -8747,6 +8932,8 @@ pub struct QuerySmsTemplateResponse {
 ///
 /// ### QPS 限制
 /// 本接口的单用户 QPS 限制为 5000/秒。超过限制，API 调用将会被限流，请合理使用。
+///
+/// Return value of [Connection::send_sms()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SendSmsResponse {
     #[serde(flatten)]
@@ -8773,6 +8960,8 @@ pub struct SendSmsResponse {
 /// - 发送短信为计费接口，国内短信按照运营商回执状态计费，调用SendBatchSms提交成功但运营商回执失败的短信不计费，计费详情请参见[计费概述](~~44340~~)。
 /// ### QPS 限制
 /// 本接口的单用户 QPS 限制为 5000/秒。超过限制，API 调用将会被限流，请合理使用。
+///
+/// Return value of [Connection::send_batch_sms()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SendBatchSmsResponse {
     #[serde(flatten)]
@@ -8793,6 +8982,8 @@ pub struct SendBatchSmsResponse {
 ///
 /// ### QPS限制
 /// 本接口的单用户QPS限制为5000/秒。超过限制，API调用将会被限流，请合理使用。
+///
+/// Return value of [Connection::query_send_details()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySendDetailsResponse {
     #[serde(flatten)]
@@ -8809,6 +9000,8 @@ pub struct QuerySendDetailsResponse {
 /// - 如果选择的时间范围较长的话，可以分页查看。指定每页显示的短信详情数量和查看的页数，即可分页查看发送记录。
 ///
 /// - 您可以登录[短信服务控制台](https://dysms.console.aliyun.com/dysms.htm#/overview)，在**业务统计**-**发送记录**页面查询发送详情。
+///
+/// Return value of [Connection::query_send_statistics()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QuerySendStatisticsResponse {
     #[serde(flatten)]
@@ -8826,6 +9019,8 @@ pub struct QuerySendStatisticsResponse {
 ///
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::get_oss_info_for_card_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetOSSInfoForCardTemplateResponse {
     #[serde(flatten)]
@@ -8846,6 +9041,8 @@ pub struct GetOSSInfoForCardTemplateResponse {
 }
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::get_media_resource_id()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetMediaResourceIdResponse {
     #[serde(flatten)]
@@ -8865,6 +9062,8 @@ pub struct GetMediaResourceIdResponse {
     pub data: Option<IdResponseData>,
 }
 ///  
+///
+/// Return value of [Connection::create_card_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateCardSmsTemplateResponse {
     #[serde(flatten)]
@@ -8887,6 +9086,8 @@ pub struct CreateCardSmsTemplateResponse {
 /// - 您也可登录控制台[国内卡片短信](https://dysms.console.aliyun.com/domestic/card)页面，在模板管理页签内查询卡片短信模板的审核状态。
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::query_card_sms_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QueryCardSmsTemplateResponse {
     #[serde(flatten)]
@@ -8910,6 +9111,8 @@ pub struct QueryCardSmsTemplateResponse {
 /// - 推荐使用新接口[QueryMobilesCardSupport](~~QueryMobilesCardSupport~~)查询手机号是否支持卡片短信。
 /// ### QPS限制
 /// 本接口的单用户QPS限制为2000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::check_mobiles_card_support()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CheckMobilesCardSupportResponse {
     #[serde(flatten)]
@@ -8929,6 +9132,8 @@ pub struct CheckMobilesCardSupportResponse {
 }
 /// - 未开通卡片短信业务的阿里云账号无法调用此API。
 /// - 目前卡片短信在内部邀约阶段，请联系您的阿里云商务经理申请开通或[联系阿里云售前咨询](https://help.aliyun.com/document_detail/464625.html)。
+///
+/// Return value of [Connection::query_mobiles_card_support()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QueryMobilesCardSupportResponse {
     #[serde(flatten)]
@@ -8951,6 +9156,8 @@ pub struct QueryMobilesCardSupportResponse {
 ///
 /// ### QPS限制
 /// - 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::get_card_sms_link()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetCardSmsLinkResponse {
     #[serde(flatten)]
@@ -8968,6 +9175,7 @@ pub struct GetCardSmsLinkResponse {
     #[serde(rename = "Data")]
     pub data: Option<LinkResponseData>,
 }
+/// Return value of [Connection::get_card_sms_details()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetCardSmsDetailsResponse {
     #[serde(flatten)]
@@ -8988,6 +9196,8 @@ pub struct GetCardSmsDetailsResponse {
 }
 /// ### QPS限制
 /// 本接口的单用户QPS限制为300次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::query_card_sms_template_report()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QueryCardSmsTemplateReportResponse {
     #[serde(flatten)]
@@ -9014,6 +9224,8 @@ pub struct QueryCardSmsTemplateReportResponse {
 ///
 /// ### QPS限制
 /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::send_card_sms()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SendCardSmsResponse {
     #[serde(flatten)]
@@ -9041,6 +9253,8 @@ pub struct SendCardSmsResponse {
 ///
 /// ### QPS限制
 /// 本接口的单用户QPS限制为1000次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
+///
+/// Return value of [Connection::send_batch_card_sms()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SendBatchCardSmsResponse {
     #[serde(flatten)]
@@ -9062,6 +9276,8 @@ pub struct SendBatchCardSmsResponse {
 /// - 您在申请资质/签名时，若用途为他用或涉及第三方，需要提供[授权委托书](~~56741~~)。
 /// - 请使用本接口获取OSS资源配置信息后，通过OSS上传相关资质材料。具体操作，可参见[通过OSS上传文件](~~2833114~~)。
 /// - 待上传的文件命名不支持包含中文和特殊符号。
+///
+/// Return value of [Connection::get_qualification_oss_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetQualificationOssInfoResponse {
     #[serde(flatten)]
@@ -9086,6 +9302,8 @@ pub struct GetQualificationOssInfoResponse {
 /// - 您在创建签名或模板时，可上传带有链接的登录页面、后台页面截图、软著、协议补充等资料。有助于审核人员了解您的业务详情。如果是多个资料，可拼成一个文件，支持png、jpg、jpeg、doc、docx、pdf格式。
 ///
 /// - 创建签名或模板所需的更多资料，可上传到OSS文件系统保存。文件上传操作，请参见[OSS上传文件](~~2833114~~)。
+///
+/// Return value of [Connection::get_oss_info_for_upload_file()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetOSSInfoForUploadFileResponse {
     #[serde(flatten)]
@@ -9103,6 +9321,7 @@ pub struct GetOSSInfoForUploadFileResponse {
     #[serde(rename = "Success")]
     pub success: Option<bool>,
 }
+/// Return value of [Connection::get_sms_ocr_oss_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetSmsOcrOssInfoResponse {
     #[serde(flatten)]
@@ -9133,6 +9352,8 @@ pub struct GetSmsOcrOssInfoResponse {
 /// 转化率=OTP转化量/OTP发送量。
 ///
 /// > 转化率反馈功能会对业务系统有一定的侵入性，为了防止调用转化率API的抖动影响业务逻辑，请考虑：  - 使用异步模式（例如：队列或事件驱动）调用API。  - 添加可降级的方案保护业务逻辑（例如：手动降级开工或者使用断路器自动降级）。
+///
+/// Return value of [Connection::sms_conversion_intl()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SmsConversionIntlResponse {
     #[serde(flatten)]
@@ -9147,6 +9368,8 @@ pub struct SmsConversionIntlResponse {
 /// >转化率反馈功能会对业务系统有一定的侵入性，为了防止调用转化率 API 的抖动影响业务逻辑，请考虑：
 /// >- 使用异步模式（例如：队列或事件驱动）调用 API。
 /// >- 添加可降级的方案保护业务逻辑（例如：手动降级开工或者使用断路器自动降级）。
+///
+/// Return value of [Connection::conversion_data_intl()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ConversionDataIntlResponse {
     #[serde(flatten)]
@@ -9156,6 +9379,8 @@ pub struct ConversionDataIntlResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::add_short_url()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AddShortUrlResponse {
     #[serde(flatten)]
@@ -9168,6 +9393,8 @@ pub struct AddShortUrlResponse {
     pub data: Option<AddShortUrlResponseData>,
 }
 ///  
+///
+/// Return value of [Connection::delete_short_url()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteShortUrlResponse {
     #[serde(flatten)]
@@ -9177,6 +9404,8 @@ pub struct DeleteShortUrlResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::query_short_url()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct QueryShortUrlResponse {
     #[serde(flatten)]
@@ -9189,6 +9418,8 @@ pub struct QueryShortUrlResponse {
     pub data: Option<QueryShortUrlResponseData>,
 }
 ///  
+///
+/// Return value of [Connection::list_tag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
@@ -9203,6 +9434,8 @@ pub struct ListTagResourcesResponse {
     pub tag_resources: Option<ResponseTagResources>,
 }
 ///  
+///
+/// Return value of [Connection::tag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct TagResourcesResponse {
     #[serde(flatten)]
@@ -9218,6 +9451,8 @@ pub struct TagResourcesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::untag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UntagResourcesResponse {
     #[serde(flatten)]

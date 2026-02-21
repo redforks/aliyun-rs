@@ -4695,6 +4695,9 @@ impl Connection {
     }
 }
 
+/// 列举请求者拥有的所有存储空间（Bucket）。
+///
+/// Argument of [Connection::list_buckets()], returns [ListBucketsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListBuckets {
@@ -4793,6 +4796,10 @@ impl crate::Request for ListBuckets {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询所有支持地域或者指定地域对应的Endpoint信息，包括外网Endpoint、内网Endpoint和传输加速Endpoint。
+///
+/// Argument of [Connection::describe_regions()], returns [DescribeRegionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRegions {
@@ -4835,6 +4842,10 @@ impl crate::Request for DescribeRegions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取指定存储空间的存储容量以及文件数量。
+///
+/// Argument of [Connection::get_bucket_stat()], returns [BucketStat].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketStat {
@@ -4882,6 +4893,10 @@ impl crate::Request for GetBucketStat {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建一个存储空间（Bucket）。
+///
+/// Argument of [Connection::put_bucket()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucket {
@@ -4975,6 +4990,10 @@ impl crate::Request for PutBucket {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除存储空间（Bucket）。
+///
+/// Argument of [Connection::delete_bucket()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucket {
@@ -5026,6 +5045,10 @@ impl crate::Request for DeleteBucket {
         crate::Form(self)
     }
 }
+
+/// 列举存储空间（Bucket）中所有文件（Object）的信息。
+///
+/// Argument of [Connection::list_objects()], returns [ListObjectsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjects {
@@ -5124,6 +5147,10 @@ impl crate::Request for ListObjects {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 列举存储空间（Bucket）中所有文件（Object）的信息。
+///
+/// Argument of [Connection::list_objects_v2()], returns [ListObjectsV2Response].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjectsV2 {
@@ -5245,6 +5272,10 @@ impl crate::Request for ListObjectsV2 {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查看存储空间（Bucket）的相关信息。只有Bucket的拥有者才能查看Bucket的信息。该请求可以从任何一个OSS的Endpoint发起。
+///
+/// Argument of [Connection::get_bucket_info()], returns [BucketInfo].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketInfo {
@@ -5292,6 +5323,10 @@ impl crate::Request for GetBucketInfo {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查看存储空间（Bucket）的位置信息。只有Bucket的拥有者才能查看Bucket的位置信息。
+///
+/// Argument of [Connection::get_bucket_location()], returns [GetBucketLocationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketLocation {
@@ -5339,6 +5374,10 @@ impl crate::Request for GetBucketLocation {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取用户级别或Bucket级别的接入点信息。
+///
+/// Argument of [Connection::list_access_points()], returns [ListAccessPointsResult].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListAccessPoints {
@@ -5395,6 +5434,10 @@ impl crate::Request for ListAccessPoints {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取接入点信息。
+///
+/// Argument of [Connection::get_access_point()], returns [GetAccessPointResult].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPoint {
@@ -5451,6 +5494,10 @@ impl crate::Request for GetAccessPoint {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取接入点策略配置。
+///
+/// Argument of [Connection::get_access_point_policy()], returns [GetAccessPointPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPolicy {
@@ -5507,6 +5554,10 @@ impl crate::Request for GetAccessPointPolicy {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除接入点策略。
+///
+/// Argument of [Connection::delete_access_point_policy()], returns [crate::OpenObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPolicy {
@@ -5570,6 +5621,10 @@ impl crate::Request for DeleteAccessPointPolicy {
         crate::Form(self)
     }
 }
+
+/// 配置接入点策略。
+///
+/// Argument of [Connection::put_access_point_policy()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicy {
@@ -5633,6 +5688,10 @@ impl crate::Request for PutAccessPointPolicy {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除接入点。
+///
+/// Argument of [Connection::delete_access_point()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPoint {
@@ -5696,6 +5755,10 @@ impl crate::Request for DeleteAccessPoint {
         crate::Form(self)
     }
 }
+
+/// 创建接入点。
+///
+/// Argument of [Connection::create_access_point()], returns [CreateAccessPointResult].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAccessPoint {
@@ -5749,6 +5812,10 @@ impl crate::Request for CreateAccessPoint {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 新建一条合规保留策略。
+///
+/// Argument of [Connection::initiate_bucket_worm()], returns [InitiateBucketWormResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitiateBucketWorm {
@@ -5816,6 +5883,10 @@ impl crate::Request for InitiateBucketWorm {
         Ok(())
     }
 }
+
+/// 删除指定存储空间（Bucket）未锁定的合规保留策略。
+///
+/// Argument of [Connection::abort_bucket_worm()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AbortBucketWorm {
@@ -5870,6 +5941,10 @@ impl crate::Request for AbortBucketWorm {
         crate::Form(self)
     }
 }
+
+/// 调用CompleteBucketWorm接口锁定合规保留策略。
+///
+/// Argument of [Connection::complete_bucket_worm()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CompleteBucketWorm {
@@ -5927,6 +6002,10 @@ impl crate::Request for CompleteBucketWorm {
         crate::Form(self)
     }
 }
+
+/// 延长已锁定的合规保留策略对应Bucket中Object的保留天数。
+///
+/// Argument of [Connection::extend_bucket_worm()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ExtendBucketWorm {
@@ -5986,6 +6065,10 @@ impl crate::Request for ExtendBucketWorm {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取指定存储空间（Bucket）的合规保留策略信息。
+///
+/// Argument of [Connection::get_bucket_worm()], returns [GetBucketWormResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketWorm {
@@ -6033,6 +6116,10 @@ impl crate::Request for GetBucketWorm {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 设置或修改存储空间（Bucket）的访问权限（ACL）。
+///
+/// Argument of [Connection::put_bucket_acl()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketAcl {
@@ -6098,6 +6185,10 @@ impl crate::Request for PutBucketAcl {
         crate::Form(self)
     }
 }
+
+/// 获取某个存储空间（Bucket）的访问权限（ACL）。只有Bucket的拥有者才能获取Bucket的访问权限。
+///
+/// Argument of [Connection::get_bucket_acl()], returns [GetBucketAclResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketAcl {
@@ -6145,6 +6236,10 @@ impl crate::Request for GetBucketAcl {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 设置存储空间的生命周期规则
+///
+/// Argument of [Connection::put_bucket_lifecycle()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketLifecycle {
@@ -6212,6 +6307,10 @@ impl crate::Request for PutBucketLifecycle {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查看存储空间（Bucket）的生命周期规则（Lifecycle）。只有Bucket的拥有者才有权限查看Bucket的生命周期规则。
+///
+/// Argument of [Connection::get_bucket_lifecycle()], returns [LifecycleConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketLifecycle {
@@ -6259,6 +6358,10 @@ impl crate::Request for GetBucketLifecycle {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 调用DeleteBucketLifecycle接口删除指定存储空间（Bucket）的生命周期规则。
+///
+/// Argument of [Connection::delete_bucket_lifecycle()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketLifecycle {
@@ -6313,6 +6416,10 @@ impl crate::Request for DeleteBucketLifecycle {
         crate::Form(self)
     }
 }
+
+/// 调用PutBucketTransferAcceleration接口为存储空间（Bucket）配置传输加速。开启传输加速后，可提升全球各地用户对OSS的访问速度，适用于远距离数据传输、GB或TB级大文件上传和下载的场景。
+///
+/// Argument of [Connection::put_bucket_transfer_acceleration()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketTransferAcceleration {
@@ -6366,6 +6473,10 @@ impl crate::Request for PutBucketTransferAcceleration {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 调用GetBucketTransferAcceleration接口获取目标存储空间（Bucket）的传输加速配置。
+///
+/// Argument of [Connection::get_bucket_transfer_acceleration()], returns [GetBucketTransferAccelerationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketTransferAcceleration {
@@ -6413,6 +6524,10 @@ impl crate::Request for GetBucketTransferAcceleration {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 设置指定存储空间（Bucket）的版本控制状态。
+///
+/// Argument of [Connection::put_bucket_versioning()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketVersioning {
@@ -6466,6 +6581,10 @@ impl crate::Request for PutBucketVersioning {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 调用GetBucketVersioning接口获取指定Bucket的版本控制状态。
+///
+/// Argument of [Connection::get_bucket_versioning()], returns [GetBucketVersioningResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketVersioning {
@@ -6513,6 +6632,10 @@ impl crate::Request for GetBucketVersioning {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 列出Bucket中包括删除标记（Delete Marker）在内的所有Object的版本信息。
+///
+/// Argument of [Connection::list_object_versions()], returns [ListObjectVersionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListObjectVersions {
@@ -6634,6 +6757,10 @@ impl crate::Request for ListObjectVersions {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为指定的存储空间（Bucket）设置授权策略（Policy)。
+///
+/// Argument of [Connection::put_bucket_policy()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketPolicy {
@@ -6686,6 +6813,10 @@ impl crate::Request for PutBucketPolicy {
         crate::OctetStream(self.body)
     }
 }
+
+/// 获取指定存储空间（Bucket）的权限策略（Policy）。
+///
+/// Argument of [Connection::get_bucket_policy()], returns [GetBucketPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketPolicy {
@@ -6733,6 +6864,10 @@ impl crate::Request for GetBucketPolicy {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除指定存储空间（Bucket）的权限策略（Policy）。
+///
+/// Argument of [Connection::delete_bucket_policy()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketPolicy {
@@ -6787,6 +6922,10 @@ impl crate::Request for DeleteBucketPolicy {
         crate::Form(self)
     }
 }
+
+/// 查看当前Bucket Policy是否允许公共访问。
+///
+/// Argument of [Connection::get_bucket_policy_status()], returns [GetBucketPolicyStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketPolicyStatus {
@@ -6834,6 +6973,10 @@ impl crate::Request for GetBucketPolicyStatus {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为已有的跨区域复制规则开启或关闭数据复制时间控制（RTC）功能。
+///
+/// Argument of [Connection::put_bucket_rtc()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketRtc {
@@ -6887,6 +7030,10 @@ impl crate::Request for PutBucketRtc {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 为存储空间（Bucket）指定数据复制规则。OSS支持跨区域复制（Cross-Region Replication）和同区域复制（Same-Region Replication）。
+///
+/// Argument of [Connection::put_bucket_replication()], returns [PutBucketReplicationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketReplication {
@@ -6955,6 +7102,10 @@ impl crate::Request for PutBucketReplication {
         Ok(())
     }
 }
+
+/// 获取某个存储空间（Bucket）已设置的数据复制规则。
+///
+/// Argument of [Connection::get_bucket_replication()], returns [GetBucketReplicationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketReplication {
@@ -7002,6 +7153,10 @@ impl crate::Request for GetBucketReplication {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取可复制到的目标存储空间（Bucket）所在的地域。您可以根据返回结果决定将源Bucket的数据复制到哪个地域。
+///
+/// Argument of [Connection::get_bucket_replication_location()], returns [GetBucketReplicationLocationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketReplicationLocation {
@@ -7049,6 +7204,10 @@ impl crate::Request for GetBucketReplicationLocation {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取某个存储空间（Bucket）的数据复制进度。
+///
+/// Argument of [Connection::get_bucket_replication_progress()], returns [GetBucketReplicationProgressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketReplicationProgress {
@@ -7100,6 +7259,10 @@ impl crate::Request for GetBucketReplicationProgress {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 停止某个存储空间（Bucket）的数据复制并删除Bucket的复制配置，此时源Bucket中的任何操作都不会被同步到目标Bucket。
+///
+/// Argument of [Connection::delete_bucket_replication()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketReplication {
@@ -7154,6 +7317,10 @@ impl crate::Request for DeleteBucketReplication {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 为指定存储空间（Bucket）配置清单（Inventory）规则。
+///
+/// Argument of [Connection::put_bucket_inventory()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketInventory {
@@ -7211,6 +7378,10 @@ impl crate::Request for PutBucketInventory {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查看某个存储空间（Bucket）中指定的清单（Inventory）任务。
+///
+/// Argument of [Connection::get_bucket_inventory()], returns [InventoryConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketInventory {
@@ -7262,6 +7433,10 @@ impl crate::Request for GetBucketInventory {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 批量获取某个存储空间（Bucket）中的所有清单（Inventory）任务。
+///
+/// Argument of [Connection::list_bucket_inventory()], returns [ListBucketInventoryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListBucketInventory {
@@ -7317,6 +7492,10 @@ impl crate::Request for ListBucketInventory {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除某个存储空间（Bucket）中指定的清单（Inventory）任务。
+///
+/// Argument of [Connection::delete_bucket_inventory()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketInventory {
@@ -7375,6 +7554,10 @@ impl crate::Request for DeleteBucketInventory {
         crate::Form(self)
     }
 }
+
+/// 为存储空间（Bucket）开启日志转存功能，可将OSS的访问日志按照固定命名规则，以小时为单位生成日志文件写入您指定的Bucket。
+///
+/// Argument of [Connection::put_bucket_logging()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketLogging {
@@ -7428,6 +7611,10 @@ impl crate::Request for PutBucketLogging {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查看存储空间（Bucket）的访问日志配置。只有Bucket的拥有者才能查看Bucket的访问日志配置。
+///
+/// Argument of [Connection::get_bucket_logging()], returns [BucketLoggingStatus].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketLogging {
@@ -7475,6 +7662,10 @@ impl crate::Request for GetBucketLogging {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 关闭存储空间（Bucket）的访问日志记录功能。
+///
+/// Argument of [Connection::delete_bucket_logging()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketLogging {
@@ -7529,6 +7720,10 @@ impl crate::Request for DeleteBucketLogging {
         crate::Form(self)
     }
 }
+
+/// 为存储空间（Bucket）实时日志中的user_defined_log_fields字段进行个性化配置。您可以将OSS请求中用户关心的请求头或查询参数信息记录到该字段中去以便后续分析请求。
+///
+/// Argument of [Connection::put_user_defined_log_fields_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutUserDefinedLogFieldsConfig {
@@ -7582,6 +7777,10 @@ impl crate::Request for PutUserDefinedLogFieldsConfig {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间（Bucket）实时日志中user_defined_log_fields字段的个性化配置。
+///
+/// Argument of [Connection::get_user_defined_log_fields_config()], returns [UserDefinedLogFieldsConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetUserDefinedLogFieldsConfig {
@@ -7629,6 +7828,10 @@ impl crate::Request for GetUserDefinedLogFieldsConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除存储空间（Bucket）实时日志中user_defined_log_fields字段的个性化配置。
+///
+/// Argument of [Connection::delete_user_defined_log_fields_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteUserDefinedLogFieldsConfig {
@@ -7683,6 +7886,10 @@ impl crate::Request for DeleteUserDefinedLogFieldsConfig {
         crate::Form(self)
     }
 }
+
+/// 查看存储空间（Bucket）的静态网站托管状态以及跳转规则。
+///
+/// Argument of [Connection::get_bucket_website()], returns [WebsiteConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketWebsite {
@@ -7730,6 +7937,10 @@ impl crate::Request for GetBucketWebsite {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 将存储空间（Bucket）设置为静态网站托管模式并设置跳转规则（RoutingRule）。
+///
+/// Argument of [Connection::put_bucket_website()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketWebsite {
@@ -7783,6 +7994,10 @@ impl crate::Request for PutBucketWebsite {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 关闭存储空间（Bucket）的静态网站托管模式以及跳转规则。
+///
+/// Argument of [Connection::delete_bucket_website()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketWebsite {
@@ -7837,6 +8052,10 @@ impl crate::Request for DeleteBucketWebsite {
         crate::Form(self)
     }
 }
+
+/// 设置存储空间（Bucket）级别的防盗链（Referer）访问白名单，支持设置是否允许Referer字段为空以及是否允许截断QueryString的请求访问OSS。
+///
+/// Argument of [Connection::put_bucket_referer()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketReferer {
@@ -7890,6 +8109,10 @@ impl crate::Request for PutBucketReferer {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查看存储空间（Bucket）的防盗链（Referer）相关配置。
+///
+/// Argument of [Connection::get_bucket_referer()], returns [RefererConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketReferer {
@@ -7937,6 +8160,10 @@ impl crate::Request for GetBucketReferer {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 给某个存储空间（Bucket）添加或修改标签。
+///
+/// Argument of [Connection::put_bucket_tags()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketTags {
@@ -7990,6 +8217,10 @@ impl crate::Request for PutBucketTags {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间（Bucket）的标签信息。
+///
+/// Argument of [Connection::get_bucket_tags()], returns [GetBucketTagsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketTags {
@@ -8037,6 +8268,10 @@ impl crate::Request for GetBucketTags {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除存储空间（Bucket）标签。
+///
+/// Argument of [Connection::delete_bucket_tags()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketTags {
@@ -8091,6 +8326,10 @@ impl crate::Request for DeleteBucketTags {
         crate::Form(self)
     }
 }
+
+/// 获取用户级别存储冗余类型转换的列表。
+///
+/// Argument of [Connection::list_user_data_redundancy_transition()], returns [ListUserDataRedundancyTransitionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListUserDataRedundancyTransition {
@@ -8143,6 +8382,10 @@ impl crate::Request for ListUserDataRedundancyTransition {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 列举某个Bucket下所有的存储冗余转换任务。
+///
+/// Argument of [Connection::list_bucket_data_redundancy_transition()], returns [ListBucketDataRedundancyTransitionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListBucketDataRedundancyTransition {
@@ -8190,6 +8433,10 @@ impl crate::Request for ListBucketDataRedundancyTransition {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取存储冗余转换任务。
+///
+/// Argument of [Connection::get_bucket_data_redundancy_transition()], returns [BucketDataRedundancyTransition].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketDataRedundancyTransition {
@@ -8247,6 +8494,10 @@ impl crate::Request for GetBucketDataRedundancyTransition {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为Bucket创建存储冗余转换任务。
+///
+/// Argument of [Connection::create_bucket_data_redundancy_transition()], returns [CreateBucketDataRedundancyTransitionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateBucketDataRedundancyTransition {
@@ -8308,6 +8559,10 @@ impl crate::Request for CreateBucketDataRedundancyTransition {
         crate::Form(self)
     }
 }
+
+/// 删除存储空间数据冗余类型转换任务。
+///
+/// Argument of [Connection::delete_bucket_data_redundancy_transition()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketDataRedundancyTransition {
@@ -8372,6 +8627,10 @@ impl crate::Request for DeleteBucketDataRedundancyTransition {
         crate::Form(self)
     }
 }
+
+/// 配置存储空间（Bucket）的加密规则。
+///
+/// Argument of [Connection::put_bucket_encryption()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketEncryption {
@@ -8425,6 +8684,10 @@ impl crate::Request for PutBucketEncryption {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间（Bucket）的加密规则。
+///
+/// Argument of [Connection::get_bucket_encryption()], returns [GetBucketEncryptionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketEncryption {
@@ -8472,6 +8735,10 @@ impl crate::Request for GetBucketEncryption {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除指定存储空间（Bucket）的加密规则。
+///
+/// Argument of [Connection::delete_bucket_encryption()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketEncryption {
@@ -8526,6 +8793,10 @@ impl crate::Request for DeleteBucketEncryption {
         crate::Form(self)
     }
 }
+
+/// 设置某个存储空间（Bucket）的请求者付费模式。
+///
+/// Argument of [Connection::put_bucket_request_payment()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketRequestPayment {
@@ -8579,6 +8850,10 @@ impl crate::Request for PutBucketRequestPayment {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取请求者付费模式的配置信息。
+///
+/// Argument of [Connection::get_bucket_request_payment()], returns [GetBucketRequestPaymentResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketRequestPayment {
@@ -8626,6 +8901,10 @@ impl crate::Request for GetBucketRequestPayment {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 设置指定存储空间（Bucket）的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
+///
+/// Argument of [Connection::put_bucket_cors()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketCors {
@@ -8679,6 +8958,10 @@ impl crate::Request for PutBucketCors {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取指定存储空间（Bucket）当前的跨域资源共享CORS（Cross-Origin Resource Sharing）规则。
+///
+/// Argument of [Connection::get_bucket_cors()], returns [GetBucketCorsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketCors {
@@ -8726,6 +9009,10 @@ impl crate::Request for GetBucketCors {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 调用DeleteBucketCors接口关闭指定存储空间（Bucket）的跨域资源共享CORS（Cross-Origin Resource Sharing）功能并清空所有规则。
+///
+/// Argument of [Connection::delete_bucket_cors()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketCors {
@@ -8780,6 +9067,10 @@ impl crate::Request for DeleteBucketCors {
         crate::Form(self)
     }
 }
+
+/// 浏览器在发送跨域请求之前会发送一个preflight请求（Options）给OSS，并带上特定的来源域、HTTP方法和header等信息，以决定是否发送真正的请求。
+///
+/// Argument of [Connection::option_object()], returns [OptionObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct OptionObject {
@@ -8898,6 +9189,10 @@ impl crate::Request for OptionObject {
         Ok(())
     }
 }
+
+/// 修改存储空间（Bucket）的访问追踪状态。
+///
+/// Argument of [Connection::put_bucket_access_monitor()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketAccessMonitor {
@@ -8951,6 +9246,10 @@ impl crate::Request for PutBucketAccessMonitor {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间（Bucket）的访问追踪功能是否开启。
+///
+/// Argument of [Connection::get_bucket_access_monitor()], returns [AccessMonitorConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketAccessMonitor {
@@ -8998,6 +9297,10 @@ impl crate::Request for GetBucketAccessMonitor {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取指定存储空间（Bucket）的元数据索引库信息。
+///
+/// Argument of [Connection::get_meta_query_status()], returns [GetMetaQueryStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetMetaQueryStatus {
@@ -9045,6 +9348,10 @@ impl crate::Request for GetMetaQueryStatus {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 关闭存储空间（Bucket）的元数据管理功能。OSS会自动删除Bucket的元数据索引库，将无法进行元数据索引。
+///
+/// Argument of [Connection::close_meta_query()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CloseMetaQuery {
@@ -9100,6 +9407,10 @@ impl crate::Request for CloseMetaQuery {
         crate::Form(self)
     }
 }
+
+/// 通过存储空间（Bucket）的元数据索引功能，查询满足指定条件的文件（Object），并按照字段和排序方式列出文件信息。
+///
+/// Argument of [Connection::do_meta_query()], returns [MetaQueryResp].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DoMetaQuery {
@@ -9164,6 +9475,10 @@ impl crate::Request for DoMetaQuery {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 开启元数据管理功能。开启元数据管理功能后，OSS会为Bucket创建元数据索引库并为Bucket中的所有文件（Object）建立元数据索引。元数据索引库创建完成后，OSS会继续对Bucket中新增文件进行准实时的增量追踪扫描并为增量文件建立元数据索引。
+///
+/// Argument of [Connection::open_meta_query()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct OpenMetaQuery {
@@ -9238,6 +9553,10 @@ impl crate::Request for OpenMetaQuery {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 更改高防OSS实例状态。
+///
+/// Argument of [Connection::update_user_anti_d_dos_info()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateUserAntiDDosInfo {
@@ -9300,6 +9619,10 @@ impl crate::Request for UpdateUserAntiDDosInfo {
         crate::Form(self)
     }
 }
+
+/// 更新Bucket防护状态。
+///
+/// Argument of [Connection::update_bucket_anti_d_dos_info()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UpdateBucketAntiDDosInfo {
@@ -9379,6 +9702,10 @@ impl crate::Request for UpdateBucketAntiDDosInfo {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取Bucket防护信息列表。
+///
+/// Argument of [Connection::list_bucket_anti_d_dos_info()], returns [ListBucketAntiDDosInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListBucketAntiDDosInfo {
@@ -9437,6 +9764,10 @@ impl crate::Request for ListBucketAntiDDosInfo {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建高防OSS实例。
+///
+/// Argument of [Connection::init_user_anti_d_dos_info()], returns [InitUserAntiDDosInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitUserAntiDDosInfo {}
@@ -9492,6 +9823,10 @@ impl crate::Request for InitUserAntiDDosInfo {
         Ok(())
     }
 }
+
+/// 初始化Bucket防护。
+///
+/// Argument of [Connection::init_bucket_anti_d_dos_info()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitBucketAntiDDosInfo {
@@ -9565,6 +9900,10 @@ impl crate::Request for InitBucketAntiDDosInfo {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查询指定账号下的高防OSS实例信息。
+///
+/// Argument of [Connection::get_user_anti_d_dos_info()], returns [GetUserAntiDDosInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetUserAntiDDosInfo {}
@@ -9599,6 +9938,10 @@ impl crate::Request for GetUserAntiDDosInfo {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取存储空间（Bucket）所属的资源组ID。
+///
+/// Argument of [Connection::get_bucket_resource_group()], returns [GetBucketResourceGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketResourceGroup {
@@ -9646,6 +9989,10 @@ impl crate::Request for GetBucketResourceGroup {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改存储空间（Bucket）所属的资源组ID。
+///
+/// Argument of [Connection::put_bucket_resource_group()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketResourceGroup {
@@ -9699,6 +10046,10 @@ impl crate::Request for PutBucketResourceGroup {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 为某个存储空间（Bucket）绑定自定义域名。
+///
+/// Argument of [Connection::put_cname()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutCname {
@@ -9753,6 +10104,10 @@ impl crate::Request for PutCname {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查询某个存储空间（Bucket）下绑定的所有的自定义域名（Cname）列表。
+///
+/// Argument of [Connection::list_cname()], returns [ListCnameResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListCname {
@@ -9800,6 +10155,10 @@ impl crate::Request for ListCname {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除某个存储空间（Bucket）已绑定的Cname。
+///
+/// Argument of [Connection::delete_cname()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteCname {
@@ -9854,6 +10213,10 @@ impl crate::Request for DeleteCname {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取已创建的CnameToken。
+///
+/// Argument of [Connection::get_cname_token()], returns [CnameToken].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetCnameToken {
@@ -9905,6 +10268,10 @@ impl crate::Request for GetCnameToken {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 创建域名所有权验证所需的CnameToken。
+///
+/// Argument of [Connection::create_cname_token()], returns [CnameToken].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCnameToken {
@@ -9959,6 +10326,10 @@ impl crate::Request for CreateCnameToken {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 新增图片样式。一个图片样式中可以包含单个或多个图片处理参数。
+///
+/// Argument of [Connection::put_style()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutStyle {
@@ -10026,6 +10397,10 @@ impl crate::Request for PutStyle {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 查询某个Bucket下已创建的所有图片样式。
+///
+/// Argument of [Connection::list_style()], returns [ListStyleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListStyle {
@@ -10073,6 +10448,10 @@ impl crate::Request for ListStyle {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查询某个Bucket下指定的图片样式信息。
+///
+/// Argument of [Connection::get_style()], returns [StyleInfo].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetStyle {
@@ -10124,6 +10503,10 @@ impl crate::Request for GetStyle {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除某个Bucket下指定的图片样式。
+///
+/// Argument of [Connection::delete_style()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteStyle {
@@ -10182,6 +10565,10 @@ impl crate::Request for DeleteStyle {
         crate::Form(self)
     }
 }
+
+/// 调用GetBucketHttpsConfig接口查看Bucket的TLS版本设置。
+///
+/// Argument of [Connection::get_bucket_https_config()], returns [HttpsConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketHttpsConfig {
@@ -10229,6 +10616,10 @@ impl crate::Request for GetBucketHttpsConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 调用PutBucketHttpsConfig接口为Bucket开启或关闭TLS版本设置。
+///
+/// Argument of [Connection::put_bucket_https_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketHttpsConfig {
@@ -10282,6 +10673,10 @@ impl crate::Request for PutBucketHttpsConfig {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 创建对象FC接入点。
+///
+/// Argument of [Connection::create_access_point_for_object_process()], returns [CreateAccessPointForObjectProcessResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAccessPointForObjectProcess {
@@ -10351,6 +10746,10 @@ impl crate::Request for CreateAccessPointForObjectProcess {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取对象FC接入点基础信息。
+///
+/// Argument of [Connection::get_access_point_for_object_process()], returns [GetAccessPointForObjectProcessResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointForObjectProcess {
@@ -10411,6 +10810,10 @@ impl crate::Request for GetAccessPointForObjectProcess {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取用户级别的对象FC接入点信息。
+///
+/// Argument of [Connection::list_access_points_for_object_process()], returns [ListAccessPointsForObjectProcessResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListAccessPointsForObjectProcess {
@@ -10467,6 +10870,10 @@ impl crate::Request for ListAccessPointsForObjectProcess {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除对象FC接入点。
+///
+/// Argument of [Connection::delete_access_point_for_object_process()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointForObjectProcess {
@@ -10534,6 +10941,10 @@ impl crate::Request for DeleteAccessPointForObjectProcess {
         crate::Form(self)
     }
 }
+
+/// 获取对象FC接入点配置信息。
+///
+/// Argument of [Connection::get_access_point_config_for_object_process()], returns [GetAccessPointConfigForObjectProcessResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointConfigForObjectProcess {
@@ -10594,6 +11005,10 @@ impl crate::Request for GetAccessPointConfigForObjectProcess {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改对象FC接入点的配置。
+///
+/// Argument of [Connection::put_access_point_config_for_object_process()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointConfigForObjectProcess {
@@ -10664,6 +11079,10 @@ impl crate::Request for PutAccessPointConfigForObjectProcess {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 为对象FC接入点配置权限策略。
+///
+/// Argument of [Connection::put_access_point_policy_for_object_process()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPolicyForObjectProcess {
@@ -10730,6 +11149,10 @@ impl crate::Request for PutAccessPointPolicyForObjectProcess {
         crate::JsonBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取对象FC接入点的权限策略配置。
+///
+/// Argument of [Connection::get_access_point_policy_for_object_process()], returns [GetAccessPointPolicyForObjectProcessResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPolicyForObjectProcess {
@@ -10795,6 +11218,10 @@ impl crate::Request for GetAccessPointPolicyForObjectProcess {
         crate::OctetStream(self.body)
     }
 }
+
+/// 删除对象FC接入点的权限策略。
+///
+/// Argument of [Connection::delete_access_point_policy_for_object_process()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPolicyForObjectProcess {
@@ -10860,6 +11287,10 @@ impl crate::Request for DeleteAccessPointPolicyForObjectProcess {
         crate::OctetStream(self.body)
     }
 }
+
+/// 获取绑定在用户级别的阻止公共访问的配置。
+///
+/// Argument of [Connection::get_public_access_block()], returns [PublicAccessBlockConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetPublicAccessBlock {}
@@ -10894,6 +11325,10 @@ impl crate::Request for GetPublicAccessBlock {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改OSS全局阻止公共访问的配置信息。
+///
+/// Argument of [Connection::put_public_access_block()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutPublicAccessBlock {
@@ -10934,6 +11369,10 @@ impl crate::Request for PutPublicAccessBlock {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除用户级别的阻止公共访问配置。
+///
+/// Argument of [Connection::delete_public_access_block()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeletePublicAccessBlock {}
@@ -10975,6 +11414,10 @@ impl crate::Request for DeletePublicAccessBlock {
         crate::Form(self)
     }
 }
+
+/// 获取存储空间绑定的阻止公共访问配置。
+///
+/// Argument of [Connection::get_bucket_public_access_block()], returns [PublicAccessBlockConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketPublicAccessBlock {
@@ -11022,6 +11465,10 @@ impl crate::Request for GetBucketPublicAccessBlock {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取绑定在存储空间上的阻止公共访问的配置信息。
+///
+/// Argument of [Connection::put_bucket_public_access_block()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketPublicAccessBlock {
@@ -11075,6 +11522,10 @@ impl crate::Request for PutBucketPublicAccessBlock {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除绑定在存储空间上的组织公共访问配置信息。
+///
+/// Argument of [Connection::delete_bucket_public_access_block()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketPublicAccessBlock {
@@ -11129,6 +11580,10 @@ impl crate::Request for DeleteBucketPublicAccessBlock {
         crate::Form(self)
     }
 }
+
+/// 获取指定接入点的阻止公共访问配置信息。
+///
+/// Argument of [Connection::get_access_point_public_access_block()], returns [PublicAccessBlockConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetAccessPointPublicAccessBlock {
@@ -11184,6 +11639,10 @@ impl crate::Request for GetAccessPointPublicAccessBlock {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改指定接入点的阻止公共访问的配置信息。
+///
+/// Argument of [Connection::put_access_point_public_access_block()], returns [PutAccessPointPublicAccessBlockResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutAccessPointPublicAccessBlock {
@@ -11244,6 +11703,10 @@ impl crate::Request for PutAccessPointPublicAccessBlock {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除指定接入点的阻止公共访问配置信息。
+///
+/// Argument of [Connection::delete_access_point_public_access_block()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAccessPointPublicAccessBlock {
@@ -11306,6 +11769,10 @@ impl crate::Request for DeleteAccessPointPublicAccessBlock {
         crate::Form(self)
     }
 }
+
+/// 查看Bucket是否开启归档直读。
+///
+/// Argument of [Connection::get_bucket_archive_direct_read()], returns [ArchiveDirectReadConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketArchiveDirectRead {
@@ -11353,6 +11820,10 @@ impl crate::Request for GetBucketArchiveDirectRead {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为Bucket开启或关闭归档直读。
+///
+/// Argument of [Connection::put_bucket_archive_direct_read()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketArchiveDirectRead {
@@ -11406,6 +11877,10 @@ impl crate::Request for PutBucketArchiveDirectRead {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 设置存储空间的禁止覆盖写规则。
+///
+/// Argument of [Connection::put_bucket_overwrite_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketOverwriteConfig {
@@ -11459,6 +11934,10 @@ impl crate::Request for PutBucketOverwriteConfig {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间的禁止覆盖写规则配置。
+///
+/// Argument of [Connection::get_bucket_overwrite_config()], returns [OverwriteConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketOverwriteConfig {
@@ -11506,6 +11985,10 @@ impl crate::Request for GetBucketOverwriteConfig {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除存储空间的不覆盖写规则配置。
+///
+/// Argument of [Connection::delete_bucket_overwrite_config()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketOverwriteConfig {
@@ -11560,6 +12043,10 @@ impl crate::Request for DeleteBucketOverwriteConfig {
         crate::Form(self)
     }
 }
+
+/// 上传文件（Object）。
+///
+/// Argument of [Connection::put_object()], returns [PutObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObject {
@@ -11786,6 +12273,10 @@ impl crate::Request for PutObject {
         Ok(())
     }
 }
+
+/// 拷贝同一地域下相同或不同存储空间（Bucket）之间的文件（Object）。
+///
+/// Argument of [Connection::copy_object()], returns [CopyObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CopyObject {
@@ -12038,6 +12529,10 @@ impl crate::Request for CopyObject {
         Ok(())
     }
 }
+
+/// 获取某个文件（Object）。
+///
+/// Argument of [Connection::get_object()], returns [GetObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObject {
@@ -12322,6 +12817,10 @@ impl crate::Request for GetObject {
         Ok(())
     }
 }
+
+/// 以追加写的方式上传文件（Object）。
+///
+/// Argument of [Connection::append_object()], returns [AppendObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AppendObject {
@@ -12518,6 +13017,10 @@ impl crate::Request for AppendObject {
         Ok(())
     }
 }
+
+/// 通过AppendObject操作创建的Appendable Object，SealAppendable 操作用于Appendable Object停止继续写入。执行该操作后，允许用户通过配置生命周期来将对应的Appendable Object存储类型转为冷归档或深度冷归档存储类型。
+///
+/// Argument of [Connection::seal_append_object()], returns [SealAppendObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SealAppendObject {
@@ -12602,6 +13105,10 @@ impl crate::Request for SealAppendObject {
         Ok(())
     }
 }
+
+/// 删除文件（object）。
+///
+/// Argument of [Connection::delete_object()], returns [DeleteObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteObject {
@@ -12690,6 +13197,10 @@ impl crate::Request for DeleteObject {
         Ok(())
     }
 }
+
+/// 获取某个文件（Object）的元信息。
+///
+/// Argument of [Connection::head_object()], returns [HeadObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct HeadObject {
@@ -12894,6 +13405,10 @@ impl crate::Request for HeadObject {
         Ok(())
     }
 }
+
+/// 获取文件（Object）的元数据信息，包括该Object的ETag、Size、LastModified信息，并且不返回该Object的内容。
+///
+/// Argument of [Connection::get_object_meta()], returns [GetObjectMetaResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectMeta {
@@ -12996,6 +13511,10 @@ impl crate::Request for GetObjectMeta {
         Ok(())
     }
 }
+
+/// 解冻归档类型（Archive）或冷归档（Cold Archive）的文件（Object）。
+///
+/// Argument of [Connection::restore_object()], returns [RestoreObjectResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RestoreObject {
@@ -13084,6 +13603,10 @@ impl crate::Request for RestoreObject {
         Ok(())
     }
 }
+
+/// 清理从冷归档或深度冷归档对象中解冻而来的副本
+///
+/// Argument of [Connection::clean_restored_object()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CleanRestoredObject {
@@ -13146,6 +13669,10 @@ impl crate::Request for CleanRestoredObject {
         crate::Form(self)
     }
 }
+
+/// 对目标文件执行SQL语句，返回执行结果。
+///
+/// Argument of [Connection::select_object()], returns [Vec<u8>].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SelectObject {
@@ -13214,6 +13741,10 @@ impl crate::Request for SelectObject {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取目标文件总的行数，总的列数（对于CSV文件），以及Splits个数。如果该信息不存在，则会扫描整个文件，分析并记录下CSV文件的上述信息。重复调用该API则会保存上述信息而不必重新扫描整个文件。
+///
+/// Argument of [Connection::create_select_object_meta()], returns [SelectMetaStatus].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSelectObjectMeta {
@@ -13282,6 +13813,10 @@ impl crate::Request for CreateSelectObjectMeta {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 通知OSS初始化一个Multipart Upload事件。
+///
+/// Argument of [Connection::initiate_multipart_upload()], returns [InitiateMultipartUploadResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InitiateMultipartUpload {
@@ -13464,6 +13999,10 @@ impl crate::Request for InitiateMultipartUpload {
         crate::Form(self)
     }
 }
+
+/// 根据指定的Object名和uploadId来分块（Part）上传数据。
+///
+/// Argument of [Connection::upload_part()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UploadPart {
@@ -13542,6 +14081,10 @@ impl crate::Request for UploadPart {
         crate::OctetStream(self.body.unwrap_or_default())
     }
 }
+
+/// 来完成整个文件的分片上传。
+///
+/// Argument of [Connection::complete_multipart_upload()], returns [CompleteMultipartUploadResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CompleteMultipartUpload {
@@ -13668,6 +14211,10 @@ impl crate::Request for CompleteMultipartUpload {
         Ok(())
     }
 }
+
+/// 从一个已存在的Object中拷贝数据来上传一个Part。
+///
+/// Argument of [Connection::upload_part_copy()], returns [UploadPartCopyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UploadPartCopy {
@@ -13823,6 +14370,10 @@ impl crate::Request for UploadPartCopy {
         Ok(())
     }
 }
+
+/// 用于取消MultipartUpload事件并删除对应的Part数据。
+///
+/// Argument of [Connection::abort_multipart_upload()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AbortMultipartUpload {
@@ -13892,6 +14443,10 @@ impl crate::Request for AbortMultipartUpload {
         crate::Form(self)
     }
 }
+
+/// 列举所有执行中的Multipart Upload事件。
+///
+/// Argument of [Connection::list_multipart_uploads()], returns [ListMultipartUploadsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListMultipartUploads {
@@ -13999,6 +14554,10 @@ impl crate::Request for ListMultipartUploads {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 列举指定Upload ID所属的所有已经上传成功Part。
+///
+/// Argument of [Connection::list_parts()], returns [ListPartsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListParts {
@@ -14096,6 +14655,10 @@ impl crate::Request for ListParts {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 修改文件（Object）的访问权限（ACL）。
+///
+/// Argument of [Connection::put_object_acl()], returns [PutObjectAclResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObjectAcl {
@@ -14198,6 +14761,10 @@ impl crate::Request for PutObjectAcl {
         Ok(())
     }
 }
+
+/// 获取存储空间（Bucket）下某个文件（Object）的访问权限（ACL）。
+///
+/// Argument of [Connection::get_object_acl()], returns [GetObjectAclResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectAcl {
@@ -14261,6 +14828,10 @@ impl crate::Request for GetObjectAcl {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为OSS的目标文件（TargetObject）创建软链接（Symlink）。
+///
+/// Argument of [Connection::put_symlink()], returns [PutSymlinkResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutSymlink {
@@ -14400,6 +14971,10 @@ impl crate::Request for PutSymlink {
         Ok(())
     }
 }
+
+/// 获取OSS目标文件（TargetObject）的软链接。
+///
+/// Argument of [Connection::get_symlink()], returns [GetSymlinkResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetSymlink {
@@ -14482,6 +15057,10 @@ impl crate::Request for GetSymlink {
         Ok(())
     }
 }
+
+/// 设置或更新对象（Object）的标签（Tagging）信息。
+///
+/// Argument of [Connection::put_object_tagging()], returns [PutObjectTaggingResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutObjectTagging {
@@ -14565,6 +15144,10 @@ impl crate::Request for PutObjectTagging {
         Ok(())
     }
 }
+
+/// 获取对象（Object）的标签（Tagging）信息。
+///
+/// Argument of [Connection::get_object_tagging()], returns [GetObjectTaggingResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetObjectTagging {
@@ -14628,6 +15211,10 @@ impl crate::Request for GetObjectTagging {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除指定对象（Object）的标签（Tagging）信息。
+///
+/// Argument of [Connection::delete_object_tagging()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteObjectTagging {
@@ -14698,6 +15285,10 @@ impl crate::Request for DeleteObjectTagging {
         crate::Form(self)
     }
 }
+
+/// 通过RTMP协议上传音视频数据前，必须先创建一个LiveChannel。
+///
+/// Argument of [Connection::put_live_channel()], returns [PutLiveChannelResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutLiveChannel {
@@ -14759,6 +15350,10 @@ impl crate::Request for PutLiveChannel {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 列举指定的LiveChannel。
+///
+/// Argument of [Connection::list_live_channel()], returns [ListLiveChannelResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListLiveChannel {
@@ -14831,6 +15426,10 @@ impl crate::Request for ListLiveChannel {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 删除指定的LiveChannel。
+///
+/// Argument of [Connection::delete_live_channel()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteLiveChannel {
@@ -14893,6 +15492,10 @@ impl crate::Request for DeleteLiveChannel {
         crate::Form(self)
     }
 }
+
+/// 切换LiveChannel启用（enabled）和禁用（disabled）两种状态。
+///
+/// Argument of [Connection::put_live_channel_status()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutLiveChannelStatus {
@@ -14966,6 +15569,10 @@ impl crate::Request for PutLiveChannelStatus {
         crate::Form(self)
     }
 }
+
+/// 获取指定LiveChannel的配置信息。
+///
+/// Argument of [Connection::get_live_channel_info()], returns [GetLiveChannelInfoResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelInfo {
@@ -15021,6 +15628,10 @@ impl crate::Request for GetLiveChannelInfo {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取指定LiveChannel的推流记录。
+///
+/// Argument of [Connection::get_live_channel_history()], returns [GetLiveChannelHistoryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelHistory {
@@ -15077,6 +15688,10 @@ impl crate::Request for GetLiveChannelHistory {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 获取指定LiveChannel的推流状态信息。
+///
+/// Argument of [Connection::get_live_channel_stat()], returns [GetLiveChannelStatResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetLiveChannelStat {
@@ -15133,6 +15748,10 @@ impl crate::Request for GetLiveChannelStat {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 查看指定LiveChannel在指定时间段内推流生成的播放列表。
+///
+/// Argument of [Connection::get_vod_playlist()], returns [Vec<u8>].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetVodPlaylist {
@@ -15202,6 +15821,10 @@ impl crate::Request for GetVodPlaylist {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 为指定的LiveChannel生成一个点播用的播放列表。
+///
+/// Argument of [Connection::post_vod_playlist()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PostVodPlaylist {
@@ -15286,6 +15909,10 @@ impl crate::Request for PostVodPlaylist {
         crate::Form(self)
     }
 }
+
+/// 创建图片处理通道
+///
+/// Argument of [Connection::put_channel()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutChannel {
@@ -15339,6 +15966,10 @@ impl crate::Request for PutChannel {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 修改存储空间哈希算法配置
+///
+/// Argument of [Connection::put_bucket_hash()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketHash {
@@ -15392,6 +16023,10 @@ impl crate::Request for PutBucketHash {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 设置存储空间的用户自定义响应头配置
+///
+/// Argument of [Connection::put_bucket_common_header()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutBucketCommonHeader {
@@ -15445,6 +16080,10 @@ impl crate::Request for PutBucketCommonHeader {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 删除存储空间的用户自定义响应头配置
+///
+/// Argument of [Connection::delete_bucket_common_header()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBucketCommonHeader {
@@ -15499,6 +16138,10 @@ impl crate::Request for DeleteBucketCommonHeader {
         crate::Form(self)
     }
 }
+
+/// 修改存储空间媒体处理配置
+///
+/// Argument of [Connection::put_process_configuration()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutProcessConfiguration {
@@ -15552,6 +16195,10 @@ impl crate::Request for PutProcessConfiguration {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 获取存储空间事件通知配置
+///
+/// Argument of [Connection::get_bucket_event_notification()], returns [EventNotificationConfiguration].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetBucketEventNotification {
@@ -15599,6 +16246,10 @@ impl crate::Request for GetBucketEventNotification {
 
     fn to_body(self) -> Self::Body {}
 }
+
+/// 配置OSS加速器异步预热规则
+///
+/// Argument of [Connection::put_data_lake_cache_prefetch_job()], returns [PutDataLakeCachePrefetchJobResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PutDataLakeCachePrefetchJob {
@@ -15657,6 +16308,10 @@ impl crate::Request for PutDataLakeCachePrefetchJob {
         crate::XmlBody(self.body.unwrap_or_default())
     }
 }
+
+/// 启动OSS加速器异步预热任务
+///
+/// Argument of [Connection::start_data_lake_cache_prefetch_job()], returns [()].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartDataLakeCachePrefetchJob {
@@ -15717,6 +16372,10 @@ impl crate::Request for StartDataLakeCachePrefetchJob {
         crate::Form(self)
     }
 }
+
+/// 列举数据湖元数据转换任务
+///
+/// Argument of [Connection::list_data_lake_storage_transfer_job()], returns [DataLakeStorageTransferJobs].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListDataLakeStorageTransferJob {
@@ -16703,29 +17362,36 @@ pub struct CreateBucketConfiguration {
 /// oss cache异步预热规则
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CreateDataLakeCachePrefetchJob {
+    /// 需要预热的文件前缀列表
     #[serde(rename = "Includes")]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub includes: Vec<String>,
+    /// 配置标签
     #[serde(rename = "Tag")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
+    /// 不需要预热的文件前缀列表
     #[serde(rename = "Excludes")]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub excludes: Vec<String>,
 }
 
+/// 待转换的文件前缀列表
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRulePrefixFilterIncludes {
+    /// 待转换的文件前缀列表
     #[serde(rename = "Include")]
     #[serde(default)]
     #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub include: Vec<String>,
 }
 
+/// 文件前缀过滤规则
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRulePrefixFilter {
+    /// 待转换的文件前缀列表
     #[serde(rename = "Includes")]
     pub includes: Option<DataLakeStorageTransferJobRulePrefixFilterIncludes>,
 }
@@ -16734,21 +17400,28 @@ pub struct DataLakeStorageTransferJobRulePrefixFilter {
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobRule {
+    /// 文件前缀过滤规则
     #[serde(rename = "PrefixFilter")]
     pub prefix_filter: Option<DataLakeStorageTransferJobRulePrefixFilter>,
+    /// 规则标签
     #[serde(rename = "Tag")]
     pub tag: Option<String>,
+    /// 授权角色
     #[serde(rename = "ExecutorRoleId")]
     pub executor_role_id: Option<String>,
+    /// 日志存放路径
     #[serde(rename = "LogBaseDir")]
     pub log_base_dir: Option<String>,
+    /// 是否开启校验
     #[serde(rename = "NeedVerify")]
     pub need_verify: Option<bool>,
 }
 
+/// 任务进度
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobProgressInfo {
+    /// 任务进度百分比
     #[serde(rename = "Percent")]
     pub percent: Option<i64>,
 }
@@ -16757,22 +17430,31 @@ pub struct DataLakeStorageTransferJobProgressInfo {
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJob {
+    /// 任务ID
     #[serde(rename = "Id")]
     pub id: Option<String>,
+    /// 上一次触发的历史任务ID
     #[serde(rename = "HistoryId")]
     pub history_id: Option<String>,
+    /// Bucket名称
     #[serde(rename = "Bucket")]
     pub bucket: Option<String>,
+    /// 复制任务类型
     #[serde(rename = "Type")]
     pub r#type: Option<i32>,
+    /// 复制任务状态
     #[serde(rename = "Status")]
     pub status: Option<String>,
+    /// 创建时间
     #[serde(rename = "CreateTime")]
     pub create_time: Option<i64>,
+    /// 最后修改时间
     #[serde(rename = "LastModifyTime")]
     pub last_modify_time: Option<i64>,
+    /// 数据湖元数据转换规则
     #[serde(rename = "Rule")]
     pub rule: Option<DataLakeStorageTransferJobRule>,
+    /// 任务进度
     #[serde(rename = "ProgressInfo")]
     pub progress_info: Option<DataLakeStorageTransferJobProgressInfo>,
 }
@@ -16781,12 +17463,16 @@ pub struct DataLakeStorageTransferJob {
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct DataLakeStorageTransferJobs {
+    /// 结果是否有截断
     #[serde(rename = "Truncated")]
     pub truncated: Option<String>,
+    /// 结果的下一个Bucket标记
     #[serde(rename = "NextMarkerBucket")]
     pub next_marker_bucket: Option<String>,
+    /// 结果的下一个任务ID
     #[serde(rename = "NextMarkerJobId")]
     pub next_marker_job_id: Option<String>,
+    /// 数据湖元数据转换任务列表
     #[serde(rename = "DataLakeStorageTransferJob")]
     #[serde(default)]
     #[serde(deserialize_with = "crate::deserialize_default_on_null")]
@@ -17022,32 +17708,40 @@ pub struct HttpsConfiguration {
     pub cipher_suite: Option<HttpsConfigurationCipherSuite>,
 }
 
+/// 增量清单导出周期信息的容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct IncrementInventorySchedule {
+    /// 描述增量清单文件导出的周期，单位为秒，目前固定为10分钟。
     #[serde(rename = "Frequency")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub frequency: Option<i64>,
 }
 
+/// 增量清单文件属性的配置容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct IncrementalInventoryOptionalFields {
+    /// 增量清单导出字段列表
     #[serde(rename = "Field")]
     #[serde(default)]
     #[serde(deserialize_with = "crate::deserialize_default_on_null")]
     pub field: Vec<String>,
 }
 
+/// 增量清单的配置容器
 #[derive(Debug, Clone, Default, serde::Serialize, serde::Deserialize)]
 #[serde(default)]
 pub struct IncrementalInventory {
+    /// 增量清单是否启用
     #[serde(rename = "IsEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_enabled: Option<bool>,
+    /// 增量清单导出周期的容器
     #[serde(rename = "Schedule")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule: Option<IncrementInventorySchedule>,
+    /// 增量清单文件属性的配置容器
     #[serde(rename = "OptionalFields")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub optional_fields: Option<IncrementalInventoryOptionalFields>,
@@ -18166,29 +18860,38 @@ pub struct MetaQueryFileAddresses {
     pub address: Option<MetaQueryRespAddress>,
 }
 
+/// 视频文件的描述信息。
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsightsVideo {
+    /// 简短描述信息。
     #[serde(rename = "Caption")]
     pub caption: Option<String>,
+    /// 详细描述信息。
     #[serde(rename = "Description")]
     pub description: Option<String>,
 }
 
+/// 图片文件描述信息
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsightsImage {
+    /// 简短描述信息
     #[serde(rename = "Caption")]
     pub caption: Option<String>,
+    /// 详细描述信息
     #[serde(rename = "Description")]
     pub description: Option<String>,
 }
 
+/// 视频与图片的描述信息。
 #[derive(Debug, Clone, Default, serde::Deserialize)]
 #[serde(default)]
 pub struct MetaQueryRespFileInsights {
+    /// 保存视频文件描述信息的容器。
     #[serde(rename = "Video")]
     pub video: Option<MetaQueryRespFileInsightsVideo>,
+    /// 保存图片文件描述信息的容器。
     #[serde(rename = "Image")]
     pub image: Option<MetaQueryRespFileInsightsImage>,
 }
@@ -18331,8 +19034,10 @@ pub struct MetaQueryFile {
     pub insights: Option<MetaQueryRespFileInsights>,
 }
 
+/// 过滤条件的容器，支持逻辑运算 AND 和 OR 以及比较运算符。  每个Filter表达式之间为 OR 关系。  单个Filter表达式中多个条件之间使用英文逗号（,）分隔，表示 AND 关系。
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequestFilters {
+    /// 过滤条件表达式，示例值表示：筛选出文件大小大于 1024 字节且修改时间晚于2025-06-03T09:20:47.999Z的文件。
     #[serde(rename = "Filter")]
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub filter: Vec<String>,
@@ -18341,6 +19046,7 @@ pub struct MetaQueryOpenRequestFilters {
 /// 为开启元数据管理功能的请求体
 #[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct MetaQueryOpenRequest {
+    /// 过滤条件的容器，支持逻辑运算 AND 和 OR 以及比较运算符。  每个Filter表达式之间为 OR 关系。  单个Filter表达式中多个条件之间使用英文逗号（,）分隔，表示 AND 关系。
     #[serde(rename = "Filters")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<MetaQueryOpenRequestFilters>,
@@ -20719,6 +21425,8 @@ impl<'a> From<&'a ReplicationRuleHistoricalObjectReplication> for crate::QueryVa
 /// - 您也可以通过设置prefix、marker或者max-keys参数列举满足指定条件的存储空间。
 /// - 要列举存储空间，您必须有oss:GetService (ListBuckets)权限。具体操作，请参见[为RAM用户授权自定义的权限策略](https://help.aliyun.com/document_detail/199058.htm?spm=a2c4g.11186623.0.0.48be7590hCA8LI#section-ucu-jv0-zip)。
 /// - 调用接口时，如果所有Bucket已返回，则返回参数的XML中不包含Prefix、Marker、MaxKeys、IsTruncated和NextMarker响应元素。
+///
+/// Return value of [Connection::list_buckets()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListBucketsResponse {
     #[serde(flatten)]
@@ -20748,6 +21456,8 @@ pub struct ListBucketsResponse {
     pub buckets: Option<ResponseBuckets>,
 }
 /// 只支持在二级域名（例如oss-cn-hangzhou.aliyuncs.com）上调用DescribeRegions接口。
+///
+/// Return value of [Connection::describe_regions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRegionsResponse {
     #[serde(flatten)]
@@ -20760,6 +21470,8 @@ pub struct DescribeRegionsResponse {
 /// - GetBucket (ListObjects)接口已修订为GetBucketV2 (ListObjectsV2)。建议您在开发应用程序时使用较新的版本GetBucketV2 (ListObjectsV2)。为保证向后兼容性，OSS继续支持GetBucket (ListObjects)。有关GetBucketV2 (ListObjectsV2)的更多信息，请参见[GetBucketV2 (ListObjectsV2)](~~187544~~)。
 ///
 /// - 执行GetBucket (ListObjects)请求时不会返回Object中自定义的元信息。
+///
+/// Return value of [Connection::list_objects()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListObjectsResponse {
     #[serde(flatten)]
@@ -20804,6 +21516,8 @@ pub struct ListObjectsResponse {
     pub common_prefixes: Vec<CommonPrefix>,
 }
 /// 执行GetBucketV2 (ListObjectsV2)请求时不会返回Object中自定义的元信息。
+///
+/// Return value of [Connection::list_objects_v2()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListObjectsV2Response {
     #[serde(flatten)]
@@ -20853,11 +21567,13 @@ pub struct ListObjectsV2Response {
     #[serde(default)]
     pub common_prefixes: Vec<CommonPrefix>,
 }
+/// Return value of [Connection::get_bucket_location()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketLocationResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
+/// Return value of [Connection::get_access_point_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetAccessPointPolicyResponse {
     #[serde(flatten)]
@@ -20868,6 +21584,8 @@ pub struct GetAccessPointPolicyResponse {
 /// - 当基于时间的合规保留策略创建24小时后未提交锁定，则该策略自动失效。当合规保留策略锁定后，您可以在Bucket中上传和读取文件（Object），但是在Object的保留时间到期之前，不允许删除Object及合规保留策略。Object的保留时间到期后，才可以删除Object。关于合规保留策略的更多信息，请参见[合规保留策略](~~90564~~)。
 ///
 /// - 同一个Bucket中，版本控制和合规保留策略无法同时配置。如果Bucket已开启版本控制功能，则无法再配置保留策略。关于版本控制功能更多信息，请参见[版本控制介绍](~~109685~~)。
+///
+/// Return value of [Connection::initiate_bucket_worm()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct InitiateBucketWormResponse {
     #[serde(flatten)]
@@ -20881,6 +21599,8 @@ pub struct InitiateBucketWormResponse {
 ///
 ///
 /// > 若指定用来获取Bucket的合规保留策略信息对应的WORM ID不存在，则返回404。
+///
+/// Return value of [Connection::get_bucket_worm()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketWormResponse {
     #[serde(flatten)]
@@ -20905,6 +21625,7 @@ pub struct GetBucketWormResponse {
     #[serde(rename = "ExpirationDate")]
     pub expiration_date: Option<String>,
 }
+/// Return value of [Connection::get_bucket_acl()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketAclResponse {
     #[serde(flatten)]
@@ -20921,6 +21642,8 @@ pub struct GetBucketAclResponse {
 /// - 如果Bucket未配置过传输加速，调用该接口时不返回加速配置状态。
 ///
 /// 有关传输加速的更多信息，请参见开发指南的[传输加速](~~131312~~)。
+///
+/// Return value of [Connection::get_bucket_transfer_acceleration()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketTransferAccelerationResponse {
     #[serde(flatten)]
@@ -20929,6 +21652,7 @@ pub struct GetBucketTransferAccelerationResponse {
     #[serde(rename = "Enabled")]
     pub enabled: Option<bool>,
 }
+/// Return value of [Connection::get_bucket_versioning()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketVersioningResponse {
     #[serde(flatten)]
@@ -20941,6 +21665,8 @@ pub struct GetBucketVersioningResponse {
 /// - GetBucketVersions(ListObjectVersions)接口返回Bucket中所有Object的所有版本。
 ///
 /// 不同Object之间按字母排序返回，同一个Object的不同版本则按从新到旧排序，与版本ID的字母序无关。
+///
+/// Return value of [Connection::list_object_versions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListObjectVersionsResponse {
     #[serde(flatten)]
@@ -21001,12 +21727,16 @@ pub struct ListObjectVersionsResponse {
 /// 某些场景下，您需要向匿名用户授予带IP限制的访问策略。例如，企业内部的机密文档，只允许在企业内部访问，不允许在其他区域访问。由于企业内部人员较多，如果针对每个人配置RAM Policy，工作量非常大。此时，您可以基于Bucket Policy设置带IP限制的访问策略，从而高效方便地进行授权。
 ///
 /// 有关Bucket Policy的配置详情及场景案例，请参见[使用Bucket Policy授权其他用户访问OSS资源](~~85111~~)。有关Policy语法，请参见[权限策略语法和结构](~~93739~~)。
+///
+/// Return value of [Connection::get_bucket_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketPolicyResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
 /// 阿里云账号默认拥有查看当前Bucket Policy是否允许公共访问的权限。如果您希望通过RAM用户或者STS的方式进行查看，您必须拥有`oss:GetBucketPolicyStatus`权限。
+///
+/// Return value of [Connection::get_bucket_policy_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketPolicyStatusResponse {
     #[serde(flatten)]
@@ -21026,6 +21756,8 @@ pub struct GetBucketPolicyStatusResponse {
 /// - 使用跨区域复制时，源Bucket与目标Bucket必须处于不同的数据中心；使用同地域复制时，源Bucket与目标Bucket必须处于相同的数据中心。
 ///
 /// 关于数据复制的更多信息，请分别参见[跨区域复制介绍](https://help.aliyun.com/document_detail/31864.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-zjp-31z-5db)和[同区域复制介绍](https://help.aliyun.com/document_detail/254865.htm?spm=a2c4g.11186623.0.0.32af6265m8tpXg#concept-2067125)。
+///
+/// Return value of [Connection::put_bucket_replication()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutBucketReplicationResponse {
     #[serde(flatten)]
@@ -21034,6 +21766,7 @@ pub struct PutBucketReplicationResponse {
     #[serde(skip)]
     pub x_oss_replication_rule_id: Option<String>,
 }
+/// Return value of [Connection::get_bucket_replication()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketReplicationResponse {
     #[serde(flatten)]
@@ -21043,6 +21776,7 @@ pub struct GetBucketReplicationResponse {
     #[serde(default)]
     pub rule: Vec<ReplicationRule>,
 }
+/// Return value of [Connection::get_bucket_replication_location()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketReplicationLocationResponse {
     #[serde(flatten)]
@@ -21060,6 +21794,7 @@ pub struct GetBucketReplicationLocationResponse {
     #[serde(rename = "LocationRTCConstraint")]
     pub location_rtc_constraint: Option<CConstraint>,
 }
+/// Return value of [Connection::get_bucket_replication_progress()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketReplicationProgressResponse {
     #[serde(flatten)]
@@ -21072,6 +21807,8 @@ pub struct GetBucketReplicationProgressResponse {
 /// - 单次请求最多可获取100条清单配置项内容。若需获取超过100条清单配置项，则需发送多次请求，并保留相应的token，作为下一次请求的参数。
 ///
 /// - 调用该请求时，请确保您有足够的权限对存储空间的清单任务进行操作。存储空间所有者默认拥有该权限，若您无该项权限，请先向存储空间所有者申请该项操作的权限。
+///
+/// Return value of [Connection::list_bucket_inventory()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListBucketInventoryResponse {
     #[serde(flatten)]
@@ -21093,6 +21830,7 @@ pub struct ListBucketInventoryResponse {
     #[serde(rename = "NextContinuationToken")]
     pub next_continuation_token: Option<String>,
 }
+/// Return value of [Connection::get_bucket_tags()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketTagsResponse {
     #[serde(flatten)]
@@ -21101,6 +21839,7 @@ pub struct GetBucketTagsResponse {
     #[serde(rename = "TagSet")]
     pub tag_set: Option<TagSet>,
 }
+/// Return value of [Connection::list_user_data_redundancy_transition()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListUserDataRedundancyTransitionResponse {
     #[serde(flatten)]
@@ -21122,6 +21861,8 @@ pub struct ListUserDataRedundancyTransitionResponse {
 }
 /// - 要列举Bucket下所有的存储冗余转换任务，您必须具有`oss:ListBucketDataRedundancyTransition`权限。具体操作，请参见[为RAM用户授权自定义的权限策略](~~199058~~)。
 /// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
+///
+/// Return value of [Connection::list_bucket_data_redundancy_transition()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
@@ -21135,6 +21876,8 @@ pub struct ListBucketDataRedundancyTransitionResponse {
 /// - Bucket的存储类型必须为标准存储、低频访问存储或归档存储，但Bucket中的文件的存储类型可以为冷归档存储和深度冷归档存储。冷归档存储和深度冷归档存储的文件转换后依然为本地冗余存储。冷归档存储和深度冷归档存储的Bucket不支持转换存储冗余类型。
 /// - 要创建存储冗余转换任务，您必须具有oss:CreateBucketDataRedundancyTransition权限。具体操作，请参见为[RAM用户授权自定义的权限策略](~~199058~~)。
 /// - 每个地域都有对应的访问域名（Endpoint）。关于地域与访问域名对应关系的更多信息，请参见[访问域名和数据中心](~~31837~~)。
+///
+/// Return value of [Connection::create_bucket_data_redundancy_transition()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateBucketDataRedundancyTransitionResponse {
     #[serde(flatten)]
@@ -21144,6 +21887,8 @@ pub struct CreateBucketDataRedundancyTransitionResponse {
     pub task_id: Option<String>,
 }
 /// 只有Bucket的拥有者及授权的RAM用户才能获取Bucket的加密规则，否则返回403错误。有关Bucket加密的更多信息，请参见**[服务器端加密](~~31871~~)**。
+///
+/// Return value of [Connection::get_bucket_encryption()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketEncryptionResponse {
     #[serde(flatten)]
@@ -21152,6 +21897,7 @@ pub struct GetBucketEncryptionResponse {
     #[serde(rename = "ApplyServerSideEncryptionByDefault")]
     pub apply_server_side_encryption_by_default: Option<ApplyServerSideEncryptionByDefault>,
 }
+/// Return value of [Connection::get_bucket_request_payment()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketRequestPaymentResponse {
     #[serde(flatten)]
@@ -21163,6 +21909,8 @@ pub struct GetBucketRequestPaymentResponse {
     pub payer: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::get_bucket_cors()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketCorsResponse {
     #[serde(flatten)]
@@ -21180,6 +21928,8 @@ pub struct GetBucketCorsResponse {
     pub response_vary: Option<bool>,
 }
 /// Options请求是由浏览器自动根据是否跨域来决定是否发送。
+///
+/// Return value of [Connection::option_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct OptionObjectResponse {
     #[serde(flatten)]
@@ -21200,6 +21950,7 @@ pub struct OptionObjectResponse {
     #[serde(skip)]
     pub access_control_max_age: Option<i64>,
 }
+/// Return value of [Connection::get_meta_query_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetMetaQueryStatusResponse {
     #[serde(flatten)]
@@ -21235,6 +21986,7 @@ pub struct GetMetaQueryStatusResponse {
     #[serde(rename = "UpdateTime")]
     pub update_time: Option<String>,
 }
+/// Return value of [Connection::list_bucket_anti_d_dos_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListBucketAntiDDosInfoResponse {
     #[serde(flatten)]
@@ -21254,6 +22006,7 @@ pub struct ListBucketAntiDDosInfoResponse {
     #[serde(default)]
     pub anti_ddos_configuration: Vec<BucketAntiDDOSInfo>,
 }
+/// Return value of [Connection::init_user_anti_d_dos_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct InitUserAntiDDosInfoResponse {
     #[serde(flatten)]
@@ -21262,6 +22015,7 @@ pub struct InitUserAntiDDosInfoResponse {
     #[serde(skip)]
     pub x_oss_defender_instance: Option<String>,
 }
+/// Return value of [Connection::get_user_anti_d_dos_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetUserAntiDDosInfoResponse {
     #[serde(flatten)]
@@ -21271,6 +22025,7 @@ pub struct GetUserAntiDDosInfoResponse {
     #[serde(default)]
     pub anti_ddos_configuration: Vec<UserAntiDDOSInfo>,
 }
+/// Return value of [Connection::get_bucket_resource_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetBucketResourceGroupResponse {
     #[serde(flatten)]
@@ -21279,6 +22034,7 @@ pub struct GetBucketResourceGroupResponse {
     #[serde(rename = "ResourceGroupId")]
     pub resource_group_id: Option<String>,
 }
+/// Return value of [Connection::list_cname()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListCnameResponse {
     #[serde(flatten)]
@@ -21294,6 +22050,7 @@ pub struct ListCnameResponse {
     #[serde(default)]
     pub cname: Vec<CnameInfo>,
 }
+/// Return value of [Connection::list_style()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListStyleResponse {
     #[serde(flatten)]
@@ -21306,6 +22063,8 @@ pub struct ListStyleResponse {
 /// - 阿里云账号默认拥有创建对象FC接入点的权限。如果您希望通过RAM用户或者STS的方式创建对象FC接入点，您必须拥有`oss:CreateAccessPointForObjectProcess`权限。
 /// - 单个阿里云账号支持创建1000个对象FC接入点。
 /// - 单个Bucket支持创建100个对象FC接入点。
+///
+/// Return value of [Connection::create_access_point_for_object_process()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateAccessPointForObjectProcessResponse {
     #[serde(flatten)]
@@ -21318,6 +22077,8 @@ pub struct CreateAccessPointForObjectProcessResponse {
     pub access_point_for_object_process_alias: Option<String>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点基础信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点基础信息，您必须拥有`oss:GetAccessPointForObjectProcess`权限。
+///
+/// Return value of [Connection::get_access_point_for_object_process()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetAccessPointForObjectProcessResponse {
     #[serde(flatten)]
@@ -21360,6 +22121,8 @@ pub struct GetAccessPointForObjectProcessResponse {
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点信息，您必须拥有`oss:ListAccessPointsForObjectProcess`权限。
+///
+/// Return value of [Connection::list_access_points_for_object_process()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListAccessPointsForObjectProcessResponse {
     #[serde(flatten)]
@@ -21381,6 +22144,8 @@ pub struct ListAccessPointsForObjectProcessResponse {
     pub access_points_for_object_process: Option<AccessPointsForObjectProcess>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点配置信息的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点配置信息，您必须拥有`oss:GetAccessPointConfigForObjectProcess`权限。
+///
+/// Return value of [Connection::get_access_point_config_for_object_process()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetAccessPointConfigForObjectProcessResponse {
     #[serde(flatten)]
@@ -21396,11 +22161,14 @@ pub struct GetAccessPointConfigForObjectProcessResponse {
     pub public_access_block_configuration: Option<PublicAccessBlockConfiguration>,
 }
 /// 阿里云账号默认拥有获取对象FC接入点权限策略配置的权限。如果您希望通过RAM用户或者STS的方式获取对象FC接入点的权限策略配置，您必须拥有`oss:GetAccessPointPolicyForObjectProcess`权限。
+///
+/// Return value of [Connection::get_access_point_policy_for_object_process()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetAccessPointPolicyForObjectProcessResponse {
     #[serde(flatten)]
     pub code_message: crate::CodeMessage,
 }
+/// Return value of [Connection::put_access_point_public_access_block()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutAccessPointPublicAccessBlockResponse {
     #[serde(flatten)]
@@ -21418,6 +22186,8 @@ pub struct PutAccessPointPublicAccessBlockResponse {
 ///
 /// - 在已开启版本控制的Bucket中，OSS会为新添加的Object自动生成唯一的版本ID，并在响应Header中通过x-oss-version-id形式返回。
 /// - 在暂停了版本控制的Bucket中，新添加的Object的版本ID为null。OSS会保证同一个Object仅有一个null的版本ID。
+///
+/// Return value of [Connection::put_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutObjectResponse {
     /// Header field from response: x-oss-hash-crc64ecma
@@ -21452,6 +22222,8 @@ pub struct PutObjectResponse {
 /// - 调用一次CopyObject接口会对源Object和目标Object所在的Bucket各增加一次Get请求次数。
 /// - 调用CopyObject接口会对目标Object所在的Bucket增加相应的存储量。
 /// - 调用CopyObject接口更改Object存储类型会涉及数据覆盖。例如低频访问IA创建后10天内被覆盖为标准存储Standard，则会产生20天的低频访问不足规定时长容量费用。关于存储费用的更多信息，请参见**[存储费用](~~173534~~)**。
+///
+/// Return value of [Connection::copy_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CopyObjectResponse {
     #[serde(flatten)]
@@ -21479,6 +22251,8 @@ pub struct CopyObjectResponse {
 ///
 /// 默认情况下，调用GetObject接口仅返回Object的当前版本。
 /// 如果在查询参数中指定Object的versionId，则返回指定的Object版本。当versionId指定为null时，则返回versionId为null的Object版本。
+///
+/// Return value of [Connection::get_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetObjectResponse {
     pub body: Vec<u8>,
@@ -21555,6 +22329,8 @@ impl crate::BinaryWithMeta for GetObjectResponse {
 /// - 通过AppendObject方式最后生成的Object大小不得超过5 GB。
 /// - 处于[合规保留策略](~~90564~~)保护期的Object不支持AppendObject操作。
 /// - AppendableObject不支持指定CMK ID进行服务端KMS加密。
+///
+/// Return value of [Connection::append_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AppendObjectResponse {
     #[serde(flatten)]
@@ -21566,6 +22342,7 @@ pub struct AppendObjectResponse {
     #[serde(skip)]
     pub x_oss_hash_crc64ecma: Option<String>,
 }
+/// Return value of [Connection::seal_append_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SealAppendObjectResponse {
     #[serde(flatten)]
@@ -21590,6 +22367,8 @@ pub struct SealAppendObjectResponse {
 ///
 /// - 指定versionId（永久删除）：
 /// 如果在指定versionId的情况下执行删除操作时，OSS会根据`params`中指定的`versionId`参数永久删除该版本。如果要删除ID为“null”的版本，请在`params`参数中添加`params['versionId'] = “null”`，OSS将“null”字符串当成“null”的versionId，从而删除versionId为“null”的Object。
+///
+/// Return value of [Connection::delete_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteObjectResponse {
     /// Header field from response: x-oss-delete-marker
@@ -21602,6 +22381,8 @@ pub struct DeleteObjectResponse {
 /// - 使用此接口不会返回文件内容。
 ///
 /// - HeadObject操作默认获取Object当前版本的元信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元信息。
+///
+/// Return value of [Connection::head_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct HeadObjectResponse {
     #[serde(flatten)]
@@ -21669,6 +22450,8 @@ pub struct HeadObjectResponse {
 ///
 /// GetObjectMeta操作默认获取Object当前版本的元数据信息。如果Object的当前版本为删除标记，则返回404 Not Found。请求参数中指定versionId则返回指定版本Object的元数据信息。
 ///
+///
+/// Return value of [Connection::get_object_meta()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetObjectMetaResponse {
     #[serde(flatten)]
@@ -21726,6 +22509,8 @@ pub struct GetObjectMetaResponse {
 /// - 对处于冷冻状态的Object执行解冻操作，会产生数据取回费用。
 /// - 解冻状态最多延长7天。在此期间不再重复收取数据取回费用。
 /// - 解冻状态结束后，Object又回到冷冻状态，再次执行解冻操作会收取数据取回费用。
+///
+/// Return value of [Connection::restore_object()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RestoreObjectResponse {
     #[serde(flatten)]
@@ -21742,6 +22527,8 @@ pub struct RestoreObjectResponse {
 /// - 初始化MultipartUpload请求，并不影响已存在的同名Object。
 ///
 /// - 该操作计算认证签名时，需要添加`?uploads`到`CanonicalizedResource`中。
+///
+/// Return value of [Connection::initiate_multipart_upload()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct InitiateMultipartUploadResponse {
     #[serde(flatten)]
@@ -21777,6 +22564,8 @@ pub struct InitiateMultipartUploadResponse {
 /// **版本控制**
 ///
 /// 在开启版本控制的情况下，调用CompleteMultipartUpload接口来完成整个文件的MultipartUpload，OSS会为整个文件生成唯一的版本ID，并在响应header中以x-oss-version-id的形式返回。
+///
+/// Return value of [Connection::complete_multipart_upload()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CompleteMultipartUploadResponse {
     #[serde(flatten)]
@@ -21827,6 +22616,8 @@ pub struct CompleteMultipartUploadResponse {
 ///
 /// 如果未指定versionId且拷贝Object的当前版本为删除标记（Delete Marker），OSS将返回404 Not Found。通过指定versionId来拷贝删除标记时，OSS将返回400 Bad Request。
 ///
+///
+/// Return value of [Connection::upload_part_copy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UploadPartCopyResponse {
     #[serde(flatten)]
@@ -21842,6 +22633,8 @@ pub struct UploadPartCopyResponse {
     pub x_oss_copy_source_version_id: Option<String>,
 }
 /// 调用ListMultipartUploads接口列举所有执行中的Multipart Upload事件，即已经初始化但还未完成（Complete）或者还未中止（Abort）的Multipart Upload事件。
+///
+/// Return value of [Connection::list_multipart_uploads()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListMultipartUploadsResponse {
     #[serde(flatten)]
@@ -21892,6 +22685,8 @@ pub struct ListMultipartUploadsResponse {
 /// - OSS的返回结果按照Part号码升序排列。
 ///
 /// - 由于网络传输可能出错，所以不推荐使用ListParts返回结果中的Part Number和ETag值来生成已经上传成功的Part列表。
+///
+/// Return value of [Connection::list_parts()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListPartsResponse {
     #[serde(flatten)]
@@ -21944,6 +22739,8 @@ pub struct ListPartsResponse {
 /// - Object的读操作包括GetObject、HeadObject、CopyObject和UploadPartCopy中的对原Object的读；Object的写操作包括PutObject、PostObject、AppendObject、DeleteObject、DeleteMultipleObjects、CompleteMultipartUpload以及CopyObject对新Object的写。
 /// - 您还可以在进行Object的写操作时，在请求头中带上x-oss-object-acl来设置Object
 ///  ACL，效果与PutObjectACL等同。例如PutObject时在请求头中带上x-oss-object-acl可以在上传一个Object的同时设置此Object的ACL。
+///
+/// Return value of [Connection::put_object_acl()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutObjectAclResponse {
     #[serde(flatten)]
@@ -21957,6 +22754,8 @@ pub struct PutObjectAclResponse {
 /// 调用GetObjectACL接口时，默认只能获取Object当前版本的ACL。您可以通过指定versionId参数来获取指定Object版本的ACL。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
 ///
 /// >如果一个Object从未设置过ACL，则调用GetObjectACL时，返回的ObjectACL为default，表示该Object的ACL遵循Bucket ACL。即如果Bucket的访问权限是private，则该Object的访问权限也是private。
+///
+/// Return value of [Connection::get_object_acl()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetObjectAclResponse {
     #[serde(flatten)]
@@ -21980,6 +22779,8 @@ pub struct GetObjectAclResponse {
 /// 您可以通过TargetObject创建的软链接指向TargetObject的当前版本。
 /// 软链接本身也可以有多个版本，每个不同的版本可以指向不同的TargetObject，版本ID由OSS自动生成，在响应Header中返回x-oss-version-id。
 ///
+///
+/// Return value of [Connection::put_symlink()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutSymlinkResponse {
     #[serde(flatten)]
@@ -21992,6 +22793,8 @@ pub struct PutSymlinkResponse {
 ///
 /// GetSymlink接口默认获取软链接的当前版本。允许通过指定versionId来获取指定版本。如果软链接的当前版本为删除标记，OSS会返回404 Not Found，在响应header中返回x-oss-delete-marker = true以及版本ID : x-oss-version-id。删除标记没有关联数据，因此也没有软链接指向的TargetObject。
 ///
+///
+/// Return value of [Connection::get_symlink()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetSymlinkResponse {
     #[serde(flatten)]
@@ -22019,6 +22822,8 @@ pub struct GetSymlinkResponse {
 /// **版本控制**
 ///
 /// 调用PutObjectTagging接口时，默认设置Object当前版本的标签信息。您可以通过指定versionId参数来设置指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
+///
+/// Return value of [Connection::put_object_tagging()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutObjectTaggingResponse {
     #[serde(flatten)]
@@ -22031,6 +22836,8 @@ pub struct PutObjectTaggingResponse {
 ///
 /// 调用GetObjectTagging接口时，默认只能获取Object当前版本的标签信息。您可以通过指定versionId参数来获取指定Object版本的标签信息。如果Object的对应版本为删除标记（Delete Marker），则OSS将返回404 Not Found。
 ///
+///
+/// Return value of [Connection::get_object_tagging()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetObjectTaggingResponse {
     #[serde(flatten)]
@@ -22041,6 +22848,8 @@ pub struct GetObjectTaggingResponse {
 }
 /// 通过RTMP协议上传音视频数据前，必须先调用该接口创建一个LiveChannel。调用该接口会返回RTMP推流地址，以及对应的播放地址。
 /// <br>您可以使用返回的地址进行推流、播放，您还可以根据该LiveChannel的名称来发起相关的操作，如查询推流状态、查询推流记录、禁止推流等。
+///
+/// Return value of [Connection::put_live_channel()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutLiveChannelResponse {
     #[serde(flatten)]
@@ -22052,6 +22861,7 @@ pub struct PutLiveChannelResponse {
     #[serde(rename = "PlayUrls")]
     pub play_urls: Option<LiveChannelPlayUrls>,
 }
+/// Return value of [Connection::list_live_channel()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListLiveChannelResponse {
     #[serde(flatten)]
@@ -22080,6 +22890,7 @@ pub struct ListLiveChannelResponse {
     #[serde(default)]
     pub live_channel: Vec<LiveChannel>,
 }
+/// Return value of [Connection::get_live_channel_info()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetLiveChannelInfoResponse {
     #[serde(flatten)]
@@ -22099,6 +22910,8 @@ pub struct GetLiveChannelInfoResponse {
     pub target: Option<LiveChannelTarget>,
 }
 /// 使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
+///
+/// Return value of [Connection::get_live_channel_history()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetLiveChannelHistoryResponse {
     #[serde(flatten)]
@@ -22108,6 +22921,7 @@ pub struct GetLiveChannelHistoryResponse {
     #[serde(default)]
     pub live_record: Vec<LiveRecord>,
 }
+/// Return value of [Connection::get_live_channel_stat()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetLiveChannelStatResponse {
     #[serde(flatten)]
@@ -22132,6 +22946,7 @@ pub struct GetLiveChannelStatResponse {
     #[serde(rename = "Audio")]
     pub audio: Option<LiveChannelAudio>,
 }
+/// Return value of [Connection::put_data_lake_cache_prefetch_job()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PutDataLakeCachePrefetchJobResponse {
     #[serde(flatten)]

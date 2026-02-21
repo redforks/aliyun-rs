@@ -15265,7 +15265,9 @@ impl Connection {
     }
 }
 
-///  
+/// 根据计费方式、资源类型等参数查询地域信息列表。
+///
+/// Argument of [Connection::describe_regions()], returns [DescribeRegionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRegions {
@@ -15357,7 +15359,9 @@ impl crate::Request for DescribeRegions {
     }
 }
 
-///  
+/// 根据地域ID、计费方式等参数查询可用区信息列表。
+///
+/// Argument of [Connection::describe_zones()], returns [DescribeZonesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeZones {
@@ -15463,7 +15467,9 @@ impl crate::Request for DescribeZones {
     }
 }
 
-///  
+/// 查询指定可用区的资源库存状态。该接口主要用于在创建实例（RunInstances）或修改实例规格（ModifyInstanceSpec）前，确认目标资源（如实例规格、系统盘类型）在特定可用区是否库存充足。
+///
+/// Argument of [Connection::describe_available_resource()], returns [DescribeAvailableResourceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAvailableResource {
@@ -15711,7 +15717,9 @@ impl crate::Request for DescribeAvailableResource {
     }
 }
 
-///  
+/// 查询您在一个阿里云地域下能创建的ECS资源配额。包括您能创建的安全组数量、弹性网卡数量、按量付费vCPU核数、抢占式实例vCPU核数、按量付费云盘总容量配额、专用宿主机数量、网络类型以及账号是否已完成实名认证。
+///
+/// Argument of [Connection::describe_account_attributes()], returns [DescribeAccountAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAccountAttributes {
@@ -15795,7 +15803,9 @@ impl crate::Request for DescribeAccountAttributes {
     }
 }
 
-///  
+/// 变更实例规格或系统盘类型之前，查询某一可用区下实例规格或系统盘的库存情况。
+///
+/// Argument of [Connection::describe_resources_modification()], returns [DescribeResourcesModificationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeResourcesModification {
@@ -15951,7 +15961,9 @@ impl crate::Request for DescribeResourcesModification {
     }
 }
 
-///  
+/// （Beta）调用DescribeRecommendInstanceType根据一个指定的实例规格，查找一个或多个备选的实例规格。针对已经或者即将停售的实例规格，DescribeRecommendInstanceType会罗列出作为替补的所有实例规格。
+///
+/// Argument of [Connection::describe_recommend_instance_type()], returns [DescribeRecommendInstanceTypeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRecommendInstanceType {
@@ -16181,7 +16193,9 @@ impl crate::Request for DescribeRecommendInstanceType {
     }
 }
 
-///  
+/// 本接口用于查询指定资源的最新价格，支持根据资源类型查询ECS实例、云盘、专有宿主机、弹性保障服务、容量预定服务的最新价格，包括活动规则、价格、折扣等信息。
+///
+/// Argument of [Connection::describe_price()], returns [DescribePriceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePrice {
@@ -16752,7 +16766,9 @@ impl crate::Request for DescribePrice {
     }
 }
 
-///  
+/// 查询云服务器ECS资源的续费价格。仅支持查询包年包月资源的续费价格。
+///
+/// Argument of [Connection::describe_renewal_price()], returns [DescribeRenewalPriceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRenewalPrice {
@@ -16854,7 +16870,9 @@ impl crate::Request for DescribeRenewalPrice {
     }
 }
 
-///  
+/// 查询未到期的包年包月ECS实例升配时目标实例规格的价格信息、新增包年包月数据盘的价格信息。
+///
+/// Argument of [Connection::describe_instance_modification_price()], returns [DescribeInstanceModificationPriceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceModificationPrice {
@@ -16938,6 +16956,10 @@ impl crate::Request for DescribeInstanceModificationPrice {
         crate::Form(self)
     }
 }
+
+/// 本接口用于批量创建ECS实例，支持自动启动、分配公网IP及设置自动释放时间。
+///
+/// Argument of [Connection::run_instances()], returns [RunInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RunInstances {
@@ -18025,7 +18047,9 @@ impl crate::Request for RunInstances {
     }
 }
 
-///  
+/// 本接口是阿里云 ECS 中用于创建实例的接口，支持创建一台包年包月或按量付费的 ECS 实例。您可通过此接口，依据自身需求灵活配置各类参数，实现实例的个性化创建。
+///
+/// Argument of [Connection::create_instance()], returns [CreateInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateInstance {
@@ -18746,7 +18770,9 @@ impl crate::Request for CreateInstance {
     }
 }
 
-///  
+/// 本接口用于启动一台ECS实例，您可以通过指定实例ID以及按需设置 InitLocalDisk 等参数启动实例。
+///
+/// Argument of [Connection::start_instance()], returns [StartInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartInstance {
@@ -18822,7 +18848,9 @@ impl crate::Request for StartInstance {
     }
 }
 
-///  
+/// 本接口用于批量启动 ECS 实例，支持通过设置参数来选择不同的批量操作模式，为您提供灵活的启动方式。
+///
+/// Argument of [Connection::start_instances()], returns [StartInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartInstances {
@@ -18904,7 +18932,9 @@ impl crate::Request for StartInstances {
     }
 }
 
-///  
+/// 本接口用于停止一台ECS实例，支持选择不同的停机方式、停机模式以及批量操作模式停止实例。
+///
+/// Argument of [Connection::stop_instance()], returns [StopInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StopInstance {
@@ -19017,7 +19047,9 @@ impl crate::Request for StopInstance {
     }
 }
 
-///  
+/// 本接口用于停止一台或多台 ECS 实例，支持选择不同的停机方式、停机模式以及批量操作模式停止实例。
+///
+/// Argument of [Connection::stop_instances()], returns [StopInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StopInstances {
@@ -19135,7 +19167,9 @@ impl crate::Request for StopInstances {
     }
 }
 
-///  
+/// 本接口用于重启一台ECS实例。
+///
+/// Argument of [Connection::reboot_instance()], returns [RebootInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RebootInstance {
@@ -19210,7 +19244,9 @@ impl crate::Request for RebootInstance {
     }
 }
 
-///  
+/// 本接口用于重启一台或多台ECS实例，支持您通过参数来选择是否强制重启和设置不同的批量操作模式。
+///
+/// Argument of [Connection::reboot_instances()], returns [RebootInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RebootInstances {
@@ -19306,7 +19342,9 @@ impl crate::Request for RebootInstances {
     }
 }
 
-///  
+/// 删除或者释放一台指定的ECS实例。
+///
+/// Argument of [Connection::delete_instance()], returns [DeleteInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteInstance {
@@ -19406,7 +19444,9 @@ impl crate::Request for DeleteInstance {
     }
 }
 
-///  
+/// 本接口用于批量删除或者释放按量付费实例或者到期的包年包月实例，支持通过参数设置决定云盘是否释放或转换为按量付费保留。
+///
+/// Argument of [Connection::delete_instances()], returns [DeleteInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteInstances {
@@ -19521,7 +19561,9 @@ impl crate::Request for DeleteInstances {
     }
 }
 
-///  
+/// 本接口主要用于查询一台或多台指定ECS实例的状态信息，同时支持查询指定条件下的实例列表。
+///
+/// Argument of [Connection::describe_instance_status()], returns [DescribeInstanceStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceStatus {
@@ -19618,6 +19660,10 @@ impl crate::Request for DescribeInstanceStatus {
         crate::Form(self)
     }
 }
+
+/// 本接口支持根据不同请求条件查询实例列表，并关联查询实例的详细信息。
+///
+/// Argument of [Connection::describe_instances()], returns [DescribeInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstances {
@@ -20069,7 +20115,9 @@ impl crate::Request for DescribeInstances {
     }
 }
 
-///  
+/// 本接口用于查询阿里云 ECS提供的实例规格族列表。通过该接口获取不同系列的实例规格族信息，从而更好地帮助您了解可用的实例规格资源，为您选择合适的实例规格创建 ECS 实例提供参考。
+///
+/// Argument of [Connection::describe_instance_type_families()], returns [DescribeInstanceTypeFamiliesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceTypeFamilies {
@@ -20136,6 +20184,10 @@ impl crate::Request for DescribeInstanceTypeFamilies {
         crate::Form(self)
     }
 }
+
+/// 本接口主要用于查询云服务器ECS提供的所有实例规格的信息列表并关联获取实例规格的详细信息，也可根据特定条件查询指定实例规格的信息，帮助您了解不同实例规格的配置和性能，以便选择适合自己业务需求的实例。
+///
+/// Argument of [Connection::describe_instance_types()], returns [DescribeInstanceTypesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceTypes {
@@ -20614,6 +20666,10 @@ impl crate::Request for DescribeInstanceTypes {
         crate::Form(self)
     }
 }
+
+/// 本接口用于查询一台指定ECS实例的属性信息。
+///
+/// Argument of [Connection::describe_instance_attribute()], returns [DescribeInstanceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceAttribute {
@@ -20661,7 +20717,9 @@ impl crate::Request for DescribeInstanceAttribute {
     }
 }
 
-///  
+/// 本接口用于修改一台ECS实例的部分属性信息，支持修改密码、实例名称、主机名、所属安全组、实例的MTU以及用户自定义数据等。
+///
+/// Argument of [Connection::modify_instance_attribute()], returns [ModifyInstanceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceAttribute {
@@ -20919,6 +20977,10 @@ impl crate::Request for ModifyInstanceAttribute {
         crate::Form(self)
     }
 }
+
+/// 按需修改实例时钟选项。
+///
+/// Argument of [Connection::modify_instance_clock_options()], returns [ModifyInstanceClockOptionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceClockOptions {
@@ -21005,6 +21067,10 @@ impl crate::Request for ModifyInstanceClockOptions {
         crate::Form(self)
     }
 }
+
+/// 修改实例网络选项。
+///
+/// Argument of [Connection::modify_instance_network_options()], returns [ModifyInstanceNetworkOptionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceNetworkOptions {
@@ -21066,6 +21132,10 @@ impl crate::Request for ModifyInstanceNetworkOptions {
         crate::Form(self)
     }
 }
+
+/// 本接口用于修改ECS实例的计费方式，支持批量修改。
+///
+/// Argument of [Connection::modify_instance_charge_type()], returns [ModifyInstanceChargeTypeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceChargeType {
@@ -21227,7 +21297,9 @@ impl crate::Request for ModifyInstanceChargeType {
     }
 }
 
-///  
+/// 本接口用于修改一台按量付费ECS实例的实例规格或者公网带宽大小。
+///
+/// Argument of [Connection::modify_instance_spec()], returns [ModifyInstanceSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceSpec {
@@ -21414,7 +21486,9 @@ impl crate::Request for ModifyInstanceSpec {
     }
 }
 
-///  
+/// 本接口用于修改一台包年包月ECS实例的实例规格，支持您升级或者降低实例规格，修改后的实例规格在实例整个生命周期内生效。
+///
+/// Argument of [Connection::modify_prepay_instance_spec()], returns [ModifyPrepayInstanceSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyPrepayInstanceSpec {
@@ -21592,7 +21666,9 @@ impl crate::Request for ModifyPrepayInstanceSpec {
     }
 }
 
-///  
+/// 本接口用于修改指定按量付费实例或者抢占式实例的自动释放时间，同时支持取消自动释放功能。
+///
+/// Argument of [Connection::modify_instance_auto_release_time()], returns [ModifyInstanceAutoReleaseTimeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceAutoReleaseTime {
@@ -21664,7 +21740,9 @@ impl crate::Request for ModifyInstanceAutoReleaseTime {
     }
 }
 
-///  
+/// 本接口用于为一台或多台ECS实例授予RAM角色。
+///
+/// Argument of [Connection::attach_instance_ram_role()], returns [AttachInstanceRamRoleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AttachInstanceRamRole {
@@ -21732,7 +21810,9 @@ impl crate::Request for AttachInstanceRamRole {
     }
 }
 
-///  
+/// 本接口具备两个主要功能，支持依据实例 ID 来查询一台或多台 ECS 实例所被授予的实RAM角色，同时也允许通过实例 RAM 角色名称来查询被授予了该特定角色的实例情况。
+///
+/// Argument of [Connection::describe_instance_ram_role()], returns [DescribeInstanceRamRoleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceRamRole {
@@ -21822,7 +21902,9 @@ impl crate::Request for DescribeInstanceRamRole {
     }
 }
 
-///  
+/// 本接口用于收回一台或多台ECS实例被授予的RAM角色。
+///
+/// Argument of [Connection::detach_instance_ram_role()], returns [DetachInstanceRamRoleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DetachInstanceRamRole {
@@ -21882,7 +21964,9 @@ impl crate::Request for DetachInstanceRamRole {
     }
 }
 
-///  
+/// 本接口用于查询一台ECS实例的VNC登录地址。
+///
+/// Argument of [Connection::describe_instance_vnc_url()], returns [DescribeInstanceVncUrlResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceVncUrl {
@@ -21934,7 +22018,9 @@ impl crate::Request for DescribeInstanceVncUrl {
     }
 }
 
-///  
+/// 本接口用于修改一台ECS实例的VNC登录密码。
+///
+/// Argument of [Connection::modify_instance_vnc_passwd()], returns [ModifyInstanceVncPasswdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceVncPasswd {
@@ -21994,7 +22080,9 @@ impl crate::Request for ModifyInstanceVncPasswd {
     }
 }
 
-///  
+/// 本接口用于修改指定地域下实例内的元数据访问设置，包括是否启用元数据访问通道和访问元数据时是否启用强制加固模式等设置。
+///
+/// Argument of [Connection::modify_instance_metadata_options()], returns [ModifyInstanceMetadataOptionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceMetadataOptions {
@@ -22095,7 +22183,9 @@ impl crate::Request for ModifyInstanceMetadataOptions {
     }
 }
 
-///  
+/// 本接口用于查询一台ECS实例的自定义数据。
+///
+/// Argument of [Connection::describe_user_data()], returns [DescribeUserDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeUserData {
@@ -22147,7 +22237,9 @@ impl crate::Request for DescribeUserData {
     }
 }
 
-///  
+/// 本接口用于续费一台包年包月的 ECS 实例，支持您设置续费时长或者续费至统一到期日。
+///
+/// Argument of [Connection::renew_instance()], returns [RenewInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RenewInstance {
@@ -22251,7 +22343,9 @@ impl crate::Request for RenewInstance {
     }
 }
 
-///  
+/// 本接口用于查询一台或多台包年包月ECS实例的自动续费属性，包括是否开启自动续费、续费周期等信息。
+///
+/// Argument of [Connection::describe_instance_auto_renew_attribute()], returns [DescribeInstanceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceAutoRenewAttribute {
@@ -22347,7 +22441,9 @@ impl crate::Request for DescribeInstanceAutoRenewAttribute {
     }
 }
 
-///  
+/// 本接口用于修改一台或多台包年包月实例的自动续费属性，可以帮助您减少资源到期的维护成本。
+///
+/// Argument of [Connection::modify_instance_auto_renew_attribute()], returns [ModifyInstanceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceAutoRenewAttribute {
@@ -22482,7 +22578,9 @@ impl crate::Request for ModifyInstanceAutoRenewAttribute {
     }
 }
 
-///  
+/// 本接口用于重新启动一台已过期或欠费回收的按量付费ECS实例。
+///
+/// Argument of [Connection::re_activate_instances()], returns [ReActivateInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReActivateInstances {
@@ -22538,7 +22636,9 @@ impl crate::Request for ReActivateInstances {
     }
 }
 
-///  
+/// 本接口用于查询抢占式实例的历史价格，最多支持获取近30天内的数据，通过历史价格数据可以帮助您合理的设置抢占式实例的单台实例上限价格。
+///
+/// Argument of [Connection::describe_spot_price_history()], returns [DescribeSpotPriceHistoryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSpotPriceHistory {
@@ -22681,7 +22781,9 @@ impl crate::Request for DescribeSpotPriceHistory {
     }
 }
 
-///  
+/// 本接口用于查询指定地域下，抢占式实例近30天的平均释放率、平均折扣率等信息。
+///
+/// Argument of [Connection::describe_spot_advice()], returns [DescribeSpotAdviceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSpotAdvice {
@@ -22824,7 +22926,9 @@ impl crate::Request for DescribeSpotAdvice {
     }
 }
 
-///  
+/// 创建一份自定义镜像。后续您可以使用创建的自定义镜像创建ECS实例（RunInstances），或者更换实例的系统盘（ReplaceSystemDisk）。
+///
+/// Argument of [Connection::create_image()], returns [CreateImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateImage {
@@ -23052,7 +23156,9 @@ impl crate::Request for CreateImage {
     }
 }
 
-///  
+/// 指定ImageId、镜像被使用场景、Filter过滤等参数，查询您可以使用的镜像资源列表。
+///
+/// Argument of [Connection::describe_images()], returns [DescribeImagesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImages {
@@ -23341,6 +23447,10 @@ impl crate::Request for DescribeImages {
         crate::Form(self)
     }
 }
+
+/// 调用ModifyImageAttribute接口，并可以指定ImageId、ImageFamily等参数，修改一份自定义镜像的属性，例如镜像族系、名称、启动模式、状态以及是否支持NVMe等。
+///
+/// Argument of [Connection::modify_image_attribute()], returns [ModifyImageAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyImageAttribute {
@@ -23480,7 +23590,9 @@ impl crate::Request for ModifyImageAttribute {
     }
 }
 
-///  
+/// 调用DeleteImage接口，并可以指定参数ImageId、Force删除一份自定义镜像。
+///
+/// Argument of [Connection::delete_image()], returns [DeleteImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteImage {
@@ -23552,7 +23664,9 @@ impl crate::Request for DeleteImage {
     }
 }
 
-///  
+/// 查询指定镜像族系内最新创建的可用自定义镜像。
+///
+/// Argument of [Connection::describe_image_from_family()], returns [DescribeImageFromFamilyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImageFromFamily {
@@ -23606,7 +23720,9 @@ impl crate::Request for DescribeImageFromFamily {
     }
 }
 
-///  
+/// 查询指定镜像支持的实例规格。
+///
+/// Argument of [Connection::describe_image_support_instance_types()], returns [DescribeImageSupportInstanceTypesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImageSupportInstanceTypes {
@@ -23681,7 +23797,9 @@ impl crate::Request for DescribeImageSupportInstanceTypes {
     }
 }
 
-///  
+/// 查询一份自定义镜像已经共享的所有用户。持返回结果支分页显示，每页的信息条目默认为10条。
+///
+/// Argument of [Connection::describe_image_share_permission()], returns [DescribeImageSharePermissionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImageSharePermission {
@@ -23757,7 +23875,9 @@ impl crate::Request for DescribeImageSharePermission {
     }
 }
 
-///  
+/// 管理镜像共享权限。您可以将自己的自定义镜像共享给其他阿里云账号，也可以发布为社区镜像供他人使用。
+///
+/// Argument of [Connection::modify_image_share_permission()], returns [ModifyImageSharePermissionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyImageSharePermission {
@@ -23854,6 +23974,10 @@ impl crate::Request for ModifyImageSharePermission {
         crate::Form(self)
     }
 }
+
+/// 修改镜像共享组权限
+///
+/// Argument of [Connection::modify_image_share_group_permission()], returns [ModifyImageShareGroupPermissionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyImageShareGroupPermission {
@@ -23916,6 +24040,10 @@ impl crate::Request for ModifyImageShareGroupPermission {
         crate::Form(self)
     }
 }
+
+/// 导入一份您的本地镜像文件到云服务器ECS，作为自定义镜像出现在相应地域中。后续您可以使用导入的镜像创建ECS实例（RunInstances），或者更换实例的系统盘（ReplaceSystemDisk）。
+///
+/// Argument of [Connection::import_image()], returns [ImportImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ImportImage {
@@ -24160,7 +24288,9 @@ impl crate::Request for ImportImage {
     }
 }
 
-///  
+/// 导出一份自定义镜像到与自定义镜像同一地域的OSS Bucket里。
+///
+/// Argument of [Connection::export_image()], returns [ExportImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ExportImage {
@@ -24258,7 +24388,9 @@ impl crate::Request for ExportImage {
     }
 }
 
-///  
+/// 复制一个地域下的自定义镜像到其他地域。复制镜像可以实现跨地域部署ECS实例、跨地域复制ECS实例等目的。
+///
+/// Argument of [Connection::copy_image()], returns [CopyImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CopyImage {
@@ -24402,7 +24534,9 @@ impl crate::Request for CopyImage {
     }
 }
 
-///  
+/// 取消正在进行中的复制镜像（CopyImage）任务。
+///
+/// Argument of [Connection::cancel_copy_image()], returns [CancelCopyImageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelCopyImage {
@@ -24454,7 +24588,9 @@ impl crate::Request for CancelCopyImage {
     }
 }
 
-///  
+/// 创建一个镜像组件。镜像组件用于存储您在构建镜像时，常用的构建模板命令。
+///
+/// Argument of [Connection::create_image_component()], returns [CreateImageComponentResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateImageComponent {
@@ -24591,7 +24727,9 @@ impl crate::Request for CreateImageComponent {
     }
 }
 
-///  
+/// 查询一个或多个镜像组件的详细信息。
+///
+/// Argument of [Connection::describe_image_components()], returns [DescribeImageComponentsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImageComponents {
@@ -24735,7 +24873,9 @@ impl crate::Request for DescribeImageComponents {
     }
 }
 
-///  
+/// 调用DeleteImageComponent接口，并指定参数RegionId、ImageComponentId，删除一个镜像组件。
+///
+/// Argument of [Connection::delete_image_component()], returns [DeleteImageComponentResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteImageComponent {
@@ -24787,7 +24927,9 @@ impl crate::Request for DeleteImageComponent {
     }
 }
 
-///  
+/// 创建一个镜像模板。镜像模板可用于构建镜像。
+///
+/// Argument of [Connection::create_image_pipeline()], returns [CreateImagePipelineResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateImagePipeline {
@@ -25069,7 +25211,9 @@ impl crate::Request for CreateImagePipeline {
     }
 }
 
-///  
+/// 查询一个或多个镜像模板的详细信息。
+///
+/// Argument of [Connection::describe_image_pipelines()], returns [DescribeImagePipelinesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImagePipelines {
@@ -25169,7 +25313,9 @@ impl crate::Request for DescribeImagePipelines {
     }
 }
 
-///  
+/// 删除一个镜像模板。
+///
+/// Argument of [Connection::delete_image_pipeline()], returns [DeleteImagePipelineResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteImagePipeline {
@@ -25221,7 +25367,9 @@ impl crate::Request for DeleteImagePipeline {
     }
 }
 
-///  
+/// 通过一个镜像模板执行构建镜像的任务。
+///
+/// Argument of [Connection::start_image_pipeline_execution()], returns [StartImagePipelineExecutionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartImagePipelineExecution {
@@ -25297,7 +25445,9 @@ impl crate::Request for StartImagePipelineExecution {
     }
 }
 
-///  
+/// 调用DescribeImagePipelineExecutions查询一个镜像构建任务的详细信息。
+///
+/// Argument of [Connection::describe_image_pipeline_executions()], returns [DescribeImagePipelineExecutionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeImagePipelineExecutions {
@@ -25410,7 +25560,9 @@ impl crate::Request for DescribeImagePipelineExecutions {
     }
 }
 
-///  
+/// 取消一个镜像构建任务。
+///
+/// Argument of [Connection::cancel_image_pipeline_execution()], returns [CancelImagePipelineExecutionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelImagePipelineExecution {
@@ -25470,7 +25622,9 @@ impl crate::Request for CancelImagePipelineExecution {
     }
 }
 
-///  
+/// 创建一块按量付费或包年包月的数据盘。
+///
+/// Argument of [Connection::create_disk()], returns [CreateDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateDisk {
@@ -25790,7 +25944,9 @@ impl crate::Request for CreateDisk {
     }
 }
 
-///  
+/// 查询一块或多块已创建的块存储（包括云盘、本地盘以及弹性临时盘）信息。
+///
+/// Argument of [Connection::describe_disks()], returns [DescribeDisksResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDisks {
@@ -26188,7 +26344,9 @@ impl crate::Request for DescribeDisks {
     }
 }
 
-///  
+/// 为一台ECS实例挂载一块按数据盘或系统盘。
+///
+/// Argument of [Connection::attach_disk()], returns [AttachDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AttachDisk {
@@ -26332,7 +26490,9 @@ impl crate::Request for AttachDisk {
     }
 }
 
-///  
+/// 从一台ECS实例上卸载一块按量付费的数据盘或者系统盘。
+///
+/// Argument of [Connection::detach_disk()], returns [DetachDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DetachDisk {
@@ -26409,7 +26569,9 @@ impl crate::Request for DetachDisk {
     }
 }
 
-///  
+/// 扩容一块磁盘，支持扩容系统盘和数据盘。
+///
+/// Argument of [Connection::resize_disk()], returns [ResizeDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ResizeDisk {
@@ -26508,7 +26670,9 @@ impl crate::Request for ResizeDisk {
     }
 }
 
-///  
+/// 修改一个或多个块存储设备的名称、描述、是否随实例释放、是否随磁盘删除其自动快照、是否启用自动快照策略、是否开启性能突发功能等。
+///
+/// Argument of [Connection::modify_disk_attribute()], returns [ModifyDiskAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiskAttribute {
@@ -26653,6 +26817,10 @@ impl crate::Request for ModifyDiskAttribute {
         crate::Form(self)
     }
 }
+
+/// 将包年包月ECS实例上挂载的数据盘的计费方式在按量付费和包年包月之间进行转换。
+///
+/// Argument of [Connection::modify_disk_charge_type()], returns [ModifyDiskChargeTypeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiskChargeType {
@@ -26744,7 +26912,9 @@ impl crate::Request for ModifyDiskChargeType {
     }
 }
 
-///  
+/// 变更一块云盘类型，或者修改一块ESSD云盘的性能级别。ESSD同城冗余云盘、普通云盘、弹性临时盘和本地盘均不支持变更云盘类型。
+///
+/// Argument of [Connection::modify_disk_spec()], returns [ModifyDiskSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiskSpec {
@@ -26875,7 +27045,9 @@ impl crate::Request for ModifyDiskSpec {
     }
 }
 
-///  
+/// 通过更换ECS实例系统盘的方式更换操作系统。更换后系统盘的云盘ID将发生变化，原云盘会被释放。
+///
+/// Argument of [Connection::replace_system_disk()], returns [ReplaceSystemDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReplaceSystemDisk {
@@ -27092,7 +27264,9 @@ impl crate::Request for ReplaceSystemDisk {
     }
 }
 
-///  
+/// 使用云盘快照，将云盘回滚到之前某一特定的历史状态。
+///
+/// Argument of [Connection::reset_disk()], returns [ResetDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ResetDisk {
@@ -27157,7 +27331,9 @@ impl crate::Request for ResetDisk {
     }
 }
 
-///  
+/// 通过实例快照回滚一个或多个云盘。
+///
+/// Argument of [Connection::reset_disks()], returns [ResetDisksResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ResetDisks {
@@ -27222,7 +27398,9 @@ impl crate::Request for ResetDisks {
     }
 }
 
-///  
+/// 重新初始化一块磁盘至创建时的初始状态。
+///
+/// Argument of [Connection::re_init_disk()], returns [ReInitDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReInitDisk {
@@ -27322,6 +27500,10 @@ impl crate::Request for ReInitDisk {
         crate::Form(self)
     }
 }
+
+/// 将云盘迁入、迁出专属块存储集群，或将云盘在不同专属块存储集群之间迁移。
+///
+/// Argument of [Connection::modify_disk_deployment()], returns [ModifyDiskDeploymentResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiskDeployment {
@@ -27415,7 +27597,9 @@ impl crate::Request for ModifyDiskDeployment {
     }
 }
 
-///  
+/// 释放一块按量付费数据盘。磁盘类型包括普通云盘、高效云盘、SSD云盘和ESSD云盘。
+///
+/// Argument of [Connection::delete_disk()], returns [DeleteDiskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteDisk {
@@ -27462,6 +27646,10 @@ impl crate::Request for DeleteDisk {
         crate::Form(self)
     }
 }
+
+/// 开启指定地域块存储账号级默认加密。
+///
+/// Argument of [Connection::enable_disk_encryption_by_default()], returns [EnableDiskEncryptionByDefaultResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct EnableDiskEncryptionByDefault {
@@ -27508,6 +27696,10 @@ impl crate::Request for EnableDiskEncryptionByDefault {
         crate::Form(self)
     }
 }
+
+/// 查询指定地域块存储账号级默认加密的服务状态。
+///
+/// Argument of [Connection::describe_disk_encryption_by_default_status()], returns [DescribeDiskEncryptionByDefaultStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiskEncryptionByDefaultStatus {
@@ -27554,6 +27746,10 @@ impl crate::Request for DescribeDiskEncryptionByDefaultStatus {
         crate::Form(self)
     }
 }
+
+/// 查询块存储账号级默认加密使用的密钥。
+///
+/// Argument of [Connection::describe_disk_default_kms_key_id()], returns [DescribeDiskDefaultKMSKeyIdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiskDefaultKMSKeyId {
@@ -27600,6 +27796,10 @@ impl crate::Request for DescribeDiskDefaultKMSKeyId {
         crate::Form(self)
     }
 }
+
+/// 修改指定地域块存储账号级默认加密使用的KMS密钥ID。
+///
+/// Argument of [Connection::modify_disk_default_kms_key_id()], returns [ModifyDiskDefaultKMSKeyIdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiskDefaultKMSKeyId {
@@ -27650,6 +27850,10 @@ impl crate::Request for ModifyDiskDefaultKMSKeyId {
         crate::Form(self)
     }
 }
+
+/// 将指定地域块存储账号级默认加密使用的 KMS 密钥 ID 重置为服务密钥的接口。
+///
+/// Argument of [Connection::reset_disk_default_kms_key_id()], returns [ResetDiskDefaultKMSKeyIdResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ResetDiskDefaultKMSKeyId {
@@ -27696,6 +27900,10 @@ impl crate::Request for ResetDiskDefaultKMSKeyId {
         crate::Form(self)
     }
 }
+
+/// 关闭指定地域块存储账号级默认加密。
+///
+/// Argument of [Connection::disable_disk_encryption_by_default()], returns [DisableDiskEncryptionByDefaultResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DisableDiskEncryptionByDefault {
@@ -27742,6 +27950,10 @@ impl crate::Request for DisableDiskEncryptionByDefault {
         crate::Form(self)
     }
 }
+
+/// 开通快照服务。
+///
+/// Argument of [Connection::open_snapshot_service()], returns [OpenSnapshotServiceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct OpenSnapshotService {
@@ -27789,7 +28001,9 @@ impl crate::Request for OpenSnapshotService {
     }
 }
 
-///  
+/// 为一块云盘创建一份快照。
+///
+/// Argument of [Connection::create_snapshot()], returns [CreateSnapshotResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSnapshot {
@@ -27938,7 +28152,9 @@ impl crate::Request for CreateSnapshot {
     }
 }
 
-///  
+/// 查询云盘的快照列表信息。例如快照状态、正在创建的快照剩余完成时间、自动快照保留天数等。
+///
+/// Argument of [Connection::describe_snapshots()], returns [DescribeSnapshotsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshots {
@@ -28205,7 +28421,9 @@ impl crate::Request for DescribeSnapshots {
     }
 }
 
-///  
+/// 查询您在一个地域下的快照数量以及快照容量。
+///
+/// Argument of [Connection::describe_snapshots_usage()], returns [DescribeSnapshotsUsageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshotsUsage {
@@ -28253,7 +28471,9 @@ impl crate::Request for DescribeSnapshotsUsage {
     }
 }
 
-///  
+/// 修改一份快照的名称、描述或保留天数。
+///
+/// Argument of [Connection::modify_snapshot_attribute()], returns [ModifySnapshotAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySnapshotAttribute {
@@ -28343,6 +28563,10 @@ impl crate::Request for ModifySnapshotAttribute {
         crate::Form(self)
     }
 }
+
+/// 修改快照类型,可以通过该接口将标准快照转换为归档快照。
+///
+/// Argument of [Connection::modify_snapshot_category()], returns [ModifySnapshotCategoryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySnapshotCategory {
@@ -28414,7 +28638,9 @@ impl crate::Request for ModifySnapshotCategory {
     }
 }
 
-///  
+/// 将一份标准快照或加密快照从一个地域复制到另一个地域。
+///
+/// Argument of [Connection::copy_snapshot()], returns [CopySnapshotResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CopySnapshot {
@@ -28568,7 +28794,9 @@ impl crate::Request for CopySnapshot {
     }
 }
 
-///  
+/// 删除一份指定的快照。如果需要取消正在创建的快照，也可以调用该接口删除快照，即取消创建快照任务。
+///
+/// Argument of [Connection::delete_snapshot()], returns [DeleteSnapshotResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSnapshot {
@@ -28630,7 +28858,9 @@ impl crate::Request for DeleteSnapshot {
     }
 }
 
-///  
+/// 查询云盘快照链。快照链是一块云盘所有快照组成的关系链，一块云盘对应一条快照链。
+///
+/// Argument of [Connection::describe_snapshot_links()], returns [DescribeSnapshotLinksResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshotLinks {
@@ -28740,6 +28970,10 @@ impl crate::Request for DescribeSnapshotLinks {
         crate::Form(self)
     }
 }
+
+/// 为指定ECS实例中的云盘创建快照一致性组。快照一致性组包含一个或多个云盘对应的快照。
+///
+/// Argument of [Connection::create_snapshot_group()], returns [CreateSnapshotGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSnapshotGroup {
@@ -28897,7 +29131,9 @@ impl crate::Request for CreateSnapshotGroup {
     }
 }
 
-///  
+/// 查询一个或多个快照一致性组的信息。例如状态、所属的实例ID、快照创建进度等。
+///
+/// Argument of [Connection::describe_snapshot_groups()], returns [DescribeSnapshotGroupsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshotGroups {
@@ -29027,7 +29263,9 @@ impl crate::Request for DescribeSnapshotGroups {
     }
 }
 
-///  
+/// 修改快照一致性组的名称与描述信息。
+///
+/// Argument of [Connection::modify_snapshot_group()], returns [ModifySnapshotGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySnapshotGroup {
@@ -29095,7 +29333,9 @@ impl crate::Request for ModifySnapshotGroup {
     }
 }
 
-///  
+/// 删除快照一致性组。
+///
+/// Argument of [Connection::delete_snapshot_group()], returns [DeleteSnapshotGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSnapshotGroup {
@@ -29147,7 +29387,9 @@ impl crate::Request for DeleteSnapshotGroup {
     }
 }
 
-///  
+/// 在指定地域下创建一条自动快照策略。可以指定自动快照的重复周期、保留时间以及跨地域备份等策略，为系统盘或数据盘创建快照备份数据。
+///
+/// Argument of [Connection::create_auto_snapshot_policy()], returns [CreateAutoSnapshotPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAutoSnapshotPolicy {
@@ -29299,7 +29541,9 @@ impl crate::Request for CreateAutoSnapshotPolicy {
     }
 }
 
-///  
+/// 本接口用于查询指定地域下已创建的自动快照策略详细信息列表。
+///
+/// Argument of [Connection::describe_auto_snapshot_policy_ex()], returns [DescribeAutoSnapshotPolicyExResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAutoSnapshotPolicyEx {
@@ -29404,6 +29648,10 @@ impl crate::Request for DescribeAutoSnapshotPolicyEx {
         crate::Form(self)
     }
 }
+
+/// 查询自动快照策略的关联关系
+///
+/// Argument of [Connection::describe_auto_snapshot_policy_associations()], returns [DescribeAutoSnapshotPolicyAssociationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAutoSnapshotPolicyAssociations {
@@ -29489,7 +29737,9 @@ impl crate::Request for DescribeAutoSnapshotPolicyAssociations {
     }
 }
 
-///  
+/// 修改一条自动快照策略，例如，快照创建时间点、重复日期、保留时间等。
+///
+/// Argument of [Connection::modify_auto_snapshot_policy_ex()], returns [ModifyAutoSnapshotPolicyExResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyAutoSnapshotPolicyEx {
@@ -29631,7 +29881,9 @@ impl crate::Request for ModifyAutoSnapshotPolicyEx {
     }
 }
 
-///  
+/// 为一块或者多块云盘应用自动快照策略。目标云盘已经应用了自动快照策略时，调用ApplyAutoSnapshotPolicy可以更换云盘当前应用的自动快照策略。
+///
+/// Argument of [Connection::apply_auto_snapshot_policy()], returns [ApplyAutoSnapshotPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ApplyAutoSnapshotPolicy {
@@ -29694,7 +29946,9 @@ impl crate::Request for ApplyAutoSnapshotPolicy {
     }
 }
 
-///  
+/// 取消一块或者多块云盘的自动快照策略。
+///
+/// Argument of [Connection::cancel_auto_snapshot_policy()], returns [CancelAutoSnapshotPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelAutoSnapshotPolicy {
@@ -29757,7 +30011,9 @@ impl crate::Request for CancelAutoSnapshotPolicy {
     }
 }
 
-///  
+/// 删除一条自动快照策略。如果目标自动快照策略已经被应用到磁盘上，删除自动快照策略后，这些磁盘不再执行该策略。
+///
+/// Argument of [Connection::delete_auto_snapshot_policy()], returns [DeleteAutoSnapshotPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAutoSnapshotPolicy {
@@ -29812,7 +30068,9 @@ impl crate::Request for DeleteAutoSnapshotPolicy {
     }
 }
 
-///  
+/// 调用DescribeSnapshotPackage查询您在一个阿里云地域下已经购买的OSS存储包。存储包可以用于抵扣标准快照存储容量，但不支持抵扣本地快照。
+///
+/// Argument of [Connection::describe_snapshot_package()], returns [DescribeSnapshotPackageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshotPackage {
@@ -29879,6 +30137,10 @@ impl crate::Request for DescribeSnapshotPackage {
         crate::Form(self)
     }
 }
+
+/// 调用DescribeBandwidthLimitation查询不同实例规格可以购买、升级或降配的公网带宽上限。
+///
+/// Argument of [Connection::describe_bandwidth_limitation()], returns [DescribeBandwidthLimitationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeBandwidthLimitation {
@@ -29983,7 +30245,9 @@ impl crate::Request for DescribeBandwidthLimitation {
     }
 }
 
-///  
+/// 修改ECS实例的带宽配置、分配公网IP、转换网络计费方式，支持升配和降配。
+///
+/// Argument of [Connection::modify_instance_network_spec()], returns [ModifyInstanceNetworkSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceNetworkSpec {
@@ -30142,7 +30406,9 @@ impl crate::Request for ModifyInstanceNetworkSpec {
     }
 }
 
-///  
+/// 为一台ECS实例分配一个公网IP地址。推荐您使用接口ModifyInstanceNetworkSpec分配公网IP。
+///
+/// Argument of [Connection::allocate_public_ip_address()], returns [AllocatePublicIpAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AllocatePublicIpAddress {
@@ -30211,7 +30477,9 @@ impl crate::Request for AllocatePublicIpAddress {
     }
 }
 
-///  
+/// 将一台专有网络VPC类型ECS实例的公网IP地址（PublicIP）转化为弹性公网IP（EIP）。
+///
+/// Argument of [Connection::convert_nat_public_ip_to_eip()], returns [ConvertNatPublicIpToEipResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ConvertNatPublicIpToEip {
@@ -30263,7 +30531,9 @@ impl crate::Request for ConvertNatPublicIpToEip {
     }
 }
 
-///  
+/// 修改一台专有网络类型ECS实例的专有网络VPC、私网IP地址、安全组或交换机。
+///
+/// Argument of [Connection::modify_instance_vpc_attribute()], returns [ModifyInstanceVpcAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceVpcAttribute {
@@ -30355,7 +30625,9 @@ impl crate::Request for ModifyInstanceVpcAttribute {
     }
 }
 
-///  
+/// 查询一台或多台与专有网络VPC建立了连接的经典网络类型实例。
+///
+/// Argument of [Connection::describe_classic_link_instances()], returns [DescribeClassicLinkInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeClassicLinkInstances {
@@ -30439,7 +30711,9 @@ impl crate::Request for DescribeClassicLinkInstances {
     }
 }
 
-///  
+/// 调用AttachClassicLinkVpc将一台经典网络类型实例连接到专有网络VPC中，使经典网络类型实例可以和VPC中的云资源私网互通。
+///
+/// Argument of [Connection::attach_classic_link_vpc()], returns [AttachClassicLinkVpcResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AttachClassicLinkVpc {
@@ -30499,7 +30773,9 @@ impl crate::Request for AttachClassicLinkVpc {
     }
 }
 
-///  
+/// 调用DetachClassicLinkVpc取消一台经典网络类型ECS实例与专有网络VPC的连接（ClassicLink）。取消ClassicLink后，经典网络类型实例无法与VPC内的实例互通。
+///
+/// Argument of [Connection::detach_classic_link_vpc()], returns [DetachClassicLinkVpcResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DetachClassicLinkVpc {
@@ -30559,7 +30835,9 @@ impl crate::Request for DetachClassicLinkVpc {
     }
 }
 
-///  
+/// 创建一张弹性网卡（ENI），支持指定主私网IP地址。
+///
+/// Argument of [Connection::create_network_interface()], returns [CreateNetworkInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateNetworkInterface {
@@ -30917,7 +31195,9 @@ impl crate::Request for CreateNetworkInterface {
     }
 }
 
-///  
+/// 查询一个或多个弹性网卡（ENI）的详细信息。
+///
+/// Argument of [Connection::describe_network_interfaces()], returns [DescribeNetworkInterfacesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeNetworkInterfaces {
@@ -31133,6 +31413,10 @@ impl crate::Request for DescribeNetworkInterfaces {
         crate::Form(self)
     }
 }
+
+/// 指定弹性网卡ID，查询一个网卡的详细信息。
+///
+/// Argument of [Connection::describe_network_interface_attribute()], returns [DescribeNetworkInterfaceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeNetworkInterfaceAttribute {
@@ -31209,7 +31493,9 @@ impl crate::Request for DescribeNetworkInterfaceAttribute {
     }
 }
 
-///  
+/// 修改一个弹性网卡（ENI）的网卡队列数、所属安全组、队列深度、通讯模式以及释放实例时是否保留网卡等属性。
+///
+/// Argument of [Connection::modify_network_interface_attribute()], returns [ModifyNetworkInterfaceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyNetworkInterfaceAttribute {
@@ -31393,6 +31679,10 @@ impl crate::Request for ModifyNetworkInterfaceAttribute {
         crate::Form(self)
     }
 }
+
+/// 异步删除一张弹性网卡（ENI）。
+///
+/// Argument of [Connection::delete_network_interface()], returns [DeleteNetworkInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteNetworkInterface {
@@ -31446,6 +31736,10 @@ impl crate::Request for DeleteNetworkInterface {
         crate::Form(self)
     }
 }
+
+/// 调用AttachNetworkInterface接口，并可以指定NetworkInterfaceId、InstanceId、NetworkCardIndex等参数，附加一个弹性网卡（ENI）到一台专有网络VPC类型ECS实例上。
+///
+/// Argument of [Connection::attach_network_interface()], returns [AttachNetworkInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AttachNetworkInterface {
@@ -31535,7 +31829,9 @@ impl crate::Request for AttachNetworkInterface {
     }
 }
 
-///  
+/// 从一台ECS实例上分离一张弹性网卡（ENI）。
+///
+/// Argument of [Connection::detach_network_interface()], returns [DetachNetworkInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DetachNetworkInterface {
@@ -31607,7 +31903,9 @@ impl crate::Request for DetachNetworkInterface {
     }
 }
 
-///  
+/// 为一块弹性网卡分配一个或多个辅助私网IP地址。可以为网卡指定在所属交换机（vSwitch）的空闲私网IP地址，或者通过指定私网地址数量自动分配私网IP地址。
+///
+/// Argument of [Connection::assign_private_ip_addresses()], returns [AssignPrivateIpAddressesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AssignPrivateIpAddresses {
@@ -31711,7 +32009,9 @@ impl crate::Request for AssignPrivateIpAddresses {
     }
 }
 
-///  
+/// 从一张弹性网卡删除一个或多个辅助私有IP地址。
+///
+/// Argument of [Connection::unassign_private_ip_addresses()], returns [UnassignPrivateIpAddressesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UnassignPrivateIpAddresses {
@@ -31782,7 +32082,9 @@ impl crate::Request for UnassignPrivateIpAddresses {
     }
 }
 
-///  
+/// 为弹性网卡分配一个或多个IPv6地址。
+///
+/// Argument of [Connection::assign_ipv6_addresses()], returns [AssignIpv6AddressesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AssignIpv6Addresses {
@@ -31885,7 +32187,9 @@ impl crate::Request for AssignIpv6Addresses {
     }
 }
 
-///  
+/// 回收一个或多个弹性网卡IPv6地址。
+///
+/// Argument of [Connection::unassign_ipv6_addresses()], returns [UnassignIpv6AddressesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UnassignIpv6Addresses {
@@ -31956,7 +32260,9 @@ impl crate::Request for UnassignIpv6Addresses {
     }
 }
 
-///  
+/// 调用CreateNetworkInterfacePermission为阿里云合作伙伴（认证ISV）或者个人用户授权弹性网卡权限。
+///
+/// Argument of [Connection::create_network_interface_permission()], returns [CreateNetworkInterfacePermissionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateNetworkInterfacePermission {
@@ -32026,7 +32332,9 @@ impl crate::Request for CreateNetworkInterfacePermission {
     }
 }
 
-///  
+/// 调用DescribeNetworkInterfacePermissions查询您授权给阿里云合作伙伴（认证ISV）或者个人用户的弹性网卡权限列表。
+///
+/// Argument of [Connection::describe_network_interface_permissions()], returns [DescribeNetworkInterfacePermissionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeNetworkInterfacePermissions {
@@ -32114,7 +32422,9 @@ impl crate::Request for DescribeNetworkInterfacePermissions {
     }
 }
 
-///  
+/// 创建一个前缀列表。
+///
+/// Argument of [Connection::create_prefix_list()], returns [CreatePrefixListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreatePrefixList {
@@ -32222,7 +32532,9 @@ impl crate::Request for CreatePrefixList {
     }
 }
 
-///  
+/// 调用DescribePrefixLists查询一个或多个前缀列表的信息。
+///
+/// Argument of [Connection::describe_prefix_lists()], returns [DescribePrefixListsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePrefixLists {
@@ -32335,7 +32647,9 @@ impl crate::Request for DescribePrefixLists {
     }
 }
 
-///  
+/// 查询指定前缀列表的详细信息，包含前缀列表的名称、地址族、最大条目容量以及条目的详细信息等。
+///
+/// Argument of [Connection::describe_prefix_list_attributes()], returns [DescribePrefixListAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePrefixListAttributes {
@@ -32387,7 +32701,9 @@ impl crate::Request for DescribePrefixListAttributes {
     }
 }
 
-///  
+/// 查询指定前缀列表已关联的资源信息，例如，资源ID和资源类型。
+///
+/// Argument of [Connection::describe_prefix_list_associations()], returns [DescribePrefixListAssociationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePrefixListAssociations {
@@ -32459,7 +32775,9 @@ impl crate::Request for DescribePrefixListAssociations {
     }
 }
 
-///  
+/// 修改指定前缀列表的名称、描述等，支持增加、修改和删除条目。
+///
+/// Argument of [Connection::modify_prefix_list()], returns [ModifyPrefixListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyPrefixList {
@@ -32543,7 +32861,9 @@ impl crate::Request for ModifyPrefixList {
     }
 }
 
-///  
+/// 调用DeletePrefixList删除指定的前缀列表，同时删除前缀列表中的所有条目。
+///
+/// Argument of [Connection::delete_prefix_list()], returns [DeletePrefixListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeletePrefixList {
@@ -32594,6 +32914,10 @@ impl crate::Request for DeletePrefixList {
         crate::Form(self)
     }
 }
+
+/// 创建端口列表，后续可关联资源（例如安全组）使用。
+///
+/// Argument of [Connection::create_port_range_list()], returns [CreatePortRangeListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreatePortRangeList {
@@ -32697,6 +33021,10 @@ impl crate::Request for CreatePortRangeList {
         crate::Form(self)
     }
 }
+
+/// 查询端口列表。
+///
+/// Argument of [Connection::describe_port_range_lists()], returns [DescribePortRangeListsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePortRangeLists {
@@ -32797,6 +33125,10 @@ impl crate::Request for DescribePortRangeLists {
         crate::Form(self)
     }
 }
+
+/// 查询指定端口列表的条目。
+///
+/// Argument of [Connection::describe_port_range_list_entries()], returns [DescribePortRangeListEntriesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePortRangeListEntries {
@@ -32847,6 +33179,10 @@ impl crate::Request for DescribePortRangeListEntries {
         crate::Form(self)
     }
 }
+
+/// 查询指定端口列表已关联的资源信息，例如，安全组。
+///
+/// Argument of [Connection::describe_port_range_list_associations()], returns [DescribePortRangeListAssociationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePortRangeListAssociations {
@@ -32917,6 +33253,10 @@ impl crate::Request for DescribePortRangeListAssociations {
         crate::Form(self)
     }
 }
+
+/// 修改指定端口列表的名称、条目，支持增加、修改和删除条目。
+///
+/// Argument of [Connection::modify_port_range_list()], returns [ModifyPortRangeListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyPortRangeList {
@@ -33007,6 +33347,10 @@ impl crate::Request for ModifyPortRangeList {
         crate::Form(self)
     }
 }
+
+/// 删除指定端口列表，同时端口列表下的端口列表条目都将被删除。
+///
+/// Argument of [Connection::delete_port_range_list()], returns [DeletePortRangeListResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeletePortRangeList {
@@ -33060,7 +33404,9 @@ impl crate::Request for DeletePortRangeList {
     }
 }
 
-///  
+/// 本接口用于创建一个安全组。
+///
+/// Argument of [Connection::create_security_group()], returns [CreateSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSecurityGroup {
@@ -33181,7 +33527,9 @@ impl crate::Request for CreateSecurityGroup {
     }
 }
 
-///  
+/// 本接口用于查询安全组基本信息列表，支持您通过地域、安全组ID、安全组类型等不同参数查询。
+///
+/// Argument of [Connection::describe_security_groups()], returns [DescribeSecurityGroupsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSecurityGroups {
@@ -33379,7 +33727,9 @@ impl crate::Request for DescribeSecurityGroups {
     }
 }
 
-///  
+/// 本接口主要用于查询一个指定安全组的详细信息，并关联查询安全组规则详细信息列表。
+///
+/// Argument of [Connection::describe_security_group_attribute()], returns [DescribeSecurityGroupAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSecurityGroupAttribute {
@@ -33491,7 +33841,9 @@ impl crate::Request for DescribeSecurityGroupAttribute {
     }
 }
 
-///  
+/// 本接口用于修改一个普通安全组的组内连通策略。
+///
+/// Argument of [Connection::modify_security_group_policy()], returns [ModifySecurityGroupPolicyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySecurityGroupPolicy {
@@ -33567,7 +33919,9 @@ impl crate::Request for ModifySecurityGroupPolicy {
     }
 }
 
-///  
+/// 本接口用于修改一个指定安全组的名称或者描述信息。
+///
+/// Argument of [Connection::modify_security_group_attribute()], returns [ModifySecurityGroupAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySecurityGroupAttribute {
@@ -33639,7 +33993,9 @@ impl crate::Request for ModifySecurityGroupAttribute {
     }
 }
 
-///  
+/// 本接口用于删除一个安全组，并关联删除组内所有安全组规则。
+///
+/// Argument of [Connection::delete_security_group()], returns [DeleteSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteSecurityGroup {
@@ -33691,7 +34047,9 @@ impl crate::Request for DeleteSecurityGroup {
     }
 }
 
-///  
+/// 本接口是阿里云 ECS 中用于增加一条或多条安全组入方向规则的接口。通过该接口，用户可以指定安全组入方向的访问权限，允许或者拒绝其他设备发送入方向流量到安全组内的实例，从而实现对网络访问的精细控制。
+///
+/// Argument of [Connection::authorize_security_group()], returns [AuthorizeSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AuthorizeSecurityGroup {
@@ -33879,7 +34237,9 @@ impl crate::Request for AuthorizeSecurityGroup {
     }
 }
 
-///  
+/// 本接口用于修改指定安全组中的一条入方向安全组规则。
+///
+/// Argument of [Connection::modify_security_group_rule()], returns [ModifySecurityGroupRuleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySecurityGroupRule {
@@ -34135,7 +34495,9 @@ impl crate::Request for ModifySecurityGroupRule {
     }
 }
 
-///  
+/// 本接口用于删除指定安全组内的一条或多条入方向安全组规则。
+///
+/// Argument of [Connection::revoke_security_group()], returns [RevokeSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RevokeSecurityGroup {
@@ -34330,6 +34692,10 @@ impl crate::Request for RevokeSecurityGroup {
         crate::Form(self)
     }
 }
+
+/// 本接口是阿里云 ECS 中用于增加一条或多条安全组出方向规则的接口。通过该接口，用户可以指定安全组出方向的访问权限，允许或拒绝安全组内的实例发送出方向流量到其他设备，从而实现对网络访问的精细控制。
+///
+/// Argument of [Connection::authorize_security_group_egress()], returns [AuthorizeSecurityGroupEgressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AuthorizeSecurityGroupEgress {
@@ -34517,7 +34883,9 @@ impl crate::Request for AuthorizeSecurityGroupEgress {
     }
 }
 
-///  
+/// 本接口用于修改一条出方向安全组规则。
+///
+/// Argument of [Connection::modify_security_group_egress_rule()], returns [ModifySecurityGroupEgressRuleResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifySecurityGroupEgressRule {
@@ -34768,7 +35136,9 @@ impl crate::Request for ModifySecurityGroupEgressRule {
     }
 }
 
-///  
+/// 本接口用于删除指定安全组内的一条或多条出方向安全组规则。
+///
+/// Argument of [Connection::revoke_security_group_egress()], returns [RevokeSecurityGroupEgressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RevokeSecurityGroupEgress {
@@ -34964,7 +35334,9 @@ impl crate::Request for RevokeSecurityGroupEgress {
     }
 }
 
-///  
+/// 本接口用于查询一个或多个指定安全组已经被授权的其他安全组列表信息。
+///
+/// Argument of [Connection::describe_security_group_references()], returns [DescribeSecurityGroupReferencesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSecurityGroupReferences {
@@ -35020,7 +35392,9 @@ impl crate::Request for DescribeSecurityGroupReferences {
     }
 }
 
-///  
+/// 本接口用于将一台ECS实例或一张弹性网卡加入到指定的安全组。
+///
+/// Argument of [Connection::join_security_group()], returns [JoinSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct JoinSecurityGroup {
@@ -35099,7 +35473,9 @@ impl crate::Request for JoinSecurityGroup {
     }
 }
 
-///  
+/// 本接口用于将一台ECS实例或一张弹性网卡移出指定的安全组。
+///
+/// Argument of [Connection::leave_security_group()], returns [LeaveSecurityGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct LeaveSecurityGroup {
@@ -35178,7 +35554,9 @@ impl crate::Request for LeaveSecurityGroup {
     }
 }
 
-///  
+/// 调用CreateKeyPair创建一对SSH密钥对。系统会为您保管密钥的公钥部分，并返回未加密的PEM编码的PKCS#8格式私钥。您需要自行妥善保管私钥部分。
+///
+/// Argument of [Connection::create_key_pair()], returns [CreateKeyPairResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateKeyPair {
@@ -35246,7 +35624,9 @@ impl crate::Request for CreateKeyPair {
     }
 }
 
-///  
+/// 导入由其他工具产生的RSA密钥对的公钥部分。导入密钥对后，阿里云为您保管公钥部分，您需要自行妥善保存密钥对的私钥部分。
+///
+/// Argument of [Connection::import_key_pair()], returns [ImportKeyPairResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ImportKeyPair {
@@ -35322,7 +35702,9 @@ impl crate::Request for ImportKeyPair {
     }
 }
 
-///  
+/// 调用DescribeKeyPairs查询一个或多个密钥对。
+///
+/// Argument of [Connection::describe_key_pairs()], returns [DescribeKeyPairsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeKeyPairs {
@@ -35438,7 +35820,9 @@ impl crate::Request for DescribeKeyPairs {
     }
 }
 
-///  
+/// 绑定一个SSH密钥对到一台或多台Linux实例。
+///
+/// Argument of [Connection::attach_key_pair()], returns [AttachKeyPairResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AttachKeyPair {
@@ -35498,7 +35882,9 @@ impl crate::Request for AttachKeyPair {
     }
 }
 
-///  
+/// 为一台或者多台Linux实例解绑SSH密钥对。
+///
+/// Argument of [Connection::detach_key_pair()], returns [DetachKeyPairResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DetachKeyPair {
@@ -35558,7 +35944,9 @@ impl crate::Request for DetachKeyPair {
     }
 }
 
-///  
+/// 调用DeleteKeyPairs删除一对或者多对SSH密钥对。
+///
+/// Argument of [Connection::delete_key_pairs()], returns [DeleteKeyPairsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteKeyPairs {
@@ -35612,7 +36000,9 @@ impl crate::Request for DeleteKeyPairs {
     }
 }
 
-///  
+/// 创建一个ECS实例启动模板，简称模板。实例启动模板能免除每次创建实例时都需要填入大量配置参数。
+///
+/// Argument of [Connection::create_launch_template()], returns [CreateLaunchTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateLaunchTemplate {
@@ -36303,7 +36693,9 @@ impl crate::Request for CreateLaunchTemplate {
     }
 }
 
-///  
+/// 调用DescribeLaunchTemplates接口，并可以指定TemplateTag、TemplateResourceGroupId、LaunchTemplateId等参数，查询一个或多个实例启动模板的信息，例如启动模板总个数、模板创建时间、模板最新版本号等信息集合。
+///
+/// Argument of [Connection::describe_launch_templates()], returns [DescribeLaunchTemplatesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeLaunchTemplates {
@@ -36414,7 +36806,9 @@ impl crate::Request for DescribeLaunchTemplates {
     }
 }
 
-///  
+/// 指定参数LaunchTemplateId或LaunchTemplateName删除目标地域下的一个实例启动模板。
+///
+/// Argument of [Connection::delete_launch_template()], returns [DeleteLaunchTemplateResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteLaunchTemplate {
@@ -36482,7 +36876,9 @@ impl crate::Request for DeleteLaunchTemplate {
     }
 }
 
-///  
+/// 在指定的ECS实例启动模板下创建一个新版本用于后续创建ECS实例、弹性伸缩组或弹性供应组。
+///
+/// Argument of [Connection::create_launch_template_version()], returns [CreateLaunchTemplateVersionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateLaunchTemplateVersion {
@@ -37172,7 +37568,9 @@ impl crate::Request for CreateLaunchTemplateVersion {
     }
 }
 
-///  
+/// 查询ECS实例启动模板版本的信息，例如实例启动模板总数、模板名称、模板版本号等。
+///
+/// Argument of [Connection::describe_launch_template_versions()], returns [DescribeLaunchTemplateVersionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeLaunchTemplateVersions {
@@ -37310,7 +37708,9 @@ impl crate::Request for DescribeLaunchTemplateVersions {
     }
 }
 
-///  
+/// 调用ModifyLaunchTemplateDefaultVersion接口，并通过指定DefaultVersionNumber参数，切换启动模板的默认版本。如果您在创建实例（RunInstances）时不指定模板版本号，则会采用默认版本。
+///
+/// Argument of [Connection::modify_launch_template_default_version()], returns [ModifyLaunchTemplateDefaultVersionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyLaunchTemplateDefaultVersion {
@@ -37381,7 +37781,9 @@ impl crate::Request for ModifyLaunchTemplateDefaultVersion {
     }
 }
 
-///  
+/// 指定LaunchTemplateId、DeleteVersion等参数，删除指定实例启动模板的一个或多个版本。
+///
+/// Argument of [Connection::delete_launch_template_version()], returns [DeleteLaunchTemplateVersionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteLaunchTemplateVersion {
@@ -37449,7 +37851,9 @@ impl crate::Request for DeleteLaunchTemplateVersion {
     }
 }
 
-///  
+/// 创建一个弹性供应组。
+///
+/// Argument of [Connection::create_auto_provisioning_group()], returns [CreateAutoProvisioningGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateAutoProvisioningGroup {
@@ -38184,7 +38588,9 @@ impl crate::Request for CreateAutoProvisioningGroup {
     }
 }
 
-///  
+/// 查询一个或多个弹性供应组。
+///
+/// Argument of [Connection::describe_auto_provisioning_groups()], returns [DescribeAutoProvisioningGroupsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAutoProvisioningGroups {
@@ -38296,7 +38702,9 @@ impl crate::Request for DescribeAutoProvisioningGroups {
     }
 }
 
-///  
+/// 查询一个弹性供应组内的实例信息。
+///
+/// Argument of [Connection::describe_auto_provisioning_group_instances()], returns [DescribeAutoProvisioningGroupInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAutoProvisioningGroupInstances {
@@ -38378,7 +38786,9 @@ impl crate::Request for DescribeAutoProvisioningGroupInstances {
     }
 }
 
-///  
+/// 修改一个弹性供应组的配置信息。
+///
+/// Argument of [Connection::modify_auto_provisioning_group()], returns [ModifyAutoProvisioningGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyAutoProvisioningGroup {
@@ -38519,7 +38929,9 @@ impl crate::Request for ModifyAutoProvisioningGroup {
     }
 }
 
-///  
+/// 调用DescribeAutoProvisioningGroupHistory查询弹性供应组的调度任务信息。
+///
+/// Argument of [Connection::describe_auto_provisioning_group_history()], returns [DescribeAutoProvisioningGroupHistoryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAutoProvisioningGroupHistory {
@@ -38613,7 +39025,9 @@ impl crate::Request for DescribeAutoProvisioningGroupHistory {
     }
 }
 
-///  
+/// 指定参数AutoProvisioningGroupId、TerminateInstances删除一个弹性供应组。
+///
+/// Argument of [Connection::delete_auto_provisioning_group()], returns [DeleteAutoProvisioningGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteAutoProvisioningGroup {
@@ -38684,7 +39098,9 @@ impl crate::Request for DeleteAutoProvisioningGroup {
     }
 }
 
-///  
+/// 在指定的地域内创建一个部署集。
+///
+/// Argument of [Connection::create_deployment_set()], returns [CreateDeploymentSetResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateDeploymentSet {
@@ -38813,7 +39229,9 @@ impl crate::Request for CreateDeploymentSet {
     }
 }
 
-///  
+/// 调用DescribeDeploymentSetSupportedInstanceTypeFamily，并指定RegionId、Strategy参数，查询支持各部署集策略的实例规格族。
+///
+/// Argument of [Connection::describe_deployment_set_supported_instance_type_family()], returns [DescribeDeploymentSetSupportedInstanceTypeFamilyResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDeploymentSetSupportedInstanceTypeFamily {
@@ -38878,7 +39296,9 @@ impl crate::Request for DescribeDeploymentSetSupportedInstanceTypeFamily {
     }
 }
 
-///  
+/// 查询一个或多个部署集的详细信息。
+///
+/// Argument of [Connection::describe_deployment_sets()], returns [DescribeDeploymentSetsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDeploymentSets {
@@ -39001,7 +39421,9 @@ impl crate::Request for DescribeDeploymentSets {
     }
 }
 
-///  
+/// 修改ECS实例的部署集，或迁移ECS实例至专有宿主机。支持在迁移ECS实例的同时变更实例规格。
+///
+/// Argument of [Connection::modify_instance_deployment()], returns [ModifyInstanceDeploymentResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceDeployment {
@@ -39179,7 +39601,9 @@ impl crate::Request for ModifyInstanceDeployment {
     }
 }
 
-///  
+/// 修改一个部署集的名称和描述信息。
+///
+/// Argument of [Connection::modify_deployment_set_attribute()], returns [ModifyDeploymentSetAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDeploymentSetAttribute {
@@ -39247,7 +39671,9 @@ impl crate::Request for ModifyDeploymentSetAttribute {
     }
 }
 
-///  
+/// 删除一个部署集。
+///
+/// Argument of [Connection::delete_deployment_set()], returns [DeleteDeploymentSetResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteDeploymentSet {
@@ -39299,7 +39725,9 @@ impl crate::Request for DeleteDeploymentSet {
     }
 }
 
-///  
+/// 通过指定弹性保障服务所属地域下的可用区、实例规格、购买时长、是否自动续费等参数创建弹性保障服务。
+///
+/// Argument of [Connection::create_elasticity_assurance()], returns [CreateElasticityAssuranceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateElasticityAssurance {
@@ -39531,7 +39959,9 @@ impl crate::Request for CreateElasticityAssurance {
     }
 }
 
-///  
+/// 查询弹性保障服务的详细信息。例如弹性保障服务的状态、匹配模式、生效方式、失效时间、已使用的实例的数量等。
+///
+/// Argument of [Connection::describe_elasticity_assurances()], returns [DescribeElasticityAssurancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeElasticityAssurances {
@@ -39700,7 +40130,9 @@ impl crate::Request for DescribeElasticityAssurances {
     }
 }
 
-///  
+/// 调用DescribeElasticityAssuranceInstances查询弹性保障服务已匹配的运行状态的实例列表。
+///
+/// Argument of [Connection::describe_elasticity_assurance_instances()], returns [DescribeElasticityAssuranceInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeElasticityAssuranceInstances {
@@ -39775,7 +40207,9 @@ impl crate::Request for DescribeElasticityAssuranceInstances {
     }
 }
 
-///  
+/// 修改一个弹性保障服务的部分信息，包含名称、描述、容量（暂时只支持缩容）。
+///
+/// Argument of [Connection::modify_elasticity_assurance()], returns [ModifyElasticityAssuranceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyElasticityAssurance {
@@ -39881,6 +40315,10 @@ impl crate::Request for ModifyElasticityAssurance {
         crate::Form(self)
     }
 }
+
+/// 对一个或多个已购买的弹性保障服务进行续费。
+///
+/// Argument of [Connection::renew_elasticity_assurances()], returns [RenewElasticityAssurancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RenewElasticityAssurances {
@@ -40024,6 +40462,10 @@ impl crate::Request for RenewElasticityAssurances {
         crate::Form(self)
     }
 }
+
+/// 修改一个或多个弹性保障服务的自动续费属性。
+///
+/// Argument of [Connection::modify_elasticity_assurance_auto_renew_attribute()], returns [ModifyElasticityAssuranceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyElasticityAssuranceAutoRenewAttribute {
@@ -40128,6 +40570,10 @@ impl crate::Request for ModifyElasticityAssuranceAutoRenewAttribute {
         crate::Form(self)
     }
 }
+
+/// 查询一个或多个弹性保障服务的自动续费属性。
+///
+/// Argument of [Connection::describe_elasticity_assurance_auto_renew_attribute()], returns [DescribeElasticityAssuranceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeElasticityAssuranceAutoRenewAttribute {
@@ -40186,6 +40632,10 @@ impl crate::Request for DescribeElasticityAssuranceAutoRenewAttribute {
         crate::Form(self)
     }
 }
+
+/// 本接口旨在为用户提供便捷、高效的方式来购买弹性保障服务。当用户存在资源准备完毕，处于未激活状态的弹性保障服务时，可以通过该接口进行购买。
+///
+/// Argument of [Connection::purchase_elasticity_assurance()], returns [PurchaseElasticityAssuranceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PurchaseElasticityAssurance {
@@ -40295,7 +40745,9 @@ impl crate::Request for PurchaseElasticityAssurance {
     }
 }
 
-///  
+/// 指定需要预留的实例规格、总数量，生效方式和可用区等，创建容量预定服务。
+///
+/// Argument of [Connection::create_capacity_reservation()], returns [CreateCapacityReservationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCapacityReservation {
@@ -40459,7 +40911,9 @@ impl crate::Request for CreateCapacityReservation {
     }
 }
 
-///  
+/// 查询一个或多个容量预定服务的详细信息，例如服务的状态、服务的生效与失效时间、私有池的模式和已使用的实例的数量等。
+///
+/// Argument of [Connection::describe_capacity_reservations()], returns [DescribeCapacityReservationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeCapacityReservations {
@@ -40612,6 +41066,10 @@ impl crate::Request for DescribeCapacityReservations {
         crate::Form(self)
     }
 }
+
+/// 查询容量预定服务已匹配的实例列表。
+///
+/// Argument of [Connection::describe_capacity_reservation_instances()], returns [DescribeCapacityReservationInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeCapacityReservationInstances {
@@ -40686,7 +41144,9 @@ impl crate::Request for DescribeCapacityReservationInstances {
     }
 }
 
-///  
+/// 调用ModifyCapacityReservation修改一个容量预定服务的部分信息，包括容量预定服务的名称、描述信息、失效方式以及预留的实例总数量。
+///
+/// Argument of [Connection::modify_capacity_reservation()], returns [ModifyCapacityReservationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyCapacityReservation {
@@ -40809,7 +41269,9 @@ impl crate::Request for ModifyCapacityReservation {
     }
 }
 
-///  
+/// 查询实例匹配的私有池信息，例如匹配模式、私有池ID等。
+///
+/// Argument of [Connection::describe_instance_attachment_attributes()], returns [DescribeInstanceAttachmentAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceAttachmentAttributes {
@@ -40885,7 +41347,9 @@ impl crate::Request for DescribeInstanceAttachmentAttributes {
     }
 }
 
-///  
+/// 修改实例的私有池匹配模式。
+///
+/// Argument of [Connection::modify_instance_attachment_attributes()], returns [ModifyInstanceAttachmentAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceAttachmentAttributes {
@@ -40962,6 +41426,10 @@ impl crate::Request for ModifyInstanceAttachmentAttributes {
         crate::Form(self)
     }
 }
+
+/// 调用ReleaseCapacityReservation释放容量预定服务。
+///
+/// Argument of [Connection::release_capacity_reservation()], returns [ReleaseCapacityReservationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReleaseCapacityReservation {
@@ -41024,7 +41492,9 @@ impl crate::Request for ReleaseCapacityReservation {
     }
 }
 
-///  
+/// 本接口用于购买一张预留实例券，支持您购买一张地域级或者可用区级的预留实例券来抵扣对应规格的按量付费实例账单。
+///
+/// Argument of [Connection::purchase_reserved_instances_offering()], returns [PurchaseReservedInstancesOfferingResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PurchaseReservedInstancesOffering {
@@ -41259,7 +41729,9 @@ impl crate::Request for PurchaseReservedInstancesOffering {
     }
 }
 
-///  
+/// 本接口主要用于查询指定地域下您已经购买的预留实例券信息列表，支持您根据标签、预留实例券属性等参数获取预留实例券详细信息列表。
+///
+/// Argument of [Connection::describe_reserved_instances()], returns [DescribeReservedInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeReservedInstances {
@@ -41434,7 +41906,9 @@ impl crate::Request for DescribeReservedInstances {
     }
 }
 
-///  
+/// 本接口的主要功能是通过修改实例规格、数量、可用区等预留实例券的配置来对预留实例券进行拆分、合并或范围变更操作。
+///
+/// Argument of [Connection::modify_reserved_instances()], returns [ModifyReservedInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyReservedInstances {
@@ -41500,7 +41974,9 @@ impl crate::Request for ModifyReservedInstances {
     }
 }
 
-///  
+/// 本接口用于修改一张预留实例券的属性信息，包括名称和描述。
+///
+/// Argument of [Connection::modify_reserved_instance_attribute()], returns [ModifyReservedInstanceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyReservedInstanceAttribute {
@@ -41572,6 +42048,10 @@ impl crate::Request for ModifyReservedInstanceAttribute {
         crate::Form(self)
     }
 }
+
+/// 本接口用于对一张或多张预留实例券进行续费，支持您在续费时设置购买时长和自动续费属性。
+///
+/// Argument of [Connection::renew_reserved_instances()], returns [RenewReservedInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RenewReservedInstances {
@@ -41709,6 +42189,10 @@ impl crate::Request for RenewReservedInstances {
         crate::Form(self)
     }
 }
+
+/// 本接口用于查询一个或多个预留实例券自动续费属性，包括自动续费时长和自动续费状态。
+///
+/// Argument of [Connection::describe_reserved_instance_auto_renew_attribute()], returns [DescribeReservedInstanceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeReservedInstanceAutoRenewAttribute {
@@ -41765,6 +42249,10 @@ impl crate::Request for DescribeReservedInstanceAutoRenewAttribute {
         crate::Form(self)
     }
 }
+
+/// 本接口主要用于修改一个或多个预留实例券的自动续费属性，支持您取消或者关闭自动续费。
+///
+/// Argument of [Connection::modify_reserved_instance_auto_renew_attribute()], returns [ModifyReservedInstanceAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyReservedInstanceAutoRenewAttribute {
@@ -41863,7 +42351,9 @@ impl crate::Request for ModifyReservedInstanceAutoRenewAttribute {
     }
 }
 
-///  
+/// 本接口用于购买一个或多个存储容量单位包SCU（Storage Capacity Unit）。
+///
+/// Argument of [Connection::purchase_storage_capacity_unit()], returns [PurchaseStorageCapacityUnitResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct PurchaseStorageCapacityUnit {
@@ -42009,7 +42499,9 @@ impl crate::Request for PurchaseStorageCapacityUnit {
     }
 }
 
-///  
+/// 本接口用于查询存储容量单位包SCU（Storage Capacity Unit）的详细信息列表，支持根据名称、状态以及容量大小等条件进行查询。
+///
+/// Argument of [Connection::describe_storage_capacity_units()], returns [DescribeStorageCapacityUnitsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeStorageCapacityUnits {
@@ -42134,7 +42626,9 @@ impl crate::Request for DescribeStorageCapacityUnits {
     }
 }
 
-///  
+/// 本接口用于修改一个存储容量单位包SCU（Storage Capacity Unit）的名称或者描述信息。
+///
+/// Argument of [Connection::modify_storage_capacity_unit_attribute()], returns [ModifyStorageCapacityUnitAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyStorageCapacityUnitAttribute {
@@ -42205,7 +42699,9 @@ impl crate::Request for ModifyStorageCapacityUnitAttribute {
     }
 }
 
-///  
+/// 本接口用于在一台或多台ECS实例中创建并执行云助手命令，支持Shell、PowerShell或者Bat类型的脚本，支持定时执行、自定义参数和实例内容器执行等功能。
+///
+/// Argument of [Connection::run_command()], returns [RunCommandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RunCommand {
@@ -42576,7 +43072,9 @@ impl crate::Request for RunCommand {
     }
 }
 
-///  
+/// 新建一条Shell、PowerShell或者Bat脚本类型的云助手命令。
+///
+/// Argument of [Connection::create_command()], returns [CreateCommandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateCommand {
@@ -42753,7 +43251,9 @@ impl crate::Request for CreateCommand {
     }
 }
 
-///  
+/// 指定CommandId、InstanceId、ResourceGroupId等参数，为一台或多台ECS实例触发一条云助手命令。
+///
+/// Argument of [Connection::invoke_command()], returns [InvokeCommandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InvokeCommand {
@@ -43045,7 +43545,9 @@ impl crate::Request for InvokeCommand {
     }
 }
 
-///  
+/// 调用DescribeInvocations查询云助手命令的执行列表和状态。
+///
+/// Argument of [Connection::describe_invocations()], returns [DescribeInvocationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInvocations {
@@ -43271,7 +43773,9 @@ impl crate::Request for DescribeInvocations {
     }
 }
 
-///  
+/// 调用DescribeInvocationResults查看一条或多条云助手命令的执行结果，即在ECS实例中的实际执行结果。
+///
+/// Argument of [Connection::describe_invocation_results()], returns [DescribeInvocationResultsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInvocationResults {
@@ -43445,6 +43949,10 @@ impl crate::Request for DescribeInvocationResults {
         crate::Form(self)
     }
 }
+
+/// 修改云助手定时任务的执行信息，包括命令内容、定时执行方式、添加ECS实例或托管实例到任务。
+///
+/// Argument of [Connection::modify_invocation_attribute()], returns [ModifyInvocationAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInvocationAttribute {
@@ -43606,7 +44114,9 @@ impl crate::Request for ModifyInvocationAttribute {
     }
 }
 
-///  
+/// 调用StopInvocation停止一台或多台ECS实例中一条正在进行中（Running）的云助手命令进程。
+///
+/// Argument of [Connection::stop_invocation()], returns [StopInvocationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StopInvocation {
@@ -43666,7 +44176,9 @@ impl crate::Request for StopInvocation {
     }
 }
 
-///  
+/// 查询您手动创建的云助手命令或者阿里云提供的公共命令。
+///
+/// Argument of [Connection::describe_commands()], returns [DescribeCommandsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeCommands {
@@ -43850,7 +44362,9 @@ impl crate::Request for DescribeCommands {
     }
 }
 
-///  
+/// 调用ModifyCommand修改一条云助手命令相关参数。
+///
+/// Argument of [Connection::modify_command()], returns [ModifyCommandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyCommand {
@@ -43950,7 +44464,9 @@ impl crate::Request for ModifyCommand {
     }
 }
 
-///  
+/// 调用DeleteCommand接口，并指定参数RegionId、CommandId删除一条云助手命令。它无法删除正在执行中的命令。
+///
+/// Argument of [Connection::delete_command()], returns [DeleteCommandResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteCommand {
@@ -44002,7 +44518,9 @@ impl crate::Request for DeleteCommand {
     }
 }
 
-///  
+/// 调用SendFile向一台或多台ECS实例下发远程文件。
+///
+/// Argument of [Connection::send_file()], returns [SendFileResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct SendFile {
@@ -44171,7 +44689,9 @@ impl crate::Request for SendFile {
     }
 }
 
-///  
+/// 调用DescribeSendFileResults查询云助手下发文件列表及状态。
+///
+/// Argument of [Connection::describe_send_file_results()], returns [DescribeSendFileResultsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSendFileResults {
@@ -44309,7 +44829,9 @@ impl crate::Request for DescribeSendFileResults {
     }
 }
 
-///  
+/// 调用DescribeCloudAssistantStatus查询一台或者多台实例是否安装了云助手Agent。如果已安装了云助手，还将查询云助手命令执行的总数量、正在执行的数量以及最近一次命令执行的时间。
+///
+/// Argument of [Connection::describe_cloud_assistant_status()], returns [DescribeCloudAssistantStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeCloudAssistantStatus {
@@ -44413,7 +44935,9 @@ impl crate::Request for DescribeCloudAssistantStatus {
     }
 }
 
-///  
+/// 调用InstallCloudAssistant为一台或多台ECS实例安装云助手Agent。需要重启实例来完成安装云助手Agent的操作。
+///
+/// Argument of [Connection::install_cloud_assistant()], returns [InstallCloudAssistantResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct InstallCloudAssistant {
@@ -44465,6 +44989,10 @@ impl crate::Request for InstallCloudAssistant {
         crate::Form(self)
     }
 }
+
+/// 调用StartTerminalSession基于会话管理功能创建一个会话。您可以通过指定ECS实例ID与该实例建立一个WebSocket会话，通过接口返回的WebSocketUrl可以远程连接到ECS实例。
+///
+/// Argument of [Connection::start_terminal_session()], returns [StartTerminalSessionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct StartTerminalSession {
@@ -44581,6 +45109,10 @@ impl crate::Request for StartTerminalSession {
         crate::Form(self)
     }
 }
+
+/// 永久关闭指定Session的数据连接。
+///
+/// Argument of [Connection::end_terminal_session()], returns [EndTerminalSessionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct EndTerminalSession {
@@ -44631,6 +45163,10 @@ impl crate::Request for EndTerminalSession {
         crate::Form(self)
     }
 }
+
+/// 查看Session Manager会话历史记录。
+///
+/// Argument of [Connection::describe_terminal_sessions()], returns [DescribeTerminalSessionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeTerminalSessions {
@@ -44713,6 +45249,10 @@ impl crate::Request for DescribeTerminalSessions {
         crate::Form(self)
     }
 }
+
+/// 修改云助手服务配置。
+///
+/// Argument of [Connection::modify_cloud_assistant_settings()], returns [ModifyCloudAssistantSettingsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyCloudAssistantSettings {
@@ -44807,6 +45347,10 @@ impl crate::Request for ModifyCloudAssistantSettings {
         crate::Form(self)
     }
 }
+
+/// 查询云助手服务配置。
+///
+/// Argument of [Connection::describe_cloud_assistant_settings()], returns [DescribeCloudAssistantSettingsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeCloudAssistantSettings {
@@ -44858,7 +45402,9 @@ impl crate::Request for DescribeCloudAssistantSettings {
     }
 }
 
-///  
+/// 该接口用于创建一个激活码，该激活码用于将非阿里云服务器注册为阿里云托管实例。
+///
+/// Argument of [Connection::create_activation()], returns [CreateActivationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateActivation {
@@ -44971,7 +45517,9 @@ impl crate::Request for CreateActivation {
     }
 }
 
-///  
+/// 调用DescribeActivations查询已创建的激活码以及激活码的使用情况。
+///
+/// Argument of [Connection::describe_activations()], returns [DescribeActivationsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeActivations {
@@ -45097,7 +45645,9 @@ impl crate::Request for DescribeActivations {
     }
 }
 
-///  
+/// 调用DisableActivation手动禁用指定的激活码。
+///
+/// Argument of [Connection::disable_activation()], returns [DisableActivationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DisableActivation {
@@ -45151,7 +45701,9 @@ impl crate::Request for DisableActivation {
     }
 }
 
-///  
+/// 调用DeleteActivation删除一个未被使用的激活码。
+///
+/// Argument of [Connection::delete_activation()], returns [DeleteActivationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteActivation {
@@ -45205,7 +45757,9 @@ impl crate::Request for DeleteActivation {
     }
 }
 
-///  
+/// 调用DescribeManagedInstances查询托管实例列表。
+///
+/// Argument of [Connection::describe_managed_instances()], returns [DescribeManagedInstancesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeManagedInstances {
@@ -45371,6 +45925,10 @@ impl crate::Request for DescribeManagedInstances {
         crate::Form(self)
     }
 }
+
+/// 调用ModifyManagedInstance修改一台托管实例的相关信息。
+///
+/// Argument of [Connection::modify_managed_instance()], returns [ModifyManagedInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyManagedInstance {
@@ -45432,7 +45990,9 @@ impl crate::Request for ModifyManagedInstance {
     }
 }
 
-///  
+/// 调用DeregisterManagedInstance注销一个托管实例。注销后您将无法再使用云助手向实例发送命令或文件。
+///
+/// Argument of [Connection::deregister_managed_instance()], returns [DeregisterManagedInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeregisterManagedInstance {
@@ -45485,6 +46045,10 @@ impl crate::Request for DeregisterManagedInstance {
         crate::Form(self)
     }
 }
+
+/// 调用ListPluginStatus查询实例中云助手插件的状态。
+///
+/// Argument of [Connection::list_plugin_status()], returns [ListPluginStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListPluginStatus {
@@ -45590,7 +46154,9 @@ impl crate::Request for ListPluginStatus {
     }
 }
 
-///  
+/// 调用DescribeInstancesFullStatus查询一台或多台ECS实例的全状态信息。全状态信息包括实例状态和实例系统事件状态，其中，实例状态为实例的生命周期状态，实例系统事件为维护事件的健康状态。
+///
+/// Argument of [Connection::describe_instances_full_status()], returns [DescribeInstancesFullStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstancesFullStatus {
@@ -45758,7 +46324,9 @@ impl crate::Request for DescribeInstancesFullStatus {
     }
 }
 
-///  
+/// 调用DescribeDisksFullStatus查询一块或多块块存储的全部状态信息。
+///
+/// Argument of [Connection::describe_disks_full_status()], returns [DescribeDisksFullStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDisksFullStatus {
@@ -45922,7 +46490,9 @@ impl crate::Request for DescribeDisksFullStatus {
     }
 }
 
-///  
+/// 调用DescribeInstanceHistoryEvents接口，并可以指定InstanceId、EventType等参数，查询指定实例系统事件信息，默认查询处于非活跃状态的历史系统事件。
+///
+/// Argument of [Connection::describe_instance_history_events()], returns [DescribeInstanceHistoryEventsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceHistoryEvents {
@@ -46184,7 +46754,9 @@ impl crate::Request for DescribeInstanceHistoryEvents {
     }
 }
 
-///  
+/// 为一台或多台ECS实例预约模拟系统事件。模拟系统事件相当于事件演习，不会真正执行事件，也不会对ECS实例产生影响。
+///
+/// Argument of [Connection::create_simulated_system_events()], returns [CreateSimulatedSystemEventsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateSimulatedSystemEvents {
@@ -46260,7 +46832,9 @@ impl crate::Request for CreateSimulatedSystemEvents {
     }
 }
 
-///  
+/// 调用CancelSimulatedSystemEvents取消一件或多件处于Scheduled（计划中）或Executing（执行中）状态的模拟系统事件。取消系统事件后，模拟事件变为Canceled（已取消）状态。
+///
+/// Argument of [Connection::cancel_simulated_system_events()], returns [CancelSimulatedSystemEventsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelSimulatedSystemEvents {
@@ -46313,7 +46887,9 @@ impl crate::Request for CancelSimulatedSystemEvents {
     }
 }
 
-///  
+/// 调用AcceptInquiredSystemEvent接受并授权执行系统事件操作。对问询中（Inquiring）状态的系统事件，接受系统事件的默认操作，授权系统执行默认操作。
+///
+/// Argument of [Connection::accept_inquired_system_event()], returns [AcceptInquiredSystemEventResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AcceptInquiredSystemEvent {
@@ -46372,6 +46948,10 @@ impl crate::Request for AcceptInquiredSystemEvent {
         crate::Form(self)
     }
 }
+
+/// 调用DescribeDiagnosticMetrics查询诊断指标列表。
+///
+/// Argument of [Connection::describe_diagnostic_metrics()], returns [DescribeDiagnosticMetricsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiagnosticMetrics {
@@ -46455,6 +47035,10 @@ impl crate::Request for DescribeDiagnosticMetrics {
         crate::Form(self)
     }
 }
+
+/// 调用CreateDiagnosticMetricSet创建资源诊断指标集合。您可以根据需要，灵活组合诊断指标。
+///
+/// Argument of [Connection::create_diagnostic_metric_set()], returns [CreateDiagnosticMetricSetResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateDiagnosticMetricSet {
@@ -46531,6 +47115,10 @@ impl crate::Request for CreateDiagnosticMetricSet {
         crate::Form(self)
     }
 }
+
+/// 调用DescribeDiagnosticMetricSets查询资源诊断集合列表。
+///
+/// Argument of [Connection::describe_diagnostic_metric_sets()], returns [DescribeDiagnosticMetricSetsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiagnosticMetricSets {
@@ -46627,6 +47215,10 @@ impl crate::Request for DescribeDiagnosticMetricSets {
         crate::Form(self)
     }
 }
+
+/// 修改资源诊断指标集合。
+///
+/// Argument of [Connection::modify_diagnostic_metric_set()], returns [ModifyDiagnosticMetricSetResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDiagnosticMetricSet {
@@ -46709,6 +47301,10 @@ impl crate::Request for ModifyDiagnosticMetricSet {
         crate::Form(self)
     }
 }
+
+/// 调用DeleteDiagnosticMetricSets删除资源诊断指标集合。
+///
+/// Argument of [Connection::delete_diagnostic_metric_sets()], returns [DeleteDiagnosticMetricSetsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteDiagnosticMetricSets {
@@ -46761,6 +47357,10 @@ impl crate::Request for DeleteDiagnosticMetricSets {
         crate::Form(self)
     }
 }
+
+/// 调用CreateDiagnosticReport创建资源诊断报告。根据您传入诊断指标集合ID，生成多个诊断指标的诊断报告。您可以根据返回的诊断报告ID，调用DescribeDiagnosticReportAttributes查询资源诊断详情。
+///
+/// Argument of [Connection::create_diagnostic_report()], returns [CreateDiagnosticReportResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateDiagnosticReport {
@@ -46835,6 +47435,10 @@ impl crate::Request for CreateDiagnosticReport {
         crate::Form(self)
     }
 }
+
+/// 调用DescribeDiagnosticReports查询资源诊断报告列表。
+///
+/// Argument of [Connection::describe_diagnostic_reports()], returns [DescribeDiagnosticReportsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiagnosticReports {
@@ -46944,6 +47548,10 @@ impl crate::Request for DescribeDiagnosticReports {
         crate::Form(self)
     }
 }
+
+/// 调用DescribeDiagnosticReportAttributes查询资源诊断详情。
+///
+/// Argument of [Connection::describe_diagnostic_report_attributes()], returns [DescribeDiagnosticReportAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiagnosticReportAttributes {
@@ -46994,6 +47602,10 @@ impl crate::Request for DescribeDiagnosticReportAttributes {
         crate::Form(self)
     }
 }
+
+/// 调用DeleteDiagnosticReports删除资源诊断报告。
+///
+/// Argument of [Connection::delete_diagnostic_reports()], returns [DeleteDiagnosticReportsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteDiagnosticReports {
@@ -47045,7 +47657,9 @@ impl crate::Request for DeleteDiagnosticReports {
     }
 }
 
-///  
+/// 调用GetInstanceScreenshot获取实例的截屏信息。
+///
+/// Argument of [Connection::get_instance_screenshot()], returns [GetInstanceScreenshotResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetInstanceScreenshot {
@@ -47107,7 +47721,9 @@ impl crate::Request for GetInstanceScreenshot {
     }
 }
 
-///  
+/// 获取一台实例的系统命令行输出，数据以Base64编码后返回。
+///
+/// Argument of [Connection::get_instance_console_output()], returns [GetInstanceConsoleOutputResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct GetInstanceConsoleOutput {
@@ -47171,7 +47787,9 @@ impl crate::Request for GetInstanceConsoleOutput {
     }
 }
 
-///  
+/// 查询一块云盘在指定时间内的使用信息，例如，云盘读IOPS、写IOPS、读带宽（B/s）、写带宽（B/s）、读时延（μs）以及写时延（μs）。
+///
+/// Argument of [Connection::describe_disk_monitor_data()], returns [DescribeDiskMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDiskMonitorData {
@@ -47249,7 +47867,9 @@ impl crate::Request for DescribeDiskMonitorData {
     }
 }
 
-///  
+/// 调用DescribeInstanceMonitorData查询一台ECS实例的监控信息。可查询的指标包括ECS实例的vCPU使用率、突发性能实例积分、接收的数据流量、发送的数据流量、平均带宽等。
+///
+/// Argument of [Connection::describe_instance_monitor_data()], returns [DescribeInstanceMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceMonitorData {
@@ -47323,7 +47943,9 @@ impl crate::Request for DescribeInstanceMonitorData {
     }
 }
 
-///  
+/// 调用DescribeEniMonitorData查询一块辅助网卡在指定时间段内使用的流量信息。
+///
+/// Argument of [Connection::describe_eni_monitor_data()], returns [DescribeEniMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeEniMonitorData {
@@ -47409,7 +48031,9 @@ impl crate::Request for DescribeEniMonitorData {
     }
 }
 
-///  
+/// 查询一个地域下近30天内的快照容量变化监控数据。
+///
+/// Argument of [Connection::describe_snapshot_monitor_data()], returns [DescribeSnapshotMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeSnapshotMonitorData {
@@ -47497,7 +48121,9 @@ impl crate::Request for DescribeSnapshotMonitorData {
     }
 }
 
-///  
+/// 调用DescribeInstanceMaintenanceAttributes查询实例的维护属性。
+///
+/// Argument of [Connection::describe_instance_maintenance_attributes()], returns [DescribeInstanceMaintenanceAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeInstanceMaintenanceAttributes {
@@ -47575,7 +48201,9 @@ impl crate::Request for DescribeInstanceMaintenanceAttributes {
     }
 }
 
-///  
+/// 调用ModifyInstanceMaintenanceAttributes修改实例的维护属性。
+///
+/// Argument of [Connection::modify_instance_maintenance_attributes()], returns [ModifyInstanceMaintenanceAttributesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyInstanceMaintenanceAttributes {
@@ -47664,7 +48292,9 @@ impl crate::Request for ModifyInstanceMaintenanceAttributes {
     }
 }
 
-///  
+/// 当ECS实例收到系统事件通知时，调用RedeployInstance可以重新部署这台ECS实例。
+///
+/// Argument of [Connection::redeploy_instance()], returns [RedeployInstanceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RedeployInstance {
@@ -47724,7 +48354,9 @@ impl crate::Request for RedeployInstance {
     }
 }
 
-///  
+/// 调用ReportInstancesStatus反馈一台或者多台ECS实例的异常问题。您可以反馈多台ECS实例发生的相同问题，也可以反馈一台ECS实例的多块磁盘发生的相同问题。
+///
+/// Argument of [Connection::report_instances_status()], returns [ReportInstancesStatusResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReportInstancesStatus {
@@ -47854,7 +48486,9 @@ impl crate::Request for ReportInstancesStatus {
     }
 }
 
-///  
+/// 为指定的ECS资源列表统一创建并绑定标签。
+///
+/// Argument of [Connection::tag_resources()], returns [TagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TagResources {
@@ -47940,7 +48574,9 @@ impl crate::Request for TagResources {
     }
 }
 
-///  
+/// 查询一个或多个ECS资源已经绑定的标签列表。
+///
+/// Argument of [Connection::list_tag_resources()], returns [ListTagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ListTagResources {
@@ -48044,7 +48680,9 @@ impl crate::Request for ListTagResources {
     }
 }
 
-///  
+/// 调用UntagResources为指定的ECS资源列表统一解绑标签。解绑后，如果该标签没有绑定其他任何资源，会被自动删除。
+///
+/// Argument of [Connection::untag_resources()], returns [UntagResourcesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UntagResources {
@@ -48143,7 +48781,9 @@ impl crate::Request for UntagResources {
     }
 }
 
-///  
+/// 调用JoinResourceGroup将一个ECS资源或者服务加入一个资源组。
+///
+/// Argument of [Connection::join_resource_group()], returns [JoinResourceGroupResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct JoinResourceGroup {
@@ -48235,7 +48875,9 @@ impl crate::Request for JoinResourceGroup {
     }
 }
 
-///  
+/// 调用AllocateDedicatedHosts创建一台或多台按量付费或者包年包月专有宿主机。专有宿主机是单租户独享的物理机资源，您可以在专有宿主机上自行创建ECS实例和获取物理服务器属性等信息。
+///
+/// Argument of [Connection::allocate_dedicated_hosts()], returns [AllocateDedicatedHostsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AllocateDedicatedHosts {
@@ -48534,7 +49176,9 @@ impl crate::Request for AllocateDedicatedHosts {
     }
 }
 
-///  
+/// 本接口用于查询一台或多台专有宿主机的详细信息。通过该接口，您可以获取包括专有宿主机的物理性能指标、机器码、使用状态以及已创建的ECS实例列表等信息。您能够根据具体需求，通过指定相关参数，如专有宿主机ID列表、专有宿主机集群ID、宿主机名称、状态等，精准地查询所需的专有宿主机详细信息，为高效管理和优化云计算资源提供有力支持。
+///
+/// Argument of [Connection::describe_dedicated_hosts()], returns [DescribeDedicatedHostsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDedicatedHosts {
@@ -48732,7 +49376,9 @@ impl crate::Request for DescribeDedicatedHosts {
     }
 }
 
-///  
+/// 调用DescribeDedicatedHostTypes查询指定地域下支持的专有宿主机规格详细参数，或者查询专有宿主机支持的ECS实例规格族。
+///
+/// Argument of [Connection::describe_dedicated_host_types()], returns [DescribeDedicatedHostTypesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDedicatedHostTypes {
@@ -48796,7 +49442,9 @@ impl crate::Request for DescribeDedicatedHostTypes {
     }
 }
 
-///  
+/// 调用ModifyDedicatedHostAttribute修改一台专有宿主机的部分信息，包括专有宿主机的名称、描述和服务不可用属性等。
+///
+/// Argument of [Connection::modify_dedicated_host_attribute()], returns [ModifyDedicatedHostAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDedicatedHostAttribute {
@@ -48929,7 +49577,9 @@ impl crate::Request for ModifyDedicatedHostAttribute {
     }
 }
 
-///  
+/// 调用ModifyDedicatedHostsChargeType修改专有宿主机的付费类型。
+///
+/// Argument of [Connection::modify_dedicated_hosts_charge_type()], returns [ModifyDedicatedHostsChargeTypeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDedicatedHostsChargeType {
@@ -49060,7 +49710,9 @@ impl crate::Request for ModifyDedicatedHostsChargeType {
     }
 }
 
-///  
+/// 调用DescribeDedicatedHostAutoRenew查询一台或多台包年包月专有宿主机自动续费状态。
+///
+/// Argument of [Connection::describe_dedicated_host_auto_renew()], returns [DescribeDedicatedHostAutoRenewResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDedicatedHostAutoRenew {
@@ -49112,7 +49764,9 @@ impl crate::Request for DescribeDedicatedHostAutoRenew {
     }
 }
 
-///  
+/// 调用ModifyDedicatedHostAutoRenewAttribute为一台或多台包年包月专有宿主机设置自动续费，也可以取消已设定的自动续费。
+///
+/// Argument of [Connection::modify_dedicated_host_auto_renew_attribute()], returns [ModifyDedicatedHostAutoRenewAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDedicatedHostAutoRenewAttribute {
@@ -49261,7 +49915,9 @@ impl crate::Request for ModifyDedicatedHostAutoRenewAttribute {
     }
 }
 
-///  
+/// 续费一台或者多台包年包月的专有宿主机。
+///
+/// Argument of [Connection::renew_dedicated_hosts()], returns [RenewDedicatedHostsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RenewDedicatedHosts {
@@ -49365,7 +50021,9 @@ impl crate::Request for RenewDedicatedHosts {
     }
 }
 
-///  
+/// 调用ModifyDedicatedHostAutoReleaseTime为一台按量付费专有宿主机设定自动释放时间，或者取消自动释放一台按量付费专有宿主机。
+///
+/// Argument of [Connection::modify_dedicated_host_auto_release_time()], returns [ModifyDedicatedHostAutoReleaseTimeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDedicatedHostAutoReleaseTime {
@@ -49430,7 +50088,9 @@ impl crate::Request for ModifyDedicatedHostAutoReleaseTime {
     }
 }
 
-///  
+/// 执行专有宿主机的故障迁移。
+///
+/// Argument of [Connection::redeploy_dedicated_host()], returns [RedeployDedicatedHostResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RedeployDedicatedHost {
@@ -49496,7 +50156,9 @@ impl crate::Request for RedeployDedicatedHost {
     }
 }
 
-///  
+/// 本接口用于释放一台按量付费专有宿主机或者到期的包年包月专有宿主机
+///
+/// Argument of [Connection::release_dedicated_host()], returns [ReleaseDedicatedHostResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReleaseDedicatedHost {
@@ -49561,7 +50223,9 @@ impl crate::Request for ReleaseDedicatedHost {
     }
 }
 
-///  
+/// 创建一个专有宿主机组。
+///
+/// Argument of [Connection::create_dedicated_host_cluster()], returns [CreateDedicatedHostClusterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateDedicatedHostCluster {
@@ -49662,7 +50326,9 @@ impl crate::Request for CreateDedicatedHostCluster {
     }
 }
 
-///  
+/// 修改一台专有宿主机组的部分信息，包括专有宿主机组的名称、描述信息、属性等。
+///
+/// Argument of [Connection::modify_dedicated_host_cluster_attribute()], returns [ModifyDedicatedHostClusterAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyDedicatedHostClusterAttribute {
@@ -49733,7 +50399,9 @@ impl crate::Request for ModifyDedicatedHostClusterAttribute {
     }
 }
 
-///  
+/// 查询一个或多个专有宿主机组的详细信息。
+///
+/// Argument of [Connection::describe_dedicated_host_clusters()], returns [DescribeDedicatedHostClustersResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeDedicatedHostClusters {
@@ -49863,7 +50531,9 @@ impl crate::Request for DescribeDedicatedHostClusters {
     }
 }
 
-///  
+/// 删除一个专有宿主机组，操作前请先将该专有宿主机组下的专有宿主机迁移至其他专有宿主机组。
+///
+/// Argument of [Connection::delete_dedicated_host_cluster()], returns [DeleteDedicatedHostClusterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteDedicatedHostCluster {
@@ -49918,7 +50588,9 @@ impl crate::Request for DeleteDedicatedHostCluster {
     }
 }
 
-///  
+/// 调用CreateHpcCluster创建一个HPC集群。
+///
+/// Argument of [Connection::create_hpc_cluster()], returns [CreateHpcClusterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateHpcCluster {
@@ -49988,7 +50660,9 @@ impl crate::Request for CreateHpcCluster {
     }
 }
 
-///  
+/// 调用DescribeHpcClusters查询您可用的HPC集群。请求参数作为筛选器（Filter）使用，筛选关系为逻辑与关系，参数之间无依赖关系。
+///
+/// Argument of [Connection::describe_hpc_clusters()], returns [DescribeHpcClustersResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeHpcClusters {
@@ -50077,7 +50751,9 @@ impl crate::Request for DescribeHpcClusters {
     }
 }
 
-///  
+/// 调用ModifyHpcClusterAttribute修改一个HPC集群的描述信息。
+///
+/// Argument of [Connection::modify_hpc_cluster_attribute()], returns [ModifyHpcClusterAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyHpcClusterAttribute {
@@ -50157,7 +50833,9 @@ impl crate::Request for ModifyHpcClusterAttribute {
     }
 }
 
-///  
+/// 调用DeleteHpcCluster删除一个HPC集群。
+///
+/// Argument of [Connection::delete_hpc_cluster()], returns [DeleteHpcClusterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteHpcCluster {
@@ -50217,7 +50895,9 @@ impl crate::Request for DeleteHpcCluster {
     }
 }
 
-///  
+/// 调用DescribeTasks查询一个或多个异步请求的进度。
+///
+/// Argument of [Connection::describe_tasks()], returns [DescribeTasksResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeTasks {
@@ -50351,7 +51031,9 @@ impl crate::Request for DescribeTasks {
     }
 }
 
-///  
+/// 调用DescribeTaskAttribute查询异步任务的详细信息。目前，可以查询的异步任务有导入镜像（ImportImage）、导出镜像（ExportImage）及变更云盘类型（ModifyDiskSpec）。
+///
+/// Argument of [Connection::describe_task_attribute()], returns [DescribeTaskAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeTaskAttribute {
@@ -50403,7 +51085,9 @@ impl crate::Request for DescribeTaskAttribute {
     }
 }
 
-///  
+/// 调用CancelTask取消一件正在运行的任务。目前，您能取消正在运行的导入镜像任务（ImportImage）和导出镜像任务（ExportImage）。
+///
+/// Argument of [Connection::cancel_task()], returns [CancelTaskResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelTask {
@@ -50454,6 +51138,10 @@ impl crate::Request for CancelTask {
         crate::Form(self)
     }
 }
+
+/// 获取用户级别默认属性
+///
+/// Argument of [Connection::describe_user_business_behavior()], returns [DescribeUserBusinessBehaviorResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeUserBusinessBehavior {
@@ -50506,6 +51194,10 @@ impl crate::Request for DescribeUserBusinessBehavior {
         crate::Form(self)
     }
 }
+
+/// 设置用户级别默认属性
+///
+/// Argument of [Connection::modify_user_business_behavior()], returns [ModifyUserBusinessBehaviorResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyUserBusinessBehavior {
@@ -50561,6 +51253,10 @@ impl crate::Request for ModifyUserBusinessBehavior {
         crate::Form(self)
     }
 }
+
+/// 查询账号限制
+///
+/// Argument of [Connection::describe_limitation()], returns [DescribeLimitationResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeLimitation {
@@ -50606,6 +51302,10 @@ impl crate::Request for DescribeLimitation {
         crate::Form(self)
     }
 }
+
+/// 查询集群
+///
+/// Argument of [Connection::describe_clusters()], returns [DescribeClustersResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeClusters {
@@ -50651,6 +51351,10 @@ impl crate::Request for DescribeClusters {
         crate::Form(self)
     }
 }
+
+/// 删除操作弹性网卡的权限
+///
+/// Argument of [Connection::delete_network_interface_permission()], returns [DeleteNetworkInterfacePermissionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteNetworkInterfacePermission {
@@ -50712,6 +51416,10 @@ impl crate::Request for DeleteNetworkInterfacePermission {
         crate::Form(self)
     }
 }
+
+/// DeleteBandwidthPackage
+///
+/// Argument of [Connection::delete_bandwidth_package()], returns [DeleteBandwidthPackageResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteBandwidthPackage {
@@ -50763,6 +51471,10 @@ impl crate::Request for DeleteBandwidthPackage {
         crate::Form(self)
     }
 }
+
+/// ModifyBandwidthPackageSpec
+///
+/// Argument of [Connection::modify_bandwidth_package_spec()], returns [ModifyBandwidthPackageSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyBandwidthPackageSpec {
@@ -50821,6 +51533,10 @@ impl crate::Request for ModifyBandwidthPackageSpec {
         crate::Form(self)
     }
 }
+
+/// DescribeBandwidthPackages
+///
+/// Argument of [Connection::describe_bandwidth_packages()], returns [DescribeBandwidthPackagesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeBandwidthPackages {
@@ -50894,6 +51610,10 @@ impl crate::Request for DescribeBandwidthPackages {
         crate::Form(self)
     }
 }
+
+/// CreateVSwitch
+///
+/// Argument of [Connection::create_v_switch()], returns [CreateVSwitchResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateVSwitch {
@@ -50977,6 +51697,10 @@ impl crate::Request for CreateVSwitch {
         crate::Form(self)
     }
 }
+
+/// DeleteVSwitch
+///
+/// Argument of [Connection::delete_v_switch()], returns [DeleteVSwitchResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteVSwitch {
@@ -51029,6 +51753,10 @@ impl crate::Request for DeleteVSwitch {
         crate::Form(self)
     }
 }
+
+/// ModifyVSwitchAttribute
+///
+/// Argument of [Connection::modify_v_switch_attribute()], returns [ModifyVSwitchAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyVSwitchAttribute {
@@ -51095,6 +51823,10 @@ impl crate::Request for ModifyVSwitchAttribute {
         crate::Form(self)
     }
 }
+
+/// DescribeVSwitches
+///
+/// Argument of [Connection::describe_v_switches()], returns [DescribeVSwitchesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeVSwitches {
@@ -51186,6 +51918,10 @@ impl crate::Request for DescribeVSwitches {
         crate::Form(self)
     }
 }
+
+/// CreatePhysicalConnection
+///
+/// Argument of [Connection::create_physical_connection()], returns [CreatePhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreatePhysicalConnection {
@@ -51308,6 +52044,10 @@ impl crate::Request for CreatePhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// DeletePhysicalConnection
+///
+/// Argument of [Connection::delete_physical_connection()], returns [DeletePhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeletePhysicalConnection {
@@ -51366,6 +52106,10 @@ impl crate::Request for DeletePhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// ModifyPhysicalConnectionAttribute
+///
+/// Argument of [Connection::modify_physical_connection_attribute()], returns [ModifyPhysicalConnectionAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyPhysicalConnectionAttribute {
@@ -51487,6 +52231,10 @@ impl crate::Request for ModifyPhysicalConnectionAttribute {
         crate::Form(self)
     }
 }
+
+/// EnablePhysicalConnection
+///
+/// Argument of [Connection::enable_physical_connection()], returns [EnablePhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct EnablePhysicalConnection {
@@ -51552,6 +52300,10 @@ impl crate::Request for EnablePhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// DescribePhysicalConnections
+///
+/// Argument of [Connection::describe_physical_connections()], returns [DescribePhysicalConnectionsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribePhysicalConnections {
@@ -51632,6 +52384,10 @@ impl crate::Request for DescribePhysicalConnections {
         crate::Form(self)
     }
 }
+
+/// CancelPhysicalConnection
+///
+/// Argument of [Connection::cancel_physical_connection()], returns [CancelPhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CancelPhysicalConnection {
@@ -51697,6 +52453,10 @@ impl crate::Request for CancelPhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// TerminatePhysicalConnection
+///
+/// Argument of [Connection::terminate_physical_connection()], returns [TerminatePhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TerminatePhysicalConnection {
@@ -51762,6 +52522,10 @@ impl crate::Request for TerminatePhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// CreateVpc
+///
+/// Argument of [Connection::create_vpc()], returns [CreateVpcResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateVpc {
@@ -51842,6 +52606,10 @@ impl crate::Request for CreateVpc {
         crate::Form(self)
     }
 }
+
+/// 删除VPC
+///
+/// Argument of [Connection::delete_vpc()], returns [DeleteVpcResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteVpc {
@@ -51894,6 +52662,10 @@ impl crate::Request for DeleteVpc {
         crate::Form(self)
     }
 }
+
+/// 查询VPC
+///
+/// Argument of [Connection::describe_vpcs()], returns [DescribeVpcsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeVpcs {
@@ -51967,6 +52739,10 @@ impl crate::Request for DescribeVpcs {
         crate::Form(self)
     }
 }
+
+/// ModifyVpcAttribute
+///
+/// Argument of [Connection::modify_vpc_attribute()], returns [ModifyVpcAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyVpcAttribute {
@@ -52047,6 +52823,10 @@ impl crate::Request for ModifyVpcAttribute {
         crate::Form(self)
     }
 }
+
+/// RemoveBandwidthPackageIps
+///
+/// Argument of [Connection::remove_bandwidth_package_ips()], returns [RemoveBandwidthPackageIpsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RemoveBandwidthPackageIps {
@@ -52116,6 +52896,10 @@ impl crate::Request for RemoveBandwidthPackageIps {
         crate::Form(self)
     }
 }
+
+/// CreateHaVip
+///
+/// Argument of [Connection::create_ha_vip()], returns [CreateHaVipResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateHaVip {
@@ -52185,6 +52969,10 @@ impl crate::Request for CreateHaVip {
         crate::Form(self)
     }
 }
+
+/// DeleteHaVip
+///
+/// Argument of [Connection::delete_ha_vip()], returns [DeleteHaVipResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteHaVip {
@@ -52240,6 +53028,10 @@ impl crate::Request for DeleteHaVip {
         crate::Form(self)
     }
 }
+
+/// AssociateHaVip
+///
+/// Argument of [Connection::associate_ha_vip()], returns [AssociateHaVipResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AssociateHaVip {
@@ -52302,6 +53094,10 @@ impl crate::Request for AssociateHaVip {
         crate::Form(self)
     }
 }
+
+/// ModifyHaVipAttribute
+///
+/// Argument of [Connection::modify_ha_vip_attribute()], returns [ModifyHaVipAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyHaVipAttribute {
@@ -52364,6 +53160,10 @@ impl crate::Request for ModifyHaVipAttribute {
         crate::Form(self)
     }
 }
+
+/// DescribeHaVips
+///
+/// Argument of [Connection::describe_ha_vips()], returns [DescribeHaVipsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeHaVips {
@@ -52426,6 +53226,10 @@ impl crate::Request for DescribeHaVips {
         crate::Form(self)
     }
 }
+
+/// UnassociateHaVip
+///
+/// Argument of [Connection::unassociate_ha_vip()], returns [UnassociateHaVipResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UnassociateHaVip {
@@ -52495,6 +53299,10 @@ impl crate::Request for UnassociateHaVip {
         crate::Form(self)
     }
 }
+
+/// CreateVirtualBorderRouter
+///
+/// Argument of [Connection::create_virtual_border_router()], returns [CreateVirtualBorderRouterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateVirtualBorderRouter {
@@ -52616,6 +53424,10 @@ impl crate::Request for CreateVirtualBorderRouter {
         crate::Form(self)
     }
 }
+
+/// DeleteVirtualBorderRouter
+///
+/// Argument of [Connection::delete_virtual_border_router()], returns [DeleteVirtualBorderRouterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteVirtualBorderRouter {
@@ -52678,6 +53490,10 @@ impl crate::Request for DeleteVirtualBorderRouter {
         crate::Form(self)
     }
 }
+
+/// ModifyVirtualBorderRouterAttribute
+///
+/// Argument of [Connection::modify_virtual_border_router_attribute()], returns [ModifyVirtualBorderRouterAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyVirtualBorderRouterAttribute {
@@ -52789,6 +53605,10 @@ impl crate::Request for ModifyVirtualBorderRouterAttribute {
         crate::Form(self)
     }
 }
+
+/// RecoverVirtualBorderRouter
+///
+/// Argument of [Connection::recover_virtual_border_router()], returns [RecoverVirtualBorderRouterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RecoverVirtualBorderRouter {
@@ -52851,6 +53671,10 @@ impl crate::Request for RecoverVirtualBorderRouter {
         crate::Form(self)
     }
 }
+
+/// TerminateVirtualBorderRouter
+///
+/// Argument of [Connection::terminate_virtual_border_router()], returns [TerminateVirtualBorderRouterResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct TerminateVirtualBorderRouter {
@@ -52913,6 +53737,10 @@ impl crate::Request for TerminateVirtualBorderRouter {
         crate::Form(self)
     }
 }
+
+/// DescribeVirtualBorderRouters
+///
+/// Argument of [Connection::describe_virtual_border_routers()], returns [DescribeVirtualBorderRoutersResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeVirtualBorderRouters {
@@ -52979,6 +53807,10 @@ impl crate::Request for DescribeVirtualBorderRouters {
         crate::Form(self)
     }
 }
+
+/// DescribeVirtualBorderRoutersForPhysicalConnection
+///
+/// Argument of [Connection::describe_virtual_border_routers_for_physical_connection()], returns [DescribeVirtualBorderRoutersForPhysicalConnectionResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeVirtualBorderRoutersForPhysicalConnection {
@@ -53052,6 +53884,10 @@ impl crate::Request for DescribeVirtualBorderRoutersForPhysicalConnection {
         crate::Form(self)
     }
 }
+
+/// CreateRouterInterface
+///
+/// Argument of [Connection::create_router_interface()], returns [CreateRouterInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateRouterInterface {
@@ -53231,6 +54067,10 @@ impl crate::Request for CreateRouterInterface {
         crate::Form(self)
     }
 }
+
+/// DeleteRouterInterface
+///
+/// Argument of [Connection::delete_router_interface()], returns [DeleteRouterInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteRouterInterface {
@@ -53296,6 +54136,10 @@ impl crate::Request for DeleteRouterInterface {
         crate::Form(self)
     }
 }
+
+/// ActivateRouterInterface
+///
+/// Argument of [Connection::activate_router_interface()], returns [ActivateRouterInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ActivateRouterInterface {
@@ -53347,6 +54191,10 @@ impl crate::Request for ActivateRouterInterface {
         crate::Form(self)
     }
 }
+
+/// DeactivateRouterInterface
+///
+/// Argument of [Connection::deactivate_router_interface()], returns [DeactivateRouterInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeactivateRouterInterface {
@@ -53398,6 +54246,10 @@ impl crate::Request for DeactivateRouterInterface {
         crate::Form(self)
     }
 }
+
+/// ModifyRouterInterfaceAttribute
+///
+/// Argument of [Connection::modify_router_interface_attribute()], returns [ModifyRouterInterfaceAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyRouterInterfaceAttribute {
@@ -53505,6 +54357,10 @@ impl crate::Request for ModifyRouterInterfaceAttribute {
         crate::Form(self)
     }
 }
+
+/// ModifyRouterInterfaceSpec
+///
+/// Argument of [Connection::modify_router_interface_spec()], returns [ModifyRouterInterfaceSpecResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyRouterInterfaceSpec {
@@ -53577,6 +54433,10 @@ impl crate::Request for ModifyRouterInterfaceSpec {
         crate::Form(self)
     }
 }
+
+/// ModifyVRouterAttribute
+///
+/// Argument of [Connection::modify_v_router_attribute()], returns [ModifyVRouterAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyVRouterAttribute {
@@ -53643,6 +54503,10 @@ impl crate::Request for ModifyVRouterAttribute {
         crate::Form(self)
     }
 }
+
+/// DescribeRouterInterfaces
+///
+/// Argument of [Connection::describe_router_interfaces()], returns [DescribeRouterInterfacesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRouterInterfaces {
@@ -53709,6 +54573,10 @@ impl crate::Request for DescribeRouterInterfaces {
         crate::Form(self)
     }
 }
+
+/// UnassociateEipAddress
+///
+/// Argument of [Connection::unassociate_eip_address()], returns [UnassociateEipAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct UnassociateEipAddress {
@@ -53771,6 +54639,10 @@ impl crate::Request for UnassociateEipAddress {
         crate::Form(self)
     }
 }
+
+/// AllocateEipAddress
+///
+/// Argument of [Connection::allocate_eip_address()], returns [AllocateEipAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AllocateEipAddress {
@@ -53851,6 +54723,10 @@ impl crate::Request for AllocateEipAddress {
         crate::Form(self)
     }
 }
+
+/// ModifyEipAddressAttribute
+///
+/// Argument of [Connection::modify_eip_address_attribute()], returns [ModifyEipAddressAttributeResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyEipAddressAttribute {
@@ -53906,6 +54782,10 @@ impl crate::Request for ModifyEipAddressAttribute {
         crate::Form(self)
     }
 }
+
+/// ReleaseEipAddress
+///
+/// Argument of [Connection::release_eip_address()], returns [ReleaseEipAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReleaseEipAddress {
@@ -53958,6 +54838,10 @@ impl crate::Request for ReleaseEipAddress {
         crate::Form(self)
     }
 }
+
+/// AssociateEipAddress
+///
+/// Argument of [Connection::associate_eip_address()], returns [AssociateEipAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AssociateEipAddress {
@@ -54020,6 +54904,10 @@ impl crate::Request for AssociateEipAddress {
         crate::Form(self)
     }
 }
+
+/// DescribeEipAddresses
+///
+/// Argument of [Connection::describe_eip_addresses()], returns [DescribeEipAddressesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeEipAddresses {
@@ -54163,6 +55051,10 @@ impl crate::Request for DescribeEipAddresses {
         crate::Form(self)
     }
 }
+
+/// DescribeEipMonitorData
+///
+/// Argument of [Connection::describe_eip_monitor_data()], returns [DescribeEipMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeEipMonitorData {
@@ -54232,6 +55124,10 @@ impl crate::Request for DescribeEipMonitorData {
         crate::Form(self)
     }
 }
+
+/// CreateNatGateway
+///
+/// Argument of [Connection::create_nat_gateway()], returns [CreateNatGatewayResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateNatGateway {
@@ -54312,6 +55208,10 @@ impl crate::Request for CreateNatGateway {
         crate::Form(self)
     }
 }
+
+/// DeleteNatGateway
+///
+/// Argument of [Connection::delete_nat_gateway()], returns [DeleteNatGatewayResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteNatGateway {
@@ -54360,6 +55260,10 @@ impl crate::Request for DeleteNatGateway {
         crate::Form(self)
     }
 }
+
+/// DescribeNatGateways
+///
+/// Argument of [Connection::describe_nat_gateways()], returns [DescribeNatGatewaysResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeNatGateways {
@@ -54433,6 +55337,10 @@ impl crate::Request for DescribeNatGateways {
         crate::Form(self)
     }
 }
+
+/// DescribeNewProjectEipMonitorData
+///
+/// Argument of [Connection::describe_new_project_eip_monitor_data()], returns [DescribeNewProjectEipMonitorDataResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeNewProjectEipMonitorData {
@@ -54502,6 +55410,10 @@ impl crate::Request for DescribeNewProjectEipMonitorData {
         crate::Form(self)
     }
 }
+
+/// DeleteRouteEntry
+///
+/// Argument of [Connection::delete_route_entry()], returns [DeleteRouteEntryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteRouteEntry {
@@ -54577,6 +55489,10 @@ impl crate::Request for DeleteRouteEntry {
         crate::Form(self)
     }
 }
+
+/// DeleteForwardEntry
+///
+/// Argument of [Connection::delete_forward_entry()], returns [DeleteForwardEntryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DeleteForwardEntry {
@@ -54632,6 +55548,10 @@ impl crate::Request for DeleteForwardEntry {
         crate::Form(self)
     }
 }
+
+/// CreateForwardEntry
+///
+/// Argument of [Connection::create_forward_entry()], returns [CreateForwardEntryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateForwardEntry {
@@ -54703,6 +55623,10 @@ impl crate::Request for CreateForwardEntry {
         crate::Form(self)
     }
 }
+
+/// AddBandwidthPackageIps
+///
+/// Argument of [Connection::add_bandwidth_package_ips()], returns [AddBandwidthPackageIpsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddBandwidthPackageIps {
@@ -54768,6 +55692,10 @@ impl crate::Request for AddBandwidthPackageIps {
         crate::Form(self)
     }
 }
+
+/// 查询路由器列表
+///
+/// Argument of [Connection::describe_v_routers()], returns [DescribeVRoutersResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeVRouters {
@@ -54834,6 +55762,10 @@ impl crate::Request for DescribeVRouters {
         crate::Form(self)
     }
 }
+
+/// CreateRouteEntry
+///
+/// Argument of [Connection::create_route_entry()], returns [CreateRouteEntryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct CreateRouteEntry {
@@ -54923,6 +55855,10 @@ impl crate::Request for CreateRouteEntry {
         crate::Form(self)
     }
 }
+
+/// DescribeForwardTableEntries
+///
+/// Argument of [Connection::describe_forward_table_entries()], returns [DescribeForwardTableEntriesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeForwardTableEntries {
@@ -54992,6 +55928,10 @@ impl crate::Request for DescribeForwardTableEntries {
         crate::Form(self)
     }
 }
+
+/// ModifyForwardEntry
+///
+/// Argument of [Connection::modify_forward_entry()], returns [ModifyForwardEntryResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ModifyForwardEntry {
@@ -55082,6 +56022,10 @@ impl crate::Request for ModifyForwardEntry {
         crate::Form(self)
     }
 }
+
+/// DescribeAccessPoints
+///
+/// Argument of [Connection::describe_access_points()], returns [DescribeAccessPointsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeAccessPoints {
@@ -55155,6 +56099,10 @@ impl crate::Request for DescribeAccessPoints {
         crate::Form(self)
     }
 }
+
+/// 查询路由表信息列表
+///
+/// Argument of [Connection::describe_route_tables()], returns [DescribeRouteTablesResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeRouteTables {
@@ -55253,6 +56201,10 @@ impl crate::Request for DescribeRouteTables {
         crate::Form(self)
     }
 }
+
+/// ConnectRouterInterface
+///
+/// Argument of [Connection::connect_router_interface()], returns [ConnectRouterInterfaceResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ConnectRouterInterface {
@@ -55304,6 +56256,10 @@ impl crate::Request for ConnectRouterInterface {
         crate::Form(self)
     }
 }
+
+/// 将快照导出到指定的对象存储
+///
+/// Argument of [Connection::export_snapshot()], returns [ExportSnapshotResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ExportSnapshot {
@@ -55366,6 +56322,10 @@ impl crate::Request for ExportSnapshot {
         crate::Form(self)
     }
 }
+
+/// 释放公网IP。
+///
+/// Argument of [Connection::release_public_ip_address()], returns [ReleasePublicIpAddressResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct ReleasePublicIpAddress {
@@ -55437,7 +56397,9 @@ impl crate::Request for ReleasePublicIpAddress {
     }
 }
 
-///  
+/// 添加或者覆盖一个或者多个标签到云服务器ECS的各项资源上。您可以添加标签到实例、磁盘、快照、镜像、安全组等，便于管理资源。
+///
+/// Argument of [Connection::add_tags()], returns [AddTagsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct AddTags {
@@ -55517,7 +56479,9 @@ impl crate::Request for AddTags {
     }
 }
 
-///  
+/// 调用DescribeResourceByTags根据标签检索资源。支持根据标签检索，也支持根据资源类型检索。
+///
+/// Argument of [Connection::describe_resource_by_tags()], returns [DescribeResourceByTagsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeResourceByTags {
@@ -55614,7 +56578,9 @@ impl crate::Request for DescribeResourceByTags {
     }
 }
 
-///  
+/// 查询可以供您使用的标签。您可以根据资源类型、资源ID、标签键或标签值等条件查询标签，筛选条件之间为逻辑与（&amp;&amp;）关系，返回满足所有筛选条件的标签。
+///
+/// Argument of [Connection::describe_tags()], returns [DescribeTagsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DescribeTags {
@@ -55734,7 +56700,9 @@ impl crate::Request for DescribeTags {
     }
 }
 
-///  
+/// 调用RemoveTags从实例、磁盘、快照、镜像或者安全组等解绑一个或多个标签。
+///
+/// Argument of [Connection::remove_tags()], returns [RemoveTagsResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct RemoveTags {
@@ -55816,6 +56784,10 @@ impl crate::Request for RemoveTags {
         crate::Form(self)
     }
 }
+
+/// 启用或修改弹性网卡QoS限速设置
+///
+/// Argument of [Connection::enable_network_interface_qo_s()], returns [EnableNetworkInterfaceQoSResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct EnableNetworkInterfaceQoS {
@@ -55878,6 +56850,10 @@ impl crate::Request for EnableNetworkInterfaceQoS {
         crate::Form(self)
     }
 }
+
+/// 禁用弹性网卡QoS限速设置
+///
+/// Argument of [Connection::disable_network_interface_qo_s()], returns [DisableNetworkInterfaceQoSResponse].
 #[derive(derive_setters::Setters, Debug)]
 #[setters(generate = false)]
 pub struct DisableNetworkInterfaceQoS {
@@ -77060,6 +78036,8 @@ impl<'a> From<&'a MigrationType> for crate::QueryValue<'a> {
 }
 
 ///  
+///
+/// Return value of [Connection::describe_regions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRegionsResponse {
     #[serde(flatten)]
@@ -77071,6 +78049,8 @@ pub struct DescribeRegionsResponse {
     pub regions: Option<ResponseRegions>,
 }
 ///  
+///
+/// Return value of [Connection::describe_zones()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeZonesResponse {
     #[serde(flatten)]
@@ -77082,6 +78062,8 @@ pub struct DescribeZonesResponse {
     pub zones: Option<ResponseZones>,
 }
 ///  
+///
+/// Return value of [Connection::describe_available_resource()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAvailableResourceResponse {
     #[serde(flatten)]
@@ -77093,6 +78075,8 @@ pub struct DescribeAvailableResourceResponse {
     pub available_zones: Option<ResourceResponseAvailableZones>,
 }
 ///  
+///
+/// Return value of [Connection::describe_account_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAccountAttributesResponse {
     #[serde(flatten)]
@@ -77104,6 +78088,8 @@ pub struct DescribeAccountAttributesResponse {
     pub account_attribute_items: Option<AttributeItems>,
 }
 ///  
+///
+/// Return value of [Connection::describe_resources_modification()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeResourcesModificationResponse {
     #[serde(flatten)]
@@ -77115,6 +78101,8 @@ pub struct DescribeResourcesModificationResponse {
     pub available_zones: Option<ModificationResponseAvailableZones>,
 }
 ///  
+///
+/// Return value of [Connection::describe_recommend_instance_type()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRecommendInstanceTypeResponse {
     #[serde(flatten)]
@@ -77126,6 +78114,8 @@ pub struct DescribeRecommendInstanceTypeResponse {
     pub data: Option<ResponseData>,
 }
 ///  
+///
+/// Return value of [Connection::describe_price()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePriceResponse {
     #[serde(flatten)]
@@ -77138,6 +78128,8 @@ pub struct DescribePriceResponse {
     pub price_info: Option<DescribePriceResponsePriceInfo>,
 }
 ///  
+///
+/// Return value of [Connection::describe_renewal_price()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRenewalPriceResponse {
     #[serde(flatten)]
@@ -77150,6 +78142,8 @@ pub struct DescribeRenewalPriceResponse {
     pub price_info: Option<RenewalPriceResponsePriceInfo>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_modification_price()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceModificationPriceResponse {
     #[serde(flatten)]
@@ -77289,6 +78283,8 @@ pub struct DescribeInstanceModificationPriceResponse {
 /// ```
 ///
 /// </details>
+///
+/// Return value of [Connection::run_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RunInstancesResponse {
     #[serde(flatten)]
@@ -77306,6 +78302,8 @@ pub struct RunInstancesResponse {
     pub instance_id_sets: Option<ResponseInstanceIdSets>,
 }
 ///  
+///
+/// Return value of [Connection::create_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateInstanceResponse {
     #[serde(flatten)]
@@ -77324,6 +78322,8 @@ pub struct CreateInstanceResponse {
     pub trade_price: Option<f32>,
 }
 ///  
+///
+/// Return value of [Connection::start_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StartInstanceResponse {
     #[serde(flatten)]
@@ -77333,6 +78333,8 @@ pub struct StartInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::start_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StartInstancesResponse {
     #[serde(flatten)]
@@ -77344,6 +78346,8 @@ pub struct StartInstancesResponse {
     pub instance_responses: Option<StartInstancesResponseInstanceResponses>,
 }
 ///  
+///
+/// Return value of [Connection::stop_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StopInstanceResponse {
     #[serde(flatten)]
@@ -77353,6 +78357,8 @@ pub struct StopInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::stop_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StopInstancesResponse {
     #[serde(flatten)]
@@ -77364,6 +78370,8 @@ pub struct StopInstancesResponse {
     pub instance_responses: Option<StopInstancesResponseInstanceResponses>,
 }
 ///  
+///
+/// Return value of [Connection::reboot_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RebootInstanceResponse {
     #[serde(flatten)]
@@ -77373,6 +78381,8 @@ pub struct RebootInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::reboot_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RebootInstancesResponse {
     #[serde(flatten)]
@@ -77384,6 +78394,8 @@ pub struct RebootInstancesResponse {
     pub instance_responses: Option<RebootInstancesResponseInstanceResponses>,
 }
 ///  
+///
+/// Return value of [Connection::delete_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteInstanceResponse {
     #[serde(flatten)]
@@ -77393,6 +78405,8 @@ pub struct DeleteInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteInstancesResponse {
     #[serde(flatten)]
@@ -77402,6 +78416,8 @@ pub struct DeleteInstancesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceStatusResponse {
     #[serde(flatten)]
@@ -77428,6 +78444,8 @@ pub struct DescribeInstanceStatusResponse {
 /// ### 使用建议
 /// - 通过请求参数DryRun发送预检请求，可以检查参数有效性和授权情况。
 /// - 分页查询首页时，仅需设置`MaxResults`以限制返回信息的条目数，返回结果中的`NextToken`值将作为查询后续页的凭证。查询后续页时，将`NextToken`参数设置为上一次返回结果中获取到的`NextToken`值作为查询凭证，并设置`MaxResults`限制返回条目数。
+///
+/// Return value of [Connection::describe_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstancesResponse {
     #[serde(flatten)]
@@ -77453,6 +78471,8 @@ pub struct DescribeInstancesResponse {
     pub instances: Option<DescribeInstancesResponseInstances>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_type_families()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceTypeFamiliesResponse {
     #[serde(flatten)]
@@ -77478,6 +78498,8 @@ pub struct DescribeInstanceTypeFamiliesResponse {
 /// <props="intl">
 /// - 如果您需要使用非售卖可见的实例规格或特别的规格需求，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket-intl)。
 /// </props>
+///
+/// Return value of [Connection::describe_instance_types()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceTypesResponse {
     #[serde(flatten)]
@@ -77491,6 +78513,7 @@ pub struct DescribeInstanceTypesResponse {
     #[serde(rename = "NextToken")]
     pub next_token: Option<String>,
 }
+/// Return value of [Connection::describe_instance_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceAttributeResponse {
     #[serde(flatten)]
@@ -77638,6 +78661,8 @@ pub struct DescribeInstanceAttributeResponse {
     pub network_options: Option<ResponseNetworkOptions>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceAttributeResponse {
     #[serde(flatten)]
@@ -77651,6 +78676,8 @@ pub struct ModifyInstanceAttributeResponse {
 /// -  当前接口是异步接口。调用后返回异步任务ID。通查查询异步任务结果来判断是否执行完成。
 ///
 /// -  修改 PtpStatus，需要对应的规格支持设置该参数。具体支持的实例规格，可以查询实例规格列表（[DescribeInstanceTypes](~~25620~~)）。
+///
+/// Return value of [Connection::modify_instance_clock_options()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceClockOptionsResponse {
     #[serde(flatten)]
@@ -77671,6 +78698,8 @@ pub struct ModifyInstanceClockOptionsResponse {
 /// -  当前接口每次调用仅支持修改一个属性。如果修改多个属性，请分多次调用。
 ///
 /// -  修改BandwidthWeighting，需要对应的规格支持设置该参数。您可以通过[DescribeInstanceTypes](~~2679699~~)查询当前实例规格是否支持带宽权重及支持的带宽权重值。
+///
+/// Return value of [Connection::modify_instance_network_options()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceNetworkOptionsResponse {
     #[serde(flatten)]
@@ -77702,6 +78731,8 @@ pub struct ModifyInstanceNetworkOptionsResponse {
 ///     - 支持将实例挂载的所有按量付费数据盘同时转换为包年包月数据盘。
 ///     - 如果按量付费实例已经设置了释放时间，则不能调用该接口。更多信息，请参见[包年包月转按量付费](~~49884~~)。
 ///     - 若实例处于节省停机模式需先启动实例。
+///
+/// Return value of [Connection::modify_instance_charge_type()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceChargeTypeResponse {
     #[serde(flatten)]
@@ -77716,6 +78747,8 @@ pub struct ModifyInstanceChargeTypeResponse {
     pub fee_of_instances: Option<InstanceChargeTypeResponseFeeOfInstances>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceSpecResponse {
     #[serde(flatten)]
@@ -77725,6 +78758,8 @@ pub struct ModifyInstanceSpecResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_prepay_instance_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyPrepayInstanceSpecResponse {
     #[serde(flatten)]
@@ -77737,6 +78772,8 @@ pub struct ModifyPrepayInstanceSpecResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_auto_release_time()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceAutoReleaseTimeResponse {
     #[serde(flatten)]
@@ -77746,6 +78783,8 @@ pub struct ModifyInstanceAutoReleaseTimeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::attach_instance_ram_role()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AttachInstanceRamRoleResponse {
     #[serde(flatten)]
@@ -77766,6 +78805,8 @@ pub struct AttachInstanceRamRoleResponse {
     pub attach_instance_ram_role_results: Option<AttachInstanceRamRoleResults>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_ram_role()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceRamRoleResponse {
     #[serde(flatten)]
@@ -77783,6 +78824,8 @@ pub struct DescribeInstanceRamRoleResponse {
     pub instance_ram_role_sets: Option<ResponseInstanceRamRoleSets>,
 }
 ///  
+///
+/// Return value of [Connection::detach_instance_ram_role()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DetachInstanceRamRoleResponse {
     #[serde(flatten)]
@@ -77803,6 +78846,8 @@ pub struct DetachInstanceRamRoleResponse {
     pub detach_instance_ram_role_results: Option<DetachInstanceRamRoleResults>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_vnc_url()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceVncUrlResponse {
     #[serde(flatten)]
@@ -77817,6 +78862,8 @@ pub struct DescribeInstanceVncUrlResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_vnc_passwd()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceVncPasswdResponse {
     #[serde(flatten)]
@@ -77826,6 +78873,8 @@ pub struct ModifyInstanceVncPasswdResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_metadata_options()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceMetadataOptionsResponse {
     #[serde(flatten)]
@@ -77835,6 +78884,8 @@ pub struct ModifyInstanceMetadataOptionsResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_user_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeUserDataResponse {
     #[serde(flatten)]
@@ -77855,6 +78906,8 @@ pub struct DescribeUserDataResponse {
     pub region_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::renew_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RenewInstanceResponse {
     #[serde(flatten)]
@@ -77867,6 +78920,8 @@ pub struct RenewInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -77887,6 +78942,8 @@ pub struct DescribeInstanceAutoRenewAttributeResponse {
     pub instance_renew_attributes: Option<ResponseInstanceRenewAttributes>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -77896,6 +78953,8 @@ pub struct ModifyInstanceAutoRenewAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::re_activate_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReActivateInstancesResponse {
     #[serde(flatten)]
@@ -77905,6 +78964,8 @@ pub struct ReActivateInstancesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_spot_price_history()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSpotPriceHistoryResponse {
     #[serde(flatten)]
@@ -77926,6 +78987,8 @@ pub struct DescribeSpotPriceHistoryResponse {
     pub spot_prices: Option<SpotPrices>,
 }
 ///  
+///
+/// Return value of [Connection::describe_spot_advice()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSpotAdviceResponse {
     #[serde(flatten)]
@@ -77940,6 +79003,8 @@ pub struct DescribeSpotAdviceResponse {
     pub available_spot_zones: Option<SpotZones>,
 }
 ///  
+///
+/// Return value of [Connection::create_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateImageResponse {
     #[serde(flatten)]
@@ -77952,6 +79017,8 @@ pub struct CreateImageResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_images()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImagesResponse {
     #[serde(flatten)]
@@ -77974,6 +79041,7 @@ pub struct DescribeImagesResponse {
     #[serde(rename = "Images")]
     pub images: Option<ResponseImages>,
 }
+/// Return value of [Connection::modify_image_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyImageAttributeResponse {
     #[serde(flatten)]
@@ -77983,6 +79051,8 @@ pub struct ModifyImageAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteImageResponse {
     #[serde(flatten)]
@@ -77992,6 +79062,8 @@ pub struct DeleteImageResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_from_family()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImageFromFamilyResponse {
     #[serde(flatten)]
@@ -78004,6 +79076,8 @@ pub struct DescribeImageFromFamilyResponse {
     pub image: Option<ResponseImage>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_support_instance_types()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImageSupportInstanceTypesResponse {
     #[serde(flatten)]
@@ -78021,6 +79095,8 @@ pub struct DescribeImageSupportInstanceTypesResponse {
     pub instance_types: Option<SupportInstanceTypesResponseInstanceTypes>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_share_permission()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImageSharePermissionResponse {
     #[serde(flatten)]
@@ -78049,6 +79125,8 @@ pub struct DescribeImageSharePermissionResponse {
     pub accounts: Option<ResponseAccounts>,
 }
 ///  
+///
+/// Return value of [Connection::modify_image_share_permission()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyImageSharePermissionResponse {
     #[serde(flatten)]
@@ -78057,6 +79135,7 @@ pub struct ModifyImageSharePermissionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_image_share_group_permission()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyImageShareGroupPermissionResponse {
     #[serde(flatten)]
@@ -78183,6 +79262,8 @@ pub struct ModifyImageShareGroupPermissionResponse {
 /// - 如果您待导入的自定义镜像对应的系统架构为arm64时，您需要设置其RTC时钟使用UTC时间标准。具体操作，请参见[Linux时间和时区说明](~~405080~~)。
 ///
 /// - 强烈建议在导入镜像时配置镜像检测参数，有助于系统帮助优化您的镜像。更多信息，请参见[镜像检测概述](~~439819~~)。
+///
+/// Return value of [Connection::import_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ImportImageResponse {
     #[serde(flatten)]
@@ -78201,6 +79282,8 @@ pub struct ImportImageResponse {
     pub region_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::export_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ExportImageResponse {
     #[serde(flatten)]
@@ -78216,6 +79299,8 @@ pub struct ExportImageResponse {
     pub region_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::copy_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CopyImageResponse {
     #[serde(flatten)]
@@ -78228,6 +79313,8 @@ pub struct CopyImageResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::cancel_copy_image()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelCopyImageResponse {
     #[serde(flatten)]
@@ -78237,6 +79324,8 @@ pub struct CancelCopyImageResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_image_component()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateImageComponentResponse {
     #[serde(flatten)]
@@ -78249,6 +79338,8 @@ pub struct CreateImageComponentResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_components()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImageComponentsResponse {
     #[serde(flatten)]
@@ -78269,6 +79360,8 @@ pub struct DescribeImageComponentsResponse {
     pub image_component: Option<ImageComponent>,
 }
 ///  
+///
+/// Return value of [Connection::delete_image_component()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteImageComponentResponse {
     #[serde(flatten)]
@@ -78278,6 +79371,8 @@ pub struct DeleteImageComponentResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_image_pipeline()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateImagePipelineResponse {
     #[serde(flatten)]
@@ -78290,6 +79385,8 @@ pub struct CreateImagePipelineResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_pipelines()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImagePipelinesResponse {
     #[serde(flatten)]
@@ -78310,6 +79407,8 @@ pub struct DescribeImagePipelinesResponse {
     pub image_pipeline: Option<ImagePipeline>,
 }
 ///  
+///
+/// Return value of [Connection::delete_image_pipeline()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteImagePipelineResponse {
     #[serde(flatten)]
@@ -78319,6 +79418,8 @@ pub struct DeleteImagePipelineResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::start_image_pipeline_execution()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StartImagePipelineExecutionResponse {
     #[serde(flatten)]
@@ -78331,6 +79432,8 @@ pub struct StartImagePipelineExecutionResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_image_pipeline_executions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeImagePipelineExecutionsResponse {
     #[serde(flatten)]
@@ -78351,6 +79454,8 @@ pub struct DescribeImagePipelineExecutionsResponse {
     pub image_pipeline_execution: Option<PipelineExecution>,
 }
 ///  
+///
+/// Return value of [Connection::cancel_image_pipeline_execution()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelImagePipelineExecutionResponse {
     #[serde(flatten)]
@@ -78360,6 +79465,8 @@ pub struct CancelImagePipelineExecutionResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateDiskResponse {
     #[serde(flatten)]
@@ -78377,6 +79484,8 @@ pub struct CreateDiskResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_disks()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDisksResponse {
     #[serde(flatten)]
@@ -78401,6 +79510,8 @@ pub struct DescribeDisksResponse {
     pub disks: Option<ResponseDisks>,
 }
 ///  
+///
+/// Return value of [Connection::attach_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AttachDiskResponse {
     #[serde(flatten)]
@@ -78410,6 +79521,8 @@ pub struct AttachDiskResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::detach_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DetachDiskResponse {
     #[serde(flatten)]
@@ -78419,6 +79532,8 @@ pub struct DetachDiskResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::resize_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ResizeDiskResponse {
     #[serde(flatten)]
@@ -78433,6 +79548,8 @@ pub struct ResizeDiskResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_disk_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiskAttributeResponse {
     #[serde(flatten)]
@@ -78453,6 +79570,8 @@ pub struct ModifyDiskAttributeResponse {
 ///
 ///
 /// 更换计费方式后，默认自动扣费。您需要确保账户余额充足，否则会生成异常订单，此时只能作废订单。如果您的账户余额不足，可以将参数AutoPay置为false，此时会生成正常的未支付订单，您可以登录阿里云**费用与成本**后，在<props="china"><ph>[我的订单](https://usercenter2.aliyun.com/order/list)</ph></props><props="intl"><ph>[订单管理](https://usercenter2-intl.aliyun.com/order/list)</ph></props>页面支付。
+///
+/// Return value of [Connection::modify_disk_charge_type()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiskChargeTypeResponse {
     #[serde(flatten)]
@@ -78465,6 +79584,8 @@ pub struct ModifyDiskChargeTypeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_disk_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiskSpecResponse {
     #[serde(flatten)]
@@ -78484,6 +79605,8 @@ pub struct ModifyDiskSpecResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::replace_system_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReplaceSystemDiskResponse {
     #[serde(flatten)]
@@ -78496,6 +79619,8 @@ pub struct ReplaceSystemDiskResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::reset_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ResetDiskResponse {
     #[serde(flatten)]
@@ -78505,6 +79630,8 @@ pub struct ResetDiskResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::reset_disks()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ResetDisksResponse {
     #[serde(flatten)]
@@ -78516,6 +79643,8 @@ pub struct ResetDisksResponse {
     pub operation_progress_set: Option<DisksResponseOperationProgressSet>,
 }
 ///  
+///
+/// Return value of [Connection::re_init_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReInitDiskResponse {
     #[serde(flatten)]
@@ -78539,6 +79668,8 @@ pub struct ReInitDiskResponse {
 /// - 迁移过程中不允许取消迁移、创建快照、变配、扩容、挂载、卸载、重新初始化云盘等操作。
 ///
 /// > 云盘迁移后遵循目标集群对应的计费方式、云盘规格和能力，调用接口后立即生效，阿里云按照新的云盘类型及云盘性能级别进行计费。更多信息，请参见[专属块存储计费](~~208883~~)和[块存储计费](~~179022~~)。
+///
+/// Return value of [Connection::modify_disk_deployment()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiskDeploymentResponse {
     #[serde(flatten)]
@@ -78551,6 +79682,8 @@ pub struct ModifyDiskDeploymentResponse {
     pub task_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_disk()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteDiskResponse {
     #[serde(flatten)]
@@ -78585,6 +79718,8 @@ pub struct DeleteDiskResponse {
 ///     - 您可以通过 [DescribeDiskEncryptionByDefaultStatus](~~2851493~~) 和 [DescribeDiskDefaultKMSKeyId](~~2851490~~) 查询指定地域块存储账号级默认加密功能是否开启以及使用的KMS密钥ID。
 ///     - 您可以通过 [ModifyDiskDefaultKMSKeyId](~~2851492~~) 或 [ResetDiskDefaultKMSKeyId](~~2851539~~) 修改或重置块存储账号级默认加密的KMS密钥。
 ///     - 您可以通过 [DisableDiskEncryptionByDefault](~~2851491~~) 关闭指定地域块存储账号级默认加密功能。
+///
+/// Return value of [Connection::enable_disk_encryption_by_default()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct EnableDiskEncryptionByDefaultResponse {
     #[serde(flatten)]
@@ -78593,6 +79728,7 @@ pub struct EnableDiskEncryptionByDefaultResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_disk_encryption_by_default_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiskEncryptionByDefaultStatusResponse {
     #[serde(flatten)]
@@ -78610,6 +79746,7 @@ pub struct DescribeDiskEncryptionByDefaultStatusResponse {
     #[serde(rename = "Encrypted")]
     pub encrypted: Option<bool>,
 }
+/// Return value of [Connection::describe_disk_default_kms_key_id()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
@@ -78624,6 +79761,8 @@ pub struct DescribeDiskDefaultKMSKeyIdResponse {
 /// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
 /// - 指定地域需要开启块存储账号级默认加密功能。
 /// - 首次使用主密钥，需要先为ECS授权`AliyunECSDiskEncryptDefaultRole`角色，允许ECS访问KMS资源，详情见[通过RAM角色授予访问KMS密钥的权限](~~2838993~~)。
+///
+/// Return value of [Connection::modify_disk_default_kms_key_id()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
@@ -78634,6 +79773,8 @@ pub struct ModifyDiskDefaultKMSKeyIdResponse {
 }
 /// - RAM用户（子账号）需要`AliyunECSFullAccess`权限，具体授权操作，请参见[为RAM用户授权](~~116146~~)。
 /// - 指定地域需要开启**块存储账号级默认加密**功能。
+///
+/// Return value of [Connection::reset_disk_default_kms_key_id()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ResetDiskDefaultKMSKeyIdResponse {
     #[serde(flatten)]
@@ -78648,6 +79789,8 @@ pub struct ResetDiskDefaultKMSKeyIdResponse {
 /// - **注意事项**
 ///   - 关闭块存储账号级默认加密后，已创建的云盘加密状态不受影响。
 ///   - 关闭块存储账号级默认加密后，您依旧可以在新购云盘时手动选择加密云盘。
+///
+/// Return value of [Connection::disable_disk_encryption_by_default()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DisableDiskEncryptionByDefaultResponse {
     #[serde(flatten)]
@@ -78656,6 +79799,7 @@ pub struct DisableDiskEncryptionByDefaultResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::open_snapshot_service()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct OpenSnapshotServiceResponse {
     #[serde(flatten)]
@@ -78665,6 +79809,8 @@ pub struct OpenSnapshotServiceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_snapshot()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSnapshotResponse {
     #[serde(flatten)]
@@ -78677,6 +79823,8 @@ pub struct CreateSnapshotResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshots()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotsResponse {
     #[serde(flatten)]
@@ -78702,6 +79850,8 @@ pub struct DescribeSnapshotsResponse {
     pub snapshots: Option<ResponseSnapshots>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshots_usage()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotsUsageResponse {
     #[serde(flatten)]
@@ -78717,6 +79867,8 @@ pub struct DescribeSnapshotsUsageResponse {
     pub snapshot_count: Option<i32>,
 }
 ///  
+///
+/// Return value of [Connection::modify_snapshot_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySnapshotAttributeResponse {
     #[serde(flatten)]
@@ -78734,6 +79886,8 @@ pub struct ModifySnapshotAttributeResponse {
 /// - 标准快照创建完成之后，必须至少已保留14天，才能进行归档。
 ///
 /// - 共享来的快照、云产品托管的快照、云盒内的快照不支持归档。
+///
+/// Return value of [Connection::modify_snapshot_category()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySnapshotCategoryResponse {
     #[serde(flatten)]
@@ -78746,6 +79900,8 @@ pub struct ModifySnapshotCategoryResponse {
     pub task_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::copy_snapshot()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CopySnapshotResponse {
     #[serde(flatten)]
@@ -78758,6 +79914,8 @@ pub struct CopySnapshotResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_snapshot()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSnapshotResponse {
     #[serde(flatten)]
@@ -78767,6 +79925,8 @@ pub struct DeleteSnapshotResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshot_links()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotLinksResponse {
     #[serde(flatten)]
@@ -78807,6 +79967,8 @@ pub struct DescribeSnapshotLinksResponse {
 /// - 开启多重挂载特性的云盘不支持创建快照一致性组。如果实例挂载了开启多重挂载特性的云盘，您需要设置`ExcludeDiskId.N`参数排除该云盘。
 ///
 /// 关于快照一致性组的功能、计费等信息，请参见[快照一致性组](~~199625~~)。
+///
+/// Return value of [Connection::create_snapshot_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSnapshotGroupResponse {
     #[serde(flatten)]
@@ -78819,6 +79981,8 @@ pub struct CreateSnapshotGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshot_groups()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotGroupsResponse {
     #[serde(flatten)]
@@ -78835,6 +79999,8 @@ pub struct DescribeSnapshotGroupsResponse {
     pub snapshot_groups: Option<SnapshotGroups>,
 }
 ///  
+///
+/// Return value of [Connection::modify_snapshot_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySnapshotGroupResponse {
     #[serde(flatten)]
@@ -78844,6 +80010,8 @@ pub struct ModifySnapshotGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_snapshot_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSnapshotGroupResponse {
     #[serde(flatten)]
@@ -78855,6 +80023,8 @@ pub struct DeleteSnapshotGroupResponse {
     pub operation_progress_set: Option<GroupResponseOperationProgressSet>,
 }
 ///  
+///
+/// Return value of [Connection::create_auto_snapshot_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateAutoSnapshotPolicyResponse {
     #[serde(flatten)]
@@ -78867,6 +80037,8 @@ pub struct CreateAutoSnapshotPolicyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_auto_snapshot_policy_ex()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAutoSnapshotPolicyExResponse {
     #[serde(flatten)]
@@ -78886,6 +80058,7 @@ pub struct DescribeAutoSnapshotPolicyExResponse {
     #[serde(rename = "AutoSnapshotPolicies")]
     pub auto_snapshot_policies: Option<SnapshotPolicies>,
 }
+/// Return value of [Connection::describe_auto_snapshot_policy_associations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
     #[serde(flatten)]
@@ -78900,6 +80073,8 @@ pub struct DescribeAutoSnapshotPolicyAssociationsResponse {
     pub auto_snapshot_policy_associations: Option<PolicyAssociations>,
 }
 ///  
+///
+/// Return value of [Connection::modify_auto_snapshot_policy_ex()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyAutoSnapshotPolicyExResponse {
     #[serde(flatten)]
@@ -78909,6 +80084,8 @@ pub struct ModifyAutoSnapshotPolicyExResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::apply_auto_snapshot_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ApplyAutoSnapshotPolicyResponse {
     #[serde(flatten)]
@@ -78918,6 +80095,8 @@ pub struct ApplyAutoSnapshotPolicyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::cancel_auto_snapshot_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelAutoSnapshotPolicyResponse {
     #[serde(flatten)]
@@ -78927,6 +80106,8 @@ pub struct CancelAutoSnapshotPolicyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_auto_snapshot_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteAutoSnapshotPolicyResponse {
     #[serde(flatten)]
@@ -78936,6 +80117,8 @@ pub struct DeleteAutoSnapshotPolicyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshot_package()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotPackageResponse {
     #[serde(flatten)]
@@ -78955,6 +80138,7 @@ pub struct DescribeSnapshotPackageResponse {
     #[serde(rename = "SnapshotPackages")]
     pub snapshot_packages: Option<SnapshotPackages>,
 }
+/// Return value of [Connection::describe_bandwidth_limitation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeBandwidthLimitationResponse {
     #[serde(flatten)]
@@ -78966,6 +80150,8 @@ pub struct DescribeBandwidthLimitationResponse {
     pub bandwidths: Option<ResponseBandwidths>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_network_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceNetworkSpecResponse {
     #[serde(flatten)]
@@ -78978,6 +80164,8 @@ pub struct ModifyInstanceNetworkSpecResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::allocate_public_ip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AllocatePublicIpAddressResponse {
     #[serde(flatten)]
@@ -78990,6 +80178,8 @@ pub struct AllocatePublicIpAddressResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::convert_nat_public_ip_to_eip()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ConvertNatPublicIpToEipResponse {
     #[serde(flatten)]
@@ -78999,6 +80189,8 @@ pub struct ConvertNatPublicIpToEipResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_vpc_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceVpcAttributeResponse {
     #[serde(flatten)]
@@ -79008,6 +80200,8 @@ pub struct ModifyInstanceVpcAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_classic_link_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeClassicLinkInstancesResponse {
     #[serde(flatten)]
@@ -79028,6 +80222,8 @@ pub struct DescribeClassicLinkInstancesResponse {
     pub links: Option<ResponseLinks>,
 }
 ///  
+///
+/// Return value of [Connection::attach_classic_link_vpc()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AttachClassicLinkVpcResponse {
     #[serde(flatten)]
@@ -79037,6 +80233,8 @@ pub struct AttachClassicLinkVpcResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::detach_classic_link_vpc()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DetachClassicLinkVpcResponse {
     #[serde(flatten)]
@@ -79046,6 +80244,8 @@ pub struct DetachClassicLinkVpcResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_network_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateNetworkInterfaceResponse {
     #[serde(flatten)]
@@ -79112,6 +80312,8 @@ pub struct CreateNetworkInterfaceResponse {
     pub source_dest_check: Option<bool>,
 }
 ///  
+///
+/// Return value of [Connection::describe_network_interfaces()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeNetworkInterfacesResponse {
     #[serde(flatten)]
@@ -79139,6 +80341,7 @@ pub struct DescribeNetworkInterfacesResponse {
     #[serde(rename = "NetworkInterfaceSets")]
     pub network_interface_sets: Option<InterfaceSets>,
 }
+/// Return value of [Connection::describe_network_interface_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeNetworkInterfaceAttributeResponse {
     #[serde(flatten)]
@@ -79288,6 +80491,8 @@ pub struct DescribeNetworkInterfaceAttributeResponse {
     pub qo_s_config: Option<SConfig>,
 }
 ///  
+///
+/// Return value of [Connection::modify_network_interface_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyNetworkInterfaceAttributeResponse {
     #[serde(flatten)]
@@ -79314,6 +80519,8 @@ pub struct ModifyNetworkInterfaceAttributeResponse {
 ///     - 若弹性网卡状态长时间为Deleting说明删除失败，此时您可以重新发起删除请求弹性网卡操作。      
 ///
 /// **调用示例详情参见**[删除弹性网卡](~~471553~~)。
+///
+/// Return value of [Connection::delete_network_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteNetworkInterfaceResponse {
     #[serde(flatten)]
@@ -79341,6 +80548,8 @@ pub struct DeleteNetworkInterfaceResponse {
 ///     - Available说明弹性网卡附加到ECS实例失败。   
 ///
 /// **调用示例详情参见**[附加弹性网卡](~~471550~~)。
+///
+/// Return value of [Connection::attach_network_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AttachNetworkInterfaceResponse {
     #[serde(flatten)]
@@ -79350,6 +80559,8 @@ pub struct AttachNetworkInterfaceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::detach_network_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DetachNetworkInterfaceResponse {
     #[serde(flatten)]
@@ -79359,6 +80570,8 @@ pub struct DetachNetworkInterfaceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::assign_private_ip_addresses()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AssignPrivateIpAddressesResponse {
     #[serde(flatten)]
@@ -79371,6 +80584,8 @@ pub struct AssignPrivateIpAddressesResponse {
     pub assigned_private_ip_addresses_set: Option<AddressesSet>,
 }
 ///  
+///
+/// Return value of [Connection::unassign_private_ip_addresses()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UnassignPrivateIpAddressesResponse {
     #[serde(flatten)]
@@ -79380,6 +80595,8 @@ pub struct UnassignPrivateIpAddressesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::assign_ipv6_addresses()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AssignIpv6AddressesResponse {
     #[serde(flatten)]
@@ -79396,6 +80613,8 @@ pub struct AssignIpv6AddressesResponse {
     pub ipv6_prefix_sets: Option<AddressesResponseIpv6PrefixSets>,
 }
 ///  
+///
+/// Return value of [Connection::unassign_ipv6_addresses()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UnassignIpv6AddressesResponse {
     #[serde(flatten)]
@@ -79405,6 +80624,8 @@ pub struct UnassignIpv6AddressesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_network_interface_permission()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateNetworkInterfacePermissionResponse {
     #[serde(flatten)]
@@ -79417,6 +80638,8 @@ pub struct CreateNetworkInterfacePermissionResponse {
     pub network_interface_permission: Option<ResponseNetworkInterfacePermission>,
 }
 ///  
+///
+/// Return value of [Connection::describe_network_interface_permissions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeNetworkInterfacePermissionsResponse {
     #[serde(flatten)]
@@ -79437,6 +80660,8 @@ pub struct DescribeNetworkInterfacePermissionsResponse {
     pub network_interface_permissions: Option<InterfacePermissions>,
 }
 ///  
+///
+/// Return value of [Connection::create_prefix_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreatePrefixListResponse {
     #[serde(flatten)]
@@ -79449,6 +80674,8 @@ pub struct CreatePrefixListResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_prefix_lists()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePrefixListsResponse {
     #[serde(flatten)]
@@ -79463,6 +80690,8 @@ pub struct DescribePrefixListsResponse {
     pub prefix_lists: Option<PrefixLists>,
 }
 ///  
+///
+/// Return value of [Connection::describe_prefix_list_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePrefixListAttributesResponse {
     #[serde(flatten)]
@@ -79495,6 +80724,8 @@ pub struct DescribePrefixListAttributesResponse {
     pub entries: Option<ResponseEntries>,
 }
 ///  
+///
+/// Return value of [Connection::describe_prefix_list_associations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePrefixListAssociationsResponse {
     #[serde(flatten)]
@@ -79509,6 +80740,8 @@ pub struct DescribePrefixListAssociationsResponse {
     pub prefix_list_associations: Option<ListAssociations>,
 }
 ///  
+///
+/// Return value of [Connection::modify_prefix_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyPrefixListResponse {
     #[serde(flatten)]
@@ -79518,6 +80751,8 @@ pub struct ModifyPrefixListResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_prefix_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeletePrefixListResponse {
     #[serde(flatten)]
@@ -79526,6 +80761,7 @@ pub struct DeletePrefixListResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_port_range_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreatePortRangeListResponse {
     #[serde(flatten)]
@@ -79537,6 +80773,7 @@ pub struct CreatePortRangeListResponse {
     #[serde(rename = "PortRangeListId")]
     pub port_range_list_id: Option<String>,
 }
+/// Return value of [Connection::describe_port_range_lists()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePortRangeListsResponse {
     #[serde(flatten)]
@@ -79552,6 +80789,7 @@ pub struct DescribePortRangeListsResponse {
     #[serde(default)]
     pub port_range_lists: Vec<RangeList>,
 }
+/// Return value of [Connection::describe_port_range_list_entries()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePortRangeListEntriesResponse {
     #[serde(flatten)]
@@ -79564,6 +80802,7 @@ pub struct DescribePortRangeListEntriesResponse {
     #[serde(default)]
     pub entries: Vec<ResponseEntry>,
 }
+/// Return value of [Connection::describe_port_range_list_associations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePortRangeListAssociationsResponse {
     #[serde(flatten)]
@@ -79579,6 +80818,7 @@ pub struct DescribePortRangeListAssociationsResponse {
     #[serde(default)]
     pub port_range_list_associations: Vec<RangeListAssociation>,
 }
+/// Return value of [Connection::modify_port_range_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyPortRangeListResponse {
     #[serde(flatten)]
@@ -79587,6 +80827,7 @@ pub struct ModifyPortRangeListResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_port_range_list()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeletePortRangeListResponse {
     #[serde(flatten)]
@@ -79596,6 +80837,8 @@ pub struct DeletePortRangeListResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSecurityGroupResponse {
     #[serde(flatten)]
@@ -79608,6 +80851,8 @@ pub struct CreateSecurityGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_security_groups()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSecurityGroupsResponse {
     #[serde(flatten)]
@@ -79638,6 +80883,8 @@ pub struct DescribeSecurityGroupsResponse {
     pub page_size: Option<i32>,
 }
 ///  
+///
+/// Return value of [Connection::describe_security_group_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSecurityGroupAttributeResponse {
     #[serde(flatten)]
@@ -79675,6 +80922,8 @@ pub struct DescribeSecurityGroupAttributeResponse {
     pub snapshot_policy_ids: Option<PolicyIds>,
 }
 ///  
+///
+/// Return value of [Connection::modify_security_group_policy()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySecurityGroupPolicyResponse {
     #[serde(flatten)]
@@ -79684,6 +80933,8 @@ pub struct ModifySecurityGroupPolicyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_security_group_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySecurityGroupAttributeResponse {
     #[serde(flatten)]
@@ -79693,6 +80944,8 @@ pub struct ModifySecurityGroupAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteSecurityGroupResponse {
     #[serde(flatten)]
@@ -79702,6 +80955,8 @@ pub struct DeleteSecurityGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::authorize_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AuthorizeSecurityGroupResponse {
     #[serde(flatten)]
@@ -79711,6 +80966,8 @@ pub struct AuthorizeSecurityGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_security_group_rule()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySecurityGroupRuleResponse {
     #[serde(flatten)]
@@ -79720,6 +80977,8 @@ pub struct ModifySecurityGroupRuleResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::revoke_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RevokeSecurityGroupResponse {
     #[serde(flatten)]
@@ -79785,6 +81044,8 @@ pub struct RevokeSecurityGroupResponse {
 ///          }
 ///     ]
 ///     ```
+///
+/// Return value of [Connection::authorize_security_group_egress()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AuthorizeSecurityGroupEgressResponse {
     #[serde(flatten)]
@@ -79794,6 +81055,8 @@ pub struct AuthorizeSecurityGroupEgressResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_security_group_egress_rule()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifySecurityGroupEgressRuleResponse {
     #[serde(flatten)]
@@ -79803,6 +81066,8 @@ pub struct ModifySecurityGroupEgressRuleResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::revoke_security_group_egress()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RevokeSecurityGroupEgressResponse {
     #[serde(flatten)]
@@ -79812,6 +81077,8 @@ pub struct RevokeSecurityGroupEgressResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_security_group_references()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSecurityGroupReferencesResponse {
     #[serde(flatten)]
@@ -79823,6 +81090,8 @@ pub struct DescribeSecurityGroupReferencesResponse {
     pub security_group_references: Option<GroupReferences>,
 }
 ///  
+///
+/// Return value of [Connection::join_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct JoinSecurityGroupResponse {
     #[serde(flatten)]
@@ -79832,6 +81101,8 @@ pub struct JoinSecurityGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::leave_security_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct LeaveSecurityGroupResponse {
     #[serde(flatten)]
@@ -79841,6 +81112,8 @@ pub struct LeaveSecurityGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_key_pair()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateKeyPairResponse {
     #[serde(flatten)]
@@ -79862,6 +81135,8 @@ pub struct CreateKeyPairResponse {
     pub key_pair_finger_print: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::import_key_pair()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ImportKeyPairResponse {
     #[serde(flatten)]
@@ -79877,6 +81152,8 @@ pub struct ImportKeyPairResponse {
     pub key_pair_finger_print: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_key_pairs()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeKeyPairsResponse {
     #[serde(flatten)]
@@ -79897,6 +81174,8 @@ pub struct DescribeKeyPairsResponse {
     pub key_pairs: Option<KeyPairs>,
 }
 ///  
+///
+/// Return value of [Connection::attach_key_pair()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AttachKeyPairResponse {
     #[serde(flatten)]
@@ -79917,6 +81196,8 @@ pub struct AttachKeyPairResponse {
     pub results: Option<AttachKeyPairResponseResults>,
 }
 ///  
+///
+/// Return value of [Connection::detach_key_pair()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DetachKeyPairResponse {
     #[serde(flatten)]
@@ -79937,6 +81218,8 @@ pub struct DetachKeyPairResponse {
     pub results: Option<DetachKeyPairResponseResults>,
 }
 ///  
+///
+/// Return value of [Connection::delete_key_pairs()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteKeyPairsResponse {
     #[serde(flatten)]
@@ -79946,6 +81229,8 @@ pub struct DeleteKeyPairsResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_launch_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateLaunchTemplateResponse {
     #[serde(flatten)]
@@ -79961,6 +81246,8 @@ pub struct CreateLaunchTemplateResponse {
     pub launch_template_version_number: Option<i64>,
 }
 ///  
+///
+/// Return value of [Connection::describe_launch_templates()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeLaunchTemplatesResponse {
     #[serde(flatten)]
@@ -79981,6 +81268,8 @@ pub struct DescribeLaunchTemplatesResponse {
     pub launch_template_sets: Option<TemplateSets>,
 }
 ///  
+///
+/// Return value of [Connection::delete_launch_template()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteLaunchTemplateResponse {
     #[serde(flatten)]
@@ -79997,6 +81286,8 @@ pub struct DeleteLaunchTemplateResponse {
     pub launch_template_version_numbers: Option<VersionNumbers>,
 }
 ///  
+///
+/// Return value of [Connection::create_launch_template_version()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateLaunchTemplateVersionResponse {
     #[serde(flatten)]
@@ -80014,6 +81305,8 @@ pub struct CreateLaunchTemplateVersionResponse {
     pub launch_template_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_launch_template_versions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeLaunchTemplateVersionsResponse {
     #[serde(flatten)]
@@ -80034,6 +81327,8 @@ pub struct DescribeLaunchTemplateVersionsResponse {
     pub launch_template_version_sets: Option<VersionSets>,
 }
 ///  
+///
+/// Return value of [Connection::modify_launch_template_default_version()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyLaunchTemplateDefaultVersionResponse {
     #[serde(flatten)]
@@ -80046,6 +81341,8 @@ pub struct ModifyLaunchTemplateDefaultVersionResponse {
     pub launch_template_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_launch_template_version()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteLaunchTemplateVersionResponse {
     #[serde(flatten)]
@@ -80057,6 +81354,8 @@ pub struct DeleteLaunchTemplateVersionResponse {
     pub launch_template_versions: Option<TemplateVersions>,
 }
 ///  
+///
+/// Return value of [Connection::create_auto_provisioning_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateAutoProvisioningGroupResponse {
     #[serde(flatten)]
@@ -80071,6 +81370,8 @@ pub struct CreateAutoProvisioningGroupResponse {
     pub launch_results: Option<LaunchResults>,
 }
 ///  
+///
+/// Return value of [Connection::describe_auto_provisioning_groups()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAutoProvisioningGroupsResponse {
     #[serde(flatten)]
@@ -80091,6 +81392,8 @@ pub struct DescribeAutoProvisioningGroupsResponse {
     pub auto_provisioning_groups: Option<ProvisioningGroups>,
 }
 ///  
+///
+/// Return value of [Connection::describe_auto_provisioning_group_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAutoProvisioningGroupInstancesResponse {
     #[serde(flatten)]
@@ -80111,6 +81414,8 @@ pub struct DescribeAutoProvisioningGroupInstancesResponse {
     pub instances: Option<GroupInstancesResponseInstances>,
 }
 ///  
+///
+/// Return value of [Connection::modify_auto_provisioning_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyAutoProvisioningGroupResponse {
     #[serde(flatten)]
@@ -80120,6 +81425,8 @@ pub struct ModifyAutoProvisioningGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_auto_provisioning_group_history()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAutoProvisioningGroupHistoryResponse {
     #[serde(flatten)]
@@ -80140,6 +81447,8 @@ pub struct DescribeAutoProvisioningGroupHistoryResponse {
     pub auto_provisioning_group_histories: Option<GroupHistories>,
 }
 ///  
+///
+/// Return value of [Connection::delete_auto_provisioning_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteAutoProvisioningGroupResponse {
     #[serde(flatten)]
@@ -80149,6 +81458,8 @@ pub struct DeleteAutoProvisioningGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_deployment_set()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateDeploymentSetResponse {
     #[serde(flatten)]
@@ -80161,6 +81472,8 @@ pub struct CreateDeploymentSetResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_deployment_set_supported_instance_type_family()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
     #[serde(flatten)]
@@ -80173,6 +81486,8 @@ pub struct DescribeDeploymentSetSupportedInstanceTypeFamilyResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_deployment_sets()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDeploymentSetsResponse {
     #[serde(flatten)]
@@ -80196,6 +81511,8 @@ pub struct DescribeDeploymentSetsResponse {
     pub deployment_sets: Option<DeploymentSets>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_deployment()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceDeploymentResponse {
     #[serde(flatten)]
@@ -80205,6 +81522,8 @@ pub struct ModifyInstanceDeploymentResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_deployment_set_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDeploymentSetAttributeResponse {
     #[serde(flatten)]
@@ -80214,6 +81533,8 @@ pub struct ModifyDeploymentSetAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_deployment_set()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteDeploymentSetResponse {
     #[serde(flatten)]
@@ -80223,6 +81544,8 @@ pub struct DeleteDeploymentSetResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_elasticity_assurance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateElasticityAssuranceResponse {
     #[serde(flatten)]
@@ -80238,6 +81561,8 @@ pub struct CreateElasticityAssuranceResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_elasticity_assurances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeElasticityAssurancesResponse {
     #[serde(flatten)]
@@ -80258,6 +81583,8 @@ pub struct DescribeElasticityAssurancesResponse {
     pub elasticity_assurance_set: Option<AssuranceSet>,
 }
 ///  
+///
+/// Return value of [Connection::describe_elasticity_assurance_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeElasticityAssuranceInstancesResponse {
     #[serde(flatten)]
@@ -80278,6 +81605,8 @@ pub struct DescribeElasticityAssuranceInstancesResponse {
     pub elasticity_assurance_item: Option<ElasticityAssurance>,
 }
 ///  
+///
+/// Return value of [Connection::modify_elasticity_assurance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyElasticityAssuranceResponse {
     #[serde(flatten)]
@@ -80286,6 +81615,7 @@ pub struct ModifyElasticityAssuranceResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::renew_elasticity_assurances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RenewElasticityAssurancesResponse {
     #[serde(flatten)]
@@ -80299,6 +81629,7 @@ pub struct RenewElasticityAssurancesResponse {
     #[serde(rename = "PrivatePoolOptionsIdSet")]
     pub private_pool_options_id_set: Option<OptionsIdSet>,
 }
+/// Return value of [Connection::modify_elasticity_assurance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -80307,6 +81638,7 @@ pub struct ModifyElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_elasticity_assurance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -80320,6 +81652,8 @@ pub struct DescribeElasticityAssuranceAutoRenewAttributeResponse {
 /// 请确保在使用该接口前，已充分了解弹性保障产品的收费方式和<props="china">[价格](https://www.aliyun.com/price/product#/ecs/detail)</props><props="intl">[价格](https://www.alibabacloud.com/zh?spm=5176.28117011.nav-v2-dropdown-language.exp-location-zh.9ae4165bF98IHz&_p_lc=1)</props>。
 ///
 /// 购买弹性保障服务前，您可以调用[DescribeElasticityAssurances](~~2679748~~)查询可购买的弹性保障服务。
+///
+/// Return value of [Connection::purchase_elasticity_assurance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PurchaseElasticityAssuranceResponse {
     #[serde(flatten)]
@@ -80329,6 +81663,8 @@ pub struct PurchaseElasticityAssuranceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_capacity_reservation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateCapacityReservationResponse {
     #[serde(flatten)]
@@ -80341,6 +81677,8 @@ pub struct CreateCapacityReservationResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_capacity_reservations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeCapacityReservationsResponse {
     #[serde(flatten)]
@@ -80360,6 +81698,7 @@ pub struct DescribeCapacityReservationsResponse {
     #[serde(rename = "CapacityReservationSet")]
     pub capacity_reservation_set: Option<ReservationSet>,
 }
+/// Return value of [Connection::describe_capacity_reservation_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeCapacityReservationInstancesResponse {
     #[serde(flatten)]
@@ -80380,6 +81719,8 @@ pub struct DescribeCapacityReservationInstancesResponse {
     pub capacity_reservation_item: Option<CapacityReservation>,
 }
 ///  
+///
+/// Return value of [Connection::modify_capacity_reservation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyCapacityReservationResponse {
     #[serde(flatten)]
@@ -80389,6 +81730,8 @@ pub struct ModifyCapacityReservationResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_attachment_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceAttachmentAttributesResponse {
     #[serde(flatten)]
@@ -80409,6 +81752,8 @@ pub struct DescribeInstanceAttachmentAttributesResponse {
     pub instances: Option<AttributesResponseInstances>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_attachment_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceAttachmentAttributesResponse {
     #[serde(flatten)]
@@ -80418,6 +81763,8 @@ pub struct ModifyInstanceAttachmentAttributesResponse {
     pub request_id: Option<String>,
 }
 /// 立即生效的容量预定服务，当释放方式为手动释放时，调用该接口可直接释放容量预定服务。
+///
+/// Return value of [Connection::release_capacity_reservation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReleaseCapacityReservationResponse {
     #[serde(flatten)]
@@ -80427,6 +81774,8 @@ pub struct ReleaseCapacityReservationResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::purchase_reserved_instances_offering()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PurchaseReservedInstancesOfferingResponse {
     #[serde(flatten)]
@@ -80441,6 +81790,8 @@ pub struct PurchaseReservedInstancesOfferingResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_reserved_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeReservedInstancesResponse {
     #[serde(flatten)]
@@ -80461,6 +81812,8 @@ pub struct DescribeReservedInstancesResponse {
     pub reserved_instances: Option<ReservedInstances>,
 }
 ///  
+///
+/// Return value of [Connection::modify_reserved_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyReservedInstancesResponse {
     #[serde(flatten)]
@@ -80472,6 +81825,8 @@ pub struct ModifyReservedInstancesResponse {
     pub reserved_instance_id_sets: Option<ModifyReservedInstancesResponseReservedInstanceIdSets>,
 }
 ///  
+///
+/// Return value of [Connection::modify_reserved_instance_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyReservedInstanceAttributeResponse {
     #[serde(flatten)]
@@ -80498,6 +81853,8 @@ pub struct ModifyReservedInstanceAttributeResponse {
 /// - 预留实例券支持手动续费和自动续费两种续费方式，详细信息请参见[预留实例券续费说明](~~100371#53bfc50b78sta~~)。
 /// - 您可以调用[DescribeReservedInstances](~~100065~~)查询已购买的预留实例券。
 /// - 该接口支持开启自动续费，但不支持取消自动续费，您可以通过[ModifyReservedInstanceAutoRenewAttribute](~~2679786~~)取消自动续费。
+///
+/// Return value of [Connection::renew_reserved_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RenewReservedInstancesResponse {
     #[serde(flatten)]
@@ -80511,6 +81868,7 @@ pub struct RenewReservedInstancesResponse {
     #[serde(rename = "OrderId")]
     pub order_id: Option<String>,
 }
+/// Return value of [Connection::describe_reserved_instance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -80521,6 +81879,7 @@ pub struct DescribeReservedInstanceAutoRenewAttributeResponse {
     #[serde(rename = "ReservedInstanceRenewAttributes")]
     pub reserved_instance_renew_attributes: Option<ReservedInstanceRenewAttributes>,
 }
+/// Return value of [Connection::modify_reserved_instance_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -80530,6 +81889,8 @@ pub struct ModifyReservedInstanceAutoRenewAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::purchase_storage_capacity_unit()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct PurchaseStorageCapacityUnitResponse {
     #[serde(flatten)]
@@ -80544,6 +81905,8 @@ pub struct PurchaseStorageCapacityUnitResponse {
     pub storage_capacity_unit_ids: Option<UnitIds>,
 }
 ///  
+///
+/// Return value of [Connection::describe_storage_capacity_units()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeStorageCapacityUnitsResponse {
     #[serde(flatten)]
@@ -80564,6 +81927,8 @@ pub struct DescribeStorageCapacityUnitsResponse {
     pub storage_capacity_units: Option<CapacityUnits>,
 }
 ///  
+///
+/// Return value of [Connection::modify_storage_capacity_unit_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyStorageCapacityUnitAttributeResponse {
     #[serde(flatten)]
@@ -80573,6 +81938,8 @@ pub struct ModifyStorageCapacityUnitAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::run_command()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RunCommandResponse {
     #[serde(flatten)]
@@ -80588,6 +81955,8 @@ pub struct RunCommandResponse {
     pub invoke_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_command()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateCommandResponse {
     #[serde(flatten)]
@@ -80600,6 +81969,8 @@ pub struct CreateCommandResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::invoke_command()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct InvokeCommandResponse {
     #[serde(flatten)]
@@ -80612,6 +81983,8 @@ pub struct InvokeCommandResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_invocations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInvocationsResponse {
     #[serde(flatten)]
@@ -80635,6 +82008,8 @@ pub struct DescribeInvocationsResponse {
     pub invocations: Option<InvocationsResponseInvocations>,
 }
 ///  
+///
+/// Return value of [Connection::describe_invocation_results()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInvocationResultsResponse {
     #[serde(flatten)]
@@ -80661,6 +82036,8 @@ pub struct DescribeInvocationResultsResponse {
 ///     - 如果调用结果返回`InvalidOperation.CloudAssistantVersionUnsupported`错误码，请将云助手Agent更新至最新版本。
 /// - 当您执行一个云助手公共命令时，无法修改命令内容`CommandContent`。
 /// - 当您修改了命令内容`CommandContent`，且调用[InvokeCommand](~~64841~~)或调用[RunCommand](~~141751~~)时设置`KeepCommand`为`true`创建任务，将会新增一条命令并长期保留，并占用云助手命令配额；在一个地域下，您最多可以保有500～50,000条云助手命令。您也可以申请提升配额，关于如何查询及提升配额，请参见[配额管理](~~184116~~)。
+///
+/// Return value of [Connection::modify_invocation_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInvocationAttributeResponse {
     #[serde(flatten)]
@@ -80676,6 +82053,8 @@ pub struct ModifyInvocationAttributeResponse {
     pub command_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::stop_invocation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StopInvocationResponse {
     #[serde(flatten)]
@@ -80685,6 +82064,8 @@ pub struct StopInvocationResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_commands()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeCommandsResponse {
     #[serde(flatten)]
@@ -80708,6 +82089,8 @@ pub struct DescribeCommandsResponse {
     pub commands: Option<ResponseCommands>,
 }
 ///  
+///
+/// Return value of [Connection::modify_command()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyCommandResponse {
     #[serde(flatten)]
@@ -80717,6 +82100,8 @@ pub struct ModifyCommandResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_command()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteCommandResponse {
     #[serde(flatten)]
@@ -80726,6 +82111,8 @@ pub struct DeleteCommandResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::send_file()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct SendFileResponse {
     #[serde(flatten)]
@@ -80738,6 +82125,8 @@ pub struct SendFileResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_send_file_results()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSendFileResultsResponse {
     #[serde(flatten)]
@@ -80761,6 +82150,8 @@ pub struct DescribeSendFileResultsResponse {
     pub invocations: Option<ResultsResponseInvocations>,
 }
 ///  
+///
+/// Return value of [Connection::describe_cloud_assistant_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeCloudAssistantStatusResponse {
     #[serde(flatten)]
@@ -80784,6 +82175,8 @@ pub struct DescribeCloudAssistantStatusResponse {
     pub instance_cloud_assistant_status_set: Option<AssistantStatusSet>,
 }
 ///  
+///
+/// Return value of [Connection::install_cloud_assistant()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct InstallCloudAssistantResponse {
     #[serde(flatten)]
@@ -80807,6 +82200,8 @@ pub struct InstallCloudAssistantResponse {
 /// - 同一地域下，已创建并可用的会话不能超过1000个，单台ECS实例处于连接状态的会话不能超过20个，单个会话连接的带宽限制为200kb/s。
 /// - 端口转发功能，目前只支持TCP端口转发，不支持UDP。
 /// - 若想永久关闭会话，并使WebSocketUrl失效，请调用EndTerminalSession接口。
+///
+/// Return value of [Connection::start_terminal_session()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct StartTerminalSessionResponse {
     #[serde(flatten)]
@@ -80827,6 +82222,8 @@ pub struct StartTerminalSessionResponse {
 /// - 关闭指定Session数据连接，Session不可再使用。
 ///
 /// - Session关联的WebSocket URL也会失效，不可再使用。
+///
+/// Return value of [Connection::end_terminal_session()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct EndTerminalSessionResponse {
     #[serde(flatten)]
@@ -80836,6 +82233,8 @@ pub struct EndTerminalSessionResponse {
     pub request_id: Option<String>,
 }
 /// 支持查看4周内创建的Session Manager会话记录。
+///
+/// Return value of [Connection::describe_terminal_sessions()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeTerminalSessionsResponse {
     #[serde(flatten)]
@@ -80849,6 +82248,7 @@ pub struct DescribeTerminalSessionsResponse {
     #[serde(rename = "Sessions")]
     pub sessions: Option<ResponseSessions>,
 }
+/// Return value of [Connection::modify_cloud_assistant_settings()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyCloudAssistantSettingsResponse {
     #[serde(flatten)]
@@ -80857,6 +82257,7 @@ pub struct ModifyCloudAssistantSettingsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_cloud_assistant_settings()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeCloudAssistantSettingsResponse {
     #[serde(flatten)]
@@ -80876,6 +82277,8 @@ pub struct DescribeCloudAssistantSettingsResponse {
     pub session_manager_config: Option<ResponseSessionManagerConfig>,
 }
 ///  
+///
+/// Return value of [Connection::create_activation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateActivationResponse {
     #[serde(flatten)]
@@ -80891,6 +82294,8 @@ pub struct CreateActivationResponse {
     pub activation_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_activations()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeActivationsResponse {
     #[serde(flatten)]
@@ -80916,6 +82321,8 @@ pub struct DescribeActivationsResponse {
     pub activation_list: Vec<ActivationList>,
 }
 ///  
+///
+/// Return value of [Connection::disable_activation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DisableActivationResponse {
     #[serde(flatten)]
@@ -80928,6 +82335,8 @@ pub struct DisableActivationResponse {
     pub activation: Option<DisableActivationResponseActivation>,
 }
 ///  
+///
+/// Return value of [Connection::delete_activation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteActivationResponse {
     #[serde(flatten)]
@@ -80940,6 +82349,8 @@ pub struct DeleteActivationResponse {
     pub activation: Option<DeleteActivationResponseActivation>,
 }
 ///  
+///
+/// Return value of [Connection::describe_managed_instances()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeManagedInstancesResponse {
     #[serde(flatten)]
@@ -80967,6 +82378,8 @@ pub struct DescribeManagedInstancesResponse {
 /// ## 接口说明
 ///
 /// 目前调用ModifyManagedInstance接口仅支持修改一台托管实例的名称。
+///
+/// Return value of [Connection::modify_managed_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyManagedInstanceResponse {
     #[serde(flatten)]
@@ -80979,6 +82392,8 @@ pub struct ModifyManagedInstanceResponse {
     pub instance: Option<ModifyManagedInstanceResponseInstance>,
 }
 ///  
+///
+/// Return value of [Connection::deregister_managed_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeregisterManagedInstanceResponse {
     #[serde(flatten)]
@@ -80994,6 +82409,8 @@ pub struct DeregisterManagedInstanceResponse {
 ///     - Linux：2.2.3.344。
 ///     - Windows：2.1.3.344。
 /// - 分页查询首页时，仅需设置`MaxResults`以限制返回信息的条目数，返回结果中的`NextToken`将作为查询后续页的凭证。查询后续页时，将`NextToken`参数设置为上一次返回结果中获取到的`NextToken`作为查询凭证，并设置`MaxResults`限制返回条目数。
+///
+/// Return value of [Connection::list_plugin_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListPluginStatusResponse {
     #[serde(flatten)]
@@ -81017,6 +82434,8 @@ pub struct ListPluginStatusResponse {
     pub instance_plugin_status_set: Option<InstancePluginStatusSet>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instances_full_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstancesFullStatusResponse {
     #[serde(flatten)]
@@ -81037,6 +82456,8 @@ pub struct DescribeInstancesFullStatusResponse {
     pub instance_full_status_set: Option<InstanceFullStatusSet>,
 }
 ///  
+///
+/// Return value of [Connection::describe_disks_full_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDisksFullStatusResponse {
     #[serde(flatten)]
@@ -81057,6 +82478,8 @@ pub struct DescribeDisksFullStatusResponse {
     pub disk_full_status_set: Option<DiskFullStatusSet>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_history_events()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceHistoryEventsResponse {
     #[serde(flatten)]
@@ -81089,6 +82512,8 @@ pub struct DescribeInstanceHistoryEventsResponse {
     pub next_token: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_simulated_system_events()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateSimulatedSystemEventsResponse {
     #[serde(flatten)]
@@ -81100,6 +82525,8 @@ pub struct CreateSimulatedSystemEventsResponse {
     pub event_id_set: Option<EventIdSet>,
 }
 ///  
+///
+/// Return value of [Connection::cancel_simulated_system_events()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelSimulatedSystemEventsResponse {
     #[serde(flatten)]
@@ -81109,6 +82536,8 @@ pub struct CancelSimulatedSystemEventsResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::accept_inquired_system_event()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AcceptInquiredSystemEventResponse {
     #[serde(flatten)]
@@ -81117,6 +82546,7 @@ pub struct AcceptInquiredSystemEventResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_diagnostic_metrics()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiagnosticMetricsResponse {
     #[serde(flatten)]
@@ -81132,6 +82562,7 @@ pub struct DescribeDiagnosticMetricsResponse {
     #[serde(default)]
     pub metrics: Vec<ResponseMetric>,
 }
+/// Return value of [Connection::create_diagnostic_metric_set()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateDiagnosticMetricSetResponse {
     #[serde(flatten)]
@@ -81143,6 +82574,7 @@ pub struct CreateDiagnosticMetricSetResponse {
     #[serde(rename = "MetricSetId")]
     pub metric_set_id: Option<String>,
 }
+/// Return value of [Connection::describe_diagnostic_metric_sets()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiagnosticMetricSetsResponse {
     #[serde(flatten)]
@@ -81158,6 +82590,7 @@ pub struct DescribeDiagnosticMetricSetsResponse {
     #[serde(default)]
     pub metric_sets: Vec<MetricSet>,
 }
+/// Return value of [Connection::modify_diagnostic_metric_set()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDiagnosticMetricSetResponse {
     #[serde(flatten)]
@@ -81166,6 +82599,7 @@ pub struct ModifyDiagnosticMetricSetResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_diagnostic_metric_sets()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteDiagnosticMetricSetsResponse {
     #[serde(flatten)]
@@ -81174,6 +82608,7 @@ pub struct DeleteDiagnosticMetricSetsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_diagnostic_report()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateDiagnosticReportResponse {
     #[serde(flatten)]
@@ -81185,6 +82620,7 @@ pub struct CreateDiagnosticReportResponse {
     #[serde(rename = "ReportId")]
     pub report_id: Option<String>,
 }
+/// Return value of [Connection::describe_diagnostic_reports()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiagnosticReportsResponse {
     #[serde(flatten)]
@@ -81198,6 +82634,7 @@ pub struct DescribeDiagnosticReportsResponse {
     #[serde(rename = "Reports")]
     pub reports: Option<ResponseReports>,
 }
+/// Return value of [Connection::describe_diagnostic_report_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiagnosticReportAttributesResponse {
     #[serde(flatten)]
@@ -81252,6 +82689,8 @@ pub struct DescribeDiagnosticReportAttributesResponse {
     pub attributes: Option<String>,
 }
 /// 不支持删除诊断中的报告。
+///
+/// Return value of [Connection::delete_diagnostic_reports()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteDiagnosticReportsResponse {
     #[serde(flatten)]
@@ -81261,6 +82700,8 @@ pub struct DeleteDiagnosticReportsResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::get_instance_screenshot()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetInstanceScreenshotResponse {
     #[serde(flatten)]
@@ -81276,6 +82717,8 @@ pub struct GetInstanceScreenshotResponse {
     pub screenshot: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::get_instance_console_output()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct GetInstanceConsoleOutputResponse {
     #[serde(flatten)]
@@ -81294,6 +82737,8 @@ pub struct GetInstanceConsoleOutputResponse {
     pub console_output: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_disk_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDiskMonitorDataResponse {
     #[serde(flatten)]
@@ -81308,6 +82753,8 @@ pub struct DescribeDiskMonitorDataResponse {
     pub monitor_data: Option<DiskMonitorDataResponseMonitorData>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceMonitorDataResponse {
     #[serde(flatten)]
@@ -81319,6 +82766,8 @@ pub struct DescribeInstanceMonitorDataResponse {
     pub monitor_data: Option<InstanceMonitorDataResponseMonitorData>,
 }
 ///  
+///
+/// Return value of [Connection::describe_eni_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeEniMonitorDataResponse {
     #[serde(flatten)]
@@ -81333,6 +82782,8 @@ pub struct DescribeEniMonitorDataResponse {
     pub monitor_data: Option<EniMonitorDataResponseMonitorData>,
 }
 ///  
+///
+/// Return value of [Connection::describe_snapshot_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeSnapshotMonitorDataResponse {
     #[serde(flatten)]
@@ -81344,6 +82795,8 @@ pub struct DescribeSnapshotMonitorDataResponse {
     pub monitor_data: Option<SnapshotMonitorDataResponseMonitorData>,
 }
 ///  
+///
+/// Return value of [Connection::describe_instance_maintenance_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeInstanceMaintenanceAttributesResponse {
     #[serde(flatten)]
@@ -81364,6 +82817,8 @@ pub struct DescribeInstanceMaintenanceAttributesResponse {
     pub maintenance_attributes: Option<MaintenanceAttributes>,
 }
 ///  
+///
+/// Return value of [Connection::modify_instance_maintenance_attributes()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyInstanceMaintenanceAttributesResponse {
     #[serde(flatten)]
@@ -81373,6 +82828,8 @@ pub struct ModifyInstanceMaintenanceAttributesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::redeploy_instance()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RedeployInstanceResponse {
     #[serde(flatten)]
@@ -81387,6 +82844,8 @@ pub struct RedeployInstanceResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::report_instances_status()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReportInstancesStatusResponse {
     #[serde(flatten)]
@@ -81396,6 +82855,8 @@ pub struct ReportInstancesStatusResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::tag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct TagResourcesResponse {
     #[serde(flatten)]
@@ -81405,6 +82866,8 @@ pub struct TagResourcesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::list_tag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ListTagResourcesResponse {
     #[serde(flatten)]
@@ -81419,6 +82882,8 @@ pub struct ListTagResourcesResponse {
     pub tag_resources: Option<ResponseTagResources>,
 }
 ///  
+///
+/// Return value of [Connection::untag_resources()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UntagResourcesResponse {
     #[serde(flatten)]
@@ -81428,6 +82893,8 @@ pub struct UntagResourcesResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::join_resource_group()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct JoinResourceGroupResponse {
     #[serde(flatten)]
@@ -81437,6 +82904,8 @@ pub struct JoinResourceGroupResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::allocate_dedicated_hosts()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AllocateDedicatedHostsResponse {
     #[serde(flatten)]
@@ -81453,6 +82922,8 @@ pub struct AllocateDedicatedHostsResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_dedicated_hosts()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDedicatedHostsResponse {
     #[serde(flatten)]
@@ -81476,6 +82947,8 @@ pub struct DescribeDedicatedHostsResponse {
     pub dedicated_hosts: Option<DedicatedHosts>,
 }
 ///  
+///
+/// Return value of [Connection::describe_dedicated_host_types()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDedicatedHostTypesResponse {
     #[serde(flatten)]
@@ -81487,6 +82960,8 @@ pub struct DescribeDedicatedHostTypesResponse {
     pub dedicated_host_types: Option<ResponseDedicatedHostTypes>,
 }
 ///  
+///
+/// Return value of [Connection::modify_dedicated_host_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDedicatedHostAttributeResponse {
     #[serde(flatten)]
@@ -81496,6 +82971,8 @@ pub struct ModifyDedicatedHostAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_dedicated_hosts_charge_type()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDedicatedHostsChargeTypeResponse {
     #[serde(flatten)]
@@ -81510,6 +82987,8 @@ pub struct ModifyDedicatedHostsChargeTypeResponse {
     pub fee_of_instances: Option<HostsChargeTypeResponseFeeOfInstances>,
 }
 ///  
+///
+/// Return value of [Connection::describe_dedicated_host_auto_renew()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDedicatedHostAutoRenewResponse {
     #[serde(flatten)]
@@ -81521,6 +83000,8 @@ pub struct DescribeDedicatedHostAutoRenewResponse {
     pub dedicated_host_renew_attributes: Option<HostRenewAttributes>,
 }
 ///  
+///
+/// Return value of [Connection::modify_dedicated_host_auto_renew_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
     #[serde(flatten)]
@@ -81530,6 +83011,8 @@ pub struct ModifyDedicatedHostAutoRenewAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::renew_dedicated_hosts()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RenewDedicatedHostsResponse {
     #[serde(flatten)]
@@ -81542,6 +83025,8 @@ pub struct RenewDedicatedHostsResponse {
     pub order_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_dedicated_host_auto_release_time()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
     #[serde(flatten)]
@@ -81551,6 +83036,8 @@ pub struct ModifyDedicatedHostAutoReleaseTimeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::redeploy_dedicated_host()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RedeployDedicatedHostResponse {
     #[serde(flatten)]
@@ -81560,6 +83047,8 @@ pub struct RedeployDedicatedHostResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::release_dedicated_host()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReleaseDedicatedHostResponse {
     #[serde(flatten)]
@@ -81569,6 +83058,8 @@ pub struct ReleaseDedicatedHostResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_dedicated_host_cluster()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateDedicatedHostClusterResponse {
     #[serde(flatten)]
@@ -81581,6 +83072,8 @@ pub struct CreateDedicatedHostClusterResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::modify_dedicated_host_cluster_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyDedicatedHostClusterAttributeResponse {
     #[serde(flatten)]
@@ -81590,6 +83083,8 @@ pub struct ModifyDedicatedHostClusterAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_dedicated_host_clusters()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeDedicatedHostClustersResponse {
     #[serde(flatten)]
@@ -81610,6 +83105,8 @@ pub struct DescribeDedicatedHostClustersResponse {
     pub dedicated_host_clusters: Option<HostClusters>,
 }
 ///  
+///
+/// Return value of [Connection::delete_dedicated_host_cluster()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteDedicatedHostClusterResponse {
     #[serde(flatten)]
@@ -81619,6 +83116,8 @@ pub struct DeleteDedicatedHostClusterResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::create_hpc_cluster()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateHpcClusterResponse {
     #[serde(flatten)]
@@ -81631,6 +83130,8 @@ pub struct CreateHpcClusterResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_hpc_clusters()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeHpcClustersResponse {
     #[serde(flatten)]
@@ -81651,6 +83152,8 @@ pub struct DescribeHpcClustersResponse {
     pub hpc_clusters: Option<HpcClusters>,
 }
 ///  
+///
+/// Return value of [Connection::modify_hpc_cluster_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyHpcClusterAttributeResponse {
     #[serde(flatten)]
@@ -81660,6 +83163,8 @@ pub struct ModifyHpcClusterAttributeResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::delete_hpc_cluster()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteHpcClusterResponse {
     #[serde(flatten)]
@@ -81669,6 +83174,8 @@ pub struct DeleteHpcClusterResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_tasks()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeTasksResponse {
     #[serde(flatten)]
@@ -81692,6 +83199,8 @@ pub struct DescribeTasksResponse {
     pub task_set: Option<TaskSet>,
 }
 ///  
+///
+/// Return value of [Connection::describe_task_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeTaskAttributeResponse {
     #[serde(flatten)]
@@ -81740,6 +83249,8 @@ pub struct DescribeTaskAttributeResponse {
     pub operation_progress_set: Option<AttributeResponseOperationProgressSet>,
 }
 ///  
+///
+/// Return value of [Connection::cancel_task()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelTaskResponse {
     #[serde(flatten)]
@@ -81748,6 +83259,7 @@ pub struct CancelTaskResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_user_business_behavior()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeUserBusinessBehaviorResponse {
     #[serde(flatten)]
@@ -81757,6 +83269,7 @@ pub struct DescribeUserBusinessBehaviorResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_user_business_behavior()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyUserBusinessBehaviorResponse {
     #[serde(flatten)]
@@ -81764,6 +83277,7 @@ pub struct ModifyUserBusinessBehaviorResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_limitation()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeLimitationResponse {
     #[serde(flatten)]
@@ -81775,6 +83289,7 @@ pub struct DescribeLimitationResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_clusters()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeClustersResponse {
     #[serde(flatten)]
@@ -81784,6 +83299,7 @@ pub struct DescribeClustersResponse {
     #[serde(rename = "Clusters")]
     pub clusters: Option<ResponseClusters>,
 }
+/// Return value of [Connection::delete_network_interface_permission()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteNetworkInterfacePermissionResponse {
     #[serde(flatten)]
@@ -81791,6 +83307,7 @@ pub struct DeleteNetworkInterfacePermissionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_bandwidth_package()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteBandwidthPackageResponse {
     #[serde(flatten)]
@@ -81798,6 +83315,7 @@ pub struct DeleteBandwidthPackageResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_bandwidth_package_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyBandwidthPackageSpecResponse {
     #[serde(flatten)]
@@ -81805,6 +83323,7 @@ pub struct ModifyBandwidthPackageSpecResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_bandwidth_packages()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeBandwidthPackagesResponse {
     #[serde(flatten)]
@@ -81820,6 +83339,7 @@ pub struct DescribeBandwidthPackagesResponse {
     #[serde(rename = "BandwidthPackages")]
     pub bandwidth_packages: Option<BandwidthPackages>,
 }
+/// Return value of [Connection::create_v_switch()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateVSwitchResponse {
     #[serde(flatten)]
@@ -81829,6 +83349,7 @@ pub struct CreateVSwitchResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_v_switch()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteVSwitchResponse {
     #[serde(flatten)]
@@ -81836,6 +83357,7 @@ pub struct DeleteVSwitchResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_v_switch_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyVSwitchAttributeResponse {
     #[serde(flatten)]
@@ -81843,6 +83365,7 @@ pub struct ModifyVSwitchAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_v_switches()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeVSwitchesResponse {
     #[serde(flatten)]
@@ -81858,6 +83381,7 @@ pub struct DescribeVSwitchesResponse {
     #[serde(rename = "VSwitches")]
     pub v_switches: Option<VSwitches>,
 }
+/// Return value of [Connection::create_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreatePhysicalConnectionResponse {
     #[serde(flatten)]
@@ -81867,6 +83391,7 @@ pub struct CreatePhysicalConnectionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeletePhysicalConnectionResponse {
     #[serde(flatten)]
@@ -81874,6 +83399,7 @@ pub struct DeletePhysicalConnectionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_physical_connection_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyPhysicalConnectionAttributeResponse {
     #[serde(flatten)]
@@ -81881,6 +83407,7 @@ pub struct ModifyPhysicalConnectionAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::enable_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct EnablePhysicalConnectionResponse {
     #[serde(flatten)]
@@ -81888,6 +83415,7 @@ pub struct EnablePhysicalConnectionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_physical_connections()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribePhysicalConnectionsResponse {
     #[serde(flatten)]
@@ -81903,6 +83431,7 @@ pub struct DescribePhysicalConnectionsResponse {
     #[serde(rename = "PhysicalConnectionSet")]
     pub physical_connection_set: Option<ResponsePhysicalConnectionSet>,
 }
+/// Return value of [Connection::cancel_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CancelPhysicalConnectionResponse {
     #[serde(flatten)]
@@ -81910,6 +83439,7 @@ pub struct CancelPhysicalConnectionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::terminate_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct TerminatePhysicalConnectionResponse {
     #[serde(flatten)]
@@ -81917,6 +83447,7 @@ pub struct TerminatePhysicalConnectionResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_vpc()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateVpcResponse {
     #[serde(flatten)]
@@ -81930,6 +83461,7 @@ pub struct CreateVpcResponse {
     #[serde(rename = "RouteTableId")]
     pub route_table_id: Option<String>,
 }
+/// Return value of [Connection::delete_vpc()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteVpcResponse {
     #[serde(flatten)]
@@ -81937,6 +83469,7 @@ pub struct DeleteVpcResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_vpcs()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeVpcsResponse {
     #[serde(flatten)]
@@ -81952,6 +83485,7 @@ pub struct DescribeVpcsResponse {
     #[serde(rename = "Vpcs")]
     pub vpcs: Option<ResponseVpcs>,
 }
+/// Return value of [Connection::modify_vpc_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyVpcAttributeResponse {
     #[serde(flatten)]
@@ -81959,6 +83493,7 @@ pub struct ModifyVpcAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::remove_bandwidth_package_ips()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RemoveBandwidthPackageIpsResponse {
     #[serde(flatten)]
@@ -81966,6 +83501,7 @@ pub struct RemoveBandwidthPackageIpsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_ha_vip()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateHaVipResponse {
     #[serde(flatten)]
@@ -81975,6 +83511,7 @@ pub struct CreateHaVipResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_ha_vip()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteHaVipResponse {
     #[serde(flatten)]
@@ -81982,6 +83519,7 @@ pub struct DeleteHaVipResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::associate_ha_vip()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AssociateHaVipResponse {
     #[serde(flatten)]
@@ -81989,6 +83527,7 @@ pub struct AssociateHaVipResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_ha_vip_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyHaVipAttributeResponse {
     #[serde(flatten)]
@@ -81996,6 +83535,7 @@ pub struct ModifyHaVipAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_ha_vips()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeHaVipsResponse {
     #[serde(flatten)]
@@ -82011,6 +83551,7 @@ pub struct DescribeHaVipsResponse {
     #[serde(rename = "HaVips")]
     pub ha_vips: Option<HaVips>,
 }
+/// Return value of [Connection::unassociate_ha_vip()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UnassociateHaVipResponse {
     #[serde(flatten)]
@@ -82018,6 +83559,7 @@ pub struct UnassociateHaVipResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_virtual_border_router()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateVirtualBorderRouterResponse {
     #[serde(flatten)]
@@ -82027,6 +83569,7 @@ pub struct CreateVirtualBorderRouterResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_virtual_border_router()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteVirtualBorderRouterResponse {
     #[serde(flatten)]
@@ -82034,6 +83577,7 @@ pub struct DeleteVirtualBorderRouterResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_virtual_border_router_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyVirtualBorderRouterAttributeResponse {
     #[serde(flatten)]
@@ -82041,6 +83585,7 @@ pub struct ModifyVirtualBorderRouterAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::recover_virtual_border_router()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RecoverVirtualBorderRouterResponse {
     #[serde(flatten)]
@@ -82048,6 +83593,7 @@ pub struct RecoverVirtualBorderRouterResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::terminate_virtual_border_router()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct TerminateVirtualBorderRouterResponse {
     #[serde(flatten)]
@@ -82055,6 +83601,7 @@ pub struct TerminateVirtualBorderRouterResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_virtual_border_routers()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeVirtualBorderRoutersResponse {
     #[serde(flatten)]
@@ -82070,6 +83617,7 @@ pub struct DescribeVirtualBorderRoutersResponse {
     #[serde(rename = "VirtualBorderRouterSet")]
     pub virtual_border_router_set: Option<RouterSet>,
 }
+/// Return value of [Connection::describe_virtual_border_routers_for_physical_connection()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
     #[serde(flatten)]
@@ -82085,6 +83633,7 @@ pub struct DescribeVirtualBorderRoutersForPhysicalConnectionResponse {
     #[serde(rename = "VirtualBorderRouterForPhysicalConnectionSet")]
     pub virtual_border_router_for_physical_connection_set: Option<ForPhysicalConnectionSet>,
 }
+/// Return value of [Connection::create_router_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateRouterInterfaceResponse {
     #[serde(flatten)]
@@ -82096,6 +83645,7 @@ pub struct CreateRouterInterfaceResponse {
     #[serde(rename = "RouterInterfaceId")]
     pub router_interface_id: Option<String>,
 }
+/// Return value of [Connection::delete_router_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteRouterInterfaceResponse {
     #[serde(flatten)]
@@ -82103,6 +83653,7 @@ pub struct DeleteRouterInterfaceResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::activate_router_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ActivateRouterInterfaceResponse {
     #[serde(flatten)]
@@ -82110,6 +83661,7 @@ pub struct ActivateRouterInterfaceResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::deactivate_router_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeactivateRouterInterfaceResponse {
     #[serde(flatten)]
@@ -82117,6 +83669,7 @@ pub struct DeactivateRouterInterfaceResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_router_interface_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyRouterInterfaceAttributeResponse {
     #[serde(flatten)]
@@ -82124,6 +83677,7 @@ pub struct ModifyRouterInterfaceAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_router_interface_spec()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyRouterInterfaceSpecResponse {
     #[serde(flatten)]
@@ -82133,6 +83687,7 @@ pub struct ModifyRouterInterfaceSpecResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::modify_v_router_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyVRouterAttributeResponse {
     #[serde(flatten)]
@@ -82140,6 +83695,7 @@ pub struct ModifyVRouterAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_router_interfaces()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRouterInterfacesResponse {
     #[serde(flatten)]
@@ -82155,6 +83711,7 @@ pub struct DescribeRouterInterfacesResponse {
     #[serde(rename = "RouterInterfaceSet")]
     pub router_interface_set: Option<RouterInterfaceSet>,
 }
+/// Return value of [Connection::unassociate_eip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct UnassociateEipAddressResponse {
     #[serde(flatten)]
@@ -82163,6 +83720,8 @@ pub struct UnassociateEipAddressResponse {
     pub request_id: Option<String>,
 }
 /// > 该接口已升级，不建议继续使用。新版接口的使用说明，请参见[AllocateEipAddress](~~120192~~)。
+///
+/// Return value of [Connection::allocate_eip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AllocateEipAddressResponse {
     #[serde(flatten)]
@@ -82174,6 +83733,7 @@ pub struct AllocateEipAddressResponse {
     #[serde(rename = "EipAddress")]
     pub eip_address: Option<String>,
 }
+/// Return value of [Connection::modify_eip_address_attribute()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyEipAddressAttributeResponse {
     #[serde(flatten)]
@@ -82181,6 +83741,7 @@ pub struct ModifyEipAddressAttributeResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::release_eip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReleaseEipAddressResponse {
     #[serde(flatten)]
@@ -82188,6 +83749,7 @@ pub struct ReleaseEipAddressResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::associate_eip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AssociateEipAddressResponse {
     #[serde(flatten)]
@@ -82195,6 +83757,7 @@ pub struct AssociateEipAddressResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_eip_addresses()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeEipAddressesResponse {
     #[serde(flatten)]
@@ -82210,6 +83773,7 @@ pub struct DescribeEipAddressesResponse {
     #[serde(rename = "EipAddresses")]
     pub eip_addresses: Option<ResponseEipAddresses>,
 }
+/// Return value of [Connection::describe_eip_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeEipMonitorDataResponse {
     #[serde(flatten)]
@@ -82219,6 +83783,7 @@ pub struct DescribeEipMonitorDataResponse {
     #[serde(rename = "EipMonitorDatas")]
     pub eip_monitor_datas: Option<DescribeEipMonitorDataResponseEipMonitorDatas>,
 }
+/// Return value of [Connection::create_nat_gateway()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateNatGatewayResponse {
     #[serde(flatten)]
@@ -82232,6 +83797,7 @@ pub struct CreateNatGatewayResponse {
     #[serde(rename = "BandwidthPackageIds")]
     pub bandwidth_package_ids: Option<ResponseBandwidthPackageIds>,
 }
+/// Return value of [Connection::delete_nat_gateway()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteNatGatewayResponse {
     #[serde(flatten)]
@@ -82239,6 +83805,7 @@ pub struct DeleteNatGatewayResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_nat_gateways()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeNatGatewaysResponse {
     #[serde(flatten)]
@@ -82254,6 +83821,7 @@ pub struct DescribeNatGatewaysResponse {
     #[serde(rename = "NatGateways")]
     pub nat_gateways: Option<NatGateways>,
 }
+/// Return value of [Connection::describe_new_project_eip_monitor_data()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeNewProjectEipMonitorDataResponse {
     #[serde(flatten)]
@@ -82263,6 +83831,7 @@ pub struct DescribeNewProjectEipMonitorDataResponse {
     #[serde(rename = "EipMonitorDatas")]
     pub eip_monitor_datas: Option<ProjectEipMonitorDataResponseEipMonitorDatas>,
 }
+/// Return value of [Connection::delete_route_entry()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteRouteEntryResponse {
     #[serde(flatten)]
@@ -82270,6 +83839,7 @@ pub struct DeleteRouteEntryResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::delete_forward_entry()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DeleteForwardEntryResponse {
     #[serde(flatten)]
@@ -82277,6 +83847,7 @@ pub struct DeleteForwardEntryResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::create_forward_entry()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateForwardEntryResponse {
     #[serde(flatten)]
@@ -82286,6 +83857,7 @@ pub struct CreateForwardEntryResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::add_bandwidth_package_ips()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AddBandwidthPackageIpsResponse {
     #[serde(flatten)]
@@ -82293,6 +83865,7 @@ pub struct AddBandwidthPackageIpsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_v_routers()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeVRoutersResponse {
     #[serde(flatten)]
@@ -82308,6 +83881,7 @@ pub struct DescribeVRoutersResponse {
     #[serde(rename = "VRouters")]
     pub v_routers: Option<VRouters>,
 }
+/// Return value of [Connection::create_route_entry()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct CreateRouteEntryResponse {
     #[serde(flatten)]
@@ -82315,6 +83889,7 @@ pub struct CreateRouteEntryResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_forward_table_entries()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeForwardTableEntriesResponse {
     #[serde(flatten)]
@@ -82330,6 +83905,7 @@ pub struct DescribeForwardTableEntriesResponse {
     #[serde(rename = "ForwardTableEntries")]
     pub forward_table_entries: Option<TableEntries>,
 }
+/// Return value of [Connection::modify_forward_entry()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ModifyForwardEntryResponse {
     #[serde(flatten)]
@@ -82337,6 +83913,7 @@ pub struct ModifyForwardEntryResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::describe_access_points()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeAccessPointsResponse {
     #[serde(flatten)]
@@ -82352,6 +83929,7 @@ pub struct DescribeAccessPointsResponse {
     #[serde(rename = "AccessPointSet")]
     pub access_point_set: Option<PointSet>,
 }
+/// Return value of [Connection::describe_route_tables()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeRouteTablesResponse {
     #[serde(flatten)]
@@ -82367,6 +83945,7 @@ pub struct DescribeRouteTablesResponse {
     #[serde(rename = "RouteTables")]
     pub route_tables: Option<RouteTables>,
 }
+/// Return value of [Connection::connect_router_interface()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ConnectRouterInterfaceResponse {
     #[serde(flatten)]
@@ -82374,6 +83953,7 @@ pub struct ConnectRouterInterfaceResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::export_snapshot()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ExportSnapshotResponse {
     #[serde(flatten)]
@@ -82383,6 +83963,7 @@ pub struct ExportSnapshotResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::release_public_ip_address()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct ReleasePublicIpAddressResponse {
     #[serde(flatten)]
@@ -82395,6 +83976,8 @@ pub struct ReleasePublicIpAddressResponse {
     pub remain_times: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::add_tags()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct AddTagsResponse {
     #[serde(flatten)]
@@ -82404,6 +83987,8 @@ pub struct AddTagsResponse {
     pub request_id: Option<String>,
 }
 ///  
+///
+/// Return value of [Connection::describe_resource_by_tags()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeResourceByTagsResponse {
     #[serde(flatten)]
@@ -82424,6 +84009,8 @@ pub struct DescribeResourceByTagsResponse {
     pub resources: Option<ResponseResources>,
 }
 ///  
+///
+/// Return value of [Connection::describe_tags()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DescribeTagsResponse {
     #[serde(flatten)]
@@ -82444,6 +84031,8 @@ pub struct DescribeTagsResponse {
     pub tags: Option<TagsResponseTags>,
 }
 ///  
+///
+/// Return value of [Connection::remove_tags()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct RemoveTagsResponse {
     #[serde(flatten)]
@@ -82452,6 +84041,7 @@ pub struct RemoveTagsResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::enable_network_interface_qo_s()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct EnableNetworkInterfaceQoSResponse {
     #[serde(flatten)]
@@ -82460,6 +84050,7 @@ pub struct EnableNetworkInterfaceQoSResponse {
     #[serde(rename = "RequestId")]
     pub request_id: Option<String>,
 }
+/// Return value of [Connection::disable_network_interface_qo_s()].
 #[derive(Debug, Default, serde::Deserialize)]
 pub struct DisableNetworkInterfaceQoSResponse {
     #[serde(flatten)]
