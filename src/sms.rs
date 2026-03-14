@@ -8697,7 +8697,7 @@ pub struct GetSmsTemplateResponse {
     ///
     /// > 仅支持企业认证用户申请推广短信和国际/港澳台消息。个人用户与企业用户权益区别详情请参见[使用须知](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8)。
     #[serde(rename = "TemplateType")]
-    pub template_type: Option<String>,
+    pub template_type: Option<i32>,
     /// 模板审核状态。返回值：
     ///
     /// - **0**：审核中。
@@ -8705,7 +8705,7 @@ pub struct GetSmsTemplateResponse {
     /// - **2**：未通过审核，会返回审核失败的原因，请参考[短信审核失败的处理建议](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ)，调用[UpdateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmstemplate?spm)接口或在[模板管理](https://dysms.console.aliyun.com/domestic/text/template)页面修改短信模板。
     /// - **10**：取消审核。
     #[serde(rename = "TemplateStatus")]
-    pub template_status: Option<String>,
+    pub template_status: Option<i32>,
     /// 申请模板时，关联的短信签名。
     #[serde(rename = "RelatedSignName")]
     pub related_sign_name: Option<String>,

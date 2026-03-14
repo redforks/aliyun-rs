@@ -7,6 +7,7 @@
 
 use ali_acs::AccessKeySecret;
 use ali_acs::sms::{Connection, Endpoint};
+use anyhow::Result;
 
 /// Helper to get the connection from environment variables
 fn test_connection() -> Connection {
@@ -88,24 +89,44 @@ async fn test_query_sms_sign() {
 
 #[tokio::test]
 #[ignore]
-async fn test_get_sms_template() {
+async fn test_get_sms_template() -> Result<()> {
     let conn = test_connection();
 
-    let result = conn
-        .get_sms_template(ali_acs::sms::GetSmsTemplate::new("SMS_template"))
-        .await;
+    // First, query the list of templates
+    let list_result = conn
+        .query_sms_template_list(ali_acs::sms::QuerySmsTemplateList::new())
+        .await?;
 
-    match result {
-        Ok(response) => {
-            println!(
-                "Get SMS template response code: {}",
-                response.code_message.code
-            );
-        }
-        Err(e) => {
-            println!("Get SMS template error: {}", e);
-        }
+    println!(
+        "Query SMS template list response code: {}, total count: {:?}",
+        list_result.code_message.code, list_result.total_count
+    );
+
+    // Get the first 2 templates and call get_sms_template for each
+    let templates: Vec<_> = list_result
+        .sms_template_list
+        .into_iter()
+        .filter_map(|t| t.template_code)
+        .take(2)
+        .collect();
+
+    if templates.is_empty() {
+        println!("No templates found to test get_sms_template");
+        return Ok(());
     }
+
+    for template_code in templates {
+        let result = conn
+            .get_sms_template(ali_acs::sms::GetSmsTemplate::new(&template_code))
+            .await?;
+
+        println!(
+            "Get SMS template '{}' response code: {}",
+            template_code, result.code_message.code
+        );
+    }
+
+    Ok(())
 }
 
 #[tokio::test]
