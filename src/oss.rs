@@ -5877,7 +5877,10 @@ impl crate::Request for InitiateBucketWorm {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-worm-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-worm-id",
+            )?;
             inner.x_oss_worm_id = parsed;
         }
         Ok(())
@@ -7096,7 +7099,10 @@ impl crate::Request for PutBucketReplication {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-replication-rule-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-replication-rule-id",
+            )?;
             inner.x_oss_replication_rule_id = parsed;
         }
         Ok(())
@@ -9163,27 +9169,42 @@ impl crate::Request for OptionObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("Access-Control-Allow-Origin") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Access-Control-Allow-Origin",
+            )?;
             inner.access_control_allow_origin = parsed;
         }
         if let Some(value) = headers.get("Access-Control-Allow-Methods") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Access-Control-Allow-Methods",
+            )?;
             inner.access_control_allow_methods = parsed;
         }
         if let Some(value) = headers.get("Access-Control-Allow-Headers") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Access-Control-Allow-Headers",
+            )?;
             inner.access_control_allow_headers = parsed;
         }
         if let Some(value) = headers.get("Access-Control-Expose-Headers") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Access-Control-Expose-Headers",
+            )?;
             inner.access_control_expose_headers = parsed;
         }
         if let Some(value) = headers.get("Access-Control-Max-Age") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Access-Control-Max-Age",
+            )?;
             inner.access_control_max_age = parsed;
         }
         Ok(())
@@ -9817,7 +9838,10 @@ impl crate::Request for InitUserAntiDDosInfo {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-defender-instance") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-defender-instance",
+            )?;
             inner.x_oss_defender_instance = parsed;
         }
         Ok(())
@@ -12262,12 +12286,18 @@ impl crate::Request for PutObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-hash-crc64ecma",
+            )?;
             inner.x_oss_hash_crc64ecma = parsed;
         }
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -12518,12 +12548,18 @@ impl crate::Request for CopyObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-copy-source-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-copy-source-version-id",
+            )?;
             inner.x_oss_copy_source_version_id = parsed;
         }
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -12721,77 +12757,122 @@ impl crate::Request for GetObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-server-side-encryption") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-server-side-encryption",
+            )?;
             inner.x_oss_server_side_encryption = parsed;
         }
         if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-server-side-encryption-key-id",
+            )?;
             inner.x_oss_server_side_encryption_key_id = parsed;
         }
         if let Some(value) = headers.get("x-oss-storage-class") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-storage-class",
+            )?;
             inner.x_oss_storage_class = parsed;
         }
         if let Some(value) = headers.get("x-oss-object-type") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-object-type",
+            )?;
             inner.x_oss_object_type = parsed;
         }
         if let Some(value) = headers.get("x-oss-next-append-position") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-next-append-position",
+            )?;
             inner.x_oss_next_append_position = parsed;
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-hash-crc64ecma",
+            )?;
             inner.x_oss_hash_crc64ecma = parsed;
         }
         if let Some(value) = headers.get("x-oss-expiration") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-expiration",
+            )?;
             inner.x_oss_expiration = parsed;
         }
         if let Some(value) = headers.get("x-oss-restore") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-restore",
+            )?;
             inner.x_oss_restore = parsed;
         }
         if let Some(value) = headers.get("x-oss-process-status") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-process-status",
+            )?;
             inner.x_oss_process_status = parsed;
         }
         if let Some(value) = headers.get("x-oss-request-charged") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-request-charged",
+            )?;
             inner.x_oss_request_charged = parsed;
         }
         if let Some(value) = headers.get("Content-Md5") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Md5",
+            )?;
             inner.content_md5 = parsed;
         }
         if let Some(value) = headers.get("Content-Length") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Length",
+            )?;
             inner.content_length = parsed;
         }
         if let Some(value) = headers.get("Last-Modified") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Last-Modified",
+            )?;
             inner.last_modified = parsed;
         }
         if let Some(value) = headers.get("Content-Type") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Type",
+            )?;
             inner.content_type = parsed;
         }
         if let Some(value) = headers.get("ETag") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "ETag",
+            )?;
             inner.e_tag = parsed;
         }
         // Handle wildcard headers matching prefix "x-oss-meta-"
@@ -12806,12 +12887,18 @@ impl crate::Request for GetObject {
         }
         if let Some(value) = headers.get("x-oss-tagging-count") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-tagging-count",
+            )?;
             inner.x_oss_tagging_count = parsed;
         }
         if let Some(value) = headers.get("Content-Disposition") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Disposition",
+            )?;
             inner.content_disposition = parsed;
         }
         Ok(())
@@ -13006,12 +13093,18 @@ impl crate::Request for AppendObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-next-append-position") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-next-append-position",
+            )?;
             inner.x_oss_next_append_position = parsed;
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-hash-crc64ecma",
+            )?;
             inner.x_oss_hash_crc64ecma = parsed;
         }
         Ok(())
@@ -13099,7 +13192,10 @@ impl crate::Request for SealAppendObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-sealed-time") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-sealed-time",
+            )?;
             inner.x_oss_sealed_time = parsed;
         }
         Ok(())
@@ -13186,12 +13282,18 @@ impl crate::Request for DeleteObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-delete-marker") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<bool> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<bool> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-delete-marker",
+            )?;
             inner.x_oss_delete_marker = parsed;
         }
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -13309,77 +13411,122 @@ impl crate::Request for HeadObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-server-side-encryption") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-server-side-encryption",
+            )?;
             inner.x_oss_server_side_encryption = parsed;
         }
         if let Some(value) = headers.get("x-oss-server-side-encryption-key-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-server-side-encryption-key-id",
+            )?;
             inner.x_oss_server_side_encryption_key_id = parsed;
         }
         if let Some(value) = headers.get("x-oss-storage-class") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-storage-class",
+            )?;
             inner.x_oss_storage_class = parsed;
         }
         if let Some(value) = headers.get("x-oss-object-type") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-object-type",
+            )?;
             inner.x_oss_object_type = parsed;
         }
         if let Some(value) = headers.get("x-oss-next-append-position") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-next-append-position",
+            )?;
             inner.x_oss_next_append_position = parsed;
         }
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-hash-crc64ecma",
+            )?;
             inner.x_oss_hash_crc64ecma = parsed;
         }
         if let Some(value) = headers.get("x-oss-expiration") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-expiration",
+            )?;
             inner.x_oss_expiration = parsed;
         }
         if let Some(value) = headers.get("x-oss-restore") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-restore",
+            )?;
             inner.x_oss_restore = parsed;
         }
         if let Some(value) = headers.get("x-oss-process-status") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-process-status",
+            )?;
             inner.x_oss_process_status = parsed;
         }
         if let Some(value) = headers.get("x-oss-request-charged") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-request-charged",
+            )?;
             inner.x_oss_request_charged = parsed;
         }
         if let Some(value) = headers.get("Content-Md5") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Md5",
+            )?;
             inner.content_md5 = parsed;
         }
         if let Some(value) = headers.get("Content-Length") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Length",
+            )?;
             inner.content_length = parsed;
         }
         if let Some(value) = headers.get("Last-Modified") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Last-Modified",
+            )?;
             inner.last_modified = parsed;
         }
         if let Some(value) = headers.get("Content-Type") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Type",
+            )?;
             inner.content_type = parsed;
         }
         if let Some(value) = headers.get("ETag") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "ETag",
+            )?;
             inner.e_tag = parsed;
         }
         // Handle wildcard headers matching prefix "x-oss-meta-"
@@ -13394,12 +13541,18 @@ impl crate::Request for HeadObject {
         }
         if let Some(value) = headers.get("x-oss-transition-time") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-transition-time",
+            )?;
             inner.x_oss_transition_time = parsed;
         }
         if let Some(value) = headers.get("x-oss-tagging-count") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-tagging-count",
+            )?;
             inner.x_oss_tagging_count = parsed;
         }
         Ok(())
@@ -13480,32 +13633,50 @@ impl crate::Request for GetObjectMeta {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         if let Some(value) = headers.get("ETag") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "ETag",
+            )?;
             inner.e_tag = parsed;
         }
         if let Some(value) = headers.get("Content-Length") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Content-Length",
+            )?;
             inner.content_length = parsed;
         }
         if let Some(value) = headers.get("x-oss-last-access-time") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-last-access-time",
+            )?;
             inner.x_oss_last_access_time = parsed;
         }
         if let Some(value) = headers.get("Last-Modifed") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "Last-Modifed",
+            )?;
             inner.last_modifed = parsed;
         }
         if let Some(value) = headers.get("x-oss-transition-time") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-transition-time",
+            )?;
             inner.x_oss_transition_time = parsed;
         }
         Ok(())
@@ -13592,12 +13763,18 @@ impl crate::Request for RestoreObject {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-object-restore-priority") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-object-restore-priority",
+            )?;
             inner.x_oss_object_restore_priority = parsed;
         }
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -14205,7 +14382,10 @@ impl crate::Request for CompleteMultipartUpload {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -14364,7 +14544,10 @@ impl crate::Request for UploadPartCopy {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-copy-source-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-copy-source-version-id",
+            )?;
             inner.x_oss_copy_source_version_id = parsed;
         }
         Ok(())
@@ -14755,7 +14938,10 @@ impl crate::Request for PutObjectAcl {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -14965,7 +15151,10 @@ impl crate::Request for PutSymlink {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -15046,12 +15235,18 @@ impl crate::Request for GetSymlink {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-symlink-target") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-symlink-target",
+            )?;
             inner.x_oss_symlink_target = parsed;
         }
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
@@ -15138,7 +15333,10 @@ impl crate::Request for PutObjectTagging {
         let inner = &mut resp.inner;
         if let Some(value) = headers.get("x-oss-version-id") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
-            let parsed = <Option<String> as crate::ParseHeaderValue>::parse_header_value(s)?;
+            let parsed = anyhow::Context::context(
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
+                "x-oss-version-id",
+            )?;
             inner.x_oss_version_id = parsed;
         }
         Ok(())
