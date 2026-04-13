@@ -12287,7 +12287,7 @@ impl crate::Request for PutObject {
         if let Some(value) = headers.get("x-oss-hash-crc64ecma") {
             let s = anyhow::Context::context(value.to_str(), "convert header to string")?;
             let parsed = anyhow::Context::context(
-                <Option<i64> as crate::ParseHeaderValue>::parse_header_value(s),
+                <Option<String> as crate::ParseHeaderValue>::parse_header_value(s),
                 "x-oss-hash-crc64ecma",
             )?;
             inner.x_oss_hash_crc64ecma = parsed;
@@ -22390,7 +22390,7 @@ pub struct PutAccessPointPublicAccessBlockResponse {
 pub struct PutObjectResponse {
     /// Header field from response: x-oss-hash-crc64ecma
     #[serde(skip)]
-    pub x_oss_hash_crc64ecma: Option<i64>,
+    pub x_oss_hash_crc64ecma: Option<String>,
     /// Header field from response: x-oss-version-id
     #[serde(skip)]
     pub x_oss_version_id: Option<String>,
