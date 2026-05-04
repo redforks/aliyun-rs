@@ -15,7 +15,7 @@ derive_setters = "0.1.8"
 hex = "0.4.3"
 hmac = "0.12.1"
 http = "1.4.0"
-reqwest = { version = "0.12.26" }
+reqwest = { version = "0.13.3", default-features = false, features = ["json"] }
 quick-xml = { version = "0.37", features = ["serialize"] }
 serde = "1.0.228"
 serde_json = "1.0"
@@ -28,13 +28,15 @@ uuid = { version = "1.19.0", features = ["v4"] }
 strum = { version = "0.27.2", features = ["derive"] }
 
 [features]
-default = ["ocr", "sms", "ecs", "oss", "fc", "rds"]
+default = ["rustls-tls","ocr", "sms", "ecs", "oss", "fc", "rds"]
 ocr = []
 sms = []
 ecs = []
 oss = []
 fc = []
 rds = []
+native-tls = ["reqwest/native-tls"]
+rustls-tls = ["reqwest/rustls"]
 
 [lib]
 doctest = false
