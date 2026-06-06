@@ -3,10 +3,9 @@
 //! This authorization algorithm is used by Aliyun OSS (Object Storage Service).
 
 use super::{AccessKeySecret, AliyunAuth, hexed_sha256, hmac_sha256, percent_encode};
-use crate::QueryValue;
-use crate::Result;
-use anyhow::Context;
-use http::{HeaderMap, HeaderValue};
+use crate::{QueryValue, Result};
+use anyhow::Context as _;
+use http::{HeaderMap, HeaderName, HeaderValue};
 use std::borrow::Cow;
 use time::OffsetDateTime;
 use tracing::debug;
@@ -230,19 +229,25 @@ fn build_oss4_canonical_request_and_additional_headers(
     let mut canonical_headers_map: BTreeMap<String, String> = BTreeMap::new();
     let mut additional_headers_set: BTreeSet<String> = BTreeSet::new();
 
+    fn header_value_to_string(k: &HeaderName, v: &HeaderValue) -> Result<String> {
+        v.to_str()
+            .with_context(|| format!("convert header '{}' value to string", k.as_str()))
+            .map_err(Into::into)
+            .map(|v| v.to_string())
+    }
+
     for (k, v) in headers.iter() {
         let key = k.as_str().to_lowercase();
-        let value = v.to_str().context("convert header value to string")?;
 
         if key.starts_with("x-oss-") {
             // x-oss-* headers always participate in signing but never in AdditionalHeaders
-            canonical_headers_map.insert(key, value.to_string());
+            canonical_headers_map.insert(key, header_value_to_string(k, v)?);
         } else if key == "content-type" || key == "content-md5" {
             // Default signing headers: participate in signing but NOT in AdditionalHeaders
-            canonical_headers_map.insert(key, value.to_string());
+            canonical_headers_map.insert(key, header_value_to_string(k, v)?);
         } else if matches!(key.as_str(), "content-disposition" | "content-length") {
             // These are optional headers that participate in signing AND appear in AdditionalHeaders
-            canonical_headers_map.insert(key.clone(), value.to_string());
+            canonical_headers_map.insert(key.clone(), header_value_to_string(k, v)?);
             additional_headers_set.insert(key);
         }
     }
