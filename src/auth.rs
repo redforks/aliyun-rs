@@ -111,7 +111,7 @@ pub trait AliyunAuth: Send + Sync {
 
 /// Compute HMAC-SHA256 with raw key bytes, returning raw bytes.
 fn hmac_sha256(key: &[u8], data: &[u8]) -> Result<Vec<u8>> {
-    use hmac::{Hmac, Mac};
+    use hmac::{Hmac, KeyInit, Mac};
     use sha2::Sha256;
 
     let mut mac = Hmac::<Sha256>::new_from_slice(key).context("Create hmac from key")?;

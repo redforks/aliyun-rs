@@ -5,7 +5,7 @@
 
 use ali_acs::AccessKeySecret;
 use ali_acs::fc::{Connection, Endpoint};
-use rand::Rng;
+use rand::RngExt;
 
 /// Helper to get the connection from environment variables
 fn test_connection() -> Connection {
@@ -47,7 +47,7 @@ async fn test_create_invoke_delete_function() {
     let conn = test_connection();
 
     // Generate a random 4-digit suffix for the function name
-    let suffix: u16 = rand::thread_rng().gen_range(1000..10000);
+    let suffix: u16 = rand::rng().random_range(1000..10000);
     let function_name = format!("ali-acs-test-{}", suffix);
     println!("Creating function: {}", function_name);
 
@@ -91,7 +91,7 @@ async fn test_create_invoke_delete_function() {
     );
 
     // Create an HTTP trigger with anonymous auth to get a public URL
-    let trigger_suffix: u16 = rand::thread_rng().gen_range(1000..10000);
+    let trigger_suffix: u16 = rand::rng().random_range(1000..10000);
     let trigger_name = format!("ali-acs-test-{}", trigger_suffix);
     println!("Creating trigger: {}", trigger_name);
 
